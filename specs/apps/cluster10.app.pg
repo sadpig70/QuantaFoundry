@@ -1,0 +1,38 @@
+# cluster10 — 1D cluster state (10큐비트). goal-autonomy 자율 생성 (family extension, human seed 0).
+# 봉인 h_gate+cz 재조립(H^⊗10 후 CZ 체인). MBQC 자원. 새 모듈 0 — O(1) marginal 확장.
+```json id=app_meta
+{"id": "cluster10", "n_sys": 10, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+CZ=np.diag([1,1,1,-1]).astype(complex)
+def emb(U,t,n):
+    left=np.eye(1<<t[0]); right=np.eye(1<<(n-t[-1]-1))
+    return np.kron(np.kron(left,U),right)
+g=np.eye(1)
+for _ in range(10): g=np.kron(g,H)
+for i in range(9): g=emb(CZ,[i,i+1],10)@g
+golden=g
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/h_gate.pg", "targets": [3]},
+           {"spec": "../modules/h_gate.pg", "targets": [4]},
+           {"spec": "../modules/h_gate.pg", "targets": [5]},
+           {"spec": "../modules/h_gate.pg", "targets": [6]},
+           {"spec": "../modules/h_gate.pg", "targets": [7]},
+           {"spec": "../modules/h_gate.pg", "targets": [8]},
+           {"spec": "../modules/h_gate.pg", "targets": [9]},
+           {"spec": "../modules/cz.pg", "targets": [0, 1]},
+           {"spec": "../modules/cz.pg", "targets": [1, 2]},
+           {"spec": "../modules/cz.pg", "targets": [2, 3]},
+           {"spec": "../modules/cz.pg", "targets": [3, 4]},
+           {"spec": "../modules/cz.pg", "targets": [4, 5]},
+           {"spec": "../modules/cz.pg", "targets": [5, 6]},
+           {"spec": "../modules/cz.pg", "targets": [6, 7]},
+           {"spec": "../modules/cz.pg", "targets": [7, 8]},
+           {"spec": "../modules/cz.pg", "targets": [8, 9]}]}
+```

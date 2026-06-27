@@ -1,7 +1,10 @@
 # QuantaFoundry — Technical Specification
 
-> **Version:** 0.4 (honesty calibration + genuine N=21 modular arithmetic, app-level cross-model,
-> second-oracle, goal-autonomy family extension, semantic_guarantee) · **Date:** 2026-06-27
+> **Version:** 0.6 (v0.5 + self-extending library: arithmetic-synthesis, continuous-rotation W-states,
+> autonomous loop-to-frontier) · **Date:** 2026-06-27
+> *(v0.5: GenSkill library — generation *methods* as a first-class catalog. v0.4: honesty calibration +
+> genuine N=21 modular arithmetic, app-level cross-model, second-oracle, goal-autonomy family extension,
+> semantic_guarantee.)*
 > **Audience:** AI runtimes and engineers performing an independent design review.
 > **Status of claims:** every result in §8 is reproduced from the working tree; "planned"/"hypothesis" items are marked.
 > **What changed since v0.3:** (1) Shor extended to **N=21 = 3 × 7 with genuine modular arithmetic**
@@ -10,8 +13,21 @@
 > demonstrated by a true-divergence probe (EXT v05: free-parameter intents diverge); (3) a
 > **second, Qualtran-independent oracle** re-checks sealed unitaries (18/18); (4) **goal-autonomy**
 > extended to multiple families (GHZ + cluster) with autonomous sealing (human seed 0); (5) per-seal
-> **semantic_guarantee** layer (Tier-1 ≠ unitary_equiv, made explicit). Library now **28 sealed
-> modules → 33 sealed applications**, every primitive established with **zero human answer keys** (§8).
+> **semantic_guarantee** layer (Tier-1 ≠ unitary_equiv, made explicit). Library now **34 sealed
+> modules → 51 sealed applications**, every primitive established with **zero human answer keys** (§8).
+> **What changed since v0.5:** the GenSkill library became *self-extending* (§8.7): (1) an
+> **arithmetic-synthesis** skill synthesizes controlled modular multipliers (×a mod N) via MMD
+> reversible synthesis into sealed MCTs — reproducing all 6 committed multipliers' sealed unitaries;
+> (2) a **continuous-rotation W-state** family — the first algorithm-level states needing irrational
+> Ry angles (α_k=arccos√(1/k) primitives, sealed with global-phase-tolerant C4), W₃/W₄ autonomously
+> sealed; (3) goal-autonomy gained an **unmanned loop-to-frontier** that recomposes sealed modules
+> until every gap is done or blocked, then names its own missing prerequisites. The library grew to
+> **34 sealed modules → 51 sealed applications** (18 forged autonomously, human seed 0, zero new
+> modules beyond the Ry primitives).
+> **What changed in v0.5:** a **GenSkill library** (`scripts/genskills.py`,
+> `registry/GENSKILL-CATALOG.json`) promotes generation *methods* — previously ad-hoc code — to a
+> first-class, introspectable catalog, the method-side counterpart of the result registry. goal-autonomy
+> consumes it. GenSkill mints no trust; its output still must pass the oracle to be sealed (§8.7).
 > **Honesty calibration (this version):** several v0.3 claims are scoped down — see §3/§10/§11 and the
 > per-section notes. "Non-linear production capacity" is now stated as a **hypothesis** with first
 > evidence, not a result.
@@ -41,7 +57,7 @@ QuantaFoundry is an **AI-native quantum software foundry**. It turns high-level 
 software modules, **verifies them with a deterministic contract oracle**, **seals only what is
 proven**, accumulates sealed modules in a registry, and **composes** sealed modules into larger
 applications (each re-verified and re-sealed). As of v0.4 all four functions are realized: the library
-holds **28 sealed base modules** and **33 sealed applications**, the latter built entirely by
+holds **34 sealed base modules** and **51 sealed applications**, the latter built entirely by
 recomposing the former — up to **Shor period-finding circuits that factor 15 = 3 × 5 and 21 = 3 × 7**
 (the latter with genuine modular arithmetic, not the N=15 special case).
 
@@ -67,7 +83,7 @@ strength:
    authored every base gate's reference and implementation; all converged, and each converged hash was
    independently corroborated by a stack-independent symbolic proof (§8.2).
 3. **Compounding via composition (F3)** — sealed modules recompose into sealed applications, each
-   re-verified against the contract oracle. The library grew to 28 verified gates and 33 verified
+   re-verified against the contract oracle. The library grew to 34 verified gates and 51 verified
    applications including Grover, QFT(2–4), Quantum Phase Estimation, **Shor period-finding (N=15 and
    genuine N=21)**, and autonomously-discovered families (GHZ, cluster), with every new primitive
    (controlled-phase family, Fredkin, modular multipliers) also established key-free (§8.3–8.4).
@@ -141,6 +157,10 @@ should watch for any path that lets an unsealed artifact influence a downstream 
 
 1. **Generate.** An AI runtime turns an intent into a candidate `.pg` (a `bloq` implementation, an
    independently authored `golden` reference, and `meta`). It may retry; it cannot self-certify.
+   *Generation methods themselves are now a reusable library (GenSkill, v0.5):* recurring construction
+   recipes (e.g. linear-CNOT entangler, graph-state synthesis) are catalogued as named, parametrized
+   skills that emit candidate specs deterministically — but the boundary holds, a GenSkill cannot
+   self-certify either; its output re-enters function 2 (§8.7).
 2. **Verify & seal → store.** A deterministic oracle checks contracts C1–C4, selects a seal tier,
    and emits `<id>.sealed.json` iff the candidate passes. Sealed artifacts are admitted to the
    registry under invariants INV1–3.
@@ -512,7 +532,7 @@ With the gate library key-free, sealed modules were **recomposed** into applicat
 input is itself sealed (INV2). Tier-0 realizes the dense unitary; Tier-1 (structural Merkle) seals
 arbitrarily large compositions without materializing 2ⁿ.
 
-**33 applications sealed.** Highlights (a representative subset):
+**51 applications sealed (33 algorithm-layer + 18 autonomously forged).** Highlights (a representative subset):
 
 | App | n | Built from (sealed modules / sub-apps) | What it demonstrates |
 |---|---|---|---|
@@ -534,7 +554,8 @@ engine, and the oracle — is mutually consistent.
 **Capability gaps were filled key-free, on demand.** Building these apps required gates not in the base
 15 (controlled-T, controlled-S†, the controlled-Rₖ phase family, controlled-Rₖ†, Fredkin). Each was
 established by the **same key-free mechanism** (independent `proof ⊕ structural` convergence, graded
-PROOF_BACKED, zero human seed) and sealed, growing the library to **28 modules**. The controlled-phase
+PROOF_BACKED, zero human seed) and sealed, growing the library to **28 modules** (at the algorithm-layer
+milestone; 34 after the W-state Ry primitives, §8.7). The controlled-phase
 rotations are exposed as a *parametric family* `CRₖ = diag(1,1,1, e^{2πi/2^k})` (with cz=CR₁, cs=CR₂,
 ct=CR₃), so arbitrary-precision QFT/QPE is a matter of sealing the next k.
 
@@ -582,9 +603,9 @@ Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a
 ### 8.5 Library-wide regression (current totals)
 
 ```
-modules: 28 sealed · re-verified through the oracle
-apps:    33 sealed (unique) · deterministic re-seal (u_hash identical)
-         registry/apps holds 52 files = 33 unique app seals + 19 cached app-side module re-seals
+modules: 34 sealed · re-verified through the oracle (28 gates + 6 ±α_k Ry primitives, §8.7)
+apps:    51 sealed (unique) · deterministic re-seal (u_hash identical) · 18 forged autonomously
+         registry/apps holds 76 files = 51 unique app seals + 25 cached app-side module re-seals
          (canonical copy lives in registry/modules; single source of truth = REGISTRY-MANIFEST.json
           registry_root_hash; blast-radius via registry_tools.py dependents)
 rediscovery cross-checks: 6/6 byte-identical to independently sealed gates
@@ -629,6 +650,65 @@ post-forge scan proposes the next members itself (self-growing loop). Artifacts:
 `scripts/goal_autonomy.py`, `.pgf/autoforge/{GOAL-SCAN,GOAL-FORGE-RESULT,COMPOUNDING-CURVE}.json`,
 `_workspace/crossmodel/EXT-V0{4,5}-INGEST-REPORT.md`, `_workspace/CORPUS-DISCOUNT-NOTE.md`.
 
+### 8.7 v0.5 evidence — GenSkill library (generation *methods* as first-class assets)
+
+Until v0.4 the foundry libraried only *results* (sealed unitaries); the *methods* that produced them
+lived as one-off code (e.g. `goal_autonomy.gen_ghz/gen_cluster`). v0.5 promotes generation methods to a
+first-class catalog (`scripts/genskills.py`): named, parametrized **GenSkills**, each with metadata
+(kind, params, required sealed modules, golden-construction method) and a deterministic `make_spec(n)`.
+`registry/GENSKILL-CATALOG.json` serializes the catalog as data — the method-side counterpart of
+`REGISTRY-MANIFEST.json`. Three skills ship: `ghz_linear`, `cluster_line` (both *byte-frozen* — they
+authored already-sealed families), and `cluster_ring` (new, built on a general `graph_state` primitive
+that handles arbitrary, non-adjacent CZ edges via `embed_unitary`).
+
+**The boundary is explicit: generation ≠ verification.** A GenSkill mints no trust — its output is a
+*candidate* spec that still must pass the `app_assemble` oracle (C-app) to be sealed. The library is a
+reuse / introspection / provenance layer only.
+
+**Determinism is enforced as the acceptance test** (`python scripts/genskills.py selftest` → 27/27):
+(i) *byte-identity* — frozen skills regenerate committed specs byte-for-byte (16 skill-authored
+members); two legacy-format members (`ghz3/4`, authored by an earlier generator) are byte-exempt and
+instead verified by (ii); (ii) *reproduce-seal* — every family member reassembles (temp store) to a
+`u_hash` **identical to the registry seal**, proving the library reproduces the foundry's actual sealed
+output regardless of spec-text format; (iii) *new-method/new-synth seals* — `cluster_ring ring4`,
+`cmul8_mod21`, and the W-state apps all seal Tier-0 EXACT through the oracle. The registry, seals, and
+frozen keys are untouched (temp store, scratch specs removed). `goal_autonomy.py` was rewired to
+*consume* genskills (inline generators removed → import), confirming behavior preservation.
+
+**v0.6 additions — the library became self-extending.**
+
+- **Arithmetic-synthesis (`modmul_synth`).** Given `(a, N, nq)` it builds the controlled-(×a mod N)
+  permutation (arithmetic, identity out-of-range — no MatrixGate) and synthesizes it via **MMD
+  transformation-based reversible synthesis** into sealed multi-controlled-Toffolis (`toffoli/c3x/c4x/c5x`,
+  ≤5 controls, q0 automatically in every control because the off-control block is identity). It
+  reproduces all six committed multipliers' sealed unitaries (`cmul2/4/16_mod21`, `cmul2/4_mod15`
+  exactly; `cmul7_mod15`'s committed artifact used an N=15-degeneracy `NOT∘rot3` decomposition that
+  differs only on the two *unused* boundary states {0, 2⁴−1} — algorithm-equivalent on the orbit
+  1..N−1, an honest documented variant) and synthesizes new ones on demand. This is the controlled-U
+  *generation method* behind Shor, captured as a reusable skill.
+- **Continuous-rotation W-states (`wstate_cascade`, prerequisite `gen_ry_module`).** The first
+  algorithm-level states requiring **irrational rotation angles**. A parametrized Ry primitive
+  `ry_k{k}(±α_k)`, α_k = arccos√(1/k), is sealed as a normal gate: bloq = `YPowGate`, golden = standard
+  `Ry`; the YPowGate↔Ry global phase is a *scalar* so a cascade of them factors to a single global
+  phase that C4 ignores. `gen_wstate(n)` prepares |W_n⟩ by an `X · CRy(α_k) · CNOT` cascade
+  (CRy decomposed into the sealed ±α_k Ry + CNOT). W₃/W₄ sealed Tier-0 and independently verified
+  (uniform 1/√n amplitudes). The Ry primitives are **family-reused**: W_{n+1} = W_n's modules + the two
+  new ±α_{n+1} gates — marginal cost 2 modules/n, the system naming `ry_k{n+1}` as the prerequisite.
+- **Goal-autonomy unmanned loop-to-frontier (`goal_autonomy.py loop`).** Repeats scan→forge until a
+  round seals nothing new, then reports the frontier blockers. From the GenSkill-supplied methods it
+  autonomously sealed **18 applications** (ghz9/10, cluster5–10, ring3–10, wstate3/4) at **human seed 0,
+  zero new modules** beyond the Ry primitives, halting honestly at the frontier (wstate≥5 blocked,
+  needing unsealed `ry_k5+`). This is the self-growing loop reaching the edge of its current methods;
+  *open-ended discovery of genuinely new methods/families remains research-stage* (the loop recomposes
+  known methods, it does not invent new mathematics).
+
+**Scope (honest).** Still not captured: analytic golden recipes (DFT matrix, diagonal phase,
+permutation) as skills, and autonomous *creation* of new primitive modules (the loop names missing
+prerequisites but a human/next-autonomy-level still seals them — preserving the loop's "zero new
+modules" invariant). Artifacts: `scripts/genskills.py`, `registry/GENSKILL-CATALOG.json`,
+`.pgf/autoforge/{GOAL-SCAN,GOAL-FORGE-RESULT,GOAL-LOOP-RESULT,COMPOUNDING-CURVE}.json`,
+`_workspace/GENSKILL-LIBRARY-NOTE.md`.
+
 ---
 
 ## 9. Honest limitations & threats (please attack these)
@@ -671,7 +751,7 @@ post-forge scan proposes the next members itself (self-growing loop). Artifacts:
 6. **Single base model for both personas.** All personas are currently the same model family. A real
    multi-model panel would strengthen (b) but reintroduces orchestration cost. Worth it?
 7. **Scope of evidence.** *v0.1 proved the loop on 8 small Tier-0 gates. v0.4 now exercises
-   composition (F3) end-to-end (33 apps incl. genuine N=21 Shor), Tier-1 large-N (ghz16), app-level
+   composition (F3) end-to-end (51 apps incl. genuine N=21 Shor), Tier-1 large-N (ghz16), app-level
    cross-model establishment, consensus necessity, and goal-autonomy family extension.* What remains
    **not** done: autonomous
    *goal* selection (the system deciding what to build next), Tier-3 (Clifford+T / ZX) sealing of the
@@ -706,7 +786,13 @@ Two distinct levels:
   over known composition rules (GHZ, cluster), not open-ended discovery of new mathematics. It detects
   gaps (incl. bootstrapping new families and naming missing prerequisites), scores them, and seals the
   top candidates with zero human seed (§8.6). This is the foundry starting to become self-growing — not
-  a "fully autonomous quantum scientist."
+  a "fully autonomous quantum scientist." As of v0.5 goal-autonomy draws its construction methods from
+  the **GenSkill library** (§8.7) rather than embedding them, so a method added to the catalog becomes
+  available to the autonomous loop — coupling the *what* (goal autonomy) to a reusable *how*. v0.6 adds an
+  **unmanned loop-to-frontier** (`goal_autonomy.py loop`): it recomposes sealed modules round after round
+  until every gap is done or blocked (18 apps forged autonomously, human seed 0), then halts and names its
+  own missing prerequisites. The honest boundary stays sharp: the loop *exhausts known methods*; inventing
+  new methods/families (or autonomously sealing new primitive modules) is the next, research-stage step.
 
 **Key-free truth establishment (v0.2, prototyped).** The v0.1 recommendation was "human seeds the
 first key, machine compounds after." v0.2 replaces the human seed with **KeyFreeConsensus**: a truth
@@ -725,7 +811,7 @@ counted per *physical unit* — same-weights / same-tool sources collapse to **o
 independent runtimes authored every base gate's golden and bloq, all reaching `MULTIMODEL` grade and
 corroborated by symbolic proof (§8.2). The on-demand gates needed for the algorithm layer
 (controlled-phase family, Fredkin) were each established by `proof ⊕ structural` convergence and
-sealed. The full library (28 modules → 33 apps → genuine N=21 Shor) therefore stands on **zero
+sealed. The full library (34 modules → 51 apps → genuine N=21 Shor) therefore stands on **zero
 human-asserted answers**. See `.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
 
 **Update (v0.4): both residuals are now addressed.** (i) App-level intents are cross-model corroborated
@@ -773,11 +859,12 @@ registry. AutoForge adds **autonomous author isolation via personas** on top of 
 QuantaFoundry/
   docs/QuantaFoundry-Technical-Spec.md   # this document
   README.md                              # vision + trust model (English)
-  specs/modules/*.pg                     # 28 sealed base-module specs
-  specs/apps/*.app.pg                    # 33 sealed application manifests (app_golden + plan)
-  registry/modules/*.sealed.json         # 28 registered gate seals (INV1-3)
-  registry/apps/*.sealed.json            # 33 app seals (C-app) + 19 cached leaf-module re-seals (52 files)
+  specs/modules/*.pg                     # 34 sealed base-module specs (incl. ±α_k Ry primitives)
+  specs/apps/*.app.pg                    # 51 sealed application manifests (app_golden + plan)
+  registry/modules/*.sealed.json         # 34 registered gate seals (INV1-3)
+  registry/apps/*.sealed.json            # 51 app seals (C-app) + 25 cached leaf-module re-seals (76 files)
   registry/{REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES}.json  # registry as first-class data (v0.4)
+  registry/GENSKILL-CATALOG.json         # generation-method library as first-class data (v0.5)
   .pgf/
     DESIGN-AutoForge.md / DESIGN-KeyFreeConsensus.md   # PG/PGF designs
     status-AutoForge.json / status-KeyFreeConsensus.json / status-F3Compose.json
@@ -791,7 +878,8 @@ QuantaFoundry/
     keyfree/consensus_keys.json          # frozen, provenance-tagged keys (15: 8 base + 7 cross-model)
   scripts/                               # v0.4 tooling (NOT the oracle; analysis/autonomy)
     second_oracle.py                     # Qualtran-independent re-check (18/18)
-    goal_autonomy.py                     # registry scan → gap detect → autonomous seal (families)
+    goal_autonomy.py                     # registry scan → gap detect → autonomous seal (consumes genskills)
+    genskills.py                         # GenSkill library: generation *methods* as a catalog (v0.5)
     semantic_guarantee.py                # per-seal guarantee layer + ghz16 partial verification
     corpus_discount.py / verify_contested_guard.py
   _workspace/crossmodel/                 # cross-model briefs, submissions, consensus reports (v04, v05)
@@ -809,6 +897,8 @@ python .pgf/keyfree/ingest_crossmodel.py                                # cross-
 python .pgf/autoforge/forge_apps.py                                     # apps SEALED · rediscovery 6/6
 python scripts/second_oracle.py                                        # Qualtran-independent 18/18
 python scripts/goal_autonomy.py scan                                   # autonomous gap detection (families)
+python scripts/goal_autonomy.py loop                                   # unmanned forge-to-frontier (self-growing)
+python scripts/genskills.py selftest                                   # GenSkill library determinism 27/27
 python scripts/semantic_guarantee.py                                   # per-seal guarantees + ghz16 partial verify
 ```
 
@@ -842,7 +932,7 @@ Please address as many as you can, and add flaws we did not anticipate.
 
 **Architecture & scope**
 9. The compounding thesis (§4) assumes composition (F3) preserves correctness via C-app + INV3, now
-   exercised on 33 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
+   exercised on 51 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
    every composition sufficient, or are there composition patterns (heterogeneous, recursive,
    uncompute) where C-app could pass while the app is semantically wrong?
 10. Given only this spec, what is the single highest-risk assumption in the whole design, and what

@@ -1,110 +1,62 @@
 [
   {
-    "id": "ghz9",
-    "family": "ghz",
-    "n": 9,
-    "buildable": true,
-    "required_modules": [
-      "h_gate",
-      "cnot"
-    ],
-    "missing_modules": [],
-    "forgeable": true,
-    "bootstrap": false,
-    "algo_value": 0.6,
-    "gate_count": 9,
-    "kind": "entangling scaling (GHZ)",
-    "score": 0.2667
-  },
-  {
-    "id": "cluster5",
-    "family": "cluster",
-    "n": 5,
-    "buildable": true,
-    "required_modules": [
-      "h_gate",
-      "cz"
-    ],
-    "missing_modules": [],
-    "forgeable": true,
-    "bootstrap": false,
-    "algo_value": 0.55,
-    "gate_count": 9,
-    "kind": "1D cluster state (MBQC resource)",
-    "score": 0.2444
-  },
-  {
-    "id": "ghz10",
-    "family": "ghz",
-    "n": 10,
-    "buildable": true,
-    "required_modules": [
-      "h_gate",
-      "cnot"
-    ],
-    "missing_modules": [],
-    "forgeable": true,
-    "bootstrap": false,
-    "algo_value": 0.6,
-    "gate_count": 10,
-    "kind": "entangling scaling (GHZ)",
-    "score": 0.24
-  },
-  {
-    "id": "cluster6",
-    "family": "cluster",
-    "n": 6,
-    "buildable": true,
-    "required_modules": [
-      "h_gate",
-      "cz"
-    ],
-    "missing_modules": [],
-    "forgeable": true,
-    "bootstrap": false,
-    "algo_value": 0.55,
-    "gate_count": 11,
-    "kind": "1D cluster state (MBQC resource)",
-    "score": 0.2
-  },
-  {
-    "id": "wstate3",
+    "id": "wstate5",
     "family": "wstate",
-    "n": 3,
+    "n": 5,
     "buildable": false,
     "required_modules": [
-      "ry_gate",
+      "x_gate",
       "cnot",
-      "x_gate"
+      "ry_k2",
+      "ry_k2_dag",
+      "ry_k3",
+      "ry_k3_dag",
+      "ry_k4",
+      "ry_k4_dag",
+      "ry_k5",
+      "ry_k5_dag"
     ],
     "missing_modules": [
-      "ry_gate"
+      "ry_k5",
+      "ry_k5_dag"
     ],
-    "forgeable": false,
-    "bootstrap": true,
+    "forgeable": true,
+    "bootstrap": false,
     "algo_value": 0.5,
-    "gate_count": 9,
-    "kind": "W-state (needs Ry primitive — blocked)",
+    "gate_count": 21,
+    "kind": "W-state (continuous-rotation cascade)",
     "score": 0.0
   },
   {
-    "id": "wstate4",
+    "id": "wstate6",
     "family": "wstate",
-    "n": 4,
+    "n": 6,
     "buildable": false,
     "required_modules": [
-      "ry_gate",
+      "x_gate",
       "cnot",
-      "x_gate"
+      "ry_k2",
+      "ry_k2_dag",
+      "ry_k3",
+      "ry_k3_dag",
+      "ry_k4",
+      "ry_k4_dag",
+      "ry_k5",
+      "ry_k5_dag",
+      "ry_k6",
+      "ry_k6_dag"
     ],
     "missing_modules": [
-      "ry_gate"
+      "ry_k5",
+      "ry_k5_dag",
+      "ry_k6",
+      "ry_k6_dag"
     ],
-    "forgeable": false,
-    "bootstrap": true,
+    "forgeable": true,
+    "bootstrap": false,
     "algo_value": 0.5,
-    "gate_count": 12,
-    "kind": "W-state (needs Ry primitive — blocked)",
+    "gate_count": 26,
+    "kind": "W-state (continuous-rotation cascade)",
     "score": 0.0
   }
 ]

@@ -1,6 +1,6 @@
 {
   "schema": "genskill-catalog/v1",
-  "count": 3,
+  "count": 5,
   "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행.",
   "skills": [
     {
@@ -44,6 +44,45 @@
       "instance_pattern": "^ring(\\d+)$",
       "byte_frozen": false,
       "id": "cluster_ring"
+    },
+    {
+      "version": "1",
+      "produces": "app",
+      "param": "n:int>=2",
+      "kind": "W-state (continuous-rotation amplitude-distribution cascade)",
+      "golden_method": "X(q0) then per-block CRy(α_k)=Ry·cnot·Ry†·cnot + cnot over sealed ±α_k Ry primitives (α_k=arccos√(1/k), k=2..n) + x_gate/cnot",
+      "required_modules": [
+        "x_gate",
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "..."
+      ],
+      "instance_pattern": "^wstate(\\d+)$",
+      "byte_frozen": true,
+      "prereq_method": "gen_ry_module(k, dag) — ±α_k Ry primitive (family-reused; W_{n+1}=W_n + ±α_{n+1})",
+      "id": "wstate_cascade"
+    },
+    {
+      "version": "1",
+      "produces": "app",
+      "param": "a,N,nq",
+      "kind": "controlled modular multiplier (reversible arithmetic synthesis)",
+      "golden_method": "arithmetic permutation (×a mod N, identity out-of-range) + MMD transformation-based synthesis into sealed MCTs (toffoli/c3x/c4x/c5x, ≤5 controls)",
+      "required_modules": [
+        "toffoli",
+        "c3x",
+        "c4x",
+        "c5x"
+      ],
+      "instance_pattern": "^cmul(\\d+)_mod(\\d+)$",
+      "byte_frozen": false,
+      "sample_args": [
+        2,
+        21,
+        6
+      ],
+      "id": "modmul_synth"
     }
   ]
 }

@@ -9,6 +9,10 @@ ccz_rediscovered
 ├─ h_gate (module×2)
 └─ toffoli (module)
 
+cluster10
+├─ cz (module×9)
+└─ h_gate (module×10)
+
 cluster3
 ├─ cz (module×2)
 └─ h_gate (module×3)
@@ -17,9 +21,33 @@ cluster4
 ├─ cz (module×3)
 └─ h_gate (module×4)
 
+cluster5
+├─ cz (module×4)
+└─ h_gate (module×5)
+
+cluster6
+├─ cz (module×5)
+└─ h_gate (module×6)
+
+cluster7
+├─ cz (module×6)
+└─ h_gate (module×7)
+
+cluster8
+├─ cz (module×7)
+└─ h_gate (module×8)
+
+cluster9
+├─ cz (module×8)
+└─ h_gate (module×9)
+
 cz_rediscovered
 ├─ cnot (module)
 └─ h_gate (module×2)
+
+ghz10
+├─ cnot (module×9)
+└─ h_gate (module)
 
 ghz16_structural
 ├─ cnot (module×15)
@@ -47,6 +75,10 @@ ghz7
 
 ghz8
 ├─ cnot (module×7)
+└─ h_gate (module)
+
+ghz9
+├─ cnot (module×8)
 └─ h_gate (module)
 
 grover2
@@ -94,6 +126,38 @@ qpe_t
 ├─ ct_gate (module)
 ├─ cz (module)
 └─ h_gate (module×3)
+
+ring10
+├─ cz (module×10)
+└─ h_gate (module×10)
+
+ring3
+├─ cz (module×3)
+└─ h_gate (module×3)
+
+ring4
+├─ cz (module×4)
+└─ h_gate (module×4)
+
+ring5
+├─ cz (module×5)
+└─ h_gate (module×5)
+
+ring6
+├─ cz (module×6)
+└─ h_gate (module×6)
+
+ring7
+├─ cz (module×7)
+└─ h_gate (module×7)
+
+ring8
+├─ cz (module×8)
+└─ h_gate (module×8)
+
+ring9
+├─ cz (module×9)
+└─ h_gate (module×9)
 
 shor15_a2
 ├─ cmul2_mod15 (app)
@@ -154,4 +218,22 @@ shor21_a2
 
 swap_via_cnot
 └─ cnot (module×3)
+
+wstate3
+├─ cnot (module×6)
+├─ ry_k2 (module)
+├─ ry_k2_dag (module)
+├─ ry_k3 (module)
+├─ ry_k3_dag (module)
+└─ x_gate (module)
+
+wstate4
+├─ cnot (module×9)
+├─ ry_k2 (module)
+├─ ry_k2_dag (module)
+├─ ry_k3 (module)
+├─ ry_k3_dag (module)
+├─ ry_k4 (module)
+├─ ry_k4_dag (module)
+└─ x_gate (module)
 ```

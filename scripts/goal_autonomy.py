@@ -25,7 +25,7 @@ REG = os.path.join(ROOT, "registry")
 
 # 생성 *방법* 은 genskills 라이브러리(1급 자산)에서 가져온다 — goal_autonomy 는 그 소비자.
 # (이전엔 gen_ghz/gen_cluster 가 여기 박혀 있었음; §5[8](A) 로 라이브러리화)
-from genskills import gen_ghz, gen_cluster
+from genskills import gen_ghz, gen_cluster, gen_cluster_ring, gen_wstate, wstate_required_modules
 
 
 def sealed_apps():
@@ -46,10 +46,15 @@ FAMILIES = {
     "cluster": {"gen": gen_cluster, "deps_fn": lambda n: ["h_gate", "cz"], "algo_value": 0.55,
                 "pattern": re.compile(r"^cluster(\d+)$"), "kind": "1D cluster state (MBQC resource)",
                 "seed": 3, "gatecount": lambda n: 2 * n - 1},
-    # blocked family(정직 탐지): W-state 는 parametrized Ry primitive 가 선행 필요 — 미봉인 → buildable=False.
-    "wstate": {"gen": None, "deps_fn": lambda n: ["ry_gate", "cnot", "x_gate"], "algo_value": 0.5,
-               "pattern": re.compile(r"^wstate(\d+)$"), "kind": "W-state (needs Ry primitive — blocked)",
-               "seed": 3, "gatecount": lambda n: 3 * n},
+    # GenSkill 라이브러리(genskills.cluster_ring)가 제공하는 방법을 자율루프가 소비 — §8.7↔§10 coupling.
+    "ring": {"gen": gen_cluster_ring, "deps_fn": lambda n: ["h_gate", "cz"], "algo_value": 0.5,
+             "pattern": re.compile(r"^ring(\d+)$"), "kind": "ring cluster state (cycle graph state)",
+             "seed": 3, "gatecount": lambda n: 2 * n},
+    # W-state: 연속회전 cascade(genskills.gen_wstate). 봉인 ±α_k Ry primitive(k=2..n) 필요 —
+    # 미봉인 k 가 있으면 해당 n 은 BLOCKED(시스템이 ry_k{k} 선행조건을 스스로 지목). 봉인분은 buildable.
+    "wstate": {"gen": gen_wstate, "deps_fn": lambda n: wstate_required_modules(n), "algo_value": 0.5,
+               "pattern": re.compile(r"^wstate(\d+)$"), "kind": "W-state (continuous-rotation cascade)",
+               "seed": 3, "gatecount": lambda n: 5 * (n - 1) + 1},
 }
 
 MAX_N = 10   # 자율 확장 상한(dense 2^10=1024; EXACT_BOUND=12 이내 안전)
@@ -113,17 +118,12 @@ def cmd_scan():
     return ranked
 
 
-def cmd_forge():
+def _forge_buildable():
+    """현재 buildable gap 전부 자율 생성·봉인. forged 레코드 리스트 반환(빌드 후보 없으면 빈 리스트)."""
     import app_assemble as aa
     ranked = [g for g in (dict(g, score=score(g)) for g in detect_gaps()) if g["buildable"]]
     ranked.sort(key=lambda x: -x["score"])
-    if not ranked:
-        print("자율 빌드 후보 없음."); return 1
-    print("=" * 78)
-    print("goal-autonomy FORGE — 최고점 후보 자동 생성·봉인 (human seed 0)")
-    print("=" * 78)
     forged = []
-    # 최고 가치 패밀리의 다음 2개 멤버까지 자율 봉인 (compounding 실증)
     for g in ranked:
         gen = FAMILIES[g["family"]]["gen"]
         spec, _ = gen(g["n"])
@@ -136,12 +136,53 @@ def cmd_forge():
         forged.append({"id": g["id"], "sealed": ok, "u_hash": v.u_hash if ok else None, "score": g["score"]})
         if not ok:
             os.remove(sp)
+    return forged
+
+
+def cmd_forge():
+    print("=" * 78)
+    print("goal-autonomy FORGE — 최고점 후보 자동 생성·봉인 (human seed 0)")
+    print("=" * 78)
+    forged = _forge_buildable()
+    if not forged:
+        print("자율 빌드 후보 없음."); return 1
     print("=" * 78)
     n_ok = sum(1 for f in forged if f["sealed"])
     print(f"자율 봉인 {n_ok}/{len(forged)} · 인간 seed 0 · 새 모듈 0 (순수 재조립)")
     json.dump(forged, open(os.path.join(ROOT, ".pgf", "autoforge", "GOAL-FORGE-RESULT.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
     return 0 if n_ok == len(forged) else 1
+
+
+def cmd_loop(max_rounds=50):
+    """무인 연속 forge-to-frontier ([7] 자동화 부분): 새 봉인이 0 인 라운드까지 scan→forge 반복.
+    각 라운드가 frontier(다음 멤버)를 채우고, 모두 BLOCKED/done(또는 MAX_N) 이면 frontier 도달→정지.
+    open-ended *새 방법/family 발견* 은 별도(연구) — 본 루프는 알려진 방법의 자율 소진."""
+    print("=" * 78)
+    print("goal-autonomy LOOP — 무인 연속 자율봉인 (frontier 까지; human seed 0)")
+    print("=" * 78)
+    total, rounds, history = 0, 0, []
+    while rounds < max_rounds:
+        rounds += 1
+        print(f"── round {rounds} ──")
+        forged = _forge_buildable()
+        n_ok = sum(1 for f in forged if f["sealed"])
+        history.append({"round": rounds, "sealed": n_ok, "ids": [f["id"] for f in forged if f["sealed"]]})
+        total += n_ok
+        if n_ok == 0:
+            print("  (이번 라운드 신규 봉인 0 — frontier 도달)"); break
+    # frontier 진단: 남은 gap 의 차단 사유
+    gaps = detect_gaps()
+    blocked = sorted({tuple(g["missing_modules"]) for g in gaps if g["missing_modules"]})
+    print("=" * 78)
+    print(f"LOOP 종료 · 라운드 {rounds} · 총 자율봉인 {total} · 인간 seed 0")
+    if blocked:
+        print(f"frontier 차단요인(미봉인 선행조건): {[list(b) for b in blocked]}")
+    json.dump({"rounds": rounds, "total_sealed": total, "history": history,
+               "frontier_blockers": [list(b) for b in blocked]},
+              open(os.path.join(ROOT, ".pgf", "autoforge", "GOAL-LOOP-RESULT.json"), "w", encoding="utf-8"),
+              ensure_ascii=False, indent=2)
+    return 0
 
 
 def cmd_compound():
@@ -193,7 +234,7 @@ def cmd_compound():
 
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "scan"
-    r = {"scan": cmd_scan, "forge": cmd_forge, "compound": cmd_compound}.get(cmd, cmd_scan)()
+    r = {"scan": cmd_scan, "forge": cmd_forge, "loop": cmd_loop, "compound": cmd_compound}.get(cmd, cmd_scan)()
     return r if isinstance(r, int) else 0
 
 
