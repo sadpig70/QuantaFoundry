@@ -19,7 +19,8 @@ CLI:
   python scripts/genskills.py list                  # catalog 요약 출력
   python scripts/genskills.py show <skill>          # skill 상세 + 샘플 spec
   python scripts/genskills.py emit <skill> <n> [--out DIR]   # spec 산출(기본 stdout)
-  python scripts/genskills.py catalog               # registry/GENSKILL-CATALOG.json 갱신
+  python scripts/genskills.py catalog               # registry/GENSKILL-CATALOG.json 갱신(+ method self-seal)
+  python scripts/genskills.py verify                # method self-seal 재검증(생성방법 변조탐지)
   python scripts/genskills.py selftest              # byte-identity + forge roundtrip 검증
 """
 import os, sys, json, re
@@ -28,6 +29,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
 APPS = os.path.join(ROOT, "specs", "apps")
 APPREG = os.path.join(ROOT, "registry", "apps")
+MODREG = os.path.join(ROOT, "registry", "modules")
 REG = os.path.join(ROOT, "registry")
 
 
@@ -309,6 +311,72 @@ def gen_wstate(n):
 
 
 # ════════════════════════════════════════════════════════════════════════════
+# 3d. 생성 방법 — analytic-golden 게이트 (모듈 산출; 닫힌형 golden + qualtran bloq)
+#     게이트의 *수학적 생성 방법* 캡처: Z^t phase(z/s/t) · controlled-R_k(cz/cs/ct/cr*) · DFT(qft).
+#     골든은 닫힌형(analytic) 독립작성, bloq 은 qualtran. 봉인 모듈의 생성 방법을 1급화.
+# ════════════════════════════════════════════════════════════════════════════
+def _module_spec(mid, n_sys, bloq_code, golden_code):
+    return ("```python id=bloq\n" + bloq_code + "\n```\n"
+            "```python id=golden\n" + golden_code + "\n```\n"
+            f'```json id=meta\n{{"id": "{mid}", "n_sys": {n_sys}, "n_anc": 0}}\n```\n')
+
+
+def _zpow_spec(mid, exponent):
+    """single-qubit Z^t = diag(1, e^{iπt}). z(t=1)·s(0.5)·t(0.25)."""
+    bloq = ("from qualtran.bloqs.basic_gates import ZPowGate\n"
+            f"bloq = ZPowGate(exponent={exponent})")
+    golden = ("import numpy as np\n"
+              f"golden = np.array([[1,0],[0,np.exp(1j*np.pi*{exponent})]], dtype=complex)")
+    return _module_spec(mid, 1, bloq, golden), mid
+
+
+def _crk_spec(mid, k, dag=False):
+    """controlled-R_k = diag(1,1,1, e^{±2πi/2^k}). cz(k1)·cs(k2)·ct(k3)·cr4-7."""
+    s = "-" if dag else ""
+    bloq = ("from qualtran.bloqs.basic_gates import ZPowGate\n"
+            f"bloq = ZPowGate(exponent={s}1/2**({k}-1)).controlled()")
+    golden = ("import numpy as np\n"
+              f"golden = np.diag([1,1,1, np.exp({s}2j*np.pi/2**{k})]).astype(complex)")
+    return _module_spec(mid, 2, bloq, golden), mid
+
+
+def _qft_spec(mid, n):
+    """n-qubit QFT = analytic DFT(2^n)/√(2^n). bloq=QFTTextBook(with_reverse=True)."""
+    bloq = ("from qualtran.bloqs.qft.qft_text_book import QFTTextBook\n"
+            f"bloq = QFTTextBook(bitsize={n}, with_reverse=True)")
+    golden = ("import numpy as np\n"
+              f"N = 1 << {n}\n"
+              "i = np.arange(N).reshape(N,1); j = np.arange(N).reshape(1,N)\n"
+              "golden = (np.exp(2j*np.pi*(i*j)/N)/np.sqrt(N)).astype(complex)")
+    return _module_spec(mid, n, bloq, golden), mid
+
+
+def gen_zpow_module(exponent):
+    return _zpow_spec(f"zpow_e{str(exponent).replace('.', 'p').replace('-', 'm')}", exponent)
+
+
+def gen_crk_module(k, dag=False):
+    return _crk_spec(f"crk{k}" + ("_dag" if dag else ""), k, dag)
+
+
+def gen_qft_module(n):
+    return _qft_spec(f"qft{n}", n)
+
+
+# committed 모듈 ↔ analytic 생성방법 매핑(reproduce-seal 검증 대상). 명명 불일치(cz≠cr1 등) 명시.
+_ANALYTIC_BUILD = {"zpow": _zpow_spec, "crk": _crk_spec, "qft": _qft_spec}
+ANALYTIC_COVERAGE = {
+    "z_gate": ("zpow", (1,)), "s_gate": ("zpow", (0.5,)), "t_gate": ("zpow", (0.25,)),
+    "cz": ("crk", (1, False)), "cs_gate": ("crk", (2, False)), "cs_dag": ("crk", (2, True)),
+    "ct_gate": ("crk", (3, False)), "cr3_dag_gate": ("crk", (3, True)),
+    "cr4_gate": ("crk", (4, False)), "cr4_dag_gate": ("crk", (4, True)),
+    "cr5_gate": ("crk", (5, False)), "cr5_dag_gate": ("crk", (5, True)),
+    "cr6_dag_gate": ("crk", (6, True)), "cr7_dag_gate": ("crk", (7, True)),
+    "qft2": ("qft", (2,)), "qft3": ("qft", (3,)), "qft4": ("qft", (4,)),
+}
+
+
+# ════════════════════════════════════════════════════════════════════════════
 # 4. GenSkill 카탈로그 — 생성 *방법* 라이브러리(1급 자산)
 # ════════════════════════════════════════════════════════════════════════════
 GENSKILLS = {
@@ -342,6 +410,28 @@ GENSKILLS = {
         "instance_pattern": r"^wstate(\d+)$", "byte_frozen": True, "make_spec": gen_wstate,
         "prereq_method": "gen_ry_module(k, dag) — ±α_k Ry primitive (family-reused; W_{n+1}=W_n + ±α_{n+1})",
     },
+    "zpow_phase": {
+        "version": "1", "produces": "module", "param": "exponent:float",
+        "kind": "single-qubit Z^t phase gate (analytic-golden)",
+        "golden_method": "diag(1, e^{iπ·exponent}) closed-form; bloq=ZPowGate. covers z(1)/s(0.5)/t(0.25)",
+        "required_modules": [], "instance_pattern": r"^zpow", "byte_frozen": False,
+        "make_spec": gen_zpow_module, "sample_args": (0.5,),
+    },
+    "crk_phase": {
+        "version": "1", "produces": "module", "param": "k:int, dag:bool",
+        "kind": "controlled-R_k phase gate (analytic-golden)",
+        "golden_method": "diag(1,1,1, e^{±2πi/2^k}) closed-form; bloq=ZPowGate(±1/2^{k-1}).controlled(). "
+                         "covers cz(k1)/cs(k2)/ct(k3)/cr4-7 (+dags)",
+        "required_modules": [], "instance_pattern": r"^crk", "byte_frozen": False,
+        "make_spec": gen_crk_module, "sample_args": (5, False),
+    },
+    "qft_dft": {
+        "version": "1", "produces": "module", "param": "n:int",
+        "kind": "n-qubit QFT (analytic DFT golden)",
+        "golden_method": "DFT(2^n)/√(2^n) closed-form; bloq=QFTTextBook(n, with_reverse=True). covers qft2-4",
+        "required_modules": [], "instance_pattern": r"^qft\d+$", "byte_frozen": False,
+        "make_spec": gen_qft_module, "sample_args": (3,),
+    },
     "modmul_synth": {
         "version": "1", "produces": "app", "param": "a,N,nq",
         "kind": "controlled modular multiplier (reversible arithmetic synthesis)",
@@ -360,6 +450,33 @@ def catalog_records():
     for sid, c in GENSKILLS.items():
         recs.append({k: c[k] for k in c if k != "make_spec"} | {"id": sid})
     return recs
+
+
+# ── method self-seal: 생성 *방법* 무결성 해시(결과물 registry_root_hash 의 method 짝) ──
+def _skill_source_hash(sid):
+    """skill 의 make_spec 소스코드 + 메타데이터의 sha256 — 메서드 변조탐지(tamper-evident)."""
+    import hashlib, inspect
+    c = GENSKILLS[sid]
+    meta = {k: c[k] for k in c if k != "make_spec"}
+    try:
+        src = inspect.getsource(c["make_spec"])
+    except (OSError, TypeError):
+        src = repr(c["make_spec"])
+    payload = json.dumps({"id": sid, "meta": meta}, ensure_ascii=False, sort_keys=True) + "\n" + src
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _library_file_hash():
+    """genskills.py 파일 전체의 sha256(whole-library tamper evidence)."""
+    import hashlib
+    return hashlib.sha256(open(os.path.abspath(__file__), "rb").read()).hexdigest()
+
+
+def catalog_root_hash(per_skill):
+    """skill source_hash 들의 Merkle-식 root(정렬·결합)."""
+    import hashlib
+    body = "\n".join(f"{sid}:{per_skill[sid]}" for sid in sorted(per_skill))
+    return hashlib.sha256(body.encode("utf-8")).hexdigest()
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -415,15 +532,53 @@ def cmd_emit(sid, args, out_dir=None):
 
 def cmd_catalog():
     recs = catalog_records()
-    out = {"schema": "genskill-catalog/v1", "count": len(recs),
+    per_skill = {sid: _skill_source_hash(sid) for sid in GENSKILLS}
+    for r in recs:
+        r["source_hash"] = per_skill[r["id"]]
+    out = {"schema": "genskill-catalog/v2", "count": len(recs),
            "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 "
                    "생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 "
-                   "committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행.",
+                   "committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행. "
+                   "source_hash/catalog_root_hash = method self-seal(생성방법 변조탐지; verify 로 재검증).",
+           "catalog_root_hash": catalog_root_hash(per_skill),
+           "library_file_hash": _library_file_hash(),
            "skills": recs}
     p = os.path.join(REG, "GENSKILL-CATALOG.json")
     json.dump(out, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    print(f"wrote {p} · skills {len(recs)}")
+    print(f"wrote {p} · skills {len(recs)} · root {out['catalog_root_hash'][:16]}")
     return 0
+
+
+def cmd_verify():
+    """method self-seal 재검증: 현재 코드에서 재계산한 source_hash/root 가 GENSKILL-CATALOG.json 과 일치?"""
+    p = os.path.join(REG, "GENSKILL-CATALOG.json")
+    if not os.path.exists(p):
+        print("GENSKILL-CATALOG.json 없음 — 먼저 `catalog` 실행"); return 1
+    stored = json.load(open(p, encoding="utf-8"))
+    stored_hashes = {s["id"]: s.get("source_hash") for s in stored["skills"]}
+    per_skill = {sid: _skill_source_hash(sid) for sid in GENSKILLS}
+    ok_all = True
+    print("=" * 72)
+    print("GenSkill method self-seal 검증 (source_hash 재계산 vs catalog)")
+    print("=" * 72)
+    for sid in GENSKILLS:
+        match = stored_hashes.get(sid) == per_skill[sid]
+        ok_all &= match
+        print(f"  {'✅' if match else '❌'} {sid:16} {per_skill[sid][:16]}{'' if match else ' ≠ '+str(stored_hashes.get(sid))[:16]}")
+    # 카탈로그에 있으나 코드에 없는 skill(삭제 탐지)
+    for sid in stored_hashes:
+        if sid not in GENSKILLS:
+            ok_all = False; print(f"  ❌ {sid:16} (카탈로그에만 존재 — 코드에서 제거됨)")
+    root_now = catalog_root_hash(per_skill)
+    root_match = root_now == stored.get("catalog_root_hash")
+    lib_match = _library_file_hash() == stored.get("library_file_hash")
+    ok_all &= root_match
+    print("-" * 72)
+    print(f"  catalog_root_hash {'✅' if root_match else '❌'} {root_now[:16]}")
+    print(f"  library_file_hash {'✅' if lib_match else '⚠ '} {'일치' if lib_match else '변경됨(catalog 재생성 필요)'}")
+    print("=" * 72)
+    print("self-seal:", "INTACT" if ok_all else "TAMPERED/STALE")
+    return 0 if ok_all else 1
 
 
 def _seal_id(skill_id, n):
@@ -560,6 +715,24 @@ def cmd_selftest():
         v = aa.assemble(tp, tmp_store)
         ok("new-synth cmul8_mod21 Tier-0 sealed", bool(v.sealed) and str(v.tier) in ("0", "exact"),
            f"sealed={v.sealed} tier={v.tier} u_hash={v.u_hash[:12] if v.sealed else 'n/a'}")
+
+        # ── T6: analytic-golden 모듈 reproduce (committed 모듈 u_hash + C4 bloq==golden) ──
+        print("── T6 analytic-golden reproduce (module u_hash == registry, C4 bloq==golden) ──")
+        import numpy as np
+        import verify_seal as vsl
+        for mid, (meth, margs) in ANALYTIC_COVERAGE.items():
+            sealed_path = os.path.join(MODREG, f"{mid}.sealed.json")
+            if not os.path.exists(sealed_path):
+                ok(f"analytic {mid} (seal 부재)", False); continue
+            ref = json.load(open(sealed_path, encoding="utf-8"))["u_hash"]
+            spec, _ = _ANALYTIC_BUILD[meth](mid, *margs)
+            blocks = vsl._extract_blocks(spec)
+            V = np.asarray(vsl.instantiate(blocks["bloq"], "bloq").tensor_contract())
+            gns = {}; exec(blocks["golden"], gns); G = np.asarray(gns["golden"])
+            c4 = np.allclose(vsl._norm_phase(V), vsl._norm_phase(G), atol=1e-7)
+            uh = vsl.hash_unitary(V)
+            ok(f"analytic {mid} (bloq==golden, u_hash==registry)", c4 and uh == ref,
+               "" if (c4 and uh == ref) else f"c4={c4} uh={uh[:10]} ref={ref[:10]}")
     finally:
         for tp in tmp_specs:
             if os.path.exists(tp):
@@ -584,9 +757,15 @@ def main():
     if cmd == "emit" and len(a) >= 3:
         out = a[a.index("--out") + 1] if "--out" in a else None
         rest = a[2:a.index("--out")] if "--out" in a else a[2:]
-        return cmd_emit(a[1], [int(x) for x in rest], out)
+        def _num(x):
+            if x in ("True", "False"):
+                return x == "True"
+            return int(x) if x.lstrip("-").isdigit() else float(x)
+        return cmd_emit(a[1], [_num(x) for x in rest], out)
     if cmd == "catalog":
         return cmd_catalog()
+    if cmd == "verify":
+        return cmd_verify()
     if cmd == "selftest":
         return cmd_selftest()
     print(__doc__)

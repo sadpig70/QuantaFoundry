@@ -976,6 +976,131 @@
       }
     ]
   },
+  "wstate10": {
+    "u_hash": "6f029c238eabfef6d6c0c277c63be58895f659f457d57be205768c87c67c9e84",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 27,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k10",
+        "uses": 1,
+        "child_u_hash": "739149f6bc94b846de172ea59f0ad511aaf8f75481a768d6b93114262003c5df"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k10_dag",
+        "uses": 1,
+        "child_u_hash": "b34b83be11eda8de7eacbb46e021db38d217514baf0f3c5eece1f5355d842e63"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2_dag",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3",
+        "uses": 1,
+        "child_u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3_dag",
+        "uses": 1,
+        "child_u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4",
+        "uses": 1,
+        "child_u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4_dag",
+        "uses": 1,
+        "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 1,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 1,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6",
+        "uses": 1,
+        "child_u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6_dag",
+        "uses": 1,
+        "child_u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7",
+        "uses": 1,
+        "child_u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7_dag",
+        "uses": 1,
+        "child_u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k8",
+        "uses": 1,
+        "child_u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k8_dag",
+        "uses": 1,
+        "child_u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k9",
+        "uses": 1,
+        "child_u_hash": "deea74b86411ad7daa4a331468474a5f1199dd3e0bf4ab92cc7fc65da606a799"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k9_dag",
+        "uses": 1,
+        "child_u_hash": "0953b0e845319668e8b9bcb44efd9d92f1aeb2359eb2615f0038de64f78f63e5"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 1,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "wstate3": {
     "u_hash": "588e269c672ef26043caf9592bb0fc86840f83dafe3088bd096b0e2409bbb2f3",
     "depends_on": [
@@ -1061,6 +1186,451 @@
         "id": "ry_k4_dag",
         "uses": 1,
         "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 1,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "wstate5": {
+    "u_hash": "8a6a9c5bba457b11f33239f578fef87220400c613ffe757ea26a8aeeea6f146a",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 12,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2_dag",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3",
+        "uses": 1,
+        "child_u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3_dag",
+        "uses": 1,
+        "child_u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4",
+        "uses": 1,
+        "child_u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4_dag",
+        "uses": 1,
+        "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 1,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 1,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 1,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "wstate6": {
+    "u_hash": "5965328ccd044b54e14e3e0074184ad9032f523d8c85fc72222885d5107de7c3",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 15,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2_dag",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3",
+        "uses": 1,
+        "child_u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3_dag",
+        "uses": 1,
+        "child_u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4",
+        "uses": 1,
+        "child_u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4_dag",
+        "uses": 1,
+        "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 1,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 1,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6",
+        "uses": 1,
+        "child_u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6_dag",
+        "uses": 1,
+        "child_u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 1,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "wstate7": {
+    "u_hash": "cb9b491f914fc2f1f8fe9e5db0f2795efcfa0d5ec6a991ace841f8f723918737",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 18,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2_dag",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3",
+        "uses": 1,
+        "child_u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3_dag",
+        "uses": 1,
+        "child_u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4",
+        "uses": 1,
+        "child_u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4_dag",
+        "uses": 1,
+        "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 1,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 1,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6",
+        "uses": 1,
+        "child_u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6_dag",
+        "uses": 1,
+        "child_u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7",
+        "uses": 1,
+        "child_u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7_dag",
+        "uses": 1,
+        "child_u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 1,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "wstate8": {
+    "u_hash": "093ad856bc878b1226db3d2a5fc02c95734d40bd28370da26794876f58f7cb5c",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 21,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2_dag",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3",
+        "uses": 1,
+        "child_u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3_dag",
+        "uses": 1,
+        "child_u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4",
+        "uses": 1,
+        "child_u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4_dag",
+        "uses": 1,
+        "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 1,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 1,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6",
+        "uses": 1,
+        "child_u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6_dag",
+        "uses": 1,
+        "child_u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7",
+        "uses": 1,
+        "child_u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7_dag",
+        "uses": 1,
+        "child_u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k8",
+        "uses": 1,
+        "child_u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k8_dag",
+        "uses": 1,
+        "child_u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 1,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "wstate9": {
+    "u_hash": "403f8876adced453d541ef35df657fe990adb16440cfc6c9cea4112571bbd825",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 24,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k2_dag",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3",
+        "uses": 1,
+        "child_u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k3_dag",
+        "uses": 1,
+        "child_u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4",
+        "uses": 1,
+        "child_u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k4_dag",
+        "uses": 1,
+        "child_u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 1,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 1,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6",
+        "uses": 1,
+        "child_u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6_dag",
+        "uses": 1,
+        "child_u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7",
+        "uses": 1,
+        "child_u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k7_dag",
+        "uses": 1,
+        "child_u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k8",
+        "uses": 1,
+        "child_u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k8_dag",
+        "uses": 1,
+        "child_u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k9",
+        "uses": 1,
+        "child_u_hash": "deea74b86411ad7daa4a331468474a5f1199dd3e0bf4ab92cc7fc65da606a799"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k9_dag",
+        "uses": 1,
+        "child_u_hash": "0953b0e845319668e8b9bcb44efd9d92f1aeb2359eb2615f0038de64f78f63e5"
       },
       {
         "kind": "module",

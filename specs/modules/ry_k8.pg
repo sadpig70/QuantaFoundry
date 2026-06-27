@@ -1,0 +1,14 @@
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+# Ry(α) primitive, α=arccos(sqrt(1/8)) — W-state cascade 반각(k=8). 전역위상은 C4 무시.
+bloq = YPowGate(exponent=np.arccos(np.sqrt(1/8))/np.pi)
+```
+```python id=golden
+import numpy as np
+a = np.arccos(np.sqrt(1/8))
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_k8", "n_sys": 1, "n_anc": 0}
+```

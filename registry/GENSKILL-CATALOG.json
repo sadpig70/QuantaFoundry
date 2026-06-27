@@ -1,7 +1,9 @@
 {
-  "schema": "genskill-catalog/v1",
-  "count": 5,
-  "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행.",
+  "schema": "genskill-catalog/v2",
+  "count": 8,
+  "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행. source_hash/catalog_root_hash = method self-seal(생성방법 변조탐지; verify 로 재검증).",
+  "catalog_root_hash": "a4f0f2a8801cc226be71d90aea0a6b63aaa6671062bc6340ffc43d9947148f1d",
+  "library_file_hash": "7a421f87843d7f2bc6bd673fb1860a88f0b816fbaed739103715e270e1696b58",
   "skills": [
     {
       "version": "1",
@@ -15,7 +17,8 @@
       ],
       "instance_pattern": "^ghz(\\d+)$",
       "byte_frozen": true,
-      "id": "ghz_linear"
+      "id": "ghz_linear",
+      "source_hash": "8db17ae0ce31d4bff18eff000b28c756d523b52b6c7f66a6e61de9d7ca31bcab"
     },
     {
       "version": "1",
@@ -29,7 +32,8 @@
       ],
       "instance_pattern": "^cluster(\\d+)$",
       "byte_frozen": true,
-      "id": "cluster_line"
+      "id": "cluster_line",
+      "source_hash": "4c4e482eed7749cf32bd38ec10fbba86c78b12d670ff3a7a051cc382e3f56194"
     },
     {
       "version": "1",
@@ -43,7 +47,8 @@
       ],
       "instance_pattern": "^ring(\\d+)$",
       "byte_frozen": false,
-      "id": "cluster_ring"
+      "id": "cluster_ring",
+      "source_hash": "514f362c223df5a14a6281917b0c7e5ce7d6bceabfdaabbcce18c456e48c742c"
     },
     {
       "version": "1",
@@ -61,7 +66,54 @@
       "instance_pattern": "^wstate(\\d+)$",
       "byte_frozen": true,
       "prereq_method": "gen_ry_module(k, dag) — ±α_k Ry primitive (family-reused; W_{n+1}=W_n + ±α_{n+1})",
-      "id": "wstate_cascade"
+      "id": "wstate_cascade",
+      "source_hash": "35cae76971b4fd6d1e0b871600985f9fc2cac5521a37b8a45e1e3f29e5746ffd"
+    },
+    {
+      "version": "1",
+      "produces": "module",
+      "param": "exponent:float",
+      "kind": "single-qubit Z^t phase gate (analytic-golden)",
+      "golden_method": "diag(1, e^{iπ·exponent}) closed-form; bloq=ZPowGate. covers z(1)/s(0.5)/t(0.25)",
+      "required_modules": [],
+      "instance_pattern": "^zpow",
+      "byte_frozen": false,
+      "sample_args": [
+        0.5
+      ],
+      "id": "zpow_phase",
+      "source_hash": "61751fc58833ff1de0896dc17e1d4c7a47a1a3282f9f46e4002dc7c050ee00d7"
+    },
+    {
+      "version": "1",
+      "produces": "module",
+      "param": "k:int, dag:bool",
+      "kind": "controlled-R_k phase gate (analytic-golden)",
+      "golden_method": "diag(1,1,1, e^{±2πi/2^k}) closed-form; bloq=ZPowGate(±1/2^{k-1}).controlled(). covers cz(k1)/cs(k2)/ct(k3)/cr4-7 (+dags)",
+      "required_modules": [],
+      "instance_pattern": "^crk",
+      "byte_frozen": false,
+      "sample_args": [
+        5,
+        false
+      ],
+      "id": "crk_phase",
+      "source_hash": "dae6e87b7f712d0f1cc57c4478d3c83b97f8922d470125867970cf48d3ba92ac"
+    },
+    {
+      "version": "1",
+      "produces": "module",
+      "param": "n:int",
+      "kind": "n-qubit QFT (analytic DFT golden)",
+      "golden_method": "DFT(2^n)/√(2^n) closed-form; bloq=QFTTextBook(n, with_reverse=True). covers qft2-4",
+      "required_modules": [],
+      "instance_pattern": "^qft\\d+$",
+      "byte_frozen": false,
+      "sample_args": [
+        3
+      ],
+      "id": "qft_dft",
+      "source_hash": "21319428b5c8455de36033d7ecf0930679854694e04d489f7578b7879f6862e4"
     },
     {
       "version": "1",
@@ -82,7 +134,8 @@
         21,
         6
       ],
-      "id": "modmul_synth"
+      "id": "modmul_synth",
+      "source_hash": "5b840b1e05858f0f22b005dead0de72917265c422e508ab589b4216d89bc4a3c"
     }
   ]
 }

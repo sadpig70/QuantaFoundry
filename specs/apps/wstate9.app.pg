@@ -1,0 +1,66 @@
+# wstate9 — W-state |W_9> (9큐비트). genskill=wstate_cascade@1 (human seed 0).
+# 봉인 재조립: X·CRy(±α_k)·cnot cascade. 연속회전 알고리즘 상태. 새 모듈=±α_k Ry(k=2..9) 재사용.
+```json id=app_meta
+{"id": "wstate9", "n_sys": 9, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n=9
+def Ry(t): return np.array([[np.cos(t/2),-np.sin(t/2)],[np.sin(t/2),np.cos(t/2)]],dtype=complex)
+def e1(U,t):
+    return np.kron(np.kron(np.eye(1<<t),U),np.eye(1<<(n-t-1)))
+def cn(c,t):
+    dim=1<<n; M=np.zeros((dim,dim),complex)
+    for x in range(dim):
+        y=x^((1<<(n-1-t)) if (x>>(n-1-c))&1 else 0); M[y,x]=1
+    return M
+X=np.array([[0,1],[1,0]],complex)
+U=e1(X,0)
+for i in range(n-1):
+    k=n-i; a=np.arccos(np.sqrt(1/k)); q=i+1
+    U=e1(Ry(a),q)@U; U=cn(i,q)@U; U=e1(Ry(-a),q)@U; U=cn(i,q)@U; U=cn(q,i)@U
+golden=U
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [0]},
+           {"spec": "../modules/ry_k9.pg", "targets": [1]},
+           {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+           {"spec": "../modules/ry_k9_dag.pg", "targets": [1]},
+           {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+           {"spec": "../modules/cnot.pg", "targets": [1, 0]},
+           {"spec": "../modules/ry_k8.pg", "targets": [2]},
+           {"spec": "../modules/cnot.pg", "targets": [1, 2]},
+           {"spec": "../modules/ry_k8_dag.pg", "targets": [2]},
+           {"spec": "../modules/cnot.pg", "targets": [1, 2]},
+           {"spec": "../modules/cnot.pg", "targets": [2, 1]},
+           {"spec": "../modules/ry_k7.pg", "targets": [3]},
+           {"spec": "../modules/cnot.pg", "targets": [2, 3]},
+           {"spec": "../modules/ry_k7_dag.pg", "targets": [3]},
+           {"spec": "../modules/cnot.pg", "targets": [2, 3]},
+           {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+           {"spec": "../modules/ry_k6.pg", "targets": [4]},
+           {"spec": "../modules/cnot.pg", "targets": [3, 4]},
+           {"spec": "../modules/ry_k6_dag.pg", "targets": [4]},
+           {"spec": "../modules/cnot.pg", "targets": [3, 4]},
+           {"spec": "../modules/cnot.pg", "targets": [4, 3]},
+           {"spec": "../modules/ry_k5.pg", "targets": [5]},
+           {"spec": "../modules/cnot.pg", "targets": [4, 5]},
+           {"spec": "../modules/ry_k5_dag.pg", "targets": [5]},
+           {"spec": "../modules/cnot.pg", "targets": [4, 5]},
+           {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+           {"spec": "../modules/ry_k4.pg", "targets": [6]},
+           {"spec": "../modules/cnot.pg", "targets": [5, 6]},
+           {"spec": "../modules/ry_k4_dag.pg", "targets": [6]},
+           {"spec": "../modules/cnot.pg", "targets": [5, 6]},
+           {"spec": "../modules/cnot.pg", "targets": [6, 5]},
+           {"spec": "../modules/ry_k3.pg", "targets": [7]},
+           {"spec": "../modules/cnot.pg", "targets": [6, 7]},
+           {"spec": "../modules/ry_k3_dag.pg", "targets": [7]},
+           {"spec": "../modules/cnot.pg", "targets": [6, 7]},
+           {"spec": "../modules/cnot.pg", "targets": [7, 6]},
+           {"spec": "../modules/ry_k2.pg", "targets": [8]},
+           {"spec": "../modules/cnot.pg", "targets": [7, 8]},
+           {"spec": "../modules/ry_k2_dag.pg", "targets": [8]},
+           {"spec": "../modules/cnot.pg", "targets": [7, 8]},
+           {"spec": "../modules/cnot.pg", "targets": [8, 7]}]}
+```
