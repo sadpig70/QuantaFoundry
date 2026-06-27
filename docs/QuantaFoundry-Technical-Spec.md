@@ -894,11 +894,22 @@ QuantaFoundry/
     genskills.py                         # GenSkill library: generation *methods* as a catalog (v0.5)
     semantic_guarantee.py                # per-seal guarantee layer + ghz16 partial verification
     corpus_discount.py / verify_contested_guard.py
+    sync_qpgf.py                         # QPGF vendor: stamp/check (provenance + seal-invariance gate)
   _workspace/crossmodel/                 # cross-model briefs, submissions, consensus reports (v04, v05)
   .agents/skills/qpgf-oracle/            # vendored QPGF oracle (used, not modified)
+    VENDOR.json                          # consumption=vendored; upstream v0.1.0/commit, bundle root, deps, fingerprint
     scripts/{verify_seal,registry,app_assemble,contracts,bundle_manifest,verify_bundle,zx_seal}.py
     references/{contract-spec,oracle-usage,DEPLOYMENT-TRUST}.md ; examples/*.pg
 ```
+
+> **QPGF consumption = vendored** (decided 2026-06-27). The oracle source is copied into the repo, not a
+> submodule or pip dependency, so a sealed artifact and the exact oracle code that sealed it live in the
+> same commit — reproducible by checkout, no environment reconstruction. Because `oracle_fingerprint` is
+> bound into every seal signature, an oracle/dependency change can alter seal u_hashes; automatic syncing
+> would risk that silently, so syncing is deliberate and gated. `VENDOR.json` records provenance (upstream
+> tag/commit, `BUNDLE.sha256` root, `DEPENDENCIES.lock`, fingerprint); `scripts/sync_qpgf.py check`
+> verifies vendor integrity, dependency match, and **seal-u_hash invariance** before any oracle upgrade is
+> committed (a semver-gated event).
 
 Reproduce the evidence:
 ```
