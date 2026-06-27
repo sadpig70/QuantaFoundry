@@ -1,0 +1,20 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "x_gate",
+      "n_sys": 1,
+      "app_golden_real": [[0, 1], [1, 0]],
+      "app_golden_imag": [[0, 0], [0, 0]]
+    },
+    {
+      "id": "sx",
+      "n_sys": 1,
+      "app_golden_real": [["<re>", "<re>"], ["<re>", "<re>"]],
+      "app_golden_imag": [["<im>", "<im>"], ["<im>", "<im>"]],
+      "note": "optional: state your reading/definition if uncertain"
+    }
+  ]
+}

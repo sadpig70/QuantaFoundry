@@ -1,12 +1,13 @@
 {
   "schema": "registry-manifest/v1",
   "modules": {
-    "count": 46,
+    "count": 48,
     "path": "registry/modules",
     "items": [
       "c3x",
       "c4x",
       "c5x",
+      "c6x",
       "ccz",
       "cnot",
       "cr3_dag_gate",
@@ -46,6 +47,7 @@
       "ry_k9_dag",
       "s_gate",
       "swap2",
+      "sx",
       "t_gate",
       "toffoli",
       "x_gate",
@@ -53,9 +55,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 57,
-    "cached_app_side_module_count": 37,
-    "total_files": 94,
+    "unique_app_count": 59,
+    "cached_app_side_module_count": 38,
+    "total_files": 97,
     "path": "registry/apps",
     "unique": [
       "bell",
@@ -71,6 +73,8 @@
       "cmul16_mod21",
       "cmul2_mod15",
       "cmul2_mod21",
+      "cmul2_mod33",
+      "cmul2_mod35",
       "cmul4_mod15",
       "cmul4_mod21",
       "cmul7_mod15",
@@ -120,6 +124,7 @@
       "c3x",
       "c4x",
       "c5x",
+      "c6x",
       "cnot",
       "cr3_dag_gate",
       "cr4_dag_gate",
@@ -160,6 +165,7 @@
     "c3x": "registry/modules/c3x.sealed.json",
     "c4x": "registry/modules/c4x.sealed.json",
     "c5x": "registry/modules/c5x.sealed.json",
+    "c6x": "registry/modules/c6x.sealed.json",
     "cnot": "registry/modules/cnot.sealed.json",
     "cr3_dag_gate": "registry/modules/cr3_dag_gate.sealed.json",
     "cr4_dag_gate": "registry/modules/cr4_dag_gate.sealed.json",
@@ -195,7 +201,7 @@
     "toffoli": "registry/modules/toffoli.sealed.json",
     "x_gate": "registry/modules/x_gate.sealed.json"
   },
-  "registry_root_hash": "3bab81a1d5fef0f914c4842dabbe2896d8e608eab8ea179d72654b672c878bc7",
+  "registry_root_hash": "3dae613da089aa76b7153236d30b6c55cc6e83dd8af78ba89a72bc304bbf3a51",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

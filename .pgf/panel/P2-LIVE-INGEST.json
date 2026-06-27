@@ -1,0 +1,59 @@
+{
+  "phase": "P2b live ingest (sx round)",
+  "mode": "REAL",
+  "honesty": "gate verdict + independent GT match only; NO sealing / NO frozen-key write (deferred to real submissions + operator confirmation); dry-run mock is wiring-validation only (NOT real consensus); consensus/gated_panel used only; frozen/sealed untouched.",
+  "ground_truth_u_hash": {
+    "x_gate": "7dc1df52d07dd742",
+    "sx": "c49a2b4d6367c172"
+  },
+  "distinct_weights": [
+    "alibaba-qwen",
+    "deepseek-v4-pro",
+    "google-gemini-3.5-flash-high",
+    "moonshot-kimi",
+    "openai-gpt-5",
+    "xai-grok"
+  ],
+  "results": [
+    {
+      "intent": "x_gate",
+      "class": "S:control-well-defined",
+      "risk": "keyed",
+      "distinct_weights": 6,
+      "decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "gt_match": true,
+      "calib_per_runtime": {
+        "deepseek-v4-pro": true,
+        "google-gemini-3.5-flash-high": true,
+        "openai-gpt-5": true,
+        "xai-grok": true,
+        "moonshot-kimi": true,
+        "alibaba-qwen": true
+      },
+      "would_propose_freeze": false
+    },
+    {
+      "intent": "sx",
+      "class": "N:new-gate-no-key",
+      "risk": "new_family",
+      "distinct_weights": 6,
+      "decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "gt_match": true,
+      "calib_per_runtime": {
+        "deepseek-v4-pro": true,
+        "google-gemini-3.5-flash-high": true,
+        "openai-gpt-5": true,
+        "xai-grok": true,
+        "moonshot-kimi": true,
+        "alibaba-qwen": true
+      },
+      "would_propose_freeze": true
+    }
+  ],
+  "pipeline_ok": true,
+  "operator_next": "정욱님: RUNTIME-BRIEF.md+intents.json+SUBMISSION-TEMPLATE.json 를 ≥2(권장 6) distinct-weights 모델 세션에 독립 전달 → <model>.submission.json 수거 → _workspace/crossmodel/p2_live/submissions/ 에 저장 → 본 스크립트 재실행(REAL)."
+}

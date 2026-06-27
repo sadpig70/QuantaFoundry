@@ -41,6 +41,20 @@ cluster9
 ├─ cz (module×8)
 └─ h_gate (module×9)
 
+cmul2_mod33
+├─ c3x (module×23)
+├─ c4x (module×36)
+├─ c5x (module×31)
+├─ c6x (module×12)
+└─ toffoli (module×11)
+
+cmul2_mod35
+├─ c3x (module×19)
+├─ c4x (module×24)
+├─ c5x (module×17)
+├─ c6x (module×7)
+└─ toffoli (module×12)
+
 cz_rediscovered
 ├─ cnot (module)
 └─ h_gate (module×2)

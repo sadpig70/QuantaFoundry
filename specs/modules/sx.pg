@@ -1,0 +1,13 @@
+# sx — √X (principal sqrt-NOT, SX²=X). cross-model 합의(6 distinct weights, human seed 0) ⊕ proof:algebraic. 하드웨어 네이티브 게이트.
+```python id=bloq
+from qualtran.bloqs.basic_gates import XPowGate
+bloq = XPowGate(exponent=0.5)   # √X (전역위상은 C4 무시)
+```
+```python id=golden
+import numpy as np
+# sx = principal sqrt(X): SX² = X. cross-model 합의(6 distinct weights) ⊕ proof:algebraic(√X 정의).
+golden = 0.5*np.array([[1+1j,1-1j],[1-1j,1+1j]], dtype=complex)
+```
+```json id=meta
+{"id": "sx", "n_sys": 1, "n_anc": 0}
+```

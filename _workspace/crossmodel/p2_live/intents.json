@@ -1,0 +1,17 @@
+{
+  "_comment": "P2b live cross-model round. Author each golden unitary INDEPENDENTLY from its standard definition (big-endian, U[out,in], up to global phase). x_gate = sanity/calibration control (known). sx = NEW intent (no answer key).",
+  "intents": [
+    {
+      "id": "x_gate",
+      "class": "S:control-well-defined",
+      "n_sys": 1,
+      "definition": "Pauli-X (NOT) gate. Swaps |0> and |1>. Standard 2x2 matrix [[0,1],[1,0]]."
+    },
+    {
+      "id": "sx",
+      "class": "N:new-gate-no-key",
+      "n_sys": 1,
+      "definition": "SX = square-root of Pauli-X (principal square root), the native sqrt-NOT gate. It is the unique (up to global phase) unitary with SX @ SX = X. Author its standard principal form."
+    }
+  ]
+}

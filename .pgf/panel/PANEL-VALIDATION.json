@@ -1,0 +1,142 @@
+{
+  "phase": "P2a GatedConsensusPanel",
+  "honesty": "replay of already-ingested EXT v05 distinct-weights data (no new external calls); consensus.py used only; gate only tightens sealing (rejects high-risk without ≥2 distinct weights); frozen consensus_keys.json read-only; non-destructive (.pgf/panel/). Live new-intent dispatch (P2b) stays BLOCKED.",
+  "policy": {
+    "keyed": "1 model (KEYED floor)",
+    "high_risk(free_param/convention/new_family/sanity_unkeyed)": "≥2 distinct weights + Persona-A (MULTIMODEL floor)"
+  },
+  "replay_validation": [
+    {
+      "intent": "free_cphase",
+      "class": "C:free-parameter",
+      "risk": "free_param",
+      "distinct_weights": 6,
+      "panel_grade_floor": "MULTIMODEL",
+      "gated_decision": "REJECT",
+      "status": "DIVERGENT",
+      "grade": "",
+      "expected_v05_documented": "REJECT",
+      "match": true
+    },
+    {
+      "intent": "free_rz",
+      "class": "C:free-parameter",
+      "risk": "free_param",
+      "distinct_weights": 6,
+      "panel_grade_floor": "MULTIMODEL",
+      "gated_decision": "REJECT",
+      "status": "DIVERGENT",
+      "grade": "",
+      "expected_v05_documented": "REJECT",
+      "match": true
+    },
+    {
+      "intent": "sanity_cz",
+      "class": "S:control-well-defined",
+      "risk": "sanity_unkeyed",
+      "distinct_weights": 6,
+      "panel_grade_floor": "MULTIMODEL",
+      "gated_decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "expected_v05_documented": "SEAL",
+      "match": true
+    },
+    {
+      "intent": "split_csqrtz_sign",
+      "class": "D:convention-split",
+      "risk": "convention",
+      "distinct_weights": 6,
+      "panel_grade_floor": "MULTIMODEL",
+      "gated_decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "expected_v05_documented": "SEAL",
+      "match": true
+    },
+    {
+      "intent": "split_ry_dir",
+      "class": "D:convention-split",
+      "risk": "convention",
+      "distinct_weights": 6,
+      "panel_grade_floor": "MULTIMODEL",
+      "gated_decision": "REJECT",
+      "status": "CONTESTED",
+      "grade": "",
+      "expected_v05_documented": "REJECT",
+      "match": true
+    },
+    {
+      "intent": "split_rz_sign",
+      "class": "D:convention-split",
+      "risk": "convention",
+      "distinct_weights": 6,
+      "panel_grade_floor": "MULTIMODEL",
+      "gated_decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "expected_v05_documented": "SEAL",
+      "match": true
+    }
+  ],
+  "falsification_probe": {
+    "method": "단일모델 2페르소나(같은 weights_id) → naive count(B4취약) vs independence-unit(gated)",
+    "naive_would_seal": 6,
+    "gated_blocked": 6,
+    "b4_structural_block_rate": "6/6",
+    "detail": [
+      {
+        "intent": "free_cphase",
+        "risk": "free_param",
+        "b4_naive_count": "SEAL",
+        "gated_independence": "REJECT",
+        "b4_blocked": true
+      },
+      {
+        "intent": "free_rz",
+        "risk": "free_param",
+        "b4_naive_count": "SEAL",
+        "gated_independence": "REJECT",
+        "b4_blocked": true
+      },
+      {
+        "intent": "sanity_cz",
+        "risk": "sanity_unkeyed",
+        "b4_naive_count": "SEAL",
+        "gated_independence": "REJECT",
+        "b4_blocked": true
+      },
+      {
+        "intent": "split_csqrtz_sign",
+        "risk": "convention",
+        "b4_naive_count": "SEAL",
+        "gated_independence": "REJECT",
+        "b4_blocked": true
+      },
+      {
+        "intent": "split_ry_dir",
+        "risk": "convention",
+        "b4_naive_count": "SEAL",
+        "gated_independence": "REJECT",
+        "b4_blocked": true
+      },
+      {
+        "intent": "split_rz_sign",
+        "risk": "convention",
+        "b4_naive_count": "SEAL",
+        "gated_independence": "REJECT",
+        "b4_blocked": true
+      }
+    ]
+  },
+  "frozen_keys_intact": true,
+  "structural_properties": {
+    "free_param_diverges(necessity)": true,
+    "3-3_tie_contested(guard)": true,
+    "4-2_majority_sealed(legit multimodel)": true,
+    "sanity_seals_multimodel": true
+  },
+  "convention_nuance": "convention-split 은 균일 거부가 아님 — 4-2 다수(rz/csqrtz)는 정당한 multi-model 합의로 SEAL(소수 convention=문서화 변형), 3-3 동률(ry)만 CONTESTED→REJECT. EXT v05 ingest(HANDOFF 5o) ground-truth 재현.",
+  "all_ok": true,
+  "p2b_blocked": "live new-intent distinct-weights dispatch needs external relay (ModelConfigurableDispatch wiring + endpoint)."
+}

@@ -289,6 +289,16 @@
           "negative_control_detects_mutation": true
         },
         "scope": "부분(샘플 basis 48 + random 16); 전수 unitary 동등성 아님 — Tier-1 약한 의미보증 상향"
+      },
+      "tier2_clifford_companion": {
+        "companion_id": "ghz16_clifford",
+        "companion_seal_path": ".pgf/clifford/sealed/ghz16_clifford.sealed.json",
+        "tier": 2,
+        "u_hash": "da6e83d127fb48507f9799df5041d2cce789363d4abd33d64674c112f5d2ab43",
+        "guarantee": "unitary_equiv",
+        "method": "정준 stabilizer tableau(O(n²), dense 미실체화) — Clifford 유니터리를 전역위상 무시 유일 결정. 합성=봉인 모듈 실제 bloq(MatrixGate 0).",
+        "note": "동반봉인(앱 자체 Tier-1 Merkle 봉인은 불변). Tier-2 u_hash≠Tier-0 dense u_hash(표현차이). 같은 Clifford 연산의 unitary_equiv 보증을 *추가*.",
+        "consistency": "generic(봉인모듈 합성)↔canonical tableau hash 일치 = True"
       }
     },
     "app:ghz3": {

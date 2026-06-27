@@ -1,0 +1,97 @@
+# cmul2_mod35 — controlled (×2 mod 35) on 6 work qubits (7q, q0=control). genskill=modmul_synth@1.
+# golden=산술 순열(독립), plan=79 gates = MMD reversible synthesis → 봉인 ['c3x', 'c4x', 'c5x', 'c6x', 'toffoli'] (≤6 control, no MatrixGate).
+```json id=app_meta
+{"id": "cmul2_mod35", "n_sys": 7, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+a=2; N=35; nq=7
+dim=1<<nq; wb=nq-1
+golden=np.zeros((dim,dim),dtype=complex)
+for s in range(dim):
+    if (s>>(nq-1))&1==0: golden[s,s]=1
+    else:
+        w=s&((1<<wb)-1); nw=(a*w)%N if w<N else w
+        golden[(1<<(nq-1))|nw, s]=1
+```
+```json id=plan
+{"steps": [{"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 3, 4, 5, 6]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 3, 4, 6]},
+           {"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 3, 5, 6, 4]},
+           {"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 3, 4, 5, 6]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 3, 5, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 3, 6]},
+           {"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 4, 5, 6, 3]},
+           {"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 3, 5, 6, 4]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 4, 5, 6]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 4, 6, 5]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 4, 6, 3]},
+           {"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 3, 5, 6, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 4, 6]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 5, 6, 4]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 4, 6, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 5, 6]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 5, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 6, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 6, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 6]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 4]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 3, 4, 5, 6]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 3, 4, 5, 2]},
+           {"spec": "../modules/c6x.pg", "targets": [0, 1, 2, 3, 4, 6, 5]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 3, 4, 6, 2]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 3, 6, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 3, 4, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 3, 4, 2]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 3, 5, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 5, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 3, 6, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 3, 6, 2]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 3, 4, 6]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 4, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 6]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 2]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 2, 4, 6, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 4, 5, 6]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 4, 5, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 4, 6, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 4, 6, 3]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 1, 3, 4, 5, 6]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 4, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 4, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 1, 2, 5, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 5, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 5, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 1, 5, 2]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 1, 6]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 2, 3, 4, 5, 6]},
+           {"spec": "../modules/c5x.pg", "targets": [0, 2, 3, 4, 5, 1]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 3, 4, 6]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 3, 4, 1]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 3, 5, 6]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 3, 5, 1]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 3, 6]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 3, 1]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 4, 5, 6]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 4, 5, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [0, 2, 4, 5, 1]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 4, 6]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 4, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 4, 1]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 5, 6]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 5, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 5, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [0, 2, 5, 1]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 2, 1]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 3, 2]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 2, 3]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 4, 3]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 3, 4]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 5, 4]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 4, 5]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 6, 5]},
+           {"spec": "../modules/toffoli.pg", "targets": [0, 5, 6]}]}
+```

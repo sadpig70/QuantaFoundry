@@ -2,8 +2,8 @@
   "schema": "genskill-catalog/v2",
   "count": 8,
   "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행. source_hash/catalog_root_hash = method self-seal(생성방법 변조탐지; verify 로 재검증).",
-  "catalog_root_hash": "a4f0f2a8801cc226be71d90aea0a6b63aaa6671062bc6340ffc43d9947148f1d",
-  "library_file_hash": "7a421f87843d7f2bc6bd673fb1860a88f0b816fbaed739103715e270e1696b58",
+  "catalog_root_hash": "0367ed6410a145aed52552095a3e1ce91d5f34fd1479eb99039f2ae042e2edf8",
+  "library_file_hash": "e2ff06c868f6f0d43f22e9fa6c50e71360f582717592dc3f72f7e497fa4b43f5",
   "skills": [
     {
       "version": "1",
@@ -135,7 +135,7 @@
         6
       ],
       "id": "modmul_synth",
-      "source_hash": "5b840b1e05858f0f22b005dead0de72917265c422e508ab589b4216d89bc4a3c"
+      "source_hash": "6de5cb90bcf1e9b91569aa5bb0be0cbf26ad33e42bf0661affa309feb58c842a"
     }
   ]
 }

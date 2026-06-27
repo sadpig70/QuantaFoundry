@@ -1,0 +1,166 @@
+{
+  "phase": "P1 ArithFamilyExtend",
+  "honesty": "engine(genskills) unchanged (functions imported only); c6x mapping local; distinct-prime targets need 6-control MCT → missing prereq c6x sealed first (P5 dependency-resolve philosophy); generation != verification (oracle seals); behavioral observe illustrative only (§8.4); plan=sealed MCT, no MatrixGate.",
+  "seal_mct6": {
+    "sealed": true,
+    "u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd",
+    "tier": null,
+    "independent_verify": {
+      "independent_u_hash": "5695deafab4f111b",
+      "matches_sealed": true
+    }
+  },
+  "synth_distinct_prime": [
+    {
+      "id": "cmul2_mod35",
+      "N": 35,
+      "factors": [
+        5,
+        7
+      ],
+      "nq": 7,
+      "gates": 79,
+      "control_dist": {
+        "6": 7,
+        "5": 17,
+        "4": 24,
+        "3": 19,
+        "2": 12
+      },
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "toffoli"
+      ],
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "a190a826040cd5e33f7c6377e49f2de743b7cad7cbb494b19863702f95b46628",
+      "reason": ""
+    },
+    {
+      "id": "cmul2_mod33",
+      "N": 33,
+      "factors": [
+        3,
+        11
+      ],
+      "nq": 7,
+      "gates": 113,
+      "control_dist": {
+        "5": 31,
+        "6": 12,
+        "4": 36,
+        "3": 23,
+        "2": 11
+      },
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "toffoli"
+      ],
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "de55372234f9f930bcf8f342b536d455b8d11f06664eeaedef34c499842144a3",
+      "reason": ""
+    }
+  ],
+  "engine_regression": {
+    "matches": 2,
+    "total": 2,
+    "detail": [
+      {
+        "id": "cmul2_mod21",
+        "sealed": true,
+        "regenerated_u_hash": "1aaf1e8a4589bbb0",
+        "matches_registry": true
+      },
+      {
+        "id": "cmul2_mod15",
+        "sealed": true,
+        "regenerated_u_hash": "3b9fdb52b48baaad",
+        "matches_registry": true
+      }
+    ]
+  },
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod35",
+      "independent_u_hash": "a190a826040cd5e3",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul2_mod33",
+      "independent_u_hash": "de55372234f9f930",
+      "matches_sealed": true
+    }
+  ],
+  "behavioral_observe": [
+    {
+      "id": "cmul2_mod35",
+      "orbit_from_1": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        29,
+        23,
+        11,
+        22,
+        9,
+        18,
+        1
+      ],
+      "observed_period": 12,
+      "ord_N_a": 12,
+      "matches": true,
+      "note": "illustrative only — 봉인 증거 아님(§8.4). control=1 work register orbit."
+    },
+    {
+      "id": "cmul2_mod33",
+      "orbit_from_1": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        31,
+        29,
+        25,
+        17,
+        1
+      ],
+      "observed_period": 10,
+      "ord_N_a": 10,
+      "matches": true,
+      "note": "illustrative only — 봉인 증거 아님(§8.4). control=1 work register orbit."
+    }
+  ],
+  "shor_scope_honest": [
+    {
+      "N": 35,
+      "period": 12,
+      "counting_t": 8,
+      "work": 6,
+      "total_qubits": 14,
+      "tier0_exact_feasible": false,
+      "honest_tier": "Tier-1 STRUCTURAL"
+    },
+    {
+      "N": 33,
+      "period": 10,
+      "counting_t": 8,
+      "work": 6,
+      "total_qubits": 14,
+      "tier0_exact_feasible": false,
+      "honest_tier": "Tier-1 STRUCTURAL"
+    }
+  ],
+  "all_ok": true
+}

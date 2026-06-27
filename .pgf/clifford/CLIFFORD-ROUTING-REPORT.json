@@ -1,0 +1,236 @@
+{
+  "phase": "P0 CliffordTierClosure",
+  "honesty": "Tier-2 tableau u_hash != Tier-0 dense u_hash (representation differs); companion seal raising guarantee to unitary_equiv, NOT a byte-identical replacement; oracle used only; registry/frozen untouched; bloq=Clifford primitives (no MatrixGate).",
+  "detected_clifford_apps": 29,
+  "tier1_weak": [
+    "ghz16_structural"
+  ],
+  "cross_validate": {
+    "tested": 28,
+    "dense_matches_registry": 28,
+    "is_clifford": 28,
+    "detail": [
+      {
+        "id": "bell",
+        "n": 2,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster10",
+        "n": 10,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster3",
+        "n": 3,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster4",
+        "n": 4,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster5",
+        "n": 5,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster6",
+        "n": 6,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster7",
+        "n": 7,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster8",
+        "n": 8,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cluster9",
+        "n": 9,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "cz_rediscovered",
+        "n": 2,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz10",
+        "n": 10,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz3",
+        "n": 3,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz4",
+        "n": 4,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz5",
+        "n": 5,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz6",
+        "n": 6,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz7",
+        "n": 7,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz8",
+        "n": 8,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ghz9",
+        "n": 9,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "reflect00",
+        "n": 2,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring10",
+        "n": 10,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring3",
+        "n": 3,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring4",
+        "n": 4,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring5",
+        "n": 5,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring6",
+        "n": 6,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring7",
+        "n": 7,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring8",
+        "n": 8,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "ring9",
+        "n": 9,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      },
+      {
+        "id": "swap_via_cnot",
+        "n": 2,
+        "is_clifford": true,
+        "dense_matches_registry": true
+      }
+    ]
+  },
+  "ghz16_closure": {
+    "generic_canonical_consistent": true,
+    "tier2_seal": {
+      "atol": 1e-09,
+      "contract": "C1-C4(clifford)",
+      "contracts_code_hash": "64dd25399a16d6f812648568f871d223a789fe72f8bce432f3d11296ec7b2ee9",
+      "convention": "qualtran-raw",
+      "id": "ghz16_clifford",
+      "n_anc": 0,
+      "n_sys": 16,
+      "oracle_code_hash": "45d316a431495c9b9a69163b3912da74ae6430fafcda50f7732198202d03092a",
+      "resource": {
+        "clifford": 16,
+        "total_t": 0
+      },
+      "resource_schema_version": "qec-gates-cost-v1",
+      "sealed": true,
+      "sig": "0c7b2ab7e129ee3f7a924e0f66d44c220f3361f2f3fa60f08a37a103d77162ae",
+      "tier": 2,
+      "u_hash": "da6e83d127fb48507f9799df5041d2cce789363d4abd33d64674c112f5d2ab43"
+    },
+    "sealed_u_hash_matches_build": true,
+    "guarantee_upgrade": "structural_wellformed(Tier-1) → unitary_equiv(Tier-2 tableau)"
+  },
+  "scale_demo": {
+    "ghz20_clifford": {
+      "atol": 1e-09,
+      "contract": "C1-C4(clifford)",
+      "contracts_code_hash": "64dd25399a16d6f812648568f871d223a789fe72f8bce432f3d11296ec7b2ee9",
+      "convention": "qualtran-raw",
+      "id": "ghz20_clifford",
+      "n_anc": 0,
+      "n_sys": 20,
+      "oracle_code_hash": "45d316a431495c9b9a69163b3912da74ae6430fafcda50f7732198202d03092a",
+      "resource": {
+        "clifford": 20,
+        "total_t": 0
+      },
+      "resource_schema_version": "qec-gates-cost-v1",
+      "sealed": true,
+      "sig": "0f58a6e80a71bce9568f4a188a6422b0b396d173a92ed4d4ee569a0bc08d16f5",
+      "tier": 2,
+      "u_hash": "b347b6ba1d137682e3cccde17c733d1e98733d4e4cb051f6ef56f298a971b39f"
+    },
+    "note": "n=20 > EXACT_BOUND(12): dense 2^20 미실체화, tableau 정확 봉인"
+  },
+  "determinism_2x_byte_identical": true,
+  "guarantee_annotation": {
+    "other_entries_unchanged": true,
+    "annotated_key": "app:ghz16_structural",
+    "other_count": 79
+  },
+  "all_ok": true
+}

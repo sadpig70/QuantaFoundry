@@ -1,0 +1,127 @@
+{
+  "phase": "P2b LiveDispatch (wiring self-contained; live new-model call = external relay)",
+  "honesty": "ReplayEndpoint replays already-ingested v05 golden (proves wiring end-to-end, NOT new-model authoring of a new intent); endpoint=None → honest BLOCKED; consensus/crossmodel_adapter/gated_panel used only; frozen/sealed untouched; non-destructive (.pgf/panel/). A genuinely new intent still needs real distinct-weights runtimes (external relay).",
+  "wired_live_pipeline": [
+    {
+      "intent": "free_cphase",
+      "risk": "free_param",
+      "decision": "REJECT",
+      "status": "DIVERGENT",
+      "grade": "",
+      "reason": "max independent agreement 1 < N=2; refine intent or add cross-model/proof source",
+      "wired_weights": [
+        "alibaba-qwen",
+        "deepseek-v4-pro",
+        "google-gemini-3.5-flash-high",
+        "moonshot-kimi",
+        "openai-gpt-5",
+        "xai-grok"
+      ],
+      "distinct_weights_used": 6
+    },
+    {
+      "intent": "free_rz",
+      "risk": "free_param",
+      "decision": "REJECT",
+      "status": "DIVERGENT",
+      "grade": "",
+      "reason": "max independent agreement 1 < N=2; refine intent or add cross-model/proof source",
+      "wired_weights": [
+        "alibaba-qwen",
+        "deepseek-v4-pro",
+        "google-gemini-3.5-flash-high",
+        "moonshot-kimi",
+        "openai-gpt-5",
+        "xai-grok"
+      ],
+      "distinct_weights_used": 6
+    },
+    {
+      "intent": "sanity_cz",
+      "risk": "sanity_unkeyed",
+      "decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "reason": "key=8d39767cd8c3",
+      "wired_weights": [
+        "alibaba-qwen",
+        "deepseek-v4-pro",
+        "google-gemini-3.5-flash-high",
+        "moonshot-kimi",
+        "openai-gpt-5",
+        "xai-grok"
+      ],
+      "distinct_weights_used": 6
+    },
+    {
+      "intent": "split_csqrtz_sign",
+      "risk": "convention",
+      "decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "reason": "key=a2193b0fcfb6",
+      "wired_weights": [
+        "alibaba-qwen",
+        "deepseek-v4-pro",
+        "google-gemini-3.5-flash-high",
+        "moonshot-kimi",
+        "openai-gpt-5",
+        "xai-grok"
+      ],
+      "distinct_weights_used": 6
+    },
+    {
+      "intent": "split_ry_dir",
+      "risk": "convention",
+      "decision": "REJECT",
+      "status": "CONTESTED",
+      "grade": "",
+      "reason": "top-2 independence tie (3=3); no plurality — refine intent or add proof/structural tie-breaker",
+      "wired_weights": [
+        "alibaba-qwen",
+        "deepseek-v4-pro",
+        "google-gemini-3.5-flash-high",
+        "moonshot-kimi",
+        "openai-gpt-5",
+        "xai-grok"
+      ],
+      "distinct_weights_used": 6
+    },
+    {
+      "intent": "split_rz_sign",
+      "risk": "convention",
+      "decision": "SEAL",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "reason": "key=7c739c3b4c3a",
+      "wired_weights": [
+        "alibaba-qwen",
+        "deepseek-v4-pro",
+        "google-gemini-3.5-flash-high",
+        "moonshot-kimi",
+        "openai-gpt-5",
+        "xai-grok"
+      ],
+      "distinct_weights_used": 6
+    }
+  ],
+  "live_equals_direct_replay": true,
+  "unwired_blocked_honestly": {
+    "intent": "brand_new_family_intent",
+    "risk": "new_family",
+    "decision": "BLOCKED",
+    "reason": "distinct-weights 연결 0 < 요구 2 (외부 의존: 미연결 ['m_deepseek-v4-pro', 'm_google-gemini-3.5-flash-high', 'm_openai-gpt-5', 'm_xai-grok', 'm_moonshot-kimi', 'm_alibaba-qwen'])",
+    "wired_weights": []
+  },
+  "partial_same_weights_blocked(B4 defense)": {
+    "intent": "free_rz",
+    "risk": "free_param",
+    "decision": "BLOCKED",
+    "reason": "distinct-weights 연결 1 < 요구 2 (외부 의존: 미연결 [])",
+    "wired_weights": [
+      "deepseek-v4-pro"
+    ]
+  },
+  "all_ok": true,
+  "remaining_external": "endpoint.author_golden wiring to real distinct-weights model APIs (정욱님 relay). 이 스크립트는 그 주입 지점까지 완비."
+}

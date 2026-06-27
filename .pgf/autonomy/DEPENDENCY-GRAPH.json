@@ -1,0 +1,1492 @@
+{
+  "phase": "P5 DepGraphClosure",
+  "honesty": "analysis-only non-destructive; registry_tools/goal_autonomy used in-memory (canonical manifest not overwritten); registry/seal/frozen untouched.",
+  "registry_root_hash": "ea57c4ac2fff9cb29379b1cd06e19305b7ed7e74cc8b08ff96ed1296a4c3781a",
+  "module_count": 47,
+  "unique_app_count": 59,
+  "cached_app_side_module_count": 38,
+  "dag": {
+    "bell": {
+      "u_hash": "b314b411bf3605ef",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ccz_rediscovered": {
+      "u_hash": "be7749314540f6a6",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "toffoli",
+          "uses": 1
+        }
+      ]
+    },
+    "cluster10": {
+      "u_hash": "b27f98426016d4a0",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 9
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 10
+        }
+      ]
+    },
+    "cluster3": {
+      "u_hash": "d2e50285e91e6acc",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        }
+      ]
+    },
+    "cluster4": {
+      "u_hash": "bb113c845558133e",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 4
+        }
+      ]
+    },
+    "cluster5": {
+      "u_hash": "491cf7c71980816a",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 4
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 5
+        }
+      ]
+    },
+    "cluster6": {
+      "u_hash": "29d8e160e88e924f",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 5
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 6
+        }
+      ]
+    },
+    "cluster7": {
+      "u_hash": "57bf15b15cb3714d",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 6
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 7
+        }
+      ]
+    },
+    "cluster8": {
+      "u_hash": "32b5695128f68dc4",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 7
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 8
+        }
+      ]
+    },
+    "cluster9": {
+      "u_hash": "385f14dd960d6ff5",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 8
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 9
+        }
+      ]
+    },
+    "cmul16_mod21": {
+      "u_hash": "2fa362f7830fa17f",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "cmul4_mod21",
+          "uses": 2
+        }
+      ]
+    },
+    "cmul2_mod15": {
+      "u_hash": "3b9fdb52b48baaad",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "fredkin",
+          "uses": 3
+        }
+      ]
+    },
+    "cmul2_mod21": {
+      "u_hash": "1aaf1e8a4589bbb0",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "c3x",
+          "uses": 21
+        },
+        {
+          "kind": "module",
+          "id": "c4x",
+          "uses": 25
+        },
+        {
+          "kind": "module",
+          "id": "c5x",
+          "uses": 9
+        },
+        {
+          "kind": "module",
+          "id": "toffoli",
+          "uses": 11
+        }
+      ]
+    },
+    "cmul2_mod33": {
+      "u_hash": "de55372234f9f930",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "c3x",
+          "uses": 23
+        },
+        {
+          "kind": "module",
+          "id": "c4x",
+          "uses": 36
+        },
+        {
+          "kind": "module",
+          "id": "c5x",
+          "uses": 31
+        },
+        {
+          "kind": "module",
+          "id": "c6x",
+          "uses": 12
+        },
+        {
+          "kind": "module",
+          "id": "toffoli",
+          "uses": 11
+        }
+      ]
+    },
+    "cmul2_mod35": {
+      "u_hash": "a190a826040cd5e3",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "c3x",
+          "uses": 19
+        },
+        {
+          "kind": "module",
+          "id": "c4x",
+          "uses": 24
+        },
+        {
+          "kind": "module",
+          "id": "c5x",
+          "uses": 17
+        },
+        {
+          "kind": "module",
+          "id": "c6x",
+          "uses": 7
+        },
+        {
+          "kind": "module",
+          "id": "toffoli",
+          "uses": 12
+        }
+      ]
+    },
+    "cmul4_mod15": {
+      "u_hash": "8b86131c2bbf1d1b",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "cmul2_mod15",
+          "uses": 2
+        }
+      ]
+    },
+    "cmul4_mod21": {
+      "u_hash": "1f73313e8be267e2",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "cmul2_mod21",
+          "uses": 2
+        }
+      ]
+    },
+    "cmul7_mod15": {
+      "u_hash": "c91549e8c0aa051b",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 4
+        },
+        {
+          "kind": "module",
+          "id": "fredkin",
+          "uses": 3
+        }
+      ]
+    },
+    "cz_rediscovered": {
+      "u_hash": "8d39767cd8c38717",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 2
+        }
+      ]
+    },
+    "diffusion": {
+      "u_hash": "067db05d7cb87831",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "reflect00",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 4
+        }
+      ]
+    },
+    "ghz10": {
+      "u_hash": "d34a49db319b5076",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 9
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz16_structural": {
+      "u_hash": "19036af5f7357761",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 15
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz3": {
+      "u_hash": "72ec19077719e4c1",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz4": {
+      "u_hash": "d7eba2533e03ae4d",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz5": {
+      "u_hash": "779ed8cdbc00609e",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 4
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz6": {
+      "u_hash": "013231d811a8e5fa",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 5
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz7": {
+      "u_hash": "2f9b2282baf2e339",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 6
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz8": {
+      "u_hash": "c7c5bdfb51ef3f7c",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 7
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "ghz9": {
+      "u_hash": "d685f2ecbc7364ba",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 8
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "grover2": {
+      "u_hash": "eadf3919812307d8",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "diffusion",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 1
+        }
+      ]
+    },
+    "iqft2": {
+      "u_hash": "8348a57b43f39dbc",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cs_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "swap2",
+          "uses": 1
+        }
+      ]
+    },
+    "iqft3": {
+      "u_hash": "74eacbc5b74d9367",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cr3_dag_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cs_dag",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "swap2",
+          "uses": 1
+        }
+      ]
+    },
+    "iqft7": {
+      "u_hash": "10da007065939b34",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cr3_dag_gate",
+          "uses": 5
+        },
+        {
+          "kind": "module",
+          "id": "cr4_dag_gate",
+          "uses": 4
+        },
+        {
+          "kind": "module",
+          "id": "cr5_dag_gate",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "cr6_dag_gate",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "cr7_dag_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cs_dag",
+          "uses": 6
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 7
+        },
+        {
+          "kind": "module",
+          "id": "swap2",
+          "uses": 3
+        }
+      ]
+    },
+    "qft2_pipeline": {
+      "u_hash": "90dbc731bb8c7e80",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cs_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "swap2",
+          "uses": 1
+        }
+      ]
+    },
+    "qft3_pipeline": {
+      "u_hash": "340b5f344fae9b99",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cs_gate",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "ct_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "swap2",
+          "uses": 1
+        }
+      ]
+    },
+    "qft4_pipeline": {
+      "u_hash": "d997d21f5cfb1487",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cr4_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cs_gate",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "ct_gate",
+          "uses": 2
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 4
+        },
+        {
+          "kind": "module",
+          "id": "swap2",
+          "uses": 2
+        }
+      ]
+    },
+    "qpe_s": {
+      "u_hash": "f222bc16eef5d891",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "iqft2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cs_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 2
+        }
+      ]
+    },
+    "qpe_t": {
+      "u_hash": "d20776ca44d88feb",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "iqft3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cs_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ct_gate",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        }
+      ]
+    },
+    "reflect00": {
+      "u_hash": "02dbf66f3a2ed576",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 4
+        }
+      ]
+    },
+    "ring10": {
+      "u_hash": "10c8f22e6f94dc05",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 10
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 10
+        }
+      ]
+    },
+    "ring3": {
+      "u_hash": "64fd672c31178826",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 3
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        }
+      ]
+    },
+    "ring4": {
+      "u_hash": "7d3dc1ef611ac20d",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 4
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 4
+        }
+      ]
+    },
+    "ring5": {
+      "u_hash": "b13224846af6d28d",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 5
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 5
+        }
+      ]
+    },
+    "ring6": {
+      "u_hash": "d47142ae9f032f90",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 6
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 6
+        }
+      ]
+    },
+    "ring7": {
+      "u_hash": "232ef1c7de0f9ec6",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 7
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 7
+        }
+      ]
+    },
+    "ring8": {
+      "u_hash": "c5ce98f106878b9f",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 8
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 8
+        }
+      ]
+    },
+    "ring9": {
+      "u_hash": "234dd855a657e681",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cz",
+          "uses": 9
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 9
+        }
+      ]
+    },
+    "shor15_a2": {
+      "u_hash": "c8088d7dc3a03bb4",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "cmul2_mod15",
+          "uses": 1
+        },
+        {
+          "kind": "app",
+          "id": "cmul4_mod15",
+          "uses": 1
+        },
+        {
+          "kind": "app",
+          "id": "iqft3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        }
+      ]
+    },
+    "shor15_a7": {
+      "u_hash": "79ba86e53cc0b065",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "cmul4_mod15",
+          "uses": 1
+        },
+        {
+          "kind": "app",
+          "id": "cmul7_mod15",
+          "uses": 1
+        },
+        {
+          "kind": "app",
+          "id": "iqft3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 3
+        }
+      ]
+    },
+    "shor21_a2": {
+      "u_hash": "c47668eaaf804ed2",
+      "depends_on": [
+        {
+          "kind": "app",
+          "id": "cmul16_mod21",
+          "uses": 3
+        },
+        {
+          "kind": "app",
+          "id": "cmul2_mod21",
+          "uses": 1
+        },
+        {
+          "kind": "app",
+          "id": "cmul4_mod21",
+          "uses": 3
+        },
+        {
+          "kind": "app",
+          "id": "iqft7",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "h_gate",
+          "uses": 7
+        }
+      ]
+    },
+    "swap_via_cnot": {
+      "u_hash": "e6255e2f105a9782",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 3
+        }
+      ]
+    },
+    "wstate10": {
+      "u_hash": "6f029c238eabfef6",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 27
+        },
+        {
+          "kind": "module",
+          "id": "ry_k10",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k10_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k8",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k8_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k9",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k9_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate3": {
+      "u_hash": "588e269c672ef260",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 6
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate4": {
+      "u_hash": "946aabc8bc4f3a6c",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 9
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate5": {
+      "u_hash": "8a6a9c5bba457b11",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 12
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate6": {
+      "u_hash": "5965328ccd044b54",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 15
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate7": {
+      "u_hash": "cb9b491f914fc2f1",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 18
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate8": {
+      "u_hash": "093ad856bc878b12",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 21
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k8",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k8_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    },
+    "wstate9": {
+      "u_hash": "403f8876adced453",
+      "depends_on": [
+        {
+          "kind": "module",
+          "id": "cnot",
+          "uses": 24
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k2_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k3_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k4_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k5_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k6_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k7_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k8",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k8_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k9",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "ry_k9_dag",
+          "uses": 1
+        },
+        {
+          "kind": "module",
+          "id": "x_gate",
+          "uses": 1
+        }
+      ]
+    }
+  },
+  "frontier": {
+    "total_gaps": 0,
+    "buildable": [],
+    "blocked_self_identified_prereq": []
+  },
+  "by_family": {},
+  "note": "frontier.blocked 의 missing_modules = 자율루프가 스스로 지목하는 선행조건. 이 prereq 를 먼저 봉인하면 해당 멤버가 buildable 로 전환(W→Ry→W 패턴). P1 에서 c6x 봉인으로 distinct-prime cmul 패밀리가 잠금해제된 것과 동형."
+}

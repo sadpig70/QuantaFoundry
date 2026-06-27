@@ -144,7 +144,7 @@ def gen_cluster_ring(n):
 #     (toffoli/c3x/c4x/c5x, ≤5 control)에 정직 분해. golden=순열(MatrixGate 없음).
 #     §8.7 이 지목한 최고가치 차기 GenSkill — Shor 의 controlled-U 생성 *방법*.
 # ════════════════════════════════════════════════════════════════════════════
-_MCT_MODULE = {0: "x_gate", 1: "cnot", 2: "toffoli", 3: "c3x", 4: "c4x", 5: "c5x"}
+_MCT_MODULE = {0: "x_gate", 1: "cnot", 2: "toffoli", 3: "c3x", 4: "c4x", 5: "c5x", 6: "c6x"}
 
 
 def _set_wires(v, nq):
@@ -210,8 +210,8 @@ def gen_modmul(a, N, nq):
     perm = _modmul_perm(a, N, nq)
     gates = mmd_synthesize(perm, nq)
     maxc = max((len(c) for c, _ in gates), default=0)
-    if maxc > 5:
-        raise ValueError(f"gen_modmul: {maxc} controls > 5 (봉인 모듈 한계; nq={nq} 축소 필요)")
+    if maxc > 6:
+        raise ValueError(f"gen_modmul: {maxc} controls > 6 (c7x 부재; nq={nq} 축소 필요)")
     steps = [{"spec": f"../modules/{_MCT_MODULE[len(c)]}.pg", "targets": list(c) + [t]} for c, t in gates]
     plan = build_plan(steps)
     golden = (
@@ -228,7 +228,7 @@ def gen_modmul(a, N, nq):
     header = (f"# cmul{a}_mod{N} — controlled (×{a} mod {N}) on {nq-1} work qubits ({nq}q, q0=control). "
               f"genskill=modmul_synth@1.\n"
               f"# golden=산술 순열(독립), plan={len(gates)} gates = MMD reversible synthesis → 봉인 "
-              f"{deps} (≤5 control, no MatrixGate).\n")
+              f"{deps} (≤{maxc} control, no MatrixGate).\n")
     spec = assemble_app_spec(f"cmul{a}_mod{N}", nq, header, golden, plan)
     return spec, deps
 

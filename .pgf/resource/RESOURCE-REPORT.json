@@ -1,0 +1,261 @@
+{
+  "phase": "P4 ResourceReport",
+  "schema": "qec-gates-cost-v1",
+  "honesty": "analysis-only non-destructive; resource values are oracle-recorded at seal time (not re-derived); seals/oracle/frozen untouched; app re-seal caches excluded from app totals (namespace split, no double-count).",
+  "modules": {
+    "namespace": "modules",
+    "count": 47,
+    "totals": {
+      "total_t": 429,
+      "t": 7,
+      "toffoli": 1,
+      "clifford": 64,
+      "and_bloq": 32,
+      "cswap": 1,
+      "rotation": 26,
+      "measurement": 32
+    },
+    "max_qubit_width": 7,
+    "top_total_t": [
+      {
+        "id": "qft4",
+        "n_sys": 4,
+        "tier": null,
+        "total_t": 37,
+        "toffoli": 0,
+        "clifford": 15
+      },
+      {
+        "id": "c6x",
+        "n_sys": 7,
+        "tier": null,
+        "total_t": 20,
+        "toffoli": 0,
+        "clifford": 6
+      },
+      {
+        "id": "c5x",
+        "n_sys": 6,
+        "tier": null,
+        "total_t": 16,
+        "toffoli": 0,
+        "clifford": 5
+      },
+      {
+        "id": "cr4_dag_gate",
+        "n_sys": 2,
+        "tier": null,
+        "total_t": 15,
+        "toffoli": 0,
+        "clifford": 1
+      },
+      {
+        "id": "cr4_gate",
+        "n_sys": 2,
+        "tier": null,
+        "total_t": 15,
+        "toffoli": 0,
+        "clifford": 1
+      },
+      {
+        "id": "cr5_dag_gate",
+        "n_sys": 2,
+        "tier": null,
+        "total_t": 15,
+        "toffoli": 0,
+        "clifford": 1
+      },
+      {
+        "id": "cr5_gate",
+        "n_sys": 2,
+        "tier": null,
+        "total_t": 15,
+        "toffoli": 0,
+        "clifford": 1
+      },
+      {
+        "id": "cr6_dag_gate",
+        "n_sys": 2,
+        "tier": null,
+        "total_t": 15,
+        "toffoli": 0,
+        "clifford": 1
+      }
+    ],
+    "zero_t_count": 8
+  },
+  "apps_unique": {
+    "namespace": "apps (unique, 재봉인 캐시 제외)",
+    "count": 59,
+    "totals": {
+      "total_t": 21043,
+      "t": 30,
+      "toffoli": 310,
+      "clifford": 6688,
+      "and_bloq": 4564,
+      "cswap": 30,
+      "rotation": 127,
+      "measurement": 4564
+    },
+    "max_qubit_width": 16,
+    "top_total_t": [
+      {
+        "id": "shor21_a2",
+        "n_sys": 12,
+        "tier": 0,
+        "total_t": 12705,
+        "toffoli": 209,
+        "clifford": 3984
+      },
+      {
+        "id": "cmul16_mod21",
+        "n_sys": 6,
+        "tier": 0,
+        "total_t": 2624,
+        "toffoli": 44,
+        "clifford": 832
+      },
+      {
+        "id": "cmul2_mod33",
+        "n_sys": 7,
+        "tier": 0,
+        "total_t": 1396,
+        "toffoli": 11,
+        "clifford": 440
+      },
+      {
+        "id": "cmul4_mod21",
+        "n_sys": 6,
+        "tier": 0,
+        "total_t": 1312,
+        "toffoli": 22,
+        "clifford": 416
+      },
+      {
+        "id": "cmul2_mod35",
+        "n_sys": 7,
+        "tier": 0,
+        "total_t": 900,
+        "toffoli": 12,
+        "clifford": 280
+      },
+      {
+        "id": "cmul2_mod21",
+        "n_sys": 6,
+        "tier": 0,
+        "total_t": 656,
+        "toffoli": 11,
+        "clifford": 208
+      },
+      {
+        "id": "iqft7",
+        "n_sys": 7,
+        "tier": 0,
+        "total_t": 241,
+        "toffoli": 0,
+        "clifford": 25
+      },
+      {
+        "id": "wstate10",
+        "n_sys": 10,
+        "tier": 0,
+        "total_t": 178,
+        "toffoli": 0,
+        "clifford": 28
+      }
+    ],
+    "zero_t_count": 31
+  },
+  "registry_apps_total": 97,
+  "registry_apps_reseal_cache": 38,
+  "cost_aware_note": {
+    "policy": "동일 u_hash(=동일 유니터리) 다후보 존재 시 최소 total_t 회로 선택 봉인 권장. 분석/문서 전용 — 봉인경로 미적용(결정론 보존). 동일 u_hash 후보군은 보통 module↔app 재봉인 캐시(같은 합성)이며, 진짜 다른 회로의 동일 u_hash 시 의미 발생.",
+    "shared_u_hash_groups": 6,
+    "examples": [
+      {
+        "u_hash": "be7749314540f6",
+        "candidates": [
+          {
+            "id": "ccz",
+            "total_t": 4
+          },
+          {
+            "id": "ccz_rediscovered",
+            "total_t": 4
+          }
+        ],
+        "cost_aware_choice": "ccz"
+      },
+      {
+        "u_hash": "8d39767cd8c387",
+        "candidates": [
+          {
+            "id": "cz",
+            "total_t": 0
+          },
+          {
+            "id": "cz_rediscovered",
+            "total_t": 0
+          }
+        ],
+        "cost_aware_choice": "cz"
+      },
+      {
+        "u_hash": "90dbc731bb8c7e",
+        "candidates": [
+          {
+            "id": "qft2",
+            "total_t": 4
+          },
+          {
+            "id": "qft2_pipeline",
+            "total_t": 11
+          }
+        ],
+        "cost_aware_choice": "qft2"
+      },
+      {
+        "u_hash": "340b5f344fae9b",
+        "candidates": [
+          {
+            "id": "qft3",
+            "total_t": 13
+          },
+          {
+            "id": "qft3_pipeline",
+            "total_t": 33
+          }
+        ],
+        "cost_aware_choice": "qft3"
+      },
+      {
+        "u_hash": "d997d21f5cfb14",
+        "candidates": [
+          {
+            "id": "qft4",
+            "total_t": 37
+          },
+          {
+            "id": "qft4_pipeline",
+            "total_t": 70
+          }
+        ],
+        "cost_aware_choice": "qft4"
+      },
+      {
+        "u_hash": "e6255e2f105a97",
+        "candidates": [
+          {
+            "id": "swap2",
+            "total_t": 0
+          },
+          {
+            "id": "swap_via_cnot",
+            "total_t": 0
+          }
+        ],
+        "cost_aware_choice": "swap2"
+      }
+    ]
+  }
+}
