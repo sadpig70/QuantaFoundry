@@ -260,21 +260,54 @@ implementation by cross-model consensus + symbolic proof — **zero human answer
 
 ```text
 QuantaFoundry/
-  README.md
-  docs/QuantaFoundry-Technical-Spec.md   # full spec + evidence (start here for review)
-  specs/    modules/*.pg (22)  apps/*.app.pg (20)
-  registry/ modules/*.sealed.json (22)  apps/*.sealed.json (20 + leaf cache)
-  .pgf/
-    autoforge/   autoforge.py (gates)  forge_apps.py (apps)
-    keyfree/     consensus.py  ingest_*.py  seal_crk.py  consensus_keys.json
-    personas/    persona-{golden,bloq,adversary}.md
-    DESIGN-*.md  status-*.json
-  _workspace/crossmodel/   cross-model briefs, submissions, consensus reports (evidence)
-  .agents/skills/qpgf-oracle/   vendored QPGF oracle (used, not modified)
+├── README.md                     # this file
+├── RELEASE-NOTES.md              # v0.3 milestone summary + reproduce commands
+├── NOTICE.md                     # vendored-component (QPGF) provenance & attribution
+├── LICENSE                       # MIT
+│
+├── docs/
+│   └── QuantaFoundry-Technical-Spec.md   # full spec + evidence + review questions (START HERE)
+│
+├── specs/                        # human/AI-readable PG specifications (the "source")
+│   ├── modules/*.pg   (22)       #   one gate per file: bloq impl + golden ref + meta
+│   └── apps/*.app.pg   (20)      #   one application per file: app_golden + decomposition plan
+│
+├── registry/                     # the sealed library (the "trust capital")
+│   ├── modules/*.sealed.json (22)#   tamper-evident gate seals (u_hash, contract, provenance, sig)
+│   └── apps/*.sealed.json (20+)  #   application seals (C-app) + cached leaf re-seals
+│
+├── .pgf/                         # the foundry implementation (PG/PGF orchestration)
+│   ├── autoforge/
+│   │   ├── autoforge.py          #   F2: seal base gates (combine → verify → anti-swap → register)
+│   │   └── forge_apps.py         #   F3: compose sealed modules → apps, with rediscovery cross-check
+│   ├── keyfree/                  #   KeyFreeConsensus engine + cross-model pipelines
+│   │   ├── consensus.py          #     independence-unit voting + source generators
+│   │   ├── consensus_keys.json   #     frozen, provenance-tagged answer keys (no human seed)
+│   │   ├── ingest_crossmodel.py  #     Round 1/2: gate golden+bloq consensus
+│   │   ├── ingest_app_golden.py  #     Round 3/4: app-intent consensus
+│   │   ├── ingest_app_bloq.py    #     Round 4: app-implementation (circuit) consensus
+│   │   ├── seal_crk.py           #     parametric controlled-Rₖ / Rₖ† gate family sealing
+│   │   ├── formal_spec.py        #     symbolic-proof source (sympy, stack-independent)
+│   │   └── freeze_/seal_crossmodel.py, crossmodel_adapter.py, build_consensus_keys.py
+│   ├── personas/                 #   isolated-author persona prompts (golden / bloq / adversary)
+│   ├── DESIGN-*.md               #   PG/PGF designs (AutoForge, KeyFreeConsensus)
+│   └── status-*.json             #   per-thread execution state + results
+│
+├── _workspace/crossmodel/        # cross-model reproduction EVIDENCE (cited by spec §8.2–8.6)
+│   ├── *-BRIEF.md, intents.json  #   the briefs/intents handed to each runtime
+│   ├── submissions*/             #   raw independent submissions from 6 external runtimes
+│   ├── apps/, apps2/             #   Round 3 (apps) and Round 4 (algorithm-layer) rounds
+│   └── *-REPORT.json             #   consensus results (who agreed, dissent, hashes)
+│
+└── .agents/skills/qpgf-oracle/   # vendored QPGF verification oracle — USED, never modified
+    ├── scripts/                  #   verify_seal.py, registry.py, app_assemble.py, contracts.py, …
+    ├── references/               #   contract spec, oracle usage, deployment-trust docs
+    ├── examples/                 #   example .pg / .app.pg specs
+    └── BUNDLE.sha256, DEPENDENCIES.lock   # integrity manifest + pinned deps
 ```
 
-The generator-skill library, multi-backend adapters, and `runs/`·`reports/` tooling remain the
-planned next foundry steps.
+The generator-skill library, multi-backend adapters (Qiskit/Cirq/CUDA-Q), and `runs/`·`reports/`
+tooling remain the planned next foundry steps.
 
 ## Non-Goals
 
@@ -318,3 +351,12 @@ This narrow-but-strong foundation is **done and public** (https://github.com/sad
 AI-generated quantum software that can *deterministically prove its unitary matches an
 independent reference, conditional on a stated and auditable trust chain*. The foundry layer
 (intent UX, generator-skill library, multi-backend adapters) builds outward from there.
+
+## License
+
+QuantaFoundry is released under the **MIT License** — see [`LICENSE`](LICENSE).
+© 2026 Jung Wook Yang.
+
+The vendored verification oracle under `.agents/skills/qpgf-oracle/` is from the public
+[QPGF](https://github.com/sadpig70/QPGF) project (also MIT) and is used as-is, not modified.
+Provenance and third-party notes are in [`NOTICE.md`](NOTICE.md).

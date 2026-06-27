@@ -22,9 +22,10 @@ _workspace/*
 !_workspace/crossmodel/
 _legacy/
 
-# cross-model 증거 내부의 임시·격리물은 제외
-_workspace/crossmodel/_*.py
+# cross-model 증거 내부의 임시·생성 스크립트·격리물은 제외 (하위 디렉토리 포함)
+_workspace/crossmodel/**/*.py
 _workspace/crossmodel/**/_quarantine/
+_workspace/crossmodel/**/generate_*.py
 
 # ── 작업 캐시·스크래치 (중간 봉인물; 정식본은 registry/·specs/) ──
 .pgf/autoforge/_store/
