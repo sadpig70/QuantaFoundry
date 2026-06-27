@@ -1,6 +1,6 @@
 # task_plan_pg — QuantaFoundry 차기 작업 계획 (PG/PGF)
 
-> **Version** 0.7-plan · **Status** P0·P1·P4·P5·P9 **done** (2026-06-27, 47모듈·59앱·root ea57c4ac) · P2·P3 blocked(외부 relay) · **Notation** PG(PPR/Gantree) · **Base** QuantaFoundry v0.6 + §5[8](B) backend adapter(b3444ca)
+> **Version** 0.7-plan · **Status** P0·P1·P2·P3·P4·P5·P9 **done** (48모듈·frozen 23키) · P3d(공개 bounty) blocked(외부 relay) · **Notation** PG(PPR/Gantree) · **Base** QuantaFoundry v0.6 + §5[8](B) backend adapter(b3444ca)
 > **실행 결과**: P0=`.pgf/clifford/` · P1=`.pgf/arith/` · P4=`.pgf/resource/` · P5=`.pgf/autonomy/`. 회귀 전수 그린(selftest 52/52·second_oracle 18/18·contested 20/20·backend·reproduce_all). 기존 sealed.json 수정 0·frozen 불변. 상세=HANDOFF §5 [9].
 > **Source** `_workspace/QuantaFoundry-v0.6-Direction-PGF.md`(8-agent 방향서)를 **실제 코드 상태로 재정렬**한 실행 척추.
 > **Scope 원칙** 이 계획의 척추(P0·P1·P4·P5)는 **self-contained**(외부 cross-model relay 불요) — 혼자 착수·완료 가능. P2·P3은 외부 의존이라 BLOCKED 명시.
@@ -46,8 +46,12 @@ QuantaFoundryV07Plan // 신뢰 약점 지점으로 가치 이동 — self-contai
         P2a_SelfContained // 정책·게이트·v05 replay B4 차단 정량화 (done) — scripts/gated_panel.py
         P2b_LiveDispatchWiring // ModelRegistry+dispatch→gated_seal end-to-end; ReplayEndpoint 검증·미연결 BLOCKED (done) — scripts/live_dispatch.py
         P2b_LiveRound_sx // 신규 sx(√X) 6 distinct-weights relay 수거→SEAL PROOF_BACKED→봉인+frozen (done) — scripts/{p2_live_ingest,seal_sx}.py
+    P3_FalsificationFront // 방어선 적대시험 — 단일 vs 합의/오라클 검출률, Tier-1 §7 반증 (done)
+        P3a_RedTeamSuite // 6공격: golden-copy·identity·uncompute(C3)·convention·B4 CAUGHT 5/6; matrixgate=문서화공백 (done) — scripts/red_team.py
+        P3b_Tier1ScaleFalsify // §7 최고위험: golden없는 Tier-1=오배선 봉인(struct≠unitary)·Tier-0 dense만 거부 (done)
+        P3c_SingleVsConsensus // 단일출처 봉인 vs 합의·게이트 거부 매트릭스(convention·B4) (done)
     Blocked_ExternalRelay // 외부 cross-model relay 의존 — 척추 아님, BLOCKED 정직 명시 (blocked)
-        P3_FalsificationFront // hard-intent bench + 공개 반증 — 단일 vs 합의 검출률, 외부 모델 필요 (blocked)
+        P3d_ReproBounty // 공개 반증 챌린지 — 게시+외부 참여자 필요 (blocked)
 ```
 
 **임계 경로:** `[parallel] P0 · P1 · P4 · P5 [/parallel]` → `P9_Integrate`.
@@ -169,8 +173,8 @@ POLICY = {
 | **P1** | 산술 패밀리 확장(엔진 재사용) | **8/8** | 최고 | 중 | ✅ |
 | **P4** | resource 실예산 집계 | 7/8 | 중 | 저 | ✅ |
 | **P5** | dep-graph standing 산출 | 6/8 | 중 | 저 | ✅ |
-| ~~P2~~ | 다중모델 panel | 5/8 | 높음 | 중 | ❌ 외부 relay |
-| ~~P3~~ | falsification front | 4/8 | 높음 | 중 | ❌ 외부 relay |
+| **P2** | 다중모델 panel(+sx 라이브 봉인) | 5/8 | 높음 | 중 | ✅ wiring·게이트 (P2b relay만 외부) |
+| **P3** | falsification front(P3a/b/c) | 4/8 | 높음 | 중 | ✅ (P3d 공개 bounty만 외부) |
 
 ---
 

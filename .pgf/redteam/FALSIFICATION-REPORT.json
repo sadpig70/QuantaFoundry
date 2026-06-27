@@ -1,0 +1,76 @@
+{
+  "phase": "P3 FalsificationFront (self-contained P3a+P3b+P3c)",
+  "honesty": "oracle/gate/consensus tested only (zero modification); attacks in temp store; existing seals/frozen untouched; SLIPPED attacks = already-designed boundaries quantified (not new bugs), e.g. Tier-1=structural_wellformed by design; ReproBounty(P3d) stays BLOCKED (public/external).",
+  "p3a_red_team": [
+    {
+      "attack": "matrixgate-shortcut",
+      "defense": "honest-decomposition(코드강제?)",
+      "sealed": true,
+      "caught": false,
+      "note": "봉인됨 → DOCUMENTED GAP: bloq=MatrixGate 가 코드로 막히지 않음(분해정직은 사회적 규약). 단 golden==bloq 자명일치라 u_hash 는 정확 — '검증 무력화'가 아니라 '분해 노력 회피'. honest 라이브러리 규율로 관리."
+    },
+    {
+      "attack": "golden-copy(self-reference)",
+      "defense": "golden_independence_guard(AST)",
+      "blocked": true,
+      "caught": true,
+      "reason": "golden_self_reference: golden에 .tensor_contract() 복사 금지 (bloq 출력이 아니라 수학적으로 독립 구"
+    },
+    {
+      "attack": "identity-golden(empty module)",
+      "defense": "spec_quality_guard/golden_guard",
+      "blocked": true,
+      "caught": true,
+      "reason": "identity_golden: 비자명 모듈(n_sys>=1)에 항등 golden 금지 (빈/무동작 모듈 reward-hacking)"
+    },
+    {
+      "attack": "uncompute-leak(ancilla entangled)",
+      "defense": "C3 AncillaClean",
+      "caught": true,
+      "reason": "ancilla_leak"
+    },
+    {
+      "attack": "convention-split(endianness)",
+      "defense": "cross-model independent_votes",
+      "status": "DIVERGENT",
+      "caught": true,
+      "reason": "max independent agreement 1 < N=2; refine intent or add cross-model/proof source"
+    },
+    {
+      "attack": "co-error/B4(same-weights)",
+      "defense": "independence_unit + gate",
+      "decision": "REJECT",
+      "caught": true,
+      "reason": "max independent agreement 1 < N=2; refine intent or add cross-model/proof source"
+    }
+  ],
+  "p3b_tier1_scale_falsify": {
+    "attack": "Tier-1 scale (struct-pass / unit-fail)",
+    "tier1_no_golden": {
+      "sealed": true,
+      "tier": 1,
+      "u_hash": "bb38b7ed1c2f"
+    },
+    "tier0_with_golden": {
+      "sealed": false,
+      "tier": null,
+      "reason": "decomposition_mismatch: composite≠app_golden"
+    },
+    "falsified": true,
+    "interpretation": "§7 반증 성립(설계상 경계 확인): Tier-1 STRUCTURAL 은 오배선 plan 을 봉인(intent 미검증) — structural_wellformed≠unitary_equiv. Tier-0 dense C-app 만 composite≠golden 으로 거부. 따라서 teeth 는 dense/Tier-0(및 Clifford 는 P0 Tier-2)에 있고, golden 없는 Tier-1 은 unitary 정확성을 보증하지 않음(semantic_guarantee 가 이미 그렇게 라벨)."
+  },
+  "p3c_catch_rate": {
+    "attacks": 6,
+    "caught_by_some_defense": 5,
+    "documented_gaps": [
+      "matrixgate-shortcut"
+    ],
+    "single_source_would_seal_but_consensus_rejects": [
+      "convention-split",
+      "co-error/B4"
+    ],
+    "tier1_unitary_gap_closed_for_clifford_by_P0": true
+  },
+  "p3d_blocked": "ReproBounty: public adversarial challenge needs publishing + external participants.",
+  "all_ok": true
+}
