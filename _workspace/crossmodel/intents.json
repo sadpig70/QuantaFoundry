@@ -1,0 +1,44 @@
+{
+  "_comment": "QuantaFoundry cross-model golden-authoring intents. Author U[out,in] (2^n_sys square, complex) from the standard definition, big-endian (first register = MSB; first register = control for controlled gates). See RUNTIME-BRIEF.md. Round A = calibration (answer known), Round B = establishment (no answer key).",
+  "convention": {
+    "endianness": "big-endian, first register = MSB",
+    "controlled_gates": "first register = control, last register = target",
+    "matrix": "U[out, in] = <out|U|in>",
+    "dtype": "complex",
+    "global_phase": "free (normalized away before hashing)",
+    "precision_lattice": 1e-9
+  },
+  "intents": [
+    { "id": "x_gate",  "n_sys": 1, "n_anc": 0, "round": "A", "name": "Pauli-X (NOT)",
+      "definition": "Single-qubit bit flip. Swaps |0> and |1>." },
+    { "id": "z_gate",  "n_sys": 1, "n_anc": 0, "round": "A", "name": "Pauli-Z",
+      "definition": "Single-qubit phase flip. |0>->|0>, |1>->-|1>." },
+    { "id": "h_gate",  "n_sys": 1, "n_anc": 0, "round": "A", "name": "Hadamard",
+      "definition": "Single-qubit Hadamard. |0>->(|0>+|1>)/sqrt2, |1>->(|0>-|1>)/sqrt2." },
+    { "id": "cnot",    "n_sys": 2, "n_anc": 0, "round": "A", "name": "CNOT (controlled-X)",
+      "definition": "Two-qubit controlled-NOT. Control = first register. Flips target (second register) iff control is |1>." },
+    { "id": "swap2",   "n_sys": 2, "n_anc": 0, "round": "A", "name": "SWAP",
+      "definition": "Two-qubit SWAP. Exchanges the two qubits: |ab> -> |ba>." },
+    { "id": "toffoli", "n_sys": 3, "n_anc": 0, "round": "A", "name": "Toffoli (CCNOT)",
+      "definition": "Three-qubit doubly-controlled NOT. Controls = first two registers, target = third. Flips target iff both controls are |1>." },
+    { "id": "qft2",    "n_sys": 2, "n_anc": 0, "round": "A", "name": "QFT on 2 qubits",
+      "definition": "Quantum Fourier Transform on 2 qubits. U[j,k] = (1/sqrt(N)) * exp(2*pi*i*j*k/N), N=4, j,k in 0..3, big-endian integer indexing. No output bit-reversal (raw QFT matrix)." },
+    { "id": "qft3",    "n_sys": 3, "n_anc": 0, "round": "A", "name": "QFT on 3 qubits",
+      "definition": "Quantum Fourier Transform on 3 qubits. U[j,k] = (1/sqrt(N)) * exp(2*pi*i*j*k/N), N=8, big-endian integer indexing. No output bit-reversal (raw QFT matrix)." },
+
+    { "id": "s_gate",  "n_sys": 1, "n_anc": 0, "round": "B", "name": "Phase gate S",
+      "definition": "Single-qubit phase gate. |0>->|0>, |1>->i|1>. (diag(1, i))." },
+    { "id": "t_gate",  "n_sys": 1, "n_anc": 0, "round": "B", "name": "T gate (pi/8)",
+      "definition": "Single-qubit T gate. |0>->|0>, |1>->exp(i*pi/4)|1>. (diag(1, e^{i pi/4}))." },
+    { "id": "cz",      "n_sys": 2, "n_anc": 0, "round": "B", "name": "Controlled-Z (CZ)",
+      "definition": "Two-qubit controlled-Z. Applies a -1 phase iff both qubits are |1>. Symmetric, diagonal: diag(1,1,1,-1)." },
+    { "id": "iswap",   "n_sys": 2, "n_anc": 0, "round": "B", "name": "iSWAP",
+      "definition": "Two-qubit iSWAP. |00>->|00>, |11>->|11>, |01>->i|10>, |10>->i|01>. (Swaps |01> and |10> with a factor of i.)" },
+    { "id": "cs_gate", "n_sys": 2, "n_anc": 0, "round": "B", "name": "Controlled-S",
+      "definition": "Two-qubit controlled-S. Control = first register. Applies S (diag(1,i)) to target iff control is |1>. Diagonal: diag(1,1,1,i)." },
+    { "id": "ccz",     "n_sys": 3, "n_anc": 0, "round": "B", "name": "CCZ (doubly-controlled Z)",
+      "definition": "Three-qubit doubly-controlled Z. Applies a -1 phase iff all three qubits are |1>. Symmetric, diagonal: diag(1,1,1,1,1,1,1,-1)." },
+    { "id": "qft4",    "n_sys": 4, "n_anc": 0, "round": "B", "name": "QFT on 4 qubits",
+      "definition": "Quantum Fourier Transform on 4 qubits. U[j,k] = (1/sqrt(N)) * exp(2*pi*i*j*k/N), N=16, big-endian integer indexing. No output bit-reversal (raw QFT matrix)." }
+  ]
+}

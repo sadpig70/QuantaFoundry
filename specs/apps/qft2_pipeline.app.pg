@@ -1,0 +1,16 @@
+# qft2_pipeline — QFT2 를 게이트 회로로 분해. H(q0)·CS(ctrl q1→q0)·H(q1)·SWAP.
+# cross-model 봉인 cs_gate 가 실제 알고리즘에 처음 투입. 봉인 qft2 와 u_hash 일치해야(재발견 교차검증).
+```json id=app_meta
+{"id": "qft2_pipeline", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=4; w=np.exp(2j*np.pi/N)
+golden = np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)  # raw QFT2
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cs_gate.pg", "targets": [1,0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/swap2.pg", "targets": [0,1]}]}
+```

@@ -1,0 +1,166 @@
+{
+  "project": "F3_Compose",
+  "version": "0.2",
+  "date": "2026-06-26",
+  "goal": "봉인된 베이스 모듈을 재조립해 상위 앱을 C-app 봉인 — 신뢰 자본의 복리(비선형 생산력) 실증",
+  "summary": { "done": 10, "total": 10 },
+  "mechanism": {
+    "engine": "오라클 app_assemble.py (사용만) — plan 합성 → 합성품==app_golden(C-app) → Tier-0/1 재봉인",
+    "inv": "INV2(입력 전부 sealed) · INV3(합성결과 재검증) · C-app(==app_golden)",
+    "compounding": "새 검증 비용 = '합성이 의도와 같은가'뿐. 부품 정확성은 이미 지불(cross-model 봉인)"
+  },
+  "artifacts": {
+    "manifests": "specs/apps/*.app.pg (6)",
+    "driver": ".pgf/autoforge/forge_apps.py",
+    "store": "registry/apps/ (C-app sealed.json, Tier-0)",
+    "report": ".pgf/autoforge/FORGE-APPS-RESULT.json"
+  },
+  "apps": [
+    { "id": "bell",  "n_sys": 2, "tier": 0, "reuses": ["h_gate", "cnot"], "kind": "entangling primitive" },
+    { "id": "ghz3",  "n_sys": 3, "tier": 0, "reuses": ["h_gate", "cnot"], "kind": "scaling" },
+    { "id": "ghz4",  "n_sys": 4, "tier": 0, "reuses": ["h_gate", "cnot"], "kind": "scaling" },
+    { "id": "cz_rediscovered",  "n_sys": 2, "tier": 0, "reuses": ["h_gate", "cnot"],
+      "rediscovers": "cz",    "u_hash_match": true, "note": "H1·CNOT·H1 == 독립 cross-model 봉인 cz" },
+    { "id": "ccz_rediscovered", "n_sys": 3, "tier": 0, "reuses": ["h_gate", "toffoli"],
+      "rediscovers": "ccz",   "u_hash_match": true, "note": "H2·TOFF·H2 == 독립 봉인 ccz" },
+    { "id": "swap_via_cnot",    "n_sys": 2, "tier": 0, "reuses": ["cnot"],
+      "rediscovers": "swap2", "u_hash_match": true, "note": "CNOT·CNOT_rev·CNOT == 독립 봉인 swap2" },
+    { "id": "reflect00", "n_sys": 2, "tier": 0, "reuses": ["x_gate", "cz"],
+      "kind": "Grover building block", "note": "(X⊗X)·CZ·(X⊗X) = 2|00><00|-I (전역위상 흡수)" },
+    { "id": "diffusion", "n_sys": 2, "tier": 0, "reuses": ["h_gate"], "sub_apps": ["reflect00"],
+      "kind": "recursive sub-app (2레벨)", "note": "(H⊗H)·reflect00·(H⊗H)" },
+    { "id": "grover2", "n_sys": 2, "tier": 0, "reuses": ["cz"], "sub_apps": ["diffusion"],
+      "kind": "real app — 3레벨 트리", "tree": "grover2 → {cz(oracle, 재사용), diffusion → reflect00 → x_gate·cz}",
+      "note": "Grover 1-iterate G=D∘O. 균등중첩 → |11> 확률 1.0 (사전검증). oracle=cross-model 봉인 cz 재사용" },
+    { "id": "ghz16_structural", "n_sys": 16, "tier": 1, "reuses": ["h_gate", "cnot"],
+      "kind": "Tier-1 대규모 (Merkle)", "note": "16q dense 미실체화. u_hash=sha256(자식 u_hash+구조). 규모 무관 봉인" }
+  ],
+  "verification": {
+    "sealed": "10/10 C-app (Tier-0 ×9, Tier-1 ×1)",
+    "rediscovery_crosscheck": "3/3 byte 일치 (합성결과 == 독립 봉인 게이트 u_hash)",
+    "determinism": "재봉인 u_hash 일치",
+    "recursion": "grover2 3레벨 트리 봉인 (sub-app 재귀, V 전파)",
+    "scale_free": "ghz16 Tier-1 — dense 불가 규모도 correct-by-construction 봉인",
+    "significance": "베이스 게이트(cross-model) ⊕ 합성기 ⊕ 오라클 전체 스택 상호일관 증명"
+  },
+  "app_level_keyfree_round3": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "앱 의도(app_golden=앱 전체 유니터리)도 cross-model 수급 → orchestrator-authored golden 대체",
+    "runtimes": ["codex", "deepseek", "gemini", "grok", "kimi", "qwen"],
+    "weights_units": ["openai-gpt-5", "deepseek-v4-pro", "google-gemini-3.5-flash-high",
+                      "xai-grok-code-fast-1", "moonshot-kimi", "alibaba-qwen"],
+    "targets": ["bell", "ghz3", "ghz4", "reflect00", "diffusion", "grover2", "qft2", "qft3"],
+    "result": "8/8 ESTABLISHED MULTIMODEL · 6/6 수렴 dissent 0 · app_golden_code 재현 48/48 · 봉인앱/게이트 8/8 u_hash 일치",
+    "crosscheck": "bell~grover2 → registry/apps(F3 봉인앱)와 일치 · qft2/qft3 → registry/modules(cross-model 게이트)와 일치",
+    "independence_verified": "construction_method 런타임별 상이 + app_golden_code 6/6 distinct → 진짜 독립 유도",
+    "pipeline": ".pgf/keyfree/ingest_app_golden.py",
+    "report": "_workspace/crossmodel/apps/APP-CONSENSUS-REPORT.json",
+    "significance": "앱 의도까지 사람/orchestrator seed 0 — 게이트(Round1-2)+앱(Round3) 전 계층 key-free 완성"
+  },
+  "qft_pipeline_round5c": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "첫 비자명 알고리즘 분해 — QFT를 게이트 회로(H·controlled-phase·swap)로 분해 봉인",
+    "new_gate": {"id": "ct_gate", "desc": "controlled-T (control=first), qft3 수요로 capability-gap 보강",
+                 "establishment": "proof(sympy diag)⊕structural(projector) 독립 수렴, PROOF_BACKED, frozen",
+                 "key": "e52c0c690a437291...", "sealed": "registry/modules/ct_gate.sealed.json (16번째 모듈)"},
+    "apps": [
+      {"id": "qft2_pipeline", "decomp": "H(q0)·CS[q1→q0]·H(q1)·SWAP", "reuses": ["h_gate","cs_gate","swap2"],
+       "rediscovers": "qft2", "u_hash_match": true, "note": "cross-model 봉인 cs_gate 첫 실알고리즘 투입"},
+      {"id": "qft3_pipeline", "decomp": "H0·CS[1→0]·CT[2→0]·H1·CS[2→1]·H2·SWAP(0,2)",
+       "reuses": ["h_gate","cs_gate","ct_gate","swap2"], "rediscovers": "qft3", "u_hash_match": true,
+       "note": "controlled-T 첫 사용 — capability-gap이 실수요로 채워짐"}
+    ],
+    "significance": "교과서 게이트를 넘어 실알고리즘 빌딩블록 봉인. cross-model 게이트(cs)+신규(ct)가 QFT 회로로 정답 재구성. Shor/QPE 토대.",
+    "verification": "앱 봉인 12/12 · 재발견 교차검증 5/5 · 모듈 재검증 16/16 · 앱 결정론 12/12"
+  },
+  "qpe_round5d": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "라이브러리 최초 다중레지스터 실알고리즘 — Quantum Phase Estimation(QPE) 봉인",
+    "new_gate": {"id": "cs_dag", "desc": "controlled-S† (control=first), inverse-QFT 수요로 보강",
+                 "establishment": "proof(sympy)⊕structural(projector) 독립 수렴, PROOF_BACKED, frozen",
+                 "key": "83e2a0e62fed7de9...", "sealed": "registry/modules/cs_dag.sealed.json (17번째 모듈)"},
+    "apps": [
+      {"id": "iqft2", "decomp": "SWAP·H(q1)·CS†[q1→q0]·H(q0)", "reuses": ["swap2","h_gate","cs_dag"],
+       "note": "inverse QFT2 = QFT2†, QPE 빌딩블록"},
+      {"id": "qpe_s", "n_sys": 3, "decomp": "H(c0)·H(c1)·cZ[c0→t]·cS[c1→t]·iQFT2[c0,c1]",
+       "reuses": ["h_gate","cz","cs_gate"], "sub_apps": ["iqft2"],
+       "behavior": "S 고유위상 판독: |t=1>→counting|01>(=1/4) p=1.0 · |t=0>→|00> p=1.0",
+       "note": "최초 다중레지스터(counting 2 + target 1) 알고리즘. controlled-power(cz=ctrl-S², cs) 재사용"}
+    ],
+    "significance": "QFT가 실제 쓰이는 곳(위상추정) 도달 — Shor/QPE 계열의 핵심 패턴. 봉인 앱이 실제 알고리즘으로 동작 검증됨.",
+    "verification": "앱 봉인 14/14 · 재발견 5/5 · 모듈 재검증 17/17 · 앱 결정론 14/14 · QPE 행동검증 통과"
+  },
+  "crk_generalization_round5e": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "controlled-Rk 게이트군 일반화 — CRk=diag(1,1,1,exp(2πi/2^k)). 임의 정밀도 QFT/QPE 토대.",
+    "generator": ".pgf/keyfree/consensus.py crk_sources(k) — proof(sympy 정확)⊕structural(projector) 매개변수화",
+    "driver": ".pgf/keyfree/seal_crk.py — 임의 k 멱등 봉인 (k 인자)",
+    "alias": "CR1=cz · CR2=cs_gate · CR3=ct_gate (기존 봉인, 별칭으로 인식)",
+    "new_modules": [
+      {"id": "cr4_gate", "k": 4, "key": "948f3dd24178e5...", "bloq": "ZPowGate(1/8).controlled()"},
+      {"id": "cr5_gate", "k": 5, "key": "bbea5ab439fa54...", "bloq": "ZPowGate(1/16).controlled()", "note": "일반화 실증/향후 정밀도"}
+    ],
+    "app": {"id": "qft4_pipeline", "n_sys": 4, "rediscovers": "qft4", "u_hash_match": true,
+            "decomp": "H·CR2·CR3·CR4·SWAP (16×16, 위상·비트순서 최난 구간)", "note": "cr4 첫 투입"},
+    "significance": "QFT/QPE를 임의 큐비트수로 확장하는 매개변수 게이트군 확보. 16×16에서도 재발견 일치.",
+    "verification": "모듈 봉인 19 · 앱 15 · 재발견 6/6 · 모듈 재검증 19/19 · 앱 결정론 15/15"
+  },
+  "qpe_highprecision_round5f": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "큰 정밀도 QPE — t=3 counting qubit으로 T 게이트 위상추정 (3비트 정밀도)",
+    "dagger_generalization": "consensus.crk_dag_sources(k) + seal_crk.py dag 모드 — CRk†=diag(1,1,1,exp(-2πi/2^k))",
+    "alias_dag": "CR1†=cz(자기역) · CR2†=cs_dag (기존)",
+    "new_modules": [
+      {"id": "cr3_dag_gate", "k": 3, "key": "84f3f01240c9d8...", "desc": "controlled-T†, iqft3 수요"},
+      {"id": "cr4_dag_gate", "k": 4, "key": "4f919463389606...", "desc": "controlled-R4†, iqft4 대비"}
+    ],
+    "apps": [
+      {"id": "iqft3", "decomp": "SWAP(0,2)·H·CR2†·CR3†·...·H", "reuses": ["swap2","h_gate","cs_dag","cr3_dag_gate"]},
+      {"id": "qpe_t", "n_sys": 4, "decomp": "H×3·cZ·cS·cT·iQFT3", "reuses": ["h_gate","cz","cs_gate","ct_gate"],
+       "sub_apps": ["iqft3"], "behavior": "T 고유위상 판독: |t=1>→|001>=1/8(0.001₂) p=1.0 · |t=0>→|000> p=1.0",
+       "note": "3비트 정밀도. controlled-power 재사용(T^4=Z, T^2=S, T^1=T). 봉인 모듈만으로 조립"}
+    ],
+    "significance": "QPE 정밀도 확장 실증 — 임의 t로 위상추정 가능. controlled-Rk(†) 게이트군이 inverse-QFT 토대 완성.",
+    "verification": "모듈 21 · 앱 17 · 재발견 6/6 · 모듈 재검증 21/21 · 앱 결정론 17/17 · qpe_t 행동검증(1/8) 통과"
+  },
+  "shor_round5g": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "최초 완전 양자 알고리즘 — Shor 주기발견으로 15=3×5 인수분해",
+    "honest_decomposition": "modular multiplication을 MatrixGate 없이 sealed Fredkin(controlled-SWAP)으로 분해 — 동반오류 방화벽 유지. 핵심: 15=2^4-1 → ×2 mod15 = 비트 좌순환 = swap 분해",
+    "new_gate": {"id": "fredkin", "desc": "controlled-SWAP (control=first)", "bloq": "TwoBitCSwap()",
+                 "key": "af88aadc0775f7...", "establishment": "proof(perm)⊕structural(projector), PROOF_BACKED"},
+    "apps": [
+      {"id": "cmul2_mod15", "n_sys": 5, "decomp": "Fredkin ×3 (controlled 좌순환1)", "note": "controlled ×2 mod15"},
+      {"id": "cmul4_mod15", "n_sys": 5, "decomp": "cmul2 ∘ cmul2", "sub_apps": ["cmul2_mod15"]},
+      {"id": "shor15_a2", "n_sys": 7, "decomp": "H×3·cmul4[c1]·cmul2[c2]·iQFT3", "sub_apps": ["cmul4_mod15","cmul2_mod15","iqft3"],
+       "behavior": "work=|1>→counting c∈{0,2,4,6}/8 각 0.25 → 주기 r=4 → gcd(2^2±1,15)=3,5 → 15=3×5",
+       "note": "최초 완전 Shor. controlled-power=controlled-rotation=Fredkin 체인. QPE/iQFT3 재사용"}
+    ],
+    "significance": "게이트→QFT→QPE→Shor 전 스택 완성. 봉인 모듈만으로 실제 인수분해 알고리즘이 동작·검증됨. 전 계층 key-free.",
+    "verification": "모듈 22 · 앱 20 · 재발견 6/6 · 모듈 재검증 22/22 · 앱 결정론 20/20 · Shor 인수분해 행동검증(15=3×5) 통과"
+  },
+  "app_crossmodel_round4": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "앱 계층까지 cross-model — 의도(app-golden)+구현(app-bloq) 양쪽. 체인 어디에도 단독 작성 없게.",
+    "targets": ["iqft2","iqft3","cmul2_mod15","cmul4_mod15","qpe_s","qpe_t","shor15_a2"],
+    "golden": {
+      "runtimes_distinct_weights": 6,
+      "result": "7/7 ESTABLISHED MULTIMODEL · 봉인앱 u_hash 7/7 일치",
+      "pipeline": ".pgf/keyfree/ingest_app_golden.py --dir apps2",
+      "report": "_workspace/crossmodel/apps2/APP-CONSENSUS-REPORT.json"
+    },
+    "bloq": {
+      "runtimes_distinct_weights": 4,
+      "note": "deepseek·gemini·grok·kimi 제출(gpt-5·qwen bloq 미제출) — 4 독립단위로 MULTIMODEL 충족",
+      "result": "7/7 ESTABLISHED · 봉인앱 u_hash 7/7 일치",
+      "independent_impl_value": "서로 다른 회로가 같은 유니터리로 수렴. 런타임 3개가 cmul4를 내 6-Fredkin보다 짧은 2-Fredkin(fredkin[0,1,3]·fredkin[0,2,4])으로 독립 발견(동일 u_hash 검증). shor도 depth {15,19} 혼재.",
+      "dissent_caught": "deepseek 이 iqft2(cs_dag 제어큐비트 오용)·qpe_s 회로를 실제로 틀림 → dissent 탐지·기각 (구현 측 동반오류 방화벽 실증)",
+      "pipeline": ".pgf/keyfree/ingest_app_bloq.py --dir apps2",
+      "report": "_workspace/crossmodel/apps2/APP-BLOQ-REPORT.json"
+    },
+    "triple_consistency": "7/7 — app-golden 합의키 == app-bloq 합의키 == 봉인앱 u_hash (세 독립 경로 수렴)",
+    "quarantined": "gemini 중복본(golden·bloq 각 1) → apps2/_quarantine/",
+    "significance": "게이트(진리+구현) + 앱(의도+구현) 전 계층 cross-model 완성. 신뢰 체인에 단독 작성 없음."
+  },
+  "next": ["기술서 §9.8 갱신(앱 cross-model 반영)", "더 큰 N 인수분해(arithmetic 모듈)", "외부 리뷰 라운드(기술서 v0.3)"]
+}

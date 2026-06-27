@@ -1,0 +1,127 @@
+{
+  "runtime": "kimi",
+  "weights_id": "moonshot-kimi",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "x_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import XGate\nbloq = XGate()",
+      "construction_method": "Native single-qubit XGate from qualtran.bloqs.basic_gates.",
+      "self_check": "XGate tensor_contract() is 2x2 and implements |0><->|1>."
+    },
+    {
+      "id": "z_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import ZGate\nbloq = ZGate()",
+      "construction_method": "Native single-qubit ZGate from qualtran.bloqs.basic_gates.",
+      "self_check": "ZGate tensor_contract() is 2x2 and diagonal diag(1,-1)."
+    },
+    {
+      "id": "h_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import Hadamard\nbloq = Hadamard()",
+      "construction_method": "Native single-qubit Hadamard bloq from qualtran.bloqs.basic_gates.",
+      "self_check": "Hadamard tensor_contract() is 2x2 with the standard (1/sqrt(2))[[1,1],[1,-1]] matrix."
+    },
+    {
+      "id": "cnot",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CNOT\nbloq = CNOT()",
+      "construction_method": "Native CNOT bloq; Qualtran returns big-endian with first register as control.",
+      "self_check": "CNOT tensor_contract() is 4x4; |10> maps to |11> and vice versa."
+    },
+    {
+      "id": "swap2",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import TwoBitSwap\nbloq = TwoBitSwap()",
+      "construction_method": "Native TwoBitSwap bloq from qualtran.bloqs.basic_gates.",
+      "self_check": "TwoBitSwap tensor_contract() is 4x4 and swaps big-endian |01><->|10>."
+    },
+    {
+      "id": "toffoli",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import Toffoli\nbloq = Toffoli()",
+      "construction_method": "Native Toffoli (CCNOT) bloq from qualtran.bloqs.basic_gates.",
+      "self_check": "Toffoli tensor_contract() is 8x8; flips target iff both controls are |1>."
+    },
+    {
+      "id": "qft2",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=2)",
+      "construction_method": "Native textbook QFT bloq with bitsize=2 (raw, no bit-reversal).",
+      "self_check": "QFTTextBook(2) tensor_contract() is 4x4 raw QFT matrix."
+    },
+    {
+      "id": "qft3",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=3)",
+      "construction_method": "Native textbook QFT bloq with bitsize=3 (raw, no bit-reversal).",
+      "self_check": "QFTTextBook(3) tensor_contract() is 8x8 raw QFT matrix."
+    },
+    {
+      "id": "s_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import SGate\nbloq = SGate()",
+      "construction_method": "Native single-qubit SGate from qualtran.bloqs.basic_gates.",
+      "self_check": "SGate tensor_contract() is 2x2 and diagonal diag(1,i)."
+    },
+    {
+      "id": "t_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import TGate\nbloq = TGate()",
+      "construction_method": "Native single-qubit TGate from qualtran.bloqs.basic_gates.",
+      "self_check": "TGate tensor_contract() is 2x2 and diagonal diag(1,exp(i*pi/4))."
+    },
+    {
+      "id": "cz",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CZ\nbloq = CZ()",
+      "construction_method": "Native CZ bloq from qualtran.bloqs.basic_gates.",
+      "self_check": "CZ tensor_contract() is 4x4 and diagonal diag(1,1,1,-1)."
+    },
+    {
+      "id": "iswap",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "import cirq\nfrom qualtran.cirq_interop import CirqGateAsBloq\nbloq = CirqGateAsBloq(cirq.ISWAP)",
+      "construction_method": "Cirq interop wrapping cirq.ISWAP (no native Qualtran iSWAP bloq).",
+      "self_check": "iSWAP tensor_contract() is 4x4; swaps |01><->|10> with phase i."
+    },
+    {
+      "id": "cs_gate",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import SGate\nbloq = SGate().controlled()",
+      "construction_method": "SGate controlled once: applies S to target iff first register (control) is |1>.",
+      "self_check": "Controlled-S tensor_contract() is 4x4 and diagonal diag(1,1,1,i)."
+    },
+    {
+      "id": "ccz",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import ZGate\nbloq = ZGate().controlled().controlled()",
+      "construction_method": "ZGate controlled twice (native Qualtran chaining): applies -1 phase iff both controls are |1>.",
+      "self_check": "CCZ tensor_contract() is 8x8 and diagonal diag(1,...,1,-1)."
+    },
+    {
+      "id": "qft4",
+      "n_sys": 4,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=4)",
+      "construction_method": "Native textbook QFT bloq with bitsize=4 (raw, no bit-reversal).",
+      "self_check": "QFTTextBook(4) tensor_contract() is 16x16 raw QFT matrix."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# QPGF oracle bundle — pinned dependencies (for reproducible build / recomputation).
+# Seal determinism (answer-key u_hashes) is verified against these versions;
+# other versions may change u_hash / resource counts.
+python==3.13.14
+numpy==2.4.6
+qualtran==0.7.0
+cirq-core==1.6.1
+pyzx==0.10.3
+# Optional: Tier-3 fallback equivalence backend (MQT QCEC, DD+ZX+simulation).
+# Absence does not change any seal; it only narrows Tier-3 coverage (ZX + dense remain).
+# mqt.qcec  (optional)
+# Install: python 3.13 venv recommended. pip install numpy qualtran cirq-core pyzx
+# Verify:  python scripts/verify_bundle.py   (bundle integrity + signature gate)

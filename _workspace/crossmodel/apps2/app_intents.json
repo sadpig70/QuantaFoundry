@@ -1,0 +1,26 @@
+{
+  "_comment": "Round 4 app-golden intents — algorithm-layer applications. Author the FULL application unitary U[out,in] (2^n_sys square, complex) from the precise specification below. Same conventions as prior rounds: big-endian (qubit 0 = MSB, = control for controlled ops), U[out,in]=<out|U|in>, dtype complex, global phase free, 1e-9 lattice. The spec fixes the unitary uniquely; author it independently (your own derivation), do not copy any decomposition/answer.",
+  "convention": {
+    "endianness": "big-endian, qubit 0 = MSB",
+    "controlled": "control = the named control qubit; first register = control for 2-qubit controlled gates",
+    "matrix": "U[out,in]=<out|U|in>; rightmost operator applied first in a product",
+    "qft_convention": "QFT_n[j,k] = (1/sqrt(2^n)) * exp(2*pi*i*j*k/2^n), big-endian integer indexing, NO output bit-reversal (raw matrix). inverse QFT = conjugate transpose.",
+    "global_phase": "free (normalized away before hashing)"
+  },
+  "intents": [
+    { "id": "iqft2", "n_sys": 2, "n_anc": 0, "name": "Inverse QFT on 2 qubits",
+      "definition": "U = (QFT_2)^dagger, i.e. the conjugate transpose of the 2-qubit raw QFT matrix QFT_2[j,k]=(1/2)exp(2*pi*i*j*k/4)." },
+    { "id": "iqft3", "n_sys": 3, "n_anc": 0, "name": "Inverse QFT on 3 qubits",
+      "definition": "U = (QFT_3)^dagger, conjugate transpose of the 3-qubit raw QFT matrix QFT_3[j,k]=(1/sqrt(8))exp(2*pi*i*j*k/8)." },
+    { "id": "cmul2_mod15", "n_sys": 5, "n_anc": 0, "name": "Controlled multiply-by-2 mod 15",
+      "definition": "5 qubits: q0=control, q1..q4 = a 4-bit work register (q1=MSB). When q0=0: identity. When q0=1: map the 4-bit work value y -> (2*y mod 15) for y in 0..14, and y=15 -> 15 (the value 15 is a fixed point). This is a controlled permutation on the work register; equivalently, when q0=1 it is a cyclic left-rotation of the 4 work bits." },
+    { "id": "cmul4_mod15", "n_sys": 5, "n_anc": 0, "name": "Controlled multiply-by-4 mod 15",
+      "definition": "5 qubits: q0=control, q1..q4 = 4-bit work (q1=MSB). q0=0: identity. q0=1: y -> (4*y mod 15) for y in 0..14, y=15 -> 15. Equivalently controlled cyclic left-rotation of the 4 work bits by 2 positions (= cmul2_mod15 applied twice)." },
+    { "id": "qpe_s", "n_sys": 3, "n_anc": 0, "name": "Quantum Phase Estimation of S (2 counting qubits)",
+      "definition": "3 qubits: q0,q1 = counting register (q0 = most significant), q2 = target. Let U=S=diag(1,i). The QPE unitary is the product (rightmost first): (1) Hadamard on q0 and q1; (2) controlled-U^2 with control q0 acting on q2, then controlled-U^1 with control q1 acting on q2; (3) inverse QFT on the counting register {q0,q1} with q0 as MSB and NO bit-reversal. Output U[out,in] on the 3 qubits." },
+    { "id": "qpe_t", "n_sys": 4, "n_anc": 0, "name": "Quantum Phase Estimation of T (3 counting qubits)",
+      "definition": "4 qubits: q0,q1,q2 = counting (q0 = most significant), q3 = target. Let U=T=diag(1,e^{i*pi/4}). Product (rightmost first): (1) Hadamard on q0,q1,q2; (2) controlled-U^4 with control q0 on q3, controlled-U^2 with control q1 on q3, controlled-U^1 with control q2 on q3; (3) inverse QFT on {q0,q1,q2}, q0 MSB, no bit-reversal." },
+    { "id": "shor15_a2", "n_sys": 7, "n_anc": 0, "name": "Shor period-finding unitary (N=15, a=2)",
+      "definition": "7 qubits: q0,q1,q2 = counting (q0 = most significant), q3..q6 = 4-bit work register (q3=MSB). Let U be multiply-by-2 mod 15 on the work register (y -> 2y mod 15 for y in 0..14, y=15 fixed). Product (rightmost first): (1) Hadamard on q0,q1,q2; (2) controlled-U^4 with control q0 on the work register, controlled-U^2 with control q1, controlled-U^1 with control q2 (note U^4 = multiply-by-16 mod 15 = identity); (3) inverse QFT on {q0,q1,q2}, q0 MSB, no bit-reversal. This is the standard Shor order-finding circuit for N=15, a=2 (period r=4)." }
+  ]
+}

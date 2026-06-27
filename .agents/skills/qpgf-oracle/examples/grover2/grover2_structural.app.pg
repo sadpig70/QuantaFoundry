@@ -1,0 +1,14 @@
+# grover2_structural — 같은 Grover지만 Tier-1 구조적 봉인 (dense 미실체화, golden 있으니 advisory 교차검증)
+```json id=app_meta
+{"id": "grover2_structural", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+O = np.diag([1,1,1,-1]).astype(complex)
+D = np.kron(H,H) @ np.diag([1,-1,-1,-1]).astype(complex) @ np.kron(H,H)
+golden = D @ O
+```
+```json id=plan
+{"tier": "structural", "steps": [{"spec": "oracle.pg"}, {"spec": "diffusion.pg"}]}
+```

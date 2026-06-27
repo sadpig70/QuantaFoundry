@@ -1,0 +1,11 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import TGate
+bloq = TGate()
+```
+```python id=golden
+import numpy as np
+golden = np.array([[1,0],[0,np.exp(1j*np.pi/4)]], dtype=complex)
+```
+```json id=meta
+{"id": "t_gate", "n_sys": 1, "n_anc": 0}
+```

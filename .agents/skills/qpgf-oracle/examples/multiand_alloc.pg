@@ -1,0 +1,35 @@
+# MultiAnd((1,1,1)) — 다중 alloc ancilla 모듈 (isometry 봉인)
+
+3-control AND. junk·target 두 큐비트를 |0>으로 **alloc**한다 (n_alloc=2):
+junk = c0∧c1, target = junk∧c2 = c0∧c1∧c2. tensor_contract는 입력 3큐비트 →
+출력 5큐비트의 **비정방 isometry** (32×8). C3-iso(`V†V=I₈`)로 봉인.
+
+정본 = Qualtran raw big-endian. 출력 와이어 [c0,c1,c2,junk,target].
+
+## Bloq
+
+```python id=bloq
+from qualtran.bloqs.mcmt import MultiAnd
+bloq = MultiAnd((1, 1, 1))
+```
+
+## Golden (해석적 32×8 isometry)
+
+```python id=golden
+import numpy as np
+golden = np.zeros((32, 8), dtype=complex)
+for c0 in (0, 1):
+    for c1 in (0, 1):
+        for c2 in (0, 1):
+            col = (c0 << 2) | (c1 << 1) | c2
+            junk = c0 & c1
+            target = junk & c2
+            row = (c0 << 4) | (c1 << 3) | (c2 << 2) | (junk << 1) | target
+            golden[row, col] = 1.0
+```
+
+## Meta
+
+```json id=meta
+{"id": "multiand_alloc", "n_sys": 3, "n_anc": 2}
+```

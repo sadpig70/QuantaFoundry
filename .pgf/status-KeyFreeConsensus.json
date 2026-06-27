@@ -1,0 +1,94 @@
+{
+  "project": "KeyFreeConsensus",
+  "version": "0.1",
+  "mode": "design+prototype",
+  "goal": "answer-key seed(인간 단일 정답표) 제거 → 독립 출처 u_hash 수렴으로 정답 창발",
+  "origin": "Disruptive Engineer 패러다임 전환 + 실험 E5'(B4) 실증",
+  "summary": { "done": 5, "total": 5 },
+  "artifacts": {
+    "design": ".pgf/DESIGN-KeyFreeConsensus.md",
+    "engine": ".pgf/keyfree/consensus.py",
+    "key_builder": ".pgf/keyfree/build_consensus_keys.py",
+    "consensus_keys": ".pgf/keyfree/consensus_keys.json",
+    "formal_spec": ".pgf/keyfree/formal_spec.py",
+    "crossmodel_adapter": ".pgf/keyfree/crossmodel_adapter.py"
+  },
+  "autoforge_integration": {
+    "wired": true,
+    "how": "autoforge._load_answer_key() 가 consensus_keys.json(frozen) 우선 로드, 없으면 _FALLBACK_KEY",
+    "base8_established": "8/8 ESTABLISHED PROOF_BACKED (model⊕proof 수렴, 인간 seed 0)",
+    "reseal_after_wiring": "8/8 SEALED 유지 (합의 키 == 기존 인간 seed 키, byte 동일)"
+  },
+  "mechanism": {
+    "independence_unit": "같은 weights/도구 출처는 1 vote로 병합 (B4 차단의 심장)",
+    "establish_truth": "독립 출처 ≥N 수렴 → consensus_key 창발, 아니면 escalation",
+    "confidence_grade": ["PROOF_BACKED", "MULTIMODEL", "INSUFFICIENT"]
+  },
+  "demo_results": {
+    "cnot_clear":   { "status": "ESTABLISHED", "grade": "PROOF_BACKED", "key": "3913bcef764f36b8...",
+                      "provenance": ["model:claude", "proof:sympy", "structural:projector"],
+                      "human_seed": 0, "verdict": "PASS — key-free 자율 창발" },
+    "b4_same_model":{ "status": "DIVERGENT", "reason": "독립단위 1 (same weights)",
+                      "verdict": "PASS — 같은모델 CZ 임의 합의 거부" },
+    "cphase_ambiguous": { "status": "DIVERGENT", "reason": "위상 분산 + 단일 weights, proof 불가",
+                      "verdict": "PASS — 모호성 escalation" },
+    "formal_spec_clear": { "input": "diag:[1,1,1,exp(I*pi)] (CZ)", "u_hash": "8d39767c...",
+                      "verdict": "PASS — 명확 formal spec 컴파일·CZ 키 일치" },
+    "formal_spec_ambiguous": { "input": "diag:[1,1,1,exp(I*phi)] (위상 미정)",
+                      "status": "UnderspecifiedIntent",
+                      "verdict": "PASS — 모호성을 *봉인 이전* 컴파일 단계에서 차단 (E5' cphase_amb 봉인 도달 결함 해소)" },
+    "crossmodel_adapter": { "available": false, "reason": "단일모델 환경 (endpoint=None)",
+                      "verdict": "PASS — 외부의존 출처 미연결 시 합의에서 자동 제외" }
+  },
+  "acceptance": {
+    "consensus_engine_implemented": true,
+    "cnot_key_free_emergence": true,
+    "b4_default_rejected": true,
+    "ambiguous_escalation": true,
+    "autoforge_integration_designed": true,
+    "cross_model_source": "어댑터 인터페이스 구현 (CrossModelSource); 실배포 시 endpoint 주입",
+    "intent_formal_spec_promoted": true,
+    "ambiguity_blocked_pre_seal": true,
+    "crossmodel_handoff_package": true,
+    "crossmodel_ingest_pipeline": true
+  },
+  "crossmodel_deployment": {
+    "round1_golden": {
+      "status": "COMPLETE (2026-06-26)",
+      "runtimes": ["gpt-5", "gemini_3.5_flash_high", "grok", "kimi", "qwen", "deepseek"],
+      "weights_units": ["openai-gpt-5", "google-gemini-3.5-flash-high", "xai-grok-code-fast-1",
+                        "moonshot-kimi", "alibaba-qwen", "deepseek-v4-pro"],
+      "result": "Round A 8/8 calibration 일치 · Round B 7/7 ESTABLISHED MULTIMODEL · ground-truth 15/15 · golden_code 재현 90/90",
+      "independence_verified": "golden_code 6개 distinct, construction_method 런타임별 상이 → 진짜 독립 수렴",
+      "report": "_workspace/crossmodel/CONSENSUS-REPORT.json",
+      "pipeline": ".pgf/keyfree/ingest_crossmodel.py",
+      "bug_fixed": "샌드박스 __import__ 누락으로 golden_code 재현 90/90 위양성 실패 → numpy/math/cmath 한정 안전 import 로 수정"
+    },
+    "keys_frozen": {
+      "status": "COMPLETE (2026-06-26)",
+      "added": ["s_gate", "t_gate", "cz", "iswap", "cs_gate", "ccz", "qft4"],
+      "total_keys": 15,
+      "grade": "PROOF_BACKED (cross-model 6독립 ⊕ proof/formal-spec)",
+      "tool": ".pgf/keyfree/freeze_crossmodel_keys.py"
+    },
+    "round2_bloq": {
+      "status": "COMPLETE (2026-06-26)",
+      "runtimes": ["codex", "deepseek", "gemini", "grok", "kimi", "qwen"],
+      "bloq_consensus": "6/6 런타임 bloq.tensor_contract() == frozen key (전 15게이트, dissent 0) — Qualtran 구현이 golden·proof와 같은 키로 수렴(삼중 삼각측량)",
+      "seal_result": "7/7 SEALED (s·t·cz·iswap·cs·ccz·qft4), golden작성자(deepseek)≠bloq작성자(gemini), 교차독립·결정론재현·anti-swap[frozen]",
+      "seal_pipeline": ".pgf/keyfree/seal_crossmodel.py",
+      "report": "_workspace/crossmodel/SEAL-RESULT.json",
+      "quarantined": "qwen이 흘린 _validate/_cross_check .py 2개 + gemini 중복본 1개 → _workspace/crossmodel/_quarantine/ (미실행)",
+      "library_after": "specs/modules 15 · registry/modules 15 · 오라클 재검증 15/15 PASS",
+      "human_seed": 0
+    },
+    "consensus_constraints": {"strict": ["big-endian basis (first reg=MSB/control)", "U[out,in]"],
+                              "free": ["global phase (normalized)", "fp noise < 1e-9 (quantized)"]}
+  },
+  "limits": [
+    "cross-model 실제 호출 불가 → proof(sympy, 모델독립)+structural 로 합의 실증",
+    "proof 신뢰는 proof checker로 이전(제거 아님)",
+    "모호 intent는 formal-spec 승격 시 컴파일 단계에서 차단 (해소). 자연어 단계는 여전히 사람/모델 책임"
+  ],
+  "next": ["cross-model source 실배포 endpoint 주입 (외부 의존)", "신규 unkeyed 모듈에 합의 자동 확립 적용", "formal-spec 컴파일러를 .pg meta 파이프라인에 연결"]
+}

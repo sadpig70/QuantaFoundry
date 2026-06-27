@@ -1,0 +1,21 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import TwoBitSwap
+bloq = TwoBitSwap()
+```
+```python id=golden
+import numpy as np
+
+# SWAP on 2 qubits, big-endian basis order |00>,|01>,|10>,|11>.
+# First-principles: SWAP maps |a,b> -> |b,a>. Index i encodes (a,b) as i = 2*a + b.
+# The swapped basis state has index j = 2*b + a. The unitary U satisfies
+# U|i> = |j>, i.e. U[j, i] = 1, all other entries 0.
+golden = np.zeros((4, 4), dtype=complex)
+for a in range(2):
+    for b in range(2):
+        i = 2 * a + b          # input basis index (a = MSB)
+        j = 2 * b + a          # output basis index after swapping a,b
+        golden[j, i] = 1.0 + 0.0j
+```
+```json id=meta
+{"id": "swap2", "n_sys": 2, "n_anc": 0}
+```

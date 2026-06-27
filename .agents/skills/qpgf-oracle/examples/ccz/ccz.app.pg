@@ -1,0 +1,12 @@
+# ccz — 실제 FTQC 게이트 identity: CCZ = H(wire2)·Toffoli·H(wire2)
+# 1큐비트 H를 3큐비트 앱의 와이어[2]에 임베딩(이종) → Toffoli 양옆에 배치.
+```json id=app_meta
+{"id": "ccz_app", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.diag([1,1,1,1,1,1,1,-1]).astype(complex)   # CCZ = controlled-controlled-Z
+```
+```json id=plan
+{"steps": [{"spec":"h.pg","targets":[2]}, {"spec":"toffoli.pg"}, {"spec":"h.pg","targets":[2]}]}
+```

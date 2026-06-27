@@ -1,0 +1,14 @@
+# GHZ20 — 20큐비트 GHZ 인코더 (H·CNOT 사슬, 전부 Clifford). Tier-0이면 2^20 불가.
+```python id=bloq
+from qualtran import BloqBuilder
+from qualtran.bloqs.basic_gates import Hadamard, CNOT
+bb = BloqBuilder()
+qs = [bb.add_register(f"q{i}", 1) for i in range(20)]
+qs[0] = bb.add(Hadamard(), q=qs[0])
+for i in range(19):
+    qs[i], qs[i+1] = bb.add(CNOT(), ctrl=qs[i], target=qs[i+1])
+bloq = bb.finalize(**{f"q{i}": qs[i] for i in range(20)})
+```
+```json id=meta
+{"id": "ghz20", "n_sys": 20, "n_anc": 0, "tier": "clifford"}
+```

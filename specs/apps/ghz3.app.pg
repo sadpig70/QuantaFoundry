@@ -1,0 +1,16 @@
+# ghz3 — GHZ_3 준비 U = CNOT12·CNOT01·(H⊗I⊗I). h_gate·cnot 재조립(스케일).
+```json id=app_meta
+{"id": "ghz3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+CN = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+I2 = np.eye(2)
+golden = np.kron(I2,CN) @ np.kron(CN,I2) @ np.kron(H, np.eye(4))
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cnot.pg", "targets": [0,1]},
+           {"spec": "../modules/cnot.pg", "targets": [1,2]}]}
+```

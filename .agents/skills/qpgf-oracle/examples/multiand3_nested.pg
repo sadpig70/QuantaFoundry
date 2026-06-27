@@ -1,0 +1,8 @@
+# 중첩 alloc: MultiAnd(3제어)=2 ancilla 트리(alloc-안-alloc) → (32,8) isometry, C1-C4(iso)
+```python id=bloq
+from qualtran.bloqs.mcmt.and_bloq import MultiAnd
+bloq = MultiAnd(cvs=(1, 1, 1))
+```
+```json id=meta
+{"id": "multiand3_nested", "n_sys": 3, "n_anc": 2}
+```

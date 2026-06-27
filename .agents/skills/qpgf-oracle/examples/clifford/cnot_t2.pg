@@ -1,0 +1,8 @@
+# CNOT — Tier-2 Clifford 봉인 (소규모, advisory 교차검증)
+```python id=bloq
+from qualtran.bloqs.basic_gates import CNOT
+bloq = CNOT()
+```
+```json id=meta
+{"id": "cnot_clifford", "n_sys": 2, "n_anc": 0, "tier": "clifford"}
+```

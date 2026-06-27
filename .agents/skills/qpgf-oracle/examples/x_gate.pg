@@ -1,0 +1,18 @@
+# X — Pauli-X (단일 큐비트 비트반전)
+
+compute-uncompute 청정성 negative 데모용(중간에 target을 X로 망가뜨리면 ancilla가
+|0>으로 복귀 못 해 합성이 비유니터리 → 거부됨). X = [[0,1],[1,0]].
+
+```python id=bloq
+from qualtran.bloqs.basic_gates import XGate
+bloq = XGate()
+```
+
+```python id=golden
+import numpy as np
+golden = np.array([[0, 1], [1, 0]], dtype=complex)
+```
+
+```json id=meta
+{"id": "x_gate", "n_sys": 1, "n_anc": 0}
+```

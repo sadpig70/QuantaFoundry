@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "id": "s_gate",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    },
+    {
+      "id": "t_gate",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea",
+      "tier": null,
+      "resource": {
+        "t": 1,
+        "total_t": 1
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    },
+    {
+      "id": "cz",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    },
+    {
+      "id": "iswap",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    },
+    {
+      "id": "cs_gate",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+      "tier": null,
+      "resource": {
+        "rotation": 1,
+        "total_t": 11
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    },
+    {
+      "id": "ccz",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+      "tier": null,
+      "resource": {
+        "and_bloq": 1,
+        "clifford": 2,
+        "measurement": 1,
+        "total_t": 4
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    },
+    {
+      "id": "qft4",
+      "cross_independent": true,
+      "golden_author": "deepseek",
+      "bloq_author": "gemini",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8",
+      "tier": null,
+      "resource": {
+        "and_bloq": 6,
+        "clifford": 15,
+        "measurement": 6,
+        "rotation": 1,
+        "t": 2,
+        "total_t": 37
+      },
+      "golden_by": "deepseek",
+      "bloq_by": "gemini"
+    }
+  ],
+  "sealed": 7,
+  "total": 7
+}

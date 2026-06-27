@@ -1,0 +1,26 @@
+# ghz4 — GHZ_4 준비 (4큐비트). 봉인 모듈 재사용으로 규모 확장.
+```json id=app_meta
+{"id": "ghz4", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+CN = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+I2 = np.eye(2)
+def emb(U,t,n):
+    import numpy as np
+    # 간단 임베딩: kron 으로 인접 배치 (t는 연속)
+    left = np.eye(1<<t[0]); right = np.eye(1<<(n-t[-1]-1))
+    return np.kron(np.kron(left,U),right)
+g = np.kron(H, np.eye(8))
+g = emb(CN,[0,1],4) @ g
+g = emb(CN,[1,2],4) @ g
+g = emb(CN,[2,3],4) @ g
+golden = g
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cnot.pg", "targets": [0,1]},
+           {"spec": "../modules/cnot.pg", "targets": [1,2]},
+           {"spec": "../modules/cnot.pg", "targets": [2,3]}]}
+```

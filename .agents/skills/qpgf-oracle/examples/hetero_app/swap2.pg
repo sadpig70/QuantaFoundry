@@ -1,0 +1,12 @@
+# swap2 — 2큐비트 SWAP (이종 앱의 2큐비트 부품)
+```python id=bloq
+from qualtran.bloqs.basic_gates import TwoBitSwap
+bloq = TwoBitSwap()
+```
+```python id=golden
+import numpy as np
+golden = np.array([[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]], dtype=complex)
+```
+```json id=meta
+{"id": "hetero_swap2", "n_sys": 2, "n_anc": 0}
+```

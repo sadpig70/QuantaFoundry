@@ -1,0 +1,28 @@
+{
+  "_comment": "EXAMPLE app-golden submission. Copy this shape, set runtime/weights_id to your own, fill `submissions` with ONE object per intent in app_intents.json (same order). The `bell` example is filled to show the exact format. DELETE this _comment and the example, then add your real answers. Numbers must be plain JSON numbers, not strings.",
+  "runtime": "example",
+  "weights_id": "vendor-model",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "bell",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [0.7071067811865476, 0.0, 0.7071067811865476, 0.0],
+        [0.0, 0.7071067811865476, 0.0, 0.7071067811865476],
+        [0.0, 0.7071067811865476, 0.0, -0.7071067811865476],
+        [0.7071067811865476, 0.0, -0.7071067811865476, 0.0]
+      ],
+      "app_golden_imag": [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+      ],
+      "app_golden_code": "import numpy as np\nH = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)\nCN = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)\ngolden = CN @ np.kron(H, np.eye(2))",
+      "construction_method": "Matrix product CNOT @ (H tensor I): Hadamard on qubit 0 then CNOT(control=0).",
+      "self_check": "U @ U.conj().T == I (4x4), shape (4,4), unitary verified."
+    }
+  ]
+}

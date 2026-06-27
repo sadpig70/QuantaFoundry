@@ -1,0 +1,12 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import SGate
+bloq = SGate().adjoint().controlled()
+```
+```python id=golden
+import numpy as np
+# controlled-S-dagger (control=first register, big-endian): diag(1,1,1,-i)
+golden = np.diag([1, 1, 1, -1j]).astype(complex)
+```
+```json id=meta
+{"id": "cs_dag", "n_sys": 2, "n_anc": 0}
+```

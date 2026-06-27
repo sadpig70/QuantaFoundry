@@ -1,0 +1,5 @@
+{ "_comment": "app-bloq 제출 예시. submissions_bloq/ 에 <runtime>.bloq.json. iqft2 회로 채워둠 — 삭제 후 본인 회로로.",
+  "runtime": "example", "weights_id": "vendor-model", "convention_ack": true,
+  "submissions": [ { "id": "iqft2", "n_sys": 2,
+    "circuit": [ {"gate":"swap","targets":[0,1]}, {"gate":"h","targets":[1]}, {"gate":"cs_dag","targets":[1,0]}, {"gate":"h","targets":[0]} ],
+    "construction_method": "QFT2 회로의 역순·dagger", "self_check": "iqft2 라고 믿음" } ] }

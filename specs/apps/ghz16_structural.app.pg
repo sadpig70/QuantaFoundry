@@ -1,0 +1,24 @@
+# ghz16_structural — GHZ_16 (16큐비트) Tier-1 구조적 봉인. dense 2^16 미실체화, Merkle(u_hash=자식+구조).
+# 봉인 h_gate·cnot 만으로 규모 무관 봉인 — correct-by-construction (자식 sealed + 인터페이스 정합).
+```json id=app_meta
+{"id": "ghz16_structural", "n_sys": 16, "n_anc": 0}
+```
+```json id=plan
+{"tier": "structural",
+ "steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cnot.pg", "targets": [0,1]},
+           {"spec": "../modules/cnot.pg", "targets": [1,2]},
+           {"spec": "../modules/cnot.pg", "targets": [2,3]},
+           {"spec": "../modules/cnot.pg", "targets": [3,4]},
+           {"spec": "../modules/cnot.pg", "targets": [4,5]},
+           {"spec": "../modules/cnot.pg", "targets": [5,6]},
+           {"spec": "../modules/cnot.pg", "targets": [6,7]},
+           {"spec": "../modules/cnot.pg", "targets": [7,8]},
+           {"spec": "../modules/cnot.pg", "targets": [8,9]},
+           {"spec": "../modules/cnot.pg", "targets": [9,10]},
+           {"spec": "../modules/cnot.pg", "targets": [10,11]},
+           {"spec": "../modules/cnot.pg", "targets": [11,12]},
+           {"spec": "../modules/cnot.pg", "targets": [12,13]},
+           {"spec": "../modules/cnot.pg", "targets": [13,14]},
+           {"spec": "../modules/cnot.pg", "targets": [14,15]}]}
+```

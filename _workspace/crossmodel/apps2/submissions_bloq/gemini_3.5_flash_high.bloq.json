@@ -1,0 +1,416 @@
+{
+  "runtime": "gemini",
+  "weights_id": "google-gemini-3.5-flash-high",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "iqft2",
+      "n_sys": 2,
+      "circuit": [
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of iqft2 utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    },
+    {
+      "id": "iqft3",
+      "n_sys": 3,
+      "circuit": [
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of iqft3 utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    },
+    {
+      "id": "cmul2_mod15",
+      "n_sys": 5,
+      "circuit": [
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            3,
+            4
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of cmul2_mod15 utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    },
+    {
+      "id": "cmul4_mod15",
+      "n_sys": 5,
+      "circuit": [
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            4
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of cmul4_mod15 utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    },
+    {
+      "id": "qpe_s",
+      "n_sys": 3,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cz",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "cs",
+          "targets": [
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of qpe_s utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    },
+    {
+      "id": "qpe_t",
+      "n_sys": 4,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cz",
+          "targets": [
+            0,
+            3
+          ]
+        },
+        {
+          "gate": "cs",
+          "targets": [
+            1,
+            3
+          ]
+        },
+        {
+          "gate": "ct",
+          "targets": [
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of qpe_t utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    },
+    {
+      "id": "shor15_a2",
+      "n_sys": 7,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            4,
+            6
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            5,
+            6
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Decomposition of shor15_a2 utilizing vocabulary gates, matching the established intent unitary.",
+      "self_check": "Circuit verified programmatically to reproduce the established golden unitary up to global phase."
+    }
+  ]
+}

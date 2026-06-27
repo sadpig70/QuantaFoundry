@@ -1,0 +1,34 @@
+# qft2.pg — 2큐비트 QFT 모듈 명세 (PG)
+#
+# 종료 오라클(verify_seal.py)이 검증·봉인할 양자모듈 명세 예시.
+# parser-free PG이되, verify_seal은 결정론 코드이므로 라벨된 fenced block을
+# 기계추출한다(```<lang> id=<key>```). golden은 정본 컨벤션(Qualtran raw,
+# big-endian = 해석적 DFT 행렬)으로 정의.
+
+QFT2 // 2큐비트 양자푸리에변환 모듈 (in-progress) @v:1.0
+    Bloq // Qualtran QFTTextBook(2) 인스턴스 (in-progress)
+        # process: instantiate → tensor_contract() → U (raw, big-endian)
+    Golden // 해석적 명세: F[i,j] = W^(ij)/√N, W=exp(2πi/N) (in-progress)
+        # criteria: C4 — verify_seal이 U == golden (전역위상 무시) 확인
+    Contract // C1~C4 (n_anc=0) → 통과시 qft2.sealed.json (needs-verify) @dep:Bloq,Golden
+        # acceptance_criteria:
+        #   - U 유니터리(C1/C2), golden 일치(C4)
+        #   - exit 0 ⟺ qft2.sealed.json ⟺ 루프 종료
+        #   - 동일 spec 재실행 → byte-identical sealed.json
+
+```python id=bloq
+from qualtran.bloqs.qft.qft_text_book import QFTTextBook
+bloq = QFTTextBook(2)
+```
+
+```python id=golden
+n = 2
+N = 2 ** n
+W = np.exp(2j * np.pi / N)
+golden = np.array([[W ** (i * j) for j in range(N)] for i in range(N)],
+                  dtype=complex) / np.sqrt(N)
+```
+
+```json id=meta
+{"id": "qft2", "n_sys": 2, "n_anc": 0}
+```

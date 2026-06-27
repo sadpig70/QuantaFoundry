@@ -1,0 +1,12 @@
+```python id=golden
+import numpy as np
+
+N = 4  # 2^n_sys, n_sys = 2
+i = np.arange(N).reshape(N, 1)
+j = np.arange(N).reshape(1, N)
+golden = np.exp(2j * np.pi * (i * j) / N) / np.sqrt(N)  # shape (4,4), analytic DFT
+golden = golden.astype(complex)
+```
+```json id=meta
+{"id": "qft2", "n_sys": 2, "n_anc": 0, "author": "persona-golden"}
+```

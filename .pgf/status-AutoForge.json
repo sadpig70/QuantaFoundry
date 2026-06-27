@@ -1,0 +1,35 @@
+{
+  "project": "AutoForge",
+  "version": "0.1",
+  "mode": "full-cycle",
+  "summary": { "done": 8, "total": 8, "sealed": 8, "cross_independent": 8, "deterministic": 8, "registered": 8 },
+  "thread": "C — 검증된 베이스 모듈 라이브러리",
+  "isolation": "PGF multi-persona (golden-author Agent ≠ bloq-author Agent), cross-model 대체",
+  "modules": {
+    "x_gate":  { "status": "sealed", "n_sys": 1, "u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a", "anchor": "seed" },
+    "z_gate":  { "status": "sealed", "n_sys": 1, "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4", "anchor": "seed" },
+    "h_gate":  { "status": "sealed", "n_sys": 1, "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c", "anchor": "seed" },
+    "cnot":    { "status": "sealed", "n_sys": 2, "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5", "anchor": "seed" },
+    "swap2":   { "status": "sealed", "n_sys": 2, "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e", "anchor": "QPGF-match" },
+    "toffoli": { "status": "sealed", "n_sys": 3, "u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d", "anchor": "QPGF-match" },
+    "qft2":    { "status": "sealed", "n_sys": 2, "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82", "anchor": "seed" },
+    "qft3":    { "status": "sealed", "n_sys": 3, "u_hash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed", "anchor": "QPGF-match" }
+  },
+  "acceptance": {
+    "all_sealed": true,
+    "u_hash_matches_answer_key": true,
+    "cross_independent": true,
+    "byte_identical_rerun": true,
+    "registry_INV1_3": true,
+    "human_intervention": "answer-key seed only (5 new modules); forge loop fully autonomous"
+  },
+  "artifacts": {
+    "design": ".pgf/DESIGN-AutoForge.md",
+    "personas": ".pgf/personas/{persona-golden,persona-bloq,persona-adversary}.md",
+    "orchestrator": ".pgf/autoforge/autoforge.py",
+    "specs": "specs/modules/*.pg",
+    "registry": "registry/modules/*.sealed.json",
+    "result": ".pgf/autoforge/FORGE-RESULT.json"
+  },
+  "next": ["PersonaA(adversary) 활성화 — 정답키 없는 구간", "F3_Compose — 봉인 베이스 재조립", "ADPLoop intent 자동생성(목표 자율)"]
+}

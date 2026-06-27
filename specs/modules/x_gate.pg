@@ -1,0 +1,17 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import XGate
+bloq = XGate()
+```
+```python id=golden
+import numpy as np
+# Pauli-X: basis-state bit flip |0> <-> |1>.
+# First-principles construction: X|j> = |1-j> for j in {0,1}.
+# Qualtran-native raw big-endian, single qubit (basis index = qubit value).
+golden = np.zeros((2, 2), dtype=complex)
+for j in range(2):          # column index = input basis state |j>
+    out = 1 - j             # X maps |j> -> |1-j>
+    golden[out, j] = 1.0    # amplitude <out| X |j> = 1
+```
+```json id=meta
+{"id": "x_gate", "n_sys": 1, "n_anc": 0}
+```

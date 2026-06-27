@@ -1,0 +1,127 @@
+{
+  "runtime": "deepseek",
+  "weights_id": "deepseek-v4-pro",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "x_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import XGate\nbloq = XGate()",
+      "construction_method": "Native XGate from qualtran.bloqs.basic_gates. Single-qubit bit-flip.",
+      "self_check": "tensor_contract() is 2x2, [[0,1],[1,0]]. Unitary."
+    },
+    {
+      "id": "z_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import ZGate\nbloq = ZGate()",
+      "construction_method": "Native ZGate from qualtran.bloqs.basic_gates. Single-qubit phase-flip, diag(1,-1).",
+      "self_check": "tensor_contract() is 2x2, diag(1,-1). Unitary."
+    },
+    {
+      "id": "h_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import Hadamard\nbloq = Hadamard()",
+      "construction_method": "Native Hadamard from qualtran.bloqs.basic_gates. H = (1/\u221a2)[[1,1],[1,-1]].",
+      "self_check": "tensor_contract() is 2x2, (1/\u221a2)[[1,1],[1,-1]]. Unitary."
+    },
+    {
+      "id": "cnot",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CNOT\nbloq = CNOT()",
+      "construction_method": "Native CNOT from qualtran.bloqs.basic_gates. Default: control=q0(MSB), target=q1.",
+      "self_check": "tensor_contract() is 4x4. |10\u27e9\u2194|11\u27e9. Unitary."
+    },
+    {
+      "id": "swap2",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import TwoBitSwap\nbloq = TwoBitSwap()",
+      "construction_method": "Native TwoBitSwap from qualtran.bloqs.basic_gates. Swaps q0 and q1.",
+      "self_check": "tensor_contract() is 4x4. |01\u27e9\u2194|10\u27e9, |00\u27e9,|11\u27e9 unchanged. Unitary."
+    },
+    {
+      "id": "toffoli",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import Toffoli\nbloq = Toffoli()",
+      "construction_method": "Native Toffoli from qualtran.bloqs.basic_gates. controls=q0,q1, target=q2.",
+      "self_check": "tensor_contract() is 8x8. |110\u27e9\u2194|111\u27e9, identity elsewhere. Unitary."
+    },
+    {
+      "id": "qft2",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=2)",
+      "construction_method": "QFTTextBook(bitsize=2). Textbook QFT, raw matrix, no bit-reversal swaps.",
+      "self_check": "tensor_contract() is 4x4, U[j,k]=(1/2)\u00b7exp(2\u03c0i\u00b7jk/4). Unitary."
+    },
+    {
+      "id": "qft3",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=3)",
+      "construction_method": "QFTTextBook(bitsize=3). Textbook QFT, raw matrix, no bit-reversal swaps.",
+      "self_check": "tensor_contract() is 8x8, U[j,k]=(1/\u221a8)\u00b7exp(2\u03c0i\u00b7jk/8). Unitary."
+    },
+    {
+      "id": "s_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import SGate\nbloq = SGate()",
+      "construction_method": "Native SGate from qualtran.bloqs.basic_gates. Single-qubit phase gate, diag(1,i).",
+      "self_check": "tensor_contract() is 2x2, diag(1,i). Unitary."
+    },
+    {
+      "id": "t_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import TGate\nbloq = TGate()",
+      "construction_method": "Native TGate from qualtran.bloqs.basic_gates. diag(1, exp(i\u03c0/4)).",
+      "self_check": "tensor_contract() is 2x2, diag(1, e^(i\u03c0/4)). Unitary."
+    },
+    {
+      "id": "cz",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CZ\nbloq = CZ()",
+      "construction_method": "Native CZ from qualtran.bloqs.basic_gates. Symmetric controlled-Z, diag(1,1,1,-1).",
+      "self_check": "tensor_contract() is 4x4, diag(1,1,1,-1). Unitary."
+    },
+    {
+      "id": "iswap",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.cirq_interop import CirqGateAsBloq\nimport cirq\nbloq = CirqGateAsBloq(cirq.ISWAP)",
+      "construction_method": "CirqGateAsBloq wrapping cirq.ISWAP. No native Qualtran iSWAP bloq; cirq interop provides the correct unitary.",
+      "self_check": "tensor_contract() is 4x4. |01\u27e9\u2192i|10\u27e9, |10\u27e9\u2192i|01\u27e9, |00\u27e9,|11\u27e9 unchanged. Unitary."
+    },
+    {
+      "id": "cs_gate",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import SGate\nbloq = SGate().controlled()",
+      "construction_method": "SGate().controlled() \u2014 adds one control qubit to SGate. Control=q0(MSB), target=q1. diag(1,1,1,i).",
+      "self_check": "tensor_contract() is 4x4, diag(1,1,1,i). Unitary."
+    },
+    {
+      "id": "ccz",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CZ\nbloq = CZ().controlled()",
+      "construction_method": "CZ().controlled() \u2014 adds one control to CZ, yielding CCZ. diag(1,...,1,-1) on |111\u27e9.",
+      "self_check": "tensor_contract() is 8x8, diag(1,...,1,-1). Unitary."
+    },
+    {
+      "id": "qft4",
+      "n_sys": 4,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=4)",
+      "construction_method": "QFTTextBook(bitsize=4). Textbook QFT, raw matrix, no bit-reversal swaps.",
+      "self_check": "tensor_contract() is 16x16, U[j,k]=(1/4)\u00b7exp(2\u03c0i\u00b7jk/16). Unitary."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# iqft2 — inverse QFT2 = QFT2†. SWAP·H(q1)·CS†[ctrl q1→q0]·H(q0). cs_dag(신규) 투입. QPE 빌딩블록.
+```json id=app_meta
+{"id": "iqft2", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=4; w=np.exp(2j*np.pi/N)
+QFT2 = np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)
+golden = QFT2.conj().T                      # inverse QFT2
+```
+```json id=plan
+{"steps": [{"spec": "../modules/swap2.pg", "targets": [0,1]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/cs_dag.pg", "targets": [1,0]},
+           {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

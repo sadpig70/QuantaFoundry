@@ -1,0 +1,480 @@
+{
+  "runtime": "grok",
+  "weights_id": "xai-grok-code-fast-1",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "iqft2",
+      "n_sys": 2,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            1
+          ]
+        }
+      ],
+      "construction_method": "Textbook 2-qubit inverse QFT: reverse of H\u2013CS\u2013H pipeline with cs_dag and wire swap.",
+      "self_check": "Matches (QFT2)\u2020 from analytic definition."
+    },
+    {
+      "id": "iqft3",
+      "n_sys": 3,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        }
+      ],
+      "construction_method": "Reverse-dagger of textbook QFT3 pipeline (H, cs, ct phases) plus final swap(0,2) for big-endian wire order.",
+      "self_check": "Matches (QFT3)\u2020 per raw big-endian QFT convention."
+    },
+    {
+      "id": "cmul2_mod15",
+      "n_sys": 5,
+      "circuit": [
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            3,
+            4
+          ]
+        }
+      ],
+      "construction_method": "\u00d72 mod 15 is a 4-bit left rotation on work q1\u2013q4; realized by three controlled-SWAPs (fredkin) with control q0.",
+      "self_check": "Controlled permutation y\u21922y mod 15 when q0=1."
+    },
+    {
+      "id": "cmul4_mod15",
+      "n_sys": 5,
+      "circuit": [
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            3,
+            4
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            3,
+            4
+          ]
+        }
+      ],
+      "construction_method": "\u00d74 mod 15 = two left rotations; duplicate the fredkin rotation chain under the same control q0.",
+      "self_check": "Controlled y\u21924y mod 15 when q0=1."
+    },
+    {
+      "id": "qpe_s",
+      "n_sys": 3,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cz",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "cs",
+          "targets": [
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            1
+          ]
+        }
+      ],
+      "construction_method": "QPE of S: H on counting; ctrl-Z(q0,t) for U\u00b2; ctrl-S(q1,t); 2-qubit IQFT on {q0,q1}.",
+      "self_check": "Standard 2-counting-bit QPE circuit for S=diag(1,i)."
+    },
+    {
+      "id": "qpe_t",
+      "n_sys": 4,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cz",
+          "targets": [
+            0,
+            3
+          ]
+        },
+        {
+          "gate": "cs",
+          "targets": [
+            1,
+            3
+          ]
+        },
+        {
+          "gate": "ct",
+          "targets": [
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        }
+      ],
+      "construction_method": "QPE of T: H on q0\u2013q2; ctrl-Z/S/T for U\u2074/U\u00b2/U on target q3; 3-qubit IQFT on counting.",
+      "self_check": "Standard 3-counting-bit QPE for T=diag(1,e^{i\u03c0/4})."
+    },
+    {
+      "id": "shor15_a2",
+      "n_sys": 7,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            3,
+            4
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            5,
+            6
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        }
+      ],
+      "construction_method": "Shor a=2,N=15: H on counting; ctrl-\u00d72\u00b2 on work via 2\u00d7 fredkin-chain (q1); ctrl-\u00d72 via 1 chain (q2); U\u2074=I skips q0; IQFT on counting.",
+      "self_check": "Order-finding circuit: controlled modular multiply powers then inverse QFT."
+    }
+  ]
+}

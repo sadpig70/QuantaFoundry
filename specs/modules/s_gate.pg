@@ -1,0 +1,11 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import SGate
+bloq = SGate()
+```
+```python id=golden
+import numpy as np
+golden = np.array([[1,0],[0,1j]], dtype=complex)
+```
+```json id=meta
+{"id": "s_gate", "n_sys": 1, "n_anc": 0}
+```

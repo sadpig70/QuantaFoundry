@@ -1,0 +1,12 @@
+# cnot — 2큐비트 CNOT (control=q0/MSB) 리프
+```python id=bloq
+from qualtran.bloqs.basic_gates import CNOT
+bloq = CNOT()
+```
+```python id=golden
+import numpy as np
+golden = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+```
+```json id=meta
+{"id": "cnot_leaf", "n_sys": 2, "n_anc": 0}
+```

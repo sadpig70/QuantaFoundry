@@ -1,0 +1,13 @@
+# bell — Bell 상태 준비 U = CNOT·(H⊗I). 봉인 모듈 h_gate·cnot 재조립.
+```json id=app_meta
+{"id": "bell", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+CN = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)  # control=first
+golden = CN @ np.kron(H, np.eye(2))
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg"}]}
+```

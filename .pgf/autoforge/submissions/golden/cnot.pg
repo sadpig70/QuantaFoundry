@@ -1,0 +1,18 @@
+```python id=golden
+import numpy as np
+
+# Big-endian basis order: |c,t> = 00, 01, 10, 11 (control = MSB = first register).
+# CNOT action: |c,t> -> |c, t XOR c>.
+#   c=0: target unchanged   -> 00->00, 01->01
+#   c=1: target flipped     -> 10->11, 11->10
+# Build analytically as a permutation operator: golden[out, in] = <out| U |in>.
+basis = [(0, 0), (0, 1), (1, 0), (1, 1)]  # index -> (c, t)
+golden = np.zeros((4, 4), dtype=complex)
+for j, (c, t) in enumerate(basis):
+    out = (c, t ^ c)                 # XOR target with control
+    i = basis.index(out)
+    golden[i, j] = 1.0 + 0.0j
+```
+```json id=meta
+{"id": "cnot", "n_sys": 2, "n_anc": 0, "author": "persona-golden"}
+```

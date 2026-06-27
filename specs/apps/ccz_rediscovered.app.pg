@@ -1,0 +1,13 @@
+# ccz_rediscovered — CCZ 를 h_gate·toffoli 로 재구성. 봉인 ccz 와 u_hash 일치해야.
+```json id=app_meta
+{"id": "ccz_rediscovered", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.diag([1,1,1,1,1,1,1,-1]).astype(complex)  # CCZ 교과서 정의
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/toffoli.pg"},
+           {"spec": "../modules/h_gate.pg", "targets": [2]}]}
+```

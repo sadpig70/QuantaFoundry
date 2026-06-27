@@ -1,0 +1,12 @@
+# diffusion (sub-app) — D = hlayer · reflect00 · hlayer 로 분해
+```json id=app_meta
+{"id": "grover2_diffusion_app", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+golden = np.kron(H,H) @ np.diag([1,-1,-1,-1]).astype(complex) @ np.kron(H,H)
+```
+```json id=plan
+{"steps": [{"spec": "hlayer.pg"}, {"spec": "reflect00.pg"}, {"spec": "hlayer.pg"}]}
+```

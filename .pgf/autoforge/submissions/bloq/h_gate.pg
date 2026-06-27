@@ -1,0 +1,7 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import Hadamard
+bloq = Hadamard()
+```
+```json id=meta
+{"id": "h_gate", "n_sys": 1, "n_anc": 0, "author": "persona-bloq"}
+```

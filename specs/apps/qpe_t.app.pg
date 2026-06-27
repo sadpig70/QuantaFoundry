@@ -1,0 +1,36 @@
+# qpe_t — Quantum Phase Estimation of T gate, t=3 counting (큰 정밀도). 고유위상 1/8=0.001₂ 정확판독.
+# H c0,c1,c2 · cZ[c0→t] · cS[c1→t] · cT[c2→t] · inverse-QFT3[c0,c1,c2]. iqft3 sub-app 재귀.
+# controlled-power 재사용: T^4=Z(cz), T^2=S(cs), T^1=T(ct). 봉인 모듈만으로 3비트 위상추정 조립.
+```json id=app_meta
+{"id": "qpe_t", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2); I2=np.eye(2)
+S=np.diag([1,1j]).astype(complex); Z=np.diag([1,-1]).astype(complex); T=np.diag([1,np.exp(1j*np.pi/4)]).astype(complex)
+P0=np.array([[1,0],[0,0]],complex); P1=np.array([[0,0],[0,1]],complex)
+def emb(U,t,n):
+    g=int(np.log2(U.shape[0])); M=np.zeros((2**n,2**n),complex)
+    for I in range(2**n):
+        for J in range(2**n):
+            ib=[(I>>(n-1-k))&1 for k in range(n)]; jb=[(J>>(n-1-k))&1 for k in range(n)]
+            if all(ib[k]==jb[k] for k in range(n) if k not in t):
+                gi=sum(ib[t[m]]<<(g-1-m) for m in range(g)); gj=sum(jb[t[m]]<<(g-1-m) for m in range(g))
+                M[I,J]=U[gi,gj]
+    return M
+cZ=np.kron(P0,I2)+np.kron(P1,Z); cS=np.kron(P0,I2)+np.kron(P1,S); cT=np.kron(P0,I2)+np.kron(P1,T)
+N=8; w=np.exp(2j*np.pi/N); QFT3=np.array([[w**(j*k) for k in range(N)] for j in range(N)],complex)/np.sqrt(N)
+IQFT3=QFT3.conj().T
+steps=[emb(H,[0],4),emb(H,[1],4),emb(H,[2],4), emb(cZ,[0,3],4),emb(cS,[1,3],4),emb(cT,[2,3],4), emb(IQFT3,[0,1,2],4)]
+golden=reduce(lambda a,b: b@a, steps)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/cz.pg", "targets": [0,3]},
+           {"spec": "../modules/cs_gate.pg", "targets": [1,3]},
+           {"spec": "../modules/ct_gate.pg", "targets": [2,3]},
+           {"app": "iqft3.app.pg", "targets": [0,1,2]}]}
+```

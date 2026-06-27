@@ -1,0 +1,12 @@
+```python id=bloq
+from qualtran.bloqs.qft.qft_text_book import QFTTextBook
+bloq = QFTTextBook(bitsize=4)
+```
+```python id=golden
+import numpy as np
+N=16; omega=np.exp(2j*np.pi/N)
+golden = np.array([[omega**(j*k)/np.sqrt(N) for k in range(N)] for j in range(N)]).astype(complex)
+```
+```json id=meta
+{"id": "qft4", "n_sys": 4, "n_anc": 0}
+```

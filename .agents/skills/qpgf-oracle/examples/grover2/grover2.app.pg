@@ -1,0 +1,26 @@
+# grover2 — Grover 2큐비트 1-iterate 앱 (정답 |11> 탐색)
+
+고수준 앱 명세. 분해 계획(plan)이 이 앱을 검증가능 서브모듈 oracle·diffusion으로 쪼갠다.
+어셈블러가 각 봉인 → 합성 → 합성품 == app_golden(C-app) 대조 → 앱 봉인.
+
+## 앱 메타
+
+```json id=app_meta
+{"id": "grover2", "n_sys": 2, "n_anc": 0}
+```
+
+## 앱 golden — 앱 전체 유니터리 G = diffusion ∘ oracle
+
+```python id=app_golden
+import numpy as np
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+O = np.diag([1, 1, 1, -1]).astype(complex)                                # oracle 의도
+D = np.kron(H, H) @ np.diag([1, -1, -1, -1]).astype(complex) @ np.kron(H, H)  # diffusion 의도
+golden = D @ O                                                            # 앱 = D∘O
+```
+
+## 분해 계획 — steps는 적용순서 (compose 누적 = V_second @ V_first)
+
+```json id=plan
+{"compose": "homogeneous", "steps": [{"spec": "oracle.pg"}, {"spec": "diffusion.pg"}]}
+```

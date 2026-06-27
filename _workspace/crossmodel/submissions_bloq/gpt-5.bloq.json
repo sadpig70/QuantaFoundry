@@ -1,0 +1,127 @@
+{
+  "runtime": "codex",
+  "weights_id": "openai-gpt-5",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "x_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import XGate\nbloq = XGate()",
+      "construction_method": "Native Qualtran XGate, chosen because the intent is the standard one-qubit bit flip.",
+      "self_check": "Checked tensor_contract() is 2x2 unitary and swaps |0> with |1>."
+    },
+    {
+      "id": "z_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import ZGate\nbloq = ZGate()",
+      "construction_method": "Native Qualtran ZGate, the standard one-qubit phase flip with -1 on |1>.",
+      "self_check": "Checked tensor_contract() is 2x2 unitary and applies a -1 phase only to |1>."
+    },
+    {
+      "id": "h_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import Hadamard\nbloq = Hadamard()",
+      "construction_method": "Native Qualtran Hadamard bloq for the textbook H action on one qubit.",
+      "self_check": "Checked tensor_contract() is 2x2 unitary with Hadamard columns (|0>+|1>)/sqrt2 and (|0>-|1>)/sqrt2."
+    },
+    {
+      "id": "cnot",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CNOT\nbloq = CNOT()",
+      "construction_method": "Native Qualtran CNOT; under Qualtran raw big-endian contraction the first register is the control and second is target.",
+      "self_check": "Checked tensor_contract() is 4x4 unitary; in big-endian order it fixes |00>, |01> and swaps |10>, |11>."
+    },
+    {
+      "id": "swap2",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import TwoBitSwap\nbloq = TwoBitSwap()",
+      "construction_method": "Native Qualtran TwoBitSwap, a two-qubit swap bloq for |ab> -> |ba>.",
+      "self_check": "Checked tensor_contract() is 4x4 unitary and swaps |01> with |10>, fixing |00> and |11>."
+    },
+    {
+      "id": "toffoli",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import Toffoli\nbloq = Toffoli()",
+      "construction_method": "Native Qualtran Toffoli, matching controls on the first two registers and target on the third.",
+      "self_check": "Checked tensor_contract() is 8x8 unitary and swaps |110> with |111>, fixing all other basis states."
+    },
+    {
+      "id": "qft2",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=2)",
+      "construction_method": "Qualtran QFTTextBook(bitsize=2), using the brief's textbook raw QFT with no output bit-reversal swaps.",
+      "self_check": "Checked tensor_contract() is 4x4 unitary for QFTTextBook(bitsize=2), raw textbook QFT without bit reversal."
+    },
+    {
+      "id": "qft3",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=3)",
+      "construction_method": "Qualtran QFTTextBook(bitsize=3), using the brief's textbook raw QFT with no output bit-reversal swaps.",
+      "self_check": "Checked tensor_contract() is 8x8 unitary for QFTTextBook(bitsize=3), raw textbook QFT without bit reversal."
+    },
+    {
+      "id": "s_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import SGate\nbloq = SGate()",
+      "construction_method": "Native Qualtran SGate, the standard phase gate diag(1,i).",
+      "self_check": "Checked tensor_contract() is 2x2 unitary and applies phase i only to |1>."
+    },
+    {
+      "id": "t_gate",
+      "n_sys": 1,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import TGate\nbloq = TGate()",
+      "construction_method": "Native Qualtran TGate, the standard phase gate diag(1, exp(i*pi/4)).",
+      "self_check": "Checked tensor_contract() is 2x2 unitary and applies phase exp(i*pi/4) only to |1>."
+    },
+    {
+      "id": "cz",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.basic_gates import CZ\nbloq = CZ()",
+      "construction_method": "Native Qualtran CZ, diagonal controlled-Z with -1 on the |11> basis state.",
+      "self_check": "Checked tensor_contract() is 4x4 unitary and diagonal with -1 phase only on |11>."
+    },
+    {
+      "id": "iswap",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.cirq_interop import CirqGateAsBloq\nimport cirq\nbloq = CirqGateAsBloq(cirq.ISWAP)",
+      "construction_method": "Cirq interop via CirqGateAsBloq(cirq.ISWAP), because iSWAP is directly available as a Cirq gate and has no native bloq listed in the brief.",
+      "self_check": "Checked tensor_contract() is 4x4 unitary; |01> maps to i|10> and |10> maps to i|01>."
+    },
+    {
+      "id": "cs_gate",
+      "n_sys": 2,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.cirq_interop import CirqGateAsBloq\nimport cirq\nbloq = CirqGateAsBloq(cirq.ControlledGate(cirq.S))",
+      "construction_method": "Cirq interop via CirqGateAsBloq(cirq.ControlledGate(cirq.S)), implementing controlled-S with the first qubit as control.",
+      "self_check": "Checked tensor_contract() is 4x4 unitary and diagonal with i phase only on |11> under first-qubit control."
+    },
+    {
+      "id": "ccz",
+      "n_sys": 3,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.cirq_interop import CirqGateAsBloq\nimport cirq\nbloq = CirqGateAsBloq(cirq.CCZ)",
+      "construction_method": "Cirq interop via CirqGateAsBloq(cirq.CCZ), implementing the standard doubly-controlled Z phase on |111>.",
+      "self_check": "Checked tensor_contract() is 8x8 unitary and diagonal with -1 phase only on |111>."
+    },
+    {
+      "id": "qft4",
+      "n_sys": 4,
+      "n_anc": 0,
+      "bloq_code": "from qualtran.bloqs.qft.qft_text_book import QFTTextBook\nbloq = QFTTextBook(bitsize=4)",
+      "construction_method": "Qualtran QFTTextBook(bitsize=4), using the brief's textbook raw QFT with no output bit-reversal swaps.",
+      "self_check": "Checked tensor_contract() is 16x16 unitary for QFTTextBook(bitsize=4), raw textbook QFT without bit reversal."
+    }
+  ]
+}

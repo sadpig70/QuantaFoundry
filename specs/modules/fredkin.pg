@@ -1,0 +1,13 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import TwoBitCSwap
+bloq = TwoBitCSwap()
+```
+```python id=golden
+import numpy as np
+# Fredkin / controlled-SWAP (control=first, big-endian): perm [0,1,2,3,4,6,5,7]
+golden = np.zeros((8,8),dtype=complex)
+for i,o in enumerate([0,1,2,3,4,6,5,7]): golden[o,i]=1
+```
+```json id=meta
+{"id": "fredkin", "n_sys": 3, "n_anc": 0}
+```

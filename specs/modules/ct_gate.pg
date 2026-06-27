@@ -1,0 +1,12 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import TGate
+bloq = TGate().controlled()
+```
+```python id=golden
+import numpy as np
+# controlled-T (control=first register, big-endian): diag(1,1,1,exp(i*pi/4))
+golden = np.diag([1, 1, 1, np.exp(1j*np.pi/4)]).astype(complex)
+```
+```json id=meta
+{"id": "ct_gate", "n_sys": 2, "n_anc": 0}
+```

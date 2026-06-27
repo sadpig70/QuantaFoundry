@@ -1,0 +1,14 @@
+# grover2_rec (최상위 앱) — oracle(리프) + diffusion(sub-app) 의 2레벨 분해 트리
+```json id=app_meta
+{"id": "grover2_rec", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+O = np.diag([1,1,1,-1]).astype(complex)
+D = np.kron(H,H) @ np.diag([1,-1,-1,-1]).astype(complex) @ np.kron(H,H)
+golden = D @ O
+```
+```json id=plan
+{"steps": [{"spec": "oracle.pg"}, {"app": "diffusion.app.pg"}]}
+```

@@ -1,0 +1,19 @@
+# iqft3 — inverse QFT3 = QFT3†. cr3_dag(CR3†, 신규) 투입. 큰 정밀도 QPE 빌딩블록.
+```json id=app_meta
+{"id": "iqft3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=8; w=np.exp(2j*np.pi/N)
+QFT3=np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)
+golden=QFT3.conj().T
+```
+```json id=plan
+{"steps": [{"spec": "../modules/swap2.pg", "targets": [0,2]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/cs_dag.pg", "targets": [2,1]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/cr3_dag_gate.pg", "targets": [2,0]},
+           {"spec": "../modules/cs_dag.pg", "targets": [1,0]},
+           {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

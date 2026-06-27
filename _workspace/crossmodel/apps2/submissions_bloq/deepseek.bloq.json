@@ -1,0 +1,416 @@
+{
+  "runtime": "deepseek",
+  "weights_id": "deepseek-v4-pro",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "iqft2",
+      "n_sys": 2,
+      "circuit": [
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        }
+      ],
+      "construction_method": "Forward raw QFT2 = swap + H(LSB) + cs(LSB->MSB) + H(MSB). iQFT2 = reverse each gate and dagger: H(MSB) + cs_dag(MSB->LSB) + H(LSB) + swap. Wire 0=MSB.",
+      "self_check": "swap fixes bit-reversal; H+cs_dag+H is standard IQFT core. 4x4 unitary expected."
+    },
+    {
+      "id": "iqft3",
+      "n_sys": 3,
+      "circuit": [
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Forward raw QFT3 = H(MSB) + cs(0,1) + ct(0,2) + H + cs(1,2) + H(LSB) + swap(0,2). iQFT3 = reverse+dagger. ct_dag = cr3_dag.",
+      "self_check": "Standard IQFT3 decomposition: swap for bit-reversal fix, H gates, cs_dag/cr3_dag for controlled rotation daggers. 8x8 unitary."
+    },
+    {
+      "id": "cmul2_mod15",
+      "n_sys": 5,
+      "circuit": [
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            3,
+            4
+          ]
+        }
+      ],
+      "construction_method": "Cyclic left-rotate [q1,q2,q3,q4] via 3 controlled swaps. fredkin(0,1,2) swaps 1-2, then (0,2,3) swaps 2-3, then (0,3,4) swaps 3-4. When ctrl=1: [a,b,c,d]->[b,c,d,a]. y=0 and y=15 are fixed points (all bits equal).",
+      "self_check": "3 fredkin gates. y=0: all-zero unchanged. y=15: all-one unchanged. y in 1..14: cyclic left rotate. 32x32 unitary."
+    },
+    {
+      "id": "cmul4_mod15",
+      "n_sys": 5,
+      "circuit": [
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            0,
+            2,
+            4
+          ]
+        }
+      ],
+      "construction_method": "Cyclic left-rotate by 2 positions: [a,b,c,d]->[c,d,a,b]. Two controlled swaps: fredkin(0,1,3) swaps q1<->q3, then fredkin(0,2,4) swaps q2<->q4. Equivalent to cmul2 applied twice but shorter.",
+      "self_check": "2 fredkin gates. y=0 and y=15 fixed points. y in 1..14: cyclic left by 2. 32x32 unitary."
+    },
+    {
+      "id": "qpe_s",
+      "n_sys": 3,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cz",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "cs",
+          "targets": [
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        }
+      ],
+      "construction_method": "Standard QPE circuit: H on counting qubits, controlled-U powers (U^2=CZ on |101>,|111>; U^1=CS on |011>,|111>), then iQFT2 on counting register. iQFT2 = swap + H(MSB) + cs_dag(MSB->LSB) + H(LSB).",
+      "self_check": "QPE of S: T=diag(1,i), U^2=Z, U^1=S. iQFT2 produces phase estimate. 8x8 unitary."
+    },
+    {
+      "id": "qpe_t",
+      "n_sys": 4,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cz",
+          "targets": [
+            0,
+            3
+          ]
+        },
+        {
+          "gate": "cs",
+          "targets": [
+            1,
+            3
+          ]
+        },
+        {
+          "gate": "ct",
+          "targets": [
+            2,
+            3
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "QPE of T: U^4=Z, U^2=S, U^1=T. H on 3 counting qubits, controlled powers to target, then iQFT3 on counting register (swap + H + cs_dag/cr3_dag).",
+      "self_check": "QPE of T=diag(1,e^(i*pi/4)). Controlled rotations CZ,CS,CT to q3. iQFT3 resolves phase. 16x16 unitary."
+    },
+    {
+      "id": "shor15_a2",
+      "n_sys": 7,
+      "circuit": [
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            1,
+            4,
+            6
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "fredkin",
+          "targets": [
+            2,
+            5,
+            6
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            2
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            0,
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            0,
+            1
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "construction_method": "Shor order-finding for N=15, a=2 (period r=4). H on 3 counting qubits. CU^4(q0)=I skipped. CU^2(q1): 2 fredkin for cyclic left-by-2 on work register. CU^1(q2): 3 fredkin for cyclic left-by-1. iQFT3 on counting register resolves period into |++...> states with period r=4 encoded.",
+      "self_check": "Standard Shor circuit: CU^k implement modular exponentiation a^(2^k) mod 15 via bit rotation. iQFT3 extracts period. 128x128 unitary."
+    }
+  ]
+}

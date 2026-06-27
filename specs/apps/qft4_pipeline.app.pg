@@ -1,0 +1,24 @@
+# qft4_pipeline — QFT4 게이트회로 분해 (16×16, 위상·비트순서 가장 틀리기 쉬운 구간). controlled-Rk 일반화(cr4) 첫 투입.
+# H0·CR2[1→0]·CR3[2→0]·CR4[3→0]·H1·CR2[2→1]·CR3[3→1]·H2·CR2[3→2]·H3·SWAP(0,3)·SWAP(1,2). 봉인 qft4 재발견.
+```json id=app_meta
+{"id": "qft4_pipeline", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=16; w=np.exp(2j*np.pi/N)
+golden = np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)  # raw QFT4
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cs_gate.pg", "targets": [1,0]},
+           {"spec": "../modules/ct_gate.pg", "targets": [2,0]},
+           {"spec": "../modules/cr4_gate.pg", "targets": [3,0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/cs_gate.pg", "targets": [2,1]},
+           {"spec": "../modules/ct_gate.pg", "targets": [3,1]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/cs_gate.pg", "targets": [3,2]},
+           {"spec": "../modules/h_gate.pg", "targets": [3]},
+           {"spec": "../modules/swap2.pg", "targets": [0,3]},
+           {"spec": "../modules/swap2.pg", "targets": [1,2]}]}
+```

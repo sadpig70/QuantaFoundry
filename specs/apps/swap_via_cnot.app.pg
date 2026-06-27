@@ -1,0 +1,13 @@
+# swap_via_cnot — SWAP 을 cnot 3개로 재구성. 봉인 swap2 와 u_hash 일치해야.
+```json id=app_meta
+{"id": "swap_via_cnot", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.array([[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]],dtype=complex)  # SWAP
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0,1]},
+           {"spec": "../modules/cnot.pg", "targets": [1,0]},
+           {"spec": "../modules/cnot.pg", "targets": [0,1]}]}
+```

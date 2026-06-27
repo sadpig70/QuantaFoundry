@@ -1,0 +1,12 @@
+# toffoli — CCX (CCZ 앱의 3큐비트 부품)
+```python id=bloq
+from qualtran.bloqs.basic_gates import Toffoli
+bloq = Toffoli()
+```
+```python id=golden
+import numpy as np
+golden = np.eye(8, dtype=complex); golden[6,6]=0; golden[6,7]=1; golden[7,6]=1; golden[7,7]=0
+```
+```json id=meta
+{"id": "ccz_toffoli", "n_sys": 3, "n_anc": 0}
+```

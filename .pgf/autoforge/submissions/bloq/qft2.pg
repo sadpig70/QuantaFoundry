@@ -1,0 +1,7 @@
+```python id=bloq
+from qualtran.bloqs.qft.qft_text_book import QFTTextBook
+bloq = QFTTextBook(bitsize=2)
+```
+```json id=meta
+{"id": "qft2", "n_sys": 2, "n_anc": 0, "author": "persona-bloq"}
+```

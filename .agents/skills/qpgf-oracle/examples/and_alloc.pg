@@ -1,0 +1,36 @@
+# And — alloc ancilla 모듈 (isometry 봉인 예시)
+
+FTQC의 작업마(workhorse) And 게이트. `target` 큐비트를 |0>으로 **alloc**해
+`ctrl0 ∧ ctrl1`을 계산한다. tensor_contract는 입력 2큐비트(ctrl) → 출력 3큐비트
+(ctrl,ctrl,target)의 **비정방 isometry** (8×4)를 준다.
+
+종료 오라클은 이를 C3-iso 계약(`V†V = I₄`, 충실한 임베딩)으로 봉인한다.
+정본 컨벤션 = Qualtran raw big-endian (첫 레지스터=MSB).
+
+## Bloq
+
+```python id=bloq
+from qualtran.bloqs.mcmt.and_bloq import And
+bloq = And()
+```
+
+## Golden (해석적 8×4 isometry)
+
+입력 |c0 c1> → 출력 |c0 c1 (c0∧c1)> (big-endian: ctrl0=MSB, target=LSB).
+
+```python id=golden
+import numpy as np
+golden = np.zeros((8, 4), dtype=complex)
+for c0 in (0, 1):
+    for c1 in (0, 1):
+        col = (c0 << 1) | c1                 # 입력 인덱스 (2 큐비트)
+        t = c0 & c1                           # alloc target = AND
+        row = (c0 << 2) | (c1 << 1) | t       # 출력 인덱스 (3 큐비트)
+        golden[row, col] = 1.0
+```
+
+## Meta
+
+```json id=meta
+{"id": "and_alloc", "n_sys": 2, "n_anc": 1}
+```

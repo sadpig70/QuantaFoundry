@@ -1,0 +1,13 @@
+# oracle — Grover 2큐비트 oracle (정답 |11> 위상반전 = CZ)
+
+```python id=bloq
+from qualtran.bloqs.basic_gates import CZ
+bloq = CZ()
+```
+```python id=golden
+import numpy as np
+golden = np.diag([1, 1, 1, -1]).astype(complex)
+```
+```json id=meta
+{"id": "grover2_oracle", "n_sys": 2, "n_anc": 0}
+```

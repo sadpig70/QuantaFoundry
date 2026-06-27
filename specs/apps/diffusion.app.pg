@@ -1,0 +1,16 @@
+# diffusion — Grover 확산 D = (H⊗H)·reflect00·(H⊗H). reflect00 을 sub-app 으로 재귀 참조.
+```json id=app_meta
+{"id": "diffusion", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+golden = np.kron(H,H) @ np.diag([1,-1,-1,-1]).astype(complex) @ np.kron(H,H)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"app": "reflect00.app.pg"},
+           {"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

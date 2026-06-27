@@ -1,0 +1,7 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import CNOT
+bloq = CNOT()
+```
+```json id=meta
+{"id": "cnot", "n_sys": 2, "n_anc": 0, "author": "persona-bloq"}
+```

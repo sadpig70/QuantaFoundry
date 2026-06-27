@@ -1,0 +1,12 @@
+# h — 단일 큐비트 Hadamard (CCZ 앱의 1큐비트 부품)
+```python id=bloq
+from qualtran.bloqs.basic_gates import Hadamard
+bloq = Hadamard()
+```
+```python id=golden
+import numpy as np
+golden = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+```
+```json id=meta
+{"id": "ccz_h", "n_sys": 1, "n_anc": 0}
+```

@@ -1,0 +1,13 @@
+# big20 — 20큐비트 구조적 앱 (2큐비트 리프, dense 미실체화). Tier-0이면 2^20 불가.
+```json id=app_meta
+{"id": "big20", "n_sys": 20, "n_anc": 0}
+```
+```json id=plan
+{"tier": "structural", "steps": [
+  {"spec": "cnot.pg", "targets": [0, 1]},
+  {"spec": "cnot.pg", "targets": [5, 6]},
+  {"spec": "cnot.pg", "targets": [10, 11]},
+  {"spec": "cnot.pg", "targets": [14, 15]},
+  {"spec": "cnot.pg", "targets": [18, 19]}
+]}
+```

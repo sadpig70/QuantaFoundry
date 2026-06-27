@@ -1,0 +1,11 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import CZ
+bloq = CZ().controlled()
+```
+```python id=golden
+import numpy as np
+golden = np.eye(8, dtype=complex); golden[7,7]=-1
+```
+```json id=meta
+{"id": "ccz", "n_sys": 3, "n_anc": 0}
+```

@@ -1,0 +1,427 @@
+{
+  "runtimes": [
+    "deepseek",
+    "gemini_3",
+    "gpt-5",
+    "grok",
+    "kimi",
+    "qwen"
+  ],
+  "warnings": [],
+  "apps": {
+    "bell": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "b314b411bf3605ef723e160e3d0e021e06f7ebc54525b78ab6966c9f5eb7de9f",
+      "n_runtimes": 6,
+      "distribution": {
+        "b314b411bf36": 6
+      },
+      "reference": "b314b411bf3605ef723e160e3d0e021e06f7ebc54525b78ab6966c9f5eb7de9f",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "b314b411bf3605ef",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "b314b411bf3605ef",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "b314b411bf3605ef",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "b314b411bf3605ef",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "b314b411bf3605ef",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "b314b411bf3605ef",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "ghz3": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "72ec19077719e4c1d6b503d4844bad8e4ba7bf024900d8cab0f925a9f458d720",
+      "n_runtimes": 6,
+      "distribution": {
+        "72ec19077719": 6
+      },
+      "reference": "72ec19077719e4c1d6b503d4844bad8e4ba7bf024900d8cab0f925a9f458d720",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "72ec19077719e4c1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "72ec19077719e4c1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "72ec19077719e4c1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "72ec19077719e4c1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "72ec19077719e4c1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "72ec19077719e4c1",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "ghz4": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "d7eba2533e03ae4d3bb6b1364801d78f93066fa3a0e084f3a1326231417add7b",
+      "n_runtimes": 6,
+      "distribution": {
+        "d7eba2533e03": 6
+      },
+      "reference": "d7eba2533e03ae4d3bb6b1364801d78f93066fa3a0e084f3a1326231417add7b",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "d7eba2533e03ae4d",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "d7eba2533e03ae4d",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "d7eba2533e03ae4d",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "d7eba2533e03ae4d",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "d7eba2533e03ae4d",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "d7eba2533e03ae4d",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "reflect00": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864",
+      "n_runtimes": 6,
+      "distribution": {
+        "02dbf66f3a2e": 6
+      },
+      "reference": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "02dbf66f3a2ed576",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "02dbf66f3a2ed576",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "02dbf66f3a2ed576",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "02dbf66f3a2ed576",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "02dbf66f3a2ed576",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "02dbf66f3a2ed576",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "diffusion": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "067db05d7cb8783118c6a018cff3bacad229213e99535c2f7faf73bf8a651636",
+      "n_runtimes": 6,
+      "distribution": {
+        "067db05d7cb8": 6
+      },
+      "reference": "067db05d7cb8783118c6a018cff3bacad229213e99535c2f7faf73bf8a651636",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "067db05d7cb87831",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "067db05d7cb87831",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "067db05d7cb87831",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "067db05d7cb87831",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "067db05d7cb87831",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "067db05d7cb87831",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "grover2": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f",
+      "n_runtimes": 6,
+      "distribution": {
+        "eadf39198123": 6
+      },
+      "reference": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "eadf3919812307d8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "eadf3919812307d8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "eadf3919812307d8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "eadf3919812307d8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "eadf3919812307d8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "eadf3919812307d8",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "qft2": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+      "n_runtimes": 6,
+      "distribution": {
+        "90dbc731bb8c": 6
+      },
+      "reference": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+      "reference_kind": "sealed-gate",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "qft3": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+      "n_runtimes": 6,
+      "distribution": {
+        "340b5f344fae": 6
+      },
+      "reference": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+      "reference_kind": "sealed-gate",
+      "reference_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total": 8,
+    "established": 8,
+    "multimodel": 8,
+    "reference_match": 8
+  }
+}

@@ -1,0 +1,15 @@
+# hetero_app — 이종 인터페이스 앱: swap2(2q, 와이어[1,2]) 후 toffoli(3q)
+# 폭이 다른 부품을 한 3큐비트 레지스터에 조립. step의 targets로 임베딩.
+```json id=app_meta
+{"id": "hetero_app", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+SW = np.array([[1,0,0,0],[0,0,1,0],[0,1,0,0],[0,0,0,1]], dtype=complex)
+TOFF = np.eye(8, dtype=complex); TOFF[6,6]=0; TOFF[6,7]=1; TOFF[7,6]=1; TOFF[7,7]=0
+# 의도: 와이어[1,2]에 SWAP(=kron(I2,SW)) 적용 후 Toffoli
+golden = TOFF @ np.kron(np.eye(2), SW)
+```
+```json id=plan
+{"steps": [{"spec": "swap2.pg", "targets": [1, 2]}, {"spec": "toffoli.pg"}]}
+```

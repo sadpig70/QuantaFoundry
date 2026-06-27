@@ -1,0 +1,25 @@
+# cmul4_mod15 — controlled (×4 mod 15) = controlled 좌순환2 = cmul2_mod15 ∘ cmul2_mod15. Shor의 controlled-U^2.
+```json id=app_meta
+{"id": "cmul4_mod15", "n_sys": 5, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+F=np.zeros((8,8),complex)
+for i,o in enumerate([0,1,2,3,4,6,5,7]): F[o,i]=1
+def emb(U,t,n):
+    g=int(np.log2(U.shape[0])); M=np.zeros((2**n,2**n),complex)
+    for I in range(2**n):
+        for J in range(2**n):
+            ib=[(I>>(n-1-k))&1 for k in range(n)]; jb=[(J>>(n-1-k))&1 for k in range(n)]
+            if all(ib[k]==jb[k] for k in range(n) if k not in t):
+                gi=sum(ib[t[m]]<<(g-1-m) for m in range(g)); gj=sum(jb[t[m]]<<(g-1-m) for m in range(g))
+                M[I,J]=U[gi,gj]
+    return M
+chain=[emb(F,[0,1,2],5), emb(F,[0,2,3],5), emb(F,[0,3,4],5)]
+rot1=reduce(lambda a,b: b@a, chain)
+golden=rot1@rot1
+```
+```json id=plan
+{"steps": [{"app": "cmul2_mod15.app.pg"}, {"app": "cmul2_mod15.app.pg"}]}
+```

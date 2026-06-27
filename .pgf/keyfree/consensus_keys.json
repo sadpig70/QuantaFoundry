@@ -1,0 +1,314 @@
+{
+  "x_gate": {
+    "key": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "z_gate": {
+    "key": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "h_gate": {
+    "key": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "cnot": {
+    "key": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "swap2": {
+    "key": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "toffoli": {
+    "key": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "qft2": {
+    "key": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "qft3": {
+    "key": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:claude",
+      "proof:algebraic"
+    ],
+    "key_version": 1,
+    "frozen": true
+  },
+  "s_gate": {
+    "key": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "t_gate": {
+    "key": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "cz": {
+    "key": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "iswap": {
+    "key": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "cs_gate": {
+    "key": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "ccz": {
+    "key": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "qft4": {
+    "key": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "model:alibaba-qwen",
+      "model:deepseek-v4-pro",
+      "model:google-gemini-3.5-flash-high",
+      "model:moonshot-kimi",
+      "model:openai-gpt-5",
+      "model:xai-grok-code-fast-1",
+      "proof:formal-spec"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "cross-model+proof",
+    "n_independent_models": 6,
+    "ground_truth_match": true
+  },
+  "ct_gate": {
+    "key": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:sympy",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-T (control=first), qft3 pipeline 수요"
+  },
+  "cs_dag": {
+    "key": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:sympy",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-S-dagger (control=first), QPE inverse-QFT 수요"
+  },
+  "cr4_gate": {
+    "key": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:sympy",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-R4 = diag(1,1,1,exp(2πi/2^4))"
+  },
+  "cr5_gate": {
+    "key": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:sympy",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-R5 = diag(1,1,1,exp(2πi/2^5))"
+  },
+  "cr3_dag_gate": {
+    "key": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:sympy",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-R3† = diag(1,1,1,exp(-2πi/2^3))"
+  },
+  "cr4_dag_gate": {
+    "key": "4f91946338960687aa67371951b3cd1c9aad7ec3e6209971f07615872e25e848",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:sympy",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-R4† = diag(1,1,1,exp(-2πi/2^4))"
+  },
+  "fredkin": {
+    "key": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711",
+    "status": "ESTABLISHED",
+    "grade": "PROOF_BACKED",
+    "provenance": [
+      "proof:perm",
+      "structural:projector"
+    ],
+    "key_version": 1,
+    "frozen": true,
+    "source": "proof+structural",
+    "note": "controlled-SWAP (control=first), Shor modular-mult 수요"
+  }
+}

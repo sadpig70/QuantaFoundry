@@ -1,0 +1,15 @@
+# grover2 — Grover 2큐비트 1-iterate G = D∘O (정답 |11>). oracle=봉인 cz 재사용, diffusion=sub-app.
+# 3레벨 분해 트리: grover2 → {oracle:cz(리프), diffusion(sub-app) → reflect00(sub-app) → x_gate·cz}.
+```json id=app_meta
+{"id": "grover2", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+O = np.diag([1,1,1,-1]).astype(complex)                                       # oracle: |11> 위상반전 (=cz)
+D = np.kron(H,H) @ np.diag([1,-1,-1,-1]).astype(complex) @ np.kron(H,H)       # diffusion
+golden = D @ O                                                                # iterate = D∘O
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cz.pg"}, {"app": "diffusion.app.pg"}]}
+```

@@ -1,0 +1,13 @@
+# cz_rediscovered — CZ 를 h_gate·cnot 만으로 재구성. 봉인 cz 와 u_hash 일치해야(재발견 교차검증).
+```json id=app_meta
+{"id": "cz_rediscovered", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.diag([1,1,1,-1]).astype(complex)   # CZ 교과서 정의
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/cnot.pg"},
+           {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

@@ -1,0 +1,27 @@
+# cmul2_mod15 — controlled (×2 mod 15) on 4 work qubits = controlled 비트 좌순환1. Fredkin 3개로 분해.
+# 5q: q0=control, q1..q4=work(big-endian). Shor(N=15,a=2)의 controlled-U^1. modular mult를 sealed swap으로 정직 분해.
+```json id=app_meta
+{"id": "cmul2_mod15", "n_sys": 5, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+F=np.zeros((8,8),complex)
+for i,o in enumerate([0,1,2,3,4,6,5,7]): F[o,i]=1
+def emb(U,t,n):
+    g=int(np.log2(U.shape[0])); M=np.zeros((2**n,2**n),complex)
+    for I in range(2**n):
+        for J in range(2**n):
+            ib=[(I>>(n-1-k))&1 for k in range(n)]; jb=[(J>>(n-1-k))&1 for k in range(n)]
+            if all(ib[k]==jb[k] for k in range(n) if k not in t):
+                gi=sum(ib[t[m]]<<(g-1-m) for m in range(g)); gj=sum(jb[t[m]]<<(g-1-m) for m in range(g))
+                M[I,J]=U[gi,gj]
+    return M
+steps=[emb(F,[0,1,2],5), emb(F,[0,2,3],5), emb(F,[0,3,4],5)]
+golden=reduce(lambda a,b: b@a, steps)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/fredkin.pg", "targets": [0,1,2]},
+           {"spec": "../modules/fredkin.pg", "targets": [0,2,3]},
+           {"spec": "../modules/fredkin.pg", "targets": [0,3,4]}]}
+```

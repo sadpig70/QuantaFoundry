@@ -1,0 +1,314 @@
+{
+  "runtimes": [
+    "deepseek",
+    "gemini_3",
+    "grok",
+    "kimi"
+  ],
+  "warnings": [],
+  "apps": {
+    "iqft2": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        4
+      ],
+      "reference": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "ee8a6e651756": 1,
+        "8348a57b43f3": 3
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "ee8a6e65175690e2",
+          "depth": 4,
+          "agrees": false
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "8348a57b43f39dbc",
+          "depth": 4,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "8348a57b43f39dbc",
+          "depth": 4,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "8348a57b43f39dbc",
+          "depth": 4,
+          "agrees": true
+        }
+      ]
+    },
+    "iqft3": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        7
+      ],
+      "reference": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "74eacbc5b74d": 4
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "74eacbc5b74d9367",
+          "depth": 7,
+          "agrees": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "74eacbc5b74d9367",
+          "depth": 7,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "74eacbc5b74d9367",
+          "depth": 7,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "74eacbc5b74d9367",
+          "depth": 7,
+          "agrees": true
+        }
+      ]
+    },
+    "cmul2_mod15": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "3b9fdb52b48baaadfe13322949ecdff8e9ff4be6a80f4da34a740cfa7db792a2",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        3
+      ],
+      "reference": "3b9fdb52b48baaadfe13322949ecdff8e9ff4be6a80f4da34a740cfa7db792a2",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "3b9fdb52b48b": 4
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "3b9fdb52b48baaad",
+          "depth": 3,
+          "agrees": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "3b9fdb52b48baaad",
+          "depth": 3,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "3b9fdb52b48baaad",
+          "depth": 3,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "3b9fdb52b48baaad",
+          "depth": 3,
+          "agrees": true
+        }
+      ]
+    },
+    "cmul4_mod15": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "8b86131c2bbf1d1b04463588961061cf83d20bb7fb39da531d8758c4b6741ea1",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        2,
+        6
+      ],
+      "reference": "8b86131c2bbf1d1b04463588961061cf83d20bb7fb39da531d8758c4b6741ea1",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "8b86131c2bbf": 4
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "8b86131c2bbf1d1b",
+          "depth": 2,
+          "agrees": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "8b86131c2bbf1d1b",
+          "depth": 2,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "8b86131c2bbf1d1b",
+          "depth": 6,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "8b86131c2bbf1d1b",
+          "depth": 2,
+          "agrees": true
+        }
+      ]
+    },
+    "qpe_s": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "f222bc16eef5d891a5de9f0664b1ef3b1cf89752c4e689db24e2087f112c861f",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        8
+      ],
+      "reference": "f222bc16eef5d891a5de9f0664b1ef3b1cf89752c4e689db24e2087f112c861f",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "da99a145d4f3": 1,
+        "f222bc16eef5": 3
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "da99a145d4f3f988",
+          "depth": 8,
+          "agrees": false
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "f222bc16eef5d891",
+          "depth": 8,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "f222bc16eef5d891",
+          "depth": 8,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "f222bc16eef5d891",
+          "depth": 8,
+          "agrees": true
+        }
+      ]
+    },
+    "qpe_t": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "d20776ca44d88feb8c5426a7697c9600b137da60daa4553c8e924a252f4bd270",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        13
+      ],
+      "reference": "d20776ca44d88feb8c5426a7697c9600b137da60daa4553c8e924a252f4bd270",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "d20776ca44d8": 4
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "d20776ca44d88feb",
+          "depth": 13,
+          "agrees": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "d20776ca44d88feb",
+          "depth": 13,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "d20776ca44d88feb",
+          "depth": 13,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "d20776ca44d88feb",
+          "depth": 13,
+          "agrees": true
+        }
+      ]
+    },
+    "shor15_a2": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "c8088d7dc3a03bb408fab2e6d9941b3f3e7ad8e2c608ae5d7575e80491156403",
+      "n_runtimes": 4,
+      "distinct_circuits_depths": [
+        15,
+        19
+      ],
+      "reference": "c8088d7dc3a03bb408fab2e6d9941b3f3e7ad8e2c608ae5d7575e80491156403",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "distribution": {
+        "c8088d7dc3a0": 4
+      },
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "c8088d7dc3a03bb4",
+          "depth": 15,
+          "agrees": true
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "c8088d7dc3a03bb4",
+          "depth": 15,
+          "agrees": true
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "c8088d7dc3a03bb4",
+          "depth": 19,
+          "agrees": true
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "c8088d7dc3a03bb4",
+          "depth": 15,
+          "agrees": true
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total": 7,
+    "established": 7,
+    "reference_match": 7
+  }
+}

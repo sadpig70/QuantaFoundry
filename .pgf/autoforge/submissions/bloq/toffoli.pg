@@ -1,0 +1,7 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import Toffoli
+bloq = Toffoli()
+```
+```json id=meta
+{"id": "toffoli", "n_sys": 3, "n_anc": 0, "author": "persona-bloq"}
+```

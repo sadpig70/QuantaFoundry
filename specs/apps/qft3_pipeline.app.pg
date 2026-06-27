@@ -1,0 +1,19 @@
+# qft3_pipeline — QFT3 게이트 회로 분해. controlled-T(ct_gate, capability-gap 보강)가 처음 투입.
+# H0·CS[1→0]·CT[2→0]·H1·CS[2→1]·H2·SWAP(0,2). 봉인 qft3 와 u_hash 일치해야(재발견 교차검증).
+```json id=app_meta
+{"id": "qft3_pipeline", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=8; w=np.exp(2j*np.pi/N)
+golden = np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)  # raw QFT3
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cs_gate.pg", "targets": [1,0]},
+           {"spec": "../modules/ct_gate.pg", "targets": [2,0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/cs_gate.pg", "targets": [2,1]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/swap2.pg", "targets": [0,2]}]}
+```

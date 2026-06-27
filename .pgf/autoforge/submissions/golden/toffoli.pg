@@ -1,0 +1,18 @@
+```python id=golden
+import numpy as np
+
+# Toffoli (CCX), big-endian basis |c1 c0 t> ordered 000,001,...,111 (index = 4*c1 + 2*c0 + t).
+# First-principles: target bit t flips iff both controls are 1; otherwise identity.
+# Construct the permutation analytically from the boolean map (c1,c0,t) -> (c1,c0, t XOR (c1 AND c0)).
+golden = np.zeros((8, 8), dtype=complex)
+for i in range(8):
+    c1 = (i >> 2) & 1          # MSB = first register (control 1)
+    c0 = (i >> 1) & 1          # middle register (control 0)
+    t = i & 1                  # LSB = last register (target)
+    t_out = t ^ (c1 & c0)      # flip target only when both controls are 1
+    j = (c1 << 2) | (c0 << 1) | t_out   # output basis index
+    golden[j, i] = 1.0         # <j|U|i> = 1 for the mapped basis state
+```
+```json id=meta
+{"id": "toffoli", "n_sys": 3, "n_anc": 0, "author": "persona-golden"}
+```

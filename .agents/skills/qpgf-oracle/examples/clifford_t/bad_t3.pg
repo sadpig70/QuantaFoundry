@@ -1,0 +1,20 @@
+# Clifford+T negative: bloq에 T^3(≠I) 추가 → golden과 비등가 → 거부
+```python id=bloq
+from qualtran import BloqBuilder
+from qualtran.bloqs.basic_gates import Hadamard, TGate, CNOT
+bb = BloqBuilder()
+q0 = bb.add_register("q0", 1); q1 = bb.add_register("q1", 1)
+q0 = bb.add(Hadamard(), q=q0); q0 = bb.add(TGate(), q=q0)
+q0, q1 = bb.add(CNOT(), ctrl=q0, target=q1)
+for _ in range(3):          # T^3 ≠ I → 의미 변경
+    q1 = bb.add(TGate(), q=q1)
+bloq = bb.finalize(q0=q0, q1=q1)
+```
+```python id=golden
+import cirq
+q = cirq.LineQubit.range(2)
+golden = cirq.Circuit([cirq.H(q[0]), cirq.T(q[0]), cirq.CNOT(q[0], q[1])])
+```
+```json id=meta
+{"id": "bad_t3", "n_sys": 2, "n_anc": 0, "tier": "clifford+t"}
+```

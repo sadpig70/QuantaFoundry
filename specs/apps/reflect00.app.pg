@@ -1,0 +1,15 @@
+# reflect00 — |00> 기준 반사 2|00><00|-I. (X⊗X)·CZ·(X⊗X). 봉인 x_gate·cz 재조립.
+```json id=app_meta
+{"id": "reflect00", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.diag([1,-1,-1,-1]).astype(complex)   # 2|00><00|-I (전역위상 흡수)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [0]},
+           {"spec": "../modules/x_gate.pg", "targets": [1]},
+           {"spec": "../modules/cz.pg"},
+           {"spec": "../modules/x_gate.pg", "targets": [0]},
+           {"spec": "../modules/x_gate.pg", "targets": [1]}]}
+```

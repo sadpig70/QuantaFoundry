@@ -1,0 +1,17 @@
+# Z — Pauli-Z (단일 큐비트 위상 게이트)
+
+compute-uncompute 중간 연산 등에 쓰는 기본 봉인 모듈. Z = diag(1, -1).
+
+```python id=bloq
+from qualtran.bloqs.basic_gates import ZGate
+bloq = ZGate()
+```
+
+```python id=golden
+import numpy as np
+golden = np.array([[1, 0], [0, -1]], dtype=complex)
+```
+
+```json id=meta
+{"id": "z_gate", "n_sys": 1, "n_anc": 0}
+```

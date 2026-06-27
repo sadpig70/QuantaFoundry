@@ -1,0 +1,893 @@
+{
+  "runtimes": [
+    "deepseek",
+    "gemini_3",
+    "gpt-5",
+    "grok",
+    "kimi",
+    "qwen"
+  ],
+  "exec_code": true,
+  "warnings": [],
+  "intents": {
+    "x_gate": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+      "n_runtimes": 6,
+      "distribution": {
+        "7dc1df52d07d": 6
+      },
+      "ground_truth": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "7dc1df52d07dd742",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "7dc1df52d07dd742",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "7dc1df52d07dd742",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "7dc1df52d07dd742",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "7dc1df52d07dd742",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "7dc1df52d07dd742",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+      "calibration_pass": true
+    },
+    "z_gate": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4",
+      "n_runtimes": 6,
+      "distribution": {
+        "1e3c0f2fa747": 6
+      },
+      "ground_truth": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "1e3c0f2fa747f4fa",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "1e3c0f2fa747f4fa",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "1e3c0f2fa747f4fa",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "1e3c0f2fa747f4fa",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "1e3c0f2fa747f4fa",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "1e3c0f2fa747f4fa",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4",
+      "calibration_pass": true
+    },
+    "h_gate": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+      "n_runtimes": 6,
+      "distribution": {
+        "0d6a0b7a9a19": 6
+      },
+      "ground_truth": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "0d6a0b7a9a19ad2e",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "0d6a0b7a9a19ad2e",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "0d6a0b7a9a19ad2e",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "0d6a0b7a9a19ad2e",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "0d6a0b7a9a19ad2e",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "0d6a0b7a9a19ad2e",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+      "calibration_pass": true
+    },
+    "cnot": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+      "n_runtimes": 6,
+      "distribution": {
+        "3913bcef764f": 6
+      },
+      "ground_truth": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+      "calibration_pass": true
+    },
+    "swap2": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+      "n_runtimes": 6,
+      "distribution": {
+        "e6255e2f105a": 6
+      },
+      "ground_truth": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "e6255e2f105a9782",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "e6255e2f105a9782",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "e6255e2f105a9782",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "e6255e2f105a9782",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "e6255e2f105a9782",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "e6255e2f105a9782",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+      "calibration_pass": true
+    },
+    "toffoli": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+      "n_runtimes": 6,
+      "distribution": {
+        "e663b43043af": 6
+      },
+      "ground_truth": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "e663b43043af6b78",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "e663b43043af6b78",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "e663b43043af6b78",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "e663b43043af6b78",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "e663b43043af6b78",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "e663b43043af6b78",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+      "calibration_pass": true
+    },
+    "qft2": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+      "n_runtimes": 6,
+      "distribution": {
+        "90dbc731bb8c": 6
+      },
+      "ground_truth": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "90dbc731bb8c7e80",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+      "calibration_pass": true
+    },
+    "qft3": {
+      "round": "A",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+      "n_runtimes": 6,
+      "distribution": {
+        "340b5f344fae": 6
+      },
+      "ground_truth": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "340b5f344fae9b99",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ],
+      "known_seal": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+      "calibration_pass": true
+    },
+    "s_gate": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+      "n_runtimes": 6,
+      "distribution": {
+        "7c739c3b4c3a": 6
+      },
+      "ground_truth": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "t_gate": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea",
+      "n_runtimes": 6,
+      "distribution": {
+        "3f0eeac929b0": 6
+      },
+      "ground_truth": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "3f0eeac929b02fe1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "3f0eeac929b02fe1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "3f0eeac929b02fe1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "3f0eeac929b02fe1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "3f0eeac929b02fe1",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "3f0eeac929b02fe1",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "cz": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+      "n_runtimes": 6,
+      "distribution": {
+        "8d39767cd8c3": 6
+      },
+      "ground_truth": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "iswap": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180",
+      "n_runtimes": 6,
+      "distribution": {
+        "b5b50c52e0c4": 6
+      },
+      "ground_truth": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "b5b50c52e0c47233",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "b5b50c52e0c47233",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "b5b50c52e0c47233",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "b5b50c52e0c47233",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "b5b50c52e0c47233",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "b5b50c52e0c47233",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "cs_gate": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+      "n_runtimes": 6,
+      "distribution": {
+        "a2193b0fcfb6": 6
+      },
+      "ground_truth": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "ccz": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+      "n_runtimes": 6,
+      "distribution": {
+        "be7749314540": 6
+      },
+      "ground_truth": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "be7749314540f6a6",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "be7749314540f6a6",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "be7749314540f6a6",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "be7749314540f6a6",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "be7749314540f6a6",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "be7749314540f6a6",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    },
+    "qft4": {
+      "round": "B",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8",
+      "n_runtimes": 6,
+      "distribution": {
+        "d997d21f5cfb": 6
+      },
+      "ground_truth": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8",
+      "ground_truth_match": true,
+      "escalation": "",
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "weights_id": "deepseek-v4-pro",
+          "u_hash": "d997d21f5cfb1487",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "gemini",
+          "weights_id": "google-gemini-3.5-flash-high",
+          "u_hash": "d997d21f5cfb1487",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "codex",
+          "weights_id": "openai-gpt-5",
+          "u_hash": "d997d21f5cfb1487",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "grok",
+          "weights_id": "xai-grok-code-fast-1",
+          "u_hash": "d997d21f5cfb1487",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "kimi",
+          "weights_id": "moonshot-kimi",
+          "u_hash": "d997d21f5cfb1487",
+          "agrees": true,
+          "self_consistent": true
+        },
+        {
+          "runtime": "qwen",
+          "weights_id": "alibaba-qwen",
+          "u_hash": "d997d21f5cfb1487",
+          "agrees": true,
+          "self_consistent": true
+        }
+      ]
+    }
+  },
+  "summary": {
+    "round_a": 8,
+    "calibration_pass": 8,
+    "round_b": 7,
+    "established_b": 7,
+    "multimodel_b": 7,
+    "ground_truth_match_total": 15
+  }
+}

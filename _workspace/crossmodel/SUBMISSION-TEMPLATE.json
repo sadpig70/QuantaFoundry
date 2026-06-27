@@ -1,0 +1,28 @@
+{
+  "_comment": "EXAMPLE submission. Copy this shape, set runtime/weights_id to your own, and fill `submissions` with ONE object per intent in intents.json (same order). The example below shows the `cz` intent fully filled so you can see the exact format. DELETE this _comment and the example object, then add your real answers. Numbers must be plain JSON numbers, not strings.",
+  "runtime": "example",
+  "weights_id": "vendor-model",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "cz",
+      "n_sys": 2,
+      "n_anc": 0,
+      "golden_real": [
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, -1]
+      ],
+      "golden_imag": [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+      ],
+      "golden_code": "import numpy as np\n# CZ: -1 phase iff both qubits |1>; diagonal in computational basis (big-endian |q0 q1>)\ngolden = np.diag([1, 1, 1, -1]).astype(complex)",
+      "construction_method": "Diagonal operator placing -1 on the |11> basis state (index 3), identity elsewhere.",
+      "self_check": "U @ U.conj().T == I (4x4), shape (4,4), unitary verified."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# ── .agents: qpgf-oracle 번들만 공개 (나머지 스킬·verify_skills 등 비공개) ──
+.agents/*
+!.agents/skills
+.agents/skills/*
+!.agents/skills/qpgf-oracle
+.qwen/
+
+# ── 워크스페이스 부트스트랩 / 내부 진행추적 (비공개) ──
+AGENTS.md
+CLAUDE.md
+PROJECT_STATUS.md
+handoff.md
+
+# ── 내부 분석·리뷰·임시·백업 (비공개) ──
+# _workspace 루트(리뷰·통합개선안·실험)는 비공개. 단 cross-model 재현 증거
+# (_workspace/crossmodel)는 기술서가 인용하므로 공개. _legacy = 정욱님 한글 백업.
+_workspace/*
+!_workspace/crossmodel/
+_legacy/
+
+# cross-model 증거 내부의 임시·격리물은 제외
+_workspace/crossmodel/_*.py
+_workspace/crossmodel/**/_quarantine/
+
+# ── 작업 캐시·스크래치 (중간 봉인물; 정식본은 registry/·specs/) ──
+.pgf/autoforge/_store/
+.pgf/keyfree/_seal_store/
+**/_app_store/
+**/_rerun/
+**/_pg/

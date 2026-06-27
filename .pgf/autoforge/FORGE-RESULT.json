@@ -1,0 +1,134 @@
+{
+  "results": [
+    {
+      "id": "cnot",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      }
+    },
+    {
+      "id": "h_gate",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      }
+    },
+    {
+      "id": "qft2",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+      "tier": null,
+      "resource": {
+        "and_bloq": 1,
+        "clifford": 5,
+        "measurement": 1,
+        "total_t": 4
+      }
+    },
+    {
+      "id": "qft3",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+      "tier": null,
+      "resource": {
+        "and_bloq": 3,
+        "clifford": 9,
+        "measurement": 3,
+        "t": 1,
+        "total_t": 13
+      }
+    },
+    {
+      "id": "swap2",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      }
+    },
+    {
+      "id": "toffoli",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+      "tier": null,
+      "resource": {
+        "toffoli": 1,
+        "total_t": 4
+      }
+    },
+    {
+      "id": "x_gate",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      }
+    },
+    {
+      "id": "z_gate",
+      "cross_independent": true,
+      "golden_author": "persona-golden",
+      "bloq_author": "persona-bloq",
+      "deterministic": true,
+      "registered": true,
+      "status": "SEALED",
+      "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4",
+      "tier": null,
+      "resource": {
+        "clifford": 1,
+        "total_t": 0
+      }
+    }
+  ],
+  "sealed": 8,
+  "total": 8,
+  "cross_independent": 8,
+  "deterministic": 8,
+  "registered": 8
+}

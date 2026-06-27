@@ -1,0 +1,29 @@
+{
+  "_comment": "QuantaFoundry app-level cross-model intents. Author the FULL application unitary U[out,in] (2^n_sys square, complex) from the application's standard definition — big-endian (first register = MSB; control = first). Same conventions as the gate round. These are application *intents* (app_golden); the decomposition into sealed modules is QuantaFoundry's job. See APP-GOLDEN-BRIEF.md.",
+  "convention": {
+    "endianness": "big-endian, first register = MSB",
+    "controlled_gates": "first register = control, last register = target",
+    "matrix": "U[out, in] = <out|U|in>",
+    "dtype": "complex",
+    "global_phase": "free (normalized away before hashing)",
+    "precision_lattice": 1e-9
+  },
+  "intents": [
+    { "id": "bell", "n_sys": 2, "n_anc": 0, "name": "Bell-state preparation",
+      "definition": "Two-qubit Bell preparation unitary U = CNOT*(H tensor I): apply Hadamard to the first qubit, then CNOT (control=first, target=second). It maps |00> -> (|00>+|11>)/sqrt(2)." },
+    { "id": "ghz3", "n_sys": 3, "n_anc": 0, "name": "GHZ-3 preparation",
+      "definition": "Three-qubit GHZ preparation unitary: Hadamard on qubit 0, then CNOT(0->1), then CNOT(1->2). Maps |000> -> (|000>+|111>)/sqrt(2)." },
+    { "id": "ghz4", "n_sys": 4, "n_anc": 0, "name": "GHZ-4 preparation",
+      "definition": "Four-qubit GHZ preparation unitary: Hadamard on qubit 0, then CNOT(0->1), CNOT(1->2), CNOT(2->3). Maps |0000> -> (|0000>+|1111>)/sqrt(2)." },
+    { "id": "reflect00", "n_sys": 2, "n_anc": 0, "name": "Reflection about |00>",
+      "definition": "Two-qubit reflection operator 2|00><00| - I: +1 on |00>, -1 on the other three basis states. (Global phase is free, so diag(1,-1,-1,-1) and diag(-1,1,1,1) are equivalent.)" },
+    { "id": "diffusion", "n_sys": 2, "n_anc": 0, "name": "Grover diffusion (2 qubits)",
+      "definition": "Two-qubit Grover diffusion operator D = (H tensor H) * (2|00><00| - I) * (H tensor H)." },
+    { "id": "grover2", "n_sys": 2, "n_anc": 0, "name": "Grover iterate (2 qubits, mark |11>)",
+      "definition": "Two-qubit Grover single iterate G = D * O, where O = diag(1,1,1,-1) marks |11> and D is the Grover diffusion operator. Applied to the uniform superposition it produces |11>." },
+    { "id": "qft2", "n_sys": 2, "n_anc": 0, "name": "QFT-2 (pipeline target)",
+      "definition": "Quantum Fourier Transform on 2 qubits. U[j,k] = (1/sqrt(N)) * exp(2*pi*i*j*k/N), N=4, big-endian integer indexing, NO output bit-reversal (raw QFT matrix). This is the intent of the QFT-2 pipeline decomposition (H + controlled-phase + swap)." },
+    { "id": "qft3", "n_sys": 3, "n_anc": 0, "name": "QFT-3 (pipeline target)",
+      "definition": "Quantum Fourier Transform on 3 qubits. U[j,k] = (1/sqrt(N)) * exp(2*pi*i*j*k/N), N=8, big-endian integer indexing, NO output bit-reversal (raw QFT matrix). Intent of the QFT-3 pipeline." }
+  ]
+}

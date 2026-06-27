@@ -1,0 +1,13 @@
+```python id=bloq
+import cirq
+from qualtran.cirq_interop import CirqGateAsBloq
+bloq = CirqGateAsBloq(cirq.ISWAP)
+```
+```python id=golden
+import numpy as np
+golden = np.zeros((4,4), dtype=complex)
+golden[0,0]=1; golden[2,1]=1j; golden[1,2]=1j; golden[3,3]=1
+```
+```json id=meta
+{"id": "iswap", "n_sys": 2, "n_anc": 0}
+```

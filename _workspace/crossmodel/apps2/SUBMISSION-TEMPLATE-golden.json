@@ -1,0 +1,7 @@
+{ "_comment": "app-golden 제출 예시. submissions/ 에 <runtime>.app.json. iqft2 채워둠 — 삭제 후 본인 답으로.",
+  "runtime": "example", "weights_id": "vendor-model", "convention_ack": true,
+  "submissions": [ { "id": "iqft2", "n_sys": 2, "n_anc": 0,
+    "app_golden_real": [[0.5,0.5,0.5,0.5],[0.5,0,-0.5,0],[0.5,-0.5,0.5,-0.5],[0.5,0,-0.5,0]],
+    "app_golden_imag": [[0,0,0,0],[0,0.5,0,-0.5],[0,0,0,0],[0,-0.5,0,0.5]],
+    "app_golden_code": "import numpy as np\nN=4;w=np.exp(2j*np.pi/N)\nQ=np.array([[w**(j*k) for k in range(N)] for j in range(N)])/2\ngolden=Q.conj().T",
+    "construction_method": "conjugate transpose of raw QFT2", "self_check": "unitary ok" } ] }
