@@ -1,0 +1,233 @@
+{
+  "tool": "backend_adapter (§5[8](B) simulator execution layer)",
+  "honesty_boundary": "execution(simulation) != verification(sealing); outputs are illustrative only (spec §8.4); registry/oracle/frozen-keys untouched; only already-sealed Tier-0 apps run; hardware(QPU) out of scope (ideal statevector only).",
+  "backends": [
+    "numpy_statevector",
+    "cirq_statevector"
+  ],
+  "determinism": "ideal statevector deterministic; shot sampling seeded (seed=20260627, shots=4096); numpy<->cirq agree atol=1e-6.",
+  "seed": 20260627,
+  "shots": 4096,
+  "negative_gate_test": {
+    "real_hash_ne_tampered": true,
+    "gate_logic": "load_sealed_app 는 hash_unitary(U)!=sealed.u_hash 시 SealGateError"
+  },
+  "demos": [
+    {
+      "app_id": "ghz3",
+      "n_sys": 3,
+      "u_hash": "72ec19077719e4c1d6b503d4844bad8e4ba7bf024900d8cab0f925a9f458d720",
+      "tier": 0,
+      "sealed_gate_passed": true,
+      "behavioral_claim": "GHZ 상관(전 큐비트 +1, 두 peak 0.5/0.5)",
+      "observed": {
+        "init": "zero",
+        "probabilities": {
+          "000": 0.5,
+          "111": 0.5
+        },
+        "ZiZj_correlations": {
+          "Z0Z1": 1.0,
+          "Z0Z2": 1.0
+        },
+        "shot_sample_seeded": {
+          "111": 2063,
+          "000": 2033
+        },
+        "shot_reproducible": true,
+        "backends_agree": true
+      },
+      "expectation_checks": {
+        "ghz_two_peaks": true,
+        "all_correlations_plus1": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "app_id": "ghz4",
+      "n_sys": 4,
+      "u_hash": "d7eba2533e03ae4d3bb6b1364801d78f93066fa3a0e084f3a1326231417add7b",
+      "tier": 0,
+      "sealed_gate_passed": true,
+      "behavioral_claim": "GHZ 상관(전 큐비트 +1, 두 peak 0.5/0.5)",
+      "observed": {
+        "init": "zero",
+        "probabilities": {
+          "0000": 0.5,
+          "1111": 0.5
+        },
+        "ZiZj_correlations": {
+          "Z0Z1": 1.0,
+          "Z0Z2": 1.0,
+          "Z0Z3": 1.0
+        },
+        "shot_sample_seeded": {
+          "1111": 2063,
+          "0000": 2033
+        },
+        "shot_reproducible": true,
+        "backends_agree": true
+      },
+      "expectation_checks": {
+        "ghz_two_peaks": true,
+        "all_correlations_plus1": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "app_id": "grover2",
+      "n_sys": 2,
+      "u_hash": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f",
+      "tier": 0,
+      "sealed_gate_passed": true,
+      "behavioral_claim": "Grover 1-iterate 가 |11> 로 증폭(P≈1)",
+      "observed": {
+        "init": "uniform",
+        "probabilities": {
+          "11": 1.0
+        },
+        "P_target": 1.0,
+        "target": "11",
+        "shot_sample_seeded": {
+          "11": 4096
+        },
+        "backends_agree": true
+      },
+      "expectation_checks": {
+        "amplifies_target_to_1": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "app_id": "wstate3",
+      "n_sys": 3,
+      "u_hash": "588e269c672ef26043caf9592bb0fc86840f83dafe3088bd096b0e2409bbb2f3",
+      "tier": 0,
+      "sealed_gate_passed": true,
+      "behavioral_claim": "W_3 균등분포(단일여기 3개 각 1/3)",
+      "observed": {
+        "init": "zero",
+        "probabilities": {
+          "001": 0.333333333,
+          "010": 0.333333333,
+          "100": 0.333333333
+        },
+        "hamming1_states": 3,
+        "each_prob": 0.333333333,
+        "shot_sample_seeded": {
+          "100": 1355,
+          "001": 1375,
+          "010": 1366
+        },
+        "backends_agree": true
+      },
+      "expectation_checks": {
+        "uniform_over_single_excitation": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "app_id": "wstate4",
+      "n_sys": 4,
+      "u_hash": "946aabc8bc4f3a6cf0e54b4e62c506e0590d67ba270768cf250dad9b3de8c19d",
+      "tier": 0,
+      "sealed_gate_passed": true,
+      "behavioral_claim": "W_4 균등분포(단일여기 4개 각 1/4)",
+      "observed": {
+        "init": "zero",
+        "probabilities": {
+          "0001": 0.25,
+          "0010": 0.25,
+          "0100": 0.25,
+          "1000": 0.25
+        },
+        "hamming1_states": 4,
+        "each_prob": 0.25,
+        "shot_sample_seeded": {
+          "1000": 1012,
+          "0001": 1035,
+          "0010": 998,
+          "0100": 1051
+        },
+        "backends_agree": true
+      },
+      "expectation_checks": {
+        "uniform_over_single_excitation": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "app_id": "shor21_a2",
+      "n_sys": 12,
+      "u_hash": "c47668eaaf804ed2bde75d1f846a80f25921e7fc10cd0a657fe280b7fb96d423",
+      "tier": 0,
+      "sealed_gate_passed": true,
+      "behavioral_claim": "Shor N=21: counting 측정→연속분수→r=6→21=3×7",
+      "observed": {
+        "init": "work=|1> (basis 1)",
+        "register_layout": "counting q0..q6 (7) | work q7..q11 (5)",
+        "counting_peaks_top8": [
+          {
+            "value": 64,
+            "phase": 0.5,
+            "prob": 0.166748
+          },
+          {
+            "value": 0,
+            "phase": 0.0,
+            "prob": 0.166748
+          },
+          {
+            "value": 107,
+            "phase": 0.835938,
+            "prob": 0.114036
+          },
+          {
+            "value": 85,
+            "phase": 0.664062,
+            "prob": 0.114036
+          },
+          {
+            "value": 43,
+            "phase": 0.335938,
+            "prob": 0.114036
+          },
+          {
+            "value": 21,
+            "phase": 0.164062,
+            "prob": 0.114036
+          },
+          {
+            "value": 86,
+            "phase": 0.671875,
+            "prob": 0.028549
+          },
+          {
+            "value": 106,
+            "phase": 0.828125,
+            "prob": 0.028549
+          }
+        ],
+        "period_votes": {
+          "2": 0.166748,
+          "1": 0.166748,
+          "6": 0.256622,
+          "3": 0.256622
+        },
+        "recovered_period": 6,
+        "factors": [
+          3,
+          7
+        ],
+        "P_r6": 0.256622,
+        "backends_agree": true
+      },
+      "expectation_checks": {
+        "period_is_6": true,
+        "factors_3_and_7": true
+      },
+      "all_expectations_met": true
+    }
+  ],
+  "all_ok": true
+}
