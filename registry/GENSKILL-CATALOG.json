@@ -1,0 +1,49 @@
+{
+  "schema": "genskill-catalog/v1",
+  "count": 3,
+  "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행.",
+  "skills": [
+    {
+      "version": "1",
+      "produces": "app",
+      "param": "n:int>=2",
+      "kind": "entangling scaling (GHZ, linear CNOT ladder)",
+      "golden_method": "H(q0) then CNOT(i,i+1) ladder; kron+emb composition over sealed h_gate,cnot",
+      "required_modules": [
+        "h_gate",
+        "cnot"
+      ],
+      "instance_pattern": "^ghz(\\d+)$",
+      "byte_frozen": true,
+      "id": "ghz_linear"
+    },
+    {
+      "version": "1",
+      "produces": "app",
+      "param": "n:int>=2",
+      "kind": "1D cluster state (path graph, MBQC resource)",
+      "golden_method": "H^⊗n then CZ(i,i+1) chain over sealed h_gate,cz",
+      "required_modules": [
+        "h_gate",
+        "cz"
+      ],
+      "instance_pattern": "^cluster(\\d+)$",
+      "byte_frozen": true,
+      "id": "cluster_line"
+    },
+    {
+      "version": "1",
+      "produces": "app",
+      "param": "n:int>=3",
+      "kind": "ring cluster state (cycle graph state, MBQC resource)",
+      "golden_method": "H^⊗n then CZ on cycle edges (path + closing edge) via general graph_state",
+      "required_modules": [
+        "h_gate",
+        "cz"
+      ],
+      "instance_pattern": "^ring(\\d+)$",
+      "byte_frozen": false,
+      "id": "cluster_ring"
+    }
+  ]
+}

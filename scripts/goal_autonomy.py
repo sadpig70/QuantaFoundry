@@ -17,10 +17,15 @@ import os, sys, json, re
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
 sys.path.insert(0, os.path.join(ROOT, ".agents", "skills", "qpgf-oracle", "scripts"))
+sys.path.insert(0, HERE)   # genskills (생성-스킬 라이브러리) 동거 디렉터리
 APPS = os.path.join(ROOT, "specs", "apps")
 MODREG = os.path.join(ROOT, "registry", "modules")
 APPREG = os.path.join(ROOT, "registry", "apps")
 REG = os.path.join(ROOT, "registry")
+
+# 생성 *방법* 은 genskills 라이브러리(1급 자산)에서 가져온다 — goal_autonomy 는 그 소비자.
+# (이전엔 gen_ghz/gen_cluster 가 여기 박혀 있었음; §5[8](A) 로 라이브러리화)
+from genskills import gen_ghz, gen_cluster
 
 
 def sealed_apps():
@@ -29,54 +34,6 @@ def sealed_apps():
 
 def sealed_modules():
     return set(f[:-12] for f in os.listdir(MODREG) if f.endswith(".sealed.json"))
-
-
-# ── family extension 생성기: family 이름 → (member n 의 spec 생성 함수, 의존모듈, 알고리즘가치) ──
-def gen_ghz(n):
-    """GHZ_n = H(0) · CNOT(0,1)·CNOT(1,2)·…·CNOT(n-2,n-1). 봉인 h_gate+cnot 재조립."""
-    golden = (
-        "import numpy as np\n"
-        "H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)\n"
-        "CN=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)\n"
-        "def emb(U,t,n):\n"
-        "    left=np.eye(1<<t[0]); right=np.eye(1<<(n-t[-1]-1))\n"
-        "    return np.kron(np.kron(left,U),right)\n"
-        f"g=np.kron(H,np.eye(1<<{n-1}))\n"
-        f"for i in range({n-1}): g=emb(CN,[i,i+1],{n})@g\n"
-        "golden=g")
-    steps = [{"spec": "../modules/h_gate.pg", "targets": [0]}]
-    steps += [{"spec": "../modules/cnot.pg", "targets": [i, i + 1]} for i in range(n - 1)]
-    plan = '{"steps": [' + ",\n           ".join(json.dumps(s) for s in steps) + "]}"
-    header = (f"# ghz{n} — GHZ_{n} 준비 ({n}큐비트). goal-autonomy 자율 생성 (family extension, human seed 0).\n"
-              f"# 봉인 h_gate+cnot 재조립. 새 모듈 0 — registry {n}큐비트로 O(1) marginal 확장(compounding).\n")
-    spec = (header + f'```json id=app_meta\n{{"id": "ghz{n}", "n_sys": {n}, "n_anc": 0}}\n```\n'
-            "```python id=app_golden\n" + golden + "\n```\n"
-            "```json id=plan\n" + plan + "\n```\n")
-    return spec, ["h_gate", "cnot"]
-
-
-def gen_cluster(n):
-    """1D cluster state_n = (∏ CZ(i,i+1)) · H^⊗n. MBQC 자원. 봉인 h_gate+cz 재조립."""
-    golden = (
-        "import numpy as np\n"
-        "H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)\n"
-        "CZ=np.diag([1,1,1,-1]).astype(complex)\n"
-        "def emb(U,t,n):\n"
-        "    left=np.eye(1<<t[0]); right=np.eye(1<<(n-t[-1]-1))\n"
-        "    return np.kron(np.kron(left,U),right)\n"
-        "g=np.eye(1)\n"
-        f"for _ in range({n}): g=np.kron(g,H)\n"
-        f"for i in range({n-1}): g=emb(CZ,[i,i+1],{n})@g\n"
-        "golden=g")
-    steps = [{"spec": "../modules/h_gate.pg", "targets": [i]} for i in range(n)]
-    steps += [{"spec": "../modules/cz.pg", "targets": [i, i + 1]} for i in range(n - 1)]
-    plan = '{"steps": [' + ",\n           ".join(json.dumps(s) for s in steps) + "]}"
-    header = (f"# cluster{n} — 1D cluster state ({n}큐비트). goal-autonomy 자율 생성 (family extension, human seed 0).\n"
-              f"# 봉인 h_gate+cz 재조립(H^⊗{n} 후 CZ 체인). MBQC 자원. 새 모듈 0 — O(1) marginal 확장.\n")
-    spec = (header + f'```json id=app_meta\n{{"id": "cluster{n}", "n_sys": {n}, "n_anc": 0}}\n```\n'
-            "```python id=app_golden\n" + golden + "\n```\n"
-            "```json id=plan\n" + plan + "\n```\n")
-    return spec, ["h_gate", "cz"]
 
 
 # ── family 레지스트리 ──
