@@ -26,6 +26,8 @@ APP_LIST = [
     ("bell.app.pg",             None),
     ("ghz3.app.pg",             None),
     ("ghz4.app.pg",             None),
+    ("ghz5.app.pg",             None),    # goal-autonomy 자율 생성 (family extension, human seed 0)
+    ("ghz6.app.pg",             None),    # goal-autonomy 자율 생성 (compounding 실증)
     ("cz_rediscovered.app.pg",  "cz"),
     ("ccz_rediscovered.app.pg", "ccz"),
     ("swap_via_cnot.app.pg",    "swap2"),
@@ -44,11 +46,19 @@ APP_LIST = [
     ("qft4_pipeline.app.pg",     "qft4"),  # h·cs(CR2)·ct(CR3)·cr4(CR4)·swap → 봉인 qft4 재발견
     # F3 확장 (§5f): 큰 정밀도 QPE — t=3 counting, inverse-QFT3
     ("iqft3.app.pg",             None),    # inverse QFT3 (cr3_dag 투입), 큰 QPE 빌딩블록
+    ("iqft7.app.pg",             None),    # inverse QFT7 (cr5/6/7_dag), Shor-21 counting register
     ("qpe_t.app.pg",             None),    # QPE(T) t=3: 고유위상 1/8=0.001₂, iqft3 sub-app 재귀
     # F3 확장 (§5g): Shor 주기발견 — modular mult를 sealed Fredkin으로 정직 분해
     ("cmul2_mod15.app.pg",       None),    # controlled ×2 mod15 = controlled 좌순환1 (Fredkin ×3)
     ("cmul4_mod15.app.pg",       None),    # controlled ×4 mod15 = cmul2 ∘ cmul2 (재귀)
     ("shor15_a2.app.pg",         None),    # 최초 완전 Shor(N=15,a=2): 7q, cmul·iqft3 재귀 트리
+    # F3 확장 (§5l): Shor base 독립성 — a=7 (비-shift base). ×7=NOT∘rot3 정직 분해(CNOT 첫 modular-mult 투입)
+    ("cmul7_mod15.app.pg",       None),    # controlled ×7 mod15 = NOT∘rot3 (Fredkin ×3 + CNOT ×4)
+    ("shor15_a7.app.pg",         None),    # 완전 Shor(N=15,a=7): cmul4(재사용)·cmul7(신규)·iqft3, r=4 → 3×5
+    # F3 확장 (§5l-2): N=21 진짜 modular arithmetic — N≠2^k-1 이라 carry/reduction 강제. reversible synth → c{3,4,5}x.
+    ("cmul2_mod21.app.pg",       None),    # controlled ×2 mod21 (66 gates, {toffoli,c3x,c4x,c5x}) — Shor-21 U^1, 진짜 산술
+    ("cmul4_mod21.app.pg",       None),    # controlled ×4 mod21 = cmul2² (복리 재사용)
+    ("cmul16_mod21.app.pg",      None),    # controlled ×16 mod21 = cmul4² — Shor-21 controlled-U^{2^j} 패밀리
 ]
 
 

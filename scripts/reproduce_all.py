@@ -1,0 +1,84 @@
+"""reproduce_all.py — one-command 전체 재현 검증 (외부 리뷰 R-F 대응).
+
+외부 reviewer 가 한 번에 전 검증을 재현하도록 오케스트레이션한다. 경로 비하드코딩(스크립트 기준 상대경로).
+구성: 모듈/앱 재봉인 + 재발견 교차검증 + 결정론 + 독립 2차검증 + 행동(인수분해) + registry manifest.
+
+사용:  python scripts/reproduce_all.py
+출력:  reports/REPRODUCE-RESULT.json
+"""
+import os, sys, json, subprocess, re
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, ".."))
+REPORTS = os.path.join(ROOT, "reports")
+os.makedirs(REPORTS, exist_ok=True)
+
+
+def run(args, cwd=ROOT):
+    p = subprocess.run(["python"] + args, cwd=cwd, capture_output=True, text=True)
+    return p.returncode, p.stdout + p.stderr
+
+
+def main():
+    result = {"bundle": "UNKNOWN", "steps": {}}
+
+    # 1. 앱 재봉인 + 재발견 교차검증 (결정론 포함: registry 와 byte 일치 재생성)
+    rc, out = run([".pgf/autoforge/forge_apps.py"])
+    m = re.search(r"앱 봉인 (\d+)/(\d+) · 재발견 교차검증 (\d+)/(\d+)", out)
+    result["steps"]["forge_apps"] = {
+        "rc": rc, "apps_sealed": f"{m.group(1)}/{m.group(2)}" if m else "?",
+        "rediscovery": f"{m.group(3)}/{m.group(4)}" if m else "?",
+        "pass": rc == 0}
+
+    # 2. registry manifest + dependency graph
+    rc, out = run(["scripts/registry_tools.py", "build"])
+    mm = re.search(r"modules=(\d+) unique_apps=(\d+) cached=(\d+) root=(\w+)", out)
+    result["steps"]["registry"] = {
+        "rc": rc, "modules": mm.group(1) if mm else "?", "unique_apps": mm.group(2) if mm else "?",
+        "cached": mm.group(3) if mm else "?", "root_hash": mm.group(4) if mm else "?", "pass": rc == 0}
+
+    # 3. 독립 2차 검증 (Qualtran 비의존)
+    rc, out = run(["scripts/second_oracle.py"])
+    sm = re.search(r"모듈 독립검증 (\d+)/(\d+)", out)
+    result["steps"]["second_oracle"] = {"rc": rc, "modules": f"{sm.group(1)}/{sm.group(2)}" if sm else "?",
+                                        "pass": rc == 0}
+
+    # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
+    beh = {}
+    import numpy as np
+    def golden_of(app):
+        src = open(os.path.join(ROOT, "specs", "apps", app), encoding="utf-8").read()
+        code = re.search(r"```python id=app_golden\n(.*?)```", src, re.S).group(1)
+        ns = {}; exec(code, ns); return ns["golden"]
+    for app, dim, exp in [("shor15_a2.app.pg", 128, {0, 2, 4, 6}), ("shor15_a7.app.pg", 128, {0, 2, 4, 6})]:
+        G = golden_of(app); psi = np.zeros(dim, complex); psi[1] = 1.0
+        out = G @ psi; pk = {}
+        for s in range(dim):
+            if abs(out[s]) ** 2 > 1e-9:
+                c = (s >> 4) & 7; pk[c] = pk.get(c, 0) + abs(out[s]) ** 2
+        beh[app[:-7]] = {"peaks": sorted(pk), "expected": sorted(exp),
+                         "pass": set(k for k in pk if pk[k] > 0.01) == exp}
+    # cmul2_mod21 orbit period 6
+    G = golden_of("cmul2_mod21.app.pg")
+    w = 1; orbit = [1]
+    for _ in range(6):
+        w = int(np.argmax(G[:, (1 << 5) | w])) & 31; orbit.append(w)
+    beh["cmul2_mod21_orbit"] = {"orbit": orbit, "period6": orbit[0] == orbit[6] and len(set(orbit[:6])) == 6}
+    result["steps"]["behavior"] = {"detail": beh,
+                                   "pass": all(v.get("pass", v.get("period6")) for v in beh.values())}
+
+    allpass = all(s.get("pass") for s in result["steps"].values())
+    result["bundle"] = "REPRODUCED" if allpass else "FAILED"
+    json.dump(result, open(os.path.join(REPORTS, "REPRODUCE-RESULT.json"), "w", encoding="utf-8"),
+              ensure_ascii=False, indent=2)
+    print("=" * 70)
+    print(f"REPRODUCE-ALL → {result['bundle']}")
+    for k, v in result["steps"].items():
+        print(f"  {'✓' if v.get('pass') else '✗'} {k}: " +
+              ", ".join(f"{kk}={vv}" for kk, vv in v.items() if kk not in ("detail", "rc")))
+    print("=" * 70)
+    return 0 if allpass else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

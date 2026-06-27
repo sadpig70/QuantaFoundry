@@ -1,0 +1,37 @@
+{
+  "R5a_golden_wellposed": {
+    "iqft7": true,
+    "cmul2_mod21": true,
+    "cmul4_mod21": true,
+    "cmul16_mod21": true
+  },
+  "R5b_vocab_match": {
+    "h": true,
+    "x": true,
+    "z": true,
+    "s": true,
+    "t": true,
+    "cnot": true,
+    "cz": true,
+    "swap": true,
+    "toffoli": true,
+    "c3x": true,
+    "c4x": true,
+    "c5x": true,
+    "fredkin": true,
+    "cs": true,
+    "ct": true,
+    "cs_dag": true,
+    "cr3_dag": true,
+    "cr4_dag": true,
+    "cr5_dag": true,
+    "cr6_dag": true,
+    "cr7_dag": true
+  },
+  "R5b_cmul2_circuit": true,
+  "R5c_classA_unitary": {
+    "hard_cy": true,
+    "hard_sqrtswap": true,
+    "hard_perm3": true
+  }
+}

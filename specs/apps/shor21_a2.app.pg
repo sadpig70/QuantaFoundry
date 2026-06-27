@@ -1,0 +1,48 @@
+# shor21_a2 — 완전 Shor 주기발견 (N=21, a=2). 12q: c0..c6(counting 7) | w0..w4(work 5).
+# N=21≠2^k-1 → ×2 mod21이 진짜 carry/reduction(cmul2/4/16_mod21, reversible synthesis). N=15 특수성 완전 탈피.
+# H^7 · controlled-U^{2^j}(c_j, U=×2, powers 16/4/16/4/16/4/2) · iQFT7. work=|1>.
+# 판독: counting/128 연속분수 → r=6 → gcd(2^3±1,21)=7,3 → 21=3×7 (확률적, P(r=6)≈0.23, t=7≥2r²).
+```json id=app_meta
+{"id": "shor21_a2", "n_sys": 12, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n=12; N=21
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+M=128; w=np.exp(2j*np.pi/M)
+QFT=np.array([[w**(a*b) for b in range(M)] for a in range(M)],dtype=complex)/np.sqrt(M); IQFT=QFT.conj().T
+def cmul(a):
+    g=np.zeros((64,64),dtype=complex)
+    for s in range(64):
+        if (s>>5)&1==0: g[s,s]=1
+        else:
+            v=s&31; g[(1<<5)|((a*v)%N if v<N else v),s]=1
+    return g
+def apply(U,targets,T):
+    k=len(targets); gg=U.reshape([2]*k+[2]*k)
+    T=np.tensordot(gg,T,axes=(list(range(k,2*k)),targets))
+    return np.moveaxis(T,list(range(k)),targets)
+T=np.eye(1<<n,dtype=complex).reshape([2]*n+[1<<n])
+for j in range(7): T=apply(H,[j],T)
+powa={0:16,1:4,2:16,3:4,4:16,5:4,6:2}
+for j in range(7): T=apply(cmul(powa[j]),[j,7,8,9,10,11],T)
+T=apply(IQFT,[0,1,2,3,4,5,6],T)
+golden=T.reshape(1<<n,1<<n)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/h_gate.pg", "targets": [3]},
+           {"spec": "../modules/h_gate.pg", "targets": [4]},
+           {"spec": "../modules/h_gate.pg", "targets": [5]},
+           {"spec": "../modules/h_gate.pg", "targets": [6]},
+           {"app": "cmul16_mod21.app.pg", "targets": [0, 7, 8, 9, 10, 11]},
+           {"app": "cmul4_mod21.app.pg", "targets": [1, 7, 8, 9, 10, 11]},
+           {"app": "cmul16_mod21.app.pg", "targets": [2, 7, 8, 9, 10, 11]},
+           {"app": "cmul4_mod21.app.pg", "targets": [3, 7, 8, 9, 10, 11]},
+           {"app": "cmul16_mod21.app.pg", "targets": [4, 7, 8, 9, 10, 11]},
+           {"app": "cmul4_mod21.app.pg", "targets": [5, 7, 8, 9, 10, 11]},
+           {"app": "cmul2_mod21.app.pg", "targets": [6, 7, 8, 9, 10, 11]},
+           {"app": "iqft7.app.pg", "targets": [0, 1, 2, 3, 4, 5, 6]}]}
+```

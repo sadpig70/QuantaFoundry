@@ -1,0 +1,26 @@
+{
+  "pass": [
+    "free_cphase: 5/5 distinct (free choice diverges)",
+    "free_rz: 5/5 distinct (free choice diverges)",
+    "split_rz_sign: two readings distinct u_hash (7c739c3b vs 20188380)",
+    "split_rz_sign: NOT global-phase equivalent (avoids R5c iqft2 trap)",
+    "split_ry_dir: two readings distinct u_hash (1b2d054b vs 393986b2)",
+    "split_ry_dir: NOT global-phase equivalent (avoids R5c iqft2 trap)",
+    "split_csqrtz_sign: two readings distinct u_hash (a2193b0f vs 83e2a0e6)",
+    "split_csqrtz_sign: NOT global-phase equivalent (avoids R5c iqft2 trap)",
+    "free_cphase (6 distinct picks) -> DIVERGENT (expect DIVERGENT)",
+    "split 4-2 -> ESTABLISHED dist={'7c739c3b4c3a': 4, '201883805425': 2} (expect ESTABLISHED w/ 2 groups = real dissent)",
+    "split 3-3 -> CONTESTED dist={'7c739c3b4c3a': 3, '201883805425': 3} (contested guard: top-2 tie -> CONTESTED, 임의봉인 차단)",
+    "free_cphase clumped(5+1) -> ESTABLISHED (measurement, not forced)",
+    "sanity_cz unanimous -> ESTABLISHED (expect ESTABLISHED single group)",
+    "free_rz declared_reading={'theta': 0.7} reconstructs deterministically",
+    "split_csqrtz_sign declared_reading={'sign': '-'} reconstructs deterministically",
+    "split_ry_dir declared_reading={'sign': '+'} reconstructs deterministically",
+    "gemini-type: prose/matrix mismatch flagged (groups=1, declared split in 1 hash)",
+    "contested 3-3: tie flagged (sizes=[3, 3]) -> escalate despite ESTABLISHED",
+    "unanimous: no false-positive flags"
+  ],
+  "fail": [],
+  "all_pass": true,
+  "note": "self-contained pre-flight: divergence is MEASURABLE (distinct, phase-inequivalent) and engine judges as designed. Actual divergence among real runtimes is measured only after EXT relay."
+}

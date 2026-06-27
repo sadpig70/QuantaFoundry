@@ -1,0 +1,391 @@
+{
+  "runtimes": [
+    "deepseek",
+    "gemini_3",
+    "gpt-5",
+    "grok",
+    "kimi",
+    "qwen"
+  ],
+  "warnings": [],
+  "apps": {
+    "iqft7": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "10da007065939b343adc9af755b622fd82b3486a2834c7ef66bc9529599d5fb3",
+      "n_runtimes": 6,
+      "distribution": {
+        "10da00706593": 6
+      },
+      "reference": "10da007065939b343adc9af755b622fd82b3486a2834c7ef66bc9529599d5fb3",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          6
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "10da00706593": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi",
+              "qwen"
+            ],
+            "declared": null,
+            "prose": [
+              "Conjugate transpose of raw QFT_7. QFT[j,k]=(1/sqrt128)*exp(2*pi*i*j*k/",
+              "conjugate transpose of raw QFT7",
+              "Constructed raw QFT_7 from the roots-of-unity formula with big-endian ",
+              "Analytic (QFT7)†: conjugate transpose of raw big-endian QFT matrix.",
+              "Conjugate transpose of the raw 7-qubit QFT matrix (no output bit-rever",
+              "Direct construction of QFT_7 = (1/sqrt(128)) * exp(2pi*i*j*k/128), the"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "10da007065939b34",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Conjugate transpose of raw QFT_7. QFT[j,k]=(1/sqrt128)*exp(2*pi*i*j*k/128). No bit-reversal."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "10da007065939b34",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "conjugate transpose of raw QFT7"
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "10da007065939b34",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Constructed raw QFT_7 from the roots-of-unity formula with big-endian integer indexing, then used its conjugate transpose."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "10da007065939b34",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Analytic (QFT7)†: conjugate transpose of raw big-endian QFT matrix."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "10da007065939b34",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Conjugate transpose of the raw 7-qubit QFT matrix (no output bit-reversal)."
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "10da007065939b34",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Direct construction of QFT_7 = (1/sqrt(128)) * exp(2pi*i*j*k/128), then conjugate transpose. Big-endian indexing, no bit-reversal."
+        }
+      ]
+    },
+    "cmul2_mod21": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "1aaf1e8a4589bbb061bf6aff725e20c40f245e6e4c9d8e9432b3cbded9eaae98",
+      "n_runtimes": 6,
+      "distribution": {
+        "1aaf1e8a4589": 6
+      },
+      "reference": "1aaf1e8a4589bbb061bf6aff725e20c40f245e6e4c9d8e9432b3cbded9eaae98",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          6
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "1aaf1e8a4589": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi",
+              "qwen"
+            ],
+            "declared": null,
+            "prose": [
+              "Controlled permutation: q0=0 -> identity. q0=1 -> y->(2y mod 21) for y",
+              "Permutation matrix implementing identity when control is 0, and y -> 2",
+              "Built the controlled permutation directly from the rule q0=1: y -> 2*y",
+              "Controlled permutation table: q0=1 maps y→(2y mod 21), y≥21 fixed.",
+              "Controlled permutation: q0=0 identity; q0=1 maps 5-bit work value y ->",
+              "Controlled permutation: for each 6-bit input s, split c=MSB and 5-bit "
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "1aaf1e8a4589bbb0",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation: q0=0 -> identity. q0=1 -> y->(2y mod 21) for y in 0..20; y in 21..31 fixed. Genuine modular arithmetic, not bit rotation."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "1aaf1e8a4589bbb0",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Permutation matrix implementing identity when control is 0, and y -> 2y mod 21 when control is 1 (with y >= 21 fixed)."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "1aaf1e8a4589bbb0",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Built the controlled permutation directly from the rule q0=1: y -> 2*y mod 21 for y in 0..20, with 21..31 fixed."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "1aaf1e8a4589bbb0",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation table: q0=1 maps y→(2y mod 21), y≥21 fixed."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "1aaf1e8a4589bbb0",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation: q0=0 identity; q0=1 maps 5-bit work value y -> (2y mod 21) for y in 0..20, fixed for y in 21..31."
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "1aaf1e8a4589bbb0",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation: for each 6-bit input s, split c=MSB and 5-bit work y. When c=0: identity. When c=1: y->2y mod 21 for y<21, fixed for y>=21. Output index = (c<<5)|y2."
+        }
+      ]
+    },
+    "cmul4_mod21": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "1f73313e8be267e2ecc941ecc4209bd3e462c3655a7c62f38e66cc3529c60a6b",
+      "n_runtimes": 6,
+      "distribution": {
+        "1f73313e8be2": 6
+      },
+      "reference": "1f73313e8be267e2ecc941ecc4209bd3e462c3655a7c62f38e66cc3529c60a6b",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          6
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "1f73313e8be2": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi",
+              "qwen"
+            ],
+            "declared": null,
+            "prose": [
+              "cmul2_mod21 applied twice. q0=1: y->(4y mod 21) for y in 0..20; y in 2",
+              "Permutation matrix implementing identity when control is 0, and y -> 4",
+              "Built the controlled permutation directly from the rule q0=1: y -> 4*y",
+              "Controlled permutation y→(4y mod 21).",
+              "Controlled permutation: q0=1 maps y -> (4y mod 21) on 0..20, fixed on ",
+              "Same structure as cmul2 but with multiplier 4. y->4y mod 21 for y<21, "
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "1f73313e8be267e2",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "cmul2_mod21 applied twice. q0=1: y->(4y mod 21) for y in 0..20; y in 21..31 fixed."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "1f73313e8be267e2",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Permutation matrix implementing identity when control is 0, and y -> 4y mod 21 when control is 1."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "1f73313e8be267e2",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Built the controlled permutation directly from the rule q0=1: y -> 4*y mod 21 for y in 0..20, with 21..31 fixed."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "1f73313e8be267e2",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation y→(4y mod 21)."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "1f73313e8be267e2",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation: q0=1 maps y -> (4y mod 21) on 0..20, fixed on 21..31. (Equivalent to cmul2 applied twice.)"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "1f73313e8be267e2",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Same structure as cmul2 but with multiplier 4. y->4y mod 21 for y<21, fixed for y>=21."
+        }
+      ]
+    },
+    "cmul16_mod21": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "2fa362f7830fa17f9e0f7a0935ceb18e81e200f3ff855d5749415ae962313664",
+      "n_runtimes": 6,
+      "distribution": {
+        "2fa362f7830f": 6
+      },
+      "reference": "2fa362f7830fa17f9e0f7a0935ceb18e81e200f3ff855d5749415ae962313664",
+      "reference_kind": "sealed-app",
+      "reference_match": true,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          6
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "2fa362f7830f": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi",
+              "qwen"
+            ],
+            "declared": null,
+            "prose": [
+              "(cmul2)^4 = cmul4 @ cmul4. 2^4=16, q0=1: y->(16y mod 21) for y in 0..2",
+              "Permutation matrix implementing identity when control is 0, and y -> 1",
+              "Built the controlled permutation directly from the rule q0=1: y -> 16*",
+              "Controlled permutation y→(16y mod 21); 16≡2^4 mod 21.",
+              "Controlled permutation: q0=1 maps y -> (16y mod 21) on 0..20, fixed on",
+              "Same structure with multiplier 16. Note 16=2^4 and ord(2 mod 21)=6, so"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "2fa362f7830fa17f",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "(cmul2)^4 = cmul4 @ cmul4. 2^4=16, q0=1: y->(16y mod 21) for y in 0..20; y in 21..31 fixed."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "2fa362f7830fa17f",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Permutation matrix implementing identity when control is 0, and y -> 16y mod 21 when control is 1."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "2fa362f7830fa17f",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Built the controlled permutation directly from the rule q0=1: y -> 16*y mod 21 for y in 0..20, with 21..31 fixed."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "2fa362f7830fa17f",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation y→(16y mod 21); 16≡2^4 mod 21."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "2fa362f7830fa17f",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled permutation: q0=1 maps y -> (16y mod 21) on 0..20, fixed on 21..31. (16 = 2^4; order of 2 mod 21 is 6.)"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "2fa362f7830fa17f",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Same structure with multiplier 16. Note 16=2^4 and ord(2 mod 21)=6, so 16y mod 21 gives genuine modular arithmetic (not bit-rotation)."
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total": 4,
+    "established": 4,
+    "multimodel": 4,
+    "reference_match": 4
+  }
+}

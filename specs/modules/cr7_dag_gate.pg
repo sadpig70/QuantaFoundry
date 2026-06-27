@@ -1,0 +1,12 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import ZPowGate
+bloq = ZPowGate(exponent=-1/2**(7-1)).controlled()
+```
+```python id=golden
+import numpy as np
+# controlled-R7-dagger (control=first, big-endian): diag(1,1,1, exp(-2*pi*i/2**7))
+golden = np.diag([1, 1, 1, np.exp(-2j*np.pi/2**7)]).astype(complex)
+```
+```json id=meta
+{"id": "cr7_dag_gate", "n_sys": 2, "n_anc": 0}
+```

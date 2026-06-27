@@ -1,0 +1,34 @@
+{
+  "_comment": "v0.5 Round 5e — TRUE-DIVERGENCE probe. R5c(v04_hard) failed to show divergence because its 'ambiguous' intents still had a UNIQUE natural (Schelling) answer that all distinct-weight models shared. This round fixes that: Class C intents are UNDER-DETERMINED BY CONSTRUCTION (a free continuous parameter — no unique answer exists), so a single source MUST seal an arbitrary value and cross-model consensus MUST refuse (DIVERGENT) = necessity-NEEDED, airtight. Class D probes genuine convention splits (rotation sign). Class S is a sanity control that should still ESTABLISH. Each submission MUST include a structured 'declared_reading' so the operator can audit prose-vs-matrix consistency (the gemini/iqft2 lesson).",
+  "convention": {
+    "matrix": "U[out,in]=<out|U|in>; dtype complex; shape (2^n_sys, 2^n_sys)",
+    "global_phase": "free (verifier normalizes); NOTE: convention splits that differ only by a global phase will NOT diverge — this probe's splits are chosen to be phase-INequivalent",
+    "declared_reading": "REQUIRED structured field per submission (see template). Lets the operator reconstruct your intended matrix and flag prose/matrix mismatch automatically."
+  },
+  "intents": [
+    { "id": "sanity_cz", "n_sys": 2, "n_anc": 0, "class": "S:control-well-defined",
+      "definition": "The controlled-Z gate CZ = diag(1,1,1,-1) (big-endian, U[out,in]). Fully specified — expect unanimous ESTABLISHED.",
+      "declared_reading_schema": { "kind": "fixed", "note": "no free choice" } },
+
+    { "id": "free_cphase", "n_sys": 2, "n_anc": 0, "class": "C:free-parameter",
+      "definition": "A controlled-phase gate diag(1,1,1,exp(i*phi)). The angle phi is YOUR FREE CHOICE in (0, 2*pi) with phi != pi. Do NOT fall back to a canonical value (pi/CZ); pick a phi you personally find interesting and COMMIT to it. There is intentionally no unique correct answer.",
+      "declared_reading_schema": { "kind": "free_param", "param": "phi", "field": "phi" } },
+
+    { "id": "free_rz", "n_sys": 1, "n_anc": 0, "class": "C:free-parameter",
+      "definition": "A single-qubit Z-rotation Rz(theta) = diag(exp(-i*theta/2), exp(+i*theta/2)). theta is YOUR FREE CHOICE in (0, 2*pi) with theta not in {0, pi}. No unique correct answer — commit to your own theta.",
+      "declared_reading_schema": { "kind": "free_param", "param": "theta", "field": "theta" } },
+
+    { "id": "split_rz_sign", "n_sys": 1, "n_anc": 0, "class": "D:convention-split",
+      "definition": "Rz at the FIXED angle theta0 = pi/2, but the SIGN CONVENTION of the generator is intentionally unspecified. Reading '-': exp(-i*theta0*Z/2) = diag(exp(-i*pi/4), exp(+i*pi/4)). Reading '+': exp(+i*theta0*Z/2) = diag(exp(+i*pi/4), exp(-i*pi/4)). These are NOT global-phase equivalent. Use the sign convention you consider standard and DECLARE it.",
+      "declared_reading_schema": { "kind": "enum", "field": "sign", "values": ["-", "+"] } },
+
+    { "id": "split_ry_dir", "n_sys": 1, "n_anc": 0, "class": "D:convention-split",
+      "definition": "Ry at the FIXED angle theta0 = pi/2, rotation DIRECTION/sign unspecified. Reading '-': exp(-i*theta0*Y/2) = [[c,-s],[s,c]]. Reading '+': exp(+i*theta0*Y/2) = [[c,s],[-s,c]]; c=cos(pi/4), s=sin(pi/4). Use your standard convention and DECLARE it.",
+      "declared_reading_schema": { "kind": "enum", "field": "sign", "values": ["-", "+"] } },
+
+    { "id": "split_csqrtz_sign", "n_sys": 2, "n_anc": 0, "class": "D:convention-split",
+      "definition": "The 'controlled square-root-of-Z' gate, diag(1,1,1, s*i) where s = +1 (controlled-S) or s = -1 (controlled-S-dagger). Which root is 'the' canonical one is intentionally unspecified. diag(1,1,1,i) vs diag(1,1,1,-i) are NOT global-phase equivalent. Pick one and DECLARE the sign.",
+      "declared_reading_schema": { "kind": "enum", "field": "sign", "values": ["+", "-"] } }
+  ],
+  "_purpose": "Class C (free_cphase, free_rz): under-determined BY CONSTRUCTION -> expect DIVERGENT (max independent agreement < 2). Proves necessity is NEEDED: single-source would seal an arbitrary value; consensus refuses and escalates-to-clarify. Class D (split_*): genuine convention splits -> MEASURE whether distinct-weight models actually split (DIVERGENT or ESTABLISHED-with-dissent) or share a Schelling default (unanimous, like R5c). Either outcome is a real result. Class S (sanity_cz): must ESTABLISH unanimously (mechanism still works). Operator: ingest_app_golden.py --dir v05_div, read status + the new READING AUDIT (prose/matrix consistency)."
+}

@@ -1,0 +1,27 @@
+{
+  "_comment": "v0.4 app-bloq circuit vocabulary. circuit step = {gate:<name>, targets:[wire,...]}. targets length = n_qubits. controlled/multi-control gates: leading targets = controls, LAST target = the X/phase target. big-endian, first register = MSB. Only these sealed gates are admissible in a bloq circuit. The cmul*_mod21 circuits are built from the multi-control-X family {toffoli=c2x, c3x, c4x, c5x}; iqft7 from {h, swap, cz, cs_dag, cr3_dag..cr7_dag}.",
+  "convention": "big-endian, first register=MSB; controlled gates: leading target(s)=control, last target=acted-on qubit; U[out,in]",
+  "gates": {
+    "h":        { "module": "h_gate",       "n_qubits": 1, "desc": "Hadamard",                          "u_hash": "0d6a0b7a9a19ad2e" },
+    "x":        { "module": "x_gate",        "n_qubits": 1, "desc": "Pauli-X",                           "u_hash": "7dc1df52d07dd742" },
+    "z":        { "module": "z_gate",        "n_qubits": 1, "desc": "Pauli-Z",                           "u_hash": "1e3c0f2fa747f4fa" },
+    "s":        { "module": "s_gate",        "n_qubits": 1, "desc": "S = diag(1,i)",                     "u_hash": "7c739c3b4c3a0ac8" },
+    "t":        { "module": "t_gate",        "n_qubits": 1, "desc": "T = diag(1,e^{i pi/4})",            "u_hash": "3f0eeac929b02fe1" },
+    "cnot":     { "module": "cnot",          "n_qubits": 2, "desc": "CNOT (control=first)",              "u_hash": "3913bcef764f36b8" },
+    "cz":       { "module": "cz",            "n_qubits": 2, "desc": "CZ",                                "u_hash": "8d39767cd8c38717" },
+    "swap":     { "module": "swap2",         "n_qubits": 2, "desc": "SWAP",                              "u_hash": "e6255e2f105a9782" },
+    "toffoli":  { "module": "toffoli",       "n_qubits": 3, "desc": "C2X (controls=first two, target=last)", "u_hash": "e663b43043af6b78" },
+    "c3x":      { "module": "c3x",           "n_qubits": 4, "desc": "C3X (controls=first 3, target=last)",    "u_hash": "d764049404dc379f" },
+    "c4x":      { "module": "c4x",           "n_qubits": 5, "desc": "C4X (controls=first 4, target=last)",    "u_hash": "0a6fb6e1181a377f" },
+    "c5x":      { "module": "c5x",           "n_qubits": 6, "desc": "C5X (controls=first 5, target=last)",    "u_hash": "9286e92137c4cb56" },
+    "fredkin":  { "module": "fredkin",       "n_qubits": 3, "desc": "controlled-SWAP (control=first)",   "u_hash": "af88aadc0775f7bf" },
+    "cs":       { "module": "cs_gate",       "n_qubits": 2, "desc": "controlled-S (control=first)",      "u_hash": "a2193b0fcfb6deb3" },
+    "ct":       { "module": "ct_gate",       "n_qubits": 2, "desc": "controlled-T (control=first)",      "u_hash": "e52c0c690a437291" },
+    "cs_dag":   { "module": "cs_dag",        "n_qubits": 2, "desc": "controlled-S† (=R2†)",     "u_hash": "83e2a0e62fed7de9" },
+    "cr3_dag":  { "module": "cr3_dag_gate",  "n_qubits": 2, "desc": "controlled-R3† (=T†)",      "u_hash": "84f3f01240c9d808" },
+    "cr4_dag":  { "module": "cr4_dag_gate",  "n_qubits": 2, "desc": "controlled-R4†",               "u_hash": "4f91946338960687" },
+    "cr5_dag":  { "module": "cr5_dag_gate",  "n_qubits": 2, "desc": "controlled-R5†",               "u_hash": "278e1c16651c7181" },
+    "cr6_dag":  { "module": "cr6_dag_gate",  "n_qubits": 2, "desc": "controlled-R6†",               "u_hash": "dc1d1ac1dd3d0f76" },
+    "cr7_dag":  { "module": "cr7_dag_gate",  "n_qubits": 2, "desc": "controlled-R7†",               "u_hash": "6472e31bb7d132a1" }
+  }
+}

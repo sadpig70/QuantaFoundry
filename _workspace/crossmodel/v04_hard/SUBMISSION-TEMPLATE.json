@@ -1,0 +1,33 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    { "id": "hard_cy", "n_sys": 2,
+      "app_golden_real": [[1,0,0,0],[0,1,0,0],[0,0,0,0],[0,0,0,0]],
+      "app_golden_imag": [[0,0,0,0],[0,0,0,0],[0,0,0,-1],[0,0,1,0]],
+      "app_golden_code": "import numpy as np\nP0=np.array([[1,0],[0,0]]);P1=np.array([[0,0],[0,1]])\nY=np.array([[0,-1j],[1j,0]])\ngolden=np.kron(P0,np.eye(2))+np.kron(P1,Y)",
+      "construction_method": "<your derivation>", "self_check": "unitary, 4x4" },
+    { "id": "hard_sqrtswap", "n_sys": 2,
+      "app_golden_real": "<4x4>", "app_golden_imag": "<4x4>",
+      "app_golden_code": "<...assign golden...>",
+      "construction_method": "...", "self_check": "V@V==SWAP" },
+    { "id": "hard_perm3", "n_sys": 3,
+      "app_golden_real": "<8x8>", "app_golden_imag": "<8x8 zeros>",
+      "app_golden_code": "<...permutation (1 2 4)(3 6)...>",
+      "construction_method": "...", "self_check": "permutation" },
+    { "id": "amb_cphase", "n_sys": 2,
+      "app_golden_real": "<4x4>", "app_golden_imag": "<4x4>",
+      "app_golden_code": "<your canonical controlled-phase>",
+      "construction_method": "STATE the phase angle you chose and why", "self_check": "unitary" },
+    { "id": "amb_cnot_endianness", "n_sys": 2,
+      "app_golden_real": "<4x4>", "app_golden_imag": "<4x4 zeros>",
+      "app_golden_code": "<your CNOT>",
+      "construction_method": "STATE which qubit you took as control", "self_check": "permutation" },
+    { "id": "amb_iqft2_bitrev", "n_sys": 2,
+      "app_golden_real": "<4x4>", "app_golden_imag": "<4x4>",
+      "app_golden_code": "<your inverse QFT2>",
+      "construction_method": "STATE whether you included output bit-reversal/SWAP", "self_check": "unitary" }
+  ],
+  "_note": "Class B (amb_*): commit to a default, do not ask for clarification. Divergence is the measurement."
+}

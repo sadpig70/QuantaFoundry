@@ -1,0 +1,473 @@
+{
+  "runtime": "codex",
+  "weights_id": "openai-gpt-5",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "hard_cy",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nP0 = np.array([[1, 0], [0, 0]], dtype=complex)\nP1 = np.array([[0, 0], [0, 1]], dtype=complex)\nY = np.array([[0, -1j], [1j, 0]], dtype=complex)\ngolden = np.kron(P0, np.eye(2, dtype=complex)) + np.kron(P1, Y)",
+      "construction_method": "Used the specified big-endian controlled-Y definition: q0 controls Pauli-Y on q1.",
+      "self_check": "Verified shape (4,4) and unitarity with U @ U.conj().T ~= I."
+    },
+    {
+      "id": "hard_sqrtswap",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0.5,
+          -0.5,
+          0
+        ],
+        [
+          0,
+          -0.5,
+          0.5,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.array([[1,0,0,0],\n                   [0,(1+1j)/2,(1-1j)/2,0],\n                   [0,(1-1j)/2,(1+1j)/2,0],\n                   [0,0,0,1]], dtype=complex)",
+      "construction_method": "Used the principal square-root-of-SWAP matrix given in the intent and checked V @ V equals SWAP.",
+      "self_check": "Verified shape (4,4) and unitarity with U @ U.conj().T ~= I."
+    },
+    {
+      "id": "hard_perm3",
+      "n_sys": 3,
+      "app_golden_real": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nmapping = list(range(8))\nmapping[1], mapping[2], mapping[4] = 2, 4, 1\nmapping[3], mapping[6] = 6, 3\ngolden = np.zeros((8, 8), dtype=complex)\nfor src, dst in enumerate(mapping):\n    golden[dst, src] = 1",
+      "construction_method": "Built the permutation matrix directly from the specified cycles (1 2 4)(3 6), fixing 0,5,7.",
+      "self_check": "Verified shape (8,8) and unitarity with U @ U.conj().T ~= I."
+    },
+    {
+      "id": "amb_cphase",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\n# Natural default chosen here: controlled-Z, i.e. controlled phase angle pi.\ngolden = np.diag([1, 1, 1, -1]).astype(complex)",
+      "construction_method": "Class B default: I interpret 'controlled-phase gate' without an angle as the canonical controlled-Z phase angle pi, diag(1,1,1,-1).",
+      "self_check": "Verified shape (4,4) and unitarity with U @ U.conj().T ~= I."
+    },
+    {
+      "id": "amb_cnot_endianness",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\n# Natural default chosen here: big-endian basis with first qubit as control.\ngolden = np.array([[1,0,0,0],\n                   [0,1,0,0],\n                   [0,0,0,1],\n                   [0,0,1,0]], dtype=complex)",
+      "construction_method": "Class B default: I use the common big-endian two-qubit matrix with the first/MSB qubit as control and the second as target.",
+      "self_check": "Verified shape (4,4) and unitarity with U @ U.conj().T ~= I."
+    },
+    {
+      "id": "amb_iqft2_bitrev",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0,
+          -0.5,
+          0
+        ],
+        [
+          0.5,
+          -0.5,
+          0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          0,
+          -0.5,
+          0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -0.5,
+          0,
+          0.5
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0.5,
+          0,
+          -0.5
+        ]
+      ],
+      "app_golden_code": "import numpy as np\n# Natural default chosen here: raw inverse QFT matrix, no output bit-reversal swap.\nN = 4\nj = np.arange(N).reshape((N, 1))\nk = np.arange(N).reshape((1, N))\nQ = np.exp(2j * np.pi * j * k / N) / np.sqrt(N)\ngolden = Q.conj().T",
+      "construction_method": "Class B default: I use the mathematical raw inverse QFT_2 matrix with no output bit-reversal/SWAP included.",
+      "self_check": "Verified shape (4,4) and unitarity with U @ U.conj().T ~= I."
+    }
+  ]
+}

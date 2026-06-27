@@ -1,0 +1,516 @@
+{
+  "runtimes": [
+    "deepseek",
+    "gemini_3",
+    "gpt-5",
+    "grok",
+    "kimi"
+  ],
+  "warnings": [],
+  "apps": {
+    "hard_cy": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "83840666edc0a80ddeb36c823cf0fe2ab01a4244ff8a39d1756f73cce3722e98",
+      "n_runtimes": 5,
+      "distribution": {
+        "83840666edc0": 5
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          5
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "83840666edc0": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi"
+            ],
+            "declared": null,
+            "prose": [
+              "Controlled-Y: control=q0(MSB), target=q1. U = |0><0|⊗I + |1><1|⊗Y. Y=[",
+              "Controlled-Y gate: control is qubit 0 (MSB), target is qubit 1.",
+              "Used the specified big-endian controlled-Y definition: q0 controls Pau",
+              "Controlled-Y: |0><0|⊗I + |1><1|⊗Y, control=q0 MSB.",
+              "Controlled-Y with qubit 0 as control: apply Pauli-Y to target qubit 1 "
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "83840666edc0a80d",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled-Y: control=q0(MSB), target=q1. U = |0><0|⊗I + |1><1|⊗Y. Y=[[0,-i],[i,0]]. Big-endian."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "83840666edc0a80d",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled-Y gate: control is qubit 0 (MSB), target is qubit 1."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "83840666edc0a80d",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Used the specified big-endian controlled-Y definition: q0 controls Pauli-Y on q1."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "83840666edc0a80d",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled-Y: |0><0|⊗I + |1><1|⊗Y, control=q0 MSB."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "83840666edc0a80d",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Controlled-Y with qubit 0 as control: apply Pauli-Y to target qubit 1 when control is |1>."
+        }
+      ]
+    },
+    "hard_sqrtswap": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "d527ab52e320b52316e2afee44b5a7458bfecfb6406759fcd51268097f44d3ad",
+      "n_runtimes": 5,
+      "distribution": {
+        "d527ab52e320": 5
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          5
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "d527ab52e320": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi"
+            ],
+            "declared": null,
+            "prose": [
+              "Principal sqrt(SWAP): V@V = SWAP. V = given matrix: diag(1, (1+i)/2, (",
+              "Principal square root of SWAP gate.",
+              "Used the principal square-root-of-SWAP matrix given in the intent and ",
+              "Explicit √SWAP matrix from spec; verified V@V=SWAP.",
+              "Principal square root of SWAP as given in the spec (V@V = SWAP)."
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "d527ab52e320b523",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Principal sqrt(SWAP): V@V = SWAP. V = given matrix: diag(1, (1+i)/2, (1+i)/2, 1) on diagonal, (1-i)/2 on off-diagonals of |01><->|10|."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "d527ab52e320b523",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Principal square root of SWAP gate."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "d527ab52e320b523",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Used the principal square-root-of-SWAP matrix given in the intent and checked V @ V equals SWAP."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "d527ab52e320b523",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Explicit √SWAP matrix from spec; verified V@V=SWAP."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "d527ab52e320b523",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Principal square root of SWAP as given in the spec (V@V = SWAP)."
+        }
+      ]
+    },
+    "hard_perm3": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "218d81e96522968cd088229462ab6d79408507f971537f1b2fe417b780333dbb",
+      "n_runtimes": 5,
+      "distribution": {
+        "218d81e96522": 5
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          5
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "218d81e96522": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi"
+            ],
+            "declared": null,
+            "prose": [
+              "Non-textbook permutation (1 2 4)(3 6)(5)(0)(7) on big-endian indices. ",
+              "Permutation matrix implementing cycle (1 2 4)(3 6)(5)(0)(7) on 3 qubit",
+              "Built the permutation matrix directly from the specified cycles (1 2 4",
+              "Basis permutation cycle (1 2 4)(3 6) on big-endian indices.",
+              "3-qubit permutation matrix with cycles (1 2 4)(3 6), others fixed."
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "218d81e96522968c",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Non-textbook permutation (1 2 4)(3 6)(5)(0)(7) on big-endian indices. Built directly from cycle description."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "218d81e96522968c",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Permutation matrix implementing cycle (1 2 4)(3 6)(5)(0)(7) on 3 qubits."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "218d81e96522968c",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Built the permutation matrix directly from the specified cycles (1 2 4)(3 6), fixing 0,5,7."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "218d81e96522968c",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Basis permutation cycle (1 2 4)(3 6) on big-endian indices."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "218d81e96522968c",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "3-qubit permutation matrix with cycles (1 2 4)(3 6), others fixed."
+        }
+      ]
+    },
+    "amb_cphase": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+      "n_runtimes": 5,
+      "distribution": {
+        "8d39767cd8c3": 5
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          5
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "8d39767cd8c3": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi"
+            ],
+            "declared": null,
+            "prose": [
+              "My canonical default for 'controlled-phase' is CZ = diag(1,1,1,-1). Ph",
+              "Selected CZ (theta = pi) as the most canonical default controlled-phas",
+              "Class B default: I interpret 'controlled-phase gate' without an angle ",
+              "Natural default: controlled-Z (π phase on |11⟩) as canonical unnamed c",
+              "Default reading: 'controlled-phase' means controlled-Z (phase angle π,"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "My canonical default for 'controlled-phase' is CZ = diag(1,1,1,-1). Phase angle = pi. This is the most fundamental 2-qubit controlled-phase gate."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Selected CZ (theta = pi) as the most canonical default controlled-phase gate."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Class B default: I interpret 'controlled-phase gate' without an angle as the canonical controlled-Z phase angle pi, diag(1,1,1,-1)."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Natural default: controlled-Z (π phase on |11⟩) as canonical unnamed controlled-phase; control=first qubit."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Default reading: 'controlled-phase' means controlled-Z (phase angle π, diagonal diag(1,1,1,-1))."
+        }
+      ]
+    },
+    "amb_cnot_endianness": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+      "n_runtimes": 5,
+      "distribution": {
+        "3913bcef764f": 5
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          5
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "3913bcef764f": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi"
+            ],
+            "declared": null,
+            "prose": [
+              "My natural default: control=first qubit (q0, MSB), target=second (q1).",
+              "Assumed qubit 0 (first qubit, MSB) as control, and qubit 1 as target.",
+              "Class B default: I use the common big-endian two-qubit matrix with the",
+              "Natural default: q0 (first/MSB register) = control, q1 = target — stan",
+              "Default reading: 'the CNOT gate' uses the first/MSB register (qubit 0)"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "My natural default: control=first qubit (q0, MSB), target=second (q1). Same convention used throughout QuantaFoundry cross-model rounds. |10><->|11|."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Assumed qubit 0 (first qubit, MSB) as control, and qubit 1 as target."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Class B default: I use the common big-endian two-qubit matrix with the first/MSB qubit as control and the second as target."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Natural default: q0 (first/MSB register) = control, q1 = target — standard big-endian CNOT."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "3913bcef764f36b8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Default reading: 'the CNOT gate' uses the first/MSB register (qubit 0) as control and the second/LSB register (qubit 1) as target, consistent with prior rounds' big-endian convention."
+        }
+      ]
+    },
+    "amb_iqft2_bitrev": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f",
+      "n_runtimes": 5,
+      "distribution": {
+        "8348a57b43f3": 5
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          5
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "8348a57b43f3": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "codex",
+              "grok",
+              "kimi"
+            ],
+            "declared": null,
+            "prose": [
+              "My natural default: RAW inverse QFT2 with NO output bit-reversal/SWAP.",
+              "Assumed IQFT2 includes the swap/bit-reversal to match the mathematical",
+              "Class B default: I use the mathematical raw inverse QFT_2 matrix with ",
+              "Natural default: raw IQFT2 = (QFT2)† without output bit-reversal/SWAP ",
+              "Default reading: 'inverse QFT on 2 qubits' is the conjugate transpose "
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "8348a57b43f39dbc",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "My natural default: RAW inverse QFT2 with NO output bit-reversal/SWAP. iQFT[j,k]=(1/2)*exp(-2*pi*i*j*k/4). This matches QuantaFoundry's consistent 'no bit-reversal' convention."
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "8348a57b43f39dbc",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Assumed IQFT2 includes the swap/bit-reversal to match the mathematical transpose QFT2_dagger."
+        },
+        {
+          "runtime": "codex",
+          "u_hash": "8348a57b43f39dbc",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Class B default: I use the mathematical raw inverse QFT_2 matrix with no output bit-reversal/SWAP included."
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "8348a57b43f39dbc",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Natural default: raw IQFT2 = (QFT2)† without output bit-reversal/SWAP (QuantaFoundry QFT convention)."
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "8348a57b43f39dbc",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": null,
+          "construction_method": "Default reading: 'inverse QFT on 2 qubits' is the conjugate transpose of the raw QFT2 matrix with NO output bit-reversal/SWAP, consistent with prior rounds."
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total": 6,
+    "established": 6,
+    "multimodel": 6,
+    "reference_match": 0
+  }
+}

@@ -139,6 +139,54 @@
     "significance": "게이트→QFT→QPE→Shor 전 스택 완성. 봉인 모듈만으로 실제 인수분해 알고리즘이 동작·검증됨. 전 계층 key-free.",
     "verification": "모듈 22 · 앱 20 · 재발견 6/6 · 모듈 재검증 22/22 · 앱 결정론 20/20 · Shor 인수분해 행동검증(15=3×5) 통과"
   },
+  "shor_base_independence_round5l": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "Shor base 독립성 — a=2가 아닌 비-shift base a=7로 15 인수분해. shortcut이 a=2 우연이 아님을 실증.",
+    "honest_finding": "N=15=2^4-1 degeneracy 발견(분석+수치 확인): ×2가 비트순환(rot)이 되므로 *모든* unit base가 NOT^e∘rot_k로 분해됨 (a=7=NOT∘rot3, a=13=NOT∘rot1, a=8=rot3, ...). 즉 shortcut의 근원은 base가 아니라 N 자체. N=15에서는 어떤 base도 carry-propagating 산술을 강제하지 못함. 진짜 hard modular arithmetic은 N≠2^k-1(예: N=21)에서만 발생.",
+    "new_apps": [
+      {"id": "cmul7_mod15", "n_sys": 5, "decomp": "NOT∘rot3 = Fredkin×3(rot3, reverse chain) + CNOT×4(NOT)",
+       "reuses": ["fredkin", "cnot"], "honest": "golden은 산술(NOT∘rot3) 독립 작성, plan은 sealed fredkin/cnot — MatrixGate 없음. 조립품==golden 32상태 전수 일치.",
+       "note": "CNOT이 처음으로 modular-mult에 투입됨. orbit{1,4,7,13}에서 ×7 mod15와 일치"},
+      {"id": "shor15_a7", "n_sys": 7, "decomp": "H×3·cmul4[c1](U^2=×4 재사용)·cmul7[c2](U^1=×7 신규)·iQFT3",
+       "sub_apps": ["cmul4_mod15", "cmul7_mod15", "iqft3"],
+       "behavior": "work=|1>→counting{0,2,4,6}/8 각 0.25 → r=4 → gcd(7^2±1,15)=3,5 → 15=3×5 (a=2와 동일 readout, base 독립성 확인)"}
+    ],
+    "significance": "(가치) Shor 성공이 a=2 특수성에 의존하지 않음을 증명 + N=15 degeneracy를 정직히 정량화. (한계) a=7도 여전히 cheap — 진짜 산술 falsification은 N=21로 이월.",
+    "verification": "앱 봉인 22/22 · 재발견 교차검증 6/6 · 결정론 재봉인 byte 일치 · 봉인 golden 인수분해 행동(15=3×5) 통과 · building block(fredkin·cnot·h·swap2) verify_seal 재봉인 일치 · 방화벽(plan=실 bloq, no MatrixGate)"
+  },
+  "n21_modular_arithmetic_round5l2": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "N=21 진짜 modular arithmetic — N≠2^k-1 이라 ×a가 비트순환으로 분해 안 됨 → carry/reduction 강제. honest 분해의 진짜 falsification.",
+    "contrast": "N=15: ×a = NOT^e∘rot_k (Fredkin/CNOT 3~7게이트, 공짜). N=21: ×2 mod21 reversible synthesis = 66 게이트(C2~C5). degeneracy 차이 정량 실증.",
+    "new_modules": [
+      {"id": "c3x", "key": "d764049404dc37...", "bloq": "MultiControlX(cvs=(1,1,1))", "n_sys": 4},
+      {"id": "c4x", "key": "0a6fb6e1181a37...", "bloq": "MultiControlX(cvs=(1,1,1,1))", "n_sys": 5},
+      {"id": "c5x", "key": "9286e92137c4cb...", "bloq": "MultiControlX(cvs=(1,1,1,1,1))", "n_sys": 6}
+    ],
+    "module_establishment": "proof(permutation truth-table)⊕structural(projector Σ|p><p|⊗(X if all1 else I)) 독립 수렴, PROOF_BACKED, frozen. 드라이버 .pgf/keyfree/seal_cnx.py. fredkin/toffoli 패턴.",
+    "new_apps": [
+      {"id": "cmul2_mod21", "n_sys": 6, "decomp": "reversible synthesis(MMD) → {toffoli×11,c3x×21,c4x×25,c5x×9}=66 steps",
+       "honest": "golden=산술 순열(controlled ×2 mod21) 독립작성, plan=sealed multi-control X만 — MatrixGate 없음. 64상태 전수 검증.",
+       "note": "Shor-21(a=2) controlled-U^1. ×2 mod21 order=6: orbit |1>→2→4→8→16→11→1 (진짜 carry/reduction)"},
+      {"id": "cmul4_mod21", "n_sys": 6, "decomp": "cmul2² (×2∘×2)", "reuses": ["cmul2_mod21"], "note": "controlled-U^2 복리 재사용"},
+      {"id": "cmul16_mod21", "n_sys": 6, "decomp": "cmul4² (×4∘×4)", "reuses": ["cmul4_mod21"], "note": "controlled-U^{2^j} 패밀리 (×2^16 mod21=×16)"}
+    ],
+    "significance": "Shor-21의 양자-난해 핵심(controlled modular multiplier)을 honest하게 봉인. N=15가 회피했던 진짜 산술이 봉인 게이트만으로 동작·전수검증됨. 신뢰자본이 진짜 비싼 산술까지 복리 확장.",
+    "staged_next": "full Shor-21 QPE 조립 = counting register(t) + controlled-multiplier 패밀리 + iQFT_t. iQFT_t(t≥6) substrate(qft5/6 pipeline, cr6, 비제어 R4-6 위상)와 확률적 r=6 판독(2^t∤6, 연속분수)이 추가 필요 → 다음 세션.",
+    "verification": "모듈 봉인 25(+c3x·c4x·c5x) · 앱 봉인 25(+cmul2/4/16_mod21) · 결정론 재봉인 byte 일치 · 행동 검증(ctrl0=identity·ctrl1=×a mod21·orbit period 6 → 21=3×7) · c{3,4,5}x verify_seal 재봉인 일치 · 방화벽(plan=MultiControlX bloq, no MatrixGate)"
+  },
+  "shor21_capstone_round5l3": {
+    "status": "COMPLETE (2026-06-27)",
+    "concept": "full Shor-21 — N=15 특수성 완전 탈피. 진짜 carry/reduction multiplier(cmul2/4/16_mod21)로 12큐비트 주기발견 봉인.",
+    "iqft_substrate": "cr5_dag·cr6_dag·cr7_dag 봉인(proof⊕structural) → iqft7(7q, IQFT7 전수일치, Tier-0).",
+    "shor21_a2": {"n_sys": 12, "tier": 0, "u_hash": "c47668eaaf804ed2...", "seal_secs": 381,
+      "decomp": "H^7 · controlled-U^{2^j}(U=×2, powers 16/4/16/4/16/4/2 = cmul16/4/2_mod21 재사용) · iQFT7",
+      "honest": "composite==app_golden Tier-0 검증(EXACT_BOUND=12). 봉인 모듈만(no MatrixGate). golden=tensordot 독립구성.",
+      "behavior": "work=|1> → counting/128 연속분수 P(r=6)=0.228(t=7≥2r²) → r=6 → gcd(2^3±1,21)=7,3 → 21=3×7"},
+    "significance": "게이트→QFT→QPE→Shor 스택을 *진짜 modular arithmetic*(N≠2^k-1)로 완성. 리뷰 7/7 합의 결함(N=15 특수성) 해소.",
+    "note": "shor21_a2 는 4096차원 6분 봉인이라 메인 회귀(forge_apps)에서 분리. 봉인기록 .pgf/autoforge/SHOR21-SEAL.json. iqft7 은 회귀 포함.",
+    "verification": "shor21 Tier-0 SEALED · 봉인 golden 연속분수 r=6 복원 · iqft7 IQFT7 전수일치 · cr5/6/7_dag anti-swap"
+  },
   "app_crossmodel_round4": {
     "status": "COMPLETE (2026-06-27)",
     "concept": "앱 계층까지 cross-model — 의도(app-golden)+구현(app-bloq) 양쪽. 체인 어디에도 단독 작성 없게.",
@@ -162,5 +210,5 @@
     "quarantined": "gemini 중복본(golden·bloq 각 1) → apps2/_quarantine/",
     "significance": "게이트(진리+구현) + 앱(의도+구현) 전 계층 cross-model 완성. 신뢰 체인에 단독 작성 없음."
   },
-  "next": ["기술서 §9.8 갱신(앱 cross-model 반영)", "더 큰 N 인수분해(arithmetic 모듈)", "외부 리뷰 라운드(기술서 v0.3)"]
+  "next": ["full Shor-21 QPE 조립 — iQFT_t(t≥6) substrate(qft5/6 pipeline·cr6·비제어 R4-6) + 확률적 r=6 판독(연속분수). cmul2/4/16_mod21 재사용", "외부 리뷰 라운드(기술서 v0.3)", "게이트 난이도↑ 스트레스(합의 필요 모호 intent)", "goal-autonomy(registry 기반 자동 빌드 선택)"]
 }

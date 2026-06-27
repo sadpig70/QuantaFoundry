@@ -1,0 +1,71 @@
+{
+  "bundle": "REPRODUCED",
+  "steps": {
+    "forge_apps": {
+      "rc": 0,
+      "apps_sealed": "28/28",
+      "rediscovery": "6/6",
+      "pass": true
+    },
+    "registry": {
+      "rc": 0,
+      "modules": "28",
+      "unique_apps": "29",
+      "cached": "19",
+      "root_hash": "033bf21cfcf4a169",
+      "pass": true
+    },
+    "second_oracle": {
+      "rc": 0,
+      "modules": "18/18",
+      "pass": true
+    },
+    "behavior": {
+      "detail": {
+        "shor15_a2": {
+          "peaks": [
+            0,
+            2,
+            4,
+            6
+          ],
+          "expected": [
+            0,
+            2,
+            4,
+            6
+          ],
+          "pass": true
+        },
+        "shor15_a7": {
+          "peaks": [
+            0,
+            2,
+            4,
+            6
+          ],
+          "expected": [
+            0,
+            2,
+            4,
+            6
+          ],
+          "pass": true
+        },
+        "cmul2_mod21_orbit": {
+          "orbit": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            11,
+            1
+          ],
+          "period6": true
+        }
+      },
+      "pass": true
+    }
+  }
+}

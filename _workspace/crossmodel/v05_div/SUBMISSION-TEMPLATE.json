@@ -1,0 +1,44 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    { "id": "sanity_cz", "n_sys": 2,
+      "app_golden_real": [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,-1]],
+      "app_golden_imag": [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+      "app_golden_code": "import numpy as np\ngolden=np.diag([1,1,1,-1]).astype(complex)",
+      "declared_reading": { "kind": "fixed" },
+      "construction_method": "CZ fully specified", "self_check": "diagonal unitary" },
+
+    { "id": "free_cphase", "n_sys": 2,
+      "app_golden_real": "<4x4>", "app_golden_imag": "<4x4>",
+      "app_golden_code": "import numpy as np\nphi=<YOUR FREE phi>\ngolden=np.diag([1,1,1,np.exp(1j*phi)]).astype(complex)",
+      "declared_reading": { "phi": 0.0 },
+      "construction_method": "FREE choice phi=<value> rad; NOT a canonical fallback", "self_check": "unitary" },
+
+    { "id": "free_rz", "n_sys": 1,
+      "app_golden_real": "<2x2>", "app_golden_imag": "<2x2>",
+      "app_golden_code": "import numpy as np\ntheta=<YOUR FREE theta>\ngolden=np.diag([np.exp(-1j*theta/2),np.exp(1j*theta/2)]).astype(complex)",
+      "declared_reading": { "theta": 0.0 },
+      "construction_method": "FREE choice theta=<value> rad", "self_check": "unitary 2x2" },
+
+    { "id": "split_rz_sign", "n_sys": 1,
+      "app_golden_real": "<2x2>", "app_golden_imag": "<2x2>",
+      "app_golden_code": "import numpy as np\ns=<-1 or +1 per your convention>\ngolden=np.diag([np.exp(-s*1j*np.pi/4),np.exp(s*1j*np.pi/4)]).astype(complex)",
+      "declared_reading": { "sign": "-" },
+      "construction_method": "Rz(pi/2), generator sign convention = <-/+>", "self_check": "unitary 2x2" },
+
+    { "id": "split_ry_dir", "n_sys": 1,
+      "app_golden_real": "<2x2>", "app_golden_imag": "<2x2 zeros>",
+      "app_golden_code": "import numpy as np\ns=<-1 or +1>\nc=np.cos(np.pi/4);sn=np.sin(np.pi/4)\ngolden=np.array([[c,-s*sn],[s*sn,c]],complex)",
+      "declared_reading": { "sign": "-" },
+      "construction_method": "Ry(pi/2), direction sign = <-/+>", "self_check": "real orthogonal" },
+
+    { "id": "split_csqrtz_sign", "n_sys": 2,
+      "app_golden_real": "<4x4>", "app_golden_imag": "<4x4>",
+      "app_golden_code": "import numpy as np\ns=<+1 (controlled-S) or -1 (controlled-S-dagger)>\ngolden=np.diag([1,1,1,s*1j]).astype(complex)",
+      "declared_reading": { "sign": "+" },
+      "construction_method": "controlled-sqrt(Z); root sign = <+/->", "self_check": "diagonal unitary" }
+  ],
+  "_note": "Class C (free_*): COMMIT to a genuine free pick, do NOT default to a canonical value. declared_reading MUST match the matrix you actually submit (prose/matrix mismatch is auto-flagged)."
+}

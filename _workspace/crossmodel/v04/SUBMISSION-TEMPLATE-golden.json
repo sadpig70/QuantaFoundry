@@ -1,0 +1,32 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "iqft7", "n_sys": 7, "n_anc": 0,
+      "app_golden_real": "<128x128 nested number array OR omit and use app_golden_code>",
+      "app_golden_imag": "<128x128 nested number array OR omit and use app_golden_code>",
+      "app_golden_code": "import numpy as np\nN=128\nw=np.exp(2j*np.pi/N)\nQ=np.array([[w**(j*k) for k in range(N)] for j in range(N)],complex)/np.sqrt(N)\ngolden=Q.conj().T",
+      "construction_method": "<your own derivation>",
+      "self_check": "U@U^H ~ I, shape 128"
+    },
+    {
+      "id": "cmul2_mod21", "n_sys": 6, "n_anc": 0,
+      "app_golden_real": "<64x64 nested number array>",
+      "app_golden_imag": "<64x64 nested number array>",
+      "app_golden_code": "import numpy as np\nN=21\nU=np.zeros((64,64),complex)\nfor s in range(64):\n    c=(s>>5)&1; y=s&31\n    y2=(2*y%N) if (c==1 and y<N) else y\n    U[(c<<5)|y2,s]=1\ngolden=U",
+      "construction_method": "<your own derivation>",
+      "self_check": "permutation; q0=1 -> y->2y mod21 on 0..20"
+    },
+    { "id": "cmul4_mod21", "n_sys": 6, "n_anc": 0,
+      "app_golden_real": "...", "app_golden_imag": "...",
+      "app_golden_code": "<...assign golden, y->4y mod21...>",
+      "construction_method": "...", "self_check": "..." },
+    { "id": "cmul16_mod21", "n_sys": 6, "n_anc": 0,
+      "app_golden_real": "...", "app_golden_imag": "...",
+      "app_golden_code": "<...assign golden, y->16y mod21...>",
+      "construction_method": "...", "self_check": "..." }
+  ],
+  "_note": "app_golden_code shown is an ILLUSTRATIVE form; derive U your own way. real/imag arrays are the primary artifact for the 64x64 ones; for iqft7 (128x128) building it in app_golden_code is acceptable. Only numpy/math/cmath in code."
+}

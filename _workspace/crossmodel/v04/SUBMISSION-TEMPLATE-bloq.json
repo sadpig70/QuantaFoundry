@@ -1,0 +1,20 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "cmul2_mod21", "n_sys": 6,
+      "circuit": [
+        { "gate": "c4x", "targets": [0, 2, 3, 4, 1] },
+        { "gate": "toffoli", "targets": [0, 5, 1] },
+        { "gate": "...", "targets": [] }
+      ],
+      "synthesis_method": "<how you synthesized x2 mod21 controlled: e.g. MMD transformation-based on the 32-value permutation, fixed on 21..31>",
+      "self_check": "assembled is a permutation; q0=1 maps y->(2y mod21) on 0..20, fixed on 21..31"
+    },
+    { "id": "cmul4_mod21", "n_sys": 6, "circuit": [], "synthesis_method": "...", "self_check": "y->4y mod21" },
+    { "id": "cmul16_mod21", "n_sys": 6, "circuit": [], "synthesis_method": "...", "self_check": "y->16y mod21" }
+  ],
+  "_note": "Only gates from GATE-VOCABULARY.json. targets length = gate n_qubits. Multi-control X: leading targets=controls, last=target. Steps apply left-to-right. No matrix-gate shortcut. iqft7 bloq is OPTIONAL (h/swap/cz/cs_dag/cr3_dag..cr7_dag) if you also want to corroborate the inverse-QFT circuit."
+}

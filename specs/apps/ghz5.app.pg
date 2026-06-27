@@ -1,0 +1,23 @@
+# ghz5 — GHZ_5 준비 (5큐비트). goal-autonomy 자율 생성 (family extension, human seed 0).
+# 봉인 h_gate+cnot 재조립. 새 모듈 0 — registry 5큐비트로 O(1) marginal 확장(compounding).
+```json id=app_meta
+{"id": "ghz5", "n_sys": 5, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+CN=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+def emb(U,t,n):
+    left=np.eye(1<<t[0]); right=np.eye(1<<(n-t[-1]-1))
+    return np.kron(np.kron(left,U),right)
+g=np.kron(H,np.eye(1<<4))
+for i in range(4): g=emb(CN,[i,i+1],5)@g
+golden=g
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+           {"spec": "../modules/cnot.pg", "targets": [1, 2]},
+           {"spec": "../modules/cnot.pg", "targets": [2, 3]},
+           {"spec": "../modules/cnot.pg", "targets": [3, 4]}]}
+```

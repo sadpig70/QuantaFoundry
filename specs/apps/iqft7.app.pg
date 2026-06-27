@@ -1,0 +1,44 @@
+# iqft7 — inverse QFT on 7 qubits (Shor-21 counting register). cr5/6/7_dag 투입.
+# 표준 iQFT 회로(비트반전 swap + controlled-R_m† + H). QFT7†와 전수 일치 검증됨.
+```json id=app_meta
+{"id": "iqft7", "n_sys": 7, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=128; w=np.exp(2j*np.pi/N)
+QFT=np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)
+golden=QFT.conj().T
+```
+```json id=plan
+{"steps": [{"spec": "../modules/swap2.pg", "targets": [0, 6]},
+           {"spec": "../modules/swap2.pg", "targets": [1, 5]},
+           {"spec": "../modules/swap2.pg", "targets": [2, 4]},
+           {"spec": "../modules/h_gate.pg", "targets": [6]},
+           {"spec": "../modules/cs_dag.pg", "targets": [6, 5]},
+           {"spec": "../modules/h_gate.pg", "targets": [5]},
+           {"spec": "../modules/cr3_dag_gate.pg", "targets": [6, 4]},
+           {"spec": "../modules/cs_dag.pg", "targets": [5, 4]},
+           {"spec": "../modules/h_gate.pg", "targets": [4]},
+           {"spec": "../modules/cr4_dag_gate.pg", "targets": [6, 3]},
+           {"spec": "../modules/cr3_dag_gate.pg", "targets": [5, 3]},
+           {"spec": "../modules/cs_dag.pg", "targets": [4, 3]},
+           {"spec": "../modules/h_gate.pg", "targets": [3]},
+           {"spec": "../modules/cr5_dag_gate.pg", "targets": [6, 2]},
+           {"spec": "../modules/cr4_dag_gate.pg", "targets": [5, 2]},
+           {"spec": "../modules/cr3_dag_gate.pg", "targets": [4, 2]},
+           {"spec": "../modules/cs_dag.pg", "targets": [3, 2]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"spec": "../modules/cr6_dag_gate.pg", "targets": [6, 1]},
+           {"spec": "../modules/cr5_dag_gate.pg", "targets": [5, 1]},
+           {"spec": "../modules/cr4_dag_gate.pg", "targets": [4, 1]},
+           {"spec": "../modules/cr3_dag_gate.pg", "targets": [3, 1]},
+           {"spec": "../modules/cs_dag.pg", "targets": [2, 1]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/cr7_dag_gate.pg", "targets": [6, 0]},
+           {"spec": "../modules/cr6_dag_gate.pg", "targets": [5, 0]},
+           {"spec": "../modules/cr5_dag_gate.pg", "targets": [4, 0]},
+           {"spec": "../modules/cr4_dag_gate.pg", "targets": [3, 0]},
+           {"spec": "../modules/cr3_dag_gate.pg", "targets": [2, 0]},
+           {"spec": "../modules/cs_dag.pg", "targets": [1, 0]},
+           {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

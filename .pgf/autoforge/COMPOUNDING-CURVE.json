@@ -1,0 +1,65 @@
+{
+  "sealed_modules": 28,
+  "sealed_apps": 33,
+  "total_module_reuse_instances": 73,
+  "avg_reuse_per_app": 2.21,
+  "module_leverage(apps_per_module)": 2.61,
+  "top_reused": {
+    "h_gate": 24,
+    "cnot": 11,
+    "cz": 6,
+    "swap2": 6,
+    "cs_gate": 5
+  },
+  "family_compounding": {
+    "ghz": {
+      "members": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "n_members": 6,
+      "base_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "base_all_sealed": true,
+      "marginal_new_module_cost": 0,
+      "status": "compounding",
+      "kind": "entangling scaling (GHZ)"
+    },
+    "cluster": {
+      "members": [
+        3,
+        4
+      ],
+      "n_members": 2,
+      "base_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "base_all_sealed": true,
+      "marginal_new_module_cost": 0,
+      "status": "compounding",
+      "kind": "1D cluster state (MBQC resource)"
+    },
+    "wstate": {
+      "members": [],
+      "n_members": 0,
+      "base_modules": [
+        "cnot",
+        "ry_gate",
+        "x_gate"
+      ],
+      "base_all_sealed": false,
+      "marginal_new_module_cost": 1,
+      "status": "blocked(missing primitive)",
+      "kind": "W-state (needs Ry primitive — blocked)"
+    }
+  },
+  "compounding_thesis": "고정된 소수 봉인 모듈이 family-extension 으로 무한 멤버를 O(1) marginal (new-module 비용 0)로 생성 → 비선형 생산성. goal-autonomy 가 그 확장을 자율 선택.",
+  "honest_note": "선형 수동 조립과 구분되는 비선형 신호는 family-extension/goal-autonomy 자동 발견에 있다. compounding family 가 늘수록(ghz·cluster…) 동일 base 재사용 레버리지가 증가."
+}

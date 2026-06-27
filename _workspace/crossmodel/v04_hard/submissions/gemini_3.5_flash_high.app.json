@@ -1,0 +1,479 @@
+{
+  "runtime": "gemini",
+  "weights_id": "google-gemini-3.5-flash-high",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "hard_cy",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,-1j],[0,0,1j,0]], dtype=complex)",
+      "construction_method": "Controlled-Y gate: control is qubit 0 (MSB), target is qubit 1.",
+      "self_check": "unitary verified programmatically"
+    },
+    {
+      "id": "hard_sqrtswap",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.5,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.array([[1,0,0,0],[0,(1+1j)/2,(1-1j)/2,0],[0,(1-1j)/2,(1+1j)/2,0],[0,0,0,1]], dtype=complex)",
+      "construction_method": "Principal square root of SWAP gate.",
+      "self_check": "unitary verified programmatically"
+    },
+    {
+      "id": "hard_perm3",
+      "n_sys": 3,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.zeros((8,8), dtype=complex)\nperm = {0:0, 1:2, 2:4, 3:6, 4:1, 5:5, 6:3, 7:7}\nfor k, v in perm.items():\n    golden[v, k] = 1.0",
+      "construction_method": "Permutation matrix implementing cycle (1 2 4)(3 6)(5)(0)(7) on 3 qubits.",
+      "self_check": "unitary verified programmatically"
+    },
+    {
+      "id": "amb_cphase",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.diag([1.0, 1.0, 1.0, -1.0]).astype(complex)",
+      "construction_method": "Selected CZ (theta = pi) as the most canonical default controlled-phase gate.",
+      "self_check": "unitary verified programmatically"
+    },
+    {
+      "id": "amb_cnot_endianness",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)",
+      "construction_method": "Assumed qubit 0 (first qubit, MSB) as control, and qubit 1 as target.",
+      "self_check": "unitary verified programmatically"
+    },
+    {
+      "id": "amb_iqft2_bitrev",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.0,
+          -0.5,
+          0.0
+        ],
+        [
+          0.5,
+          -0.5,
+          0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          0.0,
+          -0.5,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5,
+          0.0,
+          0.5
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.0,
+          -0.5
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nN=4;w=np.exp(2j*np.pi/N)\nQ=np.array([[w**(j*k) for k in range(N)] for j in range(N)])/2\ngolden=Q.conj().T",
+      "construction_method": "Assumed IQFT2 includes the swap/bit-reversal to match the mathematical transpose QFT2_dagger.",
+      "self_check": "unitary verified programmatically"
+    }
+  ]
+}

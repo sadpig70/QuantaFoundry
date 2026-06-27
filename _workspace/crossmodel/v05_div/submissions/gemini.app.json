@@ -1,0 +1,283 @@
+{
+  "runtime": "gemini",
+  "weights_id": "google-gemini-3.5-flash-high",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "sanity_cz",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nM = np.eye(4, dtype=complex)\nM[3,3] = -1\ngolden = M",
+      "declared_reading": {
+        "kind": "fixed"
+      },
+      "construction_method": "CZ = diag(1,1,1,-1) per specification",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "free_cphase",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.4161468365471424
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9092974268256817
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nphi = 2.0\nM = np.eye(4, dtype=complex)\nM[3,3] = np.exp(1j * phi)\ngolden = M",
+      "declared_reading": {
+        "phi": 2.0
+      },
+      "construction_method": "Chose phi = 2.0 rad; free choice in (0,2*pi) with phi != pi",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "free_rz",
+      "n_sys": 1,
+      "app_golden_real": [
+        [
+          0.5403023058681398,
+          0.0
+        ],
+        [
+          0.0,
+          0.5403023058681398
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          -0.8414709848078965,
+          0.0
+        ],
+        [
+          0.0,
+          0.8414709848078965
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ntheta = 2.0\nM = np.diag([np.exp(-1j * theta / 2), np.exp(1j * theta / 2)])\ngolden = M",
+      "declared_reading": {
+        "theta": 2.0
+      },
+      "construction_method": "Chose theta = 2.0 rad; free choice in (0,2*pi) with theta not in {0,pi}",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "split_rz_sign",
+      "n_sys": 1,
+      "app_golden_real": [
+        [
+          0.7071067811865476,
+          0.0
+        ],
+        [
+          0.0,
+          0.7071067811865476
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          -0.7071067811865476,
+          0.0
+        ],
+        [
+          0.0,
+          0.7071067811865476
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ntheta0 = np.pi / 2\nM = np.diag([np.exp(-1j * theta0 / 2), np.exp(1j * theta0 / 2)])\ngolden = M",
+      "declared_reading": {
+        "sign": "-"
+      },
+      "construction_method": "Standard convention exp(-i*theta*Z/2) -> sign '-'",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "split_ry_dir",
+      "n_sys": 1,
+      "app_golden_real": [
+        [
+          0.7071067811865476,
+          -0.7071067811865476
+        ],
+        [
+          0.7071067811865476,
+          0.7071067811865476
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nc = np.cos(np.pi/4)\ns = np.sin(np.pi/4)\nM = np.array([[c, -s], [s, c]], dtype=complex)\ngolden = M",
+      "declared_reading": {
+        "sign": "-"
+      },
+      "construction_method": "Standard convention exp(-i*theta*Y/2) -> sign '-'",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "split_csqrtz_sign",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nM = np.eye(4, dtype=complex)\nM[3,3] = 1j\ngolden = M",
+      "declared_reading": {
+        "sign": "+"
+      },
+      "construction_method": "Controlled-S (sign '+') as the canonical square root of Z",
+      "self_check": "unitary, shape ok"
+    }
+  ]
+}

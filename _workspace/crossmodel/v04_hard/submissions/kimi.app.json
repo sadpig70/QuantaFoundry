@@ -1,0 +1,479 @@
+{
+  "runtime": "kimi",
+  "weights_id": "moonshot-kimi",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "hard_cy",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nP0 = np.array([[1, 0], [0, 0]], dtype=complex)\nP1 = np.array([[0, 0], [0, 1]], dtype=complex)\nY = np.array([[0, -1j], [1j, 0]], dtype=complex)\ngolden = np.kron(P0, np.eye(2)) + np.kron(P1, Y)",
+      "construction_method": "Controlled-Y with qubit 0 as control: apply Pauli-Y to target qubit 1 when control is |1>.",
+      "self_check": "hard_cy verified unitary and shape (4,4)."
+    },
+    {
+      "id": "hard_sqrtswap",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.5,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\na = (1 + 1j) / 2\nb = (1 - 1j) / 2\ngolden = np.array([[1, 0, 0, 0], [0, a, b, 0], [0, b, a, 0], [0, 0, 0, 1]], dtype=complex)",
+      "construction_method": "Principal square root of SWAP as given in the spec (V@V = SWAP).",
+      "self_check": "hard_sqrtswap verified V@V==SWAP and unitary, shape (4,4)."
+    },
+    {
+      "id": "hard_perm3",
+      "n_sys": 3,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.zeros((8, 8), dtype=complex)\n# fixed points\nfor i in [0, 5, 7]:\n    golden[i, i] = 1.0\n# cycle (1 2 4)\ngolden[2, 1] = 1.0\ngolden[4, 2] = 1.0\ngolden[1, 4] = 1.0\n# cycle (3 6)\ngolden[6, 3] = 1.0\ngolden[3, 6] = 1.0",
+      "construction_method": "3-qubit permutation matrix with cycles (1 2 4)(3 6), others fixed.",
+      "self_check": "hard_perm3 verified permutation/unitary and shape (8,8)."
+    },
+    {
+      "id": "amb_cphase",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.diag([1, 1, 1, -1]).astype(complex)",
+      "construction_method": "Default reading: 'controlled-phase' means controlled-Z (phase angle \u03c0, diagonal diag(1,1,1,-1)).",
+      "self_check": "amb_cphase verified unitary and shape (4,4)."
+    },
+    {
+      "id": "amb_cnot_endianness",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)",
+      "construction_method": "Default reading: 'the CNOT gate' uses the first/MSB register (qubit 0) as control and the second/LSB register (qubit 1) as target, consistent with prior rounds' big-endian convention.",
+      "self_check": "amb_cnot_endianness verified permutation/unitary and shape (4,4)."
+    },
+    {
+      "id": "amb_iqft2_bitrev",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          3.061616997868383e-17,
+          -0.5,
+          -9.184850993605148e-17
+        ],
+        [
+          0.5,
+          -0.5,
+          0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          -9.184850993605148e-17,
+          -0.5,
+          2.755455298081545e-16
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.5,
+          -6.123233995736766e-17,
+          0.5
+        ],
+        [
+          -0.0,
+          -6.123233995736766e-17,
+          1.2246467991473532e-16,
+          -1.8369701987210297e-16
+        ],
+        [
+          -0.0,
+          0.5,
+          -1.8369701987210297e-16,
+          -0.5
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nN = 4\nj = np.arange(N)[:, None]\nk = np.arange(N)[None, :]\nQ = np.exp(2j * np.pi * j * k / N) / 2\ngolden = Q.conj().T",
+      "construction_method": "Default reading: 'inverse QFT on 2 qubits' is the conjugate transpose of the raw QFT2 matrix with NO output bit-reversal/SWAP, consistent with prior rounds.",
+      "self_check": "amb_iqft2_bitrev verified unitary and shape (4,4)."
+    }
+  ]
+}

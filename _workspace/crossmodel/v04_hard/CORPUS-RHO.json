@@ -1,0 +1,70 @@
+{
+  "dir": "v04_hard",
+  "rho": 1.0,
+  "contaminated_upper_bound": true,
+  "selftest_pass": true,
+  "per_intent": [
+    {
+      "intent_index": 0,
+      "n_models": 5,
+      "observed_agreement": 1.0,
+      "chance": 0.25,
+      "rho_i": 1.0
+    },
+    {
+      "intent_index": 1,
+      "n_models": 5,
+      "observed_agreement": 1.0,
+      "chance": 0.5,
+      "rho_i": 1.0
+    },
+    {
+      "intent_index": 2,
+      "n_models": 5,
+      "observed_agreement": 1.0,
+      "chance": 0.5,
+      "rho_i": 1.0
+    }
+  ],
+  "intent_rows": {
+    "amb_cphase": {
+      "n_weights": 5,
+      "distinct": 1,
+      "unanimous": true,
+      "k_defaults": 4
+    },
+    "amb_cnot_endianness": {
+      "n_weights": 5,
+      "distinct": 1,
+      "unanimous": true,
+      "k_defaults": 2
+    },
+    "amb_iqft2_bitrev": {
+      "n_weights": 5,
+      "distinct": 1,
+      "unanimous": true,
+      "k_defaults": 2
+    }
+  },
+  "effect_model_only": [
+    {
+      "n_models": 2,
+      "n_eff": 1.0,
+      "grade_rho0": "MULTIMODEL",
+      "grade_rho": "CORPUS_CORRELATED"
+    },
+    {
+      "n_models": 3,
+      "n_eff": 1.0,
+      "grade_rho0": "MULTIMODEL",
+      "grade_rho": "CORPUS_CORRELATED"
+    },
+    {
+      "n_models": 6,
+      "n_eff": 1.0,
+      "grade_rho0": "MULTIMODEL",
+      "grade_rho": "CORPUS_CORRELATED"
+    }
+  ],
+  "note": "ρ 은 정답부재 의도에서만 정본. R5c(v04_hard)는 Schelling-정답 혼입으로 상한. 정본 추정은 v05_div Class C(free parameter) 수급 후. proof-backed 키는 corpus 무관(불변)."
+}

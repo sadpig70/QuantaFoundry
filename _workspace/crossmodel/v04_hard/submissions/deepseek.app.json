@@ -1,0 +1,479 @@
+{
+  "runtime": "deepseek",
+  "weights_id": "deepseek-v4-pro",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "hard_cy",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nP0=np.array([[1,0],[0,0]],dtype=complex)\nP1=np.array([[0,0],[0,1]],dtype=complex)\nY=np.array([[0,-1j],[1j,0]],dtype=complex)\ngolden=np.kron(P0,np.eye(2))+np.kron(P1,Y)",
+      "construction_method": "Controlled-Y: control=q0(MSB), target=q1. U = |0><0|\u2297I + |1><1|\u2297Y. Y=[[0,-i],[i,0]]. Big-endian.",
+      "self_check": "U@U^H ~ I (atol 1e-12), shape (4,4). Class B defaults committed."
+    },
+    {
+      "id": "hard_sqrtswap",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.5,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\na=(1+1j)/2; b=(1-1j)/2\ngolden=np.array([[1,0,0,0],[0,a,b,0],[0,b,a,0],[0,0,0,1]],dtype=complex)",
+      "construction_method": "Principal sqrt(SWAP): V@V = SWAP. V = given matrix: diag(1, (1+i)/2, (1+i)/2, 1) on diagonal, (1-i)/2 on off-diagonals of |01><->|10|.",
+      "self_check": "U@U^H ~ I (atol 1e-12), shape (4,4). Class B defaults committed."
+    },
+    {
+      "id": "hard_perm3",
+      "n_sys": 3,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nperm={0:0,1:2,2:4,4:1,3:6,6:3,5:5,7:7}\ngolden=np.zeros((8,8),dtype=complex)\nfor i,j in perm.items(): golden[j,i]=1",
+      "construction_method": "Non-textbook permutation (1 2 4)(3 6)(5)(0)(7) on big-endian indices. Built directly from cycle description.",
+      "self_check": "U@U^H ~ I (atol 1e-12), shape (8,8). Class B defaults committed."
+    },
+    {
+      "id": "amb_cphase",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden=np.diag([1,1,1,-1]).astype(complex)",
+      "construction_method": "My canonical default for 'controlled-phase' is CZ = diag(1,1,1,-1). Phase angle = pi. This is the most fundamental 2-qubit controlled-phase gate.",
+      "self_check": "U@U^H ~ I (atol 1e-12), shape (4,4). Class B defaults committed."
+    },
+    {
+      "id": "amb_cnot_endianness",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden=np.zeros((4,4),dtype=complex)\ngolden[0,0]=1; golden[1,1]=1; golden[3,2]=1; golden[2,3]=1",
+      "construction_method": "My natural default: control=first qubit (q0, MSB), target=second (q1). Same convention used throughout QuantaFoundry cross-model rounds. |10><->|11|.",
+      "self_check": "U@U^H ~ I (atol 1e-12), shape (4,4). Class B defaults committed."
+    },
+    {
+      "id": "amb_iqft2_bitrev",
+      "n_sys": 2,
+      "n_anc": 0,
+      "app_golden_real": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          3.061616997868383e-17,
+          -0.5,
+          -9.184850993605148e-17
+        ],
+        [
+          0.5,
+          -0.5,
+          0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          -9.184850993605148e-17,
+          -0.5,
+          2.755455298081545e-16
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.5,
+          -6.123233995736766e-17,
+          0.5
+        ],
+        [
+          -0.0,
+          -6.123233995736766e-17,
+          1.2246467991473532e-16,
+          -1.8369701987210297e-16
+        ],
+        [
+          -0.0,
+          0.5,
+          -1.8369701987210297e-16,
+          -0.5
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nN=4;w=np.exp(2j*np.pi/N)\nQ=np.array([[w**(j*k)/np.sqrt(N) for k in range(N)] for j in range(N)]).astype(complex)\ngolden=Q.conj().T",
+      "construction_method": "My natural default: RAW inverse QFT2 with NO output bit-reversal/SWAP. iQFT[j,k]=(1/2)*exp(-2*pi*i*j*k/4). This matches QuantaFoundry's consistent 'no bit-reversal' convention.",
+      "self_check": "U@U^H ~ I (atol 1e-12), shape (4,4). Class B defaults committed."
+    }
+  ]
+}

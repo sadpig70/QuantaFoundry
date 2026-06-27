@@ -1,0 +1,22 @@
+# cmul16_mod21 — controlled (×16 mod 21) = cmul4² (×4∘×4). ×16 = (×2)^4 합성 재사용(복리).
+# 6q: q0=control, q1..q5=work. Shor(N=21,a=2) controlled-U^{2^j}. 봉인 cmul 재조립(복리).
+```json id=app_meta
+{"id": "cmul16_mod21", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+N=21
+def cm(a):
+    M=np.zeros((64,64),dtype=complex)
+    for s in range(64):
+        if (s>>5)&1==0: M[s,s]=1
+        else:
+            w=s&31; M[(1<<5)|((a*w)%N if w<N else w), s]=1
+    return M
+golden=cm(16)
+```
+```json id=plan
+{"steps": [{"app": "cmul4_mod21.app.pg"},
+           {"app": "cmul4_mod21.app.pg"}]}
+```

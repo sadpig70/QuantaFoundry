@@ -1,0 +1,98 @@
+{
+  "project": "V04Review",
+  "mode": "execute",
+  "date": "2026-06-27",
+  "source_design": "_workspace/V0.4-REVIEW-RESPONSE-DESIGN.md",
+  "summary": { "done": 12, "total": 12 },
+  "scope": "외부 리뷰(7 AI) self-contained 항목 전부. EXT(6런타임 relay) 항목은 별도 브리프로 분리.",
+  "nodes": {
+    "P5.gen_dependency_graph": "done — registry/DEPENDENCY-GRAPH.json+.md (재귀 트리), scripts/registry_tools.py",
+    "P5.gen_registry_manifest": "done — registry/REGISTRY-MANIFEST.json (modules/unique/cached + root hash + revocation slot + dependents)",
+    "P5.seal_schema_note": "done(권고) → CODE 승격(2026-06-27): registry/SEMANTIC-GUARANTEES.json 비파괴 레이어 + scripts/semantic_guarantee.py. 봉인76 분류(unitary_equiv75·structural_wellformed1). ghz16 부분검증 verified(statevector 2^16 독립 2경로+앵커+negative control). 오라클/sealed 불변.",
+    "P2.registry_scanner": "done — goal_autonomy.py scan: GHZ family gap 자율 탐지",
+    "P2.value_scorer": "done — 재사용성×가치×(1/난이도)",
+    "P2.forge_scheduler": "done — ghz5·ghz6 자율 봉인 (human seed 0, 새 모듈 0)",
+    "P2.compounding_curve": "done — COMPOUNDING-CURVE.json (재사용 52, GHZ marginal=0)",
+    "P2.family_extension": "done(2026-06-27) — 다중 family 확장. _workspace/GOAL-AUTONOMY-FAMILY-NOTE.md. cluster(h+cz, bootstrap 신규)·ghz 확장 자율봉인 4/4(cluster3/4·ghz7/8, human seed 0, 독립 stabilizer/anchor 검증). wstate BLOCKED(ry_gate 선행 정직탐지). compound 자동화: 33앱·28모듈·leverage 2.61, compounding family 2. detect_gaps: interior gap+bootstrap+missing_modules. 결정론 불변(기존 ghz3-6 동일).",
+    "P4.pure_python_verifier": "done — second_oracle.py: 18/18 모듈 + cmul2_mod21 독립 재구성 일치 (no qualtran/golden/oracle-embed)",
+    "P3.hard_intent_proof_demo": "done — hard_intent_bench.py: hard 3 ESTABLISHED + 모호/B4 3 거부 (necessity)",
+    "P1.iqft_substrate": "done — cr5_dag·cr6_dag·cr7_dag 봉인 + iqft7 (Tier-0, IQFT7 전수일치)",
+    "P1.shor21_assembly": "done — shor21_a2 Tier-0 SEALED (4096차원, composite==golden, 381s)",
+    "P1.probabilistic_readout": "done — 봉인 golden 연속분수 P(r=6)=0.228 → 21=3×7",
+    "P6.reproduce_all_py": "done — reports/REPRODUCE-RESULT.json: REPRODUCED",
+    "P7.claim_calibration_doc": "done — _workspace/V0.4-DOC-HONESTY-PATCH.md (R-M/O/P/I/K)",
+    "P7.spec_patch_applied": "done(2026-06-27) — 권고를 docs/QuantaFoundry-Technical-Spec.md 에 실제 적용(v0.3→v0.4). P-1 수량(28모듈·33앱·frozen15·52파일·root_hash)·P-2 N=21 capstone+behavioral illustrative·P-3 non-linear 가설격하+goal-autonomy MVP+fully-autonomous 완화·P-4 second_oracle 제3축 triangulation·P-5 semantic_guarantee 표+레이어·§8.6 v0.4 증거(app cross-model/necessity/corpus ρ/family) 신설. 코드/봉인 불변(문서만)."
+  },
+  "ext_ingested": {
+    "status": "DONE — 2026-06-27. 6런타임 수급(golden 6·bloq 6·hard 5) 후 ingest 완료.",
+    "report": "_workspace/crossmodel/EXT-V04-INGEST-REPORT.md",
+    "R5a_app_golden": "4/4 ESTABLISHED MULTIMODEL · 봉인앱 일치 4/4 (iqft7,cmul2/4/16_mod21)",
+    "R5b_app_bloq": "4/4 ESTABLISHED MULTIMODEL · 봉인앱 일치 4/4 · B4 저항 실증(deepseek/qwen 오구현 배제)",
+    "R5c_classA_hard": "3/3 ESTABLISHED 만장일치 — necessity WORKS 입증(off-textbook: cy,√swap,perm3)",
+    "R5c_classB_ambiguous": "3/3 ESTABLISHED 만장일치 — 발산 미발생(음성). 원인=이종 weights 공유 Schelling default. necessity-NEEDED 미입증. gemini iqft2 prose/matrix 모순 기록.",
+    "honest_note": "R5c Class B는 정직한 음성 결과. 진짜 발산엔 공유 prior 없는 의도 필요(후속)."
+  },
+  "corpus_discount_RI": {
+    "status": "DONE (code) — 2026-06-27. R-I 문서→코드 승격. ρ 분석전용(봉인경로 미적용, ρ=0 기본).",
+    "note_doc": "_workspace/CORPUS-DISCOUNT-NOTE.md",
+    "consensus_py": "effective_independent_count(N/(1+(N-1)ρ)) + confidence_grade(units,ρ=0)[byte-identical 31/31 증명] + establish_truth(ρ=0)[CORPUS_CORRELATED 강등] + estimate_corpus_rho(ICC proxy)",
+    "tool": "scripts/corpus_discount.py (selftest 4/4)",
+    "result_R5c": "v04_hard 3 모호의도 만장일치 → ρ=1.0(상한, Schelling-정답 오염). 효과: model-only N=2/3/6 전부 CORPUS_CORRELATED(N_eff=1.0). proof-backed 불변.",
+    "honesty": "ρ은 정답부재 의도에서만 정본. v05_div Class C(free param)가 정본 추정원(수급 후 --dir v05_div).",
+    "determinism": "frozen 15키=registry 15/15 일치, build+freeze 멱등(0a4ca75b), second_oracle 18/18·verify_seal 11 PASS.",
+    "incident": "determinism 점검 중 build_consensus_keys.py가 15키→8키 덮어씀(cross-model 7 일시 드롭) → freeze_crossmodel_keys.py 정규절차로 15키 복구. frozen 값 무변경 확인. 교훈: 봉인 점검 시 frozen 파일 재생성 금지, 메모리상 검증."
+  },
+  "v05_divergence_INGESTED": {
+    "status": "DONE — 2026-06-27. 6런타임 수급·ingest 완료. R5c 음성 종결.",
+    "report": "_workspace/crossmodel/EXT-V05-INGEST-REPORT.md",
+    "classC_free": "free_cphase·free_rz 6/6 distinct → DIVERGENT = necessity-NEEDED 입증(airtight). 단일소스 임의봉인을 consensus 정당거부.",
+    "classS_sanity": "sanity_cz 6/6 만장일치 ESTABLISHED(key=cz값). probe 무차별발산 아님 확인.",
+    "classD_split": "split_rz_sign 4-2 / split_ry_dir 3-3 / split_csqrtz_sign 4-2 — distinct-weights convention 실제 분기. 캠프가 의도마다 달라 고정계보 아님. (초판 csqrtz 3-3 오기→직접 hash 검증으로 4-2 정정, declared 6/6 일치, 오라클 hash 결정성 10/10 재확인.)",
+    "engine_defect_RESOLVED": "split_ry_dir 3-3 동률에서 (guard 이전) establish_truth max() 임의측 봉인 = 스모크 예측 실증 → contested guard 정식화로 CONTESTED 차단. 재ingest 확인. (csqrtz는 4-2라 정당 ESTABLISHED.)",
+    "canonical_rho": "ρ=0.0 (정본). R5c 상한 1.0 정정 — R5c 완전상관은 Schelling-정답 혼입 artifact였음. 자유선택축에서 frontier 모델 독립선택 실측 → cross-model 독립성 옹호. corpus-discount 봉인경로 적용 불요(분석전용 유지).",
+    "reports": "v05_div/APP-CONSENSUS-REPORT.json(audit포함) · v05_div/CORPUS-RHO.json"
+  },
+  "contested_guard": {
+    "status": "DONE (정욱님 승인 후 구현) — 2026-06-27.",
+    "consensus_py": "establish_truth: top-2 독립단위 동률(runner_up==winner) → CONTESTED(봉인거부·escalate). ConsensusResult status에 CONTESTED 추가. 단일그룹 수렴(frozen 빌드경로 runner_up=0)은 미발동→결정론 불변.",
+    "ingest_py": "CONTESTED 아이콘(⚑) 추가.",
+    "verify": "scripts/verify_contested_guard.py 20/20 — frozen 15키 status/key/grade 불변(파일 미변경) + guard 단위테스트(3-3·2-2→CONTESTED, 단일·4-2·3-2-1→ESTABLISHED).",
+    "regression": "smoke 19/19 · second_oracle 18/18 · v04 4/4 · v04_hard 6/6 불변. v05 재ingest: split_ry_dir → CONTESTED 차단 확인.",
+    "real_effect": "v05_div split_ry_dir(진짜 3-3)가 이제 CONTESTED. 50/50 convention 임의봉인 차단."
+  },
+  "v05_divergence_followup": {
+    "status": "INGESTED (위 v05_divergence_INGESTED 참조). 준비단계 기록 보존.",
+    "dir": "_workspace/crossmodel/v05_div/",
+    "design_fix": "R5c 모호의도는 유일 Schelling 답이 있어 수렴. v0.5 Class C는 free continuous parameter로 의도 자체에 유일답 부재 → 단일소스 임의봉인/consensus 정당거부(DIVERGENT) airtight.",
+    "intents": "S:sanity_cz / C:free_cphase,free_rz (발산 by construction) / D:split_rz_sign,split_ry_dir,split_csqrtz_sign (부호 convention 실측, phase-inequivalent 검증)",
+    "ingest_upgrade": "ingest_app_golden.py 비파괴 reading_audit 추가: declared_reading 구조화 필드로 prose/matrix 모순(gemini형) 자동감지 + contested near-tie(3-3 등 establish_truth max() 임의봉인) flag. 봉인 로직 불변(회귀 v04 4/4·v04_hard 6/6).",
+    "engine_finding": "establish_truth 는 winner 독립단위≥N이면 동률(near-tie)이라도 max()로 한쪽 임의 확립 → 50/50 convention split 거짓봉인 위험. 결정론 제약상 엔진 미변경, ingest audit으로 surface. margin/contested guard 정식화는 정욱님 승인 후보.",
+    "smoke": "_workspace/crossmodel/v05_div/SMOKE-CHECK.json (19/19): free distinct·split phase-inequivalent·engine 판정·audit 자동감지",
+    "after_relay": "ingest_app_golden.py --dir v05_div → Class C DIVERGENT(necessity-NEEDED) 확인 + Class D 실측 + READING AUDIT",
+    "ext_relay_package": {
+      "status": "READY for 정욱님 relay — 2026-06-27.",
+      "master_ops": "_workspace/crossmodel/README-EXT-v05.md",
+      "paste_prompt": "_workspace/crossmodel/v05_div/PROMPT-v05.md (6런타임 동일, self-contained)",
+      "preflight": "_workspace/crossmodel/v05_div/preflight.py (형식검증: shape/유니터리/declared_reading/code-consistency/prose-matrix 모순). 합성검증: 정상 6/6 통과·모순 정확탐지, 거짓양성 0.",
+      "bugfix": "preflight/smoke reconstruct 의 split_rz_sign·split_ry_dir 부호 라벨이 PROMPT 정의와 반대였던 것 수정(실제 제출 거짓양성 방지). smoke 19/19 회귀.",
+      "runtimes": "gpt-5/openai-gpt-5, gemini/google-gemini-3.5-flash-high, grok/xai-grok, kimi/moonshot-kimi, qwen/alibaba-qwen, deepseek/deepseek-v4-pro",
+      "after": "preflight.py → ingest_app_golden.py --dir v05_div → corpus_discount.py --dir v05_div(정본 ρ)"
+    }
+  },
+  "ext_briefs_prepared": {
+    "status": "SUPERSEDED by ext_ingested. (브리프는 보존)",
+    "master_ops": "_workspace/crossmodel/README-EXT-v04.md",
+    "R5a_app_golden": "_workspace/crossmodel/v04/ (APP-GOLDEN-BRIEF, app_intents[iqft7,cmul2/4/16_mod21], SUBMISSION-TEMPLATE-golden) → ingest_app_golden.py --dir v04",
+    "R5b_app_bloq": "_workspace/crossmodel/v04/ (APP-BLOQ-BRIEF, GATE-VOCABULARY[+c3x/c4x/c5x/cr5-7_dag], SUBMISSION-TEMPLATE-bloq) → ingest_app_bloq.py --dir v04",
+    "R5c_hard_intent": "_workspace/crossmodel/v04_hard/ (HARD-INTENT-BRIEF, app_intents[A:hard 3 / B:ambiguous 3]) → ingest_app_golden.py --dir v04_hard (발산=성공)",
+    "R5d_persona_panel": "_workspace/crossmodel/v04/PERSONA-PANEL-PROTOCOL.md (R-L 정책, 이종 weights 배치)",
+    "smoke": "_workspace/crossmodel/v04/SMOKE-CHECK.json — R5a well-posed 4/4 · R5b vocab 21/21 + cmul2 circuit 적중 · R5c classA 유니터리 3/3 · ingest 경로 정상"
+  },
+  "totals_after": { "modules": 28, "unique_apps": 33, "registry_apps_files": 52, "cached_app_side_reseals": 19, "note": "v0.4 시작 28앱 → goal-autonomy family 자율봉인(cluster3/4·ghz7/8) → 33. registry_root_hash 60189d86..", "shor21_heavy": "별도 봉인(381s, Tier-0)" },
+  "artifacts": [
+    "scripts/registry_tools.py", "scripts/goal_autonomy.py", "scripts/second_oracle.py",
+    "scripts/hard_intent_bench.py", "scripts/reproduce_all.py", ".pgf/keyfree/seal_cnx.py",
+    "specs/apps/{ghz5,ghz6,iqft7,shor21_a2}.app.pg",
+    "registry/{REGISTRY-MANIFEST,DEPENDENCY-GRAPH}.json", "reports/REPRODUCE-RESULT.json"
+  ]
+}

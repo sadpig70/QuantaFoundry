@@ -1,0 +1,804 @@
+{
+  "runtimes": [
+    "deepseek",
+    "gemini",
+    "gpt-5",
+    "grok",
+    "kimi",
+    "qwen"
+  ],
+  "warnings": [],
+  "apps": {
+    "sanity_cz": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+      "n_runtimes": 6,
+      "distribution": {
+        "8d39767cd8c3": 6
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 1,
+        "group_weight_sizes": [
+          6
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "8d39767cd8c3": {
+            "runtimes": [
+              "deepseek",
+              "gemini",
+              "gpt-5",
+              "grok",
+              "kimi",
+              "qwen"
+            ],
+            "declared": [
+              "{\"kind\": \"fixed\"}"
+            ],
+            "prose": [
+              "fixed CZ = diag(1,1,1,-1)",
+              "CZ = diag(1,1,1,-1) per specification",
+              "fixed CZ = diag(1,1,1,-1)",
+              "fixed CZ = diag(1,1,1,-1)",
+              "fixed CZ = diag(1,1,1,-1)",
+              "fixed CZ = diag(1,1,1,-1)"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "kind": "fixed"
+          },
+          "construction_method": "fixed CZ = diag(1,1,1,-1)"
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "kind": "fixed"
+          },
+          "construction_method": "CZ = diag(1,1,1,-1) per specification"
+        },
+        {
+          "runtime": "gpt-5",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "kind": "fixed"
+          },
+          "construction_method": "fixed CZ = diag(1,1,1,-1)"
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "kind": "fixed"
+          },
+          "construction_method": "fixed CZ = diag(1,1,1,-1)"
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "kind": "fixed"
+          },
+          "construction_method": "fixed CZ = diag(1,1,1,-1)"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "8d39767cd8c38717",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "kind": "fixed"
+          },
+          "construction_method": "fixed CZ = diag(1,1,1,-1)"
+        }
+      ]
+    },
+    "free_cphase": {
+      "status": "DIVERGENT",
+      "grade": null,
+      "key": null,
+      "n_runtimes": 6,
+      "distribution": {
+        "e28ade03c432": 1,
+        "2fa668d31b4e": 1,
+        "eaa981d3b2d1": 1,
+        "3d19e5ebc45f": 1,
+        "5687b0316274": 1,
+        "df9e60d7e859": 1
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "max independent agreement 1 < N=2; refine intent or add cross-model/proof source",
+      "audit": {
+        "n_groups": 6,
+        "group_weight_sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": true,
+        "groups": {
+          "e28ade03c432": {
+            "runtimes": [
+              "deepseek"
+            ],
+            "declared": [
+              "{\"phi\": 1.8849555921538759}"
+            ],
+            "prose": [
+              "free cphase with phi=1.88495559215387587"
+            ]
+          },
+          "2fa668d31b4e": {
+            "runtimes": [
+              "gemini"
+            ],
+            "declared": [
+              "{\"phi\": 2.0}"
+            ],
+            "prose": [
+              "Chose phi = 2.0 rad; free choice in (0,2*pi) with phi != pi"
+            ]
+          },
+          "eaa981d3b2d1": {
+            "runtimes": [
+              "gpt-5"
+            ],
+            "declared": [
+              "{\"phi\": 2.718281828459045}"
+            ],
+            "prose": [
+              "free cphase with phi=2.71828182845904509"
+            ]
+          },
+          "3d19e5ebc45f": {
+            "runtimes": [
+              "grok"
+            ],
+            "declared": [
+              "{\"phi\": 2.846578074224522}"
+            ],
+            "prose": [
+              "free cphase with phi=2.84657807422452214"
+            ]
+          },
+          "5687b0316274": {
+            "runtimes": [
+              "kimi"
+            ],
+            "declared": [
+              "{\"phi\": 1.9416110387254664}"
+            ],
+            "prose": [
+              "free cphase with phi=1.94161103872546636"
+            ]
+          },
+          "df9e60d7e859": {
+            "runtimes": [
+              "qwen"
+            ],
+            "declared": [
+              "{\"phi\": 1.4142135623730951}"
+            ],
+            "prose": [
+              "free cphase with phi=1.41421356237309515"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "e28ade03c432fa6b",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "phi": 1.8849555921538759
+          },
+          "construction_method": "free cphase with phi=1.88495559215387587"
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "2fa668d31b4eba97",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "phi": 2.0
+          },
+          "construction_method": "Chose phi = 2.0 rad; free choice in (0,2*pi) with phi != pi"
+        },
+        {
+          "runtime": "gpt-5",
+          "u_hash": "eaa981d3b2d1858e",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "phi": 2.718281828459045
+          },
+          "construction_method": "free cphase with phi=2.71828182845904509"
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "3d19e5ebc45f7809",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "phi": 2.846578074224522
+          },
+          "construction_method": "free cphase with phi=2.84657807422452214"
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "5687b03162741ce4",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "phi": 1.9416110387254664
+          },
+          "construction_method": "free cphase with phi=1.94161103872546636"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "df9e60d7e859c307",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "phi": 1.4142135623730951
+          },
+          "construction_method": "free cphase with phi=1.41421356237309515"
+        }
+      ]
+    },
+    "free_rz": {
+      "status": "DIVERGENT",
+      "grade": null,
+      "key": null,
+      "n_runtimes": 6,
+      "distribution": {
+        "2e3a14da9ba0": 1,
+        "d4abf03bba03": 1,
+        "cbf5c9b14753": 1,
+        "017d37c167ed": 1,
+        "bf19d89ac697": 1,
+        "1f913477c299": 1
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "max independent agreement 1 < N=2; refine intent or add cross-model/proof source",
+      "audit": {
+        "n_groups": 6,
+        "group_weight_sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": true,
+        "groups": {
+          "2e3a14da9ba0": {
+            "runtimes": [
+              "deepseek"
+            ],
+            "declared": [
+              "{\"theta\": 1.7320508075688772}"
+            ],
+            "prose": [
+              "free Rz with theta=1.73205080756887719"
+            ]
+          },
+          "d4abf03bba03": {
+            "runtimes": [
+              "gemini"
+            ],
+            "declared": [
+              "{\"theta\": 2.0}"
+            ],
+            "prose": [
+              "Chose theta = 2.0 rad; free choice in (0,2*pi) with theta not in {0,pi"
+            ]
+          },
+          "cbf5c9b14753": {
+            "runtimes": [
+              "gpt-5"
+            ],
+            "declared": [
+              "{\"theta\": 2.718281828459045}"
+            ],
+            "prose": [
+              "free Rz with theta=2.71828182845904509"
+            ]
+          },
+          "017d37c167ed": {
+            "runtimes": [
+              "grok"
+            ],
+            "declared": [
+              "{\"theta\": 1.0471975511965976}"
+            ],
+            "prose": [
+              "free Rz with theta=1.04719755119659763"
+            ]
+          },
+          "bf19d89ac697": {
+            "runtimes": [
+              "kimi"
+            ],
+            "declared": [
+              "{\"theta\": 0.8975979010256552}"
+            ],
+            "prose": [
+              "free Rz with theta=0.897597901025655176"
+            ]
+          },
+          "1f913477c299": {
+            "runtimes": [
+              "qwen"
+            ],
+            "declared": [
+              "{\"theta\": 1.1557273497909217}"
+            ],
+            "prose": [
+              "free Rz with theta=1.15572734979092173"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "2e3a14da9ba03502",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "theta": 1.7320508075688772
+          },
+          "construction_method": "free Rz with theta=1.73205080756887719"
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "d4abf03bba03dc31",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "theta": 2.0
+          },
+          "construction_method": "Chose theta = 2.0 rad; free choice in (0,2*pi) with theta not in {0,pi}"
+        },
+        {
+          "runtime": "gpt-5",
+          "u_hash": "cbf5c9b1475324f7",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "theta": 2.718281828459045
+          },
+          "construction_method": "free Rz with theta=2.71828182845904509"
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "017d37c167ed2881",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "theta": 1.0471975511965976
+          },
+          "construction_method": "free Rz with theta=1.04719755119659763"
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "bf19d89ac6974a24",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "theta": 0.8975979010256552
+          },
+          "construction_method": "free Rz with theta=0.897597901025655176"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "1f913477c299f3ed",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "theta": 1.1557273497909217
+          },
+          "construction_method": "free Rz with theta=1.15572734979092173"
+        }
+      ]
+    },
+    "split_rz_sign": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+      "n_runtimes": 6,
+      "distribution": {
+        "201883805425": 2,
+        "7c739c3b4c3a": 4
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 2,
+        "group_weight_sizes": [
+          4,
+          2
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "201883805425": {
+            "runtimes": [
+              "deepseek",
+              "grok"
+            ],
+            "declared": [
+              "{\"sign\": \"+\"}"
+            ],
+            "prose": [
+              "Rz(pi/2) with sign=+ convention",
+              "Rz(pi/2) with sign=+ convention"
+            ]
+          },
+          "7c739c3b4c3a": {
+            "runtimes": [
+              "gemini",
+              "gpt-5",
+              "kimi",
+              "qwen"
+            ],
+            "declared": [
+              "{\"sign\": \"-\"}"
+            ],
+            "prose": [
+              "Standard convention exp(-i*theta*Z/2) -> sign '-'",
+              "Rz(pi/2) with sign=- convention",
+              "Rz(pi/2) with sign=- convention",
+              "Rz(pi/2) with sign=- convention"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "2018838054253fb2",
+          "agrees": false,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "Rz(pi/2) with sign=+ convention"
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Standard convention exp(-i*theta*Z/2) -> sign '-'"
+        },
+        {
+          "runtime": "gpt-5",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Rz(pi/2) with sign=- convention"
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "2018838054253fb2",
+          "agrees": false,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "Rz(pi/2) with sign=+ convention"
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Rz(pi/2) with sign=- convention"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "7c739c3b4c3a0ac8",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Rz(pi/2) with sign=- convention"
+        }
+      ]
+    },
+    "split_ry_dir": {
+      "status": "CONTESTED",
+      "grade": null,
+      "key": null,
+      "n_runtimes": 6,
+      "distribution": {
+        "393986b2b2ec": 3,
+        "1b2d054bd3ea": 3
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "top-2 independence tie (3=3); no plurality — refine intent or add proof/structural tie-breaker",
+      "audit": {
+        "n_groups": 2,
+        "group_weight_sizes": [
+          3,
+          3
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": true,
+        "groups": {
+          "393986b2b2ec": {
+            "runtimes": [
+              "deepseek",
+              "kimi",
+              "qwen"
+            ],
+            "declared": [
+              "{\"sign\": \"+\"}"
+            ],
+            "prose": [
+              "Ry(pi/2) with sign=+ convention",
+              "Ry(pi/2) with sign=+ convention",
+              "Ry(pi/2) with sign=+ convention"
+            ]
+          },
+          "1b2d054bd3ea": {
+            "runtimes": [
+              "gemini",
+              "gpt-5",
+              "grok"
+            ],
+            "declared": [
+              "{\"sign\": \"-\"}"
+            ],
+            "prose": [
+              "Standard convention exp(-i*theta*Y/2) -> sign '-'",
+              "Ry(pi/2) with sign=- convention",
+              "Ry(pi/2) with sign=- convention"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "393986b2b2ec0634",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "Ry(pi/2) with sign=+ convention"
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "1b2d054bd3ea0cbf",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Standard convention exp(-i*theta*Y/2) -> sign '-'"
+        },
+        {
+          "runtime": "gpt-5",
+          "u_hash": "1b2d054bd3ea0cbf",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Ry(pi/2) with sign=- convention"
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "1b2d054bd3ea0cbf",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "Ry(pi/2) with sign=- convention"
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "393986b2b2ec0634",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "Ry(pi/2) with sign=+ convention"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "393986b2b2ec0634",
+          "agrees": null,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "Ry(pi/2) with sign=+ convention"
+        }
+      ]
+    },
+    "split_csqrtz_sign": {
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "key": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+      "n_runtimes": 6,
+      "distribution": {
+        "83e2a0e62fed": 2,
+        "a2193b0fcfb6": 4
+      },
+      "reference": null,
+      "reference_kind": null,
+      "reference_match": null,
+      "escalation": "",
+      "audit": {
+        "n_groups": 2,
+        "group_weight_sizes": [
+          4,
+          2
+        ],
+        "prose_matrix_mismatch": false,
+        "mismatch_hashes": [],
+        "contested_tie": false,
+        "groups": {
+          "83e2a0e62fed": {
+            "runtimes": [
+              "deepseek",
+              "kimi"
+            ],
+            "declared": [
+              "{\"sign\": \"-\"}"
+            ],
+            "prose": [
+              "controlled-sqrt(Z) with sign=- (controlled-S-dagger)",
+              "controlled-sqrt(Z) with sign=- (controlled-S-dagger)"
+            ]
+          },
+          "a2193b0fcfb6": {
+            "runtimes": [
+              "gemini",
+              "gpt-5",
+              "grok",
+              "qwen"
+            ],
+            "declared": [
+              "{\"sign\": \"+\"}"
+            ],
+            "prose": [
+              "Controlled-S (sign '+') as the canonical square root of Z",
+              "controlled-sqrt(Z) with sign=+ (controlled-S)",
+              "controlled-sqrt(Z) with sign=+ (controlled-S)",
+              "controlled-sqrt(Z) with sign=+ (controlled-S)"
+            ]
+          }
+        }
+      },
+      "votes": [
+        {
+          "runtime": "deepseek",
+          "u_hash": "83e2a0e62fed7de9",
+          "agrees": false,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "controlled-sqrt(Z) with sign=- (controlled-S-dagger)"
+        },
+        {
+          "runtime": "gemini",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "Controlled-S (sign '+') as the canonical square root of Z"
+        },
+        {
+          "runtime": "gpt-5",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "controlled-sqrt(Z) with sign=+ (controlled-S)"
+        },
+        {
+          "runtime": "grok",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "controlled-sqrt(Z) with sign=+ (controlled-S)"
+        },
+        {
+          "runtime": "kimi",
+          "u_hash": "83e2a0e62fed7de9",
+          "agrees": false,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "-"
+          },
+          "construction_method": "controlled-sqrt(Z) with sign=- (controlled-S-dagger)"
+        },
+        {
+          "runtime": "qwen",
+          "u_hash": "a2193b0fcfb6deb3",
+          "agrees": true,
+          "self_consistent": true,
+          "declared_reading": {
+            "sign": "+"
+          },
+          "construction_method": "controlled-sqrt(Z) with sign=+ (controlled-S)"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total": 6,
+    "established": 3,
+    "multimodel": 3,
+    "reference_match": 0
+  }
+}

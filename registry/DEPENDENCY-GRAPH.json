@@ -1,0 +1,707 @@
+{
+  "bell": {
+    "u_hash": "b314b411bf3605ef723e160e3d0e021e06f7ebc54525b78ab6966c9f5eb7de9f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ccz_rediscovered": {
+    "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 1,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "cluster3": {
+    "u_hash": "d2e50285e91e6acc58f7ff5b5f6f9ba2c926dd3329219aa9c7b3925ea6903c27",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 2,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "cluster4": {
+    "u_hash": "bb113c845558133ee11a7f8469178a7c1863acf3560e68f15a051c33b32fefc5",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 3,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "cmul16_mod21": {
+    "u_hash": "2fa362f7830fa17f9e0f7a0935ceb18e81e200f3ff855d5749415ae962313664",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul4_mod21",
+        "uses": 2,
+        "child_u_hash": "1f73313e8be267e2ecc941ecc4209bd3e462c3655a7c62f38e66cc3529c60a6b"
+      }
+    ]
+  },
+  "cmul2_mod15": {
+    "u_hash": "3b9fdb52b48baaadfe13322949ecdff8e9ff4be6a80f4da34a740cfa7db792a2",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "fredkin",
+        "uses": 3,
+        "child_u_hash": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711"
+      }
+    ]
+  },
+  "cmul2_mod21": {
+    "u_hash": "1aaf1e8a4589bbb061bf6aff725e20c40f245e6e4c9d8e9432b3cbded9eaae98",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 21,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 25,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 9,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 11,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "cmul4_mod15": {
+    "u_hash": "8b86131c2bbf1d1b04463588961061cf83d20bb7fb39da531d8758c4b6741ea1",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul2_mod15",
+        "uses": 2,
+        "child_u_hash": "3b9fdb52b48baaadfe13322949ecdff8e9ff4be6a80f4da34a740cfa7db792a2"
+      }
+    ]
+  },
+  "cmul4_mod21": {
+    "u_hash": "1f73313e8be267e2ecc941ecc4209bd3e462c3655a7c62f38e66cc3529c60a6b",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul2_mod21",
+        "uses": 2,
+        "child_u_hash": "1aaf1e8a4589bbb061bf6aff725e20c40f245e6e4c9d8e9432b3cbded9eaae98"
+      }
+    ]
+  },
+  "cmul7_mod15": {
+    "u_hash": "c91549e8c0aa051b734d49744605775013c231db28a917fbb70cf68cb9d0d827",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 4,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "fredkin",
+        "uses": 3,
+        "child_u_hash": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711"
+      }
+    ]
+  },
+  "cz_rediscovered": {
+    "u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "diffusion": {
+    "u_hash": "067db05d7cb8783118c6a018cff3bacad229213e99535c2f7faf73bf8a651636",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "reflect00",
+        "uses": 1,
+        "child_u_hash": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz16_structural": {
+    "u_hash": "19036af5f7357761e314a5bd583765978ce0ad6f1502f476baf1f7553aa731db",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 15,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz3": {
+    "u_hash": "72ec19077719e4c1d6b503d4844bad8e4ba7bf024900d8cab0f925a9f458d720",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz4": {
+    "u_hash": "d7eba2533e03ae4d3bb6b1364801d78f93066fa3a0e084f3a1326231417add7b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz5": {
+    "u_hash": "779ed8cdbc00609e298e979b9464fa6ffadf07c4c5d2434e466032d45baa400b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 4,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz6": {
+    "u_hash": "013231d811a8e5fa785a7f3a0fad411394ffec458f6a4380e749d2209788ff80",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 5,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz7": {
+    "u_hash": "2f9b2282baf2e33988b9036fd2c3b5bb340225dee966426ac4d11251292d5f7f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 6,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ghz8": {
+    "u_hash": "c7c5bdfb51ef3f7c51b45ef72213a9bffb6a2c72b7a33503f662f1a1b0704a04",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 7,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "grover2": {
+    "u_hash": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "diffusion",
+        "uses": 1,
+        "child_u_hash": "067db05d7cb8783118c6a018cff3bacad229213e99535c2f7faf73bf8a651636"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      }
+    ]
+  },
+  "iqft2": {
+    "u_hash": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cs_dag",
+        "uses": 1,
+        "child_u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 1,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "iqft3": {
+    "u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr3_dag_gate",
+        "uses": 1,
+        "child_u_hash": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030"
+      },
+      {
+        "kind": "module",
+        "id": "cs_dag",
+        "uses": 2,
+        "child_u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 1,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "iqft7": {
+    "u_hash": "10da007065939b343adc9af755b622fd82b3486a2834c7ef66bc9529599d5fb3",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr3_dag_gate",
+        "uses": 5,
+        "child_u_hash": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030"
+      },
+      {
+        "kind": "module",
+        "id": "cr4_dag_gate",
+        "uses": 4,
+        "child_u_hash": "4f91946338960687aa67371951b3cd1c9aad7ec3e6209971f07615872e25e848"
+      },
+      {
+        "kind": "module",
+        "id": "cr5_dag_gate",
+        "uses": 3,
+        "child_u_hash": "278e1c16651c7181fdad10f0c7afa3bdf52e062792483005396c427143490670"
+      },
+      {
+        "kind": "module",
+        "id": "cr6_dag_gate",
+        "uses": 2,
+        "child_u_hash": "dc1d1ac1dd3d0f762ce2dc3455f2bdbbb14ce77df2c7a45bb7e6f4b4cd0c1fd4"
+      },
+      {
+        "kind": "module",
+        "id": "cr7_dag_gate",
+        "uses": 1,
+        "child_u_hash": "6472e31bb7d132a1a9bf58c26af607494a4b90f71ad42475e74f1836477929ad"
+      },
+      {
+        "kind": "module",
+        "id": "cs_dag",
+        "uses": 6,
+        "child_u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 7,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 3,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qft2_pipeline": {
+    "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 1,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 1,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qft3_pipeline": {
+    "u_hash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 2,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 1,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 1,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qft4_pipeline": {
+    "u_hash": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr4_gate",
+        "uses": 1,
+        "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 3,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 2,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 2,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qpe_s": {
+    "u_hash": "f222bc16eef5d891a5de9f0664b1ef3b1cf89752c4e689db24e2087f112c861f",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "iqft2",
+        "uses": 1,
+        "child_u_hash": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 1,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "qpe_t": {
+    "u_hash": "d20776ca44d88feb8c5426a7697c9600b137da60daa4553c8e924a252f4bd270",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "iqft3",
+        "uses": 1,
+        "child_u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 1,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 1,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "reflect00": {
+    "u_hash": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 4,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "shor15_a2": {
+    "u_hash": "c8088d7dc3a03bb408fab2e6d9941b3f3e7ad8e2c608ae5d7575e80491156403",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul2_mod15",
+        "uses": 1,
+        "child_u_hash": "3b9fdb52b48baaadfe13322949ecdff8e9ff4be6a80f4da34a740cfa7db792a2"
+      },
+      {
+        "kind": "app",
+        "id": "cmul4_mod15",
+        "uses": 1,
+        "child_u_hash": "8b86131c2bbf1d1b04463588961061cf83d20bb7fb39da531d8758c4b6741ea1"
+      },
+      {
+        "kind": "app",
+        "id": "iqft3",
+        "uses": 1,
+        "child_u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "shor15_a7": {
+    "u_hash": "79ba86e53cc0b065c4b99c1e1c5300c6d0a924d435a4792eeee40930a1ce9439",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul4_mod15",
+        "uses": 1,
+        "child_u_hash": "8b86131c2bbf1d1b04463588961061cf83d20bb7fb39da531d8758c4b6741ea1"
+      },
+      {
+        "kind": "app",
+        "id": "cmul7_mod15",
+        "uses": 1,
+        "child_u_hash": "c91549e8c0aa051b734d49744605775013c231db28a917fbb70cf68cb9d0d827"
+      },
+      {
+        "kind": "app",
+        "id": "iqft3",
+        "uses": 1,
+        "child_u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "shor21_a2": {
+    "u_hash": "c47668eaaf804ed2bde75d1f846a80f25921e7fc10cd0a657fe280b7fb96d423",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul16_mod21",
+        "uses": 3,
+        "child_u_hash": "2fa362f7830fa17f9e0f7a0935ceb18e81e200f3ff855d5749415ae962313664"
+      },
+      {
+        "kind": "app",
+        "id": "cmul2_mod21",
+        "uses": 1,
+        "child_u_hash": "1aaf1e8a4589bbb061bf6aff725e20c40f245e6e4c9d8e9432b3cbded9eaae98"
+      },
+      {
+        "kind": "app",
+        "id": "cmul4_mod21",
+        "uses": 3,
+        "child_u_hash": "1f73313e8be267e2ecc941ecc4209bd3e462c3655a7c62f38e66cc3529c60a6b"
+      },
+      {
+        "kind": "app",
+        "id": "iqft7",
+        "uses": 1,
+        "child_u_hash": "10da007065939b343adc9af755b622fd82b3486a2834c7ef66bc9529599d5fb3"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 7,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "swap_via_cnot": {
+    "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      }
+    ]
+  }
+}

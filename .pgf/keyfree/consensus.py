@@ -46,12 +46,28 @@ def independent_votes(sources):
     return votes
 
 
-def confidence_grade(units: set) -> str:
+def effective_independent_count(n_models: int, rho: float) -> float:
+    """corpus 상관 할인 (R-I). 같은 weights 가 아니어도 학습 코퍼스가 겹치면 모델끼리 prior(Schelling)
+    를 공유한다 — distinct weights 라도 진짜 독립이 아니다. 설문통계의 design-effect/ICC 공식으로
+    유효 독립표본수를 환산: N_eff = N / (1 + (N-1)·ρ).  ρ=0 → N_eff=N(상관 없음, 기존 동작),
+    ρ=1 → N_eff=1(완전 상관 = 한 출처와 동등)."""
+    if n_models <= 0:
+        return 0.0
+    rho = min(max(float(rho), 0.0), 1.0)
+    return n_models / (1.0 + (n_models - 1) * rho)
+
+
+def confidence_grade(units: set, rho: float = 0.0) -> str:
+    """ρ=0(기본): 기존 동작과 byte-identical. ρ>0: model-only 합의에 corpus 상관 할인 적용 —
+    유효 독립모델수<2 면 MULTIMODEL→CORPUS_CORRELATED 로 강등(proof/structural 축이나 독립계보
+    출처 보강 필요). proof-backed 는 corpus 무관 독립축이므로 할인 없음."""
     has_proof = any(u.startswith("proof:") for u in units)
     n_models = len({u for u in units if u.startswith("model:")})
     if has_proof and len(units) >= 2:
         return "PROOF_BACKED"
     if n_models >= 2:
+        if rho > 0 and effective_independent_count(n_models, rho) < 2:
+            return "CORPUS_CORRELATED"
         return "MULTIMODEL"
     return "INSUFFICIENT"
 
@@ -59,7 +75,7 @@ def confidence_grade(units: set) -> str:
 @dataclass
 class ConsensusResult:
     intent_id: str
-    status: str                       # ESTABLISHED | DIVERGENT | INSUFFICIENT
+    status: str                       # ESTABLISHED | DIVERGENT | CONTESTED | INSUFFICIENT
     key: str = None
     grade: str = None
     provenance: list = field(default_factory=list)
@@ -67,21 +83,39 @@ class ConsensusResult:
     escalation: str = ""
 
 
-def establish_truth(intent_id, sources, N=2) -> ConsensusResult:
-    """독립 출처 ≥N개가 같은 u_hash에 수렴하면 consensus_key 창발. 아니면 escalation."""
+def establish_truth(intent_id, sources, N=2, rho=0.0) -> ConsensusResult:
+    """독립 출처 ≥N개가 같은 u_hash에 수렴하면 consensus_key 창발. 아니면 escalation.
+    rho(기본 0): corpus 상관 할인. ρ=0 이면 기존 동작 byte-identical. ρ>0 이면 model-only 합의가
+    corpus 상관으로 유효 독립<2 일 때 ESTABLISHED 대신 INSUFFICIENT(grade=CORPUS_CORRELATED)로 escalate
+    — proof/structural 또는 독립계보 출처 보강을 요구."""
     votes = independent_votes(sources)
     dist = {h[:12]: len(u) for h, u in votes.items()}
     if not votes:
         return ConsensusResult(intent_id, "DIVERGENT", escalation="no sources", distribution=dist)
     winner, units = max(votes.items(), key=lambda kv: len(kv[1]))
-    if len(units) < N:
+    w = len(units)
+    if w < N:
         return ConsensusResult(intent_id, "DIVERGENT", distribution=dist,
-                               escalation=f"max independent agreement {len(units)} < N={N}; "
+                               escalation=f"max independent agreement {w} < N={N}; "
                                           f"refine intent or add cross-model/proof source")
-    grade = confidence_grade(units)
+    # contested near-tie guard (v0.5, R5 실증): top-2 독립단위가 동률이면 plurality 부재 →
+    # 어느 쪽을 봉인해도 임의(max() 임의측) → 봉인 거부하고 escalate. 단일-그룹 수렴(runner_up=0)
+    # 인 기존 frozen 키 빌드 경로는 발동하지 않음(결정론 불변, verify_contested_guard.py 로 보증).
+    runner_up = max((len(u) for h, u in votes.items() if h != winner), default=0)
+    if runner_up == w:
+        return ConsensusResult(intent_id, "CONTESTED", distribution=dist,
+                               escalation=f"top-2 independence tie ({w}={runner_up}); no plurality — "
+                                          f"refine intent or add proof/structural tie-breaker")
+    grade = confidence_grade(units, rho=rho)
     if grade == "INSUFFICIENT":
         return ConsensusResult(intent_id, "INSUFFICIENT", distribution=dist,
                                escalation="agreement within a single independence unit")
+    if grade == "CORPUS_CORRELATED":
+        n_models = len({u for u in units if u.startswith("model:")})
+        return ConsensusResult(intent_id, "INSUFFICIENT", grade=grade, distribution=dist,
+                               escalation=f"models agree but corpus-correlated (ρ={rho}): "
+                                          f"N_eff={effective_independent_count(n_models, rho):.2f}<2; "
+                                          f"add proof/structural or independent-lineage source")
     return ConsensusResult(intent_id, "ESTABLISHED", key=winner, grade=grade,
                            provenance=sorted(units), distribution=dist)
 
@@ -215,3 +249,41 @@ def crk_dag_sources(k):
     """controlled-Rk† 의 2 독립 출처(proof, structural)."""
     return [Source(f"cr{k}dag_proof", "proof", "sympy", uhash(proof_crk_dag(k))),
             Source(f"cr{k}dag_struct", "structural", "projector", uhash(struct_crk_dag(k)))]
+
+
+# ── corpus 상관 ρ 추정 (R-I) — "정답이 없는" 의도에서만 깨끗이 추정 가능 ──
+def _pairwise_agreement(hashes):
+    """한 의도에 대해 distinct 모델들이 낸 u_hash 리스트 → 관측 pairwise 일치율 a∈[0,1]."""
+    n = len(hashes)
+    if n < 2:
+        return None
+    agree = tot = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            tot += 1
+            agree += (hashes[i] == hashes[j])
+    return agree / tot
+
+
+def estimate_corpus_rho(intent_hashes, k_defaults=None):
+    """corpus 상관계수 ρ 추정 (chance-corrected pairwise agreement = ICC proxy).
+
+    intent_hashes: list[list[str]] — 각 원소는 *한 의도*에 대해 distinct-weights 모델들이 낸 u_hash 들.
+        반드시 '정답이 임의/부재한' 의도여야 한다(자유 파라미터 = v0.5 Class C). 정답이 있는 의도는
+        '정확성에 의한 수렴'과 'corpus 상관에 의한 수렴'이 혼동되어 ρ 를 과대추정한다(R5c 오염).
+    k_defaults: 의도별 그럴듯한 default 개수(이산이면). 우연일치 보정 c=1/k. 연속(자유각)이면 c≈0.
+        ρ_i = (a_i - c_i)/(1 - c_i), [0,1] clip. 반환 = 의도 평균 ρ + 진단.
+    """
+    rows, details = [], []
+    for idx, hs in enumerate(intent_hashes):
+        a = _pairwise_agreement(hs)
+        if a is None:
+            continue
+        k = (k_defaults[idx] if isinstance(k_defaults, (list, tuple)) else k_defaults)
+        c = (1.0 / k) if (k and k > 1) else 0.0
+        rho_i = 0.0 if (1 - c) == 0 else max(0.0, min(1.0, (a - c) / (1 - c)))
+        rows.append(rho_i)
+        details.append({"intent_index": idx, "n_models": len(hs), "observed_agreement": round(a, 4),
+                        "chance": round(c, 4), "rho_i": round(rho_i, 4)})
+    rho = sum(rows) / len(rows) if rows else 0.0
+    return {"rho": round(rho, 4), "n_intents": len(rows), "per_intent": details}

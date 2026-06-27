@@ -1,0 +1,84 @@
+# cmul2_mod21 — controlled (×2 mod 21) on 5 work qubits. 6q: q0=control, q1..q5=work(big-endian, value=index).
+# Shor(N=21, a=2)의 controlled-U^1. N=21≠2^k-1 이라 ×2가 비트순환이 아님 → 진짜 carry/reduction 산술.
+# reversible synthesis(MMD)로 봉인 게이트 {toffoli,c3x,c4x,c5x}에 정직 분해(66 steps). golden=산술 순열 독립작성, MatrixGate 없음.
+# 32상태 전수 검증. ×2 mod21 order=6 (1→2→4→8→16→11→1). powers: cmul4=cmul2², cmul16=cmul4².
+```json id=app_meta
+{"id": "cmul2_mod21", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+N=21
+golden=np.zeros((64,64),dtype=complex)
+for s in range(64):
+    if (s>>5)&1==0: golden[s,s]=1
+    else:
+        w=s&31; golden[(1<<5)|((2*w)%N if w<N else w), s]=1
+```
+```json id=plan
+{"steps": [{"spec": "../modules/toffoli.pg", "targets": [5, 0, 4]},
+           {"spec": "../modules/toffoli.pg", "targets": [5, 0, 2]},
+           {"spec": "../modules/toffoli.pg", "targets": [4, 0, 5]},
+           {"spec": "../modules/toffoli.pg", "targets": [4, 0, 2]},
+           {"spec": "../modules/c3x.pg", "targets": [3, 2, 0, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 3, 2, 0, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 4, 0, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 4, 0, 2]},
+           {"spec": "../modules/toffoli.pg", "targets": [3, 0, 5]},
+           {"spec": "../modules/toffoli.pg", "targets": [3, 0, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 3, 2, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 3, 0, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 3, 0, 2]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 2, 0, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 2, 0, 3]},
+           {"spec": "../modules/c3x.pg", "targets": [4, 3, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [4, 3, 0, 2]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 2, 0, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 2, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 3, 0, 2]},
+           {"spec": "../modules/toffoli.pg", "targets": [2, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [3, 2, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 2, 0, 3]},
+           {"spec": "../modules/toffoli.pg", "targets": [1, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 1, 0, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 2, 0, 1]},
+           {"spec": "../modules/c3x.pg", "targets": [3, 2, 0, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 3, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 3, 2, 0, 1]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 4, 3, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 3, 2, 0, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 3, 2, 0, 1]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 3, 2, 1, 0, 4]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 4, 3, 2, 0, 1]},
+           {"spec": "../modules/toffoli.pg", "targets": [1, 0, 5]},
+           {"spec": "../modules/toffoli.pg", "targets": [1, 0, 4]},
+           {"spec": "../modules/toffoli.pg", "targets": [1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 3, 1, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 1, 0, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [5, 1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 2, 1, 0, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [4, 1, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [4, 1, 0, 2]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 3, 2, 1, 0, 4]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 4, 1, 0, 2]},
+           {"spec": "../modules/c3x.pg", "targets": [3, 1, 0, 5]},
+           {"spec": "../modules/c3x.pg", "targets": [3, 1, 0, 4]},
+           {"spec": "../modules/c3x.pg", "targets": [3, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [3, 2, 1, 0, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 3, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 3, 1, 0, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 3, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 2, 1, 0, 4]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 4, 2, 1, 0, 3]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 4, 3, 1, 0, 2]},
+           {"spec": "../modules/c4x.pg", "targets": [3, 2, 1, 0, 5]},
+           {"spec": "../modules/c4x.pg", "targets": [5, 2, 1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [4, 2, 1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [3, 2, 1, 0, 5]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 3, 2, 1, 0, 4]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 4, 2, 1, 0, 3]},
+           {"spec": "../modules/c4x.pg", "targets": [3, 2, 1, 0, 5]},
+           {"spec": "../modules/c5x.pg", "targets": [5, 3, 2, 1, 0, 4]}]}
+```

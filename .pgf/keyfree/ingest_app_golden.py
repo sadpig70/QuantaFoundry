@@ -44,6 +44,34 @@ def _matrix(sub):
     return np.array(sub["app_golden_real"], float) + 1j * np.array(sub["app_golden_imag"], float)
 
 
+def reading_audit(rows):
+    """비파괴 감사 (봉인 로직 불변): 한 intent 의 vote rows 를 u_hash 그룹화하여
+      - prose_matrix_mismatch: 같은 u_hash(=같은 행렬)인데 structured declared_reading 이 갈림
+        (gemini/iqft2 형: 선언과 실제 행렬 불일치). prose construction_method 는 표현차로 over-flag 되므로
+        자동 플래그는 declared_reading 이 있는 경우에만.
+      - contested_tie: 독립단위(weights) 기준 top-2 그룹 동률 → establish_truth 가 max() 로 한쪽을 임의
+        봉인할 위험(50/50 convention split). ESTABLISHED 여도 escalate 권고.
+    반환: dict (report 에 저장 + 출력용)."""
+    groups = {}
+    for r in rows:
+        g = groups.setdefault(r["u_hash"], {"runtimes": [], "weights": set(), "declared": [], "prose": []})
+        g["runtimes"].append(r["runtime"]); g["weights"].add(r["weights_id"])
+        if r.get("declared_reading") is not None:
+            g["declared"].append(json.dumps(r["declared_reading"], sort_keys=True, ensure_ascii=False))
+        if r.get("construction_method"):
+            g["prose"].append(r["construction_method"].strip()[:70])
+    # structured declared_reading 이 한 그룹 안에서 갈리면 모순
+    mism = [h for h, g in groups.items() if len(set(g["declared"])) > 1]
+    sizes = sorted(((len(g["weights"]), h) for h, g in groups.items()), reverse=True)
+    contested = len(sizes) >= 2 and sizes[0][0] == sizes[1][0]
+    return {"n_groups": len(groups), "group_weight_sizes": [s for s, _ in sizes],
+            "prose_matrix_mismatch": bool(mism), "mismatch_hashes": [h[:12] for h in mism],
+            "contested_tie": contested,
+            "groups": {h[:12]: {"runtimes": g["runtimes"],
+                                "declared": sorted(set(g["declared"])) or None,
+                                "prose": g["prose"]} for h, g in groups.items()}}
+
+
 def _exec_golden(code):
     _ALLOWED = {"numpy": np, "np": np, "math": math, "cmath": cmath}
 
@@ -94,7 +122,9 @@ def main():
                     sc = (C.uhash(_exec_golden(s["app_golden_code"])) == uh)
                 except Exception as e:
                     sc = f"exec_err:{str(e)[:35]}"
-            by[iid].append({"runtime": rt, "weights_id": wid or rt, "u_hash": uh, "self_consistent": sc})
+            by[iid].append({"runtime": rt, "weights_id": wid or rt, "u_hash": uh, "self_consistent": sc,
+                            "construction_method": s.get("construction_method"),
+                            "declared_reading": s.get("declared_reading")})
 
     report = {"runtimes": [os.path.basename(f).split('.')[0] for f in files],
               "warnings": warn, "apps": {}}
@@ -115,11 +145,13 @@ def main():
         report["apps"][iid] = {"status": res.status, "grade": res.grade, "key": res.key,
                                "n_runtimes": len(rows), "distribution": res.distribution,
                                "reference": ref, "reference_kind": kind, "reference_match": match,
-                               "escalation": res.escalation,
+                               "escalation": res.escalation, "audit": reading_audit(rows),
                                "votes": [{"runtime": r["runtime"], "u_hash": r["u_hash"][:16],
                                           "agrees": (r["u_hash"] == res.key) if res.key else None,
-                                          "self_consistent": r["self_consistent"]} for r in rows]}
-        icon = {"ESTABLISHED": "✅", "DIVERGENT": "⚠️", "INSUFFICIENT": "△"}.get(res.status, "?")
+                                          "self_consistent": r["self_consistent"],
+                                          "declared_reading": r.get("declared_reading"),
+                                          "construction_method": r.get("construction_method")} for r in rows]}
+        icon = {"ESTABLISHED": "✅", "DIVERGENT": "⚠️", "CONTESTED": "⚑", "INSUFFICIENT": "△"}.get(res.status, "?")
         line = f"  {icon} {iid:11} {res.status:12}"
         if res.key:
             line += f" {res.grade:10} key={res.key[:12]}.. votes={len(rows)}  ⟺{kind or 'none'}:"
@@ -131,6 +163,24 @@ def main():
             for v in report["apps"][iid]["votes"]:
                 if v["agrees"] is False:
                     print(f"        ✗ dissent {v['runtime']:10} {v['u_hash']}..")
+
+    # ── READING AUDIT (비파괴): contested near-tie / prose-matrix 모순 surface ──
+    flagged = [iid for iid in order if by[iid] and
+               (report["apps"][iid]["audit"]["prose_matrix_mismatch"] or
+                report["apps"][iid]["audit"]["contested_tie"])]
+    if flagged:
+        print("\nREADING AUDIT (비파괴 — 봉인 로직 불변):")
+        for iid in flagged:
+            a = report["apps"][iid]["audit"]
+            tags = []
+            if a["prose_matrix_mismatch"]:
+                tags.append("prose/matrix 모순(같은 행렬·다른 declared_reading)")
+            if a["contested_tie"]:
+                tags.append(f"contested near-tie {a['group_weight_sizes']} → establish_truth max() 임의측 봉인 위험; escalate 권고")
+            print(f"  ⚑ {iid}: " + " · ".join(tags))
+            for h, g in a["groups"].items():
+                rd = (" | ".join(g["declared"]) if g["declared"] else " | ".join(g["prose"]))[:88]
+                print(f"       [{h}] {','.join(g['runtimes'])}: {rd}")
 
     print("-" * 88)
     print(f"앱 의도 확립 {est}/{len(order)} ESTABLISHED · MULTIMODEL {mm} · 봉인앱/게이트 일치 {match_n}/{len(order)}")

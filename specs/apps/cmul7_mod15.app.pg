@@ -1,0 +1,29 @@
+# cmul7_mod15 — controlled (×7 mod 15) on 4 work qubits. 5q: q0=control, q1..q4=work(big-endian).
+# Shor(N=15, a=7)의 controlled-U^1. a=7은 비-shift base지만 N=15=2^4-1 degeneracy 때문에
+# ×7 = NOT ∘ rot3 (좌순환3 후 비트반전)으로 분해된다 → 봉인 Fredkin×3(rot3) + CNOT×4(NOT). MatrixGate 없음.
+# rot3 = reverse Fredkin chain (right-rotate-1). NOT(=4 controlled-X) = first modular-mult 투입된 CNOT.
+# orbit {1,4,7,13}에서 ×7 mod15와 일치(1->7,4->13,7->4,13->1). 정직 분해 방화벽: golden은 산술(NOT∘rot3) 독립 작성.
+```json id=app_meta
+{"id": "cmul7_mod15", "n_sys": 5, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# controlled (×7 mod15) = controlled (NOT ∘ rot3) on 5q (q0=ctrl, q1..q4=work, big-endian).
+def rot3(v):
+    b=[(v>>(3-i))&1 for i in range(4)]; b=b[3:]+b[:3]
+    return sum(bb<<(3-i) for i,bb in enumerate(b))
+golden=np.zeros((32,32),dtype=complex)
+for s in range(32):
+    c=(s>>4)&1; w=s&0b1111
+    w2=(rot3(w)^0b1111) if c==1 else w
+    golden[(c<<4)|w2,s]=1
+```
+```json id=plan
+{"steps": [{"spec": "../modules/fredkin.pg", "targets": [0,3,4]},
+           {"spec": "../modules/fredkin.pg", "targets": [0,2,3]},
+           {"spec": "../modules/fredkin.pg", "targets": [0,1,2]},
+           {"spec": "../modules/cnot.pg", "targets": [0,1]},
+           {"spec": "../modules/cnot.pg", "targets": [0,2]},
+           {"spec": "../modules/cnot.pg", "targets": [0,3]},
+           {"spec": "../modules/cnot.pg", "targets": [0,4]}]}
+```

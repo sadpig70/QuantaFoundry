@@ -1,0 +1,5820 @@
+{
+  "runtime": "codex",
+  "weights_id": "openai-gpt-5",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "iqft7",
+      "n_sys": 7,
+      "circuit": [
+        {
+          "gate": "swap",
+          "targets": [
+            0,
+            6
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            1,
+            5
+          ]
+        },
+        {
+          "gate": "swap",
+          "targets": [
+            2,
+            4
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            6
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            6,
+            5
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            6,
+            4
+          ]
+        },
+        {
+          "gate": "cr4_dag",
+          "targets": [
+            6,
+            3
+          ]
+        },
+        {
+          "gate": "cr5_dag",
+          "targets": [
+            6,
+            2
+          ]
+        },
+        {
+          "gate": "cr6_dag",
+          "targets": [
+            6,
+            1
+          ]
+        },
+        {
+          "gate": "cr7_dag",
+          "targets": [
+            6,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "cr4_dag",
+          "targets": [
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "cr5_dag",
+          "targets": [
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "cr6_dag",
+          "targets": [
+            5,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            4,
+            3
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            4,
+            2
+          ]
+        },
+        {
+          "gate": "cr4_dag",
+          "targets": [
+            4,
+            1
+          ]
+        },
+        {
+          "gate": "cr5_dag",
+          "targets": [
+            4,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            3,
+            2
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            3,
+            1
+          ]
+        },
+        {
+          "gate": "cr4_dag",
+          "targets": [
+            3,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            2,
+            1
+          ]
+        },
+        {
+          "gate": "cr3_dag",
+          "targets": [
+            2,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "cs_dag",
+          "targets": [
+            1,
+            0
+          ]
+        },
+        {
+          "gate": "h",
+          "targets": [
+            0
+          ]
+        }
+      ],
+      "synthesis_method": "Derived the inverse raw QFT_7 ladder: bit-order swaps, then H plus inverse controlled phase gates from low-significance wire upward.",
+      "self_check": "Assembled locally from vocabulary gates and checked against the mathematical app specification."
+    },
+    {
+      "id": "cmul2_mod21",
+      "n_sys": 6,
+      "circuit": [
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        }
+      ],
+      "synthesis_method": "Synthesized the exact controlled permutation y -> 2*y mod 21 using no-ancilla basis-state transpositions decomposed into vocabulary C5X/X steps.",
+      "self_check": "Assembled locally from vocabulary gates and checked against the mathematical app specification."
+    },
+    {
+      "id": "cmul4_mod21",
+      "n_sys": 6,
+      "circuit": [
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        }
+      ],
+      "synthesis_method": "Synthesized the exact controlled permutation y -> 4*y mod 21 using the same no-ancilla transposition method.",
+      "self_check": "Assembled locally from vocabulary gates and checked against the mathematical app specification."
+    },
+    {
+      "id": "cmul16_mod21",
+      "n_sys": 6,
+      "circuit": [
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            2
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "c5x",
+          "targets": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            5
+          ]
+        },
+        {
+          "gate": "x",
+          "targets": [
+            3
+          ]
+        }
+      ],
+      "synthesis_method": "Synthesized the exact controlled permutation y -> 16*y mod 21 using the same no-ancilla transposition method.",
+      "self_check": "Assembled locally from vocabulary gates and checked against the mathematical app specification."
+    }
+  ]
+}

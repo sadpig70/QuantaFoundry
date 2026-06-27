@@ -1,0 +1,283 @@
+{
+  "runtime": "deepseek",
+  "weights_id": "deepseek-v4-pro",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "sanity_cz",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1.0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1.0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1.0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0.0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.diag([1.0, 1.0, 1.0, -1.0]).astype(complex)",
+      "declared_reading": {
+        "kind": "fixed"
+      },
+      "construction_method": "fixed CZ = diag(1,1,1,-1)",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "free_cphase",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1.0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1.0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1.0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -0.30901699437494734
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0.0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0.9510565162951536
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nphi = 1.88495559215387587\ngolden = np.diag([1.0, 1.0, 1.0, np.exp(1j * phi)]).astype(complex)",
+      "declared_reading": {
+        "phi": 1.8849555921538759
+      },
+      "construction_method": "free cphase with phi=1.88495559215387587",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "free_rz",
+      "n_sys": 1,
+      "app_golden_real": [
+        [
+          0.647859344852457,
+          0
+        ],
+        [
+          0,
+          0.647859344852457
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          -0.7617599814162892,
+          0
+        ],
+        [
+          0,
+          0.7617599814162892
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ntheta = 1.73205080756887719\nh = theta / 2\ngolden = np.diag([np.exp(-1j * h), np.exp(1j * h)])",
+      "declared_reading": {
+        "theta": 1.7320508075688772
+      },
+      "construction_method": "free Rz with theta=1.73205080756887719",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "split_rz_sign",
+      "n_sys": 1,
+      "app_golden_real": [
+        [
+          0.7071067811865476,
+          0
+        ],
+        [
+          0,
+          0.7071067811865476
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.7071067811865476,
+          0
+        ],
+        [
+          0,
+          -0.7071067811865476
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nc = np.sqrt(2) / 2\ns = np.sqrt(2) / 2\ngolden = np.array([[c + 1j*s, 0], [0, c - 1j*s]], dtype=complex)\n",
+      "declared_reading": {
+        "sign": "+"
+      },
+      "construction_method": "Rz(pi/2) with sign=+ convention",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "split_ry_dir",
+      "n_sys": 1,
+      "app_golden_real": [
+        [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        [
+          -0.7071067811865476,
+          0.7071067811865476
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\nc = np.sqrt(2) / 2\ns = np.sqrt(2) / 2\ngolden = np.array([[c, s], [-s, c]], dtype=complex)",
+      "declared_reading": {
+        "sign": "+"
+      },
+      "construction_method": "Ry(pi/2) with sign=+ convention",
+      "self_check": "unitary, shape ok"
+    },
+    {
+      "id": "split_csqrtz_sign",
+      "n_sys": 2,
+      "app_golden_real": [
+        [
+          1.0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1.0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1.0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0.0
+        ]
+      ],
+      "app_golden_imag": [
+        [
+          0.0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0.0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0.0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1.0
+        ]
+      ],
+      "app_golden_code": "import numpy as np\ngolden = np.diag([1.0, 1.0, 1.0, -1j])",
+      "declared_reading": {
+        "sign": "-"
+      },
+      "construction_method": "controlled-sqrt(Z) with sign=- (controlled-S-dagger)",
+      "self_check": "unitary, shape ok"
+    }
+  ]
+}

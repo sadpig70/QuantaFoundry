@@ -1,0 +1,47 @@
+# shor15_a7 — Shor 주기발견 유니터리 (N=15, a=7). 7q: c0c1c2(counting) | w0w1w2w3(work).
+# H×3 · cmul4[c1→work](U^2=×4) · cmul7[c2→work](U^1=×7) · inverse-QFT3[c0c1c2]. work=|1> 입력 시 counting→c/8, c∈{0,2,4,6} (주기 r=4).
+# base 독립성 실증: a=2(shor15_a2)와 다른 base지만 r(7)=4 동일 → gcd(7^2±1,15)=gcd(48,15)=3, gcd(50,15)=5 → 15=3×5.
+# U^2=×7^2=×49 mod15=×4=cmul4(재사용). U^1=×7=cmul7(신규, NOT∘rot3 정직 분해, CNOT 첫 modular-mult 투입).
+```json id=app_meta
+{"id": "shor15_a7", "n_sys": 7, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+N=8; w=np.exp(2j*np.pi/N)
+QFT3=np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N); IQFT3=QFT3.conj().T
+def emb(U,t,n):
+    g=int(np.log2(U.shape[0])); M=np.zeros((2**n,2**n),complex)
+    for I in range(2**n):
+        for J in range(2**n):
+            ib=[(I>>(n-1-k))&1 for k in range(n)]; jb=[(J>>(n-1-k))&1 for k in range(n)]
+            if all(ib[k]==jb[k] for k in range(n) if k not in t):
+                gi=sum(ib[t[m]]<<(g-1-m) for m in range(g)); gj=sum(jb[t[m]]<<(g-1-m) for m in range(g))
+                M[I,J]=U[gi,gj]
+    return M
+def rotk(v,k):
+    b=[(v>>(3-i))&1 for i in range(4)]; b=b[k:]+b[:k]
+    return sum(bb<<(3-i) for i,bb in enumerate(b))
+def cmul(f):
+    g=np.zeros((32,32),complex)
+    for s in range(32):
+        c=(s>>4)&1; ww=s&0b1111; w2=f(ww) if c==1 else ww
+        g[(c<<4)|w2,s]=1
+    return g
+C4=cmul(lambda v: rotk(v,2))          # U^2 = ×4 = rot2
+C7=cmul(lambda v: rotk(v,3)^0b1111)   # U^1 = ×7 = NOT ∘ rot3
+n=7
+steps=[emb(H,[0],n),emb(H,[1],n),emb(H,[2],n),
+       emb(C4,[1,3,4,5,6],n),emb(C7,[2,3,4,5,6],n),
+       emb(IQFT3,[0,1,2],n)]
+golden=reduce(lambda a,b: b@a, steps)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]},
+           {"spec": "../modules/h_gate.pg", "targets": [1]},
+           {"spec": "../modules/h_gate.pg", "targets": [2]},
+           {"app": "cmul4_mod15.app.pg", "targets": [1,3,4,5,6]},
+           {"app": "cmul7_mod15.app.pg", "targets": [2,3,4,5,6]},
+           {"app": "iqft3.app.pg", "targets": [0,1,2]}]}
+```

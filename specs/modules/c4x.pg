@@ -1,0 +1,15 @@
+```python id=bloq
+from qualtran.bloqs.mcmt import MultiControlX
+bloq = MultiControlX(cvs=(1,) * 4)
+```
+```python id=golden
+import numpy as np
+# C4X: control=first 4 qubits (MSB), target=last (big-endian). flip target iff all controls 1.
+golden = np.zeros((1<<5, 1<<5), dtype=complex)
+for s in range(1<<5):
+    o = (s ^ 1) if (s >> 1) == ((1<<4) - 1) else s
+    golden[o, s] = 1
+```
+```json id=meta
+{"id": "c4x", "n_sys": 5, "n_anc": 0}
+```

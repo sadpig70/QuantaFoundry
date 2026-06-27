@@ -1,0 +1,24 @@
+{
+  "_comment": "v0.4 Round 5 — N=21 algorithm-layer apps. Author the FULL application unitary U[out,in] (2^n_sys square, complex) from the spec below (app-golden), AND/OR an independent sealed-gate circuit (app-bloq). Same strict conventions as prior rounds. The spec fixes the unitary uniquely; derive it INDEPENDENTLY (your own method) — do not copy any decomposition or answer. The N=21 modular multipliers require genuine carry/modular-reduction arithmetic (N=21 != 2^k-1), unlike the N=15 cyclic-rotation case.",
+  "convention": {
+    "endianness": "big-endian, qubit 0 = MSB",
+    "controlled": "control = the named control qubit; for controlled gates the first register/qubit = control",
+    "matrix": "U[out,in]=<out|U|in>; rightmost operator applied first in a product",
+    "qft_convention": "QFT_n[j,k] = (1/sqrt(2^n)) * exp(2*pi*i*j*k/2^n), big-endian integer indexing, NO output bit-reversal (raw matrix). inverse QFT = conjugate transpose.",
+    "work_register_value": "for an m-bit work register on qubits [w0..w_{m-1}] with w0=MSB, the integer value y = sum_i bit(w_i)*2^(m-1-i).",
+    "out_of_range_rule": "modular maps are defined on residues 0..N-1; a work value y >= N is a FIXED POINT (y -> y). This makes the controlled map a valid permutation on all 2^m basis states.",
+    "global_phase": "free (normalized away before hashing); permutation maps have no phase freedom anyway",
+    "fp_tolerance": "noise < 1e-9 is free (verifier quantizes)"
+  },
+  "intents": [
+    { "id": "iqft7", "n_sys": 7, "n_anc": 0, "name": "Inverse QFT on 7 qubits",
+      "definition": "U = (QFT_7)^dagger, the conjugate transpose of the 7-qubit raw QFT matrix QFT_7[j,k]=(1/sqrt(128))*exp(2*pi*i*j*k/128). 128x128. This is the counting-register transform for Shor-21 (t=7)." },
+    { "id": "cmul2_mod21", "n_sys": 6, "n_anc": 0, "name": "Controlled multiply-by-2 mod 21",
+      "definition": "6 qubits: q0=control, q1..q5 = 5-bit work register (q1=MSB, value y in 0..31). q0=0: identity on all 32 work states. q0=1: y -> (2*y mod 21) for y in 0..20; y in 21..31 -> y (fixed). A controlled permutation. NOTE: 21 != 2^k-1, so this is NOT a simple bit rotation — it is genuine modular doubling with reduction." },
+    { "id": "cmul4_mod21", "n_sys": 6, "n_anc": 0, "name": "Controlled multiply-by-4 mod 21",
+      "definition": "6 qubits: q0=control, q1..q5 = 5-bit work (q1=MSB). q0=0: identity. q0=1: y -> (4*y mod 21) for y in 0..20; y in 21..31 -> y. (= cmul2_mod21 applied twice.)" },
+    { "id": "cmul16_mod21", "n_sys": 6, "n_anc": 0, "name": "Controlled multiply-by-16 mod 21",
+      "definition": "6 qubits: q0=control, q1..q5 = 5-bit work (q1=MSB). q0=0: identity. q0=1: y -> (16*y mod 21) for y in 0..20; y in 21..31 -> y. (16 = 2^4; note 2 has multiplicative order 6 mod 21, so 2^4=16.)" }
+  ],
+  "shor21_note": "shor21_a2 (12 qubits, N=21, a=2, 7 counting + 5 work) is NOT requested as a raw matrix (4096x4096 is impractical to transmit). Its intent is the standard QPE order-finding wiring: H^7 on counting; controlled-U^(2^j) with U=multiply-by-2 mod 21 (control q_j on the work register, U^(2^j) = multiply-by-(2^(2^j) mod 21)); inverse QFT_7 on counting (q0 MSB, no bit-reversal). Once cmul2/4/16_mod21 and iqft7 are cross-model established, shor21's intent is fixed compositionally."
+}

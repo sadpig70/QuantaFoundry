@@ -1,0 +1,96 @@
+{
+  "dir": "v05_div",
+  "rho": 0.0,
+  "contaminated_upper_bound": false,
+  "selftest_pass": true,
+  "per_intent": [
+    {
+      "intent_index": 0,
+      "n_models": 6,
+      "observed_agreement": 0.0,
+      "chance": 0.0,
+      "rho_i": 0.0
+    },
+    {
+      "intent_index": 1,
+      "n_models": 6,
+      "observed_agreement": 0.0,
+      "chance": 0.0,
+      "rho_i": 0.0
+    },
+    {
+      "intent_index": 2,
+      "n_models": 6,
+      "observed_agreement": 0.4667,
+      "chance": 0.5,
+      "rho_i": 0.0
+    },
+    {
+      "intent_index": 3,
+      "n_models": 6,
+      "observed_agreement": 0.4,
+      "chance": 0.5,
+      "rho_i": 0.0
+    },
+    {
+      "intent_index": 4,
+      "n_models": 6,
+      "observed_agreement": 0.4667,
+      "chance": 0.5,
+      "rho_i": 0.0
+    }
+  ],
+  "intent_rows": {
+    "free_cphase": {
+      "n_weights": 6,
+      "distinct": 6,
+      "unanimous": false,
+      "k_defaults": null
+    },
+    "free_rz": {
+      "n_weights": 6,
+      "distinct": 6,
+      "unanimous": false,
+      "k_defaults": null
+    },
+    "split_rz_sign": {
+      "n_weights": 6,
+      "distinct": 2,
+      "unanimous": false,
+      "k_defaults": 2
+    },
+    "split_ry_dir": {
+      "n_weights": 6,
+      "distinct": 2,
+      "unanimous": false,
+      "k_defaults": 2
+    },
+    "split_csqrtz_sign": {
+      "n_weights": 6,
+      "distinct": 2,
+      "unanimous": false,
+      "k_defaults": 2
+    }
+  },
+  "effect_model_only": [
+    {
+      "n_models": 2,
+      "n_eff": 2.0,
+      "grade_rho0": "MULTIMODEL",
+      "grade_rho": "MULTIMODEL"
+    },
+    {
+      "n_models": 3,
+      "n_eff": 3.0,
+      "grade_rho0": "MULTIMODEL",
+      "grade_rho": "MULTIMODEL"
+    },
+    {
+      "n_models": 6,
+      "n_eff": 6.0,
+      "grade_rho0": "MULTIMODEL",
+      "grade_rho": "MULTIMODEL"
+    }
+  ],
+  "note": "ρ 은 정답부재 의도에서만 정본. R5c(v04_hard)는 Schelling-정답 혼입으로 상한. 정본 추정은 v05_div Class C(free parameter) 수급 후. proof-backed 키는 corpus 무관(불변)."
+}
