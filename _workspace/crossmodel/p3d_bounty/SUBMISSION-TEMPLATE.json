@@ -1,0 +1,34 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "attacks": [
+    {
+      "target": "T1_hollow",
+      "id": "atk_hollow_example",
+      "spec_text": "```python id=bloq\n<your bloq that smuggles the answer instead of decomposing>\n```\n```python id=golden\nimport numpy as np\ngolden = <the matrix>\n```\n```json id=meta\n{\"id\": \"atk_hollow_example\", \"n_sys\": 1, \"n_anc\": 0}\n```\n",
+      "rationale": "why you believe this passes contracts yet is a hollow (non-honest) decomposition",
+      "note": "optional: if you concluded T1 is unbreakable, say so here instead"
+    },
+    {
+      "target": "T2_independence",
+      "intent": "atk_t2_example",
+      "sources": [
+        {"sid": "s1", "klass": "model", "unit": "<unit-A>", "u_hash": "<shared wrong u_hash>"},
+        {"sid": "s2", "klass": "model", "unit": "<unit-B>", "u_hash": "<same shared wrong u_hash>"}
+      ],
+      "rationale": "why you believe the gate will count these as >=2 independent units despite being co-erroneous"
+    },
+    {
+      "target": "T3_convention",
+      "intent": "atk_t3_example",
+      "sources": [
+        {"sid": "s1", "unit": "<unit-A>", "golden_real": [[0, 1], [1, 0]], "golden_imag": [[0, 0], [0, 0]]},
+        {"sid": "s2", "unit": "<unit-B>", "golden_real": [[0, 1], [1, 0]], "golden_imag": [[0, 0], [0, 0]]}
+      ],
+      "reference_gt_real": [[0, 1], [1, 0]],
+      "reference_gt_imag": [[0, 0], [0, 0]],
+      "rationale": "why you believe this wrong-convention matrix would ESTABLISH as truth"
+    }
+  ]
+}

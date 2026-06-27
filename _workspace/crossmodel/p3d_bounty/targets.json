@@ -1,0 +1,29 @@
+{
+  "_comment": "P3d cross-model adversarial round. You are a red-teamer breaking the seal system. Every submission is re-run deterministically by our oracle (bounty_adjudicate.py) — claims are not trusted. A confirmed negative (cannot break) from an independent adversary is a valid, valuable result.",
+  "round": "P3d-cross-model-adversarial",
+  "public_sealed_samples": "registry/modules/*.sealed.json (attack any; they carry u_hash + tier)",
+  "adjudication": "scripts/bounty_adjudicate.py (verdicts: BREAK | HELD | DOC_GAP | NEW_GAP | INVALID)",
+  "targets": [
+    {
+      "id": "T1_hollow",
+      "defense": "honest-decomposition (social convention, not code-enforced)",
+      "goal": "module spec (bloq+golden+meta) for a NONTRIVIAL gate that passes C1-C4 but whose bloq is semantically hollow (answer smuggled in, not decomposed).",
+      "submit_fields": ["spec_text"],
+      "known_gap": "matrixgate-shortcut is already documented; reproducing it = DOC_GAP. A hollow seal our static scan does NOT flag = NEW_GAP (escalated)."
+    },
+    {
+      "id": "T2_independence",
+      "defense": "independence_unit (klass:unit) collapses same-unit votes; grade_floor=MULTIMODEL",
+      "goal": "sources that are co-erroneous (one shared WRONG u_hash) yet ESTABLISH as MULTIMODEL.",
+      "submit_fields": ["intent", "sources[{sid,klass,unit,u_hash}]"],
+      "break_if": "gated_seal returns SEAL while all sources share one u_hash (co-error)."
+    },
+    {
+      "id": "T3_convention",
+      "defense": "divergent conventions -> different u_hash -> DIVERGENT",
+      "goal": ">=2 independent authorings under a wrong convention that still ESTABLISH a non-GT matrix.",
+      "submit_fields": ["intent", "sources[{sid,unit,golden_real,golden_imag}]", "reference_gt_real", "reference_gt_imag"],
+      "break_if": "establish_truth returns ESTABLISHED with key != hash(reference_gt)."
+    }
+  ]
+}
