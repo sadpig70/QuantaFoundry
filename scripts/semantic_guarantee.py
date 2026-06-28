@@ -185,6 +185,12 @@ def main():
             sealed[f"{kind}:{d['id']}"] = {"id": d["id"], "kind": kind, "tier": tier, "tier_source": tsrc,
                                            "contract": d.get("contract"), "u_hash": d.get("u_hash"),
                                            "n_sys": d.get("n_sys")}
+    # W1.1: sampled-dense 격상 로드(비파괴 파일 읽기; sampled_dense_verify.py 산출) — structural → unitary_equiv_sampled
+    sampled = {}
+    sp = os.path.join(ROOT, "registry", "SAMPLED-DENSE-REPORT.json")
+    if os.path.exists(sp):
+        rep = json.load(open(sp, encoding="utf-8")).get("results", {})
+        sampled = {f"app:{aid}": r for aid, r in rep.items() if r.get("verified")}
     print("=" * 84)
     print("semantic_guarantee 비파괴 레이어 (R-K) — sealed/oracle 미변경")
     print("=" * 84)
@@ -206,17 +212,32 @@ def main():
                     "부분검증 첨부 시 명시된 입력부분공간에서 의도 일치 확인됨.",
            "tier_legend": TIER_GUARANTEE, "guarantees": {}}
     by_class = {}
+    by_kind_class = {}   # W0.2: 헤드라인 분리표기 — kind(module/app)별 보증등급 분포
     for key, s in sorted(sealed.items()):
         g = dict(TIER_GUARANTEE.get(s["tier"], {"class": "unknown", "method": "?"}))
+        if key in sampled and g["class"] == "structural_wellformed":   # W1.1 격상
+            g = {"class": "unitary_equiv_sampled",
+                 "method": "sampled-dense 두 독립경로 statevector(seed 봉인, W1.1). 부분(샘플) 보증 — 전수 unitary_equiv 아님"}
         entry = {"kind": s["kind"], "id": s["id"], "tier": s["tier"], "tier_source": s["tier_source"],
                  "semantic_guarantee": g["class"], "method": g["method"], "u_hash": s["u_hash"]}
+        if key in sampled:
+            entry["sampled_dense"] = {"seed": sampled[key]["seed"], "anchor_digest": sampled[key]["anchor_digest"],
+                                      "checks": sampled[key]["checks"]}
         if s["id"] == "ghz16_structural" and pv:
             entry["partial_verification"] = pv
         out["guarantees"][key] = entry
         by_class[g["class"]] = by_class.get(g["class"], 0) + 1
+        kc = by_kind_class.setdefault(s["kind"], {})
+        kc[g["class"]] = kc.get(g["class"], 0) + 1
+    out["headline_split"] = {
+        "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). "
+                 "structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
+        "by_kind_class": by_kind_class, "by_class": by_class}
 
     json.dump(out, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print("\n" + "-" * 84)
+    print("headline_split: " + " | ".join(
+        f"{kind} " + ",".join(f"{c}={n}" for c, n in sorted(cc.items())) for kind, cc in sorted(by_kind_class.items())))
     print(f"봉인 {len(sealed)}개 분류: " + " · ".join(f"{k}={v}" for k, v in sorted(by_class.items())))
     t1 = [i for i, s in sealed.items() if s["tier"] == 1]
     print(f"Tier-1(structural_wellformed) {len(t1)}개: {t1}")

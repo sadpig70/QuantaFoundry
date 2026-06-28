@@ -47,6 +47,17 @@ def cnx_perm(nc):
     return perm_gate([(s ^ 1) if (s >> 1) == ((1 << nc) - 1) else s for s in range(1 << n)])
 
 
+def ry_k(k):  # wstate cascade primitive: Ry(a), a = arccos(sqrt(1/k))
+    a = np.arccos(np.sqrt(1 / k))
+    return np.array([[np.cos(a / 2), -np.sin(a / 2)], [np.sin(a / 2), np.cos(a / 2)]], dtype=complex)
+
+
+def qft_n(n):  # analytic DFT on n qubits (no bit-reversal swap, big-endian)
+    N = 1 << n
+    i = np.arange(N).reshape(N, 1); j = np.arange(N).reshape(1, N)
+    return (np.exp(2j * np.pi * (i * j) / N) / np.sqrt(N)).astype(complex)
+
+
 # 독립 구성기: gate_id -> unitary (qualtran/spec 코드 경로와 무관)
 INDEP = {
     "x_gate": lambda: X, "z_gate": lambda: Z, "h_gate": lambda: Hd,
@@ -61,7 +72,20 @@ INDEP = {
     "cs_gate": lambda: cphase(2), "ct_gate": lambda: cphase(3),
     "cr4_gate": lambda: cphase(4), "cr5_gate": lambda: cphase(5),
     "cs_dag": lambda: np.diag([1, 1, 1, -1j]).astype(complex),
+    # ── W0.1: full-coverage extension (제1원리 numpy, qualtran/spec-golden 미사용) ──
+    "sx": lambda: 0.5 * np.array([[1 + 1j, 1 - 1j], [1 - 1j, 1 + 1j]], dtype=complex),
+    "iswap": lambda: np.array([[1, 0, 0, 0], [0, 0, 1j, 0], [0, 1j, 0, 0], [0, 0, 0, 1]], dtype=complex),
+    "ccz": lambda: np.diag([1, 1, 1, 1, 1, 1, 1, -1]).astype(complex),
+    "c6x": lambda: cnx_perm(6),
+    "cr3_dag_gate": lambda: cphase(3).conj(), "cr4_dag_gate": lambda: cphase(4).conj(),
+    "cr5_dag_gate": lambda: cphase(5).conj(), "cr6_dag_gate": lambda: cphase(6).conj(),
+    "cr7_dag_gate": lambda: cphase(7).conj(),
+    "qft2": lambda: qft_n(2), "qft3": lambda: qft_n(3), "qft4": lambda: qft_n(4),
 }
+# ry_k cascade family (k=2..10) + daggers — late-binding 회피용 즉시 캡처
+for _k in range(2, 11):
+    INDEP[f"ry_k{_k}"] = (lambda k: (lambda: ry_k(k)))(_k)
+    INDEP[f"ry_k{_k}_dag"] = (lambda k: (lambda: ry_k(k).conj().T))(_k)
 
 
 def my_canonical_hash(U):

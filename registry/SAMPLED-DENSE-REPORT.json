@@ -1,0 +1,29 @@
+{
+  "_schema": "sampled-dense-v1",
+  "_note": "Tier-1 structural 봉인의 sampled-dense 부분검증(unitary_equiv_sampled). 비파괴 가산 레이어. seed 봉인 → 결정론 재현. 전수 unitary_equiv 아님(부분 보증).",
+  "seed": 20260628,
+  "results": {
+    "ghz16_structural": {
+      "app": "ghz16_structural",
+      "n": 16,
+      "verified": true,
+      "seed": 20260628,
+      "atol": 1e-09,
+      "checks": {
+        "anchor": true,
+        "basis": {
+          "tested": 48,
+          "matched": 48
+        },
+        "random": {
+          "tested": 16,
+          "matched": 16
+        },
+        "negative_control": true
+      },
+      "anchor_digest": "6efb45fd246f56c9",
+      "method": "two-path statevector sampling: A=plan via second_oracle.INDEP (1st-principles), B=canonical intent (plan-independent). dense 미실체화. 부분(샘플) 보증.",
+      "grade": "unitary_equiv_sampled"
+    }
+  }
+}

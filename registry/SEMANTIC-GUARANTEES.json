@@ -56,6 +56,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
     },
+    "app:c6x": {
+      "kind": "app",
+      "id": "c6x",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+    },
     "app:ccz_rediscovered": {
       "kind": "app",
       "id": "ccz_rediscovered",
@@ -64,6 +73,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
+    },
+    "app:cluster10": {
+      "kind": "app",
+      "id": "cluster10",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b27f98426016d4a00cc6f70dae51fe5d3cfcc83e4f01c2a1db5fbe63ca55d657"
     },
     "app:cluster3": {
       "kind": "app",
@@ -82,6 +100,51 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bb113c845558133ee11a7f8469178a7c1863acf3560e68f15a051c33b32fefc5"
+    },
+    "app:cluster5": {
+      "kind": "app",
+      "id": "cluster5",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "491cf7c71980816a63f499e962c80ab0fd9868935c057c9c60c10026db380234"
+    },
+    "app:cluster6": {
+      "kind": "app",
+      "id": "cluster6",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "29d8e160e88e924fcf8bec26a2fe25037589cb10f1281bba059c9b90d11ed5c2"
+    },
+    "app:cluster7": {
+      "kind": "app",
+      "id": "cluster7",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "57bf15b15cb3714d0fb2e0d4bcb8c520d315b27f1d316b426b0abf54d50adffa"
+    },
+    "app:cluster8": {
+      "kind": "app",
+      "id": "cluster8",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "32b5695128f68dc4cbf1d8993556d6f479bd7309287d0e1ef2baa4c379e556d6"
+    },
+    "app:cluster9": {
+      "kind": "app",
+      "id": "cluster9",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "385f14dd960d6ff52fbd5b2122a748b6841b5998793177de160de990038536ad"
     },
     "app:cmul16_mod21": {
       "kind": "app",
@@ -109,6 +172,24 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1aaf1e8a4589bbb061bf6aff725e20c40f245e6e4c9d8e9432b3cbded9eaae98"
+    },
+    "app:cmul2_mod33": {
+      "kind": "app",
+      "id": "cmul2_mod33",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "de55372234f9f930bcf8f342b536d455b8d11f06664eeaedef34c499842144a3"
+    },
+    "app:cmul2_mod35": {
+      "kind": "app",
+      "id": "cmul2_mod35",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a190a826040cd5e33f7c6377e49f2de743b7cad7cbb494b19863702f95b46628"
     },
     "app:cmul4_mod15": {
       "kind": "app",
@@ -263,14 +344,39 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711"
     },
+    "app:ghz10": {
+      "kind": "app",
+      "id": "ghz10",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "d34a49db319b5076133dea54fdff869d95c394f46db2195b41ef8fcf5dc69cbc"
+    },
     "app:ghz16_structural": {
       "kind": "app",
       "id": "ghz16_structural",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
+      "semantic_guarantee": "unitary_equiv_sampled",
+      "method": "sampled-dense 두 독립경로 statevector(seed 봉인, W1.1). 부분(샘플) 보증 — 전수 unitary_equiv 아님",
       "u_hash": "19036af5f7357761e314a5bd583765978ce0ad6f1502f476baf1f7553aa731db",
+      "sampled_dense": {
+        "seed": 20260628,
+        "anchor_digest": "6efb45fd246f56c9",
+        "checks": {
+          "anchor": true,
+          "basis": {
+            "tested": 48,
+            "matched": 48
+          },
+          "random": {
+            "tested": 16,
+            "matched": 16
+          },
+          "negative_control": true
+        }
+      },
       "partial_verification": {
         "verified": true,
         "method": "statevector 2^16 (dense 미실체화); path A=게이트행렬 적용 vs path B=정수 비트연산(독립); 앵커=A(|0..0>)==GHZ16 상태",
@@ -289,16 +395,6 @@
           "negative_control_detects_mutation": true
         },
         "scope": "부분(샘플 basis 48 + random 16); 전수 unitary 동등성 아님 — Tier-1 약한 의미보증 상향"
-      },
-      "tier2_clifford_companion": {
-        "companion_id": "ghz16_clifford",
-        "companion_seal_path": ".pgf/clifford/sealed/ghz16_clifford.sealed.json",
-        "tier": 2,
-        "u_hash": "da6e83d127fb48507f9799df5041d2cce789363d4abd33d64674c112f5d2ab43",
-        "guarantee": "unitary_equiv",
-        "method": "정준 stabilizer tableau(O(n²), dense 미실체화) — Clifford 유니터리를 전역위상 무시 유일 결정. 합성=봉인 모듈 실제 bloq(MatrixGate 0).",
-        "note": "동반봉인(앱 자체 Tier-1 Merkle 봉인은 불변). Tier-2 u_hash≠Tier-0 dense u_hash(표현차이). 같은 Clifford 연산의 unitary_equiv 보증을 *추가*.",
-        "consistency": "generic(봉인모듈 합성)↔canonical tableau hash 일치 = True"
       }
     },
     "app:ghz3": {
@@ -354,6 +450,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c7c5bdfb51ef3f7c51b45ef72213a9bffb6a2c72b7a33503f662f1a1b0704a04"
+    },
+    "app:ghz9": {
+      "kind": "app",
+      "id": "ghz9",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "d685f2ecbc7364ba5b21b8f32f120c1154cf9f4cdae0c662027d9cc7013d7a04"
     },
     "app:grover2": {
       "kind": "app",
@@ -454,6 +559,240 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864"
     },
+    "app:ring10": {
+      "kind": "app",
+      "id": "ring10",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "10c8f22e6f94dc052096c84d4bf80effb860e1f41adcc2d7ddd59ba09fafb1de"
+    },
+    "app:ring3": {
+      "kind": "app",
+      "id": "ring3",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "64fd672c311788263d32edbd5f59ce0d9538c3384ac163a88fcb2be1821c48f2"
+    },
+    "app:ring4": {
+      "kind": "app",
+      "id": "ring4",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "7d3dc1ef611ac20d408ccae0d2557e89c9f315ca8746fc3ad3353eaf0b922adf"
+    },
+    "app:ring5": {
+      "kind": "app",
+      "id": "ring5",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b13224846af6d28d66de12a76b6ae9882ed5711b20b65e58266816d868f1d763"
+    },
+    "app:ring6": {
+      "kind": "app",
+      "id": "ring6",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "d47142ae9f032f901406dbff256abd83c686036fbeccfc0925417ace7de4c836"
+    },
+    "app:ring7": {
+      "kind": "app",
+      "id": "ring7",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "232ef1c7de0f9ec6899c917426dbfbddc278b8fd14c587de211b6340373f1e92"
+    },
+    "app:ring8": {
+      "kind": "app",
+      "id": "ring8",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c5ce98f106878b9f67bcb3cb38fb768b3880653a4a51edcd51503d8364259fd3"
+    },
+    "app:ring9": {
+      "kind": "app",
+      "id": "ring9",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "234dd855a657e68112fb9fb26451390b00079de7baa9717cb226a9e1db4f03bd"
+    },
+    "app:ry_k10": {
+      "kind": "app",
+      "id": "ry_k10",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "739149f6bc94b846de172ea59f0ad511aaf8f75481a768d6b93114262003c5df"
+    },
+    "app:ry_k10_dag": {
+      "kind": "app",
+      "id": "ry_k10_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b34b83be11eda8de7eacbb46e021db38d217514baf0f3c5eece1f5355d842e63"
+    },
+    "app:ry_k2": {
+      "kind": "app",
+      "id": "ry_k2",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+    },
+    "app:ry_k2_dag": {
+      "kind": "app",
+      "id": "ry_k2_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+    },
+    "app:ry_k3": {
+      "kind": "app",
+      "id": "ry_k3",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+    },
+    "app:ry_k3_dag": {
+      "kind": "app",
+      "id": "ry_k3_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+    },
+    "app:ry_k4": {
+      "kind": "app",
+      "id": "ry_k4",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+    },
+    "app:ry_k4_dag": {
+      "kind": "app",
+      "id": "ry_k4_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+    },
+    "app:ry_k5": {
+      "kind": "app",
+      "id": "ry_k5",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+    },
+    "app:ry_k5_dag": {
+      "kind": "app",
+      "id": "ry_k5_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+    },
+    "app:ry_k6": {
+      "kind": "app",
+      "id": "ry_k6",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+    },
+    "app:ry_k6_dag": {
+      "kind": "app",
+      "id": "ry_k6_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+    },
+    "app:ry_k7": {
+      "kind": "app",
+      "id": "ry_k7",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
+    },
+    "app:ry_k7_dag": {
+      "kind": "app",
+      "id": "ry_k7_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
+    },
+    "app:ry_k8": {
+      "kind": "app",
+      "id": "ry_k8",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
+    },
+    "app:ry_k8_dag": {
+      "kind": "app",
+      "id": "ry_k8_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
+    },
+    "app:ry_k9": {
+      "kind": "app",
+      "id": "ry_k9",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "deea74b86411ad7daa4a331468474a5f1199dd3e0bf4ab92cc7fc65da606a799"
+    },
+    "app:ry_k9_dag": {
+      "kind": "app",
+      "id": "ry_k9_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0953b0e845319668e8b9bcb44efd9d92f1aeb2359eb2615f0038de64f78f63e5"
+    },
     "app:shor15_a2": {
       "kind": "app",
       "id": "shor15_a2",
@@ -508,6 +847,78 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
     },
+    "app:wstate10": {
+      "kind": "app",
+      "id": "wstate10",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "6f029c238eabfef6d6c0c277c63be58895f659f457d57be205768c87c67c9e84"
+    },
+    "app:wstate3": {
+      "kind": "app",
+      "id": "wstate3",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "588e269c672ef26043caf9592bb0fc86840f83dafe3088bd096b0e2409bbb2f3"
+    },
+    "app:wstate4": {
+      "kind": "app",
+      "id": "wstate4",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "946aabc8bc4f3a6cf0e54b4e62c506e0590d67ba270768cf250dad9b3de8c19d"
+    },
+    "app:wstate5": {
+      "kind": "app",
+      "id": "wstate5",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "8a6a9c5bba457b11f33239f578fef87220400c613ffe757ea26a8aeeea6f146a"
+    },
+    "app:wstate6": {
+      "kind": "app",
+      "id": "wstate6",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "5965328ccd044b54e14e3e0074184ad9032f523d8c85fc72222885d5107de7c3"
+    },
+    "app:wstate7": {
+      "kind": "app",
+      "id": "wstate7",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "cb9b491f914fc2f1f8fe9e5db0f2795efcfa0d5ec6a991ace841f8f723918737"
+    },
+    "app:wstate8": {
+      "kind": "app",
+      "id": "wstate8",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "093ad856bc878b1226db3d2a5fc02c95734d40bd28370da26794876f58f7cb5c"
+    },
+    "app:wstate9": {
+      "kind": "app",
+      "id": "wstate9",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "403f8876adced453d541ef35df657fe990adb16440cfc6c9cea4112571bbd825"
+    },
     "app:x_gate": {
       "kind": "app",
       "id": "x_gate",
@@ -543,6 +954,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+    },
+    "module:c6x": {
+      "kind": "module",
+      "id": "c6x",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
     },
     "module:ccz": {
       "kind": "module",
@@ -715,6 +1135,168 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8"
     },
+    "module:ry_k10": {
+      "kind": "module",
+      "id": "ry_k10",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "739149f6bc94b846de172ea59f0ad511aaf8f75481a768d6b93114262003c5df"
+    },
+    "module:ry_k10_dag": {
+      "kind": "module",
+      "id": "ry_k10_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b34b83be11eda8de7eacbb46e021db38d217514baf0f3c5eece1f5355d842e63"
+    },
+    "module:ry_k2": {
+      "kind": "module",
+      "id": "ry_k2",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+    },
+    "module:ry_k2_dag": {
+      "kind": "module",
+      "id": "ry_k2_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+    },
+    "module:ry_k3": {
+      "kind": "module",
+      "id": "ry_k3",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
+    },
+    "module:ry_k3_dag": {
+      "kind": "module",
+      "id": "ry_k3_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
+    },
+    "module:ry_k4": {
+      "kind": "module",
+      "id": "ry_k4",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
+    },
+    "module:ry_k4_dag": {
+      "kind": "module",
+      "id": "ry_k4_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
+    },
+    "module:ry_k5": {
+      "kind": "module",
+      "id": "ry_k5",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+    },
+    "module:ry_k5_dag": {
+      "kind": "module",
+      "id": "ry_k5_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+    },
+    "module:ry_k6": {
+      "kind": "module",
+      "id": "ry_k6",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+    },
+    "module:ry_k6_dag": {
+      "kind": "module",
+      "id": "ry_k6_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
+    },
+    "module:ry_k7": {
+      "kind": "module",
+      "id": "ry_k7",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
+    },
+    "module:ry_k7_dag": {
+      "kind": "module",
+      "id": "ry_k7_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
+    },
+    "module:ry_k8": {
+      "kind": "module",
+      "id": "ry_k8",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
+    },
+    "module:ry_k8_dag": {
+      "kind": "module",
+      "id": "ry_k8_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
+    },
+    "module:ry_k9": {
+      "kind": "module",
+      "id": "ry_k9",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "deea74b86411ad7daa4a331468474a5f1199dd3e0bf4ab92cc7fc65da606a799"
+    },
+    "module:ry_k9_dag": {
+      "kind": "module",
+      "id": "ry_k9_dag",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0953b0e845319668e8b9bcb44efd9d92f1aeb2359eb2615f0038de64f78f63e5"
+    },
     "module:s_gate": {
       "kind": "module",
       "id": "s_gate",
@@ -732,6 +1314,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+    },
+    "module:sx": {
+      "kind": "module",
+      "id": "sx",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c49a2b4d6367c172f9edd000553d6175ff07bfbb383b3c3ba08c40cb9ba5dbef"
     },
     "module:t_gate": {
       "kind": "module",
@@ -768,6 +1359,22 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+    }
+  },
+  "headline_split": {
+    "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
+    "by_kind_class": {
+      "app": {
+        "unitary_equiv": 96,
+        "unitary_equiv_sampled": 1
+      },
+      "module": {
+        "unitary_equiv": 48
+      }
+    },
+    "by_class": {
+      "unitary_equiv": 144,
+      "unitary_equiv_sampled": 1
     }
   }
 }

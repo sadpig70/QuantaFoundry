@@ -17,6 +17,11 @@ It generates quantum software modules from high-level intent, verifies them with
 > goal-autonomy, a gated multi-model panel, a falsification front, and an honest-decomposition
 > guard) are now realized — see the spec's `What changed since v0.6` and §8.8.
 >
+> **Guarantee split** (no exact-coverage overclaim): all **48 modules** are `unitary_equiv` (Tier-0 EXACT);
+> the **59 apps** are 58 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
+> verified with a sealed seed, also Tier-2 sealed) — **zero structural-only seals**. Authoritative tally:
+> `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
+>
 > **Full technical specification + evidence:** [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md)
 > (written for independent design review). Reproduction artifacts under `specs/`, `registry/`,
 > `_workspace/crossmodel/`.

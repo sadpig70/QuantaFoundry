@@ -1,0 +1,53 @@
+{
+  "_schema": "zx-routing-v1",
+  "_note": "non-Clifford 대형 Tier-3 ZX 경로. 현재 대상 0(정직 음성) — Tier-1 앱은 ghz16(Clifford)뿐. 인프라는 self-test 로 동작 검증됨. 대형 non-Clifford 앱 봉인 시 활성화. 비파괴.",
+  "pyzx_version": "0.10.3",
+  "tier1_apps": [
+    {
+      "id": "ghz16_structural",
+      "n": 16,
+      "non_clifford_gates": [],
+      "is_clifford": true
+    }
+  ],
+  "zx_immediate_targets": [],
+  "selftest_pass": true,
+  "selftest": [
+    {
+      "case": "T·T==S",
+      "expect": "equiv",
+      "got": true,
+      "pass": true
+    },
+    {
+      "case": "T⁴==Z",
+      "expect": "equiv",
+      "got": true,
+      "pass": true
+    },
+    {
+      "case": "H·H==I",
+      "expect": "equiv",
+      "got": true,
+      "pass": true
+    },
+    {
+      "case": "CNOT·CNOT==I",
+      "expect": "equiv",
+      "got": true,
+      "pass": true
+    },
+    {
+      "case": "T≠S",
+      "expect": "not-equiv",
+      "got": false,
+      "pass": true
+    },
+    {
+      "case": "H≠S",
+      "expect": "not-equiv",
+      "got": false,
+      "pass": true
+    }
+  ]
+}

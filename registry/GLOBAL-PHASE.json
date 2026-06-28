@@ -1,0 +1,86 @@
+{
+  "_schema": "global-phase-v1",
+  "_note": "C4 는 single-gate 전역위상을 정당히 무시(관측 불가). 위험은 controlled 합성 시 발현. controlled-pair 정합으로 base 전역위상이 canonical 임을 실증 → 합성 안전. 비파괴.",
+  "canonical_global_phase": {
+    "x_gate": 0.0,
+    "z_gate": 0.0,
+    "h_gate": 0.0,
+    "s_gate": 0.0,
+    "t_gate": 0.0,
+    "cnot": 0.0,
+    "swap2": 0.0,
+    "cz": 0.0,
+    "toffoli": 0.0,
+    "fredkin": 0.0,
+    "c3x": 0.0,
+    "c4x": 0.0,
+    "c5x": 0.0,
+    "cs_gate": 0.0,
+    "ct_gate": 0.0,
+    "cr4_gate": 0.0,
+    "cr5_gate": 0.0,
+    "cs_dag": 0.0,
+    "sx": 0.785398,
+    "iswap": 0.0,
+    "ccz": 0.0,
+    "c6x": 0.0,
+    "cr3_dag_gate": -0.0,
+    "cr4_dag_gate": -0.0,
+    "cr5_dag_gate": -0.0,
+    "cr6_dag_gate": -0.0,
+    "cr7_dag_gate": -0.0,
+    "qft2": 0.0,
+    "qft3": 0.0,
+    "qft4": 0.0,
+    "ry_k2": 0.0,
+    "ry_k2_dag": -0.0,
+    "ry_k3": 0.0,
+    "ry_k3_dag": -0.0,
+    "ry_k4": 0.0,
+    "ry_k4_dag": -0.0,
+    "ry_k5": 0.0,
+    "ry_k5_dag": -0.0,
+    "ry_k6": 0.0,
+    "ry_k6_dag": -0.0,
+    "ry_k7": 0.0,
+    "ry_k7_dag": -0.0,
+    "ry_k8": 0.0,
+    "ry_k8_dag": -0.0,
+    "ry_k9": 0.0,
+    "ry_k9_dag": -0.0,
+    "ry_k10": 0.0,
+    "ry_k10_dag": -0.0
+  },
+  "controlled_pairs": [
+    {
+      "base": "x_gate",
+      "controlled": "cnot",
+      "exact_match": true,
+      "base_global_phase": 0.0
+    },
+    {
+      "base": "z_gate",
+      "controlled": "cz",
+      "exact_match": true,
+      "base_global_phase": 0.0
+    },
+    {
+      "base": "s_gate",
+      "controlled": "cs_gate",
+      "exact_match": true,
+      "base_global_phase": 0.0
+    },
+    {
+      "base": "t_gate",
+      "controlled": "ct_gate",
+      "exact_match": true,
+      "base_global_phase": 0.0
+    }
+  ],
+  "controlled_pairs_all_exact": true,
+  "controlled_wrapping_apps": [],
+  "phase_bearing_modules": {
+    "sx": 0.785398
+  },
+  "guard_note": "goal-autonomy/discover 가 모듈을 controlled 로 wrap 하면 전역위상 정합을 반드시 검증해야 함(현재 패턴 0). diag-block(I,U) 합성은 U 의 전역위상을 보존해야 한다."
+}
