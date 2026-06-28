@@ -50,11 +50,12 @@ QuantaFoundryV07Plan // 신뢰 약점 지점으로 가치 이동 — self-contai
         P3a_RedTeamSuite // 6공격: golden-copy·identity·uncompute(C3)·convention·B4 CAUGHT 5/6; matrixgate=문서화공백 (done) — scripts/red_team.py
         P3b_Tier1ScaleFalsify // §7 최고위험: golden없는 Tier-1=오배선 봉인(struct≠unitary)·Tier-0 dense만 거부 (done)
         P3c_SingleVsConsensus // 단일출처 봉인 vs 합의·게이트 거부 매트릭스(convention·B4) (done)
-    P3d_CrossModelBounty // 외부 AI 적대 반증(P2b relay 재사용) — 패키지·채점 준비완료, relay 대기
-        AutoAdjudicate // 제출물 오라클 재검산 자동판정(T1/T2/T3·BREAK/HELD/DOC_GAP/NEW_GAP) (done) — scripts/bounty_adjudicate.py, selftest 5/5
+    P3d_CrossModelBounty // 외부 AI 적대 반증(P2b relay 재사용) — 6런타임 라운드 1 완료 (done)
+        AutoAdjudicate // 오라클 재검산 자동판정(BREAK/HELD/DOC_GAP/NEW_GAP) (done) — scripts/bounty_adjudicate.py, selftest 5/5
         BountyPackage // BRIEF·targets·template·oracle-rules (done) — _workspace/crossmodel/p3d_bounty/
-        Relay // 6런타임 독립 전달·수거 (blocked) — 정욱님 (P2b sx 와 동일 행위)
-        Ingest // 수거·확정·cross-model adversarial 라벨 (blocked) — relay 대기
+        Relay // 6런타임(deepseek/gemini/gpt-5/grok/kimi/qwen) 독립 수거 (done) — 정욱님
+        Ingest // 라운드1 판정: T2/T3 위조 6/6 HELD(provenance), T1 hollow 6/6 DOC_GAP, BREAK 0 (done)
+        SelfVerify // 적대적 자기검증: 초기 18-break=채점기 결함 2건 발견·수정(provenance 바인딩·hollow 패턴) (done)
 ```
 
 **임계 경로:** `[parallel] P0 · P1 · P4 · P5 [/parallel]` → `P9_Integrate`.

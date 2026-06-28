@@ -1,13 +1,240 @@
 {
   "phase": "P3d ReproBounty AutoAdjudicate (cross-model adversarial)",
   "grade_label": "cross-model adversarial (NOT public human bounty — complement, honest label)",
-  "honesty": "model claims untrusted; oracle re-runs deterministically; temp store only; registry/specs/frozen unchanged; engine validated by selftest before real ingest.",
+  "honesty": "model claims untrusted; oracle re-runs deterministically; temp store only; registry/specs/frozen unchanged; engine validated by selftest before real ingest. PROVENANCE-BOUND: one submission file = one runtime = one independence unit (forged peer labels collapse) — models the deployed relay, not raw label trust.",
   "engine_selftest_passed": true,
-  "submissions_ingested": 0,
-  "relay_pending": true,
-  "results": [],
+  "submissions_ingested": 6,
+  "relay_pending": false,
+  "results": [
+    {
+      "target": "T1_hollow",
+      "verdict": "DOC_GAP",
+      "sealed": true,
+      "dishonest_flags": [
+        "def\\s+tensor_contract",
+        "np\\.eye\\(\\s*\\d+\\s*\\)\\s*\\[",
+        "\\[:\\s*,\\s*\\["
+      ],
+      "oracle_tail": "sealed: C:\\Users\\sadpig70\\AppData\\Local\\Temp\\bounty_t1_px8y2ntp\\hollow_cnot_phase_deepseek.sealed.json",
+      "runtime": "deepseek"
+    },
+    {
+      "target": "T2_independence",
+      "verdict": "HELD",
+      "decision": "REJECT",
+      "distinct_units": 1,
+      "co_error": true,
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 라벨 붕괴(1 런타임=1 단위) → 게이트 거부. 배포 relay 가 단위를 런타임에 바인딩하므로 라벨 위조 방어됨.",
+      "runtime": "deepseek"
+    },
+    {
+      "target": "T3_convention",
+      "verdict": "HELD",
+      "status": "DIVERGENT",
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 붕괴(1 런타임=1 단위) → DIVERGENT 거부. 단위가 런타임에 바인딩되므로 단일 모델이 다수 convention 위장 불가.",
+      "runtime": "deepseek"
+    },
+    {
+      "target": "T1_hollow",
+      "verdict": "DOC_GAP",
+      "sealed": true,
+      "dishonest_flags": [
+        "def\\s+tensor_contract",
+        "np\\.eye\\(\\s*\\d+\\s*\\)\\s*\\[",
+        "\\[:\\s*,\\s*\\["
+      ],
+      "oracle_tail": "sealed: C:\\Users\\sadpig70\\AppData\\Local\\Temp\\bounty_t1_nmmszyye\\hollow_swap_gemini.sealed.json",
+      "runtime": "gemini"
+    },
+    {
+      "target": "T2_independence",
+      "verdict": "HELD",
+      "decision": "REJECT",
+      "distinct_units": 1,
+      "co_error": true,
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 라벨 붕괴(1 런타임=1 단위) → 게이트 거부. 배포 relay 가 단위를 런타임에 바인딩하므로 라벨 위조 방어됨.",
+      "runtime": "gemini"
+    },
+    {
+      "target": "T3_convention",
+      "verdict": "HELD",
+      "status": "DIVERGENT",
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 붕괴(1 런타임=1 단위) → DIVERGENT 거부. 단위가 런타임에 바인딩되므로 단일 모델이 다수 convention 위장 불가.",
+      "runtime": "gemini"
+    },
+    {
+      "target": "T1_hollow",
+      "verdict": "DOC_GAP",
+      "sealed": true,
+      "dishonest_flags": [
+        "def\\s+tensor_contract",
+        "np\\.eye\\(\\s*\\d+\\s*\\)\\s*\\[",
+        "\\[:\\s*,\\s*\\["
+      ],
+      "oracle_tail": "sealed: C:\\Users\\sadpig70\\AppData\\Local\\Temp\\bounty_t1_xw_lu1cr\\hollow_cnot_gpt-5.sealed.json",
+      "runtime": "gpt-5"
+    },
+    {
+      "target": "T2_independence",
+      "verdict": "HELD",
+      "decision": "REJECT",
+      "distinct_units": 1,
+      "co_error": true,
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 라벨 붕괴(1 런타임=1 단위) → 게이트 거부. 배포 relay 가 단위를 런타임에 바인딩하므로 라벨 위조 방어됨.",
+      "runtime": "gpt-5"
+    },
+    {
+      "target": "T3_convention",
+      "verdict": "HELD",
+      "status": "DIVERGENT",
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 붕괴(1 런타임=1 단위) → DIVERGENT 거부. 단위가 런타임에 바인딩되므로 단일 모델이 다수 convention 위장 불가.",
+      "runtime": "gpt-5"
+    },
+    {
+      "target": "T1_hollow",
+      "verdict": "DOC_GAP",
+      "sealed": true,
+      "dishonest_flags": [
+        "def\\s+tensor_contract",
+        "np\\.eye\\(\\s*\\d+\\s*\\)\\s*\\[",
+        "\\[:\\s*,\\s*\\["
+      ],
+      "oracle_tail": "sealed: C:\\Users\\sadpig70\\AppData\\Local\\Temp\\bounty_t1_gwvnjjh7\\hollow_toffoli_grok.sealed.json",
+      "runtime": "grok"
+    },
+    {
+      "target": "T2_independence",
+      "verdict": "HELD",
+      "decision": "REJECT",
+      "distinct_units": 1,
+      "co_error": true,
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 라벨 붕괴(1 런타임=1 단위) → 게이트 거부. 배포 relay 가 단위를 런타임에 바인딩하므로 라벨 위조 방어됨.",
+      "runtime": "grok"
+    },
+    {
+      "target": "T3_convention",
+      "verdict": "HELD",
+      "status": "DIVERGENT",
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 붕괴(1 런타임=1 단위) → DIVERGENT 거부. 단위가 런타임에 바인딩되므로 단일 모델이 다수 convention 위장 불가.",
+      "runtime": "grok"
+    },
+    {
+      "target": "T1_hollow",
+      "verdict": "DOC_GAP",
+      "sealed": true,
+      "dishonest_flags": [
+        "def\\s+tensor_contract",
+        "np\\.diag\\("
+      ],
+      "oracle_tail": "sealed: C:\\Users\\sadpig70\\AppData\\Local\\Temp\\bounty_t1_6jfkug94\\hollow_cs_kimi.sealed.json",
+      "runtime": "kimi"
+    },
+    {
+      "target": "T2_independence",
+      "verdict": "HELD",
+      "decision": "REJECT",
+      "distinct_units": 1,
+      "co_error": true,
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 라벨 붕괴(1 런타임=1 단위) → 게이트 거부. 배포 relay 가 단위를 런타임에 바인딩하므로 라벨 위조 방어됨.",
+      "runtime": "kimi"
+    },
+    {
+      "target": "T3_convention",
+      "verdict": "HELD",
+      "status": "DIVERGENT",
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 붕괴(1 런타임=1 단위) → DIVERGENT 거부. 단위가 런타임에 바인딩되므로 단일 모델이 다수 convention 위장 불가.",
+      "runtime": "kimi"
+    },
+    {
+      "target": "T1_hollow",
+      "verdict": "DOC_GAP",
+      "sealed": true,
+      "dishonest_flags": [
+        "def\\s+tensor_contract",
+        "np\\.eye\\(\\s*\\d+\\s*\\)\\s*\\[",
+        "\\[:\\s*,\\s*\\["
+      ],
+      "oracle_tail": "sealed: C:\\Users\\sadpig70\\AppData\\Local\\Temp\\bounty_t1_0tjwziov\\hollow_fredkin_qwen.sealed.json",
+      "runtime": "qwen"
+    },
+    {
+      "target": "T2_independence",
+      "verdict": "HELD",
+      "decision": "REJECT",
+      "distinct_units": 1,
+      "co_error": true,
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 라벨 붕괴(1 런타임=1 단위) → 게이트 거부. 배포 relay 가 단위를 런타임에 바인딩하므로 라벨 위조 방어됨.",
+      "runtime": "qwen"
+    },
+    {
+      "target": "T3_convention",
+      "verdict": "HELD",
+      "status": "DIVERGENT",
+      "forged_peer_labels": true,
+      "note": "provenance 바인딩으로 위조 peer 붕괴(1 런타임=1 단위) → DIVERGENT 거부. 단위가 런타임에 바인딩되므로 단일 모델이 다수 convention 위장 불가.",
+      "runtime": "qwen"
+    }
+  ],
+  "cross_runtime_independence": [
+    {
+      "intent": "swap2",
+      "n_real_runtimes": 1,
+      "status": "DIVERGENT",
+      "testable": false,
+      "established_wrong_truth": false
+    },
+    {
+      "intent": "cnot",
+      "n_real_runtimes": 1,
+      "status": "DIVERGENT",
+      "testable": false,
+      "established_wrong_truth": false
+    },
+    {
+      "intent": "sx",
+      "n_real_runtimes": 1,
+      "status": "DIVERGENT",
+      "testable": false,
+      "established_wrong_truth": false
+    },
+    {
+      "intent": "x_gate",
+      "n_real_runtimes": 1,
+      "status": "DIVERGENT",
+      "testable": false,
+      "established_wrong_truth": false
+    },
+    {
+      "intent": "cs_gate",
+      "n_real_runtimes": 1,
+      "status": "DIVERGENT",
+      "testable": false,
+      "established_wrong_truth": false
+    },
+    {
+      "intent": "qft2",
+      "n_real_runtimes": 1,
+      "status": "DIVERGENT",
+      "testable": false,
+      "established_wrong_truth": false
+    }
+  ],
+  "cross_runtime_status": "inconclusive (disjoint intents — no shared target across runtimes; future round must fix a COMMON intent to test genuine cross-runtime co-error)",
+  "cross_runtime_converged_on_wrong_truth": [],
   "n_break": 0,
   "n_new_gap": 0,
-  "defenses_survived_external_round": false,
-  "note": "RELAY PENDING: bounty 패키지 준비 완료, 정욱님 6런타임 전달·수거 대기. selftest 로 엔진 결정론만 self-contained 입증."
+  "n_doc_gap": 6,
+  "defenses_survived_external_round": true,
+  "note": "외부 cross-model 적대 라운드: 방어선 생존(정직한 음성). DOC_GAP=6(honest-분해 공백을 6모델이 재현=공백 실재 확인, 알려진 경계)."
 }

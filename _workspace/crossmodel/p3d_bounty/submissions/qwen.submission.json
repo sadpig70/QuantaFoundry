@@ -1,0 +1,203 @@
+{
+  "runtime": "qwen",
+  "weights_id": "alibaba-qwen",
+  "convention_ack": true,
+  "attacks": [
+    {
+      "target": "T1_hollow",
+      "id": "hollow_fredkin_qwen",
+      "spec_text": "```python id=bloq\nimport numpy as np\nfrom qualtran import Bloq, Signature, Register, QBit\nfrom qualtran.bloqs.basic_gates import CSwap\n\nclass HollowFredkin(Bloq):\n    @property\n    def signature(self):\n        return Signature([Register('c', QBit()), Register('a', QBit()), Register('b', QBit())])\n    def tensor_contract(self):\n        return np.eye(8)[:, [0, 1, 2, 3, 4, 6, 5, 7]]\n    def build_call_graph(self, ssa, **kwargs):\n        return {(CSwap(1), 1)}\n\nbloq = HollowFredkin()\n\n```\n```python id=golden\nimport numpy as np\ngolden = np.eye(8)[:, [0, 1, 2, 3, 4, 6, 5, 7]].astype(complex)\n\n```\n```json id=meta\n{\"id\": \"hollow_fredkin_qwen\", \"n_sys\": 3, \"n_anc\": 0}\n```\n",
+      "rationale": "Hollow Fredkin (controlled-SWAP): the bloq emits the permutation matrix directly instead of decomposing into Toffoli/CNOT/AND. np.eye permutation avoids known dishonest signatures, so it would reach --exec-specs sealing as a NEW_GAP candidate."
+    },
+    {
+      "target": "T2_independence",
+      "intent": "toffoli",
+      "sources": [
+        {
+          "sid": "qwen_s1",
+          "klass": "model",
+          "unit": "qwen-weights",
+          "u_hash": "e485ff5eb687821232f113eaa7351a57187e0065a1ceab8529592721b466c1ad"
+        },
+        {
+          "sid": "qwen_s2",
+          "klass": "model",
+          "unit": "peer-qwen",
+          "u_hash": "e485ff5eb687821232f113eaa7351a57187e0065a1ceab8529592721b466c1ad"
+        }
+      ],
+      "rationale": "Two sources share the same incorrect u_hash for 'toffoli' but are labeled with different independence units ('qwen-weights' and 'peer-qwen'). The gate collapses only by klass:unit, so it will count 2 distinct units and ESTABLISH the shared wrong answer as MULTIMODEL truth despite both sources being co-erroneous."
+    },
+    {
+      "target": "T3_convention",
+      "intent": "qft2",
+      "sources": [
+        {
+          "sid": "qwen_s1",
+          "unit": "qwen-weights",
+          "golden_real": [
+            [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            [
+              0.5,
+              3.061616997868383e-17,
+              -0.5,
+              -9.184850993605148e-17
+            ],
+            [
+              0.5,
+              -0.5,
+              0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              -9.184850993605148e-17,
+              -0.5,
+              2.755455298081545e-16
+            ]
+          ],
+          "golden_imag": [
+            [
+              -0.0,
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            [
+              -0.0,
+              -0.5,
+              -6.123233995736766e-17,
+              0.5
+            ],
+            [
+              -0.0,
+              -6.123233995736766e-17,
+              1.2246467991473532e-16,
+              -1.8369701987210297e-16
+            ],
+            [
+              -0.0,
+              0.5,
+              -1.8369701987210297e-16,
+              -0.5
+            ]
+          ]
+        },
+        {
+          "sid": "qwen_s2",
+          "unit": "peer-qwen",
+          "golden_real": [
+            [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            [
+              0.5,
+              3.061616997868383e-17,
+              -0.5,
+              -9.184850993605148e-17
+            ],
+            [
+              0.5,
+              -0.5,
+              0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              -9.184850993605148e-17,
+              -0.5,
+              2.755455298081545e-16
+            ]
+          ],
+          "golden_imag": [
+            [
+              -0.0,
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            [
+              -0.0,
+              -0.5,
+              -6.123233995736766e-17,
+              0.5
+            ],
+            [
+              -0.0,
+              -6.123233995736766e-17,
+              1.2246467991473532e-16,
+              -1.8369701987210297e-16
+            ],
+            [
+              -0.0,
+              0.5,
+              -1.8369701987210297e-16,
+              -0.5
+            ]
+          ]
+        }
+      ],
+      "reference_gt_real": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          3.061616997868383e-17,
+          -0.5,
+          -9.184850993605148e-17
+        ],
+        [
+          0.5,
+          -0.5,
+          0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          -9.184850993605148e-17,
+          -0.5,
+          2.755455298081545e-16
+        ]
+      ],
+      "reference_gt_imag": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          6.123233995736766e-17,
+          -0.5
+        ],
+        [
+          0.0,
+          6.123233995736766e-17,
+          -1.2246467991473532e-16,
+          1.8369701987210297e-16
+        ],
+        [
+          0.0,
+          -0.5,
+          1.8369701987210297e-16,
+          0.5
+        ]
+      ],
+      "rationale": "Both independent units author 'qft2' under the same subtly wrong convention/root, so their u_hashes agree and establish_truth returns ESTABLISHED. The reference_gt represents the true matrix; the established key differs, producing a false truth."
+    }
+  ]
+}
