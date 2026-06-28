@@ -2,12 +2,187 @@
   "phase": "P3d p3d_round4 — cross-runtime co-error measurement",
   "honesty": "real weights_id independence units (NOT round-1 forged peers); consensus used only; non-destructive (no seal). corpus-correlation ρ-discount demonstrated as the existing defense against genuine cross-runtime co-error.",
   "engine_selftest_passed": true,
-  "submissions_ingested": 0,
-  "relay_pending": true,
-  "measures": [],
-  "per_runtime": [],
+  "submissions_ingested": 6,
+  "relay_pending": false,
+  "measures": [
+    {
+      "intent": "qft2",
+      "n_runtimes": 6,
+      "status": "CONTESTED",
+      "grade": null,
+      "distribution": {
+        "a8abbb2da89e": 2,
+        "90dbc731bb8c": 2,
+        "8348a57b43f3": 1,
+        "8c1c3966e7df": 1
+      },
+      "established_matches_GT": false,
+      "co_error_established_wrong": false,
+      "outcome": "contested_guard_fired"
+    },
+    {
+      "intent": "rz_half",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "7c739c3b4c3a": 4,
+        "201883805425": 2
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false,
+      "outcome": "truth_de_facto_standard"
+    },
+    {
+      "intent": "sqrt_swap",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "911539a14d3f": 2,
+        "d527ab52e320": 4
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false,
+      "outcome": "truth_de_facto_standard"
+    },
+    {
+      "intent": "x_gate",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "7dc1df52d07d": 6
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false,
+      "outcome": "truth_de_facto_standard"
+    }
+  ],
+  "per_runtime": [
+    {
+      "runtime": "deepseek",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "deepseek",
+      "intent": "qft2",
+      "correct": false
+    },
+    {
+      "runtime": "deepseek",
+      "intent": "sqrt_swap",
+      "correct": false
+    },
+    {
+      "runtime": "deepseek",
+      "intent": "rz_half",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "qft2",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "sqrt_swap",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "rz_half",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "qft2",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "sqrt_swap",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "rz_half",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "qft2",
+      "correct": false
+    },
+    {
+      "runtime": "grok",
+      "intent": "sqrt_swap",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "rz_half",
+      "correct": false
+    },
+    {
+      "runtime": "kimi",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "kimi",
+      "intent": "qft2",
+      "correct": false
+    },
+    {
+      "runtime": "kimi",
+      "intent": "sqrt_swap",
+      "correct": true
+    },
+    {
+      "runtime": "kimi",
+      "intent": "rz_half",
+      "correct": true
+    },
+    {
+      "runtime": "qwen",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "qwen",
+      "intent": "qft2",
+      "correct": false
+    },
+    {
+      "runtime": "qwen",
+      "intent": "sqrt_swap",
+      "correct": false
+    },
+    {
+      "runtime": "qwen",
+      "intent": "rz_half",
+      "correct": false
+    }
+  ],
   "co_error_intents": [],
   "co_error_undefended_by_rho": [],
   "limitations": "정직한 음성의 범위 한정: (1) 테스트한 probe 들에서 동반오류 0 = co-error '미발생'이지 '불가능' 증명 아님(probe 가 충분히 적대적이지 못했을 수 있음). (2) 동반오류가 0 이라 ρ-할인 방어는 *실데이터로 미검증*(selftest 합성으로만 입증). 더 모호한 probe 로 후속 라운드 시 ρ-경로 실측 가능.",
-  "note": "RELAY PENDING: p3d_round4 패키지 준비 완료, 정욱님 6런타임 공통 intent 수거 대기. selftest 로 채점기 결정론만 self-contained 입증."
+  "note": "동반오류 없음(런타임들이 정답 수렴 또는 발산) — corpus-상관 BREAK 미발생(정직한 음성)"
 }

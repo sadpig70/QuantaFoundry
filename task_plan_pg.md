@@ -72,11 +72,12 @@ QuantaFoundryV07Plan // 신뢰 약점 지점으로 가치 이동 — self-contai
             RoundPackage // ROUND-BRIEF·intents·template·_ground_truth(운영자전용) (done) — _workspace/crossmodel/p3d_round3/
             Measure // 6런타임 수거·실측: 4/4 intent 전원 GT수렴, 동반오류 0 (done)
             // 2라운드 종합 5 probe 전부 co-error 0 — frontier 모델 표준게이트 cross-runtime 견고(정직 음성). ρ-방어 실데이터 미검증 잔존.
-        Round4_ContestedDefinition // 정의 자체가 corpus 분열인 게이트 — DIVERGENT/CONTESTED/co-error 유발 (in-progress)
+        Round4_ContestedDefinition // 정의 자체가 corpus 분열인 게이트 — 분기 실측 성공 (done)
             DesignProbe // qft2(스왑/부호)·sqrt_swap(위상branch)·rz_half(부호 exp∓)+x_gate — GT≠대안 u_hash 확인 (done)
-            OutcomeClassify // measure_intent 에 outcome(truth/co_error/necessity_divergent/contested_guard) 분류 추가 (done)
+            OutcomeClassify // measure_intent 에 outcome 분류 추가 (done)
             RoundPackage // ROUND-BRIEF·intents·template·_ground_truth (done) — _workspace/crossmodel/p3d_round4/
-            Relay // 6런타임 공통 contested probe 배포·수거 (blocked) — 정욱님
+            Measure // 실측: qft2→CONTESTED(2-2-1-1, near-tie 가드 실데이터 첫 발동)·sqrt_swap/rz_half→4-2 다수 표준 ESTABLISHED·x_gate sanity (done)
+            // 핵심: contested near-tie 가드를 실데이터로 첫 검증(qft2 모호→봉인 거부). 4-2 분열은 표준관례 다수→진리(v05 패턴 재현). co-error 0(다수가 비표준에 수렴한 사례 없음).
 ```
 
 **임계 경로:** `[parallel] P0 · P1 · P4 · P5 [/parallel]` → `P9_Integrate`.
