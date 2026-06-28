@@ -71,6 +71,7 @@ INDEP = {
     "c3x": lambda: cnx_perm(3), "c4x": lambda: cnx_perm(4), "c5x": lambda: cnx_perm(5),
     "cs_gate": lambda: cphase(2), "ct_gate": lambda: cphase(3),
     "cr4_gate": lambda: cphase(4), "cr5_gate": lambda: cphase(5),
+    "cr6_gate": lambda: cphase(6), "cr7_gate": lambda: cphase(7), "cr8_gate": lambda: cphase(8),
     "cs_dag": lambda: np.diag([1, 1, 1, -1j]).astype(complex),
     # ── W0.1: full-coverage extension (제1원리 numpy, qualtran/spec-golden 미사용) ──
     "sx": lambda: 0.5 * np.array([[1 + 1j, 1 - 1j], [1 - 1j, 1 + 1j]], dtype=complex),

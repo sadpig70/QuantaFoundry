@@ -1,0 +1,12 @@
+```python id=bloq
+from qualtran.bloqs.basic_gates import ZPowGate
+bloq = ZPowGate(exponent=1/2**(6-1)).controlled()
+```
+```python id=golden
+import numpy as np
+# controlled-R6 (control=first, big-endian): diag(1,1,1, exp(2*pi*i/2**6))
+golden = np.diag([1, 1, 1, np.exp(2j*np.pi/2**6)]).astype(complex)
+```
+```json id=meta
+{"id": "cr6_gate", "n_sys": 2, "n_anc": 0}
+```

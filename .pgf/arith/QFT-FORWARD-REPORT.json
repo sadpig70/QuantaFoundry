@@ -1,0 +1,151 @@
+{
+  "phase": "W6.4 ForwardQFTPipelineComplete",
+  "honesty": "cr_k_gate(non-dag) analytic golden (ZPowGate ctrl); generation != verification (verify_seal modules / app_assemble apps); regression gate proves pattern (gen(4)==qft4_pipeline); modules+apps additive (frozen keys/fingerprint byte-identical).",
+  "seal_cr_gates": [
+    {
+      "id": "cr6_gate",
+      "sealed": true,
+      "tier": null,
+      "u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d",
+      "independent_match": true
+    },
+    {
+      "id": "cr7_gate",
+      "sealed": true,
+      "tier": null,
+      "u_hash": "a39c4dc9beb02627240765f4565cbb4323a1e5ec2b86afef6a2cac47bdf70b97",
+      "independent_match": true
+    },
+    {
+      "id": "cr8_gate",
+      "sealed": true,
+      "tier": null,
+      "u_hash": "bc8cc0eca1d564a17380dc28d9bc79d55b1e52e11a26e668e43bac4bd47a4c0b",
+      "independent_match": true
+    }
+  ],
+  "regression_gate_qft4": {
+    "n": 4,
+    "sealed": true,
+    "regenerated_u_hash": "d997d21f5cfb1487",
+    "registry_u_hash": "d997d21f5cfb1487",
+    "matches_registry": true,
+    "deps": [
+      "cr4_gate",
+      "cs_gate",
+      "ct_gate",
+      "h_gate",
+      "swap2"
+    ],
+    "reason": ""
+  },
+  "forge_qft": [
+    {
+      "id": "qft5_pipeline",
+      "n_sys": 5,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "8950c83f90a8fd1332133cc9257b83d479badda2e0eb84ebf151ba189ba932ea",
+      "deps": [
+        "cr4_gate",
+        "cr5_gate",
+        "cs_gate",
+        "ct_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "cr_gates_used": [
+        "cr4_gate",
+        "cr5_gate"
+      ]
+    },
+    {
+      "id": "qft6_pipeline",
+      "n_sys": 6,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "45098b844e7d9ac82d157983ad0c5cf047cc5edd64571435ab9c3c5d2e7c8921",
+      "deps": [
+        "cr4_gate",
+        "cr5_gate",
+        "cr6_gate",
+        "cs_gate",
+        "ct_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "cr_gates_used": [
+        "cr4_gate",
+        "cr5_gate",
+        "cr6_gate"
+      ]
+    },
+    {
+      "id": "qft7_pipeline",
+      "n_sys": 7,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "45c2770f9d0082b4a6e8c8befdad3587ab48ec8d87f472f024fdaa55bb61823d",
+      "deps": [
+        "cr4_gate",
+        "cr5_gate",
+        "cr6_gate",
+        "cr7_gate",
+        "cs_gate",
+        "ct_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "cr_gates_used": [
+        "cr4_gate",
+        "cr5_gate",
+        "cr6_gate",
+        "cr7_gate"
+      ]
+    },
+    {
+      "id": "qft8_pipeline",
+      "n_sys": 8,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "d3d5d684d007b025db6ebd6c3f043296d2228e66d4336d9a77b8ad2aed823f9b",
+      "deps": [
+        "cr4_gate",
+        "cr5_gate",
+        "cr6_gate",
+        "cr7_gate",
+        "cr8_gate",
+        "cs_gate",
+        "ct_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "cr_gates_used": [
+        "cr4_gate",
+        "cr5_gate",
+        "cr6_gate",
+        "cr7_gate",
+        "cr8_gate"
+      ]
+    }
+  ],
+  "independent_verify": [
+    {
+      "n": 5,
+      "matches_sealed": true
+    },
+    {
+      "n": 6,
+      "matches_sealed": true
+    },
+    {
+      "n": 7,
+      "matches_sealed": true
+    },
+    {
+      "n": 8,
+      "matches_sealed": true
+    }
+  ],
+  "all_ok": true
+}

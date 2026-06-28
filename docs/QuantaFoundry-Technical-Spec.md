@@ -12,7 +12,7 @@
 > (honest reversible synthesis, no MatrixGate) — N=15 was a 2⁴−1 degeneracy; (2) **app-level**
 > cross-model corroboration done (EXT v04: app-golden 4/4 + app-bloq 4/4) and consensus **necessity**
 > demonstrated by a true-divergence probe (EXT v05: free-parameter intents diverge); (3) a
-> **second, Qualtran-independent oracle** re-checks sealed unitaries (50/50); (4) **goal-autonomy**
+> **second, Qualtran-independent oracle** re-checks sealed unitaries (53/53); (4) **goal-autonomy**
 > extended to multiple families (GHZ + cluster) with autonomous sealing (human seed 0); (5) per-seal
 > **semantic_guarantee** layer (Tier-1 ≠ unitary_equiv, made explicit). Library now **46 sealed
 > modules → 57 sealed applications**, every primitive established with **zero human answer keys** (§8).
@@ -87,8 +87,12 @@
 > corrected (N<64 needs only `c6x`; `c7x` required iff N>64). **(W6.3 cr8 payoff)** the symmetric twin
 > spent `cr8_dag_gate` on an 8-qubit inverse-QFT `iqft8` (parametric `gen_iqft_pipeline`; a regression
 > gate proves the pattern by regenerating the sealed `iqft7` byte-identically; QFT8† independent match),
-> growing apps **62→63, root `e64f4970…→43580b93…`** (modules still 50). Three EXT relay items remain
-> (CI pilot, weak-model poison panel, runtime keys); backend evidence remains gated/deferred. Companion docs:
+> growing apps **62→63, root `e64f4970…→43580b93…`** (modules still 50). **(W6.4 forward-QFT completion)**
+> closing the `iqft8` asymmetry, three analytic `cr6/7/8_gate` (non-dag) were sealed, unlocking
+> `qft5…8_pipeline` (a regression gate reproduces the sealed `qft4_pipeline` byte-identically) — growing
+> **modules 50→53, apps 63→67, root `43580b93…→ea97a877…`** (`second_oracle` extended to 53/53). Three
+> EXT relay items remain (CI pilot, weak-model poison panel, runtime keys); backend evidence remains
+> gated/deferred. Companion docs: `docs/CONVENTION-AUDIT.md`,
 > `docs/CONVENTION-AUDIT.md`,
 > `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`,
 > `_workspace/crossmodel/discover_round1/SEAL-RESULT.json`.
@@ -118,12 +122,12 @@ QuantaFoundry is an **AI-native quantum software foundry**. It turns high-level 
 software modules, **verifies them with a deterministic contract oracle**, **seals only what is
 proven**, accumulates sealed modules in a registry, and **composes** sealed modules into larger
 applications (each re-verified and re-sealed). All four functions are realized: the library
-holds **50 sealed base modules** and **63 sealed applications** (63 at v0.7+ W6.3 cr8 QFT payoff;
-62 at W6.1 c7x arith payoff; 59 at W2.4 relay; 48 at v0.7-core; 46 → 57 at v0.6), the latter
+holds **53 sealed base modules** and **67 sealed applications** (53/67 at v0.7+ W6.4 forward-QFT
+completion; 50/63 at W6.3 cr8 payoff; 50/62 at W6.1 c7x payoff; 48/59 at v0.7-core; 46/57 at v0.6), the latter
 built entirely by recomposing the former — up to **Shor period-finding circuits that factor
 15 = 3 × 5 and 21 = 3 × 7** (the latter with genuine modular arithmetic, not the N=15 special case).
-Guarantee split (no exact-coverage overclaim): all 50 modules are `unitary_equiv` (Tier-0 EXACT); the
-63 apps are 62 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
+Guarantee split (no exact-coverage overclaim): all 53 modules are `unitary_equiv` (Tier-0 EXACT); the
+67 apps are 66 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
 with a sealed seed via `sampled_dense_verify.py`, also Tier-2 sealed) — **zero structural-only seals**.
 Authoritative tally in `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 
@@ -570,7 +574,7 @@ same mathematical definition (endianness / phase convention), so a *convention* 
 principle corrupt both at once — they are not a fully independent third axis. The genuine third axis is
 recomputing the unitary on a **Qualtran-independent path**: `scripts/second_oracle.py` reconstructs each
 sealed unitary in pure numpy (using neither Qualtran, nor the spec's golden code, nor the oracle's
-internals) and re-checks the `u_hash` — **50/50 modules + cmul2_mod21**, closing the shared-stack risk
+internals) and re-checks the `u_hash` — **53/53 modules + cmul2_mod21**, closing the shared-stack risk
 on the dense path. Corpus note: six LLMs agreeing on a *textbook* primitive is partly a shared-training
 artifact (see the corpus-correlation analysis, §8.6), so textbook convergence is discounted and the
 load-bearing credit is on hard/ambiguous intents.
@@ -672,14 +676,14 @@ Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a
 ### 8.5 Library-wide regression (current totals)
 
 ```
-modules: 50 sealed · re-verified through the oracle (32 gates incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr8†;
+modules: 53 sealed · re-verified through the oracle (35 gates incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†;
          18 ±α_k Ry primitives k=2..10, §8.7)
 apps:    63 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
-         registry/apps holds 103 files = 63 unique app seals + 40 cached app-side module re-seals
+         registry/apps holds 111 files = 67 unique app seals + 44 cached app-side module re-seals
          (canonical copy lives in registry/modules; single source of truth = REGISTRY-MANIFEST.json
-          registry_root_hash 43580b93… reproduces byte-identical; blast-radius via registry_tools.py)
+          registry_root_hash ea97a877… reproduces byte-identical; blast-radius via registry_tools.py)
 rediscovery cross-checks: 6/6 byte-identical to independently sealed gates
-second oracle (Qualtran-independent numpy): 50/50 modules + cmul2_mod21
+second oracle (Qualtran-independent numpy): 53/53 modules + cmul2_mod21
 frozen consensus keys: 23 (22 prior + sx live cross-model round; existing keys byte-preserved,
          contested-tie guard re-checks determinism every run)
 ```
@@ -737,7 +741,7 @@ analytic-golden `zpow_phase`/`crk_phase`/`qft_dft` (detailed under *v0.6 additio
 *candidate* spec that still must pass the `app_assemble` oracle (C-app) to be sealed. The library is a
 reuse / introspection / provenance layer only.
 
-**Determinism is enforced as the acceptance test** (`python scripts/genskills.py selftest` → 50/50):
+**Determinism is enforced as the acceptance test** (`python scripts/genskills.py selftest` → 55/55):
 (i) *byte-identity* — frozen skills regenerate committed specs byte-for-byte (16 skill-authored
 members); two legacy-format members (`ghz3/4`, authored by an earlier generator) are byte-exempt and
 instead verified by (ii); (ii) *reproduce-seal* — every family member reassembles (temp store) to a
@@ -903,7 +907,7 @@ sub-PG before execution.
    runtimes (§8.8). The residual question is whether AutoForge's *generation* personas (vs the
    *establishment* panel) should also be multi-model — orchestration cost vs marginal benefit.
 7. **Scope of evidence.** *v0.1 proved the loop on 8 small Tier-0 gates. v0.4–0.7 now exercise
-   composition (F3) end-to-end (63 apps incl. genuine N=21 Shor, distinct-prime mod 33/35/91/77/85, and iqft8),
+   composition (F3) end-to-end (67 apps incl. genuine N=21 Shor, distinct-prime mod 33/35/91/77/85, iqft8, and qft5–8 pipelines),
    Tier-1 large-N (ghz16) plus its Tier-2 closure, app-level cross-model establishment, consensus
    necessity, live multi-model truth, falsification/red-team, and goal-autonomy family extension.*
    What remains **not** done: autonomous
@@ -964,7 +968,7 @@ counted per *physical unit* — same-weights / same-tool sources collapse to **o
 independent runtimes authored every base gate's golden and bloq, all reaching `MULTIMODEL` grade and
 corroborated by symbolic proof (§8.2). The on-demand gates needed for the algorithm layer
 (controlled-phase family, Fredkin) were each established by `proof ⊕ structural` convergence and
-sealed. The full library (50 modules → 63 apps → genuine N=21 Shor) therefore stands on **zero
+sealed. The full library (53 modules → 67 apps → genuine N=21 Shor) therefore stands on **zero
 human-asserted answers**, including the first *live* cross-model truth `sx` (√X, §8.8). See
 `.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
 
@@ -1013,8 +1017,8 @@ registry. AutoForge adds **autonomous author isolation via personas** on top of 
 QuantaFoundry/
   docs/QuantaFoundry-Technical-Spec.md   # this document
   README.md                              # vision + trust model (English)
-  specs/modules/*.pg                     # 50 sealed base-module specs (incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr8†, ±α_k Ry k=2..10)
-  specs/apps/*.app.pg                    # 63 sealed application manifests (app_golden + plan)
+  specs/modules/*.pg                     # 53 sealed base-module specs (incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†, ±α_k Ry k=2..10)
+  specs/apps/*.app.pg                    # 67 sealed application manifests (app_golden + plan)
   registry/modules/*.sealed.json         # 50 registered module seals (INV1-3)
   registry/apps/*.sealed.json            # 63 app seals (C-app) + 40 cached leaf-module re-seals (103 files)
   registry/{REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES}.json  # registry as first-class data (v0.4)
@@ -1031,7 +1035,7 @@ QuantaFoundry/
     keyfree/{freeze_crossmodel_keys,seal_crossmodel,seal_crk}.py
     keyfree/consensus_keys.json          # frozen, provenance-tagged keys (15: 8 base + 7 cross-model)
   scripts/                               # v0.4 tooling (NOT the oracle; analysis/autonomy)
-    second_oracle.py                     # Qualtran-independent re-check (50/50)
+    second_oracle.py                     # Qualtran-independent re-check (53/53)
     goal_autonomy.py                     # registry scan → gap detect → autonomous seal (consumes genskills)
     genskills.py                         # GenSkill library: generation *methods* as a catalog (v0.5)
     semantic_guarantee.py                # per-seal guarantee layer + ghz16 partial verification
@@ -1060,11 +1064,11 @@ python .agents/skills/qpgf-oracle/scripts/test_verify_seal.py           # 11 PAS
 python .pgf/autoforge/autoforge.py                                      # base gates SEALED
 python .pgf/keyfree/ingest_crossmodel.py                                # cross-model consensus (needs submissions/)
 python .pgf/autoforge/forge_apps.py                                     # apps SEALED · rediscovery 6/6
-python scripts/second_oracle.py                                        # Qualtran-independent 50/50
+python scripts/second_oracle.py                                        # Qualtran-independent 53/53
 python scripts/goal_autonomy.py scan                                   # autonomous gap detection (families)
 python scripts/goal_autonomy.py loop                                   # unmanned forge-to-frontier (self-growing)
 python scripts/genskills.py verify                                     # method self-seal (tamper-evident)
-python scripts/genskills.py selftest                                   # GenSkill library determinism 50/50
+python scripts/genskills.py selftest                                   # GenSkill library determinism 55/55
 python scripts/semantic_guarantee.py                                   # per-seal guarantees + ghz16 partial verify
 ```
 
@@ -1098,7 +1102,7 @@ Please address as many as you can, and add flaws we did not anticipate.
 
 **Architecture & scope**
 9. The compounding thesis (§4) assumes composition (F3) preserves correctness via C-app + INV3, now
-   exercised on 63 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
+   exercised on 67 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
    every composition sufficient, or are there composition patterns (heterogeneous, recursive,
    uncompute) where C-app could pass while the app is semantically wrong?
 10. Given only this spec, what is the single highest-risk assumption in the whole design, and what

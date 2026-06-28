@@ -163,6 +163,7 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
     W6.1_ArithFamilyExtendC7x // c7x 활용 N>64 distinct-prime cmul 봉인 (done)
     W6.2_DiscoverSelfAdvance // 발견 frontier 봉인 gate 자동전진 + unlock 정정 (done)
     W6.3_QFTPipelineExtendCr8 // cr8 활용 8큐비트 역-QFT(iqft8) 봉인 (done)
+    W6.4_ForwardQFTPipelineComplete // cr6/7/8_gate 봉인 → 정-QFT pipeline n=8 완결 (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -182,6 +183,12 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
   - 분해 패턴(iqft7 도출): 비트반전 swap(i,n-1-i) + 역-QFT 사다리(t=n-1→0, c=n-1→t+1로 cr_{(c-t)+1}_dag(c,t) 후 H(t)). golden=QFT_n† (app_golden 경로).
   - ★**RegressionGate**: `gen_iqft_pipeline(7)`이 봉인 `iqft7` byte-identical 재현(composite==golden 통과 + u_hash `10da0070…` 일치) → 분해 패턴 정확성 입증.
   - 결과: **`iqft8`**(8큐비트, cr8_dag 실사용) Tier-0 EXACT 봉인. QFT8† 독립 재구성 u_hash==sealed(`99f0e17d…`). **앱 62→63, root e64f4970→43580b93**(순수 비파괴: 모듈 50·frozen 23·fingerprint byte-identical, 2회 byte-identity). ※정-QFT(qft8_pipeline)는 cr6/7/8_gate(non-dag) 미봉인 — 후속 후보.
+- [x] **W6.4 ForwardQFTPipelineComplete** `[SC][ND]` ✅ 2026-06-28
+  - 목표: W6.3(iqft8) 정-방향 대칭 닫기 — 정-QFT pipeline이 cr6/7/8_gate(non-dag) 미봉인으로 막혀 있던 것 잠금해제 → forward QFT pipeline n=8 완결.
+  - 산출: `scripts/qft_family.py`(`gen_qft_pipeline(n)` 파라메트릭 생성기 + cr_k_gate 봉인)·`.pgf/DESIGN-QftForward.md`(PG 설계)·`.pgf/arith/QFT-FORWARD-REPORT.json`. `second_oracle`에 cr6/7/8_gate(=cphase(k)) INDEP 추가.
+  - 분해 패턴(qft4_pipeline 도출): t=0→n-1로 H(t) 후 c=t+1→n-1로 cr_{(c-t)+1}(c,t)(k2→cs_gate·k3→ct_gate·k≥4→cr{k}_gate), 마지막 비트반전 swap. golden=raw QFT.
+  - ★**RegressionGate**: `gen_qft_pipeline(4)`이 봉인 `qft4_pipeline` byte-identical 재현(u_hash `d997d21f…` 일치) → 패턴 정확성 입증.
+  - 결과: `cr6/7/8_gate` 봉인(독립 cphase(k) 일치 3/3)·`qft5/6/7/8_pipeline` Tier-0 봉인(qft6/7/8이 cr6/7/8_gate 실사용)·독립 QFT_n u_hash==sealed 4/4. **모듈 50→53·앱 63→67, root 43580b93→ea97a877**(순수 비파괴: frozen 23키·fingerprint byte-identical, second_oracle 53/53, 2회 byte-identity).
 
 ---
 

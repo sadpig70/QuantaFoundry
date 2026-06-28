@@ -156,6 +156,44 @@ qft4_pipeline
 ├─ h_gate (module×4)
 └─ swap2 (module×2)
 
+qft5_pipeline
+├─ cr4_gate (module×2)
+├─ cr5_gate (module)
+├─ cs_gate (module×4)
+├─ ct_gate (module×3)
+├─ h_gate (module×5)
+└─ swap2 (module×2)
+
+qft6_pipeline
+├─ cr4_gate (module×3)
+├─ cr5_gate (module×2)
+├─ cr6_gate (module)
+├─ cs_gate (module×5)
+├─ ct_gate (module×4)
+├─ h_gate (module×6)
+└─ swap2 (module×3)
+
+qft7_pipeline
+├─ cr4_gate (module×4)
+├─ cr5_gate (module×3)
+├─ cr6_gate (module×2)
+├─ cr7_gate (module)
+├─ cs_gate (module×6)
+├─ ct_gate (module×5)
+├─ h_gate (module×7)
+└─ swap2 (module×3)
+
+qft8_pipeline
+├─ cr4_gate (module×5)
+├─ cr5_gate (module×4)
+├─ cr6_gate (module×3)
+├─ cr7_gate (module×2)
+├─ cr8_gate (module)
+├─ cs_gate (module×7)
+├─ ct_gate (module×6)
+├─ h_gate (module×8)
+└─ swap2 (module×4)
+
 qpe_s
 ├─ iqft2 (app)
 │  ├─ cs_dag (module)

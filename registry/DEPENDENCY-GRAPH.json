@@ -907,6 +907,206 @@
       }
     ]
   },
+  "qft5_pipeline": {
+    "u_hash": "8950c83f90a8fd1332133cc9257b83d479badda2e0eb84ebf151ba189ba932ea",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr4_gate",
+        "uses": 2,
+        "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
+      },
+      {
+        "kind": "module",
+        "id": "cr5_gate",
+        "uses": 1,
+        "child_u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 4,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 3,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 5,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 2,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qft6_pipeline": {
+    "u_hash": "45098b844e7d9ac82d157983ad0c5cf047cc5edd64571435ab9c3c5d2e7c8921",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr4_gate",
+        "uses": 3,
+        "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
+      },
+      {
+        "kind": "module",
+        "id": "cr5_gate",
+        "uses": 2,
+        "child_u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb"
+      },
+      {
+        "kind": "module",
+        "id": "cr6_gate",
+        "uses": 1,
+        "child_u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 5,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 4,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 6,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 3,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qft7_pipeline": {
+    "u_hash": "45c2770f9d0082b4a6e8c8befdad3587ab48ec8d87f472f024fdaa55bb61823d",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr4_gate",
+        "uses": 4,
+        "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
+      },
+      {
+        "kind": "module",
+        "id": "cr5_gate",
+        "uses": 3,
+        "child_u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb"
+      },
+      {
+        "kind": "module",
+        "id": "cr6_gate",
+        "uses": 2,
+        "child_u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d"
+      },
+      {
+        "kind": "module",
+        "id": "cr7_gate",
+        "uses": 1,
+        "child_u_hash": "a39c4dc9beb02627240765f4565cbb4323a1e5ec2b86afef6a2cac47bdf70b97"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 6,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 5,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 7,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 3,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qft8_pipeline": {
+    "u_hash": "d3d5d684d007b025db6ebd6c3f043296d2228e66d4336d9a77b8ad2aed823f9b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr4_gate",
+        "uses": 5,
+        "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
+      },
+      {
+        "kind": "module",
+        "id": "cr5_gate",
+        "uses": 4,
+        "child_u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb"
+      },
+      {
+        "kind": "module",
+        "id": "cr6_gate",
+        "uses": 3,
+        "child_u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d"
+      },
+      {
+        "kind": "module",
+        "id": "cr7_gate",
+        "uses": 2,
+        "child_u_hash": "a39c4dc9beb02627240765f4565cbb4323a1e5ec2b86afef6a2cac47bdf70b97"
+      },
+      {
+        "kind": "module",
+        "id": "cr8_gate",
+        "uses": 1,
+        "child_u_hash": "bc8cc0eca1d564a17380dc28d9bc79d55b1e52e11a26e668e43bac4bd47a4c0b"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 7,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "ct_gate",
+        "uses": 6,
+        "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 8,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 4,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
   "qpe_s": {
     "u_hash": "f222bc16eef5d891a5de9f0664b1ef3b1cf89752c4e689db24e2087f112c861f",
     "depends_on": [

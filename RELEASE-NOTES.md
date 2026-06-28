@@ -2,8 +2,8 @@
 
 ## v0.7 — Foundry realized + adoption & hardening (2026-06-28)
 
-The foundry layer around QPGF is substantially realized: **50 sealed modules → 63 sealed applications**,
-`registry_root_hash` `43580b93…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
+The foundry layer around QPGF is substantially realized: **53 sealed modules → 67 sealed applications**,
+`registry_root_hash` `ea97a877…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
 (genuine Shor N=21, the GenSkill library, self-extending goal-autonomy) are documented in the technical
 spec's *What changed* sections; v0.3 — the first public milestone — is below.
 
@@ -14,10 +14,10 @@ honest-decomposition guard. Frozen consensus keys: **23**.
 
 **v0.7+ Stage 0–5 — adoption & hardening (non-destructive analysis/tool/verification layers; all prior
 seals, the frozen consensus keys, and the fingerprint files unchanged). The W2.4 cross-runtime relay
-then grew the registry by two key-free primitives (`c7x`, `cr8_dag_gate`), and the W6 payoffs spent them:
-`c7x` on three N>64 distinct-prime multipliers (`cmul2_mod91`/`77`/`85`) and `cr8_dag_gate` on an
-8-qubit inverse-QFT (`iqft8`), advancing the root `3dae613d…→437efbc3…→e64f4970…→43580b93…`
-(50 modules, 59→63 apps) — pure non-destructive growth:**
+then grew the registry by two key-free primitives (`c7x`, `cr8_dag_gate`), the W6 payoffs spent them
+(`c7x`→distinct-prime `cmul2_mod91/77/85`; `cr8_dag_gate`→8-qubit inverse-QFT `iqft8`), and the
+forward-QFT completion sealed `cr6/7/8_gate`→`qft5…8_pipeline` — advancing from the v0.7-core root
+`3dae613d…` to the current `ea97a877…` (48→53 modules, 59→67 apps) — pure non-destructive growth:**
 
 - **S0–S1 Trust-Closure:** `second_oracle` independent re-derivation to **48/48 modules**; `ghz16`
   raised to `unitary_equiv_sampled` (zero structural-only seals); ZX-routing infrastructure (self-test

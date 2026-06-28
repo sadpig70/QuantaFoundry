@@ -1,7 +1,7 @@
 {
   "schema": "registry-manifest/v1",
   "modules": {
-    "count": 50,
+    "count": 53,
     "path": "registry/modules",
     "items": [
       "c3x",
@@ -17,8 +17,11 @@
       "cr5_dag_gate",
       "cr5_gate",
       "cr6_dag_gate",
+      "cr6_gate",
       "cr7_dag_gate",
+      "cr7_gate",
       "cr8_dag_gate",
+      "cr8_gate",
       "cs_dag",
       "cs_gate",
       "ct_gate",
@@ -57,9 +60,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 63,
-    "cached_app_side_module_count": 40,
-    "total_files": 103,
+    "unique_app_count": 67,
+    "cached_app_side_module_count": 44,
+    "total_files": 111,
     "path": "registry/apps",
     "unique": [
       "bell",
@@ -102,6 +105,10 @@
       "qft2_pipeline",
       "qft3_pipeline",
       "qft4_pipeline",
+      "qft5_pipeline",
+      "qft6_pipeline",
+      "qft7_pipeline",
+      "qft8_pipeline",
       "qpe_s",
       "qpe_t",
       "reflect00",
@@ -137,9 +144,13 @@
       "cr4_dag_gate",
       "cr4_gate",
       "cr5_dag_gate",
+      "cr5_gate",
       "cr6_dag_gate",
+      "cr6_gate",
       "cr7_dag_gate",
+      "cr7_gate",
       "cr8_dag_gate",
+      "cr8_gate",
       "cs_dag",
       "cs_gate",
       "ct_gate",
@@ -180,9 +191,13 @@
     "cr4_dag_gate": "registry/modules/cr4_dag_gate.sealed.json",
     "cr4_gate": "registry/modules/cr4_gate.sealed.json",
     "cr5_dag_gate": "registry/modules/cr5_dag_gate.sealed.json",
+    "cr5_gate": "registry/modules/cr5_gate.sealed.json",
     "cr6_dag_gate": "registry/modules/cr6_dag_gate.sealed.json",
+    "cr6_gate": "registry/modules/cr6_gate.sealed.json",
     "cr7_dag_gate": "registry/modules/cr7_dag_gate.sealed.json",
+    "cr7_gate": "registry/modules/cr7_gate.sealed.json",
     "cr8_dag_gate": "registry/modules/cr8_dag_gate.sealed.json",
+    "cr8_gate": "registry/modules/cr8_gate.sealed.json",
     "cs_dag": "registry/modules/cs_dag.sealed.json",
     "cs_gate": "registry/modules/cs_gate.sealed.json",
     "ct_gate": "registry/modules/ct_gate.sealed.json",
@@ -211,7 +226,7 @@
     "toffoli": "registry/modules/toffoli.sealed.json",
     "x_gate": "registry/modules/x_gate.sealed.json"
   },
-  "registry_root_hash": "43580b9377d4995a8f139c9be2860ed63748dddaa4eb9ab431436b61fbc9fdbe",
+  "registry_root_hash": "ea97a877973664281e6ab5a90bd2322fd776deee42c36d34923a90d87b552410",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }
