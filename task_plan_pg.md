@@ -66,11 +66,12 @@ QuantaFoundryV07Plan // 신뢰 약점 지점으로 가치 이동 — self-contai
             CrossRuntimeAdjudicate // 6 실런타임 풀링→establish_truth→GT대조+ρ할인 시연 (done) — scripts/cross_runtime_round.py, selftest 4/4
             Measure // 라운드2 수거·실측: 6/6 GT수렴(both intent ESTABLISHED MULTIMODEL), 동반오류 0 (done)
             // 정직 음성(한계: probe 1종·정답이라 ρ-방어 실데이터 미검증; 더 모호한 probe 후속 가능)
-        Round3_HarderProbe // 강한 공유 오개념 게이트로 co-error 유발·ρ-경로 실측 (in-progress)
+        Round3_HarderProbe // 강한 공유 오개념 게이트로 co-error 유발·ρ-경로 실측 (done)
             DesignProbe // rx_half(반각)·iswap(i위상/SWAP)·tdag(adjoint부호)+x_gate sanity — GT≠오답 u_hash 확인 (done)
             RoundAgnosticAdjudicate // cross_runtime_round.py --round 일반화, _ground_truth.json 로드 (done)
             RoundPackage // ROUND-BRIEF·intents·template·_ground_truth(운영자전용) (done) — _workspace/crossmodel/p3d_round3/
-            Relay // 6런타임 공통 probe 배포·수거 (blocked) — 정욱님
+            Measure // 6런타임 수거·실측: 4/4 intent 전원 GT수렴, 동반오류 0 (done)
+            // 2라운드 종합 5 probe 전부 co-error 0 — frontier 모델 표준게이트 cross-runtime 견고(정직 음성). ρ-방어 실데이터 미검증 잔존.
 ```
 
 **임계 경로:** `[parallel] P0 · P1 · P4 · P5 [/parallel]` → `P9_Integrate`.

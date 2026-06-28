@@ -2,12 +2,178 @@
   "phase": "P3d p3d_round3 — cross-runtime co-error measurement",
   "honesty": "real weights_id independence units (NOT round-1 forged peers); consensus used only; non-destructive (no seal). corpus-correlation ρ-discount demonstrated as the existing defense against genuine cross-runtime co-error.",
   "engine_selftest_passed": true,
-  "submissions_ingested": 0,
-  "relay_pending": true,
-  "measures": [],
-  "per_runtime": [],
+  "submissions_ingested": 6,
+  "relay_pending": false,
+  "measures": [
+    {
+      "intent": "iswap",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "b5b50c52e0c4": 6
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false
+    },
+    {
+      "intent": "rx_half",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "c49a2b4d6367": 6
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false
+    },
+    {
+      "intent": "tdag",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "f26ada5c4452": 6
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false
+    },
+    {
+      "intent": "x_gate",
+      "n_runtimes": 6,
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "distribution": {
+        "7dc1df52d07d": 6
+      },
+      "established_matches_GT": true,
+      "co_error_established_wrong": false
+    }
+  ],
+  "per_runtime": [
+    {
+      "runtime": "deepseek",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "deepseek",
+      "intent": "rx_half",
+      "correct": true
+    },
+    {
+      "runtime": "deepseek",
+      "intent": "iswap",
+      "correct": true
+    },
+    {
+      "runtime": "deepseek",
+      "intent": "tdag",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "rx_half",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "iswap",
+      "correct": true
+    },
+    {
+      "runtime": "gemini",
+      "intent": "tdag",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "rx_half",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "iswap",
+      "correct": true
+    },
+    {
+      "runtime": "gpt-5",
+      "intent": "tdag",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "rx_half",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "iswap",
+      "correct": true
+    },
+    {
+      "runtime": "grok",
+      "intent": "tdag",
+      "correct": true
+    },
+    {
+      "runtime": "kimi",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "kimi",
+      "intent": "rx_half",
+      "correct": true
+    },
+    {
+      "runtime": "kimi",
+      "intent": "iswap",
+      "correct": true
+    },
+    {
+      "runtime": "kimi",
+      "intent": "tdag",
+      "correct": true
+    },
+    {
+      "runtime": "qwen",
+      "intent": "x_gate",
+      "correct": true
+    },
+    {
+      "runtime": "qwen",
+      "intent": "rx_half",
+      "correct": true
+    },
+    {
+      "runtime": "qwen",
+      "intent": "iswap",
+      "correct": true
+    },
+    {
+      "runtime": "qwen",
+      "intent": "tdag",
+      "correct": true
+    }
+  ],
   "co_error_intents": [],
   "co_error_undefended_by_rho": [],
   "limitations": "정직한 음성의 범위 한정: (1) 테스트한 probe 들에서 동반오류 0 = co-error '미발생'이지 '불가능' 증명 아님(probe 가 충분히 적대적이지 못했을 수 있음). (2) 동반오류가 0 이라 ρ-할인 방어는 *실데이터로 미검증*(selftest 합성으로만 입증). 더 모호한 probe 로 후속 라운드 시 ρ-경로 실측 가능.",
-  "note": "RELAY PENDING: p3d_round3 패키지 준비 완료, 정욱님 6런타임 공통 intent 수거 대기. selftest 로 채점기 결정론만 self-contained 입증."
+  "note": "동반오류 없음(런타임들이 정답 수렴 또는 발산) — corpus-상관 BREAK 미발생(정직한 음성)"
 }
