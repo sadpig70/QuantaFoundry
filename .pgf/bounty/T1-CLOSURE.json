@@ -1,0 +1,12 @@
+{
+  "phase": "T1 honest-decomposition gap closure (P3d)",
+  "approach": "policy-layer guard (scripts/decomp_guard.py + seal_module.py); fingerprinted oracle (verify_seal.py/contracts.py) UNCHANGED → existing 48 seals byte-identical.",
+  "honest_modules_checked": 48,
+  "honest_false_blocks": [],
+  "hollow_attacks_checked": 6,
+  "hollow_rejected": 6,
+  "hollow_slipped": [],
+  "byte_identical_reseal_verified_once": true,
+  "all_ok": true,
+  "note": "raw verify_seal 직접 호출은 코어(C1-C4)만 본다(기존 posture); honest-분해는 인가된 입구 seal_module.py 의 정책 게이트가 강제. app 경로 동일 강제는 오라클 spec_guard 수정 필요(별도 승인) — 본 작업은 모듈 경로(데모된 T1 벡터)만 비파괴로 닫음."
+}
