@@ -32,17 +32,28 @@ sys.path.insert(0, os.path.join(ROOT, ".pgf", "keyfree"))
 import verify_seal as vs        # noqa: E402
 import consensus as cc          # noqa: E402
 
-PKG = os.path.join(ROOT, "_workspace", "crossmodel", "p3d_round2")
-SUBS = os.path.join(PKG, "submissions")
 OUT = os.path.join(ROOT, ".pgf", "bounty")
 
-# 알려진 정답(big-endian, q0=MSB, U[out,in]). sanity/probe 둘 다 control 명확 = 답 존재.
+# 알려진 정답(big-endian, q0=MSB, U[out,in]). round2 내장 기본값. round dir 에 _ground_truth.json
+# 이 있으면 그것으로 갱신(라운드-무관). sanity/probe 둘 다 답이 명확 = 정답 존재.
 _GT = {
     "cnot_std":   np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], complex),
     "cnot_lower": np.array([[1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0]], complex),
 }
-# 가장 그럴듯한 오답(Schelling): probe 에 표준 CNOT 을 반사 출력.
+# 가장 그럴듯한 오답(Schelling): probe 에 표준 CNOT 을 반사 출력. (selftest 합성 전용)
 _SCHELLING_WRONG = {"cnot_lower": _GT["cnot_std"]}
+
+
+def load_ground_truth(round_dir):
+    """round dir 의 _ground_truth.json(운영자 전용, real/imag)으로 _GT 갱신. 없으면 내장값 유지."""
+    p = os.path.join(round_dir, "_ground_truth.json")
+    if not os.path.exists(p):
+        return
+    gt = json.load(open(p, encoding="utf-8"))
+    for k, v in gt.items():
+        re_ = np.array(v["real"], dtype=float)
+        im = np.array(v.get("imag", np.zeros_like(re_)), dtype=float)
+        _GT[k] = re_ + 1j * im
 
 
 def _mat(entry):
@@ -115,14 +126,24 @@ def _selftest():
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--round", default="p3d_round2", help="crossmodel round dir (예: p3d_round3)")
+    args = ap.parse_args()
+    round_dir = os.path.join(ROOT, "_workspace", "crossmodel", args.round)
+    subs = os.path.join(round_dir, "submissions")
+    load_ground_truth(round_dir)                 # _ground_truth.json 있으면 _GT 갱신
+    rtag = args.round.split("_")[-1].upper()     # round2 → ROUND2
+    out_name = f"P3D-{rtag}.json"
+
     os.makedirs(OUT, exist_ok=True)
     print("=" * 76)
-    print("P3d round 2 — cross-runtime 동반오류(corpus 상관) 실측")
+    print(f"P3d {args.round} — cross-runtime 동반오류(corpus 상관) 실측")
     print("정직성: 진짜 weights_id 독립단위 풀링·consensus 사용만·비파괴(봉인 안 함).")
     print("=" * 76)
 
     selftest_ok = _selftest()
-    files = sorted(glob.glob(os.path.join(SUBS, "*.submission.json")))
+    files = sorted(glob.glob(os.path.join(subs, "*.submission.json")))
     relay_pending = len(files) == 0
 
     measures, per_runtime = ([], [])
@@ -140,7 +161,7 @@ def main():
     co_errors = [m for m in measures if m.get("co_error_established_wrong")]
     co_error_undefended = [m for m in co_errors if not m.get("rho_discount", {}).get("defended")]
     report = {
-        "phase": "P3d round 2 — cross-runtime co-error measurement",
+        "phase": f"P3d {args.round} — cross-runtime co-error measurement",
         "honesty": "real weights_id independence units (NOT round-1 forged peers); consensus used "
                    "only; non-destructive (no seal). corpus-correlation ρ-discount demonstrated as "
                    "the existing defense against genuine cross-runtime co-error.",
@@ -152,24 +173,24 @@ def main():
         "co_error_intents": [m["intent"] for m in co_errors],
         "co_error_undefended_by_rho": [m["intent"] for m in co_error_undefended],
         "limitations": (
-            "정직한 음성의 범위 한정: (1) probe 1종(cnot_lower)에서 6/6 정답 = co-error '미발생'이지 "
-            "'불가능' 증명 아님(probe 가 충분히 적대적이지 못함 — 명시된 wiring 이 표준-CNOT 반사를 "
-            "이김). (2) 동반오류가 0 이라 ρ-할인 방어는 *실데이터로 미검증*(selftest 합성으로만 입증). "
-            "더 모호한 probe(모델이 공유 오답 prior 를 갖는 게이트)로 후속 라운드 시 ρ-경로 실측 가능."
+            "정직한 음성의 범위 한정: (1) 테스트한 probe 들에서 동반오류 0 = co-error '미발생'이지 "
+            "'불가능' 증명 아님(probe 가 충분히 적대적이지 못했을 수 있음). (2) 동반오류가 0 이라 "
+            "ρ-할인 방어는 *실데이터로 미검증*(selftest 합성으로만 입증). 더 모호한 probe 로 후속 "
+            "라운드 시 ρ-경로 실측 가능."
             if not co_errors else
-            "동반오류 측정됨 — ρ-할인 방어 여부 measures 참조."),
-        "note": ("RELAY PENDING: round2 패키지 준비 완료, 정욱님 6런타임 공통 intent 수거 대기. "
+            "동반오류 측정됨(진짜 독립 런타임이 공유 오답 prior 로 수렴) — ρ-할인 방어 여부 measures 참조."),
+        "note": (f"RELAY PENDING: {args.round} 패키지 준비 완료, 정욱님 6런타임 공통 intent 수거 대기. "
                  "selftest 로 채점기 결정론만 self-contained 입증." if relay_pending else
                  ("동반오류 측정됨 — ρ-할인 방어 여부는 measures 참조" if co_errors else
                   "동반오류 없음(런타임들이 정답 수렴 또는 발산) — corpus-상관 BREAK 미발생(정직한 음성)")),
     }
-    json.dump(report, open(os.path.join(OUT, "P3D-ROUND2.json"), "w", encoding="utf-8"),
+    json.dump(report, open(os.path.join(OUT, out_name), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
     print("-" * 76)
     print(f"engine_selftest={selftest_ok} · 제출={len(files)}"
           f"{' (relay 대기)' if relay_pending else ''} · 동반오류 intent={len(co_errors)}"
           f"{f'(ρ-미방어 {len(co_error_undefended)})' if co_errors else ''}"
-          f"  →  .pgf/bounty/P3D-ROUND2.json")
+          f"  →  .pgf/bounty/{out_name}")
     return 0 if selftest_ok else 1
 
 

@@ -1,0 +1,10 @@
+{
+  "_comment": "P3d round 3 — cross-runtime co-error on commonly-confused gates. Author each golden INDEPENDENTLY from its standard definition (big-endian, q0=MSB, U[out,in], up to global phase).",
+  "round": "P3d-round3-cross-runtime-coerror",
+  "intents": [
+    {"id": "x_gate", "class": "S:control-well-defined", "n_sys": 1, "definition": "Pauli-X (NOT) gate, [[0,1],[1,0]]."},
+    {"id": "rx_half", "class": "S:control-well-defined", "n_sys": 1, "definition": "Rx(pi/2): single-qubit rotation about the X axis by angle theta=pi/2. Standard definition Rx(theta) = exp(-i theta X/2)."},
+    {"id": "iswap", "class": "S:control-well-defined", "n_sys": 2, "definition": "iSWAP gate: swaps |01> and |10> with a factor of i; leaves |00>,|11> unchanged. Basis |q0 q1>, index = 2*q0 + q1."},
+    {"id": "tdag", "class": "S:control-well-defined", "n_sys": 1, "definition": "T-dagger (T†): the adjoint/inverse of the T gate. T = diag(1, e^{i pi/4})."}
+  ]
+}
