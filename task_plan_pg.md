@@ -60,6 +60,11 @@ QuantaFoundryV07Plan // 신뢰 약점 지점으로 가치 이동 — self-contai
             DecompHonestyGuard // scripts/decomp_guard.py — 동적(__module__)+정적(AST monkey-patch) (done)
             SealModuleWrapper // scripts/seal_module.py — spec_quality+decomp+verify_seal 합성 입구 (done)
             Validate // 48 byte-identical 재봉인·6 hollow REJECT·오라클(fingerprint) 무변경 (done) — scripts/verify_t1_closure.py
+        Round2_CrossRuntimeCoError // 공통 intent 고정→진짜 독립 동반오류 실측 (in-progress)
+            DesignProbe // cnot_std(sanity)+cnot_lower(probe, control=q1≠표준) — 순열차 u_hash 분리 (done)
+            RoundPackage // ROUND-BRIEF·intents·template (done) — _workspace/crossmodel/p3d_round2/
+            CrossRuntimeAdjudicate // 6 실런타임 풀링→establish_truth→GT대조+ρ할인 시연 (done) — scripts/cross_runtime_round.py, selftest 4/4
+            Relay // 6런타임 공통 intent 배포·수거 (blocked) — 정욱님
 ```
 
 **임계 경로:** `[parallel] P0 · P1 · P4 · P5 [/parallel]` → `P9_Integrate`.

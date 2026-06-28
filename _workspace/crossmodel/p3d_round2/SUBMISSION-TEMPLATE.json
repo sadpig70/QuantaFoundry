@@ -1,0 +1,20 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "cnot_std",
+      "n_sys": 2,
+      "golden_real": [[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],
+      "golden_imag": [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+    },
+    {
+      "id": "cnot_lower",
+      "n_sys": 2,
+      "golden_real": [["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"]],
+      "golden_imag": [["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"]],
+      "note": "optional: state your reading if uncertain"
+    }
+  ]
+}
