@@ -1,0 +1,254 @@
+{
+  "phase": "W6.1 ArithFamilyExtend-c7x",
+  "honesty": "c7x(W2.4 sealed) consumed by evolved genskills.gen_modmul (c7x upstream + self-seal re-stamp INTACT); generation != verification (oracle app_assemble seals); behavioral observe illustrative only (§8.4); plan=sealed MCT incl c7x, no MatrixGate; apps additive (modules unchanged, frozen keys/fingerprint byte-identical).",
+  "correction": "discover propose claimed c7x unlocks mod39/51 — empirically false (N<64 needs only c6x). c7x genuinely required iff N>64 (work bits>=7). Targets corrected to N in (64,128].",
+  "targets": [
+    "cmul2_mod91",
+    "cmul2_mod77",
+    "cmul2_mod85"
+  ],
+  "synth_distinct_prime": [
+    {
+      "id": "cmul2_mod91",
+      "N": 91,
+      "factors": [
+        7,
+        13
+      ],
+      "nq": 8,
+      "gates": 77,
+      "control_dist": {
+        "7": 3,
+        "6": 12,
+        "5": 18,
+        "4": 21,
+        "3": 7,
+        "2": 16
+      },
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ],
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "39a41cde25a1679b1cebf91bfb02799b3fcac9b147e5ad33900d70e2ee51167a",
+      "reason": ""
+    },
+    {
+      "id": "cmul2_mod77",
+      "N": 77,
+      "factors": [
+        7,
+        11
+      ],
+      "nq": 8,
+      "gates": 128,
+      "control_dist": {
+        "7": 7,
+        "6": 27,
+        "5": 39,
+        "4": 25,
+        "3": 15,
+        "2": 15
+      },
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ],
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "e66623883ab1ba624ea486e01239291972b6a84d5efc67e1868fe60f29a58dc9",
+      "reason": ""
+    },
+    {
+      "id": "cmul2_mod85",
+      "N": 85,
+      "factors": [
+        5,
+        17
+      ],
+      "nq": 8,
+      "gates": 148,
+      "control_dist": {
+        "7": 19,
+        "6": 40,
+        "5": 41,
+        "4": 26,
+        "3": 7,
+        "2": 15
+      },
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ],
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "edecfd8d625bdd4f3284a065a5e581d59ef08b9e02400b0c7bef5aeb56dca2a9",
+      "reason": ""
+    }
+  ],
+  "c7x_used_by": [
+    "cmul2_mod91",
+    "cmul2_mod77",
+    "cmul2_mod85"
+  ],
+  "engine_regression": {
+    "matches": 2,
+    "total": 2,
+    "detail": [
+      {
+        "id": "cmul2_mod21",
+        "sealed": true,
+        "regenerated_u_hash": "1aaf1e8a4589bbb0",
+        "matches_registry": true
+      },
+      {
+        "id": "cmul2_mod15",
+        "sealed": true,
+        "regenerated_u_hash": "3b9fdb52b48baaad",
+        "matches_registry": true
+      }
+    ]
+  },
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod91",
+      "independent_u_hash": "39a41cde25a1679b",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul2_mod77",
+      "independent_u_hash": "e66623883ab1ba62",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul2_mod85",
+      "independent_u_hash": "edecfd8d625bdd4f",
+      "matches_sealed": true
+    }
+  ],
+  "behavioral_observe": [
+    {
+      "id": "cmul2_mod91",
+      "orbit_from_1": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        37,
+        74,
+        57,
+        23,
+        46,
+        1
+      ],
+      "observed_period": 12,
+      "ord_N_a": 12,
+      "matches": true,
+      "note": "illustrative only — 봉인 증거 아님(§8.4). control=1 work register orbit."
+    },
+    {
+      "id": "cmul2_mod77",
+      "orbit_from_1": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        51,
+        25,
+        50,
+        23,
+        46,
+        15,
+        30,
+        60,
+        43,
+        9,
+        18,
+        36,
+        72,
+        67,
+        57,
+        37,
+        74,
+        71,
+        65,
+        53,
+        29,
+        58,
+        39,
+        1
+      ],
+      "observed_period": 30,
+      "ord_N_a": 30,
+      "matches": true,
+      "note": "illustrative only — 봉인 증거 아님(§8.4). control=1 work register orbit."
+    },
+    {
+      "id": "cmul2_mod85",
+      "orbit_from_1": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        43,
+        1
+      ],
+      "observed_period": 8,
+      "ord_N_a": 8,
+      "matches": true,
+      "note": "illustrative only — 봉인 증거 아님(§8.4). control=1 work register orbit."
+    }
+  ],
+  "shor_scope_honest": [
+    {
+      "N": 91,
+      "period": 12,
+      "counting_t": 8,
+      "work": 7,
+      "total_qubits": 15,
+      "tier0_exact_feasible": false,
+      "honest_tier": "Tier-1 STRUCTURAL"
+    },
+    {
+      "N": 77,
+      "period": 30,
+      "counting_t": 10,
+      "work": 7,
+      "total_qubits": 17,
+      "tier0_exact_feasible": false,
+      "honest_tier": "Tier-1 STRUCTURAL"
+    },
+    {
+      "N": 85,
+      "period": 8,
+      "counting_t": 6,
+      "work": 7,
+      "total_qubits": 13,
+      "tier0_exact_feasible": false,
+      "honest_tier": "Tier-1 STRUCTURAL"
+    }
+  ],
+  "all_ok": true
+}

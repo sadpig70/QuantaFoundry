@@ -77,8 +77,16 @@
 > on `c7x` (golden `cnx_perm(7)`) and `cr8_dag_gate` (golden `diag(1,1,1,e^{-2πi/2⁸})`), both sealed
 > key-free — growing the registry to **50 modules / root `437efbc3…`** (pure non-destructive growth:
 > prior seals, the 23 frozen consensus keys, and the fingerprint files reproduce byte-identical;
-> `second_oracle` 50/50). Three EXT relay items remain (CI pilot, weak-model poison panel, runtime
-> keys); backend evidence remains gated/deferred. Companion docs: `docs/CONVENTION-AUDIT.md`,
+> `second_oracle` 50/50). **(W6.1 c7x payoff)** the evolved arithmetic engine (`genskills`
+> `_MCT_MODULE[7]=c7x` upstream + self-seal re-stamp INTACT) then spent that `c7x` on three N>64
+> distinct-prime modular multipliers — `cmul2_mod91` (7×13), `cmul2_mod77` (7×11), `cmul2_mod85`
+> (5×17), all three genuinely using the 7-control gate (independent arithmetic-permutation match 3/3,
+> ×2-orbit period = ord_N(2) 3/3) — growing apps **59→62, root `437efbc3…→e64f4970…`** (modules
+> still 50; prior seals/keys/fingerprint byte-identical). The discover frontier now auto-advances past
+> sealed gates (`c7x→c8x`, round-2 package) and the W2.4 "c7x→mod 39/51" claim was empirically
+> corrected (N<64 needs only `c6x`; `c7x` required iff N>64). Three EXT relay items remain (CI pilot,
+> weak-model poison panel, runtime keys); backend evidence remains gated/deferred. Companion docs:
+> `docs/CONVENTION-AUDIT.md`,
 > `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`,
 > `_workspace/crossmodel/discover_round1/SEAL-RESULT.json`.
 
@@ -107,12 +115,12 @@ QuantaFoundry is an **AI-native quantum software foundry**. It turns high-level 
 software modules, **verifies them with a deterministic contract oracle**, **seals only what is
 proven**, accumulates sealed modules in a registry, and **composes** sealed modules into larger
 applications (each re-verified and re-sealed). All four functions are realized: the library
-holds **50 sealed base modules** and **59 sealed applications** (50 at v0.7+ W2.4 relay; 48 at v0.7-core;
-46 → 57 at v0.6), the latter
+holds **50 sealed base modules** and **62 sealed applications** (62 at v0.7+ W6.1 c7x arith payoff;
+59 at W2.4 relay; 48 at v0.7-core; 46 → 57 at v0.6), the latter
 built entirely by recomposing the former — up to **Shor period-finding circuits that factor
 15 = 3 × 5 and 21 = 3 × 7** (the latter with genuine modular arithmetic, not the N=15 special case).
 Guarantee split (no exact-coverage overclaim): all 50 modules are `unitary_equiv` (Tier-0 EXACT); the
-59 apps are 58 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
+62 apps are 61 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
 with a sealed seed via `sampled_dense_verify.py`, also Tier-2 sealed) — **zero structural-only seals**.
 Authoritative tally in `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 
@@ -588,7 +596,7 @@ With the gate library key-free, sealed modules were **recomposed** into applicat
 input is itself sealed (INV2). Tier-0 realizes the dense unitary; Tier-1 (structural Merkle) seals
 arbitrarily large compositions without materializing 2ⁿ.
 
-**59 applications sealed (35 algorithm-layer incl. mod 33/35 + 24 autonomously forged).** Highlights (a representative subset):
+**62 applications sealed (38 algorithm-layer incl. mod 33/35 + c7x-payoff mod 91/77/85 + 24 autonomously forged).** Highlights (a representative subset):
 
 | App | n | Built from (sealed modules / sub-apps) | What it demonstrates |
 |---|---|---|---|
@@ -663,10 +671,10 @@ Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a
 ```
 modules: 50 sealed · re-verified through the oracle (32 gates incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr8†;
          18 ±α_k Ry primitives k=2..10, §8.7)
-apps:    59 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
-         registry/apps holds 97 files = 59 unique app seals + 38 cached app-side module re-seals
+apps:    62 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
+         registry/apps holds 101 files = 62 unique app seals + 39 cached app-side module re-seals
          (canonical copy lives in registry/modules; single source of truth = REGISTRY-MANIFEST.json
-          registry_root_hash 437efbc3… reproduces byte-identical; blast-radius via registry_tools.py)
+          registry_root_hash e64f4970… reproduces byte-identical; blast-radius via registry_tools.py)
 rediscovery cross-checks: 6/6 byte-identical to independently sealed gates
 second oracle (Qualtran-independent numpy): 50/50 modules + cmul2_mod21
 frozen consensus keys: 23 (22 prior + sx live cross-model round; existing keys byte-preserved,
@@ -892,7 +900,7 @@ sub-PG before execution.
    runtimes (§8.8). The residual question is whether AutoForge's *generation* personas (vs the
    *establishment* panel) should also be multi-model — orchestration cost vs marginal benefit.
 7. **Scope of evidence.** *v0.1 proved the loop on 8 small Tier-0 gates. v0.4–0.7 now exercise
-   composition (F3) end-to-end (59 apps incl. genuine N=21 Shor and distinct-prime mod 33/35),
+   composition (F3) end-to-end (62 apps incl. genuine N=21 Shor and distinct-prime mod 33/35/91/77/85),
    Tier-1 large-N (ghz16) plus its Tier-2 closure, app-level cross-model establishment, consensus
    necessity, live multi-model truth, falsification/red-team, and goal-autonomy family extension.*
    What remains **not** done: autonomous
@@ -953,7 +961,7 @@ counted per *physical unit* — same-weights / same-tool sources collapse to **o
 independent runtimes authored every base gate's golden and bloq, all reaching `MULTIMODEL` grade and
 corroborated by symbolic proof (§8.2). The on-demand gates needed for the algorithm layer
 (controlled-phase family, Fredkin) were each established by `proof ⊕ structural` convergence and
-sealed. The full library (50 modules → 59 apps → genuine N=21 Shor) therefore stands on **zero
+sealed. The full library (50 modules → 62 apps → genuine N=21 Shor) therefore stands on **zero
 human-asserted answers**, including the first *live* cross-model truth `sx` (√X, §8.8). See
 `.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
 
@@ -1003,9 +1011,9 @@ QuantaFoundry/
   docs/QuantaFoundry-Technical-Spec.md   # this document
   README.md                              # vision + trust model (English)
   specs/modules/*.pg                     # 50 sealed base-module specs (incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr8†, ±α_k Ry k=2..10)
-  specs/apps/*.app.pg                    # 59 sealed application manifests (app_golden + plan)
+  specs/apps/*.app.pg                    # 62 sealed application manifests (app_golden + plan)
   registry/modules/*.sealed.json         # 50 registered module seals (INV1-3)
-  registry/apps/*.sealed.json            # 59 app seals (C-app) + 38 cached leaf-module re-seals (97 files)
+  registry/apps/*.sealed.json            # 62 app seals (C-app) + 39 cached leaf-module re-seals (101 files)
   registry/{REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES}.json  # registry as first-class data (v0.4)
   registry/GENSKILL-CATALOG.json         # generation-method library as first-class data (v0.5)
   .pgf/
@@ -1087,7 +1095,7 @@ Please address as many as you can, and add flaws we did not anticipate.
 
 **Architecture & scope**
 9. The compounding thesis (§4) assumes composition (F3) preserves correctness via C-app + INV3, now
-   exercised on 59 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
+   exercised on 62 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
    every composition sufficient, or are there composition patterns (heterogeneous, recursive,
    uncompute) where C-app could pass while the app is semantically wrong?
 10. Given only this spec, what is the single highest-risk assumption in the whole design, and what

@@ -296,12 +296,27 @@
       },
       {
         "id": "cmul2_mod33",
-        "value": 0.3641,
+        "value": 0.3788,
         "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
       },
       {
         "id": "cmul2_mod35",
-        "value": 0.3641,
+        "value": 0.3788,
+        "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
+      },
+      {
+        "id": "cmul2_mod77",
+        "value": 0.3788,
+        "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
+      },
+      {
+        "id": "cmul2_mod85",
+        "value": 0.3788,
+        "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
+      },
+      {
+        "id": "cmul2_mod91",
+        "value": 0.3788,
         "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
       },
       {
@@ -336,19 +351,19 @@
       },
       {
         "id": "c3x",
-        "value": 0.5668,
+        "value": 0.5814,
         "capability": "module:c3x",
         "consensus_est": 0.9
       },
       {
         "id": "c4x",
-        "value": 0.5668,
+        "value": 0.5814,
         "capability": "module:c4x",
         "consensus_est": 0.9
       },
       {
         "id": "c5x",
-        "value": 0.5668,
+        "value": 0.5814,
         "capability": "module:c5x",
         "consensus_est": 0.9
       },
@@ -360,8 +375,14 @@
       },
       {
         "id": "c6x",
-        "value": 0.5473,
+        "value": 0.5619,
         "capability": "module:c6x",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "c7x",
+        "value": 0.5521,
+        "capability": "module:c7x",
         "consensus_est": 0.9
       },
       {
@@ -419,6 +440,12 @@
         "consensus_est": 0.9
       },
       {
+        "id": "toffoli",
+        "value": 0.4663,
+        "capability": "module:toffoli",
+        "consensus_est": 0.9
+      },
+      {
         "id": "cs_dag",
         "value": 0.4565,
         "capability": "module:cs_dag",
@@ -446,12 +473,6 @@
         "id": "ry_k4_dag",
         "value": 0.4516,
         "capability": "module:ry_k4_dag",
-        "consensus_est": 0.9
-      },
-      {
-        "id": "toffoli",
-        "value": 0.4516,
-        "capability": "module:toffoli",
         "consensus_est": 0.9
       },
       {
@@ -554,8 +575,8 @@
   },
   "summary": {
     "app_selected": 24,
-    "app_rejected": 35,
-    "prereq_selected": 30,
+    "app_rejected": 38,
+    "prereq_selected": 31,
     "prereq_rejected": 8,
     "single_convention_warnings": 0
   }

@@ -55,6 +55,30 @@ cmul2_mod35
 ├─ c6x (module×7)
 └─ toffoli (module×12)
 
+cmul2_mod77
+├─ c3x (module×15)
+├─ c4x (module×25)
+├─ c5x (module×39)
+├─ c6x (module×27)
+├─ c7x (module×7)
+└─ toffoli (module×15)
+
+cmul2_mod85
+├─ c3x (module×7)
+├─ c4x (module×26)
+├─ c5x (module×41)
+├─ c6x (module×40)
+├─ c7x (module×19)
+└─ toffoli (module×15)
+
+cmul2_mod91
+├─ c3x (module×7)
+├─ c4x (module×21)
+├─ c5x (module×18)
+├─ c6x (module×12)
+├─ c7x (module×3)
+└─ toffoli (module×16)
+
 cz_rediscovered
 ├─ cnot (module)
 └─ h_gate (module×2)

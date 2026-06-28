@@ -57,9 +57,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 59,
-    "cached_app_side_module_count": 38,
-    "total_files": 97,
+    "unique_app_count": 62,
+    "cached_app_side_module_count": 39,
+    "total_files": 101,
     "path": "registry/apps",
     "unique": [
       "bell",
@@ -77,6 +77,9 @@
       "cmul2_mod21",
       "cmul2_mod33",
       "cmul2_mod35",
+      "cmul2_mod77",
+      "cmul2_mod85",
+      "cmul2_mod91",
       "cmul4_mod15",
       "cmul4_mod21",
       "cmul7_mod15",
@@ -127,6 +130,7 @@
       "c4x",
       "c5x",
       "c6x",
+      "c7x",
       "cnot",
       "cr3_dag_gate",
       "cr4_dag_gate",
@@ -168,6 +172,7 @@
     "c4x": "registry/modules/c4x.sealed.json",
     "c5x": "registry/modules/c5x.sealed.json",
     "c6x": "registry/modules/c6x.sealed.json",
+    "c7x": "registry/modules/c7x.sealed.json",
     "cnot": "registry/modules/cnot.sealed.json",
     "cr3_dag_gate": "registry/modules/cr3_dag_gate.sealed.json",
     "cr4_dag_gate": "registry/modules/cr4_dag_gate.sealed.json",
@@ -203,7 +208,7 @@
     "toffoli": "registry/modules/toffoli.sealed.json",
     "x_gate": "registry/modules/x_gate.sealed.json"
   },
-  "registry_root_hash": "437efbc34f57111de8ab9a8a6b799a32406690a1d0ae5335febdb5e0dd867d9a",
+  "registry_root_hash": "e64f49700605c0ef5239e2624077f54c8d890fcb51b96635ecaa873fdcc2577d",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

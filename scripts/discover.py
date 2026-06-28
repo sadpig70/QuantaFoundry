@@ -63,7 +63,10 @@ def build_context():
             if f.endswith(".sealed.json"):
                 it = rr._load(os.path.join(store, f))
                 res[it["id"]] = it["resource"]
-    return {"graph": graph, "modules": set(modules), "fanin": fanin, "res": res,
+    # 봉인된 모듈 전체(그래프 미사용 포함) — frontier 자동전진용(미사용 봉인 gate 재제안 방지)
+    sealed_modules = {f[:-len(".sealed.json")] for f in os.listdir(MODREG) if f.endswith(".sealed.json")}
+    return {"graph": graph, "modules": set(modules), "sealed_modules": sealed_modules,
+            "fanin": fanin, "res": res,
             "max_fanin": max(fanin.values()) if fanin else 1}
 
 
@@ -362,7 +365,8 @@ PRIMITIVE_FAMILIES = [
      "desc": "{n}-control Toffoli (multi-controlled X)",
      "golden": "permutation: |c…c,t⟩ → |c…c, t⊕(c₁∧…∧c_n)⟩, big-endian 첫 레지스터=MSB",
      "constraint": "Clifford+T, ancilla 허용(borrowed/clean 명시), golden=permutation matrix",
-     "unlocks": "distinct-prime modular-mult 확장 (mod 39=3×13, mod 51=3×17 …) — cmul prereq"},
+     "unlocks": "distinct-prime modular-mult 확장 N∈(2^(n-1),2^n] (work bits=n-1; cMx는 N>2^(n-1)에서 필요). "
+                "예: c7x→mod 65=5×13·mod 77=7×11·mod 91=7×13 (N<64는 c6x로 충분 — 실측). cmul prereq"},
     {"family": "crK", "pattern": re.compile(r"^cr(\d+)_dag_gate$"), "next_fmt": "cr{}_dag_gate",
      "desc": "controlled-phase R_k† = diag(1, e^{{-2πi/2^{n}}})",
      "golden": "diag(1,1,1,exp(2πi/2^k)), 전역위상 atol 1e-7 무시 — controlled 합성 시 W1.3 정합 필요",
@@ -375,13 +379,15 @@ def gap_to_proposal(ctx):
     """ValueFunction prereq 랭킹 + family 확장규칙 → 다음 미봉인 primitive capability-gap 도출.
     sealed 최대 멤버 +1 = 미봉인 frontier. fan-in 잠재(unlock 대상)로 우선순위."""
     proposals = []
+    # frontier = 봉인된 모듈 전체 기준(그래프 미사용 봉인 gate 포함) → 봉인 즉시 다음 칸으로 전진
+    sealed = ctx.get("sealed_modules", ctx["modules"])
     for fam in PRIMITIVE_FAMILIES:
-        members = sorted(int(m.group(1)) for mid in ctx["modules"] if (m := fam["pattern"].match(mid)))
+        members = sorted(int(m.group(1)) for mid in sealed if (m := fam["pattern"].match(mid)))
         if not members:
             continue
         nxt = max(members) + 1
         gap_id = fam["next_fmt"].format(nxt)
-        if gap_id in ctx["modules"]:
+        if gap_id in sealed:                      # 이미 봉인됨(미사용이어도) → 스킵
             continue
         # 현 최대멤버의 fan-in = 이 family 의 unlock 레버리지 근거
         cur_max_id = fam["next_fmt"].format(max(members))
@@ -398,11 +404,36 @@ def gap_to_proposal(ctx):
     return sorted(proposals, key=lambda p: -p["priority_value"])
 
 
+def _round_pkg(proposals):
+    """라운드 패키지 디렉토리 선택. 현재 frontier가 최신 라운드와 같으면 재사용(idempotent),
+    다르면 다음 라운드 생성 — 봉인완료 라운드(W2.4=round1 등)를 비파괴 보존."""
+    base = os.path.join(ROOT, "_workspace", "crossmodel")
+    os.makedirs(base, exist_ok=True)
+    nums = sorted(int(m.group(1)) for d in os.listdir(base)
+                  if (m := re.match(r"discover_round(\d+)$", d)))
+    cur = sorted(p["gap_id"] for p in proposals)
+    if nums:
+        latest = max(nums)
+        gp = os.path.join(base, f"discover_round{latest}", "GAP-SPEC.json")
+        prev = None
+        if os.path.exists(gp):
+            try:
+                prev = sorted(p["gap_id"] for p in json.load(open(gp, encoding="utf-8")).get("proposals", []))
+            except Exception:
+                prev = None
+        if prev == cur:
+            return os.path.join(base, f"discover_round{latest}"), latest   # 동일 frontier → 재사용
+        rn = latest + 1
+    else:
+        rn = 1
+    return os.path.join(base, f"discover_round{rn}"), rn
+
+
 def cmd_propose():
     """[EXT] capability-gap → 6런타임 패널 배포 패키지 생성(self-contained 부분). relay 대기."""
     ctx = build_context()
     proposals = gap_to_proposal(ctx)
-    pkg = os.path.join(ROOT, "_workspace", "crossmodel", "discover_round1")
+    pkg, rn = _round_pkg(proposals)
     os.makedirs(pkg, exist_ok=True)
 
     print("=" * 84)
@@ -412,7 +443,7 @@ def cmd_propose():
         print(f"  GAP {p['gap_id']:6} ({p['description']})")
         print(f"      predecessor fan-in={p['predecessor_fanin']} · unlocks: {p['unlocks']}")
 
-    gap_spec = {"_schema": "capability-gap-v1", "round": "discover_round1",
+    gap_spec = {"_schema": "capability-gap-v1", "round": f"discover_round{rn}",
                 "_note": "ValueFunction(W2.1)+family 확장규칙이 자율 도출한 미봉인 primitive frontier. "
                          "6런타임 패널이 분해를 독립 제안 → 수렴+second_oracle 독립검증+sympy proof → key-free 봉인.",
                 "proposals": proposals}
@@ -420,7 +451,7 @@ def cmd_propose():
               ensure_ascii=False, indent=2)
 
     # 6런타임 PG TaskSpec (자연어 아닌 구조화 — agent-protocol)
-    taskspec = "# Discover Round 1 — Primitive Proposal TaskSpec (PG)\n\n"
+    taskspec = f"# Discover Round {rn} — Primitive Proposal TaskSpec (PG)\n\n"
     taskspec += "> 6런타임 패널 배포용. 각 런타임 독립 제안(상호 비참조). 정욱님 수거 후 봉인.\n"
     taskspec += "> 응답 형식: 제안(분해 회로) · 근거(왜 최소) · 봉인가능성(오라클 통과 예측) · 위험(가정).\n\n"
     for p in proposals:
@@ -436,7 +467,7 @@ def cmd_propose():
     open(os.path.join(pkg, "TASKSPEC.md"), "w", encoding="utf-8", newline="\n").write(taskspec)
 
     scoring = (
-        "# Discover Round 1 — Scoring & Seal Schema\n\n"
+        f"# Discover Round {rn} — Scoring & Seal Schema\n\n"
         "## 채점 (수거 후)\n"
         "1. **수렴**: ≥2 런타임이 동일 u_hash 분해 제출 → cross-model 합의(key-free consensus).\n"
         "2. **독립검증**: `second_oracle` 제1원리 numpy 재구성 → u_hash 일치(분해≠검증 분리).\n"
@@ -447,12 +478,12 @@ def cmd_propose():
         "- 봉인 후 자동: distinct-prime cmul 확장이 buildable 로 전환(ValueFunction fan-in 재계산).\n"
         "- standing-loop 승격: 이 라운드가 성공하면 frontier 자동전진(c7x→c8x, cr8→cr9 …).\n\n"
         "## relay (정욱님)\n"
-        "- 6런타임 배포 → 응답 수거 → `_workspace/crossmodel/discover_round1/responses/` 적재.\n"
+        f"- 6런타임 배포 → 응답 수거 → `_workspace/crossmodel/discover_round{rn}/responses/` 적재.\n"
         "- self-contained 부분(GAP-SPEC·TASKSPEC·SCORING)은 완성. **EXT 의존**: 실 런타임 응답 대기.\n")
     open(os.path.join(pkg, "SCORING.md"), "w", encoding="utf-8", newline="\n").write(scoring)
 
     readme = (
-        "# Discover Round 1 — Primitive Proposal Package\n\n"
+        f"# Discover Round {rn} — Primitive Proposal Package\n\n"
         "QF-Discover(Stage 2) W2.4 산출. ValueFunction(W2.1)이 자율 도출한 미봉인 primitive "
         "capability-gap 을 6런타임 패널에 위임하는 배포 패키지.\n\n"
         "## 파일\n"
@@ -467,7 +498,7 @@ def cmd_propose():
     os.makedirs(os.path.join(pkg, "responses"), exist_ok=True)
 
     print("-" * 84)
-    print(f"패키지 생성(self-contained): _workspace/crossmodel/discover_round1/ "
+    print(f"패키지 생성(self-contained): _workspace/crossmodel/discover_round{rn}/ "
           f"[GAP-SPEC.json·TASKSPEC.md·SCORING.md·README.md] · [EXT] relay 대기")
     return 0
 

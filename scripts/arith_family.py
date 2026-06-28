@@ -103,7 +103,7 @@ def verify_mct6_indep():
 
 
 # ── SynthDistinctPrime (진화된 엔진 gs.gen_modmul 직접 사용) ──────────
-_MCT_SET = {"x_gate", "cnot", "toffoli", "c3x", "c4x", "c5x", "c6x"}
+_MCT_SET = {"x_gate", "cnot", "toffoli", "c3x", "c4x", "c5x", "c6x", "c7x"}
 
 
 def synth_distinct_prime(targets):

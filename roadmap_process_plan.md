@@ -156,6 +156,28 @@ Stage5 // blind-spot 비파괴 방어 (designing)
 
 ---
 
+## Stage 6 — c7x Realization: distinct-prime 산술 frontier + 발견 자동전진 (Track A 연장) `[SC]`
+
+```
+Stage6 // c7x 봉인(W2.4)의 직접 결실 실현 (done)
+    W6.1_ArithFamilyExtendC7x // c7x 활용 N>64 distinct-prime cmul 봉인 (done)
+    W6.2_DiscoverSelfAdvance // 발견 frontier 봉인 gate 자동전진 + unlock 정정 (done)
+```
+
+- [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
+  - 목표: 봉인된 c7x(7-control)를 *실제로 요구하는* distinct-prime modular multiplier(N>64) 봉인 → genuine-Shor 산술 frontier 전진.
+  - ⚠ **가정 검증(정정)**: discover propose의 "c7x→mod39/51" 주장을 실측 반증 — nq-qubit MCT의 maxc=nq-1=work bits. c7x는 work bits≥7 ⟺ **N>64**일 때만 필요. mod39/51/55/57(N<64)은 maxc=6=c6x로 충분(c7x 무관).
+  - 산출: `scripts/arith_family_c7x.py`(arith_family 함수 재사용)·`.pgf/DESIGN-C7xPayoff.md`(PG 설계)·`.pgf/arith/ARITH-FAMILY-C7X-REPORT.json`.
+  - 엔진 진화: `genskills._MCT_MODULE[7]="c7x"`·cap `maxc>6`→`>7`(c8x 부재)·`arith_family._MCT_SET`+c7x → method self-seal 재스탬프(catalog_root 0367ed64→01c5b88e, verify **INTACT**). 기존 cmul(≤c6x) regression 불변 2/2.
+  - 결과: **`cmul2_mod91`(7×13, 77g)·`cmul2_mod77`(7×11, 128g)·`cmul2_mod85`(5×17, 148g)** Tier-0 EXACT 봉인 — 전부 c7x 실사용(3/3). 독립 산술순열 u_hash==sealed 3/3·×2 orbit period==ord_N(2) 3/3(12/30/8). **앱 59→62, root 437efbc3→e64f4970**(순수 비파괴: 모듈 50·frozen 23·fingerprint byte-identical, 2회 byte-identity).
+- [x] **W6.2 DiscoverSelfAdvance** `[SC][ND]` ✅ 2026-06-28
+  - 목표: 발견 루프가 봉인된 frontier를 넘어 자동전진(진짜 self-extending) + 틀린 unlock 주장 정정.
+  - 근본원인: `discover.py` `ctx["modules"]`=그래프 *사용* 모듈만(봉인 전체 아님) → 미사용 봉인 gate에 frontier 정체.
+  - 산출: `discover.py` 보강 — ctx에 `sealed_modules`(MODREG 스캔) 추가·`gap_to_proposal`이 봉인 gap 스킵·`_round_pkg`(라운드 분리, idempotent)·cNx unlock 텍스트 실측 정정.
+  - 결과: forge 후 c7x 그래프 진입(fan-in=3) → propose가 **c8x·cr9_dag_gate** 제안(round2 분리, W2.4 round1 보존). 재실행 시 round2 재사용.
+
+---
+
 ## Stage D — Backend Evidence (defer, gated) `[EXT]`
 
 - [ ] **WD.1 BackendEvidenceSidecar** `[EXT]` (다수의견 defer)
@@ -167,7 +189,7 @@ Stage5 // blind-spot 비파괴 방어 (designing)
 ## 진행 규약
 
 - 각 Work 착수 시: HANDOFF.md 해당 체크박스 `[ ]→[~]`(진행중), 완료 시 `[x]` + 본 파일 동기화.
-- Work 완료 정의: 산출물 생성 + 자체 verify PASS + 공통 회귀 그린(root 3dae613d 불변) + 비파괴 확인.
+- Work 완료 정의: 산출물 생성 + 자체 verify PASS + 공통 회귀 그린(reproduce_all REPRODUCED·기존 봉인 byte-identical) + 비파괴 확인. ※성장 Work(신규 봉인)는 root 변경 허용하되 기존 봉인·frozen 23키·fingerprint byte-identical(순수 성장). 현재 root=`e64f4970`.
 - **[EXT] Work**는 self-contained 부분(패키지·채점기·스키마)까지 완성 후 `[~]`로 두고 relay 대기.
 - Stage 경계마다 전수 회귀 그린 확인.
 - git은 정욱님 지시 시에만.
