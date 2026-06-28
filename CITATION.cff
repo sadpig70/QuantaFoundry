@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use QuantaFoundry sealed artifacts, please cite this and verify the registry root hash."
+title: "QuantaFoundry — deterministic QPGF-sealed quantum circuit foundry"
+version: "0.7.0"
+date-released: "2026-06-28"
+authors:
+  - family-names: "Jung"
+    given-names: "Wook"
+    alias: "sadpig70"
+repository-code: "https://github.com/sadpig70/QuantaFoundry"
+abstract: >-
+  QuantaFoundry is a self-growing foundry where every artifact must pass a deterministic QPGF
+  oracle seal (byte-identical reproduction) to exist. This release seals 48 modules and
+  59 unique apps with registry_root_hash 3dae613da089aa76…, independently re-derivable via
+  `python scripts/reproduce_all.py` and `scripts/second_oracle.py` (48/48 modules).
+keywords:
+  - quantum-computing
+  - deterministic-verification
+  - reproducibility
+  - QPGF
+identifiers:
+  - type: other
+    value: "registry-root-sha256:3dae613da089aa76b7153236d30b6c55cc6e83dd8af78ba89a72bc304bbf3a51"
+    description: "Deterministic registry root hash (sorted id:u_hash sha256). The citable fingerprint."
+  - type: doi
+    value: "10.5281/zenodo.PLACEHOLDER"
+    description: "Zenodo DOI — issued at release time."
+preferred-citation:
+  type: software
+  title: "QuantaFoundry v0.7.0 (QPGF-sealed root 3dae613da089aa76)"

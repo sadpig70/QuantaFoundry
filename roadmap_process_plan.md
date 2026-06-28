@@ -95,22 +95,21 @@ Stage3 // QPGF↔Foundry 분리 · CI 소비 (designing)
     W3.5_SealGateCI // GitHub Action seal-badge (designing) @dep:W3.1,W3.2 [EXT]
 ```
 
-- [ ] **W3.1 QasmExport** `[SC][ND]`
-  - 목표: sealed app/module → OpenQASM3. decomp_guard가 plan=실회로 보장 → export 정직. 외부도구가 registry 소비 가능.
-  - 산출: `scripts/qasm_export.py` · 샘플 export(shor21_a2·qft3).
-  - verify: export 회로 재시뮬 == sealed u_hash(round-trip 일관) · registry 무변경.
-- [ ] **W3.2 QasmIngestion** `[SC]`
-  - 목표(A3 우선): OpenQASM3/Qiskit → spec 변환 → *기존 회로* 봉인. 진입장벽(이미 가진 회로 봉인) 해소.
-  - 산출: `scripts/qasm_ingest.py` · 외부회로→.pg→seal 데모.
-- [ ] **W3.3 CLI** `[SC]`
-  - 목표: `qf verify/seal/compose/reproduce --expect-root 3dae613d/explain/export`.
-  - 산출: `scripts/qf_cli.py`(기존 스크립트 래핑, 신규 로직 0).
-- [ ] **W3.4 CitableRegistry** `[SC]`
-  - 목표: release 마다 Zenodo DOI + `CITATION.cff` → 논문 "QPGF-sealed root X" 인용(재현성 위기 대응).
-  - 산출: `CITATION.cff` · release 메타.
-- [ ] **W3.5 SealGateCI** `[EXT]`
-  - 목표: GitHub Action — PR 회로 QPGF 검증 → Seal Badge(Tier+ResourceCost). friendly 외부 라이브러리 1곳 파일럿. CI gate="로컬 재현 성공해야 제출".
-  - relay: 외부 라이브러리 협업 필요. **EXT 의존.**
+- [x] **W3.1 QasmExport** `[SC][ND]` ✅ 2026-06-28
+  - 산출: `scripts/qasm_export.py`(PlanFlatten 재귀펼침+서브앱 큐빗 remap → QasmEmit → RoundTrip) · `.pgf/adoption/qasm/*.qasm` · `QASM-EXPORT-REPORT.json` · `.pgf/DESIGN-Adoption.md`(PG 설계).
+  - 결과: **round-trip 57/57 일치**(n≤10 dense, second_oracle INDEP+embed 제1원리 재구성 u_hash==sealed → export 가 봉인 유니터리 정직표현 입증, hollow 아님). n>12 2개(ghz16/shor21) 정직 skip. 미매핑 c3x~c6x 는 opaque custom gate 노출(은폐 금지). 2회 byte-identical.
+- [x] **W3.2 QasmIngestion** `[SC]` ✅ 2026-06-28
+  - 산출: `scripts/qasm_ingest.py`(QASM3 서브셋 파서 + cp/ry 봉인값 역매핑 → ops_to_app_pg(tier=exact) → app_assemble).
+  - 결과: **export→ingest 폐루프 8/8 일치**(재봉인 u_hash==원본 → QASM↔spec 왕복 유니터리 보존, 진입장벽 해소). 임시 store 봉인(registry 불변, MatrixGate 없음).
+- [x] **W3.3 CLI** `[SC]` ✅ 2026-06-28
+  - 산출: `scripts/qf_cli.py`(verify/compose/reproduce/export/ingest/discover/explain).
+  - 결과: 기존 스크립트 위임(신규 검증로직 0). `reproduce --expect-root` root 대조 · `explain` 의존/blast-radius/자원 조회(c6x dependents=2 ← W2.1 fan-in 일치).
+- [x] **W3.4 CitableRegistry** `[SC]` ✅ 2026-06-28
+  - 산출: `scripts/citation_gen.py` → `CITATION.cff`(유효 YAML 1.2.0) · `.pgf/adoption/RELEASE-META.json`.
+  - 결과: registry_root_hash 를 인용가능 단일지문으로(identifiers registry-root-sha256). "QuantaFoundry v0.7.0, QPGF-sealed root 3dae613d". Zenodo DOI placeholder(릴리스 시 발급).
+- [~] **W3.5 SealGateCI** `[EXT]` (self-contained 부분 ✅ 2026-06-28, 외부 파일럿 relay 대기)
+  - 산출: `scripts/seal_gate_ci.py`(게이트+seal-badge) · `.github/workflows/seal-gate.yml` · `requirements-ci.txt`.
+  - 결과: CI gate=로컬 재현(root byte-identity) 성공해야 제출. seal-badge(shields.io endpoint, tier0=144·tier1=1·ΣT=21827·ΣToffoli=312). workflow=second_oracle+reproduce(root대조)+contested_guard+export round-trip. **EXT 의존**: friendly 외부 라이브러리 파일럿 협업 relay.
 
 ---
 

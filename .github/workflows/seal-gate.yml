@@ -1,0 +1,45 @@
+name: QPGF Seal Gate
+
+# Stage 3 W3.5 [EXT] — PR 이 registry 결정론을 깨면 머지 차단.
+# CI gate = "로컬 재현 성공해야 제출"(registry_root_hash byte-identity).
+# 외부 라이브러리 파일럿 협업은 relay 의존(정욱님).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  seal-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install deterministic deps
+        run: pip install -r requirements-ci.txt
+
+      - name: Independent oracle (pure-numpy, 48/48 modules)
+        run: python scripts/second_oracle.py
+
+      - name: Full reproduction + root gate (byte-identity)
+        run: python scripts/qf_cli.py reproduce --expect-root 3dae613da089aa76
+
+      - name: Contested-guard determinism (frozen consensus keys)
+        run: python scripts/verify_contested_guard.py
+
+      - name: QASM export round-trip (export honesty)
+        run: python scripts/qasm_export.py --all
+
+      - name: Seal badge
+        run: python scripts/seal_gate_ci.py --expect-root 3dae613da089aa76
+
+      - name: Upload seal badge
+        uses: actions/upload-artifact@v4
+        with:
+          name: seal-badge
+          path: .pgf/adoption/seal-badge.json

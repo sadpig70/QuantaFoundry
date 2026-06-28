@@ -1,0 +1,633 @@
+{
+  "_schema": "qasm-export-v1",
+  "exported": 59,
+  "round_trip_checked": 57,
+  "round_trip_matched": 57,
+  "round_trip_skipped_large": 2,
+  "all_checked_match": true,
+  "unmapped_gate_kinds": [
+    "c3x",
+    "c4x",
+    "c5x",
+    "c6x"
+  ],
+  "records": [
+    {
+      "id": "bell",
+      "n_sys": 2,
+      "n_ops": 2,
+      "sealed_u_hash": "b314b411bf3605ef",
+      "round_trip_u_hash": "b314b411bf3605ef",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/bell.qasm"
+    },
+    {
+      "id": "ccz_rediscovered",
+      "n_sys": 3,
+      "n_ops": 3,
+      "sealed_u_hash": "be7749314540f6a6",
+      "round_trip_u_hash": "be7749314540f6a6",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ccz_rediscovered.qasm"
+    },
+    {
+      "id": "cluster10",
+      "n_sys": 10,
+      "n_ops": 19,
+      "sealed_u_hash": "b27f98426016d4a0",
+      "round_trip_u_hash": "b27f98426016d4a0",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster10.qasm"
+    },
+    {
+      "id": "cluster3",
+      "n_sys": 3,
+      "n_ops": 5,
+      "sealed_u_hash": "d2e50285e91e6acc",
+      "round_trip_u_hash": "d2e50285e91e6acc",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster3.qasm"
+    },
+    {
+      "id": "cluster4",
+      "n_sys": 4,
+      "n_ops": 7,
+      "sealed_u_hash": "bb113c845558133e",
+      "round_trip_u_hash": "bb113c845558133e",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster4.qasm"
+    },
+    {
+      "id": "cluster5",
+      "n_sys": 5,
+      "n_ops": 9,
+      "sealed_u_hash": "491cf7c71980816a",
+      "round_trip_u_hash": "491cf7c71980816a",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster5.qasm"
+    },
+    {
+      "id": "cluster6",
+      "n_sys": 6,
+      "n_ops": 11,
+      "sealed_u_hash": "29d8e160e88e924f",
+      "round_trip_u_hash": "29d8e160e88e924f",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster6.qasm"
+    },
+    {
+      "id": "cluster7",
+      "n_sys": 7,
+      "n_ops": 13,
+      "sealed_u_hash": "57bf15b15cb3714d",
+      "round_trip_u_hash": "57bf15b15cb3714d",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster7.qasm"
+    },
+    {
+      "id": "cluster8",
+      "n_sys": 8,
+      "n_ops": 15,
+      "sealed_u_hash": "32b5695128f68dc4",
+      "round_trip_u_hash": "32b5695128f68dc4",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster8.qasm"
+    },
+    {
+      "id": "cluster9",
+      "n_sys": 9,
+      "n_ops": 17,
+      "sealed_u_hash": "385f14dd960d6ff5",
+      "round_trip_u_hash": "385f14dd960d6ff5",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cluster9.qasm"
+    },
+    {
+      "id": "cmul16_mod21",
+      "n_sys": 6,
+      "n_ops": 264,
+      "sealed_u_hash": "2fa362f7830fa17f",
+      "round_trip_u_hash": "2fa362f7830fa17f",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "c3x": 84,
+        "c4x": 100,
+        "c5x": 36
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod21.qasm"
+    },
+    {
+      "id": "cmul2_mod15",
+      "n_sys": 5,
+      "n_ops": 3,
+      "sealed_u_hash": "3b9fdb52b48baaad",
+      "round_trip_u_hash": "3b9fdb52b48baaad",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod15.qasm"
+    },
+    {
+      "id": "cmul2_mod21",
+      "n_sys": 6,
+      "n_ops": 66,
+      "sealed_u_hash": "1aaf1e8a4589bbb0",
+      "round_trip_u_hash": "1aaf1e8a4589bbb0",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "c3x": 21,
+        "c4x": 25,
+        "c5x": 9
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod21.qasm"
+    },
+    {
+      "id": "cmul2_mod33",
+      "n_sys": 7,
+      "n_ops": 113,
+      "sealed_u_hash": "de55372234f9f930",
+      "round_trip_u_hash": "de55372234f9f930",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "c5x": 31,
+        "c6x": 12,
+        "c4x": 36,
+        "c3x": 23
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod33.qasm"
+    },
+    {
+      "id": "cmul2_mod35",
+      "n_sys": 7,
+      "n_ops": 79,
+      "sealed_u_hash": "a190a826040cd5e3",
+      "round_trip_u_hash": "a190a826040cd5e3",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "c6x": 7,
+        "c5x": 17,
+        "c4x": 24,
+        "c3x": 19
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod35.qasm"
+    },
+    {
+      "id": "cmul4_mod15",
+      "n_sys": 5,
+      "n_ops": 6,
+      "sealed_u_hash": "8b86131c2bbf1d1b",
+      "round_trip_u_hash": "8b86131c2bbf1d1b",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod15.qasm"
+    },
+    {
+      "id": "cmul4_mod21",
+      "n_sys": 6,
+      "n_ops": 132,
+      "sealed_u_hash": "1f73313e8be267e2",
+      "round_trip_u_hash": "1f73313e8be267e2",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "c3x": 42,
+        "c4x": 50,
+        "c5x": 18
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod21.qasm"
+    },
+    {
+      "id": "cmul7_mod15",
+      "n_sys": 5,
+      "n_ops": 7,
+      "sealed_u_hash": "c91549e8c0aa051b",
+      "round_trip_u_hash": "c91549e8c0aa051b",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cmul7_mod15.qasm"
+    },
+    {
+      "id": "cz_rediscovered",
+      "n_sys": 2,
+      "n_ops": 3,
+      "sealed_u_hash": "8d39767cd8c38717",
+      "round_trip_u_hash": "8d39767cd8c38717",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/cz_rediscovered.qasm"
+    },
+    {
+      "id": "diffusion",
+      "n_sys": 2,
+      "n_ops": 9,
+      "sealed_u_hash": "067db05d7cb87831",
+      "round_trip_u_hash": "067db05d7cb87831",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/diffusion.qasm"
+    },
+    {
+      "id": "ghz10",
+      "n_sys": 10,
+      "n_ops": 10,
+      "sealed_u_hash": "d34a49db319b5076",
+      "round_trip_u_hash": "d34a49db319b5076",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz10.qasm"
+    },
+    {
+      "id": "ghz16_structural",
+      "n_sys": 16,
+      "n_ops": 16,
+      "sealed_u_hash": "19036af5f7357761",
+      "round_trip_match": null,
+      "round_trip_note": "n=16 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz16_structural.qasm"
+    },
+    {
+      "id": "ghz3",
+      "n_sys": 3,
+      "n_ops": 3,
+      "sealed_u_hash": "72ec19077719e4c1",
+      "round_trip_u_hash": "72ec19077719e4c1",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz3.qasm"
+    },
+    {
+      "id": "ghz4",
+      "n_sys": 4,
+      "n_ops": 4,
+      "sealed_u_hash": "d7eba2533e03ae4d",
+      "round_trip_u_hash": "d7eba2533e03ae4d",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz4.qasm"
+    },
+    {
+      "id": "ghz5",
+      "n_sys": 5,
+      "n_ops": 5,
+      "sealed_u_hash": "779ed8cdbc00609e",
+      "round_trip_u_hash": "779ed8cdbc00609e",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz5.qasm"
+    },
+    {
+      "id": "ghz6",
+      "n_sys": 6,
+      "n_ops": 6,
+      "sealed_u_hash": "013231d811a8e5fa",
+      "round_trip_u_hash": "013231d811a8e5fa",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz6.qasm"
+    },
+    {
+      "id": "ghz7",
+      "n_sys": 7,
+      "n_ops": 7,
+      "sealed_u_hash": "2f9b2282baf2e339",
+      "round_trip_u_hash": "2f9b2282baf2e339",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz7.qasm"
+    },
+    {
+      "id": "ghz8",
+      "n_sys": 8,
+      "n_ops": 8,
+      "sealed_u_hash": "c7c5bdfb51ef3f7c",
+      "round_trip_u_hash": "c7c5bdfb51ef3f7c",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz8.qasm"
+    },
+    {
+      "id": "ghz9",
+      "n_sys": 9,
+      "n_ops": 9,
+      "sealed_u_hash": "d685f2ecbc7364ba",
+      "round_trip_u_hash": "d685f2ecbc7364ba",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ghz9.qasm"
+    },
+    {
+      "id": "grover2",
+      "n_sys": 2,
+      "n_ops": 10,
+      "sealed_u_hash": "eadf3919812307d8",
+      "round_trip_u_hash": "eadf3919812307d8",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/grover2.qasm"
+    },
+    {
+      "id": "iqft2",
+      "n_sys": 2,
+      "n_ops": 4,
+      "sealed_u_hash": "8348a57b43f39dbc",
+      "round_trip_u_hash": "8348a57b43f39dbc",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/iqft2.qasm"
+    },
+    {
+      "id": "iqft3",
+      "n_sys": 3,
+      "n_ops": 7,
+      "sealed_u_hash": "74eacbc5b74d9367",
+      "round_trip_u_hash": "74eacbc5b74d9367",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/iqft3.qasm"
+    },
+    {
+      "id": "iqft7",
+      "n_sys": 7,
+      "n_ops": 31,
+      "sealed_u_hash": "10da007065939b34",
+      "round_trip_u_hash": "10da007065939b34",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/iqft7.qasm"
+    },
+    {
+      "id": "qft2_pipeline",
+      "n_sys": 2,
+      "n_ops": 4,
+      "sealed_u_hash": "90dbc731bb8c7e80",
+      "round_trip_u_hash": "90dbc731bb8c7e80",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/qft2_pipeline.qasm"
+    },
+    {
+      "id": "qft3_pipeline",
+      "n_sys": 3,
+      "n_ops": 7,
+      "sealed_u_hash": "340b5f344fae9b99",
+      "round_trip_u_hash": "340b5f344fae9b99",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/qft3_pipeline.qasm"
+    },
+    {
+      "id": "qft4_pipeline",
+      "n_sys": 4,
+      "n_ops": 12,
+      "sealed_u_hash": "d997d21f5cfb1487",
+      "round_trip_u_hash": "d997d21f5cfb1487",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/qft4_pipeline.qasm"
+    },
+    {
+      "id": "qpe_s",
+      "n_sys": 3,
+      "n_ops": 8,
+      "sealed_u_hash": "f222bc16eef5d891",
+      "round_trip_u_hash": "f222bc16eef5d891",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/qpe_s.qasm"
+    },
+    {
+      "id": "qpe_t",
+      "n_sys": 4,
+      "n_ops": 13,
+      "sealed_u_hash": "d20776ca44d88feb",
+      "round_trip_u_hash": "d20776ca44d88feb",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/qpe_t.qasm"
+    },
+    {
+      "id": "reflect00",
+      "n_sys": 2,
+      "n_ops": 5,
+      "sealed_u_hash": "02dbf66f3a2ed576",
+      "round_trip_u_hash": "02dbf66f3a2ed576",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/reflect00.qasm"
+    },
+    {
+      "id": "ring10",
+      "n_sys": 10,
+      "n_ops": 20,
+      "sealed_u_hash": "10c8f22e6f94dc05",
+      "round_trip_u_hash": "10c8f22e6f94dc05",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring10.qasm"
+    },
+    {
+      "id": "ring3",
+      "n_sys": 3,
+      "n_ops": 6,
+      "sealed_u_hash": "64fd672c31178826",
+      "round_trip_u_hash": "64fd672c31178826",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring3.qasm"
+    },
+    {
+      "id": "ring4",
+      "n_sys": 4,
+      "n_ops": 8,
+      "sealed_u_hash": "7d3dc1ef611ac20d",
+      "round_trip_u_hash": "7d3dc1ef611ac20d",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring4.qasm"
+    },
+    {
+      "id": "ring5",
+      "n_sys": 5,
+      "n_ops": 10,
+      "sealed_u_hash": "b13224846af6d28d",
+      "round_trip_u_hash": "b13224846af6d28d",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring5.qasm"
+    },
+    {
+      "id": "ring6",
+      "n_sys": 6,
+      "n_ops": 12,
+      "sealed_u_hash": "d47142ae9f032f90",
+      "round_trip_u_hash": "d47142ae9f032f90",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring6.qasm"
+    },
+    {
+      "id": "ring7",
+      "n_sys": 7,
+      "n_ops": 14,
+      "sealed_u_hash": "232ef1c7de0f9ec6",
+      "round_trip_u_hash": "232ef1c7de0f9ec6",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring7.qasm"
+    },
+    {
+      "id": "ring8",
+      "n_sys": 8,
+      "n_ops": 16,
+      "sealed_u_hash": "c5ce98f106878b9f",
+      "round_trip_u_hash": "c5ce98f106878b9f",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring8.qasm"
+    },
+    {
+      "id": "ring9",
+      "n_sys": 9,
+      "n_ops": 18,
+      "sealed_u_hash": "234dd855a657e681",
+      "round_trip_u_hash": "234dd855a657e681",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/ring9.qasm"
+    },
+    {
+      "id": "shor15_a2",
+      "n_sys": 7,
+      "n_ops": 19,
+      "sealed_u_hash": "c8088d7dc3a03bb4",
+      "round_trip_u_hash": "c8088d7dc3a03bb4",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/shor15_a2.qasm"
+    },
+    {
+      "id": "shor15_a7",
+      "n_sys": 7,
+      "n_ops": 23,
+      "sealed_u_hash": "79ba86e53cc0b065",
+      "round_trip_u_hash": "79ba86e53cc0b065",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/shor15_a7.qasm"
+    },
+    {
+      "id": "shor21_a2",
+      "n_sys": 12,
+      "n_ops": 1292,
+      "sealed_u_hash": "c47668eaaf804ed2",
+      "round_trip_match": null,
+      "round_trip_note": "n=12 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c3x": 399,
+        "c4x": 475,
+        "c5x": 171
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor21_a2.qasm"
+    },
+    {
+      "id": "swap_via_cnot",
+      "n_sys": 2,
+      "n_ops": 3,
+      "sealed_u_hash": "e6255e2f105a9782",
+      "round_trip_u_hash": "e6255e2f105a9782",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/swap_via_cnot.qasm"
+    },
+    {
+      "id": "wstate10",
+      "n_sys": 10,
+      "n_ops": 46,
+      "sealed_u_hash": "6f029c238eabfef6",
+      "round_trip_u_hash": "6f029c238eabfef6",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate10.qasm"
+    },
+    {
+      "id": "wstate3",
+      "n_sys": 3,
+      "n_ops": 11,
+      "sealed_u_hash": "588e269c672ef260",
+      "round_trip_u_hash": "588e269c672ef260",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate3.qasm"
+    },
+    {
+      "id": "wstate4",
+      "n_sys": 4,
+      "n_ops": 16,
+      "sealed_u_hash": "946aabc8bc4f3a6c",
+      "round_trip_u_hash": "946aabc8bc4f3a6c",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate4.qasm"
+    },
+    {
+      "id": "wstate5",
+      "n_sys": 5,
+      "n_ops": 21,
+      "sealed_u_hash": "8a6a9c5bba457b11",
+      "round_trip_u_hash": "8a6a9c5bba457b11",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate5.qasm"
+    },
+    {
+      "id": "wstate6",
+      "n_sys": 6,
+      "n_ops": 26,
+      "sealed_u_hash": "5965328ccd044b54",
+      "round_trip_u_hash": "5965328ccd044b54",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate6.qasm"
+    },
+    {
+      "id": "wstate7",
+      "n_sys": 7,
+      "n_ops": 31,
+      "sealed_u_hash": "cb9b491f914fc2f1",
+      "round_trip_u_hash": "cb9b491f914fc2f1",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate7.qasm"
+    },
+    {
+      "id": "wstate8",
+      "n_sys": 8,
+      "n_ops": 36,
+      "sealed_u_hash": "093ad856bc878b12",
+      "round_trip_u_hash": "093ad856bc878b12",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate8.qasm"
+    },
+    {
+      "id": "wstate9",
+      "n_sys": 9,
+      "n_ops": 41,
+      "sealed_u_hash": "403f8876adced453",
+      "round_trip_u_hash": "403f8876adced453",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/wstate9.qasm"
+    }
+  ],
+  "_note": "round-trip=second_oracle(INDEP+embed) 제1원리 numpy 재구성 u_hash==sealed → export 가 봉인 유니터리를 정직 표현함을 독립검증. 미매핑은 opaque custom gate 노출. 비파괴."
+}

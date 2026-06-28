@@ -1,0 +1,116 @@
+{
+  "_schema": "qasm-ingest-v1",
+  "closed_loop_checked": 8,
+  "closed_loop_matched": 8,
+  "all_match": true,
+  "records": [
+    {
+      "id": "qft3_pipeline",
+      "ingested": true,
+      "n_ops": 7,
+      "n_sys": 3,
+      "ingested_u_hash": "340b5f344fae9b99",
+      "original_u_hash": "340b5f344fae9b99",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "iqft3",
+      "ingested": true,
+      "n_ops": 7,
+      "n_sys": 3,
+      "ingested_u_hash": "74eacbc5b74d9367",
+      "original_u_hash": "74eacbc5b74d9367",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "qpe_t",
+      "ingested": true,
+      "n_ops": 13,
+      "n_sys": 4,
+      "ingested_u_hash": "d20776ca44d88feb",
+      "original_u_hash": "d20776ca44d88feb",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "ghz5",
+      "ingested": true,
+      "n_ops": 5,
+      "n_sys": 5,
+      "ingested_u_hash": "779ed8cdbc00609e",
+      "original_u_hash": "779ed8cdbc00609e",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "ring6",
+      "ingested": true,
+      "n_ops": 12,
+      "n_sys": 6,
+      "ingested_u_hash": "d47142ae9f032f90",
+      "original_u_hash": "d47142ae9f032f90",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "wstate4",
+      "ingested": true,
+      "n_ops": 16,
+      "n_sys": 4,
+      "ingested_u_hash": "946aabc8bc4f3a6c",
+      "original_u_hash": "946aabc8bc4f3a6c",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "shor15_a2",
+      "ingested": true,
+      "n_ops": 19,
+      "n_sys": 7,
+      "ingested_u_hash": "c8088d7dc3a03bb4",
+      "original_u_hash": "c8088d7dc3a03bb4",
+      "closed_loop_match": true,
+      "tier": 0
+    },
+    {
+      "id": "cmul7_mod15",
+      "ingested": true,
+      "n_ops": 7,
+      "n_sys": 5,
+      "ingested_u_hash": "c91549e8c0aa051b",
+      "original_u_hash": "c91549e8c0aa051b",
+      "closed_loop_match": true,
+      "tier": 0
+    }
+  ],
+  "ingest_store_sealed_files": [
+    "cmul7_mod15_ingested.sealed.json",
+    "cnot.sealed.json",
+    "cr3_dag_gate.sealed.json",
+    "cs_dag.sealed.json",
+    "cs_gate.sealed.json",
+    "ct_gate.sealed.json",
+    "cz.sealed.json",
+    "fredkin.sealed.json",
+    "ghz5_ingested.sealed.json",
+    "h_gate.sealed.json",
+    "iqft3_ingested.sealed.json",
+    "qft3_pipeline_ingested.sealed.json",
+    "qpe_t_ingested.sealed.json",
+    "ring6_ingested.sealed.json",
+    "ry_k2.sealed.json",
+    "ry_k2_dag.sealed.json",
+    "ry_k3.sealed.json",
+    "ry_k3_dag.sealed.json",
+    "ry_k4.sealed.json",
+    "ry_k4_dag.sealed.json",
+    "shor15_a2_ingested.sealed.json",
+    "swap2.sealed.json",
+    "wstate4_ingested.sealed.json",
+    "x_gate.sealed.json"
+  ],
+  "ingest_store_cleaned": true,
+  "_note": "export(W3.1)→QASM→parse→spec→app_assemble 봉인. 폐루프 u_hash==원본 = QASM↔spec 왕복 유니터리 보존(진입장벽: 외부 회로를 봉인 가능). 임시 store 봉인(registry 불변). MatrixGate 없음."
+}
