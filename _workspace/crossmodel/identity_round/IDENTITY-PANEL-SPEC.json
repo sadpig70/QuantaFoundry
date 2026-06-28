@@ -1,0 +1,14 @@
+{
+  "_schema": "identity-panel-v1",
+  "round": "identity_round",
+  "instruction": "각 런타임은 자체 보관 ed25519 비밀키로 제출을 서명한다. bundle={weights_id, runtime_pubkey, u_hash, nonce, signature}. 등록 시 pubkey 공개.",
+  "bundle_schema": {
+    "weights_id": "str",
+    "runtime_pubkey": "ed25519 raw hex",
+    "u_hash": "str",
+    "nonce": "str",
+    "signature": "ed25519 sig hex"
+  },
+  "scoring": "수거 후 verify_bundle 로 서명검증 → source_from_bundle(pubkey-unit) 으로 establish_truth. 같은 pubkey 다중제출은 1 독립단위로 병합(Sybil 차단).",
+  "relay": "정욱님 패널 런타임 공개키 등록 + 서명 제출 수급. EXT 의존."
+}

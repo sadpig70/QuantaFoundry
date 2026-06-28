@@ -1,0 +1,26 @@
+{
+  "_schema": "oracle-revocation-v1",
+  "fingerprint_audit": {
+    "current_oracle_code_hash": "45d316a431495c9b9a69163b3912da74ae6430fafcda50f7732198202d03092a",
+    "current_contracts_code_hash": "64dd25399a16d6f812648568f871d223a789fe72f8bce432f3d11296ec7b2ee9",
+    "checked": 145,
+    "intact": 145,
+    "mismatched": [],
+    "n_mismatched": 0,
+    "all_intact": true
+  },
+  "revocation_list": [],
+  "revocation_list_justified_empty": true,
+  "protocol": {
+    "trigger": "verify_seal.py 또는 contracts.py 의 sha256 변경(버그수정/업그레이드)",
+    "detection": "본 스크립트 fingerprint_audit — intact<checked 면 변경 감지",
+    "on_change": [
+      "1. git 으로 fingerprint 2파일 변경 검토(의도/버그 여부)",
+      "2. 변경이 정당하면: 영향 sealed 를 revocation_list 에 등재",
+      "3. reproduce_all 로 전 모듈/앱 재봉인 → 새 oracle_code_hash 로 갱신",
+      "4. 새 registry_root_hash 발행 + CITATION 갱신(W3.4) + revocation_list 비움",
+      "5. 변경이 버그면: git revert 로 rollback → fingerprint 복원(재봉인 불필요)"
+    ]
+  },
+  "_note": "fingerprint 2파일은 읽기만(sha256 대조). 전 intact = revocation 불필요. 변경 시 EMERGENCY-RESEAL 절차로 rollback 또는 전수 재봉인. 분석/검증/문서 전용 비파괴."
+}

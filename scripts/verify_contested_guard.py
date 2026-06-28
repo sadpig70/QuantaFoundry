@@ -1,9 +1,11 @@
 """verify_contested_guard.py — contested near-tie guard 의 결정론 안전성 보증 (파일 미변경).
 
-establish_truth 에 추가된 contested guard(top-2 독립단위 동률 → CONTESTED)가 기존 frozen 15키를
+establish_truth 에 추가된 contested guard(top-2 독립단위 동률 → CONTESTED)가 기존 frozen 키를
 바꾸지 않음을 *메모리상* 증명한다(consensus_keys.json 재생성 금지 — 봉인점검 교훈).
-  1. 15키의 출처를 build/freeze 와 동일하게 재구성 → 신규 establish_truth 재확립 →
-     status==ESTABLISHED & key==저장값 & grade==저장값 인지 대조 (단일-그룹 수렴 = runner_up 0 = guard 미발동).
+주의: frozen consensus_keys.json 은 전체 23키이며, 본 guard 가 출처를 재구성해 검증하는 대상은
+그 중 15키(base 8 + cross-model 7)다 — 나머지 8키(P0 등)는 재구성 출처가 본 스크립트 범위 밖.
+  1. 검증대상 15키(base 8 + cross-model 7)의 출처를 build/freeze 와 동일하게 재구성 → 신규
+     establish_truth 재확립 → status==ESTABLISHED & key==저장값 & grade==저장값 대조 (단일-그룹 수렴 = runner_up 0 = guard 미발동).
   2. guard 동작 단위테스트: 단일그룹→ESTABLISHED, 4-2→ESTABLISHED, 3-3→CONTESTED, 2-2→CONTESTED.
 
 사용:  python scripts/verify_contested_guard.py
@@ -43,7 +45,7 @@ def xmodel_sources(iid, e):
 def main():
     keys = json.load(open(KEYS, encoding="utf-8"))
     print("=" * 80)
-    print("contested guard 결정론 보증 — frozen 15키 불변 (파일 미변경)")
+    print(f"contested guard 결정론 보증 — frozen 키 불변 (전체 {len(keys)}키 · 본 검증대상 15키=base 8+cross-model 7)")
     print("=" * 80)
 
     # 1. base 8키
@@ -86,7 +88,7 @@ def main():
 
     print("=" * 80)
     ok = not FAIL
-    print(f"{'ALL PASS — guard 결정론 안전(frozen 15키 불변)' if ok else 'FAIL 있음'} · pass={len(PASS)} fail={len(FAIL)}")
+    print(f"{f'ALL PASS — guard 결정론 안전(frozen 전체 {len(keys)}키 불변·검증대상 15)' if ok else 'FAIL 있음'} · pass={len(PASS)} fail={len(FAIL)}")
     print("=" * 80)
     return 0 if ok else 1
 

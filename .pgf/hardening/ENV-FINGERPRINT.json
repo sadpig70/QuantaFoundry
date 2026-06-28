@@ -1,0 +1,54 @@
+{
+  "_schema": "determinism-env-v1",
+  "env_fingerprint": {
+    "numpy": "2.4.6",
+    "python": "3.13.14",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "blas": "scipy-openblas",
+    "byteorder": "little"
+  },
+  "fp_robustness": {
+    "per_gate_noise": [
+      {
+        "gate": "qft3",
+        "noise_1e-13_absorbed": true
+      },
+      {
+        "gate": "qft4",
+        "noise_1e-13_absorbed": true
+      },
+      {
+        "gate": "cnot",
+        "noise_1e-13_absorbed": true
+      },
+      {
+        "gate": "toffoli",
+        "noise_1e-13_absorbed": true
+      },
+      {
+        "gate": "h_gate",
+        "noise_1e-13_absorbed": true
+      },
+      {
+        "gate": "cz",
+        "noise_1e-13_absorbed": true
+      },
+      {
+        "gate": "fredkin",
+        "noise_1e-13_absorbed": true
+      }
+    ],
+    "reassociation": {
+      "max_abs_diff": 1.4210854715202004e-14,
+      "hash_identical": true
+    },
+    "blas_order": {
+      "hash_identical": true
+    },
+    "all_robust": true
+  },
+  "byte_identity_robust": true,
+  "lock_packages": null,
+  "_note": "hash_unitary 격자 양자화(QUANT 1e-9+PREQUANT 1e-12)가 FP 잡음·결합/합산 순서 차이를 흡수 → byte-identity 가 환경잡음(BLAS/FP)에 강건. 단 numpy/platform 메이저 변경은 requirements.lock 으로 핀(외부 재검증 신뢰조건 명시). 분석전용 비파괴."
+}

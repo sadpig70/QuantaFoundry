@@ -1,0 +1,35 @@
+{
+  "_schema": "runtime-identity-v1",
+  "all_pass": true,
+  "checks": [
+    {
+      "name": "signature_integrity",
+      "valid_accepts": true,
+      "tampered_rejected": true,
+      "pass": true
+    },
+    {
+      "name": "sybil_collapses",
+      "status": "DIVERGENT",
+      "dist": {
+        "340b5f344fae": 1
+      },
+      "pass": true,
+      "detail": "같은 pubkey 2제출(다른 weights_id 가장) → pubkey-unit 병합 1<2 → DIVERGENT"
+    },
+    {
+      "name": "genuine_two_runtimes",
+      "status": "ESTABLISHED",
+      "pass": true,
+      "detail": "다른 pubkey 2런타임 → 2 독립단위 → ESTABLISHED (false-negative 아님)"
+    }
+  ],
+  "bundle_schema": {
+    "weights_id": "str",
+    "runtime_pubkey": "ed25519 raw hex",
+    "u_hash": "str",
+    "nonce": "str",
+    "signature": "ed25519 sig hex"
+  },
+  "_note": "independence_unit 을 runtime_pubkey 로 강화 → 같은 물리키가 다중 weights 가장(Sybil) 시 1 단위로 병합돼 가짜 독립합의 붕괴. ed25519 서명으로 제출 무결성. self-contained 메커니즘 실증 — 실 런타임 공개키 등록/서명 수급은 [EXT] relay. 분석/검증 전용 비파괴."
+}

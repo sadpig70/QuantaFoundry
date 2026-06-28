@@ -139,15 +139,18 @@ Stage5 // blind-spot 비파괴 방어 (designing)
     W5.3_RuntimeIdentityProof // Sybil 암호증명 (designing) [EXT]
 ```
 
-- [ ] **W5.1 DeterminismEnvPin** `[SC]`
-  - 목표: numpy/BLAS/platform/FP가 byte-identity 위협(외부 재검증 신뢰조건). lockfile + container hash + cross-platform 재현 시험.
-  - 산출: `requirements.lock` · `scripts/determinism_env_check.py` · 컨테이너 fingerprint.
-- [ ] **W5.2 OracleRevocationProtocol** `[SC]`
-  - 목표: fingerprint 버그/업그레이드 시 전봉인 무효 + revocation_list 빈배열. rollback + emergency re-seal 절차 문서화.
-  - 산출: `scripts/oracle_rollback_protocol.py` · `docs/EMERGENCY-RESEAL.md` · revocation_list 운영.
-- [ ] **W5.3 RuntimeIdentityProof** `[EXT]`
-  - 목표: gated panel이 "≥2 distinct weights"를 runtime 자기식별으로 검증 → Sybil. API key fingerprint/signed submission bundle.
-  - 산출: `scripts/runtime_identity.py` · signed bundle 스키마.
+- [x] **W5.0 GuardKeyCountFix** `[SC]` ✅ 2026-06-28
+  - 산출: `scripts/verify_contested_guard.py` 출력문 명확화(비-fingerprint, 검증로직 불변) · `.pgf/DESIGN-Hardening.md`(PG 설계).
+  - 결과: "frozen 15키"→"frozen 전체 23키·본 검증대상 15키(base 8+cross-model 7)" 명확화. 모호표현(15가 전체로 오해) 제거. pass=20 불변.
+- [x] **W5.1 DeterminismEnvPin** `[SC]` ✅ 2026-06-28
+  - 산출: `scripts/determinism_env_check.py` · `requirements.lock`(178패키지) · `.pgf/hardening/ENV-FINGERPRINT.json`.
+  - 결과: 환경지문(numpy 2.4.6·py 3.13.14·scipy-openblas·Win10) 캡처. **byte-identity ROBUST** — hash_unitary 격자양자화(QUANT 1e-9+PREQUANT 1e-12)가 FP잡음(1e-13) 7/7 흡수·결합순서 (A·B)·C==A·(B·C)(Δ=1.4e-14 흡수)·BLAS 합산순서 무관. lockfile로 재검증 신뢰조건 명시.
+- [x] **W5.2 OracleRevocationProtocol** `[SC]` ✅ 2026-06-28
+  - 산출: `scripts/oracle_rollback_protocol.py` · `docs/EMERGENCY-RESEAL.md` · `.pgf/hardening/ORACLE-REVOCATION.json`.
+  - 결과: **fingerprint 무결성 145/145 sealed 일치**(현 verify_seal/contracts sha256==전 봉인 기록값, ALL INTACT) → revocation_list 빈배열 정당. fingerprint 변경 시 rollback(버그)/전수 재봉인(업그레이드) 절차 문서화. **2파일 읽기만**(무수정).
+- [~] **W5.3 RuntimeIdentityProof** `[EXT]` (self-contained 메커니즘 ✅ 2026-06-28, 실키 수급 relay)
+  - 산출: `scripts/runtime_identity.py`(ed25519) · `.pgf/hardening/RUNTIME-IDENTITY.json` · `_workspace/crossmodel/identity_round/`.
+  - 결과: signed bundle{weights_id,pubkey,u_hash,nonce,sig}. **Sybil 방어 LIVE** — 서명무결성(위변조 거부)·Sybil 붕괴(같은 pubkey 다중 weights 가장→pubkey-unit 병합 1<2→DIVERGENT)·진짜 2런타임(다른 pubkey→ESTABLISHED, FN=0). independence_unit을 pubkey로 강화. 실 런타임 공개키/서명 수급은 **EXT** relay.
 
 ---
 
