@@ -6,11 +6,17 @@
   "correct_matches_sealed": true,
   "poisoned_units": {
     "little_endian_qft3": "445095c6b830714f36658a32af5ede26a2884e0d2f2cbe0d96564dd405ba6d45",
-    "conjugate_qft3": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+    "onesided_endian_qft3": "a054af5419d626ba9ef62b41e1979707f44afdfc47548119fcd469f7717e693f",
     "phase_perturbed_qft3": "ca5223a9df70a700bf7bbb107986f90a055322b743c7d8644b4d32783b9aa3b6"
   },
   "poison_all_wrong": true,
   "checks": [
+    {
+      "name": "poison_is_genuine_error",
+      "collisions": {},
+      "pass": true,
+      "detail": "poisoned u_hash 가 어떤 registry 봉인과도 불일치 = 진짜 오류(정당 게이트 아님)"
+    },
     {
       "name": "lineage_merge",
       "status": "DIVERGENT",

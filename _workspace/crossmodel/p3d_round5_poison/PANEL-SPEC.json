@@ -4,7 +4,7 @@
   "instruction": "약모델/poisoned 런타임에 표준회로(qft3 등)를 의뢰하되, little-endian 해석·conjugate-state·corpus-sparse phase 를 유도하는 모호 프롬프트로 co-error 유발 시도. 2소스가 *같은 틀린* u_hash 로 수렴하면 lineage/corpus 상관 실측.",
   "poisoned_reference_uhashes": {
     "little_endian_qft3": "445095c6b830714f36658a32af5ede26a2884e0d2f2cbe0d96564dd405ba6d45",
-    "conjugate_qft3": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+    "onesided_endian_qft3": "a054af5419d626ba9ef62b41e1979707f44afdfc47548119fcd469f7717e693f",
     "phase_perturbed_qft3": "ca5223a9df70a700bf7bbb107986f90a055322b743c7d8644b4d32783b9aa3b6"
   },
   "correct_uhash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",

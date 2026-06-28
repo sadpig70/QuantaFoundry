@@ -28,6 +28,7 @@ import second_oracle as so            # noqa: E402  INDEP/perm_gate 사용만
 import consensus as C                 # noqa: E402  Source/establish_truth 사용만
 
 MODREG = os.path.join(ROOT, "registry", "modules")
+APPREG = os.path.join(ROOT, "registry", "apps")
 OUT = os.path.join(ROOT, ".pgf", "consensus")
 PKG = os.path.join(ROOT, "_workspace", "crossmodel", "p3d_round5_poison")
 DOC = os.path.join(ROOT, "docs", "TRUST-MODEL-VALIDATION-REPORT.md")
@@ -38,14 +39,27 @@ def _bitrev_perm(n):
     return so.perm_gate([int(format(i, f"0{n}b")[::-1], 2) for i in range(N)])
 
 
+def _all_sealed_uhashes():
+    """registry 전 봉인 u_hash 집합 — poisoned 가 *정당 게이트*와 충돌(=진짜 오류 아님) 방지용."""
+    out = set()
+    for store in (MODREG, APPREG):
+        if os.path.isdir(store):
+            for f in os.listdir(store):
+                if f.endswith(".sealed.json"):
+                    out.add(json.load(open(os.path.join(store, f), encoding="utf-8"))["u_hash"])
+    return out
+
+
 def poisoned_units():
-    """*틀린*(sealed≠) 유니터리를 결정론 구성 — co-error 의 재료. 정답=big-endian qft3."""
+    """*틀린*(sealed≠ 이고 어떤 정당 게이트와도 무관) 유니터리를 결정론 구성 — co-error 의 재료.
+    정답=big-endian qft3. 주의: qft3.conj()=iqft3(정당 게이트)이므로 poisoned 로 부적합 → 제외.
+    대신 '입력에만 bit-reversal 적용'(QFT 구현의 흔한 endian 실수)을 진짜 오류로 사용."""
     qft3 = so.qft_n(3)
     R = _bitrev_perm(3)
-    le = R @ qft3 @ R                       # little-endian QFT (비트순서 반대 = 틀린 유니터리)
-    conj = qft3.conj()                      # conjugate-stated-standard
-    phase = qft3 @ np.diag([1, 1, 1, 1, 1, 1, 1, np.exp(1j * 0.3)])   # corpus-sparse phase
-    return {"little_endian_qft3": C.uhash(le), "conjugate_qft3": C.uhash(conj),
+    le = R @ qft3 @ R                       # little-endian QFT (양쪽 bit-reversal — 틀린 유니터리)
+    onesided = R @ qft3                     # 입력에만 bit-reversal 적용(흔한 endian 구현 버그 — 틀림)
+    phase = qft3 @ np.diag([1, 1, 1, 1, 1, 1, 1, np.exp(1j * 0.3)])   # corpus-sparse phase 오류
+    return {"little_endian_qft3": C.uhash(le), "onesided_endian_qft3": C.uhash(onesided),
             "phase_perturbed_qft3": C.uhash(phase)}, C.uhash(qft3)
 
 
@@ -67,10 +81,20 @@ def main():
     # poisoned 가 정답과 다른지(틀린 유니터리) + 정답이 sealed 와 일치하는지 확인
     poison_is_wrong = all(h != correct_uh for h in poison.values())
     correct_matches_sealed = (sealed_qft3 is None) or (correct_uh == sealed_qft3)
+    # poisoned 가 *어떤 정당 게이트(registry 봉인)와도 충돌하지 않는지* — conjugate=iqft3 류 실수 자동방지
+    sealed_uhs = _all_sealed_uhashes()
+    poison_collisions = {name: h[:14] for name, h in poison.items() if h in sealed_uhs}
+    poison_genuine = not poison_collisions
     print(f"\n구성: 정답 qft3 u={correct_uh[:14]} (sealed 일치={correct_matches_sealed}) · "
-          f"poisoned {len(poison)}종 모두 정답≠ {poison_is_wrong}")
+          f"poisoned {len(poison)}종 모두 정답≠ {poison_is_wrong} · 정당게이트 충돌 {len(poison_collisions)} "
+          f"{'(없음=진짜 오류)' if poison_genuine else poison_collisions}")
 
     checks = []
+
+    # 0) poisoned 가 정당 게이트(registry 봉인)와 충돌 안 함 — conjugate=iqft3 류 실수 자동방지 가드
+    checks.append({"name": "poison_is_genuine_error", "collisions": poison_collisions,
+                   "pass": poison_genuine,
+                   "detail": "poisoned u_hash 가 어떤 registry 봉인과도 불일치 = 진짜 오류(정당 게이트 아님)"})
 
     # 1) LineageMergeTeeth: 같은 independence_unit 2소스 poisoned 합의 → DIVERGENT (독립단위 병합 w=1)
     s_same = [C.Source("rt1", "model", "weightsA", le), C.Source("rt2", "model", "weightsA", le)]
@@ -104,8 +128,8 @@ def main():
     sweep = {f"rho={r}": round(C.effective_independent_count(2, r), 3) for r in (0.0, 0.3, 0.6, 1.0)}
 
     for c in checks:
-        print(f"  {'✓' if c['pass'] else '✗'} {c['name']:24} → {c['status']}"
-              f"{'/' + c['grade'] if c.get('grade') else ''}")
+        tail = f"→ {c['status']}{'/' + c['grade'] if c.get('grade') else ''}" if "status" in c else ""
+        print(f"  {'✓' if c['pass'] else '✗'} {c['name']:24} {tail}")
         print(f"      {c['detail']}")
     print(f"\n  N_eff(2소스) sweep: {sweep}  (ρ→1 이면 2소스가 1 유효독립으로 붕괴)")
 
@@ -144,8 +168,8 @@ def main():
         "## self-contained 검증 (메커니즘)\n",
         "| 검증 | 결과 | 의미 |", "|---|---|---|"]
     for c in checks:
-        doc.append(f"| {c['name']} | {c['status']}{'/' + c['grade'] if c.get('grade') else ''} "
-                   f"{'✓' if c['pass'] else '✗'} | {c['detail']} |")
+        res = f"{c['status']}{'/' + c['grade'] if c.get('grade') else ''}" if "status" in c else "OK"
+        doc.append(f"| {c['name']} | {res} {'✓' if c['pass'] else '✗'} | {c['detail']} |")
     doc += [
         f"\nN_eff(2소스) sweep: `{sweep}`\n",
         "## 정직 구분\n",
