@@ -1,0 +1,42 @@
+{
+  "_schema": "capability-gap-v1",
+  "round": "discover_round1",
+  "_note": "ValueFunction(W2.1)+family 확장규칙이 자율 도출한 미봉인 primitive frontier. 6런타임 패널이 분해를 독립 제안 → 수렴+second_oracle 독립검증+sympy proof → key-free 봉인.",
+  "proposals": [
+    {
+      "gap_id": "c7x",
+      "family": "cNx",
+      "n": 7,
+      "description": "7-control Toffoli (multi-controlled X)",
+      "golden_spec": "permutation: |c…c,t⟩ → |c…c, t⊕(c₁∧…∧c_n)⟩, big-endian 첫 레지스터=MSB",
+      "constraints": "Clifford+T, ancilla 허용(borrowed/clean 명시), golden=permutation matrix",
+      "unlocks": "distinct-prime modular-mult 확장 (mod 39=3×13, mod 51=3×17 …) — cmul prereq",
+      "sealed_predecessors": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x"
+      ],
+      "predecessor_fanin": 2,
+      "priority_value": 0.7
+    },
+    {
+      "gap_id": "cr8_dag_gate",
+      "family": "crK",
+      "n": 8,
+      "description": "controlled-phase R_k† = diag(1, e^{-2πi/2^8})",
+      "golden_spec": "diag(1,1,1,exp(2πi/2^k)), 전역위상 atol 1e-7 무시 — controlled 합성 시 W1.3 정합 필요",
+      "constraints": "analytic golden, deg=2^k root of unity, no MatrixGate",
+      "unlocks": "더 깊은 QFT/IQFT (qft8+) — exponent precision 확장",
+      "sealed_predecessors": [
+        "cr3_dag_gate",
+        "cr4_dag_gate",
+        "cr5_dag_gate",
+        "cr6_dag_gate",
+        "cr7_dag_gate"
+      ],
+      "predecessor_fanin": 2,
+      "priority_value": 0.7
+    }
+  ]
+}

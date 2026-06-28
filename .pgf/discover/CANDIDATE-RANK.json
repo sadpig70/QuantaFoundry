@@ -1,0 +1,3261 @@
+{
+  "_schema": "qf-discover-rank-v1",
+  "_note": "8항 가치 가중합. 각 항은 registry 그래프 구조에서 유도(휴리스틱 상수 아님), 근거 동봉. app=무엇을 조립할까(retrospective 재구성), prereq=무엇을 먼저 봉인하면 가장 unlock(fan-in). 분석전용 비파괴 — 신규 봉인 없음.",
+  "weights": {
+    "novelty": 0.25,
+    "sealability": 0.2,
+    "composability": 0.2,
+    "resource_delta": 0.15,
+    "consensus_est": 0.1,
+    "ambiguity": -0.2,
+    "cost": -0.15
+  },
+  "weight_sum_abs": 1.25,
+  "app_candidates": [
+    {
+      "id": "cmul16_mod21",
+      "kind": "app",
+      "family": "cmul16_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "cmul4_mod21"
+      ],
+      "missing_modules": [],
+      "gate_count": 2,
+      "n_deps": 1,
+      "value": 0.815,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.95,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.05
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=1, max-prereq-fanin=0",
+        "resource_delta": "new_modules=0, gate_count=2",
+        "consensus_est": "1/1 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=2"
+      }
+    },
+    {
+      "id": "cmul4_mod15",
+      "kind": "app",
+      "family": "cmul4_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "cmul2_mod15"
+      ],
+      "missing_modules": [],
+      "gate_count": 2,
+      "n_deps": 1,
+      "value": 0.815,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.95,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.05
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=2, max-prereq-fanin=0",
+        "resource_delta": "new_modules=0, gate_count=2",
+        "consensus_est": "1/1 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=2"
+      }
+    },
+    {
+      "id": "cmul4_mod21",
+      "kind": "app",
+      "family": "cmul4_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "cmul2_mod21"
+      ],
+      "missing_modules": [],
+      "gate_count": 2,
+      "n_deps": 1,
+      "value": 0.815,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.95,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.05
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=2, max-prereq-fanin=0",
+        "resource_delta": "new_modules=0, gate_count=2",
+        "consensus_est": "1/1 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=2"
+      }
+    },
+    {
+      "id": "cmul2_mod15",
+      "kind": "app",
+      "family": "cmul2_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "fredkin"
+      ],
+      "missing_modules": [],
+      "gate_count": 3,
+      "n_deps": 1,
+      "value": 0.8075,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.925,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.075
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=3, max-prereq-fanin=5",
+        "resource_delta": "new_modules=0, gate_count=3",
+        "consensus_est": "1/1 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=3"
+      }
+    },
+    {
+      "id": "iqft2",
+      "kind": "app",
+      "family": "iqft",
+      "named": "QFT",
+      "buildable": true,
+      "required_modules": [
+        "cs_dag",
+        "h_gate",
+        "swap2"
+      ],
+      "missing_modules": [],
+      "gate_count": 4,
+      "n_deps": 3,
+      "value": 0.8,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.9,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.1
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=1, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=4",
+        "consensus_est": "3/3 deps sealed",
+        "ambiguity": "named: QFT",
+        "cost": "norm gate_count=4"
+      }
+    },
+    {
+      "id": "qft2_pipeline",
+      "kind": "app",
+      "family": "qft2_pipeline",
+      "named": "QFT",
+      "buildable": true,
+      "required_modules": [
+        "cs_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "missing_modules": [],
+      "gate_count": 4,
+      "n_deps": 3,
+      "value": 0.8,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.9,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.1
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=4",
+        "consensus_est": "3/3 deps sealed",
+        "ambiguity": "named: QFT",
+        "cost": "norm gate_count=4"
+      }
+    },
+    {
+      "id": "shor15_a2",
+      "kind": "app",
+      "family": "shor15_a",
+      "named": "Shor order-finding",
+      "buildable": true,
+      "required_modules": [
+        "cmul2_mod15",
+        "cmul4_mod15",
+        "iqft3",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 6,
+      "n_deps": 4,
+      "value": 0.785,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.85,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.15
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=6",
+        "consensus_est": "4/4 deps sealed",
+        "ambiguity": "named: Shor order-finding",
+        "cost": "norm gate_count=6"
+      }
+    },
+    {
+      "id": "shor15_a7",
+      "kind": "app",
+      "family": "shor15_a",
+      "named": "Shor order-finding",
+      "buildable": true,
+      "required_modules": [
+        "cmul4_mod15",
+        "cmul7_mod15",
+        "iqft3",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 6,
+      "n_deps": 4,
+      "value": 0.785,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.85,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.15
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=6",
+        "consensus_est": "4/4 deps sealed",
+        "ambiguity": "named: Shor order-finding",
+        "cost": "norm gate_count=6"
+      }
+    },
+    {
+      "id": "cmul7_mod15",
+      "kind": "app",
+      "family": "cmul7_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "fredkin"
+      ],
+      "missing_modules": [],
+      "gate_count": 7,
+      "n_deps": 2,
+      "value": 0.7775,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.825,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.175
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=1, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=7",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=7"
+      }
+    },
+    {
+      "id": "iqft3",
+      "kind": "app",
+      "family": "iqft",
+      "named": "QFT",
+      "buildable": true,
+      "required_modules": [
+        "cr3_dag_gate",
+        "cs_dag",
+        "h_gate",
+        "swap2"
+      ],
+      "missing_modules": [],
+      "gate_count": 7,
+      "n_deps": 4,
+      "value": 0.7775,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.825,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.175
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=3, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=7",
+        "consensus_est": "4/4 deps sealed",
+        "ambiguity": "named: QFT",
+        "cost": "norm gate_count=7"
+      }
+    },
+    {
+      "id": "qft3_pipeline",
+      "kind": "app",
+      "family": "qft3_pipeline",
+      "named": "QFT",
+      "buildable": true,
+      "required_modules": [
+        "cs_gate",
+        "ct_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "missing_modules": [],
+      "gate_count": 7,
+      "n_deps": 4,
+      "value": 0.7775,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.825,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.175
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=7",
+        "consensus_est": "4/4 deps sealed",
+        "ambiguity": "named: QFT",
+        "cost": "norm gate_count=7"
+      }
+    },
+    {
+      "id": "qft4_pipeline",
+      "kind": "app",
+      "family": "qft4_pipeline",
+      "named": "QFT",
+      "buildable": true,
+      "required_modules": [
+        "cr4_gate",
+        "cs_gate",
+        "ct_gate",
+        "h_gate",
+        "swap2"
+      ],
+      "missing_modules": [],
+      "gate_count": 12,
+      "n_deps": 5,
+      "value": 0.74,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.7,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.3
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=12",
+        "consensus_est": "5/5 deps sealed",
+        "ambiguity": "named: QFT",
+        "cost": "norm gate_count=12"
+      }
+    },
+    {
+      "id": "shor21_a2",
+      "kind": "app",
+      "family": "shor21_a",
+      "named": "Shor order-finding",
+      "buildable": true,
+      "required_modules": [
+        "cmul16_mod21",
+        "cmul2_mod21",
+        "cmul4_mod21",
+        "iqft7",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 15,
+      "n_deps": 5,
+      "value": 0.7175,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.625,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.375
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=15",
+        "consensus_est": "5/5 deps sealed",
+        "ambiguity": "named: Shor order-finding",
+        "cost": "norm gate_count=15"
+      }
+    },
+    {
+      "id": "bell",
+      "kind": "app",
+      "family": "bell",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 2,
+      "n_deps": 2,
+      "value": 0.695,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.95,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.05
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=2",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=2"
+      }
+    },
+    {
+      "id": "ccz_rediscovered",
+      "kind": "app",
+      "family": "ccz_rediscovered",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "h_gate",
+        "toffoli"
+      ],
+      "missing_modules": [],
+      "gate_count": 3,
+      "n_deps": 2,
+      "value": 0.6875,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.925,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.075
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=3",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=3"
+      }
+    },
+    {
+      "id": "cz_rediscovered",
+      "kind": "app",
+      "family": "cz_rediscovered",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 3,
+      "n_deps": 2,
+      "value": 0.6875,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.925,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.075
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=3",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=3"
+      }
+    },
+    {
+      "id": "diffusion",
+      "kind": "app",
+      "family": "diffusion",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "reflect00",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 5,
+      "n_deps": 2,
+      "value": 0.6725,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.875,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.125
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=1, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=5",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=5"
+      }
+    },
+    {
+      "id": "qpe_s",
+      "kind": "app",
+      "family": "qpe_s",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "iqft2",
+        "cs_gate",
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 5,
+      "n_deps": 4,
+      "value": 0.6725,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.875,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.125
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=5",
+        "consensus_est": "4/4 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=5"
+      }
+    },
+    {
+      "id": "reflect00",
+      "kind": "app",
+      "family": "reflect00",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 5,
+      "n_deps": 2,
+      "value": 0.6725,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.875,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.125
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=2, max-prereq-fanin=21",
+        "resource_delta": "new_modules=0, gate_count=5",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=5"
+      }
+    },
+    {
+      "id": "ghz3",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 3,
+      "n_deps": 2,
+      "value": 0.6575,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.925,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.075
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=3",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=3"
+      }
+    },
+    {
+      "id": "qpe_t",
+      "kind": "app",
+      "family": "qpe_t",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "iqft3",
+        "cs_gate",
+        "ct_gate",
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 7,
+      "n_deps": 5,
+      "value": 0.6575,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.825,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.175
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=7",
+        "consensus_est": "5/5 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=7"
+      }
+    },
+    {
+      "id": "ghz4",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 4,
+      "n_deps": 2,
+      "value": 0.65,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.9,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.1
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=4",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=4"
+      }
+    },
+    {
+      "id": "cluster3",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 5,
+      "n_deps": 2,
+      "value": 0.6425,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.875,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.125
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=5",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=5"
+      }
+    },
+    {
+      "id": "ghz5",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 5,
+      "n_deps": 2,
+      "value": 0.6425,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.875,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.125
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=5",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=5"
+      }
+    },
+    {
+      "id": "ghz6",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 6,
+      "n_deps": 2,
+      "value": 0.635,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.85,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.15
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=6",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=6"
+      }
+    },
+    {
+      "id": "ring3",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 6,
+      "n_deps": 2,
+      "value": 0.635,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.85,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.15
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=6",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=6"
+      }
+    },
+    {
+      "id": "cluster4",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 7,
+      "n_deps": 2,
+      "value": 0.6275,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.825,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.175
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=7",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=7"
+      }
+    },
+    {
+      "id": "ghz7",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 7,
+      "n_deps": 2,
+      "value": 0.6275,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.825,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.175
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=7",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=7"
+      }
+    },
+    {
+      "id": "ghz8",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 8,
+      "n_deps": 2,
+      "value": 0.62,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.8,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.2
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=8",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=8"
+      }
+    },
+    {
+      "id": "ring4",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 8,
+      "n_deps": 2,
+      "value": 0.62,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.8,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.2
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=8",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=8"
+      }
+    },
+    {
+      "id": "cluster5",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 9,
+      "n_deps": 2,
+      "value": 0.6125,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.775,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.225
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=9",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=9"
+      }
+    },
+    {
+      "id": "ghz9",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 9,
+      "n_deps": 2,
+      "value": 0.6125,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.775,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.225
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=9",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=9"
+      }
+    },
+    {
+      "id": "ghz10",
+      "kind": "app",
+      "family": "ghz",
+      "named": "GHZ entangling",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 10,
+      "n_deps": 2,
+      "value": 0.605,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.75,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.25
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=10",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: GHZ entangling",
+        "cost": "norm gate_count=10"
+      }
+    },
+    {
+      "id": "ring5",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 10,
+      "n_deps": 2,
+      "value": 0.605,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.75,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.25
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=10",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=10"
+      }
+    },
+    {
+      "id": "cluster6",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 11,
+      "n_deps": 2,
+      "value": 0.5975,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.725,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.275
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=11",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=11"
+      }
+    },
+    {
+      "id": "iqft7",
+      "kind": "app",
+      "family": "iqft",
+      "named": "QFT",
+      "buildable": true,
+      "required_modules": [
+        "cr3_dag_gate",
+        "cr4_dag_gate",
+        "cr5_dag_gate",
+        "cr6_dag_gate",
+        "cr7_dag_gate",
+        "cs_dag",
+        "h_gate",
+        "swap2"
+      ],
+      "missing_modules": [],
+      "gate_count": 31,
+      "n_deps": 8,
+      "value": 0.5975,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.225,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.775
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=1, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=31",
+        "consensus_est": "8/8 deps sealed",
+        "ambiguity": "named: QFT",
+        "cost": "norm gate_count=31"
+      }
+    },
+    {
+      "id": "grover2",
+      "kind": "app",
+      "family": "grover2",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "diffusion",
+        "cz"
+      ],
+      "missing_modules": [],
+      "gate_count": 2,
+      "n_deps": 2,
+      "value": 0.5974,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 0.5122,
+        "resource_delta": 0.95,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.05
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=21",
+        "resource_delta": "new_modules=0, gate_count=2",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=2"
+      }
+    },
+    {
+      "id": "swap_via_cnot",
+      "kind": "app",
+      "family": "swap_via_cnot",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "cnot"
+      ],
+      "missing_modules": [],
+      "gate_count": 3,
+      "n_deps": 1,
+      "value": 0.5948,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.925,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.075
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=3",
+        "consensus_est": "1/1 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=3"
+      }
+    },
+    {
+      "id": "ghz16_structural",
+      "kind": "app",
+      "family": "ghz16_structural",
+      "named": null,
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 16,
+      "n_deps": 2,
+      "value": 0.59,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.6,
+        "consensus_est": 1.0,
+        "ambiguity": 0.7,
+        "cost": 0.4
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=16",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=16"
+      }
+    },
+    {
+      "id": "ring6",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 12,
+      "n_deps": 2,
+      "value": 0.59,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.7,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.3
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=12",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=12"
+      }
+    },
+    {
+      "id": "cluster7",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 13,
+      "n_deps": 2,
+      "value": 0.5825,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.675,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.325
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=13",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=13"
+      }
+    },
+    {
+      "id": "ring7",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 14,
+      "n_deps": 2,
+      "value": 0.575,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.65,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.35
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=14",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=14"
+      }
+    },
+    {
+      "id": "cluster8",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 15,
+      "n_deps": 2,
+      "value": 0.5675,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.625,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.375
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=15",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=15"
+      }
+    },
+    {
+      "id": "ring8",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 16,
+      "n_deps": 2,
+      "value": 0.56,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.6,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.4
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=16",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=16"
+      }
+    },
+    {
+      "id": "cluster9",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 17,
+      "n_deps": 2,
+      "value": 0.5525,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.575,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.425
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=17",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=17"
+      }
+    },
+    {
+      "id": "ring9",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 18,
+      "n_deps": 2,
+      "value": 0.545,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.55,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.45
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=18",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=18"
+      }
+    },
+    {
+      "id": "cluster10",
+      "kind": "app",
+      "family": "cluster",
+      "named": "1D cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 19,
+      "n_deps": 2,
+      "value": 0.5375,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.525,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.475
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=19",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: 1D cluster",
+        "cost": "norm gate_count=19"
+      }
+    },
+    {
+      "id": "cmul2_mod21",
+      "kind": "app",
+      "family": "cmul2_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "toffoli"
+      ],
+      "missing_modules": [],
+      "gate_count": 66,
+      "n_deps": 4,
+      "value": 0.53,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.0,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 1.0
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=3, max-prereq-fanin=7",
+        "resource_delta": "new_modules=0, gate_count=66",
+        "consensus_est": "4/4 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=66"
+      }
+    },
+    {
+      "id": "ring10",
+      "kind": "app",
+      "family": "ring",
+      "named": "ring cluster",
+      "buildable": true,
+      "required_modules": [
+        "cz",
+        "h_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 20,
+      "n_deps": 2,
+      "value": 0.53,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.5,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.5
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=41",
+        "resource_delta": "new_modules=0, gate_count=20",
+        "consensus_est": "2/2 deps sealed",
+        "ambiguity": "named: ring cluster",
+        "cost": "norm gate_count=20"
+      }
+    },
+    {
+      "id": "wstate3",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 11,
+      "n_deps": 6,
+      "value": 0.5048,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.725,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.275
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=11",
+        "consensus_est": "6/6 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=11"
+      }
+    },
+    {
+      "id": "wstate4",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 16,
+      "n_deps": 8,
+      "value": 0.4673,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.6,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.4
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=16",
+        "consensus_est": "8/8 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=16"
+      }
+    },
+    {
+      "id": "wstate5",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "ry_k5",
+        "ry_k5_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 21,
+      "n_deps": 10,
+      "value": 0.4298,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.475,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.525
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=21",
+        "consensus_est": "10/10 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=21"
+      }
+    },
+    {
+      "id": "wstate6",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "ry_k5",
+        "ry_k5_dag",
+        "ry_k6",
+        "ry_k6_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 26,
+      "n_deps": 12,
+      "value": 0.3923,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.35,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.65
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=26",
+        "consensus_est": "12/12 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=26"
+      }
+    },
+    {
+      "id": "cmul2_mod33",
+      "kind": "app",
+      "family": "cmul2_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "toffoli"
+      ],
+      "missing_modules": [],
+      "gate_count": 113,
+      "n_deps": 5,
+      "value": 0.3641,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 0.1707,
+        "resource_delta": 0.0,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 1.0
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=7",
+        "resource_delta": "new_modules=0, gate_count=113",
+        "consensus_est": "5/5 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=113"
+      }
+    },
+    {
+      "id": "cmul2_mod35",
+      "kind": "app",
+      "family": "cmul2_mod",
+      "named": "modular mult",
+      "buildable": true,
+      "required_modules": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "toffoli"
+      ],
+      "missing_modules": [],
+      "gate_count": 79,
+      "n_deps": 5,
+      "value": 0.3641,
+      "terms": {
+        "novelty": 0.8,
+        "sealability": 1.0,
+        "composability": 0.1707,
+        "resource_delta": 0.0,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 1.0
+      },
+      "evidence": {
+        "novelty": "non-genskill composite (not reproducible by known family method)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=7",
+        "resource_delta": "new_modules=0, gate_count=79",
+        "consensus_est": "5/5 deps sealed",
+        "ambiguity": "named: modular mult",
+        "cost": "norm gate_count=79"
+      }
+    },
+    {
+      "id": "wstate7",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "ry_k5",
+        "ry_k5_dag",
+        "ry_k6",
+        "ry_k6_dag",
+        "ry_k7",
+        "ry_k7_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 31,
+      "n_deps": 14,
+      "value": 0.3548,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.225,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.775
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=31",
+        "consensus_est": "14/14 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=31"
+      }
+    },
+    {
+      "id": "wstate8",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "ry_k5",
+        "ry_k5_dag",
+        "ry_k6",
+        "ry_k6_dag",
+        "ry_k7",
+        "ry_k7_dag",
+        "ry_k8",
+        "ry_k8_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 36,
+      "n_deps": 16,
+      "value": 0.3173,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.1,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 0.9
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=36",
+        "consensus_est": "16/16 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=36"
+      }
+    },
+    {
+      "id": "wstate10",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k10",
+        "ry_k10_dag",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "ry_k5",
+        "ry_k5_dag",
+        "ry_k6",
+        "ry_k6_dag",
+        "ry_k7",
+        "ry_k7_dag",
+        "ry_k8",
+        "ry_k8_dag",
+        "ry_k9",
+        "ry_k9_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 46,
+      "n_deps": 20,
+      "value": 0.2873,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.0,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 1.0
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=46",
+        "consensus_est": "20/20 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=46"
+      }
+    },
+    {
+      "id": "wstate9",
+      "kind": "app",
+      "family": "wstate",
+      "named": "W-state",
+      "buildable": true,
+      "required_modules": [
+        "cnot",
+        "ry_k2",
+        "ry_k2_dag",
+        "ry_k3",
+        "ry_k3_dag",
+        "ry_k4",
+        "ry_k4_dag",
+        "ry_k5",
+        "ry_k5_dag",
+        "ry_k6",
+        "ry_k6_dag",
+        "ry_k7",
+        "ry_k7_dag",
+        "ry_k8",
+        "ry_k8_dag",
+        "ry_k9",
+        "ry_k9_dag",
+        "x_gate"
+      ],
+      "missing_modules": [],
+      "gate_count": 41,
+      "n_deps": 18,
+      "value": 0.2873,
+      "terms": {
+        "novelty": 0.2,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.0,
+        "consensus_est": 1.0,
+        "ambiguity": 0.1,
+        "cost": 1.0
+      },
+      "evidence": {
+        "novelty": "genskill-reproducible family-extension",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "reuse-as-block=0, max-prereq-fanin=22",
+        "resource_delta": "new_modules=0, gate_count=41",
+        "consensus_est": "18/18 deps sealed",
+        "ambiguity": "named: W-state",
+        "cost": "norm gate_count=41"
+      }
+    }
+  ],
+  "prereq_candidates": [
+    {
+      "id": "h_gate",
+      "kind": "module",
+      "family": "h_gate",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 41,
+      "value": 0.6175,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 1.0,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=41 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "c3x",
+      "kind": "module",
+      "family": "c3x",
+      "named": "multi-control X",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 6,
+      "value": 0.5668,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1463,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=6 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: multi-control X",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "c4x",
+      "kind": "module",
+      "family": "c4x",
+      "named": "multi-control X",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 6,
+      "value": 0.5668,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1463,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=6 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: multi-control X",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "c5x",
+      "kind": "module",
+      "family": "c5x",
+      "named": "multi-control X",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 6,
+      "value": 0.5668,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1463,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=6 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: multi-control X",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cr3_dag_gate",
+      "kind": "module",
+      "family": "cr3_dag_gate",
+      "named": "controlled-phase",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 6,
+      "value": 0.5668,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1463,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=6 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: controlled-phase",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "c6x",
+      "kind": "module",
+      "family": "c6x",
+      "named": "multi-control X",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.5473,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: multi-control X",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cr4_dag_gate",
+      "kind": "module",
+      "family": "cr4_dag_gate",
+      "named": "controlled-phase",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.5473,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: controlled-phase",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cr5_dag_gate",
+      "kind": "module",
+      "family": "cr5_dag_gate",
+      "named": "controlled-phase",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.5473,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: controlled-phase",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cr6_dag_gate",
+      "kind": "module",
+      "family": "cr6_dag_gate",
+      "named": "controlled-phase",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.5473,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: controlled-phase",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cr7_dag_gate",
+      "kind": "module",
+      "family": "cr7_dag_gate",
+      "named": "controlled-phase",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.5473,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: controlled-phase",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cr4_gate",
+      "kind": "module",
+      "family": "cr4_gate",
+      "named": "controlled-phase",
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 1,
+      "value": 0.5424,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0244,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.1,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=1 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "named: controlled-phase",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cnot",
+      "kind": "module",
+      "family": "cnot",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 22,
+      "value": 0.5248,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.5366,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=22 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cz",
+      "kind": "module",
+      "family": "cz",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 21,
+      "value": 0.5199,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.5122,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=21 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "swap2",
+      "kind": "module",
+      "family": "swap",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 11,
+      "value": 0.4712,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.2683,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=11 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "x_gate",
+      "kind": "module",
+      "family": "x_gate",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 11,
+      "value": 0.4712,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.2683,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=11 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cs_dag",
+      "kind": "module",
+      "family": "cs_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 8,
+      "value": 0.4565,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1951,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=8 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k2",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 8,
+      "value": 0.4565,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1951,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=8 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k2_dag",
+      "kind": "module",
+      "family": "ry_k2_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 8,
+      "value": 0.4565,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1951,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=8 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k3",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 8,
+      "value": 0.4565,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1951,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=8 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k3_dag",
+      "kind": "module",
+      "family": "ry_k3_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 8,
+      "value": 0.4565,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1951,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=8 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k4",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 7,
+      "value": 0.4516,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1707,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=7 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k4_dag",
+      "kind": "module",
+      "family": "ry_k4_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 7,
+      "value": 0.4516,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1707,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=7 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "toffoli",
+      "kind": "module",
+      "family": "toffoli",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 7,
+      "value": 0.4516,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1707,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=7 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k5",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 6,
+      "value": 0.4468,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1463,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=6 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k5_dag",
+      "kind": "module",
+      "family": "ry_k5_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 6,
+      "value": 0.4468,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.1463,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=6 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "cs_gate",
+      "kind": "module",
+      "family": "cs_gate",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 5,
+      "value": 0.4419,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.122,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=5 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "fredkin",
+      "kind": "module",
+      "family": "fredkin",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 5,
+      "value": 0.4419,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.122,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=5 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k6",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 5,
+      "value": 0.4419,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.122,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=5 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k6_dag",
+      "kind": "module",
+      "family": "ry_k6_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 5,
+      "value": 0.4419,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.122,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=5 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k7",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 4,
+      "value": 0.437,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0976,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=4 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k7_dag",
+      "kind": "module",
+      "family": "ry_k7_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 4,
+      "value": 0.437,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0976,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=4 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ct_gate",
+      "kind": "module",
+      "family": "ct_gate",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 3,
+      "value": 0.4321,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0732,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=3 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k8",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 3,
+      "value": 0.4321,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0732,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=3 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k8_dag",
+      "kind": "module",
+      "family": "ry_k8_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 3,
+      "value": 0.4321,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0732,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=3 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k9",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.4273,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k9_dag",
+      "kind": "module",
+      "family": "ry_k9_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 2,
+      "value": 0.4273,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0488,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=2 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k10",
+      "kind": "module",
+      "family": "ry_k",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 1,
+      "value": 0.4224,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0244,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=1 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    },
+    {
+      "id": "ry_k10_dag",
+      "kind": "module",
+      "family": "ry_k10_dag",
+      "named": null,
+      "buildable": true,
+      "required_modules": [],
+      "missing_modules": [],
+      "gate_count": 1,
+      "n_deps": 0,
+      "fanin": 1,
+      "value": 0.4224,
+      "terms": {
+        "novelty": 0.5,
+        "sealability": 1.0,
+        "composability": 0.0244,
+        "resource_delta": 0.975,
+        "consensus_est": 0.9,
+        "ambiguity": 0.7,
+        "cost": 0.025
+      },
+      "evidence": {
+        "novelty": "sealed primitive (counterfactual)",
+        "sealability": "buildable (all prereqs sealed)",
+        "composability": "fan-in=1 (apps depending on this module if unsealed)",
+        "resource_delta": "new_modules=0, gate_count=1",
+        "consensus_est": "sealed primitive (independently re-verified by second_oracle)",
+        "ambiguity": "unnamed synthesis",
+        "cost": "norm gate_count=1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+{
+  "_schema": "qf-discover-guard-v1",
+  "_note": "목표선택 co-error 방어: 동일 capability 중복선택 거부(coverage), 선택근거가 단일 convention 에만 의존 시 경고(independence). 모든 결정 사유 로그 = 미명명 실패모드 명명. 분석전용.",
+  "app_guard": {
+    "selected": [
+      {
+        "id": "cmul16_mod21",
+        "value": 0.815,
+        "capability": "app:cmul16_mod",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "cmul4_mod15",
+        "value": 0.815,
+        "capability": "app:cmul4_mod",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "cmul2_mod15",
+        "value": 0.8075,
+        "capability": "app:cmul2_mod",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "iqft2",
+        "value": 0.8,
+        "capability": "app:iqft",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "qft2_pipeline",
+        "value": 0.8,
+        "capability": "app:qft2_pipeline",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "shor15_a2",
+        "value": 0.785,
+        "capability": "app:shor15_a",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "cmul7_mod15",
+        "value": 0.7775,
+        "capability": "app:cmul7_mod",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "qft3_pipeline",
+        "value": 0.7775,
+        "capability": "app:qft3_pipeline",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "qft4_pipeline",
+        "value": 0.74,
+        "capability": "app:qft4_pipeline",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "shor21_a2",
+        "value": 0.7175,
+        "capability": "app:shor21_a",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "bell",
+        "value": 0.695,
+        "capability": "app:bell",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "ccz_rediscovered",
+        "value": 0.6875,
+        "capability": "app:ccz_rediscovered",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "cz_rediscovered",
+        "value": 0.6875,
+        "capability": "app:cz_rediscovered",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "diffusion",
+        "value": 0.6725,
+        "capability": "app:diffusion",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "qpe_s",
+        "value": 0.6725,
+        "capability": "app:qpe_s",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "reflect00",
+        "value": 0.6725,
+        "capability": "app:reflect00",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "ghz3",
+        "value": 0.6575,
+        "capability": "app:ghz",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "qpe_t",
+        "value": 0.6575,
+        "capability": "app:qpe_t",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "cluster3",
+        "value": 0.6425,
+        "capability": "app:cluster",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "ring3",
+        "value": 0.635,
+        "capability": "app:ring",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "grover2",
+        "value": 0.5974,
+        "capability": "app:grover2",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "swap_via_cnot",
+        "value": 0.5948,
+        "capability": "app:swap_via_cnot",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "ghz16_structural",
+        "value": 0.59,
+        "capability": "app:ghz16_structural",
+        "consensus_est": 1.0
+      },
+      {
+        "id": "wstate3",
+        "value": 0.5048,
+        "capability": "app:wstate",
+        "consensus_est": 1.0
+      }
+    ],
+    "rejected": [
+      {
+        "id": "cmul4_mod21",
+        "value": 0.815,
+        "reason": "duplicate-capability 'app:cmul4_mod' (coverage gate)"
+      },
+      {
+        "id": "shor15_a7",
+        "value": 0.785,
+        "reason": "duplicate-capability 'app:shor15_a' (coverage gate)"
+      },
+      {
+        "id": "iqft3",
+        "value": 0.7775,
+        "reason": "duplicate-capability 'app:iqft' (coverage gate)"
+      },
+      {
+        "id": "ghz4",
+        "value": 0.65,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "ghz5",
+        "value": 0.6425,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "ghz6",
+        "value": 0.635,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "cluster4",
+        "value": 0.6275,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "ghz7",
+        "value": 0.6275,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "ghz8",
+        "value": 0.62,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "ring4",
+        "value": 0.62,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "cluster5",
+        "value": 0.6125,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "ghz9",
+        "value": 0.6125,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "ghz10",
+        "value": 0.605,
+        "reason": "duplicate-capability 'app:ghz' (coverage gate)"
+      },
+      {
+        "id": "ring5",
+        "value": 0.605,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "cluster6",
+        "value": 0.5975,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "iqft7",
+        "value": 0.5975,
+        "reason": "duplicate-capability 'app:iqft' (coverage gate)"
+      },
+      {
+        "id": "ring6",
+        "value": 0.59,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "cluster7",
+        "value": 0.5825,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "ring7",
+        "value": 0.575,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "cluster8",
+        "value": 0.5675,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "ring8",
+        "value": 0.56,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "cluster9",
+        "value": 0.5525,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "ring9",
+        "value": 0.545,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "cluster10",
+        "value": 0.5375,
+        "reason": "duplicate-capability 'app:cluster' (coverage gate)"
+      },
+      {
+        "id": "cmul2_mod21",
+        "value": 0.53,
+        "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
+      },
+      {
+        "id": "ring10",
+        "value": 0.53,
+        "reason": "duplicate-capability 'app:ring' (coverage gate)"
+      },
+      {
+        "id": "wstate4",
+        "value": 0.4673,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      },
+      {
+        "id": "wstate5",
+        "value": 0.4298,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      },
+      {
+        "id": "wstate6",
+        "value": 0.3923,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      },
+      {
+        "id": "cmul2_mod33",
+        "value": 0.3641,
+        "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
+      },
+      {
+        "id": "cmul2_mod35",
+        "value": 0.3641,
+        "reason": "duplicate-capability 'app:cmul2_mod' (coverage gate)"
+      },
+      {
+        "id": "wstate7",
+        "value": 0.3548,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      },
+      {
+        "id": "wstate8",
+        "value": 0.3173,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      },
+      {
+        "id": "wstate10",
+        "value": 0.2873,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      },
+      {
+        "id": "wstate9",
+        "value": 0.2873,
+        "reason": "duplicate-capability 'app:wstate' (coverage gate)"
+      }
+    ]
+  },
+  "prereq_guard": {
+    "selected": [
+      {
+        "id": "h_gate",
+        "value": 0.6175,
+        "capability": "module:h_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "c3x",
+        "value": 0.5668,
+        "capability": "module:c3x",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "c4x",
+        "value": 0.5668,
+        "capability": "module:c4x",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "c5x",
+        "value": 0.5668,
+        "capability": "module:c5x",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cr3_dag_gate",
+        "value": 0.5668,
+        "capability": "module:cr3_dag_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "c6x",
+        "value": 0.5473,
+        "capability": "module:c6x",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cr4_dag_gate",
+        "value": 0.5473,
+        "capability": "module:cr4_dag_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cr5_dag_gate",
+        "value": 0.5473,
+        "capability": "module:cr5_dag_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cr6_dag_gate",
+        "value": 0.5473,
+        "capability": "module:cr6_dag_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cr7_dag_gate",
+        "value": 0.5473,
+        "capability": "module:cr7_dag_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cr4_gate",
+        "value": 0.5424,
+        "capability": "module:cr4_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cnot",
+        "value": 0.5248,
+        "capability": "module:cnot",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cz",
+        "value": 0.5199,
+        "capability": "module:cz",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "swap2",
+        "value": 0.4712,
+        "capability": "module:swap",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "x_gate",
+        "value": 0.4712,
+        "capability": "module:x_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cs_dag",
+        "value": 0.4565,
+        "capability": "module:cs_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k2",
+        "value": 0.4565,
+        "capability": "module:ry_k",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k2_dag",
+        "value": 0.4565,
+        "capability": "module:ry_k2_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k3_dag",
+        "value": 0.4565,
+        "capability": "module:ry_k3_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k4_dag",
+        "value": 0.4516,
+        "capability": "module:ry_k4_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "toffoli",
+        "value": 0.4516,
+        "capability": "module:toffoli",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k5_dag",
+        "value": 0.4468,
+        "capability": "module:ry_k5_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "cs_gate",
+        "value": 0.4419,
+        "capability": "module:cs_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "fredkin",
+        "value": 0.4419,
+        "capability": "module:fredkin",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k6_dag",
+        "value": 0.4419,
+        "capability": "module:ry_k6_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k7_dag",
+        "value": 0.437,
+        "capability": "module:ry_k7_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ct_gate",
+        "value": 0.4321,
+        "capability": "module:ct_gate",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k8_dag",
+        "value": 0.4321,
+        "capability": "module:ry_k8_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k9_dag",
+        "value": 0.4273,
+        "capability": "module:ry_k9_dag",
+        "consensus_est": 0.9
+      },
+      {
+        "id": "ry_k10_dag",
+        "value": 0.4224,
+        "capability": "module:ry_k10_dag",
+        "consensus_est": 0.9
+      }
+    ],
+    "rejected": [
+      {
+        "id": "ry_k3",
+        "value": 0.4565,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k4",
+        "value": 0.4516,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k5",
+        "value": 0.4468,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k6",
+        "value": 0.4419,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k7",
+        "value": 0.437,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k8",
+        "value": 0.4321,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k9",
+        "value": 0.4273,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      },
+      {
+        "id": "ry_k10",
+        "value": 0.4224,
+        "reason": "duplicate-capability 'module:ry_k' (coverage gate)"
+      }
+    ]
+  },
+  "summary": {
+    "app_selected": 24,
+    "app_rejected": 35,
+    "prereq_selected": 30,
+    "prereq_rejected": 8,
+    "single_convention_warnings": 0
+  }
+}

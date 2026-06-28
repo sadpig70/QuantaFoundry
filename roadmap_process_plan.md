@@ -65,21 +65,22 @@ Stage2 // known-family 너머 발견 (designing)
     W2.4_PrimitiveProposalRound // capability-gap→panel→seal (designing) @dep:W2.1
 ```
 
-- [ ] **W2.1 ValueFunction** `[SC][ND]`
-  - 목표: `value=0.25·Novelty+0.20·Sealability+0.20·Composability+0.15·ResourceΔ+0.10·ConsensusEst−0.20·Ambiguity−0.15·Cost`. Composability=dep-graph fan-in(BLOCKED 노드 prereq 수, c6x 패턴). Novelty는 객관근거(GenSkill 재현불가+sealed 조합 표현불가) 강제.
-  - 산출: `scripts/discover.py`(value 함수) · `.pgf/discover/CANDIDATE-RANK.json`.
-  - verify: c6x/sx 사례를 *사후*가 아닌 *사전* 상위랭크로 포착(retrospective 검증).
-- [ ] **W2.2 ExploitAxis (분해 최적화기)** `[SC][ND]`
-  - 목표: 타깃 유니터리 고정, 분해만 MCTS/진화 탐색 → 오라클=하드보상(봉인=1, resource=연속). reward-hacking 구조차단(봉인 못하면 0). cmul4(2-Fredkin) 사례 정형화.
-  - 산출: `scripts/decomp_optimizer.py` · 더 싼 봉인 분해 후보(동일 u_hash, 낮은 T/Toffoli).
-  - verify: 기존 봉인과 동일 u_hash 유지하며 자원 감소 1건 이상 · capability-coverage 게이트(trivial 양산 차단).
-- [ ] **W2.3 GoalSelectionGuard** `[SC][ND]` (A3 고유통찰)
-  - 목표: 생성·확립엔 cross-model 체크 있으나 *무엇을 만들지* 선택엔 부재(미명명 실패모드). 목표선택에 coverage/independence 게이트.
-  - 산출: `scripts/discover.py`(guard) · 선택 거부 로그.
-- [ ] **W2.4 PrimitiveProposalRound** `[EXT]`
-  - 목표: capability-gap("6-control 필요, 제약 X") → 6런타임 패널 decomposition 제안 → 수렴+sympy proof → key-free 봉인. sx/c6x가 template를 standing loop로 승격.
-  - 산출: `_workspace/crossmodel/discover_round1/` 패키지 · 수거 후 봉인.
-  - relay: 정욱님 6런타임 배포→수거. **EXT 의존.**
+- [x] **W2.1 ValueFunction** `[SC][ND]` ✅ 2026-06-28
+  - 목표: `value=0.25·Novelty+0.20·Sealability+0.20·Composability+0.15·ResourceΔ+0.10·ConsensusEst−0.20·Ambiguity−0.15·Cost`. Composability=dep-graph fan-in(c6x 패턴). Novelty 객관근거 강제.
+  - 산출: `scripts/discover.py`(rank/validate/guard/propose) · `.pgf/discover/CANDIDATE-RANK.json` · `RETRO-VALIDATE.json` · `.pgf/DESIGN-QFDiscover.md`(PG 설계).
+  - 결과: 8항 가중합(각 항 registry 그래프구조 유도, 근거 동봉). **RetroValidate ALL PASS**: c6x fan-in=2(cmul2_mod33/35) *사전*포착 · counterfactual 미봉인 시 정확히 BLOCKED 재구성 · specialized 게이트(c3x~c6x) 전부 median 위 · novelty 발견판별(distinct-prime 0.8 > genskill family 0.2). 분석전용 비파괴.
+- [x] **W2.2 ExploitAxis (분해 최적화기)** `[SC][ND]` ✅ 2026-06-28
+  - 목표: 타깃 유니터리 고정, 분해만 탐색 → 오라클=하드보상(봉인=1, resource=연속). reward-hacking 구조차단(봉인 못하면 0).
+  - 산출: `scripts/decomp_optimizer.py`(probe/reward) · `.pgf/discover/EXPLOIT-AXIS-PROBE.json` · `EXPLOIT-AXIS-REWARD.json`.
+  - 결과: **CheaperDecompProbe 6/6 그룹 자원감소 실존**(동일 u_hash, qft4 save=32.2·ccz=10.0·qft2/3·cz·swap2 — 직접 모듈이 _rediscovered/_pipeline 보다 쌈). **HardReward teeth PASS**: cz_rediscovered reward=1.77(정답) · bell/swap_via_cnot reward=0(봉인돼도 u_hash≠target → 유니터리 변조 가짜보상 **구조적 불가**). 임시 store 재봉인(registry 불변).
+- [x] **W2.3 GoalSelectionGuard** `[SC][ND]` (A3 고유통찰) ✅ 2026-06-28
+  - 목표: *무엇을 만들지* 선택의 co-error 방어(미명명 실패모드 명명). coverage/independence 게이트.
+  - 산출: `scripts/discover.py guard` · `.pgf/discover/SELECTION-LOG.json`.
+  - 결과: coverage gate 작동(app 24선택/35거부 — 동일 family-capability 중복 거부) · independence gate(단일 convention 의존 경고, consensus_est<0.6). 모든 결정 사유 로그.
+- [~] **W2.4 PrimitiveProposalRound** `[EXT]` (self-contained 부분 ✅ 2026-06-28, relay 대기)
+  - 목표: capability-gap → 6런타임 패널 decomposition 제안 → 수렴+sympy proof → key-free 봉인.
+  - 산출: `scripts/discover.py propose` → `_workspace/crossmodel/discover_round1/`(GAP-SPEC.json·TASKSPEC.md·SCORING.md·README.md·responses/).
+  - 결과: ValueFunction+family 확장규칙이 **미봉인 capability-gap 자율도출**: `c7x`(7-control, predecessor c6x fan-in=2 → distinct-prime mod39/51 unlock) · `cr8_dag_gate`(qft8+ unlock). PG TaskSpec+채점/봉인 스키마 완성. **EXT 의존**: 정욱님 6런타임 배포→수거 대기.
 
 ---
 

@@ -1,0 +1,63 @@
+{
+  "_schema": "qf-discover-retrovalidate-v1",
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "c6x_fanin_captured",
+      "fanin": 2,
+      "dependents": [
+        "cmul2_mod33",
+        "cmul2_mod35"
+      ],
+      "pass": true
+    },
+    {
+      "check": "c6x_counterfactual_blocks",
+      "blocked_apps": [
+        "cmul2_mod33",
+        "cmul2_mod35"
+      ],
+      "pass": true
+    },
+    {
+      "check": "specialized_gate_prioritized",
+      "detail": {
+        "c6x": {
+          "rank": 5,
+          "value": 0.5473,
+          "above_median": true
+        },
+        "c5x": {
+          "rank": 3,
+          "value": 0.5668,
+          "above_median": true
+        },
+        "c4x": {
+          "rank": 2,
+          "value": 0.5668,
+          "above_median": true
+        },
+        "c3x": {
+          "rank": 1,
+          "value": 0.5668,
+          "above_median": true
+        }
+      },
+      "median_rank_pos": 19.0,
+      "pass": true
+    },
+    {
+      "check": "novelty_discriminates_discovery",
+      "distinct_prime": [
+        "cmul2_mod33",
+        0.8
+      ],
+      "genskill_family": [
+        "ghz3",
+        0.2
+      ],
+      "pass": true
+    }
+  ],
+  "_note": "발견엔진 정당성: 이미 봉인되어 가치가 입증된 c6x/distinct-prime 을 ValueFunction 이 *사전* 상위로 포착하는가(retrospective). counterfactual=그래프에서 모듈 제거 시뮬."
+}
