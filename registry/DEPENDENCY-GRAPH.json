@@ -1475,6 +1475,23 @@
       }
     ]
   },
+  "rzz_pi8": {
+    "u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi4",
+        "uses": 1,
+        "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
+      }
+    ]
+  },
   "shor15_a2": {
     "u_hash": "c8088d7dc3a03bb408fab2e6d9941b3f3e7ad8e2c608ae5d7575e80491156403",
     "depends_on": [
@@ -1645,6 +1662,23 @@
         "id": "cnot",
         "uses": 4,
         "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      }
+    ]
+  },
+  "tfim3_trotter_step": {
+    "u_hash": "ce3db4425f2e8a953ddcd1acee927cfb8e5f9cdab709308c0a8c9e7dad8e9414",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rzz_pi8",
+        "uses": 2,
+        "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131"
+      },
+      {
+        "kind": "module",
+        "id": "rx_negpi4",
+        "uses": 3,
+        "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
       }
     ]
   },

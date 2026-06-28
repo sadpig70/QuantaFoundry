@@ -110,10 +110,10 @@ Read in this order. Tier 1 is enough to give a first proposal; Tier 2/3 are for 
 
 Authoritative source = `registry/REGISTRY-MANIFEST.json`. Reproducible via §8.
 
-- **59 sealed modules (53 Tier-0 dense + 6 Tier-2 Clifford) · 75 sealed apps.** (`registry/apps` holds 119 files = 75 unique +
-  44 app-side re-seal caches; canonical modules live in `registry/modules`.)
-- **registry_root_hash = `3a85407d…`** · **23 frozen consensus keys.**
-- Re-discovery cross-check **6/6** · independent second-oracle **53/53** (Tier-0 dense full coverage; the 6 Tier-2 Clifford modules — Steane/Shor-9 QEC + transversal logical H/S/CNOT — are tableau-sealed + stabilizer-witnessed, outside dense scope) · triple-agreement **7/7**.
+- **61 sealed modules (55 Tier-0 dense + 6 Tier-2 Clifford) · 77 sealed apps.** (`registry/apps` holds 123 files = 77 unique +
+  46 app-side re-seal caches; canonical modules live in `registry/modules`.)
+- **registry_root_hash = `d231fbf4…`** · **23 frozen consensus keys.**
+- Re-discovery cross-check **6/6** · independent second-oracle **55/55** (Tier-0 dense full coverage; the 6 Tier-2 Clifford modules — Steane/Shor-9 QEC + transversal logical H/S/CNOT — are tableau-sealed + stabilizer-witnessed, outside dense scope) · triple-agreement **7/7**.
 
 Completed milestones (so you don't re-propose them):
 - Base gates sealed; **first live cross-model truth** = `sx` (√X), 6 distinct-weights runtimes
@@ -189,10 +189,10 @@ Don't take the numbers on faith. The whole library re-seals deterministically:
 
 ```
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash=3a85407d… · second_oracle 53/53 · behavior pass
+# expect: REPRODUCED · root_hash=d231fbf4… · second_oracle 55/55 · behavior pass
 ```
 
-If `root_hash` matches `3a85407d…`, the 59 modules + 75 apps reproduced byte-for-byte.
+If `root_hash` matches `d231fbf4…`, the 61 modules + 77 apps reproduced byte-for-byte.
 
 ---
 

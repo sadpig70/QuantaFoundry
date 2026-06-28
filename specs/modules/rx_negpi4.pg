@@ -1,0 +1,14 @@
+# rx_negpi4 — Rx(-π/4) = e^{i(π/8)X}. Pauli-X 지수 회전(TFIM 가로장 항). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import Rx
+bloq = Rx(-np.pi/4)
+```
+```python id=golden
+import numpy as np
+X = np.array([[0,1],[1,0]], complex)
+golden = (np.cos(np.pi/8)*np.eye(2) + 1j*np.sin(np.pi/8)*X).astype(complex)
+```
+```json id=meta
+{"id": "rx_negpi4", "n_sys": 1, "n_anc": 0}
+```

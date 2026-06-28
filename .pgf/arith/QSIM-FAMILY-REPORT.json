@@ -1,0 +1,61 @@
+{
+  "phase": "W8.1 HamiltonianSimulation",
+  "honesty": "New horizontal class: Trotterized Hamiltonian simulation. New primitive type = Pauli-exponential rotations (Rz/Rx, non-Clifford analytic). golden = closed-form Pauli exponentials (cos/sin, Qualtran-independent); composite = Rz/Rx/CNOT bloqs (honest decomposition, no MatrixGate). The Trotter STEP is sealed EXACTLY (composite==golden). The Trotter ERROR vs the true e^{-iH dt} is an OBSERVATION, NOT a seal — the 'approximation != exact' boundary (sister of 'execution != verification'); O(dt^2) scaling confirmed. modules 59->61, apps 75->77.",
+  "modules": [
+    {
+      "id": "rz_negpi4",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
+    },
+    {
+      "id": "rx_negpi4",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
+    }
+  ],
+  "apps": [
+    {
+      "id": "rzz_pi8",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131",
+      "reason": ""
+    },
+    {
+      "id": "tfim3_trotter_step",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "ce3db4425f2e8a953ddcd1acee927cfb8e5f9cdab709308c0a8c9e7dad8e9414",
+      "reason": ""
+    }
+  ],
+  "trotter_error_observation": {
+    "note": "OBSERVATION, NOT A SEAL — Trotter step is sealed EXACTLY; this is its approximation error vs the true e^{-iH dt}.",
+    "scaling": [
+      {
+        "dt": 0.39269908169872414,
+        "trotter_error_2norm": 0.390663
+      },
+      {
+        "dt": 0.19634954084936207,
+        "trotter_error_2norm": 0.106062
+      },
+      {
+        "dt": 0.09817477042468103,
+        "trotter_error_2norm": 0.027072
+      }
+    ],
+    "ratio_dt_halving": [
+      3.683,
+      3.918
+    ],
+    "O(dt^2)_confirmed": true
+  },
+  "all_ok": true
+}

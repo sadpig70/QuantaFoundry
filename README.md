@@ -42,17 +42,22 @@ It generates quantum software modules from high-level intent, verifies them with
 > logical `H` (`H^⊗7`), `S` (`S†^⊗7`), and `CNOT` (`CNOT^⊗7`, two code blocks = **14 qubits**, which
 > *cannot* be a Tier-0 dense seal: 2¹⁴ — so it demonstrates Tier-2's dense-free advantage at scale),
 > each independently witnessed by its logical action on the code's basis states.
-> The registry advanced from the v0.7-core root `3dae613d…` to the current **`3a85407d…` (59 modules
-> — 53 Tier-0 dense + 6 Tier-2 Clifford, 75 apps)**. Pure non-destructive growth: every prior seal, the
+> **W8.1** opens a second new horizontal class — **Trotterized Hamiltonian simulation**: Pauli-exponential
+> `Rz`/`Rx` rotations compose (via `e^{iθZZ}` = CNOT·Rz·CNOT) into a TFIM Trotter step. The step is sealed
+> *exactly* (composite == closed-form golden), while its **Trotter error** vs the true `e^{-iHt}` is an
+> honest **observation, not a seal** (O(dt²) scaling confirmed) — the `approximation ≠ exact` boundary,
+> sister to `execution ≠ verification`.
+> The registry advanced from the v0.7-core root `3dae613d…` to the current **`d231fbf4…` (61 modules
+> — 55 Tier-0 dense + 6 Tier-2 Clifford, 77 apps)**. Pure non-destructive growth: every prior seal, the
 > 23 frozen consensus keys, and the fingerprint files reproduce byte-identically.
 >
-> **Guarantee split** (no exact-coverage overclaim): all **59 modules** are `unitary_equiv` — 53 Tier-0
+> **Guarantee split** (no exact-coverage overclaim): all **61 modules** are `unitary_equiv` — 55 Tier-0
 > EXACT (dense) + 6 Tier-2 Clifford (canonical stabilizer tableau, dense-free but still exact up to
-> global phase); the **75 apps** are 73 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
+> global phase); the **77 apps** are 75 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
 > sampled-dense two-path verified with a sealed seed, also Tier-2 sealed) + **1 `structural_wellformed`**
 > (`shor91`, the W6.5 Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense
 > `unitary_equiv`, honestly labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0; the W7.2
-> Steane/Shor-9 QEC seals and the W7.3 transversal logical gates are Tier-2 Clifford. Authoritative tally:
+> Steane/Shor-9 QEC seals and the W7.3 transversal logical gates are Tier-2 Clifford; the W8.1 Hamiltonian-sim rotations and Trotter step are Tier-0. Authoritative tally:
 > `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 >
 > **Full technical specification + evidence:** [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md)

@@ -1,0 +1,13 @@
+# rz_negpi4 — Rz(-π/4) = e^{i(π/8)Z}. Pauli-Z 지수 회전(해밀토니안 시뮬 primitive). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import Rz
+bloq = Rz(-np.pi/4)
+```
+```python id=golden
+import numpy as np
+golden = np.diag([np.exp(1j*np.pi/8), np.exp(-1j*np.pi/8)]).astype(complex)
+```
+```json id=meta
+{"id": "rz_negpi4", "n_sys": 1, "n_anc": 0}
+```

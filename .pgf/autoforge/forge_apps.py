@@ -64,6 +64,9 @@ APP_LIST = [
     ("repcode3_phaseflip.app.pg", None),   # [[3,1]] phase-flip 인코더 (+H×3, golden=H^⊗3@parity)
     ("shor9_encoder.app.pg",      None),   # [[9,1,3]] Shor 코드(1995) 인코더 9q 512×512 — QEC capstone
     ("syndrome3_bitflip.app.pg",  None),   # bit-flip 신드롬 추출(측정前 parity-copy unitary), 5q
+    # F3 확장 (§5r W8.1): Hamiltonian simulation — Trotter, 새 수평 클래스(Pauli-exp 회전)
+    ("rzz_pi8.app.pg",            None),   # e^{i(π/8)Z⊗Z} = CNOT·rz_negpi4·CNOT (2q ZZ 상호작용)
+    ("tfim3_trotter_step.app.pg", None),   # TFIM n=3 1차 Trotter step (3q) — step EXACT 봉인(오차=관찰)
 ]
 
 

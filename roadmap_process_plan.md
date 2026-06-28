@@ -170,6 +170,9 @@ Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-p
     W7.1_QECStabilizerFamily // QEC stabilizer 인코더(Clifford Tier-0): repcode3·syndrome3·shor9_encoder[[9,1,3]] (done)
     W7.2_CliffordTier2QEC // stabilizer-tableau(Tier-2)로 QEC 심화: Steane[[7,1,3]] |0>/|1>·shor9 재봉인 (done)
     W7.3_FaultTolerantLogicalGates // Steane transversal 논리 H/S/CNOT(논리 CNOT 14q dense-free), Tier-2 (done)
+
+Stage8 // 또 다른 수평 클래스 — 해밀토니안 시뮬레이션 (in-progress)
+    W8.1_HamiltonianSimulation // Trotter: Pauli-exp 회전 rz/rx + rzz/TFIM step, 정직-근사(오차=관찰) (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -220,6 +223,12 @@ Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-p
   - 봉인 3개(tier=2): `steane_logical_h`(논리 H=H^⊗7)·`steane_logical_s`(논리 S=S†^⊗7, transversal S†가 논리 S(+i) 구현)·**`steane_logical_cnot`**(논리 CNOT=CNOT^⊗7 블록 A=0..6→B=7..13, **14q**). 정준 tableau 재계산==sealed 3/3.
   - **정직성·Tier-2 스케일 실증**: 논리 CNOT 14q=2^14 dense **불가** → Tier-2 dense-free 강점을 *처음으로 스케일*에서 실증(tableau 봉인, 논리기저 벡터로 witness, full unitary 미실체화). Steane=doubly-even self-dual CSS → transversal {H,S,CNOT} 코드보존 valid. **논리-정확성 witness(오라클 독립, 드라이버)**: H̄ |0_L>→|+_L>·|1_L>→|−_L>; S̄ 코드보존+|1_L> 위상 +i; CNOT̄ 4 논리기저 |ab_L>→|a,a⊕b_L>. plan=Clifford(H·CNOT·ZPowGate(-0.5)), MatrixGate 0. second_oracle(dense)=53 Tier-0만.
   - **모듈 56→59(Tier-2 +3)·앱 75 불변, root 36e7014c→`3a85407d`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, second_oracle 53/53, contested_guard ALL PASS).
+- [x] **W8.1 HamiltonianSimulation — 새 수평 클래스(Trotter)** `[SC][ND]` ✅ 2026-06-29
+  - 목표: QEC arc 이후 또 다른 *수평* 확장. 새 primitive 타입 = **Pauli-exponential 회전**(non-Clifford analytic, cr_k 근육 재사용).
+  - 산출: `scripts/qsim_family.py`·`.pgf/DESIGN-HamiltonianSim.md`·`specs/modules/{rz_negpi4,rx_negpi4}.pg`·`specs/apps/{rzz_pi8,tfim3_trotter_step}.app.pg`. second_oracle INDEP+2·forge_apps APP_LIST+2.
+  - 봉인(전부 Tier-0 EXACT, dt=π/8): `rz_negpi4`=Rz(-π/4)=e^{i(π/8)Z}·`rx_negpi4`=Rx(-π/4)=e^{i(π/8)X}(analytic golden)·`rzz_pi8`=e^{i(π/8)Z⊗Z}=CNOT·rz·CNOT(2q)·`tfim3_trotter_step`=TFIM n=3 J=h=1 1차 Trotter step(3q). composite==closed-form golden(honest 분해, MatrixGate 0).
+  - ★**정직-근사 showcase**: Trotter STEP은 정확 봉인(golden=Trotter곱), 진짜 e^{-iHdt}와의 **Trotter 오차는 관찰(seal 아님)** — `approximation≠exact` 경계(execution≠verification 자매). 오차 0.39(dt=π/8)·**O(dt²) 스케일링 확인**(0.39→0.106→0.027, dt 반감→¼, ratio≈3.7~3.9). golden=closed-form Pauli 지수(Qualtran 비의존)·plan=Rz/Rx/CNOT bloq.
+  - **모듈 59→61(Tier-0 dense +2, second_oracle 53→55/55)·앱 75→77, root 3a85407d→`d231fbf4`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS).
 
 ---
 

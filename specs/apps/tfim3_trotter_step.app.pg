@@ -1,0 +1,20 @@
+# tfim3_trotter_step — TFIM n=3 (H=-J ΣZZ - h ΣX, J=h=1) 1차 Trotter step, dt=π/8. plan=rzz(0,1)·rzz(1,2)·rx(0,1,2), 봉인 부품. golden=Trotter곱(EXACT 봉인). 진짜 e^{-iHdt} 와의 Trotter 오차는 별도 관찰(seal 아님).
+```json id=app_meta
+{"id": "tfim3_trotter_step", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n=3; th=np.pi/8
+I2=np.eye(2,dtype=complex); Z=np.diag([1,-1]).astype(complex); X=np.array([[0,1],[1,0]],complex)
+def opn(ps):
+    m=np.array([[1]],dtype=complex)
+    for q in range(n): m=np.kron(m, ps.get(q,I2))
+    return m
+def ezz(i,j): M=opn({i:Z,j:Z}); return np.cos(th)*np.eye(8,dtype=complex)+1j*np.sin(th)*M
+def ex(i): M=opn({i:X}); return np.cos(th)*np.eye(8,dtype=complex)+1j*np.sin(th)*M
+golden=np.eye(8,dtype=complex)
+for U in [ezz(0,1),ezz(1,2),ex(0),ex(1),ex(2)]: golden=U@golden
+```
+```json id=plan
+{"steps": [{"app": "rzz_pi8.app.pg", "targets": [0, 1]}, {"app": "rzz_pi8.app.pg", "targets": [1, 2]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [1]}, {"spec": "../modules/rx_negpi4.pg", "targets": [2]}]}
+```

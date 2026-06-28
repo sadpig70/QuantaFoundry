@@ -342,6 +342,12 @@ swap_via_cnot
 syndrome3_bitflip
 └─ cnot (module×4)
 
+tfim3_trotter_step
+├─ rzz_pi8 (app×2)
+│  ├─ cnot (module×2)
+│  └─ rz_negpi4 (module)
+└─ rx_negpi4 (module×3)
+
 wstate10
 ├─ cnot (module×27)
 ├─ ry_k10 (module)

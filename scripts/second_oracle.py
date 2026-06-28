@@ -83,6 +83,9 @@ INDEP = {
     "cr5_dag_gate": lambda: cphase(5).conj(), "cr6_dag_gate": lambda: cphase(6).conj(),
     "cr7_dag_gate": lambda: cphase(7).conj(), "cr8_dag_gate": lambda: cphase(8).conj(),
     "qft2": lambda: qft_n(2), "qft3": lambda: qft_n(3), "qft4": lambda: qft_n(4),
+    # ── W8.1: Pauli-exponential 회전(해밀토니안 시뮬 primitive) — 제1원리 closed form ──
+    "rz_negpi4": lambda: np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex),
+    "rx_negpi4": lambda: (np.cos(np.pi / 8) * np.eye(2) + 1j * np.sin(np.pi / 8) * X).astype(complex),
 }
 # ry_k cascade family (k=2..10) + daggers — late-binding 회피용 즉시 캡처
 for _k in range(2, 11):
