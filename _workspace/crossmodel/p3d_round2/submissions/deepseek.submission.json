@@ -1,0 +1,121 @@
+{
+  "runtime": "deepseek",
+  "weights_id": "deepseek-v4-pro",
+  "convention_ack": true,
+  "submissions": [
+    {
+      "id": "cnot_std",
+      "n_sys": 2,
+      "golden_real": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "note": "Standard CNOT: control=q0 (MSB), target=q1. |10>\\u2194|11> swap."
+    },
+    {
+      "id": "cnot_lower",
+      "n_sys": 2,
+      "golden_real": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "golden_imag": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "note": "Reverse CNOT: control=q1 (LSB), target=q0. |01>\\u2194|11> swap."
+    }
+  ]
+}

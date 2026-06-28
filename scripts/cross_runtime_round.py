@@ -151,6 +151,13 @@ def main():
         "per_runtime": per_runtime,
         "co_error_intents": [m["intent"] for m in co_errors],
         "co_error_undefended_by_rho": [m["intent"] for m in co_error_undefended],
+        "limitations": (
+            "정직한 음성의 범위 한정: (1) probe 1종(cnot_lower)에서 6/6 정답 = co-error '미발생'이지 "
+            "'불가능' 증명 아님(probe 가 충분히 적대적이지 못함 — 명시된 wiring 이 표준-CNOT 반사를 "
+            "이김). (2) 동반오류가 0 이라 ρ-할인 방어는 *실데이터로 미검증*(selftest 합성으로만 입증). "
+            "더 모호한 probe(모델이 공유 오답 prior 를 갖는 게이트)로 후속 라운드 시 ρ-경로 실측 가능."
+            if not co_errors else
+            "동반오류 측정됨 — ρ-할인 방어 여부 measures 참조."),
         "note": ("RELAY PENDING: round2 패키지 준비 완료, 정욱님 6런타임 공통 intent 수거 대기. "
                  "selftest 로 채점기 결정론만 self-contained 입증." if relay_pending else
                  ("동반오류 측정됨 — ρ-할인 방어 여부는 measures 참조" if co_errors else
