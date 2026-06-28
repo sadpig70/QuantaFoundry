@@ -40,6 +40,12 @@ def spec_quality_guard(spec) -> Verdict:
     gi = golden_guard.golden_independence_guard(spec)
     if gi.block:
         return Verdict(True, gi.reason)
+    # honest-분해 강제 (P3d T1): bloq 가 tensor_contract 를 리터럴로 override 하는 hollow seal 차단.
+    # 모듈/앱(app_assemble) 양쪽 봉인 경로가 이 게이트를 거치므로 일괄 강제됨.
+    import decomp_guard
+    hd = decomp_guard.decomposition_honesty_guard(spec)
+    if hd.block:
+        return Verdict(True, hd.reason)
     return Verdict(False)
 
 

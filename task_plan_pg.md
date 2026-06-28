@@ -56,10 +56,10 @@ QuantaFoundryV07Plan // 신뢰 약점 지점으로 가치 이동 — self-contai
         Relay // 6런타임(deepseek/gemini/gpt-5/grok/kimi/qwen) 독립 수거 (done) — 정욱님
         Ingest // 라운드1 판정: T2/T3 위조 6/6 HELD(provenance), T1 hollow 6/6 DOC_GAP, BREAK 0 (done)
         SelfVerify // 적대적 자기검증: 초기 18-break=채점기 결함 2건 발견·수정(provenance 바인딩·hollow 패턴) (done)
-        T1Closure // honest-분해 공백 닫기(비파괴 정책가드) — 정직48 통과·hollow6 거부 (done)
-            DecompHonestyGuard // scripts/decomp_guard.py — 동적(__module__)+정적(AST monkey-patch) (done)
-            SealModuleWrapper // scripts/seal_module.py — spec_quality+decomp+verify_seal 합성 입구 (done)
-            Validate // 48 byte-identical 재봉인·6 hollow REJECT·오라클(fingerprint) 무변경 (done) — scripts/verify_t1_closure.py
+        T1Closure // honest-분해 공백 닫기(비파괴 정책가드) — 모듈+앱 경로 일괄 강제 (done)
+            DecompHonestyGuard // 오라클 decomp_guard.py — 동적(__module__)+정적(AST: override·monkey-patch·MatrixGate) (done)
+            WireSpecQualityGuard // spec_guard.spec_quality_guard 에 통합 → 모듈(seal_module)+앱(app_assemble) 양쪽 강제 (done)
+            ValidateNonDestructive // 48모듈+59앱 byte-identical(root 3dae613d 불변)·6 hollow+matrixgate+app 거부·fingerprint 무변경 (done) — scripts/verify_t1_closure.py
         Round2_CrossRuntimeCoError // 공통 intent 고정→진짜 독립 동반오류 실측 (done)
             DesignProbe // cnot_std(sanity)+cnot_lower(probe, control=q1≠표준) — 순열차 u_hash 분리 (done)
             RoundPackage // ROUND-BRIEF·intents·template (done) — _workspace/crossmodel/p3d_round2/

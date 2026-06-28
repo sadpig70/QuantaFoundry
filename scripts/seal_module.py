@@ -28,18 +28,12 @@ sys.path.insert(0, ORACLE)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import verify_seal as vs        # noqa: E402  (load_pg_spec 사용만)
 import spec_guard as sg         # noqa: E402  (오라클 정책 가드 사용만)
-import decomp_guard as dg       # noqa: E402  (신규 honest-분해 가드)
 
 
-def policy_gate(spec) -> dg.Verdict:
-    """모듈 봉인 정책 게이트: 명세충분성 + honest-분해. 통과=Verdict(block=False)."""
-    q = sg.spec_quality_guard(spec)
-    if q.block:
-        return dg.Verdict(True, "spec_quality: " + q.reason)
-    h = dg.decomposition_honesty_guard(spec)
-    if h.block:
-        return dg.Verdict(True, h.reason)
-    return dg.Verdict(False)
+def policy_gate(spec) -> "sg.Verdict":
+    """모듈 봉인 정책 게이트 = spec_quality_guard(명세충분성+golden독립성+honest-분해 합성).
+    honest-분해(decomp_guard)는 spec_quality_guard 에 통합돼 모듈/앱 경로 일괄 강제된다."""
+    return sg.spec_quality_guard(spec)
 
 
 def seal_module(spec_path: str, out_dir: str) -> int:

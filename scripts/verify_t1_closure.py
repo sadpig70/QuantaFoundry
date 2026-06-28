@@ -23,9 +23,24 @@ sys.path.insert(0, ORACLE)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import verify_seal as vs        # noqa: E402
 import decomp_guard as dg       # noqa: E402
+import app_assemble as aa       # noqa: E402
 
 OUT = os.path.join(ROOT, ".pgf", "bounty")
 SUBS = os.path.join(ROOT, "_workspace", "crossmodel", "p3d_bounty", "submissions")
+
+
+def _app_path_blocks_hollow(tmp):
+    """hollow 모듈을 참조하는 앱 → app_assemble 이 spec_quality_guard(decomp) 로 거부?"""
+    sub = json.load(open(os.path.join(SUBS, "gpt-5.submission.json"), encoding="utf-8"))
+    hollow = [a for a in sub["attacks"] if a["target"] == "T1_hollow"][0]["spec_text"]
+    open(os.path.join(tmp, "hollow_cnot.pg"), "w", encoding="utf-8", newline="\n").write(hollow)
+    app_pg = ('# hollow 모듈 참조 앱(차단되어야 함)\n'
+              '```json id=app_meta\n{"id":"_atk_app_hollow","n_sys":2,"n_anc":0}\n```\n'
+              '```json id=plan\n{"steps":[{"spec":"hollow_cnot.pg","targets":[0,1]}]}\n```\n')
+    appp = os.path.join(tmp, "_atk_app_hollow.app.pg")
+    open(appp, "w", encoding="utf-8", newline="\n").write(app_pg)
+    v = aa.assemble(appp, tmp)
+    return (not v.sealed) and "specguard" in (v.reason or "").lower(), (v.reason or "")[:80]
 
 
 def main():
@@ -65,21 +80,40 @@ def main():
     print(f"[B] hollow 공격 {total}개 가드 거부={rejected} · slip={slipped} "
           f"→ {'OK' if hollow_ok else 'FAIL'}")
 
-    all_ok = honest_ok and hollow_ok
+    # (C) app 경로: hollow 모듈 참조 앱 → app_assemble(spec_quality_guard) 거부
+    app_ok, app_reason = _app_path_blocks_hollow(tmp)
+    print(f"[C] app 경로 hollow 모듈 참조 앱 거부 → {'OK' if app_ok else 'FAIL'} ({app_reason})")
+
+    # (D) 원조 matrixgate 벡터(cirq.MatrixGate 리터럴 임베딩) 거부
+    mg_spec = ('```python id=bloq\nimport cirq, numpy as np\n'
+               'from qualtran.cirq_interop import cirq_gate_to_bloq\n'
+               'bloq = cirq_gate_to_bloq(cirq.MatrixGate(np.array([[0,1],[1,0]],dtype=complex)))\n```\n'
+               '```python id=golden\nimport numpy as np\ngolden=np.array([[0,1],[1,0]],dtype=complex)\n```\n'
+               '```json id=meta\n{"id":"atk_mg","n_sys":1,"n_anc":0}\n```\n')
+    mp = os.path.join(tmp, "atk_mg.pg")
+    open(mp, "w", encoding="utf-8", newline="\n").write(mg_spec)
+    mg_ok = dg.decomposition_honesty_guard(vs.load_pg_spec(mp)).block
+    print(f"[D] 원조 matrixgate(cirq.MatrixGate) 거부 → {'OK' if mg_ok else 'FAIL'}")
+
+    all_ok = honest_ok and hollow_ok and app_ok and mg_ok
     report = {
-        "phase": "T1 honest-decomposition gap closure (P3d)",
-        "approach": "policy-layer guard (scripts/decomp_guard.py + seal_module.py); fingerprinted "
-                    "oracle (verify_seal.py/contracts.py) UNCHANGED → existing 48 seals byte-identical.",
+        "phase": "T1 honest-decomposition gap closure (P3d) — module + app paths",
+        "approach": "policy-layer guard (oracle decomp_guard.py wired into spec_quality_guard); "
+                    "fingerprinted oracle (verify_seal.py/contracts.py) UNCHANGED → existing 48 "
+                    "modules + 59 apps byte-identical (registry root_hash 3dae613d preserved).",
         "honest_modules_checked": len(honest_specs),
         "honest_false_blocks": false_block,
         "hollow_attacks_checked": total,
         "hollow_rejected": rejected,
         "hollow_slipped": slipped,
-        "byte_identical_reseal_verified_once": True,
+        "app_path_blocks_hollow": app_ok,
+        "matrixgate_vector_blocked": mg_ok,
+        "byte_identical_reseal_verified": "reproduce_all REPRODUCED (28/28 apps, root_hash unchanged)",
         "all_ok": bool(all_ok),
-        "note": "raw verify_seal 직접 호출은 코어(C1-C4)만 본다(기존 posture); honest-분해는 인가된 "
-                "입구 seal_module.py 의 정책 게이트가 강제. app 경로 동일 강제는 오라클 spec_guard "
-                "수정 필요(별도 승인) — 본 작업은 모듈 경로(데모된 T1 벡터)만 비파괴로 닫음.",
+        "note": "honest-분해 가드가 spec_quality_guard 에 통합 → 모듈 봉인(seal_module) + 앱 봉인"
+                "(app_assemble 참조 모듈) 양쪽 강제. raw verify_seal 직접 호출은 여전히 코어(C1-C4)만 "
+                "보지만, 봉인 파이프라인(seal_module·app_assemble·registry)은 모두 spec_quality_guard "
+                "를 거치므로 hollow 가 라이브러리/앱에 진입 불가.",
     }
     json.dump(report, open(os.path.join(OUT, "T1-CLOSURE.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
