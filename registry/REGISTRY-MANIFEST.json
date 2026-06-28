@@ -60,9 +60,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 67,
+    "unique_app_count": 71,
     "cached_app_side_module_count": 44,
-    "total_files": 111,
+    "total_files": 115,
     "path": "registry/apps",
     "unique": [
       "bell",
@@ -76,6 +76,7 @@
       "cluster8",
       "cluster9",
       "cmul16_mod21",
+      "cmul16_mod91",
       "cmul2_mod15",
       "cmul2_mod21",
       "cmul2_mod33",
@@ -85,6 +86,8 @@
       "cmul2_mod91",
       "cmul4_mod15",
       "cmul4_mod21",
+      "cmul4_mod91",
+      "cmul74_mod91",
       "cmul7_mod15",
       "cz_rediscovered",
       "diffusion",
@@ -123,6 +126,7 @@
       "shor15_a2",
       "shor15_a7",
       "shor21_a2",
+      "shor91",
       "swap_via_cnot",
       "wstate10",
       "wstate3",
@@ -226,7 +230,7 @@
     "toffoli": "registry/modules/toffoli.sealed.json",
     "x_gate": "registry/modules/x_gate.sealed.json"
   },
-  "registry_root_hash": "ea97a877973664281e6ab5a90bd2322fd776deee42c36d34923a90d87b552410",
+  "registry_root_hash": "93183bcd244bb1ea6d2119d7bfbf974298bba65989d9ab52603f281450245584",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

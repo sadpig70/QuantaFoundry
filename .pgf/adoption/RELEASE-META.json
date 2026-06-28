@@ -2,14 +2,14 @@
   "_schema": "release-meta-v1",
   "version": "0.7.0",
   "date_released": "2026-06-28",
-  "registry_root_hash": "ea97a877973664281e6ab5a90bd2322fd776deee42c36d34923a90d87b552410",
+  "registry_root_hash": "93183bcd244bb1ea6d2119d7bfbf974298bba65989d9ab52603f281450245584",
   "modules": 53,
-  "unique_apps": 67,
-  "citation_string": "QuantaFoundry v0.7.0, QPGF-sealed root ea97a87797366428 (verify: python scripts/reproduce_all.py).",
+  "unique_apps": 71,
+  "citation_string": "QuantaFoundry v0.7.0, QPGF-sealed root 93183bcd244bb1ea (verify: python scripts/reproduce_all.py).",
   "verify_commands": [
     "python scripts/reproduce_all.py",
     "python scripts/second_oracle.py",
-    "python scripts/qf_cli.py reproduce --expect-root ea97a87797366428"
+    "python scripts/qf_cli.py reproduce --expect-root 93183bcd244bb1ea"
   ],
   "doi_placeholder": "10.5281/zenodo.PLACEHOLDER (release 시 발급)",
   "_note": "registry_root_hash 가 결정론 봉인 전체의 인용가능 단일지문. 논문/소프트웨어 인용 시 이 root 를 명시하면 제3자가 byte-identity 로 재현·검증 가능(재현성 위기 대응)."

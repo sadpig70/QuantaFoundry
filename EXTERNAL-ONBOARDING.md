@@ -110,9 +110,9 @@ Read in this order. Tier 1 is enough to give a first proposal; Tier 2/3 are for 
 
 Authoritative source = `registry/REGISTRY-MANIFEST.json`. Reproducible via §8.
 
-- **53 sealed modules · 67 sealed apps.** (`registry/apps` holds 111 files = 67 unique +
+- **53 sealed modules · 71 sealed apps.** (`registry/apps` holds 115 files = 71 unique +
   44 app-side re-seal caches; canonical modules live in `registry/modules`.)
-- **registry_root_hash = `ea97a877…`** · **23 frozen consensus keys.**
+- **registry_root_hash = `93183bcd…`** · **23 frozen consensus keys.**
 - Re-discovery cross-check **6/6** · independent second-oracle **53/53** (full coverage) · triple-agreement **7/7**.
 
 Completed milestones (so you don't re-propose them):
@@ -157,9 +157,10 @@ We hold ourselves to this; proposals that ignore it will read as naive.
 - A **value function now exists** (S2 QF-Discover — objective dependency-fan-in ranking), but
   continuous *unattended* discovery is still **manually triggered**; there is no always-on loop
   driving it yet.
-- **Tier-1 unitary-equivalence gap is closed for the current library** — `ghz16` was raised to
-  `unitary_equiv_sampled` (S1, sampled-dense two-path + sealed seed) and **zero structural-only
-  seals remain**. But sampled-dense is *probabilistic-complete*, not full dense equivalence; a
+- **Tier-1 unitary-equivalence: one deliberate structural-only seal** — `ghz16` was raised to
+  `unitary_equiv_sampled` (S1, sampled-dense two-path + sealed seed); the **W6.5 `shor91` capstone**
+  re-introduces exactly **one `structural_wellformed` seal** (15 qubits > dense ceiling — a Merkle of
+  sealed parts, honestly weaker than dense equivalence, by design). Sampled-dense is *probabilistic-complete*, not full dense equivalence; a
   future large non-Clifford app would re-open the gap (a ZX Tier-3 path is staged for it).
 - **Convention is a shared assumption, not independently derived** (S4 W4.1 audit): `second_oracle`
   re-derives the *unitary* independently, but endian/global-phase/atol/canonical-hash are shared
@@ -188,10 +189,10 @@ Don't take the numbers on faith. The whole library re-seals deterministically:
 
 ```
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash=ea97a877… · second_oracle 53/53 · behavior pass
+# expect: REPRODUCED · root_hash=93183bcd… · second_oracle 53/53 · behavior pass
 ```
 
-If `root_hash` matches `ea97a877…`, the 53 modules + 67 apps reproduced byte-for-byte.
+If `root_hash` matches `93183bcd…`, the 53 modules + 71 apps reproduced byte-for-byte.
 
 ---
 

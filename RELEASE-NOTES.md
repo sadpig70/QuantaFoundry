@@ -2,8 +2,8 @@
 
 ## v0.7 — Foundry realized + adoption & hardening (2026-06-28)
 
-The foundry layer around QPGF is substantially realized: **53 sealed modules → 67 sealed applications**,
-`registry_root_hash` `ea97a877…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
+The foundry layer around QPGF is substantially realized: **53 sealed modules → 71 sealed applications**,
+`registry_root_hash` `93183bcd…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
 (genuine Shor N=21, the GenSkill library, self-extending goal-autonomy) are documented in the technical
 spec's *What changed* sections; v0.3 — the first public milestone — is below.
 
@@ -16,8 +16,10 @@ honest-decomposition guard. Frozen consensus keys: **23**.
 seals, the frozen consensus keys, and the fingerprint files unchanged). The W2.4 cross-runtime relay
 then grew the registry by two key-free primitives (`c7x`, `cr8_dag_gate`), the W6 payoffs spent them
 (`c7x`→distinct-prime `cmul2_mod91/77/85`; `cr8_dag_gate`→8-qubit inverse-QFT `iqft8`), and the
-forward-QFT completion sealed `cr6/7/8_gate`→`qft5…8_pipeline` — advancing from the v0.7-core root
-`3dae613d…` to the current `ea97a877…` (48→53 modules, 59→67 apps) — pure non-destructive growth:**
+forward-QFT completion sealed `cr6/7/8_gate`→`qft5…8_pipeline`, and the W6.5 capstone composed those
+parts into a genuine distinct-prime Shor circuit `shor91` (91=7×13; 15 qubits → Tier-1 STRUCTURAL, the
+first algorithm-scale structural-only seal — honestly labelled, weaker than dense) — advancing from the
+v0.7-core root `3dae613d…` to the current `93183bcd…` (48→53 modules, 59→71 apps) — pure non-destructive growth:**
 
 - **S0–S1 Trust-Closure:** `second_oracle` independent re-derivation to **48/48 modules**; `ghz16`
   raised to `unitary_equiv_sampled` (zero structural-only seals); ZX-routing infrastructure (self-test

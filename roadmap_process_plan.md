@@ -164,6 +164,7 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
     W6.2_DiscoverSelfAdvance // 발견 frontier 봉인 gate 자동전진 + unlock 정정 (done)
     W6.3_QFTPipelineExtendCr8 // cr8 활용 8큐비트 역-QFT(iqft8) 봉인 (done)
     W6.4_ForwardQFTPipelineComplete // cr6/7/8_gate 봉인 → 정-QFT pipeline n=8 완결 (done)
+    W6.5_ShorCapstone // 부품 조립 → genuine distinct-prime Shor-91(7×13) Tier-1 STRUCTURAL (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -189,6 +190,12 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
   - 분해 패턴(qft4_pipeline 도출): t=0→n-1로 H(t) 후 c=t+1→n-1로 cr_{(c-t)+1}(c,t)(k2→cs_gate·k3→ct_gate·k≥4→cr{k}_gate), 마지막 비트반전 swap. golden=raw QFT.
   - ★**RegressionGate**: `gen_qft_pipeline(4)`이 봉인 `qft4_pipeline` byte-identical 재현(u_hash `d997d21f…` 일치) → 패턴 정확성 입증.
   - 결과: `cr6/7/8_gate` 봉인(독립 cphase(k) 일치 3/3)·`qft5/6/7/8_pipeline` Tier-0 봉인(qft6/7/8이 cr6/7/8_gate 실사용)·독립 QFT_n u_hash==sealed 4/4. **모듈 50→53·앱 63→67, root 43580b93→ea97a877**(순수 비파괴: frozen 23키·fingerprint byte-identical, second_oracle 53/53, 2회 byte-identity).
+- [x] **W6.5 ShorCapstone — genuine distinct-prime Shor-91 (7×13)** `[SC][ND]` ✅ 2026-06-28
+  - 목표: W6.1~W6.4가 만든 부품을 완전한 Shor 인수분해 회로로 조립하는 capstone. N=91=7×13(둘 다 >5, 진짜 distinct-prime).
+  - 산출: `scripts/shor_capstone.py`(조립 드라이버)·`.pgf/DESIGN-ShorCapstone.md`(PG 설계)·`specs/apps/shor91.app.pg`.
+  - 구조: 15q(counting 8 + work 7). H^8 · controlled-U^(2^j)(cmul{2,4,16,74}_mod91, powa=[74,16,74,16,74,16,4,2]) · iqft8. 부품 cmul4/16/74_mod91 신규 forge(c7x-engine, Tier-0 8q, 독립순열 일치).
+  - **봉인**: 15q > EXACT_BOUND(12) → **Tier-1 STRUCTURAL**(plan.tier="structural", u_hash=Merkle(자식 sealed u_hash + 배선), dense 미실체화). u_hash `ea39b003…`. 자식 전부 sealed. period readout(illustrative §8.4): ord_91(2)=12 → 2^6=64 → gcd(63,91)=7·gcd(65,91)=13 → 91=7×13.
+  - **앱 67→71**(cmul4/16/74_mod91 + shor91), **root ea97a877→93183bcd**(순수 비파괴: 모듈 53·frozen 23·fingerprint byte-identical, reproduce_all REPRODUCED). ⚠ **정직성**: shor91은 *첫 algorithm-scale structural-only 봉인* — dense Tier-0(shor15/21)보다 약한 보증(SEMANTIC-GUARANTEES structural_wellformed=1). t=8 counting(2^8<2r²)는 readout 확률에만 영향(구조봉인 t 무관). 정-QFT(qft9/iqft9)·t=9는 cr9_dag 선행 필요(별건).
 
 ---
 

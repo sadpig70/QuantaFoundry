@@ -1,0 +1,7 @@
+# shor91 — genuine Shor period-finding (N=91=7×13, a=2). 15q: counting c0..c7(8) | work w0..w6(7). H^8 · controlled-U^(2^j)(U=×2 mod 91, powa=[74, 16, 74, 16, 74, 16, 4, 2]) · iqft8. 15q>EXACT_BOUND → Tier-1 STRUCTURAL(Merkle of 봉인부품, dense 미봉인). 판독(illustrative §8.4): counting/256 연속분수 → r=12 → gcd(2^6±1,91)=7,13.
+```json id=app_meta
+{"id": "shor91", "n_sys": 15, "n_anc": 0}
+```
+```json id=plan
+{"tier": "structural", "steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [4]}, {"spec": "../modules/h_gate.pg", "targets": [5]}, {"spec": "../modules/h_gate.pg", "targets": [6]}, {"spec": "../modules/h_gate.pg", "targets": [7]}, {"app": "cmul74_mod91.app.pg", "targets": [0, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul16_mod91.app.pg", "targets": [1, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul74_mod91.app.pg", "targets": [2, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul16_mod91.app.pg", "targets": [3, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul74_mod91.app.pg", "targets": [4, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul16_mod91.app.pg", "targets": [5, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul4_mod91.app.pg", "targets": [6, 8, 9, 10, 11, 12, 13, 14]}, {"app": "cmul2_mod91.app.pg", "targets": [7, 8, 9, 10, 11, 12, 13, 14]}, {"app": "iqft8.app.pg", "targets": [0, 1, 2, 3, 4, 5, 6, 7]}]}
+```
