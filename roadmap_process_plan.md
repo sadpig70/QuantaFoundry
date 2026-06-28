@@ -168,6 +168,7 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
 
 Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-progress)
     W7.1_QECStabilizerFamily // QEC stabilizer 인코더(Clifford Tier-0): repcode3·syndrome3·shor9_encoder[[9,1,3]] (done)
+    W7.2_CliffordTier2QEC // stabilizer-tableau(Tier-2)로 QEC 심화: Steane[[7,1,3]] |0>/|1>·shor9 재봉인 (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -205,6 +206,13 @@ Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-p
   - 봉인 4개: `repcode3_bitflip`([[3,1]] bit-flip, 3q, golden=parity perm)·`repcode3_phaseflip`([[3,1]] phase-flip, 3q, golden=H^⊗3@parity)·`syndrome3_bitflip`(신드롬 추출 측정前 parity-copy unitary, 5q)·**`shor9_encoder`**([[9,1,3]] Shor 코드 1995, 9q 512×512 — QEC capstone, golden=P_bitflip@H_{0,3,6}@P_phase).
   - **정직성**: golden=closed-form parity-permutation/Sylvester-Hadamard(Qualtran 비의존 독립경로, qft golden=DFT 선례와 동일 수준). 독립 golden u_hash==sealed **4/4**. 생성≠검증(app_assemble 오라클). plan=봉인 모듈, MatrixGate 0. 측정=비unitary 제외(syndrome=측정前 unitary). ⚠ stabilizer-tableau(Tier-2)가 *더 강한* 독립오라클 — future work. Shor9 `|0_L>`=8 코드워드(블록∈{000,111}, amp=1/2√2) 행동검증 통과.
   - **모듈 53 불변·앱 71→75, root 93183bcd→`06ca92d7`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, second_oracle 53/53, contested_guard ALL PASS).
+- [x] **W7.2 CliffordTier2QEC — stabilizer-tableau 오라클로 QEC 심화** `[SC][ND]` ✅ 2026-06-29
+  - 목표: W7.1 정직성 갭 닫기. 일반 stabilizer 코드(Steane 등)는 인코더 full-unitary golden이 *회로-특정*(코드워드 2컬럼만 고정) → 진짜 독립검증은 **stabilizer tableau(Tier-2)**. 그 *더 강한* 오라클을 실가동.
+  - 가용성 점검(VerifyTier2Path): Tier-2 CLIFFORD = `verify_seal.py` module-level `tier="clifford"`(`clifford_seal.canonical_tableau_hash`, cirq stabilizer, dense-free, 임의크기 정확). app_assemble엔 Tier-2 없음(exact/structural만) → **모듈** 봉인.
+  - 산출: `scripts/qec_clifford.py`·`.pgf/DESIGN-QECTier2.md`·`specs/modules/{steane_zero_t2,steane_one_t2,shor9_encoder_t2}.pg`.
+  - 봉인 3개(tier=2): `steane_zero_t2`([[7,1,3]] |0_L>=(1/√8)Σ_{rowspace(Hamming)}|c>, CSS H{0,1,3}+CNOT)·`steane_one_t2`(|1_L>=X^⊗7|0_L>)·`shor9_encoder_t2`(W7.1 Shor-9 Tier-2 재봉인). 정준 tableau 재계산==sealed **3/3**.
+  - **정직성**: Tier-2 seal=정준 tableau(표현무관 지문, u_hash=tableau≠dense). 코드-정확성 **witness(오라클 독립, 드라이버)**: Steane 6 stabilizer +1·논리 Z̄ 고유값(zero=+1·one=−1) dense 직접확인; shor9_t2 cirq dense==W7.1 closed-form golden(동일연산 cross-validation). second_oracle(dense)=53 Tier-0만 — Tier-2 3개는 tableau+stabilizer witness(정직 분리, coverage 강제 gate 없음). plan=Clifford(H·CNOT·X), MatrixGate 0. 미착수(future work): full logical-input Steane 인코더·비-CSS [[5,1,3]](일반 stabilizer 인코더 합성).
+  - **모듈 53→56(Tier-2 +3)·앱 75 불변, root 06ca92d7→`36e7014c`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, second_oracle 53/53, contested_guard ALL PASS).
 
 ---
 

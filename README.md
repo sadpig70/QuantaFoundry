@@ -34,15 +34,21 @@ It generates quantum software modules from high-level intent, verifies them with
 > stabilizer encoders, all Clifford Tier-0 EXACT: the `[[3,1]]` bit-flip / phase-flip repetition encoders,
 > a bit-flip syndrome-extraction unitary, and the **`[[9,1,3]]` Shor-code (1995) 9-qubit encoder** (512×512,
 > golden built from closed-form parity/Sylvester maps independent of the gate library).
-> The registry advanced from the v0.7-core root `3dae613d…` to the current **`06ca92d7…` (53 modules,
-> 75 apps)**. Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the
-> fingerprint files reproduce byte-identically.
+> **W7.2** then deepens QEC on the *stronger* oracle: the genuinely code-defined Steane `[[7,1,3]]`
+> logical-`|0⟩`/`|1⟩` states and a Tier-2 re-seal of the Shor-9 encoder are sealed by **canonical
+> stabilizer tableau** (dense-free, exact up to global phase) and independently witnessed by
+> stabilizer-eigenvalue checks — closing the gap that a circuit-specific dense golden would leave open.
+> The registry advanced from the v0.7-core root `3dae613d…` to the current **`36e7014c…` (56 modules
+> — 53 Tier-0 dense + 3 Tier-2 Clifford, 75 apps)**. Pure non-destructive growth: every prior seal, the
+> 23 frozen consensus keys, and the fingerprint files reproduce byte-identically.
 >
-> **Guarantee split** (no exact-coverage overclaim): all **53 modules** are `unitary_equiv` (Tier-0 EXACT);
-> the **75 apps** are 73 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
-> verified with a sealed seed, also Tier-2 sealed) + **1 `structural_wellformed`** (`shor91`, the W6.5
-> Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense `unitary_equiv`, honestly
-> labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0. Authoritative tally:
+> **Guarantee split** (no exact-coverage overclaim): all **56 modules** are `unitary_equiv` — 53 Tier-0
+> EXACT (dense) + 3 Tier-2 Clifford (canonical stabilizer tableau, dense-free but still exact up to
+> global phase); the **75 apps** are 73 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
+> sampled-dense two-path verified with a sealed seed, also Tier-2 sealed) + **1 `structural_wellformed`**
+> (`shor91`, the W6.5 Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense
+> `unitary_equiv`, honestly labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0; the W7.2
+> Steane/Shor-9 QEC seals are Tier-2 Clifford. Authoritative tally:
 > `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 >
 > **Full technical specification + evidence:** [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md)

@@ -1549,6 +1549,33 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
     },
+    "module:shor9_encoder_t2": {
+      "kind": "module",
+      "id": "shor9_encoder_t2",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "4a620501318c258fc3345729fa619669ed2dbe3996c649be0a8e7f7232ea975e"
+    },
+    "module:steane_one_t2": {
+      "kind": "module",
+      "id": "steane_one_t2",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "8122c029c742221ea585453facc58c0a1c0ffc75552c2059d088021b245a4e70"
+    },
+    "module:steane_zero_t2": {
+      "kind": "module",
+      "id": "steane_zero_t2",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "be7d5a517da35134db3172236d026fe36f7d23526d8930b9d1761a9d402f0535"
+    },
     "module:swap2": {
       "kind": "module",
       "id": "swap2",
@@ -1613,11 +1640,11 @@
         "structural_wellformed": 1
       },
       "module": {
-        "unitary_equiv": 53
+        "unitary_equiv": 56
       }
     },
     "by_class": {
-      "unitary_equiv": 170,
+      "unitary_equiv": 173,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1
     }

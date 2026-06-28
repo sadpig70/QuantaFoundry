@@ -2,8 +2,8 @@
 
 ## v0.7 — Foundry realized + adoption & hardening (2026-06-28)
 
-The foundry layer around QPGF is substantially realized: **53 sealed modules → 75 sealed applications**,
-`registry_root_hash` `06ca92d7…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
+The foundry layer around QPGF is substantially realized: **56 sealed modules (53 Tier-0 + 3 Tier-2 Clifford) → 75 sealed applications**,
+`registry_root_hash` `36e7014c…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
 (genuine Shor N=21, the GenSkill library, self-extending goal-autonomy) are documented in the technical
 spec's *What changed* sections; v0.3 — the first public milestone — is below.
 
@@ -18,10 +18,12 @@ then grew the registry by two key-free primitives (`c7x`, `cr8_dag_gate`), the W
 (`c7x`→distinct-prime `cmul2_mod91/77/85`; `cr8_dag_gate`→8-qubit inverse-QFT `iqft8`), and the
 forward-QFT completion sealed `cr6/7/8_gate`→`qft5…8_pipeline`, and the W6.5 capstone composed those
 parts into a genuine distinct-prime Shor circuit `shor91` (91=7×13; 15 qubits → Tier-1 STRUCTURAL, the
-first algorithm-scale structural-only seal — honestly labelled, weaker than dense), and the W7.1 QEC
+first algorithm-scale structural-only seal — honestly labelled, weaker than dense), the W7.1 QEC
 family opened the first horizontal class — Clifford Tier-0 stabilizer encoders (`[[3,1]]` bit-flip /
-phase-flip, a bit-flip syndrome unitary, and the `[[9,1,3]]` Shor-code 9-qubit encoder) — advancing from the
-v0.7-core root `3dae613d…` to the current `06ca92d7…` (48→53 modules, 59→75 apps) — pure non-destructive growth:**
+phase-flip, a bit-flip syndrome unitary, and the `[[9,1,3]]` Shor-code 9-qubit encoder), and W7.2 deepened
+QEC on the stronger stabilizer-tableau oracle (Tier-2 Steane `[[7,1,3]]` `|0⟩`/`|1⟩` + a Tier-2 Shor-9 re-seal,
+stabilizer-eigenvalue witnessed) — advancing from the
+v0.7-core root `3dae613d…` to the current `36e7014c…` (48→56 modules, 59→75 apps) — pure non-destructive growth:**
 
 - **S0–S1 Trust-Closure:** `second_oracle` independent re-derivation to **48/48 modules**; `ghz16`
   raised to `unitary_equiv_sampled` (zero structural-only seals); ZX-routing infrastructure (self-test

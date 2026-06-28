@@ -1,7 +1,7 @@
 {
   "schema": "registry-manifest/v1",
   "modules": {
-    "count": 53,
+    "count": 56,
     "path": "registry/modules",
     "items": [
       "c3x",
@@ -51,6 +51,9 @@
       "ry_k9",
       "ry_k9_dag",
       "s_gate",
+      "shor9_encoder_t2",
+      "steane_one_t2",
+      "steane_zero_t2",
       "swap2",
       "sx",
       "t_gate",
@@ -234,7 +237,7 @@
     "toffoli": "registry/modules/toffoli.sealed.json",
     "x_gate": "registry/modules/x_gate.sealed.json"
   },
-  "registry_root_hash": "06ca92d78379340f56191846a844f80faccda89269edd7f07e7620e6867f17bc",
+  "registry_root_hash": "36e7014ce6ef9e860c28918c973a6d0fa89a048dec9d9a669dfeb07e7cd27509",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

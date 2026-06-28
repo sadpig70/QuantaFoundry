@@ -1,0 +1,30 @@
+# steane_one_t2 — [[7,1,3]] Steane 논리-1 |1_L>=X^⊗7|0_L>. Tier-2 CLIFFORD(정준 stabilizer tableau, dense 미사용). plan=Clifford 게이트, no MatrixGate. 코드-정확성 witness=qec_clifford 드라이버(stabilizer 고유값).
+```python id=bloq
+from qualtran import BloqBuilder
+from qualtran.bloqs.basic_gates import Hadamard, CNOT, XGate
+bb = BloqBuilder()
+qs = [bb.add_register(f'q{i}', 1) for i in range(7)]
+qs[0] = bb.add(Hadamard(), q=qs[0])
+qs[1] = bb.add(Hadamard(), q=qs[1])
+qs[3] = bb.add(Hadamard(), q=qs[3])
+qs[0], qs[2] = bb.add(CNOT(), ctrl=qs[0], target=qs[2])
+qs[0], qs[4] = bb.add(CNOT(), ctrl=qs[0], target=qs[4])
+qs[0], qs[6] = bb.add(CNOT(), ctrl=qs[0], target=qs[6])
+qs[1], qs[2] = bb.add(CNOT(), ctrl=qs[1], target=qs[2])
+qs[1], qs[5] = bb.add(CNOT(), ctrl=qs[1], target=qs[5])
+qs[1], qs[6] = bb.add(CNOT(), ctrl=qs[1], target=qs[6])
+qs[3], qs[4] = bb.add(CNOT(), ctrl=qs[3], target=qs[4])
+qs[3], qs[5] = bb.add(CNOT(), ctrl=qs[3], target=qs[5])
+qs[3], qs[6] = bb.add(CNOT(), ctrl=qs[3], target=qs[6])
+qs[0] = bb.add(XGate(), q=qs[0])
+qs[1] = bb.add(XGate(), q=qs[1])
+qs[2] = bb.add(XGate(), q=qs[2])
+qs[3] = bb.add(XGate(), q=qs[3])
+qs[4] = bb.add(XGate(), q=qs[4])
+qs[5] = bb.add(XGate(), q=qs[5])
+qs[6] = bb.add(XGate(), q=qs[6])
+bloq = bb.finalize(**{f'q{i}': qs[i] for i in range(7)})
+```
+```json id=meta
+{"id": "steane_one_t2", "n_sys": 7, "n_anc": 0, "tier": "clifford"}
+```

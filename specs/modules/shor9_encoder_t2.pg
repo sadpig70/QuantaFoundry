@@ -1,0 +1,22 @@
+# shor9_encoder_t2 — W7.1 [[9,1,3]] Shor-9 인코더의 Tier-2 재봉인(동일 연산, 더 강한 오라클). Tier-2 CLIFFORD(정준 stabilizer tableau, dense 미사용). plan=Clifford 게이트, no MatrixGate. 코드-정확성 witness=qec_clifford 드라이버(stabilizer 고유값).
+```python id=bloq
+from qualtran import BloqBuilder
+from qualtran.bloqs.basic_gates import Hadamard, CNOT, XGate
+bb = BloqBuilder()
+qs = [bb.add_register(f'q{i}', 1) for i in range(9)]
+qs[0], qs[3] = bb.add(CNOT(), ctrl=qs[0], target=qs[3])
+qs[0], qs[6] = bb.add(CNOT(), ctrl=qs[0], target=qs[6])
+qs[0] = bb.add(Hadamard(), q=qs[0])
+qs[3] = bb.add(Hadamard(), q=qs[3])
+qs[6] = bb.add(Hadamard(), q=qs[6])
+qs[0], qs[1] = bb.add(CNOT(), ctrl=qs[0], target=qs[1])
+qs[0], qs[2] = bb.add(CNOT(), ctrl=qs[0], target=qs[2])
+qs[3], qs[4] = bb.add(CNOT(), ctrl=qs[3], target=qs[4])
+qs[3], qs[5] = bb.add(CNOT(), ctrl=qs[3], target=qs[5])
+qs[6], qs[7] = bb.add(CNOT(), ctrl=qs[6], target=qs[7])
+qs[6], qs[8] = bb.add(CNOT(), ctrl=qs[6], target=qs[8])
+bloq = bb.finalize(**{f'q{i}': qs[i] for i in range(9)})
+```
+```json id=meta
+{"id": "shor9_encoder_t2", "n_sys": 9, "n_anc": 0, "tier": "clifford"}
+```

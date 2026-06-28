@@ -1,0 +1,51 @@
+{
+  "phase": "W7.2 CliffordTier2QEC",
+  "honesty": "Tier-2 seal = canonical stabilizer tableau (representation-independent, dense-free, exact up to global phase); u_hash is a tableau hash (≠ dense). Code-correctness is an INDEPENDENT driver witness (stabilizer-eigenvalue check via dense numpy, distinct cirq path from the Qualtran spec). second_oracle (dense reconstruction) covers the 53 Tier-0 modules; these 3 Tier-2 modules are tableau-sealed (outside dense scope). shor9_t2 cross-validates W7.1: same operator now also under the stronger oracle. Future work: full logical-input Steane encoder, non-CSS [[5,1,3]] (general stabilizer encoder synthesis).",
+  "seals": [
+    {
+      "id": "steane_zero_t2",
+      "n_sys": 7,
+      "sealed": true,
+      "tier": 2,
+      "u_hash": "be7d5a517da35134db3172236d026fe36f7d23526d8930b9d1761a9d402f0535",
+      "tableau_recompute_match": true
+    },
+    {
+      "id": "steane_one_t2",
+      "n_sys": 7,
+      "sealed": true,
+      "tier": 2,
+      "u_hash": "8122c029c742221ea585453facc58c0a1c0ffc75552c2059d088021b245a4e70",
+      "tableau_recompute_match": true
+    },
+    {
+      "id": "shor9_encoder_t2",
+      "n_sys": 9,
+      "sealed": true,
+      "tier": 2,
+      "u_hash": "4a620501318c258fc3345729fa619669ed2dbe3996c649be0a8e7f7232ea975e",
+      "tableau_recompute_match": true
+    }
+  ],
+  "witness": {
+    "steane_zero": {
+      "stabilizers_plus1": true,
+      "logicalZ_eigen": 1,
+      "logicalZ_ok": true,
+      "support": 8,
+      "pass": true
+    },
+    "steane_one": {
+      "stabilizers_plus1": true,
+      "logicalZ_eigen": -1,
+      "logicalZ_ok": true,
+      "support": 8,
+      "pass": true
+    },
+    "shor9_t2": {
+      "dense_eq_w71_golden": true,
+      "pass": true
+    }
+  },
+  "all_ok": true
+}
