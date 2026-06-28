@@ -165,6 +165,9 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
     W6.3_QFTPipelineExtendCr8 // cr8 활용 8큐비트 역-QFT(iqft8) 봉인 (done)
     W6.4_ForwardQFTPipelineComplete // cr6/7/8_gate 봉인 → 정-QFT pipeline n=8 완결 (done)
     W6.5_ShorCapstone // 부품 조립 → genuine distinct-prime Shor-91(7×13) Tier-1 STRUCTURAL (done)
+
+Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-progress)
+    W7.1_QECStabilizerFamily // QEC stabilizer 인코더(Clifford Tier-0): repcode3·syndrome3·shor9_encoder[[9,1,3]] (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -196,6 +199,12 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
   - 구조: 15q(counting 8 + work 7). H^8 · controlled-U^(2^j)(cmul{2,4,16,74}_mod91, powa=[74,16,74,16,74,16,4,2]) · iqft8. 부품 cmul4/16/74_mod91 신규 forge(c7x-engine, Tier-0 8q, 독립순열 일치).
   - **봉인**: 15q > EXACT_BOUND(12) → **Tier-1 STRUCTURAL**(plan.tier="structural", u_hash=Merkle(자식 sealed u_hash + 배선), dense 미실체화). u_hash `ea39b003…`. 자식 전부 sealed. period readout(illustrative §8.4): ord_91(2)=12 → 2^6=64 → gcd(63,91)=7·gcd(65,91)=13 → 91=7×13.
   - **앱 67→71**(cmul4/16/74_mod91 + shor91), **root ea97a877→93183bcd**(순수 비파괴: 모듈 53·frozen 23·fingerprint byte-identical, reproduce_all REPRODUCED). ⚠ **정직성**: shor91은 *첫 algorithm-scale structural-only 봉인* — dense Tier-0(shor15/21)보다 약한 보증(SEMANTIC-GUARANTEES structural_wellformed=1). t=8 counting(2^8<2r²)는 readout 확률에만 영향(구조봉인 t 무관). 정-QFT(qft9/iqft9)·t=9는 cr9_dag 선행 필요(별건).
+- [x] **W7.1 QECStabilizerFamily — 새 알고리즘 클래스(양자오류정정)** `[SC][ND]` ✅ 2026-06-29
+  - 목표: gates→QFT→arith→Shor 수직스택 이후 첫 *수평* 확장. QEC stabilizer 인코더 — 전부 Clifford → **Tier-0 EXACT**, 봉인된 base Clifford(`h_gate`·`cnot`)만으로 조립.
+  - 산출: `scripts/qec_family.py`(생성기+forge+독립검증)·`.pgf/DESIGN-QECStabilizer.md`(PG 설계)·`specs/apps/{repcode3_bitflip,repcode3_phaseflip,syndrome3_bitflip,shor9_encoder}.app.pg`. forge_apps.py APP_LIST 등록(재현 커버리지).
+  - 봉인 4개: `repcode3_bitflip`([[3,1]] bit-flip, 3q, golden=parity perm)·`repcode3_phaseflip`([[3,1]] phase-flip, 3q, golden=H^⊗3@parity)·`syndrome3_bitflip`(신드롬 추출 측정前 parity-copy unitary, 5q)·**`shor9_encoder`**([[9,1,3]] Shor 코드 1995, 9q 512×512 — QEC capstone, golden=P_bitflip@H_{0,3,6}@P_phase).
+  - **정직성**: golden=closed-form parity-permutation/Sylvester-Hadamard(Qualtran 비의존 독립경로, qft golden=DFT 선례와 동일 수준). 독립 golden u_hash==sealed **4/4**. 생성≠검증(app_assemble 오라클). plan=봉인 모듈, MatrixGate 0. 측정=비unitary 제외(syndrome=측정前 unitary). ⚠ stabilizer-tableau(Tier-2)가 *더 강한* 독립오라클 — future work. Shor9 `|0_L>`=8 코드워드(블록∈{000,111}, amp=1/2√2) 행동검증 통과.
+  - **모듈 53 불변·앱 71→75, root 93183bcd→`06ca92d7`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, second_oracle 53/53, contested_guard ALL PASS).
 
 ---
 

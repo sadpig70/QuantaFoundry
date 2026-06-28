@@ -59,6 +59,11 @@ APP_LIST = [
     ("cmul2_mod21.app.pg",       None),    # controlled ×2 mod21 (66 gates, {toffoli,c3x,c4x,c5x}) — Shor-21 U^1, 진짜 산술
     ("cmul4_mod21.app.pg",       None),    # controlled ×4 mod21 = cmul2² (복리 재사용)
     ("cmul16_mod21.app.pg",      None),    # controlled ×16 mod21 = cmul4² — Shor-21 controlled-U^{2^j} 패밀리
+    # F3 확장 (§5q W7.1): QEC stabilizer 인코더 — 새 알고리즘 클래스(오류정정), 전부 Clifford Tier-0
+    ("repcode3_bitflip.app.pg",   None),   # [[3,1]] bit-flip 인코더 (CNOT×2, golden=parity perm)
+    ("repcode3_phaseflip.app.pg", None),   # [[3,1]] phase-flip 인코더 (+H×3, golden=H^⊗3@parity)
+    ("shor9_encoder.app.pg",      None),   # [[9,1,3]] Shor 코드(1995) 인코더 9q 512×512 — QEC capstone
+    ("syndrome3_bitflip.app.pg",  None),   # bit-flip 신드롬 추출(측정前 parity-copy unitary), 5q
 ]
 
 

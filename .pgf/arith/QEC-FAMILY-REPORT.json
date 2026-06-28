@@ -1,0 +1,49 @@
+{
+  "phase": "W7.1 QECStabilizerFamily",
+  "honesty": "golden=closed-form parity-permutation/Sylvester-Hadamard (Qualtran-independent code path); generation != verification (app_assemble oracle); plan=sealed h_gate/cnot only, no MatrixGate; measurement excluded (syndrome=pre-measure unitary); stabilizer-tableau (Tier-2) is a STRONGER independent check (future work); modules+0 apps+4 (frozen keys/fingerprint byte-identical).",
+  "forge": [
+    {
+      "id": "repcode3_bitflip",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "1f4bb2dbc0d6b50a34f4ff3c4afc2ea63987fc16b272f2460f93d545d51d9f2c",
+      "independent_match": true,
+      "reason": ""
+    },
+    {
+      "id": "repcode3_phaseflip",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "4766520073f8cdf036ac58e46a6238f199174ff68ea3cd9f702c9c9d6130a4a2",
+      "independent_match": true,
+      "reason": ""
+    },
+    {
+      "id": "shor9_encoder",
+      "n_sys": 9,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "a7bd50a199069a1a34b443836988231dbfabeb7817f5eaeabfbbc4755e2b04f3",
+      "independent_match": true,
+      "reason": ""
+    },
+    {
+      "id": "syndrome3_bitflip",
+      "n_sys": 5,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "af8dadd0032c78f427a53826cb4c2b7312aca0c5a240daf5f210f7b23cd90c62",
+      "independent_match": true,
+      "reason": ""
+    }
+  ],
+  "behavior_shor9": {
+    "support": 8,
+    "codeword_uniform": true,
+    "amplitude_ok": true,
+    "pass": true
+  },
+  "all_ok": true
+}

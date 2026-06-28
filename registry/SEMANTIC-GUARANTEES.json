@@ -712,6 +712,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864"
     },
+    "app:repcode3_bitflip": {
+      "kind": "app",
+      "id": "repcode3_bitflip",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1f4bb2dbc0d6b50a34f4ff3c4afc2ea63987fc16b272f2460f93d545d51d9f2c"
+    },
+    "app:repcode3_phaseflip": {
+      "kind": "app",
+      "id": "repcode3_phaseflip",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "4766520073f8cdf036ac58e46a6238f199174ff68ea3cd9f702c9c9d6130a4a2"
+    },
     "app:ring10": {
       "kind": "app",
       "id": "ring10",
@@ -982,6 +1000,15 @@
       "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
       "u_hash": "ea39b003c0d2e0a1de31ce004303b6c65b7825f69671ab00dbbaf05b3ee6d0c8"
     },
+    "app:shor9_encoder": {
+      "kind": "app",
+      "id": "shor9_encoder",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a7bd50a199069a1a34b443836988231dbfabeb7817f5eaeabfbbc4755e2b04f3"
+    },
     "app:swap2": {
       "kind": "app",
       "id": "swap2",
@@ -999,6 +1026,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+    },
+    "app:syndrome3_bitflip": {
+      "kind": "app",
+      "id": "syndrome3_bitflip",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "af8dadd0032c78f427a53826cb4c2b7312aca0c5a240daf5f210f7b23cd90c62"
     },
     "app:toffoli": {
       "kind": "app",
@@ -1572,7 +1608,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 113,
+        "unitary_equiv": 117,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1
       },
@@ -1581,7 +1617,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 166,
+      "unitary_equiv": 170,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1
     }

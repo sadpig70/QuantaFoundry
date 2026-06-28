@@ -1,0 +1,25 @@
+# syndrome3_bitflip — bit-flip 신드롬 추출(측정前 parity-copy unitary). 5q=3data+2anc. 측정=비unitary 제외(정직 경계). golden=parity perm. QEC stabilizer 인코더(qec_family). plan=봉인 h_gate·cnot, no MatrixGate. golden=closed-form parity/Sylvester (Qualtran 비의존 독립경로).
+```json id=app_meta
+{"id": "syndrome3_bitflip", "n_sys": 5, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+def _pp(n,cn):
+    U=np.zeros((1<<n,1<<n),complex)
+    for s in range(1<<n):
+        o=s
+        for c,t in cn:
+            cb=(o>>(n-1-c))&1; tb=(o>>(n-1-t))&1; p=n-1-t
+            o=(o&~(1<<p))|((tb^cb)<<p)
+        U[o,s]=1.0
+    return U
+def _h(n,qs):
+    H=np.array([[1,1],[1,-1]],complex)/np.sqrt(2); U=np.array([[1.0+0j]]); qs=set(qs)
+    for q in range(n):
+        U=np.kron(U,H if q in qs else np.eye(2,dtype=complex))
+    return U
+golden=_pp(5,[(0,3),(1,3),(1,4),(2,4)])
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/cnot.pg", "targets": [1, 3]}, {"spec": "../modules/cnot.pg", "targets": [1, 4]}, {"spec": "../modules/cnot.pg", "targets": [2, 4]}]}
+```

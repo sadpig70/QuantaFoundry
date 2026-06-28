@@ -30,15 +30,20 @@ It generates quantum software modules from high-level intent, verifies them with
 > multipliers (`cmul2_mod91/77/85`), `cr8_dag_gate` on an 8-qubit inverse-QFT (`iqft8`), the forward-QFT
 > completion sealing `cr6/7/8_gate` → `qft5…8_pipeline`, and the **W6.5 capstone** composing those parts
 > into a genuine distinct-prime Shor circuit `shor91` (factors 91 = 7×13; 15 qubits → Tier-1 STRUCTURAL).
-> The registry advanced from the v0.7-core root `3dae613d…` to the current **`93183bcd…` (53 modules,
-> 71 apps)**. Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the
+> The **W7.1 QEC family** then opened the first *horizontal* algorithm class — quantum error-correction
+> stabilizer encoders, all Clifford Tier-0 EXACT: the `[[3,1]]` bit-flip / phase-flip repetition encoders,
+> a bit-flip syndrome-extraction unitary, and the **`[[9,1,3]]` Shor-code (1995) 9-qubit encoder** (512×512,
+> golden built from closed-form parity/Sylvester maps independent of the gate library).
+> The registry advanced from the v0.7-core root `3dae613d…` to the current **`06ca92d7…` (53 modules,
+> 75 apps)**. Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the
 > fingerprint files reproduce byte-identically.
 >
 > **Guarantee split** (no exact-coverage overclaim): all **53 modules** are `unitary_equiv` (Tier-0 EXACT);
-> the **71 apps** are 69 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
+> the **75 apps** are 73 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
 > verified with a sealed seed, also Tier-2 sealed) + **1 `structural_wellformed`** (`shor91`, the W6.5
 > Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense `unitary_equiv`, honestly
-> labelled). Authoritative tally: `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
+> labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0. Authoritative tally:
+> `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 >
 > **Full technical specification + evidence:** [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md)
 > (written for independent design review). Reproduction artifacts under `specs/`, `registry/`,

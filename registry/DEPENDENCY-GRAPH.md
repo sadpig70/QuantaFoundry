@@ -195,6 +195,13 @@ qpe_t
 ├─ cz (module)
 └─ h_gate (module×3)
 
+repcode3_bitflip
+└─ cnot (module×2)
+
+repcode3_phaseflip
+├─ cnot (module×2)
+└─ h_gate (module×3)
+
 ring10
 ├─ cz (module×10)
 └─ h_gate (module×10)
@@ -325,8 +332,15 @@ shor91
 │  └─ swap2 (module×4)
 └─ h_gate (module×8)
 
+shor9_encoder
+├─ cnot (module×8)
+└─ h_gate (module×3)
+
 swap_via_cnot
 └─ cnot (module×3)
+
+syndrome3_bitflip
+└─ cnot (module×4)
 
 wstate10
 ├─ cnot (module×27)

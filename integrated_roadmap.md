@@ -3,7 +3,7 @@
 > 작성 2026-06-28 · 입력 = `_workspace/프로젝트향후방향제안.md`(8 외부 AI 런타임의 §2 7질문 응답)
 > 방법 = PG/PGF로 8제안을 분해·수렴분석·충돌해소·통합 설계.
 > 파일명 주: 정욱님 지시의 `integrated_loadmap.md`는 `roadmap` 오타로 판단해 `integrated_roadmap.md`로 저장. 다르면 알려주세요.
-> 권위 현재상태: 53모듈·71앱·root `93183bcd`·frozen 23키 (REGISTRY-MANIFEST.json). ※성장 이력(순수 비파괴): v0.7-core 48모듈·`3dae613d` → W2.4 c7x·cr8 50모듈·`437efbc3` → W6.1 cmul(mod91/77/85) → W6.3 iqft8 → W6.4 cr6/7/8_gate+qft5~8 53모듈·67앱 → W6.5 capstone **shor91(7×13, Tier-1 STRUCTURAL)**+cmul4/16/74_mod91 71앱·`93183bcd`.
+> 권위 현재상태: 53모듈·75앱·root `06ca92d7`·frozen 23키 (REGISTRY-MANIFEST.json). ※성장 이력(순수 비파괴): v0.7-core 48모듈·`3dae613d` → W2.4 c7x·cr8 50모듈·`437efbc3` → W6.1 cmul(mod91/77/85) → W6.3 iqft8 → W6.4 cr6/7/8_gate+qft5~8 53모듈·67앱 → W6.5 capstone **shor91(7×13, Tier-1 STRUCTURAL)**+cmul4/16/74_mod91 71앱·`93183bcd` → W7.1 QEC stabilizer 인코더(repcode3 bit/phase·syndrome3·**shor9_encoder [[9,1,3]]** Clifford Tier-0) 75앱·`06ca92d7`.
 
 ---
 
