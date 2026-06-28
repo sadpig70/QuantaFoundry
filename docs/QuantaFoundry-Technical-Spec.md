@@ -1,7 +1,8 @@
 # QuantaFoundry — Technical Specification
 
-> **Version:** 0.6 (v0.5 + self-extending library: arithmetic-synthesis, continuous-rotation W-states,
-> autonomous loop-to-frontier) · **Date:** 2026-06-27
+> **Version:** 0.7 (v0.6 + Clifford Tier-2 routing, distinct-prime arithmetic, multi-model gated
+> panel with first *live* cross-model truth, falsification front, honest-decomposition closure) ·
+> **Date:** 2026-06-28
 > *(v0.5: GenSkill library — generation *methods* as a first-class catalog. v0.4: honesty calibration +
 > genuine N=21 modular arithmetic, app-level cross-model, second-oracle, goal-autonomy family extension,
 > semantic_guarantee.)*
@@ -34,6 +35,22 @@
 > **Honesty calibration (this version):** several v0.3 claims are scoped down — see §3/§10/§11 and the
 > per-section notes. "Non-linear production capacity" is now stated as a **hypothesis** with first
 > evidence, not a result.
+> **What changed since v0.6 (v0.7, §8.8):** (1) **Clifford Tier-2 routing** — the sole STRUCTURAL
+> (Tier-1) app `ghz16` now also carries a stabilizer-tableau Tier-2 seal, closing the one weak-guarantee
+> gap (companion seal, not replacement); (2) **distinct-prime arithmetic** — sealing `cmul2_mod33`
+> (3×11) and `cmul2_mod35` (5×7) surfaced a missing prerequisite `c6x` (MCT-6), sealed key-free, after
+> which the GenSkill engine was *evolved* (honest framing: a new primitive opens a family, not "infinite
+> reuse"); (3) **gated multi-model panel** (§8.8) that structurally enforces ≥2 distinct-weights for
+> key-free/ambiguous intents (B4 co-error blocked), validated by replaying the EXT v05 6-runtime data;
+> (4) **first *live* cross-model truth** — a new intent `sx` (√X) was authored by 6 distinct runtimes
+> that converged (MULTIMODEL) and was sealed with a frozen consensus key triangulated by an algebraic
+> proof (PROOF_BACKED); (5) a **falsification front** (red-team of the oracle/gate/consensus) + an
+> **honest-decomposition guard** that closes the "hollow seal" gap (a custom bloq asserting a literal
+> unitary) on both the module and app sealing paths, **without modifying the fingerprinted oracle**
+> (existing seals byte-identical); (6) **cross-runtime co-error rounds** that, on a genuinely
+> convention-contested intent (2-qubit QFT), exercised the contested near-tie guard on *real* multi-model
+> data (it refused to seal an under-specified intent). Library grew to **48 sealed modules → 59 sealed
+> applications**; frozen consensus keys: **23**; `registry_root_hash` `3dae613d…` reproduces byte-identical.
 
 ---
 
@@ -59,10 +76,10 @@ document always means *conditionally proven* — the conditions are stated in §
 QuantaFoundry is an **AI-native quantum software foundry**. It turns high-level intent into quantum
 software modules, **verifies them with a deterministic contract oracle**, **seals only what is
 proven**, accumulates sealed modules in a registry, and **composes** sealed modules into larger
-applications (each re-verified and re-sealed). As of v0.4 all four functions are realized: the library
-holds **46 sealed base modules** and **57 sealed applications**, the latter built entirely by
-recomposing the former — up to **Shor period-finding circuits that factor 15 = 3 × 5 and 21 = 3 × 7**
-(the latter with genuine modular arithmetic, not the N=15 special case).
+applications (each re-verified and re-sealed). All four functions are realized: the library
+holds **48 sealed base modules** and **59 sealed applications** (v0.7; 46 → 57 at v0.6), the latter
+built entirely by recomposing the former — up to **Shor period-finding circuits that factor
+15 = 3 × 5 and 21 = 3 × 7** (the latter with genuine modular arithmetic, not the N=15 special case).
 
 The single non-negotiable rule:
 
@@ -86,10 +103,11 @@ strength:
    authored every base gate's reference and implementation; all converged, and each converged hash was
    independently corroborated by a stack-independent symbolic proof (§8.2).
 3. **Compounding via composition (F3)** — sealed modules recompose into sealed applications, each
-   re-verified against the contract oracle. The library grew to 46 verified gates and 57 verified
+   re-verified against the contract oracle. The library grew to 48 verified gates and 59 verified
    applications including Grover, QFT(2–4), Quantum Phase Estimation, **Shor period-finding (N=15 and
-   genuine N=21)**, and autonomously-discovered families (GHZ, cluster), with every new primitive
-   (controlled-phase family, Fredkin, modular multipliers) also established key-free (§8.3–8.4).
+   genuine N=21)**, distinct-prime modular multipliers (mod 33, 35), and autonomously-discovered
+   families (GHZ, cluster), with every new primitive (controlled-phase family, Fredkin, modular
+   multipliers, MCT-6) also established key-free (§8.3–8.4, §8.8).
 
 The single load-bearing fact for a reviewer: **no result in this library rests on a human-asserted
 answer.** Every gate's truth came from independent cross-model convergence + symbolic proof; every
@@ -535,7 +553,7 @@ With the gate library key-free, sealed modules were **recomposed** into applicat
 input is itself sealed (INV2). Tier-0 realizes the dense unitary; Tier-1 (structural Merkle) seals
 arbitrarily large compositions without materializing 2ⁿ.
 
-**57 applications sealed (33 algorithm-layer + 24 autonomously forged).** Highlights (a representative subset):
+**59 applications sealed (35 algorithm-layer incl. mod 33/35 + 24 autonomously forged).** Highlights (a representative subset):
 
 | App | n | Built from (sealed modules / sub-apps) | What it demonstrates |
 |---|---|---|---|
@@ -572,7 +590,9 @@ and **defeats the co-error firewall** (the entire point of independent author + 
 used the structural fact that **15 = 2⁴ − 1**, so multiplication by 2 mod 15 is a **cyclic bit
 rotation**, which decomposes into **sealed SWAP gates**; the controlled version is a chain of **sealed
 Fredkin (controlled-SWAP)** gates. So the modular arithmetic is built from genuinely independent sealed
-primitives, not from a matrix copy of the answer.
+primitives, not from a matrix copy of the answer. *(v0.7: this discipline is now **code-enforced** — a
+hollow `MatrixGate`/literal-unitary bloq is rejected by the honest-decomposition guard on both sealing
+paths, §8.8 — so it is no longer only a convention.)*
 
 The full pipeline: `H×3 · controlled-mult⁴ · controlled-mult² · inverse-QFT3`, where each
 controlled-mult is a sub-app of Fredkins and inverse-QFT3 is a sealed sub-app (reusing cs†, ct†).
@@ -606,13 +626,16 @@ Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a
 ### 8.5 Library-wide regression (current totals)
 
 ```
-modules: 46 sealed · re-verified through the oracle (28 gates + 18 ±α_k Ry primitives k=2..10, §8.7)
-apps:    57 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
-         registry/apps holds 94 files = 57 unique app seals + 37 cached app-side module re-seals
+modules: 48 sealed · re-verified through the oracle (30 gates incl. c6x/MCT-6 + sx/√X; 18 ±α_k Ry
+         primitives k=2..10, §8.7)
+apps:    59 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
+         registry/apps holds 97 files = 59 unique app seals + 38 cached app-side module re-seals
          (canonical copy lives in registry/modules; single source of truth = REGISTRY-MANIFEST.json
-          registry_root_hash; blast-radius via registry_tools.py dependents)
+          registry_root_hash 3dae613d… reproduces byte-identical; blast-radius via registry_tools.py)
 rediscovery cross-checks: 6/6 byte-identical to independently sealed gates
 second oracle (Qualtran-independent numpy): 18/18 modules + cmul2_mod21
+frozen consensus keys: 23 (22 prior + sx live cross-model round; existing keys byte-preserved,
+         contested-tie guard re-checks determinism every run)
 ```
 
 ### 8.6 v0.4 evidence — app-level cross-model, necessity, second oracle, goal-autonomy
@@ -721,6 +744,74 @@ Artifacts: `scripts/genskills.py`, `registry/GENSKILL-CATALOG.json`,
 `.pgf/autoforge/{GOAL-SCAN,GOAL-FORGE-RESULT,GOAL-LOOP-RESULT,COMPOUNDING-CURVE}.json`,
 `_workspace/GENSKILL-LIBRARY-NOTE.md`.
 
+### 8.8 v0.7 evidence — tier routing, distinct-prime arithmetic, live panel, falsification, closure
+
+Every item below is reproduced from the working tree; all are **non-destructive** (existing
+`sealed.json` byte-identical, frozen keys append-only, `registry_root_hash 3dae613d…` unchanged) and
+use the oracle/consensus **only** (no reimplementation). Each sub-phase was re-designed as its own
+sub-PG before execution.
+
+- **P0 — Clifford → Tier-2 routing** (`scripts/clifford_routing.py`, `.pgf/clifford/`). The one app
+  that previously held only a STRUCTURAL (Tier-1) seal, `ghz16`, now also carries a stabilizer-tableau
+  **Tier-2** seal (via the oracle's `clifford_seal`), closing the sole weak-guarantee gap. The Tier-2
+  `u_hash` ≠ the dense `u_hash` by construction (the oracle says so); this is a **companion** seal, not
+  a replacement, added additively to `SEMANTIC-GUARANTEES.json` (other entries byte-unchanged). 28/28
+  Clifford-only apps cross-validated dense == registry; `ghz20` (n>EXACT_BOUND) tableau-sealed as a
+  scale demonstration.
+
+- **P1 — distinct-prime arithmetic** (`scripts/arith_family.py`, `.pgf/arith/`). Sealing the Shor
+  targets 33 = 3×11 and 35 = 5×7 required a 6-control multiply-controlled-X (`c6x`/MCT-6) that the
+  prior library (≤ MCT-5) lacked. **Honest finding:** "infinite reuse of one engine" has a limit — a
+  new primitive opens a family. Resolution: seal `c6x` key-free, then *evolve* the GenSkill engine
+  (`modmul_synth` gains the MCT-6 path) and re-stamp the method self-seal. `cmul2_mod33`/`cmul2_mod35`
+  sealed Tier-0 EXACT; behavioral orbit period == ord_N; full Shor at these N (≥14 qubits) is honestly
+  labelled Tier-1.
+
+- **P2 — gated multi-model panel + first *live* cross-model truth** (`scripts/{gated_panel,
+  live_dispatch,seal_sx}.py`, `.pgf/panel/`). A dispatch policy classifies intent risk and **structurally
+  requires ≥2 distinct-weights model units** (grade floor MULTIMODEL) for key-free/ambiguous intents,
+  closing the B4 same-weights co-error defect; validated by **replaying the EXT v05 6-runtime data**
+  (free-parameter → DIVERGENT, sanity → SEAL, convention 4-2 → SEAL / 3-3 ry → CONTESTED) with zero new
+  calls, plus a falsification probe (naive count SEALs a B4 block; the gated path REJECTs). Then the
+  **first genuinely live** key-free truth: a *new* intent `sx` (√X) was authored independently by the
+  six runtimes, all converged (MULTIMODEL), and the converged hash — triangulated by an algebraic
+  proof (PROOF_BACKED) — was sealed as module `sx` (Tier-0, `XPowGate(0.5)`) with a frozen consensus
+  key appended (existing keys byte-preserved).
+
+- **P3 — falsification front** (`scripts/red_team.py`, `.pgf/redteam/`). The oracle/gate/consensus are
+  attacked adversarially: golden self-reference, identity golden, ancilla-leak (C3), convention-split
+  (DIVERGENT), and B4 co-error are all caught (5/6); the §7-flagged top risk is confirmed by a true
+  falsification — a mis-wired but structurally-valid app **does** seal at Tier-1 STRUCTURAL while the
+  golden-bearing Tier-0 C-app rejects it (so the teeth live in dense/Tier-0 and Clifford/Tier-2, exactly
+  as `semantic_guarantee` labels). The one documented gap — **honest decomposition is a social
+  convention, not code-enforced** — was then closed (next bullet).
+
+- **Honest-decomposition closure** (`.agents/skills/qpgf-oracle/scripts/decomp_guard.py`,
+  `scripts/{seal_module,verify_t1_closure}.py`, `.pgf/bounty/T1-CLOSURE.json`). A "hollow seal" — a
+  custom bloq that asserts a *literal* unitary (overriding `tensor_contract`, or building from a raw
+  matrix via `MatrixGate`/`from_unitary`) instead of honestly decomposing into primitives — passes C4
+  because golden == the asserted matrix. A policy-layer guard rejects it (dynamic: the bloq's type must
+  originate from `qualtran`/`cirq`, not a spec-defined class; static AST: no unitary-method override /
+  monkey-patch / literal-matrix gate). Wired into `spec_quality_guard`, it enforces on **both** the
+  module-seal and the app-seal (`app_assemble`) paths. Critically, it lives **outside the fingerprinted
+  oracle** (`verify_seal.py`/`contracts.py` are the only files hashed into each seal's signature), so
+  all 48 modules + 59 apps re-seal **byte-identical** (`reproduce_all` root unchanged) while 6
+  independently-authored hollow attacks and the original MatrixGate vector are rejected.
+
+- **Cross-model adversarial + cross-runtime co-error rounds** (`scripts/{bounty_adjudicate,
+  cross_runtime_round}.py`, `_workspace/crossmodel/p3d_*`). Re-using the six-runtime relay as an
+  *adversarial* panel: round-1 attack submissions, re-adjudicated deterministically by the oracle,
+  reduced to **zero real breaks** once independence units are provenance-bound to the submitting runtime
+  (forged "peer" labels collapse) and the hollow-decomposition pattern is recognized. Then a sequence of
+  cross-runtime rounds tested genuine corpus-correlation co-error: on five convention-sensitive but
+  well-defined gates (qubit-ordering, half-angle, adjoint sign, iSWAP phase) all six runtimes converged
+  on the *correct* answer (no co-error). On a genuinely **convention-contested** intent (2-qubit QFT,
+  where the bit-reversal-swap convention legitimately splits the literature) the six runtimes split
+  2-2-1-1 → top-2 tie → **CONTESTED**: the near-tie guard refused to seal an under-specified intent —
+  the **first real multi-model exercise** of that guard (previously only self-tested). `√SWAP` and
+  `Rz(π/2)` split 4-2 and the majority landed on the *standard* convention → ESTABLISHED MULTIMODEL with
+  the minority recorded as a documented variant (mirroring the v05 convention-split pattern).
+
 ---
 
 ## 9. Honest limitations & threats (please attack these)
@@ -760,12 +851,16 @@ Artifacts: `scripts/genskills.py`, `registry/GENSKILL-CATALOG.json`,
    away from the key. For keyed modules this is closed; for unkeyed modules it is open.
 5. **Tier-3 conservatism.** ZX-based sealing may *fail to seal* correct circuits (false negatives).
    This is safe (never a false positive) but limits coverage; the boundary is not characterized here.
-6. **Single base model for both personas.** All personas are currently the same model family. A real
-   multi-model panel would strengthen (b) but reintroduces orchestration cost. Worth it?
-7. **Scope of evidence.** *v0.1 proved the loop on 8 small Tier-0 gates. v0.4 now exercises
-   composition (F3) end-to-end (57 apps incl. genuine N=21 Shor), Tier-1 large-N (ghz16), app-level
-   cross-model establishment, consensus necessity, and goal-autonomy family extension.* What remains
-   **not** done: autonomous
+6. **Single base model for both personas.** AutoForge's personas are the same model family. *v0.7
+   addresses this for truth establishment:* a gated multi-model panel structurally requires ≥2
+   distinct-weights units, and the live `sx` round established a new truth from six genuinely distinct
+   runtimes (§8.8). The residual question is whether AutoForge's *generation* personas (vs the
+   *establishment* panel) should also be multi-model — orchestration cost vs marginal benefit.
+7. **Scope of evidence.** *v0.1 proved the loop on 8 small Tier-0 gates. v0.4–0.7 now exercise
+   composition (F3) end-to-end (59 apps incl. genuine N=21 Shor and distinct-prime mod 33/35),
+   Tier-1 large-N (ghz16) plus its Tier-2 closure, app-level cross-model establishment, consensus
+   necessity, live multi-model truth, falsification/red-team, and goal-autonomy family extension.*
+   What remains **not** done: autonomous
    *goal* selection (the system deciding what to build next), Tier-3 (Clifford+T / ZX) sealing of the
    apps, and a multi-model panel for *app-level* bloqs (app implementations are still authored
    in-house even though gate implementations are cross-model). Hard-intent stress (beyond E5') is also
@@ -823,8 +918,9 @@ counted per *physical unit* — same-weights / same-tool sources collapse to **o
 independent runtimes authored every base gate's golden and bloq, all reaching `MULTIMODEL` grade and
 corroborated by symbolic proof (§8.2). The on-demand gates needed for the algorithm layer
 (controlled-phase family, Fredkin) were each established by `proof ⊕ structural` convergence and
-sealed. The full library (46 modules → 57 apps → genuine N=21 Shor) therefore stands on **zero
-human-asserted answers**. See `.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
+sealed. The full library (48 modules → 59 apps → genuine N=21 Shor) therefore stands on **zero
+human-asserted answers**, including the first *live* cross-model truth `sx` (√X, §8.8). See
+`.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
 
 **Update (v0.4): both residuals are now addressed.** (i) App-level intents are cross-model corroborated
 (EXT v04: app-golden 4/4 + app-bloq 4/4, §8.6). (ii) Consensus *necessity* is demonstrated by the
@@ -871,10 +967,10 @@ registry. AutoForge adds **autonomous author isolation via personas** on top of 
 QuantaFoundry/
   docs/QuantaFoundry-Technical-Spec.md   # this document
   README.md                              # vision + trust model (English)
-  specs/modules/*.pg                     # 46 sealed base-module specs (incl. ±α_k Ry primitives k=2..10)
-  specs/apps/*.app.pg                    # 57 sealed application manifests (app_golden + plan)
-  registry/modules/*.sealed.json         # 34 registered gate seals (INV1-3)
-  registry/apps/*.sealed.json            # 57 app seals (C-app) + 37 cached leaf-module re-seals (94 files)
+  specs/modules/*.pg                     # 48 sealed base-module specs (incl. c6x/MCT-6, sx/√X, ±α_k Ry k=2..10)
+  specs/apps/*.app.pg                    # 59 sealed application manifests (app_golden + plan)
+  registry/modules/*.sealed.json         # 48 registered module seals (INV1-3)
+  registry/apps/*.sealed.json            # 59 app seals (C-app) + 38 cached leaf-module re-seals (97 files)
   registry/{REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES}.json  # registry as first-class data (v0.4)
   registry/GENSKILL-CATALOG.json         # generation-method library as first-class data (v0.5)
   .pgf/
@@ -956,7 +1052,7 @@ Please address as many as you can, and add flaws we did not anticipate.
 
 **Architecture & scope**
 9. The compounding thesis (§4) assumes composition (F3) preserves correctness via C-app + INV3, now
-   exercised on 57 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
+   exercised on 59 apps incl. recursive trees and the 12-qubit N=21 Shor (§8.3–8.4). Is re-verification of
    every composition sufficient, or are there composition patterns (heterogeneous, recursive,
    uncompute) where C-app could pass while the app is semantically wrong?
 10. Given only this spec, what is the single highest-risk assumption in the whole design, and what
@@ -970,6 +1066,10 @@ Please address as many as you can, and add flaws we did not anticipate.
     golden. But it exploits 15 = 2⁴−1 (mult-by-2 = bit rotation). Is this a fair demonstration of
     "compose Shor from sealed parts," or does the special structure of N=15 hide the real difficulty
     (general modular arithmetic)? What is the smallest N that would make this honest *and* hard?
+    *(v0.7 partial answer, §8.8: distinct-prime multipliers `cmul2_mod33` (3×11) and `cmul2_mod35`
+    (5×7) were sealed via genuine reversible synthesis — which forced a new MCT-6 primitive `c6x` —
+    so the N=15 cyclic shortcut no longer carries the arithmetic; full distinct-prime Shor at these N
+    is ≥14 qubits and currently Tier-1.)*
 13. App intents (`app_golden`) for QPE/Shor are in-house authored (§9.8). What is the cheapest protocol
     to make app-level intent cross-model, and does the rediscovery cross-check (§8.3) already provide
     equivalent assurance for the apps that rebuild a separately-sealed gate?

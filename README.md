@@ -6,12 +6,16 @@
 
 It generates quantum software modules from high-level intent, verifies them with deterministic contract oracles, seals only proven outputs, and composes sealed modules into larger quantum applications.
 
-> **Status (v0.3, 2026-06):** the verification core is public as **QPGF** →
+> **Status (v0.7, 2026-06):** the verification core is public as **QPGF** →
 > **https://github.com/sadpig70/QPGF** (157 self-verification tests green). The foundry layer
-> around it is now **substantially realized**: a key-free, cross-model-established library of
-> **22 sealed gates** composed into **20 sealed applications** — Grover, QFT(2–4), Quantum Phase
-> Estimation, and a **Shor period-finding circuit that factors 15 = 3 × 5** — with **no human-asserted
-> answer keys** anywhere in the trust chain.
+> around it is **substantially realized**: a key-free, cross-model-established library of
+> **48 sealed modules** composed into **59 sealed applications** — Grover, QFT(2–4), Quantum Phase
+> Estimation, and **Shor period-finding circuits that factor 15 = 3 × 5 and genuinely 21 = 3 × 7**
+> (plus distinct-prime modular multipliers mod 33/35) — with **no human-asserted answer keys**
+> anywhere in the trust chain, including the first *live* cross-model truth (`sx` = √X, established
+> by six distinct runtimes + an algebraic proof). Later layers (self-extending GenSkill library,
+> goal-autonomy, a gated multi-model panel, a falsification front, and an honest-decomposition
+> guard) are now realized — see the spec's `What changed since v0.6` and §8.8.
 >
 > **Full technical specification + evidence:** [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md)
 > (written for independent design review). Reproduction artifacts under `specs/`, `registry/`,
@@ -35,8 +39,8 @@ The project combines QPGF-style PG/PPR specifications, reusable skill packs, mul
 | Layer | Scope | Status |
 |---|---|---|
 | **QPGF** (core) | Deterministic verification termination oracle (ContractGate): contracts, seal tiers, registry, composition, multi-runtime, trust model | **Realized & public** |
-| **QuantaFoundry** (foundry) | Key-free cross-model establishment, autonomous multi-persona generation, sealed-module → application composition, the gate→QFT→QPE→Shor library | **Realized (v0.3)** — 22 modules · 20 apps |
-| QuantaFoundry (remaining) | Intent UX, generator-skill library, multi-backend adapters (Qiskit/Cirq/CUDA-Q), goal-autonomy | **Planned** |
+| **QuantaFoundry** (foundry) | Key-free cross-model establishment, autonomous multi-persona generation, sealed-module → application composition, the gate→QFT→QPE→Shor library, self-extending GenSkill library, goal-autonomy, gated multi-model panel, falsification front | **Realized (v0.7)** — 48 modules · 59 apps |
+| QuantaFoundry (remaining) | Intent UX, multi-backend adapters (Qiskit/Cirq/CUDA-Q), open-ended discovery of genuinely new methods/families | **Planned** |
 
 The honest framing: QuantaFoundry does **not** introduce a new verification algorithm. The
 deterministic, phase-aware verification it relies on reuses **established techniques** (exact
@@ -45,22 +49,32 @@ Its contribution is the **systems integration**: turning that verification into 
 termination oracle* with a binary tamper-evident seal, a sealed registry, and FTQC resource
 accounting — wired so that **only what is proven can exist downstream**.
 
-## What's built (v0.3)
+## What's built (v0.7)
 
 The foundry layer is now exercised end-to-end. Every result below is reproduced from the working
-tree; details and evidence are in [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md) §8.
+tree; details and evidence are in [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md) §8 (v0.7 work in §8.8).
 
 - **Key-free, cross-model truth.** Six independent AI runtimes (gpt-5, gemini, grok, kimi, qwen,
   deepseek — six distinct model weights) independently authored each gate's reference *and*
   implementation; agreement is counted per physical weight-set, and each converged hash is also
   corroborated by a stack-independent **symbolic proof**. No gate's correctness rests on a human
-  answer key. The same was done at the **application level** (intents *and* implementations).
-- **22 sealed base gates** → **20 sealed applications**, the latter composed *only* from sealed
-  parts, each re-verified by the oracle (C-app) and re-sealable byte-identically.
-- **Algorithm layer:** Bell/GHZ (incl. a 16-qubit Tier-1 structural seal), Grover, QFT(2–4) pipelines,
-  Quantum Phase Estimation (2- and 3-bit), and **Shor period-finding** — the sealed circuit
-  measurably **factors 15 = 3 × 5**, with its modular arithmetic honestly decomposed into sealed
-  Fredkin gates (not a matrix copy of the answer).
+  answer key. The same was done at the **application level** (intents *and* implementations), and
+  v0.7 added the first *live* round: a new gate `sx` (√X) authored by six distinct runtimes that
+  converged (MULTIMODEL) and was sealed against an algebraic proof (PROOF_BACKED).
+- **48 sealed base modules** → **59 sealed applications**, the latter composed *only* from sealed
+  parts, each re-verified by the oracle (C-app) and re-sealable byte-identically (`registry_root_hash`
+  reproduces).
+- **Algorithm layer:** Bell/GHZ (incl. a 16-qubit seal now carrying both a Tier-1 structural and a
+  Tier-2 Clifford-tableau certificate), Grover, QFT(2–4) pipelines, Quantum Phase Estimation
+  (2- and 3-bit), and **Shor period-finding** — sealed circuits measurably **factor 15 = 3 × 5 and
+  genuinely 21 = 3 × 7** (distinct-prime arithmetic, not the N=15 special case; mod 33/35 multipliers
+  also sealed), with modular arithmetic honestly decomposed into sealed primitives (not a matrix copy
+  of the answer) — a discipline now **code-enforced** by the honest-decomposition guard.
+- **Self-extending + autonomous:** a GenSkill library promotes generation *methods* to first-class
+  assets, and a goal-autonomy loop recomposes sealed modules to the frontier (24 apps forged at human
+  seed 0). A **gated multi-model panel** structurally requires ≥2 distinct weights for key-free
+  intents (blocking same-weights co-error), and a **falsification front** red-teams the oracle/gate/
+  consensus (documented gaps closed).
 - **Internal consistency:** apps that rebuild a separately-sealed gate (e.g. `H·CNOT·H` = CZ)
   reproduce its hash **byte-for-byte** (6/6), and for every algorithm app the independent
   app-intent consensus, the independent app-circuit consensus, and the in-house seal **all agree**.
@@ -173,15 +187,16 @@ id, sealed, convention, n_sys, n_anc, contract, tier, u_hash, resource, sig,
 oracle_code_hash, contracts_code_hash, resource_schema_version
 ```
 
-### 7. Skill System  *[planned]*
+### 7. GenSkill System  *[realized, v0.5–0.7]*
 
-Reusable generation skills encoding successful patterns (qft-generator, grover-generator,
-phase-estimation-generator, oracle-builder, uncompute-pattern, controlled-unitary-builder,
-resource-optimizer, backend-porting, sealed-compose). Each skill should contain: task
-decomposition, endian conventions, golden construction rules, **forbidden shortcuts**,
-verification commands, and failure-signal interpretation. *(Today, the single self-contained
-`qpgf-oracle` skill bundle implements the verification side; the generator-skill library is the
-next foundry-layer step.)*
+Reusable generation **methods** are promoted to a first-class, introspectable catalog
+(`scripts/genskills.py`, `registry/GENSKILL-CATALOG.json`): named, parametrized GenSkills, each with
+metadata (kind, params, required sealed modules, golden-construction method) and a deterministic
+`make_spec(n)`. The catalog is tamper-evident via a per-skill source hash + `catalog_root_hash` (the
+method-side counterpart of `registry_root_hash`). The boundary stays sharp — **generation ≠
+verification**: a GenSkill mints no trust; its output is a *candidate* spec that still must pass the
+oracle to be sealed. *(Open-ended discovery of genuinely new methods/families remains research-stage —
+the loop recomposes known methods, it does not invent new mathematics.)*
 
 ## Trust & Security Model
 
@@ -240,21 +255,25 @@ deterministic rerun is byte-identical
 ## MVP Scope & status
 
 ### MVP-1: Sealed module generation — *realized*
-**22 gates sealed** (the original `X, Z, H, CNOT, Toffoli, Swap, QFT2, QFT3` plus `S, T, CZ, iSWAP,
-CS, CCZ, QFT4` and the controlled-phase family `controlled-T/S†/T†`, the `CRₖ`/`CRₖ†` rotations, and
-`Fredkin`). Every module has a `.pg` spec, passes `verify_seal`, and re-seals byte-identically.
+**48 modules sealed** (the core gate set `X, Z, H, CNOT, Toffoli, Swap, QFT2–4`, the phase/rotation
+gates `S, T, CZ, iSWAP, CS, CCZ`, the controlled-phase family `controlled-T/S†/T†` and `CRₖ`/`CRₖ†`,
+`Fredkin`, the multi-controlled-X family up to `c6x`/MCT-6, `sx`/√X, and ±α_k Ry primitives k=2..10).
+Every module has a `.pg` spec, passes `verify_seal`, and re-seals byte-identically.
 
 ### MVP-2: Composition — *realized*
-**20 applications sealed** from sealed parts (Bell, GHZ-3/4, 16-qubit Tier-1 GHZ, Grover, QFT2–4
-pipelines, inverse-QFT, QPE, controlled modular multiplication, Shor). Each gets its own C-app
-golden check and sealed artifact. Recursive trees (Shor → modular-mult → Fredkin; QPE → inverse-QFT)
-and rediscovery cross-checks (6/6 byte-identical) demonstrated.
+**59 applications sealed** from sealed parts (Bell, GHZ-3/4, 16-qubit GHZ with Tier-1+Tier-2 seals,
+Grover, QFT2–4 pipelines, inverse-QFT, QPE, controlled modular multiplication incl. distinct-prime
+mod 33/35, and Shor factoring 15 and genuinely 21). Each gets its own C-app golden check and sealed
+artifact. Recursive trees (Shor → modular-mult → Fredkin; QPE → inverse-QFT) and rediscovery
+cross-checks (6/6 byte-identical) demonstrated.
 
 ### MVP-3: Multi-runtime / key-free establishment — *realized*
 Six distinct-weight runtimes establish gate truth, gate implementation, app intent, and app
 implementation by cross-model consensus + symbolic proof — **zero human answer keys**. Dissent
 (a runtime's wrong submission) is detected and outvoted; independent runtimes sometimes find
-*shorter* correct decompositions than the in-house one.
+*shorter* correct decompositions than the in-house one. v0.7 added a **gated panel** that enforces
+≥2 distinct weights for key-free intents, the first **live** cross-model round (`sx`), and
+cross-runtime co-error probes (on a convention-contested QFT the consensus correctly refused to seal).
 
 ## Directory Layout
 
@@ -269,12 +288,20 @@ QuantaFoundry/
 │   └── QuantaFoundry-Technical-Spec.md   # full spec + evidence + review questions (START HERE)
 │
 ├── specs/                        # human/AI-readable PG specifications (the "source")
-│   ├── modules/*.pg   (22)       #   one gate per file: bloq impl + golden ref + meta
-│   └── apps/*.app.pg   (20)      #   one application per file: app_golden + decomposition plan
+│   ├── modules/*.pg   (48)       #   one gate per file: bloq impl + golden ref + meta
+│   └── apps/*.app.pg   (59)      #   one application per file: app_golden + decomposition plan
 │
 ├── registry/                     # the sealed library (the "trust capital")
-│   ├── modules/*.sealed.json (22)#   tamper-evident gate seals (u_hash, contract, provenance, sig)
-│   └── apps/*.sealed.json (20+)  #   application seals (C-app) + cached leaf re-seals
+│   ├── modules/*.sealed.json (48)#   tamper-evident gate seals (u_hash, contract, provenance, sig)
+│   ├── apps/*.sealed.json (59+)  #   application seals (C-app) + cached leaf re-seals
+│   └── {REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES,GENSKILL-CATALOG}.json
+│
+├── scripts/                      # foundry-layer tooling (v0.4–0.7)
+│   ├── genskills.py, goal_autonomy.py        #   GenSkill library + goal-autonomy loop
+│   ├── gated_panel.py, live_dispatch.py, seal_sx.py   #   multi-model panel + live cross-model
+│   ├── red_team.py, bounty_adjudicate.py, cross_runtime_round.py  #   falsification front
+│   ├── seal_module.py, verify_t1_closure.py  #   honest-decomposition closure (decomp guard)
+│   └── arith_family.py, clifford_routing.py, resource_report.py, dep_graph.py, second_oracle.py
 │
 ├── .pgf/                         # the foundry implementation (PG/PGF orchestration)
 │   ├── autoforge/
@@ -306,8 +333,9 @@ QuantaFoundry/
     └── BUNDLE.sha256, DEPENDENCIES.lock   # integrity manifest + pinned deps
 ```
 
-The generator-skill library, multi-backend adapters (Qiskit/Cirq/CUDA-Q), and `runs/`·`reports/`
-tooling remain the planned next foundry steps.
+The generator-skill library (GenSkill) and goal-autonomy are now realized (see `scripts/`);
+multi-backend adapters (Qiskit/Cirq/CUDA-Q) and open-ended discovery of genuinely new
+methods/families remain the planned next foundry steps.
 
 ## Non-Goals
 
@@ -350,7 +378,8 @@ Qualtran backend + QPGF-style PG specs + deterministic seal oracle + sealed regi
 This narrow-but-strong foundation is **done and public** (https://github.com/sadpig70/QPGF):
 AI-generated quantum software that can *deterministically prove its unitary matches an
 independent reference, conditional on a stated and auditable trust chain*. The foundry layer
-(intent UX, generator-skill library, multi-backend adapters) builds outward from there.
+(key-free establishment, composition, GenSkill library, goal-autonomy, multi-model panel —
+realized; intent UX and multi-backend adapters still planned) builds outward from there.
 
 ## License
 
