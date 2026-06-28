@@ -1,0 +1,38 @@
+{
+  "_schema": "discover-round1-seal-result-v1",
+  "round": "discover_round1",
+  "date": "2026-06-28",
+  "summary": "ValueFunction(W2.1)이 자율도출한 2개 미봉인 primitive를 6런타임 패널이 독립 제안 → golden 수렴 → key-free 봉인. registry 48→50 modules, root 3dae613d→437efbc3.",
+  "panel_runtimes": ["codex", "deepseek", "gemini-3.5-flash", "grok", "kimi", "qwen"],
+  "results": {
+    "c7x": {
+      "golden": "cnx_perm(7) — 7-control X permutation (big-endian, control=MSB×7, target=LSB)",
+      "bloq": "MultiControlX(cvs=(1,)*7)",
+      "golden_convergence": "qwen/deepseek/gemini/grok 동일 permutation golden (≥4/6); codex/kimi는 cr8 집중",
+      "sealed": true,
+      "u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe",
+      "n_sys": 8,
+      "second_oracle": "independent cnx_perm(7) u_hash match",
+      "unlocks": "distinct-prime modular-mult 확장 prereq (mod 39=3×13, mod 51=3×17 …)"
+    },
+    "cr8_dag_gate": {
+      "golden": "diag(1,1,1,exp(-2*pi*i/2**8)) — controlled-R8 dagger",
+      "bloq": "ZPowGate(exponent=-1/2**7).controlled()",
+      "golden_convergence": "6/6 runtimes (diag exp(-2pi i/2^8) 만장일치)",
+      "bloq_convergence": "5/6 analytic ZPowGate (kimi만 Rz-CNOT 근사 — 핵심통찰: P(pi/128)은 256차 root라 Clifford+T 정확분해 불가 → analytic golden 직접봉인이 정답)",
+      "sealed": true,
+      "u_hash": "198f6cade30501ccf515dcefaad411eb52a0a8514718b7c646a46198aa9d3922",
+      "n_sys": 2,
+      "second_oracle": "independent cphase(8).conj() u_hash match",
+      "unlocks": "더 깊은 QFT/IQFT (qft8+) exponent 정밀도"
+    }
+  },
+  "verification": {
+    "modules_before": 48, "modules_after": 50,
+    "root_before": "3dae613da089aa76", "root_after": "437efbc34f57111d",
+    "second_oracle": "50/50", "reproduce_all": "REPRODUCED (byte-identical)",
+    "frozen_consensus_keys": "23 unchanged (c7x/cr8 not consensus-key gates; sealed via verify_seal golden=spec)",
+    "fingerprint_files": "verify_seal.py/contracts.py unmodified"
+  },
+  "_note": "key-free 정당성: golden(정답)을 6런타임이 독립 제안해 수렴. 봉인은 verify_seal(C1-C4, golden vs Qualtran bloq). c_nX/cr_k_dag 는 분해가 아닌 analytic/permutation golden으로 직접 봉인되는 family(c3x~c6x, cr3~cr7과 동형)."
+}

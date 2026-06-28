@@ -77,10 +77,12 @@ Stage2 // known-family 너머 발견 (designing)
   - 목표: *무엇을 만들지* 선택의 co-error 방어(미명명 실패모드 명명). coverage/independence 게이트.
   - 산출: `scripts/discover.py guard` · `.pgf/discover/SELECTION-LOG.json`.
   - 결과: coverage gate 작동(app 24선택/35거부 — 동일 family-capability 중복 거부) · independence gate(단일 convention 의존 경고, consensus_est<0.6). 모든 결정 사유 로그.
-- [~] **W2.4 PrimitiveProposalRound** `[EXT]` (self-contained 부분 ✅ 2026-06-28, relay 대기)
+- [x] **W2.4 PrimitiveProposalRound** `[EXT]` ✅ 2026-06-28 (relay 1라운드 수거·채점·봉인 완료)
   - 목표: capability-gap → 6런타임 패널 decomposition 제안 → 수렴+sympy proof → key-free 봉인.
-  - 산출: `scripts/discover.py propose` → `_workspace/crossmodel/discover_round1/`(GAP-SPEC.json·TASKSPEC.md·SCORING.md·README.md·responses/).
-  - 결과: ValueFunction+family 확장규칙이 **미봉인 capability-gap 자율도출**: `c7x`(7-control, predecessor c6x fan-in=2 → distinct-prime mod39/51 unlock) · `cr8_dag_gate`(qft8+ unlock). PG TaskSpec+채점/봉인 스키마 완성. **EXT 의존**: 정욱님 6런타임 배포→수거 대기.
+  - 산출: `scripts/discover.py propose` → `_workspace/crossmodel/discover_round1/`(GAP-SPEC.json·TASKSPEC.md·SCORING.md·README.md·responses/·**SEAL-RESULT.json**).
+  - 결과: ValueFunction+family 확장규칙이 **미봉인 capability-gap 자율도출**: `c7x`(7-control, predecessor c6x fan-in=2 → distinct-prime mod39/51 unlock) · `cr8_dag_gate`(qft8+ unlock). PG TaskSpec+채점/봉인 스키마 완성.
+  - **relay 수거/채점**: 6런타임(codex·deepseek·gemini-3.5-flash·grok·kimi·qwen) 패널 응답 → **수렴 확인**. `c7x` golden=`cnx_perm(7)` 256×256 permutation(≥4/6 일치), bloq=`MultiControlX(cvs=(1,)*7)`. `cr8_dag_gate` golden=`diag(1,1,1,e^{-2πi/2⁸})` **6/6 만장일치**, bloq=`ZPowGate(exponent=-1/2⁷).controlled()` 5/6 analytic. kimi의 정직한 음성(P(π/128)=256차 root → Clifford+T 정확분해 불가)이 c3~c7과 동형인 **analytic golden 직접봉인**이 정답임을 입증.
+  - **봉인**: 두 모듈 verify_seal(C1–C4) 통과 → registry **48→50 modules**, root `3dae613d…→437efbc3…` (byte-identity 재현). second_oracle **50/50** 독립검증(c7x=`cnx_perm(7)`·cr8=`cphase(8).conj()`) · contested_guard frozen **23키 불변** · fingerprint 2파일 무수정. c7x가 distinct-prime modular-mult(mod39=3×13, mod51=3×17) 확장 prereq 잠금해제.
 
 ---
 

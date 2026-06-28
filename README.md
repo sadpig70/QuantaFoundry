@@ -24,9 +24,12 @@ It generates quantum software modules from high-level intent, verifies them with
 > (57/57 apps re-derived by an independent numpy oracle), a `qf` CLI, a **citable registry root**
 > (`CITATION.cff`), a convention-independence audit, **ρ-discount validation** against constructed
 > co-errors, and determinism env-pinning + an oracle-revocation protocol + ed25519 Sybil defense.
-> All are analysis/tool/verification layers — the **registry root `3dae613d…` is unchanged**.
+> Stages 0–5 are analysis/tool/verification layers; the **W2.4 cross-runtime relay** then grew the
+> registry by two key-free primitives (`c7x`, `cr8_dag_gate` — 6-runtime panel convergence), advancing
+> the root `3dae613d…→437efbc3…` (**50 modules**). Pure non-destructive growth: every prior seal, the
+> 23 frozen consensus keys, and the fingerprint files reproduce byte-identically.
 >
-> **Guarantee split** (no exact-coverage overclaim): all **48 modules** are `unitary_equiv` (Tier-0 EXACT);
+> **Guarantee split** (no exact-coverage overclaim): all **50 modules** are `unitary_equiv` (Tier-0 EXACT);
 > the **59 apps** are 58 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
 > verified with a sealed seed, also Tier-2 sealed) — **zero structural-only seals**. Authoritative tally:
 > `registry/SEMANTIC-GUARANTEES.json` `headline_split`.

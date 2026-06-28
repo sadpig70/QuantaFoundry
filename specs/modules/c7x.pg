@@ -1,0 +1,15 @@
+```python id=bloq
+from qualtran.bloqs.mcmt import MultiControlX
+bloq = MultiControlX(cvs=(1,) * 7)
+```
+```python id=golden
+import numpy as np
+# c7x: control=first 7 qubits (MSB), target=last (big-endian). flip target iff all controls 1.
+golden = np.zeros((1<<8, 1<<8), dtype=complex)
+for s in range(1<<8):
+    o = (s ^ 1) if (s >> 1) == ((1<<7) - 1) else s
+    golden[o, s] = 1
+```
+```json id=meta
+{"id": "c7x", "n_sys": 8, "n_anc": 0}
+```

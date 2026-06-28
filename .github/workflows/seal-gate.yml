@@ -23,11 +23,11 @@ jobs:
       - name: Install deterministic deps
         run: pip install -r requirements-ci.txt
 
-      - name: Independent oracle (pure-numpy, 48/48 modules)
+      - name: Independent oracle (pure-numpy, 50/50 modules)
         run: python scripts/second_oracle.py
 
       - name: Full reproduction + root gate (byte-identity)
-        run: python scripts/qf_cli.py reproduce --expect-root 3dae613da089aa76
+        run: python scripts/qf_cli.py reproduce --expect-root 437efbc34f57111d
 
       - name: Contested-guard determinism (frozen consensus keys)
         run: python scripts/verify_contested_guard.py
@@ -36,7 +36,7 @@ jobs:
         run: python scripts/qasm_export.py --all
 
       - name: Seal badge
-        run: python scripts/seal_gate_ci.py --expect-root 3dae613da089aa76
+        run: python scripts/seal_gate_ci.py --expect-root 437efbc34f57111d
 
       - name: Upload seal badge
         uses: actions/upload-artifact@v4

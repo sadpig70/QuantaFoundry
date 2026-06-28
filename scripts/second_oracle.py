@@ -77,9 +77,10 @@ INDEP = {
     "iswap": lambda: np.array([[1, 0, 0, 0], [0, 0, 1j, 0], [0, 1j, 0, 0], [0, 0, 0, 1]], dtype=complex),
     "ccz": lambda: np.diag([1, 1, 1, 1, 1, 1, 1, -1]).astype(complex),
     "c6x": lambda: cnx_perm(6),
+    "c7x": lambda: cnx_perm(7),
     "cr3_dag_gate": lambda: cphase(3).conj(), "cr4_dag_gate": lambda: cphase(4).conj(),
     "cr5_dag_gate": lambda: cphase(5).conj(), "cr6_dag_gate": lambda: cphase(6).conj(),
-    "cr7_dag_gate": lambda: cphase(7).conj(),
+    "cr7_dag_gate": lambda: cphase(7).conj(), "cr8_dag_gate": lambda: cphase(8).conj(),
     "qft2": lambda: qft_n(2), "qft3": lambda: qft_n(3), "qft4": lambda: qft_n(4),
 }
 # ry_k cascade family (k=2..10) + daggers — late-binding 회피용 즉시 캡처

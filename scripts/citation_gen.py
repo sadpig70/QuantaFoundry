@@ -42,7 +42,7 @@ abstract: >-
   QuantaFoundry is a self-growing foundry where every artifact must pass a deterministic QPGF
   oracle seal (byte-identical reproduction) to exist. This release seals {n_mod} modules and
   {n_app} unique apps with registry_root_hash {root[:16]}…, independently re-derivable via
-  `python scripts/reproduce_all.py` and `scripts/second_oracle.py` (48/48 modules).
+  `python scripts/reproduce_all.py` and `scripts/second_oracle.py` ({n_mod}/{n_mod} modules).
 keywords:
   - quantum-computing
   - deterministic-verification
