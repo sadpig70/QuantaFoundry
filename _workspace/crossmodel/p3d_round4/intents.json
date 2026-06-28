@@ -1,0 +1,10 @@
+{
+  "_comment": "P3d round 4 — contested-definition probes. Author each gate in YOUR canonical convention, INDEPENDENTLY, and state any convention choice in 'note'. Big-endian q0=MSB, U[out,in], up to global phase. The contested axes (bit-reversal, generator sign, root phase) are NOT global phase.",
+  "round": "P3d-round4-contested-definition",
+  "intents": [
+    {"id": "x_gate", "class": "S:control-well-defined", "n_sys": 1, "definition": "Pauli-X (NOT) gate, [[0,1],[1,0]]."},
+    {"id": "qft2", "class": "D:convention-contested", "n_sys": 2, "definition": "2-qubit Quantum Fourier Transform. Conventions differ on the final bit-reversal swap and the phase sign — author your canonical form and state your choice in note."},
+    {"id": "sqrt_swap", "class": "D:convention-contested", "n_sys": 2, "definition": "sqrt(SWAP): a square root of the SWAP gate. The phase/branch convention varies — author your canonical form."},
+    {"id": "rz_half", "class": "D:convention-contested", "n_sys": 1, "definition": "Rz(pi/2): rotation about Z by pi/2. The generator-sign convention exp(-i theta Z/2) vs exp(+i theta Z/2) varies — author your canonical form and state it in note."}
+  ]
+}

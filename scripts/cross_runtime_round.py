@@ -80,6 +80,17 @@ def measure_intent(intent_id, sources, rho_probe=0.5):
     else:
         out["established_matches_GT"] = False
         out["co_error_established_wrong"] = False
+    # 어느 방어선/현상을 실측했는지 분류(특히 contested 라운드 가독성)
+    if r0.status == "ESTABLISHED" and out["established_matches_GT"]:
+        out["outcome"] = "truth_de_facto_standard"        # 사실상 표준에 수렴 = 참 진리 확립
+    elif r0.status == "ESTABLISHED":
+        out["outcome"] = "co_error_corpus_dominant"       # 비표준 관례에 동반수렴 = ρ-경로
+    elif r0.status == "DIVERGENT":
+        out["outcome"] = "necessity_divergent_refused"    # 분기 → 봉인 거부(necessity 방어)
+    elif r0.status == "CONTESTED":
+        out["outcome"] = "contested_guard_fired"          # 동률 → contested near-tie 가드
+    else:
+        out["outcome"] = "insufficient"
     return out
 
 
@@ -150,8 +161,7 @@ def main():
     if not relay_pending:
         measures, per_runtime = adjudicate(files)
         for m in measures:
-            tag = ("GT수렴(truth)" if m.get("established_matches_GT") else
-                   "동반오류-wrong(BREAK)" if m.get("co_error_established_wrong") else m["status"])
+            tag = m.get("outcome", m["status"])
             extra = ""
             if m.get("co_error_established_wrong"):
                 rd = m.get("rho_discount", {})

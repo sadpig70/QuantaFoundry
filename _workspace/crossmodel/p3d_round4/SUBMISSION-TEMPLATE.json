@@ -1,0 +1,11 @@
+{
+  "runtime": "<your-runtime-name>",
+  "weights_id": "<your-distinct-model-weights-id>",
+  "convention_ack": true,
+  "submissions": [
+    {"id": "x_gate", "n_sys": 1, "golden_real": [[0,1],[1,0]], "golden_imag": [[0,0],[0,0]]},
+    {"id": "qft2", "n_sys": 2, "golden_real": [["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"]], "golden_imag": [["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"]], "note": "state your QFT convention (swap? phase sign?)"},
+    {"id": "sqrt_swap", "n_sys": 2, "golden_real": [["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"],["<re>","<re>","<re>","<re>"]], "golden_imag": [["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"],["<im>","<im>","<im>","<im>"]], "note": "state your sqrt branch"},
+    {"id": "rz_half", "n_sys": 1, "golden_real": [["<re>","<re>"],["<re>","<re>"]], "golden_imag": [["<im>","<im>"],["<im>","<im>"]], "note": "state your generator-sign convention"}
+  ]
+}

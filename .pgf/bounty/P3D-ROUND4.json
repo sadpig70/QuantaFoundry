@@ -1,0 +1,13 @@
+{
+  "phase": "P3d p3d_round4 — cross-runtime co-error measurement",
+  "honesty": "real weights_id independence units (NOT round-1 forged peers); consensus used only; non-destructive (no seal). corpus-correlation ρ-discount demonstrated as the existing defense against genuine cross-runtime co-error.",
+  "engine_selftest_passed": true,
+  "submissions_ingested": 0,
+  "relay_pending": true,
+  "measures": [],
+  "per_runtime": [],
+  "co_error_intents": [],
+  "co_error_undefended_by_rho": [],
+  "limitations": "정직한 음성의 범위 한정: (1) 테스트한 probe 들에서 동반오류 0 = co-error '미발생'이지 '불가능' 증명 아님(probe 가 충분히 적대적이지 못했을 수 있음). (2) 동반오류가 0 이라 ρ-할인 방어는 *실데이터로 미검증*(selftest 합성으로만 입증). 더 모호한 probe 로 후속 라운드 시 ρ-경로 실측 가능.",
+  "note": "RELAY PENDING: p3d_round4 패키지 준비 완료, 정욱님 6런타임 공통 intent 수거 대기. selftest 로 채점기 결정론만 self-contained 입증."
+}
