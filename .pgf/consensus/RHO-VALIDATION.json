@@ -1,0 +1,52 @@
+{
+  "_schema": "rho-validation-v1",
+  "mechanism_live": true,
+  "verdict": "MECHANISM LIVE — 구성된 co-error 를 lineage-merge + ρ-discount 가 정확히 붕괴; ρ=0 대조로 discount 존재가치 실증; 정답은 통과(false-positive 0). 자연발생 co-error(약모델 패널)는 [EXT] relay 대기.",
+  "correct_u_hash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed",
+  "correct_matches_sealed": true,
+  "poisoned_units": {
+    "little_endian_qft3": "445095c6b830714f36658a32af5ede26a2884e0d2f2cbe0d96564dd405ba6d45",
+    "conjugate_qft3": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+    "phase_perturbed_qft3": "ca5223a9df70a700bf7bbb107986f90a055322b743c7d8644b4d32783b9aa3b6"
+  },
+  "poison_all_wrong": true,
+  "checks": [
+    {
+      "name": "lineage_merge",
+      "status": "DIVERGENT",
+      "dist": {
+        "445095c6b830": 1
+      },
+      "pass": true,
+      "detail": "같은 weightsA 2소스 → independence_unit 병합으로 1 vote<2 → DIVERGENT"
+    },
+    {
+      "name": "rho_discount",
+      "status": "INSUFFICIENT",
+      "grade": "CORPUS_CORRELATED",
+      "pass": true,
+      "detail": "distinct unit 2소스 poisoned + ρ=0.6 → N_eff=1.25<2 → CORPUS_CORRELATED escalate"
+    },
+    {
+      "name": "rho0_lets_coerror_pass",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "pass": true,
+      "detail": "ρ=0 이면 distinct-unit poisoned 합의가 ESTABLISHED — ρ-discount 의 존재가치 실증"
+    },
+    {
+      "name": "control_established",
+      "status": "ESTABLISHED",
+      "grade": "MULTIMODEL",
+      "pass": true,
+      "detail": "정답 2독립소스 → ESTABLISHED (false-positive 아님)"
+    }
+  ],
+  "n_eff_sweep": {
+    "rho=0.0": 2.0,
+    "rho=0.3": 1.538,
+    "rho=0.6": 1.25,
+    "rho=1.0": 1.0
+  },
+  "_note": "self-contained: 구성된 poisoned 합의를 메커니즘이 붕괴=실가동. [EXT]: 자연발생 co-error 수급은 약모델 패널 relay. frozen consensus_keys 재생성 없음(인메모리)."
+}

@@ -121,15 +121,12 @@ Stage4 // ρ-discount 실가동 또는 "미가동" 최종확정 (designing)
     W4.2_PoisonedLineagePanel // 상관오류 강제유발 (designing) [EXT]
 ```
 
-- [ ] **W4.1 ConventionIndependenceAudit** `[SC][ND]` (A3 고유통찰)
-  - 목표: convention 단일문화(big-endian/atol/전역위상)가 전역 단일실패점. `second_oracle`가 endian/위상을 *독립유도*하는가 *가정*하는가 판정.
-  - 산출: `scripts/convention_audit.py` · 판정 리포트.
-  - verify: 가정이면 갭 문서화(검증 필요 명시).
-- [ ] **W4.2 PoisonedLineagePanel** `[EXT]`
-  - 목표: 표준게이트 co-error 유발 불가(4라운드 종료) → co-error를 *구성*. poisoned/lineage-correlated unit을 패널에 투입(little-endian QFT·conjugate-stated-standard·corpus-sparse phase). 계보공유 2소스가 *틀리게* 합의 시 ρ-discount가 joint vote를 <2 independent로 붕괴시키는가?
-  - 산출: `_workspace/crossmodel/p3d_round5_poison/` · `scripts/rho_validation.py` · `docs/TRUST-MODEL-VALIDATION-REPORT.md`.
-  - 결과: 실 상관오류 1건 → ρ 실가동 입증 / 여전히 0 → "설계됨·미가동" 최종라벨(과장위험 제거). **어느 쪽이든 정직 종결.**
-  - relay: poisoned/약모델 패널 구성 필요. **EXT 의존.**
+- [x] **W4.1 ConventionIndependenceAudit** `[SC][ND]` (A3 고유통찰) ✅ 2026-06-28
+  - 산출: `scripts/convention_audit.py` · `.pgf/consensus/CONVENTION-AUDIT.json` · `docs/CONVENTION-AUDIT.md` · `.pgf/DESIGN-ConsensusClose.md`(PG 설계).
+  - 결과: **판정 매트릭스** — 유니터리 *구성*=INDEPENDENT(numpy 제1원리 → risk(d) 구성버그 차단), endian/전역위상/atol/canonical-hash=**SHARED ASSUMPTION**(공유가정). 근거: endian-sensitive 10/24·big-endian 전부 sealed 일치(sealed 가 big-endian 의존)·전역위상 48/48 불변·atol(QUANT 1e-9) 48/48 불변·vs↔my_canonical_hash 판정일치 388/388. **갭 명시**: convention 단일문화는 미차단 단일실패점(little-endian 재유도/형식증명 필요) — 과장 제거.
+- [~] **W4.2 PoisonedLineagePanel** `[EXT]` (self-contained 메커니즘검증 ✅ 2026-06-28, 자연발생 co-error relay 대기)
+  - 산출: `scripts/rho_validation.py` · `.pgf/consensus/RHO-VALIDATION.json` · `docs/TRUST-MODEL-VALIDATION-REPORT.md` · `_workspace/crossmodel/p3d_round5_poison/`(PANEL-SPEC).
+  - 결과: co-error 결정론 *구성*(little-endian QFT·conjugate·phase-perturbed, 정답≠ 3종). **MECHANISM LIVE** — lineage_merge(같은 unit→DIVERGENT)·rho_discount(distinct-unit+ρ=0.6→N_eff=1.25<2→CORPUS_CORRELATED)·rho0 대조(ρ=0이면 co-error ESTABLISHED=존재가치 실증)·control(정답 2독립→ESTABLISHED, false-positive 0). frozen consensus_keys 불변(인메모리). **정직 라벨**: ρ-discount=설계+메커니즘 실가동(구성 co-error 붕괴 입증). 자연발생 co-error 통계는 **EXT** 약모델 패널 relay.
 
 ---
 

@@ -1,0 +1,221 @@
+{
+  "_schema": "convention-audit-v1",
+  "independence_matrix": [
+    {
+      "dimension": "유니터리 구성",
+      "verdict": "INDEPENDENT",
+      "basis": "numpy 제1원리 (qualtran/spec-golden 미실행) — risk(d) 구성버그 차단"
+    },
+    {
+      "dimension": "endian convention",
+      "verdict": "SHARED ASSUMPTION",
+      "basis": "embed big-endian 하드코딩; sealed 의존; endian-sensitive 10건"
+    },
+    {
+      "dimension": "전역위상",
+      "verdict": "SHARED ASSUMPTION",
+      "basis": "vs+my 모두 전역위상 제거 (48/48)"
+    },
+    {
+      "dimension": "atol(1e-7)",
+      "verdict": "SHARED ASSUMPTION",
+      "basis": "양 측정 동일 round (48/48)"
+    },
+    {
+      "dimension": "canonical hash",
+      "verdict": "SHARED (부분독립 측정)",
+      "basis": "vs↔my 판정일치 388/388; 구현분리·철학공유"
+    }
+  ],
+  "endian": {
+    "rows": [
+      {
+        "gid": "cnot",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "swap2",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cz",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "toffoli",
+        "nq": 3,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "fredkin",
+        "nq": 3,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "c3x",
+        "nq": 4,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "c4x",
+        "nq": 5,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "c5x",
+        "nq": 6,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "cs_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "ct_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cr4_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cr5_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cs_dag",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "iswap",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "ccz",
+        "nq": 3,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "c6x",
+        "nq": 7,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "cr3_dag_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cr4_dag_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cr5_dag_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cr6_dag_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "cr7_dag_gate",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": false,
+        "endian_sensitive": false
+      },
+      {
+        "gid": "qft2",
+        "nq": 2,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "qft3",
+        "nq": 3,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      },
+      {
+        "gid": "qft4",
+        "nq": 4,
+        "big_endian_matches_sealed": true,
+        "reversed_differs_from_bigendian": true,
+        "endian_sensitive": true
+      }
+    ],
+    "n_checked": 24,
+    "n_endian_sensitive": 10,
+    "all_bigendian_match_sealed": true,
+    "verdict": "endian = SHARED ASSUMPTION (big-endian 하드코딩; sealed 가 이에 의존, second_oracle 도 동일 convention 가정 → 독립유도 아님)"
+  },
+  "phase_atol": {
+    "n": 48,
+    "global_phase_invariant": 48,
+    "atol_invariant": 48,
+    "my_hash_phase_invariant": 48,
+    "verdict": "전역위상/atol = SHARED ASSUMPTION (vs.hash_unitary 와 my_canonical_hash 모두 전역위상 제거 + 1e-7 round 동일 철학 → canonicalization 공유)"
+  },
+  "hash_independence": {
+    "pairs_checked": 388,
+    "judgment_agreement": 388,
+    "disagreements": [],
+    "verdict": "vs.hash_unitary ↔ my_canonical_hash 판정 일치 388/388 — 측정 동치류 공유(독립 구현이나 동일 canonicalization 철학; 구성버그는 분리, convention 버그는 공동)"
+  },
+  "gap": "second_oracle 은 *유니터리 구성*을 독립화해 risk(d)[Qualtran 구성/canonicalization 버그]를 닫는다. 그러나 endian·전역위상·atol·hash canonicalization 은 verify_seal 과 **공유 가정**이다. 따라서 convention 단일문화(big-endian/atol/전역위상)에 *공통 버그*가 있으면 second_oracle 도 같이 통과한다 — 이 축은 미차단 단일실패점. 닫으려면 독립 convention(예: little-endian 재유도 + 교차대조) 또는 형식증명(consensus.proof_*)이 필요. 현재는 명시된 갭(검증 필요).",
+  "_note": "분석전용 비파괴. second_oracle 독립성 경계의 정직 판정 — 과장 제거. 구성=독립(risk d 차단), convention/측정=공유가정(미차단 갭 명시)."
+}
