@@ -17,6 +17,15 @@ It generates quantum software modules from high-level intent, verifies them with
 > goal-autonomy, a gated multi-model panel, a falsification front, and an honest-decomposition
 > guard) are now realized — see the spec's `What changed since v0.6` and §8.8.
 >
+> **v0.7+ adoption & hardening layer (Stage 0–5, non-destructive):** over the sealed core — a
+> **QF-Discover** value function (objective novelty/composability via dependency-graph fan-in;
+> c6x's leverage is captured *before* the fact), a decomposition optimizer (oracle-as-reward with
+> reward-hacking structurally blocked), **OpenQASM3 export/ingest** with round-trip unitary identity
+> (57/57 apps re-derived by an independent numpy oracle), a `qf` CLI, a **citable registry root**
+> (`CITATION.cff`), a convention-independence audit, **ρ-discount validation** against constructed
+> co-errors, and determinism env-pinning + an oracle-revocation protocol + ed25519 Sybil defense.
+> All are analysis/tool/verification layers — the **registry root `3dae613d…` is unchanged**.
+>
 > **Guarantee split** (no exact-coverage overclaim): all **48 modules** are `unitary_equiv` (Tier-0 EXACT);
 > the **59 apps** are 58 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
 > verified with a sealed seed, also Tier-2 sealed) — **zero structural-only seals**. Authoritative tally:
@@ -83,6 +92,16 @@ tree; details and evidence are in [`docs/QuantaFoundry-Technical-Spec.md`](docs/
 - **Internal consistency:** apps that rebuild a separately-sealed gate (e.g. `H·CNOT·H` = CZ)
   reproduce its hash **byte-for-byte** (6/6), and for every algorithm app the independent
   app-intent consensus, the independent app-circuit consensus, and the in-house seal **all agree**.
+- **Adoption & hardening (v0.7+, non-destructive).** A **QF-Discover** value function ranks *what to
+  build next* from objective dependency-graph fan-in (retrospectively capturing `c6x`'s leverage
+  *before* the fact), and a decomposition optimizer searches cheaper sealed decompositions with the
+  oracle as a hard reward (reward-hacking structurally blocked). Sealed apps **export to OpenQASM3**
+  and re-import with round-trip unitary identity (57/57 re-derived by an independent numpy oracle),
+  exposed through a single `qf` CLI and a citable `registry_root_hash` (`CITATION.cff`). A
+  convention-independence audit scopes what `second_oracle` *derives* vs *assumes*; **ρ-discount is
+  validated against constructed co-errors** (it collapses poisoned consensus to <2 independent); and
+  determinism is env-pinned with an oracle-revocation protocol (fingerprint **145/145 intact**) and
+  ed25519 Sybil defense. All non-destructive — the registry root is unchanged.
 
 ## Positioning
 
@@ -285,7 +304,7 @@ cross-runtime co-error probes (on a convention-contested QFT the consensus corre
 ```text
 QuantaFoundry/
 ├── README.md                     # this file
-├── RELEASE-NOTES.md              # v0.3 milestone summary + reproduce commands
+├── RELEASE-NOTES.md              # v0.7 + v0.3 milestone summaries + reproduce commands
 ├── NOTICE.md                     # vendored-component (QPGF) provenance & attribution
 ├── LICENSE                       # MIT
 │
@@ -306,7 +325,11 @@ QuantaFoundry/
 │   ├── gated_panel.py, live_dispatch.py, seal_sx.py   #   multi-model panel + live cross-model
 │   ├── red_team.py, bounty_adjudicate.py, cross_runtime_round.py  #   falsification front
 │   ├── seal_module.py, verify_t1_closure.py  #   honest-decomposition closure (decomp guard)
-│   └── arith_family.py, clifford_routing.py, resource_report.py, dep_graph.py, second_oracle.py
+│   ├── arith_family.py, clifford_routing.py, resource_report.py, dep_graph.py, second_oracle.py
+│   ├── sampled_dense_verify.py, zx_routing.py, global_phase_tracker.py   #   S1: Tier-1 trust-closure
+│   ├── discover.py, decomp_optimizer.py      #   S2: QF-Discover value function + decomposition optimizer
+│   ├── qasm_export.py, qasm_ingest.py, qf_cli.py, citation_gen.py, seal_gate_ci.py  #   S3: OpenQASM3 + qf CLI + citable + CI
+│   └── convention_audit.py, rho_validation.py, determinism_env_check.py, oracle_rollback_protocol.py, runtime_identity.py  #   S4–S5: consensus audit + hardening
 │
 ├── .pgf/                         # the foundry implementation (PG/PGF orchestration)
 │   ├── autoforge/

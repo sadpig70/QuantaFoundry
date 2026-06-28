@@ -52,6 +52,30 @@
 > data (it refused to seal an under-specified intent). Library grew to **48 sealed modules → 59 sealed
 > applications**; frozen consensus keys: **23**; `registry_root_hash` `3dae613d…` reproduces byte-identical.
 
+> **What changed in v0.7+ (Stage 0–5 process plan):** non-destructive analysis/tool/verification layers
+> over the sealed core — the registry root `3dae613d…` and all 48/59 seals are **unchanged** (no new
+> seals; the fingerprinted oracle files untouched). **(S0)** `second_oracle` independent re-derivation
+> extended to **48/48 modules** + a Tier-0/1 headline split (no exact-coverage overclaim). **(S1)**
+> Tier-1 closure — `ghz16` raised to `unitary_equiv_sampled` (sampled-dense two-path, sealed seed; **zero
+> structural-only**), a ZX-routing path (infrastructure self-test 6/6; immediate target 0 — honest
+> negative), and a global-phase tracker (controlled-pair composition proven safe). **(S2) QF-Discover** —
+> an 8-term value function whose terms derive from registry graph structure (Composability =
+> counterfactual dependency fan-in; `c6x`'s leverage captured *before* the fact, validated
+> retrospectively), a decomposition optimizer with the oracle as a hard reward (reward-hacking
+> structurally blocked; 6/6 cheaper-decomposition groups found), a goal-selection guard, and an
+> auto-derived primitive-proposal package (`c7x`, `cr8_dag_gate`). **(S3) Adoption** — OpenQASM3
+> export/ingest with round-trip unitary identity (57/57 re-derived by the numpy oracle; closed loop 8/8),
+> a `qf` CLI (wrapping existing scripts, zero new verification logic), and a citable `CITATION.cff`
+> binding the root hash. **(S4) Consensus close** — a convention-independence audit (unitary
+> *construction* = independent → risk(d) closed; endian/phase/atol/hash = **shared assumption**, gap
+> named) and ρ-discount validation against *constructed* co-errors (lineage-merge + ρ collapse a poisoned
+> consensus to <2 independent; mechanism **live**, natural co-error deferred to EXT). **(S5) Hardening** —
+> determinism env-pin (byte-identity robust to FP/BLAS noise; `requirements.lock`), an oracle-revocation
+> protocol (fingerprint **145/145 intact**, `docs/EMERGENCY-RESEAL.md`), and ed25519 Sybil defense
+> (pubkey-strengthened independence units). EXT relay packages are prepared for the four cross-runtime
+> items; backend evidence remains gated/deferred. Companion docs: `docs/CONVENTION-AUDIT.md`,
+> `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`.
+
 ---
 
 ## 0. How to read and review this document

@@ -113,7 +113,7 @@ Authoritative source = `registry/REGISTRY-MANIFEST.json`. Reproducible via §8.
 - **48 sealed modules · 59 sealed apps.** (`registry/apps` holds 97 files = 59 unique +
   38 app-side re-seal caches; canonical modules live in `registry/modules`.)
 - **registry_root_hash = `3dae613d…`** · **23 frozen consensus keys.**
-- Re-discovery cross-check **6/6** · independent second-oracle **18/18** · triple-agreement **7/7**.
+- Re-discovery cross-check **6/6** · independent second-oracle **48/48** (full coverage, S0) · triple-agreement **7/7**.
 
 Completed milestones (so you don't re-propose them):
 - Base gates sealed; **first live cross-model truth** = `sx` (√X), 6 distinct-weights runtimes
@@ -132,6 +132,14 @@ Completed milestones (so you don't re-propose them):
 - **Falsification (P3) + 4-round cross-model adversarial (P3d):** co-error 0 across 4 rounds;
   the `CONTESTED` near-tie guard fired on **real** data for the first time (qft2, a 2-2-1-1
   convention split).
+- **v0.7+ Stage 0–5 (non-destructive analysis/tool/verification layers; registry root and all
+  48/59 seals unchanged):** QF-Discover value function (objective fan-in-based ranking; `c6x`'s
+  leverage captured *before* the fact) + decomposition optimizer + goal-selection guard; OpenQASM3
+  export/ingest with round-trip identity (57/57) + a `qf` CLI + a citable `CITATION.cff`; a
+  convention-independence audit; ρ-discount validation against *constructed* co-errors; and
+  determinism env-pin + oracle-revocation (fingerprint 145/145 intact) + ed25519 Sybil defense.
+  Auto-derived primitive proposals (`c7x`, `cr8`) and four EXT relay packages await cross-runtime
+  dispatch. **Don't re-propose these as if missing — but improvements/critiques are welcome.**
 
 ---
 
@@ -140,13 +148,22 @@ Completed milestones (so you don't re-propose them):
 We hold ourselves to this; proposals that ignore it will read as naive.
 
 - Cross-model **co-error "did not occur" ≠ "is impossible"** (4 rounds, frontier models robust
-  on standard gates — but that is empirical, not a proof).
-- The **ρ-correlation discount defense is unvalidated on real data** — there was no real
-  divergence to exercise it against. We need a genuinely contested/corpus-poisoned probe.
-- "Fully autonomous" is **operational, not literal**: the discover/forge loop is still
-  *manually triggered*; there is no standing value function driving continuous discovery.
-- **Tier-1 seals do not guarantee unitary equivalence** — only structural well-formedness.
-  Large circuits (e.g. ghz16/ghz20) are sealed structurally, not exactly.
+  on standard gates — but that is empirical, not a proof). *Natural-occurrence* co-error on real
+  weak-model panels is still unmeasured (an EXT relay package is prepared).
+- The **ρ-correlation discount defense is now mechanism-validated** against *constructed* co-errors
+  (S4 W4.2 — it collapses a poisoned consensus to <2 independent), but **natural-occurrence**
+  corpus correlation on real weak-model panels is still pending (EXT). Don't overclaim ρ as proven
+  in the wild.
+- A **value function now exists** (S2 QF-Discover — objective dependency-fan-in ranking), but
+  continuous *unattended* discovery is still **manually triggered**; there is no always-on loop
+  driving it yet.
+- **Tier-1 unitary-equivalence gap is closed for the current library** — `ghz16` was raised to
+  `unitary_equiv_sampled` (S1, sampled-dense two-path + sealed seed) and **zero structural-only
+  seals remain**. But sampled-dense is *probabilistic-complete*, not full dense equivalence; a
+  future large non-Clifford app would re-open the gap (a ZX Tier-3 path is staged for it).
+- **Convention is a shared assumption, not independently derived** (S4 W4.1 audit): `second_oracle`
+  re-derives the *unitary* independently, but endian/global-phase/atol/canonical-hash are shared
+  with the oracle — a common convention bug would pass both. Named as a gap, not yet closed.
 - Verification techniques themselves are **reused, not invented** (see §1).
 
 ---
@@ -171,7 +188,7 @@ Don't take the numbers on faith. The whole library re-seals deterministically:
 
 ```
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash=3dae613d… · second_oracle 18/18 · behavior pass
+# expect: REPRODUCED · root_hash=3dae613d… · second_oracle 48/48 · behavior pass
 ```
 
 If `root_hash` matches `3dae613d…`, the 48 modules + 59 apps reproduced byte-for-byte.

@@ -1,5 +1,40 @@
 # Release Notes
 
+## v0.7 — Foundry realized + adoption & hardening (2026-06-28)
+
+The foundry layer around QPGF is substantially realized: **48 sealed modules → 59 sealed applications**,
+`registry_root_hash` `3dae613d…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
+(genuine Shor N=21, the GenSkill library, self-extending goal-autonomy) are documented in the technical
+spec's *What changed* sections; v0.3 — the first public milestone — is below.
+
+**v0.7 highlights:** genuine **Shor 21 = 3 × 7** with honestly-decomposed modular arithmetic,
+distinct-prime multipliers (mod 33/35), the first *live* cross-model truth (`sx` = √X), a gated
+multi-model panel (≥2 distinct weights), a falsification front, and a code-enforced
+honest-decomposition guard. Frozen consensus keys: **23**.
+
+**v0.7+ Stage 0–5 — adoption & hardening (non-destructive analysis/tool/verification layers; registry
+root and all 48/59 seals unchanged, no new seals):**
+
+- **S0–S1 Trust-Closure:** `second_oracle` independent re-derivation to **48/48 modules**; `ghz16`
+  raised to `unitary_equiv_sampled` (zero structural-only seals); ZX-routing infrastructure (self-test
+  6/6); global-phase tracker (controlled composition safe).
+- **S2 QF-Discover:** an 8-term value function (Composability = counterfactual dependency fan-in;
+  `c6x`'s leverage captured *before* the fact), a decomposition optimizer with the oracle as a hard
+  reward (reward-hacking structurally blocked; 6/6 cheaper decompositions), a goal-selection guard, and
+  auto-derived primitive proposals (`c7x`, `cr8_dag_gate`).
+- **S3 Adoption:** OpenQASM3 export/ingest with round-trip unitary identity (57/57; closed loop 8/8), a
+  `qf` CLI, and a citable `CITATION.cff` binding the root hash.
+- **S4 Consensus close:** a convention-independence audit (construction = independent; endian/phase/atol
+  = shared assumption, gap named) and **ρ-discount validation against constructed co-errors** (collapses
+  poisoned consensus to <2 independent; mechanism live, natural co-error deferred to EXT).
+- **S5 Hardening:** determinism env-pin (`requirements.lock`), an oracle-revocation protocol
+  (fingerprint **145/145 intact**), and ed25519 Sybil defense.
+
+Four EXT relay packages are prepared for cross-runtime items (c7x/cr8 primitives, a CI pilot, a poisoned
+panel, runtime identity keys); backend hardware evidence remains gated/deferred.
+
+---
+
 ## v0.3 — Key-free cross-model library + algorithm layer (2026-06-27)
 
 The first public milestone of the QuantaFoundry foundry layer. The full trust chain — gate truth,
