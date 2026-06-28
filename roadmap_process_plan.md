@@ -159,9 +159,10 @@ Stage5 // blind-spot 비파괴 방어 (designing)
 ## Stage 6 — c7x Realization: distinct-prime 산술 frontier + 발견 자동전진 (Track A 연장) `[SC]`
 
 ```
-Stage6 // c7x 봉인(W2.4)의 직접 결실 실현 (done)
+Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
     W6.1_ArithFamilyExtendC7x // c7x 활용 N>64 distinct-prime cmul 봉인 (done)
     W6.2_DiscoverSelfAdvance // 발견 frontier 봉인 gate 자동전진 + unlock 정정 (done)
+    W6.3_QFTPipelineExtendCr8 // cr8 활용 8큐비트 역-QFT(iqft8) 봉인 (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -175,6 +176,12 @@ Stage6 // c7x 봉인(W2.4)의 직접 결실 실현 (done)
   - 근본원인: `discover.py` `ctx["modules"]`=그래프 *사용* 모듈만(봉인 전체 아님) → 미사용 봉인 gate에 frontier 정체.
   - 산출: `discover.py` 보강 — ctx에 `sealed_modules`(MODREG 스캔) 추가·`gap_to_proposal`이 봉인 gap 스킵·`_round_pkg`(라운드 분리, idempotent)·cNx unlock 텍스트 실측 정정.
   - 결과: forge 후 c7x 그래프 진입(fan-in=3) → propose가 **c8x·cr9_dag_gate** 제안(round2 분리, W2.4 round1 보존). 재실행 시 round2 재사용.
+- [x] **W6.3 QFTPipelineExtend-cr8 (iqft8)** `[SC][ND]` ✅ 2026-06-28
+  - 목표: W6.1의 대칭 쌍 — 봉인된 cr8_dag(W2.4)를 *실제로 요구하는* 8큐비트 역-QFT 봉인 → QPE counting register 확장.
+  - 산출: `scripts/iqft_family.py`(`gen_iqft_pipeline(n)` 파라메트릭 생성기)·`.pgf/DESIGN-Cr8Payoff.md`(PG 설계)·`.pgf/arith/IQFT-FAMILY-REPORT.json`.
+  - 분해 패턴(iqft7 도출): 비트반전 swap(i,n-1-i) + 역-QFT 사다리(t=n-1→0, c=n-1→t+1로 cr_{(c-t)+1}_dag(c,t) 후 H(t)). golden=QFT_n† (app_golden 경로).
+  - ★**RegressionGate**: `gen_iqft_pipeline(7)`이 봉인 `iqft7` byte-identical 재현(composite==golden 통과 + u_hash `10da0070…` 일치) → 분해 패턴 정확성 입증.
+  - 결과: **`iqft8`**(8큐비트, cr8_dag 실사용) Tier-0 EXACT 봉인. QFT8† 독립 재구성 u_hash==sealed(`99f0e17d…`). **앱 62→63, root e64f4970→43580b93**(순수 비파괴: 모듈 50·frozen 23·fingerprint byte-identical, 2회 byte-identity). ※정-QFT(qft8_pipeline)는 cr6/7/8_gate(non-dag) 미봉인 — 후속 후보.
 
 ---
 

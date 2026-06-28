@@ -127,6 +127,17 @@ grover2
 │  └─ h_gate (module×4)
 └─ cz (module)
 
+iqft8
+├─ cr3_dag_gate (module×6)
+├─ cr4_dag_gate (module×5)
+├─ cr5_dag_gate (module×4)
+├─ cr6_dag_gate (module×3)
+├─ cr7_dag_gate (module×2)
+├─ cr8_dag_gate (module)
+├─ cs_dag (module×7)
+├─ h_gate (module×8)
+└─ swap2 (module×4)
+
 qft2_pipeline
 ├─ cs_gate (module)
 ├─ h_gate (module×2)

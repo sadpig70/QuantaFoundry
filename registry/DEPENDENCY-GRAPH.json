@@ -761,6 +761,65 @@
       }
     ]
   },
+  "iqft8": {
+    "u_hash": "99f0e17dcaace55e5a8d0b255b0fb9bafd1dff1dd2e18279a04217da7ff1ee3f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cr3_dag_gate",
+        "uses": 6,
+        "child_u_hash": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030"
+      },
+      {
+        "kind": "module",
+        "id": "cr4_dag_gate",
+        "uses": 5,
+        "child_u_hash": "4f91946338960687aa67371951b3cd1c9aad7ec3e6209971f07615872e25e848"
+      },
+      {
+        "kind": "module",
+        "id": "cr5_dag_gate",
+        "uses": 4,
+        "child_u_hash": "278e1c16651c7181fdad10f0c7afa3bdf52e062792483005396c427143490670"
+      },
+      {
+        "kind": "module",
+        "id": "cr6_dag_gate",
+        "uses": 3,
+        "child_u_hash": "dc1d1ac1dd3d0f762ce2dc3455f2bdbbb14ce77df2c7a45bb7e6f4b4cd0c1fd4"
+      },
+      {
+        "kind": "module",
+        "id": "cr7_dag_gate",
+        "uses": 2,
+        "child_u_hash": "6472e31bb7d132a1a9bf58c26af607494a4b90f71ad42475e74f1836477929ad"
+      },
+      {
+        "kind": "module",
+        "id": "cr8_dag_gate",
+        "uses": 1,
+        "child_u_hash": "198f6cade30501ccf515dcefaad411eb52a0a8514718b7c646a46198aa9d3922"
+      },
+      {
+        "kind": "module",
+        "id": "cs_dag",
+        "uses": 7,
+        "child_u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 8,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 4,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
   "qft2_pipeline": {
     "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82",
     "depends_on": [

@@ -1,0 +1,48 @@
+{
+  "phase": "W6.3 QFTPipelineExtend-cr8 (iqft8)",
+  "honesty": "cr8_dag(W2.4 sealed) consumed by inverse-QFT ladder; generation != verification (app_assemble composite==golden seals); regression gate proves pattern (gen(7)==iqft7); apps additive (modules unchanged, frozen keys/fingerprint byte-identical).",
+  "regression_gate_iqft7": {
+    "n": 7,
+    "sealed": true,
+    "tier": 0,
+    "regenerated_u_hash": "10da007065939b34",
+    "registry_u_hash": "10da007065939b34",
+    "matches_registry": true,
+    "deps": [
+      "cr3_dag_gate",
+      "cr4_dag_gate",
+      "cr5_dag_gate",
+      "cr6_dag_gate",
+      "cr7_dag_gate",
+      "cs_dag",
+      "h_gate",
+      "swap2"
+    ],
+    "reason": ""
+  },
+  "forge_iqft8": {
+    "id": "iqft8",
+    "n_sys": 8,
+    "sealed": true,
+    "tier": 0,
+    "u_hash": "99f0e17dcaace55e5a8d0b255b0fb9bafd1dff1dd2e18279a04217da7ff1ee3f",
+    "deps": [
+      "cr3_dag_gate",
+      "cr4_dag_gate",
+      "cr5_dag_gate",
+      "cr6_dag_gate",
+      "cr7_dag_gate",
+      "cr8_dag_gate",
+      "cs_dag",
+      "h_gate",
+      "swap2"
+    ],
+    "uses_cr8": true,
+    "reason": ""
+  },
+  "independent_verify": {
+    "qft8_dag_u_hash": "99f0e17dcaace55e",
+    "matches_sealed": true
+  },
+  "all_ok": true
+}

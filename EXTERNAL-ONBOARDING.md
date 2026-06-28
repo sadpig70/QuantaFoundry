@@ -110,9 +110,9 @@ Read in this order. Tier 1 is enough to give a first proposal; Tier 2/3 are for 
 
 Authoritative source = `registry/REGISTRY-MANIFEST.json`. Reproducible via §8.
 
-- **50 sealed modules · 62 sealed apps.** (`registry/apps` holds 101 files = 62 unique +
-  39 app-side re-seal caches; canonical modules live in `registry/modules`.)
-- **registry_root_hash = `e64f4970…`** · **23 frozen consensus keys.**
+- **50 sealed modules · 63 sealed apps.** (`registry/apps` holds 103 files = 63 unique +
+  40 app-side re-seal caches; canonical modules live in `registry/modules`.)
+- **registry_root_hash = `43580b93…`** · **23 frozen consensus keys.**
 - Re-discovery cross-check **6/6** · independent second-oracle **50/50** (full coverage) · triple-agreement **7/7**.
 
 Completed milestones (so you don't re-propose them):
@@ -188,10 +188,10 @@ Don't take the numbers on faith. The whole library re-seals deterministically:
 
 ```
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash=e64f4970… · second_oracle 50/50 · behavior pass
+# expect: REPRODUCED · root_hash=43580b93… · second_oracle 50/50 · behavior pass
 ```
 
-If `root_hash` matches `e64f4970…`, the 50 modules + 62 apps reproduced byte-for-byte.
+If `root_hash` matches `43580b93…`, the 50 modules + 63 apps reproduced byte-for-byte.
 
 ---
 

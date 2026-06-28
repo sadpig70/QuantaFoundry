@@ -26,13 +26,14 @@ It generates quantum software modules from high-level intent, verifies them with
 > co-errors, and determinism env-pinning + an oracle-revocation protocol + ed25519 Sybil defense.
 > Stages 0–5 are analysis/tool/verification layers; the **W2.4 cross-runtime relay** then grew the
 > registry by two key-free primitives (`c7x`, `cr8_dag_gate` — 6-runtime panel convergence), and the
-> **W6.1 c7x payoff** spent that `c7x` on three N>64 distinct-prime modular multipliers
-> (`cmul2_mod91`=7×13, `cmul2_mod77`=7×11, `cmul2_mod85`=5×17), advancing the root
-> `3dae613d…→437efbc3…→e64f4970…` (**50 modules, 62 apps**). Pure non-destructive growth: every prior
-> seal, the 23 frozen consensus keys, and the fingerprint files reproduce byte-identically.
+> **W6 payoffs** spent them: `c7x` on three N>64 distinct-prime modular multipliers
+> (`cmul2_mod91`=7×13, `cmul2_mod77`=7×11, `cmul2_mod85`=5×17), and `cr8_dag_gate` on an 8-qubit
+> inverse-QFT (`iqft8`) — advancing the root `3dae613d…→437efbc3…→e64f4970…→43580b93…`
+> (**50 modules, 63 apps**). Pure non-destructive growth: every prior seal, the 23 frozen consensus
+> keys, and the fingerprint files reproduce byte-identically.
 >
 > **Guarantee split** (no exact-coverage overclaim): all **50 modules** are `unitary_equiv` (Tier-0 EXACT);
-> the **62 apps** are 61 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
+> the **63 apps** are 62 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path
 > verified with a sealed seed, also Tier-2 sealed) — **zero structural-only seals**. Authoritative tally:
 > `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 >
