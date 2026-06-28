@@ -1,0 +1,56 @@
+{
+  "phase": "W7.3 FaultTolerantLogicalGates",
+  "honesty": "Steane doubly-even self-dual CSS → transversal {H,S,CNOT} are code-preserving valid logical operations. Named by the logical op they implement (transversal S = logical S†, so logical S is sealed as S†^⊗7). Tier-2 seal = canonical stabilizer tableau (dense-free); logical correctness is an INDEPENDENT driver witness (n=7 dense action / n=14 logical-basis vector action, full unitary not materialized). The 14-qubit logical CNOT cannot be Tier-0 dense (2^14) — it demonstrates Tier-2's dense-free advantage at scale. second_oracle (dense) covers the 53 Tier-0 modules; these are tableau-sealed.",
+  "seals": [
+    {
+      "id": "steane_logical_h",
+      "n_sys": 7,
+      "sealed": true,
+      "tier": 2,
+      "u_hash": "a7b967a1346bda80c374afd1c04e01848297a1b74a980e8f513bef4fafb04a5d",
+      "tableau_recompute_match": true
+    },
+    {
+      "id": "steane_logical_s",
+      "n_sys": 7,
+      "sealed": true,
+      "tier": 2,
+      "u_hash": "023b1c93a04a84c5d7a40a604988fc4770ee3152cdfe131d7878e66df330c9b8",
+      "tableau_recompute_match": true
+    },
+    {
+      "id": "steane_logical_cnot",
+      "n_sys": 14,
+      "sealed": true,
+      "tier": 2,
+      "u_hash": "ff7deff9b0e2a07950bdb64447a02d5f4552d34b4644f55d7f8022623f3e7345",
+      "tableau_recompute_match": true
+    }
+  ],
+  "witness": {
+    "H": {
+      "logical": "H",
+      "zero_to_plus": true,
+      "one_to_minus": true,
+      "pass": true
+    },
+    "S": {
+      "logical": "S",
+      "code_preserving": true,
+      "relative_phase": [
+        0.0,
+        1.0
+      ],
+      "is_logical_S(+i)": true,
+      "pass": true
+    },
+    "CNOT": {
+      "logical": "CNOT",
+      "basis_4of4": true,
+      "n_qubits": 14,
+      "dense_free": "2^14 dense 불가 → Tier-2 tableau (dense-free) 실증",
+      "pass": true
+    }
+  },
+  "all_ok": true
+}

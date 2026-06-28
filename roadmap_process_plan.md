@@ -169,6 +169,7 @@ Stage6 // W2.4 봉인 primitive(c7x·cr8)의 직접 결실 실현 (done)
 Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-progress)
     W7.1_QECStabilizerFamily // QEC stabilizer 인코더(Clifford Tier-0): repcode3·syndrome3·shor9_encoder[[9,1,3]] (done)
     W7.2_CliffordTier2QEC // stabilizer-tableau(Tier-2)로 QEC 심화: Steane[[7,1,3]] |0>/|1>·shor9 재봉인 (done)
+    W7.3_FaultTolerantLogicalGates // Steane transversal 논리 H/S/CNOT(논리 CNOT 14q dense-free), Tier-2 (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -213,6 +214,12 @@ Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-p
   - 봉인 3개(tier=2): `steane_zero_t2`([[7,1,3]] |0_L>=(1/√8)Σ_{rowspace(Hamming)}|c>, CSS H{0,1,3}+CNOT)·`steane_one_t2`(|1_L>=X^⊗7|0_L>)·`shor9_encoder_t2`(W7.1 Shor-9 Tier-2 재봉인). 정준 tableau 재계산==sealed **3/3**.
   - **정직성**: Tier-2 seal=정준 tableau(표현무관 지문, u_hash=tableau≠dense). 코드-정확성 **witness(오라클 독립, 드라이버)**: Steane 6 stabilizer +1·논리 Z̄ 고유값(zero=+1·one=−1) dense 직접확인; shor9_t2 cirq dense==W7.1 closed-form golden(동일연산 cross-validation). second_oracle(dense)=53 Tier-0만 — Tier-2 3개는 tableau+stabilizer witness(정직 분리, coverage 강제 gate 없음). plan=Clifford(H·CNOT·X), MatrixGate 0. 미착수(future work): full logical-input Steane 인코더·비-CSS [[5,1,3]](일반 stabilizer 인코더 합성).
   - **모듈 53→56(Tier-2 +3)·앱 75 불변, root 06ca92d7→`36e7014c`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, second_oracle 53/53, contested_guard ALL PASS).
+- [x] **W7.3 FaultTolerantLogicalGates — QEC 클래스 완성(fault-tolerant 논리연산)** `[SC][ND]` ✅ 2026-06-29
+  - 목표: QEC 서사 클라이맥스 = Steane [[7,1,3]] **transversal 논리 Clifford 게이트**(fault-tolerance 실체). 전부 Clifford → Tier-2 stabilizer-tableau(dense-free).
+  - 산출: `scripts/qec_logical.py`·`.pgf/DESIGN-FTLogicalGates.md`·`specs/modules/{steane_logical_h,steane_logical_s,steane_logical_cnot}.pg`.
+  - 봉인 3개(tier=2): `steane_logical_h`(논리 H=H^⊗7)·`steane_logical_s`(논리 S=S†^⊗7, transversal S†가 논리 S(+i) 구현)·**`steane_logical_cnot`**(논리 CNOT=CNOT^⊗7 블록 A=0..6→B=7..13, **14q**). 정준 tableau 재계산==sealed 3/3.
+  - **정직성·Tier-2 스케일 실증**: 논리 CNOT 14q=2^14 dense **불가** → Tier-2 dense-free 강점을 *처음으로 스케일*에서 실증(tableau 봉인, 논리기저 벡터로 witness, full unitary 미실체화). Steane=doubly-even self-dual CSS → transversal {H,S,CNOT} 코드보존 valid. **논리-정확성 witness(오라클 독립, 드라이버)**: H̄ |0_L>→|+_L>·|1_L>→|−_L>; S̄ 코드보존+|1_L> 위상 +i; CNOT̄ 4 논리기저 |ab_L>→|a,a⊕b_L>. plan=Clifford(H·CNOT·ZPowGate(-0.5)), MatrixGate 0. second_oracle(dense)=53 Tier-0만.
+  - **모듈 56→59(Tier-2 +3)·앱 75 불변, root 36e7014c→`3a85407d`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, second_oracle 53/53, contested_guard ALL PASS).
 
 ---
 

@@ -1558,6 +1558,33 @@
       "method": "Clifford tableau",
       "u_hash": "4a620501318c258fc3345729fa619669ed2dbe3996c649be0a8e7f7232ea975e"
     },
+    "module:steane_logical_cnot": {
+      "kind": "module",
+      "id": "steane_logical_cnot",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "ff7deff9b0e2a07950bdb64447a02d5f4552d34b4644f55d7f8022623f3e7345"
+    },
+    "module:steane_logical_h": {
+      "kind": "module",
+      "id": "steane_logical_h",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "a7b967a1346bda80c374afd1c04e01848297a1b74a980e8f513bef4fafb04a5d"
+    },
+    "module:steane_logical_s": {
+      "kind": "module",
+      "id": "steane_logical_s",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "023b1c93a04a84c5d7a40a604988fc4770ee3152cdfe131d7878e66df330c9b8"
+    },
     "module:steane_one_t2": {
       "kind": "module",
       "id": "steane_one_t2",
@@ -1640,11 +1667,11 @@
         "structural_wellformed": 1
       },
       "module": {
-        "unitary_equiv": 56
+        "unitary_equiv": 59
       }
     },
     "by_class": {
-      "unitary_equiv": 173,
+      "unitary_equiv": 176,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1
     }

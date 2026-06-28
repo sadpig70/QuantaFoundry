@@ -117,6 +117,15 @@
 > Tier-2 modules are tableau-sealed (outside dense scope), honestly tracked separately. Growing **modules
 > 53→56 (3 Tier-2 Clifford), apps still 75, root `06ca92d7…→36e7014c…`**. Future work: the full
 > logical-input Steane encoder and the non-CSS `[[5,1,3]]` code (general stabilizer encoder synthesis).
+> **(W7.3 fault-tolerant logical gates)** completes the QEC arc with the actual *point* of error
+> correction: **transversal logical Clifford gates** on Steane — logical `H` (`H^⊗7`), `S` (`S†^⊗7`,
+> verified to apply the `+i` logical phase), and `CNOT` (`CNOT^⊗7` between two code blocks). Steane is a
+> doubly-even self-dual CSS code, so each transversal gate preserves the code space and acts as the named
+> logical operation (driver witness: logical action on the code basis states — `H̄` sends `|0_L⟩→|+_L⟩`,
+> `CNOT̄` sends `|ab_L⟩→|a,a⊕b_L⟩`). The **14-qubit logical CNOT cannot be a Tier-0 dense seal** (2¹⁴) —
+> it is the first artifact to exercise Tier-2's dense-free advantage *at scale* (sealed by canonical
+> tableau, witnessed on the four logical basis vectors without materializing the full unitary). Growing
+> **modules 56→59 (3 more Tier-2 Clifford), apps still 75, root `36e7014c…→3a85407d…`**.
 > Three EXT relay items remain (CI pilot,
 > weak-model poison panel, runtime keys); backend evidence remains gated/deferred. Companion docs:
 > `docs/CONVENTION-AUDIT.md`, `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`,
@@ -147,19 +156,19 @@ QuantaFoundry is an **AI-native quantum software foundry**. It turns high-level 
 software modules, **verifies them with a deterministic contract oracle**, **seals only what is
 proven**, accumulates sealed modules in a registry, and **composes** sealed modules into larger
 applications (each re-verified and re-sealed). All four functions are realized: the library
-holds **56 sealed base modules** (53 Tier-0 dense + 3 Tier-2 Clifford) and **75 sealed applications** (56/75 at v0.7+ W7.2 Clifford-Tier-2 QEC;
-53/75 at W7.1 QEC family; 53/71 at W6.5 Shor capstone; 53/67 at W6.4 forward-QFT; 50/63 at W6.3 cr8 payoff; 50/62 at W6.1 c7x payoff; 48/59 at v0.7-core; 46/57 at v0.6), the latter
+holds **59 sealed base modules** (53 Tier-0 dense + 6 Tier-2 Clifford) and **75 sealed applications** (59/75 at v0.7+ W7.3 FT logical gates;
+56/75 at W7.2 Clifford-Tier-2 QEC; 53/75 at W7.1 QEC family; 53/71 at W6.5 Shor capstone; 53/67 at W6.4 forward-QFT; 50/63 at W6.3 cr8 payoff; 50/62 at W6.1 c7x payoff; 48/59 at v0.7-core; 46/57 at v0.6), the latter
 built entirely by recomposing the former — up to **Shor period-finding circuits that factor
 15 = 3 × 5, 21 = 3 × 7** (genuine modular arithmetic, not the N=15 special case) **and 91 = 7 × 13**
 (the W6.5 capstone — 15 qubits, Tier-1 STRUCTURAL), plus the **W7.1 QEC stabilizer encoders** (the
 `[[9,1,3]]` Shor-code 9-qubit encoder and `[[3,1]]` repetition encoders, all Clifford Tier-0) and the
 **W7.2 Tier-2 QEC seals** (Steane `[[7,1,3]]` logical states + a Shor-9 re-seal via canonical stabilizer tableau).
-Guarantee split (no exact-coverage overclaim): all 56 modules are `unitary_equiv` (53 Tier-0 EXACT dense + 3 Tier-2 Clifford tableau, both exact up to global phase); the
+Guarantee split (no exact-coverage overclaim): all 59 modules are `unitary_equiv` (53 Tier-0 EXACT dense + 6 Tier-2 Clifford tableau, both exact up to global phase); the
 75 apps are 73 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
 with a sealed seed via `sampled_dense_verify.py`, also Tier-2 sealed) + **1 `structural_wellformed`**
 (`shor91`, the W6.5 Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense
 `unitary_equiv`, honestly labelled — the first algorithm-scale structural-only seal; the W7.1 QEC
-encoders are all `unitary_equiv` Tier-0, and the W7.2 Steane/Shor-9 QEC seals are `unitary_equiv` Tier-2 Clifford).
+encoders are all `unitary_equiv` Tier-0, and the W7.2 Steane/Shor-9 QEC seals + the W7.3 transversal logical gates are `unitary_equiv` Tier-2 Clifford).
 Authoritative tally in `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 
 The single non-negotiable rule:
@@ -707,12 +716,12 @@ Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a
 ### 8.5 Library-wide regression (current totals)
 
 ```
-modules: 56 sealed (53 Tier-0 dense + 3 Tier-2 Clifford: Steane [[7,1,3]] |0⟩/|1⟩, Shor-9 re-seal) · re-verified through the oracle (35 gates incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†;
+modules: 59 sealed (53 Tier-0 dense + 6 Tier-2 Clifford: Steane [[7,1,3]] |0⟩/|1⟩, Shor-9 re-seal, transversal logical H/S/CNOT) · re-verified through the oracle (35 gates incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†;
          18 ±α_k Ry primitives k=2..10, §8.7)
 apps:    63 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
          registry/apps holds 119 files = 75 unique app seals + 44 cached app-side module re-seals
          (canonical copy lives in registry/modules; single source of truth = REGISTRY-MANIFEST.json
-          registry_root_hash 36e7014c… reproduces byte-identical; blast-radius via registry_tools.py)
+          registry_root_hash 3a85407d… reproduces byte-identical; blast-radius via registry_tools.py)
 rediscovery cross-checks: 6/6 byte-identical to independently sealed gates
 second oracle (Qualtran-independent numpy): 53/53 modules + cmul2_mod21
 frozen consensus keys: 23 (22 prior + sx live cross-model round; existing keys byte-preserved,
@@ -999,7 +1008,7 @@ counted per *physical unit* — same-weights / same-tool sources collapse to **o
 independent runtimes authored every base gate's golden and bloq, all reaching `MULTIMODEL` grade and
 corroborated by symbolic proof (§8.2). The on-demand gates needed for the algorithm layer
 (controlled-phase family, Fredkin) were each established by `proof ⊕ structural` convergence and
-sealed. The full library (56 modules → 75 apps → genuine N=21 Shor + the shor91=7×13 capstone + the W7.1/W7.2 QEC encoders) therefore stands on **zero
+sealed. The full library (59 modules → 75 apps → genuine N=21 Shor + the shor91=7×13 capstone + the W7.1/W7.2/W7.3 QEC stack) therefore stands on **zero
 human-asserted answers**, including the first *live* cross-model truth `sx` (√X, §8.8). See
 `.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
 
@@ -1048,7 +1057,7 @@ registry. AutoForge adds **autonomous author isolation via personas** on top of 
 QuantaFoundry/
   docs/QuantaFoundry-Technical-Spec.md   # this document
   README.md                              # vision + trust model (English)
-  specs/modules/*.pg                     # 56 sealed base-module specs (53 Tier-0 incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†, ±α_k Ry k=2..10; + 3 Tier-2 Clifford: steane_zero/one_t2, shor9_encoder_t2)
+  specs/modules/*.pg                     # 59 sealed base-module specs (53 Tier-0 incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†, ±α_k Ry k=2..10; + 6 Tier-2 Clifford: steane_zero/one_t2, shor9_encoder_t2, steane_logical_h/s/cnot)
   specs/apps/*.app.pg                    # 75 sealed application manifests (app_golden + plan; shor91=structural; incl. W7.1 QEC encoders)
   registry/modules/*.sealed.json         # 50 registered module seals (INV1-3)
   registry/apps/*.sealed.json            # 75 app seals (C-app, incl. shor91 structural) + 44 cached leaf-module re-seals (119 files)

@@ -1,0 +1,18 @@
+# steane_logical_s — 논리 S = S†^⊗7 (transversal S†가 논리 S 구현). Tier-2 CLIFFORD(정준 stabilizer tableau, dense 미사용). plan=Clifford 게이트, no MatrixGate. 논리-정확성 witness=qec_logical 드라이버.
+```python id=bloq
+from qualtran import BloqBuilder
+from qualtran.bloqs.basic_gates import Hadamard, CNOT, ZPowGate
+bb = BloqBuilder()
+qs = [bb.add_register(f'q{i}', 1) for i in range(7)]
+qs[0] = bb.add(ZPowGate(exponent=-0.5), q=qs[0])
+qs[1] = bb.add(ZPowGate(exponent=-0.5), q=qs[1])
+qs[2] = bb.add(ZPowGate(exponent=-0.5), q=qs[2])
+qs[3] = bb.add(ZPowGate(exponent=-0.5), q=qs[3])
+qs[4] = bb.add(ZPowGate(exponent=-0.5), q=qs[4])
+qs[5] = bb.add(ZPowGate(exponent=-0.5), q=qs[5])
+qs[6] = bb.add(ZPowGate(exponent=-0.5), q=qs[6])
+bloq = bb.finalize(**{f'q{i}': qs[i] for i in range(7)})
+```
+```json id=meta
+{"id": "steane_logical_s", "n_sys": 7, "n_anc": 0, "tier": "clifford"}
+```
