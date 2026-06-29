@@ -1,0 +1,80 @@
+{
+  "phase": "W9.3 QAEDeepening",
+  "honesty": "Grows QAE from instance to family with ZERO new modules. (1) A second exact QPE-QAE instance qae3_pi2 (a=1/2). (2) Grover-power apps grover2/3_3iter extend the iteration family. The amplitude-estimation behaviors are OBSERVATIONS, not seals: QPE-QAE (one-shot, exact only for special amplitudes 2θ/2π=k/2^t) vs iterative/power QAE (sealed Grover powers executed via backend_adapter, P_good(m)=sin^2((2m+1)θ) fit classically — handles GENERAL amplitudes a=1/4, 1/8 that small-t QPE cannot read, but precision depends on the number of measurements). apps 94->97, modules unchanged.",
+  "apps": [
+    {
+      "id": "qae3_pi2",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "5fc7fdcbb3b55cdef351d7768eb67a922d09dc2d31b0baeceee883f000f768e5",
+      "reason": ""
+    },
+    {
+      "id": "grover2_3iter",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "251131bb88baa774065be74f20858b41fd153f621aa6cce874c6ff57c3827562",
+      "reason": ""
+    },
+    {
+      "id": "grover3_3iter",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "1d136c3ecec638a9785f825403336d0c62ac3c78ce3e9451763fd6da0afff710",
+      "reason": ""
+    }
+  ],
+  "qpe_qae_observation": {
+    "note": "QPE-QAE one-shot readout (observation). Exact only for special amplitudes (2θ/2π=k/2^t); a=1/2 -> y in {2,6}, a_est=sin^2(pi/4)=0.5.",
+    "a_true": 0.5,
+    "peaks": [
+      {
+        "y": 6,
+        "prob": 0.5,
+        "a_est": 0.5
+      },
+      {
+        "y": 2,
+        "prob": 0.5,
+        "a_est": 0.5
+      }
+    ],
+    "exact_recovery": true
+  },
+  "iterative_qae_observation": {
+    "note": "OBSERVATION, NOT A SEAL — iterative/power QAE (QPE-free): sealed Grover powers executed via backend_adapter (u_hash gated), P_good(m)=sin^2((2m+1)theta) fit classically to estimate theta -> a. Handles GENERAL amplitudes (a=1/4, 1/8) that small-t QPE-QAE cannot read exactly. Precision depends on the number of measurements.",
+    "systems": {
+      "grover2": {
+        "a_true": 0.25,
+        "theta_true": 0.523599,
+        "P_good_m": [
+          0.25,
+          1.0,
+          0.25,
+          0.25
+        ],
+        "theta_est": 0.523597,
+        "a_est": 0.249999,
+        "matches_true": true
+      },
+      "grover3": {
+        "a_true": 0.125,
+        "theta_true": 0.361367,
+        "P_good_m": [
+          0.125,
+          0.78125,
+          0.945312,
+          0.330078
+        ],
+        "theta_est": 0.361349,
+        "a_est": 0.124988,
+        "matches_true": true
+      }
+    },
+    "all_match": true
+  },
+  "all_ok": true
+}

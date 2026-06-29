@@ -47,13 +47,43 @@ It generates quantum software modules from high-level intent, verifies them with
 > *exactly* (composite == closed-form golden), while its **Trotter error** vs the true `e^{-iHt}` is an
 > honest **observation, not a seal** (O(dt²) scaling confirmed) — the `approximation ≠ exact` boundary,
 > sister to `execution ≠ verification`.
-> The registry advanced from the v0.7-core root `3dae613d…` to the current **`d231fbf4…` (61 modules
-> — 55 Tier-0 dense + 6 Tier-2 Clifford, 77 apps)**. Pure non-destructive growth: every prior seal, the
+> **W8.2** grows that class from instance to family — it completes the Pauli-interaction rotation set
+> `{rxx, ryy, rzz}` (via `H`/`S†` basis changes) and seals two Heisenberg instances plus a multi-step
+> compound. The honest boundary deepens into a **convergence observation**: at fixed `T`, the first-order
+> global Trotter error scales `O(1/k)` (ratio ≈ 2 per `k`-doubling), while the **single-bond** Heisenberg
+> step is *exact* (XX, YY, ZZ commute on one bond) — not all Trotter steps are approximate.
+> **W8.3** adds **2nd-order (symmetric Suzuki) Trotter steps** and extends the lattice to 4 qubits. Where
+> W8.2 showed *approximation converges*, W8.3 shows *approximation quality (order) is also quantifiable*:
+> at fixed `T` the 1st-order error scales `O(1/k)` (ratio ≈ 2) while the 2nd-order Suzuki step scales
+> `O(1/k²)` (ratio ≈ 4) — both an observation, not a seal; the steps themselves are sealed exactly.
+> **W8.4** then *executes* the sealed steps (via the simulator backend, `u_hash`-gated) iteratively to
+> observe **time-dynamics** of physical observables vs exact diagonalization — closing the three honest
+> boundaries (sealing ≠ execution ≠ verification; approximation ≠ exact) in one family, and seals
+> **nothing** (the registry/root are unchanged). An honest subtlety surfaces: 1st- and 2nd-order Trotter
+> are Z-diagonal conjugate, so a Z-basis measurement is *blind to the order* (identical `⟨Z⟩`/`⟨ZZ⟩`);
+> only a transverse `⟨X⟩` reveals that 2nd-order tracks the exact dynamics ~3× closer.
+> **W9.1** opens another horizontal class — **amplitude amplification** (generalizing Grover): 3-qubit
+> reflection/diffusion/Grover operators and iteration-count apps, sealed by reusing prior parts with
+> **zero new modules**. Its amplitude-amplification **profile** `P_target(k)` is an observation, not a
+> seal — matching theory `sin²((2k+1)θ)` exactly, showing the optimal iteration count (N=8 → k=2, P≈0.945)
+> and over-rotation beyond it (N=4 → k=2, P=0.25).
+> **W9.2** raises that to amplitude *estimation* (**QAE**): running **QPE on the Grover operator**
+> `Q = Ry(π/2)` (4 analytic `Ry` modules + honest controlled-`Ry` ladders + a 4-qubit `qae3_pi8`
+> reusing the sealed `iqft3`). Reading the counting register *estimates* the amplitude — for the exact
+> instance `a = sin²(π/8)`, both QPE peaks (`y ∈ {1,7}`) recover the true `a` exactly (an observation,
+> not a seal).
+> **W9.3** grows QAE into a family and contrasts the two estimation paradigms — a second exact QPE-QAE
+> instance (`a = 1/2`, **zero new modules**), and **iterative/power QAE** (QPE-free): sealed Grover powers
+> are *executed* via the backend, and `P_good(m) = sin²((2m+1)θ)` is fit classically to estimate **any**
+> amplitude — including `a = 1/4`, `1/8` that small-`t` QPE cannot read exactly (precision then trades
+> against the number of measurements). Both are observations, not seals.
+> The registry advanced from the v0.7-core root `3dae613d…` to the current **`2cfe8dc3…` (67 modules
+> — 61 Tier-0 dense + 6 Tier-2 Clifford, 97 apps)**. Pure non-destructive growth: every prior seal, the
 > 23 frozen consensus keys, and the fingerprint files reproduce byte-identically.
 >
-> **Guarantee split** (no exact-coverage overclaim): all **61 modules** are `unitary_equiv` — 55 Tier-0
+> **Guarantee split** (no exact-coverage overclaim): all **67 modules** are `unitary_equiv` — 61 Tier-0
 > EXACT (dense) + 6 Tier-2 Clifford (canonical stabilizer tableau, dense-free but still exact up to
-> global phase); the **77 apps** are 75 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
+> global phase); the **97 apps** are 95 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
 > sampled-dense two-path verified with a sealed seed, also Tier-2 sealed) + **1 `structural_wellformed`**
 > (`shor91`, the W6.5 Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense
 > `unitary_equiv`, honestly labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0; the W7.2

@@ -1,0 +1,21 @@
+# tfim3_trotter_2steps — TFIM n=3 (J=h=1) 1차 Trotter step ×2 (복리, dt=π/8, 3q). plan=tfim3_trotter_step·tfim3_trotter_step(봉인 앱 ×2). golden=step@step(EXACT). 봉인 step 합성이 정확 유지됨을 실증(step^k 합성=정확).
+```json id=app_meta
+{"id": "tfim3_trotter_2steps", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+th=np.pi/8; n=3
+I2=np.eye(2,dtype=complex); X=np.array([[0,1],[1,0]],complex); Z=np.diag([1,-1]).astype(complex)
+def opn(ps):
+    m=np.array([[1]],dtype=complex)
+    for q in range(n): m=np.kron(m, ps.get(q,I2))
+    return m
+def ezz(i,j): M=opn({i:Z,j:Z}); return np.cos(th)*np.eye(8,dtype=complex)+1j*np.sin(th)*M
+def ex(i): M=opn({i:X}); return np.cos(th)*np.eye(8,dtype=complex)+1j*np.sin(th)*M
+step=np.eye(8,dtype=complex)
+for U in [ezz(0,1),ezz(1,2),ex(0),ex(1),ex(2)]: step=U@step
+golden = step @ step
+```
+```json id=plan
+{"steps": [{"app": "tfim3_trotter_step.app.pg", "targets": [0, 1, 2]}, {"app": "tfim3_trotter_step.app.pg", "targets": [0, 1, 2]}]}
+```

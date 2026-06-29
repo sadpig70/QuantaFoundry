@@ -1,0 +1,19 @@
+# grover2_3iter — 2큐비트 Grover 3-iterate G^3 (iterative QAE power). plan=[grover2]×3 복리.
+```json id=app_meta
+{"id": "grover2_3iter", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H1=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2); dim=4; nq=2
+Hn=np.array([[1]],dtype=complex)
+for _ in range(nq): Hn=np.kron(Hn,H1)
+refl=np.full((dim,dim),0.0,dtype=complex); refl[0,0]=1.0
+refl=2*refl-np.eye(dim)              # 2|0><0|-I
+D=Hn@refl@Hn                          # diffusion 2|s><s|-I
+O=np.eye(dim,dtype=complex); O[3,3]=-1   # oracle: mark target
+G=D@O
+golden=np.linalg.matrix_power(G,3)
+```
+```json id=plan
+{"steps": [{"app": "grover2.app.pg"}, {"app": "grover2.app.pg"}, {"app": "grover2.app.pg"}]}
+```

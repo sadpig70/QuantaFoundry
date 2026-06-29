@@ -1,0 +1,12 @@
+# rxx_pi8 — e^{i(π/8)X⊗X} = (H⊗H)·rzz_pi8·(H⊗H) (해밀토니안 시뮬 XX 상호작용). X=HZH 기저변환. plan=봉인 h_gate·rzz_pi8, no MatrixGate. golden=closed-form Pauli 지수.
+```json id=app_meta
+{"id": "rxx_pi8", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+X = np.array([[0,1],[1,0]],complex); XX = np.kron(X, X)
+golden = (np.cos(np.pi/8)*np.eye(4) + 1j*np.sin(np.pi/8)*XX).astype(complex)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"app": "rzz_pi8.app.pg", "targets": [0, 1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

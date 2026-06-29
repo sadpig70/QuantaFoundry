@@ -1,0 +1,13 @@
+# cry_pi2 — controlled-Ry(π/2). controlled-Ry = (I⊗Ry(φ/2))·CNOT·(I⊗Ry(-φ/2))·CNOT (표준 항등식). plan=봉인 cnot·ry_pi4·ry_negpi4, no MatrixGate.
+```json id=app_meta
+{"id": "cry_pi2", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+a = np.pi/2
+Ry = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+golden = np.eye(4, dtype=complex); golden[2:, 2:] = Ry   # |1><1|⊗Ry, control=MSB
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/ry_negpi4.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/ry_pi4.pg", "targets": [1]}]}
+```

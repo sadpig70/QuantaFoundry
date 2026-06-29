@@ -173,6 +173,14 @@ Stage7 // 새 알고리즘 클래스 — 수직스택 이후 수평 확장 (in-p
 
 Stage8 // 또 다른 수평 클래스 — 해밀토니안 시뮬레이션 (in-progress)
     W8.1_HamiltonianSimulation // Trotter: Pauli-exp 회전 rz/rx + rzz/TFIM step, 정직-근사(오차=관찰) (done)
+    W8.2_TrotterDeepening // {rxx,ryy,rzz} 완성 + Heisenberg family(single-bond 정확/chain 근사) + 복리, 수렴관찰 O(1/k) (done)
+    W8.3_SuzukiTrotter // 2차 대칭 Suzuki step + 4q 격자, 근사 차수 대비(1차 O(1/k) vs 2차 O(1/k²)) (done)
+    W8.4_TrotterDynamics // 봉인 step 반복실행→시간동역학 관찰(봉인 0, root 불변); 차수 basis-의존(Z-blind/X-우월) (done)
+
+Stage9 // 또 다른 수평 클래스 — amplitude amplification / QAE (in-progress)
+    W9.1_AmplitudeAmplification // Grover 일반화(3q 확산/연산자 + 반복); 진폭증폭 프로파일(최적-k/over-rotation) (done)
+    W9.2_AmplitudeEstimation // Grover Q 에 QPE → 진폭 추정(QAE); analytic Ry+controlled-Ry+qae3_pi8, exact a=sin²(π/8) (done)
+    W9.3_QAEDeepening // 2nd QPE-QAE(a=1/2, 신규 모듈 0)+iterative/power QAE(QPE-free, 일반 θ a=1/4·1/8) (done)
 ```
 
 - [x] **W6.1 ArithFamilyExtend-c7x** `[SC][ND]` ✅ 2026-06-28
@@ -229,6 +237,42 @@ Stage8 // 또 다른 수평 클래스 — 해밀토니안 시뮬레이션 (in-pr
   - 봉인(전부 Tier-0 EXACT, dt=π/8): `rz_negpi4`=Rz(-π/4)=e^{i(π/8)Z}·`rx_negpi4`=Rx(-π/4)=e^{i(π/8)X}(analytic golden)·`rzz_pi8`=e^{i(π/8)Z⊗Z}=CNOT·rz·CNOT(2q)·`tfim3_trotter_step`=TFIM n=3 J=h=1 1차 Trotter step(3q). composite==closed-form golden(honest 분해, MatrixGate 0).
   - ★**정직-근사 showcase**: Trotter STEP은 정확 봉인(golden=Trotter곱), 진짜 e^{-iHdt}와의 **Trotter 오차는 관찰(seal 아님)** — `approximation≠exact` 경계(execution≠verification 자매). 오차 0.39(dt=π/8)·**O(dt²) 스케일링 확인**(0.39→0.106→0.027, dt 반감→¼, ratio≈3.7~3.9). golden=closed-form Pauli 지수(Qualtran 비의존)·plan=Rz/Rx/CNOT bloq.
   - **모듈 59→61(Tier-0 dense +2, second_oracle 53→55/55)·앱 75→77, root 3a85407d→`d231fbf4`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS).
+- [x] **W8.2 TrotterDeepening — instance→family** `[SC][ND]` ✅ 2026-06-29
+  - 목표: W8.1을 *instance*에서 *family*로 확장. Pauli-상호작용 회전 집합 완성 + Heisenberg 모델 + multi-step 복리 + 정직-근사 심화(수렴관찰).
+  - 산출: `scripts/qsim2_family.py`·`.pgf/DESIGN-TrotterDeepening.md`·`specs/modules/sdg_gate.pg`·`specs/apps/{rxx_pi8,ryy_pi8,heis2_trotter_step,heis3_trotter_step,tfim3_trotter_2steps}.app.pg`. second_oracle INDEP+1(sdg)·forge_apps APP_LIST+5.
+  - 봉인(전부 Tier-0 EXACT, dt=π/8): 신규 모듈 `sdg_gate`=S†=diag(1,-i)(Clifford, ryy 기저변환용)·`rxx_pi8`=e^{i(π/8)X⊗X}=(H⊗H)·rzz·(H⊗H)·`ryy_pi8`=e^{i(π/8)Y⊗Y}(기저 B=S·H, Z→Y)·`heis2_trotter_step`=single-bond Heisenberg(2q)·`heis3_trotter_step`=chain bonds(0,1),(1,2)(3q)·`tfim3_trotter_2steps`=TFIM step×2(복리,3q). composite==closed-form golden(honest 분해, MatrixGate 0). {rxx,ryy,rzz} 상호작용 회전 집합 완성.
+  - ★**정직-근사 심화=수렴관찰**(seal 아님): 고정 T=π/4, k∈{1,2,4,8,16} → **1차 전역오차 O(1/k)**(점근 tail ratio≈2.0 per k-doubling, TFIM3 1.14→0.058·Heis-chain 1.41→0.085 둘 다 확인). **honest 미묘함**: single-bond Heisenberg는 XX,YY,ZZ 교환 → step이 e^{-iHt}와 *정확*(err~1e-16, 근사 아님). 모든 Trotter가 근사인 것은 아님 — 정직 구별 표기.
+  - **모듈 61→62(Tier-0 dense +1, second_oracle 55→56/56)·앱 77→82, root d231fbf4→`59b88d50`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS, CI tier0:184).
+- [x] **W8.3 SuzukiTrotter — 2차 차수 + 격자확장** `[SC][ND]` ✅ 2026-06-29
+  - 목표: 1차 Trotter(W8.1/8.2)에 **2차 대칭 Suzuki step** 추가 + 격자 4q 확장. 정직-근사를 근사 *차수* 대비로 심화.
+  - 산출: `scripts/qsim3_family.py`·`.pgf/DESIGN-SuzukiTrotter.md`·`specs/modules/rz_negpi8.pg`·`specs/apps/{rzz_pi16,tfim3_trotter_step2,tfim4_trotter_step,tfim4_trotter_step2}.app.pg`. second_oracle INDEP+1(rz_negpi8)·forge_apps APP_LIST+4.
+  - 봉인(전부 Tier-0 EXACT, dt=π/8): 신규 모듈 `rz_negpi8`=Rz(-π/8)=e^{i(π/16)Z}(반각)·`rzz_pi16`=e^{i(π/16)Z⊗Z}=CNOT·rz_negpi8·CNOT(반각 ZZ)·`tfim3_trotter_step2`=TFIM3 2차 Suzuki(3q, ΠZZ(d/2)·ΠX(d)·ΠZZ(d/2))·`tfim4_trotter_step`=TFIM4 1차(4q, 격자)·`tfim4_trotter_step2`=TFIM4 2차(4q). composite==closed-form golden(honest 분해).
+  - ★**정직-근사 심화=차수 대비**(seal 아님): 고정 T=π/4, **1차 O(1/k) ratio≈2 vs 2차 Suzuki O(1/k²) ratio≈4**(TFIM3·TFIM4 둘 다, 2차 tail 4.05→4.01). W8.2 "근사는 수렴"→W8.3 "근사의 *품질(차수)*도 정량화". per-step 1차 O(dt²)·2차 O(dt³).
+  - **모듈 62→63(Tier-0 dense +1, second_oracle 56→57/57)·앱 82→86, root 59b88d50→`566b0368`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS, CI tier0:190).
+- [x] **W8.4 TrotterDynamics — 봉인 step 실행→시간동역학 관찰** `[SC][ND]` ✅ 2026-06-29
+  - 목표: 봉인된 Trotter step(W8.1~8.3)을 `backend_adapter`로 **반복 실행**(U^k)해 물리 관측량 시간 동역학을 관찰하고 exact 대각화와 대조. **신규 봉인 0** — registry/오라클/frozen/root **불변**(관찰 전용 계층).
+  - 산출: `scripts/qsim_dynamics.py`·`.pgf/DESIGN-TrotterDynamics.md`·`.pgf/backend/TROTTER-DYNAMICS-REPORT.json`. backend_adapter(load_sealed_app u_hash 게이트·numpy+cirq 백엔드·expect_z/corr_zz) 사용만.
+  - 관찰: 봉인 `tfim3/4_trotter_step(·_step2)`을 |0…0⟩에 k=0..8(t=0..π) 적용 → ⟨Z₀(t)⟩·⟨X₀(t)⟩·⟨Z₀Z₁(t)⟩ 궤적. numpy↔cirq atol 일치(backends_agree). Trotter 편차(관측량 공간): ⟨X₀⟩ max 오차 1차 0.286/0.310 vs 2차 0.100/0.133(TFIM3/4).
+  - ★**차수의 basis-의존(honest, 비자명)**: 항등식 s1=A^{1/2}·s2·A^{-1/2}(A=ΠZZ(dt)) → 1·2차 Trotter는 **Z-대각 켤레**. Z-basis 초기상태에서 ⟨Z⟩·⟨ZZ⟩는 **1차==2차**(측정통계가 차수 구별 불가, diff=0.0), 차수 우월(2차)은 **transverse ⟨X⟩에서만** 가시. 측정 basis가 무엇을 드러내는지에 정직.
+  - **정직성 3경계 완결**: 봉인(분해 정확) ≠ 실행(시뮬 동역학) ≠ 검증; 근사 ≠ exact(궤적 편차). **registry 무변경**(root 566b0368 그대로, reproduce_all REPRODUCED, contested_guard ALL PASS). 관련=`scripts/backend_adapter.py`(§5[8]B).
+- [x] **W9.1 AmplitudeAmplification — Grover 일반화(새 수평 클래스)** `[SC][ND]` ✅ 2026-06-29
+  - 목표: Grover(grover2)를 amplitude amplification 패밀리로 일반화 — 3큐비트 확산/Grover 연산자 + 반복 횟수(iteration). 기존 봉인 부품 복리 재사용, 신규 모듈 0.
+  - 산출: `scripts/ampamp_family.py`·`.pgf/DESIGN-AmplitudeAmplification.md`·`specs/apps/{reflect000,diffusion3,grover3,grover3_2iter,grover2_2iter}.app.pg`. forge_apps APP_LIST+5(second_oracle 불변).
+  - 봉인(전부 Tier-0 EXACT): `reflect000`=2|000⟩⟨000|−I=(X³·CCZ·X³, 전역위상 흡수)·`diffusion3`=(H³·reflect000·H³=2|s⟩⟨s|−I)·`grover3`=D₃∘O₃(O₃=ccz, |111⟩, 1-iterate)·`grover3_2iter`=G₃²·`grover2_2iter`=G₂². composite==golden(up-to-phase, MatrixGate 0). 봉인 x_gate·ccz·h_gate·cz·grover2 복리.
+  - ★**정직-behavior=진폭증폭 프로파일**(seal 아님): 봉인 G^k를 균등중첩에 적용 → P_target(k), 이론 sin²((2k+1)θ) 정확 일치. **grover3(N=8): k=1→0.781·k=2→0.945(최적-k)·k=3→0.330(over-rotation)** · grover2(N=4): k=1→1.0(최적)·k=2→0.25(over-rotation). 최적-k·과회전은 관찰이지 봉인 아님.
+  - **앱 86→91·모듈 63 불변(신규 모듈 0)·second_oracle 57/57 불변, root 566b0368→`3e3d6fe7`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS, CI tier0:196).
+- [x] **W9.2 AmplitudeEstimation (QAE) — amplification→estimation** `[SC][ND]` ✅ 2026-06-29
+  - 목표: W9.1(amplitude amplification)을 amplitude *estimation*으로 상승 — Grover Q 연산자에 QPE를 걸어 진폭 a를 추정. exact instance(θ=π/8 → a=sin²(π/8), t=3 counting이 정확히 읽음). Shor의 controlled-U^{2^j}+봉인 iqft3 근육 복리.
+  - 산출: `scripts/qae_family.py`·`.pgf/DESIGN-AmplitudeEstimation.md`·`specs/modules/{ry_pi4,ry_negpi4,ry_pi2,ry_negpi2}.pg`·`specs/apps/{cry_pi2,cry_pi,qae3_pi8}.app.pg`. second_oracle INDEP+4(Ry)·forge_apps APP_LIST+3.
+  - 봉인(전부 Tier-0 EXACT): analytic Ry 모듈 4개(`ry_pi4`=Ry(π/4)·`ry_negpi4`·`ry_pi2`=Ry(π/2)=Grover Q·`ry_negpi2`, YPowGate(α/π) up-to-phase, ry_k 패턴)·`cry_pi2`=controlled-Ry(π/2)·`cry_pi`=controlled-Ry(π)(honest 항등식 (I⊗Ry(φ/2))·CNOT·(I⊗Ry(-φ/2))·CNOT)·**`qae3_pi8`**=QPE(t=3) on Q=Ry(π/2)(4q: counting 3+work 1; Q^4=-I→z_gate·Q^2→cry_pi·Q^1→cry_pi2; iqft3 복리). composite==golden up-to-phase, MatrixGate 0.
+  - ★**정직-behavior=진폭 추정 readout**(seal 아님): 봉인 QAE를 |0⟩에 실행→counting 측정 y→a_est=sin²(πy/2^t). exact instance라 **양 peak y∈{1,7} 각 0.5 → 둘 다 a_est=sin²(π/8)=0.146447 정확복원**(진짜 a와 일치). W9.1 amplification → W9.2 estimation. QAE 원리: Grover Q 고유위상 ±2θ를 QPE가 읽음→a=sin²θ.
+  - **모듈 63→67(Tier-0 dense +4, second_oracle 57→61/61)·앱 91→94, root 3e3d6fe7→`a916c8da`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS, CI tier0:208).
+- [x] **W9.3 QAEDeepening — instance→family, 2 QAE 패러다임** `[SC][ND]` ✅ 2026-06-29
+  - 목표: W9.2(QAE instance)를 family로 — ① 두 번째 exact QPE-QAE 인스턴스(a=1/2, 신규 모듈 0); ② iterative/power QAE(QPE-free) — P_good(m) 곡선 고전fit으로 *임의* θ 추정. backend_adapter 실행 계층 복리.
+  - 산출: `scripts/qae2_family.py`·`.pgf/DESIGN-QAEDeepening.md`·`specs/apps/{qae3_pi2,grover2_3iter,grover3_3iter}.app.pg`. forge_apps APP_LIST+3(second_oracle 불변, 신규 모듈 0).
+  - 봉인(전부 Tier-0 EXACT): `qae3_pi2`=QPE(t=3) on Q=Ry(π)→a=1/2(Q⁴=Ry(4π)=I→c0 무게이트·Q²=−I→z_gate(c1)·Q¹=Ry(π)→cry_pi(c2,work); ry_pi2·z_gate·cry_pi·iqft3 복리)·`grover2_3iter`=G₂³·`grover3_3iter`=G₃³. composite==golden up-to-phase, MatrixGate 0.
+  - ★**2 QAE 패러다임 정직 대비**(behavior, seal 아님): **QPE-QAE**=one-shot exact, 단 2θ/2π=k/2^t 특수진폭만(a=sin²(π/8) W9.2·a=1/2 qae3_pi2 → y∈{2,6}); **iterative/power QAE**=QPE-free, backend_adapter로 봉인 Grover power 실행(u_hash 게이트)→P_good(m)=sin²((2m+1)θ) 고전 least-squares fit→**임의 진폭** 추정(grover2 a_est=1/4·grover3 a_est=1/8, QPE bin 에 안 떨어지는 일반 θ), 단 정밀도=측정수 의존(공짜 아님). execution≠verification.
+  - **모듈 63 불변(신규 모듈 0)·second_oracle 61/61 불변·앱 94→97, root a916c8da→`2cfe8dc3`**(순수 비파괴: frozen 23키·fingerprint byte-identical, reproduce_all REPRODUCED, contested_guard ALL PASS, CI tier0:211).
 
 ---
 

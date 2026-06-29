@@ -86,6 +86,19 @@ INDEP = {
     # ── W8.1: Pauli-exponential 회전(해밀토니안 시뮬 primitive) — 제1원리 closed form ──
     "rz_negpi4": lambda: np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex),
     "rx_negpi4": lambda: (np.cos(np.pi / 8) * np.eye(2) + 1j * np.sin(np.pi / 8) * X).astype(complex),
+    # ── W8.2: S† (Heisenberg ryy 기저변환 primitive) — 제1원리 closed form ──
+    "sdg_gate": lambda: np.diag([1, -1j]).astype(complex),
+    # ── W8.3: 반각 Z 회전(2차 Suzuki step primitive) — 제1원리 closed form ──
+    "rz_negpi8": lambda: np.diag([np.exp(1j * np.pi / 16), np.exp(-1j * np.pi / 16)]).astype(complex),
+    # ── W9.2: analytic Ry(α) (QAE 진폭준비/controlled-Ry 반각) — 제1원리 closed form ──
+    "ry_pi4": lambda: np.array([[np.cos(np.pi / 8), -np.sin(np.pi / 8)],
+                                [np.sin(np.pi / 8), np.cos(np.pi / 8)]], dtype=complex),
+    "ry_negpi4": lambda: np.array([[np.cos(np.pi / 8), np.sin(np.pi / 8)],
+                                   [-np.sin(np.pi / 8), np.cos(np.pi / 8)]], dtype=complex),
+    "ry_pi2": lambda: np.array([[np.cos(np.pi / 4), -np.sin(np.pi / 4)],
+                               [np.sin(np.pi / 4), np.cos(np.pi / 4)]], dtype=complex),
+    "ry_negpi2": lambda: np.array([[np.cos(np.pi / 4), np.sin(np.pi / 4)],
+                                   [-np.sin(np.pi / 4), np.cos(np.pi / 4)]], dtype=complex),
 }
 # ry_k cascade family (k=2..10) + daggers — late-binding 회피용 즉시 캡처
 for _k in range(2, 11):

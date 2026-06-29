@@ -575,6 +575,52 @@
       }
     ]
   },
+  "cry_pi": {
+    "u_hash": "2a0bf888560e6e33dd47631b41bd3efa8e3baf6a8bf2c8cdbe01e8ce88b3a587",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi2",
+        "uses": 1,
+        "child_u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi2",
+        "uses": 1,
+        "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      }
+    ]
+  },
+  "cry_pi2": {
+    "u_hash": "6976a9cd7b1e918217073d09c2a3b7661d6d26f7c2e0eef7ee809de3df942056",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      }
+    ]
+  },
   "cz_rediscovered": {
     "u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
     "depends_on": [
@@ -605,6 +651,23 @@
         "kind": "module",
         "id": "h_gate",
         "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "diffusion3": {
+    "u_hash": "c173a81678999daa5dca9210d5c0fbe78b55e2e2ee56cc3a1412bc7e1414783f",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "reflect000",
+        "uses": 1,
+        "child_u_hash": "71d5d1910951348a82a59bb47aeb130795d69f67b4536ab0f7da248940969b1a"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 6,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
       }
     ]
@@ -779,6 +842,113 @@
       }
     ]
   },
+  "grover2_2iter": {
+    "u_hash": "54ade490d78d9f46648b73b1b5b19d113e57c2caaaeb45aeec1219ac41364722",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "grover2",
+        "uses": 2,
+        "child_u_hash": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f"
+      }
+    ]
+  },
+  "grover2_3iter": {
+    "u_hash": "251131bb88baa774065be74f20858b41fd153f621aa6cce874c6ff57c3827562",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "grover2",
+        "uses": 3,
+        "child_u_hash": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f"
+      }
+    ]
+  },
+  "grover3": {
+    "u_hash": "87e3303ffc39ad17d8badadfd83234edf21cf8b727842bcf5acd6aa2327a15ac",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "diffusion3",
+        "uses": 1,
+        "child_u_hash": "c173a81678999daa5dca9210d5c0fbe78b55e2e2ee56cc3a1412bc7e1414783f"
+      },
+      {
+        "kind": "module",
+        "id": "ccz",
+        "uses": 1,
+        "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
+      }
+    ]
+  },
+  "grover3_2iter": {
+    "u_hash": "33fe2545cb43abea19ffcb09925d8f09473046831b771a04ab591e488368cdb4",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "grover3",
+        "uses": 2,
+        "child_u_hash": "87e3303ffc39ad17d8badadfd83234edf21cf8b727842bcf5acd6aa2327a15ac"
+      }
+    ]
+  },
+  "grover3_3iter": {
+    "u_hash": "1d136c3ecec638a9785f825403336d0c62ac3c78ce3e9451763fd6da0afff710",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "grover3",
+        "uses": 3,
+        "child_u_hash": "87e3303ffc39ad17d8badadfd83234edf21cf8b727842bcf5acd6aa2327a15ac"
+      }
+    ]
+  },
+  "heis2_trotter_step": {
+    "u_hash": "911539a14d3f7f07bda18dfd67447fe5515b73adf4f2615b560a55c9a6253bbe",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rxx_pi8",
+        "uses": 1,
+        "child_u_hash": "8815e0aaa366748897087f191411222a073b8e82fa7dc0bb759e6323c5c68253"
+      },
+      {
+        "kind": "app",
+        "id": "ryy_pi8",
+        "uses": 1,
+        "child_u_hash": "16a1e901d176194e13efc2322f97c3b7f639557cc5d7ccd7d4d81cae6c1b1601"
+      },
+      {
+        "kind": "app",
+        "id": "rzz_pi8",
+        "uses": 1,
+        "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131"
+      }
+    ]
+  },
+  "heis3_trotter_step": {
+    "u_hash": "d5cfca826647d9e0f4fd5c6c9a9b801df9e4787c413a88ed8f175761cffc34d2",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rxx_pi8",
+        "uses": 2,
+        "child_u_hash": "8815e0aaa366748897087f191411222a073b8e82fa7dc0bb759e6323c5c68253"
+      },
+      {
+        "kind": "app",
+        "id": "ryy_pi8",
+        "uses": 2,
+        "child_u_hash": "16a1e901d176194e13efc2322f97c3b7f639557cc5d7ccd7d4d81cae6c1b1601"
+      },
+      {
+        "kind": "app",
+        "id": "rzz_pi8",
+        "uses": 2,
+        "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131"
+      }
+    ]
+  },
   "iqft2": {
     "u_hash": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f",
     "depends_on": [
@@ -940,6 +1110,82 @@
         "id": "swap2",
         "uses": 4,
         "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
+  "qae3_pi2": {
+    "u_hash": "5fc7fdcbb3b55cdef351d7768eb67a922d09dc2d31b0baeceee883f000f768e5",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cry_pi",
+        "uses": 1,
+        "child_u_hash": "2a0bf888560e6e33dd47631b41bd3efa8e3baf6a8bf2c8cdbe01e8ce88b3a587"
+      },
+      {
+        "kind": "app",
+        "id": "iqft3",
+        "uses": 1,
+        "child_u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi2",
+        "uses": 1,
+        "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 1,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
+  "qae3_pi8": {
+    "u_hash": "56c3261dfd02d80c69d44888c1a8ad28ad3b4629d9f6991ecdc23b3da1bee951",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cry_pi",
+        "uses": 1,
+        "child_u_hash": "2a0bf888560e6e33dd47631b41bd3efa8e3baf6a8bf2c8cdbe01e8ce88b3a587"
+      },
+      {
+        "kind": "app",
+        "id": "cry_pi2",
+        "uses": 1,
+        "child_u_hash": "6976a9cd7b1e918217073d09c2a3b7661d6d26f7c2e0eef7ee809de3df942056"
+      },
+      {
+        "kind": "app",
+        "id": "iqft3",
+        "uses": 1,
+        "child_u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 1,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
       }
     ]
   },
@@ -1311,6 +1557,23 @@
       }
     ]
   },
+  "reflect000": {
+    "u_hash": "71d5d1910951348a82a59bb47aeb130795d69f67b4536ab0f7da248940969b1a",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ccz",
+        "uses": 1,
+        "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 6,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "repcode3_bitflip": {
     "u_hash": "1f4bb2dbc0d6b50a34f4ff3c4afc2ea63987fc16b272f2460f93d545d51d9f2c",
     "depends_on": [
@@ -1472,6 +1735,69 @@
         "id": "h_gate",
         "uses": 9,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "rxx_pi8": {
+    "u_hash": "8815e0aaa366748897087f191411222a073b8e82fa7dc0bb759e6323c5c68253",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rzz_pi8",
+        "uses": 1,
+        "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "ryy_pi8": {
+    "u_hash": "16a1e901d176194e13efc2322f97c3b7f639557cc5d7ccd7d4d81cae6c1b1601",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rzz_pi8",
+        "uses": 1,
+        "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      },
+      {
+        "kind": "module",
+        "id": "sdg_gate",
+        "uses": 2,
+        "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+      }
+    ]
+  },
+  "rzz_pi16": {
+    "u_hash": "803310c927ca3453c70796799c0c42dfa50f705fd95c2cbf1e05afd03c970ecd",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi8",
+        "uses": 1,
+        "child_u_hash": "e48f30ca9f9e309c01f9d4e46314c670836044394c39be947458b44fd6d91a66"
       }
     ]
   },
@@ -1665,6 +1991,17 @@
       }
     ]
   },
+  "tfim3_trotter_2steps": {
+    "u_hash": "ca4d6f1ac0baa295de6db1166d0b18a6a8a2ea4f1322e9a0349f748d384ecce2",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "tfim3_trotter_step",
+        "uses": 2,
+        "child_u_hash": "ce3db4425f2e8a953ddcd1acee927cfb8e5f9cdab709308c0a8c9e7dad8e9414"
+      }
+    ]
+  },
   "tfim3_trotter_step": {
     "u_hash": "ce3db4425f2e8a953ddcd1acee927cfb8e5f9cdab709308c0a8c9e7dad8e9414",
     "depends_on": [
@@ -1678,6 +2015,57 @@
         "kind": "module",
         "id": "rx_negpi4",
         "uses": 3,
+        "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
+      }
+    ]
+  },
+  "tfim3_trotter_step2": {
+    "u_hash": "d7264b85a522969ff7c5168b09b6e1db532d39bf262b9a71aef6f0b521ff202d",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rzz_pi16",
+        "uses": 4,
+        "child_u_hash": "803310c927ca3453c70796799c0c42dfa50f705fd95c2cbf1e05afd03c970ecd"
+      },
+      {
+        "kind": "module",
+        "id": "rx_negpi4",
+        "uses": 3,
+        "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
+      }
+    ]
+  },
+  "tfim4_trotter_step": {
+    "u_hash": "0b996bf529010ad5b7d4e4258ceedbe6d56f030a0d64c84abea7897865d2663c",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rzz_pi8",
+        "uses": 3,
+        "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131"
+      },
+      {
+        "kind": "module",
+        "id": "rx_negpi4",
+        "uses": 4,
+        "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
+      }
+    ]
+  },
+  "tfim4_trotter_step2": {
+    "u_hash": "4da9b5ed0111b759caf9bb69a675040207db5a5eec7a6c484432bf9a9c100c43",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "rzz_pi16",
+        "uses": 6,
+        "child_u_hash": "803310c927ca3453c70796799c0c42dfa50f705fd95c2cbf1e05afd03c970ecd"
+      },
+      {
+        "kind": "module",
+        "id": "rx_negpi4",
+        "uses": 4,
         "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
       }
     ]

@@ -1,0 +1,14 @@
+# diffusion3 — 3큐비트 Grover 확산 D₃ = (H^⊗3)·reflect000·(H^⊗3) = 2|s><s|-I. reflect000 sub-app 재귀.
+```json id=app_meta
+{"id": "diffusion3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H1 = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+H3 = np.kron(np.kron(H1,H1),H1)
+refl = np.diag([1,-1,-1,-1,-1,-1,-1,-1]).astype(complex)
+golden = H3 @ refl @ H3
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"app": "reflect000.app.pg"}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}]}
+```

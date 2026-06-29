@@ -1,0 +1,12 @@
+# rzz_pi16 — e^{i(π/16)Z⊗Z} = CNOT·rz_negpi8·CNOT (반각 2큐비트 ZZ, 2차 Suzuki용). plan=봉인 cnot·rz_negpi8, no MatrixGate. golden=closed-form Pauli 지수.
+```json id=app_meta
+{"id": "rzz_pi16", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+Z = np.diag([1,-1]).astype(complex); ZZ = np.kron(Z, Z)
+golden = (np.cos(np.pi/16)*np.eye(4) + 1j*np.sin(np.pi/16)*ZZ).astype(complex)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi8.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

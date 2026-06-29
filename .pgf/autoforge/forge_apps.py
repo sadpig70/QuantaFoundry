@@ -67,6 +67,31 @@ APP_LIST = [
     # F3 확장 (§5r W8.1): Hamiltonian simulation — Trotter, 새 수평 클래스(Pauli-exp 회전)
     ("rzz_pi8.app.pg",            None),   # e^{i(π/8)Z⊗Z} = CNOT·rz_negpi4·CNOT (2q ZZ 상호작용)
     ("tfim3_trotter_step.app.pg", None),   # TFIM n=3 1차 Trotter step (3q) — step EXACT 봉인(오차=관찰)
+    # F3 확장 (§5s W8.2): TrotterDeepening — {rxx,ryy,rzz} 완성 + Heisenberg family + 복리
+    ("rxx_pi8.app.pg",            None),   # e^{i(π/8)X⊗X} = (H⊗H)·rzz·(H⊗H) (2q XX 상호작용)
+    ("ryy_pi8.app.pg",            None),   # e^{i(π/8)Y⊗Y}, 기저 B=S·H(Z→Y) (2q YY 상호작용)
+    ("heis2_trotter_step.app.pg", None),   # single-bond Heisenberg step (2q) — 교환항 → 정확(관찰)
+    ("heis3_trotter_step.app.pg", None),   # Heisenberg chain step (3q) — 비가환 → Trotter 오차(관찰)
+    ("tfim3_trotter_2steps.app.pg", None), # TFIM Trotter step ×2 (복리, 3q) — step^k 합성=정확
+    # F3 확장 (§5t W8.3): SuzukiTrotter — 2차 대칭 분할 + 4큐비트 격자 + 차수 대비
+    ("rzz_pi16.app.pg",             None), # e^{i(π/16)Z⊗Z} = CNOT·rz_negpi8·CNOT (반각 ZZ, 2차용)
+    ("tfim3_trotter_step2.app.pg",  None), # TFIM3 2차 Suzuki step (3q) — per-step O(dt³)
+    ("tfim4_trotter_step.app.pg",   None), # TFIM4 1차 step (4q, 격자 확장)
+    ("tfim4_trotter_step2.app.pg",  None), # TFIM4 2차 Suzuki step (4q)
+    # F3 확장 (§5u W9.1): AmplitudeAmplification — Grover 일반화(3q 확산/연산자 + 반복)
+    ("reflect000.app.pg",           None), # 2|000><000|-I = X³·CCZ·X³ (reflect00 3q 일반화)
+    ("diffusion3.app.pg",           None), # 3q 확산 (H³·reflect000·H³ = 2|s><s|-I)
+    ("grover3.app.pg",              None), # 3q Grover 1-iterate (D₃∘O₃, |111>) P=0.781
+    ("grover3_2iter.app.pg",        None), # 3q Grover 2-iterate G₃² (N=8 최적-k) P=0.945
+    ("grover2_2iter.app.pg",        None), # 2q Grover 2-iterate G₂² (N=4 over-rotation) P=0.25
+    # F3 확장 (§5v W9.2): AmplitudeEstimation(QAE) — Grover Q 에 QPE → 진폭 추정
+    ("cry_pi2.app.pg",              None), # controlled-Ry(π/2) (honest CNOT·Ry 사다리)
+    ("cry_pi.app.pg",               None), # controlled-Ry(π)
+    ("qae3_pi8.app.pg",             None), # QAE 4q: QPE on Grover Q → a=sin²(π/8) 추정 (iqft3 복리)
+    # F3 확장 (§5w W9.3): QAEDeepening — 2nd QPE-QAE(a=1/2) + iterative QAE power(QPE-free)
+    ("qae3_pi2.app.pg",             None), # QAE 4q: a=1/2 (Q=Ry(π), 신규 모듈 0)
+    ("grover2_3iter.app.pg",        None), # G₂³ (iterative QAE power m=3)
+    ("grover3_3iter.app.pg",        None), # G₃³
 ]
 
 

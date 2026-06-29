@@ -1,0 +1,13 @@
+# rz_negpi8 — Rz(-π/8) = e^{i(π/16)Z}. 반각 Pauli-Z 회전(2차 Suzuki step의 반각 ZZ에 필요). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import Rz
+bloq = Rz(-np.pi/8)
+```
+```python id=golden
+import numpy as np
+golden = np.diag([np.exp(1j*np.pi/16), np.exp(-1j*np.pi/16)]).astype(complex)
+```
+```json id=meta
+{"id": "rz_negpi8", "n_sys": 1, "n_anc": 0}
+```

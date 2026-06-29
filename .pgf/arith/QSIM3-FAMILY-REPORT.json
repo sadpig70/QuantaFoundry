@@ -1,0 +1,203 @@
+{
+  "phase": "W8.3 SuzukiTrotter",
+  "honesty": "Adds 2nd-order (symmetric Suzuki) Trotter steps and extends the lattice to 4 qubits. The Trotter STEPS (1st and 2nd order) are sealed EXACTLY (composite==golden, golden=closed-form Pauli exponentials, no MatrixGate). The Trotter ERROR vs the true e^{-iH T} and its CONVERGENCE ORDER are an OBSERVATION, NOT a seal — at fixed T=π/4, 1st-order error scales O(1/k) (ratio~2 per k-doubling) while 2nd-order Suzuki scales O(1/k^2) (ratio~4). Where W8.2 showed 'approximation converges', W8.3 shows 'approximation QUALITY (order) is also quantifiable'. modules 62->63, apps 82->86.",
+  "modules": [
+    {
+      "id": "rz_negpi8",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "e48f30ca9f9e309c01f9d4e46314c670836044394c39be947458b44fd6d91a66"
+    }
+  ],
+  "apps": [
+    {
+      "id": "rzz_pi16",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "803310c927ca3453c70796799c0c42dfa50f705fd95c2cbf1e05afd03c970ecd",
+      "reason": ""
+    },
+    {
+      "id": "tfim3_trotter_step2",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "d7264b85a522969ff7c5168b09b6e1db532d39bf262b9a71aef6f0b521ff202d",
+      "reason": ""
+    },
+    {
+      "id": "tfim4_trotter_step",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "0b996bf529010ad5b7d4e4258ceedbe6d56f030a0d64c84abea7897865d2663c",
+      "reason": ""
+    },
+    {
+      "id": "tfim4_trotter_step2",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "4da9b5ed0111b759caf9bb69a675040207db5a5eec7a6c484432bf9a9c100c43",
+      "reason": ""
+    }
+  ],
+  "order_contrast_observation": {
+    "note": "OBSERVATION, NOT A SEAL — both Trotter steps are sealed EXACTLY; this contrasts their approximation-error convergence ORDER vs the true e^{-iH T} at fixed T=π/4. 1st-order ratio~2 (O(1/k)); 2nd-order Suzuki ratio~4 (O(1/k^2)).",
+    "fixed_T": 0.7853981633974483,
+    "systems": {
+      "tfim3": {
+        "first_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.785398,
+              "error_2norm": 1.13609327
+            },
+            {
+              "k": 2,
+              "dt": 0.392699,
+              "error_2norm": 0.48582262
+            },
+            {
+              "k": 4,
+              "dt": 0.19635,
+              "error_2norm": 0.2337954
+            },
+            {
+              "k": 8,
+              "dt": 0.098175,
+              "error_2norm": 0.11563893
+            },
+            {
+              "k": 16,
+              "dt": 0.049087,
+              "error_2norm": 0.05762792
+            }
+          ],
+          "ratio_k_doubling": [
+            2.338,
+            2.078,
+            2.022,
+            2.007
+          ],
+          "O(1/k)_confirmed": true
+        },
+        "second_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.785398,
+              "error_2norm": 0.6734639
+            },
+            {
+              "k": 2,
+              "dt": 0.392699,
+              "error_2norm": 0.1337516
+            },
+            {
+              "k": 4,
+              "dt": 0.19635,
+              "error_2norm": 0.03177101
+            },
+            {
+              "k": 8,
+              "dt": 0.098175,
+              "error_2norm": 0.00784567
+            },
+            {
+              "k": 16,
+              "dt": 0.049087,
+              "error_2norm": 0.00195545
+            }
+          ],
+          "ratio_k_doubling": [
+            5.035,
+            4.21,
+            4.049,
+            4.012
+          ],
+          "O(1/k^2)_confirmed": true
+        }
+      },
+      "tfim4": {
+        "first_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.785398,
+              "error_2norm": 1.58862817
+            },
+            {
+              "k": 2,
+              "dt": 0.392699,
+              "error_2norm": 0.68440637
+            },
+            {
+              "k": 4,
+              "dt": 0.19635,
+              "error_2norm": 0.32808599
+            },
+            {
+              "k": 8,
+              "dt": 0.098175,
+              "error_2norm": 0.16232684
+            },
+            {
+              "k": 16,
+              "dt": 0.049087,
+              "error_2norm": 0.08095052
+            }
+          ],
+          "ratio_k_doubling": [
+            2.321,
+            2.086,
+            2.021,
+            2.005
+          ],
+          "O(1/k)_confirmed": true
+        },
+        "second_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.785398,
+              "error_2norm": 1.00741272
+            },
+            {
+              "k": 2,
+              "dt": 0.392699,
+              "error_2norm": 0.1984512
+            },
+            {
+              "k": 4,
+              "dt": 0.19635,
+              "error_2norm": 0.04678706
+            },
+            {
+              "k": 8,
+              "dt": 0.098175,
+              "error_2norm": 0.01153019
+            },
+            {
+              "k": 16,
+              "dt": 0.049087,
+              "error_2norm": 0.00287229
+            }
+          ],
+          "ratio_k_doubling": [
+            5.076,
+            4.242,
+            4.058,
+            4.014
+          ],
+          "O(1/k^2)_confirmed": true
+        }
+      }
+    },
+    "all_orders_confirmed": true
+  },
+  "all_ok": true
+}

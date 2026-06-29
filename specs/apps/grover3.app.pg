@@ -1,0 +1,16 @@
+# grover3 — 3큐비트 Grover 1-iterate G₃ = D₃∘O₃ (정답 |111>). oracle=봉인 ccz 재사용, diffusion3 sub-app. plan=[{ccz}, {diffusion3}].
+```json id=app_meta
+{"id": "grover3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H1 = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+H3 = np.kron(np.kron(H1,H1),H1)
+refl = np.diag([1,-1,-1,-1,-1,-1,-1,-1]).astype(complex)
+D3 = H3 @ refl @ H3
+O3 = np.diag([1,1,1,1,1,1,1,-1]).astype(complex)        # ccz: |111> 위상반전
+golden = D3 @ O3
+```
+```json id=plan
+{"steps": [{"spec": "../modules/ccz.pg"}, {"app": "diffusion3.app.pg"}]}
+```

@@ -1,0 +1,17 @@
+# grover3_2iter — 3큐비트 Grover 2-iterate G₃² (N=8 M=1 최적-k). plan=[grover3, grover3] 복리.
+```json id=app_meta
+{"id": "grover3_2iter", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H1 = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+H3 = np.kron(np.kron(H1,H1),H1)
+refl = np.diag([1,-1,-1,-1,-1,-1,-1,-1]).astype(complex)
+D3 = H3 @ refl @ H3
+O3 = np.diag([1,1,1,1,1,1,1,-1]).astype(complex)
+G3 = D3 @ O3
+golden = G3 @ G3
+```
+```json id=plan
+{"steps": [{"app": "grover3.app.pg"}, {"app": "grover3.app.pg"}]}
+```

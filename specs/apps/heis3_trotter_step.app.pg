@@ -1,0 +1,20 @@
+# heis3_trotter_step — Heisenberg chain(bonds (0,1),(1,2)) 1차 Trotter step, dt=π/8 (3q). plan=bond(0,1)[rxx·ryy·rzz]·bond(1,2)[rxx·ryy·rzz](봉인 앱). golden=Trotter곱(EXACT 봉인). 겹치는 bond(공유 q1) 비가환 → 진짜 e^{-iHt} 오차는 별도 관찰(seal 아님).
+```json id=app_meta
+{"id": "heis3_trotter_step", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+th=np.pi/8; n=3
+I2=np.eye(2,dtype=complex); X=np.array([[0,1],[1,0]],complex)
+Y=np.array([[0,-1j],[1j,0]],complex); Z=np.diag([1,-1]).astype(complex)
+def opn(ps):
+    m=np.array([[1]],dtype=complex)
+    for q in range(n): m=np.kron(m, ps.get(q,I2))
+    return m
+def e(P): return np.cos(th)*np.eye(8,dtype=complex)+1j*np.sin(th)*P
+def bond(i,j): return e(opn({i:Z,j:Z})) @ e(opn({i:Y,j:Y})) @ e(opn({i:X,j:X}))
+golden = bond(1,2) @ bond(0,1)
+```
+```json id=plan
+{"steps": [{"app": "rxx_pi8.app.pg", "targets": [0, 1]}, {"app": "ryy_pi8.app.pg", "targets": [0, 1]}, {"app": "rzz_pi8.app.pg", "targets": [0, 1]}, {"app": "rxx_pi8.app.pg", "targets": [1, 2]}, {"app": "ryy_pi8.app.pg", "targets": [1, 2]}, {"app": "rzz_pi8.app.pg", "targets": [1, 2]}]}
+```

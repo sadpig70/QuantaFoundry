@@ -1,0 +1,12 @@
+# ryy_pi8 — e^{i(π/8)Y⊗Y}, 기저 B=S·H(Z→Y). plan=봉인 sdg_gate·h_gate·rzz_pi8·s_gate, no MatrixGate. golden=closed-form Pauli 지수.
+```json id=app_meta
+{"id": "ryy_pi8", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+Y = np.array([[0,-1j],[1j,0]],complex); YY = np.kron(Y, Y)
+golden = (np.cos(np.pi/8)*np.eye(4) + 1j*np.sin(np.pi/8)*YY).astype(complex)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/sdg_gate.pg", "targets": [0]}, {"spec": "../modules/sdg_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"app": "rzz_pi8.app.pg", "targets": [0, 1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/s_gate.pg", "targets": [0]}, {"spec": "../modules/s_gate.pg", "targets": [1]}]}
+```

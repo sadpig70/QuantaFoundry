@@ -1,0 +1,16 @@
+# grover2_2iter — 2큐비트 Grover 2-iterate G₂² (N=4는 1 iterate가 P=1 최적; 2는 over-rotation P=0.25). plan=[grover2, grover2] 복리.
+```json id=app_meta
+{"id": "grover2_2iter", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H1 = np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+H2 = np.kron(H1,H1)
+D2 = H2 @ np.diag([1,-1,-1,-1]).astype(complex) @ H2
+O2 = np.diag([1,1,1,-1]).astype(complex)                # cz: |11> 위상반전
+G2 = D2 @ O2
+golden = G2 @ G2
+```
+```json id=plan
+{"steps": [{"app": "grover2.app.pg"}, {"app": "grover2.app.pg"}]}
+```

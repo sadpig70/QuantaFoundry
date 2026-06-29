@@ -1,0 +1,493 @@
+{
+  "phase": "W8.4 TrotterDynamics",
+  "honesty_boundary": "Observation-only layer; NOTHING is sealed (registry/oracle/frozen/root untouched, root stays 566b0368). Input = already-sealed Tier-0 Trotter steps (u_hash gated); executed as U^k for time dynamics. Three boundaries closed: sealing(decomposition) != execution(simulation) != verification; and approximation != exact (Trotter error visible in observable space). Honest subtlety: 1st/2nd order Trotter are Z-diagonal conjugate (s1=A^{1/2} s2 A^{-1/2}), so from a Z-basis state <Z>/<ZZ> are order-blind; only transverse <X> shows 2nd-order tracking exact closer.",
+  "backends": [
+    "numpy_statevector",
+    "cirq_statevector"
+  ],
+  "negative_gate_test": {
+    "real_hash_ne_tampered": true,
+    "gate_logic": "load_sealed_app 는 hash_unitary(U)!=sealed.u_hash 시 SealGateError"
+  },
+  "systems": [
+    {
+      "system": "tfim3",
+      "sealed_steps": {
+        "first_order": {
+          "id": "tfim3_trotter_step",
+          "u_hash": "ce3db4425f2e8a953ddcd1acee927cfb8e5f9cdab709308c0a8c9e7dad8e9414",
+          "tier": 0
+        },
+        "second_order": {
+          "id": "tfim3_trotter_step2",
+          "u_hash": "d7264b85a522969ff7c5168b09b6e1db532d39bf262b9a71aef6f0b521ff202d",
+          "tier": 0
+        }
+      },
+      "dt": 0.392699,
+      "k_range": [
+        0,
+        8
+      ],
+      "t_range": [
+        0.0,
+        3.141593
+      ],
+      "trajectory_first_order": [
+        {
+          "k": 0,
+          "t": 0.0,
+          "Z0": 1.0,
+          "X0": 0.0,
+          "Z0Z1": 1.0
+        },
+        {
+          "k": 1,
+          "t": 0.392699,
+          "Z0": 0.707107,
+          "X0": 0.0,
+          "Z0Z1": 0.5
+        },
+        {
+          "k": 2,
+          "t": 0.785398,
+          "Z0": 0.146447,
+          "X0": 0.353553,
+          "Z0Z1": 0.25
+        },
+        {
+          "k": 3,
+          "t": 1.178097,
+          "Z0": -0.146447,
+          "X0": 0.426777,
+          "Z0Z1": 0.385723
+        },
+        {
+          "k": 4,
+          "t": 1.570796,
+          "Z0": -0.066942,
+          "X0": 0.345971,
+          "Z0Z1": 0.463848
+        },
+        {
+          "k": 5,
+          "t": 1.963495,
+          "Z0": 0.066942,
+          "X0": 0.081131,
+          "Z0Z1": 0.93771
+        },
+        {
+          "k": 6,
+          "t": 2.356194,
+          "Z0": 0.0306,
+          "X0": -0.026985,
+          "Z0Z1": 0.612802
+        },
+        {
+          "k": 7,
+          "t": 2.748894,
+          "Z0": -0.111405,
+          "X0": 0.320692,
+          "Z0Z1": 0.123341
+        },
+        {
+          "k": 8,
+          "t": 3.141593,
+          "Z0": -0.289876,
+          "X0": 0.42497,
+          "Z0Z1": 0.44375
+        }
+      ],
+      "trajectory_second_order": [
+        {
+          "k": 0,
+          "t": 0.0,
+          "Z0": 1.0,
+          "X0": 0.0,
+          "Z0Z1": 1.0
+        },
+        {
+          "k": 1,
+          "t": 0.392699,
+          "Z0": 0.707107,
+          "X0": 0.191342,
+          "Z0Z1": 0.5
+        },
+        {
+          "k": 2,
+          "t": 0.785398,
+          "Z0": 0.146447,
+          "X0": 0.422312,
+          "Z0Z1": 0.25
+        },
+        {
+          "k": 3,
+          "t": 1.178097,
+          "Z0": -0.146447,
+          "X0": 0.418208,
+          "Z0Z1": 0.385723
+        },
+        {
+          "k": 4,
+          "t": 1.570796,
+          "Z0": -0.066942,
+          "X0": 0.231146,
+          "Z0Z1": 0.463848
+        },
+        {
+          "k": 5,
+          "t": 1.963495,
+          "Z0": 0.066942,
+          "X0": 0.029304,
+          "Z0Z1": 0.93771
+        },
+        {
+          "k": 6,
+          "t": 2.356194,
+          "Z0": 0.0306,
+          "X0": 0.158953,
+          "Z0Z1": 0.612802
+        },
+        {
+          "k": 7,
+          "t": 2.748894,
+          "Z0": -0.111405,
+          "X0": 0.403549,
+          "Z0Z1": 0.123341
+        },
+        {
+          "k": 8,
+          "t": 3.141593,
+          "Z0": -0.289876,
+          "X0": 0.386344,
+          "Z0Z1": 0.44375
+        }
+      ],
+      "trajectory_exact": [
+        {
+          "k": 0,
+          "t": 0.0,
+          "Z0": 1.0,
+          "X0": -0.0,
+          "Z0Z1": 1.0
+        },
+        {
+          "k": 1,
+          "t": 0.392699,
+          "Z0": 0.721703,
+          "X0": 0.23957,
+          "Z0Z1": 0.558169
+        },
+        {
+          "k": 2,
+          "t": 0.785398,
+          "Z0": 0.181191,
+          "X0": 0.481838,
+          "Z0Z1": 0.313498
+        },
+        {
+          "k": 3,
+          "t": 1.178097,
+          "Z0": -0.119582,
+          "X0": 0.446612,
+          "Z0Z1": 0.439884
+        },
+        {
+          "k": 4,
+          "t": 1.570796,
+          "Z0": -0.068596,
+          "X0": 0.240609,
+          "Z0Z1": 0.61319
+        },
+        {
+          "k": 5,
+          "t": 1.963495,
+          "Z0": 0.043992,
+          "X0": 0.043338,
+          "Z0Z1": 0.955212
+        },
+        {
+          "k": 6,
+          "t": 2.356194,
+          "Z0": -0.016144,
+          "X0": 0.258845,
+          "Z0Z1": 0.519891
+        },
+        {
+          "k": 7,
+          "t": 2.748894,
+          "Z0": -0.218925,
+          "X0": 0.470129,
+          "Z0Z1": 0.222838
+        },
+        {
+          "k": 8,
+          "t": 3.141593,
+          "Z0": -0.469959,
+          "X0": 0.35385,
+          "Z0Z1": 0.575412
+        }
+      ],
+      "observable_space_trotter_error": {
+        "max_dev_X0_first_order": 0.28583,
+        "max_dev_X0_second_order": 0.099892,
+        "max_dev_Z0_first_order": 0.180083,
+        "note": "Trotter error is visible in <X0> (dev>1e-3); a single observable's deviation oscillates (not monotone in t), so we assert it is observably present, not 'growing'."
+      },
+      "order_basis_dependence": {
+        "Z0_1st_vs_2nd_maxdiff": 0.0,
+        "Z0Z1_1st_vs_2nd_maxdiff": 0.0,
+        "X0_max_dev_vs_exact_1st": 0.28583,
+        "X0_max_dev_vs_exact_2nd": 0.099892,
+        "note": "s1=A^{1/2}·s2·A^{-1/2} (A=ΠZZ(dt)) → Z-diagonal conjugacy. From a Z-basis initial state, <Z>/<ZZ> are identical for 1st/2nd order (measurement is order-blind); only transverse <X> reveals that 2nd-order tracks exact closer."
+      },
+      "expectation_checks": {
+        "backends_agree": true,
+        "Z_observables_order_blind": true,
+        "X_reveals_order_2nd_closer": true,
+        "trotter_error_observable_in_X": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "system": "tfim4",
+      "sealed_steps": {
+        "first_order": {
+          "id": "tfim4_trotter_step",
+          "u_hash": "0b996bf529010ad5b7d4e4258ceedbe6d56f030a0d64c84abea7897865d2663c",
+          "tier": 0
+        },
+        "second_order": {
+          "id": "tfim4_trotter_step2",
+          "u_hash": "4da9b5ed0111b759caf9bb69a675040207db5a5eec7a6c484432bf9a9c100c43",
+          "tier": 0
+        }
+      },
+      "dt": 0.392699,
+      "k_range": [
+        0,
+        8
+      ],
+      "t_range": [
+        0.0,
+        3.141593
+      ],
+      "trajectory_first_order": [
+        {
+          "k": 0,
+          "t": 0.0,
+          "Z0": 1.0,
+          "X0": 0.0,
+          "Z0Z1": 1.0
+        },
+        {
+          "k": 1,
+          "t": 0.392699,
+          "Z0": 0.707107,
+          "X0": 0.0,
+          "Z0Z1": 0.5
+        },
+        {
+          "k": 2,
+          "t": 0.785398,
+          "Z0": 0.146447,
+          "X0": 0.353553,
+          "Z0Z1": 0.25
+        },
+        {
+          "k": 3,
+          "t": 1.178097,
+          "Z0": -0.146447,
+          "X0": 0.426777,
+          "Z0Z1": 0.4375
+        },
+        {
+          "k": 4,
+          "t": 1.570796,
+          "Z0": -0.066942,
+          "X0": 0.408471,
+          "Z0Z1": 0.384153
+        },
+        {
+          "k": 5,
+          "t": 1.963495,
+          "Z0": 0.066942,
+          "X0": 0.396637,
+          "Z0Z1": 0.392195
+        },
+        {
+          "k": 6,
+          "t": 2.356194,
+          "Z0": 0.039752,
+          "X0": 0.230124,
+          "Z0Z1": 0.712278
+        },
+        {
+          "k": 7,
+          "t": 2.748894,
+          "Z0": -0.039752,
+          "X0": -0.016965,
+          "Z0Z1": 0.893932
+        },
+        {
+          "k": 8,
+          "t": 3.141593,
+          "Z0": -0.02922,
+          "X0": 0.126347,
+          "Z0Z1": 0.295502
+        }
+      ],
+      "trajectory_second_order": [
+        {
+          "k": 0,
+          "t": 0.0,
+          "Z0": 1.0,
+          "X0": 0.0,
+          "Z0Z1": 1.0
+        },
+        {
+          "k": 1,
+          "t": 0.392699,
+          "Z0": 0.707107,
+          "X0": 0.191342,
+          "Z0Z1": 0.5
+        },
+        {
+          "k": 2,
+          "t": 0.785398,
+          "Z0": 0.146447,
+          "X0": 0.422312,
+          "Z0Z1": 0.25
+        },
+        {
+          "k": 3,
+          "t": 1.178097,
+          "Z0": -0.146447,
+          "X0": 0.452033,
+          "Z0Z1": 0.4375
+        },
+        {
+          "k": 4,
+          "t": 1.570796,
+          "Z0": -0.066942,
+          "X0": 0.435721,
+          "Z0Z1": 0.384153
+        },
+        {
+          "k": 5,
+          "t": 1.963495,
+          "Z0": 0.066942,
+          "X0": 0.339201,
+          "Z0Z1": 0.392195
+        },
+        {
+          "k": 6,
+          "t": 2.356194,
+          "Z0": 0.039752,
+          "X0": 0.11536,
+          "Z0Z1": 0.712278
+        },
+        {
+          "k": 7,
+          "t": 2.748894,
+          "Z0": -0.039752,
+          "X0": 0.059197,
+          "Z0Z1": 0.893932
+        },
+        {
+          "k": 8,
+          "t": 3.141593,
+          "Z0": -0.02922,
+          "X0": 0.303746,
+          "Z0Z1": 0.295502
+        }
+      ],
+      "trajectory_exact": [
+        {
+          "k": 0,
+          "t": 0.0,
+          "Z0": 1.0,
+          "X0": 0.0,
+          "Z0Z1": 1.0
+        },
+        {
+          "k": 1,
+          "t": 0.392699,
+          "Z0": 0.721703,
+          "X0": 0.239573,
+          "Z0Z1": 0.558268
+        },
+        {
+          "k": 2,
+          "t": 0.785398,
+          "Z0": 0.181192,
+          "X0": 0.483578,
+          "Z0Z1": 0.325299
+        },
+        {
+          "k": 3,
+          "t": 1.178097,
+          "Z0": -0.119539,
+          "X0": 0.491799,
+          "Z0Z1": 0.49395
+        },
+        {
+          "k": 4,
+          "t": 1.570796,
+          "Z0": -0.067606,
+          "X0": 0.473752,
+          "Z0Z1": 0.451669
+        },
+        {
+          "k": 5,
+          "t": 1.963495,
+          "Z0": 0.053731,
+          "X0": 0.340136,
+          "Z0Z1": 0.535277
+        },
+        {
+          "k": 6,
+          "t": 2.356194,
+          "Z0": 0.036649,
+          "X0": 0.109143,
+          "Z0Z1": 0.857709
+        },
+        {
+          "k": 7,
+          "t": 2.748894,
+          "Z0": -0.038424,
+          "X0": 0.148193,
+          "Z0Z1": 0.77864
+        },
+        {
+          "k": 8,
+          "t": 3.141593,
+          "Z0": -0.05622,
+          "X0": 0.43649,
+          "Z0Z1": 0.270233
+        }
+      ],
+      "observable_space_trotter_error": {
+        "max_dev_X0_first_order": 0.310143,
+        "max_dev_X0_second_order": 0.132744,
+        "max_dev_Z0_first_order": 0.034745,
+        "note": "Trotter error is visible in <X0> (dev>1e-3); a single observable's deviation oscillates (not monotone in t), so we assert it is observably present, not 'growing'."
+      },
+      "order_basis_dependence": {
+        "Z0_1st_vs_2nd_maxdiff": 0.0,
+        "Z0Z1_1st_vs_2nd_maxdiff": 0.0,
+        "X0_max_dev_vs_exact_1st": 0.310143,
+        "X0_max_dev_vs_exact_2nd": 0.132744,
+        "note": "s1=A^{1/2}·s2·A^{-1/2} (A=ΠZZ(dt)) → Z-diagonal conjugacy. From a Z-basis initial state, <Z>/<ZZ> are identical for 1st/2nd order (measurement is order-blind); only transverse <X> reveals that 2nd-order tracks exact closer."
+      },
+      "expectation_checks": {
+        "backends_agree": true,
+        "Z_observables_order_blind": true,
+        "X_reveals_order_2nd_closer": true,
+        "trotter_error_observable_in_X": true
+      },
+      "all_expectations_met": true
+    }
+  ],
+  "all_ok": true
+}

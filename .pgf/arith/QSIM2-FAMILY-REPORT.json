@@ -1,0 +1,139 @@
+{
+  "phase": "W8.2 TrotterDeepening",
+  "honesty": "Grows W8.1 from instance to family. Completes the Pauli-interaction rotation set {rxx, ryy, rzz}; seals two Heisenberg instances (single-bond exact, chain approximate) and a multi-step compound. The Trotter STEPS are sealed EXACTLY (composite==golden, golden=closed-form Pauli exponentials, no MatrixGate). The Trotter ERROR vs the true e^{-iH T} is an OBSERVATION, NOT a seal — fixed T=π/4, first-order global error O(1/k) confirmed (ratio~2 per k-doubling). Honest nuance: the single-bond Heisenberg step is EXACT (XX,YY,ZZ commute on one bond) — not all Trotter steps are approximate. modules 61->62, apps 77->82.",
+  "modules": [
+    {
+      "id": "sdg_gate",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+    }
+  ],
+  "apps": [
+    {
+      "id": "rxx_pi8",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "8815e0aaa366748897087f191411222a073b8e82fa7dc0bb759e6323c5c68253",
+      "reason": ""
+    },
+    {
+      "id": "ryy_pi8",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "16a1e901d176194e13efc2322f97c3b7f639557cc5d7ccd7d4d81cae6c1b1601",
+      "reason": ""
+    },
+    {
+      "id": "heis2_trotter_step",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "911539a14d3f7f07bda18dfd67447fe5515b73adf4f2615b560a55c9a6253bbe",
+      "reason": ""
+    },
+    {
+      "id": "heis3_trotter_step",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "d5cfca826647d9e0f4fd5c6c9a9b801df9e4787c413a88ed8f175761cffc34d2",
+      "reason": ""
+    },
+    {
+      "id": "tfim3_trotter_2steps",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "ca4d6f1ac0baa295de6db1166d0b18a6a8a2ea4f1322e9a0349f748d384ecce2",
+      "reason": ""
+    }
+  ],
+  "convergence_observation": {
+    "note": "OBSERVATION, NOT A SEAL — Trotter steps are sealed EXACTLY; this is their approximation error vs the true e^{-iH T} over fixed T=π/4 as step count k grows.",
+    "fixed_T": 0.7853981633974483,
+    "tfim3_chain": {
+      "sweep": [
+        {
+          "k": 1,
+          "dt": 0.785398,
+          "trotter_error_2norm": 1.136093
+        },
+        {
+          "k": 2,
+          "dt": 0.392699,
+          "trotter_error_2norm": 0.485823
+        },
+        {
+          "k": 4,
+          "dt": 0.19635,
+          "trotter_error_2norm": 0.233795
+        },
+        {
+          "k": 8,
+          "dt": 0.098175,
+          "trotter_error_2norm": 0.115639
+        },
+        {
+          "k": 16,
+          "dt": 0.049087,
+          "trotter_error_2norm": 0.057628
+        }
+      ],
+      "ratio_k_doubling": [
+        2.338,
+        2.078,
+        2.022,
+        2.007
+      ],
+      "O(1/k)_confirmed": true,
+      "criterion": "asymptotic tail (last 2 k-doublings) within [1.9,2.1]"
+    },
+    "heisenberg_chain3": {
+      "sweep": [
+        {
+          "k": 1,
+          "dt": 0.785398,
+          "trotter_error_2norm": 1.414214
+        },
+        {
+          "k": 2,
+          "dt": 0.392699,
+          "trotter_error_2norm": 0.707107
+        },
+        {
+          "k": 4,
+          "dt": 0.19635,
+          "trotter_error_2norm": 0.344002
+        },
+        {
+          "k": 8,
+          "dt": 0.098175,
+          "trotter_error_2norm": 0.170549
+        },
+        {
+          "k": 16,
+          "dt": 0.049087,
+          "trotter_error_2norm": 0.085085
+        }
+      ],
+      "ratio_k_doubling": [
+        2.0,
+        2.056,
+        2.017,
+        2.004
+      ],
+      "O(1/k)_confirmed": true,
+      "criterion": "asymptotic tail (last 2 k-doublings) within [1.9,2.1]"
+    },
+    "single_bond_heisenberg": {
+      "trotter_error_2norm": 0.0,
+      "exact_not_approx": true,
+      "why": "single bond: XX,YY,ZZ mutually commute → Trotter step EXACTLY equals e^{-iH dt}."
+    }
+  },
+  "all_ok": true
+}

@@ -1,0 +1,11 @@
+# reflect000 — |000> 기준 반사 2|000><000|-I = (X^⊗3)·CCZ·(X^⊗3). 봉인 x_gate·ccz 재조립 (reflect00 의 3큐비트 일반화). 전역위상 흡수.
+```json id=app_meta
+{"id": "reflect000", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.diag([1,-1,-1,-1,-1,-1,-1,-1]).astype(complex)   # 2|000><000|-I (전역위상 흡수)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/ccz.pg"}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [2]}]}
+```

@@ -1,0 +1,12 @@
+# sdg_gate — S† = diag(1,-i). Clifford 위상 게이트의 켤레전치. ryy 기저변환(Z→Y, B=S·H)에 필요. analytic golden.
+```python id=bloq
+from qualtran.bloqs.basic_gates import SGate
+bloq = SGate().adjoint()
+```
+```python id=golden
+import numpy as np
+golden = np.array([[1,0],[0,-1j]], dtype=complex)
+```
+```json id=meta
+{"id": "sdg_gate", "n_sys": 1, "n_anc": 0}
+```

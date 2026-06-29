@@ -111,13 +111,107 @@ ghz9
 ├─ cnot (module×8)
 └─ h_gate (module)
 
-grover2
-├─ diffusion (app)
-│  ├─ reflect00 (app)
-│  │  ├─ cz (module)
-│  │  └─ x_gate (module×4)
+grover2_2iter
+└─ grover2 (app×2)
+   ├─ diffusion (app)
+   │  ├─ reflect00 (app)
+   │  │  ├─ cz (module)
+   │  │  └─ x_gate (module×4)
+   │  └─ h_gate (module×4)
+   └─ cz (module)
+
+grover2_3iter
+└─ grover2 (app×3)
+   ├─ diffusion (app)
+   │  ├─ reflect00 (app)
+   │  │  ├─ cz (module)
+   │  │  └─ x_gate (module×4)
+   │  └─ h_gate (module×4)
+   └─ cz (module)
+
+grover3_2iter
+└─ grover3 (app×2)
+   ├─ diffusion3 (app)
+   │  ├─ reflect000 (app)
+   │  │  ├─ ccz (module)
+   │  │  └─ x_gate (module×6)
+   │  └─ h_gate (module×6)
+   └─ ccz (module)
+
+grover3_3iter
+└─ grover3 (app×3)
+   ├─ diffusion3 (app)
+   │  ├─ reflect000 (app)
+   │  │  ├─ ccz (module)
+   │  │  └─ x_gate (module×6)
+   │  └─ h_gate (module×6)
+   └─ ccz (module)
+
+heis2_trotter_step
+├─ rxx_pi8 (app)
+│  ├─ rzz_pi8 (app)
+│  │  ├─ cnot (module×2)
+│  │  └─ rz_negpi4 (module)
 │  └─ h_gate (module×4)
-└─ cz (module)
+├─ ryy_pi8 (app)
+│  ├─ rzz_pi8 (app)
+│  │  ├─ cnot (module×2)
+│  │  └─ rz_negpi4 (module)
+│  ├─ h_gate (module×4)
+│  ├─ s_gate (module×2)
+│  └─ sdg_gate (module×2)
+└─ rzz_pi8 (app)
+   ├─ cnot (module×2)
+   └─ rz_negpi4 (module)
+
+heis3_trotter_step
+├─ rxx_pi8 (app×2)
+│  ├─ rzz_pi8 (app)
+│  │  ├─ cnot (module×2)
+│  │  └─ rz_negpi4 (module)
+│  └─ h_gate (module×4)
+├─ ryy_pi8 (app×2)
+│  ├─ rzz_pi8 (app)
+│  │  ├─ cnot (module×2)
+│  │  └─ rz_negpi4 (module)
+│  ├─ h_gate (module×4)
+│  ├─ s_gate (module×2)
+│  └─ sdg_gate (module×2)
+└─ rzz_pi8 (app×2)
+   ├─ cnot (module×2)
+   └─ rz_negpi4 (module)
+
+qae3_pi2
+├─ cry_pi (app)
+│  ├─ cnot (module×2)
+│  ├─ ry_negpi2 (module)
+│  └─ ry_pi2 (module)
+├─ iqft3 (app)
+│  ├─ cr3_dag_gate (module)
+│  ├─ cs_dag (module×2)
+│  ├─ h_gate (module×3)
+│  └─ swap2 (module)
+├─ h_gate (module×3)
+├─ ry_pi2 (module)
+└─ z_gate (module)
+
+qae3_pi8
+├─ cry_pi (app)
+│  ├─ cnot (module×2)
+│  ├─ ry_negpi2 (module)
+│  └─ ry_pi2 (module)
+├─ cry_pi2 (app)
+│  ├─ cnot (module×2)
+│  ├─ ry_negpi4 (module)
+│  └─ ry_pi4 (module)
+├─ iqft3 (app)
+│  ├─ cr3_dag_gate (module)
+│  ├─ cs_dag (module×2)
+│  ├─ h_gate (module×3)
+│  └─ swap2 (module)
+├─ h_gate (module×3)
+├─ ry_pi4 (module)
+└─ z_gate (module)
 
 qft2_pipeline
 ├─ cs_gate (module)
@@ -342,11 +436,30 @@ swap_via_cnot
 syndrome3_bitflip
 └─ cnot (module×4)
 
-tfim3_trotter_step
-├─ rzz_pi8 (app×2)
+tfim3_trotter_2steps
+└─ tfim3_trotter_step (app×2)
+   ├─ rzz_pi8 (app×2)
+   │  ├─ cnot (module×2)
+   │  └─ rz_negpi4 (module)
+   └─ rx_negpi4 (module×3)
+
+tfim3_trotter_step2
+├─ rzz_pi16 (app×4)
+│  ├─ cnot (module×2)
+│  └─ rz_negpi8 (module)
+└─ rx_negpi4 (module×3)
+
+tfim4_trotter_step
+├─ rzz_pi8 (app×3)
 │  ├─ cnot (module×2)
 │  └─ rz_negpi4 (module)
-└─ rx_negpi4 (module×3)
+└─ rx_negpi4 (module×4)
+
+tfim4_trotter_step2
+├─ rzz_pi16 (app×6)
+│  ├─ cnot (module×2)
+│  └─ rz_negpi8 (module)
+└─ rx_negpi4 (module×4)
 
 wstate10
 ├─ cnot (module×27)

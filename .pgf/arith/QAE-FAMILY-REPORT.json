@@ -1,0 +1,79 @@
+{
+  "phase": "W9.2 AmplitudeEstimation (QAE)",
+  "honesty": "Raises W9.1 (amplitude amplification) to amplitude ESTIMATION: QPE on the Grover Q operator estimates the amplitude a. Sealed Tier-0 EXACT (composite==golden up-to-phase, no MatrixGate): 4 analytic Ry modules + controlled-Ry apps (honest CNOT·Ry ladder) + the QAE circuit qae3_pi8 (reusing sealed iqft3/cnot/h_gate/z_gate). The amplitude-ESTIMATION readout (counting measurement -> a_est=sin^2(pi*y/2^t)) is an OBSERVATION, NOT a seal: exact instance a=sin^2(pi/8), both peaks y in {1,7} recover the true a exactly. modules 63->67, apps 91->94.",
+  "modules": [
+    {
+      "id": "ry_pi4",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+    },
+    {
+      "id": "ry_negpi4",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+    },
+    {
+      "id": "ry_pi2",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+    },
+    {
+      "id": "ry_negpi2",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
+    }
+  ],
+  "apps": [
+    {
+      "id": "cry_pi2",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "6976a9cd7b1e918217073d09c2a3b7661d6d26f7c2e0eef7ee809de3df942056",
+      "reason": ""
+    },
+    {
+      "id": "cry_pi",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "2a0bf888560e6e33dd47631b41bd3efa8e3baf6a8bf2c8cdbe01e8ce88b3a587",
+      "reason": ""
+    },
+    {
+      "id": "qae3_pi8",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "56c3261dfd02d80c69d44888c1a8ad28ad3b4629d9f6991ecdc23b3da1bee951",
+      "reason": ""
+    }
+  ],
+  "estimation_observation": {
+    "note": "OBSERVATION, NOT A SEAL — the sealed QAE circuit is executed on |0>; the counting register measurement y yields a_est=sin^2(pi*y/2^t). This is amplitude ESTIMATION behavior (W9.1 was amplification). Exact instance: both peaks recover the true a.",
+    "a_true": 0.146447,
+    "t_counting": 3,
+    "peaks": [
+      {
+        "y": 7,
+        "prob": 0.5,
+        "a_est": 0.146447
+      },
+      {
+        "y": 1,
+        "prob": 0.5,
+        "a_est": 0.146447
+      }
+    ],
+    "exact_recovery": true
+  },
+  "all_ok": true
+}

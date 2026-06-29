@@ -1,0 +1,33 @@
+# qae3_pi8 — QPE(t=3 counting) on Grover Q=Ry(π/2) → 진폭 a=sin²(π/8) 추정 회로 (4q). Q^4=-I→z_gate(control)·Q^2=Ry(π)→cry_pi·Q^1=Ry(π/2)→cry_pi2. 봉인 iqft3 복리. golden=16×16 closed-form.
+```json id=app_meta
+{"id": "qae3_pi8", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n=4
+def Ry(al): return np.array([[np.cos(al/2),-np.sin(al/2)],[np.sin(al/2),np.cos(al/2)]],dtype=complex)
+I2=np.eye(2,dtype=complex); Z=np.diag([1,-1]).astype(complex)
+H1=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+def emb(g,qs):
+    k=len(qs); G=g.reshape([2]*k+[2]*k)
+    T=np.eye(1<<n,dtype=complex).reshape([2]*n+[1<<n])
+    T=np.tensordot(G,T,axes=(list(range(k,2*k)),qs)); T=np.moveaxis(T,list(range(k)),qs)
+    return T.reshape(1<<n,1<<n)
+def cU(U):
+    M=np.eye(4,dtype=complex); M[2:,2:]=U; return M
+N=8; w=np.exp(2j*np.pi/N)
+QFT3=np.array([[w**(j*k) for k in range(N)] for j in range(N)],dtype=complex)/np.sqrt(N)
+iqft3=QFT3.conj().T
+Q=Ry(np.pi/2)
+U=np.eye(1<<n,dtype=complex)
+U=emb(Ry(np.pi/4),[3])@U                                   # A 진폭준비 (a=sin²(π/8))
+for q in range(3): U=emb(H1,[q])@U                         # H on counting
+U=emb(cU(np.linalg.matrix_power(Q,4)),[0,3])@U             # controlled-Q^4 (=-I → z on ctrl)
+U=emb(cU(np.linalg.matrix_power(Q,2)),[1,3])@U             # controlled-Q^2
+U=emb(cU(np.linalg.matrix_power(Q,1)),[2,3])@U             # controlled-Q^1
+U=emb(iqft3,[0,1,2])@U                                     # inverse QFT on counting
+golden=U
+```
+```json id=plan
+{"steps": [{"spec": "../modules/ry_pi4.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/z_gate.pg", "targets": [0]}, {"app": "cry_pi.app.pg", "targets": [1, 3]}, {"app": "cry_pi2.app.pg", "targets": [2, 3]}, {"app": "iqft3.app.pg", "targets": [0, 1, 2]}]}
+```

@@ -1,0 +1,88 @@
+{
+  "phase": "W9.1 AmplitudeAmplification",
+  "honesty": "Generalizes Grover (grover2) into the amplitude-amplification family: 3-qubit reflection/diffusion/Grover operators + iteration-count apps, reusing sealed parts (x_gate/ccz/h_gate/cz/reflect00/diffusion); ZERO new modules. All Tier-0 EXACT (composite==golden up-to-phase, no MatrixGate; reflect000 absorbs a global -1, the reflect00 pattern). The amplitude-amplification PROFILE P_target(k) is an OBSERVATION, NOT a seal: sealed G^k on the uniform state, contrasted with the theory sin^2((2k+1)θ) — optimal-k (N=8 -> k=2, P=0.945) and over-rotation (N=4 -> k=2, P=0.25). apps 86->91, modules unchanged (second_oracle 57/57).",
+  "apps": [
+    {
+      "id": "reflect000",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "71d5d1910951348a82a59bb47aeb130795d69f67b4536ab0f7da248940969b1a",
+      "reason": ""
+    },
+    {
+      "id": "diffusion3",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "c173a81678999daa5dca9210d5c0fbe78b55e2e2ee56cc3a1412bc7e1414783f",
+      "reason": ""
+    },
+    {
+      "id": "grover3",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "87e3303ffc39ad17d8badadfd83234edf21cf8b727842bcf5acd6aa2327a15ac",
+      "reason": ""
+    },
+    {
+      "id": "grover3_2iter",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "33fe2545cb43abea19ffcb09925d8f09473046831b771a04ab591e488368cdb4",
+      "reason": ""
+    },
+    {
+      "id": "grover2_2iter",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "54ade490d78d9f46648b73b1b5b19d113e57c2caaaeb45aeec1219ac41364722",
+      "reason": ""
+    }
+  ],
+  "amplitude_profile": {
+    "note": "OBSERVATION, NOT A SEAL — sealed Grover operator G^k applied to the uniform state; P_target(k) is illustrative amplitude-amplification behavior, contrasted with the theory sin^2((2k+1)θ). Optimal-k and over-rotation are observations, not seals.",
+    "grover3_N8": {
+      "profile": [
+        {
+          "k": 1,
+          "P_target": 0.78125,
+          "theory": 0.78125
+        },
+        {
+          "k": 2,
+          "P_target": 0.945312,
+          "theory": 0.945313
+        },
+        {
+          "k": 3,
+          "P_target": 0.330078,
+          "theory": 0.330078
+        }
+      ],
+      "optimal_k": 2,
+      "matches_theory": true
+    },
+    "grover2_N4": {
+      "profile": [
+        {
+          "k": 1,
+          "P_target": 1.0,
+          "theory": 1.0
+        },
+        {
+          "k": 2,
+          "P_target": 0.25,
+          "theory": 0.25
+        }
+      ],
+      "optimal_k": 1,
+      "over_rotation_at_k2": true,
+      "matches_theory": true
+    }
+  },
+  "all_ok": true
+}
