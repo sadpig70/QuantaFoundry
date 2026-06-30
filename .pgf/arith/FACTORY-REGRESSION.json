@@ -1,0 +1,244 @@
+{
+  "phase": "FrontierFactory regression (INV-F1)",
+  "honesty": "Factory must reproduce sealed N byte-identically before sealing any new N.",
+  "results": [
+    {
+      "N": 91,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod91",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod91",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod91",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul74_mod91",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor91",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    },
+    {
+      "N": 119,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod119",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod119",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod119",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul18_mod119",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul86_mod119",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor119",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    },
+    {
+      "N": 221,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod221",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod221",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod221",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul35_mod221",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul120_mod221",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor221",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    },
+    {
+      "N": 381,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod381",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod381",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod381",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul256_mod381",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor381",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    },
+    {
+      "N": 635,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod635",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod635",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod635",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul131_mod635",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul256_mod635",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor635",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    },
+    {
+      "N": 1285,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod1285",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod1285",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod1285",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul256_mod1285",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor1285",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    },
+    {
+      "N": 3683,
+      "byte_identical_all": true,
+      "rows": [
+        {
+          "id": "cmul2_mod3683",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul4_mod3683",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul16_mod3683",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul256_mod3683",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "cmul2925_mod3683",
+          "present": true,
+          "byte_identical": true
+        },
+        {
+          "id": "shor3683",
+          "present": true,
+          "byte_identical": true
+        }
+      ]
+    }
+  ],
+  "all_ok": true
+}

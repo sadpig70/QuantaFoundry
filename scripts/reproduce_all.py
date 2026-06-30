@@ -28,6 +28,10 @@ FRONTIER_STEPS = [
     ("shor3683_frontier", "scripts/shor3683_frontier.py"),
 ]
 
+# Data-driven factory reproduction (INV-F5): re-seals every N in FACTORY-FRONTIER.json
+# byte-identically. Adding a new factory N needs no code change here.
+FACTORY_STEP = ("frontier_factory", "scripts/frontier_factory.py")
+
 
 def run(args, cwd=ROOT):
     p = subprocess.run(["python"] + args, cwd=cwd, capture_output=True, text=True)
@@ -52,6 +56,13 @@ def main():
             "rc": rc,
             "all_ok": "all_ok=True" in out,
             "pass": rc == 0 and "all_ok=True" in out}
+
+    # Data-driven factory reproduction (INV-F5)
+    fstep_id, fscript = FACTORY_STEP
+    rc, out = run([fscript, "--reproduce"])
+    result["steps"][fstep_id] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
 
     # 2. registry manifest + dependency graph
     rc, out = run(["scripts/registry_tools.py", "build"])

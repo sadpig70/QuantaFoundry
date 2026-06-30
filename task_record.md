@@ -24,4 +24,11 @@
 
 ## 누적 작업 (다음 동기화 시 외부 3종에 반영 후 이 섹션 초기화)
 
-현재 누적 없음. (2026-07-01 AutonomyLoop MVP + W12.22/23 frontier 일괄 동기화 완료 → 위 "마지막 동기화 시점" 참조.)
+- **2026-07-01 · W12.24 FrontierFactory 자율 폐루프 (factory-sealed N=69,77)**. 외부 3종 반영 델타:
+  - **counts**: 77 모듈 · **152 → 166 앱** (순수 가산, 신규 모듈 0).
+  - **root**: `85cdc459…` → `a0b4f67862a265ce…` (full=REGISTRY-MANIFEST.json).
+  - **guarantee-split (apps)**: 144 ue + 1 sampled + 7 structural → **156 ue + 1 sampled + 9 structural**.
+  - **structural apps 7→9**: +`shor69`(3×23, 15q)·+`shor77`(7×11, 15q). 목록=shor69/77/91/119/221/381/635/1285/3683.
+  - **second_oracle 71/71 불변** · **fingerprint 290→304 intact** (신규 14 앱 봉인; 모듈 무변경).
+  - **서사**: **W12.24 FrontierFactory** — c{11,12}x_payoff/shor{1285,3683} 템플릿을 N-파라미터 봉인 함수로 추출한 `scripts/frontier_factory.py`(자유 codegen 아님). **INV-F1 회귀게이트**(기존 7N 91~3683 byte-identical 재현) 통과 후에만 신규 N 봉인. autonomy_loop이 `next_unsealed_target`으로 미봉인 distinct-semiprime N을 자율 발견→cmul payoff Tier-0 EXACT + structural shor{N} Tier-1(n_sys≥15)을 봉인→reproduce REPRODUCED→커밋하는 폐루프. reproduce_all에 데이터-주도 factory-step(INV-F5). 자율 루프 self-improvement(2-tier verify incremental ~46s·EOL 유령 자동복원·main 직접 모드)도 동반.
+  - ★주의: seal_gate_ci.py `EXPECT_DEFAULT` 앵커는 `a0b4f678`로 갱신. fingerprint intact count 290→304.

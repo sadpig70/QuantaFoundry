@@ -192,10 +192,22 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ done 2026-06-30: autonomy_loop.py 실러너(bootstrap snapshot·machine_gate 4게이트 subprocess·
             #   guard_check fingerprint+frozen byte-identical·verified-only sync_checkpoint 先브랜치). infra 1라운드
             #   실가동 → reproduce_all REPRODUCED·root 1134ea04 불변·invariants_held=True. autonomy-loop/mvp 브랜치 commit/push.
-        AutonomyLoop_Activate // 트리거 시 자율 가동 (in-progress) @dep:AutonomyLoop_MVP
+        AutonomyLoop_Activate // 트리거 시 자율 가동 (done) @dep:AutonomyLoop_MVP
             # 트리거=(MVP완료 ✅)or(정욱님 새 방향/frontier 해금)or(EXT unblock). 없으면 frontier-exhausted 정직 종료.
-            # ★2026-06-30 정욱님 전면 승인: 구 INV7(NoAutoFrontier) 삭제. frontier(c13x/payoff/shor3683/신규클래스)·
-            #   커밋·푸쉬·동기화·방향선택 자율 진행. 신뢰기반(INV1/2 fingerprint·frozen·INV3 self-judge 금지)만 유지.
+            # ★2026-06-30 정욱님 전면 승인: 구 INV7(NoAutoFrontier) 삭제. frontier·커밋·푸쉬·동기화·방향선택 자율 진행.
+            # ✅ 2026-07-01: 2-tier verify(incremental ~46s/full)·EOL 유령 자동복원·출력버퍼링 완화·main 직접 모드 self-improve.
+        AutonomyLoop_SelfImprove // 자율 루프 self-improvement (실측 마찰 검토→수정) (done) @dep:AutonomyLoop_Activate
+            # process: reproduce_all 450s 병목→GATES_INCREMENTAL(46s) + commit-guard(full만 verified-commit) ·
+            #   clean_eol_ghosts(autocrlf 유령 자동복원) · stdout 라인버퍼+progress() · main 직접 push
+        W12_24_FrontierFactory // 파라메트릭 Shor frontier 봉인 폐루프 (in-progress) @dep:AutonomyLoop_SelfImprove
+            # design: _workspace/loop/DESIGN-FrontierFactory.md (PG Gantree+PPR+3관점 review)
+            # impl: scripts/frontier_factory.py — c{11,12}x_payoff/shor{1285,3683} 템플릿을 N-파라미터 함수로 추출
+            #   (자유 codegen 아님). seal_payoff_family·seal_structural_shor·factory_seal·verify_against_sealed.
+            # ★INV-F1 회귀게이트: factory 가 기존 봉인 7N(91~3683) byte-identical 재현 → 통과 후에만 신규 N 봉인(안전).
+            # 자율발견 next_unsealed_target + reproduce_all 데이터-주도 factory-step(INV-F5).
+            # ✅ 폐루프 실가동(autonomy_loop --mode frontier-factory): 자율발견 N=69,77 → cmul payoff Tier-0 +
+            #   shor{69,77} Tier-1 structural 15q 봉인. 신규 모듈 0(c7x 재사용). 회귀 7/7·independent arith·deterministic.
+            # criteria: 회귀 byte-identical · 신규 모듈 0 · structural n_sys≥15(dense-exact 침범 금지) · reproduce REPRODUCED
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
