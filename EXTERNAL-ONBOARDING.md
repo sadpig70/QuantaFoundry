@@ -74,7 +74,7 @@ point. If you think a claim is overstated, say so and point to the evidence.
   model runtimes (different weights) independently converge on the same unitary hash. Same-weights
   duplicates collapse to one vote (this defeats the "both models default to the same wrong answer"
   failure, called B4). A near-tie among top-2 independent units → `CONTESTED` → sealing refused.
-- **PG / PGF notation** — the project's design files (e.g. `task_plan_pg.md`) use *PG*: an
+- **PG / PGF notation** — the project's design files (e.g. `.pgf/DESIGN-MasterRoadmap.md`) use *PG*: an
   indentation tree (Gantree) + Python-like pseudocode where `AI_`-prefixed calls denote cognitive
   steps. **You do not need to parse it — just comprehend it.** A node's `(status)` tag
   (`done`/`in-progress`/…) tells you what is built vs planned.
@@ -88,7 +88,7 @@ Read in this order. Tier 1 is enough to give a first proposal; Tier 2/3 are for 
 **Tier 1 — required**
 1. `README.md` — vision, architecture, trust model, honest positioning. *Start here.*
 2. `HANDOFF.md` — current-state digest (canonical numbers, remaining work, invariants).
-3. `task_plan_pg.md` — the roadmap "spine" in PG notation; the direct starting point for §2.
+3. `.pgf/DESIGN-MasterRoadmap.md` — the execution roadmap "spine" in PG notation; the direct starting point for §2.
 
 **Tier 2 — for deeper proposals**
 4. `docs/QuantaFoundry-Technical-Spec.md` — full technical spec + evidence + limitations (large).
@@ -216,4 +216,4 @@ If `root_hash` matches `a0b4f678…`, the 77 modules + 166 apps reproduced byte-
 
 ---
 
-*End of onboarding. Proceed to `README.md` → `HANDOFF.md` → `task_plan_pg.md`, then answer §2.*
+*End of onboarding. Proceed to `README.md` → `HANDOFF.md` → `.pgf/DESIGN-MasterRoadmap.md`, then answer §2.*
