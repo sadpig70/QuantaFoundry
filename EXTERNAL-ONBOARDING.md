@@ -110,8 +110,8 @@ Read in this order. Tier 1 is enough to give a first proposal; Tier 2/3 are for 
 
 Authoritative source = `registry/REGISTRY-MANIFEST.json`. Reproducible via §8.
 
-- **77 sealed modules (71 Tier-0 dense + 6 Tier-2 Clifford) · 152 sealed apps.** (canonical modules live in `registry/modules`.)
-- **registry_root_hash = `85cdc459…`** · **23 frozen consensus keys.**
+- **77 sealed modules (71 Tier-0 dense + 6 Tier-2 Clifford) · 166 sealed apps.** (canonical modules live in `registry/modules`.)
+- **registry_root_hash = `a0b4f678…`** · **23 frozen consensus keys.**
 - Re-discovery cross-check **6/6** · independent second-oracle **71/71** (Tier-0 dense full coverage; the 6 Tier-2 Clifford modules — Steane/Shor-9 QEC + transversal logical H/S/CNOT — are tableau-sealed + stabilizer-witnessed, outside dense scope) · triple-agreement **7/7**.
 
 Completed milestones (so you don't re-propose them):
@@ -136,7 +136,7 @@ Completed milestones (so you don't re-propose them):
   leverage captured *before* the fact) + decomposition optimizer + goal-selection guard; OpenQASM3
   export/ingest with round-trip identity (57/57) + a `qf` CLI + a citable `CITATION.cff`; a
   convention-independence audit; ρ-discount validation against *constructed* co-errors; and
-  determinism env-pin + oracle-revocation (fingerprint 290/290 intact) + ed25519 Sybil defense.
+  determinism env-pin + oracle-revocation (fingerprint 304/304 intact) + ed25519 Sybil defense.
   Auto-derived primitive proposals (`c7x`, `cr8`) and four EXT relay packages await cross-runtime
   dispatch. **Don't re-propose these as if missing — but improvements/critiques are welcome.**
 - **W12 (cross-runtime: the codex runtime drove W12.1–W12.18, the Claude Opus runtime W12.19 +
@@ -150,7 +150,10 @@ Completed milestones (so you don't re-propose them):
   readout illustrative). W12.20 reviewed the next `c12x` blocker without sealing; W12.21 sealed
   `c12x` and `cmul2_mod3683` (`N=3683=29×127`, 13q, max-control 12); W12.22 completed the `mod3683` payoff family
   (`cmul{4,16,256,2925}_mod3683` Tier-0 exact) and W12.23 sealed `shor3683` (Tier-1 structural, 20q).
-  Modules 68→77, apps 105→152, root `fa06bd80…→85cdc459…`, second_oracle 62→71.
+  **W12.24 FrontierFactory** then closed the autonomous loop: a parametric sealer (regression-gated
+  byte-identical against existing seals) lets the `qfa-loop` skill auto-discover an unsealed
+  distinct-semiprime N and seal its cmul payoff family + structural `shor{N}` — `shor69`/`shor77`
+  sealed this way, zero new modules. Modules 68→77, apps 105→166, root `fa06bd80…→a0b4f678…`, second_oracle 62→71.
 - **M4 external bridge:** W12.21 evidence is mapped to blocked external work in
   `.pgf/external/POST-W12-EXT-BRIDGE.json`: CI pilot, runtime keys, backend observation sidecar,
   weak-model poison panel, and ServerLink. These remain blocked until their external inputs exist.
@@ -171,10 +174,11 @@ We hold ourselves to this; proposals that ignore it will read as naive.
 - A **value function now exists** (S2 QF-Discover — objective dependency-fan-in ranking), but
   continuous *unattended* discovery is still **manually triggered**; there is no always-on loop
   driving it yet.
-- **Tier-1 unitary-equivalence: seven deliberate structural-only seals** — `ghz16` was raised to
-  `unitary_equiv_sampled` (S1, sampled-dense two-path + sealed seed); the **W6.5 `shor91` capstone**
-  and the **W12 Shor frontier ladder** (`shor119`/`shor221`/`shor381`/`shor635`/`shor1285`/`shor3683`) carry
-  exactly **seven `structural_wellformed` seals** (15–20 qubits > dense ceiling — each a Merkle of
+- **Tier-1 unitary-equivalence: nine deliberate structural-only seals** — `ghz16` was raised to
+  `unitary_equiv_sampled` (S1, sampled-dense two-path + sealed seed); the **W6.5 `shor91` capstone**,
+  the **W12 Shor frontier ladder** (`shor119`/`shor221`/`shor381`/`shor635`/`shor1285`/`shor3683`),
+  and the **W12.24 factory-sealed** `shor69`/`shor77` carry
+  exactly **nine `structural_wellformed` seals** (15–20 qubits > dense ceiling — each a Merkle of
   sealed Tier-0 parts, honestly weaker than dense equivalence, by design; period/factor readout
   illustrative only). Sampled-dense is *probabilistic-complete*, not full dense equivalence; a
   future large non-Clifford app would re-open the gap (a ZX Tier-3 path is staged for it).
@@ -205,10 +209,10 @@ Don't take the numbers on faith. The whole library re-seals deterministically:
 
 ```
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash=85cdc459… · second_oracle 71/71 · behavior pass
+# expect: REPRODUCED · root_hash=a0b4f678… · second_oracle 71/71 · behavior pass
 ```
 
-If `root_hash` matches `85cdc459…`, the 77 modules + 152 apps reproduced byte-for-byte.
+If `root_hash` matches `a0b4f678…`, the 77 modules + 166 apps reproduced byte-for-byte.
 
 ---
 
