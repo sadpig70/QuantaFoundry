@@ -32,3 +32,4 @@
   - **second_oracle 71/71 불변** · **fingerprint 290→304 intact** (신규 14 앱 봉인; 모듈 무변경).
   - **서사**: **W12.24 FrontierFactory** — c{11,12}x_payoff/shor{1285,3683} 템플릿을 N-파라미터 봉인 함수로 추출한 `scripts/frontier_factory.py`(자유 codegen 아님). **INV-F1 회귀게이트**(기존 7N 91~3683 byte-identical 재현) 통과 후에만 신규 N 봉인. autonomy_loop이 `next_unsealed_target`으로 미봉인 distinct-semiprime N을 자율 발견→cmul payoff Tier-0 EXACT + structural shor{N} Tier-1(n_sys≥15)을 봉인→reproduce REPRODUCED→커밋하는 폐루프. reproduce_all에 데이터-주도 factory-step(INV-F5). 자율 루프 self-improvement(2-tier verify incremental ~46s·EOL 유령 자동복원·main 직접 모드)도 동반.
   - ★주의: seal_gate_ci.py `EXPECT_DEFAULT` 앵커는 `a0b4f678`로 갱신. fingerprint intact count 290→304.
+  - **README 처리(2026-07-01)**: 507줄→83줄 lean 재구성. 상세 architecture/components/trust/milestone narrative는 `docs/ARCHITECTURE.md`로 보존+링크. **README는 166/a0b4f678로 최신화 완료**. → **다음 batch 동기화는 EXTERNAL-ONBOARDING.md·Technical-Spec.md만**(아직 152, root 85cdc459) 166/a0b4f678/structural 9로 갱신하면 됨.
