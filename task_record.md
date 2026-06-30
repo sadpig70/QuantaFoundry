@@ -23,4 +23,11 @@
 
 ## 누적 작업 (다음 동기화 시 외부 3종에 반영 후 이 섹션 초기화)
 
-현재 누적 없음.
+- **2026-06-30 · AutonomyLoop MVP + W12.22/23 frontier (자율 루프 실가동)**. 외부 3종 반영 델타:
+  - **counts**: 77 모듈 · **147 → 152 앱** (순수 가산).
+  - **root**: `1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db` → `85cdc459cf98fe1d…` (full root는 동기화 시 REGISTRY-MANIFEST.json `registry_root_hash` 참조).
+  - **guarantee-split (apps)**: 140 `unitary_equiv` + 1 sampled + **6 structural** → **144 `unitary_equiv` + 1 sampled + 7 structural**.
+  - **structural apps**: shor91/119/221/381/635/1285 → **+shor3683** (6 → 7).
+  - **second_oracle 71/71 불변** · **fingerprint 285/285 intact 불변** (신규 모듈 0 — c12x payoff/structural은 기존 c12x 재사용).
+  - **서사**: (1) **AutonomyLoop MVP** — 단독 자율 루프 실러너(`_workspace/loop/autonomy_loop.py`, 로컬전용)가 mock→실게이트(reproduce_all/second_oracle/seal_gate_ci/contested_guard)·guard_check(fingerprint+frozen byte-identical)·verified-only commit/push(先브랜치)를 실가동. (2) **W12.22 C12xPayoffFamily** — `cmul{4,16,256,2925}_mod3683` Tier-0 EXACT(independent arith 4/4, max_control 12, c12x 사용). (3) **W12.23 Shor3683StructuralFrontier** — `shor3683` Tier-1 STRUCTURAL 20q(counting t=8·work=12, deterministic reassembly, readout illustrative ord_3683(2)=28→[29,127]). 둘 다 자율 루프 frontier 라운드로 봉인·검증·푸쉬(`autonomy-loop/frontier-c12x` 브랜치).
+  - ★주의: seal_gate_ci.py `EXPECT_DEFAULT` 앵커는 이미 `85cdc459`로 갱신(frontier 커밋 포함). 외부 3종의 검증 명령 기대출력(root prefix)도 동기화 시 `85cdc459`로 갱신.
