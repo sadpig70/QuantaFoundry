@@ -15,11 +15,11 @@
 
 ## 0. Canonical State
 
-- Registry: **77 modules / 147 unique apps**
-- Root: `1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db`
-- Unique-app split: modules `77 unitary_equiv`; apps `140 unitary_equiv + 1 sampled + 6 structural`
-- Semantic headline file split: modules `77 unitary_equiv`; app seal-files `201 unitary_equiv + 1 sampled + 6 structural`
-- Structural apps: `shor91`, `shor119`, `shor221`, `shor381`, `shor635`, `shor1285`
+- Registry: **77 modules / 166 unique apps**
+- Root: `a0b4f67862a265ce…` (full hash in `registry/REGISTRY-MANIFEST.json` `registry_root_hash`)
+- Unique-app split: modules `77 unitary_equiv`; apps `156 unitary_equiv + 1 sampled + 9 structural`
+- Semantic headline file split: modules `77 unitary_equiv`; app seal-files `217 unitary_equiv + 1 sampled + 9 structural`
+- Structural apps: `shor69`, `shor77`, `shor91`, `shor119`, `shor221`, `shor381`, `shor635`, `shor1285`, `shor3683`
 - Frozen consensus keys: **23**
 - Independent dense module oracle: `second_oracle 71/71`
 - One-command verification: `python scripts/reproduce_all.py` -> `REPRODUCED`
