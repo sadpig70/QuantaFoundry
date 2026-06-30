@@ -150,6 +150,18 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # output: 1 Tier-0 module(c12x) + 1 Tier-0 app(cmul2_mod3683)
             # criteria: independent cnx_perm(12) hash match · c12x dependency proven · no payoff family/full Shor claim · memory guard green
             # ✅ done: c12x Tier-0 n_sys=13, cmul2_mod3683 Tier-0 gates=1848 max_control=12 c12=45, root 5aee6ef2→1134ea04, 77모듈·147앱
+        W12_22_C12xPayoffFamily // remaining N=3683 multiplier payoff family (done) @dep:W12_21_C12xPrimitiveFrontier
+            # input: c12x primitive (W12.21), gen_modmul cap=12, NEW_POWERS=[4,16,256,2925]
+            # process: seal cmul{4,16,256,2925}_mod3683 Tier-0 exact permutation app seals (no new module)
+            # output: 4 Tier-0 apps; independent arithmetic hash match 4/4; full Shor-3683 deferred to W12.23
+            # criteria: max_control=12 · c12x in deps · independent cmul hash match · no Shor claim
+            # ★자율 루프 가동(AutonomyLoop frontier-c12x-payoff). ✅ done: cmul4/16/256/2925_mod3683 Tier-0, indep 4/4.
+        W12_23_Shor3683StructuralFrontier // c12x payoff to Shor-3683 structural app (done) @dep:W12_22_C12xPayoffFamily
+            # input: complete N=3683 payoff family, h_gate, iqft8, app_assemble structural tier
+            # process: assemble shor3683 structural (counting t=8, work=12, 20q); verify children sealed; no re-seal
+            # output: 1 Tier-1 STRUCTURAL app (shor3683, 20q); readout illustrative ord_3683(2)=28 -> [29,127]
+            # criteria: 20q>EXACT_BOUND -> structural only · deterministic reassembly · cmul children Tier-0 exact · no dense claim
+            # ✅ done(자율 루프): shor3683 Tier-1 structural 20q deterministic=True, root 1134ea04->85cdc459, 77모듈·152앱, structural 6->7.
 
     TrackMaintenance // execution infrastructure and compact handoff maintenance (in-progress)
         M1_ReproduceStepRegistry // reproduce_all frontier steps registry화 (done)

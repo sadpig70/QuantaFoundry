@@ -24,6 +24,8 @@ FRONTIER_STEPS = [
     ("c11x_payoff_family", "scripts/c11x_payoff_family.py"),
     ("shor1285_frontier", "scripts/shor1285_frontier.py"),
     ("c12x_frontier", "scripts/c12x_frontier.py"),
+    ("c12x_payoff_family", "scripts/c12x_payoff_family.py"),
+    ("shor3683_frontier", "scripts/shor3683_frontier.py"),
 ]
 
 

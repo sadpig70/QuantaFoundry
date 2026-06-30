@@ -1,0 +1,101 @@
+{
+  "phase": "W12.23 Shor3683StructuralFrontier",
+  "honesty": "N=3683=29*127 is the c12x payoff Shor structural frontier. cmul powers are already Tier-0 exact permutation app seals (W12.21/W12.22); shor3683 is Tier-1 structural, weaker than dense unitary equivalence; period readout is illustrative only.",
+  "target": {
+    "N": 3683,
+    "a": 2,
+    "factors": [
+      29,
+      127
+    ],
+    "counting_t": 8,
+    "work": 12,
+    "powa": [
+      2925,
+      256,
+      16,
+      2925,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256,
+      2925
+    ]
+  },
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod3683",
+      "tier": 0,
+      "n_sys": 13,
+      "independent_u_hash": "983cb6743d80f525",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul4_mod3683",
+      "tier": 0,
+      "n_sys": 13,
+      "independent_u_hash": "42d254d2e48b5a03",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod3683",
+      "tier": 0,
+      "n_sys": 13,
+      "independent_u_hash": "a597ddbf0e0b3ac9",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul256_mod3683",
+      "tier": 0,
+      "n_sys": 13,
+      "independent_u_hash": "43a8e7240a3b3dd3",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul2925_mod3683",
+      "tier": 0,
+      "n_sys": 13,
+      "independent_u_hash": "078bd4309e136f00",
+      "matches_sealed": true
+    }
+  ],
+  "children_sealed": {
+    "cmul2_mod3683": true,
+    "cmul4_mod3683": true,
+    "cmul16_mod3683": true,
+    "cmul256_mod3683": true,
+    "cmul2925_mod3683": true,
+    "iqft8": true,
+    "h_gate": true
+  },
+  "shor3683": {
+    "id": "shor3683",
+    "n_sys": 20,
+    "sealed": true,
+    "tier": 1,
+    "u_hash": "5cd87ccadb60b6cccd55cc8a8bfed5eafaecc299db41ea9f95fae17e14848d0f",
+    "contract": "C1-C4(structural)",
+    "reason": "fast_structural_child_seals",
+    "deterministic_reassembly": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 3683,
+    "order_r": 28,
+    "r_even": true,
+    "a_r2": 1652,
+    "nontrivial": true,
+    "factors": [
+      29,
+      127
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

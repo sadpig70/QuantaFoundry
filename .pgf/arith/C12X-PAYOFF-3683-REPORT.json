@@ -1,0 +1,225 @@
+{
+  "phase": "W12.22 C12xPayoffFamily",
+  "honesty": "N=3683=29*127 payoff family completion. New cmul powers are Tier-0 exact permutation app seals; full Shor-3683 remains deferred to W12.23.",
+  "target": {
+    "N": 3683,
+    "a": 2,
+    "factors": [
+      29,
+      127
+    ],
+    "counting_t": 8,
+    "work": 12,
+    "powa": [
+      2925,
+      256,
+      16,
+      2925,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256,
+      2925
+    ],
+    "new_powers": [
+      4,
+      16,
+      256,
+      2925
+    ]
+  },
+  "cmul_apps": [
+    {
+      "id": "cmul4_mod3683",
+      "N": 3683,
+      "a": 4,
+      "nq": 13,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "42d254d2e48b5a0374aa7b6ff667ed889c59955d1c35fe852d91229bd8dba42c",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 13590,
+      "control_dist": {
+        "11": 490,
+        "12": 116,
+        "10": 1269,
+        "9": 2286,
+        "8": 2910,
+        "7": 2911,
+        "6": 2050,
+        "5": 1076,
+        "4": 378,
+        "3": 74,
+        "2": 30
+      },
+      "max_control": 12,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c12x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul16_mod3683",
+      "N": 3683,
+      "a": 16,
+      "nq": 13,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "a597ddbf0e0b3ac994c47abcd33b5f5b412f7c14971ae2da379b1ff4b2eb21f0",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 18378,
+      "control_dist": {
+        "12": 150,
+        "11": 698,
+        "10": 1650,
+        "9": 2810,
+        "8": 3701,
+        "7": 3884,
+        "6": 3011,
+        "5": 1704,
+        "4": 601,
+        "3": 130,
+        "2": 39
+      },
+      "max_control": 12,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c12x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul256_mod3683",
+      "N": 3683,
+      "a": 256,
+      "nq": 13,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "43a8e7240a3b3dd35c1e6b6656b37310e3f06ddd1a50bfe164136dedbf583878",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 22711,
+      "control_dist": {
+        "12": 198,
+        "11": 895,
+        "10": 2078,
+        "9": 3385,
+        "8": 4336,
+        "7": 4497,
+        "6": 3702,
+        "5": 2337,
+        "4": 985,
+        "3": 246,
+        "2": 52
+      },
+      "max_control": 12,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c12x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul2925_mod3683",
+      "N": 3683,
+      "a": 2925,
+      "nq": 13,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "078bd4309e136f00e0eab1a4de081b34cf4573d9921722ff43efe33a72ea6c57",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 23025,
+      "control_dist": {
+        "12": 192,
+        "11": 856,
+        "10": 2022,
+        "9": 3364,
+        "8": 4374,
+        "7": 4538,
+        "6": 3777,
+        "5": 2372,
+        "4": 1092,
+        "3": 362,
+        "2": 76
+      },
+      "max_control": 12,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c12x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    }
+  ],
+  "independent_arith_verify": [
+    {
+      "id": "cmul4_mod3683",
+      "independent_u_hash": "42d254d2e48b5a03",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod3683",
+      "independent_u_hash": "a597ddbf0e0b3ac9",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul256_mod3683",
+      "independent_u_hash": "43a8e7240a3b3dd3",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul2925_mod3683",
+      "independent_u_hash": "078bd4309e136f00",
+      "matches_sealed": true
+    }
+  ],
+  "family_seals": {
+    "cmul2_mod3683": true,
+    "cmul4_mod3683": true,
+    "cmul16_mod3683": true,
+    "cmul256_mod3683": true,
+    "cmul2925_mod3683": true
+  },
+  "totals": {
+    "new_gate_count": 77704,
+    "new_c12_count": 656
+  },
+  "all_ok": true
+}

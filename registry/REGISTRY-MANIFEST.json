@@ -84,9 +84,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 147,
+    "unique_app_count": 152,
     "cached_app_side_module_count": 61,
-    "total_files": 208,
+    "total_files": 213,
     "path": "registry/apps",
     "unique": [
       "bell",
@@ -106,13 +106,16 @@
       "cmul16_mod1285",
       "cmul16_mod21",
       "cmul16_mod221",
+      "cmul16_mod3683",
       "cmul16_mod381",
       "cmul16_mod635",
       "cmul16_mod91",
       "cmul18_mod119",
       "cmul256_mod1285",
+      "cmul256_mod3683",
       "cmul256_mod381",
       "cmul256_mod635",
+      "cmul2925_mod3683",
       "cmul2_mod119",
       "cmul2_mod1285",
       "cmul2_mod15",
@@ -133,6 +136,7 @@
       "cmul4_mod15",
       "cmul4_mod21",
       "cmul4_mod221",
+      "cmul4_mod3683",
       "cmul4_mod381",
       "cmul4_mod635",
       "cmul4_mod91",
@@ -208,6 +212,7 @@
       "shor15_a7",
       "shor21_a2",
       "shor221",
+      "shor3683",
       "shor381",
       "shor635",
       "shor91",
@@ -364,7 +369,7 @@
     "x_gate": "registry/modules/x_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db",
+  "registry_root_hash": "85cdc459cf98fe1d1abfd863f11048434786662b9cabebf6d314e4ee6c8c26aa",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }
