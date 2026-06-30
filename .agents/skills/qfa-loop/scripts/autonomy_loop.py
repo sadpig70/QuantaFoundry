@@ -40,11 +40,12 @@ import subprocess
 import sys
 import time
 
-# ★skill layout 2026-07-01: 엔진은 .agents/skills/qfa-loop/scripts/(불변·tracked),
-#   가변 런타임 상태(rounds/loop_state)는 _workspace/loop/(gitignored)로 분리.
+# ★skill layout 2026-07-01: self-contained skill. 엔진은 scripts/(불변·tracked); 가변 런타임 상태
+#   (rounds/loop_state)는 *스킬 내부* .runtime/(gitignored)에 둔다 → _workspace/loop 의존 제거.
 HERE = os.path.dirname(os.path.abspath(__file__))
+SKILL_DIR = os.path.abspath(os.path.join(HERE, ".."))               # .agents/skills/qfa-loop
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))  # skills/qfa-loop/scripts → repo root
-RUNTIME = os.path.join(ROOT, "_workspace", "loop")
+RUNTIME = os.path.join(SKILL_DIR, ".runtime")
 ROUNDS_DIR = os.path.join(RUNTIME, "rounds")
 STATE_PATH = os.path.join(RUNTIME, "loop_state.json")
 
@@ -680,9 +681,9 @@ def main() -> int:
                 "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
             ),
             "stage_paths": [
-                "_workspace/loop/autonomy_loop.py", "_workspace/loop/loop_state.json",
-                "_workspace/loop/rounds", ".pgf/DESIGN-MasterRoadmap.md",
-                "HANDOFF.md", "_workspace/loop/AUTONOMY-LOOP-HANDOFF.md",
+                # 엔진/런타임은 스킬 내부(.runtime gitignored)라 commit 대상 아님.
+                # infra 라운드의 tracked delta = 마스터 로드맵 status 정도.
+                ".pgf/DESIGN-MasterRoadmap.md",
             ],
         }
     elif args.mode == "frontier-factory":
