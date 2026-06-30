@@ -231,7 +231,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
 # 비파괴: frozen 23키·fingerprint 2파일 byte-identical 불변. 신규 봉인은 root 성장만(순수 가산).
 # 연동(2026-07-01 단일화: task_record/remain_task_list/task_plan_pg 폐기, HANDOFF.md 단일 정본):
 #   - 매 작업 완료 → HANDOFF.md(현재상태·backlog·완료요약 단일 정본) 갱신 + 자동생성물 재생성.
-#   - 외부 3종(README/EXTERNAL-ONBOARDING/Technical-Spec)은 자율 동기화(현재상태 수치, 이력 보존).
+#   - 외부 공개 2종(README/Technical-Spec)은 자율 동기화(현재상태 수치, 이력 보존). reading order=AGENTS.md.
 #   - 이 마스터의 status 는 본 파일 Gantree 에서 직접 갱신(designing→in-progress→done).
 # 종결 규율: SC_Closure 도달 = self-contained 의도적 종료. 그 이후 즉흥 신규 클래스 제시 금지.
 ```

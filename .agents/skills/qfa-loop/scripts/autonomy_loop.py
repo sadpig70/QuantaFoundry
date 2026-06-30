@@ -73,10 +73,10 @@ EXPECT_FP_VERIFY = "45d316a431495c9b9a69163b3912da74ae6430fafcda50f7732198202d03
 EXPECT_FP_CONTRACTS = "64dd25399a16d6f812648568f871d223a789fe72f8bce432f3d11296ec7b2ee9"
 EXPECT_ROOT_PREFIX = "1134ea04099ea0c1"
 
-# 외부 3종(SyncCheckpoint DocSyncBatch 관할 — guard 대상 아님)
+# 외부 공개 narrative 2종(SyncCheckpoint DocSyncBatch 관할 — guard 대상 아님).
+# (EXTERNAL-ONBOARDING.md 폐기 2026-07-01 → reading order는 AGENTS.md, review-request는 .pgf/external.)
 EXT_DOCS = [
     os.path.join(ROOT, "README.md"),
-    os.path.join(ROOT, "EXTERNAL-ONBOARDING.md"),
     os.path.join(ROOT, "docs", "QuantaFoundry-Technical-Spec.md"),
 ]
 
@@ -342,7 +342,7 @@ def anchor_sync() -> dict:
 def doc_sync_batch(base: dict, sync_anchors: bool = True) -> dict:
     """설계 §8.4 DocSyncBatch(실구현). 두 층 분리:
       1. 멱등 앵커(seal_gate_ci·CITATION·SEMANTIC) = 자동 동기화(anchor_sync).
-      2. narrative(README/EXTERNAL-ONBOARDING/Technical-Spec) = scan_stale 로 탐지 후 *보고만*
+      2. narrative(README/Technical-Spec) = scan_stale 로 탐지 후 *보고만*
          (서사 rewrite 는 historical 보존이 필요해 수동/batch — 자동 덮어쓰기 금지)."""
     result = {"scanned": True}
     if sync_anchors:
