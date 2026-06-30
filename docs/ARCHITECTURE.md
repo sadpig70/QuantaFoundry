@@ -396,10 +396,10 @@ cross-runtime co-error probes (on a convention-contested QFT the consensus corre
 
 ```text
 QuantaFoundry/
-├── README.md                     # this file
-├── RELEASE-NOTES.md              # v0.7 + v0.3 milestone summaries + reproduce commands
+├── README.md                     # lean front page (full detail → docs/ARCHITECTURE.md)
 ├── NOTICE.md                     # vendored-component (QPGF) provenance & attribution
 ├── LICENSE                       # MIT
+#  (release/version history → docs/QuantaFoundry-Technical-Spec.md "What changed since vX" + §8.2–8.8)
 │
 ├── docs/
 │   └── QuantaFoundry-Technical-Spec.md   # full spec + evidence + review questions (START HERE)
