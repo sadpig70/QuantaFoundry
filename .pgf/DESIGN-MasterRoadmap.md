@@ -173,13 +173,17 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # 산출: DESIGN-AutonomyLoop.md(Gantree+PPR+§8 정교화 4 decomposed)·persona_contexts.md·sim×3
             # 검증: sim_autonomy_loop_v2(T1~T12)·sim_persona_diversity(D1~D5)·sim_seal_cycle ALL PASS
             # 신뢰근원=결정론 게이트(INV3 self-judge 금지). 정지조건4+불변가드(INV1/2). H1 cross-runtime 상실 정직표기.
-        AutonomyLoop_MVP // mock→실게이트 연결 1라운드 (designing) @dep:AutonomyLoop_Design
+        AutonomyLoop_MVP // mock→실게이트 연결 1라운드 (done) @dep:AutonomyLoop_Design
             # process: run_seal_cycle·reproduce_all·doc_sync·commit·push mock 을 실제 스크립트/git 로 교체
-            # frontier·EXT 무관 인프라 자율작업(c13x 금지[INV7]와 충돌 없음). ★다음 권장 자율작업.
+            # frontier·EXT 무관 인프라 자율작업. ★구현=_workspace/loop/autonomy_loop.py.
             # criteria: 1라운드 실제 자율 수행 · 결정론 게이트 통과분만 commit/push(verified-only) · root 불변 or 가산만
-        AutonomyLoop_Activate // 트리거 시 자율 가동 (blocked) @dep:AutonomyLoop_MVP
-            # 트리거=(MVP완료)or(정욱님 새 방향/c13x 해금)or(EXT unblock). 없으면 frontier-exhausted 정직 종료.
-            # INV7 NoAutoFrontier: c13x/payoff/shor3683/신규클래스 자동착수 금지 — 정욱님 명시 지시로만.
+            # ✅ done 2026-06-30: autonomy_loop.py 실러너(bootstrap snapshot·machine_gate 4게이트 subprocess·
+            #   guard_check fingerprint+frozen byte-identical·verified-only sync_checkpoint 先브랜치). infra 1라운드
+            #   실가동 → reproduce_all REPRODUCED·root 1134ea04 불변·invariants_held=True. autonomy-loop/mvp 브랜치 commit/push.
+        AutonomyLoop_Activate // 트리거 시 자율 가동 (in-progress) @dep:AutonomyLoop_MVP
+            # 트리거=(MVP완료 ✅)or(정욱님 새 방향/frontier 해금)or(EXT unblock). 없으면 frontier-exhausted 정직 종료.
+            # ★2026-06-30 정욱님 전면 승인: 구 INV7(NoAutoFrontier) 삭제. frontier(c13x/payoff/shor3683/신규클래스)·
+            #   커밋·푸쉬·동기화·방향선택 자율 진행. 신뢰기반(INV1/2 fingerprint·frozen·INV3 self-judge 금지)만 유지.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
