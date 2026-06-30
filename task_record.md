@@ -14,20 +14,14 @@
 
 ## 마지막 동기화 시점
 
-- **2026-06-30 · W12.1~M4까지 반영** · **77 모듈 · 147 앱** · root `1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db` · second_oracle **71/71** · fingerprint **285/285 intact**
-- 외부 3종(README · EXTERNAL-ONBOARDING · Technical-Spec) 전부 최신(stale 검증 완료).
-- 반영 서사: **W12 cross-runtime + C12x frontier + external bridge**. W12.1~W12.19는 query/oracle·quantum walk·Suzuki-4·ZNE·`c8x→c9x→c10x→c11x` structural Shor frontier를 반영했고, W12.20~W12.21은 no-seal memory review 후 `c12x` Tier-0 모듈과 exact payoff app `cmul2_mod3683`(`N=3683=29×127`, 13q, gates 1848, max_control 12)을 반영했다. M4는 외부 실행 없이 `EXT_W3_5_CIPilot`, `EXT_W4_2_PoisonPanel`, `EXT_W5_3_RuntimeKeys`, `EXT_SD_BackendEvidence`, `EXT_ServerLink`의 unblock map만 문서화했다.
-- ★주의(다음 동기화 시): README/Technical-Spec의 **guarantee-split 단락**과 **검증 명령 기대출력(second_oracle·fingerprint)**, **§8.5 current totals**, **§1 summary 헤드**는 헤드라인과 별도로 갱신 누락되기 쉬움. abstract의 "What changed since vX" 항목은 **버전별 historical 기록이라 보존**(현재값으로 덮지 않음).
+- **2026-07-01 · W12.1~W12.23까지 반영** · **77 모듈 · 152 앱** · root `85cdc459cf98fe1d1abfd863f11048434786662b9cabebf6d314e4ee6c8c26aa` · second_oracle **71/71** · fingerprint **290/290 intact**
+- 외부 3종(README · EXTERNAL-ONBOARDING · Technical-Spec) 전부 최신(1134ea04→85cdc459·147→152·structural 6→7 반영, stale 검증 완료). CITATION.cff·RELEASE-META.json·SEMANTIC-GUARANTEES.json 자동재생성.
+- guarantee split: app **144 unitary_equiv + 1 sampled + 7 structural**(file-split 205 ue + 1 sampled + 7 structural) · structural apps 7: shor91/119/221/381/635/1285/**shor3683**.
+- 반영 서사 추가분: **AutonomyLoop MVP + W12.22/23 frontier**. W12.21까지 반영 후, AutonomyLoop 실러너(자율 루프)가 mock→실게이트 연결로 가동되어 **W12.22 C12xPayoffFamily**(`cmul{4,16,256,2925}_mod3683` Tier-0 exact)와 **W12.23 Shor3683StructuralFrontier**(`shor3683` Tier-1 structural 20q)를 자율 봉인·검증·푸쉬했다. root `1134ea04→85cdc459`, apps `147→152`. (c13x는 2^14 dense 4GB 메모리 한계로 미봉인 — 더 큰 메모리 세션 대기.)
+- ★주의(다음 동기화 시): README/Technical-Spec의 **guarantee-split 단락**과 **검증 명령 기대출력(second_oracle·fingerprint·root prefix)**, **§8.5 current totals**, **§1 summary 헤드**, **§8.x file-count(213 files)**는 헤드라인과 별도로 갱신 누락되기 쉬움. abstract의 "What changed since vX"·milestone 리스트(77/147 at W12.21 등)는 **버전별 historical 기록이라 보존**(현재값으로 덮지 않음).
 
 ---
 
 ## 누적 작업 (다음 동기화 시 외부 3종에 반영 후 이 섹션 초기화)
 
-- **2026-06-30 · AutonomyLoop MVP + W12.22/23 frontier (자율 루프 실가동)**. 외부 3종 반영 델타:
-  - **counts**: 77 모듈 · **147 → 152 앱** (순수 가산).
-  - **root**: `1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db` → `85cdc459cf98fe1d…` (full root는 동기화 시 REGISTRY-MANIFEST.json `registry_root_hash` 참조).
-  - **guarantee-split (apps)**: 140 `unitary_equiv` + 1 sampled + **6 structural** → **144 `unitary_equiv` + 1 sampled + 7 structural**.
-  - **structural apps**: shor91/119/221/381/635/1285 → **+shor3683** (6 → 7).
-  - **second_oracle 71/71 불변** · **fingerprint 285/285 intact 불변** (신규 모듈 0 — c12x payoff/structural은 기존 c12x 재사용).
-  - **서사**: (1) **AutonomyLoop MVP** — 단독 자율 루프 실러너(`_workspace/loop/autonomy_loop.py`, 로컬전용)가 mock→실게이트(reproduce_all/second_oracle/seal_gate_ci/contested_guard)·guard_check(fingerprint+frozen byte-identical)·verified-only commit/push(先브랜치)를 실가동. (2) **W12.22 C12xPayoffFamily** — `cmul{4,16,256,2925}_mod3683` Tier-0 EXACT(independent arith 4/4, max_control 12, c12x 사용). (3) **W12.23 Shor3683StructuralFrontier** — `shor3683` Tier-1 STRUCTURAL 20q(counting t=8·work=12, deterministic reassembly, readout illustrative ord_3683(2)=28→[29,127]). 둘 다 자율 루프 frontier 라운드로 봉인·검증·푸쉬(`autonomy-loop/frontier-c12x` 브랜치).
-  - ★주의: seal_gate_ci.py `EXPECT_DEFAULT` 앵커는 이미 `85cdc459`로 갱신(frontier 커밋 포함). 외부 3종의 검증 명령 기대출력(root prefix)도 동기화 시 `85cdc459`로 갱신.
+현재 누적 없음. (2026-07-01 AutonomyLoop MVP + W12.22/23 frontier 일괄 동기화 완료 → 위 "마지막 동기화 시점" 참조.)
