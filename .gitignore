@@ -2,11 +2,13 @@ __pycache__/
 *.pyc
 *.pyo
 
-# ── .agents: qpgf-oracle 번들만 공개 (나머지 스킬·verify_skills 등 비공개) ──
+# ── .agents: self-built 번들만 공개 (qpgf-oracle·qfa-loop). vendored 스킬(pg/pgf/pgxf)·verify_skills 비공개 ──
 .agents/*
 !.agents/skills
 .agents/skills/*
 !.agents/skills/qpgf-oracle
+!.agents/skills/qfa-loop
+.agents/skills/qfa-loop/**/__pycache__/
 .qwen/
 
 # ── 워크스페이스 부트스트랩 / 내부 진행추적 (비공개) ──
