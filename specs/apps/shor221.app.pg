@@ -1,0 +1,7 @@
+# shor221 — Shor period-finding frontier (N=221=13*17, a=2). 16q: counting c0..c7(8) | work w0..w7(8). H^8 · controlled-U^(2^j)(U=×2 mod 221, powa=[35, 120, 35, 120, 35, 16, 4, 2]) · iqft8. 16q>EXACT_BOUND -> Tier-1 STRUCTURAL(Merkle of sealed components, no dense whole-unitary claim). Readout illustrative: ord_221(2)=24 -> gcd(2^12±1,221)=13,17.
+```json id=app_meta
+{"id": "shor221", "n_sys": 16, "n_anc": 0}
+```
+```json id=plan
+{"tier": "structural", "steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [4]}, {"spec": "../modules/h_gate.pg", "targets": [5]}, {"spec": "../modules/h_gate.pg", "targets": [6]}, {"spec": "../modules/h_gate.pg", "targets": [7]}, {"app": "cmul35_mod221.app.pg", "targets": [0, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul120_mod221.app.pg", "targets": [1, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul35_mod221.app.pg", "targets": [2, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul120_mod221.app.pg", "targets": [3, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul35_mod221.app.pg", "targets": [4, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul16_mod221.app.pg", "targets": [5, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul4_mod221.app.pg", "targets": [6, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul2_mod221.app.pg", "targets": [7, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "iqft8.app.pg", "targets": [0, 1, 2, 3, 4, 5, 6, 7]}]}
+```

@@ -1,0 +1,82 @@
+{
+  "project": "C10xOps",
+  "design": ".pgf/DESIGN-C10xOps.md",
+  "workplan": ".pgf/WORKPLAN-C10xOps.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 1,
+  "nodes": {
+    "SealC10x": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/modules/c10x.pg",
+          "registry/modules/c10x.sealed.json",
+          "registry/modules/c10x.provenance.json"
+        ],
+        "notes": "c10x Tier-0, n_sys=11, independent cnx_perm(10) hash matched."
+      }
+    },
+    "SealCmul635": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul2_mod635.app.pg",
+          "registry/apps/cmul2_mod635.sealed.json",
+          ".pgf/arith/C10X-FRONTIER-635-REPORT.json"
+        ],
+        "notes": "cmul2_mod635 Tier-0, gates=638, max_control=10, c10x count=23, independent arithmetic hash matched."
+      }
+    },
+    "ReproduceStepRegistry": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/reproduce_all.py"
+        ],
+        "notes": "Added FRONTIER_STEPS declarative list and included c10x_frontier."
+      }
+    },
+    "BacklogCompactionAudit": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/backlog_compaction_audit.py",
+          ".pgf/maintenance/BACKLOG-COMPACTION-AUDIT.json"
+        ],
+        "notes": "Line budget/current-marker/stale-pattern audit passes after docs update."
+      }
+    },
+    "RegistryAndDocs": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/genskills.py",
+          "scripts/second_oracle.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md"
+        ],
+        "notes": "Root 216169028a05a8405e442e842c16685110fb3a0c18595315e19e42022762613f."
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "verification": {
+    "c10x_frontier": "python scripts/c10x_frontier.py -> all_ok=True",
+    "reproduce_all": "REPRODUCED",
+    "second_oracle": "69/69",
+    "seal_gate_ci": "PASS",
+    "backlog_compaction_audit": "all_ok=True",
+    "registry_root_hash": "216169028a05a8405e442e842c16685110fb3a0c18595315e19e42022762613f"
+  }
+}

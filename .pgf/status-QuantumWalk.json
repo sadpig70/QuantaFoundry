@@ -1,0 +1,90 @@
+{
+  "project": "QuantumWalk",
+  "workplan": ".pgf/WORKPLAN-QuantumWalk.md",
+  "design": ".pgf/DESIGN-QuantumWalk.md",
+  "started_at": "2026-06-29T00:00:00+09:00",
+  "updated_at": "2026-06-29T00:00:00+09:00",
+  "iteration": 5,
+  "nodes": {
+    "Design": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/DESIGN-QuantumWalk.md",
+          ".pgf/WORKPLAN-QuantumWalk.md"
+        ],
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "W12_2 node added before implementation; design review approved."
+      }
+    },
+    "AppSeal": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/quantum_walk_family.py",
+          "specs/apps/qw_c4_step.app.pg",
+          "specs/apps/qw_c4_2steps.app.pg",
+          "specs/apps/qw_c8_step.app.pg",
+          "specs/apps/qw_c8_3steps.app.pg",
+          "registry/apps/qw_c4_step.sealed.json",
+          "registry/apps/qw_c4_2steps.sealed.json",
+          "registry/apps/qw_c8_step.sealed.json",
+          "registry/apps/qw_c8_3steps.sealed.json"
+        ],
+        "files_modified": [
+          ".pgf/autoforge/forge_apps.py"
+        ],
+        "notes": "All four apps sealed Tier-0; no new modules."
+      }
+    },
+    "Observation": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/arith/QUANTUM-WALK-REPORT.json"
+        ],
+        "notes": "C4/C8 position marginals and C8 quantum-vs-classical contrast passed."
+      }
+    },
+    "Verification": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/DEPENDENCY-GRAPH.json",
+          "registry/DEPENDENCY-GRAPH.md",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff",
+          ".pgf/adoption/RELEASE-META.json",
+          ".pgf/adoption/seal-badge.json",
+          "reports/REPRODUCE-RESULT.json",
+          "scripts/seal_gate_ci.py"
+        ],
+        "notes": "reproduce_all REPRODUCED; second_oracle 62/62; contested guard PASS; seal_gate PASS."
+      }
+    },
+    "Documentation": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "task_record.md",
+          "remain_task_list.md",
+          ".pgf/DESIGN-MasterRoadmap.md",
+          ".pgf/DESIGN-QuantumWalk.md",
+          ".pgf/WORKPLAN-QuantumWalk.md"
+        ],
+        "notes": "Internal canonical docs updated; external three docs deferred to sync batch."
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

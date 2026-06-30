@@ -9,9 +9,10 @@ It generates quantum software modules from high-level intent, verifies them with
 > **Status (v0.7, 2026-06):** the verification core is public as **QPGF** →
 > **https://github.com/sadpig70/QPGF** (157 self-verification tests green). The foundry layer
 > around it is **substantially realized**: a key-free, cross-model-established library of
-> **48 sealed modules** composed into **59 sealed applications** — Grover, QFT(2–4), Quantum Phase
+> **77 sealed modules** composed into **147 sealed applications** — Grover, QFT(2–4), Quantum Phase
 > Estimation, and **Shor period-finding circuits that factor 15 = 3 × 5 and genuinely 21 = 3 × 7**
-> (plus distinct-prime modular multipliers mod 33/35) — with **no human-asserted answer keys**
+> (plus distinct-prime modular multipliers mod 33/35, up to the `shor91` = 7 × 13 Tier-1 capstone and the
+> W12 structural frontier ladder 119/221/381/635/1285 plus the `c12x`/`cmul2_mod3683` primitive payoff) — with **no human-asserted answer keys**
 > anywhere in the trust chain, including the first *live* cross-model truth (`sx` = √X, established
 > by six distinct runtimes + an algebraic proof). Later layers (self-extending GenSkill library,
 > goal-autonomy, a gated multi-model panel, a falsification front, and an honest-decomposition
@@ -77,16 +78,42 @@ It generates quantum software modules from high-level intent, verifies them with
 > are *executed* via the backend, and `P_good(m) = sin²((2m+1)θ)` is fit classically to estimate **any**
 > amplitude — including `a = 1/4`, `1/8` that small-`t` QPE cannot read exactly (precision then trades
 > against the number of measurements). Both are observations, not seals.
-> The registry advanced from the v0.7-core root `3dae613d…` to the current **`2cfe8dc3…` (67 modules
-> — 61 Tier-0 dense + 6 Tier-2 Clifford, 97 apps)**. Pure non-destructive growth: every prior seal, the
+> **W10.1** opens a new horizontal class — the **variational quantum eigensolver**. A hardware-efficient
+> ansatz (`Ry(θ)^⊗n · CNOT` ladder) is sealed *structurally* at fixed-θ instances (new module `ry_3pi4`;
+> apps `vqe_he2_pi4/pi2/3pi4` (2q) and `vqe_he3_pi4` (3q), all Tier-0 EXACT). The honest boundary gains a
+> **variational** sibling of *approximation ≠ exact*: the energy `<H_TFIM(θ)>` (computed via the backend, an
+> observation) obeys `<H> ≥ E_ground`, and a θ-sweep approaches but never reaches the exact ground — an
+> **ansatz-limited gap > 0** persists (TFIM2 ≈ 0.071, TFIM3 ≈ 0.097). VQE is a bound, not the exact ground.
+> **W10.2–W11.1** close the variational track. A **2-layer per-qubit** ansatz shrinks the VQE gap
+> (0.071→~0.006, still >0 — depth/expressibility deepens *variational ≠ exact*, it does not remove it).
+> **QAOA** (MaxCut, p=1) opens the combinatorial-optimization sibling: sealed Tier-0 at fixed angles with
+> **zero new modules**, its approximation ratio an observation that stays <1 even at optimal angles
+> (P3 0.825, C4 0.75). **W10.3** shows the parameter-shift rule gives the *exact* analytic gradient (vs a
+> finite-difference approximation), executed on sealed `Ry` modules — no new seals.
+> **W12** opens two new directions (cross-runtime: the **codex** runtime drove W12.1–W12.18, the
+> **Claude Opus** runtime W12.19 + determinism verification — the first byte-identical cross-runtime seals).
+> *(a) New algorithm classes:* **query/oracle** algorithms (Deutsch-Jozsa, Bernstein-Vazirani, Simon —
+> here the quantum advantage itself is *exact*: BV recovers the secret in one query; **zero new modules**),
+> **coined quantum walks** (C4/C8 cycles; walk dynamics an observation, **zero new modules**), **4th-order
+> Yoshida-Suzuki** Hamiltonian steps (late k-doubling ratio ≈16 vs 1st-order ≈2, 2nd ≈4 — an observation),
+> and a **zero-noise extrapolation** layer that seals nothing (root unchanged; mitigation ≠ exact recovery).
+> *(b) Shor arithmetic frontier:* a `c8x→c9x→c10x→c11x` multi-control primitive ladder unlocks
+> distinct-prime **Shor structural apps** `shor119`/`shor221`/`shor381`/`shor635`/`shor1285`
+> (N = 7×17, 13×17, 3×127, 5×127, 5×257), each a Tier-1 Merkle over exact Tier-0 `cmul*` multiplier
+> families — structural-only, weaker than dense `unitary_equiv`, period/factor readout illustrative.
+> W12.20 reviewed the next blocker without sealing; W12.21 then sealed **`c12x`** and the exact payoff
+> **`cmul2_mod3683`** (`N=3683=29×127`, 13 qubits, 1848 gates, max-control 12), while explicitly deferring
+> the payoff family and `shor3683`. The registry advanced from the v0.7-core root `3dae613d…` to the current
+> **`1134ea04…` (77 modules — 71 Tier-0 dense + 6 Tier-2 Clifford, 147 apps)**. Pure non-destructive growth: every prior seal, the
 > 23 frozen consensus keys, and the fingerprint files reproduce byte-identically.
 >
-> **Guarantee split** (no exact-coverage overclaim): all **67 modules** are `unitary_equiv` — 61 Tier-0
+> **Guarantee split** (no exact-coverage overclaim): all **77 modules** are `unitary_equiv` — 71 Tier-0
 > EXACT (dense) + 6 Tier-2 Clifford (canonical stabilizer tableau, dense-free but still exact up to
-> global phase); the **97 apps** are 95 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
-> sampled-dense two-path verified with a sealed seed, also Tier-2 sealed) + **1 `structural_wellformed`**
-> (`shor91`, the W6.5 Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense
-> `unitary_equiv`, honestly labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0; the W7.2
+> global phase); the **147 apps** are 140 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`,
+> sampled-dense two-path verified with a sealed seed, also Tier-2 sealed) + **6 `structural_wellformed`**
+> (`shor91`/`shor119`/`shor221`/`shor381`/`shor635`/`shor1285`, the W6.5 capstone + the W12 Shor frontier
+> ladder — each a Merkle of sealed parts at 15–19 qubits, *weaker* than dense `unitary_equiv`, honestly
+> labelled). The W7.1 QEC encoders are all `unitary_equiv` Tier-0; the W7.2
 > Steane/Shor-9 QEC seals and the W7.3 transversal logical gates are Tier-2 Clifford; the W8.1 Hamiltonian-sim rotations and Trotter step are Tier-0. Authoritative tally:
 > `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 >
@@ -112,7 +139,7 @@ The project combines QPGF-style PG/PPR specifications, reusable skill packs, mul
 | Layer | Scope | Status |
 |---|---|---|
 | **QPGF** (core) | Deterministic verification termination oracle (ContractGate): contracts, seal tiers, registry, composition, multi-runtime, trust model | **Realized & public** |
-| **QuantaFoundry** (foundry) | Key-free cross-model establishment, autonomous multi-persona generation, sealed-module → application composition, the gate→QFT→QPE→Shor library, self-extending GenSkill library, goal-autonomy, gated multi-model panel, falsification front | **Realized (v0.7)** — 48 modules · 59 apps |
+| **QuantaFoundry** (foundry) | Key-free cross-model establishment, autonomous multi-persona generation, sealed-module → application composition, the gate→QFT→QPE→Shor library, self-extending GenSkill library, goal-autonomy, gated multi-model panel, falsification front | **Realized (v0.7+)** — 77 modules · 147 apps |
 | QuantaFoundry (remaining) | Intent UX, multi-backend adapters (Qiskit/Cirq/CUDA-Q), open-ended discovery of genuinely new methods/families | **Planned** |
 
 The honest framing: QuantaFoundry does **not** introduce a new verification algorithm. The
@@ -159,7 +186,7 @@ tree; details and evidence are in [`docs/QuantaFoundry-Technical-Spec.md`](docs/
   exposed through a single `qf` CLI and a citable `registry_root_hash` (`CITATION.cff`). A
   convention-independence audit scopes what `second_oracle` *derives* vs *assumes*; **ρ-discount is
   validated against constructed co-errors** (it collapses poisoned consensus to <2 independent); and
-  determinism is env-pinned with an oracle-revocation protocol (fingerprint **145/145 intact**) and
+  determinism is env-pinned with an oracle-revocation protocol (fingerprint **285/285 intact**) and
   ed25519 Sybil defense. All non-destructive — the registry root is unchanged.
 
 ## Positioning
@@ -338,15 +365,16 @@ deterministic rerun is byte-identical
 ## MVP Scope & status
 
 ### MVP-1: Sealed module generation — *realized*
-**48 modules sealed** (the core gate set `X, Z, H, CNOT, Toffoli, Swap, QFT2–4`, the phase/rotation
+**77 modules sealed** (the core gate set `X, Z, H, CNOT, Toffoli, Swap, QFT2–4`, the phase/rotation
 gates `S, T, CZ, iSWAP, CS, CCZ`, the controlled-phase family `controlled-T/S†/T†` and `CRₖ`/`CRₖ†`,
-`Fredkin`, the multi-controlled-X family up to `c6x`/MCT-6, `sx`/√X, and ±α_k Ry primitives k=2..10).
+`Fredkin`, the multi-controlled-X family up to `c12x`/MCT-12, `sx`/√X, analytic Hamiltonian/QAE/Suzuki rotations,
+and ±α_k Ry primitives k=2..10).
 Every module has a `.pg` spec, passes `verify_seal`, and re-seals byte-identically.
 
 ### MVP-2: Composition — *realized*
-**59 applications sealed** from sealed parts (Bell, GHZ-3/4, 16-qubit GHZ with Tier-1+Tier-2 seals,
+**147 applications sealed** from sealed parts (Bell, GHZ-3/4, 16-qubit GHZ with Tier-1+Tier-2 seals,
 Grover, QFT2–4 pipelines, inverse-QFT, QPE, controlled modular multiplication incl. distinct-prime
-mod 33/35, and Shor factoring 15 and genuinely 21). Each gets its own C-app golden check and sealed
+mod 33/35, the W12 modular-multiplier frontier through `cmul2_mod3683`, and Shor factoring 15, genuinely 21, plus structural Shor frontier apps through `shor1285`). Each gets its own C-app golden check and sealed
 artifact. Recursive trees (Shor → modular-mult → Fredkin; QPE → inverse-QFT) and rediscovery
 cross-checks (6/6 byte-identical) demonstrated.
 

@@ -1,0 +1,15 @@
+```python id=bloq
+from qualtran.bloqs.mcmt import MultiControlX
+bloq = MultiControlX(cvs=(1,) * 11)
+```
+```python id=golden
+import numpy as np
+# c11x: control=first 11 qubits (MSB), target=last (big-endian).
+golden = np.zeros((1<<12, 1<<12), dtype=complex)
+for s in range(1<<12):
+    o = (s ^ 1) if (s >> 1) == ((1<<11) - 1) else s
+    golden[o, s] = 1
+```
+```json id=meta
+{"id": "c11x", "n_sys": 12, "n_anc": 0}
+```

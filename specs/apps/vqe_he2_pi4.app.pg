@@ -1,0 +1,23 @@
+# vqe_he2_pi4 — 2q 1-layer θ=π/4. 1-layer HE ansatz = Ry(θ)^⊗2·CNOT ladder. plan=봉인 ry_pi4·cnot, no MatrixGate.
+```json id=app_meta
+{"id": "vqe_he2_pi4", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n=2
+def Ry(al): return np.array([[np.cos(al/2),-np.sin(al/2)],[np.sin(al/2),np.cos(al/2)]],dtype=complex)
+CNOT=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+def emb(g,qs):
+    k=len(qs); G=g.reshape([2]*k+[2]*k)
+    T=np.eye(1<<n,dtype=complex).reshape([2]*n+[1<<n])
+    T=np.tensordot(G,T,axes=(list(range(k,2*k)),qs)); T=np.moveaxis(T,list(range(k)),qs)
+    return T.reshape(1<<n,1<<n)
+th=np.pi/4
+U=np.eye(1<<n,dtype=complex)
+for q in range(n): U=emb(Ry(th),[q])@U
+for q in range(n-1): U=emb(CNOT,[q,q+1])@U
+golden=U
+```
+```json id=plan
+{"steps": [{"spec": "../modules/ry_pi4.pg", "targets": [0]}, {"spec": "../modules/ry_pi4.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

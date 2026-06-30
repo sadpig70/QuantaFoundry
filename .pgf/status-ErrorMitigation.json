@@ -1,0 +1,104 @@
+{
+  "project": "ErrorMitigationObservation",
+  "workplan": ".pgf/WORKPLAN-ErrorMitigation.md",
+  "design": ".pgf/DESIGN-ErrorMitigation.md",
+  "started_at": "2026-06-29T00:00:00+09:00",
+  "updated_at": "2026-06-29T00:00:00+09:00",
+  "iteration": 5,
+  "nodes": {
+    "Design": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/DESIGN-ErrorMitigation.md",
+          ".pgf/WORKPLAN-ErrorMitigation.md",
+          ".pgf/REVIEW-ErrorMitigation.md"
+        ],
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "W12_4 node added before implementation; review approved observation-only scope."
+      }
+    },
+    "NoiseModel": {
+      "status": "done",
+      "outputs": {
+        "implementation": "scripts/error_mitigation_obs.py",
+        "model": "global depolarizing expectation, alpha=(1-base_epsilon)^scale",
+        "scope": "script-local observation model; no backend_adapter seal-path mutation"
+      }
+    },
+    "ZNEObservation": {
+      "status": "done",
+      "outputs": {
+        "report": ".pgf/backend/ERROR-MITIGATION-REPORT.json",
+        "cases": [
+          {
+            "case": "tfim3_suzuki4_X0",
+            "ideal": 0.240383229739,
+            "scale1_noisy_error": 0.014422993784,
+            "zne_error": 0.002547743968,
+            "reduction": 5.661084
+          },
+          {
+            "case": "qaoa_p3_maxcut",
+            "ideal": 0.396446609407,
+            "scale1_noisy_error": 0.036213203436,
+            "zne_error": 0.006396866836,
+            "reduction": 5.661084
+          }
+        ],
+        "boundary": "ZNE reduces bias but residual remains; mitigation is not exact recovery."
+      }
+    },
+    "Verification": {
+      "status": "done",
+      "outputs": {
+        "registry": {
+          "modules": 72,
+          "unique_apps": 117,
+          "cached": 60,
+          "root_hash": "211ef5bb910304d34bec073d49882c28172d0e43cc39d625094137b7b79f981e"
+        },
+        "commands": [
+          "python scripts/error_mitigation_obs.py",
+          "python scripts/registry_tools.py build",
+          "python scripts/seal_gate_ci.py",
+          "python scripts/second_oracle.py",
+          "python scripts/verify_contested_guard.py",
+          "python scripts/reproduce_all.py"
+        ],
+        "results": {
+          "error_mitigation_obs": "all_ok=True, root_unchanged=True",
+          "registry_tools": "modules=72, unique_apps=117, root=211ef5bb910304d3",
+          "reproduce_all": "REPRODUCED",
+          "second_oracle": "66/66",
+          "seal_gate_ci": "PASS",
+          "verify_contested_guard": "ALL PASS",
+          "fingerprint": {
+            "verify_seal.py": "45d316a431495c9b9a69163b3912da74ae6430fafcda50f7732198202d03092a",
+            "contracts.py": "64dd25399a16d6f812648568f871d223a789fe72f8bce432f3d11296ec7b2ee9"
+          }
+        }
+      }
+    },
+    "Documentation": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md"
+        ],
+        "notes": "External docs remain batch-only; W12.4 observation delta recorded in task_record.md."
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

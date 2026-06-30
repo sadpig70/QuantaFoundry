@@ -2,8 +2,8 @@
 
 ## v0.7 — Foundry realized + adoption & hardening (2026-06-28)
 
-The foundry layer around QPGF is substantially realized: **67 sealed modules (61 Tier-0 + 6 Tier-2 Clifford) → 97 sealed applications**,
-`registry_root_hash` `2cfe8dc3…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
+The foundry layer around QPGF is substantially realized: **68 sealed modules (62 Tier-0 + 6 Tier-2 Clifford) → 101 sealed applications**,
+`registry_root_hash` `1a2a874d…` (byte-identical reproduction). Intermediate milestones v0.4–v0.6
 (genuine Shor N=21, the GenSkill library, self-extending goal-autonomy) are documented in the technical
 spec's *What changed* sections; v0.3 — the first public milestone — is below.
 
@@ -25,7 +25,7 @@ QEC on the stronger stabilizer-tableau oracle (Tier-2 Steane `[[7,1,3]]` `|0⟩`
 stabilizer-eigenvalue witnessed), and W7.3 completed the QEC class with fault-tolerant transversal logical
 Clifford gates (logical `H`/`S`/`CNOT` on Steane — the 14-qubit logical CNOT can't be Tier-0 dense, so it
 demonstrates Tier-2's dense-free advantage at scale), and W8.1 opened a second new horizontal class — Trotterized Hamiltonian simulation (Pauli-exponential Rz/Rx rotations → a TFIM Trotter step; the step is sealed exactly while its Trotter error vs the true evolution is an honest *observation, not a seal*), and W8.2 grew it from instance to family (completing the `{rxx,ryy,rzz}` interaction set + Heisenberg instances + multi-step compound, with the honest boundary deepened into an `O(1/k)` convergence observation), and W8.3 added 2nd-order symmetric Suzuki steps + a 4-qubit lattice (contrasting 1st-order `O(1/k)` vs 2nd-order `O(1/k²)` convergence) — advancing from the
-v0.7-core root `3dae613d…` to the current `2cfe8dc3…` (48→67 modules, 59→97 apps) — pure non-destructive growth:**
+v0.7-core root `3dae613d…` to the current `1a2a874d…` (48→68 modules, 59→101 apps) — pure non-destructive growth:**
 
 - **S0–S1 Trust-Closure:** `second_oracle` independent re-derivation to **48/48 modules**; `ghz16`
   raised to `unitary_equiv_sampled` (zero structural-only seals); ZX-routing infrastructure (self-test

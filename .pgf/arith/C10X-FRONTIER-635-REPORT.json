@@ -1,0 +1,88 @@
+{
+  "phase": "W12.14 C10xPrimitiveFrontier",
+  "honesty": "c10x closes the 10-control primitive gap for 10-work-bit modular arithmetic. c10x and cmul2_mod635 are Tier-0 exact seals; full Shor is deferred.",
+  "target": {
+    "N": 635,
+    "a": 2,
+    "factors": [
+      5,
+      127
+    ],
+    "work": 10,
+    "nq": 11
+  },
+  "c10x_module": {
+    "id": "c10x",
+    "sealed": true,
+    "tier": 0,
+    "n_sys": 11,
+    "u_hash": "c708b7738d327805b0039cad0c1461a4b59ccf5157ace0b34b06b373a2fe6728",
+    "resource": {
+      "and_bloq": 9,
+      "clifford": 10,
+      "measurement": 9,
+      "total_t": 36
+    }
+  },
+  "c10x_independent": {
+    "independent_u_hash": "c708b7738d327805",
+    "matches_sealed": true
+  },
+  "cmul_app": {
+    "id": "cmul2_mod635",
+    "N": 635,
+    "a": 2,
+    "factors": [
+      5,
+      127
+    ],
+    "nq": 11,
+    "sealed": true,
+    "tier": 0,
+    "u_hash": "366817f432705bfdf73c2e5af4a12660f613f38b51640c184f921e5dae92cde7",
+    "reason": "fast_exact_permutation_capp",
+    "gate_count": 638,
+    "control_dist": {
+      "10": 23,
+      "9": 79,
+      "8": 128,
+      "7": 145,
+      "6": 93,
+      "5": 72,
+      "4": 53,
+      "3": 21,
+      "2": 24
+    },
+    "max_control": 10,
+    "deps": [
+      "c10x",
+      "c3x",
+      "c4x",
+      "c5x",
+      "c6x",
+      "c7x",
+      "c8x",
+      "c9x",
+      "toffoli"
+    ]
+  },
+  "independent_arith_verify": {
+    "id": "cmul2_mod635",
+    "independent_u_hash": "366817f432705bfd",
+    "matches_sealed": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 635,
+    "order_r": 28,
+    "r_even": true,
+    "a_r2": 509,
+    "nontrivial": true,
+    "factors": [
+      5,
+      127
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

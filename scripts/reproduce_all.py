@@ -13,6 +13,19 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 REPORTS = os.path.join(ROOT, "reports")
 os.makedirs(REPORTS, exist_ok=True)
 
+FRONTIER_STEPS = [
+    ("shor_frontier", "scripts/shor_frontier.py"),
+    ("c8x_frontier", "scripts/c8x_frontier.py"),
+    ("shor221_frontier", "scripts/shor221_frontier.py"),
+    ("c9x_shor381_frontier", "scripts/c9x_shor381_frontier.py"),
+    ("c10x_frontier", "scripts/c10x_frontier.py"),
+    ("shor635_frontier", "scripts/shor635_frontier.py"),
+    ("c11x_frontier", "scripts/c11x_frontier.py"),
+    ("c11x_payoff_family", "scripts/c11x_payoff_family.py"),
+    ("shor1285_frontier", "scripts/shor1285_frontier.py"),
+    ("c12x_frontier", "scripts/c12x_frontier.py"),
+]
+
 
 def run(args, cwd=ROOT):
     p = subprocess.run(["python"] + args, cwd=cwd, capture_output=True, text=True)
@@ -29,6 +42,14 @@ def main():
         "rc": rc, "apps_sealed": f"{m.group(1)}/{m.group(2)}" if m else "?",
         "rediscovery": f"{m.group(3)}/{m.group(4)}" if m else "?",
         "pass": rc == 0}
+
+    # 1b. Heavy frontier generators with script-local fast paths.
+    for step_id, script in FRONTIER_STEPS:
+        rc, out = run([script])
+        result["steps"][step_id] = {
+            "rc": rc,
+            "all_ok": "all_ok=True" in out,
+            "pass": rc == 0 and "all_ok=True" in out}
 
     # 2. registry manifest + dependency graph
     rc, out = run(["scripts/registry_tools.py", "build"])

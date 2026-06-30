@@ -1,0 +1,14 @@
+# ry_3pi4 — Ry(3π/4) (VQE ansatz 각도 샘플; 변분 landscape min 너머 포착). Ry(α)=YPowGate(exponent=α/π) up-to-phase(C4). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+bloq = YPowGate(exponent=0.75)
+```
+```python id=golden
+import numpy as np
+a = 3*np.pi/4
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_3pi4", "n_sys": 1, "n_anc": 0}
+```

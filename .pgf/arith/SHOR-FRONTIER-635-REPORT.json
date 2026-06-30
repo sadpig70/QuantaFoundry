@@ -1,0 +1,263 @@
+{
+  "phase": "W12.15 Shor635StructuralFrontier",
+  "honesty": "N=635=5*127 is the c10x payoff Shor structural frontier. cmul powers are Tier-0 exact permutation app seals; shor635 is Tier-1 structural, weaker than dense unitary equivalence; period readout is illustrative only.",
+  "target": {
+    "N": 635,
+    "a": 2,
+    "factors": [
+      5,
+      127
+    ],
+    "counting_t": 8,
+    "work": 10,
+    "powa": [
+      131,
+      256,
+      16,
+      131,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      131,
+      256
+    ]
+  },
+  "cmul_apps": [
+    {
+      "id": "cmul2_mod635",
+      "N": 635,
+      "a": 2,
+      "nq": 11,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "366817f432705bfdf73c2e5af4a12660f613f38b51640c184f921e5dae92cde7",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 638,
+      "control_dist": {
+        "10": 23,
+        "9": 79,
+        "8": 128,
+        "7": 145,
+        "6": 93,
+        "5": 72,
+        "4": 53,
+        "3": 21,
+        "2": 24
+      },
+      "max_control": 10,
+      "deps": [
+        "c10x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul4_mod635",
+      "N": 635,
+      "a": 4,
+      "nq": 11,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "0fee26746bcb0cec9c564470f1d4a7bceac1cabef9dce8896b4ecf95f535d531",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 3048,
+      "control_dist": {
+        "10": 72,
+        "9": 252,
+        "8": 534,
+        "7": 722,
+        "6": 676,
+        "5": 478,
+        "4": 230,
+        "3": 60,
+        "2": 24
+      },
+      "max_control": 10,
+      "deps": [
+        "c10x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul16_mod635",
+      "N": 635,
+      "a": 16,
+      "nq": 11,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "6369a65e13730431a839f95088b015471524ad3a0ef623501ed152e5c952cf3f",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 4194,
+      "control_dist": {
+        "10": 78,
+        "9": 323,
+        "8": 641,
+        "7": 911,
+        "6": 955,
+        "5": 722,
+        "4": 403,
+        "3": 129,
+        "2": 32
+      },
+      "max_control": 10,
+      "deps": [
+        "c10x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul131_mod635",
+      "N": 635,
+      "a": 131,
+      "nq": 11,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "d02a47a95c96e956afedc29590454f2cda971d92e1cca7055500f207745c522a",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 4737,
+      "control_dist": {
+        "10": 92,
+        "9": 325,
+        "8": 712,
+        "7": 1001,
+        "6": 1067,
+        "5": 827,
+        "4": 482,
+        "3": 191,
+        "2": 40
+      },
+      "max_control": 10,
+      "deps": [
+        "c10x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul256_mod635",
+      "N": 635,
+      "a": 256,
+      "nq": 11,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "3d9687584d16e618acbdf6a45b6d7bd62174ade3a158cdab534a66a78775a4e8",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 4633,
+      "control_dist": {
+        "9": 343,
+        "10": 82,
+        "8": 692,
+        "7": 955,
+        "6": 1024,
+        "5": 836,
+        "4": 508,
+        "3": 159,
+        "2": 34
+      },
+      "max_control": 10,
+      "deps": [
+        "c10x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    }
+  ],
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod635",
+      "independent_u_hash": "366817f432705bfd",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul4_mod635",
+      "independent_u_hash": "0fee26746bcb0cec",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod635",
+      "independent_u_hash": "6369a65e13730431",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul131_mod635",
+      "independent_u_hash": "d02a47a95c96e956",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul256_mod635",
+      "independent_u_hash": "3d9687584d16e618",
+      "matches_sealed": true
+    }
+  ],
+  "children_sealed": {
+    "cmul2_mod635": true,
+    "cmul4_mod635": true,
+    "cmul16_mod635": true,
+    "cmul131_mod635": true,
+    "cmul256_mod635": true,
+    "iqft8": true,
+    "h_gate": true
+  },
+  "shor635": {
+    "id": "shor635",
+    "n_sys": 18,
+    "sealed": true,
+    "tier": 1,
+    "u_hash": "ca75c6224e94c6fea9fead630b90b39cc6705fa3704a1203b58e7b32dc2eb450",
+    "contract": "C1-C4(structural)",
+    "reason": "fast_structural_child_seals",
+    "deterministic_reassembly": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 635,
+    "order_r": 28,
+    "r_even": true,
+    "a_r2": 509,
+    "nontrivial": true,
+    "factors": [
+      5,
+      127
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

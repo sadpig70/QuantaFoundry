@@ -1,0 +1,231 @@
+{
+  "phase": "W12.8-W12.10 C9xPayoffFamilyToShor381",
+  "honesty": "c9x closes the 9-control primitive gap for 9-work-bit modular arithmetic. cmul powers are Tier-0 exact permutation app seals; shor381 is Tier-1 structural, weaker than dense unitary equivalence; period readout is illustrative only. c10x remains a separate feasibility review.",
+  "target": {
+    "N": 381,
+    "a": 2,
+    "factors": [
+      3,
+      127
+    ],
+    "counting_t": 8,
+    "work": 9,
+    "powa": [
+      4,
+      256,
+      16,
+      4,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256
+    ]
+  },
+  "c9x_module": {
+    "id": "c9x",
+    "sealed": true,
+    "tier": 0,
+    "n_sys": 10,
+    "u_hash": "9b4e4c940fb79ca930c4660af60fbcea56374a052854990cb6bcbafc33f6363b",
+    "resource": {
+      "and_bloq": 8,
+      "clifford": 9,
+      "measurement": 8,
+      "total_t": 32
+    }
+  },
+  "c9x_independent": {
+    "independent_u_hash": "9b4e4c940fb79ca9",
+    "matches_sealed": true
+  },
+  "cmul_apps": [
+    {
+      "id": "cmul2_mod381",
+      "N": 381,
+      "a": 2,
+      "nq": 10,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "090c25d6e40f1420a5befe5b84b0a6389171f8eb5309e94de1d9971a2b5f95c2",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 139,
+      "control_dist": {
+        "9": 5,
+        "8": 14,
+        "5": 21,
+        "4": 34,
+        "7": 16,
+        "6": 18,
+        "3": 9,
+        "2": 22
+      },
+      "max_control": 9,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul4_mod381",
+      "N": 381,
+      "a": 4,
+      "nq": 10,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "ead350dc37f1ea660c553d9168d62a3b9db2896b632df2f05028cce7cafbcd87",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 926,
+      "control_dist": {
+        "9": 34,
+        "8": 127,
+        "7": 228,
+        "6": 254,
+        "5": 161,
+        "4": 76,
+        "3": 21,
+        "2": 25
+      },
+      "max_control": 9,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul16_mod381",
+      "N": 381,
+      "a": 16,
+      "nq": 10,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "3ba30d0e1c6f2d90b40074a0b356d6c5a14a62b2c6fcb0d58010e4c1533a5053",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 1825,
+      "control_dist": {
+        "9": 66,
+        "8": 197,
+        "7": 369,
+        "6": 451,
+        "5": 395,
+        "4": 233,
+        "3": 85,
+        "2": 29
+      },
+      "max_control": 9,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul256_mod381",
+      "N": 381,
+      "a": 256,
+      "nq": 10,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "e404c1df721a86523f56c96d56a18022ab5c55cb2ce1722f6c3edf750c923133",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 1884,
+      "control_dist": {
+        "9": 56,
+        "8": 201,
+        "7": 370,
+        "6": 456,
+        "5": 408,
+        "4": 252,
+        "3": 116,
+        "2": 25
+      },
+      "max_control": 9,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    }
+  ],
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod381",
+      "independent_u_hash": "090c25d6e40f1420",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul4_mod381",
+      "independent_u_hash": "ead350dc37f1ea66",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod381",
+      "independent_u_hash": "3ba30d0e1c6f2d90",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul256_mod381",
+      "independent_u_hash": "e404c1df721a8652",
+      "matches_sealed": true
+    }
+  ],
+  "children_sealed": {
+    "cmul2_mod381": true,
+    "cmul4_mod381": true,
+    "cmul16_mod381": true,
+    "cmul256_mod381": true,
+    "iqft8": true,
+    "h_gate": true
+  },
+  "shor381": {
+    "id": "shor381",
+    "n_sys": 17,
+    "sealed": true,
+    "tier": 1,
+    "u_hash": "08e08864499ce9062c54b7e2944234a9466438198bc37ef59b9b358570e4aebe",
+    "contract": "C1-C4(structural)",
+    "reason": "fast_structural_child_seals",
+    "deterministic_reassembly": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 381,
+    "order_r": 14,
+    "r_even": true,
+    "a_r2": 128,
+    "nontrivial": true,
+    "factors": [
+      3,
+      127
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

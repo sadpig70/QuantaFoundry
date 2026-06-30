@@ -1,0 +1,336 @@
+{
+  "phase": "W12.3 Suzuki4",
+  "modules": [
+    {
+      "id": "rz_y4_p",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "781f39f48576f03ccb0a1b0098cb6d97f86d3f1fa52836ce5d14e1a8bc28084c"
+    },
+    {
+      "id": "rx_y4_p",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "1502b55ef70bbe85dfe64e5cc2b907cbf1d709cba46505e6f763dd7103889cc0"
+    },
+    {
+      "id": "rz_y4_q",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "dbe030a4cb10ad4fa67b932f4c35ade21f7e316ffd103909fa6e6180aeea2af6"
+    },
+    {
+      "id": "rx_y4_q",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "92b380debf18d6022314faec7fa559ea404a551574fa89652d1a0fd23a0c2055"
+    }
+  ],
+  "apps": [
+    {
+      "id": "rzz_y4_p_half",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "7cad7b6a2d6b999c96395ad2f96d93f59a64c822edbf9a6b3af58ef574d78c42",
+      "reason": ""
+    },
+    {
+      "id": "rzz_y4_q_half",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "865d7a0438d52394fb7b96cb03faf249474ea18cb82b4fb66a2a8109aa73db66",
+      "reason": ""
+    },
+    {
+      "id": "tfim3_suzuki4_step",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "b74f4a8616e70a846b2ec8c4883b984efe524034364cd192c45a3a5d317b43d7",
+      "reason": ""
+    },
+    {
+      "id": "tfim4_suzuki4_step",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "7871221050a401118d9cea0d3c7dcdbb9bb715ec7e8227992682c261a646ac86",
+      "reason": ""
+    }
+  ],
+  "order_observation": {
+    "note": "OBSERVATION, NOT A SEAL — sealed S4 steps are exact decompositions of the Yoshida formula. Approximation order is measured against true exp(-iHT) at fixed T=pi/4: first ratio~2, second ratio~4, fourth ratio~16 under k doubling.",
+    "coefficients": {
+      "p": 0.4144907717943757,
+      "q": -0.6579630871775028
+    },
+    "fixed_T": 0.7853981633974483,
+    "systems": {
+      "tfim3": {
+        "first_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.78539816,
+              "error_2norm": 1.1360932653
+            },
+            {
+              "k": 2,
+              "dt": 0.39269908,
+              "error_2norm": 0.4858226212
+            },
+            {
+              "k": 4,
+              "dt": 0.19634954,
+              "error_2norm": 0.2337954005
+            },
+            {
+              "k": 8,
+              "dt": 0.09817477,
+              "error_2norm": 0.1156389348
+            },
+            {
+              "k": 16,
+              "dt": 0.04908739,
+              "error_2norm": 0.0576279197
+            },
+            {
+              "k": 32,
+              "dt": 0.02454369,
+              "error_2norm": 0.0287814166
+            }
+          ],
+          "ratio_k_doubling": [
+            2.338,
+            2.078,
+            2.022,
+            2.007,
+            2.002
+          ],
+          "O(1/k)_confirmed": true
+        },
+        "second_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.78539816,
+              "error_2norm": 0.6734639034
+            },
+            {
+              "k": 2,
+              "dt": 0.39269908,
+              "error_2norm": 0.1337516025
+            },
+            {
+              "k": 4,
+              "dt": 0.19634954,
+              "error_2norm": 0.0317710148
+            },
+            {
+              "k": 8,
+              "dt": 0.09817477,
+              "error_2norm": 0.0078456703
+            },
+            {
+              "k": 16,
+              "dt": 0.04908739,
+              "error_2norm": 0.0019554521
+            },
+            {
+              "k": 32,
+              "dt": 0.02454369,
+              "error_2norm": 0.0004884918
+            }
+          ],
+          "ratio_k_doubling": [
+            5.035,
+            4.21,
+            4.049,
+            4.012,
+            4.003
+          ],
+          "O(1/k^2)_confirmed": true
+        },
+        "fourth_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.78539816,
+              "error_2norm": 0.0797050582
+            },
+            {
+              "k": 2,
+              "dt": 0.39269908,
+              "error_2norm": 0.0025221579
+            },
+            {
+              "k": 4,
+              "dt": 0.19634954,
+              "error_2norm": 0.0001485782
+            },
+            {
+              "k": 8,
+              "dt": 0.09817477,
+              "error_2norm": 9.2063e-06
+            },
+            {
+              "k": 16,
+              "dt": 0.04908739,
+              "error_2norm": 5.744e-07
+            },
+            {
+              "k": 32,
+              "dt": 0.02454369,
+              "error_2norm": 3.59e-08
+            }
+          ],
+          "ratio_k_doubling": [
+            31.602,
+            16.975,
+            16.139,
+            16.028,
+            16.0
+          ],
+          "O(1/k^4)_confirmed": true
+        }
+      },
+      "tfim4": {
+        "first_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.78539816,
+              "error_2norm": 1.58862817
+            },
+            {
+              "k": 2,
+              "dt": 0.39269908,
+              "error_2norm": 0.6844063749
+            },
+            {
+              "k": 4,
+              "dt": 0.19634954,
+              "error_2norm": 0.3280859931
+            },
+            {
+              "k": 8,
+              "dt": 0.09817477,
+              "error_2norm": 0.1623268395
+            },
+            {
+              "k": 16,
+              "dt": 0.04908739,
+              "error_2norm": 0.0809505172
+            },
+            {
+              "k": 32,
+              "dt": 0.02454369,
+              "error_2norm": 0.0404486968
+            }
+          ],
+          "ratio_k_doubling": [
+            2.321,
+            2.086,
+            2.021,
+            2.005,
+            2.001
+          ],
+          "O(1/k)_confirmed": true
+        },
+        "second_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.78539816,
+              "error_2norm": 1.0074127151
+            },
+            {
+              "k": 2,
+              "dt": 0.39269908,
+              "error_2norm": 0.1984511999
+            },
+            {
+              "k": 4,
+              "dt": 0.19634954,
+              "error_2norm": 0.0467870558
+            },
+            {
+              "k": 8,
+              "dt": 0.09817477,
+              "error_2norm": 0.0115301909
+            },
+            {
+              "k": 16,
+              "dt": 0.04908739,
+              "error_2norm": 0.0028722895
+            },
+            {
+              "k": 32,
+              "dt": 0.02454369,
+              "error_2norm": 0.0007174336
+            }
+          ],
+          "ratio_k_doubling": [
+            5.076,
+            4.242,
+            4.058,
+            4.014,
+            4.004
+          ],
+          "O(1/k^2)_confirmed": true
+        },
+        "fourth_order": {
+          "sweep": [
+            {
+              "k": 1,
+              "dt": 0.78539816,
+              "error_2norm": 0.1115630448
+            },
+            {
+              "k": 2,
+              "dt": 0.39269908,
+              "error_2norm": 0.0033304823
+            },
+            {
+              "k": 4,
+              "dt": 0.19634954,
+              "error_2norm": 0.0002027091
+            },
+            {
+              "k": 8,
+              "dt": 0.09817477,
+              "error_2norm": 1.26642e-05
+            },
+            {
+              "k": 16,
+              "dt": 0.04908739,
+              "error_2norm": 7.917e-07
+            },
+            {
+              "k": 32,
+              "dt": 0.02454369,
+              "error_2norm": 4.95e-08
+            }
+          ],
+          "ratio_k_doubling": [
+            33.498,
+            16.43,
+            16.006,
+            15.996,
+            15.994
+          ],
+          "O(1/k^4)_confirmed": true
+        }
+      }
+    },
+    "all_orders_confirmed": true
+  },
+  "all_ok": true,
+  "honesty": "The modules and apps seal the exact Yoshida-Suzuki 4th-order formula for fixed coefficient rotations. Approximation error and order ratios against true exp(-iHT) are observations, not seals."
+}

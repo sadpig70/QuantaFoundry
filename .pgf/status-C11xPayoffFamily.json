@@ -1,0 +1,75 @@
+{
+  "project": "C11xPayoffFamily",
+  "design": ".pgf/DESIGN-C11xPayoffFamily.md",
+  "workplan": ".pgf/WORKPLAN-C11xPayoffFamily.md",
+  "review": ".pgf/REVIEW-C11xPayoffFamily.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 1,
+  "nodes": {
+    "SealRemainingCmul1285": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul4_mod1285.app.pg",
+          "specs/apps/cmul16_mod1285.app.pg",
+          "specs/apps/cmul256_mod1285.app.pg",
+          "registry/apps/cmul4_mod1285.sealed.json",
+          "registry/apps/cmul16_mod1285.sealed.json",
+          "registry/apps/cmul256_mod1285.sealed.json",
+          ".pgf/arith/C11X-PAYOFF-1285-REPORT.json"
+        ],
+        "notes": "Tier-0 exact apps; gates=6815/9126/10330, c11x count=120/160/134."
+      }
+    },
+    "VerifyIndependentArithmetic": {
+      "status": "done",
+      "outputs": {
+        "notes": "Independent arithmetic u_hash matched 3/3; family seals 4/4 present including cmul2_mod1285."
+      }
+    },
+    "UpdateRegistryArtifacts": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/reproduce_all.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff",
+          ".pgf/adoption/RELEASE-META.json"
+        ],
+        "notes": "Registry root df18e3eff133d94d25231d4b38e1da451087e34a05fee9b5c49caafbd5e5a7f8."
+      }
+    },
+    "UpdateBacklog": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md",
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md"
+        ],
+        "notes": "Next finite candidate is W12.19 Shor1285StructuralFrontier."
+      }
+    }
+  },
+  "summary": {
+    "total": 4,
+    "done": 4,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "verification": {
+    "c11x_payoff_family": "python scripts/c11x_payoff_family.py -> all_ok=True",
+    "reproduce_all": "REPRODUCED",
+    "second_oracle": "70/70",
+    "seal_gate_ci": "PASS",
+    "backlog_compaction_audit": "all_ok=True",
+    "genskills_verify": "INTACT",
+    "verify_contested_guard": "ALL PASS",
+    "registry_root_hash": "df18e3eff133d94d25231d4b38e1da451087e34a05fee9b5c49caafbd5e5a7f8"
+  }
+}

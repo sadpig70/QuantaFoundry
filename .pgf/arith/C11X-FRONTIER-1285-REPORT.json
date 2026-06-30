@@ -1,0 +1,90 @@
+{
+  "phase": "W12.17 C11xPrimitiveFrontier",
+  "honesty": "c11x closes the 11-control primitive gap for 11-work-bit modular arithmetic. c11x and cmul2_mod1285 are Tier-0 exact seals; full Shor-1285 is deferred.",
+  "target": {
+    "N": 1285,
+    "a": 2,
+    "factors": [
+      5,
+      257
+    ],
+    "work": 11,
+    "nq": 12
+  },
+  "c11x_module": {
+    "id": "c11x",
+    "sealed": true,
+    "tier": 0,
+    "n_sys": 12,
+    "u_hash": "3481dda93163578d231eb1462438c0a06fc6ff2cba66c48336e38324e0f95eaf",
+    "resource": {
+      "and_bloq": 10,
+      "clifford": 11,
+      "measurement": 10,
+      "total_t": 40
+    }
+  },
+  "c11x_independent": {
+    "independent_u_hash": "3481dda93163578d",
+    "matches_sealed": true
+  },
+  "cmul_app": {
+    "id": "cmul2_mod1285",
+    "N": 1285,
+    "a": 2,
+    "factors": [
+      5,
+      257
+    ],
+    "nq": 12,
+    "sealed": true,
+    "tier": 0,
+    "u_hash": "4995dd11a5998b12e174531bc1835d27ba9af4b195a318e3b0ceb55f1a8a47a6",
+    "reason": "fast_exact_permutation_capp",
+    "gate_count": 4088,
+    "control_dist": {
+      "11": 79,
+      "10": 329,
+      "9": 621,
+      "8": 870,
+      "7": 902,
+      "6": 731,
+      "5": 388,
+      "4": 124,
+      "3": 21,
+      "2": 23
+    },
+    "max_control": 11,
+    "deps": [
+      "c10x",
+      "c11x",
+      "c3x",
+      "c4x",
+      "c5x",
+      "c6x",
+      "c7x",
+      "c8x",
+      "c9x",
+      "toffoli"
+    ]
+  },
+  "independent_arith_verify": {
+    "id": "cmul2_mod1285",
+    "independent_u_hash": "4995dd11a5998b12",
+    "matches_sealed": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 1285,
+    "order_r": 16,
+    "r_even": true,
+    "a_r2": 256,
+    "nontrivial": true,
+    "factors": [
+      5,
+      257
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

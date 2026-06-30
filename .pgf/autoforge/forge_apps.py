@@ -92,6 +92,26 @@ APP_LIST = [
     ("qae3_pi2.app.pg",             None), # QAE 4q: a=1/2 (Q=Ry(π), 신규 모듈 0)
     ("grover2_3iter.app.pg",        None), # G₂³ (iterative QAE power m=3)
     ("grover3_3iter.app.pg",        None), # G₃³
+    ("vqe_he2_pi4.app.pg",          None), # VQE 2q 1-layer HE ansatz θ=π/4 (ry_pi4·cnot)
+    ("vqe_he2_pi2.app.pg",          None), # VQE 2q θ=π/2 (ry_pi2·cnot)
+    ("vqe_he2_3pi4.app.pg",         None), # VQE 2q θ=3π/4 (ry_3pi4·cnot)
+    ("vqe_he3_pi4.app.pg",          None), # VQE 3q θ=π/4, CNOT ladder
+    ("vqe_he2_L2_pi4.app.pg",       None), # W10.2 2-layer per-qubit ansatz 단일각 π/4
+    ("vqe_he2_L2_mix.app.pg",       None), # W10.2 2-layer 혼합각 (ry_pi4/pi2/negpi4 복리)
+    ("qaoa_p3.app.pg",              None), # W11.1 QAOA MaxCut path P3 (신규 모듈 0)
+    ("qaoa_c4.app.pg",              None), # W11.1 QAOA MaxCut cycle C4
+    ("dj2_const1.app.pg",            None), # W12.1 Deutsch-Jozsa n=2 constant f(x)=1
+    ("dj2_balanced_xor.app.pg",      None), # W12.1 Deutsch-Jozsa n=2 balanced f(x)=x0 xor x1
+    ("bv3_s101.app.pg",              None), # W12.1 Bernstein-Vazirani n=3 secret s=101
+    ("simon2_s11.app.pg",            None), # W12.1 Simon n=2 hidden period s=11
+    ("qw_c4_step.app.pg",            None), # W12.2 coined quantum walk on cycle C4, one step
+    ("qw_c4_2steps.app.pg",          None), # W12.2 C4 walk two repeated steps
+    ("qw_c8_step.app.pg",            None), # W12.2 coined quantum walk on cycle C8, one step
+    ("qw_c8_3steps.app.pg",          None), # W12.2 C8 walk three repeated steps
+    ("rzz_y4_p_half.app.pg",         None), # W12.3 Yoshida-4 half ZZ coefficient p
+    ("rzz_y4_q_half.app.pg",         None), # W12.3 Yoshida-4 half ZZ coefficient q
+    ("tfim3_suzuki4_step.app.pg",    None), # W12.3 TFIM3 4th-order Suzuki step
+    ("tfim4_suzuki4_step.app.pg",    None), # W12.3 TFIM4 4th-order Suzuki step
 ]
 
 

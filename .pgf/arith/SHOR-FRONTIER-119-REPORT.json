@@ -1,0 +1,233 @@
+{
+  "phase": "W12.5 Shor119Frontier",
+  "honesty": "N=119=7*17 is a self-contained frontier beyond shor91 under existing c7x. cmul powers are Tier-0 exact app seals; shor119 is Tier-1 structural, weaker than dense unitary equivalence; period readout is illustrative only. N>=128 remains blocked until c8x or another 8-control strategy is sealed.",
+  "target": {
+    "N": 119,
+    "a": 2,
+    "factors": [
+      7,
+      17
+    ],
+    "counting_t": 8,
+    "work": 7,
+    "powa": [
+      18,
+      86,
+      18,
+      86,
+      18,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      18,
+      86
+    ]
+  },
+  "cmul_apps": [
+    {
+      "id": "cmul2_mod119",
+      "N": 119,
+      "a": 2,
+      "nq": 8,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "93f6d60413ac722aee9f9c918fda3be04a1bef9a5ec5afa64a7bbccfeaaef1cd",
+      "reason": "cached",
+      "gate_count": 34,
+      "control_dist": {
+        "7": 4,
+        "6": 6,
+        "5": 5,
+        "4": 1,
+        "3": 1,
+        "2": 17
+      },
+      "max_control": 7,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul4_mod119",
+      "N": 119,
+      "a": 4,
+      "nq": 8,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "29588ebd341f2ddb3e2309dc9e011b97d9869f79b30c37c29f52fef0120b2a3b",
+      "reason": "cached",
+      "gate_count": 314,
+      "control_dist": {
+        "7": 28,
+        "6": 63,
+        "5": 90,
+        "4": 75,
+        "3": 41,
+        "2": 17
+      },
+      "max_control": 7,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul16_mod119",
+      "N": 119,
+      "a": 16,
+      "nq": 8,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "e6da41253c2f0bd0b9f244224a83de241e464bb1fbf21ad8b767afc5f4ba703e",
+      "reason": "cached",
+      "gate_count": 270,
+      "control_dist": {
+        "7": 20,
+        "6": 55,
+        "5": 78,
+        "4": 63,
+        "3": 32,
+        "2": 22
+      },
+      "max_control": 7,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul18_mod119",
+      "N": 119,
+      "a": 18,
+      "nq": 8,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "ab80c0804d2d35155d9f8a13d8fb3ec71e32f534c4f73a169423aaa60a0bb171",
+      "reason": "cached",
+      "gate_count": 366,
+      "control_dist": {
+        "6": 58,
+        "7": 20,
+        "5": 109,
+        "4": 97,
+        "3": 57,
+        "2": 25
+      },
+      "max_control": 7,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul86_mod119",
+      "N": 119,
+      "a": 86,
+      "nq": 8,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "e32aff1d347895afa8753fe279301a66af96cb2f7649695e941bcf5490ce9b2e",
+      "reason": "cached",
+      "gate_count": 375,
+      "control_dist": {
+        "7": 24,
+        "6": 66,
+        "5": 95,
+        "4": 99,
+        "3": 66,
+        "2": 25
+      },
+      "max_control": 7,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "toffoli"
+      ]
+    }
+  ],
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod119",
+      "independent_u_hash": "93f6d60413ac722a",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul4_mod119",
+      "independent_u_hash": "29588ebd341f2ddb",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod119",
+      "independent_u_hash": "e6da41253c2f0bd0",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul18_mod119",
+      "independent_u_hash": "ab80c0804d2d3515",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul86_mod119",
+      "independent_u_hash": "e32aff1d347895af",
+      "matches_sealed": true
+    }
+  ],
+  "children_sealed": {
+    "cmul2_mod119": true,
+    "cmul4_mod119": true,
+    "cmul16_mod119": true,
+    "cmul18_mod119": true,
+    "cmul86_mod119": true,
+    "iqft8": true,
+    "h_gate": true
+  },
+  "shor119": {
+    "id": "shor119",
+    "n_sys": 15,
+    "sealed": true,
+    "tier": 1,
+    "u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690",
+    "reason": "fast_structural_child_seals",
+    "contract": "C1-C4(structural)",
+    "deterministic_reassembly": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 119,
+    "order_r": 24,
+    "r_even": true,
+    "a_r2": 50,
+    "nontrivial": true,
+    "factors": [
+      7,
+      17
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

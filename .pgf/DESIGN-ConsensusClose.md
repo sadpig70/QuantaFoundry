@@ -1,6 +1,6 @@
 # DESIGN-ConsensusClose — Stage 4 Consensus 정직종결 (ρ 실데이터)
 
-> PGF design mode · 기반 = `roadmap_process_plan.md` Stage 4 (Track B2) · 방법 = PG Gantree + PPR.
+> PGF design mode · 기반 = `_legacy/roadmap_process_plan.md` Stage 4 (Track B2) · 방법 = PG Gantree + PPR.
 > 정직성: 분석/검증 전용 비파괴. registry/sealed/frozen/fingerprint 불변. frozen consensus_keys 재생성 금지.
 > 소비 자산(사용만): second_oracle(INDEP/embed/my_canonical_hash) · verify_seal(hash_unitary) ·
 > consensus(Source/establish_truth/effective_independent_count) · corpus_discount.

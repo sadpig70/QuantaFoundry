@@ -1,0 +1,243 @@
+{
+  "phase": "W12.7 Shor221StructuralFrontier",
+  "honesty": "N=221=13*17 is the first Shor-scale payoff after c8x. cmul powers are Tier-0 exact permutation app seals; shor221 is Tier-1 structural, weaker than dense unitary equivalence; period readout is illustrative only. N>=256 remains blocked until c9x or another 9-control strategy is sealed.",
+  "target": {
+    "N": 221,
+    "a": 2,
+    "factors": [
+      13,
+      17
+    ],
+    "counting_t": 8,
+    "work": 8,
+    "powa": [
+      35,
+      120,
+      35,
+      120,
+      35,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      35,
+      120
+    ]
+  },
+  "cmul_apps": [
+    {
+      "id": "cmul2_mod221",
+      "N": 221,
+      "a": 2,
+      "nq": 9,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "1a87dd31d1892406a3f67d8bddce54d0b587edd7b1f1a61b5635c75ceaac3a21",
+      "reason": "cached",
+      "gate_count": 107,
+      "control_dist": {
+        "8": 11,
+        "7": 26,
+        "6": 21,
+        "5": 21,
+        "4": 7,
+        "3": 2,
+        "2": 19
+      },
+      "max_control": 8,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul4_mod221",
+      "N": 221,
+      "a": 4,
+      "nq": 9,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "92b74dc35f5074716c771771c76004fb68b21eb4005691f68ec2305ef22f8231",
+      "reason": "cached",
+      "gate_count": 419,
+      "control_dist": {
+        "8": 26,
+        "6": 111,
+        "7": 74,
+        "5": 111,
+        "4": 60,
+        "3": 13,
+        "2": 24
+      },
+      "max_control": 8,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul16_mod221",
+      "N": 221,
+      "a": 16,
+      "nq": 9,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "7164dc15f40a4b35ce7fa3e8095353612eb549eff0e13285614491321015044e",
+      "reason": "cached",
+      "gate_count": 711,
+      "control_dist": {
+        "8": 36,
+        "7": 104,
+        "6": 187,
+        "5": 196,
+        "4": 137,
+        "3": 31,
+        "2": 20
+      },
+      "max_control": 8,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul35_mod221",
+      "N": 221,
+      "a": 35,
+      "nq": 9,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "36f8b6cf22adae17123918c1ac711cd88ba8d8a5d7834e1b7232d8e707aebded",
+      "reason": "cached",
+      "gate_count": 874,
+      "control_dist": {
+        "8": 48,
+        "7": 124,
+        "6": 188,
+        "5": 225,
+        "4": 176,
+        "3": 88,
+        "2": 25
+      },
+      "max_control": 8,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul120_mod221",
+      "N": 221,
+      "a": 120,
+      "nq": 9,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "158bdd158e2cc7a57489598019597a6b0e59d6f1a92a36164c8e07878cd39290",
+      "reason": "cached",
+      "gate_count": 921,
+      "control_dist": {
+        "8": 40,
+        "7": 124,
+        "6": 201,
+        "5": 233,
+        "4": 198,
+        "3": 90,
+        "2": 35
+      },
+      "max_control": 8,
+      "deps": [
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "toffoli"
+      ]
+    }
+  ],
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod221",
+      "independent_u_hash": "1a87dd31d1892406",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul4_mod221",
+      "independent_u_hash": "92b74dc35f507471",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod221",
+      "independent_u_hash": "7164dc15f40a4b35",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul35_mod221",
+      "independent_u_hash": "36f8b6cf22adae17",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul120_mod221",
+      "independent_u_hash": "158bdd158e2cc7a5",
+      "matches_sealed": true
+    }
+  ],
+  "children_sealed": {
+    "cmul2_mod221": true,
+    "cmul4_mod221": true,
+    "cmul16_mod221": true,
+    "cmul35_mod221": true,
+    "cmul120_mod221": true,
+    "iqft8": true,
+    "h_gate": true
+  },
+  "shor221": {
+    "id": "shor221",
+    "n_sys": 16,
+    "sealed": true,
+    "tier": 1,
+    "u_hash": "4ab5cb39c5d6e7179bfff60cd732600f8376524d9c12a348ad77e472abaf293b",
+    "reason": "fast_structural_child_seals",
+    "contract": "C1-C4(structural)",
+    "deterministic_reassembly": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 221,
+    "order_r": 24,
+    "r_even": true,
+    "a_r2": 118,
+    "nontrivial": true,
+    "factors": [
+      13,
+      17
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

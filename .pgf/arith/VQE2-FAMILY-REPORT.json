@@ -1,0 +1,56 @@
+{
+  "phase": "W10.2 VQEDeepening",
+  "apps": [
+    {
+      "id": "vqe_he2_L2_pi4",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "63b45952ab9225fa4f69dece6e3132d93f1494116fc158977fd9990e44dfb9c4",
+      "reason": ""
+    },
+    {
+      "id": "vqe_he2_L2_mix",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "a40cf07639c472b918f4cb9ced93449fa5da5e7c4e24204da74717acd51a0cea",
+      "reason": ""
+    }
+  ],
+  "depth_observation": {
+    "note": "OBSERVATION, NOT A SEAL — variational energy of sealed 2-layer ansatz via backend_adapter; depth/expressibility sweep. Variational principle <H> >= E_ground holds; richer (per-qubit independent) parameters shrink the gap (0.071 -> ~0.002, ~30x) but it stays > 0: VQE remains a bound, not exact (the depth-deepening of variational != exact).",
+    "E_ground_exact": -2.236068,
+    "sealed_samples": [
+      {
+        "app": "vqe_he2_L2_pi4",
+        "angles": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "energy": -1.664214,
+        "above_ground": true
+      },
+      {
+        "app": "vqe_he2_L2_mix",
+        "angles": [
+          0.25,
+          0.5,
+          -0.25,
+          0.25
+        ],
+        "energy": 0.0,
+        "above_ground": true
+      }
+    ],
+    "gap_L1_single_theta": 0.070973,
+    "gap_L2_perqubit": 0.006439,
+    "gap_shrinks": true,
+    "gap_L2_still_positive": true,
+    "variational_bound_holds": true
+  },
+  "all_ok": true,
+  "honesty": "2-layer per-qubit ansatz sealed Tier-0 (zero new modules, reuses Ry). Depth/expressibility observation (not a seal): richer parameters shrink the variational gap ~30x but it stays >0 — variational != exact, deepened."
+}

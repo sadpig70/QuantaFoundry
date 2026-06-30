@@ -1,0 +1,49 @@
+{
+  "project": "PostW12ExternalBridge",
+  "workplan": ".pgf/WORKPLAN-PostW12ExternalBridge.md",
+  "design": ".pgf/DESIGN-PostW12ExternalBridge.md",
+  "started_at": "2026-06-30",
+  "updated_at": "2026-06-30",
+  "iteration": 1,
+  "nodes": {
+    "EvidencePack": {
+      "status": "done",
+      "outputs": {
+        "notes": "Captured W12.21 evidence: root 1134ea04099ea0c1, 77 modules, 147 apps, c12x, cmul2_mod3683, reproduce_all REPRODUCED."
+      }
+    },
+    "ExtMap": {
+      "status": "done",
+      "outputs": {
+        "files_created": [".pgf/external/POST-W12-EXT-BRIDGE.json"],
+        "notes": "Mapped EXT_W3_5_CIPilot, EXT_W4_2_PoisonPanel, EXT_W5_3_RuntimeKeys, EXT_SD_BackendEvidence, EXT_ServerLink."
+      }
+    },
+    "ExecutionOrder": {
+      "status": "done",
+      "outputs": {
+        "notes": "Priority: CI pilot if repo access; runtime keys if keys; backend evidence if backend; poison panel if data; ServerLink only after scope. M2 DocSyncBatch if 정욱님 says 동기화."
+      }
+    },
+    "BoundaryGuard": {
+      "status": "done",
+      "outputs": {
+        "notes": "No external execution, no external docs sync, no c13x/payoff-family/shor3683 expansion."
+      }
+    },
+    "BacklogUpdate": {
+      "status": "done",
+      "outputs": {
+        "files_modified": ["HANDOFF.md", "remain_task_list.md", "task_record.md", ".pgf/DESIGN-MasterRoadmap.md"],
+        "next": "M2_DocSyncBatch on explicit 동기화, otherwise corresponding EXT only after unblock input"
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

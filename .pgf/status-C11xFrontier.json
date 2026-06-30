@@ -1,0 +1,85 @@
+{
+  "project": "C11xFrontier",
+  "design": ".pgf/DESIGN-C11xFrontier.md",
+  "workplan": ".pgf/WORKPLAN-C11xFrontier.md",
+  "review": ".pgf/REVIEW-C11xFrontier.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 1,
+  "nodes": {
+    "SealC11x": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/modules/c11x.pg",
+          "registry/modules/c11x.sealed.json",
+          "registry/modules/c11x.provenance.json"
+        ],
+        "notes": "c11x Tier-0, n_sys=12, independent cnx_perm(11) hash matched."
+      }
+    },
+    "ExtendModmulCap": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/genskills.py"
+        ],
+        "notes": "gen_modmul cap extended to 11 controls and still rejects >11."
+      }
+    },
+    "SealCmul1285": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul2_mod1285.app.pg",
+          "registry/apps/cmul2_mod1285.sealed.json",
+          ".pgf/arith/C11X-FRONTIER-1285-REPORT.json"
+        ],
+        "notes": "cmul2_mod1285 Tier-0, gates=4088, max_control=11, c11x count=79, independent arithmetic hash matched."
+      }
+    },
+    "VerifyRegression": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/reproduce_all.py",
+          "scripts/second_oracle.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff"
+        ],
+        "notes": "Registry root 138acc5a4d720de1dbf73e65f29956ab4e8c44c499b5044d218c9d943e0f31a6."
+      }
+    },
+    "UpdateBacklog": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md",
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md"
+        ],
+        "notes": "Next finite candidate is W12.18 C11xPayoffFamily."
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "verification": {
+    "c11x_frontier": "python scripts/c11x_frontier.py -> all_ok=True",
+    "reproduce_all": "REPRODUCED",
+    "second_oracle": "70/70",
+    "seal_gate_ci": "PASS",
+    "backlog_compaction_audit": "all_ok=True",
+    "genskills_verify": "INTACT",
+    "verify_contested_guard": "ALL PASS",
+    "registry_root_hash": "138acc5a4d720de1dbf73e65f29956ab4e8c44c499b5044d218c9d943e0f31a6"
+  }
+}

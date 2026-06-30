@@ -1,0 +1,108 @@
+{
+  "phase": "W12.21 C12xPrimitiveFrontier",
+  "honesty": "c12x closes the 12-control primitive gap for 12-work-bit modular arithmetic. c12x and cmul2_mod3683 are Tier-0 exact seals; payoff family and full Shor-3683 are deferred.",
+  "target": {
+    "N": 3683,
+    "a": 2,
+    "factors": [
+      29,
+      127
+    ],
+    "work": 12,
+    "nq": 13
+  },
+  "c12x_module": {
+    "id": "c12x",
+    "sealed": true,
+    "tier": 0,
+    "n_sys": 13,
+    "u_hash": "16cacaec94c446a944331e0b4064400ce6130ed025f7240ef00dae1b48e97ed2",
+    "resource": {
+      "and_bloq": 11,
+      "clifford": 12,
+      "measurement": 11,
+      "total_t": 44
+    },
+    "available_mib_at_attempt": 5952,
+    "raw_matrix_mib": 1024
+  },
+  "c12x_independent": {
+    "independent_u_hash": "16cacaec94c446a9",
+    "matches_sealed": true
+  },
+  "cmul_app": {
+    "id": "cmul2_mod3683",
+    "N": 3683,
+    "a": 2,
+    "factors": [
+      29,
+      127
+    ],
+    "nq": 13,
+    "sealed": true,
+    "tier": 0,
+    "u_hash": "983cb6743d80f52527c32e8e73f29a6f5e9928a8eeff573d3029f68ef28efe4c",
+    "resource": {
+      "and_bloq": 13989,
+      "clifford": 15809,
+      "measurement": 13989,
+      "toffoli": 28,
+      "total_t": 56068
+    },
+    "reason": "fast_exact_permutation_capp",
+    "gate_count": 1848,
+    "control_dist": {
+      "11": 177,
+      "12": 45,
+      "10": 355,
+      "9": 444,
+      "8": 406,
+      "7": 251,
+      "6": 89,
+      "5": 34,
+      "4": 10,
+      "3": 9,
+      "2": 28
+    },
+    "max_control": 12,
+    "deps": [
+      "c10x",
+      "c11x",
+      "c12x",
+      "c3x",
+      "c4x",
+      "c5x",
+      "c6x",
+      "c7x",
+      "c8x",
+      "c9x",
+      "toffoli"
+    ]
+  },
+  "independent_arith_verify": {
+    "id": "cmul2_mod3683",
+    "independent_u_hash": "983cb6743d80f525",
+    "matches_sealed": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 3683,
+    "order_r": 28,
+    "r_even": true,
+    "a_r2": 1652,
+    "nontrivial": true,
+    "factors": [
+      29,
+      127
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "deferred": [
+    "cmul4_mod3683",
+    "cmul16_mod3683",
+    "cmul256_mod3683",
+    "cmul2925_mod3683",
+    "shor3683"
+  ],
+  "all_ok": true
+}

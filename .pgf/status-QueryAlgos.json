@@ -1,0 +1,90 @@
+{
+  "project": "QueryAlgos",
+  "workplan": ".pgf/WORKPLAN-QueryAlgos.md",
+  "design": ".pgf/DESIGN-QueryAlgos.md",
+  "started_at": "2026-06-29T00:00:00+09:00",
+  "updated_at": "2026-06-29T00:00:00+09:00",
+  "iteration": 5,
+  "nodes": {
+    "Design": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/DESIGN-QueryAlgos.md",
+          ".pgf/WORKPLAN-QueryAlgos.md"
+        ],
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "W12_1 node added before implementation; design review approved."
+      }
+    },
+    "AppSeal": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/query_family.py",
+          "specs/apps/dj2_const1.app.pg",
+          "specs/apps/dj2_balanced_xor.app.pg",
+          "specs/apps/bv3_s101.app.pg",
+          "specs/apps/simon2_s11.app.pg",
+          "registry/apps/dj2_const1.sealed.json",
+          "registry/apps/dj2_balanced_xor.sealed.json",
+          "registry/apps/bv3_s101.sealed.json",
+          "registry/apps/simon2_s11.sealed.json"
+        ],
+        "files_modified": [
+          ".pgf/autoforge/forge_apps.py"
+        ],
+        "notes": "All four apps sealed Tier-0; no new modules."
+      }
+    },
+    "Observation": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/arith/QUERY-FAMILY-REPORT.json"
+        ],
+        "notes": "DJ/BV deterministic readout and Simon support checks passed."
+      }
+    },
+    "Verification": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/DEPENDENCY-GRAPH.json",
+          "registry/DEPENDENCY-GRAPH.md",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff",
+          ".pgf/adoption/RELEASE-META.json",
+          ".pgf/adoption/seal-badge.json",
+          "reports/REPRODUCE-RESULT.json",
+          "scripts/seal_gate_ci.py"
+        ],
+        "notes": "reproduce_all REPRODUCED; second_oracle 62/62; contested guard PASS; seal_gate PASS."
+      }
+    },
+    "Documentation": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "task_record.md",
+          "remain_task_list.md",
+          ".pgf/DESIGN-MasterRoadmap.md",
+          ".pgf/DESIGN-QueryAlgos.md",
+          ".pgf/WORKPLAN-QueryAlgos.md"
+        ],
+        "notes": "Internal canonical docs updated; external three docs deferred to sync batch."
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

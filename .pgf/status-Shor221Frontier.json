@@ -1,0 +1,69 @@
+{
+  "project": "Shor221StructuralFrontier",
+  "workplan": ".pgf/WORKPLAN-Shor221Frontier.md",
+  "design": ".pgf/DESIGN-Shor221Frontier.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 4,
+  "nodes": {
+    "TargetConfirm": {
+      "status": "done",
+      "outputs": {
+        "notes": "N=221=13*17, a=2, powa=[35,120,35,120,35,16,4,2], unique=[2,4,16,35,120]."
+      }
+    },
+    "SealPowerMultipliers": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul2_mod221.app.pg",
+          "specs/apps/cmul4_mod221.app.pg",
+          "specs/apps/cmul16_mod221.app.pg",
+          "specs/apps/cmul35_mod221.app.pg",
+          "specs/apps/cmul120_mod221.app.pg",
+          "registry/apps/cmul2_mod221.sealed.json",
+          "registry/apps/cmul4_mod221.sealed.json",
+          "registry/apps/cmul16_mod221.sealed.json",
+          "registry/apps/cmul35_mod221.sealed.json",
+          "registry/apps/cmul120_mod221.sealed.json"
+        ],
+        "notes": "All five power multipliers sealed Tier-0 with max_control=8 and c8x dependency; independent arithmetic u_hash matched 5/5."
+      }
+    },
+    "AssembleShor221": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/shor221.app.pg",
+          "registry/apps/shor221.sealed.json",
+          ".pgf/arith/SHOR-FRONTIER-221-REPORT.json"
+        ],
+        "notes": "shor221 sealed Tier-1 structural, n_sys=16, deterministic structural reassembly true."
+      }
+    },
+    "RegressionUpdate": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/reproduce_all.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/DEPENDENCY-GRAPH.json",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff",
+          ".pgf/adoption/RELEASE-META.json",
+          ".pgf/adoption/seal-badge.json",
+          "reports/REPRODUCE-RESULT.json"
+        ],
+        "notes": "reproduce_all REPRODUCED; second_oracle 67/67; seal_gate PASS; contested_guard PASS; oracle fingerprint unchanged."
+      }
+    }
+  },
+  "summary": {
+    "total": 4,
+    "done": 4,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

@@ -2,8 +2,8 @@
   "schema": "genskill-catalog/v2",
   "count": 8,
   "note": "생성 *방법* 라이브러리(1급 데이터). 결과물 라이브러리(registry/REGISTRY-MANIFEST)의 생성-방법 짝. byte_frozen=True 는 이미 봉인된 family 의 생성기로 산출 spec 이 committed spec 과 바이트 일치(determinism). 산출물 봉인은 app_assemble 오라클이 수행. source_hash/catalog_root_hash = method self-seal(생성방법 변조탐지; verify 로 재검증).",
-  "catalog_root_hash": "01c5b88e550eef07128affe65055a8a4d67679ccf0dce4a8bc64c43763bee1ee",
-  "library_file_hash": "8ba84521b3f97b421be524c871f2772546e85c842c524e02f23121bc2190a433",
+  "catalog_root_hash": "eb48d0622c11b8792ff9c511064f29f75d1fea19cc7a0e34b422fa63690e6d57",
+  "library_file_hash": "6c4d068a9c309b492060c3c97dca63d279960fada103f46376ddc4457e4612b1",
   "skills": [
     {
       "version": "1",
@@ -120,12 +120,19 @@
       "produces": "app",
       "param": "a,N,nq",
       "kind": "controlled modular multiplier (reversible arithmetic synthesis)",
-      "golden_method": "arithmetic permutation (×a mod N, identity out-of-range) + MMD transformation-based synthesis into sealed MCTs (toffoli/c3x/c4x/c5x, ≤5 controls)",
+      "golden_method": "arithmetic permutation (×a mod N, identity out-of-range) + MMD transformation-based synthesis into sealed MCTs (toffoli/c3x/c4x/c5x/c6x/c7x/c8x/c9x/c10x/c11x/c12x, ≤12 controls)",
       "required_modules": [
         "toffoli",
         "c3x",
         "c4x",
-        "c5x"
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "c10x",
+        "c11x",
+        "c12x"
       ],
       "instance_pattern": "^cmul(\\d+)_mod(\\d+)$",
       "byte_frozen": false,
@@ -135,7 +142,7 @@
         6
       ],
       "id": "modmul_synth",
-      "source_hash": "65fdcebe5dbe766dd106df177ea7a325d5bf95d683982b0d0e60e31889ec09f3"
+      "source_hash": "5dbf5448819db28448e62595cb618a43e3bb65143816fc36ba1b18048569fd07"
     }
   ]
 }

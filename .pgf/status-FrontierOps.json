@@ -1,0 +1,66 @@
+{
+  "project": "FrontierOps",
+  "design": ".pgf/DESIGN-FrontierOps.md",
+  "workplan": ".pgf/WORKPLAN-FrontierOps.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 1,
+  "nodes": {
+    "FrontierSelector": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/frontier_selector.py",
+          ".pgf/arith/FRONTIER-SELECTOR-REPORT.json"
+        ],
+        "notes": "Best 512-767 candidate: N=635=5*127, work=10, max_control=10, unique powers=5, total gates=17250."
+      }
+    },
+    "ShorStructuralGeneralizer": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/shor_structural_generalizer.py",
+          ".pgf/arith/SHOR-STRUCTURAL-GENERALIZER-REPORT.json"
+        ],
+        "notes": "shor119, shor221, shor381 structural hashes/resources and generated plans reproduced exactly."
+      }
+    },
+    "C10xPrimitiveReview": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/c10x_review.py",
+          ".pgf/arith/C10X-PRIMITIVE-REVIEW.json"
+        ],
+        "notes": "Review-only decision: prepare W12.14 C10xPrimitiveFrontier; recommended target N=635."
+      }
+    },
+    "BacklogUpdate": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md",
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md"
+        ],
+        "notes": "W12.11-W12.13 marked done; W12.14 candidate added. Registry root unchanged."
+      }
+    }
+  },
+  "summary": {
+    "total": 4,
+    "done": 4,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "verification": {
+    "frontier_selector": "python scripts/frontier_selector.py -> report generated",
+    "shor_structural_generalizer": "python scripts/shor_structural_generalizer.py -> all_ok=True",
+    "c10x_review": "python scripts/c10x_review.py -> GO_FOR_REVIEWED_NEXT_STEP_NOT_NOW",
+    "root_unchanged": "fc9c2184c32281a367a842880acbcdfa3176df2079edd5fb101197b7e316a9eb",
+    "reproduce_all": "REPRODUCED"
+  }
+}

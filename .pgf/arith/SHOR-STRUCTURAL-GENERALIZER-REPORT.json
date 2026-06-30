@@ -1,0 +1,74 @@
+{
+  "phase": "W12.12 ShorStructuralGeneralizer",
+  "schema": "shor-structural-generalizer/v1",
+  "honesty": "Report/helper only. Existing structural seals are not rewritten.",
+  "helper": "build_shor_spec(app_id, n, a, t=8)",
+  "results": [
+    {
+      "id": "shor119",
+      "N": 119,
+      "a": 2,
+      "t": 8,
+      "n_sys": 15,
+      "sealed_u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690",
+      "rebuilt_u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690",
+      "hash_matches": true,
+      "resource_matches": true,
+      "plan_matches_generator": true,
+      "child_count": 17
+    },
+    {
+      "id": "shor221",
+      "N": 221,
+      "a": 2,
+      "t": 8,
+      "n_sys": 16,
+      "sealed_u_hash": "4ab5cb39c5d6e7179bfff60cd732600f8376524d9c12a348ad77e472abaf293b",
+      "rebuilt_u_hash": "4ab5cb39c5d6e7179bfff60cd732600f8376524d9c12a348ad77e472abaf293b",
+      "hash_matches": true,
+      "resource_matches": true,
+      "plan_matches_generator": true,
+      "child_count": 17
+    },
+    {
+      "id": "shor381",
+      "N": 381,
+      "a": 2,
+      "t": 8,
+      "n_sys": 17,
+      "sealed_u_hash": "08e08864499ce9062c54b7e2944234a9466438198bc37ef59b9b358570e4aebe",
+      "rebuilt_u_hash": "08e08864499ce9062c54b7e2944234a9466438198bc37ef59b9b358570e4aebe",
+      "hash_matches": true,
+      "resource_matches": true,
+      "plan_matches_generator": true,
+      "child_count": 17
+    },
+    {
+      "id": "shor635",
+      "N": 635,
+      "a": 2,
+      "t": 8,
+      "n_sys": 18,
+      "sealed_u_hash": "ca75c6224e94c6fea9fead630b90b39cc6705fa3704a1203b58e7b32dc2eb450",
+      "rebuilt_u_hash": "ca75c6224e94c6fea9fead630b90b39cc6705fa3704a1203b58e7b32dc2eb450",
+      "hash_matches": true,
+      "resource_matches": true,
+      "plan_matches_generator": true,
+      "child_count": 17
+    },
+    {
+      "id": "shor1285",
+      "N": 1285,
+      "a": 2,
+      "t": 8,
+      "n_sys": 19,
+      "sealed_u_hash": "2b38f641ca31a1553183a0b2dc86a3aceeb1fb35b096f41d92a3afeae4997748",
+      "rebuilt_u_hash": "2b38f641ca31a1553183a0b2dc86a3aceeb1fb35b096f41d92a3afeae4997748",
+      "hash_matches": true,
+      "resource_matches": true,
+      "plan_matches_generator": true,
+      "child_count": 13
+    }
+  ],
+  "all_ok": true
+}

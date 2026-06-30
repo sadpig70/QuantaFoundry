@@ -1,6 +1,6 @@
 # DESIGN-Adoption — Stage 3 Adoption-CI (신뢰자본 외부 소비화)
 
-> PGF design mode · 기반 = `roadmap_process_plan.md` Stage 3 (Track C) · 방법 = PG Gantree + PPR.
+> PGF design mode · 기반 = `_legacy/roadmap_process_plan.md` Stage 3 (Track C) · 방법 = PG Gantree + PPR.
 > 정직성: 비파괴 가산. registry/sealed/frozen/fingerprint 불변. QASM round-trip 은 second_oracle
 > 독립 numpy(INDEP+embed)로 검증 — 봉인 u_hash 재현이 export 정직성의 증명.
 > 소비 자산(사용만): second_oracle(INDEP/embed/hash) · registry_tools(parse_plan_deps) ·

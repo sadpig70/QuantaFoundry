@@ -1,0 +1,881 @@
+{
+  "phase": "W12.13 C10xPrimitiveReview",
+  "schema": "c10x-review/v1",
+  "honesty": "Review-only. No c10x spec, no seal, no registry/root mutation.",
+  "dense_cost_estimate": {
+    "c10x_n_sys": 11,
+    "unitary_dimension": 2048,
+    "complex128_dense_bytes": 67108864,
+    "comment": "Standalone c10x exact dense oracle is likely feasible; 11q app-family exact dense is heavier and should keep permutation fast path."
+  },
+  "candidate_scan": {
+    "range": [
+      512,
+      767
+    ],
+    "a": 2,
+    "count": 36,
+    "top": [
+      {
+        "N": 635,
+        "a": 2,
+        "factors": [
+          5,
+          127
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          5,
+          127
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          131,
+          256,
+          16,
+          131,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          131,
+          256
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 17250,
+        "max_control": 10,
+        "c10_count": 347,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 638,
+            "max_control": 10,
+            "c10_count": 23
+          },
+          {
+            "a": 4,
+            "gate_count": 3048,
+            "max_control": 10,
+            "c10_count": 72
+          },
+          {
+            "a": 16,
+            "gate_count": 4194,
+            "max_control": 10,
+            "c10_count": 78
+          },
+          {
+            "a": 131,
+            "gate_count": 4737,
+            "max_control": 10,
+            "c10_count": 92
+          },
+          {
+            "a": 256,
+            "gate_count": 4633,
+            "max_control": 10,
+            "c10_count": 82
+          }
+        ],
+        "score": 66903
+      },
+      {
+        "N": 723,
+        "a": 2,
+        "factors": [
+          3,
+          241
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          3,
+          241
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          466,
+          256,
+          466,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          466
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 18020,
+        "max_control": 10,
+        "c10_count": 385,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1247,
+            "max_control": 10,
+            "c10_count": 55
+          },
+          {
+            "a": 4,
+            "gate_count": 3008,
+            "max_control": 10,
+            "c10_count": 60
+          },
+          {
+            "a": 16,
+            "gate_count": 4194,
+            "max_control": 10,
+            "c10_count": 82
+          },
+          {
+            "a": 256,
+            "gate_count": 4801,
+            "max_control": 10,
+            "c10_count": 100
+          },
+          {
+            "a": 466,
+            "gate_count": 4770,
+            "max_control": 10,
+            "c10_count": 88
+          }
+        ],
+        "score": 67635
+      },
+      {
+        "N": 755,
+        "a": 2,
+        "factors": [
+          5,
+          151
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          5,
+          151
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          16,
+          306,
+          606,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          306,
+          606
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 21874,
+        "max_control": 10,
+        "c10_count": 461,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 983,
+            "max_control": 10,
+            "c10_count": 51
+          },
+          {
+            "a": 4,
+            "gate_count": 2754,
+            "max_control": 10,
+            "c10_count": 60
+          },
+          {
+            "a": 16,
+            "gate_count": 3818,
+            "max_control": 10,
+            "c10_count": 76
+          },
+          {
+            "a": 256,
+            "gate_count": 4728,
+            "max_control": 10,
+            "c10_count": 86
+          },
+          {
+            "a": 306,
+            "gate_count": 4784,
+            "max_control": 10,
+            "c10_count": 100
+          },
+          {
+            "a": 606,
+            "gate_count": 4807,
+            "max_control": 10,
+            "c10_count": 88
+          }
+        ],
+        "score": 81413
+      },
+      {
+        "N": 731,
+        "a": 2,
+        "factors": [
+          17,
+          43
+        ],
+        "order_r": 56,
+        "readout_factors": [
+          17,
+          43
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          477,
+          256,
+          188,
+          477,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          188,
+          256,
+          477
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 22183,
+        "max_control": 10,
+        "c10_count": 461,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1105,
+            "max_control": 10,
+            "c10_count": 57
+          },
+          {
+            "a": 4,
+            "gate_count": 2746,
+            "max_control": 10,
+            "c10_count": 66
+          },
+          {
+            "a": 16,
+            "gate_count": 4163,
+            "max_control": 10,
+            "c10_count": 84
+          },
+          {
+            "a": 188,
+            "gate_count": 4704,
+            "max_control": 10,
+            "c10_count": 80
+          },
+          {
+            "a": 256,
+            "gate_count": 4717,
+            "max_control": 10,
+            "c10_count": 90
+          },
+          {
+            "a": 477,
+            "gate_count": 4748,
+            "max_control": 10,
+            "c10_count": 84
+          }
+        ],
+        "score": 81722
+      },
+      {
+        "N": 671,
+        "a": 2,
+        "factors": [
+          11,
+          61
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          11,
+          61
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          16,
+          301,
+          449,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          301,
+          449
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 22914,
+        "max_control": 10,
+        "c10_count": 482,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1142,
+            "max_control": 10,
+            "c10_count": 52
+          },
+          {
+            "a": 4,
+            "gate_count": 3073,
+            "max_control": 10,
+            "c10_count": 72
+          },
+          {
+            "a": 16,
+            "gate_count": 4418,
+            "max_control": 10,
+            "c10_count": 92
+          },
+          {
+            "a": 256,
+            "gate_count": 4809,
+            "max_control": 10,
+            "c10_count": 94
+          },
+          {
+            "a": 301,
+            "gate_count": 4765,
+            "max_control": 10,
+            "c10_count": 80
+          },
+          {
+            "a": 449,
+            "gate_count": 4707,
+            "max_control": 10,
+            "c10_count": 92
+          }
+        ],
+        "score": 82432
+      },
+      {
+        "N": 679,
+        "a": 2,
+        "factors": [
+          7,
+          97
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          7,
+          97
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          326,
+          352,
+          326,
+          352,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          326,
+          352
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 23754,
+        "max_control": 10,
+        "c10_count": 466,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1386,
+            "max_control": 10,
+            "c10_count": 60
+          },
+          {
+            "a": 4,
+            "gate_count": 3525,
+            "max_control": 10,
+            "c10_count": 76
+          },
+          {
+            "a": 16,
+            "gate_count": 4516,
+            "max_control": 10,
+            "c10_count": 82
+          },
+          {
+            "a": 256,
+            "gate_count": 4725,
+            "max_control": 10,
+            "c10_count": 84
+          },
+          {
+            "a": 326,
+            "gate_count": 4827,
+            "max_control": 10,
+            "c10_count": 88
+          },
+          {
+            "a": 352,
+            "gate_count": 4775,
+            "max_control": 10,
+            "c10_count": 76
+          }
+        ],
+        "score": 83288
+      },
+      {
+        "N": 697,
+        "a": 2,
+        "factors": [
+          17,
+          41
+        ],
+        "order_r": 40,
+        "readout_factors": [
+          17,
+          41
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          426,
+          324,
+          18,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          18,
+          256,
+          324,
+          426
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 27251,
+        "max_control": 10,
+        "c10_count": 576,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1318,
+            "max_control": 10,
+            "c10_count": 54
+          },
+          {
+            "a": 4,
+            "gate_count": 2991,
+            "max_control": 10,
+            "c10_count": 88
+          },
+          {
+            "a": 16,
+            "gate_count": 4231,
+            "max_control": 10,
+            "c10_count": 82
+          },
+          {
+            "a": 18,
+            "gate_count": 4560,
+            "max_control": 10,
+            "c10_count": 94
+          },
+          {
+            "a": 256,
+            "gate_count": 4692,
+            "max_control": 10,
+            "c10_count": 76
+          },
+          {
+            "a": 324,
+            "gate_count": 4677,
+            "max_control": 10,
+            "c10_count": 92
+          },
+          {
+            "a": 426,
+            "gate_count": 4782,
+            "max_control": 10,
+            "c10_count": 90
+          }
+        ],
+        "score": 96675
+      },
+      {
+        "N": 527,
+        "a": 2,
+        "factors": [
+          17,
+          31
+        ],
+        "order_r": 40,
+        "readout_factors": [
+          17,
+          31
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          171,
+          35,
+          188,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          35,
+          171,
+          188,
+          256
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 28470,
+        "max_control": 10,
+        "c10_count": 572,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 2037,
+            "max_control": 10,
+            "c10_count": 62
+          },
+          {
+            "a": 4,
+            "gate_count": 3315,
+            "max_control": 10,
+            "c10_count": 68
+          },
+          {
+            "a": 16,
+            "gate_count": 4189,
+            "max_control": 10,
+            "c10_count": 68
+          },
+          {
+            "a": 35,
+            "gate_count": 4698,
+            "max_control": 10,
+            "c10_count": 102
+          },
+          {
+            "a": 171,
+            "gate_count": 4779,
+            "max_control": 10,
+            "c10_count": 94
+          },
+          {
+            "a": 188,
+            "gate_count": 4703,
+            "max_control": 10,
+            "c10_count": 82
+          },
+          {
+            "a": 256,
+            "gate_count": 4749,
+            "max_control": 10,
+            "c10_count": 96
+          }
+        ],
+        "score": 97898
+      },
+      {
+        "N": 579,
+        "a": 2,
+        "factors": [
+          3,
+          193
+        ],
+        "order_r": 96,
+        "readout_factors": [
+          3,
+          193
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          301,
+          277,
+          301,
+          109,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          109,
+          256,
+          277,
+          301
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 28998,
+        "max_control": 10,
+        "c10_count": 559,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 2098,
+            "max_control": 10,
+            "c10_count": 53
+          },
+          {
+            "a": 4,
+            "gate_count": 3431,
+            "max_control": 10,
+            "c10_count": 70
+          },
+          {
+            "a": 16,
+            "gate_count": 4440,
+            "max_control": 10,
+            "c10_count": 82
+          },
+          {
+            "a": 109,
+            "gate_count": 4751,
+            "max_control": 10,
+            "c10_count": 88
+          },
+          {
+            "a": 256,
+            "gate_count": 4762,
+            "max_control": 10,
+            "c10_count": 92
+          },
+          {
+            "a": 277,
+            "gate_count": 4756,
+            "max_control": 10,
+            "c10_count": 84
+          },
+          {
+            "a": 301,
+            "gate_count": 4760,
+            "max_control": 10,
+            "c10_count": 90
+          }
+        ],
+        "score": 98439
+      },
+      {
+        "N": 767,
+        "a": 2,
+        "factors": [
+          13,
+          59
+        ],
+        "order_r": 348,
+        "readout_factors": [
+          13,
+          59
+        ],
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          438,
+          536,
+          464,
+          341,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          341,
+          438,
+          464,
+          536
+        ],
+        "unique_power_count": 8,
+        "total_gate_count": 23997,
+        "max_control": 10,
+        "c10_count": 498,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 81,
+            "max_control": 5,
+            "c10_count": 0
+          },
+          {
+            "a": 4,
+            "gate_count": 1534,
+            "max_control": 10,
+            "c10_count": 62
+          },
+          {
+            "a": 16,
+            "gate_count": 816,
+            "max_control": 10,
+            "c10_count": 24
+          },
+          {
+            "a": 256,
+            "gate_count": 2536,
+            "max_control": 10,
+            "c10_count": 30
+          },
+          {
+            "a": 341,
+            "gate_count": 4750,
+            "max_control": 10,
+            "c10_count": 96
+          },
+          {
+            "a": 438,
+            "gate_count": 4759,
+            "max_control": 10,
+            "c10_count": 88
+          },
+          {
+            "a": 464,
+            "gate_count": 4782,
+            "max_control": 10,
+            "c10_count": 98
+          },
+          {
+            "a": 536,
+            "gate_count": 4739,
+            "max_control": 10,
+            "c10_count": 100
+          }
+        ],
+        "score": 103499
+      }
+    ]
+  },
+  "decision": {
+    "go_no_go": "GO_FOR_REVIEWED_NEXT_STEP_NOT_NOW",
+    "recommended_next": "W12.14 C10xPrimitiveFrontier",
+    "recommended_target": {
+      "N": 635,
+      "a": 2,
+      "factors": [
+        5,
+        127
+      ],
+      "order_r": 28,
+      "readout_factors": [
+        5,
+        127
+      ],
+      "work": 10,
+      "nq": 11,
+      "powa": [
+        131,
+        256,
+        16,
+        131,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        131,
+        256
+      ],
+      "unique_power_count": 5,
+      "total_gate_count": 17250,
+      "max_control": 10,
+      "c10_count": 347,
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 638,
+          "max_control": 10,
+          "c10_count": 23
+        },
+        {
+          "a": 4,
+          "gate_count": 3048,
+          "max_control": 10,
+          "c10_count": 72
+        },
+        {
+          "a": 16,
+          "gate_count": 4194,
+          "max_control": 10,
+          "c10_count": 78
+        },
+        {
+          "a": 131,
+          "gate_count": 4737,
+          "max_control": 10,
+          "c10_count": 92
+        },
+        {
+          "a": 256,
+          "gate_count": 4633,
+          "max_control": 10,
+          "c10_count": 82
+        }
+      ],
+      "score": 66903
+    },
+    "guardrails": [
+      "Seal c10x module first and verify independent cnx_perm(10) hash.",
+      "Do not attempt full Shor in the same task.",
+      "Use permutation-space exact C-app path for 11q multipliers.",
+      "Keep c11x as the next honest blocker."
+    ]
+  }
+}

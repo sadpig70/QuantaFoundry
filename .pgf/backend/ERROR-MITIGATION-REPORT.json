@@ -1,0 +1,83 @@
+{
+  "phase": "W12.4 ErrorMitigationObservation",
+  "honesty_boundary": "OBSERVATION, NOT A SEAL. Deterministic depolarizing-noise expectations and zero-noise extrapolation are simulator-side estimates over already sealed Tier-0 apps loaded through backend_adapter. Mitigation reduces bias but is not exact recovery or verification.",
+  "registry_root_before": "211ef5bb910304d34bec073d49882c28172d0e43cc39d625094137b7b79f981e",
+  "registry_root_after": "211ef5bb910304d34bec073d49882c28172d0e43cc39d625094137b7b79f981e",
+  "root_unchanged": true,
+  "new_seals": 0,
+  "model": {
+    "noise": "global depolarizing expectation",
+    "alpha": "(1-base_epsilon)^scale",
+    "zne": "linear fit over scales [1,3,5], evaluated at scale=0",
+    "base_epsilon": 0.06
+  },
+  "cases": [
+    {
+      "case": "tfim3_suzuki4_X0",
+      "app_id": "tfim3_suzuki4_step",
+      "n": 3,
+      "observable": "X0",
+      "u_hash": "b74f4a8616e70a846b2ec8c4883b984efe524034364cd192c45a3a5d317b43d7",
+      "tier": 0,
+      "base_epsilon": 0.06,
+      "noise_scales": [
+        1,
+        3,
+        5
+      ],
+      "ideal_expectation": 0.240383229739,
+      "depolarized_trace_mean": 0.0,
+      "noisy_expectations": [
+        0.225960235955,
+        0.19965846449,
+        0.176418219223
+      ],
+      "zne_linear_estimate": 0.237835485771,
+      "zne_linear_slope": -0.012385504183,
+      "scale1_noisy_error": 0.014422993784,
+      "zne_error": 0.002547743968,
+      "error_reduction_factor": 5.661084,
+      "expectation_checks": {
+        "sealed_gate_passed": true,
+        "noisy_bias_visible": true,
+        "zne_reduces_bias": true,
+        "zne_not_exact": true
+      },
+      "all_expectations_met": true
+    },
+    {
+      "case": "qaoa_p3_maxcut",
+      "app_id": "qaoa_p3",
+      "n": 3,
+      "observable": "MaxCutCost(P3)",
+      "u_hash": "3d1f92227b491bbad8be03598a4d5e72aaf023cc5b5d25be59ea36a05bbd6684",
+      "tier": 0,
+      "base_epsilon": 0.06,
+      "noise_scales": [
+        1,
+        3,
+        5
+      ],
+      "ideal_expectation": 0.396446609407,
+      "depolarized_trace_mean": 1.0,
+      "noisy_expectations": [
+        0.432659812842,
+        0.498698210627,
+        0.55704973891
+      ],
+      "zne_linear_estimate": 0.402843476242,
+      "zne_linear_slope": 0.031097481517,
+      "scale1_noisy_error": 0.036213203436,
+      "zne_error": 0.006396866836,
+      "error_reduction_factor": 5.661084,
+      "expectation_checks": {
+        "sealed_gate_passed": true,
+        "noisy_bias_visible": true,
+        "zne_reduces_bias": true,
+        "zne_not_exact": true
+      },
+      "all_expectations_met": true
+    }
+  ],
+  "all_ok": true
+}

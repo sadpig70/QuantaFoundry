@@ -1,0 +1,92 @@
+{
+  "phase": "W12.1 Query/Oracle Algorithms",
+  "apps": [
+    {
+      "id": "dj2_const1",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "83b52e513d2f251ed6e0b332e52487b369569d0502fe26192dda2d08470dde26",
+      "reason": ""
+    },
+    {
+      "id": "dj2_balanced_xor",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "486effa3a55e9213c6285374b84138c265e606c71c94bf27978f7b52b9759926",
+      "reason": ""
+    },
+    {
+      "id": "bv3_s101",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "09db3d7ca2850ee95081f37d83547bdf3517448bdf8c8a7ade6f5964672cd009",
+      "reason": ""
+    },
+    {
+      "id": "simon2_s11",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "0bcfbe1526824789ee505cd363e2786dde0a6a7b8d1b2168416a14a7d66659d3",
+      "reason": ""
+    }
+  ],
+  "query_observation": {
+    "note": "OBSERVATION, NOT A SEAL — sealed query/oracle circuits executed from |0...0>. Deutsch-Jozsa/BV one-query readout and Simon support constraints are behavior claims over sealed Tier-0 unitaries; the seal itself only certifies composite==golden.",
+    "instances": {
+      "dj2_const1": {
+        "algorithm": "Deutsch-Jozsa",
+        "function": "constant_one",
+        "query_marginal": {
+          "00": 1.0
+        },
+        "expected": {
+          "00": 1.0
+        },
+        "deterministic_constant": true
+      },
+      "dj2_balanced_xor": {
+        "algorithm": "Deutsch-Jozsa",
+        "function": "x0_xor_x1",
+        "query_marginal": {
+          "11": 1.0
+        },
+        "expected": {
+          "11": 1.0
+        },
+        "deterministic_balanced_nonzero": true
+      },
+      "bv3_s101": {
+        "algorithm": "Bernstein-Vazirani",
+        "secret": "101",
+        "query_marginal": {
+          "101": 1.0
+        },
+        "expected": {
+          "101": 1.0
+        },
+        "secret_recovered_one_query": true
+      },
+      "simon2_s11": {
+        "algorithm": "Simon",
+        "hidden_period": "11",
+        "query_marginal": {
+          "00": 0.5,
+          "11": 0.5
+        },
+        "expected_support": [
+          "00",
+          "11"
+        ],
+        "all_y_dot_s_zero": true,
+        "support_correct": true
+      }
+    },
+    "all_ok": true
+  },
+  "all_ok": true,
+  "honesty": "The four query/oracle algorithm circuits are sealed as Tier-0 app unitaries (composite==golden, up-to-global-phase, zero new modules; only h_gate/x_gate/cnot). Deutsch-Jozsa one-query distinction, Bernstein-Vazirani one-query secret recovery, and Simon y·s=0 support are backend_adapter observations over sealed outputs, not seals."
+}

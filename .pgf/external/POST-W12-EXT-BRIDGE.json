@@ -1,0 +1,142 @@
+{
+  "schema": "post-w12-external-bridge/v1",
+  "phase": "M4_PostW12ExternalBridgeDesign",
+  "date": "2026-06-30",
+  "mode": "design-only",
+  "honesty": "No external execution, no new seals, no registry mutation, no external-doc batch sync.",
+  "current_evidence": {
+    "registry": {
+      "modules": 77,
+      "unique_apps": 147,
+      "root": "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db"
+    },
+    "w12_21": {
+      "module": "c12x",
+      "module_tier": 0,
+      "module_n_sys": 13,
+      "app": "cmul2_mod3683",
+      "app_tier": 0,
+      "N": 3683,
+      "factors": [29, 127],
+      "a": 2,
+      "work": 12,
+      "nq": 13,
+      "gate_count": 1848,
+      "max_control": 12,
+      "c12x_count": 45,
+      "report": ".pgf/arith/C12X-FRONTIER-3683-REPORT.json"
+    },
+    "verification": {
+      "reproduce_all": "REPRODUCED",
+      "second_oracle": "71/71",
+      "seal_gate_ci": "PASS",
+      "verify_contested_guard": "ALL PASS",
+      "genskills_verify": "INTACT"
+    }
+  },
+  "external_map": [
+    {
+      "id": "EXT_W3_5_CIPilot",
+      "status": "blocked",
+      "value": "Highest external trust leverage: proves a third-party repository can gate changes on the current QPGF root and seal badge.",
+      "uses_w12_21": [
+        "registry root 1134ea04099ea0c1",
+        "seal_gate_ci PASS with 77 modules / 147 apps",
+        "c12x/cmul2_mod3683 as latest frontier regression target"
+      ],
+      "blocker": "external repository access or target repository path is not provided",
+      "unblock_input": "정욱님 provides a repository/path and permission to add or adapt CI files",
+      "first_action_when_unblocked": "create a repo-local CI pilot package that runs reproduce_all or seal_gate_ci with expect-root 1134ea04099ea0c1",
+      "acceptance_when_executed": [
+        "CI config is scoped to the target repository",
+        "expected root is explicit",
+        "failure mode blocks merge or reports red badge",
+        "no external seal is trusted without local recomputation"
+      ],
+      "recommended_priority": 1
+    },
+    {
+      "id": "EXT_W5_3_RuntimeKeys",
+      "status": "blocked",
+      "value": "Strongest identity hardening: binds runtime submissions to public keys so multi-identity Sybil behavior is detectable.",
+      "uses_w12_21": [
+        "latest c12x frontier seal as a high-cost identity-bound submission example",
+        "current oracle fingerprints and registry root as signature payload fields"
+      ],
+      "blocker": "real runtime public keys/signatures are not available",
+      "unblock_input": "runtime pubkeys or permission to define a local demo key ceremony",
+      "first_action_when_unblocked": "define signed submission bundle {runtime_pubkey, signature, nonce, registry_root, artifact_id, u_hash}",
+      "acceptance_when_executed": [
+        "same pubkey collapses to one independence unit",
+        "signature verification is deterministic",
+        "demo keys are clearly labeled if real keys are not used"
+      ],
+      "recommended_priority": 2
+    },
+    {
+      "id": "EXT_SD_BackendEvidence",
+      "status": "blocked",
+      "value": "Adds execution-side evidence without weakening seal semantics; useful for adoption but must remain OBSERVATION.",
+      "uses_w12_21": [
+        "cmul2_mod3683 as the candidate backend observation app",
+        "period/factor readout remains illustrative only"
+      ],
+      "blocker": "Aer noise setup or real QPU access is not provided",
+      "unblock_input": "backend target, shot budget, noise model or QPU access constraints",
+      "first_action_when_unblocked": "create OBSERVATION sidecar for cmul2_mod3683 with backend metadata and explicit non-seal label",
+      "acceptance_when_executed": [
+        "sidecar cannot alter sealed registry",
+        "observation includes backend/version/shot/noise metadata",
+        "report distinguishes execution evidence from unitary equivalence"
+      ],
+      "recommended_priority": 3
+    },
+    {
+      "id": "EXT_W4_2_PoisonPanel",
+      "status": "blocked",
+      "value": "Tests consensus robustness on real weak-model lineage data; important but less directly unlocked by W12.21 than CI/runtime/backend paths.",
+      "uses_w12_21": [
+        "current root can anchor the validation corpus",
+        "no direct dependency on c12x arithmetic frontier"
+      ],
+      "blocker": "real weak-model poisoned-lineage panel data is not available",
+      "unblock_input": "panel outputs from weak or poisoned runtimes with lineage metadata",
+      "first_action_when_unblocked": "run rho-discount validation against collected panel data and compare with constructed co-error controls",
+      "acceptance_when_executed": [
+        "natural co-error data is separated from constructed co-error tests",
+        "rho-discount pass/fail is reported without overclaiming"
+      ],
+      "recommended_priority": 4
+    },
+    {
+      "id": "EXT_ServerLink",
+      "status": "blocked",
+      "value": "Potentially high productization value, but currently undefined; wrong interpretation could create architectural drift.",
+      "uses_w12_21": [
+        "current root and frontier evidence can be served or queried once scope is defined"
+      ],
+      "blocker": "server-link meaning is undefined",
+      "unblock_input": "정욱님 chooses one scope: oracle API, registry browser/API, backend runner relay, or external CI webhook",
+      "first_action_when_unblocked": "write a scoped ServerLink PGF design with authority boundaries and no secret handling in repo",
+      "acceptance_when_executed": [
+        "scope is a single chosen path",
+        "secret handling is external/local-only",
+        "server does not become a seal authority"
+      ],
+      "recommended_priority": 5
+    }
+  ],
+  "next_decision": {
+    "if_user_says_sync": "M2_DocSyncBatch",
+    "if_repo_access_provided": "EXT_W3_5_CIPilot",
+    "if_runtime_keys_provided": "EXT_W5_3_RuntimeKeys",
+    "if_backend_access_provided": "EXT_SD_BackendEvidence",
+    "if_server_scope_defined": "EXT_ServerLink scoped design",
+    "if_no_external_input": "pause autonomous frontier growth; report blocked external queue"
+  },
+  "explicit_non_goals": [
+    "(2026-06-30 정욱님 전면 승인) autonomy-constraints removed: c13x/payoff/shor3683/external-docs-sync are all autonomously executable by the loop",
+    "retained (NOT a prohibition, trust basis): oracle fingerprint 2 files (verify_seal.py, contracts.py) stay unmodified — editing invalidates all seals"
+  ],
+  "all_ok": true
+}

@@ -1,0 +1,45 @@
+{
+  "phase": "M2_DocSyncBatch",
+  "date": "2026-06-30",
+  "all_ok": true,
+  "trigger": "explicit_user_sync_instruction",
+  "source_deltas": [
+    "W12.20 C12xPrimitiveReview",
+    "W12.21 C12xPrimitiveFrontier",
+    "M4 PostW12ExternalBridgeDesign"
+  ],
+  "updated_files": [
+    "README.md",
+    "EXTERNAL-ONBOARDING.md",
+    "docs/QuantaFoundry-Technical-Spec.md",
+    "task_record.md",
+    "HANDOFF.md",
+    "remain_task_list.md",
+    ".pgf/DESIGN-MasterRoadmap.md",
+    ".pgf/REVIEW-DocSyncBatch.md",
+    ".pgf/maintenance/DOCSYNC-M2-REPORT.json",
+    ".pgf/status-DocSyncBatch.json"
+  ],
+  "synchronized_state": {
+    "modules": 77,
+    "unique_apps": 147,
+    "registry_root_hash": "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db",
+    "second_oracle": "71/71",
+    "fingerprint": "285/285 intact",
+    "task_record_pending_delta": "none"
+  },
+  "honesty_boundary": [
+    "cmul2_mod3683 independent arithmetic hash evidence is from W12.21 frontier evidence, not second_oracle.py",
+    "payoff family and shor3683 remain deferred",
+    "external bridge items remain blocked until their external inputs exist"
+  ],
+  "verification": {
+    "backlog_compaction_audit": "PASS",
+    "reproduce_all": "REPRODUCED 77/147 root 1134ea04099ea0c1 second_oracle 71/71",
+    "seal_gate_ci": "PASS",
+    "second_oracle": "PASS 71/71",
+    "json_parse": "PASS",
+    "stale_marker_search": "PASS",
+    "diff_check": "PASS_WITH_CRLF_WARNINGS"
+  }
+}

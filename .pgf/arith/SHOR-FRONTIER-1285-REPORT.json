@@ -1,0 +1,92 @@
+{
+  "phase": "W12.19 Shor1285StructuralFrontier",
+  "honesty": "N=1285=5*257 is the c11x payoff Shor structural frontier. cmul powers are already Tier-0 exact permutation app seals (W12.17/W12.18); shor1285 is Tier-1 structural, weaker than dense unitary equivalence; period readout is illustrative only.",
+  "target": {
+    "N": 1285,
+    "a": 2,
+    "factors": [
+      5,
+      257
+    ],
+    "counting_t": 8,
+    "work": 11,
+    "powa": [
+      1,
+      1,
+      1,
+      1,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256
+    ]
+  },
+  "independent_arith_verify": [
+    {
+      "id": "cmul2_mod1285",
+      "tier": 0,
+      "n_sys": 12,
+      "independent_u_hash": "4995dd11a5998b12",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul4_mod1285",
+      "tier": 0,
+      "n_sys": 12,
+      "independent_u_hash": "a87f825debcf09bd",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod1285",
+      "tier": 0,
+      "n_sys": 12,
+      "independent_u_hash": "3abb9974fdac6031",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul256_mod1285",
+      "tier": 0,
+      "n_sys": 12,
+      "independent_u_hash": "239f6e5669ddcfc0",
+      "matches_sealed": true
+    }
+  ],
+  "children_sealed": {
+    "cmul2_mod1285": true,
+    "cmul4_mod1285": true,
+    "cmul16_mod1285": true,
+    "cmul256_mod1285": true,
+    "iqft8": true,
+    "h_gate": true
+  },
+  "shor1285": {
+    "id": "shor1285",
+    "n_sys": 19,
+    "sealed": true,
+    "tier": 1,
+    "u_hash": "2b38f641ca31a1553183a0b2dc86a3aceeb1fb35b096f41d92a3afeae4997748",
+    "contract": "C1-C4(structural)",
+    "reason": "fast_structural_child_seals",
+    "deterministic_reassembly": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 1285,
+    "order_r": 16,
+    "r_even": true,
+    "a_r2": 256,
+    "nontrivial": true,
+    "factors": [
+      5,
+      257
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

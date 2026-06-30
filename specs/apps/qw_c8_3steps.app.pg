@@ -1,0 +1,21 @@
+# qw_c8_3steps — C8 three-step walk. W12.2 repeated coined quantum walk via qw_c8_step^3 sub-app reuse.
+```json id=app_meta
+{"id": "qw_c8_3steps", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+npos=3; power=3; n=1+npos; N=1<<npos; dim=1<<n
+S=np.zeros((dim,dim),dtype=complex)
+for s in range(dim):
+    coin=(s>>npos)&1; pos=s&(N-1)
+    newpos=(pos+(1 if coin==0 else -1))%N
+    out=(coin<<npos)|newpos
+    S[out,s]=1
+Hc=np.kron(H,np.eye(N,dtype=complex))
+step=S@Hc
+golden=np.linalg.matrix_power(step,power)
+```
+```json id=plan
+{"steps": [{"app": "qw_c8_step.app.pg"}, {"app": "qw_c8_step.app.pg"}, {"app": "qw_c8_step.app.pg"}]}
+```

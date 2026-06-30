@@ -12,7 +12,7 @@
 > (honest reversible synthesis, no MatrixGate) — N=15 was a 2⁴−1 degeneracy; (2) **app-level**
 > cross-model corroboration done (EXT v04: app-golden 4/4 + app-bloq 4/4) and consensus **necessity**
 > demonstrated by a true-divergence probe (EXT v05: free-parameter intents diverge); (3) a
-> **second, Qualtran-independent oracle** re-checks sealed unitaries (61/61); (4) **goal-autonomy**
+> **second, Qualtran-independent oracle** re-checks sealed unitaries (62/62); (4) **goal-autonomy**
 > extended to multiple families (GHZ + cluster) with autonomous sealing (human seed 0); (5) per-seal
 > **semantic_guarantee** layer (Tier-1 ≠ unitary_equiv, made explicit). Library now **46 sealed
 > modules → 57 sealed applications**, every primitive established with **zero human answer keys** (§8).
@@ -177,8 +177,11 @@
 > amplitudes (`a = 1/4`, `1/8`) that small-`t` QPE cannot read, at the cost of precision-vs-measurements.
 > Both readouts are observations, not seals. Growing **apps 94→97 (modules unchanged at 67;
 > `second_oracle` stays 61/61), root `a916c8da…→2cfe8dc3…`**.
-> Three EXT relay items remain (CI pilot,
-> weak-model poison panel, runtime keys); backend evidence remains gated/deferred. Companion docs:
+> **(W10.1 VQE ansatz)** opens a new horizontal class — the **variational quantum eigensolver**. A hardware-efficient ansatz (`Ry(θ)^⊗n · CNOT` ladder) is sealed *structurally* at fixed-θ instances (new module `ry_3pi4`=`Ry(3π/4)`; apps `vqe_he2_pi4/pi2/3pi4` (2q) and `vqe_he3_pi4` (3q), all **Tier-0 EXACT**, `composite==golden` up-to-phase, no `MatrixGate`, reusing `ry_pi4/pi2/3pi4`·`cnot`). The honest boundary gains a **variational** sibling of *approximation != exact*: the variational energy `<H_TFIM(θ)>` (computed via `backend_adapter`, an observation — not a seal) obeys the variational principle `<H> >= E_ground`, and a continuous θ-sweep approaches but never reaches the exact ground energy — an **ansatz-limited gap > 0** persists (TFIM2 gap≈0.071, TFIM3 gap≈0.097). VQE is a bound/approximation, not the exact ground. Growing **modules 67→68 (1 Tier-0 `ry_3pi4`; `second_oracle` to 62/62), apps 97→101, root `2cfe8dc3…→1a2a874d…`**.
+> **(W10.2 VQE deepening)** seals a **2-layer per-qubit** hardware-efficient ansatz (`vqe_he2_L2_*`, zero new modules); the variational gap shrinks with expressibility (0.071→~0.006) but stays >0 — depth *deepens* `variational != exact`, it does not remove it. **(W11.1 QAOA)** opens the combinatorial-optimization sibling: MaxCut QAOA p=1 sealed Tier-0 at fixed angles (`qaoa_p3`, `qaoa_c4`, **zero new modules** — reuses `cnot`/`rz_negpi4`/`rx_negpi4`/`h_gate`), the approximation ratio an observation that stays <1 even at optimal angles (P3 0.825, C4 0.75). **(W10.3 parameter-shift)** executes sealed `Ry` modules to show the parameter-shift rule yields the *exact* analytic gradient, contrasted with finite-difference (O(h²) approximation) — no new seals. Growing **apps 101→105 (modules unchanged at 68; `second_oracle` stays 62/62), root `1a2a874d…→fa06bd80…`**.
+> **(W12 — new horizontal classes + Shor arithmetic frontier; cross-runtime)** the **codex** runtime drove W12.1–W12.18, W12.20, and W12.21, while the **Claude Opus** runtime drove W12.19 + determinism verification — the first byte-identical cross-runtime seals (one runtime's seals re-verified deterministically by the other). **(W12.1 query/oracle)** Deutsch-Jozsa, Bernstein-Vazirani, Simon sealed (`dj2_const1`, `dj2_balanced_xor`, `bv3_s101`, `simon2_s11`, **zero new modules**) — here the quantum advantage itself is *exact* (BV recovers the secret in one query; Simon's measured support is orthogonal to the period), a new honesty type beside approximation/variational. **(W12.2 quantum walk)** coined C4/C8 cycle walks (zero new modules; walk dynamics an observation — C8 3-step TV distance 0.25 vs classical). **(W12.3 Suzuki-4)** 4th-order Yoshida-Suzuki Trotter steps (4 new analytic-coefficient modules `rz_y4_p/rx_y4_p/rz_y4_q/rx_y4_q`; late k-doubling ratio ≈16 vs 1st-order ≈2, 2nd ≈4 — convergence-order observation, not a seal). **(W12.4 ZNE)** a deterministic zero-noise-extrapolation observation layer that **seals nothing** (root unchanged; mitigation ≠ exact recovery, residual bias remains). **(W12.5–W12.19 Shor frontier)** a `c8x→c9x→c10x→c11x` multi-control primitive ladder (4 new Tier-0 MCT modules, `gen_modmul` cap evolved each step) unlocks distinct-prime **Shor structural apps** `shor119`/`shor221`/`shor381`/`shor635`/`shor1285` (N = 7×17, 13×17, 3×127, 5×127, 5×257), each a **Tier-1 STRUCTURAL** Merkle over exact Tier-0 `cmul*` modular-multiplier families (max control 7→11; independent arithmetic `u_hash` matched per multiplier). **(W12.20–W12.21 C12x frontier)** reviewed the memory boundary, then sealed `c12x` and the representative exact payoff app `cmul2_mod3683` (`N=3683=29×127`, 13 qubits, 1848 gates, max-control 12, independent arithmetic `u_hash` matched); payoff family and `shor3683` remain deliberately unsealed. Growing **modules 68→77 (4 Suzuki-4 + c8x/c9x/c10x/c11x/c12x; `second_oracle` 62→71), apps 105→147, root `fa06bd80…→1134ea04…`**.
+> The post-W12 bridge maps five external relay items (CI pilot,
+> weak-model poison panel, runtime keys, backend evidence, ServerLink scope) but does not execute external work. Companion docs:
 > `docs/CONVENTION-AUDIT.md`, `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`,
 > `_workspace/crossmodel/discover_round1/SEAL-RESULT.json`.
 
@@ -207,18 +210,19 @@ QuantaFoundry is an **AI-native quantum software foundry**. It turns high-level 
 software modules, **verifies them with a deterministic contract oracle**, **seals only what is
 proven**, accumulates sealed modules in a registry, and **composes** sealed modules into larger
 applications (each re-verified and re-sealed). All four functions are realized: the library
-holds **61 sealed base modules** (55 Tier-0 dense + 6 Tier-2 Clifford) and **77 sealed applications** (61/77 at v0.7+ W8.1 Hamiltonian sim; 59/75 at W7.3 FT logical gates;
+holds **77 sealed base modules** (71 Tier-0 dense + 6 Tier-2 Clifford) and **147 sealed applications** (77/147 at v0.7+ W12.21 C12x frontier; 76/146 at v0.7+ W12.19 Shor-1285 frontier; 68/105 at W11.1 variational track; 61/77 at v0.7+ W8.1 Hamiltonian sim; 59/75 at W7.3 FT logical gates;
 56/75 at W7.2 Clifford-Tier-2 QEC; 53/75 at W7.1 QEC family; 53/71 at W6.5 Shor capstone; 53/67 at W6.4 forward-QFT; 50/63 at W6.3 cr8 payoff; 50/62 at W6.1 c7x payoff; 48/59 at v0.7-core; 46/57 at v0.6), the latter
 built entirely by recomposing the former — up to **Shor period-finding circuits that factor
 15 = 3 × 5, 21 = 3 × 7** (genuine modular arithmetic, not the N=15 special case) **and 91 = 7 × 13**
-(the W6.5 capstone — 15 qubits, Tier-1 STRUCTURAL), plus the **W7.1 QEC stabilizer encoders** (the
+(the W6.5 capstone — 15 qubits, Tier-1 STRUCTURAL), extended by the **W12 frontier ladder** to
+structural Shor apps for **119 / 221 / 381 / 635 / 1285** (distinct-prime, Tier-1 STRUCTURAL, 15–19 qubits), plus the exact **C12x payoff** `cmul2_mod3683` (`N=3683=29×127`, 13 qubits), plus the **W7.1 QEC stabilizer encoders** (the
 `[[9,1,3]]` Shor-code 9-qubit encoder and `[[3,1]]` repetition encoders, all Clifford Tier-0) and the
 **W7.2 Tier-2 QEC seals** (Steane `[[7,1,3]]` logical states + a Shor-9 re-seal via canonical stabilizer tableau).
-Guarantee split (no exact-coverage overclaim): all 67 modules are `unitary_equiv` (61 Tier-0 EXACT dense + 6 Tier-2 Clifford tableau, both exact up to global phase); the
-97 apps are 95 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
-with a sealed seed via `sampled_dense_verify.py`, also Tier-2 sealed) + **1 `structural_wellformed`**
-(`shor91`, the W6.5 Tier-1 capstone — a Merkle of sealed parts at 15 qubits, *weaker* than dense
-`unitary_equiv`, honestly labelled — the first algorithm-scale structural-only seal; the W7.1 QEC
+Guarantee split (no exact-coverage overclaim): all 77 modules are `unitary_equiv` (71 Tier-0 EXACT dense + 6 Tier-2 Clifford tableau, both exact up to global phase); the
+147 apps are 140 `unitary_equiv` + **1 `unitary_equiv_sampled`** (`ghz16`, sampled-dense two-path verified
+with a sealed seed via `sampled_dense_verify.py`, also Tier-2 sealed) + **6 `structural_wellformed`**
+(`shor91` the W6.5 Tier-1 capstone + the W12 Shor frontier ladder `shor119`/`shor221`/`shor381`/`shor635`/`shor1285` — each a Merkle of sealed Tier-0 parts at 15–19 qubits, *weaker* than dense
+`unitary_equiv`, honestly labelled — structural-only, period/factor readout illustrative; the W7.1 QEC
 encoders are all `unitary_equiv` Tier-0, and the W7.2 Steane/Shor-9 QEC seals + the W7.3 transversal logical gates are `unitary_equiv` Tier-2 Clifford).
 Authoritative tally in `registry/SEMANTIC-GUARANTEES.json` `headline_split`.
 
@@ -665,7 +669,7 @@ same mathematical definition (endianness / phase convention), so a *convention* 
 principle corrupt both at once — they are not a fully independent third axis. The genuine third axis is
 recomputing the unitary on a **Qualtran-independent path**: `scripts/second_oracle.py` reconstructs each
 sealed unitary in pure numpy (using neither Qualtran, nor the spec's golden code, nor the oracle's
-internals) and re-checks the `u_hash` — **61/61 modules + cmul2_mod21**, closing the shared-stack risk
+internals) and re-checks the `u_hash` — **71/71 modules + cmul2_mod21**, closing the shared-stack risk
 on the dense path. Corpus note: six LLMs agreeing on a *textbook* primitive is partly a shared-training
 artifact (see the corpus-correlation analysis, §8.6), so textbook convergence is discounted and the
 load-bearing credit is on hard/ambiguous intents.
@@ -767,14 +771,14 @@ Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a
 ### 8.5 Library-wide regression (current totals)
 
 ```
-modules: 61 sealed (55 Tier-0 dense incl. rz/rx Pauli-exp rotations + 6 Tier-2 Clifford: Steane [[7,1,3]] |0⟩/|1⟩, Shor-9 re-seal, transversal logical H/S/CNOT) · re-verified through the oracle (35 gates incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†;
+modules: 77 sealed (71 Tier-0 dense incl. rz/rx Pauli-exp rotations + Suzuki-4 coeff modules + c8x..c12x MCTs + 6 Tier-2 Clifford: Steane [[7,1,3]] |0⟩/|1⟩, Shor-9 re-seal, transversal logical H/S/CNOT) · re-verified through the oracle (MCT family c6x..c12x, sx/√X, cr6/7/8 + cr8†;
          18 ±α_k Ry primitives k=2..10, §8.7)
-apps:    63 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
-         registry/apps holds 119 files = 75 unique app seals + 44 cached app-side module re-seals
+apps:    147 sealed (unique) · deterministic re-seal (u_hash identical) · 24 forged autonomously
+         registry/apps holds 208 files = 147 unique app seals + 61 cached app-side module re-seals
          (canonical copy lives in registry/modules; single source of truth = REGISTRY-MANIFEST.json
-          registry_root_hash 2cfe8dc3… reproduces byte-identical; blast-radius via registry_tools.py)
+          registry_root_hash 1134ea04… reproduces byte-identical; blast-radius via registry_tools.py)
 rediscovery cross-checks: 6/6 byte-identical to independently sealed gates
-second oracle (Qualtran-independent numpy): 61/61 modules + cmul2_mod21
+second oracle (Qualtran-independent numpy): 71/71 modules + cmul2_mod21
 frozen consensus keys: 23 (22 prior + sx live cross-model round; existing keys byte-preserved,
          contested-tie guard re-checks determinism every run)
 ```
@@ -998,7 +1002,7 @@ sub-PG before execution.
    runtimes (§8.8). The residual question is whether AutoForge's *generation* personas (vs the
    *establishment* panel) should also be multi-model — orchestration cost vs marginal benefit.
 7. **Scope of evidence.** *v0.1 proved the loop on 8 small Tier-0 gates. v0.4–0.7 now exercise
-   composition (F3) end-to-end (97 apps incl. genuine N=21 Shor, distinct-prime mod 33/35/91/77/85, iqft8, qft5–8 pipelines, the shor91 Tier-1 capstone, the W7.1 QEC stabilizer encoders incl. the [[9,1,3]] Shor-code encoder, and a TFIM Trotter step),
+   composition (F3) end-to-end (147 apps incl. genuine N=21 Shor, distinct-prime mod 33/35/91/77/85/3683, the W12 Shor frontier ladder 119/221/381/635/1285, exact `cmul2_mod3683`, iqft8, qft5–8 pipelines, the shor91 Tier-1 capstone, the W7.1 QEC stabilizer encoders incl. the [[9,1,3]] Shor-code encoder, and a TFIM Trotter step),
    Tier-1 large-N (ghz16) plus its Tier-2 closure, app-level cross-model establishment, consensus
    necessity, live multi-model truth, falsification/red-team, and goal-autonomy family extension.*
    What remains **not** done: autonomous
@@ -1059,7 +1063,7 @@ counted per *physical unit* — same-weights / same-tool sources collapse to **o
 independent runtimes authored every base gate's golden and bloq, all reaching `MULTIMODEL` grade and
 corroborated by symbolic proof (§8.2). The on-demand gates needed for the algorithm layer
 (controlled-phase family, Fredkin) were each established by `proof ⊕ structural` convergence and
-sealed. The full library (67 modules → 97 apps → genuine N=21 Shor + the shor91=7×13 capstone + the W7.1/W7.2/W7.3 QEC stack + W8.1 Hamiltonian sim) therefore stands on **zero
+sealed. The full library (77 modules → 147 apps → genuine N=21 Shor + the shor91=7×13 capstone + the W12 Shor frontier ladder 119/221/381/635/1285 + exact `cmul2_mod3683` for N=3683 + the W7.1/W7.2/W7.3 QEC stack + W8.1 Hamiltonian sim) therefore stands on **zero
 human-asserted answers**, including the first *live* cross-model truth `sx` (√X, §8.8). See
 `.pgf/DESIGN-KeyFreeConsensus.md`, `consensus.py`, `_workspace/crossmodel/`.
 
@@ -1108,10 +1112,10 @@ registry. AutoForge adds **autonomous author isolation via personas** on top of 
 QuantaFoundry/
   docs/QuantaFoundry-Technical-Spec.md   # this document
   README.md                              # vision + trust model (English)
-  specs/modules/*.pg                     # 61 sealed base-module specs (55 Tier-0 incl. c6x/MCT-6, c7x/MCT-7, sx/√X, cr6/7/8 + cr8†, ±α_k Ry k=2..10, rz/rx_negpi4 Pauli-exp; + 6 Tier-2 Clifford: steane_zero/one_t2, shor9_encoder_t2, steane_logical_h/s/cnot)
-  specs/apps/*.app.pg                    # 75 sealed application manifests (app_golden + plan; shor91=structural; incl. W7.1 QEC encoders)
-  registry/modules/*.sealed.json         # 50 registered module seals (INV1-3)
-  registry/apps/*.sealed.json            # 75 app seals (C-app, incl. shor91 structural) + 44 cached leaf-module re-seals (119 files)
+  specs/modules/*.pg                     # 77 sealed base-module specs (71 Tier-0 incl. c6x..c12x MCTs, sx/√X, cr6/7/8 + cr8†, ±α_k Ry k=2..10, rz/rx_negpi4 Pauli-exp, Suzuki-4 coeff modules; + 6 Tier-2 Clifford)
+  specs/apps/*.app.pg                    # 147 sealed application manifests (app_golden + plan; incl. W7.1 QEC encoders, structural Shor frontier, exact cmul2_mod3683)
+  registry/modules/*.sealed.json         # 77 registered module seals (INV1-3)
+  registry/apps/*.sealed.json            # 147 app seals + 61 cached leaf-module re-seals (208 files)
   registry/{REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES}.json  # registry as first-class data (v0.4)
   registry/GENSKILL-CATALOG.json         # generation-method library as first-class data (v0.5)
   .pgf/
@@ -1126,7 +1130,7 @@ QuantaFoundry/
     keyfree/{freeze_crossmodel_keys,seal_crossmodel,seal_crk}.py
     keyfree/consensus_keys.json          # frozen, provenance-tagged keys (15: 8 base + 7 cross-model)
   scripts/                               # v0.4 tooling (NOT the oracle; analysis/autonomy)
-    second_oracle.py                     # Qualtran-independent re-check (61/61)
+    second_oracle.py                     # Qualtran-independent re-check (71/71)
     goal_autonomy.py                     # registry scan → gap detect → autonomous seal (consumes genskills)
     genskills.py                         # GenSkill library: generation *methods* as a catalog (v0.5)
     semantic_guarantee.py                # per-seal guarantee layer + ghz16 partial verification
@@ -1155,7 +1159,7 @@ python .agents/skills/qpgf-oracle/scripts/test_verify_seal.py           # 11 PAS
 python .pgf/autoforge/autoforge.py                                      # base gates SEALED
 python .pgf/keyfree/ingest_crossmodel.py                                # cross-model consensus (needs submissions/)
 python .pgf/autoforge/forge_apps.py                                     # apps SEALED · rediscovery 6/6
-python scripts/second_oracle.py                                        # Qualtran-independent 61/61
+python scripts/second_oracle.py                                        # Qualtran-independent 71/71
 python scripts/goal_autonomy.py scan                                   # autonomous gap detection (families)
 python scripts/goal_autonomy.py loop                                   # unmanned forge-to-frontier (self-growing)
 python scripts/genskills.py verify                                     # method self-seal (tamper-evident)
@@ -1193,7 +1197,7 @@ Please address as many as you can, and add flaws we did not anticipate.
 
 **Architecture & scope**
 9. The compounding thesis (§4) assumes composition (F3) preserves correctness via C-app + INV3, now
-   exercised on 97 apps incl. recursive trees, the 12-qubit N=21 Shor, the 15-qubit shor91 capstone, the 9-qubit [[9,1,3]] Shor-code encoder, and a TFIM Trotter step (§8.3–8.4). Is re-verification of
+   exercised on 147 apps incl. recursive trees, the 12-qubit N=21 Shor, the 15-qubit shor91 capstone, the 19-qubit shor1285 W12 frontier app, exact 13-qubit `cmul2_mod3683`, the 9-qubit [[9,1,3]] Shor-code encoder, and a TFIM Trotter step (§8.3–8.4). Is re-verification of
    every composition sufficient, or are there composition patterns (heterogeneous, recursive,
    uncompute) where C-app could pass while the app is semantically wrong?
 10. Given only this spec, what is the single highest-risk assumption in the whole design, and what

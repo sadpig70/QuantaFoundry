@@ -1,0 +1,84 @@
+{
+  "phase": "W12.6 C8xPrimitiveFrontier",
+  "honesty": "c8x closes the 8-control primitive gap for 8-work-bit modular arithmetic. c8x and cmul2_mod187 are Tier-0 exact seals; period/factor readout is illustrative only. N>=256 remains blocked until c9x or another 9-control strategy is sealed.",
+  "target": {
+    "N": 187,
+    "a": 2,
+    "factors": [
+      11,
+      17
+    ],
+    "work": 8,
+    "nq": 9
+  },
+  "c8x_module": {
+    "id": "c8x",
+    "sealed": true,
+    "tier": 0,
+    "n_sys": 9,
+    "u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f",
+    "resource": {
+      "and_bloq": 7,
+      "clifford": 8,
+      "measurement": 7,
+      "total_t": 28
+    }
+  },
+  "c8x_independent": {
+    "independent_u_hash": "50e84ffe3e8aa4bb",
+    "matches_sealed": true
+  },
+  "cmul_app": {
+    "id": "cmul2_mod187",
+    "N": 187,
+    "a": 2,
+    "factors": [
+      11,
+      17
+    ],
+    "nq": 9,
+    "sealed": true,
+    "tier": 0,
+    "u_hash": "bb974c6dca0a1f1769dd38c3e24d6fccab2b3eff2201a7b7c8563769a79f4fb4",
+    "reason": "",
+    "gate_count": 105,
+    "control_dist": {
+      "8": 3,
+      "7": 13,
+      "6": 18,
+      "5": 15,
+      "4": 29,
+      "3": 8,
+      "2": 19
+    },
+    "max_control": 8,
+    "deps": [
+      "c3x",
+      "c4x",
+      "c5x",
+      "c6x",
+      "c7x",
+      "c8x",
+      "toffoli"
+    ]
+  },
+  "independent_arith_verify": {
+    "id": "cmul2_mod187",
+    "independent_u_hash": "bb974c6dca0a1f17",
+    "matches_sealed": true
+  },
+  "period_readout_illustrative": {
+    "a": 2,
+    "N": 187,
+    "order_r": 40,
+    "r_even": true,
+    "a_r2": 67,
+    "nontrivial": true,
+    "factors": [
+      11,
+      17
+    ],
+    "note": "illustrative only; period/factor readout is not seal evidence"
+  },
+  "all_ok": true
+}

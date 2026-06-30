@@ -1,6 +1,6 @@
 # DESIGN-QFDiscover — Stage 2 QF-Discover (open-ended 발견 엔진)
 
-> PGF design mode · 기반 = `roadmap_process_plan.md` Stage 2 (Track A) · 방법 = PG Gantree + PPR.
+> PGF design mode · 기반 = `_legacy/roadmap_process_plan.md` Stage 2 (Track A) · 방법 = PG Gantree + PPR.
 > 정직성: 분석/제안 전용 비파괴. registry/sealed/frozen/fingerprint 불변. 신규 봉인은 오라클 경유만.
 > 소비 자산(사용만): `goal_autonomy`(detect_gaps/FAMILIES) · `registry_tools`(build_graph/dependents) ·
 > `resource_report`(_load/resource) · `app_assemble`(오라클 봉인) · `second_oracle`(독립검증).

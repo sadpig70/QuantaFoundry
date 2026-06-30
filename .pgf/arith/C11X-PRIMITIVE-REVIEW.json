@@ -1,0 +1,752 @@
+{
+  "phase": "W12.16 C11xPrimitiveReview",
+  "schema": "c11x-review/v1",
+  "honesty": "Review-only. No c11x spec, no c11x seal, no registry/root mutation.",
+  "registry_root_before": "09f62bf3f55846193d1a447f10c9c97255d06b15e5e1cf919c0c0addf5976f03",
+  "dense_cost_estimate": {
+    "c11x_n_sys": 12,
+    "unitary_dimension": 4096,
+    "complex128_dense_bytes": 268435456,
+    "complex128_dense_mib": 256.0,
+    "comment": "Standalone c11x exact dense oracle is plausible but materially heavier than c10x; app-family exact path should remain permutation-space."
+  },
+  "candidate_scan": {
+    "range": [
+      1024,
+      2047
+    ],
+    "a": 2,
+    "count": 144,
+    "ranking": "unique_power_count, then N",
+    "top": [
+      {
+        "N": 1285,
+        "a": 2,
+        "factors": [
+          5,
+          257
+        ],
+        "order_r": 16,
+        "readout_factors": [
+          5,
+          257
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          1,
+          1,
+          1,
+          1,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256
+        ],
+        "unique_power_count": 4
+      },
+      {
+        "N": 1205,
+        "a": 2,
+        "factors": [
+          5,
+          241
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          5,
+          241
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          256,
+          466,
+          256,
+          466,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          466
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 1247,
+        "a": 2,
+        "factors": [
+          29,
+          43
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          29,
+          43
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          692,
+          256,
+          16,
+          692,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          692
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 1661,
+        "a": 2,
+        "factors": [
+          11,
+          151
+        ],
+        "order_r": 30,
+        "readout_factors": [
+          11,
+          151
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          256,
+          16,
+          4,
+          757,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          757
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 1687,
+        "a": 2,
+        "factors": [
+          7,
+          241
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          7,
+          241
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          256,
+          1430,
+          256,
+          1430,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          1430
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 1261,
+        "a": 2,
+        "factors": [
+          13,
+          97
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          13,
+          97
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          35,
+          1225,
+          35,
+          1225,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          35,
+          256,
+          1225
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 1271,
+        "a": 2,
+        "factors": [
+          31,
+          41
+        ],
+        "order_r": 20,
+        "readout_factors": [
+          31,
+          41
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          256,
+          16,
+          283,
+          715,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          283,
+          715
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 1649,
+        "a": 2,
+        "factors": [
+          17,
+          97
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          17,
+          97
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          35,
+          1225,
+          35,
+          1225,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          35,
+          256,
+          1225
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 1655,
+        "a": 2,
+        "factors": [
+          5,
+          331
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          5,
+          331
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          256,
+          16,
+          666,
+          991,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          666,
+          991
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 1799,
+        "a": 2,
+        "factors": [
+          7,
+          257
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          7,
+          257
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          515,
+          772,
+          515,
+          772,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          515,
+          772
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 1891,
+        "a": 2,
+        "factors": [
+          31,
+          61
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          31,
+          61
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          256,
+          16,
+          1399,
+          1242,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          1242,
+          1399
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 1921,
+        "a": 2,
+        "factors": [
+          17,
+          113
+        ],
+        "order_r": 56,
+        "readout_factors": [
+          17,
+          113
+        ],
+        "counting_t": 8,
+        "work": 11,
+        "nq": 12,
+        "powa": [
+          222,
+          256,
+          1259,
+          222,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          222,
+          256,
+          1259
+        ],
+        "unique_power_count": 6
+      }
+    ]
+  },
+  "cmul2_blocker_sample": {
+    "sample_size": 12,
+    "c11x_blocked": 12,
+    "signals": [
+      {
+        "N": 1285,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 1.4965
+      },
+      {
+        "N": 1205,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 1.2619
+      },
+      {
+        "N": 1247,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.6132
+      },
+      {
+        "N": 1661,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.4408
+      },
+      {
+        "N": 1687,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.4736
+      },
+      {
+        "N": 1261,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.8836
+      },
+      {
+        "N": 1271,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.4953
+      },
+      {
+        "N": 1649,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.6031
+      },
+      {
+        "N": 1655,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.518
+      },
+      {
+        "N": 1799,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.3789
+      },
+      {
+        "N": 1891,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.2343
+      },
+      {
+        "N": 1921,
+        "status": "c11x_blocker",
+        "error": "gen_modmul: 11 controls > 10 (c11x 부재; nq=12 축소 필요)",
+        "elapsed_s": 0.2836
+      }
+    ]
+  },
+  "representative_payoff": {
+    "N": 1285,
+    "a": 2,
+    "factors": [
+      5,
+      257
+    ],
+    "order_r": 16,
+    "readout_factors": [
+      5,
+      257
+    ],
+    "work": 11,
+    "nq": 12,
+    "powa": [
+      1,
+      1,
+      1,
+      1,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256
+    ],
+    "cmul_stats": [
+      {
+        "a": 2,
+        "gate_count": 4088,
+        "max_control": 11,
+        "c11_count": 79,
+        "control_dist": {
+          "11": 79,
+          "10": 329,
+          "9": 621,
+          "8": 870,
+          "7": 902,
+          "6": 731,
+          "5": 388,
+          "4": 124,
+          "3": 21,
+          "2": 23
+        }
+      },
+      {
+        "a": 4,
+        "gate_count": 6815,
+        "max_control": 11,
+        "c11_count": 120,
+        "control_dist": {
+          "11": 120,
+          "10": 428,
+          "9": 896,
+          "8": 1343,
+          "7": 1548,
+          "6": 1282,
+          "5": 788,
+          "4": 308,
+          "3": 73,
+          "2": 29
+        }
+      },
+      {
+        "a": 16,
+        "gate_count": 9126,
+        "max_control": 11,
+        "c11_count": 160,
+        "control_dist": {
+          "11": 160,
+          "10": 529,
+          "9": 1096,
+          "8": 1660,
+          "7": 1890,
+          "6": 1821,
+          "5": 1257,
+          "4": 552,
+          "3": 131,
+          "2": 30
+        }
+      },
+      {
+        "a": 256,
+        "gate_count": 10330,
+        "max_control": 11,
+        "c11_count": 134,
+        "control_dist": {
+          "11": 134,
+          "10": 564,
+          "9": 1230,
+          "8": 1874,
+          "7": 2199,
+          "6": 2017,
+          "5": 1462,
+          "4": 661,
+          "3": 154,
+          "2": 35
+        }
+      }
+    ],
+    "total_gate_count": 30359,
+    "max_control": 11,
+    "c11_count": 493,
+    "elapsed_s": 10.1508
+  },
+  "file_guard": {
+    "c11x_spec_exists": false,
+    "c11x_seal_exists": false
+  },
+  "decision": {
+    "go_no_go": "GO_FOR_C11X_FRONTIER_WITH_GUARDS_NOT_NOW",
+    "recommended_next": "W12.17 C11xPrimitiveFrontier",
+    "recommended_target": {
+      "N": 1285,
+      "a": 2,
+      "factors": [
+        5,
+        257
+      ],
+      "order_r": 16,
+      "readout_factors": [
+        5,
+        257
+      ],
+      "work": 11,
+      "nq": 12,
+      "powa": [
+        1,
+        1,
+        1,
+        1,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        256
+      ],
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 4088,
+          "max_control": 11,
+          "c11_count": 79,
+          "control_dist": {
+            "11": 79,
+            "10": 329,
+            "9": 621,
+            "8": 870,
+            "7": 902,
+            "6": 731,
+            "5": 388,
+            "4": 124,
+            "3": 21,
+            "2": 23
+          }
+        },
+        {
+          "a": 4,
+          "gate_count": 6815,
+          "max_control": 11,
+          "c11_count": 120,
+          "control_dist": {
+            "11": 120,
+            "10": 428,
+            "9": 896,
+            "8": 1343,
+            "7": 1548,
+            "6": 1282,
+            "5": 788,
+            "4": 308,
+            "3": 73,
+            "2": 29
+          }
+        },
+        {
+          "a": 16,
+          "gate_count": 9126,
+          "max_control": 11,
+          "c11_count": 160,
+          "control_dist": {
+            "11": 160,
+            "10": 529,
+            "9": 1096,
+            "8": 1660,
+            "7": 1890,
+            "6": 1821,
+            "5": 1257,
+            "4": 552,
+            "3": 131,
+            "2": 30
+          }
+        },
+        {
+          "a": 256,
+          "gate_count": 10330,
+          "max_control": 11,
+          "c11_count": 134,
+          "control_dist": {
+            "11": 134,
+            "10": 564,
+            "9": 1230,
+            "8": 1874,
+            "7": 2199,
+            "6": 2017,
+            "5": 1462,
+            "4": 661,
+            "3": 154,
+            "2": 35
+          }
+        }
+      ],
+      "total_gate_count": 30359,
+      "max_control": 11,
+      "c11_count": 493,
+      "elapsed_s": 10.1508
+    },
+    "guardrails": [
+      "Seal c11x module first and verify independent cnx_perm(11) hash.",
+      "Keep multiplier payoff to one representative app first, preferably cmul2_mod1285.",
+      "Do not attempt shor1285 in the same task.",
+      "Use permutation-space exact C-app path for 12q multiplier apps.",
+      "Abort if c11x oracle memory/time exceeds local feasibility."
+    ]
+  },
+  "registry_root_after": "09f62bf3f55846193d1a447f10c9c97255d06b15e5e1cf919c0c0addf5976f03",
+  "root_unchanged": true,
+  "all_ok": true
+}

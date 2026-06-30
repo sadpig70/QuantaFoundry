@@ -1,0 +1,21 @@
+# qw_c8_step — C8 one-step U=S8·H_coin. W12.2 coined quantum walk step, app-only Tier-0, 신규 모듈 0.
+```json id=app_meta
+{"id": "qw_c8_step", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+npos=3; power=1; n=1+npos; N=1<<npos; dim=1<<n
+S=np.zeros((dim,dim),dtype=complex)
+for s in range(dim):
+    coin=(s>>npos)&1; pos=s&(N-1)
+    newpos=(pos+(1 if coin==0 else -1))%N
+    out=(coin<<npos)|newpos
+    S[out,s]=1
+Hc=np.kron(H,np.eye(N,dtype=complex))
+step=S@Hc
+golden=np.linalg.matrix_power(step,power)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/c3x.pg", "targets": [0, 2, 3, 1]}, {"spec": "../modules/toffoli.pg", "targets": [0, 3, 2]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/toffoli.pg", "targets": [0, 3, 2]}, {"spec": "../modules/c3x.pg", "targets": [0, 2, 3, 1]}]}
+```

@@ -1,0 +1,1191 @@
+{
+  "phase": "W12.20 C12xPrimitiveReview",
+  "schema": "c12x-review/v1",
+  "honesty": "Review-only. No c12x spec, no c12x seal, no registry/root mutation.",
+  "registry_root_before": "5aee6ef251bd4df0501ae76f34e84e81cd2bf4f25e1a1eafde0f726709cd4bc6",
+  "dense_cost_estimate": {
+    "c12x_n_sys": 13,
+    "unitary_dimension": 8192,
+    "complex128_dense_bytes": 1073741824,
+    "complex128_dense_mib": 1024.0,
+    "comment": "Standalone c12x exact dense oracle is about 1 GiB raw matrix, before tensor/normalization temporaries; attempt only with memory guards."
+  },
+  "candidate_scan": {
+    "range": [
+      2048,
+      4095
+    ],
+    "a": 2,
+    "count": 288,
+    "ranking": "unique_power_count, then N; top-3 family costs measured",
+    "top": [
+      {
+        "N": 2317,
+        "a": 2,
+        "factors": [
+          7,
+          331
+        ],
+        "order_r": 30,
+        "readout_factors": [
+          7,
+          331
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          256,
+          16,
+          4,
+          660,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          660
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 3133,
+        "a": 2,
+        "factors": [
+          13,
+          241
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          13,
+          241
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          256,
+          2876,
+          256,
+          2876,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          2876
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 3683,
+        "a": 2,
+        "factors": [
+          29,
+          127
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          29,
+          127
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          2925,
+          256,
+          16,
+          2925,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          2925
+        ],
+        "unique_power_count": 5
+      },
+      {
+        "N": 2159,
+        "a": 2,
+        "factors": [
+          17,
+          127
+        ],
+        "order_r": 56,
+        "readout_factors": [
+          17,
+          127
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          766,
+          256,
+          1667,
+          766,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          766,
+          1667
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 3205,
+        "a": 2,
+        "factors": [
+          5,
+          641
+        ],
+        "order_r": 64,
+        "readout_factors": [
+          5,
+          641
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          1,
+          1,
+          1281,
+          1436,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          1281,
+          1436
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 3341,
+        "a": 2,
+        "factors": [
+          13,
+          257
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          13,
+          257
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          1543,
+          2057,
+          1543,
+          2057,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          1543,
+          2057
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 3365,
+        "a": 2,
+        "factors": [
+          5,
+          673
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          5,
+          673
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          2436,
+          1601,
+          2436,
+          1601,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          1601,
+          2436
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 3963,
+        "a": 2,
+        "factors": [
+          3,
+          1321
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          3,
+          1321
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          256,
+          16,
+          2638,
+          2128,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          2128,
+          2638
+        ],
+        "unique_power_count": 6
+      },
+      {
+        "N": 2413,
+        "a": 2,
+        "factors": [
+          19,
+          127
+        ],
+        "order_r": 126,
+        "readout_factors": [
+          19,
+          127
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          4,
+          891,
+          1032,
+          385,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          385,
+          891,
+          1032
+        ],
+        "unique_power_count": 7
+      },
+      {
+        "N": 2509,
+        "a": 2,
+        "factors": [
+          13,
+          193
+        ],
+        "order_r": 96,
+        "readout_factors": [
+          13,
+          193
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          880,
+          1628,
+          880,
+          302,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          302,
+          880,
+          1628
+        ],
+        "unique_power_count": 7
+      },
+      {
+        "N": 2567,
+        "a": 2,
+        "factors": [
+          17,
+          151
+        ],
+        "order_r": 120,
+        "readout_factors": [
+          17,
+          151
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          256,
+          2432,
+          1514,
+          1361,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          1361,
+          1514,
+          2432
+        ],
+        "unique_power_count": 7
+      },
+      {
+        "N": 2651,
+        "a": 2,
+        "factors": [
+          11,
+          241
+        ],
+        "order_r": 120,
+        "readout_factors": [
+          11,
+          241
+        ],
+        "counting_t": 8,
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          256,
+          225,
+          15,
+          1912,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          15,
+          16,
+          225,
+          256,
+          1912
+        ],
+        "unique_power_count": 7
+      }
+    ]
+  },
+  "family_cost_shortlist": [
+    {
+      "N": 3683,
+      "a": 2,
+      "factors": [
+        29,
+        127
+      ],
+      "order_r": 28,
+      "readout_factors": [
+        29,
+        127
+      ],
+      "work": 12,
+      "nq": 13,
+      "powa": [
+        2925,
+        256,
+        16,
+        2925,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        256,
+        2925
+      ],
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 1848,
+          "max_control": 12,
+          "c12_count": 45,
+          "c11_count": 177,
+          "control_dist": {
+            "12": 45,
+            "11": 177,
+            "10": 355,
+            "9": 444,
+            "8": 406,
+            "7": 251,
+            "6": 89,
+            "5": 34,
+            "4": 10,
+            "3": 9,
+            "2": 28
+          },
+          "elapsed_s": 0.9474
+        },
+        {
+          "a": 4,
+          "gate_count": 13590,
+          "max_control": 12,
+          "c12_count": 116,
+          "c11_count": 490,
+          "control_dist": {
+            "12": 116,
+            "11": 490,
+            "10": 1269,
+            "9": 2286,
+            "8": 2910,
+            "7": 2911,
+            "6": 2050,
+            "5": 1076,
+            "4": 378,
+            "3": 74,
+            "2": 30
+          },
+          "elapsed_s": 7.6052
+        },
+        {
+          "a": 16,
+          "gate_count": 18378,
+          "max_control": 12,
+          "c12_count": 150,
+          "c11_count": 698,
+          "control_dist": {
+            "12": 150,
+            "11": 698,
+            "10": 1650,
+            "9": 2810,
+            "8": 3701,
+            "7": 3884,
+            "6": 3011,
+            "5": 1704,
+            "4": 601,
+            "3": 130,
+            "2": 39
+          },
+          "elapsed_s": 10.4604
+        },
+        {
+          "a": 256,
+          "gate_count": 22711,
+          "max_control": 12,
+          "c12_count": 198,
+          "c11_count": 895,
+          "control_dist": {
+            "12": 198,
+            "11": 895,
+            "10": 2078,
+            "9": 3385,
+            "8": 4336,
+            "7": 4497,
+            "6": 3702,
+            "5": 2337,
+            "4": 985,
+            "3": 246,
+            "2": 52
+          },
+          "elapsed_s": 12.8856
+        },
+        {
+          "a": 2925,
+          "gate_count": 23025,
+          "max_control": 12,
+          "c12_count": 192,
+          "c11_count": 856,
+          "control_dist": {
+            "12": 192,
+            "11": 856,
+            "10": 2022,
+            "9": 3364,
+            "8": 4374,
+            "7": 4538,
+            "6": 3777,
+            "5": 2372,
+            "4": 1092,
+            "3": 362,
+            "2": 76
+          },
+          "elapsed_s": 12.5722
+        }
+      ],
+      "total_gate_count": 79552,
+      "max_control": 12,
+      "c12_count": 701,
+      "c11_count": 3116,
+      "elapsed_s": 44.4708
+    },
+    {
+      "N": 3133,
+      "a": 2,
+      "factors": [
+        13,
+        241
+      ],
+      "order_r": 24,
+      "readout_factors": [
+        13,
+        241
+      ],
+      "work": 12,
+      "nq": 13,
+      "powa": [
+        256,
+        2876,
+        256,
+        2876,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        256,
+        2876
+      ],
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 4521,
+          "max_control": 12,
+          "c12_count": 69,
+          "c11_count": 326,
+          "control_dist": {
+            "12": 69,
+            "11": 326,
+            "10": 691,
+            "9": 953,
+            "8": 1015,
+            "7": 781,
+            "6": 404,
+            "5": 185,
+            "4": 58,
+            "3": 11,
+            "2": 28
+          },
+          "elapsed_s": 2.4726
+        },
+        {
+          "a": 4,
+          "gate_count": 12783,
+          "max_control": 12,
+          "c12_count": 162,
+          "c11_count": 651,
+          "control_dist": {
+            "12": 162,
+            "11": 651,
+            "10": 1445,
+            "9": 2238,
+            "8": 2688,
+            "7": 2519,
+            "6": 1725,
+            "5": 929,
+            "4": 319,
+            "3": 74,
+            "2": 33
+          },
+          "elapsed_s": 7.0646
+        },
+        {
+          "a": 16,
+          "gate_count": 20150,
+          "max_control": 12,
+          "c12_count": 188,
+          "c11_count": 865,
+          "control_dist": {
+            "12": 188,
+            "11": 865,
+            "10": 1943,
+            "9": 3090,
+            "8": 3838,
+            "7": 4004,
+            "6": 3218,
+            "5": 1972,
+            "4": 810,
+            "3": 181,
+            "2": 41
+          },
+          "elapsed_s": 12.0436
+        },
+        {
+          "a": 256,
+          "gate_count": 22952,
+          "max_control": 12,
+          "c12_count": 182,
+          "c11_count": 872,
+          "control_dist": {
+            "12": 182,
+            "11": 872,
+            "10": 2039,
+            "9": 3344,
+            "8": 4370,
+            "7": 4598,
+            "6": 3786,
+            "5": 2338,
+            "4": 1067,
+            "3": 299,
+            "2": 57
+          },
+          "elapsed_s": 12.7737
+        },
+        {
+          "a": 2876,
+          "gate_count": 23435,
+          "max_control": 12,
+          "c12_count": 222,
+          "c11_count": 918,
+          "control_dist": {
+            "12": 222,
+            "11": 918,
+            "10": 2129,
+            "9": 3441,
+            "8": 4364,
+            "7": 4583,
+            "6": 3817,
+            "5": 2437,
+            "4": 1099,
+            "3": 356,
+            "2": 69
+          },
+          "elapsed_s": 12.6602
+        }
+      ],
+      "total_gate_count": 83841,
+      "max_control": 12,
+      "c12_count": 823,
+      "c11_count": 3632,
+      "elapsed_s": 47.0148
+    },
+    {
+      "N": 2317,
+      "a": 2,
+      "factors": [
+        7,
+        331
+      ],
+      "order_r": 30,
+      "readout_factors": [
+        7,
+        331
+      ],
+      "work": 12,
+      "nq": 13,
+      "powa": [
+        256,
+        16,
+        4,
+        660,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        256,
+        660
+      ],
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 9579,
+          "max_control": 12,
+          "c12_count": 133,
+          "c11_count": 542,
+          "control_dist": {
+            "12": 133,
+            "11": 542,
+            "10": 1134,
+            "9": 1775,
+            "8": 2089,
+            "7": 1863,
+            "6": 1234,
+            "5": 580,
+            "4": 176,
+            "3": 27,
+            "2": 26
+          },
+          "elapsed_s": 5.0865
+        },
+        {
+          "a": 4,
+          "gate_count": 15623,
+          "max_control": 12,
+          "c12_count": 146,
+          "c11_count": 745,
+          "control_dist": {
+            "12": 146,
+            "11": 745,
+            "10": 1620,
+            "9": 2575,
+            "8": 3134,
+            "7": 3212,
+            "6": 2356,
+            "5": 1271,
+            "4": 438,
+            "3": 95,
+            "2": 31
+          },
+          "elapsed_s": 8.7434
+        },
+        {
+          "a": 16,
+          "gate_count": 20471,
+          "max_control": 12,
+          "c12_count": 190,
+          "c11_count": 877,
+          "control_dist": {
+            "12": 190,
+            "11": 877,
+            "10": 1949,
+            "9": 3166,
+            "8": 3953,
+            "7": 4130,
+            "6": 3283,
+            "5": 1963,
+            "4": 735,
+            "3": 186,
+            "2": 39
+          },
+          "elapsed_s": 11.1465
+        },
+        {
+          "a": 256,
+          "gate_count": 23077,
+          "max_control": 12,
+          "c12_count": 228,
+          "c11_count": 912,
+          "control_dist": {
+            "12": 228,
+            "11": 912,
+            "10": 2051,
+            "9": 3377,
+            "8": 4358,
+            "7": 4558,
+            "6": 3736,
+            "5": 2358,
+            "4": 1117,
+            "3": 323,
+            "2": 59
+          },
+          "elapsed_s": 12.7375
+        },
+        {
+          "a": 660,
+          "gate_count": 22931,
+          "max_control": 12,
+          "c12_count": 210,
+          "c11_count": 903,
+          "control_dist": {
+            "12": 210,
+            "11": 903,
+            "10": 2059,
+            "9": 3286,
+            "8": 4369,
+            "7": 4565,
+            "6": 3723,
+            "5": 2315,
+            "4": 1093,
+            "3": 337,
+            "2": 71
+          },
+          "elapsed_s": 13.0278
+        }
+      ],
+      "total_gate_count": 91681,
+      "max_control": 12,
+      "c12_count": 907,
+      "c11_count": 3979,
+      "elapsed_s": 50.7418
+    }
+  ],
+  "representative_payoff": {
+    "N": 3683,
+    "a": 2,
+    "factors": [
+      29,
+      127
+    ],
+    "order_r": 28,
+    "readout_factors": [
+      29,
+      127
+    ],
+    "work": 12,
+    "nq": 13,
+    "powa": [
+      2925,
+      256,
+      16,
+      2925,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256,
+      2925
+    ],
+    "cmul_stats": [
+      {
+        "a": 2,
+        "gate_count": 1848,
+        "max_control": 12,
+        "c12_count": 45,
+        "c11_count": 177,
+        "control_dist": {
+          "12": 45,
+          "11": 177,
+          "10": 355,
+          "9": 444,
+          "8": 406,
+          "7": 251,
+          "6": 89,
+          "5": 34,
+          "4": 10,
+          "3": 9,
+          "2": 28
+        },
+        "elapsed_s": 0.9474
+      },
+      {
+        "a": 4,
+        "gate_count": 13590,
+        "max_control": 12,
+        "c12_count": 116,
+        "c11_count": 490,
+        "control_dist": {
+          "12": 116,
+          "11": 490,
+          "10": 1269,
+          "9": 2286,
+          "8": 2910,
+          "7": 2911,
+          "6": 2050,
+          "5": 1076,
+          "4": 378,
+          "3": 74,
+          "2": 30
+        },
+        "elapsed_s": 7.6052
+      },
+      {
+        "a": 16,
+        "gate_count": 18378,
+        "max_control": 12,
+        "c12_count": 150,
+        "c11_count": 698,
+        "control_dist": {
+          "12": 150,
+          "11": 698,
+          "10": 1650,
+          "9": 2810,
+          "8": 3701,
+          "7": 3884,
+          "6": 3011,
+          "5": 1704,
+          "4": 601,
+          "3": 130,
+          "2": 39
+        },
+        "elapsed_s": 10.4604
+      },
+      {
+        "a": 256,
+        "gate_count": 22711,
+        "max_control": 12,
+        "c12_count": 198,
+        "c11_count": 895,
+        "control_dist": {
+          "12": 198,
+          "11": 895,
+          "10": 2078,
+          "9": 3385,
+          "8": 4336,
+          "7": 4497,
+          "6": 3702,
+          "5": 2337,
+          "4": 985,
+          "3": 246,
+          "2": 52
+        },
+        "elapsed_s": 12.8856
+      },
+      {
+        "a": 2925,
+        "gate_count": 23025,
+        "max_control": 12,
+        "c12_count": 192,
+        "c11_count": 856,
+        "control_dist": {
+          "12": 192,
+          "11": 856,
+          "10": 2022,
+          "9": 3364,
+          "8": 4374,
+          "7": 4538,
+          "6": 3777,
+          "5": 2372,
+          "4": 1092,
+          "3": 362,
+          "2": 76
+        },
+        "elapsed_s": 12.5722
+      }
+    ],
+    "total_gate_count": 79552,
+    "max_control": 12,
+    "c12_count": 701,
+    "c11_count": 3116,
+    "elapsed_s": 44.4708
+  },
+  "file_guard": {
+    "c12x_spec_exists": false,
+    "c12x_seal_exists": false
+  },
+  "decision": {
+    "go_no_go": "GO_FOR_C12X_FRONTIER_WITH_MEMORY_GUARDS_NOT_NOW",
+    "recommended_next": "W12.21 C12xPrimitiveFrontier",
+    "recommended_target": {
+      "N": 3683,
+      "a": 2,
+      "first_payoff_app": "cmul2_mod3683",
+      "target": {
+        "N": 3683,
+        "a": 2,
+        "factors": [
+          29,
+          127
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          29,
+          127
+        ],
+        "work": 12,
+        "nq": 13,
+        "powa": [
+          2925,
+          256,
+          16,
+          2925,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          2925
+        ],
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1848,
+            "max_control": 12,
+            "c12_count": 45,
+            "c11_count": 177,
+            "control_dist": {
+              "12": 45,
+              "11": 177,
+              "10": 355,
+              "9": 444,
+              "8": 406,
+              "7": 251,
+              "6": 89,
+              "5": 34,
+              "4": 10,
+              "3": 9,
+              "2": 28
+            },
+            "elapsed_s": 0.9474
+          },
+          {
+            "a": 4,
+            "gate_count": 13590,
+            "max_control": 12,
+            "c12_count": 116,
+            "c11_count": 490,
+            "control_dist": {
+              "12": 116,
+              "11": 490,
+              "10": 1269,
+              "9": 2286,
+              "8": 2910,
+              "7": 2911,
+              "6": 2050,
+              "5": 1076,
+              "4": 378,
+              "3": 74,
+              "2": 30
+            },
+            "elapsed_s": 7.6052
+          },
+          {
+            "a": 16,
+            "gate_count": 18378,
+            "max_control": 12,
+            "c12_count": 150,
+            "c11_count": 698,
+            "control_dist": {
+              "12": 150,
+              "11": 698,
+              "10": 1650,
+              "9": 2810,
+              "8": 3701,
+              "7": 3884,
+              "6": 3011,
+              "5": 1704,
+              "4": 601,
+              "3": 130,
+              "2": 39
+            },
+            "elapsed_s": 10.4604
+          },
+          {
+            "a": 256,
+            "gate_count": 22711,
+            "max_control": 12,
+            "c12_count": 198,
+            "c11_count": 895,
+            "control_dist": {
+              "12": 198,
+              "11": 895,
+              "10": 2078,
+              "9": 3385,
+              "8": 4336,
+              "7": 4497,
+              "6": 3702,
+              "5": 2337,
+              "4": 985,
+              "3": 246,
+              "2": 52
+            },
+            "elapsed_s": 12.8856
+          },
+          {
+            "a": 2925,
+            "gate_count": 23025,
+            "max_control": 12,
+            "c12_count": 192,
+            "c11_count": 856,
+            "control_dist": {
+              "12": 192,
+              "11": 856,
+              "10": 2022,
+              "9": 3364,
+              "8": 4374,
+              "7": 4538,
+              "6": 3777,
+              "5": 2372,
+              "4": 1092,
+              "3": 362,
+              "2": 76
+            },
+            "elapsed_s": 12.5722
+          }
+        ],
+        "total_gate_count": 79552,
+        "max_control": 12,
+        "c12_count": 701,
+        "c11_count": 3116,
+        "elapsed_s": 44.4708
+      }
+    },
+    "guardrails": [
+      "Seal c12x module first and verify independent cnx_perm(12) hash.",
+      "Attempt only one representative payoff app first: cmul2_mod3683.",
+      "Do not attempt payoff family or shor3683 in the same task.",
+      "Use permutation-space exact C-app path for 13q multiplier apps.",
+      "Abort and pivot to TrackW12 closure if c12x dense oracle exceeds local memory/time.",
+      "Do not extend beyond c12x without another review-only gate."
+    ]
+  },
+  "registry_root_after": "5aee6ef251bd4df0501ae76f34e84e81cd2bf4f25e1a1eafde0f726709cd4bc6",
+  "root_unchanged": true,
+  "all_ok": true
+}

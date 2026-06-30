@@ -1,0 +1,82 @@
+{
+  "project": "C12xFrontier",
+  "workplan": ".pgf/WORKPLAN-C12xFrontier.md",
+  "design": ".pgf/DESIGN-C12xFrontier.md",
+  "started_at": "2026-06-30",
+  "updated_at": "2026-06-30",
+  "iteration": 1,
+  "nodes": {
+    "SealPrimitive": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/modules/c12x.pg",
+          "registry/modules/c12x.sealed.json"
+        ],
+        "notes": "c12x Tier-0 exact, n_sys=13, independent cnx_perm(12) hash matched"
+      }
+    },
+    "SealPayoff": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul2_mod3683.app.pg",
+          "registry/apps/cmul2_mod3683.sealed.json",
+          ".pgf/arith/C12X-FRONTIER-3683-REPORT.json"
+        ],
+        "notes": "cmul2_mod3683 Tier-0 exact, gates=1848, max_control=12, c12_count=45"
+      }
+    },
+    "IntegrateRegistry": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/genskills.py",
+          "scripts/reproduce_all.py",
+          "scripts/second_oracle.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/GENSKILL-CATALOG.json",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff",
+          ".pgf/adoption/RELEASE-META.json",
+          ".pgf/adoption/seal-badge.json"
+        ],
+        "notes": "registry root 1134ea04099ea0c1; modules=77 unique_apps=147; second_oracle=71/71"
+      }
+    },
+    "VerifyBoundary": {
+      "status": "done",
+      "outputs": {
+        "commands": [
+          "python scripts/c12x_frontier.py -> all_ok=True",
+          "python scripts/reproduce_all.py -> REPRODUCED",
+          "python scripts/second_oracle.py -> 71/71",
+          "python scripts/seal_gate_ci.py -> PASS",
+          "python scripts/verify_contested_guard.py -> ALL PASS",
+          "python scripts/genskills.py verify -> INTACT"
+        ],
+        "notes": "payoff family and shor3683 deferred"
+      }
+    },
+    "UpdateBacklog": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md",
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "next": "M4_PostW12ExternalBridgeDesign"
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

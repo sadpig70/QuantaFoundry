@@ -1,0 +1,117 @@
+{
+  "project": "Shor119Frontier",
+  "workplan": ".pgf/WORKPLAN-ShorFrontier.md",
+  "design": ".pgf/DESIGN-ShorFrontier.md",
+  "started_at": "2026-06-29T00:00:00+09:00",
+  "updated_at": "2026-06-29T00:00:00+09:00",
+  "iteration": 6,
+  "nodes": {
+    "Design": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/DESIGN-ShorFrontier.md",
+          ".pgf/WORKPLAN-ShorFrontier.md",
+          ".pgf/REVIEW-ShorFrontier.md"
+        ],
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "N=119 selected as N>91 frontier that stays within existing c7x; N>=128 remains c8x-blocked."
+      }
+    },
+    "MultiplierSeal": {
+      "status": "done",
+      "outputs": {
+        "apps": [
+          "cmul2_mod119",
+          "cmul4_mod119",
+          "cmul16_mod119",
+          "cmul18_mod119",
+          "cmul86_mod119"
+        ],
+        "tiers": "Tier-0 EXACT",
+        "independent_arith_verify": "5/5 u_hash matches sealed",
+        "max_control": 7
+      }
+    },
+    "ShorStructural": {
+      "status": "done",
+      "outputs": {
+        "app": "shor119",
+        "tier": 1,
+        "contract": "C1-C4(structural)",
+        "n_sys": 15,
+        "u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690",
+        "deterministic_reassembly": true,
+        "implementation_note": "Used QPGF app_assemble structural primitives over already sealed child apps to avoid re-dense-assembling hundreds-gate cmul children."
+      }
+    },
+    "ReadoutObservation": {
+      "status": "done",
+      "outputs": {
+        "N": 119,
+        "a": 2,
+        "order_r": 24,
+        "a_r2": 50,
+        "factors": [
+          7,
+          17
+        ],
+        "boundary": "Period/factor readout is illustrative only, not seal evidence."
+      }
+    },
+    "Verification": {
+      "status": "done",
+      "outputs": {
+        "registry": {
+          "modules": 72,
+          "unique_apps": 123,
+          "cached": 60,
+          "root_hash": "b27e47dc89fe6fff31907b2cd0e87cad4cd7157859471635ba20b1a2dbbe7bcf"
+        },
+        "commands": [
+          "python scripts/shor_frontier.py",
+          "python scripts/registry_tools.py build",
+          "python scripts/semantic_guarantee.py",
+          "python scripts/citation_gen.py --version 0.7.0 --date 2026-06-29",
+          "python scripts/seal_gate_ci.py",
+          "python scripts/second_oracle.py",
+          "python scripts/verify_contested_guard.py",
+          "python scripts/reproduce_all.py"
+        ],
+        "results": {
+          "shor_frontier": "all_ok=True",
+          "reproduce_all": "REPRODUCED",
+          "second_oracle": "66/66",
+          "seal_gate_ci": "PASS",
+          "verify_contested_guard": "ALL PASS",
+          "fingerprint": {
+            "verify_seal.py": "45d316a431495c9b9a69163b3912da74ae6430fafcda50f7732198202d03092a",
+            "contracts.py": "64dd25399a16d6f812648568f871d223a789fe72f8bce432f3d11296ec7b2ee9"
+          }
+        }
+      }
+    },
+    "Documentation": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md",
+          "scripts/reproduce_all.py",
+          "scripts/seal_gate_ci.py"
+        ],
+        "notes": "External docs remain batch-only; W12.5 deltas recorded in task_record.md."
+      }
+    }
+  },
+  "summary": {
+    "total": 6,
+    "done": 6,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

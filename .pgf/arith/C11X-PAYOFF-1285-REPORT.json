@@ -1,0 +1,173 @@
+{
+  "phase": "W12.18 C11xPayoffFamily",
+  "honesty": "N=1285=5*257 payoff family completion. New cmul powers are Tier-0 exact permutation app seals; full Shor-1285 remains deferred.",
+  "target": {
+    "N": 1285,
+    "a": 2,
+    "factors": [
+      5,
+      257
+    ],
+    "counting_t": 8,
+    "work": 11,
+    "powa": [
+      1,
+      1,
+      1,
+      1,
+      256,
+      16,
+      4,
+      2
+    ],
+    "unique_powers": [
+      2,
+      4,
+      16,
+      256
+    ],
+    "new_powers": [
+      4,
+      16,
+      256
+    ]
+  },
+  "cmul_apps": [
+    {
+      "id": "cmul4_mod1285",
+      "N": 1285,
+      "a": 4,
+      "nq": 12,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "a87f825debcf09bdba30b4de74470b69e4a26fc6c82a1defee2258e7db3e2c13",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 6815,
+      "control_dist": {
+        "11": 120,
+        "10": 428,
+        "9": 896,
+        "8": 1343,
+        "7": 1548,
+        "6": 1282,
+        "5": 788,
+        "4": 308,
+        "3": 73,
+        "2": 29
+      },
+      "max_control": 11,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul16_mod1285",
+      "N": 1285,
+      "a": 16,
+      "nq": 12,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "3abb9974fdac60315d71451018f057f11e54dc9dfd688061674fddd3b2e8e691",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 9126,
+      "control_dist": {
+        "11": 160,
+        "10": 529,
+        "9": 1096,
+        "8": 1660,
+        "7": 1890,
+        "6": 1821,
+        "5": 1257,
+        "4": 552,
+        "3": 131,
+        "2": 30
+      },
+      "max_control": 11,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    },
+    {
+      "id": "cmul256_mod1285",
+      "N": 1285,
+      "a": 256,
+      "nq": 12,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "239f6e5669ddcfc02e67c51a78df5e3f614881295210607109471ad2129337d8",
+      "reason": "fast_exact_permutation_capp",
+      "gate_count": 10330,
+      "control_dist": {
+        "11": 134,
+        "10": 564,
+        "9": 1230,
+        "8": 1874,
+        "7": 2199,
+        "6": 2017,
+        "5": 1462,
+        "4": 661,
+        "3": 154,
+        "2": 35
+      },
+      "max_control": 11,
+      "deps": [
+        "c10x",
+        "c11x",
+        "c3x",
+        "c4x",
+        "c5x",
+        "c6x",
+        "c7x",
+        "c8x",
+        "c9x",
+        "toffoli"
+      ]
+    }
+  ],
+  "independent_arith_verify": [
+    {
+      "id": "cmul4_mod1285",
+      "independent_u_hash": "a87f825debcf09bd",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul16_mod1285",
+      "independent_u_hash": "3abb9974fdac6031",
+      "matches_sealed": true
+    },
+    {
+      "id": "cmul256_mod1285",
+      "independent_u_hash": "239f6e5669ddcfc0",
+      "matches_sealed": true
+    }
+  ],
+  "family_seals": {
+    "cmul2_mod1285": true,
+    "cmul4_mod1285": true,
+    "cmul16_mod1285": true,
+    "cmul256_mod1285": true
+  },
+  "totals": {
+    "new_gate_count": 26271,
+    "new_c11_count": 414
+  },
+  "all_ok": true
+}

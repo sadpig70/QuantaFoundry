@@ -1,0 +1,27 @@
+# qaoa_p3 — path P3. QAOA p=1 MaxCut, 고정각 γ=π/4·β=−π/8. cost=cnot·rz_negpi4·cnot·mixer=rx_negpi4·H. MatrixGate 0.
+```json id=app_meta
+{"id": "qaoa_p3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+Z=np.diag([1,-1]).astype(complex); H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+CNOT=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+def Rz(a): return np.array([[np.exp(-1j*a/2),0],[0,np.exp(1j*a/2)]],dtype=complex)
+def Rx(a): return np.array([[np.cos(a/2),-1j*np.sin(a/2)],[-1j*np.sin(a/2),np.cos(a/2)]],dtype=complex)
+def emb(g,qs):
+    n=3
+    k=len(qs); G=g.reshape([2]*k+[2]*k)
+    T=np.eye(1<<n,dtype=complex).reshape([2]*n+[1<<n])
+    T=np.tensordot(G,T,axes=(list(range(k,2*k)),qs)); T=np.moveaxis(T,list(range(k)),qs)
+    return T.reshape(1<<n,1<<n)
+n=3; edges=[[0, 1], [1, 2]]; g=np.pi/4
+U=np.eye(1<<n,dtype=complex)
+for q in range(n): U=emb(H,[q])@U
+for (i,j) in edges:
+    C2=emb(CNOT,[i,j]); U=C2@emb(Rz(-g),[j])@C2@U
+for q in range(n): U=emb(Rx(-np.pi/4),[q])@U
+golden=U
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi4.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [1, 2]}, {"spec": "../modules/rz_negpi4.pg", "targets": [2]}, {"spec": "../modules/cnot.pg", "targets": [1, 2]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [1]}, {"spec": "../modules/rx_negpi4.pg", "targets": [2]}]}
+```

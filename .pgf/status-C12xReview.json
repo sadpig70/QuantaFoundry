@@ -1,0 +1,62 @@
+{
+  "project": "C12xReview",
+  "design": ".pgf/DESIGN-C12xReview.md",
+  "workplan": ".pgf/WORKPLAN-C12xReview.md",
+  "review": ".pgf/REVIEW-C12xReview.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 1,
+  "nodes": {
+    "ScanCandidates": {
+      "status": "done",
+      "outputs": {
+        "notes": "288 useful distinct-semiprime candidates in [2048,4095] for a=2."
+      }
+    },
+    "MeasureShortlistCost": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "scripts/c12x_review.py",
+          ".pgf/arith/C12X-PRIMITIVE-REVIEW.json"
+        ],
+        "notes": "Top-3 family costs measured; representative N=3683 has total gates=79552, c12_count=701; cmul2 gates=1848, c12_count=45."
+      }
+    },
+    "DecideNextFrontier": {
+      "status": "done",
+      "outputs": {
+        "notes": "Decision GO_FOR_C12X_FRONTIER_WITH_MEMORY_GUARDS_NOT_NOW; recommended W12.21 C12xPrimitiveFrontier."
+      }
+    },
+    "UpdateBacklog": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md",
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md"
+        ],
+        "notes": "Root unchanged at 5aee6ef251bd4df0501ae76f34e84e81cd2bf4f25e1a1eafde0f726709cd4bc6."
+      }
+    }
+  },
+  "summary": {
+    "total": 4,
+    "done": 4,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "verification": {
+    "c12x_review": "python scripts/c12x_review.py -> all_ok=True",
+    "reproduce_all": "REPRODUCED",
+    "second_oracle": "70/70",
+    "seal_gate_ci": "PASS",
+    "backlog_compaction_audit": "all_ok=True",
+    "genskills_verify": "INTACT",
+    "verify_contested_guard": "ALL PASS",
+    "registry_root_hash": "5aee6ef251bd4df0501ae76f34e84e81cd2bf4f25e1a1eafde0f726709cd4bc6"
+  }
+}

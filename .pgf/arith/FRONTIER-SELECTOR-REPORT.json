@@ -1,0 +1,3105 @@
+{
+  "phase": "W12.11 FrontierSelector",
+  "schema": "frontier-selector/v1",
+  "honesty": "Report-only. No specs, seals, registry writes, or root changes.",
+  "ranking": "score=(max_control, work, unique_power_count, total_gate_count, -frontier_control_count, N)",
+  "buckets": {
+    "15_127": [
+      {
+        "N": 15,
+        "a": 2,
+        "factors": [
+          3,
+          5
+        ],
+        "order_r": 4,
+        "readout_factors": [
+          3,
+          5
+        ],
+        "counting_t": 8,
+        "work": 4,
+        "nq": 5,
+        "powa": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4
+        ],
+        "unique_power_count": 2,
+        "total_gate_count": 15,
+        "max_control": 2,
+        "frontier_control_count": 15,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 9,
+            "max_control": 2,
+            "frontier_control_count": 9
+          },
+          {
+            "a": 4,
+            "gate_count": 6,
+            "max_control": 2,
+            "frontier_control_count": 6
+          }
+        ],
+        "score": 2420000
+      },
+      {
+        "N": 21,
+        "a": 2,
+        "factors": [
+          3,
+          7
+        ],
+        "order_r": 6,
+        "readout_factors": [
+          3,
+          7
+        ],
+        "counting_t": 8,
+        "work": 5,
+        "nq": 6,
+        "powa": [
+          4,
+          16,
+          4,
+          16,
+          4,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16
+        ],
+        "unique_power_count": 3,
+        "total_gate_count": 133,
+        "max_control": 5,
+        "frontier_control_count": 25,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 35,
+            "max_control": 5,
+            "frontier_control_count": 7
+          },
+          {
+            "a": 4,
+            "gate_count": 39,
+            "max_control": 5,
+            "frontier_control_count": 8
+          },
+          {
+            "a": 16,
+            "gate_count": 59,
+            "max_control": 5,
+            "frontier_control_count": 10
+          }
+        ],
+        "score": 5530108
+      },
+      {
+        "N": 51,
+        "a": 2,
+        "factors": [
+          3,
+          17
+        ],
+        "order_r": 8,
+        "readout_factors": [
+          3,
+          17
+        ],
+        "counting_t": 8,
+        "work": 6,
+        "nq": 7,
+        "powa": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16
+        ],
+        "unique_power_count": 3,
+        "total_gate_count": 244,
+        "max_control": 6,
+        "frontier_control_count": 23,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 43,
+            "max_control": 6,
+            "frontier_control_count": 3
+          },
+          {
+            "a": 4,
+            "gate_count": 94,
+            "max_control": 6,
+            "frontier_control_count": 8
+          },
+          {
+            "a": 16,
+            "gate_count": 107,
+            "max_control": 6,
+            "frontier_control_count": 12
+          }
+        ],
+        "score": 6630221
+      },
+      {
+        "N": 39,
+        "a": 2,
+        "factors": [
+          3,
+          13
+        ],
+        "order_r": 12,
+        "readout_factors": [
+          3,
+          13
+        ],
+        "counting_t": 8,
+        "work": 6,
+        "nq": 7,
+        "powa": [
+          22,
+          16,
+          22,
+          16,
+          22,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          22
+        ],
+        "unique_power_count": 4,
+        "total_gate_count": 507,
+        "max_control": 6,
+        "frontier_control_count": 52,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 52,
+            "max_control": 6,
+            "frontier_control_count": 4
+          },
+          {
+            "a": 4,
+            "gate_count": 131,
+            "max_control": 6,
+            "frontier_control_count": 14
+          },
+          {
+            "a": 16,
+            "gate_count": 164,
+            "max_control": 6,
+            "frontier_control_count": 18
+          },
+          {
+            "a": 22,
+            "gate_count": 160,
+            "max_control": 6,
+            "frontier_control_count": 16
+          }
+        ],
+        "score": 6640455
+      },
+      {
+        "N": 35,
+        "a": 2,
+        "factors": [
+          5,
+          7
+        ],
+        "order_r": 12,
+        "readout_factors": [
+          5,
+          7
+        ],
+        "counting_t": 8,
+        "work": 6,
+        "nq": 7,
+        "powa": [
+          11,
+          16,
+          11,
+          16,
+          11,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          11,
+          16
+        ],
+        "unique_power_count": 4,
+        "total_gate_count": 537,
+        "max_control": 6,
+        "frontier_control_count": 59,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 79,
+            "max_control": 6,
+            "frontier_control_count": 7
+          },
+          {
+            "a": 4,
+            "gate_count": 127,
+            "max_control": 6,
+            "frontier_control_count": 16
+          },
+          {
+            "a": 11,
+            "gate_count": 163,
+            "max_control": 6,
+            "frontier_control_count": 16
+          },
+          {
+            "a": 16,
+            "gate_count": 168,
+            "max_control": 6,
+            "frontier_control_count": 20
+          }
+        ],
+        "score": 6640478
+      },
+      {
+        "N": 55,
+        "a": 2,
+        "factors": [
+          5,
+          11
+        ],
+        "order_r": 20,
+        "readout_factors": [
+          5,
+          11
+        ],
+        "counting_t": 8,
+        "work": 6,
+        "nq": 7,
+        "powa": [
+          36,
+          16,
+          26,
+          31,
+          36,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          26,
+          31,
+          36
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 789,
+        "max_control": 6,
+        "frontier_control_count": 94,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 30,
+            "max_control": 6,
+            "frontier_control_count": 4
+          },
+          {
+            "a": 4,
+            "gate_count": 103,
+            "max_control": 6,
+            "frontier_control_count": 12
+          },
+          {
+            "a": 16,
+            "gate_count": 133,
+            "max_control": 6,
+            "frontier_control_count": 16
+          },
+          {
+            "a": 26,
+            "gate_count": 166,
+            "max_control": 6,
+            "frontier_control_count": 20
+          },
+          {
+            "a": 31,
+            "gate_count": 184,
+            "max_control": 6,
+            "frontier_control_count": 26
+          },
+          {
+            "a": 36,
+            "gate_count": 173,
+            "max_control": 6,
+            "frontier_control_count": 16
+          }
+        ],
+        "score": 6660695
+      },
+      {
+        "N": 85,
+        "a": 2,
+        "factors": [
+          5,
+          17
+        ],
+        "order_r": 8,
+        "readout_factors": [
+          5,
+          17
+        ],
+        "counting_t": 8,
+        "work": 7,
+        "nq": 8,
+        "powa": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16
+        ],
+        "unique_power_count": 3,
+        "total_gate_count": 674,
+        "max_control": 7,
+        "frontier_control_count": 63,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 148,
+            "max_control": 7,
+            "frontier_control_count": 19
+          },
+          {
+            "a": 4,
+            "gate_count": 212,
+            "max_control": 7,
+            "frontier_control_count": 18
+          },
+          {
+            "a": 16,
+            "gate_count": 314,
+            "max_control": 7,
+            "frontier_control_count": 26
+          }
+        ],
+        "score": 7730611
+      },
+      {
+        "N": 91,
+        "a": 2,
+        "factors": [
+          7,
+          13
+        ],
+        "order_r": 12,
+        "readout_factors": [
+          7,
+          13
+        ],
+        "counting_t": 8,
+        "work": 7,
+        "nq": 8,
+        "powa": [
+          74,
+          16,
+          74,
+          16,
+          74,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          74
+        ],
+        "unique_power_count": 4,
+        "total_gate_count": 1115,
+        "max_control": 7,
+        "frontier_control_count": 75,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 77,
+            "max_control": 7,
+            "frontier_control_count": 3
+          },
+          {
+            "a": 4,
+            "gate_count": 261,
+            "max_control": 7,
+            "frontier_control_count": 18
+          },
+          {
+            "a": 16,
+            "gate_count": 390,
+            "max_control": 7,
+            "frontier_control_count": 30
+          },
+          {
+            "a": 74,
+            "gate_count": 387,
+            "max_control": 7,
+            "frontier_control_count": 24
+          }
+        ],
+        "score": 7741040
+      },
+      {
+        "N": 119,
+        "a": 2,
+        "factors": [
+          7,
+          17
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          7,
+          17
+        ],
+        "counting_t": 8,
+        "work": 7,
+        "nq": 8,
+        "powa": [
+          18,
+          86,
+          18,
+          86,
+          18,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          18,
+          86
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 1359,
+        "max_control": 7,
+        "frontier_control_count": 96,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 34,
+            "max_control": 7,
+            "frontier_control_count": 4
+          },
+          {
+            "a": 4,
+            "gate_count": 314,
+            "max_control": 7,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 16,
+            "gate_count": 270,
+            "max_control": 7,
+            "frontier_control_count": 20
+          },
+          {
+            "a": 18,
+            "gate_count": 366,
+            "max_control": 7,
+            "frontier_control_count": 20
+          },
+          {
+            "a": 86,
+            "gate_count": 375,
+            "max_control": 7,
+            "frontier_control_count": 24
+          }
+        ],
+        "score": 7751263
+      },
+      {
+        "N": 93,
+        "a": 2,
+        "factors": [
+          3,
+          31
+        ],
+        "order_r": 10,
+        "readout_factors": [
+          3,
+          31
+        ],
+        "counting_t": 8,
+        "work": 7,
+        "nq": 8,
+        "powa": [
+          70,
+          16,
+          4,
+          64,
+          70,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          64,
+          70
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 1423,
+        "max_control": 7,
+        "frontier_control_count": 101,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 72,
+            "max_control": 7,
+            "frontier_control_count": 5
+          },
+          {
+            "a": 4,
+            "gate_count": 195,
+            "max_control": 7,
+            "frontier_control_count": 14
+          },
+          {
+            "a": 16,
+            "gate_count": 379,
+            "max_control": 7,
+            "frontier_control_count": 30
+          },
+          {
+            "a": 64,
+            "gate_count": 361,
+            "max_control": 7,
+            "frontier_control_count": 22
+          },
+          {
+            "a": 70,
+            "gate_count": 416,
+            "max_control": 7,
+            "frontier_control_count": 30
+          }
+        ],
+        "score": 7751322
+      }
+    ],
+    "128_255": [
+      {
+        "N": 221,
+        "a": 2,
+        "factors": [
+          13,
+          17
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          13,
+          17
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          35,
+          120,
+          35,
+          120,
+          35,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          35,
+          120
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 3032,
+        "max_control": 8,
+        "frontier_control_count": 161,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 107,
+            "max_control": 8,
+            "frontier_control_count": 11
+          },
+          {
+            "a": 4,
+            "gate_count": 419,
+            "max_control": 8,
+            "frontier_control_count": 26
+          },
+          {
+            "a": 16,
+            "gate_count": 711,
+            "max_control": 8,
+            "frontier_control_count": 36
+          },
+          {
+            "a": 35,
+            "gate_count": 874,
+            "max_control": 8,
+            "frontier_control_count": 48
+          },
+          {
+            "a": 120,
+            "gate_count": 921,
+            "max_control": 8,
+            "frontier_control_count": 40
+          }
+        ],
+        "score": 8852871
+      },
+      {
+        "N": 215,
+        "a": 2,
+        "factors": [
+          5,
+          43
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          5,
+          43
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          176,
+          41,
+          16,
+          176,
+          41,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          41,
+          176
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 3191,
+        "max_control": 8,
+        "frontier_control_count": 126,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 104,
+            "max_control": 8,
+            "frontier_control_count": 6
+          },
+          {
+            "a": 4,
+            "gate_count": 566,
+            "max_control": 8,
+            "frontier_control_count": 22
+          },
+          {
+            "a": 16,
+            "gate_count": 704,
+            "max_control": 8,
+            "frontier_control_count": 30
+          },
+          {
+            "a": 41,
+            "gate_count": 864,
+            "max_control": 8,
+            "frontier_control_count": 34
+          },
+          {
+            "a": 176,
+            "gate_count": 953,
+            "max_control": 8,
+            "frontier_control_count": 34
+          }
+        ],
+        "score": 8853065
+      },
+      {
+        "N": 143,
+        "a": 2,
+        "factors": [
+          11,
+          13
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          11,
+          13
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          113,
+          16,
+          48,
+          42,
+          113,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          42,
+          48,
+          113
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 4143,
+        "max_control": 8,
+        "frontier_control_count": 164,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 286,
+            "max_control": 8,
+            "frontier_control_count": 16
+          },
+          {
+            "a": 4,
+            "gate_count": 575,
+            "max_control": 8,
+            "frontier_control_count": 24
+          },
+          {
+            "a": 16,
+            "gate_count": 708,
+            "max_control": 8,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 42,
+            "gate_count": 878,
+            "max_control": 8,
+            "frontier_control_count": 36
+          },
+          {
+            "a": 48,
+            "gate_count": 783,
+            "max_control": 8,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 113,
+            "gate_count": 913,
+            "max_control": 8,
+            "frontier_control_count": 32
+          }
+        ],
+        "score": 8863979
+      },
+      {
+        "N": 183,
+        "a": 2,
+        "factors": [
+          3,
+          61
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          3,
+          61
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          73,
+          16,
+          118,
+          22,
+          73,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          22,
+          73,
+          118
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 4228,
+        "max_control": 8,
+        "frontier_control_count": 174,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 160,
+            "max_control": 8,
+            "frontier_control_count": 10
+          },
+          {
+            "a": 4,
+            "gate_count": 613,
+            "max_control": 8,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 16,
+            "gate_count": 713,
+            "max_control": 8,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 22,
+            "gate_count": 879,
+            "max_control": 8,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 73,
+            "gate_count": 912,
+            "max_control": 8,
+            "frontier_control_count": 38
+          },
+          {
+            "a": 118,
+            "gate_count": 951,
+            "max_control": 8,
+            "frontier_control_count": 42
+          }
+        ],
+        "score": 8864054
+      },
+      {
+        "N": 155,
+        "a": 2,
+        "factors": [
+          5,
+          31
+        ],
+        "order_r": 20,
+        "readout_factors": [
+          5,
+          31
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          101,
+          16,
+          66,
+          126,
+          101,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          66,
+          101,
+          126
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 4472,
+        "max_control": 8,
+        "frontier_control_count": 195,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 206,
+            "max_control": 8,
+            "frontier_control_count": 9
+          },
+          {
+            "a": 4,
+            "gate_count": 613,
+            "max_control": 8,
+            "frontier_control_count": 22
+          },
+          {
+            "a": 16,
+            "gate_count": 849,
+            "max_control": 8,
+            "frontier_control_count": 36
+          },
+          {
+            "a": 66,
+            "gate_count": 954,
+            "max_control": 8,
+            "frontier_control_count": 40
+          },
+          {
+            "a": 101,
+            "gate_count": 916,
+            "max_control": 8,
+            "frontier_control_count": 44
+          },
+          {
+            "a": 126,
+            "gate_count": 934,
+            "max_control": 8,
+            "frontier_control_count": 44
+          }
+        ],
+        "score": 8864277
+      },
+      {
+        "N": 219,
+        "a": 2,
+        "factors": [
+          3,
+          73
+        ],
+        "order_r": 18,
+        "readout_factors": [
+          3,
+          73
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          4,
+          148,
+          178,
+          55,
+          37,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          37,
+          55,
+          148,
+          178
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 4966,
+        "max_control": 8,
+        "frontier_control_count": 219,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 106,
+            "max_control": 8,
+            "frontier_control_count": 7
+          },
+          {
+            "a": 4,
+            "gate_count": 435,
+            "max_control": 8,
+            "frontier_control_count": 24
+          },
+          {
+            "a": 16,
+            "gate_count": 733,
+            "max_control": 8,
+            "frontier_control_count": 28
+          },
+          {
+            "a": 37,
+            "gate_count": 919,
+            "max_control": 8,
+            "frontier_control_count": 32
+          },
+          {
+            "a": 55,
+            "gate_count": 909,
+            "max_control": 8,
+            "frontier_control_count": 38
+          },
+          {
+            "a": 148,
+            "gate_count": 916,
+            "max_control": 8,
+            "frontier_control_count": 40
+          },
+          {
+            "a": 178,
+            "gate_count": 948,
+            "max_control": 8,
+            "frontier_control_count": 50
+          }
+        ],
+        "score": 8874747
+      },
+      {
+        "N": 187,
+        "a": 2,
+        "factors": [
+          11,
+          17
+        ],
+        "order_r": 40,
+        "readout_factors": [
+          11,
+          17
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          69,
+          137,
+          103,
+          86,
+          69,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          69,
+          86,
+          103,
+          137
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 4982,
+        "max_control": 8,
+        "frontier_control_count": 215,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 105,
+            "max_control": 8,
+            "frontier_control_count": 3
+          },
+          {
+            "a": 4,
+            "gate_count": 425,
+            "max_control": 8,
+            "frontier_control_count": 24
+          },
+          {
+            "a": 16,
+            "gate_count": 709,
+            "max_control": 8,
+            "frontier_control_count": 38
+          },
+          {
+            "a": 69,
+            "gate_count": 880,
+            "max_control": 8,
+            "frontier_control_count": 32
+          },
+          {
+            "a": 86,
+            "gate_count": 949,
+            "max_control": 8,
+            "frontier_control_count": 40
+          },
+          {
+            "a": 103,
+            "gate_count": 973,
+            "max_control": 8,
+            "frontier_control_count": 38
+          },
+          {
+            "a": 137,
+            "gate_count": 941,
+            "max_control": 8,
+            "frontier_control_count": 40
+          }
+        ],
+        "score": 8874767
+      },
+      {
+        "N": 133,
+        "a": 2,
+        "factors": [
+          7,
+          19
+        ],
+        "order_r": 18,
+        "readout_factors": [
+          7,
+          19
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          4,
+          93,
+          25,
+          100,
+          123,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          25,
+          93,
+          100,
+          123
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 5463,
+        "max_control": 8,
+        "frontier_control_count": 267,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 485,
+            "max_control": 8,
+            "frontier_control_count": 25
+          },
+          {
+            "a": 4,
+            "gate_count": 745,
+            "max_control": 8,
+            "frontier_control_count": 48
+          },
+          {
+            "a": 16,
+            "gate_count": 872,
+            "max_control": 8,
+            "frontier_control_count": 36
+          },
+          {
+            "a": 25,
+            "gate_count": 844,
+            "max_control": 8,
+            "frontier_control_count": 46
+          },
+          {
+            "a": 93,
+            "gate_count": 940,
+            "max_control": 8,
+            "frontier_control_count": 42
+          },
+          {
+            "a": 100,
+            "gate_count": 729,
+            "max_control": 8,
+            "frontier_control_count": 30
+          },
+          {
+            "a": 123,
+            "gate_count": 848,
+            "max_control": 8,
+            "frontier_control_count": 40
+          }
+        ],
+        "score": 8875196
+      },
+      {
+        "N": 253,
+        "a": 2,
+        "factors": [
+          11,
+          23
+        ],
+        "order_r": 110,
+        "readout_factors": [
+          11,
+          23
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          36,
+          236,
+          81,
+          9,
+          3,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          3,
+          4,
+          9,
+          16,
+          36,
+          81,
+          236
+        ],
+        "unique_power_count": 8,
+        "total_gate_count": 4480,
+        "max_control": 8,
+        "frontier_control_count": 215,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 28,
+            "max_control": 8,
+            "frontier_control_count": 3
+          },
+          {
+            "a": 3,
+            "gate_count": 375,
+            "max_control": 8,
+            "frontier_control_count": 26
+          },
+          {
+            "a": 4,
+            "gate_count": 227,
+            "max_control": 8,
+            "frontier_control_count": 20
+          },
+          {
+            "a": 9,
+            "gate_count": 778,
+            "max_control": 8,
+            "frontier_control_count": 34
+          },
+          {
+            "a": 16,
+            "gate_count": 333,
+            "max_control": 8,
+            "frontier_control_count": 22
+          },
+          {
+            "a": 36,
+            "gate_count": 905,
+            "max_control": 8,
+            "frontier_control_count": 32
+          },
+          {
+            "a": 81,
+            "gate_count": 943,
+            "max_control": 8,
+            "frontier_control_count": 40
+          },
+          {
+            "a": 236,
+            "gate_count": 891,
+            "max_control": 8,
+            "frontier_control_count": 38
+          }
+        ],
+        "score": 8884265
+      },
+      {
+        "N": 247,
+        "a": 2,
+        "factors": [
+          13,
+          19
+        ],
+        "order_r": 36,
+        "readout_factors": [
+          13,
+          19
+        ],
+        "counting_t": 8,
+        "work": 8,
+        "nq": 9,
+        "powa": [
+          61,
+          55,
+          139,
+          81,
+          9,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          9,
+          16,
+          55,
+          61,
+          81,
+          139
+        ],
+        "unique_power_count": 8,
+        "total_gate_count": 4861,
+        "max_control": 8,
+        "frontier_control_count": 202,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 38,
+            "max_control": 8,
+            "frontier_control_count": 4
+          },
+          {
+            "a": 4,
+            "gate_count": 358,
+            "max_control": 8,
+            "frontier_control_count": 16
+          },
+          {
+            "a": 9,
+            "gate_count": 564,
+            "max_control": 8,
+            "frontier_control_count": 24
+          },
+          {
+            "a": 16,
+            "gate_count": 489,
+            "max_control": 8,
+            "frontier_control_count": 14
+          },
+          {
+            "a": 55,
+            "gate_count": 918,
+            "max_control": 8,
+            "frontier_control_count": 32
+          },
+          {
+            "a": 61,
+            "gate_count": 912,
+            "max_control": 8,
+            "frontier_control_count": 40
+          },
+          {
+            "a": 81,
+            "gate_count": 773,
+            "max_control": 8,
+            "frontier_control_count": 34
+          },
+          {
+            "a": 139,
+            "gate_count": 809,
+            "max_control": 8,
+            "frontier_control_count": 38
+          }
+        ],
+        "score": 8884659
+      }
+    ],
+    "256_511": [
+      {
+        "N": 381,
+        "a": 2,
+        "factors": [
+          3,
+          127
+        ],
+        "order_r": 14,
+        "readout_factors": [
+          3,
+          127
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          4,
+          256,
+          16,
+          4,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256
+        ],
+        "unique_power_count": 4,
+        "total_gate_count": 4774,
+        "max_control": 9,
+        "frontier_control_count": 161,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 139,
+            "max_control": 9,
+            "frontier_control_count": 5
+          },
+          {
+            "a": 4,
+            "gate_count": 926,
+            "max_control": 9,
+            "frontier_control_count": 34
+          },
+          {
+            "a": 16,
+            "gate_count": 1825,
+            "max_control": 9,
+            "frontier_control_count": 66
+          },
+          {
+            "a": 256,
+            "gate_count": 1884,
+            "max_control": 9,
+            "frontier_control_count": 56
+          }
+        ],
+        "score": 9944613
+      },
+      {
+        "N": 453,
+        "a": 2,
+        "factors": [
+          3,
+          151
+        ],
+        "order_r": 30,
+        "readout_factors": [
+          3,
+          151
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          256,
+          16,
+          4,
+          304,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          304
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 7282,
+        "max_control": 9,
+        "frontier_control_count": 221,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 260,
+            "max_control": 9,
+            "frontier_control_count": 15
+          },
+          {
+            "a": 4,
+            "gate_count": 1046,
+            "max_control": 9,
+            "frontier_control_count": 36
+          },
+          {
+            "a": 16,
+            "gate_count": 1779,
+            "max_control": 9,
+            "frontier_control_count": 62
+          },
+          {
+            "a": 256,
+            "gate_count": 2117,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 304,
+            "gate_count": 2080,
+            "max_control": 9,
+            "frontier_control_count": 52
+          }
+        ],
+        "score": 9957061
+      },
+      {
+        "N": 341,
+        "a": 2,
+        "factors": [
+          11,
+          31
+        ],
+        "order_r": 10,
+        "readout_factors": [
+          11,
+          31
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          256,
+          16,
+          4,
+          64,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          64,
+          256
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 7615,
+        "max_control": 9,
+        "frontier_control_count": 289,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 686,
+            "max_control": 9,
+            "frontier_control_count": 49
+          },
+          {
+            "a": 4,
+            "gate_count": 1164,
+            "max_control": 9,
+            "frontier_control_count": 40
+          },
+          {
+            "a": 16,
+            "gate_count": 1851,
+            "max_control": 9,
+            "frontier_control_count": 70
+          },
+          {
+            "a": 64,
+            "gate_count": 1901,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 256,
+            "gate_count": 2013,
+            "max_control": 9,
+            "frontier_control_count": 74
+          }
+        ],
+        "score": 9957326
+      },
+      {
+        "N": 339,
+        "a": 2,
+        "factors": [
+          3,
+          113
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          3,
+          113
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          109,
+          256,
+          16,
+          109,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          109,
+          256
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 8316,
+        "max_control": 9,
+        "frontier_control_count": 231,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 675,
+            "max_control": 9,
+            "frontier_control_count": 37
+          },
+          {
+            "a": 4,
+            "gate_count": 1533,
+            "max_control": 9,
+            "frontier_control_count": 42
+          },
+          {
+            "a": 16,
+            "gate_count": 2019,
+            "max_control": 9,
+            "frontier_control_count": 46
+          },
+          {
+            "a": 109,
+            "gate_count": 2019,
+            "max_control": 9,
+            "frontier_control_count": 54
+          },
+          {
+            "a": 256,
+            "gate_count": 2070,
+            "max_control": 9,
+            "frontier_control_count": 52
+          }
+        ],
+        "score": 9958085
+      },
+      {
+        "N": 493,
+        "a": 2,
+        "factors": [
+          17,
+          29
+        ],
+        "order_r": 56,
+        "readout_factors": [
+          17,
+          29
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          460,
+          256,
+          103,
+          460,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          103,
+          256,
+          460
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 8781,
+        "max_control": 9,
+        "frontier_control_count": 281,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 77,
+            "max_control": 9,
+            "frontier_control_count": 7
+          },
+          {
+            "a": 4,
+            "gate_count": 705,
+            "max_control": 9,
+            "frontier_control_count": 36
+          },
+          {
+            "a": 16,
+            "gate_count": 1643,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 103,
+            "gate_count": 2176,
+            "max_control": 9,
+            "frontier_control_count": 62
+          },
+          {
+            "a": 256,
+            "gate_count": 2085,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 460,
+            "gate_count": 2095,
+            "max_control": 9,
+            "frontier_control_count": 64
+          }
+        ],
+        "score": 9968500
+      },
+      {
+        "N": 485,
+        "a": 2,
+        "factors": [
+          5,
+          97
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          5,
+          97
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          326,
+          61,
+          326,
+          61,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          61,
+          256,
+          326
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 9019,
+        "max_control": 9,
+        "frontier_control_count": 277,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 120,
+            "max_control": 9,
+            "frontier_control_count": 11
+          },
+          {
+            "a": 4,
+            "gate_count": 956,
+            "max_control": 9,
+            "frontier_control_count": 48
+          },
+          {
+            "a": 16,
+            "gate_count": 1683,
+            "max_control": 9,
+            "frontier_control_count": 44
+          },
+          {
+            "a": 61,
+            "gate_count": 2066,
+            "max_control": 9,
+            "frontier_control_count": 60
+          },
+          {
+            "a": 256,
+            "gate_count": 2118,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 326,
+            "gate_count": 2076,
+            "max_control": 9,
+            "frontier_control_count": 58
+          }
+        ],
+        "score": 9968742
+      },
+      {
+        "N": 427,
+        "a": 2,
+        "factors": [
+          7,
+          61
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          7,
+          61
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          256,
+          16,
+          179,
+          205,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          179,
+          205,
+          256
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 9740,
+        "max_control": 9,
+        "frontier_control_count": 313,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 303,
+            "max_control": 9,
+            "frontier_control_count": 21
+          },
+          {
+            "a": 4,
+            "gate_count": 1254,
+            "max_control": 9,
+            "frontier_control_count": 42
+          },
+          {
+            "a": 16,
+            "gate_count": 1883,
+            "max_control": 9,
+            "frontier_control_count": 70
+          },
+          {
+            "a": 179,
+            "gate_count": 2093,
+            "max_control": 9,
+            "frontier_control_count": 54
+          },
+          {
+            "a": 205,
+            "gate_count": 2162,
+            "max_control": 9,
+            "frontier_control_count": 66
+          },
+          {
+            "a": 256,
+            "gate_count": 2045,
+            "max_control": 9,
+            "frontier_control_count": 60
+          }
+        ],
+        "score": 9969427
+      },
+      {
+        "N": 451,
+        "a": 2,
+        "factors": [
+          11,
+          41
+        ],
+        "order_r": 20,
+        "readout_factors": [
+          11,
+          41
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          256,
+          16,
+          37,
+          141,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          37,
+          141,
+          256
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 9748,
+        "max_control": 9,
+        "frontier_control_count": 297,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 263,
+            "max_control": 9,
+            "frontier_control_count": 13
+          },
+          {
+            "a": 4,
+            "gate_count": 1286,
+            "max_control": 9,
+            "frontier_control_count": 42
+          },
+          {
+            "a": 16,
+            "gate_count": 1960,
+            "max_control": 9,
+            "frontier_control_count": 58
+          },
+          {
+            "a": 37,
+            "gate_count": 2071,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 141,
+            "gate_count": 2071,
+            "max_control": 9,
+            "frontier_control_count": 66
+          },
+          {
+            "a": 256,
+            "gate_count": 2097,
+            "max_control": 9,
+            "frontier_control_count": 62
+          }
+        ],
+        "score": 9969451
+      },
+      {
+        "N": 403,
+        "a": 2,
+        "factors": [
+          13,
+          31
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          13,
+          31
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          256,
+          16,
+          35,
+          250,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          35,
+          250,
+          256
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 10273,
+        "max_control": 9,
+        "frontier_control_count": 305,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 396,
+            "max_control": 9,
+            "frontier_control_count": 27
+          },
+          {
+            "a": 4,
+            "gate_count": 1466,
+            "max_control": 9,
+            "frontier_control_count": 52
+          },
+          {
+            "a": 16,
+            "gate_count": 2018,
+            "max_control": 9,
+            "frontier_control_count": 54
+          },
+          {
+            "a": 35,
+            "gate_count": 2122,
+            "max_control": 9,
+            "frontier_control_count": 62
+          },
+          {
+            "a": 250,
+            "gate_count": 2147,
+            "max_control": 9,
+            "frontier_control_count": 56
+          },
+          {
+            "a": 256,
+            "gate_count": 2124,
+            "max_control": 9,
+            "frontier_control_count": 54
+          }
+        ],
+        "score": 9969968
+      },
+      {
+        "N": 287,
+        "a": 2,
+        "factors": [
+          7,
+          41
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          7,
+          41
+        ],
+        "counting_t": 8,
+        "work": 9,
+        "nq": 10,
+        "powa": [
+          256,
+          16,
+          242,
+          100,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          100,
+          242,
+          256
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 10401,
+        "max_control": 9,
+        "frontier_control_count": 322,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 594,
+            "max_control": 9,
+            "frontier_control_count": 30
+          },
+          {
+            "a": 4,
+            "gate_count": 1601,
+            "max_control": 9,
+            "frontier_control_count": 54
+          },
+          {
+            "a": 16,
+            "gate_count": 1849,
+            "max_control": 9,
+            "frontier_control_count": 58
+          },
+          {
+            "a": 100,
+            "gate_count": 2095,
+            "max_control": 9,
+            "frontier_control_count": 54
+          },
+          {
+            "a": 242,
+            "gate_count": 2165,
+            "max_control": 9,
+            "frontier_control_count": 62
+          },
+          {
+            "a": 256,
+            "gate_count": 2097,
+            "max_control": 9,
+            "frontier_control_count": 64
+          }
+        ],
+        "score": 9970079
+      }
+    ],
+    "512_767": [
+      {
+        "N": 635,
+        "a": 2,
+        "factors": [
+          5,
+          127
+        ],
+        "order_r": 28,
+        "readout_factors": [
+          5,
+          127
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          131,
+          256,
+          16,
+          131,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          131,
+          256
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 17250,
+        "max_control": 10,
+        "frontier_control_count": 347,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 638,
+            "max_control": 10,
+            "frontier_control_count": 23
+          },
+          {
+            "a": 4,
+            "gate_count": 3048,
+            "max_control": 10,
+            "frontier_control_count": 72
+          },
+          {
+            "a": 16,
+            "gate_count": 4194,
+            "max_control": 10,
+            "frontier_control_count": 78
+          },
+          {
+            "a": 131,
+            "gate_count": 4737,
+            "max_control": 10,
+            "frontier_control_count": 92
+          },
+          {
+            "a": 256,
+            "gate_count": 4633,
+            "max_control": 10,
+            "frontier_control_count": 82
+          }
+        ],
+        "score": 11066903
+      },
+      {
+        "N": 723,
+        "a": 2,
+        "factors": [
+          3,
+          241
+        ],
+        "order_r": 24,
+        "readout_factors": [
+          3,
+          241
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          466,
+          256,
+          466,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          466
+        ],
+        "unique_power_count": 5,
+        "total_gate_count": 18020,
+        "max_control": 10,
+        "frontier_control_count": 385,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1247,
+            "max_control": 10,
+            "frontier_control_count": 55
+          },
+          {
+            "a": 4,
+            "gate_count": 3008,
+            "max_control": 10,
+            "frontier_control_count": 60
+          },
+          {
+            "a": 16,
+            "gate_count": 4194,
+            "max_control": 10,
+            "frontier_control_count": 82
+          },
+          {
+            "a": 256,
+            "gate_count": 4801,
+            "max_control": 10,
+            "frontier_control_count": 100
+          },
+          {
+            "a": 466,
+            "gate_count": 4770,
+            "max_control": 10,
+            "frontier_control_count": 88
+          }
+        ],
+        "score": 11067635
+      },
+      {
+        "N": 755,
+        "a": 2,
+        "factors": [
+          5,
+          151
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          5,
+          151
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          16,
+          306,
+          606,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          306,
+          606
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 21874,
+        "max_control": 10,
+        "frontier_control_count": 461,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 983,
+            "max_control": 10,
+            "frontier_control_count": 51
+          },
+          {
+            "a": 4,
+            "gate_count": 2754,
+            "max_control": 10,
+            "frontier_control_count": 60
+          },
+          {
+            "a": 16,
+            "gate_count": 3818,
+            "max_control": 10,
+            "frontier_control_count": 76
+          },
+          {
+            "a": 256,
+            "gate_count": 4728,
+            "max_control": 10,
+            "frontier_control_count": 86
+          },
+          {
+            "a": 306,
+            "gate_count": 4784,
+            "max_control": 10,
+            "frontier_control_count": 100
+          },
+          {
+            "a": 606,
+            "gate_count": 4807,
+            "max_control": 10,
+            "frontier_control_count": 88
+          }
+        ],
+        "score": 11081413
+      },
+      {
+        "N": 731,
+        "a": 2,
+        "factors": [
+          17,
+          43
+        ],
+        "order_r": 56,
+        "readout_factors": [
+          17,
+          43
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          477,
+          256,
+          188,
+          477,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          188,
+          256,
+          477
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 22183,
+        "max_control": 10,
+        "frontier_control_count": 461,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1105,
+            "max_control": 10,
+            "frontier_control_count": 57
+          },
+          {
+            "a": 4,
+            "gate_count": 2746,
+            "max_control": 10,
+            "frontier_control_count": 66
+          },
+          {
+            "a": 16,
+            "gate_count": 4163,
+            "max_control": 10,
+            "frontier_control_count": 84
+          },
+          {
+            "a": 188,
+            "gate_count": 4704,
+            "max_control": 10,
+            "frontier_control_count": 80
+          },
+          {
+            "a": 256,
+            "gate_count": 4717,
+            "max_control": 10,
+            "frontier_control_count": 90
+          },
+          {
+            "a": 477,
+            "gate_count": 4748,
+            "max_control": 10,
+            "frontier_control_count": 84
+          }
+        ],
+        "score": 11081722
+      },
+      {
+        "N": 671,
+        "a": 2,
+        "factors": [
+          11,
+          61
+        ],
+        "order_r": 60,
+        "readout_factors": [
+          11,
+          61
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          16,
+          301,
+          449,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          301,
+          449
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 22914,
+        "max_control": 10,
+        "frontier_control_count": 482,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1142,
+            "max_control": 10,
+            "frontier_control_count": 52
+          },
+          {
+            "a": 4,
+            "gate_count": 3073,
+            "max_control": 10,
+            "frontier_control_count": 72
+          },
+          {
+            "a": 16,
+            "gate_count": 4418,
+            "max_control": 10,
+            "frontier_control_count": 92
+          },
+          {
+            "a": 256,
+            "gate_count": 4809,
+            "max_control": 10,
+            "frontier_control_count": 94
+          },
+          {
+            "a": 301,
+            "gate_count": 4765,
+            "max_control": 10,
+            "frontier_control_count": 80
+          },
+          {
+            "a": 449,
+            "gate_count": 4707,
+            "max_control": 10,
+            "frontier_control_count": 92
+          }
+        ],
+        "score": 11082432
+      },
+      {
+        "N": 679,
+        "a": 2,
+        "factors": [
+          7,
+          97
+        ],
+        "order_r": 48,
+        "readout_factors": [
+          7,
+          97
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          326,
+          352,
+          326,
+          352,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          326,
+          352
+        ],
+        "unique_power_count": 6,
+        "total_gate_count": 23754,
+        "max_control": 10,
+        "frontier_control_count": 466,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1386,
+            "max_control": 10,
+            "frontier_control_count": 60
+          },
+          {
+            "a": 4,
+            "gate_count": 3525,
+            "max_control": 10,
+            "frontier_control_count": 76
+          },
+          {
+            "a": 16,
+            "gate_count": 4516,
+            "max_control": 10,
+            "frontier_control_count": 82
+          },
+          {
+            "a": 256,
+            "gate_count": 4725,
+            "max_control": 10,
+            "frontier_control_count": 84
+          },
+          {
+            "a": 326,
+            "gate_count": 4827,
+            "max_control": 10,
+            "frontier_control_count": 88
+          },
+          {
+            "a": 352,
+            "gate_count": 4775,
+            "max_control": 10,
+            "frontier_control_count": 76
+          }
+        ],
+        "score": 11083288
+      },
+      {
+        "N": 697,
+        "a": 2,
+        "factors": [
+          17,
+          41
+        ],
+        "order_r": 40,
+        "readout_factors": [
+          17,
+          41
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          426,
+          324,
+          18,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          18,
+          256,
+          324,
+          426
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 27251,
+        "max_control": 10,
+        "frontier_control_count": 576,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 1318,
+            "max_control": 10,
+            "frontier_control_count": 54
+          },
+          {
+            "a": 4,
+            "gate_count": 2991,
+            "max_control": 10,
+            "frontier_control_count": 88
+          },
+          {
+            "a": 16,
+            "gate_count": 4231,
+            "max_control": 10,
+            "frontier_control_count": 82
+          },
+          {
+            "a": 18,
+            "gate_count": 4560,
+            "max_control": 10,
+            "frontier_control_count": 94
+          },
+          {
+            "a": 256,
+            "gate_count": 4692,
+            "max_control": 10,
+            "frontier_control_count": 76
+          },
+          {
+            "a": 324,
+            "gate_count": 4677,
+            "max_control": 10,
+            "frontier_control_count": 92
+          },
+          {
+            "a": 426,
+            "gate_count": 4782,
+            "max_control": 10,
+            "frontier_control_count": 90
+          }
+        ],
+        "score": 11096675
+      },
+      {
+        "N": 527,
+        "a": 2,
+        "factors": [
+          17,
+          31
+        ],
+        "order_r": 40,
+        "readout_factors": [
+          17,
+          31
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          256,
+          171,
+          35,
+          188,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          35,
+          171,
+          188,
+          256
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 28470,
+        "max_control": 10,
+        "frontier_control_count": 572,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 2037,
+            "max_control": 10,
+            "frontier_control_count": 62
+          },
+          {
+            "a": 4,
+            "gate_count": 3315,
+            "max_control": 10,
+            "frontier_control_count": 68
+          },
+          {
+            "a": 16,
+            "gate_count": 4189,
+            "max_control": 10,
+            "frontier_control_count": 68
+          },
+          {
+            "a": 35,
+            "gate_count": 4698,
+            "max_control": 10,
+            "frontier_control_count": 102
+          },
+          {
+            "a": 171,
+            "gate_count": 4779,
+            "max_control": 10,
+            "frontier_control_count": 94
+          },
+          {
+            "a": 188,
+            "gate_count": 4703,
+            "max_control": 10,
+            "frontier_control_count": 82
+          },
+          {
+            "a": 256,
+            "gate_count": 4749,
+            "max_control": 10,
+            "frontier_control_count": 96
+          }
+        ],
+        "score": 11097898
+      },
+      {
+        "N": 579,
+        "a": 2,
+        "factors": [
+          3,
+          193
+        ],
+        "order_r": 96,
+        "readout_factors": [
+          3,
+          193
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          301,
+          277,
+          301,
+          109,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          109,
+          256,
+          277,
+          301
+        ],
+        "unique_power_count": 7,
+        "total_gate_count": 28998,
+        "max_control": 10,
+        "frontier_control_count": 559,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 2098,
+            "max_control": 10,
+            "frontier_control_count": 53
+          },
+          {
+            "a": 4,
+            "gate_count": 3431,
+            "max_control": 10,
+            "frontier_control_count": 70
+          },
+          {
+            "a": 16,
+            "gate_count": 4440,
+            "max_control": 10,
+            "frontier_control_count": 82
+          },
+          {
+            "a": 109,
+            "gate_count": 4751,
+            "max_control": 10,
+            "frontier_control_count": 88
+          },
+          {
+            "a": 256,
+            "gate_count": 4762,
+            "max_control": 10,
+            "frontier_control_count": 92
+          },
+          {
+            "a": 277,
+            "gate_count": 4756,
+            "max_control": 10,
+            "frontier_control_count": 84
+          },
+          {
+            "a": 301,
+            "gate_count": 4760,
+            "max_control": 10,
+            "frontier_control_count": 90
+          }
+        ],
+        "score": 11098439
+      },
+      {
+        "N": 767,
+        "a": 2,
+        "factors": [
+          13,
+          59
+        ],
+        "order_r": 348,
+        "readout_factors": [
+          13,
+          59
+        ],
+        "counting_t": 8,
+        "work": 10,
+        "nq": 11,
+        "powa": [
+          438,
+          536,
+          464,
+          341,
+          256,
+          16,
+          4,
+          2
+        ],
+        "unique_powers": [
+          2,
+          4,
+          16,
+          256,
+          341,
+          438,
+          464,
+          536
+        ],
+        "unique_power_count": 8,
+        "total_gate_count": 23997,
+        "max_control": 10,
+        "frontier_control_count": 522,
+        "cmul_stats": [
+          {
+            "a": 2,
+            "gate_count": 81,
+            "max_control": 5,
+            "frontier_control_count": 24
+          },
+          {
+            "a": 4,
+            "gate_count": 1534,
+            "max_control": 10,
+            "frontier_control_count": 62
+          },
+          {
+            "a": 16,
+            "gate_count": 816,
+            "max_control": 10,
+            "frontier_control_count": 24
+          },
+          {
+            "a": 256,
+            "gate_count": 2536,
+            "max_control": 10,
+            "frontier_control_count": 30
+          },
+          {
+            "a": 341,
+            "gate_count": 4750,
+            "max_control": 10,
+            "frontier_control_count": 96
+          },
+          {
+            "a": 438,
+            "gate_count": 4759,
+            "max_control": 10,
+            "frontier_control_count": 88
+          },
+          {
+            "a": 464,
+            "gate_count": 4782,
+            "max_control": 10,
+            "frontier_control_count": 98
+          },
+          {
+            "a": 536,
+            "gate_count": 4739,
+            "max_control": 10,
+            "frontier_control_count": 100
+          }
+        ],
+        "score": 11103475
+      }
+    ]
+  },
+  "current_frontier_observations": {
+    "best_256_511": {
+      "N": 381,
+      "a": 2,
+      "factors": [
+        3,
+        127
+      ],
+      "order_r": 14,
+      "readout_factors": [
+        3,
+        127
+      ],
+      "counting_t": 8,
+      "work": 9,
+      "nq": 10,
+      "powa": [
+        4,
+        256,
+        16,
+        4,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        256
+      ],
+      "unique_power_count": 4,
+      "total_gate_count": 4774,
+      "max_control": 9,
+      "frontier_control_count": 161,
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 139,
+          "max_control": 9,
+          "frontier_control_count": 5
+        },
+        {
+          "a": 4,
+          "gate_count": 926,
+          "max_control": 9,
+          "frontier_control_count": 34
+        },
+        {
+          "a": 16,
+          "gate_count": 1825,
+          "max_control": 9,
+          "frontier_control_count": 66
+        },
+        {
+          "a": 256,
+          "gate_count": 1884,
+          "max_control": 9,
+          "frontier_control_count": 56
+        }
+      ],
+      "score": 9944613
+    },
+    "best_512_767": {
+      "N": 635,
+      "a": 2,
+      "factors": [
+        5,
+        127
+      ],
+      "order_r": 28,
+      "readout_factors": [
+        5,
+        127
+      ],
+      "counting_t": 8,
+      "work": 10,
+      "nq": 11,
+      "powa": [
+        131,
+        256,
+        16,
+        131,
+        256,
+        16,
+        4,
+        2
+      ],
+      "unique_powers": [
+        2,
+        4,
+        16,
+        131,
+        256
+      ],
+      "unique_power_count": 5,
+      "total_gate_count": 17250,
+      "max_control": 10,
+      "frontier_control_count": 347,
+      "cmul_stats": [
+        {
+          "a": 2,
+          "gate_count": 638,
+          "max_control": 10,
+          "frontier_control_count": 23
+        },
+        {
+          "a": 4,
+          "gate_count": 3048,
+          "max_control": 10,
+          "frontier_control_count": 72
+        },
+        {
+          "a": 16,
+          "gate_count": 4194,
+          "max_control": 10,
+          "frontier_control_count": 78
+        },
+        {
+          "a": 131,
+          "gate_count": 4737,
+          "max_control": 10,
+          "frontier_control_count": 92
+        },
+        {
+          "a": 256,
+          "gate_count": 4633,
+          "max_control": 10,
+          "frontier_control_count": 82
+        }
+      ],
+      "score": 11066903
+    }
+  }
+}

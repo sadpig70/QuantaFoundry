@@ -141,10 +141,25 @@ def gen_cluster_ring(n):
 # ════════════════════════════════════════════════════════════════════════════
 # 3b. 생성 방법 — reversible arithmetic synthesis (controlled modular multiplier)
 #     산술 순열(×a mod N)을 MMD transformation-based synthesis 로 봉인 MCT
-#     (toffoli/c3x/c4x/c5x, ≤5 control)에 정직 분해. golden=순열(MatrixGate 없음).
+#     (toffoli/c3x/c4x/c5x/c6x/c7x/c8x/c9x/c10x/c11x/c12x, ≤12 control)에 정직 분해.
+#     golden=순열(MatrixGate 없음).
 #     §8.7 이 지목한 최고가치 차기 GenSkill — Shor 의 controlled-U 생성 *방법*.
 # ════════════════════════════════════════════════════════════════════════════
-_MCT_MODULE = {0: "x_gate", 1: "cnot", 2: "toffoli", 3: "c3x", 4: "c4x", 5: "c5x", 6: "c6x", 7: "c7x"}
+_MCT_MODULE = {
+    0: "x_gate",
+    1: "cnot",
+    2: "toffoli",
+    3: "c3x",
+    4: "c4x",
+    5: "c5x",
+    6: "c6x",
+    7: "c7x",
+    8: "c8x",
+    9: "c9x",
+    10: "c10x",
+    11: "c11x",
+    12: "c12x",
+}
 
 
 def _set_wires(v, nq):
@@ -210,8 +225,8 @@ def gen_modmul(a, N, nq):
     perm = _modmul_perm(a, N, nq)
     gates = mmd_synthesize(perm, nq)
     maxc = max((len(c) for c, _ in gates), default=0)
-    if maxc > 7:
-        raise ValueError(f"gen_modmul: {maxc} controls > 7 (c8x 부재; nq={nq} 축소 필요)")
+    if maxc > 12:
+        raise ValueError(f"gen_modmul: {maxc} controls > 12 (c13x 부재; nq={nq} 축소 필요)")
     steps = [{"spec": f"../modules/{_MCT_MODULE[len(c)]}.pg", "targets": list(c) + [t]} for c, t in gates]
     plan = build_plan(steps)
     golden = (
@@ -436,8 +451,9 @@ GENSKILLS = {
         "version": "1", "produces": "app", "param": "a,N,nq",
         "kind": "controlled modular multiplier (reversible arithmetic synthesis)",
         "golden_method": "arithmetic permutation (×a mod N, identity out-of-range) + MMD "
-                         "transformation-based synthesis into sealed MCTs (toffoli/c3x/c4x/c5x, ≤5 controls)",
-        "required_modules": ["toffoli", "c3x", "c4x", "c5x"],
+                         "transformation-based synthesis into sealed MCTs "
+                         "(toffoli/c3x/c4x/c5x/c6x/c7x/c8x/c9x/c10x/c11x/c12x, ≤12 controls)",
+        "required_modules": ["toffoli", "c3x", "c4x", "c5x", "c6x", "c7x", "c8x", "c9x", "c10x", "c11x", "c12x"],
         "instance_pattern": r"^cmul(\d+)_mod(\d+)$", "byte_frozen": False,
         "make_spec": gen_modmul, "sample_args": (2, 21, 6),
     },

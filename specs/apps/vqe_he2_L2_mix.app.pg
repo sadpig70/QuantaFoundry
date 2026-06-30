@@ -1,0 +1,15 @@
+# vqe_he2_L2_mix — 2-layer 혼합각 (π/4,π/2,−π/4,π/4). 2-layer HE ansatz(per-qubit 독립각)·기존 Ry 복리·MatrixGate 0.
+```json id=app_meta
+{"id": "vqe_he2_L2_mix", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+def Ry(al): return np.array([[np.cos(al/2),-np.sin(al/2)],[np.sin(al/2),np.cos(al/2)]],dtype=complex)
+CNOT=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+k=np.kron
+a,b,c,d=[x*np.pi for x in (0.25, 0.5, -0.25, 0.25)]
+golden=CNOT@k(Ry(c),Ry(d))@CNOT@k(Ry(a),Ry(b))
+```
+```json id=plan
+{"steps": [{"spec": "../modules/ry_pi4.pg", "targets": [0]}, {"spec": "../modules/ry_pi2.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/ry_negpi4.pg", "targets": [0]}, {"spec": "../modules/ry_pi4.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

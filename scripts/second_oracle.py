@@ -79,6 +79,11 @@ INDEP = {
     "ccz": lambda: np.diag([1, 1, 1, 1, 1, 1, 1, -1]).astype(complex),
     "c6x": lambda: cnx_perm(6),
     "c7x": lambda: cnx_perm(7),
+    "c8x": lambda: cnx_perm(8),
+    "c9x": lambda: cnx_perm(9),
+    "c10x": lambda: cnx_perm(10),
+    "c11x": lambda: cnx_perm(11),
+    "c12x": lambda: cnx_perm(12),
     "cr3_dag_gate": lambda: cphase(3).conj(), "cr4_dag_gate": lambda: cphase(4).conj(),
     "cr5_dag_gate": lambda: cphase(5).conj(), "cr6_dag_gate": lambda: cphase(6).conj(),
     "cr7_dag_gate": lambda: cphase(7).conj(), "cr8_dag_gate": lambda: cphase(8).conj(),
@@ -99,6 +104,17 @@ INDEP = {
                                [np.sin(np.pi / 4), np.cos(np.pi / 4)]], dtype=complex),
     "ry_negpi2": lambda: np.array([[np.cos(np.pi / 4), np.sin(np.pi / 4)],
                                    [-np.sin(np.pi / 4), np.cos(np.pi / 4)]], dtype=complex),
+    "ry_3pi4": lambda: np.array([[np.cos(3 * np.pi / 8), -np.sin(3 * np.pi / 8)],
+                                 [np.sin(3 * np.pi / 8), np.cos(3 * np.pi / 8)]], dtype=complex),
+    # ── W12.3: Yoshida 4th-order Suzuki coefficient rotations ──
+    "rz_y4_p": lambda: np.diag([np.exp(1j * (1 / (4 - 4 ** (1 / 3))) * np.pi / 16),
+                                np.exp(-1j * (1 / (4 - 4 ** (1 / 3))) * np.pi / 16)]).astype(complex),
+    "rx_y4_p": lambda: (np.cos((1 / (4 - 4 ** (1 / 3))) * np.pi / 8) * np.eye(2)
+                        + 1j * np.sin((1 / (4 - 4 ** (1 / 3))) * np.pi / 8) * X).astype(complex),
+    "rz_y4_q": lambda: np.diag([np.exp(1j * (1 - 4 * (1 / (4 - 4 ** (1 / 3)))) * np.pi / 16),
+                                np.exp(-1j * (1 - 4 * (1 / (4 - 4 ** (1 / 3)))) * np.pi / 16)]).astype(complex),
+    "rx_y4_q": lambda: (np.cos((1 - 4 * (1 / (4 - 4 ** (1 / 3)))) * np.pi / 8) * np.eye(2)
+                        + 1j * np.sin((1 - 4 * (1 / (4 - 4 ** (1 / 3)))) * np.pi / 8) * X).astype(complex),
 }
 # ry_k cascade family (k=2..10) + daggers — late-binding 회피용 즉시 캡처
 for _k in range(2, 11):

@@ -1,0 +1,72 @@
+{
+  "project": "C8xPrimitiveFrontier",
+  "workplan": ".pgf/WORKPLAN-C8xFrontier.md",
+  "design": ".pgf/DESIGN-C8xFrontier.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 5,
+  "nodes": {
+    "FrontierSelect": {
+      "status": "done",
+      "outputs": {
+        "notes": "N=187=11*17 selected: nq=9, gates=105, max_control=8, c8x_count=3."
+      }
+    },
+    "SealC8x": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/modules/c8x.pg",
+          "registry/modules/c8x.sealed.json"
+        ],
+        "notes": "c8x sealed Tier-0, n_sys=9; independent cnx_perm(8) u_hash matched."
+      }
+    },
+    "ExtendModmulEngine": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/genskills.py",
+          "registry/GENSKILL-CATALOG.json"
+        ],
+        "notes": "Added _MCT_MODULE[8]='c8x', honest cap now blocks >8 as c9x missing; genskills verify INTACT."
+      }
+    },
+    "SealCmul187": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul2_mod187.app.pg",
+          "registry/apps/cmul2_mod187.sealed.json",
+          ".pgf/arith/C8X-FRONTIER-187-REPORT.json"
+        ],
+        "notes": "cmul2_mod187 sealed Tier-0, gates=105, max_control=8, c8x_count=3; independent arithmetic u_hash matched."
+      }
+    },
+    "RegressionUpdate": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/reproduce_all.py",
+          "scripts/second_oracle.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/DEPENDENCY-GRAPH.json",
+          "registry/SEMANTIC-GUARANTEES.json",
+          "CITATION.cff",
+          ".pgf/adoption/RELEASE-META.json",
+          ".pgf/adoption/seal-badge.json",
+          "reports/REPRODUCE-RESULT.json"
+        ],
+        "notes": "reproduce_all REPRODUCED; second_oracle 67/67; seal_gate PASS; contested_guard PASS; oracle fingerprint unchanged."
+      }
+    }
+  },
+  "summary": {
+    "total": 5,
+    "done": 5,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

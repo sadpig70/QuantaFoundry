@@ -1,0 +1,16 @@
+{
+  "id": "M2_DocSyncBatch",
+  "status": "done",
+  "date": "2026-06-30",
+  "trigger": "explicit_user_sync_instruction",
+  "result": {
+    "external_docs_synced": true,
+    "task_record_reset": true,
+    "pending_sync_delta": "none",
+    "modules": 77,
+    "unique_apps": 147,
+    "registry_root_hash": "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db",
+    "second_oracle": "71/71"
+  },
+  "next_repeat_condition": "new task_record.md deltas plus explicit user sync instruction"
+}

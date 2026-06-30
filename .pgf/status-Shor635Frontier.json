@@ -1,0 +1,79 @@
+{
+  "project": "Shor635Frontier",
+  "design": ".pgf/DESIGN-Shor635Frontier.md",
+  "workplan": ".pgf/WORKPLAN-Shor635Frontier.md",
+  "started_at": "2026-06-30T00:00:00+09:00",
+  "updated_at": "2026-06-30T00:00:00+09:00",
+  "iteration": 1,
+  "nodes": {
+    "SealMultiplierFamily": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/cmul4_mod635.app.pg",
+          "specs/apps/cmul16_mod635.app.pg",
+          "specs/apps/cmul131_mod635.app.pg",
+          "specs/apps/cmul256_mod635.app.pg",
+          "registry/apps/cmul4_mod635.sealed.json",
+          "registry/apps/cmul16_mod635.sealed.json",
+          "registry/apps/cmul131_mod635.sealed.json",
+          "registry/apps/cmul256_mod635.sealed.json"
+        ],
+        "notes": "All five N=635 power multipliers are Tier-0 exact, max_control=10, c10x-consuming; independent arithmetic hashes match 5/5."
+      }
+    },
+    "AssembleStructuralShor": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "specs/apps/shor635.app.pg",
+          "registry/apps/shor635.sealed.json",
+          ".pgf/arith/SHOR-FRONTIER-635-REPORT.json"
+        ],
+        "notes": "shor635 Tier-1 structural app sealed at n_sys=18 with deterministic reassembly."
+      }
+    },
+    "VerifyRegression": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "scripts/reproduce_all.py",
+          "scripts/shor_structural_generalizer.py",
+          "scripts/seal_gate_ci.py",
+          "registry/REGISTRY-MANIFEST.json",
+          "registry/SEMANTIC-GUARANTEES.json"
+        ],
+        "notes": "Regression gates passed with root 09f62bf3f55846193d1a447f10c9c97255d06b15e5e1cf919c0c0addf5976f03."
+      }
+    },
+    "UpdateBacklog": {
+      "status": "done",
+      "outputs": {
+        "files_modified": [
+          "HANDOFF.md",
+          "remain_task_list.md",
+          "task_record.md",
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "Current state updated and W12.16 C11xPrimitiveReview added as next ready candidate."
+      }
+    }
+  },
+  "summary": {
+    "total": 4,
+    "done": 4,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  },
+  "verification": {
+    "shor635_frontier": "python scripts/shor635_frontier.py -> all_ok=True",
+    "shor_structural_generalizer": "includes shor635 hash/resource/generator reproduction",
+    "reproduce_all": "REPRODUCED",
+    "second_oracle": "69/69",
+    "seal_gate_ci": "PASS",
+    "verify_contested_guard": "ALL PASS",
+    "backlog_compaction_audit": "all_ok=True",
+    "registry_root_hash": "09f62bf3f55846193d1a447f10c9c97255d06b15e5e1cf919c0c0addf5976f03"
+  }
+}

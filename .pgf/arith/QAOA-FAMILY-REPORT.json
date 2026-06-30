@@ -1,0 +1,53 @@
+{
+  "phase": "W11.1 QAOA",
+  "apps": [
+    {
+      "id": "qaoa_p3",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "3d1f92227b491bbad8be03598a4d5e72aaf023cc5b5d25be59ea36a05bbd6684",
+      "reason": ""
+    },
+    {
+      "id": "qaoa_c4",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "c7b3d2a3a53ea4da254d2644ee8d859004757bf945d5fc83e4f9ae2033071df6",
+      "reason": ""
+    }
+  ],
+  "qaoa_observation": {
+    "note": "OBSERVATION, NOT A SEAL — MaxCut <C> of the sealed QAOA circuit via backend_adapter, plus the p=1-optimal approximation ratio over (γ,β). p=1 is a finite-layer approximation: even at optimal angles ratio<1 (P3 0.825, C4 0.75) — QAOA != exact (the combinatorial sibling of approximation != exact / variational bound != exact).",
+    "instances": [
+      {
+        "app": "qaoa_p3",
+        "n": 3,
+        "edges": 2,
+        "Cmax": 2,
+        "sealed_expC": 0.396447,
+        "sealed_ratio": 0.198223,
+        "p1_opt_expC": 1.649328,
+        "p1_opt_ratio": 0.824664,
+        "sealed_in_range": true,
+        "p1_opt_below_1": true
+      },
+      {
+        "app": "qaoa_c4",
+        "n": 4,
+        "edges": 4,
+        "Cmax": 4,
+        "sealed_expC": 1.0,
+        "sealed_ratio": 0.25,
+        "p1_opt_expC": 2.999689,
+        "p1_opt_ratio": 0.749922,
+        "sealed_in_range": true,
+        "p1_opt_below_1": true
+      }
+    ],
+    "all_ok": true
+  },
+  "all_ok": true,
+  "honesty": "MaxCut QAOA p=1 circuit sealed Tier-0 (zero new modules, reuses cnot/rz_negpi4/rx_negpi4/h_gate). Approximation ratio is an observation (not a seal): p=1 finite layer gives ratio<1 even at optimal angles (P3 0.825, C4 0.75) — QAOA != exact."
+}

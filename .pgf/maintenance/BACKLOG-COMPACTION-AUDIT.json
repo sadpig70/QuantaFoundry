@@ -1,0 +1,42 @@
+{
+  "phase": "M3 BacklogCompactionAudit",
+  "schema": "backlog-compaction-audit/v1",
+  "registry_root_hash": "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db",
+  "files": {
+    "HANDOFF.md": {
+      "lines": 113,
+      "line_budget": 140,
+      "line_budget_ok": true,
+      "current_marker_hits": {
+        "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db": true,
+        "77 modules / 147 unique apps": true
+      },
+      "stale_hits": [],
+      "ok": true
+    },
+    "remain_task_list.md": {
+      "lines": 260,
+      "line_budget": 270,
+      "line_budget_ok": true,
+      "current_marker_hits": {
+        "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db": true,
+        "77 modules / 147 unique apps": true
+      },
+      "stale_hits": [],
+      "ok": true
+    },
+    "task_record.md": {
+      "lines": 26,
+      "line_budget": 120,
+      "line_budget_ok": true,
+      "current_marker_hits": {
+        "1134ea04099ea0c16d1681e5a425e4997a53184f1ab85325d4517152be7108db": true,
+        "77 modules / 147 unique apps": false
+      },
+      "stale_hits": [],
+      "ok": true
+    }
+  },
+  "all_ok": true,
+  "note": "task_record.md may contain old roots as cumulative history; stale root checks are enforced on handoff/remain."
+}

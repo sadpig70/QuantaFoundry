@@ -1,0 +1,99 @@
+{
+  "phase": "W10.1 VQEAnsatz",
+  "honesty": "New horizontal class: variational quantum eigensolver (VQE) hardware-efficient ansatz. The ansatz STRUCTURE is sealed Tier-0 EXACT at fixed-parameter instances (Ry layer + CNOT ladder; composite==golden, no MatrixGate; reuses ry_pi4/pi2/3pi4 + cnot). The variational ENERGY <H(θ)> and parameter optimization are OBSERVATIONS, NOT seals: <H> executed via backend_adapter obeys the variational principle <H> >= E_ground (upper bound); a continuous sweep approaches E_ground but an ansatz-limited gap>0 remains (variational bound != exact ground — the variational sibling of approximation != exact). modules 67->68, apps 97->101.",
+  "modules": [
+    {
+      "id": "ry_3pi4",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "f407cd052ffcbbea04a478c3a9ebb739da65d03c1576932d776e38dbb2d783a4"
+    }
+  ],
+  "apps": [
+    {
+      "id": "vqe_he2_pi4",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "9b9b322ba9109640f9b98d2f2ee096f91a7f23afa6d2ac9da74297507b82b859",
+      "reason": ""
+    },
+    {
+      "id": "vqe_he2_pi2",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "38101d22c38f58768d4106e8eaa640c9e4a77cc83f4cd7708ca91dcc56b0e6cb",
+      "reason": ""
+    },
+    {
+      "id": "vqe_he2_3pi4",
+      "n_sys": 2,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "8d1445eb49fcdfaf543522d090a66cd62811b83df25287eaba04ff6df90e7574",
+      "reason": ""
+    },
+    {
+      "id": "vqe_he3_pi4",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "8b7739c1b04bd798251300254b6c227208f26467ce45232b4608e6a88a8b66ea",
+      "reason": ""
+    }
+  ],
+  "variational_observation": {
+    "note": "OBSERVATION, NOT A SEAL — variational energy <H(θ)> of the sealed ansatz executed via backend_adapter. Variational principle: <H> >= E_ground (upper bound). A continuous sweep approaches E_ground but an ansatz-limited gap>0 remains: VQE is an approximation/bound, not the exact ground (variational != exact).",
+    "hamiltonian": "H_TFIM = -(sum ZZ) - (sum X)",
+    "systems": {
+      "tfim2": {
+        "E_ground_exact": -2.236068,
+        "sealed_samples": [
+          {
+            "app": "vqe_he2_pi4",
+            "theta": 0.785398,
+            "energy": -1.914214,
+            "above_ground": true
+          },
+          {
+            "app": "vqe_he2_pi2",
+            "theta": 1.570796,
+            "energy": -2.0,
+            "above_ground": true
+          },
+          {
+            "app": "vqe_he2_3pi4",
+            "theta": 2.356194,
+            "energy": -0.5,
+            "above_ground": true
+          }
+        ],
+        "sweep_min_energy": -2.165095,
+        "sweep_min_theta": 1.238407,
+        "ansatz_gap": 0.070973,
+        "variational_bound_holds": true,
+        "gap_positive_honest": true
+      },
+      "tfim3": {
+        "E_ground_exact": -3.493959,
+        "sealed_samples": [
+          {
+            "app": "vqe_he3_pi4",
+            "theta": 0.785398,
+            "energy": -3.12132,
+            "above_ground": true
+          }
+        ],
+        "sweep_min_energy": -3.39664,
+        "sweep_min_theta": 1.166114,
+        "ansatz_gap": 0.09732,
+        "variational_bound_holds": true,
+        "gap_positive_honest": true
+      }
+    },
+    "all_ok": true
+  },
+  "all_ok": true
+}

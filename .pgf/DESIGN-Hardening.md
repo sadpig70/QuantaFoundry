@@ -1,6 +1,6 @@
 # DESIGN-Hardening — Stage 5 Hardening 잔여 (blind-spot 비파괴 방어)
 
-> PGF design mode · 기반 = `roadmap_process_plan.md` Stage 5 (Track E) · 방법 = PG Gantree + PPR.
+> PGF design mode · 기반 = `_legacy/roadmap_process_plan.md` Stage 5 (Track E) · 방법 = PG Gantree + PPR.
 > 정직성: 분석/검증/문서 전용 비파괴. registry/sealed/frozen/fingerprint(verify_seal.py·contracts.py) 불변.
 > 소비 자산(사용만): verify_seal(hash_unitary/fingerprint) · second_oracle(INDEP) · registry_tools(manifest).
 

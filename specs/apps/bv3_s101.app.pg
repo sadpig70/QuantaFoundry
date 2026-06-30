@@ -1,0 +1,25 @@
+# bv3_s101 — Bernstein-Vazirani n=3 secret s=101. W12.1 query/oracle algorithm, app-only Tier-0, 신규 모듈 0.
+```json id=app_meta
+{"id": "bv3_s101", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H=np.array([[1,1],[1,-1]],dtype=complex)/np.sqrt(2)
+X=np.array([[0,1],[1,0]],dtype=complex)
+CNOT=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]],dtype=complex)
+def emb(g,qs):
+    n=4
+    k=len(qs); G=g.reshape([2]*k+[2]*k)
+    T=np.eye(1<<n,dtype=complex).reshape([2]*n+[1<<n])
+    T=np.tensordot(G,T,axes=(list(range(k,2*k)),qs)); T=np.moveaxis(T,list(range(k)),qs)
+    return T.reshape(1<<n,1<<n)
+ops=[["x", [3]], ["h", [3]], ["h", [0]], ["h", [1]], ["h", [2]], ["cnot", [0, 3]], ["cnot", [2, 3]], ["h", [0]], ["h", [1]], ["h", [2]]]
+U=np.eye(1<<4,dtype=complex)
+for gate,qs in ops:
+    G={'h':H,'x':X,'cnot':CNOT}[gate]
+    U=emb(G,qs)@U
+golden=U
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/cnot.pg", "targets": [2, 3]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}]}
+```

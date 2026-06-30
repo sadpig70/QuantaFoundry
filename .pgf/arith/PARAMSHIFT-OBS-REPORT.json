@@ -1,0 +1,17 @@
+{
+  "phase": "W10.3 ParamShiftGradient",
+  "note": "OBSERVATION, NOT A SEAL. Sealed Ry modules executed via u_hash gate. parameter-shift rule gives the EXACT analytic gradient (-sin θ), contrasted with finite-difference (O(h^2) approximation). Zero new seals; registry/root unchanged.",
+  "theta": "pi/4",
+  "expect_z": {
+    "theta": 0.707107,
+    "theta_plus": -0.707107,
+    "theta_minus": 0.707107
+  },
+  "grad_parameter_shift": -0.707106781,
+  "grad_exact": -0.707106781,
+  "grad_finite_diff": -0.707094996,
+  "param_shift_is_exact": true,
+  "finite_diff_error": 1.1785054096269398e-05,
+  "all_ok": true,
+  "seals_added": 0
+}

@@ -1,0 +1,91 @@
+{
+  "phase": "W12.2 Quantum Walk",
+  "apps": [
+    {
+      "id": "qw_c4_step",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "c338b5be0090eb905f4b40368179e0d1b6a66d631bc277c01c02b42a06430c4d",
+      "reason": ""
+    },
+    {
+      "id": "qw_c4_2steps",
+      "n_sys": 3,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "59f6c2e900258190468c0076cce41087b72ec1b0e94cc4f1b4d183cd3bea3e3d",
+      "reason": ""
+    },
+    {
+      "id": "qw_c8_step",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "d1a739f5c027df776f386ae3b27d49580865ac4ed49516d32c4c035bab555225",
+      "reason": ""
+    },
+    {
+      "id": "qw_c8_3steps",
+      "n_sys": 4,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "b958b0eb30ed34e5f63955813287a3f50ce799257e5b4d6c44755010b5e5caa1",
+      "reason": ""
+    }
+  ],
+  "walk_observation": {
+    "note": "OBSERVATION, NOT A SEAL — sealed coined-walk circuits executed from |coin=0,pos=0>. Position distributions and quantum-vs-classical contrast are behavior claims over sealed Tier-0 unitaries; the seal itself only certifies composite==golden.",
+    "instances": {
+      "qw_c4_step": {
+        "position_marginal": {
+          "01": 0.5,
+          "11": 0.5
+        },
+        "expected_adjacent_support": {
+          "01": 0.5,
+          "11": 0.5
+        },
+        "adjacent_support_ok": true
+      },
+      "qw_c4_2steps": {
+        "position_marginal": {
+          "00": 0.5,
+          "10": 0.5
+        },
+        "normalized": true
+      },
+      "qw_c8_step": {
+        "position_marginal": {
+          "001": 0.5,
+          "111": 0.5
+        },
+        "expected_adjacent_support": {
+          "001": 0.5,
+          "111": 0.5
+        },
+        "adjacent_support_ok": true
+      },
+      "qw_c8_3steps": {
+        "position_marginal": {
+          "001": 0.625,
+          "011": 0.125,
+          "101": 0.125,
+          "111": 0.125
+        },
+        "classical_unbiased_3steps": {
+          "001": 0.375,
+          "011": 0.125,
+          "101": 0.125,
+          "111": 0.375
+        },
+        "total_variation_vs_classical": 0.25,
+        "interference_contrast_ok": true,
+        "normalized": true
+      }
+    },
+    "all_ok": true
+  },
+  "all_ok": true,
+  "honesty": "The four coined-walk circuits are sealed as Tier-0 app unitaries (composite==golden, up-to-global-phase, zero new modules; only h_gate/x_gate/cnot/toffoli/c3x). Position marginals, interference, and quantum-vs-classical contrast are backend_adapter observations over sealed outputs, not seals."
+}

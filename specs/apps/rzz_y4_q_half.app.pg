@@ -1,0 +1,14 @@
+# rzz_y4_q_half — exp(i q·π/16 ZZ) = CNOT·rz_y4_q·CNOT. Yoshida-4 half-ZZ rotation, app-only Tier-0.
+```json id=app_meta
+{"id": "rzz_y4_q_half", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+p=1/(4-4**(1/3)); q=1-4*p
+Z=np.diag([1,-1]).astype(complex); ZZ=np.kron(Z,Z)
+theta=q*np.pi/16
+golden=(np.cos(theta)*np.eye(4)+1j*np.sin(theta)*ZZ).astype(complex)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/rz_y4_q.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```
