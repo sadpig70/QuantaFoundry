@@ -20,6 +20,15 @@
     }
   },
   "guarantees": {
+    "app:be_proj": {
+      "kind": "app",
+      "id": "be_proj",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e"
+    },
     "app:be_xz": {
       "kind": "app",
       "id": "be_xz",
@@ -1260,6 +1269,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "36cd989bdbc3248774d677bc899e82dced24b8b68d2a3770ca9ba33235b29346"
+    },
+    "app:qsvt_proj_d2": {
+      "kind": "app",
+      "id": "qsvt_proj_d2",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0cad930c75fc2dcf2ba03bf4b4f3da5b2c0da459e7b1ec547fc6cfd504b3d16a"
     },
     "app:qw_c4_2steps": {
       "kind": "app",
@@ -2931,7 +2949,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 219,
+        "unitary_equiv": 221,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 9
       },
@@ -2940,7 +2958,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 296,
+      "unitary_equiv": 298,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 9
     }

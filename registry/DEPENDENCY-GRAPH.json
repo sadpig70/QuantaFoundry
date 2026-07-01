@@ -1,4 +1,21 @@
 {
+  "be_proj": {
+    "u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "be_xz": {
     "u_hash": "998b5b8f1eb4c544f3e1028f2bfcbb9ad404633a0e9ec788bec79af8cd455b22",
     "depends_on": [
@@ -3804,6 +3821,23 @@
         "kind": "module",
         "id": "rz_negpi4",
         "uses": 2,
+        "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
+      }
+    ]
+  },
+  "qsvt_proj_d2": {
+    "u_hash": "0cad930c75fc2dcf2ba03bf4b4f3da5b2c0da459e7b1ec547fc6cfd504b3d16a",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "be_proj",
+        "uses": 2,
+        "child_u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi4",
+        "uses": 3,
         "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
       }
     ]

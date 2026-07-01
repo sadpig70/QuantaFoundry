@@ -1,0 +1,24 @@
+# qsvt_proj_d2 — QSVT degree-2 on be_proj (eigenvalue transformation of A=|0><0|). 2q.
+# U = e^{iφ0 Z_a}·U_A·e^{iφ1 Z_a}·U_A·e^{iφ2 Z_a}, U_A=be_proj, e^{iφ Z_a}=rz_negpi4[0](φ=π/8).
+# ★projector-controlled rotation e^{iφ(2Π-I)}=e^{iφ Z_a}(Π=|0><0|_ancilla). U_A Hermitian(=U_A†)이라 d=2 교대.
+# top-left block ⟨0|_a U|0>_a = e^{iπ/4}·diag(e^{iπ/8}, e^{-iπ/8}) = P(A): 고유값 1→e^{iπ/8}, 0→e^{-iπ/8}
+#   (non-trivial 고유값 변환, A²∝I 축퇴 회피). Tier-0 EXACT. 새 module 0(rz_negpi4·be_proj 재사용).
+# ★다항식 P sweep(φ 변주·차수↑)=observation(INV-Q3, seal 아님). 봉인은 이 위상열의 정확 유니터리.
+```json id=app_meta
+{"id": "qsvt_proj_d2", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+be = np.kron(H, I) @ (np.kron(P0, I) + np.kron(P1, Z)) @ np.kron(H, I)   # be_proj
+rz = np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex)   # rz_negpi4=e^{iπZ/8}
+Rz0 = np.kron(rz, I)
+golden = Rz0 @ be @ Rz0 @ be @ Rz0
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}]}
+```

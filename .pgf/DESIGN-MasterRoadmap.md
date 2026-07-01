@@ -255,6 +255,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   d231fbf4 하드코딩 2곳 삭제 → seal_gate_ci EXPECT_DEFAULT=anchor_sync 관리값 사용, CI 영구 최신).
             #   V08 게이트 추가(convention_independence·resource_witness 명시 스텝 + perm_subspace=reproduce 내부).
             #   second_oracle 71/71 라벨 정정. root 대조=seal_gate 스텝 단일화.
+        V08_11_QSVTCombination // block-encoding + QSP 결합 = 고유값 변환 (done) @dep:V08_7,V08_8
+            # ✅ done: QSVT 최고 compounding("one seal, many algorithms")의 실질 payoff — 분리된 부품(be/qsp)을 결합.
+            #   be_proj.app.pg — block-encoding of |0><0|=(I+Z)/2(h·cz·h, Tier-0 2776579e). ★스펙트럼 비축퇴(A²=A)
+            #   라 be_xz(A²=I/2 축퇴, 다항식 붕괴)와 달리 QSVT non-trivial. qsvt_proj_d2.app.pg — QSVT d=2:
+            #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
+            #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
+            #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
         V08_10_DiscoverySuperopt // 봉인 golden에 더 싼/새 분해 탐색(oracle-gated) (done) @dep:V08_7
             # ✅ done: scripts/discovery_superopt.py — 기존 decomp_optimizer(reward만)에 **탐색 엔진** 추가.
             #   BFS(깊이제한, visited pruning) over 봉인 primitive 팔레트 → up-to-phase 매칭 → 발견 시퀀스를

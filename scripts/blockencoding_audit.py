@@ -27,8 +27,14 @@ Z = np.array([[1, 0], [0, -1]], dtype=complex)
 # be_* 앱의 의도 A/α (규약 검증 대상). data 큐빗 수 = n_sys(app) - n_anc.
 BE_TARGETS = {
     "be_xz": {"A": (X + Z) / 2, "alpha": 1.0, "n_anc": 1, "desc": "(X+Z)/2 via LCU(½X+½Z)"},
+    "be_proj": {"A": np.diag([1, 0]).astype(complex), "alpha": 1.0, "n_anc": 1,
+                "desc": "|0><0|=(I+Z)/2 via LCU (스펙트럼 비축퇴 → QSVT non-trivial)"},
 }
 QSP_APPS = ["qsp_d1"]
+# QSVT 결합 앱: block == P(A) 고유값 변환(observation). data 큐빗 = n_sys - n_anc.
+QSVT_APPS = {"qsvt_proj_d2": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/8 d=2",
+                              "expect": np.diag([np.exp(1j * np.pi / 4) * np.exp(1j * np.pi / 8),
+                                                 np.exp(1j * np.pi / 4) * np.exp(-1j * np.pi / 8)]).astype(complex)}}
 
 
 def _load_golden(app_id):
@@ -77,6 +83,25 @@ def audit_qsp(app_id):
             "note": "QSP 위상열의 정확 유니터리(Tier-0 봉인). 다항식 P(a) sweep=observation(INV-Q3)."}
 
 
+def audit_qsvt(app_id):
+    """QSVT 결합 앱: top-left block == P(A) 고유값 변환 관측(observation) + non-trivial 확인."""
+    g = _load_golden(app_id)
+    meta = QSVT_APPS[app_id]
+    n_sys = _n_sys(app_id)
+    d_data = 1 << (n_sys - meta["n_anc"])
+    block = g[:d_data, :d_data]
+    unitary = bool(np.allclose(g.conj().T @ g, np.eye(g.shape[0]), atol=1e-9))
+    matches_expect = bool(np.allclose(block, meta["expect"], atol=1e-9))
+    # non-trivial: block 이 스칼라·I 가 아님(고유값을 서로 다르게 변환 → 진짜 QSVT)
+    nontrivial = bool(not np.allclose(block, block[0, 0] * np.eye(d_data), atol=1e-9))
+    return {"app": app_id, "kind": "qsvt", "observation": True, "A": meta["A_desc"], "phi": meta["phi_desc"],
+            "block_matches_expected_P(A)": matches_expect,
+            "nontrivial_eigenvalue_transform": nontrivial, "full_unitary": unitary,
+            "ok": unitary and matches_expect and nontrivial,
+            "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). "
+                    "다항식 P sweep=observation(INV-Q3)."}
+
+
 def main():
     quick = "--quick" in sys.argv
     results = {}
@@ -90,6 +115,11 @@ def main():
         if not os.path.exists(os.path.join(SPECS_APPS, f"{aid}.app.pg")):
             continue
         r = audit_qsp(aid); results[aid] = r
+        all_ok = all_ok and r["ok"]
+    for aid in QSVT_APPS:
+        if not os.path.exists(os.path.join(SPECS_APPS, f"{aid}.app.pg")):
+            continue
+        r = audit_qsvt(aid); results[aid] = r
         all_ok = all_ok and r["ok"]
 
     if not quick:
@@ -107,6 +137,9 @@ def main():
             if r["kind"] == "block-encoding":
                 print(f"  {aid}: block==A/α {r['block_matches_A_over_alpha']} · teeth {r['negative_control_teeth']} "
                       f"· {r['desc']}", flush=True)
+            elif r["kind"] == "qsvt":
+                print(f"  {aid}: QSVT block==P(A) {r['block_matches_expected_P(A)']} · "
+                      f"non-trivial 고유값변환 {r['nontrivial_eigenvalue_transform']} ({r['phi']}, observation)", flush=True)
             else:
                 print(f"  {aid}: QSP ⟨0|U|0>={r['poly_value_<0|U|0>']} (observation)", flush=True)
         print(f"  → {os.path.relpath(OUT, ROOT)}", flush=True)

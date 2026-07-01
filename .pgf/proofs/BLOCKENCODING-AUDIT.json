@@ -8,6 +8,17 @@
     "endian": "big"
   },
   "results": {
+    "be_proj": {
+      "alpha": 1.0,
+      "app": "be_proj",
+      "block_matches_A_over_alpha": true,
+      "desc": "|0><0|=(I+Z)/2 via LCU (스펙트럼 비축퇴 → QSVT non-trivial)",
+      "full_unitary": true,
+      "kind": "block-encoding",
+      "n_anc": 1,
+      "negative_control_teeth": true,
+      "ok": true
+    },
     "be_xz": {
       "alpha": 1.0,
       "app": "be_xz",
@@ -30,6 +41,18 @@
         "im": 0.653281,
         "re": 0.653281
       }
+    },
+    "qsvt_proj_d2": {
+      "A": "|0><0|",
+      "app": "qsvt_proj_d2",
+      "block_matches_expected_P(A)": true,
+      "full_unitary": true,
+      "kind": "qsvt",
+      "nontrivial_eigenvalue_transform": true,
+      "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). 다항식 P sweep=observation(INV-Q3).",
+      "observation": true,
+      "ok": true,
+      "phi": "φ=π/8 d=2"
     }
   }
 }
