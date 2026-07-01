@@ -1,4 +1,33 @@
 {
+  "be_pauli2": {
+    "u_hash": "4586c515f2ae8bee37b5ac7e94ef4965b6f4c2e23ed8b36cc0c91a927f4a3a98",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 2,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 2,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "be_proj": {
     "u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e",
     "depends_on": [
@@ -3821,6 +3850,23 @@
         "kind": "module",
         "id": "rz_negpi4",
         "uses": 2,
+        "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
+      }
+    ]
+  },
+  "qsvt_pauli2_d2": {
+    "u_hash": "1128aa76e49bf4a7b5746ee897dbf38289c909ff38e2aa1cf5124fb1a4d12d90",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "be_pauli2",
+        "uses": 2,
+        "child_u_hash": "4586c515f2ae8bee37b5ac7e94ef4965b6f4c2e23ed8b36cc0c91a927f4a3a98"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi4",
+        "uses": 3,
         "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
       }
     ]

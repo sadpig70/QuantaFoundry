@@ -1,0 +1,29 @@
+# qsvt_pauli2_d2 — QSVT degree-2 on be_pauli2 (2-qubit Hermitian A=(XX+ZZ)/2). 3q.
+# U = e^{iφZ_a}·be_pauli2·e^{iφZ_a}·be_pauli2·e^{iφZ_a}, φ=π/8(rz_negpi4[ancilla]). be_pauli2 Hermitian involution.
+# top-left 4×4 block = P(A): 고유값 λ∈{1,0,0,-1} → P(λ)=e^{iπ/4}(cos(π/8)+i sin(π/8)(2λ²-1)):
+#   |λ|=1 → e^{iπ/4}e^{iπ/8}, λ=0 → e^{iπ/4}e^{-iπ/8}. |λ| 구분(짝수다항식). 2q QSVT 고유값 변환.
+# Tier-0 EXACT. 새 module 0(rz_negpi4·be_pauli2 재사용). P sweep=observation(INV-Q3).
+```json id=app_meta
+{"id": "qsvt_pauli2_d2", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+be = kr(H, I, I) @ (kr(P0, X, X) + kr(P1, Z, Z)) @ kr(H, I, I)     # be_pauli2
+rz = np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex)   # rz_negpi4
+Rz0 = kr(rz, I, I)
+golden = Rz0 @ be @ Rz0 @ be @ Rz0
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_pauli2.app.pg", "targets": [0, 1, 2]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_pauli2.app.pg", "targets": [0, 1, 2]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}]}
+```

@@ -29,6 +29,8 @@ BE_TARGETS = {
     "be_xz": {"A": (X + Z) / 2, "alpha": 1.0, "n_anc": 1, "desc": "(X+Z)/2 via LCU(½X+½Z)"},
     "be_proj": {"A": np.diag([1, 0]).astype(complex), "alpha": 1.0, "n_anc": 1,
                 "desc": "|0><0|=(I+Z)/2 via LCU (스펙트럼 비축퇴 → QSVT non-trivial)"},
+    "be_pauli2": {"A": (np.kron(X, X) + np.kron(Z, Z)) / 2, "alpha": 1.0, "n_anc": 1,
+                  "desc": "(XX+ZZ)/2 Pauli LCU (2q Hermitian, commuting→비축퇴 고유값 -1,0,0,1)"},
 }
 QSP_APPS = ["qsp_d1"]
 # QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".
@@ -39,6 +41,7 @@ QSVT_APPS = {
                                         np.exp(1j * np.pi / 4) * np.exp(-1j * np.pi / 8)]).astype(complex)},
     "qsvt_proj_d2b": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/16 d=2", "be": "be_proj"},
     "qsvt_proj_d3": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/8 d=3(홀수, projector-like 필터)", "be": "be_proj"},
+    "qsvt_pauli2_d2": {"n_anc": 1, "A_desc": "(XX+ZZ)/2", "phi_desc": "φ=π/8 d=2 (2q Hermitian A)", "be": "be_pauli2"},
 }
 
 
@@ -98,8 +101,10 @@ def audit_qsvt(app_id):
     unitary = bool(np.allclose(g.conj().T @ g, np.eye(g.shape[0]), atol=1e-9))
     # non-trivial: block 이 스칼라·I 가 아님(고유값을 서로 다르게 변환 → 진짜 QSVT)
     nontrivial = bool(not np.allclose(block, block[0, 0] * np.eye(d_data), atol=1e-9))
-    # P(A) 고유값 프로파일(대각) — observation. A=|0><0| 고유값 {1,0} 에서의 변환값.
-    profile = [[round(complex(block[i, i]).real, 4), round(complex(block[i, i]).imag, 4)] for i in range(d_data)]
+    # P(A) 고유값 프로파일 — observation. block 의 고유값(non-diagonal block 대응, 위상·크기 정렬).
+    evs = np.linalg.eigvals(block)
+    evs = sorted(evs, key=lambda z: (round(float(np.angle(z)), 4), round(float(abs(z)), 4)))
+    profile = [[round(float(z.real), 4), round(float(z.imag), 4)] for z in evs]
     r = {"app": app_id, "kind": "qsvt", "observation": True, "A": meta["A_desc"], "phi": meta["phi_desc"],
          "be_source": meta.get("be"), "eigenvalue_profile_P": profile,
          "nontrivial_eigenvalue_transform": nontrivial, "full_unitary": unitary,

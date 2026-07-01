@@ -262,6 +262,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_13_BlockEncoding2Q // 2-qubit Hermitian block-encoding (Pauli LCU) + 2q QSVT (done) @dep:V08_11
+            # ✅ done: abstraction layer 상승(1q→2q Hermitian, Hamiltonian 표준표현). be_pauli2.app.pg —
+            #   A=(X⊗X+Z⊗Z)/2 Pauli LCU, 3q(1anc+2sys). ★commuting Paulis(XX·ZZ 교환)→A²≠∝I 비축퇴(고유값
+            #   -1,0,0,1); anticommuting(예 ZI+XX)은 A²∝I 축퇴로 부적합(numpy 선검증). block==A, Tier-0 4586c515.
+            #   plan=h·cz·cz·x·cnot·cnot·x·h, 새 module 0. qsvt_pauli2_d2.app.pg — 2q QSVT d=2, block=P(A)
+            #   4고유값을 |λ|별 변환(P(±1)=e^{iπ/4}e^{iπ/8}·P(0)=e^{iπ/4}e^{-iπ/8}), Tier-0 1128aa76. audit
+            #   eigenvalue-profile 보강(non-diagonal block 대응). root 6cb370→8fcd78afea65d823(172→174 apps).
         V08_12_QSVTPolynomialFamily // one seal(be_proj) → many algorithms(다른 φ→다른 P(A)) (done) @dep:V08_11
             # ✅ done: "one seal, many algorithms" compounding 실증. 같은 be_proj block-encoding + 다른 위상열:
             #   qsvt_proj_d2b(φ=π/16, P(1)=e^{i3π/16}·P(0)=e^{iπ/16}, Tier-0 bd45eec0)·qsvt_proj_d3(d=3 홀수,

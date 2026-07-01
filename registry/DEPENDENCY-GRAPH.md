@@ -326,6 +326,14 @@ qsp_d1
 ├─ rx_negpi4 (module)
 └─ rz_negpi4 (module×2)
 
+qsvt_pauli2_d2
+├─ be_pauli2 (app×2)
+│  ├─ cnot (module×2)
+│  ├─ cz (module×2)
+│  ├─ h_gate (module×2)
+│  └─ x_gate (module×2)
+└─ rz_negpi4 (module×3)
+
 qsvt_proj_d2
 ├─ be_proj (app×2)
 │  ├─ cz (module)

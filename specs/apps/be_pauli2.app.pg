@@ -1,0 +1,26 @@
+# be_pauli2 — 2-qubit Hermitian block-encoding via Pauli LCU: A=(X⊗X + Z⊗Z)/2. 3q(1anc+2sys). α=1.
+# U=(H_a⊗I⊗I)·SELECT·(H_a⊗I⊗I), SELECT=|0><0|⊗X⊗X + |1><1|⊗Z⊗Z. top-left 4×4 block == A.
+# ★commuting Paulis(XX·ZZ 교환) → A²≠∝I 비축퇴(고유값 -1,0,0,1) → QSVT non-trivial(anticommuting은 A²∝I 축퇴).
+# abstraction layer 상승(1q→2q Hermitian, Hamiltonian 표준표현). plan=봉인 게이트만, MatrixGate 0. 새 module 0.
+```json id=app_meta
+{"id": "be_pauli2", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+SELECT = kr(P0, X, X) + kr(P1, Z, Z)              # |0><0|⊗XX + |1><1|⊗ZZ (α=1)
+golden = kr(H, I, I) @ SELECT @ kr(H, I, I)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```
