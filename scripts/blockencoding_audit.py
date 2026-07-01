@@ -31,10 +31,15 @@ BE_TARGETS = {
                 "desc": "|0><0|=(I+Z)/2 via LCU (스펙트럼 비축퇴 → QSVT non-trivial)"},
 }
 QSP_APPS = ["qsp_d1"]
-# QSVT 결합 앱: block == P(A) 고유값 변환(observation). data 큐빗 = n_sys - n_anc.
-QSVT_APPS = {"qsvt_proj_d2": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/8 d=2",
-                              "expect": np.diag([np.exp(1j * np.pi / 4) * np.exp(1j * np.pi / 8),
-                                                 np.exp(1j * np.pi / 4) * np.exp(-1j * np.pi / 8)]).astype(complex)}}
+# QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".
+# block == P(A) 고유값 변환(observation). data 큐빗 = n_sys - n_anc. expect=sanity(있으면 대조).
+QSVT_APPS = {
+    "qsvt_proj_d2": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/8 d=2", "be": "be_proj",
+                     "expect": np.diag([np.exp(1j * np.pi / 4) * np.exp(1j * np.pi / 8),
+                                        np.exp(1j * np.pi / 4) * np.exp(-1j * np.pi / 8)]).astype(complex)},
+    "qsvt_proj_d2b": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/16 d=2", "be": "be_proj"},
+    "qsvt_proj_d3": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/8 d=3(홀수, projector-like 필터)", "be": "be_proj"},
+}
 
 
 def _load_golden(app_id):
@@ -91,15 +96,21 @@ def audit_qsvt(app_id):
     d_data = 1 << (n_sys - meta["n_anc"])
     block = g[:d_data, :d_data]
     unitary = bool(np.allclose(g.conj().T @ g, np.eye(g.shape[0]), atol=1e-9))
-    matches_expect = bool(np.allclose(block, meta["expect"], atol=1e-9))
     # non-trivial: block 이 스칼라·I 가 아님(고유값을 서로 다르게 변환 → 진짜 QSVT)
     nontrivial = bool(not np.allclose(block, block[0, 0] * np.eye(d_data), atol=1e-9))
-    return {"app": app_id, "kind": "qsvt", "observation": True, "A": meta["A_desc"], "phi": meta["phi_desc"],
-            "block_matches_expected_P(A)": matches_expect,
-            "nontrivial_eigenvalue_transform": nontrivial, "full_unitary": unitary,
-            "ok": unitary and matches_expect and nontrivial,
-            "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). "
-                    "다항식 P sweep=observation(INV-Q3)."}
+    # P(A) 고유값 프로파일(대각) — observation. A=|0><0| 고유값 {1,0} 에서의 변환값.
+    profile = [[round(complex(block[i, i]).real, 4), round(complex(block[i, i]).imag, 4)] for i in range(d_data)]
+    r = {"app": app_id, "kind": "qsvt", "observation": True, "A": meta["A_desc"], "phi": meta["phi_desc"],
+         "be_source": meta.get("be"), "eigenvalue_profile_P": profile,
+         "nontrivial_eigenvalue_transform": nontrivial, "full_unitary": unitary,
+         "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). "
+                 "다항식 P sweep=observation(INV-Q3)."}
+    if "expect" in meta:
+        r["block_matches_expected_P(A)"] = bool(np.allclose(block, meta["expect"], atol=1e-9))
+        r["ok"] = unitary and nontrivial and r["block_matches_expected_P(A)"]
+    else:
+        r["ok"] = unitary and nontrivial
+    return r
 
 
 def main():
@@ -122,14 +133,23 @@ def main():
         r = audit_qsvt(aid); results[aid] = r
         all_ok = all_ok and r["ok"]
 
+    # compounding 요약: 같은 be_source 에 다른 위상열 → 다른 P(A) ("one seal, many algorithms")
+    by_be = {}
+    for aid, r in results.items():
+        if r.get("kind") == "qsvt":
+            by_be.setdefault(r["be_source"], []).append(
+                {"app": aid, "phi": r["phi"], "P_eigenvalues": r["eigenvalue_profile_P"]})
+    compounding = {be: {"n_transforms": len(v),
+                        "distinct_P": len({tuple(map(tuple, t["P_eigenvalues"])) for t in v}) == len(v),
+                        "transforms": v} for be, v in by_be.items()}
     if not quick:
         os.makedirs(os.path.dirname(OUT), exist_ok=True)
         report = {"_schema": "blockencoding-audit-v1",
-                  "_note": "block-encoding 규약(ancilla=MSB·top-left==A/α·big-endian) 관측 + QSP 다항식 관측. "
+                  "_note": "block-encoding 규약(ancilla=MSB·top-left==A/α·big-endian) 관측 + QSP/QSVT P(A) 관측. "
                            "seal 아님(봉인은 app_assemble composite==golden). sealed/oracle/root 무영향.",
                   "convention": {"ancilla": "MSB(상위)", "block": "(⟨0|_a⊗I)U(|0>_a⊗I)==A/α",
                                  "endian": "big", "alpha": "정규화상수(LCU=Σ|c_i|)"},
-                  "results": results}
+                  "one_seal_many_algorithms": compounding, "results": results}
         with open(OUT, "w", encoding="utf-8", newline="\n") as f:
             json.dump(report, f, ensure_ascii=False, indent=2, sort_keys=True)
             f.write("\n")
@@ -138,10 +158,13 @@ def main():
                 print(f"  {aid}: block==A/α {r['block_matches_A_over_alpha']} · teeth {r['negative_control_teeth']} "
                       f"· {r['desc']}", flush=True)
             elif r["kind"] == "qsvt":
-                print(f"  {aid}: QSVT block==P(A) {r['block_matches_expected_P(A)']} · "
-                      f"non-trivial 고유값변환 {r['nontrivial_eigenvalue_transform']} ({r['phi']}, observation)", flush=True)
+                print(f"  {aid}: QSVT P(A)={r['eigenvalue_profile_P']} · "
+                      f"non-trivial {r['nontrivial_eigenvalue_transform']} ({r['phi']}, observation)", flush=True)
             else:
                 print(f"  {aid}: QSP ⟨0|U|0>={r['poly_value_<0|U|0>']} (observation)", flush=True)
+        for be, c in compounding.items():
+            print(f"  ★ one seal '{be}' → {c['n_transforms']} distinct QSVT transforms "
+                  f"(distinct_P={c['distinct_P']})", flush=True)
         print(f"  → {os.path.relpath(OUT, ROOT)}", flush=True)
     print(f"blockencoding_audit: all_ok={all_ok}", flush=True)
     return 0 if all_ok else 1

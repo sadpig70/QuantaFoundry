@@ -3842,6 +3842,40 @@
       }
     ]
   },
+  "qsvt_proj_d2b": {
+    "u_hash": "bd45eec0c2fe925dc44b64392efe1f042aa009214424a401009d6d343485970e",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "be_proj",
+        "uses": 2,
+        "child_u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi8",
+        "uses": 3,
+        "child_u_hash": "e48f30ca9f9e309c01f9d4e46314c670836044394c39be947458b44fd6d91a66"
+      }
+    ]
+  },
+  "qsvt_proj_d3": {
+    "u_hash": "8ffa3e2484084a659e84650ddfd2ea7a8e8e72374fdd5ef412226bd02d49b299",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "be_proj",
+        "uses": 3,
+        "child_u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi4",
+        "uses": 4,
+        "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
+      }
+    ]
+  },
   "qw_c4_2steps": {
     "u_hash": "59f6c2e900258190468c0076cce41087b72ec1b0e94cc4f1b4d183cd3bea3e3d",
     "depends_on": [

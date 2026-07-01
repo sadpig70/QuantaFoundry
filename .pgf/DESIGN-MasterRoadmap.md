@@ -262,6 +262,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_12_QSVTPolynomialFamily // one seal(be_proj) → many algorithms(다른 φ→다른 P(A)) (done) @dep:V08_11
+            # ✅ done: "one seal, many algorithms" compounding 실증. 같은 be_proj block-encoding + 다른 위상열:
+            #   qsvt_proj_d2b(φ=π/16, P(1)=e^{i3π/16}·P(0)=e^{iπ/16}, Tier-0 bd45eec0)·qsvt_proj_d3(d=3 홀수,
+            #   P(1)=i·P(0)=0 projector-like 필터, Tier-0 8ffa3e24). 새 module 0. blockencoding_audit family 확장
+            #   (one_seal_many_algorithms: be_proj→3 distinct P(A), distinct_P=True). P profile=observation(INV-Q3).
+            #   root 5f89297→6cb370b86f88d33e(170→172 apps). 앵커 동기화.
         V08_10_DiscoverySuperopt // 봉인 golden에 더 싼/새 분해 탐색(oracle-gated) (done) @dep:V08_7
             # ✅ done: scripts/discovery_superopt.py — 기존 decomp_optimizer(reward만)에 **탐색 엔진** 추가.
             #   BFS(깊이제한, visited pruning) over 봉인 primitive 팔레트 → up-to-phase 매칭 → 발견 시퀀스를

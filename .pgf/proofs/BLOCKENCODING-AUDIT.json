@@ -1,11 +1,61 @@
 {
-  "_note": "block-encoding 규약(ancilla=MSB·top-left==A/α·big-endian) 관측 + QSP 다항식 관측. seal 아님(봉인은 app_assemble composite==golden). sealed/oracle/root 무영향.",
+  "_note": "block-encoding 규약(ancilla=MSB·top-left==A/α·big-endian) 관측 + QSP/QSVT P(A) 관측. seal 아님(봉인은 app_assemble composite==golden). sealed/oracle/root 무영향.",
   "_schema": "blockencoding-audit-v1",
   "convention": {
     "alpha": "정규화상수(LCU=Σ|c_i|)",
     "ancilla": "MSB(상위)",
     "block": "(⟨0|_a⊗I)U(|0>_a⊗I)==A/α",
     "endian": "big"
+  },
+  "one_seal_many_algorithms": {
+    "be_proj": {
+      "distinct_P": true,
+      "n_transforms": 3,
+      "transforms": [
+        {
+          "P_eigenvalues": [
+            [
+              0.3827,
+              0.9239
+            ],
+            [
+              0.9239,
+              0.3827
+            ]
+          ],
+          "app": "qsvt_proj_d2",
+          "phi": "φ=π/8 d=2"
+        },
+        {
+          "P_eigenvalues": [
+            [
+              0.8315,
+              0.5556
+            ],
+            [
+              0.9808,
+              0.1951
+            ]
+          ],
+          "app": "qsvt_proj_d2b",
+          "phi": "φ=π/16 d=2"
+        },
+        {
+          "P_eigenvalues": [
+            [
+              -0.0,
+              1.0
+            ],
+            [
+              -0.0,
+              -0.0
+            ]
+          ],
+          "app": "qsvt_proj_d3",
+          "phi": "φ=π/8 d=3(홀수, projector-like 필터)"
+        }
+      ]
+    }
   },
   "results": {
     "be_proj": {
@@ -45,7 +95,18 @@
     "qsvt_proj_d2": {
       "A": "|0><0|",
       "app": "qsvt_proj_d2",
+      "be_source": "be_proj",
       "block_matches_expected_P(A)": true,
+      "eigenvalue_profile_P": [
+        [
+          0.3827,
+          0.9239
+        ],
+        [
+          0.9239,
+          0.3827
+        ]
+      ],
       "full_unitary": true,
       "kind": "qsvt",
       "nontrivial_eigenvalue_transform": true,
@@ -53,6 +114,50 @@
       "observation": true,
       "ok": true,
       "phi": "φ=π/8 d=2"
+    },
+    "qsvt_proj_d2b": {
+      "A": "|0><0|",
+      "app": "qsvt_proj_d2b",
+      "be_source": "be_proj",
+      "eigenvalue_profile_P": [
+        [
+          0.8315,
+          0.5556
+        ],
+        [
+          0.9808,
+          0.1951
+        ]
+      ],
+      "full_unitary": true,
+      "kind": "qsvt",
+      "nontrivial_eigenvalue_transform": true,
+      "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). 다항식 P sweep=observation(INV-Q3).",
+      "observation": true,
+      "ok": true,
+      "phi": "φ=π/16 d=2"
+    },
+    "qsvt_proj_d3": {
+      "A": "|0><0|",
+      "app": "qsvt_proj_d3",
+      "be_source": "be_proj",
+      "eigenvalue_profile_P": [
+        [
+          -0.0,
+          1.0
+        ],
+        [
+          -0.0,
+          -0.0
+        ]
+      ],
+      "full_unitary": true,
+      "kind": "qsvt",
+      "nontrivial_eigenvalue_transform": true,
+      "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). 다항식 P sweep=observation(INV-Q3).",
+      "observation": true,
+      "ok": true,
+      "phi": "φ=π/8 d=3(홀수, projector-like 필터)"
     }
   }
 }

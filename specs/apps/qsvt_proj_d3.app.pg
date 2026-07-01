@@ -1,0 +1,22 @@
+# qsvt_proj_d3 — QSVT degree-3 on be_proj, φ=π/8 (홀수 차수 → projector-like 필터). 2q.
+# 같은 block-encoding(be_proj) 3회 + rz_negpi4 4개. block=P(A): 고유값 1→i(=e^{iπ/2}), 0→0(완전 감쇠).
+#   고유값 0 부분공간을 죽이는 필터 — QSVT eigenvalue transformation 의 위력(같은 seal, 또 다른 알고리즘).
+# Tier-0 EXACT. 새 module 0(rz_negpi4·be_proj 재사용). P sweep/필터 설계=observation(INV-Q3).
+```json id=app_meta
+{"id": "qsvt_proj_d3", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+be = np.kron(H, I) @ (np.kron(P0, I) + np.kron(P1, Z)) @ np.kron(H, I)   # be_proj
+rz = np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex)   # rz_negpi4=e^{iπZ/8}
+Rz0 = np.kron(rz, I)
+golden = Rz0 @ be @ Rz0 @ be @ Rz0 @ be @ Rz0
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}]}
+```

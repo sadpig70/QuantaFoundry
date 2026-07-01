@@ -332,6 +332,18 @@ qsvt_proj_d2
 │  └─ h_gate (module×2)
 └─ rz_negpi4 (module×3)
 
+qsvt_proj_d2b
+├─ be_proj (app×2)
+│  ├─ cz (module)
+│  └─ h_gate (module×2)
+└─ rz_negpi8 (module×3)
+
+qsvt_proj_d3
+├─ be_proj (app×3)
+│  ├─ cz (module)
+│  └─ h_gate (module×2)
+└─ rz_negpi4 (module×4)
+
 qw_c4_2steps
 └─ qw_c4_step (app×2)
    ├─ cnot (module×2)

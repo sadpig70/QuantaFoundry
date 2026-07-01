@@ -1,0 +1,22 @@
+# qsvt_proj_d2b — QSVT degree-2 on be_proj, φ=π/16 (다른 위상열 → 다른 P(A)). 2q.
+# 같은 block-encoding(be_proj)에 다른 projector-controlled rotation(rz_negpi8, φ=π/16) → 다른 고유값 변환:
+#   block=P(A): 고유값 1→e^{i3π/16}(0.83+0.56j), 0→e^{iπ/16}(0.98+0.20j). "one seal, many algorithms".
+# Tier-0 EXACT. 새 module 0(rz_negpi8·be_proj 재사용). P sweep=observation(INV-Q3).
+```json id=app_meta
+{"id": "qsvt_proj_d2b", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+be = np.kron(H, I) @ (np.kron(P0, I) + np.kron(P1, Z)) @ np.kron(H, I)   # be_proj
+rz = np.diag([np.exp(1j * np.pi / 16), np.exp(-1j * np.pi / 16)]).astype(complex)   # rz_negpi8=e^{iπZ/16}
+Rz0 = np.kron(rz, I)
+golden = Rz0 @ be @ Rz0 @ be @ Rz0
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi8.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi8.pg", "targets": [0]}, {"app": "be_proj.app.pg", "targets": [0, 1]}, {"spec": "../modules/rz_negpi8.pg", "targets": [0]}]}
+```
