@@ -1,0 +1,47 @@
+{
+  "_note": "parity 인코딩 입자수-대칭 tapering 관측. seal 아님(INV-Q3), 신규 봉인 0.",
+  "_schema": "parity-taper-observe-v1",
+  "observation": {
+    "all_taperable": true,
+    "conjugation": "O_par = U_par · O_JW · U_par†  (exact)",
+    "encoding": "parity (n=4, U_par=parity4_transform 봉인)",
+    "honest_boundary": "켤레변환=exact(parity4_transform 봉인 귀결). taperability=관측; sector 물리 선택=별도 contract; qubit 절감=관측. 신규 봉인 0.",
+    "ok": true,
+    "tapering_table": [
+      {
+        "commutes_total_parity": true,
+        "last_qubit_paulis": [
+          "I"
+        ],
+        "op": "n_1",
+        "taperable": true
+      },
+      {
+        "commutes_total_parity": true,
+        "last_qubit_paulis": [
+          "I"
+        ],
+        "op": "n_2",
+        "taperable": true
+      },
+      {
+        "commutes_total_parity": true,
+        "last_qubit_paulis": [
+          "I"
+        ],
+        "op": "H_12",
+        "taperable": true
+      },
+      {
+        "commutes_total_parity": true,
+        "last_qubit_paulis": [
+          "I",
+          "Z"
+        ],
+        "op": "H_03",
+        "taperable": true
+      }
+    ],
+    "total_parity_operator": "Z_{n-1} (q3) = (-1)^{입자수}"
+  }
+}

@@ -1,0 +1,34 @@
+# parity4_transform — Parity fermion-to-qubit basis change, n=4. 4q. Tier-0 16×16.
+# 대체 페르미온 인코딩 수평축(#axis-A, HE H1.4): JW/BK 외 세번째 인코딩(parity).
+# parity matrix β_par (all-ones 하삼각): p_i = f_0 ⊕ f_1 ⊕ … ⊕ f_i (누적 parity). GF(2) 가역.
+#   p3 = 총 occupation parity = 입자수 보존량 → tapering(sector 고정 시 제거) 대상. parity_taper 관측.
+# U_par|f> = |β_par f mod2> 는 계산기저 permutation → 순수 CNOT 6-gate 네트워크(MatrixGate 0, 새 module 0).
+# ★봉인=exact 기저변환. 2-qubit tapering 이점은 관측(seal 아님).
+```json id=app_meta
+{"id": "parity4_transform", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n = 4
+# β_par: p_i = f_0 ⊕ … ⊕ f_i  (누적 parity, all-ones 하삼각 — 독립 GF(2) 산출, C4 참조)
+beta = [[1, 0, 0, 0],
+        [1, 1, 0, 0],
+        [1, 1, 1, 0],
+        [1, 1, 1, 1]]
+def bits(x):            # big-endian: qubit0 = MSB
+    return [(x >> (n - 1 - i)) & 1 for i in range(n)]
+def frombits(b):
+    x = 0
+    for i in range(n):
+        x |= (b[i] & 1) << (n - 1 - i)
+    return x
+dim = 1 << n
+golden = np.zeros((dim, dim), dtype=complex)
+for f in range(dim):
+    fb = bits(f)
+    bb = [sum(beta[i][j] * fb[j] for j in range(n)) % 2 for i in range(n)]
+    golden[frombits(bb), f] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/cnot.pg", "targets": [1, 3]}, {"spec": "../modules/cnot.pg", "targets": [2, 3]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/cnot.pg", "targets": [1, 2]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

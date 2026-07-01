@@ -162,6 +162,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3o. HE H1.4: parity 인코딩 입자수-대칭 tapering (parity4_transform 켤레변환, observation)
+    rc, out = run(["scripts/parity_taper_observe.py", "--quick"])
+    result["steps"]["parity_taper_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
