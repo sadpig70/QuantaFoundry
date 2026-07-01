@@ -68,12 +68,19 @@ preferred-citation:
         "registry_root_hash": root, "modules": n_mod, "unique_apps": n_app,
         "citation_string": f"QuantaFoundry v{version}, {cite_key} "
                            f"(verify: python scripts/reproduce_all.py).",
+        # ★ 하드코딩 --expect-root 금지(anchor drift 방지): 비파괴 성장으로 root 가 매 봉인마다
+        #   진화하므로, RELEASE-META 에 root 를 pin 한 명령을 넣으면 이후 checkout 에서 stale mismatch 발생
+        #   (Codex 가 구 RELEASE-META 의 --expect-root d231fbf4 를 실행해 실패한 케이스). reproduce 는
+        #   재현 후 자기 root 를 출력만 하고, 사용자가 아래 registry_root_hash 와 대조한다.
         "verify_commands": ["python scripts/reproduce_all.py",
                             "python scripts/second_oracle.py",
-                            f"python scripts/qf_cli.py reproduce --expect-root {root[:16]}"],
+                            "python scripts/qf_cli.py reproduce"],
         "doi_placeholder": "10.5281/zenodo.PLACEHOLDER (release 시 발급)",
         "_note": "registry_root_hash 가 결정론 봉인 전체의 인용가능 단일지문. 논문/소프트웨어 인용 시 "
-                 "이 root 를 명시하면 제3자가 byte-identity 로 재현·검증 가능(재현성 위기 대응)."}
+                 "이 root 를 명시하면 제3자가 byte-identity 로 재현·검증 가능(재현성 위기 대응). "
+                 "★verify_commands 는 하드코딩 --expect-root 를 쓰지 않는다(비파괴 성장으로 root 가 진화 → "
+                 "stale pin=anchor drift 방지, V08_9 fix 정신). `qf reproduce` 출력 root 를 위 "
+                 "registry_root_hash 와 대조하라. CI 고정검증은 seal_gate_ci(EXPECT_DEFAULT, anchor_sync 자동갱신)가 담당."}
     os.makedirs(os.path.join(ROOT, ".pgf", "adoption"), exist_ok=True)
     json.dump(release, open(os.path.join(ROOT, ".pgf", "adoption", "RELEASE-META.json"), "w",
                             encoding="utf-8"), ensure_ascii=False, indent=2)
