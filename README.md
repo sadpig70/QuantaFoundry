@@ -76,6 +76,15 @@ python scripts/reproduce_all.py
 | [`.agents/skills/qfa-loop/SKILL.md`](.agents/skills/qfa-loop/SKILL.md) | The autonomous seal loop (engine, modes, invariants) |
 | [`.agents/skills/qpgf-oracle/SKILL.md`](.agents/skills/qpgf-oracle/SKILL.md) | The deterministic termination oracle (ContractGate) |
 
+### The autonomous seal loop at a glance
+
+[![QFA-Loop — autonomous seal loop](assets/qfa_loop.svg)](.agents/skills/qfa-loop/SKILL.md)
+
+`Bootstrap → Round(SelectNext → PlanNode → Implement → VerifyGate → GuardCheck → Record → SyncCheckpoint) → Stop`.
+The AI *executes* the loop, but **pass/fail is decided only by executable machine gates** (`VerifyGate`,
+`GuardCheck`) — never by the AI — and a round **commits only when fully verified**. See
+[`qfa-loop`](.agents/skills/qfa-loop/SKILL.md).
+
 Reproduction artifacts live under `specs/`, `registry/`, and `_workspace/crossmodel/`.
 
 ## Non-goals

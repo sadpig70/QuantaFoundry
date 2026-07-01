@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">QFA-Loop Autonomous Seal Loop</title>
+  <desc id="desc">QuantaFoundry qfa-loop: Bootstrap, autonomous round cycle, machine verification gates, guard checks, record, sync checkpoint, stop controller, and finalize.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#07111f"/><stop offset="55%" stop-color="#0b1730"/><stop offset="100%" stop-color="#101827"/></linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10223c"/><stop offset="100%" stop-color="#0d1628"/></linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#17365d"/><stop offset="100%" stop-color="#10233f"/></linearGradient>
+    <linearGradient id="gate" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#123e49"/><stop offset="100%" stop-color="#0d2933"/></linearGradient>
+    <linearGradient id="danger" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4a2b12"/><stop offset="100%" stop-color="#2d1b0c"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/></filter>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 1 1 L 11 6 L 1 11 z" fill="#6ee7ff"/></marker>
+    <marker id="arrowAmber" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 1 1 L 11 6 L 1 11 z" fill="#fbbf24"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 1 1 L 11 6 L 1 11 z" fill="#4ade80"/></marker>
+    <style><![CDATA[
+      text { font-family: Inter, Segoe UI, Arial, sans-serif; }
+      .title { font-weight: 800; font-size: 44px; fill: #f8fafc; letter-spacing: -0.8px; }
+      .subtitle { font-weight: 500; font-size: 19px; fill: #a7c8e7; }
+      .label { font-weight: 750; font-size: 21px; fill: #f8fafc; }
+      .small { font-weight: 500; font-size: 14px; fill: #b6c7da; }
+      .tiny { font-weight: 500; font-size: 12px; fill: #91a8c0; }
+      .panelTitle { font-weight: 800; font-size: 20px; fill: #f8fafc; }
+      .pill { font-weight: 700; font-size: 13px; fill: #06121f; }
+      .arrowText { font-weight: 700; font-size: 13px; fill: #9defff; }
+      .amberText { font-weight: 700; font-size: 13px; fill: #fcd34d; }
+      .greenText { font-weight: 700; font-size: 13px; fill: #86efac; }
+      .line { stroke: #6ee7ff; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .lineThin { stroke: #4fb7d5; stroke-width: 2; fill: none; marker-end: url(#arrow); opacity: .9; }
+      .lineAmber { stroke: #fbbf24; stroke-width: 3; fill: none; marker-end: url(#arrowAmber); }
+      .lineGreen { stroke: #4ade80; stroke-width: 3; fill: none; marker-end: url(#arrowGreen); }
+      .dash { stroke-dasharray: 9 8; }
+    ]]></style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g opacity="0.12">
+    <path d="M0,880 C260,760 410,980 650,840 C890,700 1040,820 1290,710 C1430,650 1530,650 1600,610" stroke="#6ee7ff" stroke-width="2" fill="none"/>
+    <path d="M0,180 C280,260 390,70 630,210 C880,355 1060,170 1310,300 C1440,370 1530,350 1600,390" stroke="#fbbf24" stroke-width="2" fill="none"/>
+    <circle cx="112" cy="805" r="2" fill="#6ee7ff"/><circle cx="372" cy="116" r="2" fill="#6ee7ff"/><circle cx="1460" cy="222" r="2" fill="#fbbf24"/>
+    <circle cx="1180" cy="842" r="2" fill="#6ee7ff"/><circle cx="754" cy="902" r="2" fill="#fbbf24"/><circle cx="990" cy="95" r="2" fill="#6ee7ff"/>
+  </g>
+
+  <text x="64" y="72" class="title">QFA-Loop: Autonomous Seal Loop</text>
+  <text x="66" y="108" class="subtitle">discover → seal → verify → commit · AI executes, deterministic machine gates decide</text>
+  <g transform="translate(1238,56)"><rect x="0" y="0" width="288" height="48" rx="24" fill="#0b2432" stroke="#38bdf8" stroke-opacity=".65"/><text x="28" y="30" class="tiny" style="fill:#a5f3fc;font-weight:700;font-size:13px">disable-model-invocation: true</text></g>
+
+  <rect x="50" y="145" width="1055" height="760" rx="34" fill="#071526" stroke="#1e3a5f" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="85" y="188" class="panelTitle">Core Execution Spine</text>
+  <text x="86" y="214" class="small">Single-runtime harness around deterministic gates and stop/invariant guards</text>
+
+  <g id="bootstrap" transform="translate(92,420)" filter="url(#shadow)"><rect width="190" height="95" rx="20" fill="url(#node)" stroke="#38bdf8" stroke-width="2"/><text x="95" y="38" text-anchor="middle" class="label">Bootstrap</text><text x="95" y="63" text-anchor="middle" class="small">preflight snapshot</text><text x="95" y="81" text-anchor="middle" class="tiny">budget &amp; stop conditions</text></g>
+
+  <g id="round">
+    <rect x="340" y="275" width="690" height="390" rx="34" fill="#0a1a2e" stroke="#2dd4bf" stroke-opacity=".65" stroke-width="2"/>
+    <text x="376" y="314" class="panelTitle">Round</text><text x="450" y="314" class="small">(repeatable verified seal cycle)</text>
+    <g transform="translate(385,350)" filter="url(#shadow)"><rect width="150" height="74" rx="16" fill="url(#node)" stroke="#60a5fa"/><text x="75" y="32" text-anchor="middle" class="label" font-size="18">SelectNext</text><text x="75" y="55" text-anchor="middle" class="tiny">target / mode</text></g>
+    <g transform="translate(575,350)" filter="url(#shadow)"><rect width="150" height="74" rx="16" fill="url(#node)" stroke="#60a5fa"/><text x="75" y="32" text-anchor="middle" class="label" font-size="18">PlanNode</text><text x="75" y="55" text-anchor="middle" class="tiny">bounded step</text></g>
+    <g transform="translate(765,350)" filter="url(#shadow)"><rect width="150" height="74" rx="16" fill="url(#node)" stroke="#60a5fa"/><text x="75" y="32" text-anchor="middle" class="label" font-size="18">Implement</text><text x="75" y="55" text-anchor="middle" class="tiny">generate candidate</text></g>
+    <g transform="translate(765,535)" filter="url(#shadow)"><rect width="150" height="74" rx="16" fill="url(#node)" stroke="#60a5fa"/><text x="75" y="32" text-anchor="middle" class="label" font-size="18">Record</text><text x="75" y="55" text-anchor="middle" class="tiny">round-NN.json</text></g>
+    <g transform="translate(575,535)" filter="url(#shadow)"><rect width="150" height="74" rx="16" fill="url(#gate)" stroke="#2dd4bf"/><text x="75" y="32" text-anchor="middle" class="label" font-size="18">GuardCheck</text><text x="75" y="55" text-anchor="middle" class="tiny">invariants held?</text></g>
+    <g transform="translate(385,535)" filter="url(#shadow)"><rect width="150" height="74" rx="16" fill="url(#gate)" stroke="#2dd4bf"/><text x="75" y="32" text-anchor="middle" class="label" font-size="18">VerifyGate</text><text x="75" y="55" text-anchor="middle" class="tiny">machine pass/fail</text></g>
+    <g transform="translate(897,443)" filter="url(#shadow)"><rect width="105" height="95" rx="18" fill="#10233f" stroke="#fbbf24" stroke-width="2"/><text x="52.5" y="33" text-anchor="middle" class="label" font-size="16">Sync</text><text x="52.5" y="54" text-anchor="middle" class="label" font-size="16">Checkpoint</text><text x="52.5" y="76" text-anchor="middle" class="tiny">commit only if</text><text x="52.5" y="91" text-anchor="middle" class="tiny">full verified</text></g>
+  </g>
+
+  <path class="lineThin" d="M535,387 L575,387"/><path class="lineThin" d="M725,387 L765,387"/><path class="lineThin" d="M840,424 C840,464 690,484 535,535"/>
+  <path class="lineThin" d="M385,572 L360,572 C325,572 325,478 360,478 L385,478 C420,478 455,450 460,424"/><text x="352" y="463" class="arrowText">seal / repair</text>
+  <path class="lineThin" d="M535,572 L575,572"/><path class="lineThin" d="M725,572 L765,572"/><path class="lineAmber" d="M915,572 C960,572 975,545 974,538"/>
+  <path class="line" d="M282,468 C305,468 320,388 385,388"/><text x="289" y="443" class="arrowText">start</text>
+
+  <g transform="translate(130,682)"><rect x="0" y="0" width="870" height="145" rx="24" fill="#091827" stroke="#1e3a5f"/><text x="25" y="35" class="panelTitle">MachineGate stack</text><text x="25" y="62" class="small">Pass/fail is determined by executable gates — never by the AI executor.</text><g transform="translate(25,84)"><rect width="185" height="38" rx="19" fill="#0e7490" opacity=".9"/><text x="92.5" y="25" text-anchor="middle" class="pill">reproduce_all</text></g><g transform="translate(230,84)"><rect width="185" height="38" rx="19" fill="#0f766e" opacity=".9"/><text x="92.5" y="25" text-anchor="middle" class="pill">second_oracle</text></g><g transform="translate(435,84)"><rect width="185" height="38" rx="19" fill="#2563eb" opacity=".9"/><text x="92.5" y="25" text-anchor="middle" class="pill">seal_gate_ci</text></g><g transform="translate(640,84)"><rect width="205" height="38" rx="19" fill="#7c3aed" opacity=".9"/><text x="102.5" y="25" text-anchor="middle" class="pill">contested_guard</text></g></g>
+  <path class="lineGreen dash" d="M460,682 C460,644 460,632 460,609"/><text x="478" y="655" class="greenText">gate evidence</text>
+
+  <g id="stop" transform="translate(1162,420)" filter="url(#shadow)"><path d="M95,0 L190,55 L95,110 L0,55 Z" fill="url(#danger)" stroke="#fbbf24" stroke-width="2"/><text x="95" y="47" text-anchor="middle" class="label" font-size="17">Stop</text><text x="95" y="68" text-anchor="middle" class="label" font-size="17">Controller</text></g>
+  <g transform="translate(1360,427)" filter="url(#shadow)"><rect width="150" height="95" rx="20" fill="#12233a" stroke="#4ade80" stroke-width="2"/><text x="75" y="39" text-anchor="middle" class="label">Finalize</text><text x="75" y="65" text-anchor="middle" class="small">summary</text><text x="75" y="83" text-anchor="middle" class="tiny">safe stop</text></g>
+  <path class="lineAmber" d="M1002,490 C1058,490 1108,477 1162,475"/><text x="1042" y="465" class="amberText">round result</text><path class="lineGreen" d="M1352,475 L1360,475"/><text x="1322" y="454" class="greenText">stop</text><path class="line dash" d="M1257,530 C1225,780 520,825 460,424"/><text x="806" y="812" class="arrowText">continue → next round</text>
+
+  <g transform="translate(1135,145)" filter="url(#shadow)"><rect width="405" height="230" rx="28" fill="url(#panel)" stroke="#1e3a5f" stroke-width="1.5"/><text x="28" y="42" class="panelTitle">Gate Modes</text><g transform="translate(28,68)"><rect width="108" height="32" rx="16" fill="#0891b2"/><text x="54" y="22" text-anchor="middle" class="pill">full</text><text x="128" y="22" class="small">REPRODUCED · only mode allowed to commit</text></g><g transform="translate(28,113)"><rect width="108" height="32" rx="16" fill="#2563eb"/><text x="54" y="22" text-anchor="middle" class="pill">incremental</text><text x="128" y="22" class="small">registry + second_oracle + guards</text></g><g transform="translate(28,158)"><rect width="108" height="32" rx="16" fill="#475569"/><text x="54" y="22" text-anchor="middle" class="pill">fast</text><text x="128" y="22" class="small">inspection · no registry build</text></g></g>
+  <g transform="translate(1135,405)" filter="url(#shadow)"><rect width="405" height="140" rx="24" fill="#0a1a2e" stroke="#fbbf24" stroke-width="1.5"/><text x="28" y="38" class="panelTitle">Frontier Factory Driver</text><text x="28" y="70" class="small">discover unsealed distinct-semiprime N</text><text x="28" y="98" class="small">seal cmul payoff · assemble structural shor{N}</text><text x="28" y="126" class="small">regression must reproduce existing N byte-identically</text></g>
+  <g transform="translate(1135,575)" filter="url(#shadow)"><rect width="405" height="92" rx="24" fill="#0a1a2e" stroke="#2dd4bf" stroke-width="1.5"/><text x="28" y="36" class="panelTitle">Runtime State</text><text x="28" y="65" class="small">_workspace/loop/rounds/round-NN.json · loop_state.json</text></g>
+  <g transform="translate(1135,690)" filter="url(#shadow)"><rect width="405" height="215" rx="28" fill="url(#panel)" stroke="#1e3a5f" stroke-width="1.5"/><text x="28" y="42" class="panelTitle">Honesty Boundaries</text><text x="28" y="77" class="small">• single-runtime = intra-runtime diversity only</text><text x="28" y="107" class="small">• cmul = Tier-0 exact permutation</text><text x="28" y="137" class="small">• structural shor{N} = Tier-1 Merkle</text><text x="28" y="167" class="small">• seal ≠ run ≠ verify</text><text x="28" y="197" class="small">• structural ≠ dense</text></g>
+
+  <g transform="translate(64,900)"><rect x="0" y="0" width="1475" height="70" rx="24" fill="#06111e" stroke="#1e3a5f"/><text x="28" y="30" class="panelTitle" font-size="18">Invariant Rail</text><text x="28" y="54" class="tiny">INV1/2: fingerprints + consensus read-only</text><text x="360" y="54" class="tiny">INV3: no self-judge</text><text x="540" y="54" class="tiny">INV5: verified-only commit</text><text x="760" y="54" class="tiny">INV6: stop conditions required</text><text x="1015" y="54" class="tiny">INV-F1: factory regression before new seal</text></g>
+  <path d="M650,535 C640,500 575,485 535,535" stroke="#fb7185" stroke-width="2" fill="none" marker-end="url(#arrowAmber)" stroke-dasharray="6 6"/><text x="596" y="499" class="amberText">fatal stop on invariant breach</text>
+</svg>
