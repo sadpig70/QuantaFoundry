@@ -1,0 +1,513 @@
+{
+  "_note": "규약(전역위상·atol 격자) 변주 하 seal 재현 실증 + teeth. endian 은 규약-고정(big) — 정직 표기. 측정도구 공유(사용만).",
+  "_schema": "convention-independence-v1",
+  "convention_fixed_axes": [
+    "endian(big) — bit-reversal 로 연결된 다른 표현"
+  ],
+  "convention_invariant_axes": [
+    "global-phase",
+    "atol-grid"
+  ],
+  "failures": [],
+  "modules_checked": 71,
+  "modules_ok": 71,
+  "results": {
+    "c10x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c11x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c12x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c3x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c4x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c5x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c6x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c7x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c8x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "c9x": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ccz": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cnot": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr3_dag_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr4_dag_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr4_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr5_dag_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr5_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr6_dag_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr6_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr7_dag_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr7_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr8_dag_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cr8_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cs_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cs_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ct_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "cz": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "fredkin": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "h_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "iswap": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "qft2": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "qft3": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "qft4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rx_negpi4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rx_y4_p": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rx_y4_q": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_3pi4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k10": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k10_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k2": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k2_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k3": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k3_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k4_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k5": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k5_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k6": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k6_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k7": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k7_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k8": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k8_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k9": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_k9_dag": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_negpi2": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_negpi4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_pi2": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "ry_pi4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rz_negpi4": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rz_negpi8": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rz_y4_p": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "rz_y4_q": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "s_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "sdg_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "swap2": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "sx": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "t_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "toffoli": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "x_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    },
+    "z_gate": {
+      "atol_indep": true,
+      "atol_teeth": true,
+      "ok": true,
+      "phase_indep": true,
+      "phase_teeth": true
+    }
+  }
+}

@@ -233,8 +233,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ done: scripts/resource_witness.py — 조립앱 resource==자식 resource 합 독립재계산(A6).
             #   166/166 consistent(61 golden-only skip), structural Shor 9/9. reproduce_all에 --quick 통합.
             #   INV-R1 배너(reproduce 출력)·README Honest boundaries 갱신(REPRODUCED≠correct, subspace 등급).
-        V08_5_InvertedSecondOracle // endian/phase/atol 뒤집은 독립 오라클 재검증 (designing) @dep:V08_2
-            # criteria: 규약-뒤집은 오라클과 불일치 seal 집합 명시 · frozen 23키 무수정 · 관측 문서화
+        V08_5_InvertedSecondOracle // 규약(전역위상·atol) 변주 하 seal 재현 실증 (done) @dep:V08_2
+            # criteria: 규약-변주 하 seal 재현/불일치 명시 · frozen 23키 무수정 · 관측 문서화
+            # ✅ done: scripts/inverted_second_oracle.py — 71/71 모듈 규약-독립 재현(전역위상·atol 격자 변주 불변
+            #   + teeth: 상대위상·격자밖 섭동은 불일치). endian=규약-고정(big, 정직표기). reproduce_all 통합.
+            #   sidecar .pgf/proofs/CONVENTION-INDEPENDENCE.json. A3 최약가정(공유 규약 오류) 직접 타격.
         V08_6_ConventionAuditFirst // block-encoding 규약 감사 선행 (designing) @dep:V08_2
         V08_7_BlockEncodingLCU // 소형 Hermitian block-encoding + Pauli LCU (Tier-0) (designing) @dep:V08_6
         V08_8_QSPPolynomial // QSP 위상열(저차 Chebyshev) — 근사=observation (designing) @dep:V08_7

@@ -77,6 +77,12 @@ def main():
     result["steps"]["second_oracle"] = {"rc": rc, "modules": f"{sm.group(1)}/{sm.group(2)}" if sm else "?",
                                         "pass": rc == 0}
 
+    # 3a2. V08_5: 규약(전역위상·atol) 변주 하 seal 재현 실증 (convention-independence, A3)
+    rc, out = run(["scripts/inverted_second_oracle.py", "--quick"])
+    result["steps"]["convention_independence"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3b. V08 P0: structural Shor 앱 modexp 코어 부분공간 순열 강검증 (경량 재검증)
     #     path A=회로 게이트순열 vs path B=정수산술 w·a^c mod N. sidecar(.pgf/proofs) 비파괴, root 무영향.
     rc, out = run(["scripts/perm_subspace_verify.py", "--quick"])
