@@ -241,7 +241,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         V08_6_ConventionAuditFirst // block-encoding 규약 감사 선행 (designing) @dep:V08_2
         V08_7_BlockEncodingLCU // 소형 Hermitian block-encoding + Pauli LCU (Tier-0) (designing) @dep:V08_6
         V08_8_QSPPolynomial // QSP 위상열(저차 Chebyshev) — 근사=observation (designing) @dep:V08_7
-        V08_9_CISealGateAction // GitHub Action: verify+reproduce+root gate (designing) @dep:V08_2
+        V08_9_CISealGateAction // GitHub Action: verify+reproduce+root gate (done) @dep:V08_2
+            # ✅ done: .github/workflows/seal-gate.yml 강화. ★근본 fix=anchor drift 제거(정적 앵커
+            #   d231fbf4 하드코딩 2곳 삭제 → seal_gate_ci EXPECT_DEFAULT=anchor_sync 관리값 사용, CI 영구 최신).
+            #   V08 게이트 추가(convention_independence·resource_witness 명시 스텝 + perm_subspace=reproduce 내부).
+            #   second_oracle 71/71 라벨 정정. root 대조=seal_gate 스텝 단일화.
         V08_10_DiscoverySuperopt // 봉인 golden에 더 싼/새 분해 탐색(oracle-gated) (designing) @dep:V08_7
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)

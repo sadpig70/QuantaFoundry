@@ -23,11 +23,19 @@ jobs:
       - name: Install deterministic deps
         run: pip install -r requirements-ci.txt
 
-      - name: Independent oracle (pure-numpy, 50/50 modules)
+      - name: Independent oracle (pure-numpy, 71/71 modules)
         run: python scripts/second_oracle.py
 
-      - name: Full reproduction + root gate (byte-identity)
-        run: python scripts/qf_cli.py reproduce --expect-root d231fbf48704e677
+      - name: Convention-independence (규약 변주 하 seal 재현 + teeth, V08_5)
+        run: python scripts/inverted_second_oracle.py --quick
+
+      - name: Resource witness (봉인 resource == 자식 resource 합, V08_4)
+        run: python scripts/resource_witness.py --quick
+
+      # 전수 재현 — perm-subspace(V08 P0)·convention·resource witness 스텝을 내부 포함.
+      # root 대조는 아래 seal-gate 스텝(EXPECT_DEFAULT, anchor_sync 관리)이 담당한다.
+      - name: Full reproduction (byte-identity; incl. perm-subspace V08 P0)
+        run: python scripts/qf_cli.py reproduce
 
       - name: Contested-guard determinism (frozen consensus keys)
         run: python scripts/verify_contested_guard.py
@@ -35,8 +43,10 @@ jobs:
       - name: QASM export round-trip (export honesty)
         run: python scripts/qasm_export.py --all
 
-      - name: Seal badge
-        run: python scripts/seal_gate_ci.py --expect-root d231fbf48704e677
+      # root gate: 정적 앵커 하드코딩 금지(anchor drift 방지) — seal_gate_ci.py 의
+      # EXPECT_DEFAULT(anchor_sync 가 갱신)를 사용. root 결정론 깨지면 여기서 머지 차단.
+      - name: Seal badge + root gate (EXPECT_DEFAULT, anchor_sync-managed)
+        run: python scripts/seal_gate_ci.py
 
       - name: Upload seal badge
         uses: actions/upload-artifact@v4
