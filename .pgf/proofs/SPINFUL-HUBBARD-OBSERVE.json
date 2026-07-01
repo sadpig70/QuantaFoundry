@@ -1,0 +1,59 @@
+{
+  "_note": "정통 spinful Fermi-Hubbard(2site×2spin) 관측 = be_hopz(Z-string hopping)+be_num(number). 4-mode JW=EXACT, 봉인=be_hopz·be_num, e^{-iHt}=observation(INV-Q3).",
+  "_schema": "spinful-hubbard-observe-v1",
+  "observation": {
+    "consumer_link": "full H = Pauli 합 → block-encoding/QSVT Hamiltonian sim(V08_14)",
+    "honest_boundary": "4-mode JW 반교환 보존=EXACT. 봉인=be_hopz·be_num. e^{-iHt}=observation(INV-Q3).",
+    "jw_4mode_anticommutation": true,
+    "model": "2-site × 2-spin Fermi-Hubbard: H = -t·Σ_σ hopping_σ + U·Σ_j n_j↑n_j↓ (Jordan-Wigner)",
+    "modes": "0=site0↑, 1=site0↓, 2=site1↑, 3=site1↓",
+    "mott_trend_ground_rises_with_U": true,
+    "ok": true,
+    "sealed_assets": {
+      "nonadjacent_hopping_zstring": "be_hopz (Tier-0)",
+      "number_operator": "be_num (Tier-0)"
+    },
+    "spectra_vs_U": [
+      {
+        "U": 0.0,
+        "ground_energy": -2.0,
+        "low_spectrum": [
+          -2.0,
+          -1.0,
+          -1.0,
+          -1.0
+        ]
+      },
+      {
+        "U": 2.0,
+        "ground_energy": -1.2361,
+        "low_spectrum": [
+          -1.2361,
+          -1.0,
+          -1.0,
+          0.0
+        ]
+      },
+      {
+        "U": 4.0,
+        "ground_energy": -1.0,
+        "low_spectrum": [
+          -1.0,
+          -1.0,
+          -0.8284,
+          0.0
+        ]
+      },
+      {
+        "U": 8.0,
+        "ground_energy": -1.0,
+        "low_spectrum": [
+          -1.0,
+          -1.0,
+          -0.4721,
+          0.0
+        ]
+      }
+    ]
+  }
+}

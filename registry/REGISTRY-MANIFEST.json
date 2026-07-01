@@ -84,12 +84,13 @@
     ]
   },
   "apps": {
-    "unique_app_count": 179,
+    "unique_app_count": 180,
     "cached_app_side_module_count": 61,
-    "total_files": 240,
+    "total_files": 241,
     "path": "registry/apps",
     "unique": [
       "be_hop",
+      "be_hopz",
       "be_num",
       "be_pauli2",
       "be_proj",
@@ -396,7 +397,7 @@
     "x_gate": "registry/modules/x_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "848e83d75ac87f7aa160b1bdb8f24ae4ffb8214e1c9a28cf069c9e0727c3f17d",
+  "registry_root_hash": "a177da0c33f84d8c2ef8b00812ee41965bf4d855915557100648d384a331bbc7",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

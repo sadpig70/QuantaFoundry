@@ -262,6 +262,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_19_SpinfulFermiHubbard // 정통 spinful Fermi-Hubbard 2site×2spin (fermionic 축 정점) (done) @dep:V08_17
+            # ✅ done: 정통 Fermi-Hubbard(응집물질·양자화학 대표). 4 modes(0↑,0↓,1↑,1↓). H=-t·Σ_σ hopping_σ +
+            #   U·Σ_j n_j↑n_j↓. same-spin hopping 비인접(0↑-1↑ 사이 mode)→JW Z-string. be_hopz.app.pg — 비인접
+            #   hopping (X⊗Z⊗X+Y⊗Z⊗Y)/2 block-encoding(Z_1=JW Z-string, YZY=(S⊗I⊗S)(XZX)(S†⊗I⊗S†), h·sdg·cnot·cz·s·x,
+            #   4q, block==A, Tier-0 b3bea4c4, 새 module 0). spinful_hubbard_observe.py — 4-mode JW 반교환 EXACT +
+            #   스펙트럼 vs U + ★Mott 물리(U↑→ground energy↑ -2→-1, 이중점유 억제·국소모멘트). 봉인=be_hopz·be_num.
+            #   ★JW=EXACT, e^{-iHt}=observation(INV-Q3). root 848e83d7→a177da0c33f84d8c(179→180).
         V08_17_FermiHubbardModel // 완전한 t-V Fermi-Hubbard (be_hop hopping + be_num interaction) (done) @dep:V08_16
             # ✅ done: fermionic 축을 완전한 물리 모델로. H=-t(a0†a1+a1†a0)+V·n0·n1 --JW--> -t(XX+YY)/2+V(I-Z0)(I-Z1)/4.
             #   be_num.app.pg — number operator n=(I-Z)/2=|1><1| block-encoding((I⊗X)be_proj(I⊗X)=X켤레, x·h·cz·h·x,

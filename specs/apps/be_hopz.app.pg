@@ -1,0 +1,28 @@
+# be_hopz — block-encoding of non-adjacent fermionic hopping w/ Jordan-Wigner Z-string. 4q(1anc+3sys). α=1.
+# 비인접 hopping a_0†a_2 + a_2†a_0 (중간 mode 1) --JW--> (X⊗Z⊗X + Y⊗Z⊗Y)/2. Z_1=JW Z-string(비국소성).
+# U=(H_a⊗I³)·SELECT·(H_a⊗I³), SELECT=|0><0|⊗XZX + |1><1|⊗YZY. top-left 8×8 block == A. 고유값 {-1,-1,0,0,0,0,1,1}.
+# ★spinful/multi-site Hubbard 의 핵심 신기능=JW Z-string 이 hopping block-encoding 에 들어감. commuting XZX·YZY.
+# YZY=(S⊗I⊗S)(XZX)(S†⊗I⊗S†) 로 봉인 게이트 조립(h·sdg·cnot·cz·s·x). MatrixGate 0, 새 module 0.
+```json id=app_meta
+{"id": "be_hopz", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+SELECT = kr(P0, X, Z, X) + kr(P1, Y, Z, Y)          # |0><0|⊗XZX + |1><1|⊗YZY (Z-string hopping)
+golden = kr(H, I, I, I) @ SELECT @ kr(H, I, I, I)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/sdg_gate.pg", "targets": [1]}, {"spec": "../modules/sdg_gate.pg", "targets": [3]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/s_gate.pg", "targets": [1]}, {"spec": "../modules/s_gate.pg", "targets": [3]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```
