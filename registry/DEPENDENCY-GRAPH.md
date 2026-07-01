@@ -34,6 +34,17 @@ bell
 bk4_transform
 └─ cnot (module×4)
 
+bk_hop01
+├─ cz (module)
+├─ h_gate (module×2)
+├─ x_gate (module)
+└─ z_gate (module)
+
+bk_num1
+├─ cz (module×2)
+├─ h_gate (module×2)
+└─ x_gate (module×2)
+
 bv3_s101
 ├─ cnot (module×2)
 ├─ h_gate (module×7)
@@ -228,6 +239,9 @@ heis3_trotter_step
 magic_a
 ├─ h_gate (module)
 └─ t_gate (module)
+
+parity4_transform
+└─ cnot (module×6)
 
 qae3_pi2
 ├─ cry_pi (app)

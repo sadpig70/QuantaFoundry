@@ -156,6 +156,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3n. HE H1.3: JW↔BK 인코딩 등가성(exact 켤레변환)+weight payoff (bk4_transform·bk_num1·bk_hop01, observation)
+    rc, out = run(["scripts/bk_equiv_observe.py", "--quick"])
+    result["steps"]["bk_equiv_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -1,0 +1,34 @@
+# bk_hop01 — Bravyi-Kitaev hopping H_01 = a_0†a_1+a_1†a_0 block-encoding. 3q(1anc+2sys). α=1. Tier-0.
+# HE H1.2 (#axis-A): BK 인코딩의 인접-mode hopping.
+#   JW: H_01=(X_0X_1+Y_0Y_1)/2 (weight2).  BK: H_01=(X_0 - X_0Z_1)/2 = X_0·(I-Z_1)/2 (weight≤2).
+# block-encoding: top-left 4×4 == (X⊗I - X⊗Z)/2. U=H_a·X_0·CZ(a,1)·Z_a·H_a
+#   (SELECT=|0><0|⊗X0 + |1><1|⊗(-X0Z1) = X0·CZ(a,mode1)·Z_a). plan=봉인 게이트만(h·x·cz·z), 새 module 0.
+# ★봉인=exact BK hopping block. weight 대비(H_03: JW w4→BK w3 payoff)는 bk_equiv 관측(seal 아님).
+```json id=app_meta
+{"id": "bk_hop01", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+def g1(op, q):                       # single-qubit op on qubit q of 3 (q0=anc)
+    return kr(*[op if i == q else I for i in range(3)])
+def cz(c, t):
+    M = np.zeros((8, 8), dtype=complex)
+    for x in range(8):
+        b = [(x >> (2 - i)) & 1 for i in range(3)]
+        M[x, x] = -1.0 if (b[c] and b[t]) else 1.0
+    return M
+# top-left 4×4 == (X⊗I - X⊗Z)/2 = BK H_01 hopping
+golden = g1(H, 0) @ g1(Z, 0) @ cz(0, 2) @ g1(X, 1) @ g1(H, 0)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/z_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

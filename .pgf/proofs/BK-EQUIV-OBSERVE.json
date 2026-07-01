@@ -1,0 +1,57 @@
+{
+  "_note": "JW↔BK 등가성(exact 켤레변환)+weight payoff 관측. seal 아님(INV-Q3), 신규 봉인 0.",
+  "_schema": "bk-equiv-observe-v1",
+  "observation": {
+    "conjugation": "O_BK = U_BK · O_JW · U_BK†  (exact, U_BK=계산기저 permutation)",
+    "encoding": "Jordan-Wigner ↔ Bravyi-Kitaev (n=4, U_BK=bk4_transform 봉인)",
+    "honest_boundary": "켤레변환 등가성=exact 항등(bk4_transform 봉인 귀결). weight 감소=관측. 신규 봉인 0.",
+    "ok": true,
+    "payoff_H03_jw_w4_to_bk_w3": true,
+    "sealed_block_recheck": {
+      "bk_hop01 == BK H_01": true,
+      "bk_num1 == BK n_1": true
+    },
+    "weight_table": [
+      {
+        "bk_weight": 1,
+        "jw_weight": 1,
+        "op": "n_0"
+      },
+      {
+        "bk_weight": 2,
+        "jw_weight": 1,
+        "op": "n_1"
+      },
+      {
+        "bk_weight": 1,
+        "jw_weight": 1,
+        "op": "n_2"
+      },
+      {
+        "bk_weight": 3,
+        "jw_weight": 1,
+        "op": "n_3"
+      },
+      {
+        "bk_weight": 2,
+        "jw_weight": 2,
+        "op": "H_01"
+      },
+      {
+        "bk_weight": 3,
+        "jw_weight": 2,
+        "op": "H_12"
+      },
+      {
+        "bk_weight": 3,
+        "jw_weight": 2,
+        "op": "H_23"
+      },
+      {
+        "bk_weight": 3,
+        "jw_weight": 4,
+        "op": "H_03"
+      }
+    ]
+  }
+}
