@@ -3451,6 +3451,23 @@
       }
     ]
   },
+  "magic_a": {
+    "u_hash": "8b8b7d24b6e3997ec819a823e24617c341c0e86c1335bf7050f806ab94fe7299",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 1,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "qae3_pi2": {
     "u_hash": "5fc7fdcbb3b55cdef351d7768eb67a922d09dc2d31b0baeceee883f000f768e5",
     "depends_on": [

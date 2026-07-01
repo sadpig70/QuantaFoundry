@@ -1,0 +1,23 @@
+{
+  "_note": "FTQC non-Clifford universality: magic state |A>(magic_a 봉인) + T-injection. non-stabilizer·injection=EXACT 독립검증. distillation=하드웨어 범위 밖.",
+  "_schema": "magic-state-observe-v1",
+  "observation": {
+    "cos2_pi_8": 0.8536,
+    "honest_boundary": "magic_a=Tier-0 EXACT 봉인. non-stabilizer·T-injection=EXACT(독립검증). magic state distillation(잡음→고순도)은 하드웨어 맥락→범위 밖(정체성).",
+    "magic_state": "|A> = T·H|0> = (|0>+e^{iπ/4}|1>)/√2 (magic_a, Tier-0 봉인)",
+    "max_stabilizer_fidelity": 0.8536,
+    "non_stabilizer_magic": true,
+    "ok": true,
+    "stabilizer_fidelities": {
+      "|+>": 0.8536,
+      "|+i>": 0.8536,
+      "|->": 0.1464,
+      "|-i>": 0.1464,
+      "|0>": 0.5,
+      "|1>": 0.5
+    },
+    "t_injection_exact": true,
+    "teeth_stabilizer_has_fid1": true,
+    "universality": "Clifford(W7 QEC: transversal H/S/CNOT) + T(magic state injection) = universal gate set"
+  }
+}

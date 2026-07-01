@@ -262,6 +262,15 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_20_FTQCMagicState // FTQC non-Clifford universality (magic state + T-injection) (done) @dep:V08_19
+            # ✅ done: project-identity 마지막 미완 핵심축(FTQC 자산). QEC(W7)는 transversal Clifford(H/S/CNOT)까지만
+            #   → universality 엔 non-Clifford T 필요. magic state 가 T 를 fault-tolerant 주입. magic_a.app.pg —
+            #   |A>=T·H|0>=(|0>+e^{iπ/4}|1>)/√2 준비(plan=[h·t], Tier-0 8b8b7d24, 새 module 0). magic_state_observe.py —
+            #   (1)non-stabilizer witness: max stab fidelity=cos²(π/8)=0.8536<1→Clifford 궤도 밖(magic)+teeth;
+            #   (2)T-injection EXACT: |ψ>⊗|A>·CNOT·측정·S보정→T|ψ>(모든 입력·측정결과); (3)Clifford(W7)+T(magic)=universal.
+            #   ★magic_a=Tier-0 EXACT, non-stabilizer·injection=EXACT 독립검증. distillation=하드웨어 범위 밖(정체성).
+            #   root a177da0c→4bd5911945ac6dcb(180→181). ★project-identity 4대 방향(structural강검증·독립성·발견자율화·
+            #   FTQC자산) 전부 실증 도달.
         V08_19_SpinfulFermiHubbard // 정통 spinful Fermi-Hubbard 2site×2spin (fermionic 축 정점) (done) @dep:V08_17
             # ✅ done: 정통 Fermi-Hubbard(응집물질·양자화학 대표). 4 modes(0↑,0↓,1↑,1↓). H=-t·Σ_σ hopping_σ +
             #   U·Σ_j n_j↑n_j↓. same-spin hopping 비인접(0↑-1↑ 사이 mode)→JW Z-string. be_hopz.app.pg — 비인접

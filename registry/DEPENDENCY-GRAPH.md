@@ -222,6 +222,10 @@ heis3_trotter_step
    ├─ cnot (module×2)
    └─ rz_negpi4 (module)
 
+magic_a
+├─ h_gate (module)
+└─ t_gate (module)
+
 qae3_pi2
 ├─ cry_pi (app)
 │  ├─ cnot (module×2)

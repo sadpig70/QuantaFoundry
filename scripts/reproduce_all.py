@@ -144,6 +144,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3l. V08 FTQC: non-Clifford universality (magic state |A> + T-injection)
+    rc, out = run(["scripts/magic_state_observe.py", "--quick"])
+    result["steps"]["magic_state_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

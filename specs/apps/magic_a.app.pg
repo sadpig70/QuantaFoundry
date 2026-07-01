@@ -1,0 +1,17 @@
+# magic_a — magic state |A> preparation (FTQC non-Clifford universality). 1 qubit.
+# |A> = T·H|0> = (|0> + e^{iπ/4}|1>)/√2 — non-Clifford resource state(Clifford 로 생성 불가).
+# QEC(W7)는 transversal Clifford(H/S/CNOT)까지만 — universality 엔 non-Clifford T 필요. magic state 가
+# T-gate 를 fault-tolerant 하게 주입(gate teleportation)한다. golden=T·H, plan=[h·t] 봉인 게이트, 새 module 0.
+# ★max stabilizer fidelity=cos²(π/8)<1 → |A>는 stabilizer 궤도 밖(magic). T-injection 정확성=별도 관측.
+```json id=app_meta
+{"id": "magic_a", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+T = np.diag([1, np.exp(1j * np.pi / 4)]).astype(complex)
+golden = T @ H          # U|0> = T·H|0> = |A> magic state
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/t_gate.pg", "targets": [0]}]}
+```
