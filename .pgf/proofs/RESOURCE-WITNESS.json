@@ -1,0 +1,3276 @@
+{
+  "_note": "조립 앱 resource == 자식 resource 합 독립 재계산(A6). sealed/oracle/root 무영향.",
+  "_schema": "resource-witness-v1",
+  "checked": 166,
+  "consistent": 166,
+  "inconsistencies": [],
+  "results": {
+    "bell": {
+      "children_sum": {
+        "clifford": 2,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "bell",
+      "n_children": 2,
+      "sealed_resource": {
+        "clifford": 2,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "bv3_s101": {
+      "children_sum": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "bv3_s101",
+      "n_children": 10,
+      "sealed_resource": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "c3x": {
+      "id": "c3x",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "c4x": {
+      "id": "c4x",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "c5x": {
+      "id": "c5x",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "c6x": {
+      "id": "c6x",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "c7x": {
+      "id": "c7x",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "c8x": {
+      "id": "c8x",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ccz": {
+      "id": "ccz",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ccz_rediscovered": {
+      "children_sum": {
+        "clifford": 2,
+        "toffoli": 1,
+        "total_t": 4
+      },
+      "consistent": true,
+      "id": "ccz_rediscovered",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 2,
+        "toffoli": 1,
+        "total_t": 4
+      },
+      "status": "checked"
+    },
+    "cluster10": {
+      "children_sum": {
+        "clifford": 19,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster10",
+      "n_children": 19,
+      "sealed_resource": {
+        "clifford": 19,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster3": {
+      "children_sum": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster3",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster4": {
+      "children_sum": {
+        "clifford": 7,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster4",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 7,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster5": {
+      "children_sum": {
+        "clifford": 9,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster5",
+      "n_children": 9,
+      "sealed_resource": {
+        "clifford": 9,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster6": {
+      "children_sum": {
+        "clifford": 11,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster6",
+      "n_children": 11,
+      "sealed_resource": {
+        "clifford": 11,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster7": {
+      "children_sum": {
+        "clifford": 13,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster7",
+      "n_children": 13,
+      "sealed_resource": {
+        "clifford": 13,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster8": {
+      "children_sum": {
+        "clifford": 15,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster8",
+      "n_children": 15,
+      "sealed_resource": {
+        "clifford": 15,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cluster9": {
+      "children_sum": {
+        "clifford": 17,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cluster9",
+      "n_children": 17,
+      "sealed_resource": {
+        "clifford": 17,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cmul120_mod221": {
+      "children_sum": {
+        "and_bloq": 3735,
+        "clifford": 4621,
+        "measurement": 3735,
+        "toffoli": 35,
+        "total_t": 15080
+      },
+      "consistent": true,
+      "id": "cmul120_mod221",
+      "n_children": 921,
+      "sealed_resource": {
+        "and_bloq": 3735,
+        "clifford": 4621,
+        "measurement": 3735,
+        "toffoli": 35,
+        "total_t": 15080
+      },
+      "status": "checked"
+    },
+    "cmul131_mod635": {
+      "children_sum": {
+        "and_bloq": 24889,
+        "clifford": 29586,
+        "measurement": 24889,
+        "toffoli": 40,
+        "total_t": 99716
+      },
+      "consistent": true,
+      "id": "cmul131_mod635",
+      "n_children": 4737,
+      "sealed_resource": {
+        "and_bloq": 24889,
+        "clifford": 29586,
+        "measurement": 24889,
+        "toffoli": 40,
+        "total_t": 99716
+      },
+      "status": "checked"
+    },
+    "cmul13_mod69": {
+      "children_sum": {
+        "and_bloq": 1331,
+        "clifford": 1694,
+        "measurement": 1331,
+        "toffoli": 21,
+        "total_t": 5408
+      },
+      "consistent": true,
+      "id": "cmul13_mod69",
+      "n_children": 384,
+      "sealed_resource": {
+        "and_bloq": 1331,
+        "clifford": 1694,
+        "measurement": 1331,
+        "toffoli": 21,
+        "total_t": 5408
+      },
+      "status": "checked"
+    },
+    "cmul16_mod119": {
+      "children_sum": {
+        "and_bloq": 960,
+        "clifford": 1208,
+        "measurement": 960,
+        "toffoli": 22,
+        "total_t": 3928
+      },
+      "consistent": true,
+      "id": "cmul16_mod119",
+      "n_children": 270,
+      "sealed_resource": {
+        "and_bloq": 960,
+        "clifford": 1208,
+        "measurement": 960,
+        "toffoli": 22,
+        "total_t": 3928
+      },
+      "status": "checked"
+    },
+    "cmul16_mod1285": {
+      "children_sum": {
+        "and_bloq": 54140,
+        "clifford": 63236,
+        "measurement": 54140,
+        "toffoli": 30,
+        "total_t": 216680
+      },
+      "consistent": true,
+      "id": "cmul16_mod1285",
+      "n_children": 9126,
+      "sealed_resource": {
+        "and_bloq": 54140,
+        "clifford": 63236,
+        "measurement": 54140,
+        "toffoli": 30,
+        "total_t": 216680
+      },
+      "status": "checked"
+    },
+    "cmul16_mod21": {
+      "children_sum": {
+        "and_bloq": 612,
+        "clifford": 832,
+        "measurement": 612,
+        "toffoli": 44,
+        "total_t": 2624
+      },
+      "consistent": true,
+      "id": "cmul16_mod21",
+      "n_children": 2,
+      "sealed_resource": {
+        "and_bloq": 612,
+        "clifford": 832,
+        "measurement": 612,
+        "toffoli": 44,
+        "total_t": 2624
+      },
+      "status": "checked"
+    },
+    "cmul16_mod221": {
+      "children_sum": {
+        "and_bloq": 3068,
+        "clifford": 3759,
+        "measurement": 3068,
+        "toffoli": 20,
+        "total_t": 12352
+      },
+      "consistent": true,
+      "id": "cmul16_mod221",
+      "n_children": 711,
+      "sealed_resource": {
+        "and_bloq": 3068,
+        "clifford": 3759,
+        "measurement": 3068,
+        "toffoli": 20,
+        "total_t": 12352
+      },
+      "status": "checked"
+    },
+    "cmul16_mod3683": {
+      "children_sum": {
+        "and_bloq": 119105,
+        "clifford": 137444,
+        "measurement": 119105,
+        "toffoli": 39,
+        "total_t": 476576
+      },
+      "consistent": true,
+      "id": "cmul16_mod3683",
+      "n_children": 18378,
+      "sealed_resource": {
+        "and_bloq": 119105,
+        "clifford": 137444,
+        "measurement": 119105,
+        "toffoli": 39,
+        "total_t": 476576
+      },
+      "status": "checked"
+    },
+    "cmul16_mod381": {
+      "children_sum": {
+        "and_bloq": 8825,
+        "clifford": 10621,
+        "measurement": 8825,
+        "toffoli": 29,
+        "total_t": 35416
+      },
+      "consistent": true,
+      "id": "cmul16_mod381",
+      "n_children": 1825,
+      "sealed_resource": {
+        "and_bloq": 8825,
+        "clifford": 10621,
+        "measurement": 8825,
+        "toffoli": 29,
+        "total_t": 35416
+      },
+      "status": "checked"
+    },
+    "cmul16_mod635": {
+      "children_sum": {
+        "and_bloq": 22369,
+        "clifford": 26531,
+        "measurement": 22369,
+        "toffoli": 32,
+        "total_t": 89604
+      },
+      "consistent": true,
+      "id": "cmul16_mod635",
+      "n_children": 4194,
+      "sealed_resource": {
+        "and_bloq": 22369,
+        "clifford": 26531,
+        "measurement": 22369,
+        "toffoli": 32,
+        "total_t": 89604
+      },
+      "status": "checked"
+    },
+    "cmul16_mod69": {
+      "children_sum": {
+        "and_bloq": 1253,
+        "clifford": 1595,
+        "measurement": 1253,
+        "toffoli": 18,
+        "total_t": 5084
+      },
+      "consistent": true,
+      "id": "cmul16_mod69",
+      "n_children": 360,
+      "sealed_resource": {
+        "and_bloq": 1253,
+        "clifford": 1595,
+        "measurement": 1253,
+        "toffoli": 18,
+        "total_t": 5084
+      },
+      "status": "checked"
+    },
+    "cmul16_mod77": {
+      "children_sum": {
+        "and_bloq": 1368,
+        "clifford": 1738,
+        "measurement": 1368,
+        "toffoli": 18,
+        "total_t": 5544
+      },
+      "consistent": true,
+      "id": "cmul16_mod77",
+      "n_children": 388,
+      "sealed_resource": {
+        "and_bloq": 1368,
+        "clifford": 1738,
+        "measurement": 1368,
+        "toffoli": 18,
+        "total_t": 5544
+      },
+      "status": "checked"
+    },
+    "cmul16_mod91": {
+      "children_sum": {
+        "and_bloq": 1408,
+        "clifford": 1778,
+        "measurement": 1408,
+        "toffoli": 20,
+        "total_t": 5712
+      },
+      "consistent": true,
+      "id": "cmul16_mod91",
+      "n_children": 390,
+      "sealed_resource": {
+        "and_bloq": 1408,
+        "clifford": 1778,
+        "measurement": 1408,
+        "toffoli": 20,
+        "total_t": 5712
+      },
+      "status": "checked"
+    },
+    "cmul18_mod119": {
+      "children_sum": {
+        "and_bloq": 1251,
+        "clifford": 1592,
+        "measurement": 1251,
+        "toffoli": 25,
+        "total_t": 5104
+      },
+      "consistent": true,
+      "id": "cmul18_mod119",
+      "n_children": 366,
+      "sealed_resource": {
+        "and_bloq": 1251,
+        "clifford": 1592,
+        "measurement": 1251,
+        "toffoli": 25,
+        "total_t": 5104
+      },
+      "status": "checked"
+    },
+    "cmul256_mod1285": {
+      "children_sum": {
+        "and_bloq": 60792,
+        "clifford": 71087,
+        "measurement": 60792,
+        "toffoli": 35,
+        "total_t": 243308
+      },
+      "consistent": true,
+      "id": "cmul256_mod1285",
+      "n_children": 10330,
+      "sealed_resource": {
+        "and_bloq": 60792,
+        "clifford": 71087,
+        "measurement": 60792,
+        "toffoli": 35,
+        "total_t": 243308
+      },
+      "status": "checked"
+    },
+    "cmul256_mod3683": {
+      "children_sum": {
+        "and_bloq": 145549,
+        "clifford": 168208,
+        "measurement": 145549,
+        "toffoli": 52,
+        "total_t": 582404
+      },
+      "consistent": true,
+      "id": "cmul256_mod3683",
+      "n_children": 22711,
+      "sealed_resource": {
+        "and_bloq": 145549,
+        "clifford": 168208,
+        "measurement": 145549,
+        "toffoli": 52,
+        "total_t": 582404
+      },
+      "status": "checked"
+    },
+    "cmul256_mod381": {
+      "children_sum": {
+        "and_bloq": 8975,
+        "clifford": 10834,
+        "measurement": 8975,
+        "toffoli": 25,
+        "total_t": 36000
+      },
+      "consistent": true,
+      "id": "cmul256_mod381",
+      "n_children": 1884,
+      "sealed_resource": {
+        "and_bloq": 8975,
+        "clifford": 10834,
+        "measurement": 8975,
+        "toffoli": 25,
+        "total_t": 36000
+      },
+      "status": "checked"
+    },
+    "cmul256_mod635": {
+      "children_sum": {
+        "and_bloq": 24362,
+        "clifford": 28961,
+        "measurement": 24362,
+        "toffoli": 34,
+        "total_t": 97584
+      },
+      "consistent": true,
+      "id": "cmul256_mod635",
+      "n_children": 4633,
+      "sealed_resource": {
+        "and_bloq": 24362,
+        "clifford": 28961,
+        "measurement": 24362,
+        "toffoli": 34,
+        "total_t": 97584
+      },
+      "status": "checked"
+    },
+    "cmul25_mod77": {
+      "children_sum": {
+        "and_bloq": 1383,
+        "clifford": 1755,
+        "measurement": 1383,
+        "toffoli": 23,
+        "total_t": 5624
+      },
+      "consistent": true,
+      "id": "cmul25_mod77",
+      "n_children": 395,
+      "sealed_resource": {
+        "and_bloq": 1383,
+        "clifford": 1755,
+        "measurement": 1383,
+        "toffoli": 23,
+        "total_t": 5624
+      },
+      "status": "checked"
+    },
+    "cmul2925_mod3683": {
+      "children_sum": {
+        "and_bloq": 146001,
+        "clifford": 168950,
+        "measurement": 146001,
+        "toffoli": 76,
+        "total_t": 584308
+      },
+      "consistent": true,
+      "id": "cmul2925_mod3683",
+      "n_children": 23025,
+      "sealed_resource": {
+        "and_bloq": 146001,
+        "clifford": 168950,
+        "measurement": 146001,
+        "toffoli": 76,
+        "total_t": 584308
+      },
+      "status": "checked"
+    },
+    "cmul2_mod119": {
+      "children_sum": {
+        "and_bloq": 79,
+        "clifford": 96,
+        "measurement": 79,
+        "toffoli": 17,
+        "total_t": 384
+      },
+      "consistent": true,
+      "id": "cmul2_mod119",
+      "n_children": 34,
+      "sealed_resource": {
+        "and_bloq": 79,
+        "clifford": 96,
+        "measurement": 79,
+        "toffoli": 17,
+        "total_t": 384
+      },
+      "status": "checked"
+    },
+    "cmul2_mod1285": {
+      "children_sum": {
+        "and_bloq": 25842,
+        "clifford": 29907,
+        "measurement": 25842,
+        "toffoli": 23,
+        "total_t": 103460
+      },
+      "consistent": true,
+      "id": "cmul2_mod1285",
+      "n_children": 4088,
+      "sealed_resource": {
+        "and_bloq": 25842,
+        "clifford": 29907,
+        "measurement": 25842,
+        "toffoli": 23,
+        "total_t": 103460
+      },
+      "status": "checked"
+    },
+    "cmul2_mod15": {
+      "children_sum": {
+        "cswap": 3,
+        "total_t": 12
+      },
+      "consistent": true,
+      "id": "cmul2_mod15",
+      "n_children": 3,
+      "sealed_resource": {
+        "cswap": 3,
+        "total_t": 12
+      },
+      "status": "checked"
+    },
+    "cmul2_mod187": {
+      "children_sum": {
+        "and_bloq": 352,
+        "clifford": 438,
+        "measurement": 352,
+        "toffoli": 19,
+        "total_t": 1484
+      },
+      "consistent": true,
+      "id": "cmul2_mod187",
+      "n_children": 105,
+      "sealed_resource": {
+        "and_bloq": 352,
+        "clifford": 438,
+        "measurement": 352,
+        "toffoli": 19,
+        "total_t": 1484
+      },
+      "status": "checked"
+    },
+    "cmul2_mod21": {
+      "children_sum": {
+        "and_bloq": 153,
+        "clifford": 208,
+        "measurement": 153,
+        "toffoli": 11,
+        "total_t": 656
+      },
+      "consistent": true,
+      "id": "cmul2_mod21",
+      "n_children": 66,
+      "sealed_resource": {
+        "and_bloq": 153,
+        "clifford": 208,
+        "measurement": 153,
+        "toffoli": 11,
+        "total_t": 656
+      },
+      "status": "checked"
+    },
+    "cmul2_mod221": {
+      "children_sum": {
+        "and_bloq": 447,
+        "clifford": 535,
+        "measurement": 447,
+        "toffoli": 19,
+        "total_t": 1864
+      },
+      "consistent": true,
+      "id": "cmul2_mod221",
+      "n_children": 107,
+      "sealed_resource": {
+        "and_bloq": 447,
+        "clifford": 535,
+        "measurement": 447,
+        "toffoli": 19,
+        "total_t": 1864
+      },
+      "status": "checked"
+    },
+    "cmul2_mod33": {
+      "children_sum": {
+        "and_bloq": 338,
+        "clifford": 440,
+        "measurement": 338,
+        "toffoli": 11,
+        "total_t": 1396
+      },
+      "consistent": true,
+      "id": "cmul2_mod33",
+      "n_children": 113,
+      "sealed_resource": {
+        "and_bloq": 338,
+        "clifford": 440,
+        "measurement": 338,
+        "toffoli": 11,
+        "total_t": 1396
+      },
+      "status": "checked"
+    },
+    "cmul2_mod35": {
+      "children_sum": {
+        "and_bloq": 213,
+        "clifford": 280,
+        "measurement": 213,
+        "toffoli": 12,
+        "total_t": 900
+      },
+      "consistent": true,
+      "id": "cmul2_mod35",
+      "n_children": 79,
+      "sealed_resource": {
+        "and_bloq": 213,
+        "clifford": 280,
+        "measurement": 213,
+        "toffoli": 12,
+        "total_t": 900
+      },
+      "status": "checked"
+    },
+    "cmul2_mod3683": {
+      "children_sum": {
+        "and_bloq": 13989,
+        "clifford": 15809,
+        "measurement": 13989,
+        "toffoli": 28,
+        "total_t": 56068
+      },
+      "consistent": true,
+      "id": "cmul2_mod3683",
+      "n_children": 1848,
+      "sealed_resource": {
+        "and_bloq": 13989,
+        "clifford": 15809,
+        "measurement": 13989,
+        "toffoli": 28,
+        "total_t": 56068
+      },
+      "status": "checked"
+    },
+    "cmul2_mod381": {
+      "children_sum": {
+        "and_bloq": 528,
+        "clifford": 645,
+        "measurement": 528,
+        "toffoli": 22,
+        "total_t": 2200
+      },
+      "consistent": true,
+      "id": "cmul2_mod381",
+      "n_children": 139,
+      "sealed_resource": {
+        "and_bloq": 528,
+        "clifford": 645,
+        "measurement": 528,
+        "toffoli": 22,
+        "total_t": 2200
+      },
+      "status": "checked"
+    },
+    "cmul2_mod635": {
+      "children_sum": {
+        "and_bloq": 3559,
+        "clifford": 4173,
+        "measurement": 3559,
+        "toffoli": 24,
+        "total_t": 14332
+      },
+      "consistent": true,
+      "id": "cmul2_mod635",
+      "n_children": 638,
+      "sealed_resource": {
+        "and_bloq": 3559,
+        "clifford": 4173,
+        "measurement": 3559,
+        "toffoli": 24,
+        "total_t": 14332
+      },
+      "status": "checked"
+    },
+    "cmul2_mod69": {
+      "children_sum": {
+        "and_bloq": 788,
+        "clifford": 989,
+        "measurement": 788,
+        "toffoli": 14,
+        "total_t": 3208
+      },
+      "consistent": true,
+      "id": "cmul2_mod69",
+      "n_children": 215,
+      "sealed_resource": {
+        "and_bloq": 788,
+        "clifford": 989,
+        "measurement": 788,
+        "toffoli": 14,
+        "total_t": 3208
+      },
+      "status": "checked"
+    },
+    "cmul2_mod77": {
+      "children_sum": {
+        "and_bloq": 438,
+        "clifford": 551,
+        "measurement": 438,
+        "toffoli": 15,
+        "total_t": 1812
+      },
+      "consistent": true,
+      "id": "cmul2_mod77",
+      "n_children": 128,
+      "sealed_resource": {
+        "and_bloq": 438,
+        "clifford": 551,
+        "measurement": 438,
+        "toffoli": 15,
+        "total_t": 1812
+      },
+      "status": "checked"
+    },
+    "cmul2_mod85": {
+      "children_sum": {
+        "and_bloq": 570,
+        "clifford": 703,
+        "measurement": 570,
+        "toffoli": 15,
+        "total_t": 2340
+      },
+      "consistent": true,
+      "id": "cmul2_mod85",
+      "n_children": 148,
+      "sealed_resource": {
+        "and_bloq": 570,
+        "clifford": 703,
+        "measurement": 570,
+        "toffoli": 15,
+        "total_t": 2340
+      },
+      "status": "checked"
+    },
+    "cmul2_mod91": {
+      "children_sum": {
+        "and_bloq": 227,
+        "clifford": 288,
+        "measurement": 227,
+        "toffoli": 16,
+        "total_t": 972
+      },
+      "consistent": true,
+      "id": "cmul2_mod91",
+      "n_children": 77,
+      "sealed_resource": {
+        "and_bloq": 227,
+        "clifford": 288,
+        "measurement": 227,
+        "toffoli": 16,
+        "total_t": 972
+      },
+      "status": "checked"
+    },
+    "cmul35_mod221": {
+      "children_sum": {
+        "and_bloq": 3624,
+        "clifford": 4473,
+        "measurement": 3624,
+        "toffoli": 25,
+        "total_t": 14596
+      },
+      "consistent": true,
+      "id": "cmul35_mod221",
+      "n_children": 874,
+      "sealed_resource": {
+        "and_bloq": 3624,
+        "clifford": 4473,
+        "measurement": 3624,
+        "toffoli": 25,
+        "total_t": 14596
+      },
+      "status": "checked"
+    },
+    "cmul49_mod69": {
+      "children_sum": {
+        "and_bloq": 1232,
+        "clifford": 1567,
+        "measurement": 1232,
+        "toffoli": 27,
+        "total_t": 5036
+      },
+      "consistent": true,
+      "id": "cmul49_mod69",
+      "n_children": 362,
+      "sealed_resource": {
+        "and_bloq": 1232,
+        "clifford": 1567,
+        "measurement": 1232,
+        "toffoli": 27,
+        "total_t": 5036
+      },
+      "status": "checked"
+    },
+    "cmul4_mod119": {
+      "children_sum": {
+        "and_bloq": 1150,
+        "clifford": 1447,
+        "measurement": 1150,
+        "toffoli": 17,
+        "total_t": 4668
+      },
+      "consistent": true,
+      "id": "cmul4_mod119",
+      "n_children": 314,
+      "sealed_resource": {
+        "and_bloq": 1150,
+        "clifford": 1447,
+        "measurement": 1150,
+        "toffoli": 17,
+        "total_t": 4668
+      },
+      "status": "checked"
+    },
+    "cmul4_mod1285": {
+      "children_sum": {
+        "and_bloq": 41541,
+        "clifford": 48327,
+        "measurement": 41541,
+        "toffoli": 29,
+        "total_t": 166280
+      },
+      "consistent": true,
+      "id": "cmul4_mod1285",
+      "n_children": 6815,
+      "sealed_resource": {
+        "and_bloq": 41541,
+        "clifford": 48327,
+        "measurement": 41541,
+        "toffoli": 29,
+        "total_t": 166280
+      },
+      "status": "checked"
+    },
+    "cmul4_mod15": {
+      "children_sum": {
+        "cswap": 6,
+        "total_t": 24
+      },
+      "consistent": true,
+      "id": "cmul4_mod15",
+      "n_children": 2,
+      "sealed_resource": {
+        "cswap": 6,
+        "total_t": 24
+      },
+      "status": "checked"
+    },
+    "cmul4_mod21": {
+      "children_sum": {
+        "and_bloq": 306,
+        "clifford": 416,
+        "measurement": 306,
+        "toffoli": 22,
+        "total_t": 1312
+      },
+      "consistent": true,
+      "id": "cmul4_mod21",
+      "n_children": 2,
+      "sealed_resource": {
+        "and_bloq": 306,
+        "clifford": 416,
+        "measurement": 306,
+        "toffoli": 22,
+        "total_t": 1312
+      },
+      "status": "checked"
+    },
+    "cmul4_mod221": {
+      "children_sum": {
+        "and_bloq": 1831,
+        "clifford": 2226,
+        "measurement": 1831,
+        "toffoli": 24,
+        "total_t": 7420
+      },
+      "consistent": true,
+      "id": "cmul4_mod221",
+      "n_children": 419,
+      "sealed_resource": {
+        "and_bloq": 1831,
+        "clifford": 2226,
+        "measurement": 1831,
+        "toffoli": 24,
+        "total_t": 7420
+      },
+      "status": "checked"
+    },
+    "cmul4_mod3683": {
+      "children_sum": {
+        "and_bloq": 89557,
+        "clifford": 103117,
+        "measurement": 89557,
+        "toffoli": 30,
+        "total_t": 358348
+      },
+      "consistent": true,
+      "id": "cmul4_mod3683",
+      "n_children": 13590,
+      "sealed_resource": {
+        "and_bloq": 89557,
+        "clifford": 103117,
+        "measurement": 89557,
+        "toffoli": 30,
+        "total_t": 358348
+      },
+      "status": "checked"
+    },
+    "cmul4_mod381": {
+      "children_sum": {
+        "and_bloq": 4713,
+        "clifford": 5614,
+        "measurement": 4713,
+        "toffoli": 25,
+        "total_t": 18952
+      },
+      "consistent": true,
+      "id": "cmul4_mod381",
+      "n_children": 926,
+      "sealed_resource": {
+        "and_bloq": 4713,
+        "clifford": 5614,
+        "measurement": 4713,
+        "toffoli": 25,
+        "total_t": 18952
+      },
+      "status": "checked"
+    },
+    "cmul4_mod635": {
+      "children_sum": {
+        "and_bloq": 16836,
+        "clifford": 19860,
+        "measurement": 16836,
+        "toffoli": 24,
+        "total_t": 67440
+      },
+      "consistent": true,
+      "id": "cmul4_mod635",
+      "n_children": 3048,
+      "sealed_resource": {
+        "and_bloq": 16836,
+        "clifford": 19860,
+        "measurement": 16836,
+        "toffoli": 24,
+        "total_t": 67440
+      },
+      "status": "checked"
+    },
+    "cmul4_mod69": {
+      "children_sum": {
+        "and_bloq": 1079,
+        "clifford": 1362,
+        "measurement": 1079,
+        "toffoli": 15,
+        "total_t": 4376
+      },
+      "consistent": true,
+      "id": "cmul4_mod69",
+      "n_children": 298,
+      "sealed_resource": {
+        "and_bloq": 1079,
+        "clifford": 1362,
+        "measurement": 1079,
+        "toffoli": 15,
+        "total_t": 4376
+      },
+      "status": "checked"
+    },
+    "cmul4_mod77": {
+      "children_sum": {
+        "and_bloq": 992,
+        "clifford": 1239,
+        "measurement": 992,
+        "toffoli": 18,
+        "total_t": 4040
+      },
+      "consistent": true,
+      "id": "cmul4_mod77",
+      "n_children": 265,
+      "sealed_resource": {
+        "and_bloq": 992,
+        "clifford": 1239,
+        "measurement": 992,
+        "toffoli": 18,
+        "total_t": 4040
+      },
+      "status": "checked"
+    },
+    "cmul4_mod91": {
+      "children_sum": {
+        "and_bloq": 967,
+        "clifford": 1213,
+        "measurement": 967,
+        "toffoli": 15,
+        "total_t": 3928
+      },
+      "consistent": true,
+      "id": "cmul4_mod91",
+      "n_children": 261,
+      "sealed_resource": {
+        "and_bloq": 967,
+        "clifford": 1213,
+        "measurement": 967,
+        "toffoli": 15,
+        "total_t": 3928
+      },
+      "status": "checked"
+    },
+    "cmul52_mod69": {
+      "children_sum": {
+        "and_bloq": 1146,
+        "clifford": 1455,
+        "measurement": 1146,
+        "toffoli": 20,
+        "total_t": 4664
+      },
+      "consistent": true,
+      "id": "cmul52_mod69",
+      "n_children": 329,
+      "sealed_resource": {
+        "and_bloq": 1146,
+        "clifford": 1455,
+        "measurement": 1146,
+        "toffoli": 20,
+        "total_t": 4664
+      },
+      "status": "checked"
+    },
+    "cmul55_mod69": {
+      "children_sum": {
+        "and_bloq": 1379,
+        "clifford": 1745,
+        "measurement": 1379,
+        "toffoli": 24,
+        "total_t": 5612
+      },
+      "consistent": true,
+      "id": "cmul55_mod69",
+      "n_children": 390,
+      "sealed_resource": {
+        "and_bloq": 1379,
+        "clifford": 1745,
+        "measurement": 1379,
+        "toffoli": 24,
+        "total_t": 5612
+      },
+      "status": "checked"
+    },
+    "cmul58_mod69": {
+      "children_sum": {
+        "and_bloq": 1331,
+        "clifford": 1686,
+        "measurement": 1331,
+        "toffoli": 23,
+        "total_t": 5416
+      },
+      "consistent": true,
+      "id": "cmul58_mod69",
+      "n_children": 378,
+      "sealed_resource": {
+        "and_bloq": 1331,
+        "clifford": 1686,
+        "measurement": 1331,
+        "toffoli": 23,
+        "total_t": 5416
+      },
+      "status": "checked"
+    },
+    "cmul74_mod91": {
+      "children_sum": {
+        "and_bloq": 1342,
+        "clifford": 1704,
+        "measurement": 1342,
+        "toffoli": 25,
+        "total_t": 5468
+      },
+      "consistent": true,
+      "id": "cmul74_mod91",
+      "n_children": 387,
+      "sealed_resource": {
+        "and_bloq": 1342,
+        "clifford": 1704,
+        "measurement": 1342,
+        "toffoli": 25,
+        "total_t": 5468
+      },
+      "status": "checked"
+    },
+    "cmul7_mod15": {
+      "children_sum": {
+        "clifford": 4,
+        "cswap": 3,
+        "total_t": 12
+      },
+      "consistent": true,
+      "id": "cmul7_mod15",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 4,
+        "cswap": 3,
+        "total_t": 12
+      },
+      "status": "checked"
+    },
+    "cmul86_mod119": {
+      "children_sum": {
+        "and_bloq": 1283,
+        "clifford": 1633,
+        "measurement": 1283,
+        "toffoli": 25,
+        "total_t": 5232
+      },
+      "consistent": true,
+      "id": "cmul86_mod119",
+      "n_children": 375,
+      "sealed_resource": {
+        "and_bloq": 1283,
+        "clifford": 1633,
+        "measurement": 1283,
+        "toffoli": 25,
+        "total_t": 5232
+      },
+      "status": "checked"
+    },
+    "cmul9_mod77": {
+      "children_sum": {
+        "and_bloq": 1355,
+        "clifford": 1711,
+        "measurement": 1355,
+        "toffoli": 15,
+        "total_t": 5480
+      },
+      "consistent": true,
+      "id": "cmul9_mod77",
+      "n_children": 371,
+      "sealed_resource": {
+        "and_bloq": 1355,
+        "clifford": 1711,
+        "measurement": 1355,
+        "toffoli": 15,
+        "total_t": 5480
+      },
+      "status": "checked"
+    },
+    "cnot": {
+      "id": "cnot",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr3_dag_gate": {
+      "id": "cr3_dag_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr4_dag_gate": {
+      "id": "cr4_dag_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr4_gate": {
+      "id": "cr4_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr5_dag_gate": {
+      "id": "cr5_dag_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr5_gate": {
+      "id": "cr5_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr6_dag_gate": {
+      "id": "cr6_dag_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr6_gate": {
+      "id": "cr6_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr7_dag_gate": {
+      "id": "cr7_dag_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr7_gate": {
+      "id": "cr7_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr8_dag_gate": {
+      "id": "cr8_dag_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cr8_gate": {
+      "id": "cr8_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cry_pi": {
+      "children_sum": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cry_pi",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "cry_pi2": {
+      "children_sum": {
+        "clifford": 2,
+        "t": 2,
+        "total_t": 2
+      },
+      "consistent": true,
+      "id": "cry_pi2",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 2,
+        "t": 2,
+        "total_t": 2
+      },
+      "status": "checked"
+    },
+    "cs_dag": {
+      "id": "cs_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cs_gate": {
+      "id": "cs_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ct_gate": {
+      "id": "ct_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cz": {
+      "id": "cz",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "cz_rediscovered": {
+      "children_sum": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "cz_rediscovered",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "diffusion": {
+      "children_sum": {
+        "clifford": 9,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "diffusion",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 9,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "diffusion3": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 14,
+        "measurement": 1,
+        "total_t": 4
+      },
+      "consistent": true,
+      "id": "diffusion3",
+      "n_children": 7,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 14,
+        "measurement": 1,
+        "total_t": 4
+      },
+      "status": "checked"
+    },
+    "dj2_balanced_xor": {
+      "children_sum": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "dj2_balanced_xor",
+      "n_children": 8,
+      "sealed_resource": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "dj2_const1": {
+      "children_sum": {
+        "clifford": 7,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "dj2_const1",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 7,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "fredkin": {
+      "id": "fredkin",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ghz10": {
+      "children_sum": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz10",
+      "n_children": 10,
+      "sealed_resource": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz16_structural": {
+      "children_sum": {
+        "clifford": 16,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz16_structural",
+      "n_children": 16,
+      "sealed_resource": {
+        "clifford": 16,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz3": {
+      "children_sum": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz3",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz4": {
+      "children_sum": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz4",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz5": {
+      "children_sum": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz5",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz6": {
+      "children_sum": {
+        "clifford": 6,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz6",
+      "n_children": 6,
+      "sealed_resource": {
+        "clifford": 6,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz7": {
+      "children_sum": {
+        "clifford": 7,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz7",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 7,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz8": {
+      "children_sum": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz8",
+      "n_children": 8,
+      "sealed_resource": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ghz9": {
+      "children_sum": {
+        "clifford": 9,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ghz9",
+      "n_children": 9,
+      "sealed_resource": {
+        "clifford": 9,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "grover2": {
+      "children_sum": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "grover2",
+      "n_children": 2,
+      "sealed_resource": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "grover2_2iter": {
+      "children_sum": {
+        "clifford": 20,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "grover2_2iter",
+      "n_children": 2,
+      "sealed_resource": {
+        "clifford": 20,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "grover2_3iter": {
+      "children_sum": {
+        "clifford": 30,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "grover2_3iter",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 30,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "grover3": {
+      "children_sum": {
+        "and_bloq": 2,
+        "clifford": 16,
+        "measurement": 2,
+        "total_t": 8
+      },
+      "consistent": true,
+      "id": "grover3",
+      "n_children": 2,
+      "sealed_resource": {
+        "and_bloq": 2,
+        "clifford": 16,
+        "measurement": 2,
+        "total_t": 8
+      },
+      "status": "checked"
+    },
+    "grover3_2iter": {
+      "children_sum": {
+        "and_bloq": 4,
+        "clifford": 32,
+        "measurement": 4,
+        "total_t": 16
+      },
+      "consistent": true,
+      "id": "grover3_2iter",
+      "n_children": 2,
+      "sealed_resource": {
+        "and_bloq": 4,
+        "clifford": 32,
+        "measurement": 4,
+        "total_t": 16
+      },
+      "status": "checked"
+    },
+    "grover3_3iter": {
+      "children_sum": {
+        "and_bloq": 6,
+        "clifford": 48,
+        "measurement": 6,
+        "total_t": 24
+      },
+      "consistent": true,
+      "id": "grover3_3iter",
+      "n_children": 3,
+      "sealed_resource": {
+        "and_bloq": 6,
+        "clifford": 48,
+        "measurement": 6,
+        "total_t": 24
+      },
+      "status": "checked"
+    },
+    "h_gate": {
+      "id": "h_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "heis2_trotter_step": {
+      "children_sum": {
+        "clifford": 18,
+        "t": 3,
+        "total_t": 3
+      },
+      "consistent": true,
+      "id": "heis2_trotter_step",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 18,
+        "t": 3,
+        "total_t": 3
+      },
+      "status": "checked"
+    },
+    "heis3_trotter_step": {
+      "children_sum": {
+        "clifford": 36,
+        "t": 6,
+        "total_t": 6
+      },
+      "consistent": true,
+      "id": "heis3_trotter_step",
+      "n_children": 6,
+      "sealed_resource": {
+        "clifford": 36,
+        "t": 6,
+        "total_t": 6
+      },
+      "status": "checked"
+    },
+    "iqft2": {
+      "children_sum": {
+        "clifford": 3,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "consistent": true,
+      "id": "iqft2",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 3,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "status": "checked"
+    },
+    "iqft3": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 5,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 27
+      },
+      "consistent": true,
+      "id": "iqft3",
+      "n_children": 7,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 5,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 27
+      },
+      "status": "checked"
+    },
+    "iqft7": {
+      "children_sum": {
+        "and_bloq": 15,
+        "clifford": 25,
+        "measurement": 15,
+        "rotation": 16,
+        "t": 5,
+        "total_t": 241
+      },
+      "consistent": true,
+      "id": "iqft7",
+      "n_children": 31,
+      "sealed_resource": {
+        "and_bloq": 15,
+        "clifford": 25,
+        "measurement": 15,
+        "rotation": 16,
+        "t": 5,
+        "total_t": 241
+      },
+      "status": "checked"
+    },
+    "iqft8": {
+      "children_sum": {
+        "and_bloq": 21,
+        "clifford": 33,
+        "measurement": 21,
+        "rotation": 22,
+        "t": 6,
+        "total_t": 332
+      },
+      "consistent": true,
+      "id": "iqft8",
+      "n_children": 40,
+      "sealed_resource": {
+        "and_bloq": 21,
+        "clifford": 33,
+        "measurement": 21,
+        "rotation": 22,
+        "t": 6,
+        "total_t": 332
+      },
+      "status": "checked"
+    },
+    "qae3_pi2": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 14,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 27
+      },
+      "consistent": true,
+      "id": "qae3_pi2",
+      "n_children": 7,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 14,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 27
+      },
+      "status": "checked"
+    },
+    "qae3_pi8": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 15,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 4,
+        "total_t": 30
+      },
+      "consistent": true,
+      "id": "qae3_pi8",
+      "n_children": 8,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 15,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 4,
+        "total_t": 30
+      },
+      "status": "checked"
+    },
+    "qaoa_c4": {
+      "children_sum": {
+        "clifford": 12,
+        "t": 8,
+        "total_t": 8
+      },
+      "consistent": true,
+      "id": "qaoa_c4",
+      "n_children": 20,
+      "sealed_resource": {
+        "clifford": 12,
+        "t": 8,
+        "total_t": 8
+      },
+      "status": "checked"
+    },
+    "qaoa_p3": {
+      "children_sum": {
+        "clifford": 7,
+        "t": 5,
+        "total_t": 5
+      },
+      "consistent": true,
+      "id": "qaoa_p3",
+      "n_children": 12,
+      "sealed_resource": {
+        "clifford": 7,
+        "t": 5,
+        "total_t": 5
+      },
+      "status": "checked"
+    },
+    "qft2_pipeline": {
+      "children_sum": {
+        "clifford": 3,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "consistent": true,
+      "id": "qft2_pipeline",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 3,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "status": "checked"
+    },
+    "qft3_pipeline": {
+      "children_sum": {
+        "clifford": 4,
+        "rotation": 3,
+        "total_t": 33
+      },
+      "consistent": true,
+      "id": "qft3_pipeline",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 4,
+        "rotation": 3,
+        "total_t": 33
+      },
+      "status": "checked"
+    },
+    "qft4_pipeline": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 7,
+        "measurement": 1,
+        "rotation": 6,
+        "total_t": 70
+      },
+      "consistent": true,
+      "id": "qft4_pipeline",
+      "n_children": 12,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 7,
+        "measurement": 1,
+        "rotation": 6,
+        "total_t": 70
+      },
+      "status": "checked"
+    },
+    "qft5_pipeline": {
+      "children_sum": {
+        "and_bloq": 3,
+        "clifford": 10,
+        "measurement": 3,
+        "rotation": 10,
+        "total_t": 122
+      },
+      "consistent": true,
+      "id": "qft5_pipeline",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 3,
+        "clifford": 10,
+        "measurement": 3,
+        "rotation": 10,
+        "total_t": 122
+      },
+      "status": "checked"
+    },
+    "qft6_pipeline": {
+      "children_sum": {
+        "and_bloq": 6,
+        "clifford": 15,
+        "measurement": 6,
+        "rotation": 15,
+        "total_t": 189
+      },
+      "consistent": true,
+      "id": "qft6_pipeline",
+      "n_children": 24,
+      "sealed_resource": {
+        "and_bloq": 6,
+        "clifford": 15,
+        "measurement": 6,
+        "rotation": 15,
+        "total_t": 189
+      },
+      "status": "checked"
+    },
+    "qft7_pipeline": {
+      "children_sum": {
+        "and_bloq": 10,
+        "clifford": 20,
+        "measurement": 10,
+        "rotation": 21,
+        "total_t": 271
+      },
+      "consistent": true,
+      "id": "qft7_pipeline",
+      "n_children": 31,
+      "sealed_resource": {
+        "and_bloq": 10,
+        "clifford": 20,
+        "measurement": 10,
+        "rotation": 21,
+        "total_t": 271
+      },
+      "status": "checked"
+    },
+    "qft8_pipeline": {
+      "children_sum": {
+        "and_bloq": 15,
+        "clifford": 27,
+        "measurement": 15,
+        "rotation": 28,
+        "total_t": 368
+      },
+      "consistent": true,
+      "id": "qft8_pipeline",
+      "n_children": 40,
+      "sealed_resource": {
+        "and_bloq": 15,
+        "clifford": 27,
+        "measurement": 15,
+        "rotation": 28,
+        "total_t": 368
+      },
+      "status": "checked"
+    },
+    "qpe_s": {
+      "children_sum": {
+        "clifford": 6,
+        "rotation": 2,
+        "total_t": 22
+      },
+      "consistent": true,
+      "id": "qpe_s",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 6,
+        "rotation": 2,
+        "total_t": 22
+      },
+      "status": "checked"
+    },
+    "qpe_t": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 9,
+        "measurement": 1,
+        "rotation": 4,
+        "t": 1,
+        "total_t": 49
+      },
+      "consistent": true,
+      "id": "qpe_t",
+      "n_children": 7,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 9,
+        "measurement": 1,
+        "rotation": 4,
+        "t": 1,
+        "total_t": 49
+      },
+      "status": "checked"
+    },
+    "qw_c4_2steps": {
+      "children_sum": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "qw_c4_2steps",
+      "n_children": 2,
+      "sealed_resource": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "qw_c4_step": {
+      "children_sum": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "qw_c4_step",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "qw_c8_3steps": {
+      "children_sum": {
+        "and_bloq": 12,
+        "clifford": 33,
+        "measurement": 12,
+        "toffoli": 6,
+        "total_t": 72
+      },
+      "consistent": true,
+      "id": "qw_c8_3steps",
+      "n_children": 3,
+      "sealed_resource": {
+        "and_bloq": 12,
+        "clifford": 33,
+        "measurement": 12,
+        "toffoli": 6,
+        "total_t": 72
+      },
+      "status": "checked"
+    },
+    "qw_c8_step": {
+      "children_sum": {
+        "and_bloq": 4,
+        "clifford": 11,
+        "measurement": 4,
+        "toffoli": 2,
+        "total_t": 24
+      },
+      "consistent": true,
+      "id": "qw_c8_step",
+      "n_children": 9,
+      "sealed_resource": {
+        "and_bloq": 4,
+        "clifford": 11,
+        "measurement": 4,
+        "toffoli": 2,
+        "total_t": 24
+      },
+      "status": "checked"
+    },
+    "reflect00": {
+      "children_sum": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "reflect00",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "reflect000": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 8,
+        "measurement": 1,
+        "total_t": 4
+      },
+      "consistent": true,
+      "id": "reflect000",
+      "n_children": 7,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 8,
+        "measurement": 1,
+        "total_t": 4
+      },
+      "status": "checked"
+    },
+    "repcode3_bitflip": {
+      "children_sum": {
+        "clifford": 2,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "repcode3_bitflip",
+      "n_children": 2,
+      "sealed_resource": {
+        "clifford": 2,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "repcode3_phaseflip": {
+      "children_sum": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "repcode3_phaseflip",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 5,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring10": {
+      "children_sum": {
+        "clifford": 20,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring10",
+      "n_children": 20,
+      "sealed_resource": {
+        "clifford": 20,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring3": {
+      "children_sum": {
+        "clifford": 6,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring3",
+      "n_children": 6,
+      "sealed_resource": {
+        "clifford": 6,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring4": {
+      "children_sum": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring4",
+      "n_children": 8,
+      "sealed_resource": {
+        "clifford": 8,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring5": {
+      "children_sum": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring5",
+      "n_children": 10,
+      "sealed_resource": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring6": {
+      "children_sum": {
+        "clifford": 12,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring6",
+      "n_children": 12,
+      "sealed_resource": {
+        "clifford": 12,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring7": {
+      "children_sum": {
+        "clifford": 14,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring7",
+      "n_children": 14,
+      "sealed_resource": {
+        "clifford": 14,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring8": {
+      "children_sum": {
+        "clifford": 16,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring8",
+      "n_children": 16,
+      "sealed_resource": {
+        "clifford": 16,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "ring9": {
+      "children_sum": {
+        "clifford": 18,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "ring9",
+      "n_children": 18,
+      "sealed_resource": {
+        "clifford": 18,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "rx_negpi4": {
+      "id": "rx_negpi4",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rx_y4_p": {
+      "id": "rx_y4_p",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rx_y4_q": {
+      "id": "rx_y4_q",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rxx_pi8": {
+      "children_sum": {
+        "clifford": 6,
+        "t": 1,
+        "total_t": 1
+      },
+      "consistent": true,
+      "id": "rxx_pi8",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 6,
+        "t": 1,
+        "total_t": 1
+      },
+      "status": "checked"
+    },
+    "ry_3pi4": {
+      "id": "ry_3pi4",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k10": {
+      "id": "ry_k10",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k10_dag": {
+      "id": "ry_k10_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k2": {
+      "id": "ry_k2",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k2_dag": {
+      "id": "ry_k2_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k3": {
+      "id": "ry_k3",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k3_dag": {
+      "id": "ry_k3_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k4": {
+      "id": "ry_k4",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k4_dag": {
+      "id": "ry_k4_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k5": {
+      "id": "ry_k5",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k5_dag": {
+      "id": "ry_k5_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k6": {
+      "id": "ry_k6",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k6_dag": {
+      "id": "ry_k6_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k7": {
+      "id": "ry_k7",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k7_dag": {
+      "id": "ry_k7_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k8": {
+      "id": "ry_k8",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k8_dag": {
+      "id": "ry_k8_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k9": {
+      "id": "ry_k9",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_k9_dag": {
+      "id": "ry_k9_dag",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_negpi2": {
+      "id": "ry_negpi2",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_negpi4": {
+      "id": "ry_negpi4",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_pi2": {
+      "id": "ry_pi2",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ry_pi4": {
+      "id": "ry_pi4",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "ryy_pi8": {
+      "children_sum": {
+        "clifford": 10,
+        "t": 1,
+        "total_t": 1
+      },
+      "consistent": true,
+      "id": "ryy_pi8",
+      "n_children": 9,
+      "sealed_resource": {
+        "clifford": 10,
+        "t": 1,
+        "total_t": 1
+      },
+      "status": "checked"
+    },
+    "rz_negpi4": {
+      "id": "rz_negpi4",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rz_negpi8": {
+      "id": "rz_negpi8",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rz_y4_p": {
+      "id": "rz_y4_p",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rz_y4_q": {
+      "id": "rz_y4_q",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "rzz_pi16": {
+      "children_sum": {
+        "clifford": 2,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "consistent": true,
+      "id": "rzz_pi16",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 2,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "status": "checked"
+    },
+    "rzz_pi8": {
+      "children_sum": {
+        "clifford": 2,
+        "t": 1,
+        "total_t": 1
+      },
+      "consistent": true,
+      "id": "rzz_pi8",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 2,
+        "t": 1,
+        "total_t": 1
+      },
+      "status": "checked"
+    },
+    "rzz_y4_p_half": {
+      "children_sum": {
+        "clifford": 2,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "consistent": true,
+      "id": "rzz_y4_p_half",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 2,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "status": "checked"
+    },
+    "rzz_y4_q_half": {
+      "children_sum": {
+        "clifford": 2,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "consistent": true,
+      "id": "rzz_y4_q_half",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 2,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "status": "checked"
+    },
+    "s_gate": {
+      "id": "s_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "sdg_gate": {
+      "id": "sdg_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "shor119": {
+      "children_sum": {
+        "and_bloq": 8529,
+        "clifford": 10834,
+        "measurement": 8529,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 181,
+        "total_t": 35088
+      },
+      "consistent": true,
+      "id": "shor119",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 8529,
+        "clifford": 10834,
+        "measurement": 8529,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 181,
+        "total_t": 35088
+      },
+      "status": "checked"
+    },
+    "shor1285": {
+      "children_sum": {
+        "and_bloq": 182336,
+        "clifford": 212598,
+        "measurement": 182336,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 117,
+        "total_t": 730060
+      },
+      "consistent": true,
+      "id": "shor1285",
+      "n_children": 13,
+      "sealed_resource": {
+        "and_bloq": 182336,
+        "clifford": 212598,
+        "measurement": 182336,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 117,
+        "total_t": 730060
+      },
+      "status": "checked"
+    },
+    "shor15_a2": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 8,
+        "cswap": 9,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 63
+      },
+      "consistent": true,
+      "id": "shor15_a2",
+      "n_children": 6,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 8,
+        "cswap": 9,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 63
+      },
+      "status": "checked"
+    },
+    "shor15_a7": {
+      "children_sum": {
+        "and_bloq": 1,
+        "clifford": 12,
+        "cswap": 9,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 63
+      },
+      "consistent": true,
+      "id": "shor15_a7",
+      "n_children": 6,
+      "sealed_resource": {
+        "and_bloq": 1,
+        "clifford": 12,
+        "cswap": 9,
+        "measurement": 1,
+        "rotation": 2,
+        "t": 1,
+        "total_t": 63
+      },
+      "status": "checked"
+    },
+    "shor21_a2": {
+      "children_sum": {
+        "and_bloq": 2922,
+        "clifford": 3984,
+        "measurement": 2922,
+        "rotation": 16,
+        "t": 5,
+        "toffoli": 209,
+        "total_t": 12705
+      },
+      "consistent": true,
+      "id": "shor21_a2",
+      "n_children": 15,
+      "sealed_resource": {
+        "and_bloq": 2922,
+        "clifford": 3984,
+        "measurement": 2922,
+        "rotation": 16,
+        "t": 5,
+        "toffoli": 209,
+        "total_t": 12705
+      },
+      "status": "checked"
+    },
+    "shor221": {
+      "children_sum": {
+        "and_bloq": 23709,
+        "clifford": 29222,
+        "measurement": 23709,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 208,
+        "total_t": 95916
+      },
+      "consistent": true,
+      "id": "shor221",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 23709,
+        "clifford": 29222,
+        "measurement": 23709,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 208,
+        "total_t": 95916
+      },
+      "status": "checked"
+    },
+    "shor3683": {
+      "children_sum": {
+        "and_bloq": 924877,
+        "clifford": 1068171,
+        "measurement": 924877,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 392,
+        "total_t": 3701324
+      },
+      "consistent": true,
+      "id": "shor3683",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 924877,
+        "clifford": 1068171,
+        "measurement": 924877,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 392,
+        "total_t": 3701324
+      },
+      "status": "checked"
+    },
+    "shor381": {
+      "children_sum": {
+        "and_bloq": 50288,
+        "clifford": 60438,
+        "measurement": 50288,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 205,
+        "total_t": 202220
+      },
+      "consistent": true,
+      "id": "shor381",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 50288,
+        "clifford": 60438,
+        "measurement": 50288,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 205,
+        "total_t": 202220
+      },
+      "status": "checked"
+    },
+    "shor635": {
+      "children_sum": {
+        "and_bloq": 163656,
+        "clifford": 194230,
+        "measurement": 163656,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 260,
+        "total_t": 655912
+      },
+      "consistent": true,
+      "id": "shor635",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 163656,
+        "clifford": 194230,
+        "measurement": 163656,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 260,
+        "total_t": 655912
+      },
+      "status": "checked"
+    },
+    "shor69": {
+      "children_sum": {
+        "and_bloq": 9560,
+        "clifford": 12134,
+        "measurement": 9560,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 162,
+        "total_t": 39136
+      },
+      "consistent": true,
+      "id": "shor69",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 9560,
+        "clifford": 12134,
+        "measurement": 9560,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 162,
+        "total_t": 39136
+      },
+      "status": "checked"
+    },
+    "shor77": {
+      "children_sum": {
+        "and_bloq": 9300,
+        "clifford": 11767,
+        "measurement": 9300,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 148,
+        "total_t": 38040
+      },
+      "consistent": true,
+      "id": "shor77",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 9300,
+        "clifford": 11767,
+        "measurement": 9300,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 148,
+        "total_t": 38040
+      },
+      "status": "checked"
+    },
+    "shor91": {
+      "children_sum": {
+        "and_bloq": 9465,
+        "clifford": 11988,
+        "measurement": 9465,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 166,
+        "total_t": 38772
+      },
+      "consistent": true,
+      "id": "shor91",
+      "n_children": 17,
+      "sealed_resource": {
+        "and_bloq": 9465,
+        "clifford": 11988,
+        "measurement": 9465,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 166,
+        "total_t": 38772
+      },
+      "status": "checked"
+    },
+    "shor9_encoder": {
+      "children_sum": {
+        "clifford": 11,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "shor9_encoder",
+      "n_children": 11,
+      "sealed_resource": {
+        "clifford": 11,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "simon2_s11": {
+      "children_sum": {
+        "clifford": 6,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "simon2_s11",
+      "n_children": 6,
+      "sealed_resource": {
+        "clifford": 6,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "swap2": {
+      "id": "swap2",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "swap_via_cnot": {
+      "children_sum": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "swap_via_cnot",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "syndrome3_bitflip": {
+      "children_sum": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "syndrome3_bitflip",
+      "n_children": 4,
+      "sealed_resource": {
+        "clifford": 4,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "tfim3_suzuki4_step": {
+      "children_sum": {
+        "clifford": 40,
+        "rotation": 35,
+        "total_t": 385
+      },
+      "consistent": true,
+      "id": "tfim3_suzuki4_step",
+      "n_children": 35,
+      "sealed_resource": {
+        "clifford": 40,
+        "rotation": 35,
+        "total_t": 385
+      },
+      "status": "checked"
+    },
+    "tfim3_trotter_2steps": {
+      "children_sum": {
+        "clifford": 8,
+        "t": 10,
+        "total_t": 10
+      },
+      "consistent": true,
+      "id": "tfim3_trotter_2steps",
+      "n_children": 2,
+      "sealed_resource": {
+        "clifford": 8,
+        "t": 10,
+        "total_t": 10
+      },
+      "status": "checked"
+    },
+    "tfim3_trotter_step": {
+      "children_sum": {
+        "clifford": 4,
+        "t": 5,
+        "total_t": 5
+      },
+      "consistent": true,
+      "id": "tfim3_trotter_step",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 4,
+        "t": 5,
+        "total_t": 5
+      },
+      "status": "checked"
+    },
+    "tfim3_trotter_step2": {
+      "children_sum": {
+        "clifford": 8,
+        "rotation": 4,
+        "t": 3,
+        "total_t": 47
+      },
+      "consistent": true,
+      "id": "tfim3_trotter_step2",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 8,
+        "rotation": 4,
+        "t": 3,
+        "total_t": 47
+      },
+      "status": "checked"
+    },
+    "tfim4_suzuki4_step": {
+      "children_sum": {
+        "clifford": 60,
+        "rotation": 50,
+        "total_t": 550
+      },
+      "consistent": true,
+      "id": "tfim4_suzuki4_step",
+      "n_children": 50,
+      "sealed_resource": {
+        "clifford": 60,
+        "rotation": 50,
+        "total_t": 550
+      },
+      "status": "checked"
+    },
+    "tfim4_trotter_step": {
+      "children_sum": {
+        "clifford": 6,
+        "t": 7,
+        "total_t": 7
+      },
+      "consistent": true,
+      "id": "tfim4_trotter_step",
+      "n_children": 7,
+      "sealed_resource": {
+        "clifford": 6,
+        "t": 7,
+        "total_t": 7
+      },
+      "status": "checked"
+    },
+    "tfim4_trotter_step2": {
+      "children_sum": {
+        "clifford": 12,
+        "rotation": 6,
+        "t": 4,
+        "total_t": 70
+      },
+      "consistent": true,
+      "id": "tfim4_trotter_step2",
+      "n_children": 10,
+      "sealed_resource": {
+        "clifford": 12,
+        "rotation": 6,
+        "t": 4,
+        "total_t": 70
+      },
+      "status": "checked"
+    },
+    "toffoli": {
+      "id": "toffoli",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "vqe_he2_3pi4": {
+      "children_sum": {
+        "clifford": 1,
+        "rotation": 2,
+        "total_t": 22
+      },
+      "consistent": true,
+      "id": "vqe_he2_3pi4",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 1,
+        "rotation": 2,
+        "total_t": 22
+      },
+      "status": "checked"
+    },
+    "vqe_he2_L2_mix": {
+      "children_sum": {
+        "clifford": 3,
+        "t": 3,
+        "total_t": 3
+      },
+      "consistent": true,
+      "id": "vqe_he2_L2_mix",
+      "n_children": 6,
+      "sealed_resource": {
+        "clifford": 3,
+        "t": 3,
+        "total_t": 3
+      },
+      "status": "checked"
+    },
+    "vqe_he2_L2_pi4": {
+      "children_sum": {
+        "clifford": 2,
+        "t": 4,
+        "total_t": 4
+      },
+      "consistent": true,
+      "id": "vqe_he2_L2_pi4",
+      "n_children": 6,
+      "sealed_resource": {
+        "clifford": 2,
+        "t": 4,
+        "total_t": 4
+      },
+      "status": "checked"
+    },
+    "vqe_he2_pi2": {
+      "children_sum": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "consistent": true,
+      "id": "vqe_he2_pi2",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 3,
+        "total_t": 0
+      },
+      "status": "checked"
+    },
+    "vqe_he2_pi4": {
+      "children_sum": {
+        "clifford": 1,
+        "t": 2,
+        "total_t": 2
+      },
+      "consistent": true,
+      "id": "vqe_he2_pi4",
+      "n_children": 3,
+      "sealed_resource": {
+        "clifford": 1,
+        "t": 2,
+        "total_t": 2
+      },
+      "status": "checked"
+    },
+    "vqe_he3_pi4": {
+      "children_sum": {
+        "clifford": 2,
+        "t": 3,
+        "total_t": 3
+      },
+      "consistent": true,
+      "id": "vqe_he3_pi4",
+      "n_children": 5,
+      "sealed_resource": {
+        "clifford": 2,
+        "t": 3,
+        "total_t": 3
+      },
+      "status": "checked"
+    },
+    "wstate10": {
+      "children_sum": {
+        "clifford": 28,
+        "rotation": 16,
+        "t": 2,
+        "total_t": 178
+      },
+      "consistent": true,
+      "id": "wstate10",
+      "n_children": 46,
+      "sealed_resource": {
+        "clifford": 28,
+        "rotation": 16,
+        "t": 2,
+        "total_t": 178
+      },
+      "status": "checked"
+    },
+    "wstate3": {
+      "children_sum": {
+        "clifford": 7,
+        "rotation": 2,
+        "t": 2,
+        "total_t": 24
+      },
+      "consistent": true,
+      "id": "wstate3",
+      "n_children": 11,
+      "sealed_resource": {
+        "clifford": 7,
+        "rotation": 2,
+        "t": 2,
+        "total_t": 24
+      },
+      "status": "checked"
+    },
+    "wstate4": {
+      "children_sum": {
+        "clifford": 10,
+        "rotation": 4,
+        "t": 2,
+        "total_t": 46
+      },
+      "consistent": true,
+      "id": "wstate4",
+      "n_children": 16,
+      "sealed_resource": {
+        "clifford": 10,
+        "rotation": 4,
+        "t": 2,
+        "total_t": 46
+      },
+      "status": "checked"
+    },
+    "wstate5": {
+      "children_sum": {
+        "clifford": 13,
+        "rotation": 6,
+        "t": 2,
+        "total_t": 68
+      },
+      "consistent": true,
+      "id": "wstate5",
+      "n_children": 21,
+      "sealed_resource": {
+        "clifford": 13,
+        "rotation": 6,
+        "t": 2,
+        "total_t": 68
+      },
+      "status": "checked"
+    },
+    "wstate6": {
+      "children_sum": {
+        "clifford": 16,
+        "rotation": 8,
+        "t": 2,
+        "total_t": 90
+      },
+      "consistent": true,
+      "id": "wstate6",
+      "n_children": 26,
+      "sealed_resource": {
+        "clifford": 16,
+        "rotation": 8,
+        "t": 2,
+        "total_t": 90
+      },
+      "status": "checked"
+    },
+    "wstate7": {
+      "children_sum": {
+        "clifford": 19,
+        "rotation": 10,
+        "t": 2,
+        "total_t": 112
+      },
+      "consistent": true,
+      "id": "wstate7",
+      "n_children": 31,
+      "sealed_resource": {
+        "clifford": 19,
+        "rotation": 10,
+        "t": 2,
+        "total_t": 112
+      },
+      "status": "checked"
+    },
+    "wstate8": {
+      "children_sum": {
+        "clifford": 22,
+        "rotation": 12,
+        "t": 2,
+        "total_t": 134
+      },
+      "consistent": true,
+      "id": "wstate8",
+      "n_children": 36,
+      "sealed_resource": {
+        "clifford": 22,
+        "rotation": 12,
+        "t": 2,
+        "total_t": 134
+      },
+      "status": "checked"
+    },
+    "wstate9": {
+      "children_sum": {
+        "clifford": 25,
+        "rotation": 14,
+        "t": 2,
+        "total_t": 156
+      },
+      "consistent": true,
+      "id": "wstate9",
+      "n_children": 41,
+      "sealed_resource": {
+        "clifford": 25,
+        "rotation": 14,
+        "t": 2,
+        "total_t": 156
+      },
+      "status": "checked"
+    },
+    "x_gate": {
+      "id": "x_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    },
+    "z_gate": {
+      "id": "z_gate",
+      "reason": "no plan/resource",
+      "status": "skip"
+    }
+  },
+  "skipped": 61,
+  "structural_shor_all_consistent": true
+}

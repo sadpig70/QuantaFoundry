@@ -228,8 +228,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         V08_3_SemanticGuaranteeSplit // 새 등급(subspace_permutation_verified) 비파괴 레이어 (done) @dep:V08_2
             # criteria: SEMANTIC-GUARANTEES 비파괴 가산 · "structural≠dense≠subspace" 표기 · reproduce REPRODUCED
             # ✅ done: semantic_guarantee.py 격상 로직 추가. headline app subspace_permutation_verified=9.
-        V08_4_HonestyHardening // 결정론≠정확성 명시·metric split·resource witness (designing)
+        V08_4_HonestyHardening // 결정론≠정확성 명시·metric split·resource witness (done)
             # criteria: INV-R1/R7 문서·출력 명시 · seal resource 회로 대조(X_ResourceWitness) · root 불변
+            # ✅ done: scripts/resource_witness.py — 조립앱 resource==자식 resource 합 독립재계산(A6).
+            #   166/166 consistent(61 golden-only skip), structural Shor 9/9. reproduce_all에 --quick 통합.
+            #   INV-R1 배너(reproduce 출력)·README Honest boundaries 갱신(REPRODUCED≠correct, subspace 등급).
         V08_5_InvertedSecondOracle // endian/phase/atol 뒤집은 독립 오라클 재검증 (designing) @dep:V08_2
             # criteria: 규약-뒤집은 오라클과 불일치 seal 집합 명시 · frozen 23키 무수정 · 관측 문서화
         V08_6_ConventionAuditFirst // block-encoding 규약 감사 선행 (designing) @dep:V08_2

@@ -84,6 +84,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3c. V08 HonestyHardening: 봉인 resource == 자식 resource 합 독립 재계산 (A6)
+    rc, out = run(["scripts/resource_witness.py", "--quick"])
+    result["steps"]["resource_witness"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
@@ -117,6 +123,9 @@ def main():
     for k, v in result["steps"].items():
         print(f"  {'✓' if v.get('pass') else '✗'} {k}: " +
               ", ".join(f"{kk}={vv}" for kk, vv in v.items() if kk not in ("detail", "rc")))
+    print("-" * 70)
+    print("INV-R1: 'REPRODUCED'=결정론적 byte-identical 재현이지 correctness 증명이 아니다.")
+    print("  정확성은 오라클의 독립검증(C1-C4·second_oracle·subspace/resource witness)에서 온다.")
     print("=" * 70)
     return 0 if allpass else 1
 

@@ -53,9 +53,15 @@ python scripts/reproduce_all.py
 ## Honest boundaries (no overclaim)
 
 - **seal ≠ run ≠ verify**, **approximation ≠ exact**, **structural ≠ dense**.
-- Modules + most apps are `unitary_equiv` (exact). `ghz16` is `unitary_equiv_sampled`; the large Shor
-  apps (15–20 qubits) are `structural_wellformed` — a Merkle of exact-sealed parts, **honestly weaker
-  than dense unitary equivalence**, with period/factor readout illustrative only.
+- **`REPRODUCED` ≠ correct**: one-command reproduction proves byte-identical *determinism*, not
+  correctness. Correctness comes from the oracle's independent checks (C1–C4, a second dense oracle,
+  and the subspace/resource witnesses) — not from the fact that a run reproduces.
+- Modules + most apps are `unitary_equiv` (exact). `ghz16` is `unitary_equiv_sampled`. The large Shor
+  apps (15–20 qubits) stay Tier-1 (dense infeasible), but their **modexp core is now
+  `subspace_permutation_verified`** — exact permutation on the computational basis by *independent*
+  integer arithmetic (path A = circuit-gate permutation vs path B = `w·a^c mod N`), with adversarial
+  teeth. This is a real strengthening over bare Merkle structure, yet **still weaker than full dense
+  unitary equivalence** (H·iQFT are excluded); period/factor readout stays illustrative only.
 - Authoritative tier split: [`registry/SEMANTIC-GUARANTEES.json`](registry/SEMANTIC-GUARANTEES.json) `headline_split`.
 
 ---
