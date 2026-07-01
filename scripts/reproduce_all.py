@@ -114,6 +114,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3g. V08 QSVT consumer: amplitude amplification = QSP 홀수 다항식 관측 (검색, observation)
+    rc, out = run(["scripts/qsvt_ampamp_observe.py", "--quick"])
+    result["steps"]["qsvt_ampamp_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

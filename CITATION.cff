@@ -11,7 +11,7 @@ repository-code: "https://github.com/sadpig70/QuantaFoundry"
 abstract: >-
   QuantaFoundry is a self-growing foundry where every artifact must pass a deterministic QPGF
   oracle seal (byte-identical reproduction) to exist. This release seals 77 modules and
-  175 unique apps with registry_root_hash 1c748ac02ebb21f0…, independently re-derivable via
+  176 unique apps with registry_root_hash 0e0a1e212c76c701…, independently re-derivable via
   `python scripts/reproduce_all.py`; dense Tier-0 module formulas are independently
   cross-checked by `scripts/second_oracle.py` while Clifford Tier-2 artifacts use tableau seals.
 keywords:
@@ -21,11 +21,11 @@ keywords:
   - QPGF
 identifiers:
   - type: other
-    value: "registry-root-sha256:1c748ac02ebb21f09fcf015c8bc05f06256597064cca8fd7e270496e1331feef"
+    value: "registry-root-sha256:0e0a1e212c76c7011c999af4b43870787f7cc26a7faca499c1db7e8efa2338a1"
     description: "Deterministic registry root hash (sorted id:u_hash sha256). The citable fingerprint."
   - type: doi
     value: "10.5281/zenodo.PLACEHOLDER"
     description: "Zenodo DOI — issued at release time."
 preferred-citation:
   type: software
-  title: "QuantaFoundry v0.7.0 (QPGF-sealed root 1c748ac02ebb21f0)"
+  title: "QuantaFoundry v0.7.0 (QPGF-sealed root 0e0a1e212c76c701)"

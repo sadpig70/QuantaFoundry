@@ -1,0 +1,168 @@
+{
+  "_note": "Grover amplitude amplification = QSP 홀수 다항식(deg 2k+1) 고전관측. seal 아님(INV-Q3). 봉인은 정확 QSP 블록(qsp_d1/d3). Ham-sim consumer 의 자매(검색↔물리).",
+  "_schema": "qsvt-ampamp-observe-v1",
+  "observation": {
+    "honest_boundary": "봉인=정확 QSP 홀수 다항식 유니터리(qsp_d1/d3). 증폭 프로파일=고전관측(INV-Q3, seal 아님). 검색(amp-amp)과 물리(Ham-sim)가 같은 QSVT/QSP 프레임워크의 두 consumer.",
+    "mechanism": "Grover amplitude amplification: a=sinθ → sin((2k+1)θ) = 진폭의 홀수다항식(deg 2k+1)",
+    "profiles": [
+      {
+        "a0": 0.1,
+        "iterations": [
+          {
+            "amplitude": 0.1,
+            "degree": 1,
+            "k": 0,
+            "prob_good": 0.01
+          },
+          {
+            "amplitude": 0.296,
+            "degree": 3,
+            "k": 1,
+            "prob_good": 0.0876
+          },
+          {
+            "amplitude": 0.4802,
+            "degree": 5,
+            "k": 2,
+            "prob_good": 0.2306
+          },
+          {
+            "amplitude": 0.6451,
+            "degree": 7,
+            "k": 3,
+            "prob_good": 0.4162
+          },
+          {
+            "amplitude": 0.7843,
+            "degree": 9,
+            "k": 4,
+            "prob_good": 0.6151
+          }
+        ],
+        "optimal_k": 7,
+        "prob_at_optimal": 0.9953,
+        "theta": 0.1002
+      },
+      {
+        "a0": 0.2,
+        "iterations": [
+          {
+            "amplitude": 0.2,
+            "degree": 1,
+            "k": 0,
+            "prob_good": 0.04
+          },
+          {
+            "amplitude": 0.568,
+            "degree": 3,
+            "k": 1,
+            "prob_good": 0.3226
+          },
+          {
+            "amplitude": 0.8451,
+            "degree": 5,
+            "k": 2,
+            "prob_good": 0.7142
+          },
+          {
+            "amplitude": 0.987,
+            "degree": 7,
+            "k": 3,
+            "prob_good": 0.9742
+          },
+          {
+            "amplitude": 0.971,
+            "degree": 9,
+            "k": 4,
+            "prob_good": 0.9428
+          }
+        ],
+        "optimal_k": 3,
+        "prob_at_optimal": 0.9742,
+        "theta": 0.2014
+      },
+      {
+        "a0": 0.3,
+        "iterations": [
+          {
+            "amplitude": 0.3,
+            "degree": 1,
+            "k": 0,
+            "prob_good": 0.09
+          },
+          {
+            "amplitude": 0.792,
+            "degree": 3,
+            "k": 1,
+            "prob_good": 0.6273
+          },
+          {
+            "amplitude": 0.9989,
+            "degree": 5,
+            "k": 2,
+            "prob_good": 0.9978
+          },
+          {
+            "amplitude": 0.8462,
+            "degree": 7,
+            "k": 3,
+            "prob_good": 0.716
+          },
+          {
+            "amplitude": 0.3888,
+            "degree": 9,
+            "k": 4,
+            "prob_good": 0.1512
+          }
+        ],
+        "optimal_k": 2,
+        "prob_at_optimal": 0.9978,
+        "theta": 0.3047
+      },
+      {
+        "a0": 0.5,
+        "iterations": [
+          {
+            "amplitude": 0.5,
+            "degree": 1,
+            "k": 0,
+            "prob_good": 0.25
+          },
+          {
+            "amplitude": 1.0,
+            "degree": 3,
+            "k": 1,
+            "prob_good": 1.0
+          },
+          {
+            "amplitude": 0.5,
+            "degree": 5,
+            "k": 2,
+            "prob_good": 0.25
+          },
+          {
+            "amplitude": -0.5,
+            "degree": 7,
+            "k": 3,
+            "prob_good": 0.25
+          },
+          {
+            "amplitude": -1.0,
+            "degree": 9,
+            "k": 4,
+            "prob_good": 1.0
+          }
+        ],
+        "optimal_k": 1,
+        "prob_at_optimal": 1.0,
+        "theta": 0.5236
+      }
+    ],
+    "qsp_realizes": {
+      "degree_1_k0": "qsp_d1 (봉인 Tier-0)",
+      "degree_3_k1": "qsp_d3 (봉인 Tier-0)",
+      "note": "고차 k 는 동일 QSP 구조 반복 — Grover 반복 = QSP 홀수 다항식"
+    },
+    "unifies_sealed": "W9 amplitude amplification/estimation(grover3·qae3) 와 동일 수학을 QSP 로 통합"
+  }
+}

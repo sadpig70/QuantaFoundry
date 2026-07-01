@@ -32,7 +32,7 @@ BE_TARGETS = {
     "be_pauli2": {"A": (np.kron(X, X) + np.kron(Z, Z)) / 2, "alpha": 1.0, "n_anc": 1,
                   "desc": "(XX+ZZ)/2 Pauli LCU (2q Hermitian, commuting→비축퇴 고유값 -1,0,0,1)"},
 }
-QSP_APPS = ["qsp_d1"]
+QSP_APPS = ["qsp_d1", "qsp_d3"]   # qsp_d3=홀수 degree-3 = amplitude amplification(k=1) 기본블록
 # QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".
 # block == P(A) 고유값 변환(observation). data 큐빗 = n_sys - n_anc. expect=sanity(있으면 대조).
 QSVT_APPS = {

@@ -262,6 +262,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_15_QSVTAmpAmpConsumer // QSVT consumer: amplitude amplification = QSP 홀수 다항식 (done) @dep:V08_8
+            # ✅ done: QSVT consumer 축 완결(Ham-sim=물리 + amp-amp=검색). amplitude amplification 의 진폭증폭
+            #   a=sinθ→sin((2k+1)θ)=진폭의 홀수다항식(deg 2k+1)=QSP 실현. qsp_d3.app.pg(degree-3 홀수=k=1
+            #   기본블록, 4×rz·3×W, Tier-0 942f93e2, 새 module 0). qsvt_ampamp_observe.py — Grover 증폭프로파일
+            #   sin²((2k+1)θ) 고전관측(a0=0.5,k=1→P=1.0; qsp_d1=k0/qsp_d3=k1). 기존 W9 amp-amp/qae 를 QSP 로 통합.
+            #   ★observation(INV-Q3): 봉인=정확 QSP 홀수 다항식, 증폭프로파일=관측. root 1c748ac0→0e0a1e212c76c701(175→176).
         V08_14_QSVTHamSimConsumer // QSVT consumer: Chebyshev Hamiltonian simulation 관측 (done) @dep:V08_13
             # ✅ done: "QSVT=여러 알고리즘의 통합틀"을 실제 알고리즘(Hamiltonian sim)으로 연결. QSVT 는 block-encoded
             #   A 의 Chebyshev T_k(A) 를 정확 실현: qsvt_pauli2_d3(홀수 Chebyshev, 1→i·-1→-i·0→0, Tier-0 a45c169c;
