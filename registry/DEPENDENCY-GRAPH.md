@@ -334,6 +334,14 @@ qsvt_pauli2_d2
 │  └─ x_gate (module×2)
 └─ rz_negpi4 (module×3)
 
+qsvt_pauli2_d3
+├─ be_pauli2 (app×3)
+│  ├─ cnot (module×2)
+│  ├─ cz (module×2)
+│  ├─ h_gate (module×2)
+│  └─ x_gate (module×2)
+└─ rz_negpi4 (module×4)
+
 qsvt_proj_d2
 ├─ be_proj (app×2)
 │  ├─ cz (module)

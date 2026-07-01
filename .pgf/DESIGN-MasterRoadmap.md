@@ -262,6 +262,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_14_QSVTHamSimConsumer // QSVT consumer: Chebyshev Hamiltonian simulation 관측 (done) @dep:V08_13
+            # ✅ done: "QSVT=여러 알고리즘의 통합틀"을 실제 알고리즘(Hamiltonian sim)으로 연결. QSVT 는 block-encoded
+            #   A 의 Chebyshev T_k(A) 를 정확 실현: qsvt_pauli2_d3(홀수 Chebyshev, 1→i·-1→-i·0→0, Tier-0 a45c169c;
+            #   d2 짝수와 상보=e^{-iAt}=cos(At)-i sin(At) 성분). qsvt_hamsim_observe.py — e^{-iAt}=Chebyshev급수
+            #   (Jacobi-Anger) 고전관측: A=(XX+ZZ)/2 고유값3개→degree-2 Chebyshev에서 exact(‖P_d-e^{-iAt}‖ 0→0).
+            #   ★observation(INV-Q3, seal 아님): 봉인=정확 Chebyshev블록, e^{-iAt}일치는 관측. 이 A는 commuting→
+            #   Trotter도 exact(QSVT이점=일반 비가환A 점근, 정직표기). root 8fcd78→1c748ac02ebb21f0(174→175 apps).
         V08_13_BlockEncoding2Q // 2-qubit Hermitian block-encoding (Pauli LCU) + 2q QSVT (done) @dep:V08_11
             # ✅ done: abstraction layer 상승(1q→2q Hermitian, Hamiltonian 표준표현). be_pauli2.app.pg —
             #   A=(X⊗X+Z⊗Z)/2 Pauli LCU, 3q(1anc+2sys). ★commuting Paulis(XX·ZZ 교환)→A²≠∝I 비축퇴(고유값

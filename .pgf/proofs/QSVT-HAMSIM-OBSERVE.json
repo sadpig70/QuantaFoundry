@@ -1,0 +1,42 @@
+{
+  "_note": "QSVT=Chebyshev-of-A 실현 → e^{-iAt} Hamiltonian sim 의 Chebyshev 급수 근사 고전관측. seal 아님(INV-Q3). 봉인은 정확 Chebyshev 블록(qsvt_pauli2_d2/d3).",
+  "_schema": "qsvt-hamsim-observe-v1",
+  "observation": {
+    "A": "(X⊗X+Z⊗Z)/2 (be_pauli2 block-encoded)",
+    "chebyshev_error_by_degree": [
+      {
+        "degree": 0,
+        "frobenius_error": 1.284893
+      },
+      {
+        "degree": 1,
+        "frobenius_error": 0.484564
+      },
+      {
+        "degree": 2,
+        "frobenius_error": 0.0
+      },
+      {
+        "degree": 3,
+        "frobenius_error": 0.0
+      },
+      {
+        "degree": 4,
+        "frobenius_error": 0.0
+      }
+    ],
+    "eigenvalues": [
+      -1.0,
+      0.0,
+      1.0
+    ],
+    "exact_at_degree": 2,
+    "honest_boundary": "봉인=정확 Chebyshev-of-A 블록(Tier-0). e^{-iAt}=Chebyshev 급수(고전관측, seal 아님, INV-Q3). QSVT 블록 LCU 합성=future work. 이 A 는 commuting→Trotter도 exact.",
+    "qsvt_realizes": {
+      "even_chebyshev": "qsvt_pauli2_d2 (T_0,T_2 성분)",
+      "odd_chebyshev": "qsvt_pauli2_d3 (T_1,T_3 성분)"
+    },
+    "t": 1.0,
+    "target": "e^{-iAt} (Hamiltonian simulation)"
+  }
+}

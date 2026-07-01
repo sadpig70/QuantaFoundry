@@ -10,7 +10,7 @@
   "one_seal_many_algorithms": {
     "be_pauli2": {
       "distinct_P": true,
-      "n_transforms": 1,
+      "n_transforms": 2,
       "transforms": [
         {
           "P_eigenvalues": [
@@ -32,7 +32,29 @@
             ]
           ],
           "app": "qsvt_pauli2_d2",
-          "phi": "φ=π/8 d=2 (2q Hermitian A)"
+          "phi": "φ=π/8 d=2 (2q 짝수 Chebyshev)"
+        },
+        {
+          "P_eigenvalues": [
+            [
+              -0.0,
+              -1.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              -0.0,
+              0.0
+            ]
+          ],
+          "app": "qsvt_pauli2_d3",
+          "phi": "φ=π/8 d=3 (2q 홀수 Chebyshev: 1→i,-1→-i)"
         }
       ]
     },
@@ -159,7 +181,37 @@
       "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). 다항식 P sweep=observation(INV-Q3).",
       "observation": true,
       "ok": true,
-      "phi": "φ=π/8 d=2 (2q Hermitian A)"
+      "phi": "φ=π/8 d=2 (2q 짝수 Chebyshev)"
+    },
+    "qsvt_pauli2_d3": {
+      "A": "(XX+ZZ)/2",
+      "app": "qsvt_pauli2_d3",
+      "be_source": "be_pauli2",
+      "eigenvalue_profile_P": [
+        [
+          -0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          -0.0,
+          0.0
+        ]
+      ],
+      "full_unitary": true,
+      "kind": "qsvt",
+      "nontrivial_eigenvalue_transform": true,
+      "note": "block-encoding + projector-controlled rotation → P(A) 고유값 변환(Tier-0 봉인). 다항식 P sweep=observation(INV-Q3).",
+      "observation": true,
+      "ok": true,
+      "phi": "φ=π/8 d=3 (2q 홀수 Chebyshev: 1→i,-1→-i)"
     },
     "qsvt_proj_d2": {
       "A": "|0><0|",

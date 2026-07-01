@@ -1,0 +1,29 @@
+# qsvt_pauli2_d3 — QSVT degree-3 on be_pauli2 (odd Chebyshev of A=(XX+ZZ)/2). 3q.
+# U = e^{iφZ_a}·be_pauli2·e^{iφZ_a}·be_pauli2·e^{iφZ_a}·be_pauli2·e^{iφZ_a}, φ=π/8, 4×rz_negpi4·3×be_pauli2.
+# top-left block=P(A) 홀수변환: 고유값 1→i, -1→-i, 0→0 (부호 구분 = odd, d2 짝수와 상보).
+#   짝수(d2:cos-성분)+홀수(d3:sin-성분) = e^{-iAt}=cos(At)-i·sin(At) 의 Chebyshev 성분 → QSVT Hamiltonian sim 기저.
+# Tier-0 EXACT. 새 module 0(rz_negpi4·be_pauli2 재사용). e^{-iAt} 근사=observation(INV-Q3, 별도 관측).
+```json id=app_meta
+{"id": "qsvt_pauli2_d3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+be = kr(H, I, I) @ (kr(P0, X, X) + kr(P1, Z, Z)) @ kr(H, I, I)     # be_pauli2
+rz = np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex)   # rz_negpi4
+Rz0 = kr(rz, I, I)
+golden = Rz0 @ be @ Rz0 @ be @ Rz0 @ be @ Rz0
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_pauli2.app.pg", "targets": [0, 1, 2]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_pauli2.app.pg", "targets": [0, 1, 2]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"app": "be_pauli2.app.pg", "targets": [0, 1, 2]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}]}
+```

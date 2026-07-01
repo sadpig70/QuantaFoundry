@@ -41,7 +41,8 @@ QSVT_APPS = {
                                         np.exp(1j * np.pi / 4) * np.exp(-1j * np.pi / 8)]).astype(complex)},
     "qsvt_proj_d2b": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/16 d=2", "be": "be_proj"},
     "qsvt_proj_d3": {"n_anc": 1, "A_desc": "|0><0|", "phi_desc": "φ=π/8 d=3(홀수, projector-like 필터)", "be": "be_proj"},
-    "qsvt_pauli2_d2": {"n_anc": 1, "A_desc": "(XX+ZZ)/2", "phi_desc": "φ=π/8 d=2 (2q Hermitian A)", "be": "be_pauli2"},
+    "qsvt_pauli2_d2": {"n_anc": 1, "A_desc": "(XX+ZZ)/2", "phi_desc": "φ=π/8 d=2 (2q 짝수 Chebyshev)", "be": "be_pauli2"},
+    "qsvt_pauli2_d3": {"n_anc": 1, "A_desc": "(XX+ZZ)/2", "phi_desc": "φ=π/8 d=3 (2q 홀수 Chebyshev: 1→i,-1→-i)", "be": "be_pauli2"},
 }
 
 

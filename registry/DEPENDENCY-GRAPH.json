@@ -3871,6 +3871,23 @@
       }
     ]
   },
+  "qsvt_pauli2_d3": {
+    "u_hash": "a45c169cf6d05e6b02da809044dbd7af45d73d22f6b9825da2fedda2fedd4f3f",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "be_pauli2",
+        "uses": 3,
+        "child_u_hash": "4586c515f2ae8bee37b5ac7e94ef4965b6f4c2e23ed8b36cc0c91a927f4a3a98"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi4",
+        "uses": 4,
+        "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
+      }
+    ]
+  },
   "qsvt_proj_d2": {
     "u_hash": "0cad930c75fc2dcf2ba03bf4b4f3da5b2c0da459e7b1ec547fc6cfd504b3d16a",
     "depends_on": [
