@@ -1,0 +1,21 @@
+# be_num — block-encoding of fermionic number operator n=(I-Z)/2=|1><1| (Jordan-Wigner). 2q(1anc+1sys). α=1.
+# JW: n_j = a_j†a_j = (I-Z_j)/2 = |1><1| (occupied-mode projector). U=(I⊗X)·be_proj·(I⊗X).
+# top-left block == diag(0,1)=|1><1|. Fermi-Hubbard interaction 기본블록(n_i·n_j = 밀도-밀도 상호작용).
+# be_proj(|0><0|)의 형제(X 켤레). plan=봉인 게이트만(x·h·cz·h·x), MatrixGate 0, 새 module 0.
+```json id=app_meta
+{"id": "be_num", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+be_proj = np.kron(H, I) @ (np.kron(P0, I) + np.kron(P1, Z)) @ np.kron(H, I)   # block=(I+Z)/2=|0><0|
+golden = np.kron(I, X) @ be_proj @ np.kron(I, X)                              # X-conjugate → |1><1|
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}]}
+```

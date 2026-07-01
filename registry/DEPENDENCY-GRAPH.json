@@ -34,6 +34,29 @@
       }
     ]
   },
+  "be_num": {
+    "u_hash": "5e63b4f57b6d194252304fcf383f96d4cb6b3206b767c42ab6d6f52212445832",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 2,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "be_pauli2": {
     "u_hash": "4586c515f2ae8bee37b5ac7e94ef4965b6f4c2e23ed8b36cc0c91a927f4a3a98",
     "depends_on": [

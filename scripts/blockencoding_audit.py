@@ -34,6 +34,8 @@ BE_TARGETS = {
                   "desc": "(XX+ZZ)/2 Pauli LCU (2q Hermitian, commuting→비축퇴 고유값 -1,0,0,1)"},
     "be_hop": {"A": (np.kron(X, X) + np.kron(Y, Y)) / 2, "alpha": 1.0, "n_anc": 1,
                "desc": "(XX+YY)/2 fermionic hopping (Jordan-Wigner, 고유값 -1,0,0,1)"},
+    "be_num": {"A": np.diag([0, 1]).astype(complex), "alpha": 1.0, "n_anc": 1,
+               "desc": "n=(I-Z)/2=|1><1| fermionic number operator (Hubbard interaction 기본블록)"},
 }
 QSP_APPS = ["qsp_d1", "qsp_d3"]   # qsp_d3=홀수 degree-3 = amplitude amplification(k=1) 기본블록
 # QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".

@@ -262,6 +262,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_17_FermiHubbardModel // 완전한 t-V Fermi-Hubbard (be_hop hopping + be_num interaction) (done) @dep:V08_16
+            # ✅ done: fermionic 축을 완전한 물리 모델로. H=-t(a0†a1+a1†a0)+V·n0·n1 --JW--> -t(XX+YY)/2+V(I-Z0)(I-Z1)/4.
+            #   be_num.app.pg — number operator n=(I-Z)/2=|1><1| block-encoding((I⊗X)be_proj(I⊗X)=X켤레, x·h·cz·h·x,
+            #   Tier-0 5e63b4f5, 새 module 0). hubbard_observe.py — number op JW성질(commuting projector n²=n)·
+            #   interaction n0·n1=|11><11|(double-occupancy) EXACT + teeth(잘못된 n=(I+Z)/2). 스펙트럼 {-1,0,1,V}
+            #   (V=이중점유 에너지, 물리 정확). 봉인자산=be_hop(hopping)+be_num(number). full H=Pauli합→QSVT Ham-sim.
+            #   ★JW성질=EXACT, 봉인=be_hop·be_num, e^{-iHt}=observation(INV-Q3). root 58e5af8e→53f10210f1a134ae(177→178).
         V08_16_FermionicSimJW // Fermionic simulation: Jordan-Wigner mapping (새 수평축) (done) @dep:V08_13
             # ✅ done: 새 수평축(미래 QPC 양자화학). 물리 연산자→Pauli(JW)→block-encoding→QSVT/Trotter Ham-sim 연결.
             #   JW: a_j=(∏_{k<j}Z_k)(X_j+iY_j)/2. be_hop.app.pg — 2-site hopping a_0†a_1+a_1†a_0=(X⊗X+Y⊗Y)/2

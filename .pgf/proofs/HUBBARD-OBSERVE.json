@@ -1,0 +1,53 @@
+{
+  "_note": "완전한 t-V Fermi-Hubbard 모델 = be_hop(hopping) + be_num(number op) 결합 관측. JW 성질=EXACT, 봉인=be_hop·be_num, 시간발전=observation(INV-Q3).",
+  "_schema": "hubbard-observe-v1",
+  "observation": {
+    "checks": {
+      "interaction_is_double_occupancy": true,
+      "number_commuting": true,
+      "number_projector": true,
+      "teeth_wrong_number_op": true
+    },
+    "consumer_link": "full H = Pauli 합 → block-encoding/QSVT Hamiltonian sim(V08_14)",
+    "honest_boundary": "JW 성질(commuting projector·interaction=|11><11|)=EXACT. 봉인=be_hop·be_num. e^{-iHt} 시간발전=observation(INV-Q3).",
+    "jw_mapping": "hopping→(XX+YY)/2 [be_hop], n_j=(I-Z_j)/2=|1><1| [be_num], interaction=|11><11|",
+    "model": "2-site t-V Fermi-Hubbard: H = -t(a0†a1+a1†a0) + V·n0·n1 (Jordan-Wigner)",
+    "ok": true,
+    "sealed_assets": {
+      "hopping": "be_hop (Tier-0)",
+      "number_operator": "be_num (Tier-0)"
+    },
+    "spectra": [
+      {
+        "V": 0.0,
+        "eigenvalues": [
+          -1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "t": 1.0
+      },
+      {
+        "V": 2.0,
+        "eigenvalues": [
+          -1.0,
+          0.0,
+          1.0,
+          2.0
+        ],
+        "t": 1.0
+      },
+      {
+        "V": 4.0,
+        "eigenvalues": [
+          -1.0,
+          0.0,
+          1.0,
+          4.0
+        ],
+        "t": 1.0
+      }
+    ]
+  }
+}

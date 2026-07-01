@@ -8,6 +8,11 @@ be_hop
 ├─ sdg_gate (module×2)
 └─ x_gate (module×2)
 
+be_num
+├─ cz (module)
+├─ h_gate (module×2)
+└─ x_gate (module×2)
+
 be_xz
 ├─ cnot (module)
 ├─ cz (module)
