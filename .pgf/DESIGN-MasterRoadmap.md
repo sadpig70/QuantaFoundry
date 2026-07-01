@@ -262,6 +262,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_16_FermionicSimJW // Fermionic simulation: Jordan-Wigner mapping (새 수평축) (done) @dep:V08_13
+            # ✅ done: 새 수평축(미래 QPC 양자화학). 물리 연산자→Pauli(JW)→block-encoding→QSVT/Trotter Ham-sim 연결.
+            #   JW: a_j=(∏_{k<j}Z_k)(X_j+iY_j)/2. be_hop.app.pg — 2-site hopping a_0†a_1+a_1†a_0=(X⊗X+Y⊗Y)/2
+            #   block-encoding(YY=(S⊗S)(XX)(S†⊗S†), h·sdg·cnot·s·x 조립), 3q, block==H, Tier-0 7994e80c, 새 module 0.
+            #   ★commuting XX·YY→고유값 -1,0,0,1 비축퇴. fermionic_jw_observe.py — 반교환 {a_i,a_j†}=δ_ij·{a_i,a_j}=0
+            #   보존 EXACT 검증 + Z-string teeth(잘못된 매핑 위반). ★JW보존=EXACT(항등식), 봉인=be_hop, e^{-iHt}=
+            #   observation(INV-Q3). be_hop→QSVT Ham-sim(V08_14 재사용). root 0e0a1e21→58e5af8edf801d96(176→177).
         V08_15_QSVTAmpAmpConsumer // QSVT consumer: amplitude amplification = QSP 홀수 다항식 (done) @dep:V08_8
             # ✅ done: QSVT consumer 축 완결(Ham-sim=물리 + amp-amp=검색). amplitude amplification 의 진폭증폭
             #   a=sinθ→sin((2k+1)θ)=진폭의 홀수다항식(deg 2k+1)=QSP 실현. qsp_d3.app.pg(degree-3 홀수=k=1

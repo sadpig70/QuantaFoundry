@@ -120,6 +120,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3h. V08 Fermionic simulation: Jordan-Wigner 반교환 보존 검증 + be_hop (새 수평축)
+    rc, out = run(["scripts/fermionic_jw_observe.py", "--quick"])
+    result["steps"]["fermionic_jw_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

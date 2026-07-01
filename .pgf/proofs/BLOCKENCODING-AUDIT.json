@@ -108,6 +108,17 @@
     }
   },
   "results": {
+    "be_hop": {
+      "alpha": 1.0,
+      "app": "be_hop",
+      "block_matches_A_over_alpha": true,
+      "desc": "(XX+YY)/2 fermionic hopping (Jordan-Wigner, 고유값 -1,0,0,1)",
+      "full_unitary": true,
+      "kind": "block-encoding",
+      "n_anc": 1,
+      "negative_control_teeth": true,
+      "ok": true
+    },
     "be_pauli2": {
       "alpha": 1.0,
       "app": "be_pauli2",

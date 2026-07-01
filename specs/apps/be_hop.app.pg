@@ -1,0 +1,27 @@
+# be_hop — block-encoding of fermionic hopping Hamiltonian (Jordan-Wigner). 3q(1anc+2sys). α=1.
+# 2-site hopping a_0†a_1 + a_1†a_0  --JW-->  H=(X⊗X + Y⊗Y)/2. U=(H_a⊗I⊗I)·SELECT·(H_a⊗I⊗I),
+# SELECT=|0><0|⊗X⊗X + |1><1|⊗Y⊗Y. top-left 4×4 block == H. 고유값 {-1,0,0,1} 비축퇴(commuting XX·YY).
+# ★fermionic simulation 수평축: 물리 연산자→Pauli(JW)→block-encoding→QSVT/Trotter Ham-sim(V08_14 재사용).
+# Y⊗Y = (S⊗S)(X⊗X)(S†⊗S†) 로 봉인 게이트 조립. plan=봉인 게이트만, MatrixGate 0, 새 module 0.
+```json id=app_meta
+{"id": "be_hop", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+SELECT = kr(P0, X, X) + kr(P1, Y, Y)              # |0><0|⊗XX + |1><1|⊗YY (JW hopping LCU)
+golden = kr(H, I, I) @ SELECT @ kr(H, I, I)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/sdg_gate.pg", "targets": [2]}, {"spec": "../modules/sdg_gate.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/s_gate.pg", "targets": [2]}, {"spec": "../modules/s_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

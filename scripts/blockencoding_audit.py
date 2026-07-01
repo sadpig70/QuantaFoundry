@@ -22,6 +22,7 @@ OUT = os.path.join(ROOT, ".pgf", "proofs", "BLOCKENCODING-AUDIT.json")
 
 I = np.eye(2, dtype=complex)
 X = np.array([[0, 1], [1, 0]], dtype=complex)
+Y = np.array([[0, -1j], [1j, 0]], dtype=complex)
 Z = np.array([[1, 0], [0, -1]], dtype=complex)
 
 # be_* 앱의 의도 A/α (규약 검증 대상). data 큐빗 수 = n_sys(app) - n_anc.
@@ -31,6 +32,8 @@ BE_TARGETS = {
                 "desc": "|0><0|=(I+Z)/2 via LCU (스펙트럼 비축퇴 → QSVT non-trivial)"},
     "be_pauli2": {"A": (np.kron(X, X) + np.kron(Z, Z)) / 2, "alpha": 1.0, "n_anc": 1,
                   "desc": "(XX+ZZ)/2 Pauli LCU (2q Hermitian, commuting→비축퇴 고유값 -1,0,0,1)"},
+    "be_hop": {"A": (np.kron(X, X) + np.kron(Y, Y)) / 2, "alpha": 1.0, "n_anc": 1,
+               "desc": "(XX+YY)/2 fermionic hopping (Jordan-Wigner, 고유값 -1,0,0,1)"},
 }
 QSP_APPS = ["qsp_d1", "qsp_d3"]   # qsp_d3=홀수 degree-3 = amplitude amplification(k=1) 기본블록
 # QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".

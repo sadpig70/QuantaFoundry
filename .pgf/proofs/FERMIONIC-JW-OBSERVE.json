@@ -1,0 +1,23 @@
+{
+  "_note": "Jordan-Wigner 반교환관계 보존 독립검증(EXACT) + Z-string teeth + be_hop 대조. 봉인=be_hop(fermionic hopping block-encoding). 시간발전=observation(INV-Q3).",
+  "_schema": "fermionic-jw-observe-v1",
+  "observation": {
+    "H_hop_eigenvalues": [
+      -1.0,
+      0.0,
+      1.0
+    ],
+    "checks": {
+      "anticomm_a_a": true,
+      "anticomm_a_adag": true,
+      "be_hop_block_equals_H": true,
+      "hopping_maps_to_pauli": true,
+      "zstring_teeth": true
+    },
+    "consumer_link": "be_hop → QSVT/Trotter Hamiltonian sim(V08_14, e^{-iHt} 근사=observation)",
+    "honest_boundary": "JW 반교환 보존=EXACT(수학 항등식). 봉인=be_hop. e^{-iHt} 시간발전=observation(INV-Q3).",
+    "n_modes": 2,
+    "ok": true,
+    "sealed_block_encoding": "be_hop (Tier-0, fermionic hopping (XX+YY)/2)"
+  }
+}
