@@ -37,7 +37,7 @@ BE_TARGETS = {
     "be_num": {"A": np.diag([0, 1]).astype(complex), "alpha": 1.0, "n_anc": 1,
                "desc": "n=(I-Z)/2=|1><1| fermionic number operator (Hubbard interaction 기본블록)"},
 }
-QSP_APPS = ["qsp_d1", "qsp_d3"]   # qsp_d3=홀수 degree-3 = amplitude amplification(k=1) 기본블록
+QSP_APPS = ["qsp_d1", "qsp_d3", "qsp_d5"]   # 홀수 degree-1/3/5 = amp-amp·matrix-inversion 기본블록
 # QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".
 # block == P(A) 고유값 변환(observation). data 큐빗 = n_sys - n_anc. expect=sanity(있으면 대조).
 QSVT_APPS = {

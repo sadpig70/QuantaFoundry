@@ -1,0 +1,19 @@
+# qsp_d5 — QSP degree-5 (Wx convention), 1 qubit. 홀수 다항식 = matrix inversion(1/x) 기본블록.
+# U = e^{iφ0 Z}·(W·e^{iφ Z})^5, W=e^{iπX/8}(rx_negpi4), φ=π/8(rz_negpi4). 6×rz·5×W. degree-5 odd.
+# ★matrix inversion(linear systems): well-conditioned A 에 대해 odd polynomial P(A)≈c·A⁻¹.
+#   고유값 3개면 degree-5 홀수(x,x³,x⁵ 3항)가 c/x 를 정확 보간. QSVT consumer trilogy 3번째(물리·검색·선형대수).
+# Tier-0 EXACT. 새 module 0(rz_negpi4·rx_negpi4 재사용). 1/x 근사 프로파일=observation(INV-Q3).
+```json id=app_meta
+{"id": "qsp_d5", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+rz = np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex)   # e^{iπZ/8}
+rx = (np.cos(np.pi / 8) * I + 1j * np.sin(np.pi / 8) * X).astype(complex)         # e^{iπX/8} signal W
+golden = rz @ rx @ rz @ rx @ rz @ rx @ rz @ rx @ rz @ rx @ rz
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}]}
+```

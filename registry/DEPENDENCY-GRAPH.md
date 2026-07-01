@@ -342,6 +342,10 @@ qsp_d3
 ├─ rx_negpi4 (module×3)
 └─ rz_negpi4 (module×4)
 
+qsp_d5
+├─ rx_negpi4 (module×5)
+└─ rz_negpi4 (module×6)
+
 qsvt_pauli2_d2
 ├─ be_pauli2 (app×2)
 │  ├─ cnot (module×2)

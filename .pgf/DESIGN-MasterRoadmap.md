@@ -269,6 +269,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   interaction n0·n1=|11><11|(double-occupancy) EXACT + teeth(잘못된 n=(I+Z)/2). 스펙트럼 {-1,0,1,V}
             #   (V=이중점유 에너지, 물리 정확). 봉인자산=be_hop(hopping)+be_num(number). full H=Pauli합→QSVT Ham-sim.
             #   ★JW성질=EXACT, 봉인=be_hop·be_num, e^{-iHt}=observation(INV-Q3). root 58e5af8e→53f10210f1a134ae(177→178).
+        V08_18_QSVTMatrixInversion // QSVT consumer: matrix inversion (선형대수, trilogy 완결) (done) @dep:V08_15
+            # ✅ done: QSVT consumer trilogy 완결(물리 Ham-sim + 검색 amp-amp + 선형대수 matrix inversion).
+            #   qsp_d5.app.pg — QSP degree-5 홀수(6×rz_negpi4·5×rx_negpi4, Tier-0 cfff54e1, 새 module 0)=1/x 근사
+            #   기본블록. matrix_inversion_observe.py — well-conditioned A=(3I+XX+ZZ)/4(고유값 0.25,0.75,1.25 κ=5)
+            #   에 odd polynomial P(A)≈c·A⁻¹: degree 1→0.95·3→0.83·5→0.0(고유값3개→degree-5 홀수 3항 보간 exact).
+            #   QSP realizes qsp_d1/d3/d5. ★0 고유값 발산→well-conditioned 한정(honest). 봉인=정확 QSP 홀수,
+            #   1/x 근사=observation(INV-Q3). root 53f10210→848e83d75ac87f7a(178→179).
         V08_16_FermionicSimJW // Fermionic simulation: Jordan-Wigner mapping (새 수평축) (done) @dep:V08_13
             # ✅ done: 새 수평축(미래 QPC 양자화학). 물리 연산자→Pauli(JW)→block-encoding→QSVT/Trotter Ham-sim 연결.
             #   JW: a_j=(∏_{k<j}Z_k)(X_j+iY_j)/2. be_hop.app.pg — 2-site hopping a_0†a_1+a_1†a_0=(X⊗X+Y⊗Y)/2

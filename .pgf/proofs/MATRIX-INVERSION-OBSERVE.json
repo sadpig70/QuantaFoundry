@@ -1,0 +1,36 @@
+{
+  "_note": "QSVT matrix inversion(linear systems): 홀수 다항식 P(A)≈c·A⁻¹ 고전관측. seal 아님(INV-Q3). 봉인=정확 QSP 홀수 블록(qsp_d1/d3/d5). QSVT consumer trilogy 3번째(선형대수).",
+  "_schema": "matrix-inversion-observe-v1",
+  "observation": {
+    "A": "(3I+X⊗X+Z⊗Z)/4 (well-conditioned Hermitian)",
+    "condition_number": 5.0,
+    "consumer_trilogy": "물리(Ham-sim, V08_14) · 검색(amp-amp, V08_15) · 선형대수(matrix inversion, 본 노드)",
+    "eigenvalues": [
+      0.25,
+      0.75,
+      1.25
+    ],
+    "exact_at_odd_degree": 5,
+    "honest_boundary": "봉인=정확 QSP 홀수 다항식(qsp_d1/d3/d5). 1/x 근사=고전관측(INV-Q3, seal 아님). 0 고유값 발산→well-conditioned A 한정(honest).",
+    "odd_poly_error_by_degree": [
+      {
+        "frobenius_error": 0.948564,
+        "odd_degree": 1
+      },
+      {
+        "frobenius_error": 0.832217,
+        "odd_degree": 3
+      },
+      {
+        "frobenius_error": 0.0,
+        "odd_degree": 5
+      }
+    ],
+    "qsp_realizes": {
+      "degree_1": "qsp_d1",
+      "degree_3": "qsp_d3",
+      "degree_5": "qsp_d5 (모두 봉인 Tier-0)"
+    },
+    "target": "c·A⁻¹ (c=min λ, |P(λ)|<=1 정규화)"
+  }
+}
