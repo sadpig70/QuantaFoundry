@@ -102,6 +102,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3e. V08_10: 봉인 팔레트로 타겟 golden 재분해 자동 탐색 → oracle 하드게이트 (발견 자율화)
+    rc, out = run(["scripts/discovery_superopt.py", "--quick"])
+    result["steps"]["discovery_superopt"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

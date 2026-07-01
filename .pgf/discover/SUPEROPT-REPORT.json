@@ -1,0 +1,81 @@
+{
+  "_note": "봉인 primitive 팔레트로 타겟 golden 재분해 탐색 → oracle 하드게이트 검증. 자유 codegen 아님(golden 이미 봉인). registry/frozen/root 불변(임시 store, 신규 봉인 0).",
+  "_schema": "superopt-report-v1",
+  "max_depth": 4,
+  "results": {
+    "cz": {
+      "decomposition": [
+        [
+          "h_gate",
+          [
+            0
+          ]
+        ],
+        [
+          "cnot",
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "h_gate",
+          [
+            0
+          ]
+        ]
+      ],
+      "found": true,
+      "length": 3,
+      "negative_control_fails": true,
+      "novelty": {
+        "app_level_decomposition_new": true,
+        "note": "봉인 primitive 를 non-trivial 게이트열로 자동 재분해(oracle-verified)",
+        "registry_primitive_exists": true
+      },
+      "ok": true,
+      "oracle_reward": 1.769231,
+      "sealed": true,
+      "target": "cz",
+      "u_hash": "8d39767cd8c38717"
+    },
+    "swap2": {
+      "decomposition": [
+        [
+          "cnot",
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          "cnot",
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          "cnot",
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "found": true,
+      "length": 3,
+      "negative_control_fails": true,
+      "novelty": {
+        "app_level_decomposition_new": true,
+        "note": "봉인 primitive 를 non-trivial 게이트열로 자동 재분해(oracle-verified)",
+        "registry_primitive_exists": true
+      },
+      "ok": true,
+      "oracle_reward": 1.769231,
+      "sealed": true,
+      "target": "swap2",
+      "u_hash": "e6255e2f105a9782"
+    }
+  }
+}

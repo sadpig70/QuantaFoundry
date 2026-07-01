@@ -255,7 +255,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   d231fbf4 하드코딩 2곳 삭제 → seal_gate_ci EXPECT_DEFAULT=anchor_sync 관리값 사용, CI 영구 최신).
             #   V08 게이트 추가(convention_independence·resource_witness 명시 스텝 + perm_subspace=reproduce 내부).
             #   second_oracle 71/71 라벨 정정. root 대조=seal_gate 스텝 단일화.
-        V08_10_DiscoverySuperopt // 봉인 golden에 더 싼/새 분해 탐색(oracle-gated) (designing) @dep:V08_7
+        V08_10_DiscoverySuperopt // 봉인 golden에 더 싼/새 분해 탐색(oracle-gated) (done) @dep:V08_7
+            # ✅ done: scripts/discovery_superopt.py — 기존 decomp_optimizer(reward만)에 **탐색 엔진** 추가.
+            #   BFS(깊이제한, visited pruning) over 봉인 primitive 팔레트 → up-to-phase 매칭 → 발견 시퀀스를
+            #   decomp_optimizer.oracle_reward(재봉인 u_hash==target 하드게이트)로 검증. cz→h·cnot·h·(len3),
+            #   swap2→3×cnot 자동 발견(reward 1.77, nc_fail teeth). 자유 codegen 아님(golden 이미 봉인, INV-S1).
+            #   임시 store+specs/apps 임시 spec 정리 → registry/frozen/root 불변(신규 봉인 0). reproduce_all 통합.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
