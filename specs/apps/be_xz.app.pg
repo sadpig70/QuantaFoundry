@@ -1,0 +1,20 @@
+# be_xz — block-encoding of (X+Z)/2 via LCU (q0=ancilla MSB, q1=sys, 2q). α=1.
+# U=(H⊗I)·SELECT·(H⊗I), SELECT=|0><0|⊗X + |1><1|⊗Z. top-left block ⟨0|_a U |0>_a = (X+Z)/2.
+# V08_7 BlockEncodingLCU (Tier-0 EXACT). plan=봉인 게이트만(h·anti-cX(x·cnot·x)·cz·h), MatrixGate 0.
+```json id=app_meta
+{"id": "be_xz", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+P0 = np.array([[1, 0], [0, 0]], dtype=complex)
+P1 = np.array([[0, 0], [0, 1]], dtype=complex)
+SELECT = np.kron(P0, X) + np.kron(P1, Z)          # |0><0|⊗X + |1><1|⊗Z
+golden = np.kron(H, I) @ SELECT @ np.kron(H, I)   # PREP·SELECT·PREP, α=1
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

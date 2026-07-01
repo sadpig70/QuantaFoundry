@@ -96,6 +96,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3d. V08_6/8: block-encoding 규약 감사 + QSP 다항식 관측 (QSVT 수평클래스)
+    rc, out = run(["scripts/blockencoding_audit.py", "--quick"])
+    result["steps"]["blockencoding_audit"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

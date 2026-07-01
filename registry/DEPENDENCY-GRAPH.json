@@ -1,4 +1,33 @@
 {
+  "be_xz": {
+    "u_hash": "998b5b8f1eb4c544f3e1028f2bfcbb9ad404633a0e9ec788bec79af8cd455b22",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 2,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "bell": {
     "u_hash": "b314b411bf3605ef723e160e3d0e021e06f7ebc54525b78ab6966c9f5eb7de9f",
     "depends_on": [
@@ -3759,6 +3788,23 @@
         "id": "h_gate",
         "uses": 3,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "qsp_d1": {
+    "u_hash": "36cd989bdbc3248774d677bc899e82dced24b8b68d2a3770ca9ba33235b29346",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "rx_negpi4",
+        "uses": 1,
+        "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
+      },
+      {
+        "kind": "module",
+        "id": "rz_negpi4",
+        "uses": 2,
+        "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
       }
     ]
   },

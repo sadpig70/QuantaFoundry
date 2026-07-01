@@ -238,9 +238,18 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ done: scripts/inverted_second_oracle.py — 71/71 모듈 규약-독립 재현(전역위상·atol 격자 변주 불변
             #   + teeth: 상대위상·격자밖 섭동은 불일치). endian=규약-고정(big, 정직표기). reproduce_all 통합.
             #   sidecar .pgf/proofs/CONVENTION-INDEPENDENCE.json. A3 최약가정(공유 규약 오류) 직접 타격.
-        V08_6_ConventionAuditFirst // block-encoding 규약 감사 선행 (designing) @dep:V08_2
-        V08_7_BlockEncodingLCU // 소형 Hermitian block-encoding + Pauli LCU (Tier-0) (designing) @dep:V08_6
-        V08_8_QSPPolynomial // QSP 위상열(저차 Chebyshev) — 근사=observation (designing) @dep:V08_7
+        V08_6_ConventionAuditFirst // block-encoding 규약 감사 선행 (done) @dep:V08_2
+            # ✅ done: scripts/blockencoding_audit.py — 규약(ancilla=MSB·top-left block==A/α·big-endian·α정규화)
+            #   관측. be_xz top-left block==(X+Z)/2 확인 + teeth(다른 관측가능량 Y 불일치). sidecar
+            #   BLOCKENCODING-AUDIT.json. seal 아님(봉인은 app_assemble). reproduce_all 통합.
+        V08_7_BlockEncodingLCU // 소형 Hermitian block-encoding + Pauli LCU (Tier-0) (done) @dep:V08_6
+            # ✅ done: be_xz.app.pg — block-encoding of (X+Z)/2 via LCU(½X+½Z), 2q(1anc+1sys). U=PREP·SELECT·PREP,
+            #   PREP=H, SELECT=|0><0|⊗X+|1><1|⊗Z. plan=봉인 게이트만(h·anti-cX·cz·h), MatrixGate 0. Tier-0 EXACT
+            #   u_hash 998b5b8f. 새 module 0(h/x/cnot/cz 재사용). 신규 앱 +1.
+        V08_8_QSPPolynomial // QSP 위상열(저차 Chebyshev) — 근사=observation (done) @dep:V08_7
+            # ✅ done: qsp_d1.app.pg — QSP degree-1(Wx conv), 1q. U=e^{iπZ/8}·W·e^{iπZ/8}, W=e^{iπX/8}(rx_negpi4).
+            #   plan=[rz_negpi4,rx_negpi4,rz_negpi4], 새 module 0(재사용). Tier-0 EXACT u_hash 36cd989b.
+            #   ★다항식 P(a) sweep=observation(INV-Q3, seal 아님). 신규 앱 +1. root a0b4f678→480876220a204f6d.
         V08_9_CISealGateAction // GitHub Action: verify+reproduce+root gate (done) @dep:V08_2
             # ✅ done: .github/workflows/seal-gate.yml 강화. ★근본 fix=anchor drift 제거(정적 앵커
             #   d231fbf4 하드코딩 2곳 삭제 → seal_gate_ci EXPECT_DEFAULT=anchor_sync 관리값 사용, CI 영구 최신).

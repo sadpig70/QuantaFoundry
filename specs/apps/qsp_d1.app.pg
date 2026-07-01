@@ -1,0 +1,18 @@
+# qsp_d1 — Quantum Signal Processing, degree-1 (Wx convention), 1 qubit.
+# U = e^{iφ0 Z}·W·e^{iφ1 Z}, W=e^{iπX/8}(=rx_negpi4), φ0=φ1=π/8(=rz_negpi4). 새 module 0(재사용).
+# V08_8 QSPPolynomial (Tier-0 EXACT). QSP 구조=고정 위상열의 정확 유니터리 봉인.
+# ★목표함수 다항식 P(a)(a=cos θ) sweep 은 observation(INV-Q3, seal 아님) — Trotter 근사경계의 자매.
+```json id=app_meta
+{"id": "qsp_d1", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+rz = np.diag([np.exp(1j * np.pi / 8), np.exp(-1j * np.pi / 8)]).astype(complex)   # e^{iπZ/8}
+rx = (np.cos(np.pi / 8) * I + 1j * np.sin(np.pi / 8) * X).astype(complex)         # e^{iπX/8} signal W
+golden = rz @ rx @ rz
+```
+```json id=plan
+{"steps": [{"spec": "../modules/rz_negpi4.pg", "targets": [0]}, {"spec": "../modules/rx_negpi4.pg", "targets": [0]}, {"spec": "../modules/rz_negpi4.pg", "targets": [0]}]}
+```
