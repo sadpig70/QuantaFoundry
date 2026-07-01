@@ -1,0 +1,50 @@
+{
+  "_note": "실제 분자 H₂(양자화학) = 봉인 fermionic 자산(be_hop·be_num)+VQE+QSVT Ham-sim 조합 관측. 계수=고전 적분(illustrative), 구조=봉인 block-encoding. seal 아님(INV-Q3), 신규 봉인 0.",
+  "_schema": "h2-molecule-observe-v1",
+  "observation": {
+    "bond_dissociation_curve": [
+      {
+        "ground_energy": -1.8512,
+        "hopping_scale": 1.0
+      },
+      {
+        "ground_energy": -1.8378,
+        "hopping_scale": 0.6
+      },
+      {
+        "ground_energy": -1.8321,
+        "hopping_scale": 0.3
+      },
+      {
+        "ground_energy": -1.8302,
+        "hopping_scale": 0.0
+      }
+    ],
+    "coefficients_illustrative": {
+      "I": -0.4804,
+      "X0X1": 0.091,
+      "Y0Y1": 0.091,
+      "Z0": 0.3435,
+      "Z0Z1": 0.5716,
+      "Z1": -0.4347
+    },
+    "consumer_link": "H₂ = Pauli 합 → be_hop·be_num block-encoding + VQE ansatz(봉인) + QSVT Ham-sim(V08_14)",
+    "dissociation_trend_ground_rises": true,
+    "eigenvalues_hartree": [
+      -1.8512,
+      -0.2528,
+      0.0,
+      0.1824
+    ],
+    "ground_energy_hartree": -1.8512,
+    "hamiltonian": "H = g₀I + g₁Z₀ + g₂Z₁ + g₃Z₀Z₁ + g₄X₀X₁ + g₅Y₀Y₁",
+    "honest_boundary": "계수 gᵢ=고전 양자화학 적분(illustrative). Hamiltonian 구조=봉인 block-encoding 조합. ground energy·bond curve·e^{-iHt}=observation(INV-Q3). 신규 봉인 0(자산 재사용).",
+    "molecule": "H₂ (STO-3G, 2-qubit reduced, Jordan-Wigner)",
+    "ok": true,
+    "sealed_asset_decomposition": {
+      "Z_terms": "= be_num 류 number operator (be_num 봉인)",
+      "hopping_X0X1_plus_Y0Y1": "= 2·be_hop_A (be_hop 봉인 block-encoding)",
+      "hopping_matches_be_hop": true
+    }
+  }
+}

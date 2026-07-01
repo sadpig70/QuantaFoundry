@@ -262,6 +262,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   e^{iφZ_a}·be_proj·e^{iφZ_a}·be_proj·e^{iφZ_a}(projector-controlled rotation=rz_negpi4[ancilla]).
             #   top-left block=P(A) 고유값변환(1→e^{iπ/8}, 0→e^{-iπ/8}), Tier-0 0cad930c, 새 module 0. blockencoding_audit
             #   확장(be_proj block==diag(1,0)·qsvt block==P(A) non-trivial). P sweep=observation(INV-Q3). root 성장.
+        V08_21_H2MoleculeChemistry // 실제 분자 H₂ 양자화학 (봉인 fermionic 자산 조합, observation) (done) @dep:V08_19
+            # ✅ done: 미래 QPC 킬러앱(양자화학) hello-world. H₂ STO-3G 2-qubit 축약 Hamiltonian(O'Malley 2016)=
+            #   g₀I+g₁Z₀+g₂Z₁+g₃Z₀Z₁+g₄X₀X₁+g₅Y₀Y₁. ★H₂=봉인 fermionic 자산 조합: hopping X₀X₁+Y₀Y₁=2·be_hop_A
+            #   (봉인 block-encoding)·Z항=be_num 류. h2_molecule_observe.py — ground energy -1.85(illustrative 계수)+
+            #   결합 해리 곡선(hopping↓→energy↑). ★계수=고전 양자화학 적분(illustrative), 구조=봉인 block-encoding,
+            #   ground/curve/e^{-iHt}=observation(INV-Q3). **신규 봉인 0(be_hop·be_num 재사용), root 4bd59119 불변**.
         V08_20_FTQCMagicState // FTQC non-Clifford universality (magic state + T-injection) (done) @dep:V08_19
             # ✅ done: project-identity 마지막 미완 핵심축(FTQC 자산). QEC(W7)는 transversal Clifford(H/S/CNOT)까지만
             #   → universality 엔 non-Clifford T 필요. magic state 가 T 를 fault-tolerant 주입. magic_a.app.pg —
