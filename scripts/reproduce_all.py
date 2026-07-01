@@ -77,6 +77,13 @@ def main():
     result["steps"]["second_oracle"] = {"rc": rc, "modules": f"{sm.group(1)}/{sm.group(2)}" if sm else "?",
                                         "pass": rc == 0}
 
+    # 3b. V08 P0: structural Shor 앱 modexp 코어 부분공간 순열 강검증 (경량 재검증)
+    #     path A=회로 게이트순열 vs path B=정수산술 w·a^c mod N. sidecar(.pgf/proofs) 비파괴, root 무영향.
+    rc, out = run(["scripts/perm_subspace_verify.py", "--quick"])
+    result["steps"]["perm_subspace"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

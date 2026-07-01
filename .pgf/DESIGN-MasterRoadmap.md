@@ -209,6 +209,35 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   shor{69,77} Tier-1 structural 15q 봉인. 신규 모듈 0(c7x 재사용). 회귀 7/7·independent arith·deterministic.
             # criteria: 회귀 byte-identical · 신규 모듈 0 · structural n_sys≥15(dense-exact 침범 금지) · reproduce REPRODUCED
 
+    TrackV08_ProofCarrying // 8-review 통합 실행 — 부채상환→수평unlock→발견 (in-progress) @dep:W12_24_FrontierFactory
+        # 설계: _workspace/integrated_roadmap.md(8-review 통합) + _workspace/execution_plan_v08.md(실행계획).
+        # 착수순서(feasibility×독립성): V08_1→V08_4(병행)→V08_5→V08_6/7/8→V08_9→V08_10.
+        # 불변 상속: fingerprint 2파일·frozen 23키·기존 sealed byte-identical. 신규검증=sidecar/외부스크립트(oracle 무수정).
+        V08_1_PermSubspaceContract // Shor modexp 코어 부분공간 순열 강검증 sidecar (done)
+            # input: shor69~3683 9개 structural 앱의 modexp 코어(H·iQFT 제외 controlled-cmul 시퀀스)
+            # process: pathA=회로 배선대로 cmul→MCT 게이트 전개 순열 시뮬(비트연산) vs pathB=정수산술 w·a^c mod N(독립)
+            # output: scripts/perm_subspace_verify.py(전수/표본 + 2종 teeth + --quick) + .pgf/proofs/<app>.subspace_proof.json
+            # criteria: exact 순열 · dense 2^total 미실체화 · negative control reject · root 불변(sidecar만)
+            # ✅ done: 9/9 verified. 전수 7개(shor69~635, shor635=262144/262144) + 표본 2개(shor1285 19q·shor3683 20q,
+            #   4099/4099). teeth=배선mutation + 틀린산술(a+1) 이중. reproduce_all 에 --quick 스텝 통합(root 무영향).
+        V08_2_StructuralAppPromotion // shor69~3683 9개 structural→subspace 강화 (done) @dep:V08_1
+            # process: shor 상위앱의 modexp 코어를 직접 부분공간 순열 강검증(자식 cmul은 이미 dense EXACT였음 —
+            #   실제 gap=조립된 배선이 올바른 modexp 순열을 내는가; structural=배선기록만, P0=배선의미 확인)
+            # criteria: 9개 앱 subspace_permutation_verified · INV-R5 정직표기(H·iQFT 포함 전체 unitary 미검증) · 비파괴
+            # ✅ done: 9개 전부 subspace_permutation_verified 격상. structural_wellformed 잔존 app=0.
+        V08_3_SemanticGuaranteeSplit // 새 등급(subspace_permutation_verified) 비파괴 레이어 (done) @dep:V08_2
+            # criteria: SEMANTIC-GUARANTEES 비파괴 가산 · "structural≠dense≠subspace" 표기 · reproduce REPRODUCED
+            # ✅ done: semantic_guarantee.py 격상 로직 추가. headline app subspace_permutation_verified=9.
+        V08_4_HonestyHardening // 결정론≠정확성 명시·metric split·resource witness (designing)
+            # criteria: INV-R1/R7 문서·출력 명시 · seal resource 회로 대조(X_ResourceWitness) · root 불변
+        V08_5_InvertedSecondOracle // endian/phase/atol 뒤집은 독립 오라클 재검증 (designing) @dep:V08_2
+            # criteria: 규약-뒤집은 오라클과 불일치 seal 집합 명시 · frozen 23키 무수정 · 관측 문서화
+        V08_6_ConventionAuditFirst // block-encoding 규약 감사 선행 (designing) @dep:V08_2
+        V08_7_BlockEncodingLCU // 소형 Hermitian block-encoding + Pauli LCU (Tier-0) (designing) @dep:V08_6
+        V08_8_QSPPolynomial // QSP 위상열(저차 Chebyshev) — 근사=observation (designing) @dep:V08_7
+        V08_9_CISealGateAction // GitHub Action: verify+reproduce+root gate (designing) @dep:V08_2
+        V08_10_DiscoverySuperopt // 봉인 golden에 더 싼/새 분해 탐색(oracle-gated) (designing) @dep:V08_7
+
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

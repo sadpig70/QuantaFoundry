@@ -1,6 +1,6 @@
 {
   "_schema": "semantic-guarantee-v1",
-  "_note": "비파괴 레이어. sealed.json/oracle 불변. Tier-1=structural_wellformed(Merkle)≠unitary_equiv; 부분검증 첨부 시 명시된 입력부분공간에서 의도 일치 확인됨.",
+  "_note": "비파괴 레이어. sealed.json/oracle 불변. Tier-1=structural_wellformed(Merkle)≠unitary_equiv; 부분검증 첨부 시 명시된 입력부분공간에서 의도 일치 확인됨. subspace_permutation_verified=structural Shor modexp 코어를 계산기저에서 exact 순열로 강검증(V08 P0, structural 상향; 전체 unitary 동등은 아님, INV-R5).",
   "tier_legend": {
     "0": {
       "class": "unitary_equiv",
@@ -1734,18 +1734,44 @@
       "id": "shor119",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 32768/32768; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 32768,
+        "basis_matched": 32768,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 2466,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "438e38216849fc20"
+      }
     },
     "app:shor1285": {
       "kind": "app",
       "id": "shor1285",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "2b38f641ca31a1553183a0b2dc86a3aceeb1fb35b096f41d92a3afeae4997748"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(sampled, basis 4099/4099; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "2b38f641ca31a1553183a0b2dc86a3aceeb1fb35b096f41d92a3afeae4997748",
+      "subspace_verification": {
+        "grade": "subspace_permutation_sampled",
+        "method": "sampled",
+        "basis_tested": 4099,
+        "basis_matched": 4099,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 30359,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "cf22c2b194b2f294"
+      }
     },
     "app:shor15_a2": {
       "kind": "app",
@@ -1779,63 +1805,154 @@
       "id": "shor221",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "4ab5cb39c5d6e7179bfff60cd732600f8376524d9c12a348ad77e472abaf293b"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 65536/65536; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "4ab5cb39c5d6e7179bfff60cd732600f8376524d9c12a348ad77e472abaf293b",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 65536,
+        "basis_matched": 65536,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 5701,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "57b9bcaa9d72d007"
+      }
     },
     "app:shor3683": {
       "kind": "app",
       "id": "shor3683",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "5cd87ccadb60b6cccd55cc8a8bfed5eafaecc299db41ea9f95fae17e14848d0f"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(sampled, basis 4099/4099; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "5cd87ccadb60b6cccd55cc8a8bfed5eafaecc299db41ea9f95fae17e14848d0f",
+      "subspace_verification": {
+        "grade": "subspace_permutation_sampled",
+        "method": "sampled",
+        "basis_tested": 4099,
+        "basis_matched": 4099,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 143666,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "c38431b9ab0fef9e"
+      }
     },
     "app:shor381": {
       "kind": "app",
       "id": "shor381",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "08e08864499ce9062c54b7e2944234a9466438198bc37ef59b9b358570e4aebe"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 131072/131072; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "08e08864499ce9062c54b7e2944234a9466438198bc37ef59b9b358570e4aebe",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 131072,
+        "basis_matched": 131072,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 10335,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "e2a22e44d58f1179"
+      }
     },
     "app:shor635": {
       "kind": "app",
       "id": "shor635",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "ca75c6224e94c6fea9fead630b90b39cc6705fa3704a1203b58e7b32dc2eb450"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 262144/262144; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "ca75c6224e94c6fea9fead630b90b39cc6705fa3704a1203b58e7b32dc2eb450",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 262144,
+        "basis_matched": 262144,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 30814,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "bcf27d26a10e6d6c"
+      }
     },
     "app:shor69": {
       "kind": "app",
       "id": "shor69",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "4676368ce4d7f10b801e437538e8aef0b7a49cae47f002c9be7014f6aba35857"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 32768/32768; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "4676368ce4d7f10b801e437538e8aef0b7a49cae47f002c9be7014f6aba35857",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 32768,
+        "basis_matched": 32768,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 2716,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "13164489c51efbaf"
+      }
     },
     "app:shor77": {
       "kind": "app",
       "id": "shor77",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "fd1d78a5e369a8dc45cd22eaacba93d02c4006b12f5a3e9f183b5c8fce819e0b"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 32768/32768; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "fd1d78a5e369a8dc45cd22eaacba93d02c4006b12f5a3e9f183b5c8fce819e0b",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 32768,
+        "basis_matched": 32768,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 2595,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "c90c42e57ba55138"
+      }
     },
     "app:shor91": {
       "kind": "app",
       "id": "shor91",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "structural_wellformed",
-      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
-      "u_hash": "ea39b003c0d2e0a1de31ce004303b6c65b7825f69671ab00dbbaf05b3ee6d0c8"
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 32768/32768; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "ea39b003c0d2e0a1de31ce004303b6c65b7825f69671ab00dbbaf05b3ee6d0c8",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 32768,
+        "basis_matched": 32768,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 2669,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "81b289dcad0f1ce8"
+      }
     },
     "app:shor9_encoder": {
       "kind": "app",
@@ -2798,7 +2915,7 @@
       "app": {
         "unitary_equiv": 217,
         "unitary_equiv_sampled": 1,
-        "structural_wellformed": 9
+        "subspace_permutation_verified": 9
       },
       "module": {
         "unitary_equiv": 77
@@ -2807,7 +2924,7 @@
     "by_class": {
       "unitary_equiv": 294,
       "unitary_equiv_sampled": 1,
-      "structural_wellformed": 9
+      "subspace_permutation_verified": 9
     }
   }
 }
