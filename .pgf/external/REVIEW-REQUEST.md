@@ -1,30 +1,63 @@
-<!-- External adversarial review request — for a fresh external AI runtime asked to critique QuantaFoundry.
-     Distilled from the former EXTERNAL-ONBOARDING.md §2–§3 (2026-07-01). Entry/reading order: AGENTS.md. -->
-# QuantaFoundry — External Review Request
+<!-- External adversarial review request — for a fresh external AI runtime asked to critique QuantaFoundry
+     and propose directions. Distilled from the former EXTERNAL-ONBOARDING.md (2026-07-01).
+     Reading order below points to tracked docs only (AGENTS.md/HANDOFF.md are local, not in a clone). -->
+# QuantaFoundry — External Review & Direction Request
 
 **Role:** external reviewer of a quantum-verification + autonomous-AI architecture. Be adversarial about
 assumptions; prioritize actionable next steps over validation. We do **not** want praise — we want the
 sharpest critique of the weakest assumptions and concrete, feasible directions.
 
-First read, in order: `README.md` (identity, trust model, current status) → `.pgf/DESIGN-MasterRoadmap.md`
-(execution roadmap spine, PG notation) → `docs/QuantaFoundry-Technical-Spec.md` (full spec + evidence +
-limitations + version history). Then answer these in priority order, each as `proposal / rationale /
-feasibility / risk`, citing the file that informs each point:
+## Project scope (this shapes what counts as a valid proposal — read first)
+
+QuantaFoundry is **software prepared *in advance* for a future fault-tolerant quantum computer (QPC)**.
+Every artifact seals **ideal, noiseless mathematical truth** (exact unitary, or structural Merkle for
+large circuits) via a deterministic oracle. It is **not** meant to run on present-day noisy hardware —
+so **QPU backends / noise models / real-hardware execution are permanently deferred and out of scope**.
+Do **not** propose "run it on a real QPU" or "add a noise model." The seal is a **permanent contract**:
+because there is no post-hoc hardware check, the *seal-time* mathematical verification is the entire
+basis of trust — which makes verification *strength* and *independence* unusually load-bearing.
+
+**Already considered — critique or go beyond these, don't re-propose them as if new:**
+
+- **Vertical scale is a wall, not a goal.** Larger dense circuits (e.g. the 14-qubit `c13x` primitive)
+  are blocked by the dense-matrix memory ceiling. This is an honest, accepted boundary — *not* a target.
+- **Horizontal / abstraction-layer expansion is the intended growth axis** (small *exact* instances, higher
+  abstraction, not more qubits). Candidates under weighing: **QSVT/QSP + block-encoding/LCU** (a unifying
+  framework where one seal yields many algorithms) · **fermionic simulation** (Jordan-Wigner / Bravyi-Kitaev
+  — the FTQC chemistry app) · **FTQC-native logical layers** (surface/color codes, magic-state distillation,
+  lattice surgery, logical-level algorithms) · **structural→strong verification** (ZX Tier-3 / partial-subspace
+  / symbolic proof, to pay down the "structural is weaker than dense" debt) · **genuine discovery autonomy**
+  (AI proposing *unknown* decompositions/primitives, oracle-gated).
+
+## Reading order (tracked files; a clone has these)
+
+`README.md` (identity · trust model · current status · one-command verify) → `.pgf/DESIGN-MasterRoadmap.md`
+(execution roadmap spine, PG notation; a node's `(status)` = built vs planned) → `docs/QuantaFoundry-Technical-Spec.md`
+(full spec + evidence + **limitations** + version history). Authoritative current numbers/root live in
+`registry/REGISTRY-MANIFEST.json`; the tier split in `registry/SEMANTIC-GUARANTEES.json`.
+
+## Your task — answer in priority order
+
+Each answer as `proposal / rationale / feasibility / risk`, citing the file that informs it:
 
 1. Is the core identity (an **AI-terminating oracle** + binary seal, where no AI judges its own output)
    convincing? What is the **single weakest assumption**, and how would you stress it?
 2. **Open-ended goal-autonomy:** the loop (`qfa-loop`) now auto-discovers and seals frontier families via a
-   regression-gated parametric factory, but still seals *known* structure. How would you design the **value
-   function + search** for discovering *genuinely new methods/families* and autonomously generating *unsealed
-   primitives*?
-3. **Backend (real hardware):** QPU backends, noise models, and Tier-1 large-circuit execution are unstarted.
-   Priority and approach?
-4. **Unproven consensus areas:** cross-model co-error never materialized (4 rounds) and the ρ-correlation
-   discount is validated only by *constructed* co-errors. How would you actually exercise the defense with
-   real divergence on weak-model panels?
-5. **Adoption / ecosystem:** currently a self-contained single repo. A credible path to external adoption?
-6. What **risks or blind spots** are missed?
-7. Your **top-3 six-month roadmap** items, ranked by impact × feasibility.
+   regression-gated parametric factory, but still seals *known* structure. Design the **value function +
+   search** for discovering *genuinely new* methods/decompositions/primitives (oracle-gated) — not just
+   re-parameterizing known families.
+3. **Horizontal expansion (the main open question):** given that vertical scale is walled off by identity,
+   what is the **strongest abstraction-layer expansion**? Critique the candidate framing above (QSVT/LCU,
+   fermionic, FTQC-native, structural→strong verification) and propose the highest impact × feasibility path
+   — or a better axis we missed.
+4. **Verification strength for large circuits:** big apps are Tier-1 *structural* (Merkle, no unitary
+   guarantee) because dense is infeasible. Since there is no hardware to re-check them later, how would you
+   make large-circuit seals *strong* (ZX / partial-subspace / symbolic) without breaking determinism?
+5. **Unproven consensus:** cross-model co-error never materialized (4 rounds) and the ρ-correlation discount
+   is validated only by *constructed* co-errors. How would you exercise the defense with *real* divergence?
+6. **Adoption (software, not hardware):** a self-contained single repo. Credible path to external adoption —
+   interoperability (QASM/Qiskit/Cirq/PennyLane), citation/consumption of the sealed registry, CI seal-gate?
+7. What **risks or blind spots** are missed, and your **top-3 six-month roadmap** ranked by impact × feasibility.
 
 ## Concept mini-glossary
 
@@ -47,5 +80,5 @@ feasibility / risk`, citing the file that informs each point:
 - **Self-contained** — no external skills/services beyond the vendored oracle.
 
 Verify everything yourself: `python scripts/reproduce_all.py` → `REPRODUCED · root a0b4f678… · second_oracle
-71/71`. Honest limitations are in `docs/QuantaFoundry-Technical-Spec.md` (limitations sections) and README's
+71/71 · 77 modules / 166 apps`. Honest limitations are in `docs/QuantaFoundry-Technical-Spec.md` and README's
 "Honest boundaries".
