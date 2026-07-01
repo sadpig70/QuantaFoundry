@@ -112,6 +112,8 @@ APP_LIST = [
     ("rzz_y4_q_half.app.pg",         None), # W12.3 Yoshida-4 half ZZ coefficient q
     ("tfim3_suzuki4_step.app.pg",    None), # W12.3 TFIM3 4th-order Suzuki step
     ("tfim4_suzuki4_step.app.pg",    None), # W12.3 TFIM4 4th-order Suzuki step
+    # HE H1 (#axis-A): Alternative fermionic encoding — Bravyi-Kitaev / parity
+    ("bk4_transform.app.pg",         None), # H1.1 BK-2002 U_BK n=4 basis change (GF(2) permutation, cnot 조립)
 ]
 
 

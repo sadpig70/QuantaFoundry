@@ -31,6 +31,9 @@ bell
 ├─ cnot (module)
 └─ h_gate (module)
 
+bk4_transform
+└─ cnot (module×4)
+
 bv3_s101
 ├─ cnot (module×2)
 ├─ h_gate (module×7)

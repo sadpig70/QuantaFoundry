@@ -190,6 +190,17 @@
       }
     ]
   },
+  "bk4_transform": {
+    "u_hash": "8a51222e4113e292b264962433346229ea715782917062446d86eed3138c5e36",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 4,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      }
+    ]
+  },
   "bv3_s101": {
     "u_hash": "09db3d7ca2850ee95081f37d83547bdf3517448bdf8c8a7ade6f5964672cd009",
     "depends_on": [
