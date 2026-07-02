@@ -372,8 +372,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ H5.2′ payoff d4_hsp_observe(봉인 0): 이면군 HSP 소비 — coset state→d4_qft→irrep 분포,
             #   g-불변·문자론 독립참조 일치·비정규{e,s} vs 정규{e,r2} 구별(↔격자문제 연결점).
             # 잔여: H5.3 Schur-Weyl — CG 계수 비-dyadic(√⅔)→신규 module 다수=he_task_plan §4 사람 게이트(승인 대기).
-        H6_Exploratory // #axis-F qudit·MPS·bosonic (blocked)
-            # 개별 진입 게이트(오라클 임의차원 C1 수용·절단근사 경계) 선검증 전 착수 금지.
+        H6_Exploratory // #axis-F qudit 개창(임베딩 우회)·MPS/bosonic 잔여 (in-progress)
+            # ✅ H6.1′ qutrit_x3+qutrit_sum: ★게이트 우회 — qutrit(3레벨)을 qubit 부분공간 {00,01,10}에
+            #   임베딩(|11>=sink) → 오라클 표준 2ⁿ 프레임 유지, "차원≠2ⁿ" 진입 게이트 소멸. 삼진 산술(순열)만
+            #   exact: X₃(+1 mod3, anti-CX×2)·SUM((a+b)mod3, ctrl-X₃/X₃²=c3x 켤레). qutrit_arith_observe:
+            #   X₃ 위수3·궤도·SUM 교환/영원 + 게이트경계(ω=e^{2πi/3}·1/√3: Z₃/QFT₃/Bell₃=차기). C4=정수 삼진산술.
+            # 잔여(게이트): qutrit QFT₃/Z₃(ω)·MPS(AKLT χ=2)·bosonic(절단근사) — 신규 module 다수=he_task_plan §4.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
