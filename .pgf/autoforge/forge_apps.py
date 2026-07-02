@@ -126,6 +126,8 @@ APP_LIST = [
     ("code513_encoder.app.pg",       None), # H3.1 [[5,1,3]] 오각형 graph-code 인코더 (cnot·h·cz, 증류 Clifford 핵심)
     # HE H5 (#axis-E): 표현론 — 비아벨 유한군
     ("s3_mult.app.pg",               None), # H5.1 S₃ 곱셈 오라클 |g>|h>→|g>|gh> (반직접곱 닫힌형, cnot·fredkin·c3x·x)
+    ("d4_mult.app.pg",               None), # H5.2′ D₄ 곱셈 오라클 (8원소=3q 정확, 5게이트 2-bit 가산기)
+    ("d4_qft.app.pg",                None), # H5.2′ 첫 비아벨 군 Fourier: F_D4 = anti-CH∘(QFT_Z4⊗I), 위상 {±1,±i} 팔레트-exact
 ]
 
 

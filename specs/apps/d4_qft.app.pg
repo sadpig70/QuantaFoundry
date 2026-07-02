@@ -1,0 +1,32 @@
+# d4_qft — 첫 비아벨 군 Fourier 변환: D₄ 표현론 기저변환. 3q. Tier-0 8×8.
+# HE H5.2′ (#axis-E): 비아벨 HSP(이면군↔격자문제)의 관문. 현 카탈로그 QFT=전부 아벨(Z_N) — 본 봉인이
+#   군 Fourier(기약표현 기저)의 첫 사례.
+# ★게이트 우회 통찰: S₃는 ω=e^{2πi/3} 비-dyadic → 신규 module 불가피. D₄는 회전 부분군이 Z₄ —
+#   위상 {±1,±i} 전부 팔레트 안 → F_{D₄} = [k₀=0 조건 anti-controlled-H on b] ∘ [QFT_{Z₄}⊗I]:
+#   CH = Ry(π/4)·CZ·Ry(−π/4) (H = Ry(π/4)·Z·Ry(−π/4), 봉인 ry_pi4/ry_negpi4). 새 module 0!
+# 기저: in |a₁,a₀,b> (g=r^a s^b) → out |k₁,k₀,b'>: k=0→χ₁/χ₂ · k=2→χ₃/χ₄ (1차원 4종, H가 b 를 섞음) ·
+#   k=1→ρ₀₀/ρ₀₁ · k=3→ρ₁₁/ρ₁₀ (2차원 기약표현 ρ(r)=diag(i,−i)·ρ(s)=swap 의 행렬원소, b'=열지표).
+# C4 독립참조(설계 검증): golden=기약표현 공식 직접 구성(√(d_ρ/8)·ρ(g)_jk) · Peter-Weyl(F·R(g)·F† 가
+#   전 8원소에서 1차원↔2차원 누설 0 블록구조) · 유니터리. plan=qft2(봉인 모듈)+x·cz·ry_pi4/negpi4.
+```json id=app_meta
+{"id": "d4_qft", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# 기약표현 공식으로 직접 구성 (C4 독립참조): 행=irrep 행렬원소, 열=g=(a,b)
+golden = np.zeros((8, 8), dtype=complex)
+for a in range(4):
+    for b in range(2):
+        x = (a << 1) | b
+        golden[0, x] = 1 / np.sqrt(8)                          # χ₁ (trivial)
+        golden[1, x] = (-1) ** b / np.sqrt(8)                  # χ₂ (sign s)
+        golden[4, x] = (-1) ** a / np.sqrt(8)                  # χ₃ (sign r)
+        golden[5, x] = (-1) ** (a + b) / np.sqrt(8)            # χ₄
+        golden[2, x] = (1j ** a) / 2 if b == 0 else 0          # ρ₀₀
+        golden[3, x] = (1j ** a) / 2 if b == 1 else 0          # ρ₀₁
+        golden[6, x] = ((-1j) ** a) / 2 if b == 0 else 0       # ρ₁₁
+        golden[7, x] = ((-1j) ** a) / 2 if b == 1 else 0       # ρ₁₀
+```
+```json id=plan
+{"steps": [{"spec": "../modules/qft2.pg", "targets": [0, 1]}, {"spec": "../modules/ry_negpi4.pg", "targets": [2]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/cz.pg", "targets": [1, 2]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/ry_pi4.pg", "targets": [2]}]}
+```

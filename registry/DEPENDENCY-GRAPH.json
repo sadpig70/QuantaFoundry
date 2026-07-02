@@ -3069,6 +3069,58 @@
       }
     ]
   },
+  "d4_mult": {
+    "u_hash": "63f90e690f0f3e465cb17ea11ac9be56914bf2add20a8db8381e4fa0ee449455",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 2,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "d4_qft": {
+    "u_hash": "5d4725467b225fca84863f917269a733b2f2b68a398d1f736e6ddbde46734f5b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "qft2",
+        "uses": 1,
+        "child_u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 2,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "diffusion": {
     "u_hash": "067db05d7cb8783118c6a018cff3bacad229213e99535c2f7faf73bf8a651636",
     "depends_on": [

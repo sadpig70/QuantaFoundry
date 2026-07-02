@@ -1,0 +1,40 @@
+# d4_mult — D₄(이면군, 8원소) 곱셈 오라클 |g>|h> → |g>|gh>. 6q. Tier-0 64×64.
+# HE H5.2′ (#axis-E): 비아벨 축 2번째 군. ★D₄=8원소가 3 qubit 를 정확히 채움(invalid 상태 0개, S₃보다 깨끗).
+# 반직접곱 g=r^a s^b (a∈Z₄: q_a1 q_a0 / b∈Z₂: q_b) → 곱셈 닫힌형 (a,b)(c,d)=(a+(−1)^b c mod 4, b⊕d):
+#   d⊕=b → CNOT · mod-4 부정(1↔3 스왑)=c1⊕=c0 → b-제어 toffoli ·
+#   +a mod 4 = 자연 2-bit 오버플로 가산기(carry toffoli + cnot×2) — 총 5게이트(모듈러 감산 불필요!).
+# C4 독립참조(설계 검증): 군법칙 == 정사각형 대칭(꼭짓점 순열: r=회전·s=반사) 합성, 64 전 매핑 == Cayley,
+#   비아벨(rs≠sr). 계산기저 permutation. plan=봉인 게이트만(cnot·toffoli), MatrixGate 0, 새 module 0.
+```json id=app_meta
+{"id": "d4_mult", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 6
+DIM = 64
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def semantics(g, h):
+    """(a,b)(c,d)=(a+(−1)^b c mod 4, b⊕d) — 회로 의미(전 64 상태 유효)."""
+    a1, a0, bb = g
+    c1, c0, dd = h
+    dd ^= bb                       # CNOT b→d
+    if bb:                         # −c mod 4 = 1↔3 스왑 = c1 ⊕= c0 (b-제어 toffoli)
+        c1 ^= c0
+    c1 ^= (a0 & c0)                # carry (가산 전 c0 사용, toffoli)
+    c0 ^= a0                       # CNOT
+    c1 ^= a1                       # CNOT
+    return [a1, a0, bb, c1, c0, dd]
+golden = np.zeros((DIM, DIM), dtype=complex)
+for x in range(DIM):
+    b = bits(x)
+    golden[frombits(semantics(b[:3], b[3:])), x] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [2, 5]}, {"spec": "../modules/toffoli.pg", "targets": [2, 4, 3]}, {"spec": "../modules/toffoli.pg", "targets": [1, 4, 3]}, {"spec": "../modules/cnot.pg", "targets": [1, 4]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}]}
+```

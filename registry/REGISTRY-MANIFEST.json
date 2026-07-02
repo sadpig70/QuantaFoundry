@@ -84,9 +84,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 190,
-    "cached_app_side_module_count": 62,
-    "total_files": 252,
+    "unique_app_count": 192,
+    "cached_app_side_module_count": 63,
+    "total_files": 255,
     "path": "registry/apps",
     "unique": [
       "be_h2",
@@ -169,6 +169,8 @@
       "cry_pi",
       "cry_pi2",
       "cz_rediscovered",
+      "d4_mult",
+      "d4_qft",
       "diffusion",
       "diffusion3",
       "dj2_balanced_xor",
@@ -306,6 +308,7 @@
       "cz",
       "fredkin",
       "h_gate",
+      "qft2",
       "rx_negpi4",
       "rx_y4_p",
       "rx_y4_q",
@@ -371,6 +374,7 @@
     "cz": "registry/modules/cz.sealed.json",
     "fredkin": "registry/modules/fredkin.sealed.json",
     "h_gate": "registry/modules/h_gate.sealed.json",
+    "qft2": "registry/modules/qft2.sealed.json",
     "rx_negpi4": "registry/modules/rx_negpi4.sealed.json",
     "rx_y4_p": "registry/modules/rx_y4_p.sealed.json",
     "rx_y4_q": "registry/modules/rx_y4_q.sealed.json",
@@ -409,7 +413,7 @@
     "x_gate": "registry/modules/x_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "36f8bc09fc3f46f049261548eb27de3f2c29abaf247180f965f40d9f3d00c27f",
+  "registry_root_hash": "c4ff2a1bc4ef04f8c57b5c4e4e30773796c1c556bcfda2a4e78557052654c6d1",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }
