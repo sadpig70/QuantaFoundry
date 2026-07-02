@@ -180,6 +180,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3r. HE H5.2′: 이면군 D₄ Hidden Subgroup 소비 (d4_mult·d4_qft 구동, 문자론 참조, observation)
+    rc, out = run(["scripts/d4_hsp_observe.py", "--quick"])
+    result["steps"]["d4_hsp_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

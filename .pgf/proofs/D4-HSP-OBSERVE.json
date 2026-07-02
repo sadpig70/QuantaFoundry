@@ -1,0 +1,72 @@
+{
+  "_note": "이면군 D₄ HSP 소비 관측: 봉인 d4_mult·d4_qft 구동. 문자론 독립참조 대조. 신규 봉인 0(INV-Q3).",
+  "_schema": "d4-hsp-observe-v1",
+  "observation": {
+    "algorithm": "Dihedral D₄ Hidden Subgroup — coset state Fourier sampling",
+    "all_g_invariant": true,
+    "all_match_character_formula": true,
+    "honest_boundary": "봉인=d4_mult·d4_qft exact 뿐. HSP 분포·불변성·구별성=관측(문자론 대조). 완전 HSP 알고리즘(표본→부분군 복원)=범위 밖. 신규 봉인 0(INV-Q3).",
+    "nonnormal_vs_normal_distinguishable": true,
+    "ok": true,
+    "per_subgroup": [
+      {
+        "character_formula": {
+          "chi1": 0.25,
+          "chi2": 0.0,
+          "chi3": 0.25,
+          "chi4": 0.0,
+          "rho": 0.5
+        },
+        "fourier_dist": {
+          "chi1": 0.25,
+          "chi2": 0.0,
+          "chi3": 0.25,
+          "chi4": 0.0,
+          "rho": 0.5
+        },
+        "g_invariant": true,
+        "matches_character_formula": true,
+        "subgroup": "{e,s} (비정규)"
+      },
+      {
+        "character_formula": {
+          "chi1": 0.25,
+          "chi2": 0.25,
+          "chi3": 0.25,
+          "chi4": 0.25,
+          "rho": 0.0
+        },
+        "fourier_dist": {
+          "chi1": 0.25,
+          "chi2": 0.25,
+          "chi3": 0.25,
+          "chi4": 0.25,
+          "rho": 0.0
+        },
+        "g_invariant": true,
+        "matches_character_formula": true,
+        "subgroup": "{e,r2} (정규)"
+      },
+      {
+        "character_formula": {
+          "chi1": 0.5,
+          "chi2": 0.5,
+          "chi3": 0.0,
+          "chi4": 0.0,
+          "rho": -0.0
+        },
+        "fourier_dist": {
+          "chi1": 0.5,
+          "chi2": 0.5,
+          "chi3": 0.0,
+          "chi4": 0.0,
+          "rho": 0.0
+        },
+        "g_invariant": true,
+        "matches_character_formula": true,
+        "subgroup": "{e,r,r2,r3} (회전)"
+      }
+    ],
+    "sealed_assets": "d4_mult(곱셈 오라클)·d4_qft(비아벨 Fourier)"
+  }
+}
