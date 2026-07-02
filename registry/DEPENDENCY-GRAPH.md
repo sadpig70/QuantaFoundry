@@ -155,6 +155,9 @@ dj2_const1
 ├─ h_gate (module×5)
 └─ x_gate (module×2)
 
+gf4_mul
+└─ toffoli (module×5)
+
 ghz10
 ├─ cnot (module×9)
 └─ h_gate (module)

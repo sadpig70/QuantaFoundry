@@ -1,0 +1,39 @@
+# gf4_mul — GF(4) 유한체 곱셈 |a,b,0>→|a,b,a·b>. 6q. Tier-0 64×64.
+# HE2 P3.1 (#GF): 특성-2 유한체(finite field) 산술 축 개창. 현 카탈로그 산술=전부 군 연산(mod-N cmul·
+#   mod-3 qutrit). GF(2ᵏ)는 **체** — 곱셈·역원·Frobenius. Reed-Solomon/AES·부호이론·qLDPC의 양자 하부.
+# GF(4)=GF(2)[x]/(x²+x+1), a=a₁x+a₀. x²=x+1 → a·b: c₁=a₁b₁⊕a₁b₀⊕a₀b₁ · c₀=a₁b₁⊕a₀b₀.
+#   레이아웃 q0=a₁·q1=a₀ · q2=b₁·q3=b₀ · q4=c₁·q5=c₀(초기 0). 계산기저 permutation(c⊕=a·b, 가역).
+# 조립: toffoli 5개(c₁←3항·c₀←2항). plan=봉인 게이트만(toffoli), MatrixGate 0, 새 module 0.
+# C4 독립참조: 다항식 체 산술(x²+x+1)과 golden 대조 · 체 성질(x²=x+1·x·(x+1)=1·역원). subspace 강검증 적합.
+```json id=app_meta
+{"id": "gf4_mul", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 6
+DIM = 64
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def gf4_mul(a, b):                       # 독립 GF(4) 곱셈 (C4 참조)
+    a1, a0 = (a >> 1) & 1, a & 1
+    b1, b0 = (b >> 1) & 1, b & 1
+    c1 = (a1 & b1) ^ (a1 & b0) ^ (a0 & b1)
+    c0 = (a1 & b1) ^ (a0 & b0)
+    return (c1 << 1) | c0
+golden = np.zeros((DIM, DIM), dtype=complex)
+for x in range(DIM):
+    b = bits(x)
+    a = (b[0] << 1) | b[1]
+    bb = (b[2] << 1) | b[3]
+    c = (b[4] << 1) | b[5]
+    nc = c ^ gf4_mul(a, bb)
+    golden[frombits([b[0], b[1], b[2], b[3], (nc >> 1) & 1, nc & 1]), x] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/toffoli.pg", "targets": [0, 2, 4]}, {"spec": "../modules/toffoli.pg", "targets": [0, 3, 4]}, {"spec": "../modules/toffoli.pg", "targets": [1, 2, 4]}, {"spec": "../modules/toffoli.pg", "targets": [0, 2, 5]}, {"spec": "../modules/toffoli.pg", "targets": [1, 3, 5]}]}
+```

@@ -3195,6 +3195,17 @@
       }
     ]
   },
+  "gf4_mul": {
+    "u_hash": "f1216a065462561312156c960a8a334df1f7508ecc5c77889319c83e98262af1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 5,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "ghz10": {
     "u_hash": "d34a49db319b5076133dea54fdff869d95c394f46db2195b41ef8fcf5dc69cbc",
     "depends_on": [
