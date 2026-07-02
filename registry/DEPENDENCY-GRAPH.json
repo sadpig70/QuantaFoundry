@@ -1,4 +1,51 @@
 {
+  "be_h2": {
+    "u_hash": "6005b8bf9f3b3665096ac5462e87ecbe60a55243dc13e747ab0448128f80d1a9",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ccz",
+        "uses": 2,
+        "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      },
+      {
+        "kind": "module",
+        "id": "sdg_gate",
+        "uses": 2,
+        "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 4,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 8,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "be_hop": {
     "u_hash": "7994e80c2533735144595536fb30138a3af623432d3119490b18924de9fc3259",
     "depends_on": [

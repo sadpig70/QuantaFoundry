@@ -117,6 +117,8 @@ APP_LIST = [
     ("bk_num1.app.pg",               None), # H1.2 BK number n_1=(I-Z0Z1)/2 block-encoding (parity-set 구조)
     ("bk_hop01.app.pg",              None), # H1.2 BK hopping H_01=X0(I-Z1)/2 block-encoding
     ("parity4_transform.app.pg",     None), # H1.4 parity 인코딩 U_par n=4 (누적 parity permutation, cnot 조립)
+    # HE H2 (#axis-B): Molecular Hamiltonian seal pack
+    ("be_h2.app.pg",                 None), # H2.1 H₂ 부호구조 block-encoding (dyadic uniform LCU, (−I+XX+YY+ZZ)/4)
 ]
 
 

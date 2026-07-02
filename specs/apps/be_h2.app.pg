@@ -1,0 +1,70 @@
+# be_h2 — H₂ 분자 Hamiltonian 부호구조 block-encoding (dyadic uniform LCU). 4q(2anc+2sys). α=4. Tier-0.
+# HE H2.1 (#axis-B): 실제 분자 H₂(STO-3G, 2-qubit JW)의 봉인 자산화.
+#   H₂ = gI·I + gZ0·Z0 + gZ1·Z1 + gZZ·Z0Z1 + gXX·X0X1 + gYY·Y0Y1 (O'Malley 2016).
+#   부호: I(−) Z0(+) Z1(−) Z0Z1(+) X0X1(+) Y0Y1(+).
+# ★dyadic uniform LCU: top-left 4×4 block == (−I + X0X1 + Y0Y1 + Z0Z1)/4 — H₂ 지배항(hopping+ZZ
+#   상관, 부호 정확)을 균일 dyadic(1/4) 계수로 exact 봉인. PREPARE=H⊗H(균일, 봉인각), SELECT=anc-제어
+#   4-branch(−I·Z0Z1·X0X1·Y0Y1). plan=봉인 게이트만(h·x·cz·ccz·toffoli·s·sdg), MatrixGate 0, 새 module 0.
+# 정직 경계(INV-Q3): 봉인=선택된 dyadic 계수 하 exact block. 물리 상대크기·single-Z(Z0,Z1)항·
+#   실제 계수·ground energy = 관측(h2_molecule_observe, seal 아님).
+```json id=app_meta
+{"id": "be_h2", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+S = np.diag([1, 1j]).astype(complex)
+Sd = S.conj().T
+NQ = 4
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+def emb(op, q):
+    return kr(*[op if i == q else I2 for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    x = 0
+    for i in range(NQ):
+        x |= (b[i] & 1) << (NQ - 1 - i)
+    return x
+def toffoli(c1, c2, t):
+    M = np.zeros((16, 16), dtype=complex)
+    for x in range(16):
+        b = bits(x)
+        if b[c1] and b[c2]:
+            b = b[:]; b[t] ^= 1
+        M[frombits(b), x] = 1.0
+    return M
+def ccz(c1, c2, c3):
+    M = np.eye(16, dtype=complex)
+    for x in range(16):
+        b = bits(x)
+        if b[c1] and b[c2] and b[c3]:
+            M[x, x] = -1.0
+    return M
+def cz(a, b_):
+    M = np.eye(16, dtype=complex)
+    for x in range(16):
+        bb = bits(x)
+        if bb[a] and bb[b_]:
+            M[x, x] = -1.0
+    return M
+gates = [emb(Hd, 0), emb(Hd, 1),
+         emb(X, 0), emb(X, 1), cz(0, 1), emb(X, 0), emb(X, 1),          # 00 -> -I
+         emb(X, 0), ccz(0, 1, 2), ccz(0, 1, 3), emb(X, 0),             # 01 -> Z2Z3
+         emb(X, 1), toffoli(0, 1, 2), toffoli(0, 1, 3), emb(X, 1),     # 10 -> X2X3
+         emb(Sd, 2), emb(Sd, 3), toffoli(0, 1, 2), toffoli(0, 1, 3), emb(S, 2), emb(S, 3),  # 11 -> Y2Y3
+         emb(Hd, 0), emb(Hd, 1)]
+golden = np.eye(16, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/ccz.pg", "targets": [0, 1, 2]}, {"spec": "../modules/ccz.pg", "targets": [0, 1, 3]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 3]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/sdg_gate.pg", "targets": [2]}, {"spec": "../modules/sdg_gate.pg", "targets": [3]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 3]}, {"spec": "../modules/s_gate.pg", "targets": [2]}, {"spec": "../modules/s_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```
