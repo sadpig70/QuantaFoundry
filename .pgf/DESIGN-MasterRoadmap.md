@@ -338,6 +338,39 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   swap2→3×cnot 자동 발견(reward 1.77, nc_fail teeth). 자유 codegen 아님(golden 이미 봉인, INV-S1).
             #   임시 store+specs/apps 임시 spec 정리 → registry/frozen/root 불변(신규 봉인 0). reproduce_all 통합.
 
+    TrackHE // 수평확장 — 외부 8런타임 제안 통합(6축 A–F), he_task_plan 단일지시 자율실행 (in-progress) @dep:TrackV08_ProofCarrying
+        # 정본: _workspace/integrated_horizontal_expansion.md(통합설계)·_workspace/he_task_plan.md(PPR 실행계획).
+        # 2026-07-02 세션: 10커밋(939e502~591a2b2+체크포인트) · root 4bd59119→36f8bc09 · 181→190 apps · 전 구간 새 module 0.
+        H1_BKEncoding // #axis-A 대체 페르미온 인코딩(8/8 합의 최우선) (done)
+            # ✅ bk4_transform(BK-2002 U_BK, GF(2) permutation→cnot 4-gate, Tier-0 16×16) ·
+            #   bk_num1((I−Z0Z1)/2)·bk_hop01(X0(I−Z1)/2) block-encoding · bk_equiv_observe(★payoff
+            #   H_03: JW w4→BK w3, 켤레변환=exact·weight감소=관측) · parity4_transform(cnot 6-gate)+
+            #   parity_taper_observe(number/hopping이 총-parity Z_{n-1}과 교환+q3에 I/Z만→taperable).
+        H2_MolecularSeal // #axis-B 분자 봉인 pack (in-progress)
+            # ✅ H2.1 be_h2: H₂ 부호구조 block-encoding — dyadic uniform LCU(정욱님 승인 방향),
+            #   block=(−I+X0X1+Y0Y1+Z0Z1)/4 부호정확, PREPARE=H⊗H·SELECT 4-branch. 봉인=dyadic 계수 하
+            #   exact; 실제 계수·ground energy=관측(h2_molecule_observe 유지).
+            # 잔여: H2.2 self-contained integral(dyadic 경로로 필요성↓)·H2.3 be_lih.
+        H3_FTQCNonClifford // #axis-C non-Clifford 3부작(물리→공장→논리) (done)
+            # ✅ H3.1 code513_encoder: ★[[5,1,3]]=C₅ 오각형 graph code 통찰 → GHZ·H^5·CZ(오각간선)
+            #   순수 팔레트, Tier-0 32×32. distill5to1_observe(coherent-branch): T-type^⊗5→syndrome-0
+            #   출력 |r|=1 순수 exact magic(축 twist 문서화)·p=1/6 닫힌형·teeth.
+            # ✅ H3.2 steane_encoded_t_observe(신규 봉인 0): 논리 T-injection — |ψ_L>⊗|T_L>→transversal
+            #   CNOT→논리Z branch→S_L 보정((S†)^⊗7=논리S 검증). branch0/1 모두 T_L|ψ_L> exact·p=1/2.
+            #   Eastin-Knill: transversal T 부재→magic-injection이 유일 정직 경로. 14q 벡터만(dense 미실체화).
+            # H3.3 lattice surgery: surface-code 자산 부재로 연기 판단(선행 자산 필요).
+        H4_DataOracle // #axis-D generic data oracle (done)
+            # ✅ qrom22(|i>|d>→|i>|d⊕data[i]>, X-켤레 toffoli, perm)·select_prepare4(전 4종 Pauli 단일
+            #   SELECT, block=(I+X+Y+Z)/4 비축퇴, Y=S·X·S† 켤레; blockencoding_audit 편입 n_anc=2 일반화).
+            #   qROM(하부)+SELECT-PREPARE(상부)로 축 폐합 — be_* 들이 템플릿 인스턴스로 재해석.
+        H5_RepnBasis // #axis-E 표현론/비아벨 (in-progress)
+            # ✅ H5.1 s3_mult: 첫 비아벨군(S₃) 곱셈 오라클 — ★반직접곱 닫힌형(a+(−1)^b c mod3, b⊕d):
+            #   CNOT·fredkin(mod-3 부정=비트스왑)·X-켤레 c3x. C4=Cayley·순열합성 독립검증. Tier-0 64×64.
+            # 잔여: H5.2 비아벨 QFT·H5.3 Schur — ★비-dyadic 각(ω=e^{2πi/3}·CG 계수)→신규 module 4~6개
+            #   필요 → he_task_plan §4 "신규 module>2" 사람 게이트 대상(승인 대기).
+        H6_Exploratory // #axis-F qudit·MPS·bosonic (blocked)
+            # 개별 진입 게이트(오라클 임의차원 C1 수용·절단근사 경계) 선검증 전 착수 금지.
+
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
