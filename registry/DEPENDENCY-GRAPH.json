@@ -2983,6 +2983,29 @@
       }
     ]
   },
+  "code513_encoder": {
+    "u_hash": "dea0fccedc2474b936443cc4dd601f9ec7866fac1e8d088accd30f93d64166b5",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 4,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 5,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 5,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "cry_pi": {
     "u_hash": "2a0bf888560e6e33dd47631b41bd3efa8e3baf6a8bf2c8cdbe01e8ce88b3a587",
     "depends_on": [

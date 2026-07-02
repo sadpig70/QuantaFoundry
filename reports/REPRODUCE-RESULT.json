@@ -3,7 +3,7 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "81/81",
+      "apps_sealed": "82/82",
       "rediscovery": "6/6",
       "pass": true
     },
@@ -75,9 +75,9 @@
     "registry": {
       "rc": 0,
       "modules": "77",
-      "unique_apps": "188",
+      "unique_apps": "189",
       "cached": "62",
-      "root_hash": "83e5d72d5d3812bd",
+      "root_hash": "badbecc1b89b0a64",
       "pass": true
     },
     "second_oracle": {
@@ -156,6 +156,11 @@
       "pass": true
     },
     "parity_taper_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "distill5to1_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

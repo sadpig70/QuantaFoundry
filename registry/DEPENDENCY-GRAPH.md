@@ -126,6 +126,11 @@ cmul2_mod85
 ├─ c7x (module×19)
 └─ toffoli (module×15)
 
+code513_encoder
+├─ cnot (module×4)
+├─ cz (module×5)
+└─ h_gate (module×5)
+
 cz_rediscovered
 ├─ cnot (module)
 └─ h_gate (module×2)

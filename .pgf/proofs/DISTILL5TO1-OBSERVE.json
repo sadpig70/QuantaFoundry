@@ -1,0 +1,22 @@
+{
+  "_note": "5-to-1 magic distillation coherent-branch 관측. 봉인=code513_encoder 뿐. 프로토콜 자체=관측(INV-Q3).",
+  "_schema": "distill5to1-observe-v1",
+  "observation": {
+    "honest_boundary": "봉인=encoder Clifford exact. fixed-point·성공확률·post-selection 확률성=관측(INV-Q3). T-type 상태(비-dyadic 각)=수학 정의로만 사용, 봉인 아님.",
+    "input_axis": "(1,1,1)/√3",
+    "logical_twist": {
+      "V†X⁵V==−Z": true,
+      "V†Z⁵V==X": true,
+      "ok": true
+    },
+    "ok": true,
+    "output_axis": "[-1.0, -1.0, 1.0]",
+    "output_pure_exact_magic": true,
+    "protocol": "Bravyi-Kitaev 2005 5-to-1 T-type distillation (coherent-branch)",
+    "sealed_asset": "code513_encoder ([[5,1,3]] 오각형 graph code, Clifford Tier-0)",
+    "stabilizers_fix_isometry": true,
+    "success_probability": 0.166666667,
+    "success_probability_closed_form": "1/6",
+    "teeth_nonmagic_input_not_T": true
+  }
+}

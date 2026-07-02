@@ -122,6 +122,8 @@ APP_LIST = [
     # HE H4 (#axis-D): Generic data oracle — qROM / SELECT-PREPARE
     ("qrom22.app.pg",                None), # H4.1 qROM 2addr×2data table lookup (|i>|d>→|i>|d⊕data[i]>, x·toffoli)
     ("select_prepare4.app.pg",       None), # H4.2 generic SELECT-PREPARE LCU 템플릿 (전 4종 Pauli, block=(I+X+Y+Z)/4)
+    # HE H3 (#axis-C): FTQC non-Clifford 심화 — magic state distillation
+    ("code513_encoder.app.pg",       None), # H3.1 [[5,1,3]] 오각형 graph-code 인코더 (cnot·h·cz, 증류 Clifford 핵심)
 ]
 
 

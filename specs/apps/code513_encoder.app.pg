@@ -1,0 +1,54 @@
+# code513_encoder — [[5,1,3]] 5-qubit perfect code 인코더 (오각형 graph code). 5q. Tier-0 32×32.
+# HE H3.1 (#axis-C): magic state distillation 의 봉인 핵심(이상적 Clifford 유니터리).
+# ★구조 통찰: [[5,1,3]] = C₅(오각형) graph code — encoder 가 순수 팔레트로 떨어진다:
+#   GHZ(CNOT 0→1..4) → H^⊗5 → CZ(오각 간선 0-1,1-2,2-3,3-4,4-0).
+#   |ψ>|0000> → a|G_C5> + b·Z^⊗5|G_C5>  (graph-basis 논리 인코딩).
+# 검증(설계 시 확인): 4 stabilizer(XZZXI 순환: XZZXI·IXZZX·XIXZZ·ZXIXZ)가 isometry 고정.
+#   논리 twist(관례): V†(X^⊗5)V = −Z, V†(Z^⊗5)V = X — 문서화된 기저 관계(distill 관측에서 사용).
+# plan=봉인 게이트만(cnot·h·cz), MatrixGate 0, 새 module 0.
+# 봉인=exact 인코더 유니터리. distillation fixed-point·성공확률(1/6)=관측(distill5to1_observe, seal 아님).
+```json id=app_meta
+{"id": "code513_encoder", "n_sys": 5, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 5
+DIM = 32
+def kr(*m):
+    return reduce(np.kron, m)
+def emb(op, q):
+    return kr(*[op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def cnot(c, t):
+    M = np.zeros((DIM, DIM), dtype=complex)
+    for x in range(DIM):
+        b = bits(x)
+        b = b[:]; b[t] ^= b[c]
+        M[frombits(b), x] = 1.0
+    return M
+def cz(a, b_):
+    M = np.eye(DIM, dtype=complex)
+    for x in range(DIM):
+        bb = bits(x)
+        if bb[a] and bb[b_]:
+            M[x, x] = -1.0
+    return M
+gates = [cnot(0, 1), cnot(0, 2), cnot(0, 3), cnot(0, 4),
+         emb(Hd, 0), emb(Hd, 1), emb(Hd, 2), emb(Hd, 3), emb(Hd, 4),
+         cz(0, 1), cz(1, 2), cz(2, 3), cz(3, 4), cz(4, 0)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}, {"spec": "../modules/cnot.pg", "targets": [0, 4]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [4]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [1, 2]}, {"spec": "../modules/cz.pg", "targets": [2, 3]}, {"spec": "../modules/cz.pg", "targets": [3, 4]}, {"spec": "../modules/cz.pg", "targets": [4, 0]}]}
+```
