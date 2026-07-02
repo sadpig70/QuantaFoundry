@@ -128,6 +128,9 @@ APP_LIST = [
     ("s3_mult.app.pg",               None), # H5.1 S₃ 곱셈 오라클 |g>|h>→|g>|gh> (반직접곱 닫힌형, cnot·fredkin·c3x·x)
     ("d4_mult.app.pg",               None), # H5.2′ D₄ 곱셈 오라클 (8원소=3q 정확, 5게이트 2-bit 가산기)
     ("d4_qft.app.pg",                None), # H5.2′ 첫 비아벨 군 Fourier: F_D4 = anti-CH∘(QFT_Z4⊗I), 위상 {±1,±i} 팔레트-exact
+    # HE H6 (#axis-F): qudit — 큐트릿 qubit-임베딩(삼진 산술 계층만 exact, ω-위상 게이트)
+    ("qutrit_x3.app.pg",             None), # H6.1′ 큐트릿 순환 증가 X₃ (+1 mod3, x·cnot, 임베딩)
+    ("qutrit_sum.app.pg",            None), # H6.1′ 큐트릿 삼진 모듈러 가산기 (a+b mod3, c3x 켤레)
 ]
 
 

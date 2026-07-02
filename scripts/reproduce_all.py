@@ -186,6 +186,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3s. HE H6.1′: 큐트릿 삼진 산술 관측 + qudit 게이트 경계 (qutrit_x3·qutrit_sum, observation)
+    rc, out = run(["scripts/qutrit_arith_observe.py", "--quick"])
+    result["steps"]["qutrit_arith_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -438,6 +438,14 @@ qsvt_proj_d3
 │  └─ h_gate (module×2)
 └─ rz_negpi4 (module×4)
 
+qutrit_sum
+├─ c3x (module×6)
+└─ x_gate (module×18)
+
+qutrit_x3
+├─ cnot (module×2)
+└─ x_gate (module×4)
+
 qw_c4_2steps
 └─ qw_c4_step (app×2)
    ├─ cnot (module×2)

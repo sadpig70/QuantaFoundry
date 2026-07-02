@@ -1,0 +1,36 @@
+# qutrit_sum — 큐트릿 삼진 모듈러 가산기 |a>|b> → |a>|(a+b) mod 3>, qubit-임베딩. 4q. Tier-0 16×16.
+# HE H6.1′ (#axis-F): 큐트릿 SUM 게이트(qudit CNOT 유사). a,b∈{0,1,2}(임베딩 |v>: 0=00·1=01·2=10),
+#   a=3 또는 b=3(sink) 개입 시 항등(계약). q0q1=a · q2q3=b.
+# ★삼진 산술 = 계산기저 permutation → controlled-X₃/X₃²(a=01→X₃·a=10→X₃²) X-켤레 c3x 조립. 새 module 0.
+#   compounding: X₃(qutrit_x3)+SUM → 삼진 모듈러 산술 → 큐트릿 QFT/Shor 산술 하부.
+# C4 독립참조: 정수 (a+b) mod 3 산출과 golden 대조. 봉인=exact ternary 가산 순열; ω-위상 계층=차기(게이트).
+```json id=app_meta
+{"id": "qutrit_sum", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 4
+def b4(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def f4(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+VAL = {(0, 0): 0, (0, 1): 1, (1, 0): 2, (1, 1): 3}
+ENC = {0: (0, 0), 1: (0, 1), 2: (1, 0), 3: (1, 1)}
+golden = np.zeros((16, 16), dtype=complex)
+for x in range(16):
+    b = b4(x)
+    a = VAL[(b[0], b[1])]
+    bb = VAL[(b[2], b[3])]
+    if a < 3 and bb < 3:
+        hi, lo = ENC[(a + bb) % 3]
+        out = [b[0], b[1], hi, lo]
+    else:
+        out = b[:]
+    golden[f4(out), x] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 2]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 2]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]}, {"spec": "../modules/x_gate.pg", "targets": [2]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 2]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/x_gate.pg", "targets": [1]}]}
+```

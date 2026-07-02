@@ -4302,6 +4302,40 @@
       }
     ]
   },
+  "qutrit_sum": {
+    "u_hash": "42e4e3688e648d3f23a623df562844bdbadddec893f9a808ddaf117d70a22c39",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 6,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 18,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "qutrit_x3": {
+    "u_hash": "abd5db22cca56244ab845c843117c7615ffc0284df910a5471b3c196b5c08362",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 4,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "qw_c4_2steps": {
     "u_hash": "59f6c2e900258190468c0076cce41087b72ec1b0e94cc4f1b4d183cd3bea3e3d",
     "depends_on": [

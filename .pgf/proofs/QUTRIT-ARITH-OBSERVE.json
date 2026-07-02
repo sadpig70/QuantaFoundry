@@ -1,0 +1,24 @@
+{
+  "_note": "큐트릿 삼진 산술 관측 + qudit 게이트 경계. 봉인=순열 exact 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "qutrit-arith-observe-v1",
+  "observation": {
+    "SUM_commutative": true,
+    "SUM_matches_integer_ternary": true,
+    "SUM_zero_identity": true,
+    "X3_orbit_0": [
+      1,
+      2,
+      0
+    ],
+    "X3_order_3": true,
+    "axis": "qudit (#F) — 큐트릿 qubit-임베딩 삼진 산술",
+    "gate_boundary": {
+      "gated_next": "ω=e^{2πi/3}·1/√3 phases — Z₃·QFT₃·Bell₃ (신규 module 필요)",
+      "sealed_exact": "ternary arithmetic (permutation): X₃·SUM"
+    },
+    "honest_boundary": "봉인=삼진 산술 순열 exact 뿐(INV-Q3). qudit Fourier/중첩=게이트 계층(분리). 임베딩 |11> sink=해석, 오라클은 표준 2ⁿ 검증. 신규 봉인 0.",
+    "ok": true,
+    "sealed_assets": "qutrit_x3(+1 mod3)·qutrit_sum((a+b) mod3)",
+    "sink_11_fixed": true
+  }
+}

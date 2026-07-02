@@ -1,0 +1,20 @@
+# qutrit_x3 — 큐트릿 순환 증가 X₃ (ternary +1 mod 3), qubit-임베딩. 2q. Tier-0 4×4.
+# HE H6.1′ (#axis-F): qudit 축을 큐트릿의 qubit 부분공간 임베딩으로 개창(오라클 표준 2ⁿ 프레임 유지).
+#   임베딩: |0>=00 · |1>=01 · |2>=10 · sink=11(항등 보존, 계약). X₃: 00→01→10→00, 11 고정.
+# ★게이트 우회: 순열(삼진 산술)만 exact 봉인 — 오라클 재구현 0, 신규 module 0. ω-위상(Z₃·QFT₃)은 분리(게이트).
+# 조립: (0 1 2)=(0 2)∘(0 1) → anti-CX 2개: X0·CNOT(0,1)·X0 then X1·CNOT(1,0)·X1. plan=봉인 게이트만(x·cnot).
+# 봉인=exact ternary +1 순열. Z₃/QFT₃(비-dyadic ω) = 차기/관측 영역.
+```json id=app_meta
+{"id": "qutrit_x3", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# 큐트릿 +1 mod 3: 00→01→10→00, 11 고정 (독립 삼진 산술 참조 — C4)
+cyc = {0: 1, 1: 2, 2: 0, 3: 3}
+golden = np.zeros((4, 4), dtype=complex)
+for x in range(4):
+    golden[cyc[x], x] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [1, 0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}]}
+```
