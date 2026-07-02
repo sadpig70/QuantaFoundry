@@ -1,0 +1,33 @@
+{
+  "_note": "완전 FTQC 논리 스택 관측 — v1 non-Clifford 3부작 + v2 위상적 논리연산 자산 정합. 신규 봉인 0(INV-Q3).",
+  "_schema": "logical-stack-observe-v1",
+  "observation": {
+    "honest_boundary": "봉인=각 자산 exact 유니터리뿐. 스택 정합성·논리 대수=관측(INV-Q3). 실측정·decoder·threshold·거리·완전 encoder=하드웨어/차기. 신규 봉인 0.",
+    "layers": {
+      "lattice_surgery_merge": {
+        "Z_L_isomorphic_to_surf422": true,
+        "block==(I+Z_L1Z_L2)/2": true
+      },
+      "surf422_logical_algebra": {
+        "X_L1=X1X3 == X⊗I": true,
+        "X_L2=X2X3 == I⊗X": true,
+        "Z_L1=Z0Z1 == Z⊗I": true,
+        "Z_L2=Z0Z2 == I⊗Z": true
+      },
+      "toric22_topological_order": {
+        "GS_fixed_by_6_stabilizers": true
+      }
+    },
+    "ok": true,
+    "sealed_assets_present": true,
+    "stack": "물리 magic → 증류 → 논리 T → surface/toric 논리큐빗 → lattice surgery 논리연산",
+    "stack_inventory": [
+      "magic_a (물리 magic state)",
+      "code513_encoder (magic 증류 [[5,1,3]])",
+      "steane logical T-injection (관측)",
+      "surf422_encoder ([[4,2,2]] 논리 큐빗)",
+      "toric22_gs (위상 질서)",
+      "surf_ls_merge_zz (lattice surgery 논리연산)"
+    ]
+  }
+}

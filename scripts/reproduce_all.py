@@ -192,6 +192,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3t. HE2 P1.4: 완전 FTQC 논리 스택 관측 (surf422·toric22·ls_merge + v1 magic 자산 정합, observation)
+    rc, out = run(["scripts/logical_stack_observe.py", "--quick"])
+    result["steps"]["logical_stack_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
