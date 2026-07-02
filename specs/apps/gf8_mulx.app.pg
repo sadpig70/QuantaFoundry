@@ -1,0 +1,30 @@
+# gf8_mulx — GF(8) 생성원 곱 a↦a·x. 3q. Tier-0 8×8.
+# HE2 P3.2 (#GF): 체 확장 GF(8)=GF(2)[x]/(x³+x+1). x=생성원(primitive) 곱 = LFSR 선형변환.
+#   a=a₂x²+a₁x+a₀, a·x = a₁x²+(a₀⊕a₂)x + a₂ (x³=x+1 되먹임). 계산기저 permutation(선형, CNOT만).
+#   x-궤도가 7개 비영원소 전부 순회(primitive 확인): x→x²→…→x⁷=1 (곱셈군 Z₇). 봉인 후 discrete-log 하부.
+#   레이아웃 q0=a₂·q1=a₁·q2=a₀. plan=봉인 게이트만(cnot 5개, BFS 최적), MatrixGate 0, 새 module 0.
+# C4: 독립 체 산술(x³+x+1) 대조 + primitive 궤도(7-cycle).
+```json id=app_meta
+{"id": "gf8_mulx", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 3
+DIM = 8
+def b3(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def f3(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def mulx(a):                             # a·x mod x³+x+1 (독립 체 산술 참조 — C4)
+    a2, a1, a0 = (a >> 2) & 1, (a >> 1) & 1, a & 1
+    return (a1 << 2) | ((a0 ^ a2) << 1) | a2
+golden = np.zeros((DIM, DIM), dtype=complex)
+for x in range(DIM):
+    golden[mulx(x), x] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [1, 0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [2, 1]}, {"spec": "../modules/cnot.pg", "targets": [1, 2]}]}
+```

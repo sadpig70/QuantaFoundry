@@ -137,6 +137,8 @@ APP_LIST = [
     ("toric22_gs.app.pg",            None), # P1.3 2×2 토릭 ground state |00>_L 준비 (8q 위상질서, star-seed h·cnot)
     # HE2 P3 (#GF): 유한체 GF(2ᵏ) 산술 (특성-2 체 대수)
     ("gf4_mul.app.pg",               None), # P3.1 GF(4) 곱셈 |a,b,0>→|a,b,a·b> (toffoli 5, permutation)
+    ("gf4_frob.app.pg",              None), # P3.2 GF(4) Frobenius x↦x² (cnot 1, 갈루아 Z₂)
+    ("gf8_mulx.app.pg",              None), # P3.2 GF(8) 생성원 곱 a↦a·x (LFSR cnot 5, primitive 7-cycle)
 ]
 
 
