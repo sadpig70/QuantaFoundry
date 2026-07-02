@@ -1079,6 +1079,10 @@ simon2_s11
 ├─ cnot (module×2)
 └─ h_gate (module×4)
 
+surf422_encoder
+├─ cnot (module×5)
+└─ h_gate (module)
+
 swap_via_cnot
 └─ cnot (module×3)
 

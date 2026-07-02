@@ -1,0 +1,46 @@
+# surf422_encoder — [[4,2,2]] 최소 surface-type CSS 코드 인코더. 4q. Tier-0 16×16.
+# HE2 P1.1 (#TOPO): 위상적 논리연산 축의 관문 — v1 magic distillation(code513)·논리 T(Steane) 위에
+#   surface code + lattice surgery(논리 큐빗 간 연산)를 더해 완전한 FTQC 논리 스택을 폐합.
+# 코드: stabilizer S_X=XXXX·S_Z=ZZZZ, 2 논리 큐빗(d=2 검출). 논리 codeword (a,b):
+#   x=|0,a,b,a⊕b>, codeword=(|x>+|x̄>)/√2. 논리 X_L1=X₁X₃(=X⊗I)·X_L2=X₂X₃(=I⊗X)·
+#   Z_L1=Z₀Z₁(=Z⊗I)·Z_L2=Z₀Z₂(=I⊗Z) (even-weight Z-string, stabilizer와 교환).
+# encoder(입력 논리 a=q1,b=q2, q0=q3=|0>): CNOT(1,3)·CNOT(2,3)[q3=a⊕b] → H(0)·CNOT(0,1/2/3)[(|x>+|x̄>)/√2].
+# plan=봉인 게이트만(cnot·h_gate), MatrixGate 0, 새 module 0.
+# 봉인=이상적 Clifford encoder exact. d=2 검출·거리·decoder·threshold=관측(하드웨어, INV-Q3).
+```json id=app_meta
+{"id": "surf422_encoder", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 4
+DIM = 16
+def kr(*m):
+    return reduce(np.kron, m)
+def emb(op, q):
+    return kr(*[op if i == q else I for i in range(NQ)])
+def b4(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def f4(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def cnot(c, t):
+    M = np.zeros((DIM, DIM), dtype=complex)
+    for x in range(DIM):
+        b = b4(x)
+        b = b[:]; b[t] ^= b[c]
+        M[f4(b), x] = 1.0
+    return M
+# encoder: CNOT(1,3)·CNOT(2,3) then H(0)·CNOT(0,1)·CNOT(0,2)·CNOT(0,3)
+gates = [cnot(1, 3), cnot(2, 3), emb(Hd, 0), cnot(0, 1), cnot(0, 2), cnot(0, 3)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [1, 3]}, {"spec": "../modules/cnot.pg", "targets": [2, 3]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/cnot.pg", "targets": [0, 3]}]}
+```

@@ -131,6 +131,8 @@ APP_LIST = [
     # HE H6 (#axis-F): qudit — 큐트릿 qubit-임베딩(삼진 산술 계층만 exact, ω-위상 게이트)
     ("qutrit_x3.app.pg",             None), # H6.1′ 큐트릿 순환 증가 X₃ (+1 mod3, x·cnot, 임베딩)
     ("qutrit_sum.app.pg",            None), # H6.1′ 큐트릿 삼진 모듈러 가산기 (a+b mod3, c3x 켤레)
+    # HE2 P1 (#TOPO): Surface code + lattice surgery (위상적 논리연산)
+    ("surf422_encoder.app.pg",       None), # P1.1 [[4,2,2]] 최소 surface-type CSS 인코더 (Clifford, cnot·h)
 ]
 
 

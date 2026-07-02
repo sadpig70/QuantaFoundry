@@ -5348,6 +5348,23 @@
       }
     ]
   },
+  "surf422_encoder": {
+    "u_hash": "421b0aede7752fec31c2bf9a3c12b6a4e2bbc6ce3282dd29c0825489ab8f7381",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 5,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "swap_via_cnot": {
     "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
     "depends_on": [
