@@ -1,0 +1,26 @@
+{
+  "_note": "논리 수준 T-injection 관측(Steane). 신규 봉인 0(INV-Q3). 봉인 Steane 자산(W7.2/W7.3)의 non-Clifford 소비 실증.",
+  "_schema": "steane-encoded-t-observe-v1",
+  "observation": {
+    "branch0_exact_TL_psi": true,
+    "branch1_SL_corrected_exact_TL_psi": true,
+    "branch_probabilities": [
+      0.5,
+      0.5
+    ],
+    "chain": "magic_a(물리) → distill5to1(공장) → encoded T(논리 사용) — non-Clifford 3부작 완결",
+    "conventions": {
+      "S^⊗7 == S_L†": true,
+      "X_L=X^⊗7·Z_L=Z^⊗7": true,
+      "ok": true
+    },
+    "honest_boundary": "논리 T=측정+보정 프로토콜 → 유니터리 봉인 대상 아님. branch 별 exact 항등=관측(INV-Q3). p=1/2 확률성=본질. 신규 봉인 0·root 불변·14q dense 미실체화.",
+    "logical_basis_stabilizer_check": true,
+    "ok": true,
+    "protocol": "Steane [[7,1,3]] 논리 T-injection (gate teleportation, coherent-branch)",
+    "teeth": {
+      "uncorrected_branch1_not_target": true,
+      "wrong_magic_gives_identity_not_T": true
+    }
+  }
+}
