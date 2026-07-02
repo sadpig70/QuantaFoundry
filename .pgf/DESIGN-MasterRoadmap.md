@@ -363,11 +363,15 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ qrom22(|i>|d>→|i>|d⊕data[i]>, X-켤레 toffoli, perm)·select_prepare4(전 4종 Pauli 단일
             #   SELECT, block=(I+X+Y+Z)/4 비축퇴, Y=S·X·S† 켤레; blockencoding_audit 편입 n_anc=2 일반화).
             #   qROM(하부)+SELECT-PREPARE(상부)로 축 폐합 — be_* 들이 템플릿 인스턴스로 재해석.
-        H5_RepnBasis // #axis-E 표현론/비아벨 (in-progress)
-            # ✅ H5.1 s3_mult: 첫 비아벨군(S₃) 곱셈 오라클 — ★반직접곱 닫힌형(a+(−1)^b c mod3, b⊕d):
+        H5_RepnBasis // #axis-E 표현론/비아벨 — 오라클→Fourier→HSP 완결 (done)
+            # ✅ H5.1 s3_mult: 첫 비아벨군(S₃) 곱셈 오라클 — 반직접곱 닫힌형(a+(−1)^b c mod3, b⊕d):
             #   CNOT·fredkin(mod-3 부정=비트스왑)·X-켤레 c3x. C4=Cayley·순열합성 독립검증. Tier-0 64×64.
-            # 잔여: H5.2 비아벨 QFT·H5.3 Schur — ★비-dyadic 각(ω=e^{2πi/3}·CG 계수)→신규 module 4~6개
-            #   필요 → he_task_plan §4 "신규 module>2" 사람 게이트 대상(승인 대기).
+            # ✅ H5.2′ d4_mult+d4_qft: ★게이트 우회 — S₃는 ω(비-dyadic)로 막혔으나 D₄ 회전군=Z₄→위상{±1,±i}
+            #   팔레트 안. d4_mult(8원소=3q 정확, cnot·toffoli 5게이트 오버플로 가산기)·d4_qft(첫 비아벨 Fourier,
+            #   F=anti-CH∘(QFT_Z4⊗I), 봉인 qft2+ry 재사용). golden=기약표현 공식·Peter-Weyl 블록 검증. 새 module 0.
+            # ✅ H5.2′ payoff d4_hsp_observe(봉인 0): 이면군 HSP 소비 — coset state→d4_qft→irrep 분포,
+            #   g-불변·문자론 독립참조 일치·비정규{e,s} vs 정규{e,r2} 구별(↔격자문제 연결점).
+            # 잔여: H5.3 Schur-Weyl — CG 계수 비-dyadic(√⅔)→신규 module 다수=he_task_plan §4 사람 게이트(승인 대기).
         H6_Exploratory // #axis-F qudit·MPS·bosonic (blocked)
             # 개별 진입 게이트(오라클 임의차원 C1 수용·절단근사 경계) 선검증 전 착수 금지.
 

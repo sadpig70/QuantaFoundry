@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **77 sealed modules · 190 sealed applications** · registry root `36f8bc09…`
+- **77 sealed modules · 192 sealed applications** · registry root `c4ff2a1b…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 36f8bc09… · second_oracle 71/71 · behavior pass
+# expect: REPRODUCED · root_hash c4ff2a1b… · second_oracle 71/71 · behavior pass
 ```
 
 ---
@@ -42,7 +42,8 @@ python scripts/reproduce_all.py
   encoders + transversal logical gates, QSVT (block-encoding → QSP → polynomial transforms),
   fermionic encodings (Jordan-Wigner **and Bravyi-Kitaev/parity**), an H₂ molecular block-encoding,
   a generic qROM + SELECT-PREPARE data-oracle layer, the [[5,1,3]] code as a pentagon graph code
-  (5-to-1 magic-state distillation core), and the first **non-abelian group oracle** (S₃).
+  (5-to-1 magic-state distillation core), and the first **non-abelian group oracles + Fourier
+  transform** (S₃ and D₄, driving a dihedral hidden-subgroup sampling observation).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
   structural frontier (`shor91 … shor3683`, sealed via a `c8x→c12x` multi-control ladder).
 - **Key-free cross-model establishment**: the first *live* cross-model truth (`sx` = √X) settled by
