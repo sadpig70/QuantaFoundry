@@ -38,6 +38,9 @@ BE_TARGETS = {
                "desc": "n=(I-Z)/2=|1><1| fermionic number operator (Hubbard interaction 기본블록)"},
     "be_hopz": {"A": (np.kron(np.kron(X, Z), X) + np.kron(np.kron(Y, Z), Y)) / 2, "alpha": 1.0, "n_anc": 1,
                 "desc": "(XZX+YZY)/2 비인접 hopping w/ JW Z-string (spinful Hubbard, 고유값 ±1·0)"},
+    "select_prepare4": {"A": np.eye(2, dtype=complex) + X + Y + Z, "alpha": 4.0, "n_anc": 2,
+                        "desc": "HE H4.2 generic SELECT-PREPARE 템플릿: (I+X+Y+Z)/4 전 4종 Pauli, "
+                                "고유값 (1±√3)/4 비축퇴"},
 }
 QSP_APPS = ["qsp_d1", "qsp_d3", "qsp_d5"]   # 홀수 degree-1/3/5 = amp-amp·matrix-inversion 기본블록
 # QSVT family: 같은 be_proj block-encoding + 다른 위상열 → 다른 P(A). "one seal, many algorithms".

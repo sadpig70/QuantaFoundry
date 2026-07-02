@@ -475,6 +475,14 @@ ring9
 ├─ cz (module×9)
 └─ h_gate (module×9)
 
+select_prepare4
+├─ ccz (module)
+├─ h_gate (module×4)
+├─ s_gate (module)
+├─ sdg_gate (module)
+├─ toffoli (module×2)
+└─ x_gate (module×4)
+
 shor119
 ├─ cmul16_mod119 (app)
 │  ├─ c3x (module×32)

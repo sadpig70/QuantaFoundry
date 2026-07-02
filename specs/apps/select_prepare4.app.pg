@@ -1,0 +1,61 @@
+# select_prepare4 — generic SELECT-PREPARE LCU 템플릿: 전 4종 Pauli. 3q(2anc+1sys). α=4. Tier-0.
+# HE H4.2 (#axis-D): generic data oracle 계층의 상부(완성 스텝). qrom22(하부)+본 템플릿으로 축 폐합.
+#   top-left 2×2 block == A = (I + X + Y + Z)/4 — 전 4종 Pauli 를 한 SELECT 로 소화(템플릿 일반성 실증).
+#   고유값 (1±√3)/4 비축퇴(A²∝I 붕괴 없음) → QSVT consumer 즉시 소비 가능.
+# 구조: PREPARE=H⊗H(균일 dyadic, be_h2 실증 패턴) · SELECT=|j><j|⊗P_j (00→I·01→X·10→Y·11→Z) · UNPREPARE.
+#   Y branch 는 Y=S·X·S† 켤레로 honest 조립(제어 off 시 S·S†=I 자동상쇄).
+# plan=봉인 게이트만(h·x·toffoli·ccz·s·sdg), MatrixGate 0, 새 module 0.
+# ★compounding: be_xz/be_pauli2/be_h2 는 본 템플릿의 인스턴스 — "one template, many block-encodings".
+# 봉인=선택 dyadic 계수 하 exact block. 임의(비-dyadic) 진폭 PREPARE 는 범위 밖(관측 영역).
+```json id=app_meta
+{"id": "select_prepare4", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+S = np.diag([1, 1j]).astype(complex)
+Sd = S.conj().T
+NQ = 3
+def kr(*m):
+    r = m[0]
+    for x in m[1:]:
+        r = np.kron(r, x)
+    return r
+def emb(op, q):
+    return kr(*[op if i == q else I2 for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def ccx(c1, c2, t):
+    M = np.zeros((8, 8), dtype=complex)
+    for x in range(8):
+        b = bits(x)
+        if b[c1] and b[c2]:
+            b = b[:]; b[t] ^= 1
+        M[frombits(b), x] = 1.0
+    return M
+def ccz(c1, c2, c3):
+    M = np.eye(8, dtype=complex)
+    for x in range(8):
+        b = bits(x)
+        if b[c1] and b[c2] and b[c3]:
+            M[x, x] = -1.0
+    return M
+gates = [emb(Hd, 0), emb(Hd, 1),                                   # PREPARE
+         emb(X, 0), ccx(0, 1, 2), emb(X, 0),                        # 01 -> X
+         emb(X, 1), emb(Sd, 2), ccx(0, 1, 2), emb(S, 2), emb(X, 1), # 10 -> Y = S·X·S†
+         ccz(0, 1, 2),                                              # 11 -> Z
+         emb(Hd, 0), emb(Hd, 1)]                                    # UNPREPARE
+golden = np.eye(8, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/sdg_gate.pg", "targets": [2]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]}, {"spec": "../modules/s_gate.pg", "targets": [2]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/ccz.pg", "targets": [0, 1, 2]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

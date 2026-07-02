@@ -121,6 +121,7 @@ APP_LIST = [
     ("be_h2.app.pg",                 None), # H2.1 H₂ 부호구조 block-encoding (dyadic uniform LCU, (−I+XX+YY+ZZ)/4)
     # HE H4 (#axis-D): Generic data oracle — qROM / SELECT-PREPARE
     ("qrom22.app.pg",                None), # H4.1 qROM 2addr×2data table lookup (|i>|d>→|i>|d⊕data[i]>, x·toffoli)
+    ("select_prepare4.app.pg",       None), # H4.2 generic SELECT-PREPARE LCU 템플릿 (전 4종 Pauli, block=(I+X+Y+Z)/4)
 ]
 
 
