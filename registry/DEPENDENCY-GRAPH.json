@@ -4074,6 +4074,23 @@
       }
     ]
   },
+  "qrom22": {
+    "u_hash": "ded68349bf68661fce768918fdace66d53bf0769e2f044d0dbf517f73f9c6d16",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 4,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 8,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "qsp_d1": {
     "u_hash": "36cd989bdbc3248774d677bc899e82dced24b8b68d2a3770ca9ba33235b29346",
     "depends_on": [

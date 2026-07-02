@@ -119,6 +119,8 @@ APP_LIST = [
     ("parity4_transform.app.pg",     None), # H1.4 parity 인코딩 U_par n=4 (누적 parity permutation, cnot 조립)
     # HE H2 (#axis-B): Molecular Hamiltonian seal pack
     ("be_h2.app.pg",                 None), # H2.1 H₂ 부호구조 block-encoding (dyadic uniform LCU, (−I+XX+YY+ZZ)/4)
+    # HE H4 (#axis-D): Generic data oracle — qROM / SELECT-PREPARE
+    ("qrom22.app.pg",                None), # H4.1 qROM 2addr×2data table lookup (|i>|d>→|i>|d⊕data[i]>, x·toffoli)
 ]
 
 

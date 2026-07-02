@@ -372,6 +372,10 @@ qpe_t
 ├─ cz (module)
 └─ h_gate (module×3)
 
+qrom22
+├─ toffoli (module×4)
+└─ x_gate (module×8)
+
 qsp_d1
 ├─ rx_negpi4 (module)
 └─ rz_negpi4 (module×2)
