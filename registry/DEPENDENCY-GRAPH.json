@@ -4642,6 +4642,35 @@
       }
     ]
   },
+  "s3_mult": {
+    "u_hash": "f8a0c5e9b8a922240978d856d7c6bc2336404ffac4b710f20ff12c5bf021b61b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 4,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "fredkin",
+        "uses": 1,
+        "child_u_hash": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 12,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "select_prepare4": {
     "u_hash": "305401a7909513f2e179b2616a1c3fe85b7f18f1ede0879c36a72e189fe97ee2",
     "depends_on": [

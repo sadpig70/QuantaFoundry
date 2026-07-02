@@ -1,0 +1,50 @@
+# s3_mult — S₃(첫 비아벨군) 곱셈 오라클 |g>|h> → |g>|gh>. 6q. Tier-0 64×64.
+# HE H5.1 (#axis-E): 표현론/비아벨 대수 축의 관문. 현 카탈로그의 QFT/Shor/Simon=전부 아벨(Z_N) —
+#   S₃ 곱셈 오라클이 비아벨 hidden subgroup(격자문제·그래프동형 관문) 세계를 연다.
+# ★인코딩 통찰: 반직접곱 g=r^a s^b (a∈Z₃: q_a1 q_a0 / b∈Z₂: q_b) → 곱셈이 닫힌형
+#   (a,b)(c,d) = (a + (−1)^b c mod 3, b⊕d):
+#   d⊕=b → CNOT · (−1)^b 부정(mod3: 1↔2=비트스왑!) → fredkin(b; c1,c0) ·
+#   +1/+2 mod3 → X-켤레 c3x 전위쌍(t01·t02) 2branch. 레이아웃 q0..q2=g(a1,a0,b)·q3..q5=h(c1,c0,d).
+# C4 독립참조(설계 검증): 군법칙 공식 == 실제 순열(r=(012),s=(01)) 합성, 36 유효매핑 == Cayley table,
+#   비아벨(rs≠sr) 확인. invalid(a=11/c=11)=항등 보존(계약 명시). 계산기저 permutation.
+# plan=봉인 게이트만(cnot·fredkin·c3x·x), MatrixGate 0, 새 module 0.
+```json id=app_meta
+{"id": "s3_mult", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 6
+DIM = 64
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def semantics(g, h):
+    """(a,b)(c,d)=(a+(−1)^b c mod3, b⊕d) 의 회로 의미(invalid 계약 포함)."""
+    a1, a0, bb = g
+    c1, c0, dd = h
+    dd ^= bb                                   # CNOT b→d
+    if bb:                                     # fredkin: mod-3 부정 = c1↔c0 스왑 (11 고정)
+        c1, c0 = c0, c1
+    if (a1, a0) == (0, 1):                     # +1 mod 3: t01 후 t02
+        if c1 == 0:
+            c0 ^= 1
+        if c0 == 0:
+            c1 ^= 1
+    if (a1, a0) == (1, 0):                     # +2 mod 3: t02 후 t01 (역사이클)
+        if c0 == 0:
+            c1 ^= 1
+        if c1 == 0:
+            c0 ^= 1
+    return [a1, a0, bb, c1, c0, dd]
+golden = np.zeros((DIM, DIM), dtype=complex)
+for x in range(DIM):
+    b = bits(x)
+    golden[frombits(semantics(b[:3], b[3:])), x] = 1.0 + 0.0j
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [2, 5]}, {"spec": "../modules/fredkin.pg", "targets": [2, 3, 4]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 4]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/x_gate.pg", "targets": [4]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 4, 3]}, {"spec": "../modules/x_gate.pg", "targets": [4]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/x_gate.pg", "targets": [1]}, {"spec": "../modules/x_gate.pg", "targets": [4]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 4, 3]}, {"spec": "../modules/x_gate.pg", "targets": [4]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/c3x.pg", "targets": [0, 1, 3, 4]}, {"spec": "../modules/x_gate.pg", "targets": [3]}, {"spec": "../modules/x_gate.pg", "targets": [1]}]}
+```

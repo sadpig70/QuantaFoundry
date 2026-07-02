@@ -124,6 +124,8 @@ APP_LIST = [
     ("select_prepare4.app.pg",       None), # H4.2 generic SELECT-PREPARE LCU 템플릿 (전 4종 Pauli, block=(I+X+Y+Z)/4)
     # HE H3 (#axis-C): FTQC non-Clifford 심화 — magic state distillation
     ("code513_encoder.app.pg",       None), # H3.1 [[5,1,3]] 오각형 graph-code 인코더 (cnot·h·cz, 증류 Clifford 핵심)
+    # HE H5 (#axis-E): 표현론 — 비아벨 유한군
+    ("s3_mult.app.pg",               None), # H5.1 S₃ 곱셈 오라클 |g>|h>→|g>|gh> (반직접곱 닫힌형, cnot·fredkin·c3x·x)
 ]
 
 

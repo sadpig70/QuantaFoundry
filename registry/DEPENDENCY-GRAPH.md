@@ -480,6 +480,12 @@ ring9
 ├─ cz (module×9)
 └─ h_gate (module×9)
 
+s3_mult
+├─ c3x (module×4)
+├─ cnot (module)
+├─ fredkin (module)
+└─ x_gate (module×12)
+
 select_prepare4
 ├─ ccz (module)
 ├─ h_gate (module×4)
