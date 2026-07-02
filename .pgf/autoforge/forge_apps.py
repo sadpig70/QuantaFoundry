@@ -134,6 +134,7 @@ APP_LIST = [
     # HE2 P1 (#TOPO): Surface code + lattice surgery (위상적 논리연산)
     ("surf422_encoder.app.pg",       None), # P1.1 [[4,2,2]] 최소 surface-type CSS 인코더 (Clifford, cnot·h)
     ("surf_ls_merge_zz.app.pg",      None), # P1.2 lattice surgery coherent Z_L⊗Z_L 병합 (9q, joint-parity block, h·cz)
+    ("toric22_gs.app.pg",            None), # P1.3 2×2 토릭 ground state |00>_L 준비 (8q 위상질서, star-seed h·cnot)
 ]
 
 

@@ -1138,6 +1138,10 @@ tfim4_trotter_step2
 │  └─ rz_negpi8 (module)
 └─ rx_negpi4 (module×4)
 
+toric22_gs
+├─ cnot (module×9)
+└─ h_gate (module×3)
+
 vqe_he2_3pi4
 ├─ cnot (module)
 └─ ry_3pi4 (module×2)

@@ -1,0 +1,46 @@
+# toric22_gs — 2×2 토릭 코드 ground state(|00>_L) 준비 회로. 8q. Tier-0 256×256.
+# HE2 P1.3 (#TOPO): 위상적 질서(topological order)의 봉인 — surf422(국소 CSS 검출)와 달리 주기경계·
+#   호몰로지(논리 연산자=비축약 루프, 국소 연산으로 지울 수 없음)로 위상적 QEC 본질을 담는다.
+# 격자: 2×2 torus, 8 edge qubit(h00,h01,h10,h11,v00,v01,v10,v11 = q0..7). stabilizer:
+#   star(X): A00=X{0,1,4,6}·A01=X{0,1,5,7}·A10=X{2,3,4,6} | plaquette(Z): B00=Z{0,2,4,5}·B01=Z{1,3,4,5}·B10=Z{0,2,6,7}.
+#   (A11·B11 종속) → 6 독립 stabilizer, 8q, 2 논리. ground state |00>_L = ∏_v(I+A_v)|0^8> = loop-gas 중첩.
+# 회로: star 별 fresh-seed(0,5,2) H·CNOT 확산. golden|0^8> = |GS>(6 stabilizer 전부 +1 고유상태).
+# plan=봉인 게이트만(h_gate·cnot), MatrixGate 0, 새 module 0.
+# 봉인=ground state prep Clifford exact. 완전 2-논리 encoder(논리 X 확산)·거리·decoder=차기/관측(INV-Q3).
+```json id=app_meta
+{"id": "toric22_gs", "n_sys": 8, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 8
+DIM = 256
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def frombits(b):
+    v = 0
+    for i in range(NQ):
+        v |= (b[i] & 1) << (NQ - 1 - i)
+    return v
+def cnot(c, t):
+    M = np.zeros((DIM, DIM), dtype=complex)
+    for x in range(DIM):
+        b = bits(x)
+        b = b[:]; b[t] ^= b[c]
+        M[frombits(b), x] = 1.0
+    return M
+# star-seed ground state prep: seeds 0,5,2 spread via CNOT over A00,A01,A10 support
+gates = [emb(Hd, 0), cnot(0, 1), cnot(0, 4), cnot(0, 6),
+         emb(Hd, 5), cnot(5, 0), cnot(5, 1), cnot(5, 7),
+         emb(Hd, 2), cnot(2, 3), cnot(2, 4), cnot(2, 6)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 4]}, {"spec": "../modules/cnot.pg", "targets": [0, 6]}, {"spec": "../modules/h_gate.pg", "targets": [5]}, {"spec": "../modules/cnot.pg", "targets": [5, 0]}, {"spec": "../modules/cnot.pg", "targets": [5, 1]}, {"spec": "../modules/cnot.pg", "targets": [5, 7]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/cnot.pg", "targets": [2, 3]}, {"spec": "../modules/cnot.pg", "targets": [2, 4]}, {"spec": "../modules/cnot.pg", "targets": [2, 6]}]}
+```

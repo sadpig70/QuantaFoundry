@@ -5541,6 +5541,23 @@
       }
     ]
   },
+  "toric22_gs": {
+    "u_hash": "ecbafc4c210f32c8f0c8874668e76fb201f85243d3dce6333d396ddf49a4cad9",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 9,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "vqe_he2_3pi4": {
     "u_hash": "8d1445eb49fcdfaf543522d090a66cd62811b83df25287eaba04ff6df90e7574",
     "depends_on": [
