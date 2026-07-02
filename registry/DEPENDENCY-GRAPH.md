@@ -1083,6 +1083,10 @@ surf422_encoder
 ├─ cnot (module×5)
 └─ h_gate (module)
 
+surf_ls_merge_zz
+├─ cz (module×4)
+└─ h_gate (module×2)
+
 swap_via_cnot
 └─ cnot (module×3)
 

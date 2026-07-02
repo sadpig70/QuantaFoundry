@@ -133,6 +133,7 @@ APP_LIST = [
     ("qutrit_sum.app.pg",            None), # H6.1′ 큐트릿 삼진 모듈러 가산기 (a+b mod3, c3x 켤레)
     # HE2 P1 (#TOPO): Surface code + lattice surgery (위상적 논리연산)
     ("surf422_encoder.app.pg",       None), # P1.1 [[4,2,2]] 최소 surface-type CSS 인코더 (Clifford, cnot·h)
+    ("surf_ls_merge_zz.app.pg",      None), # P1.2 lattice surgery coherent Z_L⊗Z_L 병합 (9q, joint-parity block, h·cz)
 ]
 
 

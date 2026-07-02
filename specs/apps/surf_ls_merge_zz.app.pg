@@ -1,0 +1,38 @@
+# surf_ls_merge_zz — lattice surgery: 두 [[4,2,2]] 논리 큐빗 coherent Z_L⊗Z_L 병합. 9q. Tier-0 512×512.
+# HE2 P1.2 (#TOPO): "논리 큐빗 간 연산"의 실체 — v1에서 자산 부재로 연기한 H3.3 lattice surgery 완성.
+# lattice surgery ZZ-merge = 두 논리 큐빗의 결합 parity Z_L1⊗Z_L2 측정. coherent 버전(측정→deferred 제어):
+#   ancilla(q0)를 Z_L1 Z_L2 에 얽어(H·controlled·H) syndrome-0 branch 가 결합 사영 (I+Z_L1Z_L2)/2 구현.
+# 레이아웃: q0=ancilla · patch1=q1-4(Z_L1=Z₁Z₂) · patch2=q5-8(Z_L2=Z₅Z₆). U=H(0)·CZ(0,1)CZ(0,2)CZ(0,5)CZ(0,6)·H(0).
+#   top-left 256×256 block == (I + Z_L1Z_L2)/2 (projector, 고유값 {0,1}). be_num 형제(joint-parity block-encoding).
+# plan=봉인 게이트만(h_gate·cz), MatrixGate 0, 새 module 0.
+# 봉인=이상적 coherent merge Clifford exact. 실측정·Pauli-frame 피드백·decoder·split=관측(하드웨어, INV-Q3).
+```json id=app_meta
+{"id": "surf_ls_merge_zz", "n_sys": 9, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 9
+DIM = 512
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def cz(a, b_):
+    M = np.eye(DIM, dtype=complex)
+    for x in range(DIM):
+        bb = bits(x)
+        if bb[a] and bb[b_]:
+            M[x, x] = -1.0
+    return M
+# coherent Z_L1⊗Z_L2 merge: ancilla q0 entangled with Z1Z2 (patch1) · Z5Z6 (patch2)
+gates = [emb(Hd, 0), cz(0, 1), cz(0, 2), cz(0, 5), cz(0, 6), emb(Hd, 0)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/cz.pg", "targets": [0, 5]}, {"spec": "../modules/cz.pg", "targets": [0, 6]}, {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```
