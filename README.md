@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **77 sealed modules · 205 sealed applications** · registry root `d5557622…`
+- **77 sealed modules · 207 sealed applications** · registry root `c188d733…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash d5557622… · second_oracle 71/71 · behavior pass
+# expect: REPRODUCED · root_hash c188d733… · second_oracle 71/71 · behavior pass
 ```
 
 ---
@@ -48,7 +48,9 @@ python scripts/reproduce_all.py
   encoder + coherent lattice surgery + 2×2 toric ground state, closing the FTQC logical stack),
   **GF(2ᵏ) finite-field arithmetic** (multiply/Frobenius/primitive-orbit), **Ising/Majorana braiding**
   (Yang-Baxter), **measurement-based computation** (cluster state + coherent gate teleportation),
-  a **Clifford quantum cellular automaton** (exact discrete-time dynamics), and a **fermionic SWAP**.
+  a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **fermionic SWAP**,
+  a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
+  (Clifford fragment), and a **hypergraph-product qLDPC code** (generic classical→CSS construction).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
   structural frontier (`shor91 … shor3683`, sealed via a `c8x→c12x` multi-control ladder).
 - **Key-free cross-model establishment**: the first *live* cross-model truth (`sx` = √X) settled by
