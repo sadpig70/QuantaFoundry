@@ -379,6 +379,24 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   X₃ 위수3·궤도·SUM 교환/영원 + 게이트경계(ω=e^{2πi/3}·1/√3: Z₃/QFT₃/Bell₃=차기). C4=정수 삼진산술.
             # 잔여(게이트): qutrit QFT₃/Z₃(ω)·MPS(AKLT χ=2)·bosonic(절단근사) — 신규 module 다수=he_task_plan §4.
 
+    TrackHE2 // 2차 수평확장 — 외부 8런타임 report2(23제안)→통합6축(P1–P6) 자율실행 (in-progress) @dep:TrackHE
+        # 정본: _workspace/integrated_horizontal_expansion2.md(통합)·he_task_plan2.md(PPR 실행계획, 회로확정 명세).
+        # 2026-07-03: 11커밋 · root eedb7aa8→d5557622 · 194→205 apps · 전 구간 새 module 0. ★시그니처=게이트 우회.
+        P1_SurfaceLatticeSurgery // #TOPO 위상적 논리연산 (done)
+            # ✅ surf422_encoder([[4,2,2]] CSS)·surf_ls_merge_zz(coherent Z_L⊗Z_L 병합)·toric22_gs(위상질서)·
+            #   logical_stack_observe(완전 FTQC 논리스택: magic→증류→논리T→논리큐빗→lattice surgery). v1 H3.3 완성.
+        P2_MBQC // #MBQC 측정기반 계산 (done, 최다합의 7)
+            # ✅ cluster3x3_prep(2D 자원)·mbqc_h(측정패턴↔회로 등가, H 텔레포트 coherent)·mbqc_observe.
+        P3_GF2k // #GF 유한체 특성-2 대수 (done)
+            # ✅ gf4_mul(GF(4) 곱셈)·gf4_frob(Frobenius Z₂)·gf8_mulx(GF(8) primitive 7-cycle). 군≠체.
+        P4_BraidAnyon // #ANYON 위상적 계산 (done)
+            # ✅ ising_braid_b2(Majorana B₂ entangling)·braid_observe(Yang-Baxter B₁B₂B₁==B₂B₁B₂·Clifford).
+        P5_QCA // #QCA discrete-time exact (done)
+            # ✅ qca_step(Clifford brickwork 병진불변)·gnvw_index_observe(exact≠Trotter 근사·light-cone).
+        P6_Exploratory // 탐색 (in-progress)
+            # ✅ fswap(fermionic SWAP, VC primitive §3b gap). 잔여: AKLT(착수시 de-risk)·사람게이트(Schur CG√⅔·
+            #   GKP 근사·ZX 검증방법·qLDPC 13q dense초과→Tier-2).
+
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
