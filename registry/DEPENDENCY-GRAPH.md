@@ -270,6 +270,11 @@ heis3_trotter_step
    ├─ cnot (module×2)
    └─ rz_negpi4 (module)
 
+ising_braid_b2
+├─ cz (module)
+├─ h_gate (module×4)
+└─ sdg_gate (module×2)
+
 magic_a
 ├─ h_gate (module)
 └─ t_gate (module)

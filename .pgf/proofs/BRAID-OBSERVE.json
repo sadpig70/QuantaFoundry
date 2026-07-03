@@ -1,0 +1,14 @@
+{
+  "_note": "Ising/Majorana 브레이드 Yang-Baxter 관계 관측. 봉인=ising_braid_b2 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "braid-observe-v1",
+  "observation": {
+    "B2_entangling": true,
+    "axis": "위상적 양자계산 — Ising/Majorana 브레이드 (JW 표현)",
+    "honest_boundary": "봉인=ising_braid_b2 Clifford exact 뿐. Yang-Baxter·Clifford성=관측. Fibonacci anyon(황금비)·Jones 다항식·universality=비-dyadic 차기 게이트. 신규 봉인 0.",
+    "ising_braid_is_clifford": true,
+    "ok": true,
+    "sealed_asset": "ising_braid_b2 (B₂=exp(π/4 γ₂γ₃), entangling)",
+    "yang_baxter_B1B2B1==B2B1B2": true,
+    "yang_baxter_B2B3B2==B3B2B3": true
+  }
+}

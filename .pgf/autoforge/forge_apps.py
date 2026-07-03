@@ -139,6 +139,8 @@ APP_LIST = [
     ("gf4_mul.app.pg",               None), # P3.1 GF(4) 곱셈 |a,b,0>→|a,b,a·b> (toffoli 5, permutation)
     ("gf4_frob.app.pg",              None), # P3.2 GF(4) Frobenius x↦x² (cnot 1, 갈루아 Z₂)
     ("gf8_mulx.app.pg",              None), # P3.2 GF(8) 생성원 곱 a↦a·x (LFSR cnot 5, primitive 7-cycle)
+    # HE2 P4 (#ANYON): Ising/Majorana 브레이드 (위상적 양자계산)
+    ("ising_braid_b2.app.pg",        None), # P4.1 Majorana 브레이드 생성자 B₂ (entangling, h·sdg·cz)
 ]
 
 

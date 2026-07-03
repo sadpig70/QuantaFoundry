@@ -1,0 +1,22 @@
+# ising_braid_b2 — Ising/Majorana 브레이드 생성자 B₂=exp(π/4·γ₂γ₃) (JW 표현, entangling). 2q. Tier-0.
+# HE2 P4.1 (#ANYON): 위상적 양자계산(anyon braiding) 축. P1(surface code)=위상적 오류정정이면
+#   P4=위상적 *계산* — Majorana anyon 교환이 논리 게이트를 구현(fault-tolerant, 기하학적 보호).
+# ★기존 JW fermionic 자산 복리: Majorana γ (JW): γ₁=X₀·γ₂=Y₀·γ₃=Z₀X₁·γ₄=Z₀Y₁ ({γᵢ,γⱼ}=2δᵢⱼ).
+#   B₂=exp(π/4·γ₂γ₃)=(I+iX₀X₁)/√2 — 유일 entangling 브레이드(2q). 전역위상 e^{iπ/4} 제거(관측 불가):
+#   sealed = (H⊗H)(S†⊗S†)CZ(H⊗H) = Clifford. plan=봉인 게이트만(h·sdg·cz), MatrixGate 0, 새 module 0.
+# 봉인=Ising 브레이드(Clifford) exact. Fibonacci anyon(황금비)·Jones 다항식·universality=차기 게이트(INV-Q3).
+```json id=app_meta
+{"id": "ising_braid_b2", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+Sd = np.diag([1, -1j]).astype(complex)                # S† (phase gate dagger)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+# B₂ up to global phase e^{iπ/4} = (H⊗H)(S†⊗S†)CZ(H⊗H)  (Majorana exp(π/4 γ₂γ₃)=exp(iπ/4 X₀X₁))
+golden = np.kron(Hd, Hd) @ np.kron(Sd, Sd) @ CZ @ np.kron(Hd, Hd)
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/sdg_gate.pg", "targets": [0]}, {"spec": "../modules/sdg_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```
