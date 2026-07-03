@@ -4215,6 +4215,23 @@
       }
     ]
   },
+  "qldpc_hgp": {
+    "u_hash": "4d89057e5b58f9298d1b988b2eec495cefca026ac35190990c6b70c43a3911af",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 10,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "qpe_s": {
     "u_hash": "f222bc16eef5d891a5de9f0664b1ef3b1cf89752c4e689db24e2087f112c861f",
     "depends_on": [

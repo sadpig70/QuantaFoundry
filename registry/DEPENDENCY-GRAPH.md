@@ -399,6 +399,10 @@ qft8_pipeline
 ├─ h_gate (module×8)
 └─ swap2 (module×4)
 
+qldpc_hgp
+├─ cnot (module×10)
+└─ h_gate (module×4)
+
 qpe_s
 ├─ iqft2 (app)
 │  ├─ cs_dag (module)

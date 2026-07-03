@@ -1,0 +1,41 @@
+# qldpc_hgp — 하이퍼그래프곱 CSS 코드 [[8,1,2]] 인코더 (|0_L> 준비). 8q. Tier-0 256×256.
+# HE2 T4 (#QLDPC · 사람게이트 승인분 ③, ★소형 Tier-0로 우회 — Tier-2 불필요, 새 module 0).
+# ★차세대 QEC: 고전 선형부호 → 양자 CSS 의 **generic 구성**(Tillich-Zémor 하이퍼그래프곱).
+#   H1=[3,1] rep · H2=[2,1] rep → N=n1n2+m1m2=8 qubit, K=1 logical, CSS(H_X·H_Zᵀ=0).
+#   surface/toric(repetition×repetition)와 달리 **비대칭 부호**([[8,1,2]]≠toric22 [[8,2,2]]) — 구성의 일반성 실증.
+# |0_L> = ∏(I+S_X)|0^8>: RREF-pivot seed(0,1,2,3) H·CNOT 확산 14게이트. plan=봉인 게이트만(h·cnot), 새 module 0.
+# C4: HGP CSS 구성(H_X H_Zᵀ=0·K=1) + golden|0^8> 이 X-stab·Z-stab 전부 +1 고유상태.
+# 봉인=CSS encoder Clifford exact. 거리 d·비국소성 이점·decoder·큰 인스턴스(Tier-2/structural)=관측/차기(INV-Q3).
+```json id=app_meta
+{"id": "qldpc_hgp", "n_sys": 8, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 8
+DIM = 256
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def cnot(c, t):
+    M = np.zeros((DIM, DIM), dtype=complex)
+    for x in range(DIM):
+        b = bits(x)
+        b = b[:]; b[t] ^= b[c]
+        M[sum((b[i] & 1) << (NQ - 1 - i) for i in range(NQ)), x] = 1.0
+    return M
+# CSS |0_L> prep: RREF-pivot(0,1,2,3) H(pivot)+CNOT(pivot→support)
+gates = [emb(Hd, 0), cnot(0, 4), cnot(0, 6), cnot(0, 7),
+         emb(Hd, 1), cnot(1, 5), cnot(1, 6), cnot(1, 7),
+         emb(Hd, 2), cnot(2, 4), cnot(2, 7),
+         emb(Hd, 3), cnot(3, 5), cnot(3, 7)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 4]}, {"spec": "../modules/cnot.pg", "targets": [0, 6]}, {"spec": "../modules/cnot.pg", "targets": [0, 7]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/cnot.pg", "targets": [1, 5]}, {"spec": "../modules/cnot.pg", "targets": [1, 6]}, {"spec": "../modules/cnot.pg", "targets": [1, 7]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/cnot.pg", "targets": [2, 4]}, {"spec": "../modules/cnot.pg", "targets": [2, 7]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/cnot.pg", "targets": [3, 5]}, {"spec": "../modules/cnot.pg", "targets": [3, 7]}]}
+```
