@@ -374,6 +374,23 @@
       }
     ]
   },
+  "cluster3x3_prep": {
+    "u_hash": "eec6e603fe45aa6e43cdc52e2b2c7f0b03c69e35df3f23462a8ed74331ad42ee",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 12,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 9,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "cluster4": {
     "u_hash": "bb113c845558133ee11a7f8469178a7c1863acf3560e68f15a051c33b32fefc5",
     "depends_on": [

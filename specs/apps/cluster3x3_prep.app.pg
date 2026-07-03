@@ -1,0 +1,39 @@
+# cluster3x3_prep — 2D 3×3 cluster graph state 준비. 9q. Tier-0 512×512.
+# HE2 P2.1 (#MBQC): 측정기반 양자계산(MBQC)의 자원 상태 — 회로모델↔측정모델 전환의 기초.
+#   외부 8런타임 중 7개가 지목한 최다합의 축. cluster state = graph state(격자 그래프).
+# 3×3 격자 qubit i=3r+c. 12 간선: 수평(0-1,1-2,3-4,4-5,6-7,7-8)·수직(0-3,3-6,1-4,4-7,2-5,5-8).
+#   준비: |+>^⊗9 후 각 간선에 CZ. stabilizer 생성자 gᵢ = Xᵢ ∏_{j∈N(i)} Zⱼ 가 상태 고정.
+# plan=봉인 게이트만(h_gate·cz), MatrixGate 0, 새 module 0. C4: 9 stabilizer 정수검증(고정).
+# 봉인=cluster state prep Clifford exact. 측정패턴·feedforward·gflow=P2.2/관측(측정=비유니터리, INV-Q3).
+```json id=app_meta
+{"id": "cluster3x3_prep", "n_sys": 9, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 9
+DIM = 1 << NQ
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def cz(a, b):
+    M = np.eye(DIM, dtype=complex)
+    for x in range(DIM):
+        bb = bits(x)
+        if bb[a] and bb[b]:
+            M[x, x] = -1.0
+    return M
+EDGES = [(0, 1), (1, 2), (3, 4), (4, 5), (6, 7), (7, 8),   # 수평
+         (0, 3), (3, 6), (1, 4), (4, 7), (2, 5), (5, 8)]   # 수직
+golden = np.eye(DIM, dtype=complex)
+for q in range(NQ):                                        # |+>^⊗9
+    golden = emb(Hd, q) @ golden
+for (a, b) in EDGES:                                       # CZ per edge
+    golden = cz(a, b) @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [4]}, {"spec": "../modules/h_gate.pg", "targets": [5]}, {"spec": "../modules/h_gate.pg", "targets": [6]}, {"spec": "../modules/h_gate.pg", "targets": [7]}, {"spec": "../modules/h_gate.pg", "targets": [8]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [1, 2]}, {"spec": "../modules/cz.pg", "targets": [3, 4]}, {"spec": "../modules/cz.pg", "targets": [4, 5]}, {"spec": "../modules/cz.pg", "targets": [6, 7]}, {"spec": "../modules/cz.pg", "targets": [7, 8]}, {"spec": "../modules/cz.pg", "targets": [0, 3]}, {"spec": "../modules/cz.pg", "targets": [3, 6]}, {"spec": "../modules/cz.pg", "targets": [1, 4]}, {"spec": "../modules/cz.pg", "targets": [4, 7]}, {"spec": "../modules/cz.pg", "targets": [2, 5]}, {"spec": "../modules/cz.pg", "targets": [5, 8]}]}
+```

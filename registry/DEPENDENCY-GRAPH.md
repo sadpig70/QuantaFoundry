@@ -71,6 +71,10 @@ cluster3
 ├─ cz (module×2)
 └─ h_gate (module×3)
 
+cluster3x3_prep
+├─ cz (module×12)
+└─ h_gate (module×9)
+
 cluster4
 ├─ cz (module×3)
 └─ h_gate (module×4)

@@ -141,6 +141,8 @@ APP_LIST = [
     ("gf8_mulx.app.pg",              None), # P3.2 GF(8) 생성원 곱 a↦a·x (LFSR cnot 5, primitive 7-cycle)
     # HE2 P4 (#ANYON): Ising/Majorana 브레이드 (위상적 양자계산)
     ("ising_braid_b2.app.pg",        None), # P4.1 Majorana 브레이드 생성자 B₂ (entangling, h·sdg·cz)
+    # HE2 P2 (#MBQC): 측정기반 양자계산 (cluster state + 측정패턴)
+    ("cluster3x3_prep.app.pg",       None), # P2.1 2D 3×3 cluster graph state (9q, h·cz 12간선)
 ]
 
 
