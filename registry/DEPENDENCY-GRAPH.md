@@ -283,6 +283,11 @@ magic_a
 ├─ h_gate (module)
 └─ t_gate (module)
 
+mbqc_h
+├─ cnot (module)
+├─ cz (module)
+└─ h_gate (module)
+
 parity4_transform
 └─ cnot (module×6)
 

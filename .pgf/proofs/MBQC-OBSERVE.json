@@ -1,0 +1,12 @@
+{
+  "_note": "MBQC 측정패턴↔회로 등가 관측. 봉인=cluster3x3·mbqc_h 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "mbqc-observe-v1",
+  "observation": {
+    "H_teleport_deterministic": true,
+    "axis": "측정기반 양자계산(MBQC) — 측정패턴↔회로 등가",
+    "cluster_resource_stabilizer_wellformed": true,
+    "honest_boundary": "봉인=coherent Clifford exact 뿐(mbqc_h·cluster). 실측정(비유니터리)·byproduct·gflow·비-Clifford(π/4 T-텔레포트)=관측(INV-Q3). 신규 봉인 0.",
+    "ok": true,
+    "sealed_assets": "cluster3x3_prep(자원)·mbqc_h(coherent H 텔레포트)"
+  }
+}

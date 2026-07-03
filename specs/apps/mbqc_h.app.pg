@@ -1,0 +1,27 @@
+# mbqc_h — MBQC 측정패턴↔회로 등가: H 게이트 텔레포트 (coherent). 2q. Tier-0 4×4.
+# HE2 P2.2 (#MBQC): 측정기반 계산의 본질 — "cluster state 준비"(P2.1)에서 "cluster state로 계산"으로.
+#   1D 2-qubit cluster teleportation: 입력 |ψ>₀·자원 |+>₁, CZ 얽음, q0 를 X-기저 측정 → q1=H|ψ> (Pauli 보정).
+# ★게이트 우회(측정=비유니터리): 측정→deferred coherent 제어 치환. U=CNOT(0,1)·H(0)·CZ(0,1) 는
+#   |ψ>₀|+>₁ → |+>₀ (H|ψ>)₁ 를 결정론적 텔레포트(Clifford exact). plan=봉인 게이트만(cz·h·cnot).
+# 봉인=coherent 패턴 회로 exact. 실측정·byproduct·gflow·비-Clifford(π/4 T)=관측(mbqc_observe, INV-Q3).
+```json id=app_meta
+{"id": "mbqc_h", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+def cnot(c, t):
+    M = np.zeros((4, 4), dtype=complex)
+    for x in range(4):
+        b = [(x >> 1) & 1, x & 1]
+        b[t] ^= b[c]
+        M[(b[0] << 1) | b[1], x] = 1.0
+    return M
+# coherent MBQC H-teleportation: CNOT(0,1)·H(0)·CZ  (CZ 먼저 적용)
+golden = cnot(0, 1) @ np.kron(Hd, I) @ CZ
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

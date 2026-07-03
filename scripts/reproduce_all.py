@@ -204,6 +204,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3v. HE2 P2.2: MBQC 측정패턴↔회로 등가 (cluster3x3·mbqc_h, observation)
+    rc, out = run(["scripts/mbqc_observe.py", "--quick"])
+    result["steps"]["mbqc_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
