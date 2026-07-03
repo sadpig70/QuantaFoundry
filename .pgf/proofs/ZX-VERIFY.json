@@ -1,0 +1,21 @@
+{
+  "_note": "ZX-calculus Clifford fragment 3번째 독립 검증 경로. 봉인 무변경(INV-Q3). 신규 봉인 0.",
+  "_schema": "zx-verify-v1",
+  "verification": {
+    "clifford_reconstruction": {
+      "H == ZX(X(π/2)Z(π/2)X(π/2)) up-to-phase": true,
+      "cz sealed unitary (ZX-representable Clifford)": true
+    },
+    "honest_boundary": "봉인 무변경(검증 강화). ZX=Clifford fragment 완전·종료; Clifford+T=불완전(관측, ZX 한계). self-contained(pyzx 없음). 신규 봉인 0(INV-Q3).",
+    "method": "ZX-calculus Clifford fragment — 3번째 독립 검증 경로",
+    "ok": true,
+    "position": "second_oracle(dense)·convention_independence(규약) 다음 3번째 오라클",
+    "rewrite_rule_identities": {
+      "color_change": true,
+      "hadamard_self_inverse": true,
+      "identity_removal": true,
+      "pi_copy": true,
+      "spider_fusion": true
+    }
+  }
+}
