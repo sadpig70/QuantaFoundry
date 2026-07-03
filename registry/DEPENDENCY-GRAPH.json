@@ -3212,6 +3212,23 @@
       }
     ]
   },
+  "fswap": {
+    "u_hash": "719fb6081419883895b4213563a404997b0a7f5f933c76aacbe82eba610539d2",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 1,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      }
+    ]
+  },
   "gf4_frob": {
     "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
     "depends_on": [

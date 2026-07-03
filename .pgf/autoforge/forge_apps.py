@@ -146,6 +146,7 @@ APP_LIST = [
     ("mbqc_h.app.pg",                None), # P2.2 MBQC H 텔레포트 coherent (2q, cz·h·cnot)
     # HE2 P5 (#QCA): 양자 셀룰러 오토마타 (discrete-time exact dynamics)
     ("qca_step.app.pg",              None), # P5.1 Clifford QCA 1-step brickwork (4q, cz·h, 병진불변)
+    ("fswap.app.pg",                 None), # P6 fermionic SWAP (Verstraete-Cirac primitive, swap2·cz)
 ]
 
 

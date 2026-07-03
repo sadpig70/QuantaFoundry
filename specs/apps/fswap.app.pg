@@ -1,0 +1,27 @@
+# fswap — fermionic SWAP (Verstraete-Cirac primitive). 2q. Tier-0 4×4.
+# HE2 P6 (#VC): Verstraete-Cirac / fermionic swap network — v2 §3b 명시 gap(JW/BK/parity 외 미구현).
+#   JW 인코딩의 비국소 Z-string 을 제거하는 핵심 primitive: 인접 fermionic mode 교환 시 반교환 부호 처리.
+# fSWAP = SWAP 후 CZ: |00>→|00>·|01>↔|10>·|11>→−|11>. 두 fermion 교환의 −1(반교환) 을 CZ 로 정직 부여.
+#   a_i↔a_j 교환에서 |11>(둘 다 점유)만 부호 −1 → fermionic 통계 보존. plan=봉인 게이트만(swap2·cz).
+# MatrixGate 0, 새 module 0. C4: fermionic swap 대수(교환 후 반교환 관계 보존) 독립검증.
+# 봉인=fSWAP 유니터리 exact. 완전 VC 인코딩(plaquette 보조 stabilizer)·분자계수=차기/관측(INV-Q3).
+```json id=app_meta
+{"id": "fswap", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# fSWAP: SWAP 후 CZ (fermionic 반교환 부호를 |11>에 부여)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+def cnot(c, t):
+    M = np.zeros((4, 4), dtype=complex)
+    for x in range(4):
+        b = [(x >> 1) & 1, x & 1]
+        b[t] ^= b[c]
+        M[(b[0] << 1) | b[1], x] = 1.0
+    return M
+SWAP = cnot(0, 1) @ cnot(1, 0) @ cnot(0, 1)
+golden = CZ @ SWAP
+```
+```json id=plan
+{"steps": [{"spec": "../modules/swap2.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}]}
+```

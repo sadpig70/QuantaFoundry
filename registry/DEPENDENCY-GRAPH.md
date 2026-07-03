@@ -159,6 +159,10 @@ dj2_const1
 ├─ h_gate (module×5)
 └─ x_gate (module×2)
 
+fswap
+├─ cz (module)
+└─ swap2 (module)
+
 gf4_frob
 └─ cnot (module)
 
