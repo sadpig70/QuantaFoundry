@@ -6465,5 +6465,22 @@
         "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
       }
     ]
+  },
+  "z2gauge3": {
+    "u_hash": "846c1a3c154493ac536fe039331f87d30c197a4eb8bf1d13d4a96636933c3ac1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
   }
 }

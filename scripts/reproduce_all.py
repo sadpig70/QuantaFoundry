@@ -216,6 +216,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3x. HE2 T2.2: Z₂ 격자게이지 Gauss law + gauge-invariant H (z2gauge3, observation)
+    rc, out = run(["scripts/z2gauge_observe.py", "--quick"])
+    result["steps"]["z2gauge_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

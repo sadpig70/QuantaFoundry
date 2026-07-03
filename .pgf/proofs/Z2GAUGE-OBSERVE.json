@@ -1,0 +1,16 @@
+{
+  "_note": "Z₂ 격자 게이지 Gauss law + gauge-invariant H 관측. 봉인=z2gauge3 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "z2gauge-observe-v1",
+  "observation": {
+    "axis": "Z₂ 격자 게이지 이론 (1+1D Kogut-Susskind)",
+    "codespace_fixed_dim2": true,
+    "gauss_law_commute": true,
+    "gauss_law_sq_I": true,
+    "hamiltonian_gauge_invariant": true,
+    "honest_boundary": "봉인=z2gauge3 Clifford exact 뿐. Gauss law 대수·게이지불변=관측. H·Trotter=근사, U(1)/SU(2)=비-dyadic 차기. 신규 봉인 0(INV-Q3).",
+    "logical_Z_L=Z0": true,
+    "ok": true,
+    "qec_distinction": "대수는 stabilizer code 유사하나 gauge 정체성(Gauss law 제약·link 변수)이 구별점",
+    "sealed_asset": "z2gauge3 (게이지불변 부분공간 encoder)"
+  }
+}

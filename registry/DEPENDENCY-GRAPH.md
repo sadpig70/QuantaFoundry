@@ -1318,4 +1318,8 @@ wstate9
 ├─ ry_k9 (module)
 ├─ ry_k9_dag (module)
 └─ x_gate (module)
+
+z2gauge3
+├─ cnot (module×2)
+└─ h_gate (module)
 ```

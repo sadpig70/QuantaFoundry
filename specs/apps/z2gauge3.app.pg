@@ -1,0 +1,37 @@
+# z2gauge3 — 1+1D Z₂ 격자 게이지 이론 게이지불변 부분공간 인코더. 3q. Tier-0 8×8.
+# HE2 T2.1 (#GAUGE): 게이지 대칭 + Gauss law 제약 — 새 물리 클래스(QEC와 대수 유사하나 gauge 정체성).
+#   1+1D Z₂ Kogut-Susskind: matter(q0)·link(q1)·matter(q2). Gauss law G₀=Z₀X₁·G₁=X₁Z₂
+#   ([G₀,G₁]=0, Gₖ²=I). 게이지불변(물리) 부분공간 = G₀=G₁=+1 (dim 2, 1 논리 큐빗).
+# ★통찰: H(q1) 켤레로 Gauss law(Z₀X₁·X₁Z₂) → 반복부호(Z₀Z₁·Z₁Z₂). encoder=CNOT(0,1)·CNOT(0,2)·H(1).
+#   논리 Z_L=Z₀. plan=봉인 게이트만(cnot·h_gate), MatrixGate 0, 새 module 0.
+# 봉인=게이지불변 encoder Clifford exact. Kogut-Susskind H·Trotter 시간진화·U(1)/SU(2) 확장=관측/차기(INV-Q3).
+```json id=app_meta
+{"id": "z2gauge3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 3
+DIM = 8
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def cnot(c, t):
+    M = np.zeros((DIM, DIM), dtype=complex)
+    for x in range(DIM):
+        b = bits(x)
+        b = b[:]; b[t] ^= b[c]
+        M[sum((b[i] & 1) << (NQ - 1 - i) for i in range(NQ)), x] = 1.0
+    return M
+# encoder: CNOT(0,1)·CNOT(0,2)(반복부호) → H(1)(Gauss law 기저)
+gates = [cnot(0, 1), cnot(0, 2), emb(Hd, 1)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/cnot.pg", "targets": [0, 2]}, {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

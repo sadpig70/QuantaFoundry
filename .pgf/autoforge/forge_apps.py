@@ -147,6 +147,8 @@ APP_LIST = [
     # HE2 P5 (#QCA): 양자 셀룰러 오토마타 (discrete-time exact dynamics)
     ("qca_step.app.pg",              None), # P5.1 Clifford QCA 1-step brickwork (4q, cz·h, 병진불변)
     ("fswap.app.pg",                 None), # P6 fermionic SWAP (Verstraete-Cirac primitive, swap2·cz)
+    # HE2 v3 (사람게이트 승인): T2 Z₂ gauge · T1 Schur · T4 qLDPC
+    ("z2gauge3.app.pg",              None), # T2.1 Z₂ 격자게이지 gauge-invariant encoder (cnot·h, Gauss law)
 ]
 
 
