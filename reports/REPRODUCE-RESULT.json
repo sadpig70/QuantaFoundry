@@ -3,7 +3,7 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "96/96",
+      "apps_sealed": "97/97",
       "rediscovery": "6/6",
       "pass": true
     },
@@ -75,9 +75,9 @@
     "registry": {
       "rc": 0,
       "modules": "77",
-      "unique_apps": "203",
+      "unique_apps": "204",
       "cached": "63",
-      "root_hash": "c8538194000b83d1",
+      "root_hash": "8b12508838d2eea8",
       "pass": true
     },
     "second_oracle": {
@@ -191,6 +191,11 @@
       "pass": true
     },
     "mbqc_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "gnvw_index_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

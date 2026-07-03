@@ -1,0 +1,37 @@
+# qca_step — Clifford 양자 셀룰러 오토마타(QCA) 1-step, 4q 주기 chain. 4q. Tier-0 16×16.
+# HE2 P5.1 (#QCA): discrete spacetime dynamics — ★기존 Hamiltonian 시뮬(Trotter/Suzuki)은 **근사**
+#   (오차=관측)였으나 QCA는 **exact discrete-time 유니터리 진화**(근사 아님). 질적으로 새 시뮬 클래스.
+# 병진불변 국소규칙(brickwork): even bonds CZ(0,1)(2,3) → H^⊗4 → odd bonds CZ(1,2)(3,0)(주기경계).
+#   shift-2 covariant(병진불변)·Clifford(Pauli→Pauli). plan=봉인 게이트만(cz·h_gate), MatrixGate 0, 새 module 0.
+# 봉인=Clifford QCA step exact(discrete-time 정확, 근사 아님). GNVW index(위상분류)=gnvw_index_observe.
+# ★brickwork CNOT과 구별: 병진불변+Clifford 조건이 자명한 CNOT 층이 아님을 oracle 검증.
+```json id=app_meta
+{"id": "qca_step", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+I = np.eye(2, dtype=complex)
+Hd = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+NQ = 4
+DIM = 16
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I for i in range(NQ)])
+def bits(x):
+    return [(x >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def cz(a, b):
+    M = np.eye(DIM, dtype=complex)
+    for x in range(DIM):
+        bb = bits(x)
+        if bb[a] and bb[b]:
+            M[x, x] = -1.0
+    return M
+# brickwork QCA step: even bonds → H layer → odd bonds (주기경계 3-0)
+gates = [cz(0, 1), cz(2, 3), emb(Hd, 0), emb(Hd, 1), emb(Hd, 2), emb(Hd, 3), cz(1, 2), cz(3, 0)]
+golden = np.eye(DIM, dtype=complex)
+for G in gates:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/cz.pg", "targets": [2, 3]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/cz.pg", "targets": [1, 2]}, {"spec": "../modules/cz.pg", "targets": [3, 0]}]}
+```

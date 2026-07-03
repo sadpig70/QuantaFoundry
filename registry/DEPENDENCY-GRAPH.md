@@ -335,6 +335,10 @@ qaoa_p3
 ├─ rx_negpi4 (module×3)
 └─ rz_negpi4 (module×2)
 
+qca_step
+├─ cz (module×4)
+└─ h_gate (module×4)
+
 qft2_pipeline
 ├─ cs_gate (module)
 ├─ h_gate (module×2)

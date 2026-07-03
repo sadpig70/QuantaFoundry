@@ -1,0 +1,16 @@
+{
+  "_note": "Clifford QCA 위상분류+discrete-time exact 관측. 봉인=qca_step 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "gnvw-index-observe-v1",
+  "observation": {
+    "axis": "양자 셀룰러 오토마타(QCA) — discrete-time exact dynamics",
+    "clifford": true,
+    "discrete_time_exact_Uk": true,
+    "gnvw_index_note": "대칭 brickwork Clifford QCA = GNVW index 0 부류(순수 shift 성분 없음, 관측)",
+    "honest_boundary": "봉인=qca_step Clifford exact 뿐. 병진불변·GNVW index·light-cone=관측(INV-Q3). QCA=exact≠Trotter 근사. 신규 봉인 0.",
+    "ok": true,
+    "propagated_X0_support_size": 3,
+    "sealed_asset": "qca_step (Clifford brickwork 1-step)",
+    "translation_invariant_shift2": true,
+    "vs_trotter": "QCA=exact discrete unitary(근사 아님) vs Trotter/Suzuki=근사(오차 관측)"
+  }
+}
