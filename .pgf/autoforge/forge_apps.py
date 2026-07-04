@@ -151,6 +151,7 @@ APP_LIST = [
     ("z2gauge3.app.pg",              None), # T2.1 Z₂ 격자게이지 gauge-invariant encoder (cnot·h, Gauss law)
     ("qldpc_hgp.app.pg",             None), # T4 하이퍼그래프곱 CSS [[8,1,2]] 인코더 (generic 구성, h·cnot)
     ("schur3.app.pg",                None), # T1 3-qubit Schur-Weyl transform (CG cascade, ry_cg_half±·toffoli·CH)
+    ("aklt4.app.pg",                 None), # V4 4-site AKLT VBS 준비 (순차 조건화 등척, ry_ak41/13/7±·ry_k5 복리)
 ]
 
 

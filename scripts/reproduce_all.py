@@ -234,6 +234,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aa. HE2 V4: AKLT₄ VBS — 독립 MPS 수축 exact + parent-H/triplet witness (aklt4, observation)
+    rc, out = run(["scripts/aklt_observe.py", "--quick"])
+    result["steps"]["aklt_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

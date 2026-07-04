@@ -1,0 +1,14 @@
+# ry_ak7 — Ry(arccos√(2/7)) (AKLT₄ site-2 bond-1 분기 CG 반각; V4 승인 module). 우측환경 R₁ 유래(2/7=4/14). controlled-Ry 분해(CX 켤레)용 반각. Ry(α)=YPowGate(exponent=α/π) up-to-phase(C4). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+bloq = YPowGate(exponent=float(np.arccos(np.sqrt(2.0/7.0)) / np.pi))
+```
+```python id=golden
+import numpy as np
+a = np.arccos(np.sqrt(2.0/7.0))
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_ak7", "n_sys": 1, "n_anc": 0}
+```

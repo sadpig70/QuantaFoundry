@@ -1,0 +1,14 @@
+# ry_ak41 — Ry(arccos√(28/41)) (AKLT₄ site-1 CG 반각; V4 승인 module). OBC(0,0) 경계 norm²=41/81 유래 — √41 무리수 정규화의 각도화. controlled-Ry 분해(CX 켤레)용 반각. Ry(α)=YPowGate(exponent=α/π) up-to-phase(C4). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+bloq = YPowGate(exponent=float(np.arccos(np.sqrt(28.0/41.0)) / np.pi))
+```
+```python id=golden
+import numpy as np
+a = np.arccos(np.sqrt(28.0/41.0))
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_ak41", "n_sys": 1, "n_anc": 0}
+```

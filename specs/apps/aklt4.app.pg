@@ -1,0 +1,157 @@
+# aklt4 — 4-site spin-1 AKLT(VBS) 상태 준비 회로. 9q(8 site + 1 bond wire). Tier-0 512×512.
+# HE2 V4 (#AKLT, 사람게이트 승인 2026-07-04): 텐서망(MPS χ=2) 상태의 결정론 exact 준비 — 새 수평 클래스.
+#   spin-1 site = 2q triplet 임베딩(m=+1→|00⟩, m=0→(|01⟩+|10⟩)/√2, m=−1→|11⟩). site k = (q_{2k}, q_{2k+1}).
+#   OBC 경계 pinned ⟨0|·|0⟩ → norm² = 41/81 (★√41 무리수 정규화 = 승인 사유).
+# ★직접 구성(순차 조건화 등척, 탐색 아님): 우측환경 R_j=E^{4−j}(|0⟩⟨0|) 전부 대각·유리수
+#   (41,40)/81→(13,14)/27→(5,4)/9→(1,2)/3→(1,0). site별 분기 진폭² 유리수:
+#   site1 (13/41,28/41) · site2 b0(5/13,8/13)/b1(2/7,5/7) · site3 b0(1/5,4/5)/b1(1/2,1/2) · site4 결정론(Clifford).
+#   site 템플릿: bond(q8) 조건 Ry 적재(CX 켤레 반각) → bond 갱신(anti-y CNOT·CNOT(x→a)) → V2 확장(|01⟩→t₀, schur3 pair-CG 블록).
+#   ★복리: site3 = 기봉인 ry_k5/ry_pi2/ry_pi4 family로 전부 커버(arccos√(4/5)=π/2−arccos√(1/5) 합성).
+#   신규 module 3각도×2: ry_ak41(arccos√(28/41))·ry_ak13(arccos√(8/13))·ry_ak7(arccos√(2/7)) ± dag.
+# honest(INV-Q3): 봉인=회로 유니터리 exact. 정의 열=|0⟩⁹ → |AKLT₄⟩⊗|0⟩_bond(bond wire 청정, aklt_observe 검증);
+#   여타 열=회로-유도 완성(AKLT 물리 아님, 문서화). q8=bond wire(n_sys 편입, C3 전-입력 청정 주장 안 함).
+#   parent-H P⁽²⁾ 소멸·string order=관측(aklt_observe). n>4·PBC·bond>2 일반 MPS·열역학 극한=차기.
+```json id=app_meta
+{"id": "aklt4", "n_sys": 9, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+from functools import reduce
+NQ = 9
+DIM = 512
+I2 = np.eye(2, dtype=complex)
+Xg = np.array([[0, 1], [1, 0]], dtype=complex)
+Zg = np.array([[1, 0], [0, -1]], dtype=complex)
+def emb(op, q):
+    return reduce(np.kron, [op if i == q else I2 for i in range(NQ)])
+def bits(v):
+    return [(v >> (NQ - 1 - i)) & 1 for i in range(NQ)]
+def idx(b):
+    return sum((b[i] & 1) << (NQ - 1 - i) for i in range(NQ))
+def cnot(c, t):
+    M = np.zeros((DIM, DIM), dtype=complex)
+    for v in range(DIM):
+        b = bits(v); b[t] ^= b[c]
+        M[idx(b), v] = 1.0
+    return M
+def cz2(c, t):
+    M = np.eye(DIM, dtype=complex)
+    for v in range(DIM):
+        b = bits(v)
+        if b[c] and b[t]:
+            M[v, v] = -1.0
+    return M
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+ak41 = np.arccos(np.sqrt(28.0/41.0))
+ak13 = np.arccos(np.sqrt(8.0/13.0))
+ak7 = np.arccos(np.sqrt(2.0/7.0))
+k5 = np.arccos(np.sqrt(1.0/5.0))
+p4, p2 = np.pi/4, np.pi/2
+def v2(x, y):
+    return [cnot(y, x), emb(Xg, y), emb(ry(-p4), y), cz2(x, y),
+            emb(ry(p4), y), emb(Xg, y), cnot(y, x)]
+seq = []
+# global -1 fix: ZXZX(q8) = -I
+seq += [emb(Zg, 8), emb(Xg, 8), emb(Zg, 8), emb(Xg, 8)]
+# site1 (x=0,y=1): uncontrolled y load Ry(-2*ak41), update1, V2
+seq += [emb(ry(-ak41), 1), emb(ry(-ak41), 1)]
+seq += [emb(Xg, 1), cnot(1, 8), emb(Xg, 1)]
+seq += v2(0, 1)
+# site2 (x=2,y=3): b0 anti-ctrl y load(ak13), b1 y-set + x load(ak7), updates, V2
+seq += [emb(Xg, 8), cnot(8, 3), emb(ry(ak13), 3), cnot(8, 3), emb(ry(-ak13), 3), emb(Xg, 8)]
+seq += [cnot(8, 3), cnot(8, 2), emb(ry(ak7), 2), cnot(8, 2), emb(ry(-ak7), 2)]
+seq += [emb(Xg, 3), cnot(3, 8), emb(Xg, 3), cnot(2, 8)]
+seq += v2(2, 3)
+# site3 (x=4,y=5): b0 half = pi/2 - k5 (ry_pi2*ry_k5_dag 합성), b1 half = pi/4
+seq += [emb(Xg, 8), cnot(8, 5), emb(ry(-k5), 5), emb(ry(p2), 5), cnot(8, 5),
+        emb(ry(-p2), 5), emb(ry(k5), 5), emb(Xg, 8)]
+seq += [cnot(8, 5), cnot(8, 4), emb(ry(p4), 4), cnot(8, 4), emb(ry(-p4), 4)]
+seq += [emb(Xg, 5), cnot(5, 8), emb(Xg, 5), cnot(4, 8)]
+seq += v2(4, 5)
+# site4 (x=6,y=7): 결정론 Clifford — b0: y=1(anti), b1: x=1,y=1, update2, V2
+seq += [emb(Xg, 8), cnot(8, 7), emb(Xg, 8), cnot(8, 6), cnot(8, 7), cnot(6, 8)]
+seq += v2(6, 7)
+golden = np.eye(DIM, dtype=complex)
+for G in seq:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/z_gate.pg", "targets": [8]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/z_gate.pg", "targets": [8]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/ry_ak41_dag.pg", "targets": [1]},
+  {"spec": "../modules/ry_ak41_dag.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 8]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [1]},
+  {"spec": "../modules/cz.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 3]},
+  {"spec": "../modules/ry_ak13.pg", "targets": [3]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 3]},
+  {"spec": "../modules/ry_ak13_dag.pg", "targets": [3]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 2]},
+  {"spec": "../modules/ry_ak7.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 2]},
+  {"spec": "../modules/ry_ak7_dag.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 8]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 8]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [3]},
+  {"spec": "../modules/cz.pg", "targets": [2, 3]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [3]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 5]},
+  {"spec": "../modules/ry_k5_dag.pg", "targets": [5]},
+  {"spec": "../modules/ry_pi2.pg", "targets": [5]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 5]},
+  {"spec": "../modules/ry_negpi2.pg", "targets": [5]},
+  {"spec": "../modules/ry_k5.pg", "targets": [5]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 5]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 4]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [4]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 4]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [4]},
+  {"spec": "../modules/x_gate.pg", "targets": [5]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 8]},
+  {"spec": "../modules/x_gate.pg", "targets": [5]},
+  {"spec": "../modules/cnot.pg", "targets": [4, 8]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+  {"spec": "../modules/x_gate.pg", "targets": [5]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [5]},
+  {"spec": "../modules/cz.pg", "targets": [4, 5]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [5]},
+  {"spec": "../modules/x_gate.pg", "targets": [5]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 7]},
+  {"spec": "../modules/x_gate.pg", "targets": [8]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 6]},
+  {"spec": "../modules/cnot.pg", "targets": [8, 7]},
+  {"spec": "../modules/cnot.pg", "targets": [6, 8]},
+  {"spec": "../modules/cnot.pg", "targets": [7, 6]},
+  {"spec": "../modules/x_gate.pg", "targets": [7]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [7]},
+  {"spec": "../modules/cz.pg", "targets": [6, 7]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [7]},
+  {"spec": "../modules/x_gate.pg", "targets": [7]},
+  {"spec": "../modules/cnot.pg", "targets": [7, 6]}
+]}
+```

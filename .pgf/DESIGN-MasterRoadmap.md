@@ -404,6 +404,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   frozen/consensus 무훼손 재확인). golden=CG 계수 직접(회로 독립)·C-app exact.
             #   schur_observe: U†J²U·U†JzU 동시대각{3.75×4,0.75×4}+S₃ duality sector 보존+teeth.
             #   second_oracle 71→73/73. root c188d733→e6c60258(77→79 modules·207→208 apps).
+        V4_AKLT // 사람게이트 승인(정욱님 2026-07-04): AKLT₄ 무리수 정규화(√41) 진행 (in-progress)
+            # 4-site spin-1 AKLT VBS(8q, 각 site=triplet 임베딩 2q), OBC 경계 pinned(norm²=41/81).
+            # 봉인=aklt4 상태준비 회로 exact 유니터리. 신규 module=Ry family(무리수 각, 최소화·문서화).
+            # 검증=MPS 독립수축 일치 + parent-H P⁽²⁾ bulk 소멸 witness + teeth. 근사·bond>2 일반 MPS=차기.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.

@@ -1,0 +1,28 @@
+{
+  "_note": "AKLT₄ 정의 열의 독립 MPS 수축 exact 일치 + parent-H/triplet witness. 봉인=aklt4 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "aklt-observe-v1",
+  "observation": {
+    "axis": "AKLT VBS 상태 준비 (MPS χ=2 텐서망, Haldane 위상)",
+    "bond_wire_clean": 0.0,
+    "degeneracy_note": "OBC(0,1) edge 상태(norm²=40/81)는 parent-H 소멸 유지(바닥다양체 축퇴가 정확) — edge 고정은 MPS exact-match 만 가능",
+    "honest_boundary": "봉인=aklt4 회로==golden exact(C-app) 뿐. MPS 정합·parent-H 소멸·string order=관측 witness. 정의 열만 AKLT 물리(여타 열=회로-유도 완성). n>4·PBC·bond>2 일반 MPS=차기. 신규 봉인 0(INV-Q3).",
+    "mps_reference_exact_match": 1.1102230246251565e-16,
+    "norm_sq_41_81": true,
+    "ok": true,
+    "parent_H_P2_violations": [
+      8.621174951582233e-17,
+      9.088298455564916e-17,
+      5.481843958583246e-17
+    ],
+    "sealed_asset": "aklt4 (9q 순차 조건화 등척 준비 회로, ry_ak41/13/7± + ry_k5 복리)",
+    "site_singlet_components": [
+      3.925995396676559e-17,
+      9.264674406945479e-17,
+      3.907465175977921e-17,
+      1.962615573354719e-17
+    ],
+    "string_order_value": -0.4878048780487807,
+    "teeth_edge_state_mps_only": true,
+    "teeth_wrong_angle_detected": true
+  }
+}

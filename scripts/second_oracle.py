@@ -113,6 +113,25 @@ INDEP = {
     "ry_cg_half_dag": lambda: np.array(
         [[np.cos(np.arccos(1 / 3) / 4), np.sin(np.arccos(1 / 3) / 4)],
          [-np.sin(np.arccos(1 / 3) / 4), np.cos(np.arccos(1 / 3) / 4)]], dtype=complex),
+    # ── HE2 V4: AKLT₄ CG 반각 회전 Ry(±arccos√(28/41 · 8/13 · 2/7)) — 제1원리 closed form ──
+    "ry_ak41": lambda: np.array(
+        [[np.cos(np.arccos(np.sqrt(28 / 41)) / 2), -np.sin(np.arccos(np.sqrt(28 / 41)) / 2)],
+         [np.sin(np.arccos(np.sqrt(28 / 41)) / 2), np.cos(np.arccos(np.sqrt(28 / 41)) / 2)]], dtype=complex),
+    "ry_ak41_dag": lambda: np.array(
+        [[np.cos(np.arccos(np.sqrt(28 / 41)) / 2), np.sin(np.arccos(np.sqrt(28 / 41)) / 2)],
+         [-np.sin(np.arccos(np.sqrt(28 / 41)) / 2), np.cos(np.arccos(np.sqrt(28 / 41)) / 2)]], dtype=complex),
+    "ry_ak13": lambda: np.array(
+        [[np.cos(np.arccos(np.sqrt(8 / 13)) / 2), -np.sin(np.arccos(np.sqrt(8 / 13)) / 2)],
+         [np.sin(np.arccos(np.sqrt(8 / 13)) / 2), np.cos(np.arccos(np.sqrt(8 / 13)) / 2)]], dtype=complex),
+    "ry_ak13_dag": lambda: np.array(
+        [[np.cos(np.arccos(np.sqrt(8 / 13)) / 2), np.sin(np.arccos(np.sqrt(8 / 13)) / 2)],
+         [-np.sin(np.arccos(np.sqrt(8 / 13)) / 2), np.cos(np.arccos(np.sqrt(8 / 13)) / 2)]], dtype=complex),
+    "ry_ak7": lambda: np.array(
+        [[np.cos(np.arccos(np.sqrt(2 / 7)) / 2), -np.sin(np.arccos(np.sqrt(2 / 7)) / 2)],
+         [np.sin(np.arccos(np.sqrt(2 / 7)) / 2), np.cos(np.arccos(np.sqrt(2 / 7)) / 2)]], dtype=complex),
+    "ry_ak7_dag": lambda: np.array(
+        [[np.cos(np.arccos(np.sqrt(2 / 7)) / 2), np.sin(np.arccos(np.sqrt(2 / 7)) / 2)],
+         [-np.sin(np.arccos(np.sqrt(2 / 7)) / 2), np.cos(np.arccos(np.sqrt(2 / 7)) / 2)]], dtype=complex),
     # ── W12.3: Yoshida 4th-order Suzuki coefficient rotations ──
     "rz_y4_p": lambda: np.diag([np.exp(1j * (1 / (4 - 4 ** (1 / 3))) * np.pi / 16),
                                 np.exp(-1j * (1 / (4 - 4 ** (1 / 3))) * np.pi / 16)]).astype(complex),
