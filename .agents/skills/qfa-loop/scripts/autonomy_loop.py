@@ -191,9 +191,18 @@ def bootstrap(state: dict) -> dict:
     return base
 
 
+# 동적 재발견 훅(frontier-factory 전용). 큐 소진 시 라운드마다 disk 상태에서 다음 후보를 재발견.
+# 정적 큐만으로는 라운드 0에서 1개 봉인 후 큐가 비어 항상 frontier-exhausted → budget>1 무인 불가였음.
+_REFILL: "callable | None" = None
+
+
 def select_next(queue: list[Candidate]) -> Candidate | None:
-    """후보 큐에서 1개 pop. 비면 None(frontier-exhausted)."""
-    return queue.pop(0) if queue else None
+    """후보 큐에서 1개 pop. 비면 refill 훅으로 재발견(있으면). 그래도 없으면 None(frontier-exhausted)."""
+    if queue:
+        return queue.pop(0)
+    if _REFILL is not None:
+        return _REFILL()                                 # 라운드별 동적 재발견(방금 봉인분 반영)
+    return None
 
 
 def discover_frontier() -> dict:
@@ -575,16 +584,24 @@ def build_queue(mode: str) -> list[Candidate]:
     if mode == "frontier-factory":
         # ★자율 폐루프: factory 가 다음 미봉인 distinct-semiprime N 을 자율 발견 → 봉인.
         # codegen 없음(파라메트릭 함수) · 회귀게이트(INV-F1) 통과 후에만 봉인 · 신규 모듈 0.
+        # ★budget>1 무인: 정적 큐 대신 refill 훅 등록 → 매 라운드 disk 에서 다음 N 재발견
+        #   (방금 봉인분이 반영돼 연속 봉인 가능). 큐는 비워 두고 select_next 가 refill 을 소비.
+        global _REFILL
         sys.path.insert(0, os.path.join(ROOT, "scripts"))
         import frontier_factory as ff
-        N, m = ff.next_unsealed_target()
-        if N is None:
-            return []                                   # frontier-exhausted (정직 종료)
-        progress(f"factory discover: next unsealed N={N}={'×'.join(map(str, m['factors']))} "
-                 f"n_sys={m['t'] + m['work']} prim={m['primitive']}")
-        return [Candidate(f"shor{N}", kind="frontier",
-                          driver=["scripts/frontier_factory.py", "--seal", str(N)],
-                          new_module=False, all_ok_token="sealed=True")]
+
+        def _factory_refill() -> Candidate | None:
+            N, m = ff.next_unsealed_target()
+            if N is None:
+                return None                              # frontier-exhausted (정직 종료)
+            progress(f"factory discover: next unsealed N={N}={'×'.join(map(str, m['factors']))} "
+                     f"n_sys={m['t'] + m['work']} prim={m['primitive']}")
+            return Candidate(f"shor{N}", kind="frontier",
+                             driver=["scripts/frontier_factory.py", "--seal", str(N)],
+                             new_module=False, all_ok_token="sealed=True")
+
+        _REFILL = _factory_refill
+        return []                                        # 큐 비움 — 라운드마다 refill 로 동적 발견
     raise SystemExit(f"unknown mode: {mode}")
 
 
@@ -601,11 +618,13 @@ def factory_cfg(args) -> dict:
             "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
         ),
         "stage_paths": [
-            "scripts/frontier_factory.py", "scripts/reproduce_all.py", "scripts/seal_gate_ci.py",
+            "scripts/frontier_factory.py", "scripts/perm_subspace_verify.py",
+            "scripts/reproduce_all.py", "scripts/seal_gate_ci.py",
             "registry/apps", "specs/apps",
             "registry/REGISTRY-MANIFEST.json", "registry/DEPENDENCY-GRAPH.json",
             "registry/DEPENDENCY-GRAPH.md", "registry/SEMANTIC-GUARANTEES.json",
-            ".pgf/arith", "reports/REPRODUCE-RESULT.json", ".pgf/adoption/seal-badge.json",
+            ".pgf/arith", ".pgf/proofs",   # ★subspace 자동상환 sidecar(shor{N}.subspace_proof.json) 커밋
+            "reports/REPRODUCE-RESULT.json", ".pgf/adoption/seal-badge.json",
             ".pgf/adoption/RELEASE-META.json", "CITATION.cff",
         ],
     }
