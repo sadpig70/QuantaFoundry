@@ -2851,6 +2851,33 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0bcfbe1526824789ee505cd363e2786dde0a6a7b8d1b2168416a14a7d66659d3"
     },
+    "app:stinespring_ampdamp": {
+      "kind": "app",
+      "id": "stinespring_ampdamp",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "54f02528c971ad04788c9c61a6715472c10071a06398171aff23ea18d1a56c14"
+    },
+    "app:stinespring_bitflip": {
+      "kind": "app",
+      "id": "stinespring_bitflip",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "00e9d23216c3bc34efdfc77e9324cab785248f4134f86bcb6d0dc41ed3d16689"
+    },
+    "app:stinespring_phasedamp": {
+      "kind": "app",
+      "id": "stinespring_phasedamp",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "6976a9cd7b1e918217073d09c2a3b7661d6d26f7c2e0eef7ee809de3df942056"
+    },
     "app:surf422_encoder": {
       "kind": "app",
       "id": "surf422_encoder",
@@ -3909,7 +3936,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 305,
+        "unitary_equiv": 308,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 15
       },
@@ -3918,7 +3945,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 390,
+      "unitary_equiv": 393,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 15
     }

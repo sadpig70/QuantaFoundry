@@ -353,6 +353,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ab. HE2 V6: CPTP 채널 Stinespring dilation — Tr_env==Kraus 채널 exact + CPTP witness (observation)
+    rc, out = run(["scripts/channel_observe.py", "--quick"])
+    result["steps"]["channel_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -1,0 +1,42 @@
+{
+  "_note": "3 채널 dilation 의 Tr_env == Kraus 채널 exact + CPTP witness. 봉인=유니터리뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "channel-observe-v1",
+  "observation": {
+    "axis": "열린 양자계 (CPTP 채널 Stinespring dilation)",
+    "channels": [
+      {
+        "app": "stinespring_bitflip",
+        "channel": "bitflip",
+        "kraus_completeness": 2.220446049250313e-16,
+        "kraus_match": 2.220446049250313e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 2.220446049250313e-16,
+        "unitary": true
+      },
+      {
+        "app": "stinespring_phasedamp",
+        "channel": "phasedamp",
+        "kraus_completeness": 2.220446049250313e-16,
+        "kraus_match": 2.220446049250313e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 0.0,
+        "unitary": true
+      },
+      {
+        "app": "stinespring_ampdamp",
+        "channel": "ampdamp",
+        "kraus_completeness": 2.220446049250313e-16,
+        "kraus_match": 2.220446049250313e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 0.0,
+        "unitary": true
+      }
+    ],
+    "honest_boundary": "봉인=dilation 유니터리뿐. 채널 E(ρ)=Tr_env[U(ρ⊗|0⟩⟨0|)U†]=비유니터리 초연산자 → 관측(seal 아님). 1/2 감쇠점만 dyadic-exact; 일반 감쇠율·depolarizing·다큐빗·하드웨어 노이즈=차기. 신규 봉인 0(INV-Q3).",
+    "ok": true,
+    "sealed_assets": "stinespring_bitflip/phasedamp/ampdamp (dilation 유니터리 Tier-0 exact)"
+  }
+}

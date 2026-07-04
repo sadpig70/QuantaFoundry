@@ -153,6 +153,10 @@ APP_LIST = [
     ("qldpc_hgp.app.pg",             None), # T4 하이퍼그래프곱 CSS [[8,1,2]] 인코더 (generic 구성, h·cnot)
     ("schur3.app.pg",                None), # T1 3-qubit Schur-Weyl transform (CG cascade, ry_cg_half±·toffoli·CH)
     ("aklt4.app.pg",                 None), # V4 4-site AKLT VBS 준비 (순차 조건화 등척, ry_ak41/13/7±·ry_k5 복리)
+    # HE2 V6 (#CHANNEL): 열린 양자계 — CPTP 채널 Stinespring dilation (1/2 감쇠점 dyadic, 신규 module 0)
+    ("stinespring_bitflip.app.pg",   None), # V6 bit-flip p½ dilation (Ry(π/2)_e·CNOT(e→s))
+    ("stinespring_phasedamp.app.pg", None), # V6 phase-damping λ½ dilation (CRY(π/2) s→e)
+    ("stinespring_ampdamp.app.pg",   None), # V6 amplitude-damping γ½ dilation (CRY(π/2)·CNOT(e→s))
 ]
 
 

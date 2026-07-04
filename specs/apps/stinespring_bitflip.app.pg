@@ -1,0 +1,34 @@
+# stinespring_bitflip — bit-flip 채널(p=½)의 Stinespring dilation 유니터리. 2q(sys q0·env q1). Tier-0 4×4.
+# HE2 V6 (#CHANNEL, 열린 양자계): 첫 non-unitary 계층 — CPTP 채널을 확장 유니터리로 실체화.
+#   bit-flip E(ρ)=½ρ+½XρX, Kraus {√½ I, √½ X}. env 입력 |0⟩.
+#   ★1/2 감쇠점 = dyadic: U = CNOT(e→s)·(I⊗Ry(π/2)). 신규 module 0(ry_pi2·cnot 기봉인 재사용).
+# 봉인=dilation 유니터리 Tier-0 exact. 채널 E(ρ)=Tr_env[U(ρ⊗|0⟩⟨0|)U†]=관측(비유니터리 초연산자, channel_observe).
+# 정직 경계(INV-Q3): seal=유니터리뿐. 채널·CPTP·Kraus 일치=관측. 일반 p·depolarizing·다큐빗=차기.
+```json id=app_meta
+{"id": "stinespring_bitflip", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+def emb(op, q):
+    return np.kron(op, I) if q == 0 else np.kron(I, op)
+def cnot(c, t):
+    M = np.zeros((4, 4), dtype=complex)
+    for x in range(4):
+        b = [(x >> 1) & 1, x & 1]; b[t] ^= b[c]
+        M[(b[0] << 1) | b[1], x] = 1.0
+    return M
+# 시간순: Ry(π/2)_env → CNOT(env→sys)
+golden = np.eye(4, dtype=complex)
+for G in [emb(ry(np.pi/2), 1), cnot(1, 0)]:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/ry_pi2.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 0]}
+]}
+```

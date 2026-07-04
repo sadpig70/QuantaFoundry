@@ -416,6 +416,14 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v3.md — self-contained, 봉인 0·root 불변.
             #   EXCLUDE 3c(v2 P1–P6·v3 T1–T4·V4 AKLT) 추가, §4′ 직접-구성 성공패턴(닫힌형 CG/환경 유도)
             #   + 승인-module 사람게이트 프로세스 명시. 수거=정욱님(외부 런타임 전달·회신 수집).
+        V6_ChannelDilation // 열린 양자계(CPTP 채널) Stinespring dilation — 새 수평 클래스 (done)
+            # ✅ 첫 non-unitary 계층: 채널을 확장 유니터리로 실체화(sys+env). ★1/2 감쇠점에서 각도가
+            #   전부 dyadic(π/2·π/4) → 신규 module 0(기봉인 ry_pi2/pi4/negpi4·cnot 재사용).
+            #   stinespring_bitflip(p½, Ry(π/2)_e·CNOT)·stinespring_phasedamp(λ½, CRY(π/2))·
+            #   stinespring_ampdamp(γ½, CRY(π/2)·CNOT). 봉인=dilation 유니터리 Tier-0 exact(2q 4×4).
+            #   channel_observe: Tr_env[U(ρ⊗|0⟩⟨0|)U†]==Kraus 채널 exact + CPTP(trace-preserve·ΣK†K=I)
+            #   + teeth(틀린각). ★정직 경계: 채널=관측(비유니터리 초연산자, seal 아님). 일반 감쇠율·
+            #   depolarizing(3-Kraus)·다큐빗=차기.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.

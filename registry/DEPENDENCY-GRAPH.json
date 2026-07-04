@@ -7425,6 +7425,69 @@
       }
     ]
   },
+  "stinespring_ampdamp": {
+    "u_hash": "54f02528c971ad04788c9c61a6715472c10071a06398171aff23ea18d1a56c14",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      }
+    ]
+  },
+  "stinespring_bitflip": {
+    "u_hash": "00e9d23216c3bc34efdfc77e9324cab785248f4134f86bcb6d0dc41ed3d16689",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi2",
+        "uses": 1,
+        "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      }
+    ]
+  },
+  "stinespring_phasedamp": {
+    "u_hash": "6976a9cd7b1e918217073d09c2a3b7661d6d26f7c2e0eef7ee809de3df942056",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      }
+    ]
+  },
   "surf422_encoder": {
     "u_hash": "421b0aede7752fec31c2bf9a3c12b6a4e2bbc6ce3282dd29c0825489ab8f7381",
     "depends_on": [

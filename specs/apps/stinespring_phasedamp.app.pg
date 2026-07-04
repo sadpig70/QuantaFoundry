@@ -1,0 +1,35 @@
+# stinespring_phasedamp — 위상감쇠 채널(λ=½)의 Stinespring dilation 유니터리. 2q(sys q0·env q1). Tier-0 4×4.
+# HE2 V6 (#CHANNEL): phase-damping E — off-diagonal 을 √(1−λ) 로 감쇠(비가역 결어긋남).
+#   Kraus {diag(1,√½), diag(0,√½)}. env 입력 |0⟩. U|s,0⟩=|s⟩(√(1−λ)|0⟩+√λ|1⟩)_e (env=|1⟩ i s=|1⟩ 기록).
+#   ★1/2 점 = dyadic: U = CRY(π/2)(ctrl=sys→tgt=env). 신규 module 0(ry_pi4/negpi4·cnot 재사용).
+#   CRY(π/2) = CNOT(s,e)·Ry(−π/4)_e·CNOT(s,e)·Ry(π/4)_e (표준 controlled-Ry 분해).
+# 봉인=dilation 유니터리 exact. 채널=Tr_env[…]=관측(channel_observe). CPTP·Kraus 일치·teeth=관측. 일반 λ=차기.
+```json id=app_meta
+{"id": "stinespring_phasedamp", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+def emb(op, q):
+    return np.kron(op, I) if q == 0 else np.kron(I, op)
+def cnot(c, t):
+    M = np.zeros((4, 4), dtype=complex)
+    for x in range(4):
+        b = [(x >> 1) & 1, x & 1]; b[t] ^= b[c]
+        M[(b[0] << 1) | b[1], x] = 1.0
+    return M
+# CRY(π/2)(ctrl=0,tgt=1) 시간순: CNOT · Ry(−π/4)_1 · CNOT · Ry(π/4)_1
+golden = np.eye(4, dtype=complex)
+for G in [cnot(0, 1), emb(ry(-np.pi/4), 1), cnot(0, 1), emb(ry(np.pi/4), 1)]:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [1]}
+]}
+```

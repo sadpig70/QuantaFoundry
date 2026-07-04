@@ -1467,6 +1467,20 @@ simon2_s11
 ├─ cnot (module×2)
 └─ h_gate (module×4)
 
+stinespring_ampdamp
+├─ cnot (module×3)
+├─ ry_negpi4 (module)
+└─ ry_pi4 (module)
+
+stinespring_bitflip
+├─ cnot (module)
+└─ ry_pi2 (module)
+
+stinespring_phasedamp
+├─ cnot (module×2)
+├─ ry_negpi4 (module)
+└─ ry_pi4 (module)
+
 surf422_encoder
 ├─ cnot (module×5)
 └─ h_gate (module)
