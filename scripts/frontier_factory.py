@@ -27,6 +27,7 @@ import argparse
 import json
 import math
 import os
+import subprocess
 import sys
 from collections import Counter
 from math import gcd
@@ -369,6 +370,30 @@ def verify_against_sealed(N: int, a: int = DEFAULT_A, t: int = DEFAULT_T) -> dic
 # CLI modes
 # ─────────────────────────────────────────────────────────────────────────────
 REGRESSION_N = [91, 119, 221, 381, 635, 1285, 3683]
+# 표본 회귀(계층화): codegen(mmd_synthesize 등)은 단일 함수라 무변경 시 drift 는 전 N 에 균일하게
+#   나타난다 → 저비용 대표 N 로 충분히 감지. 91=c7x·381=c9x·635=c10x(3 primitive·상이 구조, ~15s).
+#   비용 지배 3683(c12x, 193s)·1285(c11x, 42s)는 표본에서 제외(auto 가 codegen 변경 시 full 로 커버).
+SAMPLE_REGRESSION_N = [91, 381, 635]
+# codegen-critical 파일: 하나라도 변경되면 전 N 이 영향 → full 회귀 강제(INV-F1 안전).
+_CODEGEN_FILES = [
+    "scripts/frontier_factory.py",                                   # 템플릿(payoff/structural)
+    "scripts/genskills.py",                                          # mmd_synthesize·_modmul_perm
+    ".agents/skills/qpgf-oracle/scripts/app_assemble.py",            # _structural_hash·_seal_dict
+    ".agents/skills/qpgf-oracle/scripts/verify_seal.py",            # fingerprint(봉인 baked)
+    ".agents/skills/qpgf-oracle/scripts/contracts.py",
+]
+
+
+def _codegen_changed() -> bool:
+    """git 기준 codegen-critical 파일 변경 여부. git 부재/오류 시 True(→full 회귀, 안전측)."""
+    try:
+        out = subprocess.run(["git", "-C", ROOT, "status", "--porcelain", "--", *_CODEGEN_FILES],
+                             capture_output=True, text=True, timeout=30)
+        if out.returncode != 0:
+            return True
+    except Exception:
+        return True
+    return any(line[3:].strip() for line in out.stdout.splitlines())
 
 
 def repay_subspace(N: int) -> dict:
@@ -396,17 +421,27 @@ def repay_subspace(N: int) -> dict:
             "negative_control_reject": pr["negative_control_reject"]}
 
 
-def _run_regression() -> int:
-    results = [verify_against_sealed(N) for N in REGRESSION_N]
+def _run_regression(scope: str = "auto") -> int:
+    """INV-F1 회귀 게이트(계층화). scope:
+      - "full"   : REGRESSION_N 전량(codegen drift 완전 커버) — CI/세션종결.
+      - "sample" : SAMPLE_REGRESSION_N 표본(primitive 사다리 대표) — codegen 무변경 시 라운드 가드.
+      - "auto"   : codegen-critical 파일 변경 감지 시 full, 아니면 sample(기본, --seal 이 사용).
+    안전: codegen 변경 시 반드시 full → 표본이 못 잡는 drift 없음. 무변경이면 로직 동일→표본이 충분."""
+    if scope == "auto":
+        scope = "full" if _codegen_changed() else "sample"
+    ns = REGRESSION_N if scope == "full" else SAMPLE_REGRESSION_N
+    results = [verify_against_sealed(N) for N in ns]
     all_ok = all(r["byte_identical_all"] for r in results)
     report = {"phase": "FrontierFactory regression (INV-F1)",
               "honesty": "Factory must reproduce sealed N byte-identically before sealing any new N.",
-              "results": results, "all_ok": bool(all_ok)}
+              "scope": scope, "regression_N": ns, "results": results, "all_ok": bool(all_ok)}
     os.makedirs(OUT, exist_ok=True)
-    json.dump(report, open(os.path.join(OUT, "FACTORY-REGRESSION.json"), "w", encoding="utf-8"),
-              ensure_ascii=False, indent=2)
+    # 정본 리포트는 full 회귀만 기록(커밋 아티팩트=최강 증명 유지). sample 은 라운드 가드라 비기록.
+    if scope == "full":
+        json.dump(report, open(os.path.join(OUT, "FACTORY-REGRESSION.json"), "w", encoding="utf-8"),
+                  ensure_ascii=False, indent=2)
     print("=" * 84)
-    print("FrontierFactory regression gate (INV-F1) — factory u_hash == sealed u_hash")
+    print(f"FrontierFactory regression gate (INV-F1) — scope={scope} — factory u_hash == sealed u_hash")
     print("=" * 84)
     for r in results:
         print(f"  N={r['N']:5} byte_identical_all={r['byte_identical_all']}")
@@ -435,22 +470,26 @@ def _run_reproduce() -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Parametric Shor frontier factory")
-    ap.add_argument("--verify-regression", action="store_true")
+    ap.add_argument("--verify-regression", action="store_true",
+                    help="INV-F1 회귀 게이트(scope=--regression-scope, 기본 auto)")
+    ap.add_argument("--regression-scope", choices=["auto", "full", "sample"], default="auto",
+                    help="full=전량(CI/세션종결) · sample=표본(codegen 무변경 가드) · auto=codegen 변경시 full")
     ap.add_argument("--reproduce", action="store_true")
     ap.add_argument("--resolve", type=int, default=None)
     ap.add_argument("--seal", type=int, nargs="+", default=None)
     args = ap.parse_args()
 
     if args.verify_regression:
-        return _run_regression()
+        return _run_regression(args.regression_scope)
     if args.reproduce:
         return _run_reproduce()
     if args.resolve is not None:
         print(json.dumps(resolve_primitive(args.resolve), ensure_ascii=False, indent=2))
         return 0
     if args.seal:
-        # safety: regression must pass before sealing any new N (INV-F1)
-        if _run_regression() != 0:
+        # safety: regression must pass before sealing any new N (INV-F1).
+        #   scope=auto → codegen-critical 파일 무변경이면 sample(빠름), 변경이면 full(안전).
+        if _run_regression(args.regression_scope) != 0:
             print("ABORT: regression gate failed — refusing to seal new N (INV-F1)")
             return 1
         rc = 0

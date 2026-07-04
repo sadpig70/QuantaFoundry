@@ -1,6 +1,16 @@
 {
   "phase": "FrontierFactory regression (INV-F1)",
   "honesty": "Factory must reproduce sealed N byte-identically before sealing any new N.",
+  "scope": "full",
+  "regression_N": [
+    91,
+    119,
+    221,
+    381,
+    635,
+    1285,
+    3683
+  ],
   "results": [
     {
       "N": 91,
