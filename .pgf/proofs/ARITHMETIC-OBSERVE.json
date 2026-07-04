@@ -1,0 +1,46 @@
+{
+  "_note": "산술 1급 자산 witness: 전수 정수 two-path + ripple vs Fourier 교차 + teeth.",
+  "_schema": "arithmetic-observe-v1",
+  "observation": {
+    "apps": [
+      {
+        "app": "cuccaro_add2",
+        "cases": 64,
+        "exhaustive_integer_match": true,
+        "is_permutation": true,
+        "n": 6,
+        "seal_link": true
+      },
+      {
+        "app": "cuccaro_add3",
+        "cases": 256,
+        "exhaustive_integer_match": true,
+        "is_permutation": true,
+        "n": 8,
+        "seal_link": true
+      },
+      {
+        "app": "cmp2_ge",
+        "cases": 64,
+        "exhaustive_integer_match": true,
+        "is_permutation": true,
+        "n": 6,
+        "seal_link": true
+      },
+      {
+        "app": "draper_add2",
+        "cases": 16,
+        "exhaustive_integer_match": true,
+        "is_permutation": true,
+        "n": 4,
+        "seal_link": true
+      }
+    ],
+    "composition_add_twice_eq_b_plus_2a": true,
+    "cross_family_ripple_vs_fourier_16": true,
+    "honest_boundary": "봉인=가역 산술 유니터리 exact 뿐. mod 2^n wrap=사양. cmp 전체 사양 z⊕=[a≥b+cin]. n>3·modular add·곱셈기 조립=차기.",
+    "ok": true,
+    "sealed_assets": "cuccaro_add2/add3·cmp2_ge·draper_add2 (Tier-0 exact, 신규 module 0)",
+    "teeth_corrupted_carry_detected": true
+  }
+}

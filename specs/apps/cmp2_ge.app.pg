@@ -1,0 +1,43 @@
+# cmp2_ge — 2-bit magnitude 비교기 (HE3 H3.1). 보수 트릭: a−b 의 borrow-free = carry(a+~b+1).
+# wires(w0=MSB): 0=a1 1=a0 2=b1 3=b0 4=cin 5=z. ★정직 사양(전체 유니터리): z ⊕= [a ≥ b + cin]
+#   (cin=0: a≥b 플래그, cin=1: a>b strict 선택자). a·b·cin 전부 복원(MAJ 사다리 → carry copy → MAJ† 역사다리
+#   — UMA 대신 MAJ† 라서 합은 미기록, 플래그만 남음). X 켤레로 b 보수·cin 반전. {x,cnot,toffoli}만 — 신규 module 0.
+# golden=정수 비교 순열(회로 독립).
+```json id=app_meta
+{"id": "cmp2_ge", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+n = 6; dim = 2 ** n
+A, B, CIN, Z = [1, 0], [3, 2], 4, 5
+golden = np.zeros((dim, dim), dtype=complex)
+for basis in range(dim):
+    bits = [(basis >> (n - 1 - q)) & 1 for q in range(n)]
+    av = sum(bits[A[i]] << i for i in range(2))
+    bv = sum(bits[B[i]] << i for i in range(2))
+    out = list(bits)
+    out[Z] ^= 1 if av >= bv + bits[CIN] else 0
+    golden[int("".join(map(str, out)), 2), basis] = 1
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [4]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 4]},
+  {"spec": "../modules/toffoli.pg", "targets": [4, 3, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 5]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/toffoli.pg", "targets": [4, 3, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 3]},
+  {"spec": "../modules/x_gate.pg", "targets": [4]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]}]}
+```

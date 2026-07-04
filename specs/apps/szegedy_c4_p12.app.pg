@@ -1,0 +1,62 @@
+# szegedy_c4_p12 — Szegedy walk, C₄ cycle 균일 Markov 연쇄(p=1/2 양방향) (HE3 H3.2 심화, 4q 16×16).
+# wires: x=[0,1](w0=MSB), y=[2,3](w2=MSB). p_x=(|x−1⟩+|x+1⟩)/√2 (mod 4).
+# ★복리 시그니처: 상태의존 prep V|x⟩|0⟩=|x⟩|p_x⟩ = ψ0-prep(x[3]·h[2], ψ0=(|1⟩+|3⟩)/√2) 후
+#   y+=x (H3.1 draper_add2 sub-app 재사용!). R_A=V·(2|00⟩⟨00|−I)_y·V† — reflect00 sub-app(전역위상 −1은
+#   R_B·R_A 에서 상쇄). V†의 ADD† = 뺄셈 = X-켤레 가산 + increment(+1: cnot·x) 정직 분해.
+# R_B=REG-SWAP·R_A·REG-SWAP(비트별 swap2×2), W=R_B·R_A. 신규 module 0. golden=Szegedy 정의식(회로 독립).
+```json id=app_meta
+{"id": "szegedy_c4_p12", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+P = np.zeros((4, 4))
+for x in range(4):
+    P[x, (x - 1) % 4] = 0.5
+    P[x, (x + 1) % 4] = 0.5
+N = 4; dim = N * N
+PI_A = np.zeros((dim, dim), dtype=complex)
+for x in range(N):
+    v = np.zeros(dim, dtype=complex)
+    for y in range(N):
+        v[x * N + y] = np.sqrt(P[x, y])
+    PI_A += np.outer(v, v.conj())
+RA = 2 * PI_A - np.eye(dim)
+S = np.zeros((dim, dim), dtype=complex)
+for x in range(N):
+    for y in range(N):
+        S[y * N + x, x * N + y] = 1
+golden = (S @ RA @ S) @ RA
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"app": "draper_add2.app.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"app": "reflect00.app.pg", "targets": [2, 3]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"app": "draper_add2.app.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/swap2.pg", "targets": [0, 2]},
+  {"spec": "../modules/swap2.pg", "targets": [1, 3]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"app": "draper_add2.app.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"app": "reflect00.app.pg", "targets": [2, 3]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"app": "draper_add2.app.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/swap2.pg", "targets": [0, 2]},
+  {"spec": "../modules/swap2.pg", "targets": [1, 3]}]}
+```

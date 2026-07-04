@@ -80,6 +80,37 @@ ccz_rediscovered
 ├─ h_gate (module×2)
 └─ toffoli (module)
 
+choi_ampdamp
+├─ stinespring_ampdamp (app)
+│  ├─ cnot (module×3)
+│  ├─ ry_negpi4 (module)
+│  └─ ry_pi4 (module)
+├─ cnot (module)
+└─ h_gate (module)
+
+choi_bitflip
+├─ stinespring_bitflip (app)
+│  ├─ cnot (module)
+│  └─ ry_pi2 (module)
+├─ cnot (module)
+└─ h_gate (module)
+
+choi_depol
+├─ stinespring_depol (app)
+│  ├─ cnot (module)
+│  ├─ cz (module)
+│  └─ h_gate (module×2)
+├─ cnot (module)
+└─ h_gate (module)
+
+choi_phasedamp
+├─ stinespring_phasedamp (app)
+│  ├─ cnot (module×2)
+│  ├─ ry_negpi4 (module)
+│  └─ ry_pi4 (module)
+├─ cnot (module)
+└─ h_gate (module)
+
 cliff1_h
 └─ h_gate (module)
 
@@ -207,6 +238,11 @@ cluster9
 ├─ cz (module×8)
 └─ h_gate (module×9)
 
+cmp2_ge
+├─ cnot (module×9)
+├─ toffoli (module×4)
+└─ x_gate (module×6)
+
 cmul2_mod187
 ├─ c3x (module×8)
 ├─ c4x (module×29)
@@ -234,6 +270,14 @@ code513_encoder
 ├─ cnot (module×4)
 ├─ cz (module×5)
 └─ h_gate (module×5)
+
+cuccaro_add2
+├─ cnot (module×9)
+└─ toffoli (module×4)
+
+cuccaro_add3
+├─ cnot (module×13)
+└─ toffoli (module×6)
 
 cz_rediscovered
 ├─ cnot (module)
@@ -1558,25 +1602,6 @@ simon2_s11
 ├─ cnot (module×2)
 └─ h_gate (module×4)
 
-stinespring_ampdamp
-├─ cnot (module×3)
-├─ ry_negpi4 (module)
-└─ ry_pi4 (module)
-
-stinespring_bitflip
-├─ cnot (module)
-└─ ry_pi2 (module)
-
-stinespring_depol
-├─ cnot (module)
-├─ cz (module)
-└─ h_gate (module×2)
-
-stinespring_phasedamp
-├─ cnot (module×2)
-├─ ry_negpi4 (module)
-└─ ry_pi4 (module)
-
 surf422_encoder
 ├─ cnot (module×5)
 └─ h_gate (module)
@@ -1590,6 +1615,28 @@ swap_via_cnot
 
 syndrome3_bitflip
 └─ cnot (module×4)
+
+szegedy_2state_p12
+├─ h_gate (module×4)
+├─ swap2 (module×2)
+└─ z_gate (module×2)
+
+szegedy_c4_p12
+├─ draper_add2 (app×4)
+│  ├─ iqft2 (app)
+│  │  ├─ cs_dag (module)
+│  │  ├─ h_gate (module×2)
+│  │  └─ swap2 (module)
+│  ├─ cs_gate (module)
+│  ├─ cz (module×2)
+│  └─ qft2 (module)
+├─ reflect00 (app×2)
+│  ├─ cz (module)
+│  └─ x_gate (module×4)
+├─ cnot (module×2)
+├─ h_gate (module×4)
+├─ swap2 (module×4)
+└─ x_gate (module×14)
 
 tfim3_suzuki4_step
 ├─ rzz_y4_p_half (app×16)

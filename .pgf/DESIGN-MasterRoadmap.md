@@ -443,6 +443,28 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   기계정밀도 + twirl |0⟩⟨0|→I/2 + teeth(원소 제거 F₂=2.026·S→T 오염 F₂=2.015 검출).
             #   RB·shadow tomography 자체=미구현(기반만). 2q Clifford(11520)=차기(전수 비현실, 표본화 필요).
 
+    TrackHE3 // 3차 수평확장 — 외부 8런타임 report3(35제안)→통합채점(12클러스터)→자율실행 4트랙 (done) @dep:TrackHE2
+        # 정본: _workspace/integrated_horizontal_expansion3.md(통합채점)·he_task_plan4.md(PPR 실행계획).
+        # 합의: 산술 8/8 만장일치·Szegedy 6/8·채널 6/8(V6 기봉인 중복→잔여 Choi만)·path-sum 3/8.
+        # 자율실행분=신규 module 0 확정 4트랙. 사람게이트 6건(Fibonacci·Schur4·γ¼/POVM·Szegedy p¼·PEPS·2q design)=대기.
+        H3_1_QuantumArithmetic // 명시적 정수 산술 1급 자산화 (done)
+            # ✅ cuccaro_add2(6q 13스텝)/add3(8q 19스텝)(MAJ/UMA {cnot,toffoli})·draper_add2(4q,
+            #   qft2+cs/cz 위상가산+iqft2 sub-app)·cmp2_ge(6q 19스텝, 보수 carry, ★정직사양 z⊕=[a≥b+cin]).
+            #   golden=정수산술 순열(회로 독립). arithmetic_observe(3ae): 전수 정수 two-path(64/256/64/16)
+            #   +★ripple==Fourier 교차-family(16)+합성 b+2a+teeth. 신규 module 0.
+        H3_2_SzegedyWalk // Markov 연쇄 양자화 — 새 수평 클래스 (done)
+            # ✅ szegedy_2state_p12(2q, R_A=I⊗(HZH), ★W→X⊗X Clifford 수축)·szegedy_c4_p12(4q 30스텝,
+            #   ★복리 시그니처: V=ψ0-prep+draper_add2 sub-app, ADD†=X-켤레+increment 정직분해,
+            #   reflect00 전역위상 −1이 R_B·R_A 에서 상쇄). golden=Szegedy 정의식(회로 독립).
+            #   szegedy_observe(3af): 정의식 exact+스펙트럼 정리(위상⊆±2arccos λ_D)+정상 +1 고유벡터+teeth.
+        H3_3_ChoiState // channel-state duality 자산화 (채널축 잔여 novelty) (done)
+            # ✅ choi_bitflip/phasedamp/ampdamp(3q)·choi_depol(4q, ★J=I₄/4 극단)=Bell+기봉인
+            #   stinespring_* sub-app 복리, 신규 module 0. choi_observe(3ag): J==Kraus-Choi·CP(J⪰0)·
+            #   TP(Tr_sys J=I/2)·★duality(J→E 재구성==채널) exact+teeth. INV-Q3 상속(J·채널 성질=관측).
+        H3_4_PathSumVerify // 4번째 독립 검증경로 — sum-over-paths 정수환 exact (done)
+            # ✅ scripts/pathsum_verify.py(3ah): ℤ[ω₈]·(1/√2)^k 축차 경로합(부동소수 0 정수 연산)→dense
+            #   golden 전역위상 정규화 대조. 8개 봉인 앱(bell~szegedy_2state) dev≤2e-16+teeth(T 오염 검출).
+            #   봉인 0·oracle 무수정(봉인 판정 불참 sidecar). dense·tableau·ZX 다음의 4번째 수학 기반.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

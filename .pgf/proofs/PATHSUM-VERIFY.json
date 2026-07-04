@@ -1,0 +1,84 @@
+{
+  "_note": "sum-over-paths 정수환 exact 4차 검증경로. 봉인 0·root 불변·oracle 무수정.",
+  "_schema": "pathsum-verify-v1",
+  "observation": {
+    "apps": [
+      {
+        "app": "bell",
+        "max_dev": 0.0,
+        "max_terms": 2,
+        "n": 2,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 2
+      },
+      {
+        "app": "ghz3",
+        "max_dev": 0.0,
+        "max_terms": 2,
+        "n": 3,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 3
+      },
+      {
+        "app": "magic_a",
+        "max_dev": 7.850462293418876e-17,
+        "max_terms": 2,
+        "n": 1,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 2
+      },
+      {
+        "app": "reflect00",
+        "max_dev": 0.0,
+        "max_terms": 1,
+        "n": 2,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 5
+      },
+      {
+        "app": "cliff1_hsh",
+        "max_dev": 0.0,
+        "max_terms": 2,
+        "n": 1,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 3
+      },
+      {
+        "app": "cuccaro_add2",
+        "max_dev": 0.0,
+        "max_terms": 1,
+        "n": 6,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 13
+      },
+      {
+        "app": "cmp2_ge",
+        "max_dev": 0.0,
+        "max_terms": 1,
+        "n": 6,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 19
+      },
+      {
+        "app": "szegedy_2state_p12",
+        "max_dev": 2.2204460492503136e-16,
+        "max_terms": 1,
+        "n": 2,
+        "ok": true,
+        "phase_factor_abs1": true,
+        "steps": 8
+      }
+    ],
+    "honest_boundary": "봉인 판정 불참(sidecar witness)·oracle 무수정. 경로합=exact 정수, 최종 대조=float 1e-12 한계. 소형 Clifford+T 봉인분 한정, 비지원 게이트=스킵.",
+    "ok": true,
+    "path": "4번째 독립경로: ℤ[ω₈] 정수환 축차 경로합(부동소수 0) vs dense golden",
+    "teeth_injected_t_detected": true
+  }
+}

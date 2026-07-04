@@ -209,6 +209,42 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
     },
+    "app:choi_ampdamp": {
+      "kind": "app",
+      "id": "choi_ampdamp",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "24d1a0023fc86b158d14f2c57d75d340bbeaeb43b88a37761431ec8dfda2f58a"
+    },
+    "app:choi_bitflip": {
+      "kind": "app",
+      "id": "choi_bitflip",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "da22845941f4b93c7724351b30791555de14dbe8c133e4bf2ccf81e810c56494"
+    },
+    "app:choi_depol": {
+      "kind": "app",
+      "id": "choi_depol",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "9f77e6e3c354c915c8c90a6a8a1f0e49de6e1fbec82f77d5f0cecd92e4450f50"
+    },
+    "app:choi_phasedamp": {
+      "kind": "app",
+      "id": "choi_phasedamp",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c64c5518b6f86f623106eed730d5138b37516b13fd54033cd732990d71674905"
+    },
     "app:cliff1_h": {
       "kind": "app",
       "id": "cliff1_h",
@@ -505,6 +541,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "385f14dd960d6ff52fbd5b2122a748b6841b5998793177de160de990038536ad"
+    },
+    "app:cmp2_ge": {
+      "kind": "app",
+      "id": "cmp2_ge",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c34413327f3dc1484359c6550b2044625eab6139e63aebbf5bbb61c1f937a952"
     },
     "app:cmul101_mod115": {
       "kind": "app",
@@ -1487,6 +1532,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
     },
+    "app:cuccaro_add2": {
+      "kind": "app",
+      "id": "cuccaro_add2",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a5f85ecffc24b15b0749696bd2047ebc483e235fff63581b6c44411e550b1727"
+    },
+    "app:cuccaro_add3": {
+      "kind": "app",
+      "id": "cuccaro_add3",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "4306d79dabab8fdd42319bd26e24e3c21b9d00f9f2487aa6d15ee39f36867333"
+    },
     "app:cz": {
       "kind": "app",
       "id": "cz",
@@ -1558,6 +1621,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "83b52e513d2f251ed6e0b332e52487b369569d0502fe26192dda2d08470dde26"
+    },
+    "app:draper_add2": {
+      "kind": "app",
+      "id": "draper_add2",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "fc0c31ceaddb259829bbaa067e6bce73853cf4166d9bc4bca3e2e6dcd2939fff"
     },
     "app:fredkin": {
       "kind": "app",
@@ -3148,6 +3220,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "af8dadd0032c78f427a53826cb4c2b7312aca0c5a240daf5f210f7b23cd90c62"
     },
+    "app:szegedy_2state_p12": {
+      "kind": "app",
+      "id": "szegedy_2state_p12",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a351865018eba6540b46df434d4d1a081bdcf99ea22979316ebea7d20496810f"
+    },
+    "app:szegedy_c4_p12": {
+      "kind": "app",
+      "id": "szegedy_c4_p12",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "124430fcc90bc26956894eaa77646de34dd20bb25f84a3ce591328043374771e"
+    },
     "app:t_gate": {
       "kind": "app",
       "id": "t_gate",
@@ -4161,7 +4251,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 333,
+        "unitary_equiv": 343,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 15
       },
@@ -4170,7 +4260,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 418,
+      "unitary_equiv": 428,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 15
     }

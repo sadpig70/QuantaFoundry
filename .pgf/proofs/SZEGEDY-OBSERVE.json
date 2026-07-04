@@ -1,0 +1,29 @@
+{
+  "_note": "Szegedy walk witness: 정의식 재유도+스펙트럼 정리+정상벡터+teeth.",
+  "_schema": "szegedy-observe-v1",
+  "observation": {
+    "collapse_2state_to_XX_clifford": true,
+    "honest_boundary": "봉인=W 유니터리뿐. 스펙트럼 정리·정상벡터=witness 관측. gap 증폭/hitting-time 성능=차기. 비-dyadic P(π/3 계열)=사람게이트.",
+    "ok": true,
+    "sealed_assets": "szegedy_2state_p12·szegedy_c4_p12 (walk 유니터리 Tier-0 exact, ★C₄=draper_add2·reflect00 sub-app 복리, 신규 module 0)",
+    "teeth_wrong_P_detected": true,
+    "walks": [
+      {
+        "app": "szegedy_2state_p12",
+        "ok": true,
+        "seal_link": true,
+        "spectral_phases_subset_pm2arccos": true,
+        "stationary_plus1_eigvec_dev": 4.440892098500626e-16,
+        "szegedy_formula_match": 0.0
+      },
+      {
+        "app": "szegedy_c4_p12",
+        "ok": true,
+        "seal_link": true,
+        "spectral_phases_subset_pm2arccos": true,
+        "stationary_plus1_eigvec_dev": 3.3306690738754696e-16,
+        "szegedy_formula_match": 0.0
+      }
+    ]
+  }
+}

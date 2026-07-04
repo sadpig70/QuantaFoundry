@@ -92,9 +92,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 279,
+    "unique_app_count": 289,
     "cached_app_side_module_count": 70,
-    "total_files": 349,
+    "total_files": 359,
     "path": "registry/apps",
     "unique": [
       "aklt4",
@@ -111,6 +111,10 @@
       "bk_num1",
       "bv3_s101",
       "ccz_rediscovered",
+      "choi_ampdamp",
+      "choi_bitflip",
+      "choi_depol",
+      "choi_phasedamp",
       "cliff1_h",
       "cliff1_hs",
       "cliff1_hsh",
@@ -144,6 +148,7 @@
       "cluster7",
       "cluster8",
       "cluster9",
+      "cmp2_ge",
       "cmul101_mod115",
       "cmul120_mod221",
       "cmul131_mod635",
@@ -238,6 +243,8 @@
       "code513_encoder",
       "cry_pi",
       "cry_pi2",
+      "cuccaro_add2",
+      "cuccaro_add3",
       "cz_rediscovered",
       "d4_mult",
       "d4_qft",
@@ -245,6 +252,7 @@
       "diffusion3",
       "dj2_balanced_xor",
       "dj2_const1",
+      "draper_add2",
       "fswap",
       "gf4_frob",
       "gf4_mul",
@@ -353,6 +361,8 @@
       "surf_ls_merge_zz",
       "swap_via_cnot",
       "syndrome3_bitflip",
+      "szegedy_2state_p12",
+      "szegedy_c4_p12",
       "tfim3_suzuki4_step",
       "tfim3_trotter_2steps",
       "tfim3_trotter_step",
@@ -522,7 +532,7 @@
     "x_gate": "registry/modules/x_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "262e0379d3fcbc890119dcfdf5bea77c986f5f49ced717a8c6ab9128d95fffbf",
+  "registry_root_hash": "e40a8eaf0387fc0ec06694c7fefd85224ea4ddf68613f4cd6a5983fe83b7e61c",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

@@ -1,0 +1,57 @@
+{
+  "_note": "Choi duality witness: J==Kraus-Choi·CP/TP·J→E 재구성 exact. 봉인=유니터리뿐.",
+  "_schema": "choi-observe-v1",
+  "observation": {
+    "chois": [
+      {
+        "CP_min_eig": 0.0,
+        "TP_dev": 0.0,
+        "app": "choi_bitflip",
+        "channel": "bitflip",
+        "choi_match_kraus": 5.551115123125783e-17,
+        "duality_reconstruction_dev": 1.1102230246251565e-16,
+        "ok": true,
+        "seal_link": true,
+        "unitary": true
+      },
+      {
+        "CP_min_eig": 0.0,
+        "TP_dev": 1.1102230246251565e-16,
+        "app": "choi_phasedamp",
+        "channel": "phasedamp",
+        "choi_match_kraus": 1.1102230246251565e-16,
+        "duality_reconstruction_dev": 2.220446049250313e-16,
+        "ok": true,
+        "seal_link": true,
+        "unitary": true
+      },
+      {
+        "CP_min_eig": 0.0,
+        "TP_dev": 1.1102230246251565e-16,
+        "app": "choi_ampdamp",
+        "channel": "ampdamp",
+        "choi_match_kraus": 1.1102230246251565e-16,
+        "duality_reconstruction_dev": 2.220446049250313e-16,
+        "ok": true,
+        "seal_link": true,
+        "unitary": true
+      },
+      {
+        "CP_min_eig": 0.2499999999999999,
+        "J_eq_I4_over_4": 1.1102230246251565e-16,
+        "TP_dev": 2.220446049250313e-16,
+        "app": "choi_depol",
+        "channel": "depol",
+        "choi_match_kraus": 1.1102230246251565e-16,
+        "duality_reconstruction_dev": 2.220446049250313e-16,
+        "ok": true,
+        "seal_link": true,
+        "unitary": true
+      }
+    ],
+    "honest_boundary": "봉인=Choi 상태 준비 유니터리뿐. J(부분대각합)·CP/TP·채널 재구성=관측(INV-Q3). 일반 p·qubit>1 채널·process tomography=차기.",
+    "ok": true,
+    "sealed_assets": "choi_bitflip/phasedamp/ampdamp/depol (준비 유니터리 Tier-0 exact, Bell+기봉인 stinespring_* sub-app 복리, 신규 module 0)",
+    "teeth_wrong_p_detected": true
+  }
+}

@@ -371,6 +371,30 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ae. HE3 H3.1: 정수 산술 1급 자산 — 전수 정수 two-path + ripple==Fourier 교차 (observation)
+    rc, out = run(["scripts/arithmetic_observe.py", "--quick"])
+    result["steps"]["arithmetic_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3af. HE3 H3.2: Szegedy walk — 정의식 재유도 + 스펙트럼 정리 + 정상벡터 witness (observation)
+    rc, out = run(["scripts/szegedy_observe.py", "--quick"])
+    result["steps"]["szegedy_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3ag. HE3 H3.3: Choi channel-state duality — J==Kraus·CP/TP·J→E 재구성 witness (observation)
+    rc, out = run(["scripts/choi_observe.py", "--quick"])
+    result["steps"]["choi_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3ah. HE3 H3.4: path-sum(ℤ[ω₈]) 4번째 독립 검증경로 — 봉인 0, sidecar witness (observation)
+    rc, out = run(["scripts/pathsum_verify.py", "--quick"])
+    result["steps"]["pathsum_verify"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

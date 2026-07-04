@@ -435,6 +435,98 @@
       }
     ]
   },
+  "choi_ampdamp": {
+    "u_hash": "24d1a0023fc86b158d14f2c57d75d340bbeaeb43b88a37761431ec8dfda2f58a",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "stinespring_ampdamp",
+        "uses": 1,
+        "child_u_hash": "54f02528c971ad04788c9c61a6715472c10071a06398171aff23ea18d1a56c14"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "choi_bitflip": {
+    "u_hash": "da22845941f4b93c7724351b30791555de14dbe8c133e4bf2ccf81e810c56494",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "stinespring_bitflip",
+        "uses": 1,
+        "child_u_hash": "00e9d23216c3bc34efdfc77e9324cab785248f4134f86bcb6d0dc41ed3d16689"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "choi_depol": {
+    "u_hash": "9f77e6e3c354c915c8c90a6a8a1f0e49de6e1fbec82f77d5f0cecd92e4450f50",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "stinespring_depol",
+        "uses": 1,
+        "child_u_hash": "7b469cc83670ebec89412f6360408689ae8e50a74d7752074cee0289869d3147"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "choi_phasedamp": {
+    "u_hash": "c64c5518b6f86f623106eed730d5138b37516b13fd54033cd732990d71674905",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "stinespring_phasedamp",
+        "uses": 1,
+        "child_u_hash": "6976a9cd7b1e918217073d09c2a3b7661d6d26f7c2e0eef7ee809de3df942056"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "cliff1_h": {
     "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
     "depends_on": [
@@ -963,6 +1055,29 @@
         "id": "h_gate",
         "uses": 9,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "cmp2_ge": {
+    "u_hash": "c34413327f3dc1484359c6550b2044625eab6139e63aebbf5bbb61c1f937a952",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 9,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 4,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 6,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
       }
     ]
   },
@@ -5000,6 +5115,40 @@
       }
     ]
   },
+  "cuccaro_add2": {
+    "u_hash": "a5f85ecffc24b15b0749696bd2047ebc483e235fff63581b6c44411e550b1727",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 9,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 4,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "cuccaro_add3": {
+    "u_hash": "4306d79dabab8fdd42319bd26e24e3c21b9d00f9f2487aa6d15ee39f36867333",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 13,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 6,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "cz_rediscovered": {
     "u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
     "depends_on": [
@@ -5140,6 +5289,35 @@
         "id": "x_gate",
         "uses": 2,
         "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "draper_add2": {
+    "u_hash": "fc0c31ceaddb259829bbaa067e6bce73853cf4166d9bc4bca3e2e6dcd2939fff",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "iqft2",
+        "uses": 1,
+        "child_u_hash": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 1,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 2,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "qft2",
+        "uses": 1,
+        "child_u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82"
       }
     ]
   },
@@ -7942,6 +8120,70 @@
         "id": "cnot",
         "uses": 4,
         "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      }
+    ]
+  },
+  "szegedy_2state_p12": {
+    "u_hash": "a351865018eba6540b46df434d4d1a081bdcf99ea22979316ebea7d20496810f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 2,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 2,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
+  "szegedy_c4_p12": {
+    "u_hash": "124430fcc90bc26956894eaa77646de34dd20bb25f84a3ce591328043374771e",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "draper_add2",
+        "uses": 4,
+        "child_u_hash": "fc0c31ceaddb259829bbaa067e6bce73853cf4166d9bc4bca3e2e6dcd2939fff"
+      },
+      {
+        "kind": "app",
+        "id": "reflect00",
+        "uses": 2,
+        "child_u_hash": "02dbf66f3a2ed57646ee3b90eaead938372780912c230c6a87f62f93ccf01864"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 4,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 14,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
       }
     ]
   },

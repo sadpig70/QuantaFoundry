@@ -185,6 +185,19 @@ APP_LIST = [
     ("cliff1_hshssh.app.pg", None),      # C1 'hshssh' X→-Z Z→-Y
     ("cliff1_hshsss.app.pg", None),      # C1 'hshsss' X→-Y Z→-X
     ("cliff1_hsshss.app.pg", None),      # C1 'hsshss' X→-X Z→-Z (mod phase = Y)
+    # HE3 H3.1 QuantumArithmetic: 명시적 정수 산술 1급 자산화 (외부 8런타임 8/8 만장일치 축, 신규 module 0)
+    ("cuccaro_add2.app.pg",  None),      # 2-bit ripple-carry 가산기 (MAJ/UMA, {cnot,toffoli}, 6q)
+    ("cuccaro_add3.app.pg",  None),      # 3-bit ripple-carry 가산기 (family 수직 1단, 8q)
+    ("cmp2_ge.app.pg",       None),      # 2-bit 비교기 z^=[a>=b+cin] (보수 carry 트릭, MAJ† 역사다리, 6q)
+    ("draper_add2.app.pg",   None),      # 2-bit Draper QFT-가산기 (위상공간 가산, qft2·cs·cz·iqft2 복리, 4q)
+    # HE3 H3.2 SzegedyWalk: Markov 연쇄 양자화 — 새 수평 클래스 (6/8 합의, 이분 반사, 신규 module 0)
+    ("szegedy_2state_p12.app.pg", None), # 2-state 균일 P=1/2 walk (W=X⊗X 로 닫힘, 반사 구성 plan, 2q)
+    ("szegedy_c4_p12.app.pg",     None), # C₄ cycle 균일 walk (★draper_add2·reflect00 sub-app 복리, 4q 30스텝)
+    # HE3 H3.3 ChoiState: channel-state duality 자산화 (채널축 잔여 novelty, Bell+dilation 복리, 신규 module 0)
+    ("choi_bitflip.app.pg",   None),     # J(bit-flip½) 준비 유니터리 (3q, Bell+stinespring_bitflip sub-app)
+    ("choi_phasedamp.app.pg", None),     # J(phase-damp½) 준비 유니터리 (3q)
+    ("choi_ampdamp.app.pg",   None),     # J(amp-damp½) 준비 유니터리 (3q)
+    ("choi_depol.app.pg",     None),     # J(depol p=1)=I/4 극단 사례 (4q, env 2q)
 ]
 
 

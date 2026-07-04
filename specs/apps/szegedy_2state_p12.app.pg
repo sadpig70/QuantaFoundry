@@ -1,0 +1,37 @@
+# szegedy_2state_p12 — Szegedy 양자화 walk, 2-state 대칭 Markov 연쇄 P=[[1/2,1/2],[1/2,1/2]] (HE3 H3.2,
+# 새 수평 클래스: Markov 연쇄 양자화 — coined walk 와 다른 이분 반사 구성, 6/8 합의 축).
+# wires(w0=x레지스터, w1=y레지스터): T|x⟩=|x⟩|p_x⟩, p_x=|+⟩ ∀x → R_A=2TT†−I=I⊗(HZH)=I⊗X,
+# R_B=SWAP·R_A·SWAP, W=R_B·R_A. ★2-state 균일에서 W가 Clifford(X⊗X)로 닫힘 — plan=반사 구성 그대로,
+# 수축은 golden 대조로 확인되는 구조적 사실. 신규 module 0. spectral 성질(±2arccos λ_D)=관측(seal 아님).
+```json id=app_meta
+{"id": "szegedy_2state_p12", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# Szegedy 정의식에서 직접 유도(회로 독립): P → Π_A=Σ|x,p_x⟩⟨x,p_x| → W=(S·R_A·S)·R_A
+P = np.full((2, 2), 0.5)
+N = 2; dim = N * N
+PI_A = np.zeros((dim, dim), dtype=complex)
+for x in range(N):
+    v = np.zeros(dim, dtype=complex)
+    for y in range(N):
+        v[x * N + y] = np.sqrt(P[x, y])
+    PI_A += np.outer(v, v.conj())
+RA = 2 * PI_A - np.eye(dim)
+S = np.zeros((dim, dim), dtype=complex)
+for x in range(N):
+    for y in range(N):
+        S[y * N + x, x * N + y] = 1
+golden = (S @ RA @ S) @ RA
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/z_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/swap2.pg", "targets": [0, 1]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/z_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/swap2.pg", "targets": [0, 1]}]}
+```

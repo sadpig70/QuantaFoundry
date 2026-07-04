@@ -1,0 +1,40 @@
+# choi_depol — 완전 depolarizing 채널(p=1)의 Choi 상태 준비 유니터리 (HE3 H3.3). wires: 0=ref, 1=sys, 2·3=env.
+# Bell(ref,sys) 후 기봉인 stinespring_depol sub-app(sys,env×2) — 신규 module 0. 봉인=유니터리(16×16)뿐.
+# ★E=I/2(완전 망각) ⟺ J = I₄/4 (최대혼합 Choi) — duality 의 극단 사례 관측(choi_observe, INV-Q3).
+```json id=app_meta
+{"id": "choi_depol", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def embN(op, q, n):
+    ops = [I] * n; ops[q] = op
+    M = ops[0]
+    for o in ops[1:]:
+        M = np.kron(M, o)
+    return M
+def cnotN(c, t, n):
+    dim = 2 ** n; M = np.zeros((dim, dim), dtype=complex)
+    for x in range(dim):
+        b = [(x >> (n - 1 - q)) & 1 for q in range(n)]; b[t] ^= b[c]
+        y = 0
+        for bb in b:
+            y = (y << 1) | bb
+        M[y, x] = 1.0
+    return M
+def ctrlN(c, t, P, n):
+    P0 = np.diag([1, 0]).astype(complex); P1 = np.diag([0, 1]).astype(complex)
+    return embN(P0, c, n) + embN(P1, c, n) @ embN(P, t, n)
+# U_dep(3q, s=0·e1=1·e2=2) = CZ(e1→s)·CNOT(e2→s)·H(e2)·H(e1) — V6.2 닫힌형 그대로
+U_dep = ctrlN(1, 0, Z, 3) @ ctrlN(2, 0, X, 3) @ embN(H, 2, 3) @ embN(H, 1, 3)
+golden = np.kron(I, U_dep) @ cnotN(0, 1, 4) @ embN(H, 0, 4)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"app": "stinespring_depol.app.pg", "targets": [1, 2, 3]}]}
+```

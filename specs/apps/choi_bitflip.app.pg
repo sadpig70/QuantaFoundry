@@ -1,0 +1,39 @@
+# choi_bitflip — bit-flip 채널(p=½)의 Choi–Jamiołkowski 상태 준비 유니터리 (HE3 H3.3, channel-state duality 자산화).
+# wires: 0=ref, 1=sys, 2=env. |000⟩ → (I_ref⊗U_bf)(|Φ⁺⟩_{ref,sys}⊗|0⟩_env): Bell prep 후 기봉인
+#   stinespring_bitflip sub-app 을 (sys,env)에 적용 — 전부 기봉인 부품 복리, 신규 module 0.
+# 봉인=준비 유니터리(Tier-0 8×8)뿐. Choi 행렬 J(E)=Tr_env[·]=관측(choi_observe: CP(J⪰0)·TP(Tr_sys J=I/2)·
+#   duality(J→E 재구성==Kraus)). INV-Q3 상속: 채널 성질=비유니터리 관측.
+```json id=app_meta
+{"id": "choi_bitflip", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+def embN(op, q, n):
+    ops = [I] * n; ops[q] = op
+    M = ops[0]
+    for o in ops[1:]:
+        M = np.kron(M, o)
+    return M
+def cnotN(c, t, n):
+    dim = 2 ** n; M = np.zeros((dim, dim), dtype=complex)
+    for x in range(dim):
+        b = [(x >> (n - 1 - q)) & 1 for q in range(n)]; b[t] ^= b[c]
+        y = 0
+        for bb in b:
+            y = (y << 1) | bb
+        M[y, x] = 1.0
+    return M
+# U_bf(2q, sys·env) = CNOT(env→sys)·Ry(π/2)_env — V6 닫힌형 그대로
+U_bf = cnotN(1, 0, 2) @ embN(ry(np.pi / 2), 1, 2)
+golden = np.kron(I, U_bf) @ cnotN(0, 1, 3) @ embN(H, 0, 3)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"app": "stinespring_bitflip.app.pg", "targets": [1, 2]}]}
+```
