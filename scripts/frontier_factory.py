@@ -371,6 +371,31 @@ def verify_against_sealed(N: int, a: int = DEFAULT_A, t: int = DEFAULT_T) -> dic
 REGRESSION_N = [91, 119, 221, 381, 635, 1285, 3683]
 
 
+def repay_subspace(N: int) -> dict:
+    """봉인 직후 structural 부채 자동 상환 — 신규 shor{N} 을 계산기저 순열로 강검증.
+
+    factory 는 structural(Merkle) 로만 봉인하므로 봉인마다 structural 부채가 1건씩 재도입된다
+    (V08 P0 에서 상환한 subspace_permutation_verified 등급 누락). 이 함수가 라운드 안에서 그
+    부채를 즉시 상환한다: perm_subspace_verify.verify(shor{N}) → sidecar 생성. 비파괴(sidecar 만,
+    root 무영향). semantic_guarantee 재생성은 호출자(loop sync 또는 main)가 수행 → 등급 자동 상향.
+    """
+    sid = f"shor{N}"
+    try:
+        import perm_subspace_verify as ps  # noqa: E402  (사용만)
+    except Exception as e:
+        return {"id": sid, "repaid": False, "reason": f"import-fail:{e}"}
+    if not os.path.exists(os.path.join(APPREG, f"{sid}.sealed.json")):
+        return {"id": sid, "repaid": False, "reason": "not-sealed"}
+    try:
+        pr = ps.verify(sid)
+        ps.write_sidecar(pr)
+    except Exception as e:
+        return {"id": sid, "repaid": False, "reason": f"verify-fail:{e}"}
+    return {"id": sid, "repaid": bool(pr["verified"]), "grade": pr["grade"],
+            "method": pr["method"], "basis": f"{pr['basis_matched']}/{pr['basis_tested']}",
+            "negative_control_reject": pr["negative_control_reject"]}
+
+
 def _run_regression() -> int:
     results = [verify_against_sealed(N) for N in REGRESSION_N]
     all_ok = all(r["byte_identical_all"] for r in results)
@@ -432,7 +457,14 @@ def main() -> int:
         for N in args.seal:
             res = factory_seal(N)
             print(f"[seal] N={N} sealed={res['sealed']} reason={res.get('reason', 'ok')}")
-            rc |= 0 if res["sealed"] else 1
+            if res["sealed"]:
+                # ★자동 상환: 봉인 직후 subspace 순열 강검증(structural 부채 즉시 상환, 비파괴 sidecar).
+                rp = repay_subspace(N)
+                print(f"[subspace] N={N} repaid={rp.get('repaid')} "
+                      f"grade={rp.get('grade', rp.get('reason'))} basis={rp.get('basis', '-')}")
+                rc |= 0 if rp.get("repaid") else 1
+            else:
+                rc |= 1
         return rc
     ap.print_help()
     return 0

@@ -20,16 +20,35 @@ modular-exponentiation 순열을 계산기저에서 구현함"을 독립 2-경�
 
 사용: python scripts/perm_subspace_verify.py [shor69 shor91 ...]  (인자 없으면 9개 전부)
 """
-import os, re, sys, json, hashlib
+import os, re, sys, json, glob, hashlib
 import numpy as np
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPECS_APPS = os.path.join(ROOT, "specs", "apps")
+APPREG = os.path.join(ROOT, "registry", "apps")
 PROOFS = os.path.join(ROOT, ".pgf", "proofs")
 
-# 10개 structural Shor 앱 (HANDOFF Current; shor85=factory 라운드 2026-07-04 가산)
-STRUCTURAL_SHOR = ["shor69", "shor77", "shor85", "shor91", "shor119", "shor221",
-                   "shor381", "shor635", "shor1285", "shor3683"]
+
+def _discover_structural_shor():
+    """registry 데이터-주도: Tier-1 로 봉인된 shor{N} 앱을 자동 발견(N 오름차순).
+    하드코딩 대신 봉인 상태를 진실원으로 삼아 factory 라운드가 가산한 신규 N 을 자동 포함
+    (수동 상환 누락 방지). shor15/21 등 Tier-0 dense-exact 앱은 modexp-코어 구조가 달라 제외."""
+    out = []
+    for p in glob.glob(os.path.join(APPREG, "shor*.sealed.json")):
+        try:
+            if json.load(open(p, encoding="utf-8")).get("tier") != 1:
+                continue
+        except Exception:
+            continue
+        sid = os.path.basename(p)[:-len(".sealed.json")]
+        m = re.fullmatch(r"shor(\d+)", sid)   # shor{N} 형태만(shor{N}_structural 등 변형 배제)
+        if m and os.path.exists(os.path.join(SPECS_APPS, f"{sid}.app.pg")):
+            out.append((int(m.group(1)), sid))
+    return [sid for _, sid in sorted(out)]
+
+
+# structural Shor 앱 (registry Tier-1 자동 발견; factory 라운드 신규 N 자동 편입)
+STRUCTURAL_SHOR = _discover_structural_shor()
 
 EXHAUSTIVE_BOUND = 18   # n_sys ≤ 18 → 전수 vectorized; ≥19 → 표본(sampled)
 N_BASIS = 4096          # 표본 basis state 수 (n≥19)
