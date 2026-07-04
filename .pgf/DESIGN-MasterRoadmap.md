@@ -412,6 +412,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   aklt_observe: 독립 MPS 수축 exact(1e-16)+parent-H P⁽²⁾ 소멸 3/3+triplet+string order 관측
             #   +teeth(edge 축퇴=parent-H 불변이 정직·MPS-match만 edge 고정). second_oracle 73→79/79.
             #   root e6c60258→3790e617(79→85 modules·208→209 apps). n>4·PBC·bond>2 일반 MPS=차기.
+        V5_ExtRound3Request // 외부 3차 제안 요청문(v1+v2+v3+V4 EXCLUDE) 작성·배치 (done)
+            # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v3.md — self-contained, 봉인 0·root 불변.
+            #   EXCLUDE 3c(v2 P1–P6·v3 T1–T4·V4 AKLT) 추가, §4′ 직접-구성 성공패턴(닫힌형 CG/환경 유도)
+            #   + 승인-module 사람게이트 프로세스 명시. 수거=정욱님(외부 런타임 전달·회신 수집).
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
