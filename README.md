@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **79 sealed modules · 208 sealed applications** · registry root `e6c60258…`
+- **85 sealed modules · 209 sealed applications** · registry root `3790e617…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash e6c60258… · second_oracle 73/73 · behavior pass
+# expect: REPRODUCED · root_hash 3790e617… · second_oracle 79/79 · behavior pass
 ```
 
 ---
@@ -51,8 +51,10 @@ python scripts/reproduce_all.py
   a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **fermionic SWAP**,
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
-  and a **3-qubit Schur-Weyl transform** (direct Clebsch-Gordan cascade, J²/Jz simultaneous-
-  diagonalization witness + S₃ duality sector preservation).
+  a **3-qubit Schur-Weyl transform** (direct Clebsch-Gordan cascade, J²/Jz simultaneous-
+  diagonalization witness + S₃ duality sector preservation), and a **4-site AKLT/VBS state
+  preparation** (tensor-network MPS class: sequential conditioned isometries, independent MPS
+  contraction match + parent-Hamiltonian annihilation witness).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
   structural frontier (`shor91 … shor3683`, sealed via a `c8x→c12x` multi-control ladder).
 - **Key-free cross-model establishment**: the first *live* cross-model truth (`sx` = √X) settled by
