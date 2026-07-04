@@ -465,6 +465,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ scripts/pathsum_verify.py(3ah): ℤ[ω₈]·(1/√2)^k 축차 경로합(부동소수 0 정수 연산)→dense
             #   golden 전역위상 정규화 대조. 8개 봉인 앱(bell~szegedy_2state) dev≤2e-16+teeth(T 오염 검출).
             #   봉인 0·oracle 무수정(봉인 판정 불참 sidecar). dense·tableau·ZX 다음의 4번째 수학 기반.
+    TrackGate6 // 사람게이트 6건 단계별 개창 — 상세 계획서 .pgf/DESIGN-HumanGate6.md (in-progress) @dep:TrackHE3
+        # 순서(승인 부담 오름차순×payoff): G1 PEPS RVB(module 0 도전)→G2 2q 2-design(실행가능성 수학게이트)
+        #   →G3 π/6·π/3 family(승인 1회→채널γ¼·Szegedy p¼·POVM 3축)→G4 Schur n=4(module 2)
+        #   →G5 Fibonacci(새 대수체 ℚ(√5)+ζ₅, 최대 게이트)→G6 종결동기화.
+        # ★승인 게이트=각 G의 신규 module 각도 확정 시점에 명세 보고 후 정욱님 승인(계획서 승인과 분리).
+        # 노드별 status 는 DESIGN-HumanGate6.md 가 정본(이 마스터는 트랙 요약만).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
