@@ -59,9 +59,12 @@ python .agents/skills/qfa-loop/scripts/autonomy_loop.py --mode frontier-factory 
 
 | `--gates` | meaning |
 |---|---|
-| `full` | reproduce_all re-synthesis (REPRODUCED) — **only mode allowed to commit** (verified-only) |
+| `full` | reproduce_all full re-synthesis of every generator (REPRODUCED, byte-identical) — **verified-commit**. Session-close / CI final proof. |
+| `changed` | reproduce_all `--changed-only` (re-synthesize changed specs byte-identically + coherence-verify the rest; same root as full, ~230s vs full 600s+) — **verified-commit**. Recommended for unattended multi-round. |
 | `incremental` | registry build + second_oracle + seal_gate_ci + contested_guard (~46s) — commit withheld |
 | `fast` | independent gates only, no registry build — inspection |
+
+Commit-allowed gates: `{full, changed}` (both re-synthesize newly-sealed apps byte-identically). `changed` layers the verification so a factory round no longer re-synthesizes the ~200 unchanged frontier apps.
 
 ## Invariants (trust basis, not prohibitions)
 

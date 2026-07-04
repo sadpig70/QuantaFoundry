@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **85 sealed modules · 242 sealed applications** · registry root `bf64e8a3…`
+- **85 sealed modules · 251 sealed applications** · registry root `afa2cab8…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash bf64e8a3… · second_oracle 79/79 · behavior pass
+# expect: REPRODUCED · root_hash afa2cab8… · second_oracle 79/79 · behavior pass
 ```
 
 ---
@@ -56,7 +56,7 @@ python scripts/reproduce_all.py
   preparation** (tensor-network MPS class: sequential conditioned isometries, independent MPS
   contraction match + parent-Hamiltonian annihilation witness).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
-  structural frontier (`shor69 … shor3683`, 14 apps, sealed via a `c7x→c12x` multi-control ladder;
+  structural frontier (`shor69 … shor3683`, 16 apps, sealed via a `c7x→c12x` multi-control ladder;
   every one subspace-permutation verified against independent integer arithmetic — the newest ones
   discovered and sealed unattended by the autonomous factory loop, then auto-repaid to that grade).
 - **Key-free cross-model establishment**: the first *live* cross-model truth (`sx` = √X) settled by
