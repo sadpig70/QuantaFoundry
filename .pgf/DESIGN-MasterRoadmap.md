@@ -426,6 +426,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   ★V6.2 심화(5490e8f): stinespring_depol(3q, 완전 depolarizing p=1=균일 Pauli twirl 4-Kraus,
             #   H⊗H env·CZ·CNOT, E=I/2, 신규 module 0) + 합성 compounding 관측(봉인 dilation 직렬→
             #   phase-damp½∘½==λ¾·amp-damp½∘½==γ¾). 일반 p<1(비-dyadic)·다큐빗·하드웨어 노이즈=차기.
+        V7_ChannelQEC // 채널→QEC 완결 파이프라인 관측(봉인 자산 3축 결합) (done)
+            # ✅ qec_channel_observe(신규 봉인 0·root 불변): repcode3(인코더)→stinespring_bitflip(채널
+            #   오류주입)→syndrome3(신드롬)→코히런트 조건-X 정정→decode→논리 복원. ★bit-flip={√(1−p)I,
+            #   √p X_i} 두 Kraus weight≤1→거리-3 exact 정정: R(E_i(Encode(ρ)))=ρ, 18 케이스 전부 1e-16.
+            #   봉인 채널 링크 확인·전역 teeth(정정필요). 봉인=유니터리뿐, 채널·복원=관측(INV-Q3). 단일큐빗만.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
