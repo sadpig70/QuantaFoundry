@@ -6,8 +6,8 @@
       "apps_sealed": "106/106",
       "rediscovery": "6/6",
       "pass": true,
-      "reassembled": 1,
-      "coherence": 105
+      "reassembled": 0,
+      "coherence": 106
     },
     "frontier_coherence": {
       "coherence_checked": 161,
@@ -169,6 +169,11 @@
       "pass": true
     },
     "channel_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "qec_channel_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

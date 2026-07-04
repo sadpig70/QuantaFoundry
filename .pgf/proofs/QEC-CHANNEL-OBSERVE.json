@@ -1,0 +1,16 @@
+{
+  "_note": "봉인 채널로 오류 주입 → 봉인 QEC 로 정정 → 논리상태 exact 복원. 신규 봉인 0(INV-Q3).",
+  "_schema": "qec-channel-observe-v1",
+  "observation": {
+    "axis": "채널→QEC 완결 파이프라인 (오류 주입→신드롬→정정→복원)",
+    "cases": "p∈{½,¼} × err_q∈{0,1,2} × 3 상태 = 18 케이스 전부 R(E_i(Encode(ρ)))=ρ exact (정정 생략 시 최소 1 케이스 훼손=teeth). ★계산기저×비-q0 오류는 코드가 자연보호.",
+    "exact_recovery_all": true,
+    "failures": [],
+    "honest_boundary": "봉인=인코더/dilation/syndrome 유니터리뿐(각 Tier-0 exact). 채널·복원·측정후처리=관측. 단일큐빗 채널만 거리-3 exact 정정; 2큐빗 동시오류·측정 실측·decoder threshold=차기. 신규 봉인 0(INV-Q3).",
+    "n_cases": 18,
+    "ok": true,
+    "sealed_assets": "repcode3_bitflip(인코더)·stinespring_bitflip(채널)·syndrome3_bitflip(신드롬)",
+    "sealed_channel_link_verified": true,
+    "teeth_uncorrected_fails": true
+  }
+}

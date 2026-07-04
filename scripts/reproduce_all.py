@@ -359,6 +359,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ac. HE2 V7: 채널→QEC 완결 파이프라인 — 봉인 채널 오류주입→봉인 QEC 정정→exact 복원 (observation)
+    rc, out = run(["scripts/qec_channel_observe.py", "--quick"])
+    result["steps"]["qec_channel_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
