@@ -27,8 +27,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPECS_APPS = os.path.join(ROOT, "specs", "apps")
 PROOFS = os.path.join(ROOT, ".pgf", "proofs")
 
-# 9개 structural Shor 앱 (HANDOFF Current)
-STRUCTURAL_SHOR = ["shor69", "shor77", "shor91", "shor119", "shor221",
+# 10개 structural Shor 앱 (HANDOFF Current; shor85=factory 라운드 2026-07-04 가산)
+STRUCTURAL_SHOR = ["shor69", "shor77", "shor85", "shor91", "shor119", "shor221",
                    "shor381", "shor635", "shor1285", "shor3683"]
 
 EXHAUSTIVE_BOUND = 18   # n_sys ≤ 18 → 전수 vectorized; ≥19 → 표본(sampled)
