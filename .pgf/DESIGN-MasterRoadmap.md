@@ -422,8 +422,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   stinespring_bitflip(p½, Ry(π/2)_e·CNOT)·stinespring_phasedamp(λ½, CRY(π/2))·
             #   stinespring_ampdamp(γ½, CRY(π/2)·CNOT). 봉인=dilation 유니터리 Tier-0 exact(2q 4×4).
             #   channel_observe: Tr_env[U(ρ⊗|0⟩⟨0|)U†]==Kraus 채널 exact + CPTP(trace-preserve·ΣK†K=I)
-            #   + teeth(틀린각). ★정직 경계: 채널=관측(비유니터리 초연산자, seal 아님). 일반 감쇠율·
-            #   depolarizing(3-Kraus)·다큐빗=차기.
+            #   + teeth(틀린각). ★정직 경계: 채널=관측(비유니터리 초연산자, seal 아님).
+            #   ★V6.2 심화(5490e8f): stinespring_depol(3q, 완전 depolarizing p=1=균일 Pauli twirl 4-Kraus,
+            #   H⊗H env·CZ·CNOT, E=I/2, 신규 module 0) + 합성 compounding 관측(봉인 dilation 직렬→
+            #   phase-damp½∘½==λ¾·amp-damp½∘½==γ¾). 일반 p<1(비-dyadic)·다큐빗·하드웨어 노이즈=차기.
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
