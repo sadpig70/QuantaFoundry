@@ -157,6 +157,7 @@ APP_LIST = [
     ("stinespring_bitflip.app.pg",   None), # V6 bit-flip p½ dilation (Ry(π/2)_e·CNOT(e→s))
     ("stinespring_phasedamp.app.pg", None), # V6 phase-damping λ½ dilation (CRY(π/2) s→e)
     ("stinespring_ampdamp.app.pg",   None), # V6 amplitude-damping γ½ dilation (CRY(π/2)·CNOT(e→s))
+    ("stinespring_depol.app.pg",     None), # V6.2 fully depolarizing p=1 dilation (4-Kraus, H²·cnot·cz, 2q env)
 ]
 
 

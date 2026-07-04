@@ -2,7 +2,7 @@
   "_note": "3 채널 dilation 의 Tr_env == Kraus 채널 exact + CPTP witness. 봉인=유니터리뿐(INV-Q3). 신규 봉인 0.",
   "_schema": "channel-observe-v1",
   "observation": {
-    "axis": "열린 양자계 (CPTP 채널 Stinespring dilation)",
+    "axis": "열린 양자계 (CPTP 채널 Stinespring dilation + compounding)",
     "channels": [
       {
         "app": "stinespring_bitflip",
@@ -33,10 +33,28 @@
         "teeth_wrong_angle": true,
         "trace_preserving": 0.0,
         "unitary": true
+      },
+      {
+        "app": "stinespring_depol",
+        "channel": "depol",
+        "fully_depolarizing_E_eq_I_over_2": true,
+        "kraus_completeness": 0.0,
+        "kraus_match": 2.220446049250313e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 4.440892098500626e-16,
+        "unitary": true
       }
     ],
-    "honest_boundary": "봉인=dilation 유니터리뿐. 채널 E(ρ)=Tr_env[U(ρ⊗|0⟩⟨0|)U†]=비유니터리 초연산자 → 관측(seal 아님). 1/2 감쇠점만 dyadic-exact; 일반 감쇠율·depolarizing·다큐빗·하드웨어 노이즈=차기. 신규 봉인 0(INV-Q3).",
+    "composition": {
+      "ampdamp_half_composed": "== amplitude-damping(γ_eff=3/4)",
+      "ampdamp_match": 2.220446049250313e-16,
+      "ok": true,
+      "phasedamp_half_composed": "== phase-damping(λ_eff=3/4)",
+      "phasedamp_match": 1.1102230246251565e-16
+    },
+    "honest_boundary": "봉인=dilation 유니터리뿐. 채널 E(ρ)=Tr_env[U(ρ⊗|0⟩⟨0|)U†]=비유니터리 초연산자 → 관측(seal 아님). dyadic 점(½ 감쇠·depol p=1)만 exact; 일반 감쇠율·다큐빗·하드웨어 노이즈=차기. 합성=봉인 자산 복리 관측. 신규 봉인=depol 1개(INV-Q3).",
     "ok": true,
-    "sealed_assets": "stinespring_bitflip/phasedamp/ampdamp (dilation 유니터리 Tier-0 exact)"
+    "sealed_assets": "stinespring_bitflip/phasedamp/ampdamp/depol (dilation 유니터리 Tier-0 exact)"
   }
 }

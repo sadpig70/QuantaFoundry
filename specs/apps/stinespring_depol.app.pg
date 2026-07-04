@@ -1,0 +1,36 @@
+# stinespring_depol — 완전 depolarizing 채널(p=1)의 Stinespring dilation 유니터리. 3q(sys q0·env q1,q2). Tier-0 8×8.
+# HE2 V6.2 (#CHANNEL): 4-Kraus 채널 — 균일 Pauli twirl. E(ρ)=I/2 (완전 망각, 최대혼합).
+#   Kraus {½I, ½X, ½Y, ½Z} (전 계수 ½=dyadic). env=2q(4차원, Kraus 4개). env 입력 |00⟩.
+#   ★구성: env |00⟩→½Σ|k⟩(H⊗H), env-index k→controlled Pauli Z^{e1}X^{e0} on sys(위상 채널서 상쇄).
+#   U = CZ(e1→s)·CNOT(e0→s)·(H_e1⊗H_e0). 신규 module 0(h_gate·cnot·cz 재사용).
+#   q0=sys(MSB)·q1=e1·q2=e0. 봉인=dilation 유니터리 Tier-0 exact.
+# 정직 경계(INV-Q3): seal=유니터리뿐. 채널 E(ρ)=Tr_env[…]=I/2=비유니터리 초연산자→관측(channel_observe).
+#   compounding: 봉인 dilation 직렬연결→합성채널(관측). 일반 p<1(비-dyadic)·다큐빗=차기. 신규 봉인=이 1개.
+```json id=app_meta
+{"id": "stinespring_depol", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.array([[1, 0], [0, -1]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def emb(op, q):
+    ops = [I, I, I]; ops[q] = op
+    return np.kron(np.kron(ops[0], ops[1]), ops[2])
+def ctrl(c, t, P):
+    P0 = np.diag([1, 0]).astype(complex); P1 = np.diag([0, 1]).astype(complex)
+    return emb(P0, c) + emb(P1, c) @ emb(P, t)
+# 시간순: H(e1)·H(e0) → CNOT(e0→s) → CZ(e1→s).  s=0, e1=1, e0=2
+golden = np.eye(8, dtype=complex)
+for G in [emb(H, 1), emb(H, 2), ctrl(2, 0, X), ctrl(1, 0, Z)]:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 0]},
+  {"spec": "../modules/cz.pg", "targets": [1, 0]}
+]}
+```

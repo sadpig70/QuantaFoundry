@@ -1476,6 +1476,11 @@ stinespring_bitflip
 ├─ cnot (module)
 └─ ry_pi2 (module)
 
+stinespring_depol
+├─ cnot (module)
+├─ cz (module)
+└─ h_gate (module×2)
+
 stinespring_phasedamp
 ├─ cnot (module×2)
 ├─ ry_negpi4 (module)

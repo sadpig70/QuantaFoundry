@@ -2869,6 +2869,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "00e9d23216c3bc34efdfc77e9324cab785248f4134f86bcb6d0dc41ed3d16689"
     },
+    "app:stinespring_depol": {
+      "kind": "app",
+      "id": "stinespring_depol",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "7b469cc83670ebec89412f6360408689ae8e50a74d7752074cee0289869d3147"
+    },
     "app:stinespring_phasedamp": {
       "kind": "app",
       "id": "stinespring_phasedamp",
@@ -3936,7 +3945,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 308,
+        "unitary_equiv": 309,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 15
       },
@@ -3945,7 +3954,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 393,
+      "unitary_equiv": 394,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 15
     }
