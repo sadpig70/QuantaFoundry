@@ -106,6 +106,13 @@ INDEP = {
                                    [-np.sin(np.pi / 4), np.cos(np.pi / 4)]], dtype=complex),
     "ry_3pi4": lambda: np.array([[np.cos(3 * np.pi / 8), -np.sin(3 * np.pi / 8)],
                                  [np.sin(3 * np.pi / 8), np.cos(3 * np.pi / 8)]], dtype=complex),
+    # ── HE2 T1: Schur-Weyl CG 반각 회전 Ry(±arccos(⅓)/2) — 제1원리 closed form ──
+    "ry_cg_half": lambda: np.array(
+        [[np.cos(np.arccos(1 / 3) / 4), -np.sin(np.arccos(1 / 3) / 4)],
+         [np.sin(np.arccos(1 / 3) / 4), np.cos(np.arccos(1 / 3) / 4)]], dtype=complex),
+    "ry_cg_half_dag": lambda: np.array(
+        [[np.cos(np.arccos(1 / 3) / 4), np.sin(np.arccos(1 / 3) / 4)],
+         [-np.sin(np.arccos(1 / 3) / 4), np.cos(np.arccos(1 / 3) / 4)]], dtype=complex),
     # ── W12.3: Yoshida 4th-order Suzuki coefficient rotations ──
     "rz_y4_p": lambda: np.diag([np.exp(1j * (1 / (4 - 4 ** (1 / 3))) * np.pi / 16),
                                 np.exp(-1j * (1 / (4 - 4 ** (1 / 3))) * np.pi / 16)]).astype(complex),

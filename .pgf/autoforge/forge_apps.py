@@ -150,6 +150,7 @@ APP_LIST = [
     # HE2 v3 (사람게이트 승인): T2 Z₂ gauge · T1 Schur · T4 qLDPC
     ("z2gauge3.app.pg",              None), # T2.1 Z₂ 격자게이지 gauge-invariant encoder (cnot·h, Gauss law)
     ("qldpc_hgp.app.pg",             None), # T4 하이퍼그래프곱 CSS [[8,1,2]] 인코더 (generic 구성, h·cnot)
+    ("schur3.app.pg",                None), # T1 3-qubit Schur-Weyl transform (CG cascade, ry_cg_half±·toffoli·CH)
 ]
 
 

@@ -1,7 +1,7 @@
 {
   "schema": "registry-manifest/v1",
   "modules": {
-    "count": 77,
+    "count": 79,
     "path": "registry/modules",
     "items": [
       "c10x",
@@ -41,6 +41,8 @@
       "rx_y4_p",
       "rx_y4_q",
       "ry_3pi4",
+      "ry_cg_half",
+      "ry_cg_half_dag",
       "ry_k10",
       "ry_k10_dag",
       "ry_k2",
@@ -84,9 +86,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 207,
-    "cached_app_side_module_count": 63,
-    "total_files": 270,
+    "unique_app_count": 208,
+    "cached_app_side_module_count": 65,
+    "total_files": 273,
     "path": "registry/apps",
     "unique": [
       "be_h2",
@@ -254,6 +256,7 @@
       "rzz_y4_p_half",
       "rzz_y4_q_half",
       "s3_mult",
+      "schur3",
       "select_prepare4",
       "shor119",
       "shor1285",
@@ -328,6 +331,8 @@
       "rx_y4_p",
       "rx_y4_q",
       "ry_3pi4",
+      "ry_cg_half",
+      "ry_cg_half_dag",
       "ry_k10",
       "ry_k10_dag",
       "ry_k2",
@@ -394,6 +399,8 @@
     "rx_y4_p": "registry/modules/rx_y4_p.sealed.json",
     "rx_y4_q": "registry/modules/rx_y4_q.sealed.json",
     "ry_3pi4": "registry/modules/ry_3pi4.sealed.json",
+    "ry_cg_half": "registry/modules/ry_cg_half.sealed.json",
+    "ry_cg_half_dag": "registry/modules/ry_cg_half_dag.sealed.json",
     "ry_k10": "registry/modules/ry_k10.sealed.json",
     "ry_k10_dag": "registry/modules/ry_k10_dag.sealed.json",
     "ry_k2": "registry/modules/ry_k2.sealed.json",
@@ -428,7 +435,7 @@
     "x_gate": "registry/modules/x_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "c188d733f2935e4b990a049d43965a44543247406d361642793aa42acdd8edaa",
+  "registry_root_hash": "e6c602585732a1ce625067c3ae7a763be108b400635c784c3772ce00a17d1d27",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

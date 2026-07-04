@@ -1,0 +1,62 @@
+# schur3 — 3-qubit Schur-Weyl transform (encoder 방향: 계산기저 label → Schur 기저). Tier-0 8×8.
+# HE2 T1 (#SCHUR): 표현론 기저변환 2^⊗3 = spin-3/2 ⊕ spin-1/2×2 (SU(2)×S₃ duality).
+#   ★직접 CG cascade 구성(탐색 아님): U = V2(q1,q2) · G2 · G1.
+#   - G1 = 2-level Ry(+arccos⅓) on {|001⟩,|100⟩}: CNOT(0→2) 라우팅 + CCRy(q1=0,q2=1→q0)
+#   - G2 = 2-level Ry(−arccos⅓) on {|011⟩,|101⟩}: CNOT(0→1) 라우팅 + CCRy(q1=1,q2=1→q0)
+#   - V2 = pair CG(q1,q2): |01⟩→T₀=(|01⟩+|10⟩)/√2, |10⟩→S=(|01⟩−|10⟩)/√2
+#         = CNOT(2→1)·[X₂·CH(1→2)·X₂]·CNOT(2→1), CH = Ry(π/4)·CZ·Ry(−π/4) 켤레.
+#   CCRy(α) = Ry(α/2)·CCX·Ry(−α/2)·CCX (반각 module ry_cg_half/dag, 승인분).
+# label 규약(big-endian |q0q1q2⟩, 0=up, Jz=ΣZᵢ/2): 000→|3/2,+3/2⟩ · 001→|3/2,+1/2⟩ ·
+#   101→|3/2,−1/2⟩ · 111→|3/2,−3/2⟩ · 100→|1/2,+1/2⟩_A(j₁₂=1) · 011→−|1/2,−1/2⟩_A ·
+#   010→|1/2,+1/2⟩_B(j₁₂=0, B=(|001⟩−|010⟩)/√2) · 110→|1/2,−1/2⟩_B. 부호 규약 자유(문서화).
+# golden=CG 계수 직접 구성(회로 독립). 검증 C4: U†J²U=diag(3.75×4,0.75×4)·U†JzU 동시대각(schur_observe).
+# 봉인=exact 유니터리(전 성분 실수, √⅓·√⅙ CG 계수). n≥4 Schur·S₃ 레지스터 분리=차기(INV-Q3).
+```json id=app_meta
+{"id": "schur3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 3
+DIM = 8
+def idx(b):
+    return sum((b[i] & 1) << (NQ - 1 - i) for i in range(NQ))
+s2, s3, s6 = np.sqrt(2.0), np.sqrt(3.0), np.sqrt(6.0)
+golden = np.zeros((DIM, DIM), dtype=complex)
+def put(col, vec):
+    for b, a in vec.items():
+        golden[idx(list(b)), idx(list(col))] = a
+# 열 = Schur 기저벡터 (CG 계수 직접 — 회로와 독립)
+put((0, 0, 0), {(0, 0, 0): 1.0})                                                    # |3/2,+3/2>
+put((0, 0, 1), {(0, 0, 1): 1/s3, (0, 1, 0): 1/s3, (1, 0, 0): 1/s3})                 # |3/2,+1/2> (W)
+put((1, 0, 1), {(0, 1, 1): 1/s3, (1, 0, 1): 1/s3, (1, 1, 0): 1/s3})                 # |3/2,-1/2>
+put((1, 1, 1), {(1, 1, 1): 1.0})                                                    # |3/2,-3/2>
+put((1, 0, 0), {(1, 0, 0): 2/s6, (0, 0, 1): -1/s6, (0, 1, 0): -1/s6})               # |1/2,+1/2>_A
+put((0, 1, 1), {(0, 1, 1): 2/s6, (1, 0, 1): -1/s6, (1, 1, 0): -1/s6})               # -|1/2,-1/2>_A
+put((0, 1, 0), {(0, 0, 1): 1/s2, (0, 1, 0): -1/s2})                                 # |1/2,+1/2>_B
+put((1, 1, 0), {(1, 0, 1): 1/s2, (1, 1, 0): -1/s2})                                 # |1/2,-1/2>_B
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_cg_half_dag.pg", "targets": [0]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_cg_half.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_cg_half.pg", "targets": [0]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_cg_half_dag.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 1]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [2]},
+  {"spec": "../modules/cz.pg", "targets": [1, 2]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 1]}
+]}
+```

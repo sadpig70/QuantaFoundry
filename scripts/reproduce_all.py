@@ -228,6 +228,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3z. HE2 T1: Schur-Weyl transform J²/Jz 동시대각 + S₃ duality witness (schur3, observation)
+    rc, out = run(["scripts/schur_observe.py", "--quick"])
+    result["steps"]["schur_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -1,0 +1,19 @@
+{
+  "_note": "3-qubit Schur transform J²/Jz 동시대각 + S₃ duality witness. 봉인=schur3 뿐(INV-Q3). 신규 봉인 0.",
+  "_schema": "schur-observe-v1",
+  "observation": {
+    "axis": "Schur-Weyl transform (3-qubit, SU(2)×S₃ duality)",
+    "honest_boundary": "봉인=schur3 회로==CG golden exact(C-app) 뿐. J²/Jz 대각화·S₃ duality=관측 witness. n≥4 Schur·irrep 레지스터 분리=차기. 신규 봉인 0(INV-Q3).",
+    "ok": true,
+    "s3_duality_sector_preserving": true,
+    "sealed_asset": "schur3 (encoder: 계산기저 label → Schur 기저, CG cascade)",
+    "simultaneous_diagonal_J2_Jz": true,
+    "spectrum": "J² {3.75×4, 0.75×4} = spin-3/2 ⊕ spin-1/2×2 · Jz label map 정합",
+    "teeth_wrong_angle_and_sector_swap_detected": true,
+    "unitary": true,
+    "witness_detail": {
+      "offdiag_J2": 9.578057337228945e-17,
+      "offdiag_Jz": 1.2257133926344813e-17
+    }
+  }
+}

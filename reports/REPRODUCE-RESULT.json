@@ -3,7 +3,7 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "100/100",
+      "apps_sealed": "101/101",
       "rediscovery": "6/6",
       "pass": true
     },
@@ -74,15 +74,15 @@
     },
     "registry": {
       "rc": 0,
-      "modules": "77",
-      "unique_apps": "207",
-      "cached": "63",
-      "root_hash": "c188d733f2935e4b",
+      "modules": "79",
+      "unique_apps": "208",
+      "cached": "65",
+      "root_hash": "e6c602585732a1ce",
       "pass": true
     },
     "second_oracle": {
       "rc": 0,
-      "modules": "71/71",
+      "modules": "73/73",
       "pass": true
     },
     "convention_independence": {
@@ -206,6 +206,11 @@
       "pass": true
     },
     "zx_verify": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "schur_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

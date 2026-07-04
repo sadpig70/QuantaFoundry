@@ -1,0 +1,14 @@
+# ry_cg_half — Ry(arccos(⅓)/2) (Schur-Weyl CG 반각; HE2 T1 승인 module). CCRy(arccos⅓)=CCX·half†·CCX·half 분해용(√⅔·√⅓ CG mixing). Ry(α)=YPowGate(exponent=α/π) up-to-phase(C4). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+bloq = YPowGate(exponent=float(np.arccos(1.0/3.0) / (2.0*np.pi)))
+```
+```python id=golden
+import numpy as np
+a = np.arccos(1.0/3.0) / 2.0
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_cg_half", "n_sys": 1, "n_anc": 0}
+```

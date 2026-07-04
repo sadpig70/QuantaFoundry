@@ -4904,6 +4904,59 @@
       }
     ]
   },
+  "schur3": {
+    "u_hash": "45d57a5d08852d134b06a9b31732a69624a271a8d36d68b58a325977a4b70ad4",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 6,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_cg_half",
+        "uses": 2,
+        "child_u_hash": "b76f699acc27599f9b1ffca91dcb4b009c1174a2967781c08b05e94ddf0304e7"
+      },
+      {
+        "kind": "module",
+        "id": "ry_cg_half_dag",
+        "uses": 2,
+        "child_u_hash": "c60de30edbc2aedf0bf01fa72d05c11bcf6cebcd1b9328723e242fb97ac1bd9f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 1,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 1,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 4,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 4,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "select_prepare4": {
     "u_hash": "305401a7909513f2e179b2616a1c3fe85b7f18f1ede0879c36a72e189fe97ee2",
     "depends_on": [

@@ -540,6 +540,16 @@ s3_mult
 ├─ fredkin (module)
 └─ x_gate (module×12)
 
+schur3
+├─ cnot (module×6)
+├─ cz (module)
+├─ ry_cg_half (module×2)
+├─ ry_cg_half_dag (module×2)
+├─ ry_negpi4 (module)
+├─ ry_pi4 (module)
+├─ toffoli (module×4)
+└─ x_gate (module×4)
+
 select_prepare4
 ├─ ccz (module)
 ├─ h_gate (module×4)
