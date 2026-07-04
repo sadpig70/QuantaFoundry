@@ -41,11 +41,13 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   상보 π−θ=ry_pi2²·(ry_k6_dag)² · CCRy 반각=ry_k5 · multiplexer 보정 θ−π/2=ry_k6²·ry_negpi2 ·
             #   결정 분기=X/CNOT/toffoli · 부호(0110/1001 음)=차수≤2 위상다항식 → Z/CZ 로 GF(2) 가해(P7 확인).
             #   P5·P7 리뷰 수치 재검증 통과(판정 견고). 승인 게이트 불필요.
-        G1c1_CircuitDesign // 회로 구성 numpy == RVB golden 선검증 (designing) @dep:G1b_GateDecision
-            # process: 순차 조건화 등척(aklt4 패턴) — site0 ry_pi2 → site1 multiplexer(ry_pi2·CX·보정) →
-            #   site2 2-제어 분기(CCRy=ry_k5 반각+CCX 켤레, 00→X·11→I 결정 분기) → site3 결정론(CNOT/toffoli)
-            #   → 부호 보정 Z/CZ 층. golden=RVB 상태 열(dimer 정의 직접, orientation 고정) — 회로 독립.
-            # criteria: 회로 행렬 열(입력 |0000⟩) == golden 열 exact(1e-12) + 전체 유니터리 정방 완성 확인
+        G1c1_CircuitDesign // 회로 구성 numpy == RVB golden 선검증 (done) @dep:G1b_GateDecision
+            # ✅ 2026-07-05 1회 통과: **33스텝 plan** — site0 ry_pi2 → site1 multiplexer(ry_pi2·CX·
+            #   [ry_k6²·ry_negpi2]·CX) → site2 분기 3블록(00→X-켤레 toffoli·01→CCRy 반각=ry_k5·
+            #   10→CCRy 반각=ry_pi2·ry_k5_dag, anti-control=X 켤레) → site3 parity(CNOT×3, 전 support
+            #   weight=2 강제) → 부호층 f=x0+x0x1+x0x2+x1x2 = Z(0)·CZ(01)·CZ(02)·CZ(12).
+            #   ‖U|0000⟩−|RVB⟩‖=3.3e-16 · 유니터리 ✓ · module 10종 전부 기봉인(신규 0 재확인):
+            #   {ry_pi2, ry_negpi2, ry_k5±, ry_k6, x, z, cnot, cz, toffoli}. orientation 고정(i<j: |01⟩−|10⟩).
         G1c2_SealForge // peps22_rvb spec + forge 봉인 (designing) @dep:G1c1_CircuitDesign
             # criteria: SEALED Tier-0 · 신규 module 0 · 재발견 교차검증 불변
         G1c3_Observe // peps_observe + 사이클 완주 (designing) @dep:G1c2_SealForge
