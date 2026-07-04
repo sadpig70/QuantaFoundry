@@ -398,6 +398,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d63d4d6c3e787e8d0d5e531cf50e0543f735502cf723f46a6328421bebfd6ac7"
     },
+    "app:cmul16_mod85": {
+      "kind": "app",
+      "id": "cmul16_mod85",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c1b907a3f25870ed547eab7bc7f6d58a6ec11c5d7f32481d6f97adac1387041d"
+    },
     "app:cmul16_mod91": {
       "kind": "app",
       "id": "cmul16_mod91",
@@ -712,6 +721,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9b03cad9d8ec1f4bf2b3b050b0ae6c688214f3d9625aeabbeb7f0a23b8ab2e35"
+    },
+    "app:cmul4_mod85": {
+      "kind": "app",
+      "id": "cmul4_mod85",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "023a0577c80542df5b2940ea99562eba5ee3a0ae3971c01e20de27975b92f407"
     },
     "app:cmul4_mod91": {
       "kind": "app",
@@ -2355,6 +2373,15 @@
         "proof_digest": "c90c42e57ba55138"
       }
     },
+    "app:shor85": {
+      "kind": "app",
+      "id": "shor85",
+      "tier": 1,
+      "tier_source": "explicit",
+      "semantic_guarantee": "structural_wellformed",
+      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
+      "u_hash": "ce3eff48a9968eb44a742dd3176555b26a4f5a3fc81a25a39184d933dac41eb1"
+    },
     "app:shor91": {
       "kind": "app",
       "id": "shor91",
@@ -3453,18 +3480,20 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 269,
+        "unitary_equiv": 271,
         "unitary_equiv_sampled": 1,
-        "subspace_permutation_verified": 9
+        "subspace_permutation_verified": 9,
+        "structural_wellformed": 1
       },
       "module": {
         "unitary_equiv": 85
       }
     },
     "by_class": {
-      "unitary_equiv": 354,
+      "unitary_equiv": 356,
       "unitary_equiv_sampled": 1,
-      "subspace_permutation_verified": 9
+      "subspace_permutation_verified": 9,
+      "structural_wellformed": 1
     }
   }
 }
