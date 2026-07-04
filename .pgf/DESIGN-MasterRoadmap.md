@@ -395,13 +395,15 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ qca_step(Clifford brickwork 병진불변)·gnvw_index_observe(exact≠Trotter 근사·light-cone).
         P6_Exploratory // 탐색 (done)
             # ✅ fswap(fermionic SWAP, VC primitive §3b gap). AKLT=무리수 정규화(√41)→사람게이트(미봉인).
-        V3_HumanGateApproved // 사람게이트 승인분(정욱님 2026-07-03: Schur module·ZX·Z2·qLDPC Tier-2) (in-progress)
+        V3_HumanGateApproved // 사람게이트 승인분(정욱님 2026-07-03: Schur module·ZX·Z2·qLDPC Tier-2) (done)
             # ✅ T2 z2gauge3: Z₂ 격자게이지 Gauss law encoder(H 켤레→반복부호, Clifford). z2gauge_observe.
             # ✅ T3 zx_verify: ZX Clifford fragment 3번째 독립 오라클 경로(rewrite 5종·재구성, 봉인0).
             # ✅ T4 qldpc_hgp: 하이퍼그래프곱 CSS [[8,1,2]]([3,1]×[2,1], Tier-2 승인을 소형 Tier-0로 우회, 새 module 0).
-            # ⛔ T1 Schur 정지: ry_cg(arccos⅓) module 봉인→롤백. 3-qubit Schur=uniformly-controlled 다중 rotation
-            #   구조(단일 CRy 불충분). 반각 module 2개 승인유효 → 정확 CG cascade 신선세션 인계.
-            #   ★선결 A 통과: seal_module.py=consensus/frozen 무훼손. root d5557622→c188d733(205→207 apps).
+            # ✅ T1 schur3: 3-qubit Schur-Weyl transform 완성 — 탐색 아닌 ★직접 CG cascade(U=V2·G2·G1,
+            #   2-level CCRy(arccos⅓) Givens ×2 + pair CG=CH 켤레). 승인 module 2개 봉인(ry_cg_half±,
+            #   frozen/consensus 무훼손 재확인). golden=CG 계수 직접(회로 독립)·C-app exact.
+            #   schur_observe: U†J²U·U†JzU 동시대각{3.75×4,0.75×4}+S₃ duality sector 보존+teeth.
+            #   second_oracle 71→73/73. root c188d733→e6c60258(77→79 modules·207→208 apps).
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
