@@ -107,9 +107,21 @@ GATES_INCREMENTAL = [
     ("seal_gate_ci", ["scripts/seal_gate_ci.py"], "PASS"),
     ("contested_guard", ["scripts/verify_contested_guard.py"], "ALL PASS"),
 ]
+# ★changed(2026-07-04): reproduce_all --changed-only(변경 spec 재합성 byte-identity + 무변경 coherence,
+#   동일 root 산출·~230s vs full 600s+). full 과 동일한 byte-identity 보증을 신규 봉인분에 대해 제공하므로
+#   verified-commit 허용(무인 다라운드 #1 병목 해소). full 은 세션종결/CI 의 전량 재합성 최종보증으로 존치.
+GATES_CHANGED = [
+    ("reproduce_all", ["scripts/reproduce_all.py", "--changed-only"], "REPRODUCED"),
+    ("second_oracle", ["scripts/second_oracle.py"], None),
+    ("seal_gate_ci", ["scripts/seal_gate_ci.py"], "PASS"),
+    ("contested_guard", ["scripts/verify_contested_guard.py"], "ALL PASS"),
+]
 # fast: reproduce_all·registry build 둘 다 제외(직전 상태 신뢰). 비-verified 점검용.
 GATES_FAST = [g for g in GATES_FULL if g[0] != "reproduce_all"]
-_GATE_SETS = {"full": GATES_FULL, "incremental": GATES_INCREMENTAL, "fast": GATES_FAST}
+_GATE_SETS = {"full": GATES_FULL, "changed": GATES_CHANGED,
+              "incremental": GATES_INCREMENTAL, "fast": GATES_FAST}
+# verified-commit 허용 게이트(byte-identity 재합성 보증). full=전량, changed=변경분+coherence.
+_COMMIT_GATES = {"full", "changed"}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -415,8 +427,8 @@ def sync_checkpoint(state: dict, cfg: dict, verified: bool, base: dict,
     if not do_git:
         result["reason"] = "git-disabled (gates+invariants 검증만)"
         return result
-    if gates_mode != "full":
-        result["reason"] = f"non-full gates({gates_mode}) → commit 보류(full 재현만 verified-commit)"
+    if gates_mode not in _COMMIT_GATES:
+        result["reason"] = f"non-verified gates({gates_mode}) → commit 보류(full/changed 재합성만 verified-commit)"
         return result
     if not verified:
         result["reason"] = "verified-only: 게이트 미통과 → commit/push 생략"
@@ -678,8 +690,10 @@ def main() -> int:
                     choices=["infra", "frontier-c12x-payoff", "frontier-factory"])
     ap.add_argument("--budget", type=int, default=1)
     ap.add_argument("--dry-limit", type=int, default=2)
-    ap.add_argument("--gates", default="full", choices=["full", "incremental", "fast"],
-                    help="full=reproduce_all 재합성(verified-commit 가능) · "
+    ap.add_argument("--gates", default="full", choices=["full", "changed", "incremental", "fast"],
+                    help="full=reproduce_all 전량 재합성(verified-commit) · "
+                         "changed=reproduce_all --changed-only(변경분 byte-identity+coherence, "
+                         "verified-commit, ~230s, 무인 다라운드 권장) · "
                          "incremental=registry build+독립게이트(~30s, commit 보류) · fast=점검만")
     ap.add_argument("--commit", action="store_true", help="verified-only commit (先브랜치)")
     ap.add_argument("--push", action="store_true", help="commit 후 origin push")

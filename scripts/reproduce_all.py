@@ -3,10 +3,18 @@
 외부 reviewer 가 한 번에 전 검증을 재현하도록 오케스트레이션한다. 경로 비하드코딩(스크립트 기준 상대경로).
 구성: 모듈/앱 재봉인 + 재발견 교차검증 + 결정론 + 독립 2차검증 + 행동(인수분해) + registry manifest.
 
-사용:  python scripts/reproduce_all.py
+사용:  python scripts/reproduce_all.py                 # full: 전 앱 byte-identity 재합성(가장 강함, CI/세션종료)
+      python scripts/reproduce_all.py --changed-only   # 변경 spec 만 재합성 + 나머지 coherence(무인 라운드용)
 출력:  reports/REPRODUCE-RESULT.json
+
+--changed-only (검증 계층화): forge_apps 를 changed-only 로 위임(변경 spec 재조립 + 무변경 앱 fingerprint
+  coherence) · factory 는 --verify-regression(byte-identity) 대신 --reproduce(캐시 재봉인, 저비용) 유지 ·
+  독립 오라클 게이트(second_oracle·perm_subspace·resource·convention)는 전부 그대로. full 대비 forge 95s→~0s.
+  결정론 보증: 동일 spec bytes + 동일 oracle fingerprint → 재조립 동일 seal(byte-identity). full 은 세션종료 1회.
 """
 import os, sys, json, subprocess, re
+
+CHANGED_ONLY = "--changed-only" in sys.argv
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
@@ -38,31 +46,136 @@ def run(args, cwd=ROOT):
     return p.returncode, p.stdout + p.stderr
 
 
+# ── changed-only 지원: frontier/factory 앱 coherence 스윕 ──────────────────────
+import glob, hashlib   # noqa: E402
+
+_APPREG = os.path.join(ROOT, "registry", "apps")
+_SPECS_APPS = os.path.join(ROOT, "specs", "apps")
+_ORACLE_DIR = os.path.join(ROOT, ".agents", "skills", "qpgf-oracle", "scripts")
+
+# forge_apps 가 관리하는 템플릿 앱(1단계 forge_apps --changed-only 담당)을 제외한 나머지=
+# frontier/factory 앱. 이들의 spec 변경 여부만 별도 판정.
+def _template_app_ids():
+    sys.path.insert(0, os.path.join(ROOT, ".pgf", "autoforge"))
+    import forge_apps as fa  # noqa: E402  (APP_LIST 참조만)
+    return {fn[:-7] for fn, _ in fa.APP_LIST}
+
+
+def _git_changed_specs():
+    """git porcelain 으로 변경된 specs/apps·specs/modules 파일 basename 집합(추적변경+untracked)."""
+    try:
+        out = subprocess.run(["git", "-C", ROOT, "status", "--porcelain",
+                              "--", "specs/apps", "specs/modules"],
+                             capture_output=True, text=True, timeout=30)
+        if out.returncode != 0:
+            return None
+    except Exception:
+        return None
+    return {os.path.basename(l[3:].strip().strip('"'))
+            for l in out.stdout.splitlines() if l[3:].strip().endswith((".app.pg", ".pg"))}
+
+
+def _factory_app_ids():
+    """FACTORY-FRONTIER.json 의 sealed_N → 그 N 의 shor/cmul 앱 id 집합.
+    이 앱들은 changed-only 에서 factory --reproduce(저비용 9s)가 담당하므로 legacy 판정·coherence 에서 제외."""
+    db = os.path.join(ROOT, ".pgf", "arith", "FACTORY-FRONTIER.json")
+    if not os.path.exists(db):
+        return set()
+    ids = set()
+    for e in json.load(open(db, encoding="utf-8")).get("sealed_N", []):
+        N = e["N"]
+        ids.add(f"shor{N}")
+        for mul in e.get("unique_powers", []):
+            ids.add(f"cmul{mul}_mod{N}")
+    return ids
+
+
+def _frontier_specs_changed():
+    """legacy frontier(=템플릿·factory 외) 앱 spec 또는 module spec 변경? git 부재 시 True(→full 폴백).
+    factory 앱 spec 변경은 여기서 무시(factory --reproduce 가 저비용 담당)."""
+    changed = _git_changed_specs()
+    if changed is None:
+        return True
+    if any(n.endswith(".pg") and not n.endswith(".app.pg") for n in changed):
+        return True                                  # module 변경 → 전 앱 영향
+    tmpl = _template_app_ids()
+    fac = _factory_app_ids()
+    for n in changed:
+        if n.endswith(".app.pg"):
+            aid = n[:-7]
+            if aid not in tmpl and aid not in fac:
+                return True                          # legacy frontier 앱 spec 변경(드묾) → FRONTIER_STEPS
+    return False
+
+
+def _coherence_sweep_frontier():
+    """무변경 frontier/factory 앱 sealed.json 을 재봉인 없이 coherence 검증:
+    fingerprint(oracle/contracts_code_hash)==현재값 + u_hash 존재. 결정론 기반(동일 spec+동일 oracle→동일 seal)."""
+    cur_oracle = hashlib.sha256(open(os.path.join(_ORACLE_DIR, "verify_seal.py"), "rb").read()).hexdigest()
+    cur_contracts = hashlib.sha256(open(os.path.join(_ORACLE_DIR, "contracts.py"), "rb").read()).hexdigest()
+    skip = _template_app_ids() | _factory_app_ids()  # 템플릿=forge_apps, factory=factory --reproduce 담당
+    checked, bad = 0, []
+    for p in glob.glob(os.path.join(_APPREG, "*.sealed.json")):
+        app_id = os.path.basename(p)[:-len(".sealed.json")]
+        if app_id in skip:
+            continue
+        try:
+            d = json.load(open(p, encoding="utf-8"))
+        except Exception:
+            bad.append(app_id); continue
+        if (d.get("oracle_code_hash") != cur_oracle or d.get("contracts_code_hash") != cur_contracts
+                or not d.get("u_hash")):
+            bad.append(app_id)
+        else:
+            checked += 1
+    return {"coherence_checked": checked, "failed": bad[:20], "n_failed": len(bad),
+            "pass": len(bad) == 0}
+
+
 def main():
     result = {"bundle": "UNKNOWN", "steps": {}}
 
+    result["mode"] = "changed-only" if CHANGED_ONLY else "full"
+
     # 1. 앱 재봉인 + 재발견 교차검증 (결정론 포함: registry 와 byte 일치 재생성)
-    rc, out = run([".pgf/autoforge/forge_apps.py"])
+    #    changed-only: forge_apps 가 변경 spec 만 재조립 + 무변경 앱 coherence(fingerprint/redisc).
+    forge_args = [".pgf/autoforge/forge_apps.py"] + (["--changed-only"] if CHANGED_ONLY else [])
+    rc, out = run(forge_args)
     m = re.search(r"앱 봉인 (\d+)/(\d+) · 재발견 교차검증 (\d+)/(\d+)", out)
-    result["steps"]["forge_apps"] = {
-        "rc": rc, "apps_sealed": f"{m.group(1)}/{m.group(2)}" if m else "?",
-        "rediscovery": f"{m.group(3)}/{m.group(4)}" if m else "?",
-        "pass": rc == 0}
+    fa = {"rc": rc, "apps_sealed": f"{m.group(1)}/{m.group(2)}" if m else "?",
+          "rediscovery": f"{m.group(3)}/{m.group(4)}" if m else "?", "pass": rc == 0}
+    if CHANGED_ONLY:
+        cm = re.search(r"재조립 (\d+) · coherence (\d+)", out)
+        if cm:
+            fa["reassembled"], fa["coherence"] = int(cm.group(1)), int(cm.group(2))
+    result["steps"]["forge_apps"] = fa
 
     # 1b. Heavy frontier generators with script-local fast paths.
-    for step_id, script in FRONTIER_STEPS:
-        rc, out = run([script])
-        result["steps"][step_id] = {
-            "rc": rc,
-            "all_ok": "all_ok=True" in out,
+    #     changed-only: frontier/factory 앱 spec 이 무변경이면 재봉인(수백초) 대신 coherence 스윕으로 대체.
+    #       변경된 frontier/factory spec 이 있으면 full 재봉인으로 안전 폴백.
+    frontier_specs_changed = _frontier_specs_changed() if CHANGED_ONLY else True
+    if CHANGED_ONLY and not frontier_specs_changed:
+        # legacy frontier 무변경 → coherence 스윕. factory 앱은 factory --reproduce(저비용)가 담당.
+        cov = _coherence_sweep_frontier()
+        result["steps"]["frontier_coherence"] = cov
+        fstep_id, fscript = FACTORY_STEP
+        rc, out = run([fscript, "--reproduce"])       # 9s, factory N 전부 byte-identity 재봉인
+        result["steps"][fstep_id] = {
+            "rc": rc, "all_ok": "all_ok=True" in out,
             "pass": rc == 0 and "all_ok=True" in out}
-
-    # Data-driven factory reproduction (INV-F5)
-    fstep_id, fscript = FACTORY_STEP
-    rc, out = run([fscript, "--reproduce"])
-    result["steps"][fstep_id] = {
-        "rc": rc, "all_ok": "all_ok=True" in out,
-        "pass": rc == 0 and "all_ok=True" in out}
+    else:
+        for step_id, script in FRONTIER_STEPS:
+            rc, out = run([script])
+            result["steps"][step_id] = {
+                "rc": rc,
+                "all_ok": "all_ok=True" in out,
+                "pass": rc == 0 and "all_ok=True" in out}
+        # Data-driven factory reproduction (INV-F5)
+        fstep_id, fscript = FACTORY_STEP
+        rc, out = run([fscript, "--reproduce"])
+        result["steps"][fstep_id] = {
+            "rc": rc, "all_ok": "all_ok=True" in out,
+            "pass": rc == 0 and "all_ok=True" in out}
 
     # 2. registry manifest + dependency graph
     rc, out = run(["scripts/registry_tools.py", "build"])

@@ -9,7 +9,7 @@ cross-model 봉인된 게이트와 byte 일치함을 단언. 전체 스택(베�
 
 사용:  python .pgf/autoforge/forge_apps.py
 """
-import os, sys, json
+import os, sys, json, hashlib, subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
@@ -20,6 +20,7 @@ import app_assemble as aa              # noqa: E402  (오라클 — 사용만)
 APPS = os.path.join(ROOT, "specs", "apps")
 STORE = os.path.join(ROOT, "registry", "apps")
 MOD_REG = os.path.join(ROOT, "registry", "modules")
+_ORACLE = os.path.join(ROOT, ".agents", "skills", "qpgf-oracle", "scripts")
 
 # 앱 목록 (적용순) + 재발견 단언 대상(있으면 그 봉인 게이트와 u_hash 일치해야)
 APP_LIST = [
@@ -160,16 +161,85 @@ def _sealed_key(mid):
     return json.load(open(p, encoding="utf-8"))["u_hash"] if os.path.exists(p) else None
 
 
-def main():
+def _sha256(path):
+    return hashlib.sha256(open(path, "rb").read()).hexdigest() if os.path.exists(path) else None
+
+
+def _changed_specs():
+    """git 기준 변경된 app/module spec 파일명 집합(추적 변경 + untracked). git 부재 시 None(→full)."""
+    try:
+        out = subprocess.run(["git", "-C", ROOT, "status", "--porcelain",
+                              "--", "specs/apps", "specs/modules"],
+                             capture_output=True, text=True, timeout=30)
+        if out.returncode != 0:
+            return None
+    except Exception:
+        return None
+    changed = set()
+    for line in out.stdout.splitlines():
+        # porcelain: 'XY path' — path 는 3열부터
+        path = line[3:].strip().strip('"')
+        if path.endswith((".app.pg", ".pg")):
+            changed.add(os.path.basename(path))
+    return changed
+
+
+def _coherence_ok(app_id, redisc):
+    """저비용 coherence(재조립 없이): sealed.json 존재 + fingerprint(oracle/contracts) 현재값 일치
+    + redisc 앱은 u_hash==타겟 module 일치. spec 무변경일 때만 호출(결정론: 동일 spec+동일 oracle→동일 seal)."""
+    p = os.path.join(STORE, f"{app_id}.sealed.json")
+    if not os.path.exists(p):
+        return False, None
+    d = json.load(open(p, encoding="utf-8"))
+    cur_oracle = _sha256(os.path.join(_ORACLE, "verify_seal.py"))
+    cur_contracts = _sha256(os.path.join(_ORACLE, "contracts.py"))
+    if d.get("oracle_code_hash") != cur_oracle or d.get("contracts_code_hash") != cur_contracts:
+        return False, d.get("u_hash")   # 오라클 변경 → 재조립 필요
+    if redisc and d.get("u_hash") != _sealed_key(redisc):
+        return False, d.get("u_hash")
+    return True, d.get("u_hash")
+
+
+def main(argv=None):
+    argv = sys.argv[1:] if argv is None else argv
+    changed_only = "--changed-only" in argv
     os.makedirs(STORE, exist_ok=True)
+    # changed-only: git 으로 변경된 spec 만 재조립. spec 무변경 앱은 저비용 coherence(fingerprint/redisc).
+    #   결정론 기반: 동일 spec bytes + 동일 oracle fingerprint → 재조립은 동일 seal 을 산출(byte-identity).
+    #   full(기본)은 전량 재조립(가장 강한 byte-identity 증명). 세션 종료/CI 는 full 권장.
+    changed = _changed_specs() if changed_only else None
+    if changed_only and changed is None:
+        print("[changed-only] git 미가용 → full 재조립으로 폴백", flush=True)
+        changed_only = False
+    # 모듈 spec 이 하나라도 변경되면 전 앱이 영향 → full 강제(안전).
+    mod_changed = bool(changed) and any(n.endswith(".pg") and not n.endswith(".app.pg") for n in changed)
+    if changed_only and mod_changed:
+        print("[changed-only] module spec 변경 감지 → full 재조립으로 폴백(전 앱 영향)", flush=True)
+        changed_only = False
+    mode = "changed-only" if changed_only else "full"
     print("=" * 84)
-    print("QuantaFoundry F3_Compose — 봉인 모듈 재조립 → C-app 봉인 (신뢰 자본 복리)")
+    print(f"QuantaFoundry F3_Compose — 봉인 모듈 재조립 → C-app 봉인 (신뢰 자본 복리) · mode={mode}")
     print("=" * 84)
-    results, ok, redisc_ok = [], 0, 0
+    results, ok, redisc_ok, assembled, coherent = [], 0, 0, 0, 0
     for fname, redisc in APP_LIST:
+        app_id = fname[:-7]
+        do_assemble = True
+        if changed_only and fname not in changed:
+            coh, uh = _coherence_ok(app_id, redisc)
+            if coh:
+                do_assemble = False
+                coherent += 1
+                ok += 1
+                if redisc:
+                    redisc_ok += 1
+                results.append({"app": app_id, "sealed": True, "u_hash": uh,
+                                "rediscovers": redisc, "verified": "coherence"})
+                continue
+        assembled += 1
         v = aa.assemble(os.path.join(APPS, fname), STORE)
-        rec = {"app": fname[:-7], "sealed": v.sealed, "tier": v.tier,
-               "u_hash": v.u_hash, "reason": v.reason, "rediscovers": redisc}
+        rec = {"app": app_id, "sealed": v.sealed, "tier": v.tier,
+               "u_hash": v.u_hash, "reason": v.reason, "rediscovers": redisc,
+               "verified": "reassembled"}
         if v.sealed:
             ok += 1
             assertion = ""
@@ -180,20 +250,22 @@ def main():
                 if match:
                     redisc_ok += 1
                 assertion = f"  ⟺ {redisc}: {'✓일치' if match else '✗불일치!'}"
-            icon = "✅"
-            print(f"  {icon} {rec['app']:18} SEALED  tier={v.tier}  u_hash={v.u_hash[:14]}..{assertion}")
+            print(f"  ✅ {app_id:18} SEALED  tier={v.tier}  u_hash={v.u_hash[:14]}..{assertion}")
         else:
-            print(f"  ❌ {rec['app']:18} REJECT  {v.reason[:50]}")
+            print(f"  ❌ {app_id:18} REJECT  {v.reason[:50]}")
         results.append(rec)
 
     print("=" * 84)
     redisc_total = sum(1 for _, r in APP_LIST if r)
-    print(f"앱 봉인 {ok}/{len(APP_LIST)} · 재발견 교차검증 {redisc_ok}/{redisc_total} 일치 · store=registry/apps")
+    tail = f" · 재조립 {assembled} · coherence {coherent}" if changed_only else ""
+    print(f"앱 봉인 {ok}/{len(APP_LIST)} · 재발견 교차검증 {redisc_ok}/{redisc_total} 일치 · store=registry/apps{tail}")
     print("=" * 84)
-    rep = os.path.join(HERE, "FORGE-APPS-RESULT.json")
-    json.dump({"results": results, "sealed": ok, "total": len(APP_LIST),
-               "rediscovery_ok": redisc_ok, "rediscovery_total": redisc_total},
-              open(rep, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    # 정본 리포트는 full 모드만 기록(커밋 아티팩트 안정). changed-only 는 빠른 점검이라 정본 무변경.
+    if not changed_only:
+        rep = os.path.join(HERE, "FORGE-APPS-RESULT.json")
+        json.dump({"results": results, "sealed": ok, "total": len(APP_LIST),
+                   "rediscovery_ok": redisc_ok, "rediscovery_total": redisc_total},
+                  open(rep, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     all_ok = ok == len(APP_LIST) and redisc_ok == redisc_total
     return 0 if all_ok else 1
 
