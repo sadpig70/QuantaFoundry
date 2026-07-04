@@ -1,0 +1,44 @@
+{
+  "_note": "1q Clifford 군(cliff1_* 24 봉인 앱) = 정확 unitary 2/3-design witness. 봉인=유니터리뿐, design 성질=관측(INV-Q3).",
+  "_schema": "twodesign-observe-v1",
+  "observation": {
+    "frame_potentials": {
+      "F1": {
+        "diff": 0.0,
+        "haar_d2": 1.0,
+        "value": 1.0
+      },
+      "F2": {
+        "diff": 4.440892098500626e-16,
+        "haar_d2": 2.0,
+        "value": 1.9999999999999996
+      },
+      "F3": {
+        "diff": 2.6645352591003757e-15,
+        "haar_d2": 5.0,
+        "value": 4.999999999999997
+      }
+    },
+    "group": {
+      "closure_576_products": true,
+      "distinct_mod_phase": true,
+      "generators": "h_gate·s_gate (기봉인)",
+      "max_word_len": 6,
+      "order": 24,
+      "seal_link_24": true,
+      "unitary": true
+    },
+    "honest_boundary": "봉인=개별 Clifford 유니터리 24개뿐. 2/3-design 성질=frame potential 군 평균(Haar 모멘트 대조)→관측(seal 아님, INV-Q3). RB·shadow tomography 미구현(기반만). 2q Clifford(11520)=차기.",
+    "ok": true,
+    "sealed_assets": "cliff1_* 24 apps (C1 전 원소, Tier-0 exact, 신규 module 0)",
+    "teeth": {
+      "detects": true,
+      "drop_one_F2": 2.026465028355387,
+      "s_to_t_corrupt_F2": 2.0150803671892628
+    },
+    "twirl_rho0_to_maximally_mixed": {
+      "max_dev": 1.1102230246251565e-16,
+      "ok": true
+    }
+  }
+}

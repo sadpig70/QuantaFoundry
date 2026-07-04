@@ -435,6 +435,384 @@
       }
     ]
   },
+  "cliff1_h": {
+    "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "cliff1_hs": {
+    "u_hash": "d282ba7b0af20674ab919e1127f6cbe175b68d6e16845e7bb323185c549fd06d",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 1,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hsh": {
+    "u_hash": "c49a2b4d6367c172f9edd000553d6175ff07bfbb383b3c3ba08c40cb9ba5dbef",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 1,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hshs": {
+    "u_hash": "7335274fb58c6da424b32f3e3fa38fa135f7510c1ab65f97aa746d9d51970600",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hshss": {
+    "u_hash": "2e908f9f461ed7416309bbc2322b288aa813f9e246757e77a762fec088246855",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hshssh": {
+    "u_hash": "264998c9107c4e85b53997b878a4afccefb124075c12ec7051080ab89ed0a8a1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hshsss": {
+    "u_hash": "0051d5cc6ea7f8cb3846cb23a4abea0628346a19670b13fd53b640aca1f8a325",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 4,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hss": {
+    "u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hssh": {
+    "u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hsshs": {
+    "u_hash": "26cb8b048fc0f01209aefd3c723d4f467e493f162570cc37896cd6e96f25e14c",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hsshss": {
+    "u_hash": "8728af313d28918718a626e2ed3ae641b7ea016d4ea1c035f28e0e1326bfb748",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 4,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_hsss": {
+    "u_hash": "5bc975762689445567d0ff71ae9a255388742e4741e7a6933d68e60e2e83fcdb",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_id": {
+    "u_hash": "9291988fec75733f2e311df8aa52063df14f55312dbdd4827c9bad83295f5d3d",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "cliff1_s": {
+    "u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 1,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_sh": {
+    "u_hash": "1fcaa6a4b9f63b864d3f5282834da494b73f32583abf7ee758476a94d4c51deb",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 1,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_shs": {
+    "u_hash": "a68e565061c47ac0a57e9a12ac22883d977749c4190b79eeb4882a20c4c7ef0d",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_shss": {
+    "u_hash": "5a55a3d6dc2574f1b2bf80274b44e127d1516b61aaa5492da79fdfe841b07e3f",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_shssh": {
+    "u_hash": "d1ff8f9a5f6aaabcc79c6056b8a76e6504c7c0f8efea1d769866f5f82279bfad",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_shsss": {
+    "u_hash": "7d2d977c61111e86edca736fa1983a6327c3b2158696a1cb1565cea6784639e8",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 4,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_ss": {
+    "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_ssh": {
+    "u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 2,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_sshs": {
+    "u_hash": "dff7ee43c7002e349c7b88bea335b55f512c2c3a579a7b70b06ec961ac146fc8",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_sshss": {
+    "u_hash": "acc2d85a64ad6528d8d5ff5511f63223c478190943fc3b5ada85bc22060aefa1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 4,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
+  "cliff1_sss": {
+    "u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 3,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      }
+    ]
+  },
   "cluster10": {
     "u_hash": "b27f98426016d4a00cc6f70dae51fe5d3cfcc83e4f01c2a1db5fbe63ca55d657",
     "depends_on": [

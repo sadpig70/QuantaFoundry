@@ -3,68 +3,16 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "106/106",
-      "rediscovery": "6/6",
-      "pass": true
+      "apps_sealed": "130/130",
+      "rediscovery": "12/12",
+      "pass": true,
+      "reassembled": 24,
+      "coherence": 106
     },
-    "shor_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c8x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor221_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c9x_shor381_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c10x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor635_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c11x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c11x_payoff_family": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor1285_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c12x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c12x_payoff_family": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor3683_frontier": {
-      "rc": 0,
-      "all_ok": true,
+    "frontier_coherence": {
+      "coherence_checked": 161,
+      "failed": [],
+      "n_failed": 0,
       "pass": true
     },
     "frontier_factory": {
@@ -75,9 +23,9 @@
     "registry": {
       "rc": 0,
       "modules": "85",
-      "unique_apps": "255",
+      "unique_apps": "279",
       "cached": "70",
-      "root_hash": "331ba89a846a69f6",
+      "root_hash": "262e0379d3fcbc89",
       "pass": true
     },
     "second_oracle": {
@@ -230,6 +178,11 @@
       "all_ok": true,
       "pass": true
     },
+    "twodesign_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
     "behavior": {
       "detail": {
         "shor15_a2": {
@@ -278,5 +231,5 @@
       "pass": true
     }
   },
-  "mode": "full"
+  "mode": "changed-only"
 }

@@ -1,0 +1,14 @@
+# cliff1_sss — 1q Clifford 군 C1 원소 word 'sss' (적용순: 왼쪽부터). V8 Unitary2Design: C1 전체 24원소 봉인 → 정확 unitary 2-design(F2=2)·3-design(F3=5)은 twodesign_observe 관측(seal 아님).
+# 켤레작용(mod phase 원소 식별자): X→-Y, Z→+Z. ★재발견: 봉인 sdg_gate 와 u_hash 일치 단언. plan=기봉인 h_gate/s_gate word, 신규 module 0.
+```json id=app_meta
+{"id": "cliff1_sss", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+S = np.diag([1, 1j]).astype(complex)
+golden = S @ S @ S
+```
+```json id=plan
+{"steps": [{"spec": "../modules/s_gate.pg", "targets": [0]}, {"spec": "../modules/s_gate.pg", "targets": [0]}, {"spec": "../modules/s_gate.pg", "targets": [0]}]}
+```

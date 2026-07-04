@@ -158,6 +158,33 @@ APP_LIST = [
     ("stinespring_phasedamp.app.pg", None), # V6 phase-damping λ½ dilation (CRY(π/2) s→e)
     ("stinespring_ampdamp.app.pg",   None), # V6 amplitude-damping γ½ dilation (CRY(π/2)·CNOT(e→s))
     ("stinespring_depol.app.pg",     None), # V6.2 fully depolarizing p=1 dilation (4-Kraus, H²·cnot·cz, 2q env)
+    # HE2 V8 Unitary2Design: 1q Clifford 군 C1 전체 24원소(BFS words over {h,s}, mod phase) 봉인.
+    #   각 앱=2×2 Tier-0 exact, plan=기봉인 h_gate/s_gate word(신규 module 0). 재발견 6건 단언.
+    #   2/3-design 성질(frame potential F2=2·F3=5)=twodesign_observe 관측(seal 아님, INV-Q3).
+    ("cliff1_id.app.pg",     None),      # C1 'I' X→+X Z→+Z (plan=h·h, H²=I exact)
+    ("cliff1_h.app.pg",      "h_gate"),  # C1 'h' X→+Z Z→+X (== h_gate)
+    ("cliff1_s.app.pg",      "s_gate"),  # C1 's' X→+Y Z→+Z (== s_gate)
+    ("cliff1_hs.app.pg",     None),      # C1 'hs' X→+Z Z→+Y
+    ("cliff1_sh.app.pg",     None),      # C1 'sh' X→-Y Z→+X
+    ("cliff1_ss.app.pg",     "z_gate"),  # C1 'ss' X→-X Z→+Z (== z_gate)
+    ("cliff1_hsh.app.pg",    "sx"),      # C1 'hsh' X→+X Z→-Y (== sx, HSH=√X exact)
+    ("cliff1_hss.app.pg",    None),      # C1 'hss' X→+Z Z→-X
+    ("cliff1_shs.app.pg",    None),      # C1 'shs' X→+X Z→+Y
+    ("cliff1_ssh.app.pg",    None),      # C1 'ssh' X→-Z Z→+X
+    ("cliff1_sss.app.pg",    "sdg_gate"),# C1 'sss' X→-Y Z→+Z (== sdg_gate)
+    ("cliff1_hshs.app.pg",   None),      # C1 'hshs' X→+Y Z→+X
+    ("cliff1_hssh.app.pg",   "x_gate"),  # C1 'hssh' X→+X Z→-Z (== x_gate, HZH=X exact)
+    ("cliff1_hsss.app.pg",   None),      # C1 'hsss' X→+Z Z→-Y
+    ("cliff1_shss.app.pg",   None),      # C1 'shss' X→+Y Z→-X
+    ("cliff1_sshs.app.pg",   None),      # C1 'sshs' X→-Z Z→+Y
+    ("cliff1_hshss.app.pg",  None),      # C1 'hshss' X→-X Z→+Y
+    ("cliff1_hsshs.app.pg",  None),      # C1 'hsshs' X→+Y Z→-Z
+    ("cliff1_shssh.app.pg",  None),      # C1 'shssh' X→-Y Z→-Z
+    ("cliff1_shsss.app.pg",  None),      # C1 'shsss' X→-X Z→-Y
+    ("cliff1_sshss.app.pg",  None),      # C1 'sshss' X→-Z Z→-X
+    ("cliff1_hshssh.app.pg", None),      # C1 'hshssh' X→-Z Z→-Y
+    ("cliff1_hshsss.app.pg", None),      # C1 'hshsss' X→-Y Z→-X
+    ("cliff1_hsshss.app.pg", None),      # C1 'hsshss' X→-X Z→-Z (mod phase = Y)
 ]
 
 

@@ -80,6 +80,97 @@ ccz_rediscovered
 ├─ h_gate (module×2)
 └─ toffoli (module)
 
+cliff1_h
+└─ h_gate (module)
+
+cliff1_hs
+├─ h_gate (module)
+└─ s_gate (module)
+
+cliff1_hsh
+├─ h_gate (module×2)
+└─ s_gate (module)
+
+cliff1_hshs
+├─ h_gate (module×2)
+└─ s_gate (module×2)
+
+cliff1_hshss
+├─ h_gate (module×2)
+└─ s_gate (module×3)
+
+cliff1_hshssh
+├─ h_gate (module×3)
+└─ s_gate (module×3)
+
+cliff1_hshsss
+├─ h_gate (module×2)
+└─ s_gate (module×4)
+
+cliff1_hss
+├─ h_gate (module)
+└─ s_gate (module×2)
+
+cliff1_hssh
+├─ h_gate (module×2)
+└─ s_gate (module×2)
+
+cliff1_hsshs
+├─ h_gate (module×2)
+└─ s_gate (module×3)
+
+cliff1_hsshss
+├─ h_gate (module×2)
+└─ s_gate (module×4)
+
+cliff1_hsss
+├─ h_gate (module)
+└─ s_gate (module×3)
+
+cliff1_id
+└─ h_gate (module×2)
+
+cliff1_s
+└─ s_gate (module)
+
+cliff1_sh
+├─ h_gate (module)
+└─ s_gate (module)
+
+cliff1_shs
+├─ h_gate (module)
+└─ s_gate (module×2)
+
+cliff1_shss
+├─ h_gate (module)
+└─ s_gate (module×3)
+
+cliff1_shssh
+├─ h_gate (module×2)
+└─ s_gate (module×3)
+
+cliff1_shsss
+├─ h_gate (module)
+└─ s_gate (module×4)
+
+cliff1_ss
+└─ s_gate (module×2)
+
+cliff1_ssh
+├─ h_gate (module)
+└─ s_gate (module×2)
+
+cliff1_sshs
+├─ h_gate (module)
+└─ s_gate (module×3)
+
+cliff1_sshss
+├─ h_gate (module)
+└─ s_gate (module×4)
+
+cliff1_sss
+└─ s_gate (module×3)
+
 cluster10
 ├─ cz (module×9)
 └─ h_gate (module×10)

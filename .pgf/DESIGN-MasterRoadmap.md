@@ -431,6 +431,17 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   오류주입)→syndrome3(신드롬)→코히런트 조건-X 정정→decode→논리 복원. ★bit-flip={√(1−p)I,
             #   √p X_i} 두 Kraus weight≤1→거리-3 exact 정정: R(E_i(Encode(ρ)))=ρ, 18 케이스 전부 1e-16.
             #   봉인 채널 링크 확인·전역 teeth(정정필요). 봉인=유니터리뿐, 채널·복원=관측(INV-Q3). 단일큐빗만.
+        V8_Unitary2Design // 1q Clifford 군 전체 봉인 → 정확 unitary 2-design (자체 개창) (done)
+            # ✅ 요청문 §4 첫 자체-발굴 후보(외부 3차 회신 부재 → 2-B 게이트). RB·shadow tomography 기반.
+            #   설계(numpy 선검증): BFS words over {h,s} → C₁ 24원소(mod phase, 최대 word 6) 폐포 확인.
+            # ✅ 봉인: cliff1_* 24개 앱(각 2×2 Tier-0 exact, plan=기봉인 h_gate/s_gate word, 항등원=h·h).
+            #   ★신규 module 0 (§4′ 직접 닫힌형 — 유한군 전 원소가 기봉인 팔레트 word).
+            #   ★재발견 6건 u_hash 일치 단언: h→h_gate·s→s_gate·ss→z_gate·sss→sdg_gate·hsh→sx(HSH=√X)·
+            #   hssh→x_gate(HZH=X). 255→279 apps·root 331ba89a→262e0379d3fcbc89.
+            # ✅ 관측(seal 아님, INV-Q3): twodesign_observe(3ad) — seal링크 24/24·유니터리·군 폐포(576곱 전수)·
+            #   frame potential F₁=1·F₂=2(정확 2-design)·F₃=5(정확 3-design, d=2 Haar ∫|TrU|⁶=5 일치)
+            #   기계정밀도 + twirl |0⟩⟨0|→I/2 + teeth(원소 제거 F₂=2.026·S→T 오염 F₂=2.015 검출).
+            #   RB·shadow tomography 자체=미구현(기반만). 2q Clifford(11520)=차기(전수 비현실, 표본화 필요).
 
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
