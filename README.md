@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **85 sealed modules · 251 sealed applications** · registry root `afa2cab8…`
+- **85 sealed modules · 254 sealed applications** · registry root `62900103…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash afa2cab8… · second_oracle 79/79 · behavior pass
+# expect: REPRODUCED · root_hash 62900103… · second_oracle 79/79 · behavior pass
 ```
 
 ---
@@ -52,9 +52,11 @@ python scripts/reproduce_all.py
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
   a **3-qubit Schur-Weyl transform** (direct Clebsch-Gordan cascade, J²/Jz simultaneous-
-  diagonalization witness + S₃ duality sector preservation), and a **4-site AKLT/VBS state
+  diagonalization witness + S₃ duality sector preservation), a **4-site AKLT/VBS state
   preparation** (tensor-network MPS class: sequential conditioned isometries, independent MPS
-  contraction match + parent-Hamiltonian annihilation witness).
+  contraction match + parent-Hamiltonian annihilation witness), and **open-system CPTP channels**
+  (Stinespring dilation of bit-flip / phase-damping / amplitude-damping at the dyadic ½ point; the
+  sealed dilation unitary's environment partial-trace reproduces the target Kraus map exactly).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
   structural frontier (`shor69 … shor3683`, 16 apps, sealed via a `c7x→c12x` multi-control ladder;
   every one subspace-permutation verified against independent integer arithmetic — the newest ones
