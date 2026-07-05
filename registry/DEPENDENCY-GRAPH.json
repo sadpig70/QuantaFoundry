@@ -8648,6 +8648,23 @@
       }
     ]
   },
+  "s_teleport": {
+    "u_hash": "2cab7bf373c56c414ed5ce94214210599359df3ec184c271032e40d678b64ee1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 1,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      }
+    ]
+  },
   "schur3": {
     "u_hash": "45d57a5d08852d134b06a9b31732a69624a271a8d36d68b58a325977a4b70ad4",
     "depends_on": [
@@ -10153,6 +10170,23 @@
         "id": "x_gate",
         "uses": 14,
         "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
+  "t_teleport": {
+    "u_hash": "6d51b925c3f386f1917983aa4481acdeada9b08039976f5c04f68d84436261d9",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 1,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
       }
     ]
   },

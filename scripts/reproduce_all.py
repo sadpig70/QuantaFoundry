@@ -437,6 +437,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ap. TrackC3Hierarchy: Clifford 계층·teleportation 촉매 — 계층 판정+촉매+사다리 witness (observation)
+    rc, out = run(["scripts/hierarchy_observe.py", "--quick"])
+    result["steps"]["hierarchy_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

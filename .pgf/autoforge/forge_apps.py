@@ -233,6 +233,9 @@ APP_LIST = [
     # TrackR3Residue C6: GF(8) 체 연산 완결 — 역원(첫 비선형)·Frobenius (신규 module 0)
     ("gf8_inv.app.pg",                   None),  # a↦a⁻¹=a⁶ (0↦0), MMD 6게이트(toffoli3·cnot3)
     ("gf8_frob.app.pg",                  None),  # a↦a² 자기동형 (GF(2)-선형 → cnot 2개, Gal≅Z₃)
+    # TrackC3Hierarchy: Clifford 계층(3단계) 자체개창 — coherent gate teleportation 촉매 회로 (module 0)
+    ("t_teleport.app.pg",                None),  # CS·CNOT: U(|ψ⟩⊗|A⟩)=(T|ψ⟩)⊗|A⟩ — T-촉매, U∈C₃∖C₂
+    ("s_teleport.app.pg",                None),  # CZ·CNOT: U(|ψ⟩⊗|Y⟩)=(S|ψ⟩)⊗|Y⟩ — 사다리 짝, U∈C₂
 ]
 
 

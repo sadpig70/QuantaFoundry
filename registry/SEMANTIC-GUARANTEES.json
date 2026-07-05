@@ -3223,6 +3223,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
     },
+    "app:s_teleport": {
+      "kind": "app",
+      "id": "s_teleport",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "2cab7bf373c56c414ed5ce94214210599359df3ec184c271032e40d678b64ee1"
+    },
     "app:schur3": {
       "kind": "app",
       "id": "schur3",
@@ -3843,6 +3852,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+    },
+    "app:t_teleport": {
+      "kind": "app",
+      "id": "t_teleport",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "6d51b925c3f386f1917983aa4481acdeada9b08039976f5c04f68d84436261d9"
     },
     "app:tfim3_suzuki4_step": {
       "kind": "app",
@@ -4893,7 +4911,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 403,
+        "unitary_equiv": 405,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 18
       },
@@ -4902,7 +4920,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 492,
+      "unitary_equiv": 494,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 18
     }

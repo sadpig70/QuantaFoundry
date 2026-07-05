@@ -96,9 +96,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 348,
+    "unique_app_count": 350,
     "cached_app_side_module_count": 74,
-    "total_files": 422,
+    "total_files": 424,
     "path": "registry/apps",
     "unique": [
       "aklt4",
@@ -386,6 +386,7 @@
       "rzz_y4_p_half",
       "rzz_y4_q_half",
       "s3_mult",
+      "s_teleport",
       "schur3",
       "schur4",
       "select_prepare4",
@@ -426,6 +427,7 @@
       "szegedy_2state_p12",
       "szegedy_2state_p14",
       "szegedy_c4_p12",
+      "t_teleport",
       "tfim3_suzuki4_step",
       "tfim3_trotter_2steps",
       "tfim3_trotter_step",
@@ -603,7 +605,7 @@
     "z5_gate": "registry/modules/z5_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "7e820010c53eb952e0ca126f1fd055508186744cbb17ca8307b8681d850e2d4a",
+  "registry_root_hash": "ddeb6079ef8f88b37bab8ed80b6d13a3ed9bee531452d0dcafd87fc89d5a32f4",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

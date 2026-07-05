@@ -1,0 +1,23 @@
+# t_teleport — coherent T-게이트 텔레포테이션(촉매형). 2q(data q0·resource q1). Tier-0 4×4.
+# TrackC3Hierarchy (#C3, 자체개창): Clifford 계층 C₁⊂C₂⊂C₃ (C_{k+1}={U: UPU†∈C_k}) 구조 자산화.
+#   ★U = CS·CNOT(0→1): 정의 부분공간(resource=|A⟩=T|+⟩ 입력)에서 U(|ψ⟩⊗|A⟩) = (T|ψ⟩)⊗|A⟩ —
+#   자원상태가 소모되지 않고 보존되는 **T-촉매(catalysis)**(measurement-free gate teleportation).
+#   유도: CNOT 후 anc=1 분기 = ω·T†|ψ⟩ → coherent 보정 CS(S=T², ★보정 게이트 계층 = 대상−1) →
+#   양 분기 T|ψ⟩ 합류 + anc 가 |A⟩ 로 재조립. U 자체 ∈ C₃∖C₂(계층 판정=hierarchy_observe).
+# 신규 module 0(cnot·cs_gate 기봉인, magic_a=|A⟩ 준비 복리). honest: 정의 부분공간만 촉매 물리 —
+#   여타 입력=회로-유도. 계층 판정·T²=S 재발견·teeth = hierarchy_observe(INV-Q3, seal 아님).
+#   측정 기반 프로토콜(Clifford-only 소비+고전 보정)=관측 경계(magic_state_observe 기존 T-injection).
+```json id=app_meta
+{"id": "t_teleport", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+CNOT = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+CS = np.diag([1, 1, 1, 1j]).astype(complex)
+golden = CS @ CNOT
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/cs_gate.pg", "targets": [0, 1]}]}
+```

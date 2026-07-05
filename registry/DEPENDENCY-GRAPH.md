@@ -836,6 +836,10 @@ s3_mult
 ├─ fredkin (module)
 └─ x_gate (module×12)
 
+s_teleport
+├─ cnot (module)
+└─ cz (module)
+
 schur4
 ├─ schur3 (app)
 │  ├─ cnot (module×6)
@@ -2020,6 +2024,10 @@ szegedy_c4_p12
 ├─ h_gate (module×4)
 ├─ swap2 (module×4)
 └─ x_gate (module×14)
+
+t_teleport
+├─ cnot (module)
+└─ cs_gate (module)
 
 tfim3_suzuki4_step
 ├─ rzz_y4_p_half (app×16)

@@ -511,6 +511,18 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         R3_C12_LinearOptics // 선형광학 unary Clements (deferred — 스킵 판정 2026-07-06)
             # 판정 근거(정직 기록): 저합의 1/8(A7 단독) + 각도 혼재(π/3 algebraic → 승인 게이트 비용)
             #   + unary 인코딩=기존 자산과 복리 접점 약함. report4 회신이 재제안·보강하면 재평가.
+    TrackC3Hierarchy // Clifford 계층구조(3단계) 자체개창 — gate teleportation exact 코어 (done — 2026-07-06)
+        # ✅ t_teleport(CS·CNOT, u_hash 6d51b925)·s_teleport(CZ·CNOT, 2cab7bf3) Tier-0 봉인.
+        #   hierarchy_observe(3ap): ★촉매 exact 7상태(|A⟩==magic_a 열 복리)·계층 판정 7건(독립 정의:
+        #   T/CS/CCZ/U_t∈C₃∖C₂·S/U_s∈C₂)·사다리 재발견 t²==s·s²==z(봉인 golden)·teeth 3종
+        #   (자원 오염·Z^{1/8}∉C₃·무보정 CNOT). 348→350앱·root ddeb6079ef8f88b3.
+        # V8(2-B) 자체개창 선례. v3·v4 요청문 §4 예시였으나 외부 미제안 축. 새 수평: 계층 C₁⊂C₂⊂C₃
+        #   (C_{k+1}={U: UPU†∈C_k})의 구조 자산화. 인스턴스: ★coherent gate teleportation 촉매 회로 —
+        #   t_teleport=CS·CNOT: U(|ψ⟩⊗|A⟩)=(T|ψ⟩)⊗|A⟩ (magic_a 복리, |A⟩ 촉매 보존) ·
+        #   s_teleport=CZ·CNOT: U(|ψ⟩⊗|Y⟩)=(S|ψ⟩)⊗|Y⟩ — ★사다리: 보정 게이트 계층 = 대상 게이트−1
+        #   (S보정↔T·Z보정↔S), coherent 제어 보정 = 대상과 동일 계층. 신규 module 0(cnot·cs_gate·cz).
+        #   witness: 촉매 exact·계층 판정(독립 정의: C₂=Pauli保·C₃=Clifford保 — T/CS/CCZ∈C₃∖C₂·
+        #   S∈C₂∖C₁·T²=S 재발견·비-C₃ 검출 teeth). 측정 기반 프로토콜(Clifford-only 소비)=관측 경계.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

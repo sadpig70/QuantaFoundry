@@ -1,0 +1,21 @@
+# s_teleport — coherent S-게이트 텔레포테이션(촉매형). 2q(data q0·resource q1). Tier-0 4×4.
+# TrackC3Hierarchy (#C3): t_teleport 의 한 계층 아래 짝 — ★사다리 실증: 대상 S∈C₂ ⇒ 보정 Z∈C₁
+#   (coherent 보정 CZ), 대상 T∈C₃ ⇒ 보정 S∈C₂ (coherent 보정 CS). U = CZ·CNOT(0→1):
+#   정의 부분공간(resource=|Y⟩=S|+⟩)에서 U(|ψ⟩⊗|Y⟩) = (S|ψ⟩)⊗|Y⟩ — S-촉매.
+#   ★대비: U_s ∈ C₂(Clifford — 보정까지 전부 Clifford) vs U_t ∈ C₃∖C₂ (계층 판정=hierarchy_observe).
+# 신규 module 0(cnot·cz 기봉인). honest: 정의 부분공간만 촉매 물리. 계층 판정·S²=Z 재발견·teeth
+#   = hierarchy_observe(INV-Q3, seal 아님).
+```json id=app_meta
+{"id": "s_teleport", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+CNOT = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+golden = CZ @ CNOT
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/cz.pg", "targets": [0, 1]}]}
+```
