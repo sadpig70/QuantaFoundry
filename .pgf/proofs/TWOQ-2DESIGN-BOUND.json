@@ -1,0 +1,26 @@
+{
+  "_claim_refuted": "외부 런타임 '21원소 2q exact unitary 2-design' — 하한 226 위반",
+  "_schema": "twoq-2design-bound-v1",
+  "_verdict": "CLOSED-NEGATIVE",
+  "consequence": "2q exact unitary 2-design 봉인은 ≥226 앱 — 등록부 규모상 비현실 → G2 봉인 트랙 정직 종결(closed-negative). 대체 payoff=G2b MUB-20 projective state 2-design (Clifford, 규모 게이트).",
+  "honest_boundary": "반증 문서(봉인 0·root 불변). rank/FP 수치=float(1e-8/1e-9) witness, 하한 정리=해석적. V8 cliff1 24개=군 폐포 봉인(최소 2-design 아님) 정직 기록.",
+  "numerics": {
+    "F2_cliff1_24": 1.9999999999999996,
+    "F2_tetrahedral_12": 1.9999999999999984,
+    "K_d2_clifford24": 10,
+    "K_d2_haar": 10,
+    "K_d4_clifford_samples": 226,
+    "K_d4_haar": 226,
+    "bound_formula_d2": 10,
+    "bound_formula_d4": 226,
+    "mub20": {
+      "is_projective_state_2design": true,
+      "mutually_unbiased": true,
+      "n_states": 20,
+      "state_frame_potential": 0.1,
+      "target_2_over_d_d1": 0.1
+    }
+  },
+  "seed": 0,
+  "theorem": "정확(가중 포함) unitary 2-design |X| ≥ d⁴−2d²+2 = 1+(d²−1)² [Gross–Audenaert–Eisert 2007]; 하한의 정체=K(d)=dim span{vec(U⊗Ū)} (설계 원소당 기여 방향 1개, 가중치는 rank 불증가)"
+}

@@ -59,14 +59,15 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   guard ALL PASS · reproduce --changed-only REPRODUCED(41스텝 0 fail). G1 폐합.
     G2_TwoQubit2Design // 2q 2-design — ★closed-negative 반증 + 대체 payoff (designing)
         # 순서: 문서 순서=실행 순서(정책). G1 과 데이터 의존 없음 — a-노드는 언제든 선행 가능.
-        G2a_MathVerify // 하한 정리 판정 + 반증 문서화 (in-progress)
-            # ✅리뷰 중 선판정(P7 수치): span{U⊗Ū} rank = d⁴−2d²+2 = 10(d=2)·226(d=4) 확인.
-            #   ★하한의 정체=Fisher-type span 차원 → **가중(비균일) 설계에도 유효** — "소형 부분집합" 탈출구 없음.
-            #   외부 "21원소" 주장=하한 위반 **반증 확정**(정체 추정: d=4 MUB 20-state 는 projective *state*
-            #   2-design — unitary/state design 혼동 개연). 1q 캘리브레이션: 12원소 ⟨2T⟩± 부분군도 F₂=2
-            #   (V8 cliff1 24개=최소 아닌 군 폐포 봉인 — 프레이밍 정정 기록).
-            # 잔여: 반증 리포트 .pgf/proofs/TWOQ-2DESIGN-BOUND.json (하한 산출 코드+수치) 작성 →
-            #   closed-negative 종결(=G6 @dep 충족하는 정상 terminal). 봉인 0·root 불변.
+        G2a_MathVerify // 하한 정리 판정 + 반증 문서화 (done — ★closed-negative)
+            # ✅ 2026-07-05 반증 리포트 고정: scripts/twoq_2design_bound.py → .pgf/proofs/TWOQ-2DESIGN-BOUND.json
+            #   (결정론 seed=0). ①K(d)=dim span{vec(U⊗Ū)} 2경로(Haar 표본·Clifford 원소) rank 포화:
+            #   **10/10(d=2)·226/226(d=4) = d⁴−2d²+2 공식 일치** — 하한(GAE 2007)은 원소당 기여 방향 1개
+            #   논증이라 가중 설계에도 유효. ②1q 캘리브레이션: C₁ 24원소 F₂=2 + ★12원소 사면체(Pauli⋊C₃)
+            #   부분군 F₂=2(하한 10≤최소≤12 정합, V8 24개=군 폐포 봉인 정직 기록). ③외부 "21원소" 주장=
+            #   하한 226 위반 **반증 확정**; 정체=d=4 MUB 20-state(가환 Pauli 5-분할 {ZI,IZ}·{XI,IX}·
+            #   {YI,IY}·{XZ,ZY}·{ZX,YZ})가 projective **state** 2-design(FP=1/10 exact, 상호비편향 전수
+            #   확인)임을 실증 — unitary/state design 혼동. 봉인 0·root 불변. **G2 unitary-design 트랙 정직 종결.**
         G2b_StateDesignOption // ★대체 payoff: MUB-20 state 2-design (Clifford, module 0) (designing) @dep:G2a_MathVerify
             # P7 부수 발견의 정직한 회수: d=4 MUB 5기저×4상태=20 상태준비 앱(전부 Clifford word) 봉인 +
             #   state 2-design witness(frame potential 2/(d(d+1))=1/10 exact) 관측. unitary design 아님을
