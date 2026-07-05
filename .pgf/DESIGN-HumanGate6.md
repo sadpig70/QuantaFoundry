@@ -133,19 +133,21 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   schur4_observe(3al): U†J²U=diag{6×5,2×9,0×2}·U†JzU label map 16 전수·S₄ duality
             #   (섹터보존+[4] P=+1 전수+[3,1] χ(전치)=1(m별 trace 3)+[2,2] χ=0)·teeth 2종(CG 오염
             #   √¾→√0.7 off-diag 검출·label 열교환 j=2↔1 검출). 기존 schur_observe 불변(가산-only).
-    G5_Fibonacci // Fibonacci anyon braid — 새 대수체 (designing)
-        G5a_DesignBraid // R/F 닫힌형·B₃ 표현 설계 (designing)
-            # process: 3-anyon fusion space=2차원(1q). R=diag(e^{−4πi/5}, e^{3πi/5}) ·
-            #   F=[[φ⁻¹,φ^{−1/2}],[φ^{−1/2},−φ⁻¹]] (F²=I ✓) · σ₁=R·σ₂=FRF.
-            #   ★field 정정(P7 Critical): N(φ)=−1 → √φ∉ℚ(√5,ζ₅) — 실제 계수체=**ℚ(ζ₅,√φ), 차수 8 확장**.
-            #   ★Euler 분해 확보(P7 수치 exact): σ₂=e^{−iπ/10}·Rz(−7π/5)·Ry(2arccos φ⁻¹)·Rz(−2π/5)
-            #   → module 후보: rz_pi5 계열(ZPowGate t=k/5)+ry_fib(YPowGate, cos(반각)=φ⁻¹∈ℚ(√5))
-            #   +전역위상 ζ₂₀ 처리(전역위상 흡수 규약으로 소화 가능 여부 확인). F=Ry(2arccos φ⁻¹)·Z ✓P5.
-            # criteria: 승인 요청 module ≤3 · **field 공시=ℚ(ζ₅,√φ) 차수 8**(축소 보고 금지) ·
-            #   Yang-Baxter σ₁σ₂σ₁==σ₂σ₁σ₂ ✓(수치 통과) · second_oracle 제1원리(√5·√φ 기호) 초안
-        G5b_ApprovalGate // ★정욱님 승인: 새 대수체 ℚ(ζ₅,√φ) 도입 + module 집합 (designing) @dep:G5a_DesignBraid #HUMANGATE
-            # 판단 재료: 기존 field(dyadic·√2·√3·arccos√유리수·√41)에 5차 단위근+√φ(차수 8) 추가 —
-            #   등록부 대수 지평 최대 확장. 보고서: .pgf/approvals/G5-fibonacci.md
+    G5_Fibonacci // Fibonacci anyon braid — 새 대수체 (in-progress — G5b 승인 대기)
+        G5a_DesignBraid // R/F 닫힌형·B₃ 표현 설계 (done)
+            # ✅ 2026-07-05 선검증 14항 ALL PASS: R/F 닫힌형(F²=I·F=F†)·σ₁=R·σ₂=FRF ·
+            #   ★Yang-Baxter exact · ★B₃ 중심 (σ₁σ₂)³=e^{2πi/5}I(0.4π 정확) · Euler 분해 재현 ·
+            #   비-Clifford witness(Clifford-24 overlap σ₁ 0.9877·σ₂ 0.9715 <1).
+            # ★module 확정 **2개**(≤3): z5_gate=Z^(1/5)=ZPowGate(t=1/5)(★t_gate 선례 비대칭 표현으로
+            #   ζ₂₀ 봉인계수 배제 — e^{iπ/5}=ζ₁₀=−ζ₅³∈ℚ(ζ₅); 전역위상 ζ₂₀=C4 흡수 판정 완료;
+            #   (z5)⁵=z_gate 재발견 단언 예정) + ry_fib=Ry(2arccos φ⁻¹)(√φ 캐리어,
+            #   ★sin(반각)=φ^{−½} 항등으로 두 계수가 √φ 하나로 닫힘). plan word 환원 선검증:
+            #   σ₁=z5⁷·σ₂=[z,ry_fib]z5⁷[z,ry_fib] up-to-phase exact. 드라이런 2/2(u_hash 예보
+            #   a60ac94b·25614750, registry 무접촉). second_oracle surd 초안(π-free) 포함.
+        G5b_ApprovalGate // ★정욱님 승인: 새 대수체 ℚ(ζ₅,√φ) 도입 + module 집합 (in-progress — 승인 대기) @dep:G5a_DesignBraid #HUMANGATE
+            # 보고서 정본 고정: **.pgf/approvals/G5-fibonacci.md** (2026-07-05) — ①새 대수체
+            #   ℚ(ζ₅,√φ) 차수 8(N(φ)=−1 수치 확인, 축소 보고 없음) ②module 2(z5_gate·ry_fib).
+            #   승인→G5c(fib_braid_s1/s2+observe)→G6 · 부결→blocked terminal(G6 직행).
         G5c_SealObserve // fib_braid_s1/s2 봉인 + fib_braid_observe (designing) @dep:G5b_ApprovalGate
             # witness: Yang-Baxter exact · ★B₃ 중심 **(σ₁σ₂)³=e^{2πi/5}·I**(P5/P7 수치 확정 — ⁵ 아님) ·
             #   비-Clifford witness(stabilizer fidelity<1, magic_a 패턴) · teeth.
