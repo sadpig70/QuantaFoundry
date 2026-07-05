@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **85 sealed modules · 289 sealed applications** · registry root `e40a8eaf…`
+- **85 sealed modules · 290 sealed applications** · registry root `7293a3de…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash e40a8eaf… · second_oracle 79/79 · behavior pass
+# expect: REPRODUCED · root_hash 7293a3de… · second_oracle 79/79 · behavior pass
 ```
 
 ---

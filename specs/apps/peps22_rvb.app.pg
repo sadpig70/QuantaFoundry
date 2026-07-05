@@ -1,0 +1,89 @@
+# peps22_rvb — 2×2 RVB(Resonating Valence Bond) PEPS 준비 회로 (TrackGate6 G1, 2D 텐서망 새 수평 클래스).
+# |RVB⟩ ∝ |cov_H⟩+|cov_V⟩ — nearest-neighbor dimer covering 2개(H={01,23}·V={02,13})의 singlet 곱 중첩.
+#   orientation 고정: singlet=(|01⟩−|10⟩)/√2 (사이트 i<j 순). ⟨H|V⟩=+1/2·norm²=3·amp²∈{1/12,1/3}.
+# ★순차 조건화 등척(aklt4 패턴, 33스텝): site0 ry_pi2 → site1 multiplexer(CX-켤레, 보정=ry_k6²·ry_negpi2)
+#   → site2 분기 3블록(anti-control CCRy: 00→X·01→반각 ry_k5·10→반각 ry_pi2·ry_k5_dag·11→I)
+#   → site3 parity CNOT×3(전 support weight=2) → 부호층 f=x0+x0x1+x0x2+x1x2 → Z·CZ×3 (GF(2) 해).
+# ★신규 module 0 — 분기 확률 전부 유리수{1/2,1/6,5/6,1/5,4/5,0,1} → 기봉인 ry_pi2/ry_k5±/ry_k6 가법 조합.
+# honest(aklt4 상속): 정의 열(|0⟩^⊗4 입력)만 RVB 물리 — 여타 열=회로-유도 유니터리 완성.
+#   RVB 열의 독립 검증(dimer 정의 직접·S_tot²=0 exact)=peps_observe(INV-Q3). n>2×2·PBC·일반 PEPS=차기.
+```json id=app_meta
+{"id": "peps22_rvb", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Z = np.diag([1, -1]).astype(complex)
+CNOT = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+TOFF = np.eye(8, dtype=complex); TOFF[6,6]=TOFF[7,7]=0; TOFF[6,7]=TOFF[7,6]=1
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+def emb(G, tg, n=4):
+    k = len(tg); dim = 2 ** n
+    M = np.zeros((dim, dim), dtype=complex)
+    for b in range(dim):
+        bits = [(b >> (n - 1 - q)) & 1 for q in range(n)]
+        si = 0
+        for t in tg:
+            si = (si << 1) | bits[t]
+        for so in range(2 ** k):
+            if G[so, si] == 0:
+                continue
+            ob = list(bits)
+            for i, t in enumerate(tg):
+                ob[t] = (so >> (k - 1 - i)) & 1
+            o = 0
+            for bb in ob:
+                o = (o << 1) | bb
+            M[o, b] += G[so, si]
+    return M
+tk5 = np.arccos(np.sqrt(1/5)); tk6 = np.arccos(np.sqrt(1/6))
+SEQ = [(ry(np.pi/2), [0]),
+       (ry(np.pi/2), [1]), (CNOT, [0,1]), (ry(tk6), [1]), (ry(tk6), [1]), (ry(-np.pi/2), [1]), (CNOT, [0,1]),
+       (X, [0]), (X, [1]), (TOFF, [0,1,2]), (X, [0]), (X, [1]),
+       (X, [0]), (ry(tk5), [2]), (TOFF, [0,1,2]), (ry(-tk5), [2]), (TOFF, [0,1,2]), (X, [0]),
+       (X, [1]), (ry(np.pi/2), [2]), (ry(-tk5), [2]), (TOFF, [0,1,2]), (ry(tk5), [2]), (ry(-np.pi/2), [2]), (TOFF, [0,1,2]), (X, [1]),
+       (CNOT, [0,3]), (CNOT, [1,3]), (CNOT, [2,3]),
+       (Z, [0]), (CZ, [0,1]), (CZ, [0,2]), (CZ, [1,2])]
+golden = np.eye(16, dtype=complex)
+for G, tg in SEQ:
+    golden = emb(G, tg) @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/ry_pi2.pg", "targets": [0]},
+  {"spec": "../modules/ry_pi2.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_k6.pg", "targets": [1]},
+  {"spec": "../modules/ry_k6.pg", "targets": [1]},
+  {"spec": "../modules/ry_negpi2.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_k5.pg", "targets": [2]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/ry_k5_dag.pg", "targets": [2]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/ry_pi2.pg", "targets": [2]},
+  {"spec": "../modules/ry_k5_dag.pg", "targets": [2]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/ry_k5.pg", "targets": [2]},
+  {"spec": "../modules/ry_negpi2.pg", "targets": [2]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 3]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/cz.pg", "targets": [0, 1]},
+  {"spec": "../modules/cz.pg", "targets": [0, 2]},
+  {"spec": "../modules/cz.pg", "targets": [1, 2]}]}
+```

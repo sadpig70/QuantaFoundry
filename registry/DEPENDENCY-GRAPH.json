@@ -5886,6 +5886,71 @@
       }
     ]
   },
+  "peps22_rvb": {
+    "u_hash": "4d67b9862b4bb973350e97e43eac6a3712cc48f32443e8957f46bfeb8e2dc9b2",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 5,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 3,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5",
+        "uses": 2,
+        "child_u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k5_dag",
+        "uses": 2,
+        "child_u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
+      },
+      {
+        "kind": "module",
+        "id": "ry_k6",
+        "uses": 2,
+        "child_u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi2",
+        "uses": 2,
+        "child_u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi2",
+        "uses": 3,
+        "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 5,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 8,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 1,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
   "qae3_pi2": {
     "u_hash": "5fc7fdcbb3b55cdef351d7768eb67a922d09dc2d31b0baeceee883f000f768e5",
     "depends_on": [

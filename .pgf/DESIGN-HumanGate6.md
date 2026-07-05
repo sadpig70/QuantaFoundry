@@ -29,7 +29,7 @@ c-노드(봉인·커밋)만 한 번에 하나(순서 정책). — P7 High 반영
 
 ```
 HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
-    G1_PepsRvb // 2×2 RVB PEPS — 2D 텐서망 새 클래스, module 0 확정 (in-progress)
+    G1_PepsRvb // 2×2 RVB PEPS — 2D 텐서망 새 클래스, module 0 확정 (done)
         G1a_Analyze // RVB 상태 닫힌형 선분석 (done)
             # ✅ 2026-07-05 numpy: |RVB⟩=|cov_H⟩+|cov_V⟩(H={01,23}·V={02,13}), ⟨H|V⟩=+1/2·norm²=3.
             #   진폭 전부 실수 ±1/√12(4개)·∓1/√3(0110·1001), amp²∈{1/12,1/3}. 순차 분기 확률
@@ -48,11 +48,15 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   weight=2 강제) → 부호층 f=x0+x0x1+x0x2+x1x2 = Z(0)·CZ(01)·CZ(02)·CZ(12).
             #   ‖U|0000⟩−|RVB⟩‖=3.3e-16 · 유니터리 ✓ · module 10종 전부 기봉인(신규 0 재확인):
             #   {ry_pi2, ry_negpi2, ry_k5±, ry_k6, x, z, cnot, cz, toffoli}. orientation 고정(i<j: |01⟩−|10⟩).
-        G1c2_SealForge // peps22_rvb spec + forge 봉인 (designing) @dep:G1c1_CircuitDesign
-            # criteria: SEALED Tier-0 · 신규 module 0 · 재발견 교차검증 불변
-        G1c3_Observe // peps_observe + 사이클 완주 (designing) @dep:G1c2_SealForge
-            # witness: 독립 텐서수축(covering 합) 일치·S_tot²=0 exact·정의 열 honest split(INV-Q3,
-            #   준비 열=|0…0⟩ 만 RVB — aklt4 선례)·teeth. 이후 standard_cycle_gates() 완주.
+        G1c2_SealForge // peps22_rvb spec + forge 봉인 (done) @dep:G1c1_CircuitDesign
+            # ✅ 2026-07-05 1회 통과: specs/apps/peps22_rvb.app.pg(33스텝 plan·honest 주석=정의 열만
+            #   RVB 물리) + APP_LIST 등록 → **SEALED Tier-0 u_hash 4d67b986** · 신규 module 0 ·
+            #   재발견 교차검증 12/12 불변. 커밋은 G1c3 사이클 완주 후(verified-only).
+        G1c3_Observe // peps_observe + 사이클 완주 (done) @dep:G1c2_SealForge
+            # ✅ 2026-07-05: peps_observe(3ai) — 정의열==dimer 정의 재구성 3.3e-16 · S_tot²=0 exact ·
+            #   각 사이트 reduced ρ=I/2 · teeth 2종(orientation 반전·각도 오염) 검출. 사이클 완주:
+            #   registry 290 apps · root e40a8eaf→**7293a3de4baa50ba** · anchor PASS · second_oracle 79/79 ·
+            #   guard ALL PASS · reproduce --changed-only REPRODUCED(41스텝 0 fail). G1 폐합.
     G2_TwoQubit2Design // 2q 2-design — ★closed-negative 반증 + 대체 payoff (designing)
         # 순서: 문서 순서=실행 순서(정책). G1 과 데이터 의존 없음 — a-노드는 언제든 선행 가능.
         G2a_MathVerify // 하한 정리 판정 + 반증 문서화 (in-progress)

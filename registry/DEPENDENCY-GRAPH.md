@@ -439,6 +439,18 @@ mbqc_h
 parity4_transform
 └─ cnot (module×6)
 
+peps22_rvb
+├─ cnot (module×5)
+├─ cz (module×3)
+├─ ry_k5 (module×2)
+├─ ry_k5_dag (module×2)
+├─ ry_k6 (module×2)
+├─ ry_negpi2 (module×2)
+├─ ry_pi2 (module×3)
+├─ toffoli (module×5)
+├─ x_gate (module×8)
+└─ z_gate (module)
+
 qae3_pi2
 ├─ cry_pi (app)
 │  ├─ cnot (module×2)

@@ -198,6 +198,8 @@ APP_LIST = [
     ("choi_phasedamp.app.pg", None),     # J(phase-damp½) 준비 유니터리 (3q)
     ("choi_ampdamp.app.pg",   None),     # J(amp-damp½) 준비 유니터리 (3q)
     ("choi_depol.app.pg",     None),     # J(depol p=1)=I/4 극단 사례 (4q, env 2q)
+    # TrackGate6 G1: 2×2 RVB PEPS — 2D 텐서망 새 수평 클래스 (순차 조건화 등척 33스텝, 신규 module 0)
+    ("peps22_rvb.app.pg",     None),     # |cov_H⟩+|cov_V⟩ dimer 중첩, ry_k5/k6 가법·parity·부호층 Z/CZ
 ]
 
 

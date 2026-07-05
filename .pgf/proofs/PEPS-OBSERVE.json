@@ -1,0 +1,19 @@
+{
+  "_note": "2×2 RVB PEPS witness: dimer 정의 독립 재구성+S_tot²=0+reduced I/2+teeth.",
+  "_schema": "peps-observe-v1",
+  "observation": {
+    "S_tot_sq_annihilation": 2.220446049250313e-16,
+    "app": "peps22_rvb",
+    "defining_column_vs_dimer_definition": 3.3306690738754696e-16,
+    "honest_boundary": "봉인=준비 유니터리뿐. RVB 물리=정의 열(|0⟩^⊗4)만 — 여타 열=회로-유도 완성. S_tot²·reduced ρ=witness 관측(INV-Q3). n>2×2·PBC·일반 PEPS=차기.",
+    "ok": true,
+    "seal_link": true,
+    "sealed_assets": "peps22_rvb (준비 유니터리 Tier-0 exact, 33스텝, 신규 module 0)",
+    "single_site_reduced_maximally_mixed": 6.661338147750939e-16,
+    "teeth": {
+      "angle_corruption_detected": true,
+      "orientation_flip_detected": true
+    },
+    "unitary": true
+  }
+}

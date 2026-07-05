@@ -1945,6 +1945,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bb4b91b5d019df67ea0cc426c088521fe3b86048667ef0b2e5c61b81f70d5581"
     },
+    "app:peps22_rvb": {
+      "kind": "app",
+      "id": "peps22_rvb",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "4d67b9862b4bb973350e97e43eac6a3712cc48f32443e8957f46bfeb8e2dc9b2"
+    },
     "app:qae3_pi2": {
       "kind": "app",
       "id": "qae3_pi2",
@@ -4251,7 +4260,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 343,
+        "unitary_equiv": 344,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 15
       },
@@ -4260,7 +4269,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 428,
+      "unitary_equiv": 429,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 15
     }
