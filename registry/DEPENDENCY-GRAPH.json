@@ -5321,6 +5321,40 @@
       }
     ]
   },
+  "fib_braid_s1": {
+    "u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "z5_gate",
+        "uses": 7,
+        "child_u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4"
+      }
+    ]
+  },
+  "fib_braid_s2": {
+    "u_hash": "bda39df22964a1258e353513b2b0be69fffc8d36e62d7245feb869cd0ddfc406",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ry_fib",
+        "uses": 2,
+        "child_u_hash": "256147502bcb8da36800a3bcc2d43701ae99690ac2783c30d6d7fab0ac5154b5"
+      },
+      {
+        "kind": "module",
+        "id": "z5_gate",
+        "uses": 7,
+        "child_u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 2,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
   "fswap": {
     "u_hash": "719fb6081419883895b4213563a404997b0a7f5f933c76aacbe82eba610539d2",
     "depends_on": [

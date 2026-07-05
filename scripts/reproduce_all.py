@@ -419,6 +419,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3am. TrackGate6 G5: Fibonacci braid — Yang-Baxter+B₃중심+z5⁵=Z 재발견+비-Clifford witness (observation)
+    rc, out = run(["scripts/fib_braid_observe.py", "--quick"])
+    result["steps"]["fib_braid_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

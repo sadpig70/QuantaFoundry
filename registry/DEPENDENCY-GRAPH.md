@@ -303,6 +303,14 @@ dj2_const1
 ├─ h_gate (module×5)
 └─ x_gate (module×2)
 
+fib_braid_s1
+└─ z5_gate (module×7)
+
+fib_braid_s2
+├─ ry_fib (module×2)
+├─ z5_gate (module×7)
+└─ z_gate (module×2)
+
 fswap
 ├─ cz (module)
 └─ swap2 (module)

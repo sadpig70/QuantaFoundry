@@ -1,0 +1,31 @@
+# fib_braid_s2 — Fibonacci anyon braid 생성원 σ₂ = F·R·F. Tier-0 2×2. TrackGate6 G5c (#TOPO).
+# F = [[φ⁻¹, φ^{−½}], [φ^{−½}, −φ⁻¹]] (fusion 재결합, F²=I·F=F†) · R = diag(e^{−4πi/5}, e^{3πi/5}).
+#   ★F = ry_fib·z_gate (수치 exact) → plan = [z, ry_fib]·z5⁷·[z, ry_fib] (11스텝, up-to-phase C4).
+#   Euler 대조(설계 검증): σ₂ = e^{−iπ/10}·Rz(−7π/5)·Ry(2arccos φ⁻¹)·Rz(−2π/5) exact.
+# golden=F·R·F 정의 직접(위상 포함). ★Yang-Baxter σ₁σ₂σ₁==σ₂σ₁σ₂ · B₃ 중심 (σ₁σ₂)³=e^{2πi/5}I ·
+#   비-Clifford(Clifford-24 overlap 0.97<1) = fib_braid_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=생성원 유니터리뿐. universality·근사 컴파일·n-anyon 일반화=범위 밖.
+```json id=app_meta
+{"id": "fib_braid_s2", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+F = np.array([[1/phi, 1/np.sqrt(phi)], [1/np.sqrt(phi), -1/phi]], dtype=complex)
+golden = F @ R @ F
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]}]}
+```

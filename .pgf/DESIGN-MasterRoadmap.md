@@ -465,7 +465,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ scripts/pathsum_verify.py(3ah): ℤ[ω₈]·(1/√2)^k 축차 경로합(부동소수 0 정수 연산)→dense
             #   golden 전역위상 정규화 대조. 8개 봉인 앱(bell~szegedy_2state) dev≤2e-16+teeth(T 오염 검출).
             #   봉인 0·oracle 무수정(봉인 판정 불참 sidecar). dense·tableau·ZX 다음의 4번째 수학 기반.
-    TrackGate6 // 사람게이트 6건 단계별 개창 — 상세 계획서 .pgf/DESIGN-HumanGate6.md v1.1 (in-progress) @dep:TrackHE3
+    TrackGate6 // 사람게이트 6건 단계별 개창 — 상세 계획서 .pgf/DESIGN-HumanGate6.md v1.1 (done — 2026-07-05 폐합) @dep:TrackHE3
         # ★v1.1=PGF 3관점 설계리뷰(P5/P7/P8, REVISE: C2·H5) 반영 개정: G1 PEPS RVB(module 0 확정)→
         #   G2 2q 2-design(★하한 226 가중 포함 유효→closed-negative 반증+MUB-20 state-design 대체 payoff)→
         #   G3 π/6 family(승인 1회→채널γ¼·Szegedy p¼ 확정+POVM 조건부 A6)→G4 Schur n=4(★arccos√(2/3)=
@@ -481,7 +481,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   naimark_observe 3ak) 일괄 봉인 → 87 modules·315 apps·root 008e09334c543c7c.
         # ✅G4 폐합(2026-07-05): schur4 16×16(★schur3 sub-app 복리, CG 반각 {π/6,π/4,π/3} 전부 기봉인
         #   → module 0, G4b 스킵) — J²/Jz {6×5,2×9,0×2}+S₄ [4]/[3,1]/[2,2] witness(schur4_observe 3al)
-        #   → 316 apps·root 16422fcc4319ea92. 잔여 G5(Fibonacci ★최대 승인 게이트)·G6.
+        #   → 316 apps·root 16422fcc4319ea92.
+        # ✅G5 폐합+G6 종결(2026-07-05): ★새 대수체 ℚ(ζ₅,√φ) 차수 8 승인(.pgf/approvals/G5-fibonacci.md)
+        #   → z5_gate(Z^(1/5), (z5)⁵=z_gate 재발견)·ry_fib(√φ 캐리어) + fib_braid_s1/s2(첫 비-Clifford
+        #   anyon braid, Yang-Baxter·B₃중심 e^{2πi/5}I·비-Clifford witness, fib_braid_observe 3am).
+        #   **TrackGate6 전체 폐합**: module +4·앱 290→318·반증 1·root 7293a3de→1feeef7e7af4d23d.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

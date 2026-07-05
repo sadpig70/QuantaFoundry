@@ -221,6 +221,9 @@ APP_LIST = [
     ("naimark_ud3.app.pg",               None),  # UD-POVM Naimark 정방 완성 (rank-1 Kraus, module 0, W 간섭층)
     # TrackGate6 G4: n=4 Schur-Weyl — ★schur3 sub-app 복리 + CG 반각 {π/6,π/4,π/3} 전부 기봉인(module 0)
     ("schur4.app.pg",                    None),  # 16×16 = spin-2 ⊕ spin-1×3 ⊕ spin-0×2 (S₄ [4]/[3,1]/[2,2])
+    # TrackGate6 G5: Fibonacci anyon braid — 새 대수체 ℚ(ζ₅,√φ) 승인분(z5_gate·ry_fib), 첫 비-Clifford braid
+    ("fib_braid_s1.app.pg",              None),  # σ₁ = R (z5⁷, up-to-phase)
+    ("fib_braid_s2.app.pg",              None),  # σ₂ = F·R·F (F=ry_fib·z, 11스텝)
 ]
 
 

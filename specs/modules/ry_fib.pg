@@ -1,0 +1,19 @@
+# ry_fib — Ry(2·arccos φ⁻¹), φ=(1+√5)/2 (TrackGate6 G5 Fibonacci braid; 정욱님 승인 2026-07-05,
+# .pgf/approvals/G5-fibonacci.md). cos(반각)=φ⁻¹=(√5−1)/2 · sin(반각)=φ^{−½} (φ²=φ+1 항등으로
+# 두 계수가 √φ 하나로 닫힘) — ★√φ 캐리어(N(φ)=−1 → √φ∉ℚ(√5), ℚ(√φ) 차수 4).
+# F-move = ry_fib·z_gate (F²=I). Ry(α)=YPowGate(exponent=α/π) up-to-phase(C4). analytic golden.
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+bloq = YPowGate(exponent=float(2.0 * np.arccos(1.0 / phi) / np.pi))
+```
+```python id=golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+a = 2.0 * np.arccos(1.0 / phi)
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_fib", "n_sys": 1, "n_anc": 0}
+```

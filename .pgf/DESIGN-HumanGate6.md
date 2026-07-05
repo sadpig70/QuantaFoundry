@@ -28,7 +28,7 @@ c-노드(봉인·커밋)만 한 번에 하나(순서 정책). — P7 High 반영
 ## Gantree
 
 ```
-HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
+HumanGate6 // 사람게이트 6건 단계별 개창 (done — 2026-07-05 전체 폐합) @v:1.1
     G1_PepsRvb // 2×2 RVB PEPS — 2D 텐서망 새 클래스, module 0 확정 (done)
         G1a_Analyze // RVB 상태 닫힌형 선분석 (done)
             # ✅ 2026-07-05 numpy: |RVB⟩=|cov_H⟩+|cov_V⟩(H={01,23}·V={02,13}), ⟨H|V⟩=+1/2·norm²=3.
@@ -133,7 +133,9 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   schur4_observe(3al): U†J²U=diag{6×5,2×9,0×2}·U†JzU label map 16 전수·S₄ duality
             #   (섹터보존+[4] P=+1 전수+[3,1] χ(전치)=1(m별 trace 3)+[2,2] χ=0)·teeth 2종(CG 오염
             #   √¾→√0.7 off-diag 검출·label 열교환 j=2↔1 검출). 기존 schur_observe 불변(가산-only).
-    G5_Fibonacci // Fibonacci anyon braid — 새 대수체 (in-progress — G5b 승인 대기)
+    G5_Fibonacci // Fibonacci anyon braid — 새 대수체 (done — 2026-07-05 완주)
+        # ✅ 승인 module 2(z5_gate·ry_fib, 새 대수체 ℚ(ζ₅,√φ)) → fib_braid_s1/s2 봉인+observe.
+        #   87→89 modules·316→318 apps·root 16422fcc→1feeef7e7af4d23d.
         G5a_DesignBraid // R/F 닫힌형·B₃ 표현 설계 (done)
             # ✅ 2026-07-05 선검증 14항 ALL PASS: R/F 닫힌형(F²=I·F=F†)·σ₁=R·σ₂=FRF ·
             #   ★Yang-Baxter exact · ★B₃ 중심 (σ₁σ₂)³=e^{2πi/5}I(0.4π 정확) · Euler 분해 재현 ·
@@ -144,18 +146,24 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   ★sin(반각)=φ^{−½} 항등으로 두 계수가 √φ 하나로 닫힘). plan word 환원 선검증:
             #   σ₁=z5⁷·σ₂=[z,ry_fib]z5⁷[z,ry_fib] up-to-phase exact. 드라이런 2/2(u_hash 예보
             #   a60ac94b·25614750, registry 무접촉). second_oracle surd 초안(π-free) 포함.
-        G5b_ApprovalGate // ★정욱님 승인: 새 대수체 ℚ(ζ₅,√φ) 도입 + module 집합 (in-progress — 승인 대기) @dep:G5a_DesignBraid #HUMANGATE
-            # 보고서 정본 고정: **.pgf/approvals/G5-fibonacci.md** (2026-07-05) — ①새 대수체
-            #   ℚ(ζ₅,√φ) 차수 8(N(φ)=−1 수치 확인, 축소 보고 없음) ②module 2(z5_gate·ry_fib).
-            #   승인→G5c(fib_braid_s1/s2+observe)→G6 · 부결→blocked terminal(G6 직행).
-        G5c_SealObserve // fib_braid_s1/s2 봉인 + fib_braid_observe (designing) @dep:G5b_ApprovalGate
-            # witness: Yang-Baxter exact · ★B₃ 중심 **(σ₁σ₂)³=e^{2πi/5}·I**(P5/P7 수치 확정 — ⁵ 아님) ·
-            #   비-Clifford witness(stabilizer fidelity<1, magic_a 패턴) · teeth.
-            #   universality/근사컴파일 주장=범위 밖 정직경계. 신규 스크립트 fib_braid_observe.py
-            #   (기존 braid_observe.py=Ising 불변, 가산-only).
-    G6_Closure // 종결 — 정본·외부문서·메모리 동기화 (designing) @dep:G1_PepsRvb,G2_TwoQubit2Design,G3_AngleFamilyPi6,G4_Schur4,G5_Fibonacci
-        # @dep 의미(P8/P7): 각 선행 G 가 **terminal**(done 또는 closed-negative/blocked-final+사유)이면 충족.
-        #   승인 부결도 정당한 terminal — 오히려 동기화가 더 필요. G7+ 확장=노드 추가+이 @dep 1개 추가로 국소화.
+        G5b_ApprovalGate // ★정욱님 승인: 새 대수체 ℚ(ζ₅,√φ) 도입 + module 집합 (done — 승인 2026-07-05) @dep:G5a_DesignBraid #HUMANGATE
+            # ✅ 정욱님 승인("승인 권장을 채택한다") — 보고서 .pgf/approvals/G5-fibonacci.md.
+            #   **z5_gate/ry_fib 봉인 완료**(u_hash a60ac94b·25614750 — 드라이런 예보와 byte-identical).
+            #   second_oracle 제1원리 surd(π-free, √5·√φ) 추가 **83/83**. frozen/fingerprint 무훼손.
+        G5c_SealObserve // fib_braid_s1/s2 봉인 + fib_braid_observe (done) @dep:G5b_ApprovalGate
+            # ✅ fib_braid_s1(σ₁=R, plan=z5⁷ up-to-phase, u_hash 20b006c6)·fib_braid_s2(σ₂=FRF,
+            #   plan=[z,ry_fib]z5⁷[z,ry_fib] 11스텝, u_hash bda39df2) Tier-0 봉인 — ★첫 비-Clifford
+            #   anyon braid. fib_braid_observe(3am): anyon 데이터 독립 재구성·★Yang-Baxter 2.4e-16·
+            #   ★B₃ 중심 (σ₁σ₂)³=e^{2πi/5}I dev 3.5e-16·★재발견 z5⁵==z_gate exact·plan word 환원·
+            #   비-Clifford(Clifford-24 overlap 0.9877/0.9715<1)·teeth(R 위상 0.9배 오염 → YB 0.325·
+            #   중심 0.438 검출). universality·근사컴파일=범위 밖 정직경계. braid_observe(Ising) 불변.
+    G6_Closure // 종결 — 정본·외부문서·메모리 동기화 (done — 2026-07-05 TrackGate6 전체 폐합) @dep:G1_PepsRvb,G2_TwoQubit2Design,G3_AngleFamilyPi6,G4_Schur4,G5_Fibonacci
+        # ✅ 전 선행 G terminal: G1 done·G2 done(closed-negative+회수)·G3 done·G4 done·G5 done.
+        #   동기화 완료: 이 계획서·마스터 로드맵·HANDOFF·README/Spec headline·메모리.
+        #   ★트랙 총결산: 사람게이트 6건 → 신규 module 4(ry_pi6±·z5_gate·ry_fib, 전부 승인분) ·
+        #   앱 +29(MUB-20·γ¼ 3·szegedy p14·naimark_ud3·schur4·fib_braid 2 — 290→318) ·
+        #   반증 문서 1(TWOQ-2DESIGN-BOUND) · 새 수평: 2D 텐서망·state 2-design·측정이론(POVM)·
+        #   비-Clifford braid · root 7293a3de→1feeef7e7af4d23d.
 ```
 
 ## 공통 PPR

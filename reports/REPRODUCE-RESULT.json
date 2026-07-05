@@ -3,16 +3,68 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "167/167",
+      "apps_sealed": "169/169",
       "rediscovery": "12/12",
-      "pass": true,
-      "reassembled": 1,
-      "coherence": 166
+      "pass": true
     },
-    "frontier_coherence": {
-      "coherence_checked": 163,
-      "failed": [],
-      "n_failed": 0,
+    "shor_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c8x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor221_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c9x_shor381_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c10x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor635_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor1285_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor3683_frontier": {
+      "rc": 0,
+      "all_ok": true,
       "pass": true
     },
     "frontier_factory": {
@@ -22,15 +74,15 @@
     },
     "registry": {
       "rc": 0,
-      "modules": "87",
-      "unique_apps": "316",
-      "cached": "72",
-      "root_hash": "16422fcc4319ea92",
+      "modules": "89",
+      "unique_apps": "318",
+      "cached": "74",
+      "root_hash": "1feeef7e7af4d23d",
       "pass": true
     },
     "second_oracle": {
       "rc": 0,
-      "modules": "81/81",
+      "modules": "83/83",
       "pass": true
     },
     "convention_independence": {
@@ -219,6 +271,11 @@
       "pass": true
     },
     "schur4_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "fib_braid_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

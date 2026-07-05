@@ -1,0 +1,16 @@
+# z5_gate — Z^(1/5) = ZPowGate(t=1/5) (TrackGate6 G5 Fibonacci braid; 정욱님 승인 2026-07-05,
+# .pgf/approvals/G5-fibonacci.md — 새 대수체 ℚ(ζ₅,√φ) 도입 승인분). (z5_gate)⁵ = z_gate (재발견).
+# 계수 e^{iπ/5}=ζ₁₀=−ζ₅³ ∈ ℚ(ζ₅) — ★t_gate 선례 ZPowGate 비대칭 표현(ζ₂₀ 봉인계수 배제, C4 흡수).
+# 소비처: Fibonacci R = e^{−4πi/5}·diag(1, ζ₁₀⁷) → fib_braid_s1 = z5⁷ (up-to-phase).
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import ZPowGate
+bloq = ZPowGate(exponent=1.0 / 5.0)
+```
+```python id=golden
+import numpy as np
+golden = np.diag([1.0, np.exp(1j * np.pi / 5.0)]).astype(complex)
+```
+```json id=meta
+{"id": "z5_gate", "n_sys": 1, "n_anc": 0}
+```

@@ -1,0 +1,25 @@
+# fib_braid_s1 — Fibonacci anyon braid 생성원 σ₁ (3-anyon fusion space=1q B₃ 표현). Tier-0 2×2.
+# TrackGate6 G5c (#TOPO): ★첫 비-Clifford anyon braid(Ising braid=Clifford 한계와 대조) —
+#   위상적 보편 모델의 생성원 1급 자산화. 승인분: 새 대수체 ℚ(ζ₅,√φ)·module z5_gate/ry_fib.
+# σ₁ = R = diag(e^{−4πi/5}, e^{3πi/5}) — fusion 채널(1/τ)별 topological spin (닫힌형, 탐색 0).
+#   plan = z5_gate⁷ = diag(1, ζ₁₀⁷) ≅ R up-to-phase(C4 — 전역위상 e^{−4πi/5} 흡수).
+# golden=R 정의 직접(위상 포함 — B₃ 중심 (σ₁σ₂)³=e^{2πi/5}I 관측은 정의행렬 소관).
+# witness(Yang-Baxter·중심·비-Clifford·z5⁵=Z 재발견)=fib_braid_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=생성원 유니터리뿐. universality(braid 조밀성)·근사 컴파일=범위 밖.
+```json id=app_meta
+{"id": "fib_braid_s1", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+golden = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]}]}
+```

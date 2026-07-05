@@ -1,0 +1,35 @@
+{
+  "_note": "Fibonacci braid witness: YB+B₃중심+재발견+비-Clifford+teeth. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "fib-braid-observe-v1",
+  "observation": {
+    "axis": "Fibonacci anyon braid (첫 비-Clifford anyon braid — Ising=Clifford 한계와 대조)",
+    "braid_relations": {
+      "b3_center_e2pi5_dev": 3.510833468576701e-16,
+      "center_ok": true,
+      "ok": true,
+      "yang_baxter_residual": 2.355138688025663e-16
+    },
+    "field": "ℚ(ζ₅,√φ) ℚ위 차수 8 (승인분 .pgf/approvals/G5-fibonacci.md)",
+    "honest_boundary": "봉인=braid 생성원 유니터리 2개뿐. YB·중심·비-Clifford=관측(INV-Q3). universality·근사 컴파일·n≥4 anyon=범위 밖. braid_observe(Ising) 불변.",
+    "nonclifford": {
+      "cliff24_overlap_s1": 0.9876883405951378,
+      "cliff24_overlap_s2": 0.9715199080288744,
+      "ok": true
+    },
+    "ok": true,
+    "reconstruction": {
+      "F_selfinv_hermitian": true,
+      "sigma_eq_R_FRF": true
+    },
+    "rediscovery": {
+      "plan_words_uptophase": true,
+      "z5_pow5_eq_z_gate": true
+    },
+    "seal_links_2apps_2modules": true,
+    "teeth": {
+      "detects": true,
+      "r_corrupt_center_dev": 0.43829096344695084,
+      "r_corrupt_yb_residual": 0.3254381174170708
+    }
+  }
+}

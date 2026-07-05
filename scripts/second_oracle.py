@@ -113,6 +113,13 @@ INDEP = {
     "ry_cg_half_dag": lambda: np.array(
         [[np.cos(np.arccos(1 / 3) / 4), np.sin(np.arccos(1 / 3) / 4)],
          [-np.sin(np.arccos(1 / 3) / 4), np.cos(np.arccos(1 / 3) / 4)]], dtype=complex),
+    # ── TrackGate6 G5: Fibonacci braid — 제1원리 closed form (π-free surd: cos(π/5)=(1+√5)/4 ·
+    #    sin(π/5)=√(10−2√5)/4 · φ⁻¹=(√5−1)/2 · sin(arccos φ⁻¹)=φ^{−½}, field ℚ(ζ₅,√φ) 승인분) ──
+    "z5_gate": lambda: np.diag(
+        [1.0, (1 + np.sqrt(5)) / 4 + 1j * np.sqrt(10 - 2 * np.sqrt(5)) / 4]).astype(complex),
+    "ry_fib": lambda: np.array(
+        [[(np.sqrt(5) - 1) / 2, -np.sqrt((np.sqrt(5) - 1) / 2)],
+         [np.sqrt((np.sqrt(5) - 1) / 2), (np.sqrt(5) - 1) / 2]], dtype=complex),
     # ── TrackGate6 G3: π/6 family Ry(±π/6) — 제1원리 closed form (π-free surd: cos/sin(π/12)=(√6±√2)/4) ──
     "ry_pi6": lambda: np.array(
         [[(np.sqrt(6) + np.sqrt(2)) / 4, -(np.sqrt(6) - np.sqrt(2)) / 4],
