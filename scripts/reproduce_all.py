@@ -413,6 +413,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3al. TrackGate6 G4: 4-qubit Schur-Weyl — J²/Jz 동시대각+S₄ duality+teeth witness (observation)
+    rc, out = run(["scripts/schur4_observe.py", "--quick"])
+    result["steps"]["schur4_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

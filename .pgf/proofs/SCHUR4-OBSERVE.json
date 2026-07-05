@@ -1,0 +1,44 @@
+{
+  "_note": "4-qubit Schur-Weyl witness: J²/Jz 동시대각+S₄ duality+teeth. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "schur4-observe-v1",
+  "observation": {
+    "app": "schur4",
+    "compounding": "plan = 기봉인 schur3 sub-app ⊗ I · W(5 Givens, 반각 π/6·π/4·π/3 전부 기봉인)",
+    "decomposition": "2^⊗4 = spin-2(5) ⊕ spin-1(3×3) ⊕ spin-0(1×2) · S₄ [4]/[3,1]/[2,2]",
+    "honest_boundary": "봉인=회로==CG golden exact 뿐. J²/Jz·S₄ duality=witness 관측(INV-Q3). 신규 module 0(G4b 승인 게이트 스킵). n≥5·irrep 레지스터 분리=차기.",
+    "ok": true,
+    "s4_duality": {
+      "characters": {
+        "t01": {
+          "trace_j0_expect_0": -2.220446049250313e-16,
+          "trace_j1_expect_3": 3.0
+        },
+        "t12": {
+          "trace_j0_expect_0": 4.440892098500626e-16,
+          "trace_j1_expect_3": 3.000000000000001
+        },
+        "t23": {
+          "trace_j0_expect_0": -2.220446049250313e-16,
+          "trace_j1_expect_3": 3.0000000000000004
+        }
+      },
+      "sector_preserving_and_characters": true
+    },
+    "seal_links_schur4_schur3": true,
+    "simultaneous_diag": {
+      "J2_distribution": {
+        "0.0": 2,
+        "2.0": 9,
+        "6.0": 5
+      },
+      "distribution_ok": true,
+      "label_map_16": true,
+      "offdiag_max": 7.932972258354907e-16
+    },
+    "teeth": {
+      "cg_corrupt_offdiag_detected": true,
+      "label_swap_detected": true
+    },
+    "unitary": true
+  }
+}

@@ -3,68 +3,16 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "166/166",
+      "apps_sealed": "167/167",
       "rediscovery": "12/12",
-      "pass": true
+      "pass": true,
+      "reassembled": 1,
+      "coherence": 166
     },
-    "shor_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c8x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor221_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c9x_shor381_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c10x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor635_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c11x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c11x_payoff_family": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor1285_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c12x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c12x_payoff_family": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor3683_frontier": {
-      "rc": 0,
-      "all_ok": true,
+    "frontier_coherence": {
+      "coherence_checked": 163,
+      "failed": [],
+      "n_failed": 0,
       "pass": true
     },
     "frontier_factory": {
@@ -75,9 +23,9 @@
     "registry": {
       "rc": 0,
       "modules": "87",
-      "unique_apps": "315",
+      "unique_apps": "316",
       "cached": "72",
-      "root_hash": "008e09334c543c7c",
+      "root_hash": "16422fcc4319ea92",
       "pass": true
     },
     "second_oracle": {
@@ -266,6 +214,11 @@
       "pass": true
     },
     "naimark_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "schur4_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

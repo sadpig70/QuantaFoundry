@@ -7608,6 +7608,59 @@
       }
     ]
   },
+  "schur4": {
+    "u_hash": "9ec8eb81168156b5c7f980a3f75e102488f708b16a8399de1b7f47e50a63487a",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "schur3",
+        "uses": 1,
+        "child_u_hash": "45d57a5d08852d134b06a9b31732a69624a271a8d36d68b58a325977a4b70ad4"
+      },
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 10,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 14,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 3,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi6",
+        "uses": 3,
+        "child_u_hash": "6cd2dc18b0917761339b43904e4635392c086ca1fc39a72660a0cbb0c538981f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 3,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi6",
+        "uses": 3,
+        "child_u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 10,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "select_prepare4": {
     "u_hash": "305401a7909513f2e179b2616a1c3fe85b7f18f1ede0879c36a72e189fe97ee2",
     "depends_on": [

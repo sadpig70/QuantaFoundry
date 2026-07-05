@@ -2962,6 +2962,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "45d57a5d08852d134b06a9b31732a69624a271a8d36d68b58a325977a4b70ad4"
     },
+    "app:schur4": {
+      "kind": "app",
+      "id": "schur4",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "9ec8eb81168156b5c7f980a3f75e102488f708b16a8399de1b7f47e50a63487a"
+    },
     "app:sdg_gate": {
       "kind": "app",
       "id": "sdg_gate",
@@ -4521,7 +4530,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 371,
+        "unitary_equiv": 372,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 15
       },
@@ -4530,7 +4539,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 458,
+      "unitary_equiv": 459,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 15
     }

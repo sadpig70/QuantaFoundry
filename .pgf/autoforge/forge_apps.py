@@ -219,6 +219,8 @@ APP_LIST = [
     ("stinespring_ampdamp_g14.app.pg",   None),  # amp-damp γ=¼ (CRY(π/3)·CNOT)
     ("szegedy_2state_p14.app.pg",        None),  # Szegedy P=[[¼,¾],[¼,¾]] (Ry(2π/3)=ry_pi2·ry_pi6, 비대칭 첫 연쇄)
     ("naimark_ud3.app.pg",               None),  # UD-POVM Naimark 정방 완성 (rank-1 Kraus, module 0, W 간섭층)
+    # TrackGate6 G4: n=4 Schur-Weyl — ★schur3 sub-app 복리 + CG 반각 {π/6,π/4,π/3} 전부 기봉인(module 0)
+    ("schur4.app.pg",                    None),  # 16×16 = spin-2 ⊕ spin-1×3 ⊕ spin-0×2 (S₄ [4]/[3,1]/[2,2])
 ]
 
 

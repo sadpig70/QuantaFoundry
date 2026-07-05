@@ -800,15 +800,23 @@ s3_mult
 ├─ fredkin (module)
 └─ x_gate (module×12)
 
-schur3
-├─ cnot (module×6)
-├─ cz (module)
-├─ ry_cg_half (module×2)
-├─ ry_cg_half_dag (module×2)
-├─ ry_negpi4 (module)
-├─ ry_pi4 (module)
-├─ toffoli (module×4)
-└─ x_gate (module×4)
+schur4
+├─ schur3 (app)
+│  ├─ cnot (module×6)
+│  ├─ cz (module)
+│  ├─ ry_cg_half (module×2)
+│  ├─ ry_cg_half_dag (module×2)
+│  ├─ ry_negpi4 (module)
+│  ├─ ry_pi4 (module)
+│  ├─ toffoli (module×4)
+│  └─ x_gate (module×4)
+├─ c3x (module×10)
+├─ cnot (module×14)
+├─ ry_negpi4 (module×3)
+├─ ry_negpi6 (module×3)
+├─ ry_pi4 (module×3)
+├─ ry_pi6 (module×3)
+└─ x_gate (module×10)
 
 select_prepare4
 ├─ ccz (module)

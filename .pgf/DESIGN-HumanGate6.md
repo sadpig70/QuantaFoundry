@@ -110,23 +110,29 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   반증돼 재설계(sys which-path 코히런트 소거가 가능조건, ⟨t0|t1⟩=0). naimark_observe(3ak):
             #   E_k 재구성==IDP 정의 exact·ΣE=I·오식별 0·성공 ½(최적)·dilation 통계==Tr(Eρ)·teeth 2종
             #   (틀린각+★W층 잘림→대각화+오식별 0.25 검출=간섭층 하중 실증). SIC/trine=봉인불가 정직경계.
-    G4_Schur4 // n=4 Schur-Weyl irrep splitter — ★module 0 가능성 높음 (designing) @dep:G3b_ApprovalGate
-        # ★hard dep 근거(P5): CG 계수 √(3/4)의 Givens 반각=arccos√(3/4)=π/6 → G3 승인 module ry_pi6 재사용.
-        #   G3b 부결 시 G4 는 π/6 을 자체 승인 요청으로 승계(축 이동).
-        G4a1_PaletteReduction // 기존 팔레트 가법성 환원 검사 (designing)
-            # ✅리뷰 중 선판정(P5 수치): arccos√(2/3)=arccos(1/3)/2=**기봉인 ry_cg_half 와 float-identical** ·
-            #   arccos√(1/3)=π/2−arccos√(2/3)=ry_pi2·ry_cg_half_dag 합성 ✓ · √(1/2)→π/4=ry_pi4 ✓ ·
-            #   √(3/4)→π/6(G3) · 3-control=c3x 기봉인 ✓. 잔여: 전체 CG cascade 필요 각도 전수 나열 후
-            #   환원 완결 확인 → **신규 module 0 이면 G4b 스킵**(조건부).
-        G4a2_CGGoldenDesign // 독립 CG golden(16×16)+j-사다리 설계 (designing) @dep:G4a1_PaletteReduction
-            # j=2(5)⊕j=1(3×3)⊕j=0(2×1)=16 ✓(P5). golden=CG 계수 직접(회로 독립, schur3 패턴). label map 명시.
-        G4a3_CascadeRouting // 2-level Givens 라우팅 plan + numpy 전수 일치 (designing) @dep:G4a2_CGGoldenDesign
-            # criteria: plan 합성 == CG golden exact(16×16 전수) · MatrixGate 0 · 신규각 최종 판정
-        G4b_ApprovalGate // ★조건부 승인: G4a1 에서 신규각 잔존 시만 (designing) @dep:G4a3_CascadeRouting #HUMANGATE
-            # module 0 확정 시 이 노드는 (done: skipped-no-new-module) 로 종결. 보고서: .pgf/approvals/G4-schur4.md
-        G4c_SealObserve // schur4 봉인 + schur4_observe (designing) @dep:G4b_ApprovalGate
-            # witness: U†J²U·U†JzU 동시대각(고유값 {6,2,0}·mult {5,9,2} ✓P5)+S₄ duality sector+teeth.
-            #   신규 스크립트 schur4_observe.py (기존 schur_observe.py 는 불변 — 가산-only 원칙, P8).
+    G4_Schur4 // n=4 Schur-Weyl irrep splitter — ★module 0 확정·완주 (done — 2026-07-05)
+        # ✅ G3b 승인으로 hard-dep 해소 → 전 노드 1회 통과 완주. 87모듈 불변·316앱.
+        G4a1_PaletteReduction // 기존 팔레트 가법성 환원 검사 (done)
+            # ✅ 전수 나열 확정: 4번째 스핀 CG 결합 혼합계수 √((j₃+m+½)/(2j₃+1)) ∈ {√¾,√½,√¼}
+            #   → Givens 전각 {π/3, π/2, 2π/3} → 반각 {π/6=ry_pi6, π/4=ry_pi4, π/3=ry_pi6²} 전부 기봉인.
+            #   라우팅 {x, cnot, c3x} 기봉인 · n=3 단계 각도는 schur3 sub-app 재사용으로 불요.
+            #   **신규 module 0 확정 → G4b 스킵.**
+        G4a2_CGGoldenDesign // 독립 CG golden(16×16)+j-사다리 설계 (done) @dep:G4a1_PaletteReduction
+            # ✅ 16 = j=2(5)⊕j=1(3×3: 3/2경로·A·B)⊕j=0(2: A·B). golden=CG 계수 직접(schur3 라벨 부호
+            #   규약 상속: 011=−|½,−½⟩_A → 0111=−|1,−1⟩_A 문서화). label map=|schur3 label⟩|q3⟩ 합성
+            #   (spec 헤더 명시). 5 Givens 쌍: (0010,0001)π/3·(1010,0011)π/2·(1110,1011)2π/3·
+            #   (0110,1001)π/2·(1100,0101)π/2 — 쌍 전부 서로소(순서 무관).
+        G4a3_CascadeRouting // 2-level Givens 라우팅 plan + numpy 전수 일치 (done) @dep:G4a2_CGGoldenDesign
+            # ✅ 1회 통과: plan = W(46스텝: 쌍별 CNOT(q3→·) 라우팅+X-켤레+CCCRy=c3x·반각·c3x·반각)
+            #   → ★schur3 sub-app(q0,q1,q2) — 합성 == CG golden **exact 16×16 전수(dev 1.7e-16)** ·
+            #   MatrixGate 0 · 신규각 0 최종 확정.
+        G4b_ApprovalGate // ★조건부 승인 (done: skipped-no-new-module) @dep:G4a3_CascadeRouting #HUMANGATE
+            # ✅ G4a1 module 0 확정 → 계획서 규율대로 승인 게이트 스킵 종결(보고서 불요).
+        G4c_SealObserve // schur4 봉인 + schur4_observe (done) @dep:G4b_ApprovalGate
+            # ✅ schur4 SEALED Tier-0 u_hash 9ec8eb81(★첫 sub-app 복리 Schur: schur3 재사용).
+            #   schur4_observe(3al): U†J²U=diag{6×5,2×9,0×2}·U†JzU label map 16 전수·S₄ duality
+            #   (섹터보존+[4] P=+1 전수+[3,1] χ(전치)=1(m별 trace 3)+[2,2] χ=0)·teeth 2종(CG 오염
+            #   √¾→√0.7 off-diag 검출·label 열교환 j=2↔1 검출). 기존 schur_observe 불변(가산-only).
     G5_Fibonacci // Fibonacci anyon braid — 새 대수체 (designing)
         G5a_DesignBraid // R/F 닫힌형·B₃ 표현 설계 (designing)
             # process: 3-anyon fusion space=2차원(1q). R=diag(e^{−4πi/5}, e^{3πi/5}) ·
