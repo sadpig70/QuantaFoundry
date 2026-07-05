@@ -79,17 +79,18 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   290→**310 apps**·root 7293a3de→**b82d79eb24d14ee5**·second_oracle 79/79·guard ALL PASS.
             #   **G2 폐합**: closed-negative 반증(G2a)+정직한 알맹이 회수(G2b) — 반증→회수 패턴 완결.
     G3_AngleFamilyPi6 // π/6·π/3 family 승인 1회 → 2+1축 소비 (designing)
-        G3a_DeriveAngles // 3축 필요 각도 정확 도출 (designing)
-            # process(numpy): ①채널 γ=¼: θ=2arcsin√γ=π/3 → CRY(π/3)=반각 Ry(π/6)± 분해(V6 CRY 패턴) ✓리뷰 확인
-            #   ②Szegedy p=¼/¾: prep Ry(2π/3)=ry_pi6⁴ — ry_pi6 만으로 닫힘 ✓P5 확인
-            #   ③Naimark POVM: ⚠A6 — canonical √E isometry 성분²={2/3,1/24,1/8,3/8}(P7)로 π/6 family 밖.
-            #     Kraus/기저 선택 자유도로 π/6·π/3 격자 재도출 시도 → 실패 시 POVM 축을 G4 family(√(2/3)=
-            #     ry_cg_half 계열)로 이동 또는 별도 각도 승인으로 분리(G3b 보고서에 판정 결과 명시).
-            # criteria: 확정 module 집합(목표 ry_pi6/ry_negpi6 2개 — 명명 규약: π-분수 family 는 neg-접두,
-            #   _dag 는 ry_k*/ak*/cg 전용, P8) + YPowGate 표현(t=1/6) + seal_module 드라이런 +
-            #   second_oracle 제1원리 구성 초안 + POVM 축 판정
-        G3b_ApprovalGate // ★정욱님 승인: 신규 module 집합 (designing) @dep:G3a_DeriveAngles #HUMANGATE
-            # 보고서 정본 위치: .pgf/approvals/G3-ry_pi6.md (각도·개수·닫힌형 근거·소비처·POVM 판정·불변 확인)
+        G3a_DeriveAngles // 3축 필요 각도 정확 도출 (done)
+            # ✅ 2026-07-05 numpy 선검증 17항 ALL PASS: ①γ=¼: CRY(π/3)=반각 Ry(±π/6) 분해 exact +
+            #   3채널(bitflip/phasedamp/ampdamp) Tr_env==Kraus γ¼ 통과 ②Szegedy p=¼: Ry(2π/3)=ry_pi6⁴
+            #   가법 폐포 ③★A6 해소: 리뷰 {2/3,1/24,1/8,3/8} 정체=UD-POVM(|ψ±⟩=Ry(±π/3)|0⟩, overlap ½)
+            #   canonical √E 성분 — **rank-1 Kraus 자유도(M=√λ|0⟩⟨χ|)로 V 진폭² {2/3,1/6,1/2} 환원**
+            #   = arccos√(2/3)=ry_cg_half(float-identical)+dyadic → POVM 축 신규각 불필요(G3e module 0
+            #   전망, 승인 범위 제외). 부수: ④팔레트 도달불가 witness(ℤ-조합 3.9M 스캔, 최근접 3.27e-7
+            #   =near-miss) ⑤field=ℚ(√2,√3) 신규 대수체 없음 ⑥seal_module 드라이런 성공(u_hash 예보
+            #   ry_pi6 9372e737·ry_negpi6 6cd2dc18, registry 무접촉) ⑦second_oracle surd 제1원리 초안.
+        G3b_ApprovalGate // ★정욱님 승인: 신규 module 집합 (in-progress — 승인 대기) @dep:G3a_DeriveAngles #HUMANGATE
+            # 보고서 정본 고정: **.pgf/approvals/G3-ry_pi6.md** (2026-07-05) — 요청=module 2개
+            #   ry_pi6/ry_negpi6(YPowGate t=±1/6, ℚ(√2,√3)). 승인→G3c/G3d/G3e+G4 해제 · 부결→blocked terminal.
         G3c_SealChannelG14 // stinespring_*_g14 (γ=¼ family) 봉인+channel_observe 확장 (designing) @dep:G3b_ApprovalGate
             # 기존 자산 의존: scripts/channel_observe.py(확장은 가산-only 비파괴). 무접미사 기존 4앱=γ½ 레거시 규약 주석.
         G3d_SealSzegedyP14 // szegedy_2state_p14 봉인+szegedy_observe 확장 (designing) @dep:G3b_ApprovalGate
@@ -177,12 +178,14 @@ def run_gate_G(node) -> Literal["done", "closed-negative", "blocked"]:
 - **A1(G1)**: ~~각도 미확정~~ → 해소(G1b done). 잔여: G1c1 회로==golden 열 일치 실패 시 재설계 1회 후 blocked.
 - **A2(G2)**: ~~하한이 맞으면 불가~~ → **확정**(가중 포함 하한 226): G2 정상 종결=closed-negative 반증 문서화.
   대체 payoff(G2b MUB state 2-design)는 규모 게이트(20앱) 1줄 확인 후.
-- **A3(G3)**: Ry(π/6)=YPowGate(t=1/6) oracle exact 처리 — seal_module 드라이런으로 G3a 에서 확인.
+- **A3(G3)**: ~~oracle exact 처리 미확인~~ → **해소**(G3a ⑥): seal_module 드라이런 2/2 성공
+  (C1-C4 통과·fingerprint 현행 일치·스크래치 store, registry 무접촉).
 - **A4(G4)**: n=4 CG cascade 라우팅 복잡도 — 탐색 금지 유지, G4a3 실패 시 재설계 1회 후 blocked.
 - **A5(G5)**: 새 대수체 ℚ(ζ₅,√φ)와 second_oracle float 대조 경로 충돌 — √41(ry_ak41) 선례상 float-경유
   가능성 높으나 제1원리 구성(기호)을 승인 요청서에 포함해 선판정. 전역위상 ζ₂₀ 흡수 여부 포함.
-- **A6(G3, 신규 — P7)**: "승인 1회→3축"은 POVM 축에서 미검증(canonical isometry 성분²={2/3,1/24,1/8,3/8}
-  — π/6 family 밖). G3a ③ Kraus 자유도 재도출로 판정, 실패 시 POVM=G4 family 이동 또는 별도 승인.
+- **A6(G3, 신규 — P7)**: ~~POVM 축 미검증~~ → **해소**(G3a ③): rank-1 Kraus 자유도로 V 진폭²
+  {2/3,1/6,1/2} = ry_cg_half+dyadic 격자 재도출 성공 — POVM 축 신규각 불필요, G3e=module 0 전망
+  (정방 완성 순차 조건화는 G3e 선검증에서 최종 확정).
 - **A7(공통, 신규 — P7)**: frontier factory 무인 라운드 인터럽트 시 root/anchor 이동 —
   각 G 의 c-노드 착수 전 `git log`+`seal_gate_ci` 로 현재 anchor 재확인(선례: factory anchor 버그 수동복구).
 
