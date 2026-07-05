@@ -224,6 +224,9 @@ APP_LIST = [
     # TrackGate6 G5: Fibonacci anyon braid — 새 대수체 ℚ(ζ₅,√φ) 승인분(z5_gate·ry_fib), 첫 비-Clifford braid
     ("fib_braid_s1.app.pg",              None),  # σ₁ = R (z5⁷, up-to-phase)
     ("fib_braid_s2.app.pg",              None),  # σ₂ = F·R·F (F=ry_fib·z, 11스텝)
+    # TrackR3Residue C7: FT 증후 추출 프리미티브 — 1-flag weight-4 stabilizer ([[4,2,2]] 쌍, 신규 module 0)
+    ("flag_synd_zzzz.app.pg",            None),  # S_Z=ZZZZ 1-flag coherent 추출 (6q, h/cnot)
+    ("flag_synd_xxxx.app.pg",            None),  # S_X=XXXX (H⊗4 켤레) — [[4,2,2]] stabilizer 쌍 완성
 ]
 
 

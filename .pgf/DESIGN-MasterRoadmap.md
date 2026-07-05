@@ -486,6 +486,18 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   → z5_gate(Z^(1/5), (z5)⁵=z_gate 재발견)·ry_fib(√φ 캐리어) + fib_braid_s1/s2(첫 비-Clifford
         #   anyon braid, Yang-Baxter·B₃중심 e^{2πi/5}I·비-Clifford witness, fib_braid_observe 3am).
         #   **TrackGate6 전체 폐합**: module +4·앱 290→318·반증 1·root 7293a3de→1feeef7e7af4d23d.
+    TrackR3Residue // report3 잔여 차기 후보 소화 (v4 회신 대기 중 자율 트랙) (in-progress) @dep:TrackHE3
+        # integrated_horizontal_expansion3.md 의 ⏸️차기 4건(C6 GF(2ᵏ)·C7 Flag·C8 D₄ HSP·C12 선형광학).
+        R3_C7_FlagSyndrome // ★FT 증후 추출 프리미티브 — 1-flag weight-4 stabilizer (done — 2026-07-06)
+            # ✅ flag_synd_zzzz(u_hash c7218f50)·flag_synd_xxxx(48ab83c3, ==H⊗4 켤레 exact) Tier-0 봉인
+            #   — 6q coherent 추출, Chao-Reichardt 1-flag 배치(데이터 CNOT 1·3 뒤), 신규 module 0.
+            #   flag_syndrome_observe(3an): 증후 정확성(기저 전수)·★flag 정리 exact(Pauli 전파 9위치:
+            #   무flag⇒잔여 Z-string≡w≤1 mod ZZZZ, 위험 w_eff=2 fault 는 반드시 flag)·보조 fault 무해·
+            #   ★surf422 codeword 4×2 무증후 복리([[4,2,2]] stabilizer 쌍 완성)·teeth 2종(무flag hook·
+            #   창 오배치 검출 — flag 층 하중 실증). 342→344앱·root 191287568abd3191.
+        R3_C6_GF2k // GF(2ᵏ) 역원·최소다항식 (designing)
+        R3_C8_D4HSP // D₄ HSP 1-shot coset 회로 (designing)
+        R3_C12_LinearOptics // 선형광학 unary Clements (designing — 각도 혼재, 선분석 필요)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

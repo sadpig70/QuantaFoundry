@@ -311,6 +311,14 @@ fib_braid_s2
 ├─ z5_gate (module×7)
 └─ z_gate (module×2)
 
+flag_synd_xxxx
+├─ cnot (module×6)
+└─ h_gate (module×10)
+
+flag_synd_zzzz
+├─ cnot (module×6)
+└─ h_gate (module×2)
+
 fswap
 ├─ cz (module)
 └─ swap2 (module)

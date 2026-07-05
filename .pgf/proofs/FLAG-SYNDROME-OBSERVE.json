@@ -1,0 +1,87 @@
+{
+  "_note": "1-flag FT 증후 추출 witness: flag 정리+hook teeth+surf422 복리. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "flag-syndrome-observe-v1",
+  "observation": {
+    "axis": "FT 증후 추출 프리미티브(1-flag) — 비-FT syndrome3 와 대조되는 새 층",
+    "flag_theorem": {
+      "all_faults_safe": true,
+      "aux_faults_harmless": true,
+      "locations": [
+        {
+          "loc": 0,
+          "safe": true,
+          "state": "triv",
+          "w_eff_mod_stab": 0,
+          "z_weight": 4
+        },
+        {
+          "loc": 1,
+          "safe": true,
+          "state": "triv",
+          "w_eff_mod_stab": 0,
+          "z_weight": 4
+        },
+        {
+          "loc": 2,
+          "safe": true,
+          "state": "no-flag",
+          "w_eff_mod_stab": 1,
+          "z_weight": 3
+        },
+        {
+          "loc": 3,
+          "safe": true,
+          "state": "flag",
+          "w_eff_mod_stab": 1,
+          "z_weight": 3
+        },
+        {
+          "loc": 4,
+          "safe": true,
+          "state": "flag",
+          "w_eff_mod_stab": 2,
+          "z_weight": 2
+        },
+        {
+          "loc": 5,
+          "safe": true,
+          "state": "flag",
+          "w_eff_mod_stab": 1,
+          "z_weight": 1
+        },
+        {
+          "loc": 6,
+          "safe": true,
+          "state": "no-flag",
+          "w_eff_mod_stab": 1,
+          "z_weight": 1
+        },
+        {
+          "loc": 7,
+          "safe": true,
+          "state": "no-flag",
+          "w_eff_mod_stab": 0,
+          "z_weight": 0
+        },
+        {
+          "loc": 8,
+          "safe": true,
+          "state": "no-flag",
+          "w_eff_mod_stab": 0,
+          "z_weight": 0
+        }
+      ]
+    },
+    "honest_boundary": "봉인=coherent 추출 유니터리 2개뿐. flag 정리·hook=Pauli 전파 witness(관측, INV-Q3). 측정·decoder·반복 프로토콜·d≥3=차기. 신규 module 0.",
+    "ok": true,
+    "seal_links": true,
+    "surf422_compounding_4x2_clean": true,
+    "syndrome_correct": true,
+    "teeth": {
+      "misplaced_window_fails": true,
+      "noflag_circuit_has_hook": true
+    },
+    "unitary": true,
+    "xxxx_eq_H4_conj": true
+  }
+}

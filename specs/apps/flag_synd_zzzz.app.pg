@@ -1,0 +1,54 @@
+# flag_synd_zzzz — 1-flag fault-tolerant 증후 추출: weight-4 Z-stabilizer(ZZZZ). 6q(d0..d3·anc q4·flag q5).
+# TrackR3Residue C7 (#FTQC): ★새 수평 — FT 증후 추출 프리미티브(기존 syndrome3=비-FT 추출과 대조).
+#   [[4,2,2]](surf422) S_Z=ZZZZ 의 coherent 추출 + 1-flag(Chao-Reichardt 배치: 데이터 CNOT 1·3 뒤).
+#   ★flag 정리(선검증 exact): 단일 Z_anc fault 전 위치에서 (무flag ⇒ 잔여 Z-string ≡ weight≤1
+#   mod ZZZZ) — 위험 fault(w_eff=2)는 반드시 flag. 무flag 회로엔 hook 존재(teeth).
+# 회로(시간순): H(f) · CX(d0→a) · CX(f→a) · CX(d1→a) · CX(d2→a) · CX(f→a) · CX(d3→a) · H(f)
+#   — 전부 Clifford(h/cnot), ★신규 module 0. anc=Z-readout(parity)·flag=X-readout(H 켤레로 Z화).
+# 봉인=coherent 추출 유니터리 exact(측정 지연). flag 정리·hook teeth·surf422 codeword 무증후 복리
+#   = flag_syndrome_observe(INV-Q3, seal 아님). 측정·decoder·반복 추출 프로토콜=범위 밖.
+```json id=app_meta
+{"id": "flag_synd_zzzz", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+CNOT = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+N = 6
+def emb(G, tg):
+    k = len(tg); dim = 2 ** N
+    M = np.zeros((dim, dim), dtype=complex)
+    for b in range(dim):
+        bits = [(b >> (N - 1 - q)) & 1 for q in range(N)]
+        si = 0
+        for t in tg:
+            si = (si << 1) | bits[t]
+        for so in range(2 ** k):
+            if G[so, si] == 0:
+                continue
+            ob = list(bits)
+            for i, t in enumerate(tg):
+                ob[t] = (so >> (k - 1 - i)) & 1
+            o = 0
+            for bb in ob:
+                o = (o << 1) | bb
+            M[o, b] += G[so, si]
+    return M
+SEQ = [(H, [5]), (CNOT, [0, 4]), (CNOT, [5, 4]), (CNOT, [1, 4]),
+       (CNOT, [2, 4]), (CNOT, [5, 4]), (CNOT, [3, 4]), (H, [5])]
+golden = np.eye(2 ** N, dtype=complex)
+for G, tg in SEQ:
+    golden = emb(G, tg) @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [5]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 4]},
+  {"spec": "../modules/h_gate.pg", "targets": [5]}]}
+```

@@ -1,0 +1,61 @@
+# flag_synd_xxxx — 1-flag fault-tolerant 증후 추출: weight-4 X-stabilizer(XXXX). 6q(d0..d3·anc q4·flag q5).
+# TrackR3Residue C7 (#FTQC): flag_synd_zzzz 의 X-판 — XXXX = H⊗4·ZZZZ·H⊗4 켤레(데이터만 H, anc/flag
+#   회로 동일). [[4,2,2]](surf422) S_X 추출 — 두 앱이 [[4,2,2]] stabilizer 생성원 쌍을 완성(복리:
+#   codeword 4/4 무증후·무flag = flag_syndrome_observe). ★flag 정리 동일(잔여 X-string ≡ w≤1 mod XXXX).
+# 회로: H(d0..d3) · [flag_synd_zzzz 코어 8스텝] · H(d0..d3) — 전부 Clifford, ★신규 module 0.
+# 봉인=coherent 추출 유니터리 exact. witness·teeth=flag_syndrome_observe(INV-Q3). decoder=범위 밖.
+```json id=app_meta
+{"id": "flag_synd_xxxx", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+CNOT = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+N = 6
+def emb(G, tg):
+    k = len(tg); dim = 2 ** N
+    M = np.zeros((dim, dim), dtype=complex)
+    for b in range(dim):
+        bits = [(b >> (N - 1 - q)) & 1 for q in range(N)]
+        si = 0
+        for t in tg:
+            si = (si << 1) | bits[t]
+        for so in range(2 ** k):
+            if G[so, si] == 0:
+                continue
+            ob = list(bits)
+            for i, t in enumerate(tg):
+                ob[t] = (so >> (k - 1 - i)) & 1
+            o = 0
+            for bb in ob:
+                o = (o << 1) | bb
+            M[o, b] += G[so, si]
+    return M
+SEQ = ([(H, [0]), (H, [1]), (H, [2]), (H, [3])]
+       + [(H, [5]), (CNOT, [0, 4]), (CNOT, [5, 4]), (CNOT, [1, 4]),
+          (CNOT, [2, 4]), (CNOT, [5, 4]), (CNOT, [3, 4]), (H, [5])]
+       + [(H, [0]), (H, [1]), (H, [2]), (H, [3])])
+golden = np.eye(2 ** N, dtype=complex)
+for G, tg in SEQ:
+    golden = emb(G, tg) @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/h_gate.pg", "targets": [3]},
+  {"spec": "../modules/h_gate.pg", "targets": [5]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 4]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 4]},
+  {"spec": "../modules/h_gate.pg", "targets": [5]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/h_gate.pg", "targets": [3]}]}
+```

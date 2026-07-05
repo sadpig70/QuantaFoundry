@@ -425,6 +425,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3an. TrackR3Residue C7: 1-flag FT 증후 추출 — flag 정리+hook teeth+surf422 복리 witness (observation)
+    rc, out = run(["scripts/flag_syndrome_observe.py", "--quick"])
+    result["steps"]["flag_syndrome_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

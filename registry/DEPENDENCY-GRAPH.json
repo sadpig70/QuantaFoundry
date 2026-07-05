@@ -6306,6 +6306,40 @@
       }
     ]
   },
+  "flag_synd_xxxx": {
+    "u_hash": "48ab83c38799c228a4ba0330359b24d7471cd66a23f3b42f4d2d95b340f66937",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 6,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 10,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "flag_synd_zzzz": {
+    "u_hash": "c7218f5096d9b2d0510be12038af9ca9ffb1a52e3415ba9f7bf465934a48b3f4",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 6,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 2,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "fswap": {
     "u_hash": "719fb6081419883895b4213563a404997b0a7f5f933c76aacbe82eba610539d2",
     "depends_on": [
