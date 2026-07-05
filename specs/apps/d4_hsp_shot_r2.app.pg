@@ -1,0 +1,55 @@
+# d4_hsp_shot_r2 — D₄ HSP 1-shot coset 표본화 회로: 숨은 부분군 H={e,r²} (정규 — 중심). 6q. Tier-0 64×64.
+# TrackR3Residue C8 (#HSP): d4_hsp_shot_s 의 정규 부분군 짝 — 두 앱이 ★비정규 vs 정규 구별 witness 를
+#   봉인-회로-구동으로 완성(비정규 ⇒ ρ 가중 ½ vs 정규 ⇒ 1차원 균등 ¼×4·ρ=0).
+# 회로: H⊗3(g) · H(q3: |H⟩=(|e⟩+|r²⟩)/√2, e=000·r²=100) · d4_mult sub-app · d4_qft sub-app —
+#   이중 sub-app 복리, ★신규 module 0. HSP 물리(조건부 coset·문자공식)=d4_hsp_observe 가산 확장.
+# golden=군론 공식 직접(회로 독립). 측정·고전후처리=범위 밖.
+```json id=app_meta
+{"id": "d4_hsp_shot_r2", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 6; DIM = 64
+def mult(a, b, c, d):
+    return ((a + (c if b == 0 else (-c) % 4)) % 4, b ^ d)
+MUL = np.zeros((DIM, DIM), dtype=complex)
+for g in range(8):
+    for h in range(8):
+        ga, gb = g >> 1, g & 1
+        ha, hb = h >> 1, h & 1
+        pa, pb = mult(ga, gb, ha, hb)
+        MUL[(g << 3) | ((pa << 1) | pb), (g << 3) | h] = 1.0
+F = np.zeros((8, 8), dtype=complex)
+for a in range(4):
+    for b in range(2):
+        x = (a << 1) | b
+        F[0, x] = 1 / np.sqrt(8)
+        F[1, x] = (-1) ** b / np.sqrt(8)
+        F[4, x] = (-1) ** a / np.sqrt(8)
+        F[5, x] = (-1) ** (a + b) / np.sqrt(8)
+        F[2, x] = (1j ** a) / 2 if b == 0 else 0
+        F[3, x] = (1j ** a) / 2 if b == 1 else 0
+        F[6, x] = ((-1j) ** a) / 2 if b == 0 else 0
+        F[7, x] = ((-1j) ** a) / 2 if b == 1 else 0
+H2 = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def emb1(G, q):
+    M = np.eye(1, dtype=complex)
+    for i in range(NQ):
+        M = np.kron(M, G if i == q else np.eye(2, dtype=complex))
+    return M
+golden = emb1(H2, 0)
+golden = emb1(H2, 1) @ golden
+golden = emb1(H2, 2) @ golden
+golden = emb1(H2, 3) @ golden          # |H⟩ = (|000⟩+|100⟩)/√2 = {e, r²}
+golden = MUL @ golden
+golden = np.kron(F, np.eye(8, dtype=complex)) @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/h_gate.pg", "targets": [3]},
+  {"app": "d4_mult.app.pg", "targets": [0, 1, 2, 3, 4, 5]},
+  {"app": "d4_qft.app.pg", "targets": [0, 1, 2]}]}
+```

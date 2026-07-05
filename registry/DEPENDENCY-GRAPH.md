@@ -283,16 +283,29 @@ cz_rediscovered
 ├─ cnot (module)
 └─ h_gate (module×2)
 
-d4_mult
-├─ cnot (module×3)
-└─ toffoli (module×2)
+d4_hsp_shot_r2
+├─ d4_mult (app)
+│  ├─ cnot (module×3)
+│  └─ toffoli (module×2)
+├─ d4_qft (app)
+│  ├─ cz (module)
+│  ├─ qft2 (module)
+│  ├─ ry_negpi4 (module)
+│  ├─ ry_pi4 (module)
+│  └─ x_gate (module×2)
+└─ h_gate (module×4)
 
-d4_qft
-├─ cz (module)
-├─ qft2 (module)
-├─ ry_negpi4 (module)
-├─ ry_pi4 (module)
-└─ x_gate (module×2)
+d4_hsp_shot_s
+├─ d4_mult (app)
+│  ├─ cnot (module×3)
+│  └─ toffoli (module×2)
+├─ d4_qft (app)
+│  ├─ cz (module)
+│  ├─ qft2 (module)
+│  ├─ ry_negpi4 (module)
+│  ├─ ry_pi4 (module)
+│  └─ x_gate (module×2)
+└─ h_gate (module×4)
 
 dj2_balanced_xor
 ├─ cnot (module×2)

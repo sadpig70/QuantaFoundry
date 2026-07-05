@@ -1,0 +1,59 @@
+# d4_hsp_shot_s — D₄ HSP 1-shot coset 표본화 회로: 숨은 부분군 H={e,s} (비정규 — 격자문제 연결 사례).
+# 6q(g=q0..2: a1,a0,b · h=q3..5). Tier-0 64×64. TrackR3Residue C8 (#HSP): 기존 d4_hsp_observe 는
+#   coset 상태를 수치로 손조립해 관측만 했음 — 본 봉인이 **HSP 표준 절차 전체를 하나의 coherent 회로**로 자산화.
+# 회로: H⊗3(g: 균일 Σ_g) · H(q5: |H⟩=(|e⟩+|s⟩)/√2, e=000·s=001) · ★d4_mult sub-app(|g⟩|h⟩→|g⟩|gh⟩
+#   → Σ_g|g⟩|gH⟩) · ★d4_qft sub-app(g-레지스터 비아벨 Fourier) — 이중 sub-app 복리, ★신규 module 0.
+# ★HSP 물리(선검증 exact): h-레지스터 측정값 y ⇒ g-레지스터 = F|yH⟩(coset 상태, 8y 전수) ·
+#   irrep 주변분포 == 문자공식 (d_χ/8)Σ_{h∈H}χ(h) = {χ₁ ¼, χ₃ ¼, ρ ½} (비정규 ⇒ ρ 가중 — 정규 사례와 구별).
+# golden=군론 공식 직접(D₄ 곱셈 순열 + 기약표현 행렬원소 — 회로 독립). 측정·고전후처리(부분군 복원)=범위 밖.
+```json id=app_meta
+{"id": "d4_hsp_shot_s", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+NQ = 6; DIM = 64
+def mult(a, b, c, d):
+    return ((a + (c if b == 0 else (-c) % 4)) % 4, b ^ d)
+# d4_mult 순열 (군법칙 직접): |g>|h> → |g>|gh>
+MUL = np.zeros((DIM, DIM), dtype=complex)
+for g in range(8):
+    for h in range(8):
+        ga, gb = g >> 1, g & 1
+        ha, hb = h >> 1, h & 1
+        pa, pb = mult(ga, gb, ha, hb)
+        MUL[(g << 3) | ((pa << 1) | pb), (g << 3) | h] = 1.0
+# d4_qft (기약표현 공식 직접)
+F = np.zeros((8, 8), dtype=complex)
+for a in range(4):
+    for b in range(2):
+        x = (a << 1) | b
+        F[0, x] = 1 / np.sqrt(8)
+        F[1, x] = (-1) ** b / np.sqrt(8)
+        F[4, x] = (-1) ** a / np.sqrt(8)
+        F[5, x] = (-1) ** (a + b) / np.sqrt(8)
+        F[2, x] = (1j ** a) / 2 if b == 0 else 0
+        F[3, x] = (1j ** a) / 2 if b == 1 else 0
+        F[6, x] = ((-1j) ** a) / 2 if b == 0 else 0
+        F[7, x] = ((-1j) ** a) / 2 if b == 1 else 0
+H2 = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def emb1(G, q):
+    M = np.eye(1, dtype=complex)
+    for i in range(NQ):
+        M = np.kron(M, G if i == q else np.eye(2, dtype=complex))
+    return M
+golden = emb1(H2, 0)
+golden = emb1(H2, 1) @ golden
+golden = emb1(H2, 2) @ golden
+golden = emb1(H2, 5) @ golden          # |H⟩ = (|000⟩+|001⟩)/√2 = {e, s}
+golden = MUL @ golden
+golden = np.kron(F, np.eye(8, dtype=complex)) @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/h_gate.pg", "targets": [5]},
+  {"app": "d4_mult.app.pg", "targets": [0, 1, 2, 3, 4, 5]},
+  {"app": "d4_qft.app.pg", "targets": [0, 1, 2]}]}
+```

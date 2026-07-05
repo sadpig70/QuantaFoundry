@@ -6117,6 +6117,52 @@
       }
     ]
   },
+  "d4_hsp_shot_r2": {
+    "u_hash": "6edcaa93f93d280f4e2464e4c7ecaf43fd2740fdff9986bd4c275f89e1bf24da",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "d4_mult",
+        "uses": 1,
+        "child_u_hash": "63f90e690f0f3e465cb17ea11ac9be56914bf2add20a8db8381e4fa0ee449455"
+      },
+      {
+        "kind": "app",
+        "id": "d4_qft",
+        "uses": 1,
+        "child_u_hash": "5d4725467b225fca84863f917269a733b2f2b68a398d1f736e6ddbde46734f5b"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "d4_hsp_shot_s": {
+    "u_hash": "8934e586a0b8e1f57a639da76102bc6cf5c7815a33eea6fe16054179a190987b",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "d4_mult",
+        "uses": 1,
+        "child_u_hash": "63f90e690f0f3e465cb17ea11ac9be56914bf2add20a8db8381e4fa0ee449455"
+      },
+      {
+        "kind": "app",
+        "id": "d4_qft",
+        "uses": 1,
+        "child_u_hash": "5d4725467b225fca84863f917269a733b2f2b68a398d1f736e6ddbde46734f5b"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "d4_mult": {
     "u_hash": "63f90e690f0f3e465cb17ea11ac9be56914bf2add20a8db8381e4fa0ee449455",
     "depends_on": [

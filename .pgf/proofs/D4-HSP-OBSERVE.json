@@ -5,9 +5,44 @@
     "algorithm": "Dihedral D₄ Hidden Subgroup — coset state Fourier sampling",
     "all_g_invariant": true,
     "all_match_character_formula": true,
-    "honest_boundary": "봉인=d4_mult·d4_qft exact 뿐. HSP 분포·불변성·구별성=관측(문자론 대조). 완전 HSP 알고리즘(표본→부분군 복원)=범위 밖. 신규 봉인 0(INV-Q3).",
+    "honest_boundary": "봉인=d4_mult·d4_qft·1-shot 회로 exact 뿐. HSP 분포·불변성·구별성·조건부 coset=관측(문자론 대조). 완전 HSP 알고리즘(표본→부분군 복원 고전후처리)=범위 밖(INV-Q3).",
     "nonnormal_vs_normal_distinguishable": true,
     "ok": true,
+    "oneshot_sealed_circuits": {
+      "apps": [
+        {
+          "app": "d4_hsp_shot_s",
+          "conditional_coset_states_8y": true,
+          "dist": {
+            "chi1": 0.25,
+            "chi2": 0.0,
+            "chi3": 0.25,
+            "chi4": 0.0,
+            "rho": 0.5
+          },
+          "marginal_matches_character_formula": true,
+          "ok": true,
+          "seal_link": true
+        },
+        {
+          "app": "d4_hsp_shot_r2",
+          "conditional_coset_states_8y": true,
+          "dist": {
+            "chi1": 0.25,
+            "chi2": 0.25,
+            "chi3": 0.25,
+            "chi4": 0.25,
+            "rho": 0.0
+          },
+          "marginal_matches_character_formula": true,
+          "ok": true,
+          "seal_link": true
+        }
+      ],
+      "compounding": "d4_mult·d4_qft 이중 sub-app (plan 참조), 신규 module 0",
+      "ok": true,
+      "sealed_circuit_distinguishes_subgroups": true
+    },
     "per_subgroup": [
       {
         "character_formula": {
@@ -67,6 +102,6 @@
         "subgroup": "{e,r,r2,r3} (회전)"
       }
     ],
-    "sealed_assets": "d4_mult(곱셈 오라클)·d4_qft(비아벨 Fourier)"
+    "sealed_assets": "d4_mult(곱셈 오라클)·d4_qft(비아벨 Fourier) + ★d4_hsp_shot_s/r2(1-shot coset 회로, C8)"
   }
 }

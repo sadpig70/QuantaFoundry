@@ -496,7 +496,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   ★surf422 codeword 4×2 무증후 복리([[4,2,2]] stabilizer 쌍 완성)·teeth 2종(무flag hook·
             #   창 오배치 검출 — flag 층 하중 실증). 342→344앱·root 191287568abd3191.
         R3_C6_GF2k // GF(2ᵏ) 역원·최소다항식 (designing)
-        R3_C8_D4HSP // D₄ HSP 1-shot coset 회로 (designing)
+        R3_C8_D4HSP // D₄ HSP 1-shot coset 회로 (done — 2026-07-06)
+            # ✅ d4_hsp_shot_s(비정규 {e,s}, u_hash 8934e586)·d4_hsp_shot_r2(정규 {e,r²}, 6edcaa93)
+            #   Tier-0 64×64 — HSP 표준 절차 전체(균일중첩·|H⟩·오라클·비아벨 QFT)를 하나의 coherent
+            #   회로로 자산화. ★d4_mult+d4_qft 이중 sub-app 복리, 신규 module 0. golden=군론 공식 직접.
+            #   d4_hsp_observe 가산 확장: marginal==문자공식·★조건부 y⇒F|yH⟩(8y 전수 위상 포함)·
+            #   봉인회로 구동 비정규/정규 구별(ρ ½ vs 0). 344→346앱·root 2602911c9adcf59a.
         R3_C12_LinearOptics // 선형광학 unary Clements (designing — 각도 혼재, 선분석 필요)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.

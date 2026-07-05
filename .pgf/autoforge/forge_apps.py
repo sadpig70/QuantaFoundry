@@ -227,6 +227,9 @@ APP_LIST = [
     # TrackR3Residue C7: FT 증후 추출 프리미티브 — 1-flag weight-4 stabilizer ([[4,2,2]] 쌍, 신규 module 0)
     ("flag_synd_zzzz.app.pg",            None),  # S_Z=ZZZZ 1-flag coherent 추출 (6q, h/cnot)
     ("flag_synd_xxxx.app.pg",            None),  # S_X=XXXX (H⊗4 켤레) — [[4,2,2]] stabilizer 쌍 완성
+    # TrackR3Residue C8: D₄ HSP 1-shot coset 회로 — ★d4_mult·d4_qft 이중 sub-app 복리 (신규 module 0)
+    ("d4_hsp_shot_s.app.pg",             None),  # H={e,s} 비정규 (ρ 가중 ½ — 격자문제 연결 사례)
+    ("d4_hsp_shot_r2.app.pg",            None),  # H={e,r²} 정규 (1차원 균등 — 구별 짝)
 ]
 
 

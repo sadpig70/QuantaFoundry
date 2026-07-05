@@ -17,7 +17,7 @@ import os, sys, json, glob
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, "registry", "REGISTRY-MANIFEST.json")
-EXPECT_DEFAULT = "191287568abd3191"
+EXPECT_DEFAULT = "2602911c9adcf59a"
 
 
 def _tier_distribution():

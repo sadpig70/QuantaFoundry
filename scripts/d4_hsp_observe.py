@@ -75,6 +75,51 @@ def char_formula(H):
     return out
 
 
+def seal_link(sid):
+    p = os.path.join(ROOT, "registry", "apps", f"{sid}.sealed.json")
+    return os.path.exists(p) and bool(json.load(open(p, encoding="utf-8")).get("u_hash"))
+
+
+def observe_oneshot(F):
+    """★C8 가산 확장(2026-07-06): 봉인된 1-shot coset 회로 d4_hsp_shot_s/r2 — HSP 절차 전체가
+    하나의 coherent 앱으로 자산화됨을 관측. ①marginal irrep 분포==문자공식 ②h-측정값 y ⇒
+    g-레지스터==F|yH⟩(조건부 coset, 8y 전수·위상 포함) ③비정규 vs 정규 구별(봉인 회로 구동)."""
+    cases = {"d4_hsp_shot_s": [(0, 0), (0, 1)], "d4_hsp_shot_r2": [(0, 0), (2, 0)]}
+    rows, dists, all_ok = [], {}, True
+    for app_id, Hs in cases.items():
+        link = seal_link(app_id)
+        U = load_golden(f"{app_id}.app.pg")
+        psi = U[:, 0]
+        p = np.abs(psi) ** 2
+        marg = {k: float(sum(p[(r << 3) | y] for r in rs for y in range(8)))
+                for k, rs in IRREP_ROWS.items()}
+        formula = char_formula(Hs)
+        m_ok = all(abs(marg[k] - formula[k]) < 1e-12 for k in marg)
+        c_ok = True
+        for y in range(8):
+            cond = np.array([psi[(r << 3) | y] for r in range(8)])
+            nrm = np.linalg.norm(cond)
+            if nrm < 1e-12:
+                continue
+            cond /= nrm
+            ref = F @ coset_state((y >> 1, y & 1), Hs)
+            j = int(np.argmax(np.abs(ref)))
+            ph = cond[j] / ref[j]
+            c_ok &= bool(abs(abs(ph) - 1) < 1e-12 and np.allclose(cond, ph * ref, atol=1e-12))
+        ok = bool(link and m_ok and c_ok)
+        all_ok &= ok
+        dists[app_id] = marg
+        rows.append({"app": app_id, "seal_link": link,
+                     "marginal_matches_character_formula": bool(m_ok),
+                     "conditional_coset_states_8y": bool(c_ok),
+                     "dist": {k: round(v, 4) for k, v in marg.items()}, "ok": ok})
+    disc = any(abs(dists["d4_hsp_shot_s"][k] - dists["d4_hsp_shot_r2"][k]) > 1e-6
+               for k in dists["d4_hsp_shot_s"])
+    return {"apps": rows, "sealed_circuit_distinguishes_subgroups": bool(disc),
+            "compounding": "d4_mult·d4_qft 이중 sub-app (plan 참조), 신규 module 0",
+            "ok": bool(all_ok and disc)}
+
+
 def observe():
     F = load_golden("d4_qft.app.pg")
     rows = []
@@ -98,15 +143,19 @@ def observe():
     # 부분군 구별 + teeth
     ds = rows[0]["fourier_dist"]; dr2 = rows[1]["fourier_dist"]
     distinguish = any(abs(ds[k] - dr2[k]) > 1e-6 for k in ds)
-    ok = all_inv and all_match and distinguish
+    oneshot = observe_oneshot(F)
+    ok = all_inv and all_match and distinguish and oneshot["ok"]
     return {"algorithm": "Dihedral D₄ Hidden Subgroup — coset state Fourier sampling",
-            "sealed_assets": "d4_mult(곱셈 오라클)·d4_qft(비아벨 Fourier)",
+            "sealed_assets": "d4_mult(곱셈 오라클)·d4_qft(비아벨 Fourier) + ★d4_hsp_shot_s/r2"
+                             "(1-shot coset 회로, C8)",
             "per_subgroup": rows,
             "all_g_invariant": all_inv,
             "all_match_character_formula": all_match,
             "nonnormal_vs_normal_distinguishable": distinguish,
-            "honest_boundary": "봉인=d4_mult·d4_qft exact 뿐. HSP 분포·불변성·구별성=관측(문자론 대조). "
-                               "완전 HSP 알고리즘(표본→부분군 복원)=범위 밖. 신규 봉인 0(INV-Q3).",
+            "oneshot_sealed_circuits": oneshot,
+            "honest_boundary": "봉인=d4_mult·d4_qft·1-shot 회로 exact 뿐. HSP 분포·불변성·구별성·조건부 "
+                               "coset=관측(문자론 대조). 완전 HSP 알고리즘(표본→부분군 복원 고전후처리)="
+                               "범위 밖(INV-Q3).",
             "ok": bool(ok)}
 
 
@@ -127,6 +176,11 @@ def main():
             print(f"  H={r['subgroup']:18} g불변={r['g_invariant']} 문자공식일치={r['matches_character_formula']} "
                   f"dist={r['fourier_dist']}", flush=True)
         print(f"  비정규 vs 정규 구별={res['nonnormal_vs_normal_distinguishable']}", flush=True)
+        for r in res["oneshot_sealed_circuits"]["apps"]:
+            print(f"  ★1-shot {r['app']:16}: seal={r['seal_link']} 문자공식={r['marginal_matches_character_formula']} "
+                  f"조건부coset={r['conditional_coset_states_8y']} dist={r['dist']}", flush=True)
+        print(f"  ★1-shot 봉인회로 부분군 구별={res['oneshot_sealed_circuits']['sealed_circuit_distinguishes_subgroups']}",
+              flush=True)
         print(f"  → {os.path.relpath(OUT, ROOT)}", flush=True)
     print(f"d4_hsp_observe: all_ok={res['ok']}", flush=True)
     return 0 if res["ok"] else 1
