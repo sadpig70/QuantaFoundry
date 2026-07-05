@@ -200,6 +200,19 @@ APP_LIST = [
     ("choi_depol.app.pg",     None),     # J(depol p=1)=I/4 극단 사례 (4q, env 2q)
     # TrackGate6 G1: 2×2 RVB PEPS — 2D 텐서망 새 수평 클래스 (순차 조건화 등척 33스텝, 신규 module 0)
     ("peps22_rvb.app.pg",     None),     # |cov_H⟩+|cov_V⟩ dimer 중첩, ry_k5/k6 가법·parity·부호층 Z/CZ
+    # TrackGate6 G2b: d=4 MUB-20 projective state 2-design — G2a closed-negative 반증의 대체 payoff
+    #   (unitary 2-design 아님 — 용어 정직). 5기저×4상태, 전부 기봉인 x/h/s/cz Clifford word(신규 module 0).
+    #   기저: b1=Z⊗Z · b2=H⊗H · b3=(SH)⊗(SH) · b4=CZ·(H⊗SH){XZ,ZY} · b5=CZ·(SH⊗H){YZ,ZX} (닫힌형, 탐색 0)
+    ("mub4_b1_s0.app.pg",     None),     ("mub4_b1_s1.app.pg",     None),
+    ("mub4_b1_s2.app.pg",     None),     ("mub4_b1_s3.app.pg",     None),
+    ("mub4_b2_s0.app.pg",     None),     ("mub4_b2_s1.app.pg",     None),
+    ("mub4_b2_s2.app.pg",     None),     ("mub4_b2_s3.app.pg",     None),
+    ("mub4_b3_s0.app.pg",     None),     ("mub4_b3_s1.app.pg",     None),
+    ("mub4_b3_s2.app.pg",     None),     ("mub4_b3_s3.app.pg",     None),
+    ("mub4_b4_s0.app.pg",     None),     ("mub4_b4_s1.app.pg",     None),
+    ("mub4_b4_s2.app.pg",     None),     ("mub4_b4_s3.app.pg",     None),
+    ("mub4_b5_s0.app.pg",     None),     ("mub4_b5_s1.app.pg",     None),
+    ("mub4_b5_s2.app.pg",     None),     ("mub4_b5_s3.app.pg",     None),
 ]
 
 

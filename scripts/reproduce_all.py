@@ -401,6 +401,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aj. TrackGate6 G2b: d=4 MUB-20 — Pauli 라벨맵+비편향+state 2-design+단층재구성 witness (observation)
+    rc, out = run(["scripts/mub_observe.py", "--quick"])
+    result["steps"]["mub_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -3,11 +3,11 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "141/141",
+      "apps_sealed": "161/161",
       "rediscovery": "12/12",
       "pass": true,
-      "reassembled": 1,
-      "coherence": 140
+      "reassembled": 20,
+      "coherence": 141
     },
     "frontier_coherence": {
       "coherence_checked": 161,
@@ -23,9 +23,9 @@
     "registry": {
       "rc": 0,
       "modules": "85",
-      "unique_apps": "290",
+      "unique_apps": "310",
       "cached": "70",
-      "root_hash": "7293a3de4baa50ba",
+      "root_hash": "b82d79eb24d14ee5",
       "pass": true
     },
     "second_oracle": {
@@ -204,6 +204,11 @@
       "pass": true
     },
     "peps_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "mub_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

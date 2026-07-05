@@ -92,9 +92,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 290,
+    "unique_app_count": 310,
     "cached_app_side_module_count": 70,
-    "total_files": 360,
+    "total_files": 380,
     "path": "registry/apps",
     "unique": [
       "aklt4",
@@ -281,6 +281,26 @@
       "ising_braid_b2",
       "magic_a",
       "mbqc_h",
+      "mub4_b1_s0",
+      "mub4_b1_s1",
+      "mub4_b1_s2",
+      "mub4_b1_s3",
+      "mub4_b2_s0",
+      "mub4_b2_s1",
+      "mub4_b2_s2",
+      "mub4_b2_s3",
+      "mub4_b3_s0",
+      "mub4_b3_s1",
+      "mub4_b3_s2",
+      "mub4_b3_s3",
+      "mub4_b4_s0",
+      "mub4_b4_s1",
+      "mub4_b4_s2",
+      "mub4_b4_s3",
+      "mub4_b5_s0",
+      "mub4_b5_s1",
+      "mub4_b5_s2",
+      "mub4_b5_s3",
       "parity4_transform",
       "peps22_rvb",
       "qae3_pi2",
@@ -533,7 +553,7 @@
     "x_gate": "registry/modules/x_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "7293a3de4baa50babc59a7db12303125892836333eb2e3aa03b9d7e78edd084d",
+  "registry_root_hash": "b82d79eb24d14ee5aa38ea0a5541d1c0bd3c12893cb4d13294be1abf6135fae2",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

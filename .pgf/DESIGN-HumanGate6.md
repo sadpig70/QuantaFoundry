@@ -57,7 +57,7 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   각 사이트 reduced ρ=I/2 · teeth 2종(orientation 반전·각도 오염) 검출. 사이클 완주:
             #   registry 290 apps · root e40a8eaf→**7293a3de4baa50ba** · anchor PASS · second_oracle 79/79 ·
             #   guard ALL PASS · reproduce --changed-only REPRODUCED(41스텝 0 fail). G1 폐합.
-    G2_TwoQubit2Design // 2q 2-design — ★closed-negative 반증 + 대체 payoff (designing)
+    G2_TwoQubit2Design // 2q 2-design — ★closed-negative 반증 + 대체 payoff (done)
         # 순서: 문서 순서=실행 순서(정책). G1 과 데이터 의존 없음 — a-노드는 언제든 선행 가능.
         G2a_MathVerify // 하한 정리 판정 + 반증 문서화 (done — ★closed-negative)
             # ✅ 2026-07-05 반증 리포트 고정: scripts/twoq_2design_bound.py → .pgf/proofs/TWOQ-2DESIGN-BOUND.json
@@ -68,11 +68,16 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   하한 226 위반 **반증 확정**; 정체=d=4 MUB 20-state(가환 Pauli 5-분할 {ZI,IZ}·{XI,IX}·
             #   {YI,IY}·{XZ,ZY}·{ZX,YZ})가 projective **state** 2-design(FP=1/10 exact, 상호비편향 전수
             #   확인)임을 실증 — unitary/state design 혼동. 봉인 0·root 불변. **G2 unitary-design 트랙 정직 종결.**
-        G2b_StateDesignOption // ★대체 payoff: MUB-20 state 2-design (Clifford, module 0) (designing) @dep:G2a_MathVerify
-            # P7 부수 발견의 정직한 회수: d=4 MUB 5기저×4상태=20 상태준비 앱(전부 Clifford word) 봉인 +
-            #   state 2-design witness(frame potential 2/(d(d+1))=1/10 exact) 관측. unitary design 아님을
-            #   명시(용어 정직). numpy 선검증 → 규모(20앱) 대비 가치 판단 보고 후 진행/스킵 결정.
-            #   ※진행 결정은 봉인 규모 게이트(module 아님): 20앱 추가가 등록부 오염인지 payoff 인지 정욱님 1줄 확인.
+        G2b_StateDesignOption // ★대체 payoff: MUB-20 state 2-design (Clifford, module 0) (done) @dep:G2a_MathVerify
+            # ✅ 2026-07-05 규모 게이트 승인(정욱님 "진행") → 완주: mub4_b{1..5}_s{0..3} **20앱 Tier-0
+            #   봉인**(신규 module 0 — x/h/s/cz 기봉인 Clifford word). ★닫힌형 직접 구성(탐색 0):
+            #   V1=I·V2=H⊗H·V3=(SH)⊗(SH)·**V4=CZ·(H⊗SH){XZ,ZY}·V5=CZ·(SH⊗H){YZ,ZX}** — 스태빌라이저
+            #   켤레 V·Z0·V†=+A·V·Z1·V†=+B 부호 포함 정확(numpy 선검증 1회 통과). mub_observe(3aj):
+            #   Pauli 라벨맵 20/20(회로 독립)·비편향 400쌍·FP=1/10+2차모멘트==0.1·Πsym(이중 witness)·
+            #   ★소비 데모=MUB 완비측정 단층재구성 ρ=Σp·Π−I exact(순수+혼합)·teeth 2종(T-오염·기저제거).
+            #   honest: state 2-design(unitary 아님) 용어 정직·확률=해석값(유한샘플 shadow 미구현, 기반만).
+            #   290→**310 apps**·root 7293a3de→**b82d79eb24d14ee5**·second_oracle 79/79·guard ALL PASS.
+            #   **G2 폐합**: closed-negative 반증(G2a)+정직한 알맹이 회수(G2b) — 반증→회수 패턴 완결.
     G3_AngleFamilyPi6 // π/6·π/3 family 승인 1회 → 2+1축 소비 (designing)
         G3a_DeriveAngles // 3축 필요 각도 정확 도출 (designing)
             # process(numpy): ①채널 γ=¼: θ=2arcsin√γ=π/3 → CRY(π/3)=반각 Ry(π/6)± 분해(V6 CRY 패턴) ✓리뷰 확인

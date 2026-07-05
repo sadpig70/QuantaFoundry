@@ -436,6 +436,98 @@ mbqc_h
 ├─ cz (module)
 └─ h_gate (module)
 
+mub4_b1_s0
+└─ x_gate (module×2)
+
+mub4_b1_s1
+└─ x_gate (module)
+
+mub4_b1_s2
+└─ x_gate (module)
+
+mub4_b1_s3
+└─ x_gate (module×2)
+
+mub4_b2_s0
+└─ h_gate (module×2)
+
+mub4_b2_s1
+├─ h_gate (module×2)
+└─ x_gate (module)
+
+mub4_b2_s2
+├─ h_gate (module×2)
+└─ x_gate (module)
+
+mub4_b2_s3
+├─ h_gate (module×2)
+└─ x_gate (module×2)
+
+mub4_b3_s0
+├─ h_gate (module×2)
+└─ s_gate (module×2)
+
+mub4_b3_s1
+├─ h_gate (module×2)
+├─ s_gate (module×2)
+└─ x_gate (module)
+
+mub4_b3_s2
+├─ h_gate (module×2)
+├─ s_gate (module×2)
+└─ x_gate (module)
+
+mub4_b3_s3
+├─ h_gate (module×2)
+├─ s_gate (module×2)
+└─ x_gate (module×2)
+
+mub4_b4_s0
+├─ cz (module)
+├─ h_gate (module×2)
+└─ s_gate (module)
+
+mub4_b4_s1
+├─ cz (module)
+├─ h_gate (module×2)
+├─ s_gate (module)
+└─ x_gate (module)
+
+mub4_b4_s2
+├─ cz (module)
+├─ h_gate (module×2)
+├─ s_gate (module)
+└─ x_gate (module)
+
+mub4_b4_s3
+├─ cz (module)
+├─ h_gate (module×2)
+├─ s_gate (module)
+└─ x_gate (module×2)
+
+mub4_b5_s0
+├─ cz (module)
+├─ h_gate (module×2)
+└─ s_gate (module)
+
+mub4_b5_s1
+├─ cz (module)
+├─ h_gate (module×2)
+├─ s_gate (module)
+└─ x_gate (module)
+
+mub4_b5_s2
+├─ cz (module)
+├─ h_gate (module×2)
+├─ s_gate (module)
+└─ x_gate (module)
+
+mub4_b5_s3
+├─ cz (module)
+├─ h_gate (module×2)
+├─ s_gate (module)
+└─ x_gate (module×2)
+
 parity4_transform
 └─ cnot (module×6)
 

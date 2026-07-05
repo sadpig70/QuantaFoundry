@@ -1,0 +1,32 @@
+# mub4_b4_s3 — d=4 MUB 상태준비 (TrackGate6 G2b: MUB-20 projective state 2-design, 기저 4/5 · 상태 s=3).
+# 기저 4: 얽힘기저 {XZ,ZY,−YX} = CZ·(H⊗(S·H)) — 스태빌라이저 (A,B)=(XZ,ZY), V·Z0·V†=+XZ·V·Z1·V†=+ZY (닫힌형, 탐색 0).
+# 정의 열(|00⟩ 입력): A 고유값 -1 · B 고유값 -1 공통고유상태 = V_b·(X^1⊗X^1)|00⟩.
+# ★state 2-design 이며 unitary 2-design 아님(용어 정직 — G2a 반증 리포트 .pgf/proofs/TWOQ-2DESIGN-BOUND.json:
+#   2q unitary 2-design 은 하한 226, MUB-20 은 그 대체 payoff). 신규 module 0 (x/h/s/cz 기봉인 Clifford word).
+# honest(peps22_rvb 상속): 정의 열만 MUB 물리 — 여타 열=회로-유도 유니터리 완성. 상호비편향·FP=1/10·
+#   단층재구성 witness = mub_observe(INV-Q3, seal 아님).
+```json id=app_meta
+{"id": "mub4_b4_s3", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+S = np.diag([1, 1j]).astype(complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+def emb1(G, q):
+    return np.kron(G, I2) if q == 0 else np.kron(I2, G)
+golden = np.eye(4, dtype=complex)
+for M in [emb1(X, 0), emb1(X, 1), emb1(H, 0), emb1(H, 1), emb1(S, 1), CZ]:
+    golden = M @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/s_gate.pg", "targets": [1]},
+  {"spec": "../modules/cz.pg", "targets": [0, 1]}]}
+```

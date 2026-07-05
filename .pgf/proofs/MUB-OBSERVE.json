@@ -1,0 +1,57 @@
+{
+  "_note": "d=4 MUB-20(봉인 mub4_* 20 앱) = projective state 2-design witness. 봉인=유니터리뿐, design 성질·단층재구성=관측(INV-Q3).",
+  "_schema": "mub-observe-v1",
+  "observation": {
+    "ensemble": {
+      "bases": 5,
+      "mutually_unbiased_400": true,
+      "n_states": 20,
+      "pauli_label_map_20": true,
+      "seal_link_20": true,
+      "stabilizers": {
+        "b1": [
+          "ZI",
+          "IZ"
+        ],
+        "b2": [
+          "XI",
+          "IX"
+        ],
+        "b3": [
+          "YI",
+          "IY"
+        ],
+        "b4": [
+          "XZ",
+          "ZY"
+        ],
+        "b5": [
+          "YZ",
+          "ZX"
+        ]
+      },
+      "unitary": true
+    },
+    "honest_boundary": "봉인=개별 상태준비 유니터리 20개뿐(정의 열만 MUB 물리). projective state 2-design 이며 unitary 2-design 아님(G2a 하한 226 반증의 대체 payoff). witness·단층재구성=관측(seal 아님, INV-Q3). 확률=해석값 — 유한샘플 shadow tomography 미구현(기반만).",
+    "ok": true,
+    "sealed_assets": "mub4_b{1..5}_s{0..3} 20 apps (Tier-0 exact, 신규 module 0)",
+    "state_2design": {
+      "fp_exact": true,
+      "frame_potential": 0.09999999999999998,
+      "second_moment_dev": 2.0816681711721685e-17,
+      "second_moment_exact": true,
+      "target": 0.1
+    },
+    "teeth": {
+      "detects": true,
+      "drop_basis_recon_dev": 0.2500000000000008,
+      "t_corrupt_fp": 0.1013572330470336,
+      "unbiased_broken": true
+    },
+    "tomography_demo": {
+      "exact": true,
+      "mixed_dev": 1.2490009546911454e-15,
+      "pure_seed0_dev": 9.992365810778136e-16
+    }
+  }
+}
