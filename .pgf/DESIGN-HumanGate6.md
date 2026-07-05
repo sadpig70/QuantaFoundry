@@ -78,7 +78,9 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   honest: state 2-design(unitary 아님) 용어 정직·확률=해석값(유한샘플 shadow 미구현, 기반만).
             #   290→**310 apps**·root 7293a3de→**b82d79eb24d14ee5**·second_oracle 79/79·guard ALL PASS.
             #   **G2 폐합**: closed-negative 반증(G2a)+정직한 알맹이 회수(G2b) — 반증→회수 패턴 완결.
-    G3_AngleFamilyPi6 // π/6·π/3 family 승인 1회 → 2+1축 소비 (designing)
+    G3_AngleFamilyPi6 // π/6·π/3 family 승인 1회 → 2+1축 소비 (done — 2026-07-05 완주)
+        # ✅ 승인 module 2(ry_pi6/negpi6) → 소비 5앱(채널 ¼ 3·Szegedy p¼ 1·naimark_ud3 1) 일괄 봉인.
+        #   85→87 modules·310→315 apps·root b82d79eb→008e09334c543c7c. G4 hard-dep 해소.
         G3a_DeriveAngles // 3축 필요 각도 정확 도출 (done)
             # ✅ 2026-07-05 numpy 선검증 17항 ALL PASS: ①γ=¼: CRY(π/3)=반각 Ry(±π/6) 분해 exact +
             #   3채널(bitflip/phasedamp/ampdamp) Tr_env==Kraus γ¼ 통과 ②Szegedy p=¼: Ry(2π/3)=ry_pi6⁴
@@ -88,19 +90,26 @@ HumanGate6 // 사람게이트 6건 단계별 개창 (in-progress) @v:1.1
             #   전망, 승인 범위 제외). 부수: ④팔레트 도달불가 witness(ℤ-조합 3.9M 스캔, 최근접 3.27e-7
             #   =near-miss) ⑤field=ℚ(√2,√3) 신규 대수체 없음 ⑥seal_module 드라이런 성공(u_hash 예보
             #   ry_pi6 9372e737·ry_negpi6 6cd2dc18, registry 무접촉) ⑦second_oracle surd 제1원리 초안.
-        G3b_ApprovalGate // ★정욱님 승인: 신규 module 집합 (in-progress — 승인 대기) @dep:G3a_DeriveAngles #HUMANGATE
-            # 보고서 정본 고정: **.pgf/approvals/G3-ry_pi6.md** (2026-07-05) — 요청=module 2개
-            #   ry_pi6/ry_negpi6(YPowGate t=±1/6, ℚ(√2,√3)). 승인→G3c/G3d/G3e+G4 해제 · 부결→blocked terminal.
-        G3c_SealChannelG14 // stinespring_*_g14 (γ=¼ family) 봉인+channel_observe 확장 (designing) @dep:G3b_ApprovalGate
-            # 기존 자산 의존: scripts/channel_observe.py(확장은 가산-only 비파괴). 무접미사 기존 4앱=γ½ 레거시 규약 주석.
-        G3d_SealSzegedyP14 // szegedy_2state_p14 봉인+szegedy_observe 확장 (designing) @dep:G3b_ApprovalGate
-            # 기존 자산 의존: specs/apps/szegedy_2state_p12.app.pg·scripts/szegedy_observe.py(가산-only).
-        G3e_SealNaimark // naimark_ud3 — 정방 유니터리 완성 봉인 + POVM witness 관측 (designing) @dep:G3b_ApprovalGate
-            # ★재설계(P5 High): app 경로 isometry 미지원·C1-C4(iso) production 선례 0건 →
-            #   **unitary completion**: Naimark isometry 를 정방 유니터리로 완성해 Tier-0 봉인,
-            #   POVM 작용(ancilla-|0⟩ 열 제한)=witness 관측(aklt4 "정의 열" honest split, INV-Q3).
-            #   SIC/trine 비-골든=봉인불가 정직경계 명시. (module-level alloc-bloq isometry 봉인은
-            #   별도 결정사항 — 이번 트랙 범위 밖.)
+        G3b_ApprovalGate // ★정욱님 승인: 신규 module 집합 (done — 승인 2026-07-05) @dep:G3a_DeriveAngles #HUMANGATE
+            # ✅ 정욱님 승인("너가 제시한 작업을 진행한다") → **ry_pi6/ry_negpi6 봉인 완료**
+            #   (u_hash 9372e737·6cd2dc18 — 드라이런 예보와 byte-identical, 결정론 재현).
+            #   second_oracle 제1원리 surd 추가(81/81). frozen 23키/fingerprint 무훼손 재확인.
+        G3c_SealChannelG14 // stinespring_*_g14 (γ=¼ family) 봉인+channel_observe 확장 (done) @dep:G3b_ApprovalGate
+            # ✅ 3앱 Tier-0: bitflip_g14(Ry(π/3)=ry_pi6², 3스텝)·phasedamp_g14(CRY(π/3) 반각, 4스텝)·
+            #   ampdamp_g14(5스텝). channel_observe 가산 확장: Tr_env==Kraus ¼ 3/3 exact·teeth(0.8·π/3)·
+            #   ★합성 복리: γ¼∘¼==7/16 + **교차 γ¼∘½==γ½∘¼==5/8**(감쇠 격자 결합) exact. 레거시 ½ 규약 주석.
+        G3d_SealSzegedyP14 // szegedy_2state_p14 봉인+szegedy_observe 확장 (done) @dep:G3b_ApprovalGate
+            # ✅ Tier-0(12스텝): P=[[¼,¾],[¼,¾]] — ★첫 비대칭(가역) 연쇄. golden=Szegedy 정의식 직접
+            #   (회로 독립). R_A=I⊗(VZV†), V=Ry(2π/3)=ry_pi2·ry_pi6. szegedy_observe 가산 확장:
+            #   일반 discriminant D=√(P∘Pᵀ) 경로(eig {0,1}→위상{0,±π})·정상분포 π=(¼,¾) 비균일
+            #   +1 고유벡터 exact·teeth. p12 관측 무변경.
+        G3e_SealNaimark // naimark_ud3 — 정방 유니터리 완성 봉인 + POVM witness 관측 (done) @dep:G3b_ApprovalGate
+            # ✅ Tier-0 8×8(23스텝, ★신규 module 0 — G3a rank-1 판정 실현: ry_cg_half±+dyadic+x/cnot/cz/
+            #   toffoli). 회로=①anti-ctl CRY(arccos⅓) ②ctl-X ③CRY(π/2) ④CCRy(−π) ⑤★W 간섭층
+            #   (B=CH·CNOT, CCX, B†) — 선검증 중 W층 없는 프로토타입이 **대각 POVM 붕괴(UD 실패)**로
+            #   반증돼 재설계(sys which-path 코히런트 소거가 가능조건, ⟨t0|t1⟩=0). naimark_observe(3ak):
+            #   E_k 재구성==IDP 정의 exact·ΣE=I·오식별 0·성공 ½(최적)·dilation 통계==Tr(Eρ)·teeth 2종
+            #   (틀린각+★W층 잘림→대각화+오식별 0.25 검출=간섭층 하중 실증). SIC/trine=봉인불가 정직경계.
     G4_Schur4 // n=4 Schur-Weyl irrep splitter — ★module 0 가능성 높음 (designing) @dep:G3b_ApprovalGate
         # ★hard dep 근거(P5): CG 계수 √(3/4)의 Givens 반각=arccos√(3/4)=π/6 → G3 승인 module ry_pi6 재사용.
         #   G3b 부결 시 G4 는 π/6 을 자체 승인 요청으로 승계(축 이동).

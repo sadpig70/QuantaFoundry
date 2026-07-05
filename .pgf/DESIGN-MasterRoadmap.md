@@ -475,7 +475,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   a-노드(설계) 병렬 허용·c-노드(봉인) 직렬. 노드별 status 는 DESIGN-HumanGate6.md 가 정본.
         # ✅G1 폐합(peps22_rvb, root 7293a3de)·✅G2 폐합(2026-07-05): G2a closed-negative 반증
         #   (.pgf/proofs/TWOQ-2DESIGN-BOUND.json)+G2b MUB-20 state 2-design 20앱 봉인(규모 게이트
-        #   정욱님 승인, 신규 module 0, mub_observe 3aj) → 310 apps·root b82d79eb24d14ee5. 잔여 G3~G5.
+        #   정욱님 승인, 신규 module 0, mub_observe 3aj) → 310 apps·root b82d79eb24d14ee5.
+        # ✅G3 폐합(2026-07-05): 승인 module 2(ry_pi6/negpi6, .pgf/approvals/G3-ry_pi6.md 정욱님 승인)
+        #   → 소비 5앱(stinespring_*_g14 3·szegedy_2state_p14·naimark_ud3 = UD-POVM Naimark 완성,
+        #   naimark_observe 3ak) 일괄 봉인 → 87 modules·315 apps·root 008e09334c543c7c. 잔여 G4·G5.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

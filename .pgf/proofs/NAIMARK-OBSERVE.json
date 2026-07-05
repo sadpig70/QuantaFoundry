@@ -1,0 +1,38 @@
+{
+  "_note": "UD-POVM Naimark 완성 witness: E_k 재구성==IDP 정의+UD 성질+통계+teeth. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "naimark-observe-v1",
+  "observation": {
+    "app": "naimark_ud3",
+    "ensemble": {
+      "seal_link": true,
+      "states": "|ψ±⟩=Ry(±π/3)|0⟩ (overlap ½)",
+      "unitary": true
+    },
+    "honest_boundary": "봉인=정방 유니터리 완성뿐(정의 열만 Naimark isometry). POVM·통계=관측(INV-Q3). rank-1 Kraus 자유도로 기존 팔레트 실현(신규 module 0). SIC/trine 비-골든각=봉인불가. 유한샘플 측정=미구현(해석 확률).",
+    "ok": true,
+    "povm": {
+      "E_reconstruction_vs_IDP": 3.3306690738754696e-16,
+      "completeness_dev": 4.440892098500626e-16,
+      "null_outcome_E3": "0 (anc |11⟩ 도달 불가)",
+      "positive": true
+    },
+    "statistics": {
+      "dilation_marginal_vs_trace_dev": 1.1102230246251565e-16,
+      "ok": true
+    },
+    "teeth": {
+      "w_layer_cut_misidentify": 0.25000000000000006,
+      "w_layer_cut_offdiag": 0.0,
+      "w_layer_loadbearing": true,
+      "wrong_angle_detects": true
+    },
+    "ud": {
+      "misidentify_m": -3.71854203583436e-18,
+      "misidentify_p": 0.0,
+      "ok": true,
+      "optimal_1_minus_overlap": 0.5,
+      "success_m": 0.5000000000000002,
+      "success_p": 0.5
+    }
+  }
+}

@@ -113,6 +113,13 @@ INDEP = {
     "ry_cg_half_dag": lambda: np.array(
         [[np.cos(np.arccos(1 / 3) / 4), np.sin(np.arccos(1 / 3) / 4)],
          [-np.sin(np.arccos(1 / 3) / 4), np.cos(np.arccos(1 / 3) / 4)]], dtype=complex),
+    # ── TrackGate6 G3: π/6 family Ry(±π/6) — 제1원리 closed form (π-free surd: cos/sin(π/12)=(√6±√2)/4) ──
+    "ry_pi6": lambda: np.array(
+        [[(np.sqrt(6) + np.sqrt(2)) / 4, -(np.sqrt(6) - np.sqrt(2)) / 4],
+         [(np.sqrt(6) - np.sqrt(2)) / 4, (np.sqrt(6) + np.sqrt(2)) / 4]], dtype=complex),
+    "ry_negpi6": lambda: np.array(
+        [[(np.sqrt(6) + np.sqrt(2)) / 4, (np.sqrt(6) - np.sqrt(2)) / 4],
+         [-(np.sqrt(6) - np.sqrt(2)) / 4, (np.sqrt(6) + np.sqrt(2)) / 4]], dtype=complex),
     # ── HE2 V4: AKLT₄ CG 반각 회전 Ry(±arccos√(28/41 · 8/13 · 2/7)) — 제1원리 closed form ──
     "ry_ak41": lambda: np.array(
         [[np.cos(np.arccos(np.sqrt(28 / 41)) / 2), -np.sin(np.arccos(np.sqrt(28 / 41)) / 2)],

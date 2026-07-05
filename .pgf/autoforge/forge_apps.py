@@ -213,6 +213,12 @@ APP_LIST = [
     ("mub4_b4_s2.app.pg",     None),     ("mub4_b4_s3.app.pg",     None),
     ("mub4_b5_s0.app.pg",     None),     ("mub4_b5_s1.app.pg",     None),
     ("mub4_b5_s2.app.pg",     None),     ("mub4_b5_s3.app.pg",     None),
+    # TrackGate6 G3c/d/e: π/6·π/3 family 소비 (승인 module ry_pi6/ry_negpi6 — .pgf/approvals/G3-ry_pi6.md)
+    ("stinespring_bitflip_g14.app.pg",   None),  # bit-flip p=¼ dilation (Ry(π/3)=ry_pi6², 첫 비-dyadic 채널)
+    ("stinespring_phasedamp_g14.app.pg", None),  # phase-damp λ=¼ (CRY(π/3) 반각 ry_pi6±)
+    ("stinespring_ampdamp_g14.app.pg",   None),  # amp-damp γ=¼ (CRY(π/3)·CNOT)
+    ("szegedy_2state_p14.app.pg",        None),  # Szegedy P=[[¼,¾],[¼,¾]] (Ry(2π/3)=ry_pi2·ry_pi6, 비대칭 첫 연쇄)
+    ("naimark_ud3.app.pg",               None),  # UD-POVM Naimark 정방 완성 (rank-1 Kraus, module 0, W 간섭층)
 ]
 
 

@@ -1,0 +1,80 @@
+# naimark_ud3 — 3-outcome UD(unambiguous discrimination) POVM 의 Naimark 정방 유니터리 완성.
+# 3q(sys q0 · outcome anc q1,q2). Tier-0 8×8. TrackGate6 G3e (#POVM — 측정이론 첫 1급 자산).
+# 대상: |ψ±⟩=Ry(±π/3)|0⟩ (overlap ½), IDP POVM E±=⅔|ψ∓^⊥⟩⟨ψ∓^⊥| · E?=⅔|0⟩⟨0| (성공확률 1−s=½ 최적).
+# ★rank-1 Kraus 자유도(G3a 판정): M_k=√λ_k|0⟩⟨χ_k| → V 진폭² {2/3,1/6,1/2} = ry_cg_half+dyadic 격자
+#   — canonical √E 경로({2/3,1/24,1/8,3/8})와 달리 **신규 module 0** (π/6 승인과 독립).
+# 회로(23스텝): ①anti-ctl_s CRY(arccos⅓)(→q2, 반각=ry_cg_half±) ②ctl_s X(q2) ③CRY(q2→q1,π/2)
+#   ④CCRy(s,q2→q1,−π)(toffoli 반각) ⑤W=B·CCX(q1q2→s)·B†(B=CH(q2→q1)·CNOT(1→2), CH=Ry(π/4)·CZ·Ry(−π/4))
+#   — W 층이 sys which-path 를 코히런트 소거(간섭)해 E± off-diagonal 실현(⟨t0|t1⟩=0 이 가능조건).
+# honest(aklt4/peps 상속): 정의 열(anc|00⟩ 입력 2열)만 Naimark isometry V — E_k 재구성==IDP 정의·
+#   ΣE=I·UD(오식별 0)·성공 ½ = naimark_observe(INV-Q3, seal 아님). SIC/trine 비-골든각=봉인불가 정직경계.
+```json id=app_meta
+{"id": "naimark_ud3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+CNOT = np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]], dtype=complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+TOFF = np.eye(8, dtype=complex); TOFF[6,6]=TOFF[7,7]=0; TOFF[6,7]=TOFF[7,6]=1
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+def emb(G, tg, n=3):
+    k = len(tg); dim = 2 ** n
+    M = np.zeros((dim, dim), dtype=complex)
+    for b in range(dim):
+        bits = [(b >> (n - 1 - q)) & 1 for q in range(n)]
+        si = 0
+        for t in tg:
+            si = (si << 1) | bits[t]
+        for so in range(2 ** k):
+            if G[so, si] == 0:
+                continue
+            ob = list(bits)
+            for i, t in enumerate(tg):
+                ob[t] = (so >> (k - 1 - i)) & 1
+            o = 0
+            for bb in ob:
+                o = (o << 1) | bb
+            M[o, b] += G[so, si]
+    return M
+cg = np.arccos(1.0/3.0) / 2.0
+SEQ = [(X, [0]), (CNOT, [0, 2]), (ry(-cg), [2]), (CNOT, [0, 2]), (ry(cg), [2]), (X, [0]),
+       (CNOT, [0, 2]),
+       (CNOT, [2, 1]), (ry(-np.pi/4), [1]), (CNOT, [2, 1]), (ry(np.pi/4), [1]),
+       (TOFF, [0, 2, 1]), (ry(np.pi/2), [1]), (TOFF, [0, 2, 1]), (ry(-np.pi/2), [1]),
+       (ry(-np.pi/4), [1]), (CZ, [1, 2]), (ry(np.pi/4), [1]),
+       (TOFF, [1, 2, 0]),
+       (ry(-np.pi/4), [1]), (CZ, [1, 2]), (ry(np.pi/4), [1]),
+       (CNOT, [1, 2])]
+golden = np.eye(8, dtype=complex)
+for G, tg in SEQ:
+    golden = emb(G, tg) @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/ry_cg_half_dag.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/ry_cg_half.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 1]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 1]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [1]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 2, 1]},
+  {"spec": "../modules/ry_pi2.pg", "targets": [1]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 2, 1]},
+  {"spec": "../modules/ry_negpi2.pg", "targets": [1]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [1]},
+  {"spec": "../modules/cz.pg", "targets": [1, 2]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [1]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [1]},
+  {"spec": "../modules/cz.pg", "targets": [1, 2]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 2]}]}
+```

@@ -47,6 +47,14 @@ def kraus(name):
         return [np.diag([1, r2]).astype(complex), np.array([[0, r2], [0, 0]], dtype=complex)]
     if name == "depol":
         return [0.5 * I, 0.5 * X, 0.5 * Y, 0.5 * Z]
+    # ── TrackGate6 G3c: γ/p/λ=¼ family (승인 module ry_pi6± 소비, 첫 비-dyadic 감쇠점) ──
+    s34, s14 = np.sqrt(3) / 2, 0.5
+    if name == "bitflip_g14":
+        return [s34 * I, s14 * X]
+    if name == "phasedamp_g14":
+        return [np.diag([1, s34]).astype(complex), np.diag([0, s14]).astype(complex)]
+    if name == "ampdamp_g14":
+        return [np.diag([1, s34]).astype(complex), np.array([[0, s14], [0, 0]], dtype=complex)]
     raise ValueError(name)
 
 
@@ -86,7 +94,7 @@ def verify_one(app_id, name, n_env=1):
     comp = float(np.abs(sum(K.conj().T @ K for K in Ks) - np.eye(2)).max())
     row = {"app": app_id, "channel": name, "unitary": unitary,
            "kraus_match": match, "trace_preserving": tp, "kraus_completeness": comp}
-    if name in ("bitflip", "phasedamp", "ampdamp"):
+    if name != "depol":
         Ubad = _wrong_angle_dilation(name)
         Ebad = channel_from_unitary(Ubad, 1)
         row["teeth_wrong_angle"] = bool(max(np.abs(Ebad(b) - Ekr(b)).max() for b in _BASIS) > 1e-3)
@@ -116,9 +124,21 @@ def observe_composition():
     Ead2 = compose(E2(Uad), E2(Uad))
     m_pd = float(max(np.abs(Epd2(b) - pd_ref(0.75)(b)).max() for b in _BASIS))
     m_ad = float(max(np.abs(Ead2(b) - ad_ref(0.75)(b)).max() for b in _BASIS))
+    # ── G3c 확장(가산): ¼ family 합성 — 1−(1−γ)²=7/16 · ★교차 ¼∘½==½∘¼ (감쇠 격자 결합) ──
+    Upd4 = load_golden("stinespring_phasedamp_g14.app.pg")
+    Uad4 = load_golden("stinespring_ampdamp_g14.app.pg")
+    m_pd4 = float(max(np.abs(compose(E2(Upd4), E2(Upd4))(b) - pd_ref(7/16)(b)).max() for b in _BASIS))
+    m_ad4 = float(max(np.abs(compose(E2(Uad4), E2(Uad4))(b) - ad_ref(7/16)(b)).max() for b in _BASIS))
+    m_x = float(max(np.abs(compose(E2(Uad4), E2(Uad))(b) - compose(E2(Uad), E2(Uad4))(b)).max()
+                    for b in _BASIS))
+    m_x_ref = float(max(np.abs(compose(E2(Uad4), E2(Uad))(b) - ad_ref(1 - 3/8)(b)).max() for b in _BASIS))
     return {"phasedamp_half_composed": "== phase-damping(λ_eff=3/4)", "phasedamp_match": m_pd,
             "ampdamp_half_composed": "== amplitude-damping(γ_eff=3/4)", "ampdamp_match": m_ad,
-            "ok": bool(m_pd < 1e-9 and m_ad < 1e-9)}
+            "g14_phasedamp_composed": "λ¼∘¼ == λ_eff=7/16", "g14_phasedamp_match": m_pd4,
+            "g14_ampdamp_composed": "γ¼∘¼ == γ_eff=7/16", "g14_ampdamp_match": m_ad4,
+            "g14_cross": "γ¼∘½ == γ½∘¼ == γ_eff=5/8 (격자 결합)", "g14_cross_match": max(m_x, m_x_ref),
+            "ok": bool(m_pd < 1e-9 and m_ad < 1e-9 and m_pd4 < 1e-9 and m_ad4 < 1e-9
+                       and m_x < 1e-9 and m_x_ref < 1e-9)}
 
 
 def _ry(a):
@@ -145,12 +165,13 @@ def _cry(theta, c, t):
 
 
 def _wrong_angle_dilation(name):
-    bad = 0.8 * np.pi / 2
-    if name == "bitflip":
+    bad = 0.8 * (np.pi / 3 if name.endswith("_g14") else np.pi / 2)
+    base = name.replace("_g14", "")
+    if base == "bitflip":
         return _cnot(1, 0) @ _emb(_ry(bad), 1)
-    if name == "phasedamp":
+    if base == "phasedamp":
         return _cry(bad, 0, 1)
-    if name == "ampdamp":
+    if base == "ampdamp":
         return _cnot(1, 0) @ _cry(bad, 0, 1)
 
 
@@ -158,7 +179,11 @@ def observe():
     rows = [verify_one("stinespring_bitflip", "bitflip"),
             verify_one("stinespring_phasedamp", "phasedamp"),
             verify_one("stinespring_ampdamp", "ampdamp"),
-            verify_one("stinespring_depol", "depol", n_env=2)]
+            verify_one("stinespring_depol", "depol", n_env=2),
+            # TrackGate6 G3c: ¼ family (승인 module ry_pi6± 소비, 무접미사 기존 앱=½ 레거시 규약)
+            verify_one("stinespring_bitflip_g14", "bitflip_g14"),
+            verify_one("stinespring_phasedamp_g14", "phasedamp_g14"),
+            verify_one("stinespring_ampdamp_g14", "ampdamp_g14")]
     comp = observe_composition()
     ok = all(r["ok"] for r in rows) and comp["ok"]
     return {"axis": "열린 양자계 (CPTP 채널 Stinespring dilation + compounding)",

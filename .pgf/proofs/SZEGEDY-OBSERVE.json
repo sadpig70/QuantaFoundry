@@ -3,9 +3,10 @@
   "_schema": "szegedy-observe-v1",
   "observation": {
     "collapse_2state_to_XX_clifford": true,
-    "honest_boundary": "봉인=W 유니터리뿐. 스펙트럼 정리·정상벡터=witness 관측. gap 증폭/hitting-time 성능=차기. 비-dyadic P(π/3 계열)=사람게이트.",
+    "honest_boundary": "봉인=W 유니터리뿐. 스펙트럼 정리·정상벡터=witness 관측. gap 증폭/hitting-time 성능=차기. p=¼ 는 승인 π/6 family 로 개방(G3d); 여타 비-골든 P=여전히 사람게이트.",
     "ok": true,
-    "sealed_assets": "szegedy_2state_p12·szegedy_c4_p12 (walk 유니터리 Tier-0 exact, ★C₄=draper_add2·reflect00 sub-app 복리, 신규 module 0)",
+    "sealed_assets": "szegedy_2state_p12·szegedy_c4_p12 (walk 유니터리 Tier-0 exact, ★C₄=draper_add2·reflect00 sub-app 복리, 신규 module 0) + szegedy_2state_p14 (G3d, 승인 module ry_pi6± 소비)",
+    "teeth_wrong_P14_detected": true,
     "teeth_wrong_P_detected": true,
     "walks": [
       {
@@ -22,6 +23,19 @@
         "seal_link": true,
         "spectral_phases_subset_pm2arccos": true,
         "stationary_plus1_eigvec_dev": 3.3306690738754696e-16,
+        "szegedy_formula_match": 0.0
+      },
+      {
+        "app": "szegedy_2state_p14",
+        "discriminant_eigs": [
+          0.0,
+          1.0
+        ],
+        "note": "★첫 비대칭(가역) 연쇄 — 정상분포 π=(¼,¾) 비균일, D≠P 일반 discriminant 경로",
+        "ok": true,
+        "seal_link": true,
+        "spectral_phases_subset_pm2arccos": true,
+        "stationary_pi_quarter_threequarter_dev": 3.3306690738754696e-16,
         "szegedy_formula_match": 0.0
       }
     ]

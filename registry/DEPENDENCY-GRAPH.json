@@ -6287,6 +6287,71 @@
       }
     ]
   },
+  "naimark_ud3": {
+    "u_hash": "75306045bb0ec5b3c4599165ebe4cb368fff718fd79000c7b8ddb034fbe10fe0",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 6,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 2,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_cg_half",
+        "uses": 1,
+        "child_u_hash": "b76f699acc27599f9b1ffca91dcb4b009c1174a2967781c08b05e94ddf0304e7"
+      },
+      {
+        "kind": "module",
+        "id": "ry_cg_half_dag",
+        "uses": 1,
+        "child_u_hash": "c60de30edbc2aedf0bf01fa72d05c11bcf6cebcd1b9328723e242fb97ac1bd9f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi2",
+        "uses": 1,
+        "child_u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi4",
+        "uses": 3,
+        "child_u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi2",
+        "uses": 1,
+        "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi4",
+        "uses": 3,
+        "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 3,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      },
+      {
+        "kind": "module",
+        "id": "x_gate",
+        "uses": 2,
+        "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
+      }
+    ]
+  },
   "parity4_transform": {
     "u_hash": "bb4b91b5d019df67ea0cc426c088521fe3b86048667ef0b2e5c61b81f70d5581",
     "depends_on": [
@@ -8481,6 +8546,29 @@
       }
     ]
   },
+  "stinespring_ampdamp_g14": {
+    "u_hash": "99a90ef3959012bcd655d555ae8d9f6e1f740c13a530666c6b6d98f2b0b7d1d8",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi6",
+        "uses": 1,
+        "child_u_hash": "6cd2dc18b0917761339b43904e4635392c086ca1fc39a72660a0cbb0c538981f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi6",
+        "uses": 1,
+        "child_u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
+      }
+    ]
+  },
   "stinespring_bitflip": {
     "u_hash": "00e9d23216c3bc34efdfc77e9324cab785248f4134f86bcb6d0dc41ed3d16689",
     "depends_on": [
@@ -8495,6 +8583,23 @@
         "id": "ry_pi2",
         "uses": 1,
         "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      }
+    ]
+  },
+  "stinespring_bitflip_g14": {
+    "u_hash": "0c7224975f15d4ef078f6357adfe372f5d55cea6561a664a5ded6372e2cf0a2e",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi6",
+        "uses": 2,
+        "child_u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
       }
     ]
   },
@@ -8541,6 +8646,29 @@
         "id": "ry_pi4",
         "uses": 1,
         "child_u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
+      }
+    ]
+  },
+  "stinespring_phasedamp_g14": {
+    "u_hash": "a917dde3c17aba0443e747bfc95654cbb34a6d6e64240c75c9b9d62e0fa45ab6",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi6",
+        "uses": 1,
+        "child_u_hash": "6cd2dc18b0917761339b43904e4635392c086ca1fc39a72660a0cbb0c538981f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi6",
+        "uses": 1,
+        "child_u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
       }
     ]
   },
@@ -8608,6 +8736,47 @@
         "id": "h_gate",
         "uses": 4,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "swap2",
+        "uses": 2,
+        "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 2,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
+  "szegedy_2state_p14": {
+    "u_hash": "1abfe3ff06b229f51ed417191fcdb4d7e76cfdf94bc732eca5cd8234bce3f779",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ry_negpi2",
+        "uses": 2,
+        "child_u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
+      },
+      {
+        "kind": "module",
+        "id": "ry_negpi6",
+        "uses": 2,
+        "child_u_hash": "6cd2dc18b0917761339b43904e4635392c086ca1fc39a72660a0cbb0c538981f"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi2",
+        "uses": 2,
+        "child_u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
+      },
+      {
+        "kind": "module",
+        "id": "ry_pi6",
+        "uses": 2,
+        "child_u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
       },
       {
         "kind": "module",

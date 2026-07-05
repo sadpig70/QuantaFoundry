@@ -1,0 +1,41 @@
+# szegedy_2state_p14 — Szegedy 양자화 walk, 2-state Markov 연쇄 P=[[1/4,3/4],[1/4,3/4]] (TrackGate6 G3d,
+# H3.2 family 비-dyadic 확장 — 승인 module ry_pi6± 소비, 정상분포 π=(1/4,3/4) 비대칭 연쇄 첫 사례).
+# wires(w0=x, w1=y): |p_x⟩=√(1/4)|0⟩+√(3/4)|1⟩ ∀x = Ry(2π/3)|0⟩ → R_A=I⊗(V·Z·V†), V=Ry(2π/3)=
+# Ry(π/2)·Ry(π/6)(가법), R_B=SWAP·R_A·SWAP, W=R_B·R_A. ★golden=Szegedy 정의식 직접(회로 독립, p12 패턴).
+# spectral 성질(위상 ⊆ ±2arccos λ_D)·정상벡터 witness=szegedy_observe 확장(seal 아님, INV-Q3).
+```json id=app_meta
+{"id": "szegedy_2state_p14", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# Szegedy 정의식에서 직접 유도(회로 독립): P → Π_A=Σ|x,p_x⟩⟨x,p_x| → W=(S·R_A·S)·R_A
+P = np.array([[0.25, 0.75], [0.25, 0.75]])
+N = 2; dim = N * N
+PI_A = np.zeros((dim, dim), dtype=complex)
+for x in range(N):
+    v = np.zeros(dim, dtype=complex)
+    for y in range(N):
+        v[x * N + y] = np.sqrt(P[x, y])
+    PI_A += np.outer(v, v.conj())
+RA = 2 * PI_A - np.eye(dim)
+S = np.zeros((dim, dim), dtype=complex)
+for x in range(N):
+    for y in range(N):
+        S[y * N + x, x * N + y] = 1
+golden = (S @ RA @ S) @ RA
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/ry_negpi2.pg", "targets": [1]},
+  {"spec": "../modules/ry_negpi6.pg", "targets": [1]},
+  {"spec": "../modules/z_gate.pg", "targets": [1]},
+  {"spec": "../modules/ry_pi6.pg", "targets": [1]},
+  {"spec": "../modules/ry_pi2.pg", "targets": [1]},
+  {"spec": "../modules/swap2.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_negpi2.pg", "targets": [1]},
+  {"spec": "../modules/ry_negpi6.pg", "targets": [1]},
+  {"spec": "../modules/z_gate.pg", "targets": [1]},
+  {"spec": "../modules/ry_pi6.pg", "targets": [1]},
+  {"spec": "../modules/ry_pi2.pg", "targets": [1]},
+  {"spec": "../modules/swap2.pg", "targets": [0, 1]}]}
+```

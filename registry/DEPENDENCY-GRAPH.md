@@ -528,6 +528,18 @@ mub4_b5_s3
 ├─ s_gate (module)
 └─ x_gate (module×2)
 
+naimark_ud3
+├─ cnot (module×6)
+├─ cz (module×2)
+├─ ry_cg_half (module)
+├─ ry_cg_half_dag (module)
+├─ ry_negpi2 (module)
+├─ ry_negpi4 (module×3)
+├─ ry_pi2 (module)
+├─ ry_pi4 (module×3)
+├─ toffoli (module×3)
+└─ x_gate (module×2)
+
 parity4_transform
 └─ cnot (module×6)
 
@@ -1706,6 +1718,20 @@ simon2_s11
 ├─ cnot (module×2)
 └─ h_gate (module×4)
 
+stinespring_ampdamp_g14
+├─ cnot (module×3)
+├─ ry_negpi6 (module)
+└─ ry_pi6 (module)
+
+stinespring_bitflip_g14
+├─ cnot (module)
+└─ ry_pi6 (module×2)
+
+stinespring_phasedamp_g14
+├─ cnot (module×2)
+├─ ry_negpi6 (module)
+└─ ry_pi6 (module)
+
 surf422_encoder
 ├─ cnot (module×5)
 └─ h_gate (module)
@@ -1722,6 +1748,14 @@ syndrome3_bitflip
 
 szegedy_2state_p12
 ├─ h_gate (module×4)
+├─ swap2 (module×2)
+└─ z_gate (module×2)
+
+szegedy_2state_p14
+├─ ry_negpi2 (module×2)
+├─ ry_negpi6 (module×2)
+├─ ry_pi2 (module×2)
+├─ ry_pi6 (module×2)
 ├─ swap2 (module×2)
 └─ z_gate (module×2)
 

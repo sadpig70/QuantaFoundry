@@ -1,0 +1,35 @@
+# stinespring_phasedamp_g14 — 위상감쇠 채널(λ=¼)의 Stinespring dilation 유니터리. 2q(sys q0·env q1). Tier-0 4×4.
+# TrackGate6 G3c (#CHANNEL): V6 λ½ dyadic 레거시를 비-dyadic 격자로 확장(승인 module ry_pi6± 소비).
+#   Kraus {diag(1,√¾), diag(0,√¼)}. env 입력 |0⟩. U|s,0⟩=|s⟩(√(1−λ)|0⟩+√λ|1⟩)_e (s=|1⟩ 일 때만 기록).
+#   ★λ=¼ 점: U = CRY(π/3)(ctrl=sys→tgt=env) = CNOT·Ry(−π/6)_e·CNOT·Ry(π/6)_e (표준 반각 분해).
+# 봉인=dilation 유니터리 exact. 채널=Tr_env[…]=관측(channel_observe g14 확장). CPTP·Kraus·teeth=관측.
+# 정직 경계(INV-Q3): seal=유니터리뿐. 무접미사 기존 3앱=½ 레거시 규약. 일반 λ=차기.
+```json id=app_meta
+{"id": "stinespring_phasedamp_g14", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I = np.eye(2, dtype=complex)
+def ry(a):
+    return np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+def emb(op, q):
+    return np.kron(op, I) if q == 0 else np.kron(I, op)
+def cnot(c, t):
+    M = np.zeros((4, 4), dtype=complex)
+    for x in range(4):
+        b = [(x >> 1) & 1, x & 1]; b[t] ^= b[c]
+        M[(b[0] << 1) | b[1], x] = 1.0
+    return M
+# CRY(π/3)(ctrl=0,tgt=1) 시간순: CNOT · Ry(−π/6)_1 · CNOT · Ry(π/6)_1
+golden = np.eye(4, dtype=complex)
+for G in [cnot(0, 1), emb(ry(-np.pi/6), 1), cnot(0, 1), emb(ry(np.pi/6), 1)]:
+    golden = G @ golden
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_negpi6.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_pi6.pg", "targets": [1]}
+]}
+```

@@ -3,16 +3,68 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "161/161",
+      "apps_sealed": "166/166",
       "rediscovery": "12/12",
-      "pass": true,
-      "reassembled": 20,
-      "coherence": 141
+      "pass": true
     },
-    "frontier_coherence": {
-      "coherence_checked": 161,
-      "failed": [],
-      "n_failed": 0,
+    "shor_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c8x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor221_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c9x_shor381_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c10x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor635_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor1285_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor3683_frontier": {
+      "rc": 0,
+      "all_ok": true,
       "pass": true
     },
     "frontier_factory": {
@@ -22,15 +74,15 @@
     },
     "registry": {
       "rc": 0,
-      "modules": "85",
-      "unique_apps": "310",
-      "cached": "70",
-      "root_hash": "b82d79eb24d14ee5",
+      "modules": "87",
+      "unique_apps": "315",
+      "cached": "72",
+      "root_hash": "008e09334c543c7c",
       "pass": true
     },
     "second_oracle": {
       "rc": 0,
-      "modules": "79/79",
+      "modules": "81/81",
       "pass": true
     },
     "convention_independence": {
@@ -209,6 +261,11 @@
       "pass": true
     },
     "mub_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "naimark_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

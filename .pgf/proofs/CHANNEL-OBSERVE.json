@@ -44,11 +44,47 @@
         "teeth_wrong_angle": true,
         "trace_preserving": 4.440892098500626e-16,
         "unitary": true
+      },
+      {
+        "app": "stinespring_bitflip_g14",
+        "channel": "bitflip_g14",
+        "kraus_completeness": 1.1102230246251565e-16,
+        "kraus_match": 2.220446049250313e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 0.0,
+        "unitary": true
+      },
+      {
+        "app": "stinespring_phasedamp_g14",
+        "channel": "phasedamp_g14",
+        "kraus_completeness": 1.1102230246251565e-16,
+        "kraus_match": 1.1102230246251565e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 0.0,
+        "unitary": true
+      },
+      {
+        "app": "stinespring_ampdamp_g14",
+        "channel": "ampdamp_g14",
+        "kraus_completeness": 1.1102230246251565e-16,
+        "kraus_match": 2.220446049250313e-16,
+        "ok": true,
+        "teeth_wrong_angle": true,
+        "trace_preserving": 0.0,
+        "unitary": true
       }
     ],
     "composition": {
       "ampdamp_half_composed": "== amplitude-damping(γ_eff=3/4)",
       "ampdamp_match": 2.220446049250313e-16,
+      "g14_ampdamp_composed": "γ¼∘¼ == γ_eff=7/16",
+      "g14_ampdamp_match": 1.6653345369377348e-16,
+      "g14_cross": "γ¼∘½ == γ½∘¼ == γ_eff=5/8 (격자 결합)",
+      "g14_cross_match": 1.1102230246251565e-16,
+      "g14_phasedamp_composed": "λ¼∘¼ == λ_eff=7/16",
+      "g14_phasedamp_match": 1.1102230246251565e-16,
       "ok": true,
       "phasedamp_half_composed": "== phase-damping(λ_eff=3/4)",
       "phasedamp_match": 1.1102230246251565e-16

@@ -1,0 +1,16 @@
+# ry_pi6 — Ry(π/6) (TrackGate6 G3 π/6·π/3 family; 정욱님 승인 2026-07-05, .pgf/approvals/G3-ry_pi6.md).
+# 소비처: CRY(π/3) 반각 분해(채널 γ=¼)·Ry(π/3)=ry_pi6²·Ry(2π/3)=ry_pi6⁴(Szegedy p=¼)·G4 Schur4 √(3/4) 반각 재사용.
+# Ry(α)=YPowGate(exponent=α/π) up-to-phase(C4). analytic golden. cos(π/12)=(√6+√2)/4 ∈ ℚ(√2,√3)(신규 대수체 없음).
+```python id=bloq
+import numpy as np
+from qualtran.bloqs.basic_gates import YPowGate
+bloq = YPowGate(exponent=1.0 / 6.0)
+```
+```python id=golden
+import numpy as np
+a = np.pi / 6.0
+golden = np.array([[np.cos(a/2), -np.sin(a/2)], [np.sin(a/2), np.cos(a/2)]], dtype=complex)
+```
+```json id=meta
+{"id": "ry_pi6", "n_sys": 1, "n_anc": 0}
+```
