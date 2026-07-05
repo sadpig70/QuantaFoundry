@@ -1,0 +1,34 @@
+{
+  "_note": "GF(8) 역원·Frobenius witness: 독립 산술+Galois 구조+궤도 복리+teeth. 봉인=순열뿐(INV-Q3).",
+  "_schema": "gf8-observe-v1",
+  "observation": {
+    "field": "GF(8) = GF(2)[x]/(x³+x+1) · 레이아웃 q0=a₂·q1=a₁·q2=a₀",
+    "field_structure": {
+      "automorphism_64_products": true,
+      "fixed_field_GF2": true,
+      "frob_inv_commute": true,
+      "galois_frob_cubed_id_Z3": true
+    },
+    "frobenius": {
+      "gf2_linear": true,
+      "matches_a_squared": true
+    },
+    "honest_boundary": "봉인=계산기저 순열 2개뿐. 체 구조=독립 산술 대조 관측(INV-Q3). 일반 GF(2ᵏ)·다항식 인수분해·Reed-Solomon=차기. 신규 module 0.",
+    "inversion": {
+      "involution": true,
+      "matches_arithmetic_7of7": true,
+      "note": "첫 비선형 체 연산 (0↦0 규약, MMD 6게이트)"
+    },
+    "mulx_orbit_reversal": {
+      "inv_xk_eq_x_7mk": true,
+      "note": "역원이 primitive 궤도 반전 — gf8_mulx 복리"
+    },
+    "ok": true,
+    "permutations": true,
+    "seal_links_3": true,
+    "teeth": {
+      "frob_gate_order_detected": true,
+      "wrong_poly_x3x2_1_detected": true
+    }
+  }
+}

@@ -6425,6 +6425,34 @@
       }
     ]
   },
+  "gf8_frob": {
+    "u_hash": "5af848a34026e80f8f993cecd7702b6239c10fbc37d77b7320864d5d3520ebf3",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      }
+    ]
+  },
+  "gf8_inv": {
+    "u_hash": "ac2452e6f80810c0ff52397be69b92b101279638535c0fe73624a8de66890220",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 3,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "gf8_mulx": {
     "u_hash": "b89d6063163e46a1777755856146cc054085373d41e9f5fc97a001ec8f5220a3",
     "depends_on": [

@@ -230,6 +230,9 @@ APP_LIST = [
     # TrackR3Residue C8: D₄ HSP 1-shot coset 회로 — ★d4_mult·d4_qft 이중 sub-app 복리 (신규 module 0)
     ("d4_hsp_shot_s.app.pg",             None),  # H={e,s} 비정규 (ρ 가중 ½ — 격자문제 연결 사례)
     ("d4_hsp_shot_r2.app.pg",            None),  # H={e,r²} 정규 (1차원 균등 — 구별 짝)
+    # TrackR3Residue C6: GF(8) 체 연산 완결 — 역원(첫 비선형)·Frobenius (신규 module 0)
+    ("gf8_inv.app.pg",                   None),  # a↦a⁻¹=a⁶ (0↦0), MMD 6게이트(toffoli3·cnot3)
+    ("gf8_frob.app.pg",                  None),  # a↦a² 자기동형 (GF(2)-선형 → cnot 2개, Gal≅Z₃)
 ]
 
 

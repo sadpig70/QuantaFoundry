@@ -431,6 +431,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ao. TrackR3Residue C6: GF(8) 역원·Frobenius — 독립 산술+Galois 구조+mulx 궤도 witness (observation)
+    rc, out = run(["scripts/gf8_observe.py", "--quick"])
+    result["steps"]["gf8_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

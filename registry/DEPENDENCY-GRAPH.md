@@ -342,6 +342,13 @@ gf4_frob
 gf4_mul
 └─ toffoli (module×5)
 
+gf8_frob
+└─ cnot (module×2)
+
+gf8_inv
+├─ cnot (module×3)
+└─ toffoli (module×3)
+
 gf8_mulx
 └─ cnot (module×5)
 

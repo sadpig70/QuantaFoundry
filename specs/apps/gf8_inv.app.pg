@@ -1,0 +1,38 @@
+# gf8_inv — GF(8) 곱셈 역원 a↦a⁻¹ (0↦0 규약). 3q. Tier-0 8×8. TrackR3Residue C6 (#GF).
+# 체: GF(8)=GF(2)[x]/(x³+x+1), 레이아웃 q0=a₂(MSB)·q1=a₁·q2=a₀ (gf8_mulx 상속).
+#   역원 = a⁶(페르마, a⁷=1) — 0↦0 을 더해 8원소 순열(대합: 고정점 {0,1}, 전치 {x,x⁶}{x²,x⁵}{x³,x⁴}).
+#   ★§3b 명시 갭 폐합: 기존 GF 자산(mul·frob·mulx)은 선형/곱셈 — 역원은 첫 비선형 체 연산.
+# plan = MMD reversible synthesis 6게이트(toffoli 3·cnot 3, 결정론 — cmul family 동일 인프라),
+#   ★신규 module 0. golden=독립 체 산술 직접(x³+x+1 감산·a⁶ 계산 — 회로 독립).
+# witness(a·a⁻¹=1 전수·대합·frob 가환·mulx 궤도 반전·teeth)=gf8_observe(INV-Q3, seal 아님).
+```json id=app_meta
+{"id": "gf8_inv", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+def gf_mul(a, b):
+    r = 0
+    for i in range(3):
+        if (b >> i) & 1:
+            r ^= a << i
+    for d in (5, 4, 3):
+        if (r >> d) & 1:
+            r ^= 0b1011 << (d - 3)      # x³ = x+1
+    return r & 7
+golden = np.zeros((8, 8), dtype=complex)
+golden[0, 0] = 1.0
+for a in range(1, 8):
+    p = 1
+    for _ in range(6):
+        p = gf_mul(p, a)                 # a⁻¹ = a⁶
+    golden[p, a] = 1.0
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/toffoli.pg", "targets": [0, 2, 1]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 0]},
+  {"spec": "../modules/toffoli.pg", "targets": [0, 2, 1]}]}
+```

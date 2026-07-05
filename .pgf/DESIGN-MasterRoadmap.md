@@ -486,8 +486,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   → z5_gate(Z^(1/5), (z5)⁵=z_gate 재발견)·ry_fib(√φ 캐리어) + fib_braid_s1/s2(첫 비-Clifford
         #   anyon braid, Yang-Baxter·B₃중심 e^{2πi/5}I·비-Clifford witness, fib_braid_observe 3am).
         #   **TrackGate6 전체 폐합**: module +4·앱 290→318·반증 1·root 7293a3de→1feeef7e7af4d23d.
-    TrackR3Residue // report3 잔여 차기 후보 소화 (v4 회신 대기 중 자율 트랙) (in-progress) @dep:TrackHE3
-        # integrated_horizontal_expansion3.md 의 ⏸️차기 4건(C6 GF(2ᵏ)·C7 Flag·C8 D₄ HSP·C12 선형광학).
+    TrackR3Residue // report3 잔여 차기 후보 소화 (done — 2026-07-06 폐합) @dep:TrackHE3
+        # integrated_horizontal_expansion3.md 의 ⏸️차기 4건 전부 terminal: C7·C8·C6 done ·
+        #   C12 deferred(스킵 판정). ★report3 완전 소진 — 6앱 +(flag 2·hsp 2·gf 2), 전부 module 0.
         R3_C7_FlagSyndrome // ★FT 증후 추출 프리미티브 — 1-flag weight-4 stabilizer (done — 2026-07-06)
             # ✅ flag_synd_zzzz(u_hash c7218f50)·flag_synd_xxxx(48ab83c3, ==H⊗4 켤레 exact) Tier-0 봉인
             #   — 6q coherent 추출, Chao-Reichardt 1-flag 배치(데이터 CNOT 1·3 뒤), 신규 module 0.
@@ -495,14 +496,21 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   무flag⇒잔여 Z-string≡w≤1 mod ZZZZ, 위험 w_eff=2 fault 는 반드시 flag)·보조 fault 무해·
             #   ★surf422 codeword 4×2 무증후 복리([[4,2,2]] stabilizer 쌍 완성)·teeth 2종(무flag hook·
             #   창 오배치 검출 — flag 층 하중 실증). 342→344앱·root 191287568abd3191.
-        R3_C6_GF2k // GF(2ᵏ) 역원·최소다항식 (designing)
+        R3_C6_GF2k // GF(8) 역원·Frobenius — 체 연산 완결 (done — 2026-07-06)
+            # ✅ gf8_inv(a↦a⁻¹=a⁶, 0↦0, u_hash ac2452e6 — ★첫 비선형 체 연산, MMD 6게이트=cmul 동일
+            #   합성 인프라)·gf8_frob(a↦a², 5af848a3 — GF(2)-선형→cnot 2개) Tier-0, 신규 module 0.
+            #   golden=독립 체 산술 직접. gf8_observe(3ao): a·a⁻¹=1 전수·대합·★Galois 구조(frob³=id Z₃·
+            #   자기동형 64곱·고정체 GF(2)·inv 가환)·★mulx 궤도 반전 inv(xᵏ)=x^(7−k)(복리)·teeth 2종
+            #   (틀린 poly x³+x²+1·게이트 순서). 346→348앱·root 7e820010c53eb952.
         R3_C8_D4HSP // D₄ HSP 1-shot coset 회로 (done — 2026-07-06)
             # ✅ d4_hsp_shot_s(비정규 {e,s}, u_hash 8934e586)·d4_hsp_shot_r2(정규 {e,r²}, 6edcaa93)
             #   Tier-0 64×64 — HSP 표준 절차 전체(균일중첩·|H⟩·오라클·비아벨 QFT)를 하나의 coherent
             #   회로로 자산화. ★d4_mult+d4_qft 이중 sub-app 복리, 신규 module 0. golden=군론 공식 직접.
             #   d4_hsp_observe 가산 확장: marginal==문자공식·★조건부 y⇒F|yH⟩(8y 전수 위상 포함)·
             #   봉인회로 구동 비정규/정규 구별(ρ ½ vs 0). 344→346앱·root 2602911c9adcf59a.
-        R3_C12_LinearOptics // 선형광학 unary Clements (designing — 각도 혼재, 선분석 필요)
+        R3_C12_LinearOptics // 선형광학 unary Clements (deferred — 스킵 판정 2026-07-06)
+            # 판정 근거(정직 기록): 저합의 1/8(A7 단독) + 각도 혼재(π/3 algebraic → 승인 게이트 비용)
+            #   + unary 인코딩=기존 자산과 복리 접점 약함. report4 회신이 재제안·보강하면 재평가.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
