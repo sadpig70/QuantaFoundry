@@ -6352,6 +6352,73 @@
       }
     ]
   },
+  "fib_fmove": {
+    "u_hash": "86782086af311dd7fe14afe86803ef12c0aeb67528f1e2fd32bc2f3a0994fedf",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ry_fib",
+        "uses": 1,
+        "child_u_hash": "256147502bcb8da36800a3bcc2d43701ae99690ac2783c30d6d7fab0ac5154b5"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 1,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
+  "fib_hopf": {
+    "u_hash": "0b9d62b50713456035ba314dc6f63d5f0d2abd43238a1fd0b883f0dffd4ec73d",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 2,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      }
+    ]
+  },
+  "fib_solomon": {
+    "u_hash": "1176fec9f351414e57b9aa2c77d9a504aa55ad2602d55a8dec30fafe02b27b74",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 4,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      }
+    ]
+  },
+  "fib_trefoil": {
+    "u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 3,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      }
+    ]
+  },
+  "fib_trefoil_m": {
+    "u_hash": "02bf1c2773563d91490caa3a66fb21e6e1387a950139ee820d3f73dd3cd3a396",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 3,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      },
+      {
+        "kind": "app",
+        "id": "fib_braid_s2",
+        "uses": 1,
+        "child_u_hash": "bda39df22964a1258e353513b2b0be69fffc8d36e62d7245feb869cd0ddfc406"
+      }
+    ]
+  },
   "flag_synd_xxxx": {
     "u_hash": "48ab83c38799c228a4ba0330359b24d7471cd66a23f3b42f4d2d95b340f66937",
     "depends_on": [

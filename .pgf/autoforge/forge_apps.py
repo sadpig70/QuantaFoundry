@@ -236,6 +236,12 @@ APP_LIST = [
     # TrackC3Hierarchy: Clifford 계층(3단계) 자체개창 — coherent gate teleportation 촉매 회로 (module 0)
     ("t_teleport.app.pg",                None),  # CS·CNOT: U(|ψ⟩⊗|A⟩)=(T|ψ⟩)⊗|A⟩ — T-촉매, U∈C₃∖C₂
     ("s_teleport.app.pg",                None),  # CZ·CNOT: U(|ψ⟩⊗|Y⟩)=(S|ψ⟩)⊗|Y⟩ — 사다리 짝, U∈C₂
+    # TrackHE4 P1: Fibonacci 소비층 (report4 6/8 합의) — F-move 독립 자산 + 매듭 braid word (module 0)
+    ("fib_fmove.app.pg",                 None),  # F = ry_fib·z (융합트리 기저변환, F²=I, 1+φ=φ² 단위성)
+    ("fib_hopf.app.pg",                  None),  # σ₁² — 폐포 = Hopf T(2,2)⊔O (s1 sub-app ×2)
+    ("fib_trefoil.app.pg",               None),  # σ₁³ — 폐포 = 삼엽 T(2,3)⊔O (s1 sub-app ×3)
+    ("fib_solomon.app.pg",               None),  # σ₁⁴ — 폐포 = Solomon T(2,4)⊔O (s1 sub-app ×4)
+    ("fib_trefoil_m.app.pg",             None),  # σ₁³σ₂ — Markov 안정화판 삼엽 (s2 경로 최초 소비)
 ]
 
 

@@ -3,68 +3,16 @@
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "177/177",
+      "apps_sealed": "182/182",
       "rediscovery": "12/12",
-      "pass": true
+      "pass": true,
+      "reassembled": 5,
+      "coherence": 177
     },
-    "shor_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c8x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor221_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c9x_shor381_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c10x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor635_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c11x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c11x_payoff_family": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor1285_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c12x_frontier": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "c12x_payoff_family": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
-    },
-    "shor3683_frontier": {
-      "rc": 0,
-      "all_ok": true,
+    "frontier_coherence": {
+      "coherence_checked": 165,
+      "failed": [],
+      "n_failed": 0,
       "pass": true
     },
     "frontier_factory": {
@@ -75,9 +23,9 @@
     "registry": {
       "rc": 0,
       "modules": "89",
-      "unique_apps": "350",
+      "unique_apps": "355",
       "cached": "74",
-      "root_hash": "ddeb6079ef8f88b3",
+      "root_hash": "4c28b6b8df22e95c",
       "pass": true
     },
     "second_oracle": {
@@ -295,6 +243,11 @@
       "all_ok": true,
       "pass": true
     },
+    "fib_jones_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
     "behavior": {
       "detail": {
         "shor15_a2": {
@@ -343,5 +296,5 @@
       "pass": true
     }
   },
-  "mode": "full"
+  "mode": "changed-only"
 }

@@ -1,0 +1,24 @@
+# fib_trefoil_m — braid word σ₁³σ₂ (B₃ Markov 안정화판 삼엽: σ₂ 1회 출현 → 소멸 이동으로
+#   폐포 = 삼엽매듭 자체, 분리 unknot 없음). Tier-0 2×2. TrackHE4 P1 (#TOPO).
+# ★2-생성원 혼합 word — fib_braid_s1×3 + fib_braid_s2×1 sub-app 복리 (σ₂=FRF 경로 최초 소비).
+# golden = σ₂·R³ 정의 직접 (닫힌형, 탐색 0). circuit ≅ golden up-to-phase(C4).
+# Jones 관측 본체: V(σ₁³σ₂ 폐포) == V(σ₁³ 폐포 in B₂) == skein V(삼엽) — Markov 소멸 불변성이
+#   두 독립 경로(가중 trace vs skein)로 exact 일치 = fib_jones_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=word 유니터리뿐. Markov 정리 일반론·매듭 동치판정=범위 밖.
+```json id=app_meta
+{"id": "fib_trefoil_m", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+F = np.array([[1/phi, 1/np.sqrt(phi)], [1/np.sqrt(phi), -1/phi]], dtype=complex)
+golden = (F @ R @ F) @ np.linalg.matrix_power(R, 3)
+```
+```json id=plan
+{"steps": [
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s2.app.pg", "targets": [0]}]}
+```

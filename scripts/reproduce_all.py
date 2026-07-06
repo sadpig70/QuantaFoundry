@@ -443,6 +443,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aq. TrackHE4 P1: Fibonacci 소비층 — F-move 교차 + Jones 두 독립 경로 + Markov 소멸 (observation)
+    rc, out = run(["scripts/fib_jones_observe.py", "--quick"])
+    result["steps"]["fib_jones_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

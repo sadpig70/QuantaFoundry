@@ -1,0 +1,19 @@
+# fib_fmove — Fibonacci F-move(융합트리 재결합 기저변환) 독립 자산. Tier-0 2×2. TrackHE4 P1 (#TOPO).
+# F = [[φ⁻¹, φ^{−½}], [φ^{−½}, −φ⁻¹]] — F²=I·F=F† (황금비 항등 1+φ=φ² 이 단위성의 원천, det=−1).
+#   ★plan = [z_gate, ry_fib] 2스텝 — F = ry_fib·z 위상 포함 exact (fib_braid_s2 내부 분해의 1급 승격).
+# report4 최고 합의축(6/8, Fibonacci 소비층)의 진입점: braid word 자산의 기저변환 부품 (σ₂=F·σ₁·F).
+# witness(F·σ₁·F==σ₂ 교차·Jones 소비층)=fib_jones_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=F 유니터리뿐. n≥4 fusion tree·pentagon 방정식 일반론=범위 밖.
+```json id=app_meta
+{"id": "fib_fmove", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+golden = np.array([[1/phi, 1/np.sqrt(phi)], [1/np.sqrt(phi), -1/phi]], dtype=complex)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]}]}
+```

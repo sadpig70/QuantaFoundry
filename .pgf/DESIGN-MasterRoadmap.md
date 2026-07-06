@@ -523,6 +523,20 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   (S보정↔T·Z보정↔S), coherent 제어 보정 = 대상과 동일 계층. 신규 module 0(cnot·cs_gate·cz).
         #   witness: 촉매 exact·계층 판정(독립 정의: C₂=Pauli保·C₃=Clifford保 — T/CS/CCZ∈C₃∖C₂·
         #   S∈C₂∖C₁·T²=S 재발견·비-C₃ 검출 teeth). 측정 기반 프로토콜(Clifford-only 소비)=관측 경계.
+    TrackHE4 // report4 소비 — 수평확장 4차 통합 6축 (in-progress — 2026-07-06 개시) @dep:TrackC3Hierarchy
+        # 설계 정본: _workspace/integrated_horizontal_expansion4.md (35제안→기소비 4 차감→13클러스터→
+        #   자율 6축 P1~P6 + 예비 R1~R7 + 조건부 사람게이트 2. 기본경로 = 신규 module 0·사람게이트 0).
+        P1_FibConsume // Fibonacci 소비층 — F-move+매듭 word+Jones 관측 (done — 2026-07-06)
+            # ✅ fib_fmove(F=ry_fib·z, u_hash 86782086)·fib_hopf(σ₁²)·fib_trefoil(σ₁³)·fib_solomon(σ₁⁴)·
+            #   fib_trefoil_m(σ₁³σ₂ — s2 경로 최초 소비) 전부 Tier-0·module 0(sub-app 복리).
+            #   fib_jones_observe(3aq): ★Jones 두 독립 경로 exact(가중 trace (1,φ) vs skein 재귀;
+            #   t^½=A⁻² 분지 규약)·unknot==1·T(2,n)⊔O 3건·★Markov 소멸 σ₁³σ₂==V(삼엽)·teeth 2종.
+            #   350→355앱·root ddeb6079→4c28b6b8df22e95c. honest: 봉인=word 유니터리뿐·Jones 값=관측.
+        P2_C3PhasePoly // C3 대각 phase-polynomial 정규형 + 계층/semi-Clifford witness (designing)
+        P3_GF8Field // gf8_mul + RS 신드롬 코어 + rs73 structural capstone (designing) @dep:P2_C3PhasePoly
+        P4_SchurSampling // 반사자 R + label register + Dicke k=2 조건부 (designing)
+        P5_MubShadow // MUB 측정 word 4 + frame channel 대수 관측 (designing)
+        P6_StabRank // stabilizer-rank 제5 검증경로 인프라 (designing)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

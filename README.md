@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 350 sealed applications** · registry root `ddeb6079…`
+- **89 sealed modules · 355 sealed applications** · registry root `4c28b6b8…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash ddeb6079… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 4c28b6b8… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -47,7 +47,9 @@ python scripts/reproduce_all.py
   ternary-arithmetic** layer (qudit axis), a **topological logical-operation stack** (surface-code
   encoder + coherent lattice surgery + 2×2 toric ground state, closing the FTQC logical stack),
   **GF(2ᵏ) finite-field arithmetic** (multiply/Frobenius/primitive-orbit), **Ising/Majorana braiding**
-  (Yang-Baxter), **measurement-based computation** (cluster state + coherent gate teleportation),
+  (Yang-Baxter), a **Fibonacci-anyon braid + knot-word layer** (field ℚ(ζ₅,√φ); F-move basis change
+  and torus-knot braid words whose closures feed a two-path Jones-polynomial observation at
+  t = e^(−2πi/5) — sealed unitaries only, invariant values are observations), **measurement-based computation** (cluster state + coherent gate teleportation),
   a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **fermionic SWAP**,
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **hypergraph-product qLDPC code** (generic classical→CSS construction),

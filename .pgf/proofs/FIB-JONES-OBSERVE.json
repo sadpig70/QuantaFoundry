@@ -1,0 +1,72 @@
+{
+  "_note": "Fibonacci 소비층: F-move 교차 + Jones 두 독립 경로(가중 trace vs skein) + Markov 소멸 + teeth. 봉인=word 유니터리뿐(INV-Q3).",
+  "_schema": "fib-jones-observe-v1",
+  "observation": {
+    "axis": "Fibonacci 소비층 — braid word → Jones 다항식 (report4 최고 합의축 6/8)",
+    "closed_form_V3": true,
+    "convention": {
+      "A": "e^{3πi/5}",
+      "chirality": "V(삼엽)=t+t³−t⁴ (경상=t↔t⁻¹)",
+      "sqrt_t_branch": "A⁻²(주분지 아님)",
+      "t": "A⁻⁴=e^{−2πi/5}",
+      "weights": "(d₁,d_τ)=(1,φ) — 양자차원, /φ 정규화"
+    },
+    "fmove_cross_sigma2": true,
+    "honest_boundary": "봉인=braid word 유니터리 5개뿐(module 0). Jones 값·Markov 일반론·매듭 동치판정=관측(INV-Q3). 대형 링크 근사·universality=범위 밖.",
+    "markov_destab_trefoil": {
+      "match": true,
+      "quantum": [
+        -0.8090169943749459,
+        -1.314327780297834
+      ],
+      "skein_V3": [
+        -0.8090169943749459,
+        -1.314327780297835
+      ]
+    },
+    "ok": true,
+    "seal_links_7apps": true,
+    "teeth": {
+      "detects": true,
+      "weight_corrupt_unknot_fails": true,
+      "word_perturb_trefoil_deviates": true
+    },
+    "torus_links_quantum_vs_skein": {
+      "fib_hopf": {
+        "match": true,
+        "quantum": [
+          -0.3090169943749474,
+          -0.951056516295154
+        ],
+        "skein_x_split": [
+          -0.30901699437494684,
+          -0.9510565162951546
+        ]
+      },
+      "fib_solomon": {
+        "match": true,
+        "quantum": [
+          -0.9999999999999976,
+          -1.9021130325903064
+        ],
+        "skein_x_split": [
+          -0.9999999999999972,
+          -1.902113032590308
+        ]
+      },
+      "fib_trefoil": {
+        "match": true,
+        "quantum": [
+          -1.309016994374946,
+          -2.1266270208801004
+        ],
+        "skein_x_split": [
+          -1.309016994374945,
+          -2.1266270208801017
+        ]
+      }
+    },
+    "unknot_sigma12_eq_1": true,
+    "word_composition_exact": true
+  }
+}

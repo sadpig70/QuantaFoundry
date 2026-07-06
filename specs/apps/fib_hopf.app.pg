@@ -1,0 +1,19 @@
+# fib_hopf — braid word σ₁² (trace 폐포 = Hopf 링크 T(2,2) ⊔ unknot). Tier-0 2×2. TrackHE4 P1 (#TOPO).
+# 봉인 fib_braid_s1 의 sub-app 2회 복리 — 첫 매듭/링크 braid word 자산 (생성원→word 계층 승격).
+# golden = R² 정의 직접 (닫힌형, 탐색 0). circuit(z5¹⁴) ≅ golden up-to-phase(C4, 전역위상 e^{−8πi/5}).
+# Jones 관측: V(T(2,2))@t=e^{−2πi/5} = 섹터 가중 trace(d₁·Tr ρ₁ + d_τ·Tr ρ_τ)/φ ↔ skein 재귀 독립
+#   일치 = fib_jones_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=word 유니터리뿐. Jones 값·매듭 동치판정·대형 링크 근사=관측/범위 밖.
+```json id=app_meta
+{"id": "fib_hopf", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+golden = np.linalg.matrix_power(R, 2)
+```
+```json id=plan
+{"steps": [
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]}]}
+```

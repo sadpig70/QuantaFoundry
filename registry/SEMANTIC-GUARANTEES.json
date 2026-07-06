@@ -1856,6 +1856,51 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bda39df22964a1258e353513b2b0be69fffc8d36e62d7245feb869cd0ddfc406"
     },
+    "app:fib_fmove": {
+      "kind": "app",
+      "id": "fib_fmove",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "86782086af311dd7fe14afe86803ef12c0aeb67528f1e2fd32bc2f3a0994fedf"
+    },
+    "app:fib_hopf": {
+      "kind": "app",
+      "id": "fib_hopf",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0b9d62b50713456035ba314dc6f63d5f0d2abd43238a1fd0b883f0dffd4ec73d"
+    },
+    "app:fib_solomon": {
+      "kind": "app",
+      "id": "fib_solomon",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1176fec9f351414e57b9aa2c77d9a504aa55ad2602d55a8dec30fafe02b27b74"
+    },
+    "app:fib_trefoil": {
+      "kind": "app",
+      "id": "fib_trefoil",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4"
+    },
+    "app:fib_trefoil_m": {
+      "kind": "app",
+      "id": "fib_trefoil_m",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "02bf1c2773563d91490caa3a66fb21e6e1387a950139ee820d3f73dd3cd3a396"
+    },
     "app:flag_synd_xxxx": {
       "kind": "app",
       "id": "flag_synd_xxxx",
@@ -4911,7 +4956,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 405,
+        "unitary_equiv": 410,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 18
       },
@@ -4920,7 +4965,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 494,
+      "unitary_equiv": 499,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 18
     }

@@ -1,0 +1,20 @@
+# fib_trefoil — braid word σ₁³ (trace 폐포 = 삼엽매듭 T(2,3) ⊔ unknot). Tier-0 2×2. TrackHE4 P1 (#TOPO).
+# 봉인 fib_braid_s1 의 sub-app 3회 복리. golden = R³ 정의 직접 (닫힌형, 탐색 0).
+# circuit(z5²¹) ≅ golden up-to-phase(C4, 전역위상 e^{−12πi/5}).
+# Jones 관측: V(삼엽)@t=e^{−2πi/5} = t+t³−t⁴ (본 word 방향성 규약; 경상 = t↔t⁻¹) — 가중 trace ↔
+#   skein 재귀 두 독립 경로 일치 + σ₁³σ₂ Markov 소멸 대조 = fib_jones_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=word 유니터리뿐. Jones 값·매듭 동치판정=관측/범위 밖.
+```json id=app_meta
+{"id": "fib_trefoil", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+golden = np.linalg.matrix_power(R, 3)
+```
+```json id=plan
+{"steps": [
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]}]}
+```

@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 350,
-  "round_trip_checked": 316,
-  "round_trip_matched": 316,
+  "exported": 355,
+  "round_trip_checked": 321,
+  "round_trip_matched": 321,
   "round_trip_skipped_large": 34,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -2633,6 +2633,67 @@
         "z5_gate": 7
       },
       "qasm_path": ".pgf/adoption/qasm/fib_braid_s2.qasm"
+    },
+    {
+      "id": "fib_fmove",
+      "n_sys": 1,
+      "n_ops": 2,
+      "sealed_u_hash": "86782086af311dd7",
+      "round_trip_u_hash": "86782086af311dd7",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "ry_fib": 1
+      },
+      "qasm_path": ".pgf/adoption/qasm/fib_fmove.qasm"
+    },
+    {
+      "id": "fib_hopf",
+      "n_sys": 1,
+      "n_ops": 14,
+      "sealed_u_hash": "0b9d62b507134560",
+      "round_trip_u_hash": "0b9d62b507134560",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "z5_gate": 14
+      },
+      "qasm_path": ".pgf/adoption/qasm/fib_hopf.qasm"
+    },
+    {
+      "id": "fib_solomon",
+      "n_sys": 1,
+      "n_ops": 28,
+      "sealed_u_hash": "1176fec9f351414e",
+      "round_trip_u_hash": "1176fec9f351414e",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "z5_gate": 28
+      },
+      "qasm_path": ".pgf/adoption/qasm/fib_solomon.qasm"
+    },
+    {
+      "id": "fib_trefoil",
+      "n_sys": 1,
+      "n_ops": 21,
+      "sealed_u_hash": "a60ac94b41b84ac4",
+      "round_trip_u_hash": "a60ac94b41b84ac4",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "z5_gate": 21
+      },
+      "qasm_path": ".pgf/adoption/qasm/fib_trefoil.qasm"
+    },
+    {
+      "id": "fib_trefoil_m",
+      "n_sys": 1,
+      "n_ops": 32,
+      "sealed_u_hash": "02bf1c2773563d91",
+      "round_trip_u_hash": "02bf1c2773563d91",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "z5_gate": 28,
+        "ry_fib": 2
+      },
+      "qasm_path": ".pgf/adoption/qasm/fib_trefoil_m.qasm"
     },
     {
       "id": "flag_synd_xxxx",
