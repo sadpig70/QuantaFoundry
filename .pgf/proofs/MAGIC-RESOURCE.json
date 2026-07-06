@@ -1,0 +1,56 @@
+{
+  "_note": "magic 단조량 exact 증명서(extent/robustness/T-count/변환 판정). 전부 witness(INV-Q3).",
+  "_schema": "magic-resource-v1",
+  "observation": {
+    "axis": "magic 자원 이론 exact 증명서 — 제5 검증경로 첫 downstream (report5 6/8)",
+    "clifford_conversion_verdict": {
+      "F_CS": "5/8",
+      "F_TT": "(3+2√2)/8",
+      "T2_to_CS_impossible": true,
+      "note": "★report5 A6-1 반증 — F 는 Clifford 불변량(closed-negative급 1급 판정)"
+    },
+    "extent_CS_bounded": {
+      "decomp_states_are_stabilizer": true,
+      "dual_feasible_60": true,
+      "lower": "8/5 (F==5/8 exact)",
+      "lower_ok": true,
+      "note": "최적성 미증명 — bounded certificate (정직)",
+      "upper": "(11+2√10)/9 ≈ 1.9250 (명시 3항)",
+      "upper_ok": true
+    },
+    "extent_T": {
+      "dual_feasible_6": true,
+      "primal_2term": true,
+      "value": "4−2√2",
+      "zero_gap_exact_Q_sqrt2": true
+    },
+    "extent_TT": {
+      "dual_w_tensor_60": true,
+      "multiplicativity_instance": true,
+      "primal_tensor_4term": true,
+      "value": "24−16√2"
+    },
+    "honest_boundary": "전부 증명서/관측(봉인=magic_cs 유니터리뿐). 스칼라=ℚ(√2) 정확산술·벡터 재구성=닫힌형 계수 1e-12. n≥3 최적성 주장 없음. 문헌 선험 인용 없음.",
+    "ok": true,
+    "robustness_T": {
+      "dual_W_XplusY": true,
+      "primal": true,
+      "value": "√2",
+      "zero_gap_exact": true
+    },
+    "seal_links": true,
+    "stab_enumeration_6_60": true,
+    "tcount_certificates": {
+      "cs_eq_3T_construction": true,
+      "gate_factor_eq_xiT": true,
+      "magic_a_geq_1_tight": true,
+      "magic_cs_geq_3": true,
+      "note": "t ≥ ⌈ln ξ_하한/ln(4−2√2)⌉ · CS 3-T 구성 == 위상다항 f=2x₀x₁"
+    },
+    "teeth": {
+      "dual_scaled_violates": true,
+      "fake_lower_rejected": true,
+      "primal_corrupt": true
+    }
+  }
+}

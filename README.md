@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 373 sealed applications** · registry root `860fdf32…`
+- **89 sealed modules · 374 sealed applications** · registry root `6871f793…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 860fdf32… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 6871f793… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -62,7 +62,11 @@ python scripts/reproduce_all.py
   (Clifford fragment), a **path-sum ℤ[ω₈] fourth and a stabilizer-decomposition fifth verification
   path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
   each branch as an affine-support quadratic form — no matrix products; 128 sealed Clifford+T apps
-  re-verified, skips recorded with reasons), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
+  re-verified, skips recorded with reasons), a **magic resource-theory exact certificate layer**
+  (stabilizer extent/robustness with primal + dual + zero-gap certificates in exact ℚ(√2) arithmetic
+  — ξ(|T⟩)=4−2√2, R(|T⟩)=√2, bounded ξ(|CS⟩) ∈ [8/5, (11+2√10)/9]; tight T-count lower-bound
+  certificates, and a Clifford-invariant proof that |T⟩⊗|T⟩ cannot be deterministically converted
+  to |CS⟩), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
   the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
   cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
   triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal

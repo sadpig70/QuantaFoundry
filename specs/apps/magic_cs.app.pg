@@ -1,0 +1,22 @@
+# magic_cs — |CS⟩ = CS|++⟩ 자원상태 준비 (정의 열 |00⟩). 2q Tier-0. TrackHE5 P2 (#RESOURCE).
+# ★magic 자원 사슬 T→CS→CCZ 의 기착지: 2q 대각 C₃ 자원상태 — extent/robustness 증명서·T-count
+#   인증(≥3, 타이트)의 표적. plan = [h,h,cs_gate] 3스텝(신규 module 0).
+# honest(mub 선례): 정의 열만 자원상태 물리 — 여타 열=회로-유도 완성. golden = CS·(H⊗H) 정의 직접.
+# witness(extent 8/5≤ξ≤(11+2√10)/9 bounded 증명서·★T⊗T↛CS Clifford 비동치 판정·T-count≥3)=
+#   magic_resource_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=준비 유니터리뿐. 단조량 값·변환 가부·하한 = 증명서/관측.
+```json id=app_meta
+{"id": "magic_cs", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+CS = np.diag([1, 1, 1, 1j]).astype(complex)
+golden = CS @ np.kron(H, H)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/cs_gate.pg", "targets": [0, 1]}]}
+```

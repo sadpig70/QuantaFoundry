@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 373,
-  "round_trip_checked": 338,
-  "round_trip_matched": 338,
+  "exported": 374,
+  "round_trip_checked": 339,
+  "round_trip_matched": 339,
   "round_trip_skipped_large": 35,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -3127,6 +3127,16 @@
       "round_trip_match": true,
       "unmapped_gates": {},
       "qasm_path": ".pgf/adoption/qasm/magic_a.qasm"
+    },
+    {
+      "id": "magic_cs",
+      "n_sys": 2,
+      "n_ops": 3,
+      "sealed_u_hash": "f9a74799d8c4b687",
+      "round_trip_u_hash": "f9a74799d8c4b687",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/magic_cs.qasm"
     },
     {
       "id": "mbqc_h",

@@ -266,6 +266,8 @@ APP_LIST = [
     ("du_gate_j8.app.pg",                None),  # V=iSWAP†·e^{−iπ/8 ZZ} — 비-Clifford DU (J=π/8)
     ("du_brick6_t2.app.pg",              None),  # 6q PBC 브릭워크 2층 — du_gate sub-app ×6
     ("floquet4_uf.app.pg",               None),  # CZ링+T킥 주기 유니터리 — 첫 Floquet (16스텝)
+    # TrackHE5 P2: magic 자원 이론 exact 코어 (report5 6/8 합의) — 자원상태 (module 0)
+    ("magic_cs.app.pg",                  None),  # |CS⟩=CS|++⟩ — T→CS→CCZ 사슬 기착지 (3스텝)
 ]
 
 

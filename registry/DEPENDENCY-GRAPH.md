@@ -536,6 +536,10 @@ magic_a
 ├─ h_gate (module)
 └─ t_gate (module)
 
+magic_cs
+├─ cs_gate (module)
+└─ h_gate (module×2)
+
 mbqc_h
 ├─ cnot (module)
 ├─ cz (module)

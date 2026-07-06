@@ -574,7 +574,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   floquet4_uf(93c0ffec, CZ링+T킥). dyn_observe(3at): ★쌍대성 exact·★광원뿔 두 경로
             #   (오프레이 전소멸+광선 X½/Y½/Z1==M₊² 닫힌형)·quasi-energy 기록·teeth 3.
             #   370→373앱·root 9b5964fa→860fdf32460c0110. §3b 관문 개창.
-        P2_MagicResource // extent/robustness exact 증명서 + T-count 하한 (designing)
+        P2_MagicResource // extent/robustness exact 증명서 + T-count 하한 (done — 2026-07-07)
+            # ✅ magic_cs(f9a74799) 봉인 1 + magic_resource_observe(3au): ξ(T)=4−2√2·ξ(T⊗2)=24−16√2
+            #   완전 증명서(ℚ(√2) Fraction 정확산술 격차0)·ξ(CS) bounded [8/5,(11+2√10)/9]·R(T)=√2·
+            #   T-count 인증 magic_a≥1/magic_cs≥3 타이트·★A6-1 반증(F 불변량: T⊗T↛CS).
+            #   373→374앱·root 860fdf32→6871f793fa2d5f0b.
         P3_MatchgatePfaffian // 제6 독립 검증경로 (designing) @dep:P2_MagicResource
         P4_RM15 // RM [[15,1,3]] transversal T (designing) @dep:P3_MatchgatePfaffian
         P5_KnotDeepening // 3-strand word family + 다중 불변량 (designing) @dep:P4_RM15
