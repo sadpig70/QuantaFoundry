@@ -1,0 +1,56 @@
+# schur3_dag — 3q Schur-Weyl 디코더(U₃†: 물리 CG 상태 → label 기저). Tier-0 8×8. TrackHE4 P4 (#SCHUR).
+# ★weak Schur sampling 의 실제 원시 방향: 물리상태에 U† 적용 후 label 측정. 기봉인 schur3 word 의
+#   기계적 역word(21스텝: 역순 + ry_cg_half↔dag·ry_pi4↔neg 짝교환, 전부 기봉인 — 신규 module 0).
+# golden = CG 계수 직접 구성의 conj-transpose (회로 독립). witness(U†U=I 재발견·spectrum 샘플링)=
+#   schur4_observe 가산 확장(INV-Q3, seal 아님).
+# 정직 경계: 봉인=디코더 유니터리뿐. 샘플링 분포·추정오차=관측.
+```json id=app_meta
+{"id": "schur3_dag", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+s2, s3, s6 = np.sqrt(2.0), np.sqrt(3.0), np.sqrt(6.0)
+def v3(d):
+    v = np.zeros(8, dtype=complex)
+    for b, a in d.items():
+        v[int("".join(map(str, b)), 2)] = a
+    return v
+L3 = {
+    (0,0,0): v3({(0,0,0): 1.0}),
+    (0,0,1): v3({(0,0,1): 1/s3, (0,1,0): 1/s3, (1,0,0): 1/s3}),
+    (1,0,1): v3({(0,1,1): 1/s3, (1,0,1): 1/s3, (1,1,0): 1/s3}),
+    (1,1,1): v3({(1,1,1): 1.0}),
+    (1,0,0): v3({(1,0,0): 2/s6, (0,0,1): -1/s6, (0,1,0): -1/s6}),
+    (0,1,1): v3({(0,1,1): 2/s6, (1,0,1): -1/s6, (1,1,0): -1/s6}),
+    (0,1,0): v3({(0,0,1): 1/s2, (0,1,0): -1/s2}),
+    (1,1,0): v3({(1,0,1): 1/s2, (1,1,0): -1/s2}),
+}
+U = np.zeros((8, 8), dtype=complex)
+for lab, vec in L3.items():
+    U[:, int("".join(map(str, lab)), 2)] = vec
+golden = U.conj().T
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [2, 1]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [2]},
+  {"spec": "../modules/cz.pg", "targets": [1, 2]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/ry_cg_half.pg", "targets": [0]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_cg_half_dag.pg", "targets": [0]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/ry_cg_half_dag.pg", "targets": [0]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/ry_cg_half.pg", "targets": [0]},
+  {"spec": "../modules/toffoli.pg", "targets": [1, 2, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 2]}]}
+```

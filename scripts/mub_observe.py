@@ -61,6 +61,65 @@ def reconstruct(rho, states):
     return rec
 
 
+def observe_p5(states):
+    """TrackHE4 P5 가산: shadow 측정측 — premeasurement V_b†·frame channel·재구성 witness."""
+    links = True
+    meas = {}
+    for b in (2, 3, 4, 5):
+        sealed = os.path.join(ROOT, "registry", "apps", f"mub4_meas_b{b}.sealed.json")
+        links &= os.path.exists(sealed) and bool(json.load(open(sealed, encoding="utf-8")).get("u_hash"))
+        meas[b] = load_golden(f"mub4_meas_b{b}.app.pg")
+
+    # 측정측 완성: V_b†·V_b == I (기봉인 준비 s0 앱 golden == V_b) + V_b†·|state(b,s)⟩ == |s⟩ 16/16
+    inv_ok = all(np.allclose(meas[b] @ load_golden(f"mub4_b{b}_s0.app.pg"), np.eye(4), atol=1e-12)
+                 for b in (2, 3, 4, 5))
+    pre_ok = True
+    for b in (2, 3, 4, 5):
+        for s in range(4):
+            out = meas[b] @ states[(b - 1) * 4 + s]
+            j = int(np.argmax(np.abs(out)))
+            pre_ok &= bool(j == s and abs(abs(out[j]) - 1) < 1e-12
+                           and abs(np.abs(out).sum() - 1) < 1e-11)
+
+    # shadow exact core: frame channel M(ρ)=(ρ+I)/5 · 역재구성 5M−I==ρ · Bell·Pauli 회복 (유리 대수)
+    rng = np.random.default_rng(0)
+    A_ = rng.standard_normal((4, 4)) + 1j * rng.standard_normal((4, 4))
+    rho_r = A_ @ A_.conj().T; rho_r /= np.trace(rho_r)
+    bell = np.zeros(4, dtype=complex); bell[0] = bell[3] = 1 / np.sqrt(2)
+    rho_b = np.outer(bell, bell.conj())
+    frame_ok = inv_frame_ok = True
+    for rho in (rho_r, rho_b):
+        M = sum(np.real(np.vdot(u, rho @ u)) * np.outer(u, u.conj()) for u in states) / 5
+        frame_ok &= bool(np.allclose(M, (rho + np.eye(4)) / 5, atol=1e-12))
+        inv_frame_ok &= bool(np.allclose(5 * M - np.eye(4), rho, atol=1e-12))
+    pauli_ok = True
+    rec_b = 5 * sum(np.real(np.vdot(u, rho_b @ u)) * np.outer(u, u.conj()) for u in states) / 5 \
+        - np.eye(4)
+    for nm in ("XX", "YY", "ZZ", "XI", "IZ"):
+        P = pp(nm)
+        pauli_ok &= bool(abs(np.trace(P @ rec_b) - np.trace(P @ rho_b)) < 1e-12)
+
+    # teeth: sdg→s 교란(수반 부호) → premeasurement 실패
+    Sg = np.diag([1, 1j]).astype(complex)
+    H1 = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+    bad3 = np.kron(H1 @ Sg, I2) @ np.kron(I2, H1 @ Sg)   # sdg 대신 s
+    out = bad3 @ states[8]                                # b3_s0
+    teeth = bool(not (int(np.argmax(np.abs(out))) == 0 and abs(abs(out[0]) - 1) < 1e-6))
+
+    ok = bool(links and inv_ok and pre_ok and frame_ok and inv_frame_ok and pauli_ok and teeth)
+    return {"seal_links_4meas": links,
+            "meas_inverts_sealed_prep_word": inv_ok,
+            "premeasurement_16of16_states_to_labels": pre_ok,
+            "shadow_exact_core": {"frame_channel_rho_plus_I_over5": frame_ok,
+                                  "inverse_5M_minus_I": inv_frame_ok,
+                                  "bell_pauli_recovery": pauli_ok,
+                                  "note": "유리 계수 exact — 유한표본 통계는 범위 밖"},
+            "teeth_sdg_sign": teeth,
+            "honest_boundary": "봉인=premeasurement 유니터리 4뿐(b1=계산기저 자명). frame channel·"
+                               "재구성=관측(INV-Q3). median-of-means·신뢰구간·유한표본=범위 밖.",
+            "ok": ok}
+
+
 def observe():
     ids = [f"mub4_b{b}_s{s}" for b in range(1, 6) for s in range(4)]
     # 1. seal 링크 + golden 로드
@@ -131,9 +190,11 @@ def observe():
     dev_drop = float(np.abs(reconstruct(rho_p, drop) - rho_p).max())
     teeth_ok = bool(abs(fp_bad - 0.1) > 1e-6 and unb_bad and dev_drop > 1e-3)
 
+    p5 = observe_p5(states)
     ok = bool(seal_ok and unitary_ok and label_ok and gram_ok and fp_ok and m2_ok
-              and tomo_ok and teeth_ok)
-    return {"ensemble": {"n_states": 20, "bases": 5, "stabilizers": {f"b{b}": list(STAB[b]) for b in STAB},
+              and tomo_ok and teeth_ok and p5["ok"])
+    return {"p5_shadow": p5,
+            "ensemble": {"n_states": 20, "bases": 5, "stabilizers": {f"b{b}": list(STAB[b]) for b in STAB},
                          "seal_link_20": seal_ok, "unitary": unitary_ok,
                          "pauli_label_map_20": label_ok, "mutually_unbiased_400": gram_ok},
             "state_2design": {"frame_potential": fp, "target": 0.1, "fp_exact": fp_ok,

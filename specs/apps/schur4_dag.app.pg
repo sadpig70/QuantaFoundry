@@ -1,0 +1,98 @@
+# schur4_dag — 4q Schur-Weyl 디코더(U₄†: 물리 CG 상태 → label 기저). Tier-0 16×16. TrackHE4 P4 (#SCHUR).
+# ★weak Schur sampling 코어(report4 A1-3/A8-3 registerization 의 실행 방향): 물리상태에 U† 적용 후
+#   label 측정 = J-섹터 판독(label 규약은 schur4 헤더). U₄†=W†·(U₃†⊗I) — ★기봉인 schur3_dag sub-app
+#   복리 + W 역word(기계적 역순·ry짝 교환, 신규 module 0).
+# golden = CG 계수 직접 구성의 conj-transpose (회로 독립). witness(U†U=I·spectrum 히스토그램)=
+#   schur4_observe 가산 확장(INV-Q3, seal 아님).
+# 정직 경계: 봉인=디코더 유니터리뿐. 샘플링 분포·스펙트럼 추정오차=관측.
+```json id=app_meta
+{"id": "schur4_dag", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+s2, s3, s6 = np.sqrt(2.0), np.sqrt(3.0), np.sqrt(6.0)
+def v3(d):
+    v = np.zeros(8, dtype=complex)
+    for b, a in d.items():
+        v[int("".join(map(str, b)), 2)] = a
+    return v
+L3 = {
+    (0,0,0): v3({(0,0,0): 1.0}),
+    (0,0,1): v3({(0,0,1): 1/s3, (0,1,0): 1/s3, (1,0,0): 1/s3}),
+    (1,0,1): v3({(0,1,1): 1/s3, (1,0,1): 1/s3, (1,1,0): 1/s3}),
+    (1,1,1): v3({(1,1,1): 1.0}),
+    (1,0,0): v3({(1,0,0): 2/s6, (0,0,1): -1/s6, (0,1,0): -1/s6}),
+    (0,1,1): v3({(0,1,1): 2/s6, (1,0,1): -1/s6, (1,1,0): -1/s6}),
+    (0,1,0): v3({(0,0,1): 1/s2, (0,1,0): -1/s2}),
+    (1,1,0): v3({(1,0,1): 1/s2, (1,1,0): -1/s2}),
+}
+e0, e1 = np.array([1, 0], dtype=complex), np.array([0, 1], dtype=complex)
+PAIRS = [
+    ((0,0,1), (0,0,0), np.sqrt(3/4)),
+    ((1,0,1), (0,0,1), np.sqrt(2/4)),
+    ((1,1,1), (1,0,1), np.sqrt(1/4)),
+    ((0,1,1), (1,0,0), np.sqrt(1/2)),
+    ((1,1,0), (0,1,0), np.sqrt(1/2)),
+]
+SINGLES = [((0,0,0), 0), ((1,1,1), 1), ((1,0,0), 0), ((0,1,1), 1), ((0,1,0), 0), ((1,1,0), 1)]
+U = np.zeros((16, 16), dtype=complex)
+def colidx(l3, s):
+    return (int("".join(map(str, l3)), 2) << 1) | s
+for A3, B3, c in PAIRS:
+    s_ = np.sqrt(1 - c * c)
+    U[:, colidx(A3, 0)] = c * np.kron(L3[A3], e0) + s_ * np.kron(L3[B3], e1)
+    U[:, colidx(B3, 1)] = -s_ * np.kron(L3[A3], e0) + c * np.kron(L3[B3], e1)
+for l3, s in SINGLES:
+    U[:, colidx(l3, s)] = np.kron(L3[l3], [e0, e1][s])
+golden = U.conj().T
+```
+```json id=plan
+{"steps": [
+  {"app": "schur3_dag.app.pg", "targets": [0, 1, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 1]},
+  {"spec": "../modules/ry_negpi6.pg", "targets": [3]},
+  {"spec": "../modules/ry_negpi6.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/ry_pi6.pg", "targets": [3]},
+  {"spec": "../modules/ry_pi6.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/ry_negpi4.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/ry_pi4.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 0]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_negpi6.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/ry_pi6.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [0, 1, 2, 3]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 2]}]}
+```

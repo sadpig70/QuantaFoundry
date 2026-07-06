@@ -1,0 +1,21 @@
+# mub4_meas_b3 — MUB 기저 3(Y⊗Y) 측정 유니터리 V₃† = (S₁H₁S₀H₀)† = H₀S₀†H₁S₁†. 2q Tier-0.
+#   TrackHE4 P5 (#MUB). ★classical shadow premeasurement — sdg_gate(기봉인) 소비, 신규 module 0.
+# 정직 경계: 봉인=회전 유니터리뿐. 유한표본 shadow 통계=관측/범위 밖.
+```json id=app_meta
+{"id": "mub4_meas_b3", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+S = np.diag([1, 1j]).astype(complex)
+V = np.kron(S @ H, I2) @ np.kron(I2, S @ H)
+golden = V.conj().T
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/sdg_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

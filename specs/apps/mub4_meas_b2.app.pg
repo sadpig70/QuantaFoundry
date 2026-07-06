@@ -1,0 +1,18 @@
+# mub4_meas_b2 — MUB 기저 2(X⊗X) 측정 유니터리 V₂†: 기저상태를 계산기저로 회전. 2q Tier-0. TrackHE4 P5 (#MUB).
+# ★classical shadow exact core 의 premeasurement: V₂=H⊗H(자기역) → V₂†=H⊗H. 기봉인 mub4_b2_s* 준비
+#   자산의 측정측 완성(신규 module 0). frame channel M(ρ)=(ρ+I)/5·역재구성 witness=mub_observe 가산 확장.
+# 정직 경계: 봉인=회전 유니터리뿐. 유한표본 shadow(median-of-means·신뢰구간)=관측/범위 밖.
+```json id=app_meta
+{"id": "mub4_meas_b2", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+V = np.kron(H, np.eye(2)) @ np.kron(np.eye(2), H)
+golden = V.conj().T
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

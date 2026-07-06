@@ -1,0 +1,54 @@
+# dicke4_k2 — Dicke 상태 |D⁴₂⟩=(Σ_{|x|=2}|x⟩)/√6 준비 (정의 열 |0000⟩). Tier-0 16×16. TrackHE4 P4 (#SCHUR).
+# ★plan = [x(0), x(2), schur4] 3스텝: |2,0⟩ Schur 기저 벡터가 곧 |D⁴₂⟩ — schur4 인코더가 label 1010 을
+#   Dicke 로 사상(수직 복리). ★report4 A8-3 의 ry_sqrt23 사람게이트 후보를 완전 회피(module 0 확정).
+#   Dicke family: k=1=wstate4 기봉인·k=2=본 앱·k=0/4=계산기저 자명 — d=4 전 층 완비.
+# honest(mub 선례): 정의 열만 Dicke 물리 — 여타 열=회로-유도 유니터리 완성. golden = schur4 CG 직접
+#   구성(회로 독립) × X₀X₂ 열순열. 정의열 witness = schur4_observe 가산 확장(INV-Q3).
+# 정직 경계: 봉인=준비 유니터리뿐. n≥5 Dicke·중첩 가중 준비=범위 밖.
+```json id=app_meta
+{"id": "dicke4_k2", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+s2, s3, s6 = np.sqrt(2.0), np.sqrt(3.0), np.sqrt(6.0)
+def v3(d):
+    v = np.zeros(8, dtype=complex)
+    for b, a in d.items():
+        v[int("".join(map(str, b)), 2)] = a
+    return v
+L3 = {
+    (0,0,0): v3({(0,0,0): 1.0}),
+    (0,0,1): v3({(0,0,1): 1/s3, (0,1,0): 1/s3, (1,0,0): 1/s3}),
+    (1,0,1): v3({(0,1,1): 1/s3, (1,0,1): 1/s3, (1,1,0): 1/s3}),
+    (1,1,1): v3({(1,1,1): 1.0}),
+    (1,0,0): v3({(1,0,0): 2/s6, (0,0,1): -1/s6, (0,1,0): -1/s6}),
+    (0,1,1): v3({(0,1,1): 2/s6, (1,0,1): -1/s6, (1,1,0): -1/s6}),
+    (0,1,0): v3({(0,0,1): 1/s2, (0,1,0): -1/s2}),
+    (1,1,0): v3({(1,0,1): 1/s2, (1,1,0): -1/s2}),
+}
+e0, e1 = np.array([1, 0], dtype=complex), np.array([0, 1], dtype=complex)
+PAIRS = [
+    ((0,0,1), (0,0,0), np.sqrt(3/4)),
+    ((1,0,1), (0,0,1), np.sqrt(2/4)),
+    ((1,1,1), (1,0,1), np.sqrt(1/4)),
+    ((0,1,1), (1,0,0), np.sqrt(1/2)),
+    ((1,1,0), (0,1,0), np.sqrt(1/2)),
+]
+SINGLES = [((0,0,0), 0), ((1,1,1), 1), ((1,0,0), 0), ((0,1,1), 1), ((0,1,0), 0), ((1,1,0), 1)]
+U = np.zeros((16, 16), dtype=complex)
+def colidx(l3, s):
+    return (int("".join(map(str, l3)), 2) << 1) | s
+for A3, B3, c in PAIRS:
+    s_ = np.sqrt(1 - c * c)
+    U[:, colidx(A3, 0)] = c * np.kron(L3[A3], e0) + s_ * np.kron(L3[B3], e1)
+    U[:, colidx(B3, 1)] = -s_ * np.kron(L3[A3], e0) + c * np.kron(L3[B3], e1)
+for l3, s in SINGLES:
+    U[:, colidx(l3, s)] = np.kron(L3[l3], [e0, e1][s])
+golden = U[:, [c ^ 0b1010 for c in range(16)]]
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"app": "schur4.app.pg", "targets": [0, 1, 2, 3]}]}
+```

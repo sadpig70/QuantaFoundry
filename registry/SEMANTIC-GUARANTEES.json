@@ -1811,6 +1811,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "5d4725467b225fca84863f917269a733b2f2b68a398d1f736e6ddbde46734f5b"
     },
+    "app:dicke4_k2": {
+      "kind": "app",
+      "id": "dicke4_k2",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1af9b5b1b3a89735ebbee1e057ed5919c2d8b3eb06d8f1b97e2df0d7835719d9"
+    },
     "app:diffusion": {
       "kind": "app",
       "id": "diffusion",
@@ -2448,6 +2457,42 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "2dc5525fcb6ca942e49a3022bca5d867757a1c4257acb12f7b16a47fb72aeab0"
+    },
+    "app:mub4_meas_b2": {
+      "kind": "app",
+      "id": "mub4_meas_b2",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "5dd4cea321627bed60e59676cd6db7befda8c261d9f5a6e66e658ec4246bd366"
+    },
+    "app:mub4_meas_b3": {
+      "kind": "app",
+      "id": "mub4_meas_b3",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "cc1b311988c5ba1af2d140ff4e0305401d497a77020de3f2b3e9a1fb6635c7e0"
+    },
+    "app:mub4_meas_b4": {
+      "kind": "app",
+      "id": "mub4_meas_b4",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "f058f952fe7f8ef8dee9f6f3c044490215c17f71cb7ea574ae5e2877566a2128"
+    },
+    "app:mub4_meas_b5": {
+      "kind": "app",
+      "id": "mub4_meas_b5",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b8a486bad6fa61bae7db3e9e93f35326586ea057d3b76f8eeb0763c4bff34ec3"
     },
     "app:naimark_ud3": {
       "kind": "app",
@@ -3343,6 +3388,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "45d57a5d08852d134b06a9b31732a69624a271a8d36d68b58a325977a4b70ad4"
     },
+    "app:schur3_dag": {
+      "kind": "app",
+      "id": "schur3_dag",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c79e962e0d576cbefc739a61d12c9991f8f59ceb40441c3537033a853730aecf"
+    },
     "app:schur4": {
       "kind": "app",
       "id": "schur4",
@@ -3351,6 +3405,24 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9ec8eb81168156b5c7f980a3f75e102488f708b16a8399de1b7f47e50a63487a"
+    },
+    "app:schur4_dag": {
+      "kind": "app",
+      "id": "schur4_dag",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "50023750f1936238f5905ae2b46a9339329b8e7e5275bd5c686682b0d1b2aafb"
+    },
+    "app:schur_reflect4": {
+      "kind": "app",
+      "id": "schur_reflect4",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "abbdacc4332340cd1f613c2c70454b80fe281f477f753db91379c1e0f43363c6"
     },
     "app:sdg_gate": {
       "kind": "app",
@@ -5013,7 +5085,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 414,
+        "unitary_equiv": 422,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 19
       },
@@ -5022,7 +5094,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 503,
+      "unitary_equiv": 511,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 19
     }

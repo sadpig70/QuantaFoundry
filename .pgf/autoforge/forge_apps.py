@@ -249,6 +249,16 @@ APP_LIST = [
     ("gf8_mul.app.pg",                   None),  # 일반 가환 곱 t⊕=a·b — Toffoli 12 (bilinear)
     ("rs_synd_core.app.pg",              None),  # S⊕=α·r₀⊕α²·r₁ — CNOT 9 (GF(8)-선형)
     ("rs73_encoder.app.pg",              None),  # RS(7,3) 계통적 인코더 — 21q STRUCTURAL, CNOT 60
+    # TrackHE4 P4: Schur sampling 알고리즘화 (report4 3/8 합의) — decoder·Dicke·reflector (module 0)
+    ("schur3_dag.app.pg",                None),  # U₃† 디코더 — schur3 역word 21스텝
+    ("schur4_dag.app.pg",                None),  # U₄† 디코더(sampling 코어) — schur3_dag 복리
+    ("dicke4_k2.app.pg",                 None),  # |D⁴₂⟩ = schur4|1010⟩ — 3스텝, ry_sqrt23 게이트 회피
+    ("schur_reflect4.app.pg",            None),  # R=2P_sym−I = U·D(ANF 10항)·U† — P2 사전 교차복리
+    # TrackHE4 P5: MUB-20 shadow 측정측 (report4 2/8 합의) — premeasurement V_b† (module 0)
+    ("mub4_meas_b2.app.pg",              None),  # (H⊗H)† — X⊗X 기저
+    ("mub4_meas_b3.app.pg",              None),  # (S₁H₁S₀H₀)† — Y⊗Y 기저
+    ("mub4_meas_b4.app.pg",              None),  # (CZ·S₁·H₁·H₀)† — 얽힘기저
+    ("mub4_meas_b5.app.pg",              None),  # (CZ·H₁·S₀·H₀)† — 얽힘기저 (5기저 완성)
 ]
 
 

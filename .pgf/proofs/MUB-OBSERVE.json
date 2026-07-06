@@ -34,6 +34,20 @@
     },
     "honest_boundary": "봉인=개별 상태준비 유니터리 20개뿐(정의 열만 MUB 물리). projective state 2-design 이며 unitary 2-design 아님(G2a 하한 226 반증의 대체 payoff). witness·단층재구성=관측(seal 아님, INV-Q3). 확률=해석값 — 유한샘플 shadow tomography 미구현(기반만).",
     "ok": true,
+    "p5_shadow": {
+      "honest_boundary": "봉인=premeasurement 유니터리 4뿐(b1=계산기저 자명). frame channel·재구성=관측(INV-Q3). median-of-means·신뢰구간·유한표본=범위 밖.",
+      "meas_inverts_sealed_prep_word": true,
+      "ok": true,
+      "premeasurement_16of16_states_to_labels": true,
+      "seal_links_4meas": true,
+      "shadow_exact_core": {
+        "bell_pauli_recovery": true,
+        "frame_channel_rho_plus_I_over5": true,
+        "inverse_5M_minus_I": true,
+        "note": "유리 계수 exact — 유한표본 통계는 범위 밖"
+      },
+      "teeth_sdg_sign": true
+    },
     "sealed_assets": "mub4_b{1..5}_s{0..3} 20 apps (Tier-0 exact, 신규 module 0)",
     "state_2design": {
       "fp_exact": true,

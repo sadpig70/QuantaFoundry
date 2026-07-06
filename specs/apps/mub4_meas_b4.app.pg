@@ -1,0 +1,22 @@
+# mub4_meas_b4 — MUB 기저 4(얽힘 스태빌라이저 XY/YX 축) 측정 유니터리 V₄†, V₄=CZ·S₁·H₁·H₀. 2q Tier-0.
+#   TrackHE4 P5 (#MUB). V₄† = H₀·H₁·S₁†·CZ — 얽힘기저 premeasurement(CZ 포함), 신규 module 0.
+# 정직 경계: 봉인=회전 유니터리뿐. 유한표본 shadow 통계=관측/범위 밖.
+```json id=app_meta
+{"id": "mub4_meas_b4", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+S = np.diag([1, 1j]).astype(complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+V = CZ @ np.kron(I2, S) @ np.kron(I2, H) @ np.kron(H, I2)
+golden = V.conj().T
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cz.pg", "targets": [0, 1]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]}]}
+```

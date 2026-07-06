@@ -7,6 +7,43 @@
     "decomposition": "2^⊗4 = spin-2(5) ⊕ spin-1(3×3) ⊕ spin-0(1×2) · S₄ [4]/[3,1]/[2,2]",
     "honest_boundary": "봉인=회로==CG golden exact 뿐. J²/Jz·S₄ duality=witness 관측(INV-Q3). 신규 module 0(G4b 승인 게이트 스킵). n≥5·irrep 레지스터 분리=차기.",
     "ok": true,
+    "p4_sampling": {
+      "decoder_dag_eq_adjoint": true,
+      "dicke_family": {
+        "k1_eq_wstate4_uptophase": true,
+        "k2_def_col": true,
+        "note": "k=0/4 자명·k=1=wstate4 기봉인·k=2=schur4|1010⟩ — ry_sqrt23 게이트 회피"
+      },
+      "honest_boundary": "봉인=유니터리 4(dag 2·Dicke·반사자)뿐. 샘플링 분포·스펙트럼 추정=관측(INV-Q3). 반복 진폭증폭·대칭성 검정 프로토콜·n≥5=범위 밖.",
+      "ok": true,
+      "reflector": {
+        "eq_2P_minus_I_combinatorial": true,
+        "spectrum_plus5_minus11": true,
+        "two_path_UDUdag": true
+      },
+      "schur_sampling_spectrum": {
+        "histograms": {
+          "basis_0011": {
+            "j0": 0.333333333,
+            "j1": 0.5,
+            "j2": 0.166666667
+          },
+          "dicke_k2": {
+            "j0": 0.0,
+            "j1": 0.0,
+            "j2": 1.0
+          },
+          "singlet_x_singlet": {
+            "j0": 1.0,
+            "j1": 0.0,
+            "j2": 0.0
+          }
+        },
+        "two_path_exact": true
+      },
+      "seal_links_5apps": true,
+      "teeth_D_monomial_drop": true
+    },
     "s4_duality": {
       "characters": {
         "t01": {

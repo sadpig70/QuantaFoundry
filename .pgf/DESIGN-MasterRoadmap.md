@@ -543,8 +543,14 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   gf8_observe 가산: mul 전수512·inv 교차(mul(frob²,frob))·rs73 두경로 전수512·
             #   신드롬제로 2048·★거리5 MDS 전수511·teeth. semantic method_desc 가산 1건.
             #   357→360앱·root 4f2a333f→6f262232dac41e79.
-        P4_SchurSampling // 반사자 R + label register + Dicke k=2 조건부 (designing)
-        P5_MubShadow // MUB 측정 word 4 + frame channel 대수 관측 (designing)
+        P4_SchurSampling // 반사자 R + 디코더 + Dicke k=2 (done — 2026-07-06)
+            # ✅ schur3_dag/schur4_dag(역word 디코더=sampling 방향)·dicke4_k2(=[x,x,schur4] —
+            #   ry_sqrt23 게이트 회피)·schur_reflect4(R=2P−I, D=ANF 10항 — P2 사전 교차복리,
+            #   golden=조합 독립). spectrum 두 경로 exact. label register 는 반사자+디코더가 흡수
+            #   (섹터 판독 물리 동일 — 별도 순열 앱 불요 판정).
+        P5_MubShadow // MUB 측정 word 4 + frame channel 대수 관측 (done — 2026-07-06)
+            # ✅ mub4_meas_b2~b5(V_b†, sdg 소비). 측정측↔기봉인 준비 20앱 역회전 16/16 ·
+            #   frame channel (ρ+I)/5·역재구성·Bell Pauli 회복 유리 exact. 360→368앱·root 32a44bfe.
         P6_StabRank // stabilizer-rank 제5 검증경로 인프라 (designing)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.

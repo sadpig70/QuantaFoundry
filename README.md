@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 360 sealed applications** · registry root `6f262232…`
+- **89 sealed modules · 368 sealed applications** · registry root `32a44bfe…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 6f262232… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 32a44bfe… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -56,8 +56,10 @@ python scripts/reproduce_all.py
   a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **fermionic SWAP**,
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
-  a **3-qubit Schur-Weyl transform** (direct Clebsch-Gordan cascade, J²/Jz simultaneous-
-  diagonalization witness + S₃ duality sector preservation), a **4-site AKLT/VBS state
+  a **3/4-qubit Schur-Weyl transform pair with decoders** (direct Clebsch-Gordan cascade, J²/Jz
+  simultaneous-diagonalization witness + S₃/S₄ duality sector preservation; the decoders make weak
+  Schur sampling executable, with a symmetric-subspace reflector 2P−I and a Dicke |D⁴₂⟩ preparation
+  as consumers), a **4-site AKLT/VBS state
   preparation** (tensor-network MPS class: sequential conditioned isometries, independent MPS
   contraction match + parent-Hamiltonian annihilation witness), and **open-system CPTP channels**
   (Stinespring dilation of bit-flip / phase-damping / amplitude-damping at the dyadic ½ point plus a
