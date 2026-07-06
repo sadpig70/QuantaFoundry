@@ -245,6 +245,10 @@ APP_LIST = [
     # TrackHE4 P2: C₃ 대각 phase-polynomial 정규형 (report4 5/8 합의) — T/CS/CCZ 사전 (module 0)
     ("c3_diag_ladder3.app.pg",           None),  # f=x₀+2x₀x₁+4x₀x₁x₂ — 차수 1·2·3 사다리 각 1항
     ("c3_diag_full3.app.pg",             None),  # f=Σxᵢ+2Σxᵢxⱼ+4x₀x₁x₂ — 전 계수 1 정준형 (7스텝)
+    # TrackHE4 P3: GF(8) 체 완결 + RS 부호 코어 (report4 4/8 합의) — 회전 0 (module 0)
+    ("gf8_mul.app.pg",                   None),  # 일반 가환 곱 t⊕=a·b — Toffoli 12 (bilinear)
+    ("rs_synd_core.app.pg",              None),  # S⊕=α·r₀⊕α²·r₁ — CNOT 9 (GF(8)-선형)
+    ("rs73_encoder.app.pg",              None),  # RS(7,3) 계통적 인코더 — 21q STRUCTURAL, CNOT 60
 ]
 
 

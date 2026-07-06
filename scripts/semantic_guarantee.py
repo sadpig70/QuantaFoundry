@@ -231,10 +231,12 @@ def main():
                  "method": "sampled-dense 두 독립경로 statevector(seed 봉인, W1.1). 부분(샘플) 보증 — 전수 unitary_equiv 아님"}
         if key in subspace and g["class"] == "structural_wellformed":  # V08 P0 격상
             pr = subspace[key]
+            # method_desc(비-Shor 앱용 자기기술, TrackHE4 P3 가산) 우선 — 없으면 기존 Shor 문구 그대로
             g = {"class": "subspace_permutation_verified",
-                 "method": f"modexp 코어 계산기저 부분공간 순열 강검증({pr['method']}, "
+                 "method": pr.get("method_desc") or (
+                           f"modexp 코어 계산기저 부분공간 순열 강검증({pr['method']}, "
                            f"basis {pr['basis_matched']}/{pr['basis_tested']}; path A=회로 게이트순열(cmul→MCT 전개) "
-                           "vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5)."}
+                           "vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).")}
         entry = {"kind": s["kind"], "id": s["id"], "tier": s["tier"], "tier_source": s["tier_source"],
                  "semantic_guarantee": g["class"], "method": g["method"], "u_hash": s["u_hash"]}
         if key in sampled:

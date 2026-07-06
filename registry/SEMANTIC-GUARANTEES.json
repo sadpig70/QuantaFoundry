@@ -1991,6 +1991,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "ac2452e6f80810c0ff52397be69b92b101279638535c0fe73624a8de66890220"
     },
+    "app:gf8_mul": {
+      "kind": "app",
+      "id": "gf8_mul",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "6595a35e595a598c126390974f3ea88a40c3603180d843c87215d0b8b4daa17b"
+    },
     "app:gf8_mulx": {
       "kind": "app",
       "id": "gf8_mulx",
@@ -2853,6 +2862,36 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "234dd855a657e68112fb9fb26451390b00079de7baa9717cb226a9e1db4f03bd"
+    },
+    "app:rs73_encoder": {
+      "kind": "app",
+      "id": "rs73_encoder",
+      "tier": 1,
+      "tier_source": "explicit",
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "RS(7,3) 인코더 계산기저 순열 강검증(exhaustive, basis 512/512; path A=spec plan CNOT 비트시뮬 vs path B=독립 다항 나눗셈 m(x)x⁴ mod g). +부호어 신드롬-제로 2048건·최소무게 5 전수 511(MDS). 전체 unitary dense 미검증(INV-R5).",
+      "u_hash": "af6f688dfa7882c1ceb90f127aa1fd93e8517242207c9cefc5de303d4ac521ff",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 512,
+        "basis_matched": 512,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "dense_materialized": false,
+        "scope": "message->parity permutation (exhaustive 512); NOT dense unitary equivalence — INV-R5",
+        "seed": 0,
+        "proof_digest": "22a134b2cb95c742"
+      }
+    },
+    "app:rs_synd_core": {
+      "kind": "app",
+      "id": "rs_synd_core",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "57dc57302e7a52c3cda6d0d000fdf02b182026a2df60bbea7b5e23baf21f0c73"
     },
     "app:rx_negpi4": {
       "kind": "app",
@@ -4974,18 +5013,18 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 412,
+        "unitary_equiv": 414,
         "unitary_equiv_sampled": 1,
-        "subspace_permutation_verified": 18
+        "subspace_permutation_verified": 19
       },
       "module": {
         "unitary_equiv": 89
       }
     },
     "by_class": {
-      "unitary_equiv": 501,
+      "unitary_equiv": 503,
       "unitary_equiv_sampled": 1,
-      "subspace_permutation_verified": 18
+      "subspace_permutation_verified": 19
     }
   }
 }

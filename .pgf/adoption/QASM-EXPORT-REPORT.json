@@ -1,9 +1,9 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 357,
-  "round_trip_checked": 323,
-  "round_trip_matched": 323,
-  "round_trip_skipped_large": 34,
+  "exported": 360,
+  "round_trip_checked": 325,
+  "round_trip_matched": 325,
+  "round_trip_skipped_large": 35,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
     "c10x",
@@ -2790,6 +2790,16 @@
       "qasm_path": ".pgf/adoption/qasm/gf8_inv.qasm"
     },
     {
+      "id": "gf8_mul",
+      "n_sys": 9,
+      "n_ops": 12,
+      "sealed_u_hash": "6595a35e595a598c",
+      "round_trip_u_hash": "6595a35e595a598c",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/gf8_mul.qasm"
+    },
+    {
       "id": "gf8_mulx",
       "n_sys": 3,
       "n_ops": 5,
@@ -3753,6 +3763,26 @@
       "round_trip_match": true,
       "unmapped_gates": {},
       "qasm_path": ".pgf/adoption/qasm/ring9.qasm"
+    },
+    {
+      "id": "rs73_encoder",
+      "n_sys": 21,
+      "n_ops": 60,
+      "sealed_u_hash": "af6f688dfa7882c1",
+      "round_trip_match": null,
+      "round_trip_note": "n=21 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/rs73_encoder.qasm"
+    },
+    {
+      "id": "rs_synd_core",
+      "n_sys": 9,
+      "n_ops": 9,
+      "sealed_u_hash": "57dc57302e7a52c3",
+      "round_trip_u_hash": "57dc57302e7a52c3",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/rs_synd_core.qasm"
     },
     {
       "id": "rxx_pi8",

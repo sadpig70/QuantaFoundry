@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 357 sealed applications** · registry root `4f2a333f…`
+- **89 sealed modules · 360 sealed applications** · registry root `6f262232…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 4f2a333f… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 6f262232… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -46,7 +46,10 @@ python scripts/reproduce_all.py
   (S₃ and D₄, driving a dihedral hidden-subgroup sampling observation), a **qutrit-embedded
   ternary-arithmetic** layer (qudit axis), a **topological logical-operation stack** (surface-code
   encoder + coherent lattice surgery + 2×2 toric ground state, closing the FTQC logical stack),
-  **GF(2ᵏ) finite-field arithmetic** (multiply/Frobenius/primitive-orbit), **Ising/Majorana braiding**
+  **GF(2ᵏ) finite-field arithmetic** (multiply/inverse/Frobenius/primitive-orbit, completed by a
+  general GF(8) product and a **Reed-Solomon RS(7,3) systematic encoder + syndrome core** — the
+  21-qubit encoder is structural, repaid to an exhaustively verified message→parity permutation
+  with an exhaustive distance-5 MDS observation), **Ising/Majorana braiding**
   (Yang-Baxter), a **Fibonacci-anyon braid + knot-word layer** (field ℚ(ζ₅,√φ); F-move basis change
   and torus-knot braid words whose closures feed a two-path Jones-polynomial observation at
   t = e^(−2πi/5) — sealed unitaries only, invariant values are observations), **measurement-based computation** (cluster state + coherent gate teleportation),

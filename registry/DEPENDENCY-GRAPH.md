@@ -375,6 +375,9 @@ gf8_inv
 ├─ cnot (module×3)
 └─ toffoli (module×3)
 
+gf8_mul
+└─ toffoli (module×12)
+
 gf8_mulx
 └─ cnot (module×5)
 
@@ -855,6 +858,12 @@ ring8
 ring9
 ├─ cz (module×9)
 └─ h_gate (module×9)
+
+rs73_encoder
+└─ cnot (module×60)
+
+rs_synd_core
+└─ cnot (module×9)
 
 s3_mult
 ├─ c3x (module×4)

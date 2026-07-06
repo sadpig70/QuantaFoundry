@@ -1,0 +1,40 @@
+# rs_synd_core — RS 신드롬 누산 코어 |r₀⟩|r₁⟩|s⟩→|r₀⟩|r₁⟩|s⊕α·r₀⊕α²·r₁⟩ (GF(8), α=x primitive).
+#   9q Tier-0 512×512. TrackHE4 P3 (#GF #CODE) — 부호이론 소비층 진입: S_j=Σrᵢα^{ij} (j=1, 2심볼)
+#   의 GF(8)-선형 누산 = CNOT 9개뿐(회전 0). α·a=(a₂, a₀⊕a₂, a₁)·α²·a=(a₁, a₁⊕a₂, a₀⊕a₂) 선형지도.
+# 레이아웃(심볼 내 big-endian): r₀=q0-2·r₁=q3-5·s=q6-8.
+# golden = 독립 체 산술 순열 직접(닫힌형). witness(선형성·rs73 부호어 신드롬-제로 연동)=gf8_observe
+#   가산 확장(INV-Q3, seal 아님).
+# 정직 경계: 봉인=누산 유니터리뿐. 전체 신드롬(4개)·오류 위치 복호(Berlekamp-Massey)=범위 밖.
+```json id=app_meta
+{"id": "rs_synd_core", "n_sys": 9, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+def gmul(a, b):
+    r = 0
+    for k in range(3):
+        if (b >> k) & 1:
+            r ^= a << k
+    for d in (5, 4, 3):
+        if (r >> d) & 1:
+            r ^= (0b1011 << (d - 3))
+    return r
+golden = np.zeros((512, 512), dtype=complex)
+for r0 in range(8):
+    for r1 in range(8):
+        for s in range(8):
+            out = s ^ gmul(2, r0) ^ gmul(gmul(2, 2), r1)
+            golden[(r0 << 6) | (r1 << 3) | out, (r0 << 6) | (r1 << 3) | s] = 1.0
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 8]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 7]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 7]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 6]},
+  {"spec": "../modules/cnot.pg", "targets": [4, 8]},
+  {"spec": "../modules/cnot.pg", "targets": [4, 7]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 7]},
+  {"spec": "../modules/cnot.pg", "targets": [5, 6]},
+  {"spec": "../modules/cnot.pg", "targets": [3, 6]}]}
+```

@@ -1,0 +1,21 @@
+{
+  "_note": "비파괴 sidecar. registry root/sealed/oracle/frozen 무영향. RS(7,3) 인코더 계산기저 순열 강검증(전수). gf8_observe 산출(TrackHE4 P3).",
+  "_schema": "subspace-proof-v1",
+  "basis_matched": 512,
+  "basis_tested": 512,
+  "dense_materialized": false,
+  "deterministic": true,
+  "exact_permutation": true,
+  "grade": "subspace_permutation_exhaustive",
+  "id": "rs73_encoder",
+  "method": "exhaustive",
+  "method_desc": "RS(7,3) 인코더 계산기저 순열 강검증(exhaustive, basis 512/512; path A=spec plan CNOT 비트시뮬 vs path B=독립 다항 나눗셈 m(x)x⁴ mod g). +부호어 신드롬-제로 2048건·최소무게 5 전수 511(MDS). 전체 unitary dense 미검증(INV-R5).",
+  "n_sys": 21,
+  "negative_control_reject": true,
+  "path_A": "circuit permutation (spec plan CNOT bit-sim, bitops only)",
+  "path_B": "independent polynomial division m(x)*x^4 mod g over GF(8)",
+  "proof_digest": "22a134b2cb95c742",
+  "scope": "message->parity permutation (exhaustive 512); NOT dense unitary equivalence — INV-R5",
+  "seed": 0,
+  "verified": true
+}

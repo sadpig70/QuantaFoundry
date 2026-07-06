@@ -537,7 +537,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   hierarchy_observe 가산 확장: ★강하 두 경로(행렬 켤레 vs Δ_j f 정수 다항)·2단→Pauli·
             #   멤버십 C₃∖C₂·컴파일러 항등 40표본·semi-Clifford U_t==CS·CNOT(탐색 0)·teeth CT교란.
             #   355→357앱·root 4c28b6b8→4f2a333fa5bbd165. honest: 봉인=인스턴스 2뿐·일반론=관측.
-        P3_GF8Field // gf8_mul + RS 신드롬 코어 + rs73 structural capstone (designing) @dep:P2_C3PhasePoly
+        P3_GF8Field // gf8_mul + RS 신드롬 코어 + rs73 structural capstone (done — 2026-07-06)
+            # ✅ gf8_mul(Toffoli 12, u_hash 6595a35e)·rs_synd_core(CNOT 9, 57dc5730)·rs73_encoder
+            #   (CNOT 60, 21q Tier-1, af6f688d + ★동일 커밋 subspace 상환 — 첫 비-Shor). 회전 0.
+            #   gf8_observe 가산: mul 전수512·inv 교차(mul(frob²,frob))·rs73 두경로 전수512·
+            #   신드롬제로 2048·★거리5 MDS 전수511·teeth. semantic method_desc 가산 1건.
+            #   357→360앱·root 4f2a333f→6f262232dac41e79.
         P4_SchurSampling // 반사자 R + label register + Dicke k=2 조건부 (designing)
         P5_MubShadow // MUB 측정 word 4 + frame channel 대수 관측 (designing)
         P6_StabRank // stabilizer-rank 제5 검증경로 인프라 (designing)

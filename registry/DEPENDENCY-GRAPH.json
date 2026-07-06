@@ -6566,6 +6566,17 @@
       }
     ]
   },
+  "gf8_mul": {
+    "u_hash": "6595a35e595a598c126390974f3ea88a40c3603180d843c87215d0b8b4daa17b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 12,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "gf8_mulx": {
     "u_hash": "b89d6063163e46a1777755856146cc054085373d41e9f5fc97a001ec8f5220a3",
     "depends_on": [
@@ -8615,6 +8626,28 @@
         "id": "h_gate",
         "uses": 9,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "rs73_encoder": {
+    "u_hash": "af6f688dfa7882c1ceb90f127aa1fd93e8517242207c9cefc5de303d4ac521ff",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 60,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      }
+    ]
+  },
+  "rs_synd_core": {
+    "u_hash": "57dc57302e7a52c3cda6d0d000fdf02b182026a2df60bbea7b5e23baf21f0c73",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 9,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
       }
     ]
   },
