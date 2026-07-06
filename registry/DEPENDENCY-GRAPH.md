@@ -354,6 +354,13 @@ dj2_const1
 ├─ h_gate (module×5)
 └─ x_gate (module×2)
 
+du_brick6_t2
+└─ du_gate_j8 (app×6)
+   ├─ cnot (module×2)
+   ├─ iswap (module)
+   ├─ t_gate (module)
+   └─ z_gate (module×2)
+
 fib_fmove
 ├─ ry_fib (module)
 └─ z_gate (module)
@@ -385,6 +392,11 @@ flag_synd_xxxx
 flag_synd_zzzz
 ├─ cnot (module×6)
 └─ h_gate (module×2)
+
+floquet4_uf
+├─ cz (module×4)
+├─ h_gate (module×8)
+└─ t_gate (module×4)
 
 fswap
 ├─ cz (module)

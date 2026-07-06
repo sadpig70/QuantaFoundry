@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 370 sealed applications** · registry root `9b5964fa…`
+- **89 sealed modules · 373 sealed applications** · registry root `860fdf32…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 9b5964fa… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 860fdf32… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -53,7 +53,11 @@ python scripts/reproduce_all.py
   (Yang-Baxter), a **Fibonacci-anyon braid + knot-word layer** (field ℚ(ζ₅,√φ); F-move basis change
   and torus-knot braid words whose closures feed a two-path Jones-polynomial observation at
   t = e^(−2πi/5) — sealed unitaries only, invariant values are observations), **measurement-based computation** (cluster state + coherent gate teleportation),
-  a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **fermionic SWAP**,
+  a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **non-Clifford
+  dual-unitary brickwork + kicked Floquet unitary** (space-time-dual gate at J=π/8; the
+  infinite-temperature two-point function vanishes off the light ray exactly and the on-ray value
+  matches a closed-form one-qubit transfer-channel power — two independent paths; quasi-energies
+  recorded as observations), a **fermionic SWAP**,
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **path-sum ℤ[ω₈] fourth and a stabilizer-decomposition fifth verification
   path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves

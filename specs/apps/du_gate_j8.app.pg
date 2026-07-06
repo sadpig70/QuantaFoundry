@@ -1,0 +1,27 @@
+# du_gate_j8 — 비-Clifford dual-unitary 게이트 V = exp[−i(π/4·XX + π/4·YY + π/8·ZZ)]. 2q Tier-0.
+#   TrackHE5 P1 (#DYN, report5 최고 합의 7/8). ★새 동역학 클래스 진입점: 시공간 쌍대성(재배열 행렬도
+#   유니터리) — §3b 관문 "non-Clifford QCA·Floquet" 개창. J=π/8 로 Clifford 점(J∈{0,π/4}) 회피.
+# XX·YY·ZZ 상호 가환 → 정확 3인자 분리(닫힌형, 탐색 0): V = iSWAP†·exp(−iπ/8 ZZ).
+#   plan = [z,z,iswap](=iSWAP†, ZZ 가환)·[cnot,t,cnot](=ZZ 인자 up-to-phase ζ₁₆ — C4 흡수) 6스텝,
+#   신규 module 0. 회로 성분 전부 ℤ[ω₈].
+# witness(쌍대성 Ṽ†Ṽ=I·광원뿔 상관 두 경로·teeth)=dyn_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=게이트 유니터리뿐. solvability·무한계 정리=관측(유한 시간창 명시).
+```json id=app_meta
+{"id": "du_gate_j8", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+F1 = np.array([[1, 0, 0, 0], [0, 0, -1j, 0], [0, -1j, 0, 0], [0, 0, 0, 1]], dtype=complex)
+p = np.exp(-1j * np.pi / 8)
+F2 = np.diag([p, np.conj(p), np.conj(p), p]).astype(complex)
+golden = F1 @ F2
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [1]},
+  {"spec": "../modules/iswap.pg", "targets": [0, 1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/t_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

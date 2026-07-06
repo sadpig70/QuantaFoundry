@@ -6415,6 +6415,46 @@
       }
     ]
   },
+  "du_brick6_t2": {
+    "u_hash": "a0b1603a1659a2becc5f0c2715e3fd08438809b58675705d83e070c5196dc3a3",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "du_gate_j8",
+        "uses": 6,
+        "child_u_hash": "78626df395727df12ff8e488d50124ae0e0f21fa4f661c88714e4d01ea74cadd"
+      }
+    ]
+  },
+  "du_gate_j8": {
+    "u_hash": "78626df395727df12ff8e488d50124ae0e0f21fa4f661c88714e4d01ea74cadd",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "iswap",
+        "uses": 1,
+        "child_u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 1,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 2,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
   "fib_braid_s1": {
     "u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b",
     "depends_on": [
@@ -6547,6 +6587,29 @@
         "id": "h_gate",
         "uses": 2,
         "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "floquet4_uf": {
+    "u_hash": "93c0ffec4ddacf3434aaae42902cc743b8e08dfacc0f191d1670bce8ae520085",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cz",
+        "uses": 4,
+        "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 8,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 4,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
       }
     ]
   },

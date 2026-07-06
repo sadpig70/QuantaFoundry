@@ -1883,6 +1883,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "fc0c31ceaddb259829bbaa067e6bce73853cf4166d9bc4bca3e2e6dcd2939fff"
     },
+    "app:du_brick6_t2": {
+      "kind": "app",
+      "id": "du_brick6_t2",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a0b1603a1659a2becc5f0c2715e3fd08438809b58675705d83e070c5196dc3a3"
+    },
+    "app:du_gate_j8": {
+      "kind": "app",
+      "id": "du_gate_j8",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "78626df395727df12ff8e488d50124ae0e0f21fa4f661c88714e4d01ea74cadd"
+    },
     "app:fib_braid_s1": {
       "kind": "app",
       "id": "fib_braid_s1",
@@ -1963,6 +1981,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c7218f5096d9b2d0510be12038af9ca9ffb1a52e3415ba9f7bf465934a48b3f4"
+    },
+    "app:floquet4_uf": {
+      "kind": "app",
+      "id": "floquet4_uf",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "93c0ffec4ddacf3434aaae42902cc743b8e08dfacc0f191d1670bce8ae520085"
     },
     "app:fredkin": {
       "kind": "app",
@@ -2277,6 +2304,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c98a37880edd00e119c7c1632a676ca4cf3a0876afc5c16277faafba0c6ecf83"
+    },
+    "app:iswap": {
+      "kind": "app",
+      "id": "iswap",
+      "tier": 0,
+      "tier_source": "inferred(default-dense)",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
     },
     "app:magic_a": {
       "kind": "app",
@@ -5103,7 +5139,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 424,
+        "unitary_equiv": 428,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 19
       },
@@ -5112,7 +5148,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 513,
+      "unitary_equiv": 517,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 19
     }

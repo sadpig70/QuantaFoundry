@@ -1,0 +1,63 @@
+{
+  "_note": "dual-unitary+Floquet witness: 쌍대성·광원뿔 두 경로·quasi-energy·teeth. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "dyn-observe-v1",
+  "observation": {
+    "axis": "정확해 동역학 — dual-unitary(시공간 쌍대) + Floquet(주기 구동) (report5 7/8)",
+    "dual_unitarity": {
+      "V_nonclifford": true,
+      "gate": "V=iSWAP†·e^{−iπ/8·ZZ} (J=π/8 — Clifford 점 회피)",
+      "reshuffle_unitary_exact": true
+    },
+    "floquet": {
+      "UF_nonclifford": true,
+      "note": "주기 구동 자체(근사 아님) — 스펙트럼은 관측 기록",
+      "quasi_energy_over_pi": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        1.166666667,
+        1.25,
+        1.25,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.75,
+        1.75,
+        1.833333333
+      ]
+    },
+    "honest_boundary": "봉인=유니터리 3뿐(module 0). 쌍대성·광원뿔·quasi-energy=관측(INV-Q3). 유한창 t<n/2 명시. 열화·연속구동·winding 일반론=범위 밖.",
+    "lightcone_two_path": {
+      "channel_match_exact": true,
+      "note": "경로 A=dense 상관 vs 경로 B=1q 전달채널 M₊² 닫힌형 · t=2<n/2 무랩 창",
+      "offray_all_vanish_max": 2.2666821373919087e-17,
+      "ok": true,
+      "ray_values": {
+        "X": [
+          0.5,
+          5.204170427930421e-18
+        ],
+        "Y": [
+          0.5,
+          5.204170427930421e-18
+        ],
+        "Z": [
+          1.0,
+          1.0161774852602155e-18
+        ]
+      }
+    },
+    "ok": true,
+    "seal_links_3": true,
+    "teeth": {
+      "clifford_kick_flips_judgement": true,
+      "cnot_not_dual_unitary": true,
+      "nondu_brick_offray_survives": true
+    },
+    "unitary_3": true
+  }
+}

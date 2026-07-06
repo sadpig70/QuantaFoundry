@@ -1,0 +1,46 @@
+# du_brick6_t2 — dual-unitary 브릭워크 (6q PBC 링, 2층: 짝층 (0,1)(2,3)(4,5)·홀층 (1,2)(3,4)(5,0)).
+#   Tier-0 64×64. TrackHE5 P1 (#DYN). ★기봉인 du_gate_j8 sub-app 6회 복리 — 첫 비-Clifford DU 동역학.
+# t=2 < n/2=3 → PBC 광원뿔 무랩(무한계 정리 유효 시간창). golden = V=iSWAP†·diag(ζ₁₆ 패턴) 정의의
+#   직접 임베딩 곱(닫힌형).
+# ★witness(dyn_observe, INV-Q3): 무한온도 2점 상관 ⟨a(x,2)b(0)⟩ — 광선 밖 전소멸 + 광선 위 값 ==
+#   1q 전달채널 M₊²(a) 닫힌형 (두 독립 경로: dense vs 채널 거듭제곱; X:½·Y:½·Z:1).
+# 정직 경계: 봉인=브릭워크 유니터리뿐. 상관 인수분해·solvable 주장=관측(t<n/2 창 명시)·열화=범위 밖.
+```json id=app_meta
+{"id": "du_brick6_t2", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+F1 = np.array([[1, 0, 0, 0], [0, 0, -1j, 0], [0, -1j, 0, 0], [0, 0, 0, 1]], dtype=complex)
+p = np.exp(-1j * np.pi / 8)
+V = F1 @ np.diag([p, np.conj(p), np.conj(p), p]).astype(complex)
+N = 6
+def emb2(g, i, j):
+    dim = 2 ** N
+    M = np.zeros((dim, dim), dtype=complex)
+    for idx in range(dim):
+        b = [(idx >> (N - 1 - q)) & 1 for q in range(N)]
+        si = (b[i] << 1) | b[j]
+        for so in range(4):
+            a = g[so, si]
+            if abs(a) < 1e-16:
+                continue
+            nb = list(b)
+            nb[i], nb[j] = (so >> 1) & 1, so & 1
+            oidx = 0
+            for q in range(N):
+                oidx = (oidx << 1) | nb[q]
+            M[oidx, idx] += a
+    return M
+L1 = emb2(V, 0, 1) @ emb2(V, 2, 3) @ emb2(V, 4, 5)
+L2 = emb2(V, 1, 2) @ emb2(V, 3, 4) @ emb2(V, 5, 0)
+golden = L2 @ L1
+```
+```json id=plan
+{"steps": [
+  {"app": "du_gate_j8.app.pg", "targets": [0, 1]},
+  {"app": "du_gate_j8.app.pg", "targets": [2, 3]},
+  {"app": "du_gate_j8.app.pg", "targets": [4, 5]},
+  {"app": "du_gate_j8.app.pg", "targets": [1, 2]},
+  {"app": "du_gate_j8.app.pg", "targets": [3, 4]},
+  {"app": "du_gate_j8.app.pg", "targets": [5, 0]}]}
+```

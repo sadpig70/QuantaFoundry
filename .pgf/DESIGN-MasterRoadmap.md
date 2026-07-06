@@ -566,6 +566,18 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   §3f(예비 보강조건)·§4′(e) 패턴 4(기소비 선점 대조·교차 복리·게이트 구조 회피·인프라 소비)·
         #   검증경로 5개 공시. 회신 정본 규약 = _workspace/HORIZONTAL-EXPANSION-report5.md → TrackHE5.
         #   외부 전달·수집 = 정욱님 액션. 대기 중 자율 대안 = frontier(N=143+)·예비 재정식화.
+    TrackHE5 // report5 소비 — 수평확장 5차 통합 5축 (in-progress — 2026-07-07 개시) @dep:RequestV5
+        # 설계 정본: _workspace/integrated_horizontal_expansion5.md (35제안→기소비 차감 0→12클러스터→
+        #   자율 5축 P1~P5 + 예비 S1~S7. 실측 정정 2: A8 cr6≠ζ₃·A5 Burau 비유니터리).
+        P1_ExactDynamics // dual-unitary + Floquet — 새 동역학 클래스 (done — 2026-07-07)
+            # ✅ du_gate_j8(78626df3, V=iSWAP†·e^{−iπ/8 ZZ})·du_brick6_t2(a0b1603a, sub-app ×6)·
+            #   floquet4_uf(93c0ffec, CZ링+T킥). dyn_observe(3at): ★쌍대성 exact·★광원뿔 두 경로
+            #   (오프레이 전소멸+광선 X½/Y½/Z1==M₊² 닫힌형)·quasi-energy 기록·teeth 3.
+            #   370→373앱·root 9b5964fa→860fdf32460c0110. §3b 관문 개창.
+        P2_MagicResource // extent/robustness exact 증명서 + T-count 하한 (designing)
+        P3_MatchgatePfaffian // 제6 독립 검증경로 (designing) @dep:P2_MagicResource
+        P4_RM15 // RM [[15,1,3]] transversal T (designing) @dep:P3_MatchgatePfaffian
+        P5_KnotDeepening // 3-strand word family + 다중 불변량 (designing) @dep:P4_RM15
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

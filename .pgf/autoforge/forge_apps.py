@@ -262,6 +262,10 @@ APP_LIST = [
     # TrackHE4-R2: [[8,3,2]] triorthogonal — 첫 비-Clifford 횡단 논리 게이트 (module 0)
     ("code832_encoder.app.pg",           None),  # 정육면체 CSS 인코더 — CNOT 16 + H
     ("code832_tccz.app.pg",              None),  # ⊗T^{±1} (짝parity +·홀 −) → 논리 CCZ 사영
+    # TrackHE5 P1: 정확해 동역학 (report5 ★7/8 최고 합의) — dual-unitary + Floquet (module 0)
+    ("du_gate_j8.app.pg",                None),  # V=iSWAP†·e^{−iπ/8 ZZ} — 비-Clifford DU (J=π/8)
+    ("du_brick6_t2.app.pg",              None),  # 6q PBC 브릭워크 2층 — du_gate sub-app ×6
+    ("floquet4_uf.app.pg",               None),  # CZ링+T킥 주기 유니터리 — 첫 Floquet (16스텝)
 ]
 
 

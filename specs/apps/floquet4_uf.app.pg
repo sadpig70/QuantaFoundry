@@ -1,0 +1,63 @@
+# floquet4_uf — 비-Clifford Floquet 주기 유니터리 U_F = [Rx(π/4) 킥]^⊗4 · [CZ 링] (4q, 주기 구동
+#   kicked-Ising 형). Tier-0 16×16. TrackHE5 P1 (#DYN, report5 7/8 합의축).
+# ★Trotter(e^{−iHt} 근사)와 다른 계층: U_F 자체가 물리적 실체(주기 구동) — §3b 관문 "Floquet 위상
+#   아직 없음" 개창. T-킥(Rx(π/4)=H·T·H up-to-phase)이라 비-Clifford; CZ 링 4 + 킥 4 = 16스텝,
+#   신규 module 0, 성분 전부 ℤ[ω₈, ½].
+# witness(quasi-energy 스펙트럼 기록·비-Clifford 판정·teeth)=dyn_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=U_F 유니터리뿐. quasi-energy·winding·edge mode=관측. 연속 구동·열화=범위 밖.
+```json id=app_meta
+{"id": "floquet4_uf", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+T = np.diag([1, np.exp(1j * np.pi / 4)]).astype(complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+N = 4
+def emb2(g, i, j):
+    dim = 2 ** N
+    M = np.zeros((dim, dim), dtype=complex)
+    for idx in range(dim):
+        b = [(idx >> (N - 1 - q)) & 1 for q in range(N)]
+        si = (b[i] << 1) | b[j]
+        for so in range(4):
+            a = g[so, si]
+            if abs(a) < 1e-16:
+                continue
+            nb = list(b)
+            nb[i], nb[j] = (so >> 1) & 1, so & 1
+            oidx = 0
+            for q in range(N):
+                oidx = (oidx << 1) | nb[q]
+            M[oidx, idx] += a
+    return M
+def emb1(g, i):
+    M = np.eye(1, dtype=complex)
+    for q in range(N):
+        M = np.kron(M, g if q == i else I2)
+    return M
+Uzz = emb2(CZ, 0, 1) @ emb2(CZ, 1, 2) @ emb2(CZ, 2, 3) @ emb2(CZ, 3, 0)
+RxT = H @ T @ H
+Ux = emb1(RxT, 0) @ emb1(RxT, 1) @ emb1(RxT, 2) @ emb1(RxT, 3)
+golden = Ux @ Uzz
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cz.pg", "targets": [0, 1]},
+  {"spec": "../modules/cz.pg", "targets": [1, 2]},
+  {"spec": "../modules/cz.pg", "targets": [2, 3]},
+  {"spec": "../modules/cz.pg", "targets": [3, 0]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/t_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/t_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/t_gate.pg", "targets": [2]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/h_gate.pg", "targets": [3]},
+  {"spec": "../modules/t_gate.pg", "targets": [3]},
+  {"spec": "../modules/h_gate.pg", "targets": [3]}]}
+```

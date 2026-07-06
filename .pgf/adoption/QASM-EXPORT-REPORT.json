@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 370,
-  "round_trip_checked": 335,
-  "round_trip_matched": 335,
+  "exported": 373,
+  "round_trip_checked": 338,
+  "round_trip_matched": 338,
   "round_trip_skipped_large": 35,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -17,6 +17,7 @@
     "c8x",
     "c9x",
     "ccz",
+    "iswap",
     "qft2",
     "rx_negpi4",
     "rx_y4_p",
@@ -2674,6 +2675,30 @@
       "qasm_path": ".pgf/adoption/qasm/draper_add2.qasm"
     },
     {
+      "id": "du_brick6_t2",
+      "n_sys": 6,
+      "n_ops": 36,
+      "sealed_u_hash": "a0b1603a1659a2be",
+      "round_trip_u_hash": "a0b1603a1659a2be",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "iswap": 6
+      },
+      "qasm_path": ".pgf/adoption/qasm/du_brick6_t2.qasm"
+    },
+    {
+      "id": "du_gate_j8",
+      "n_sys": 2,
+      "n_ops": 6,
+      "sealed_u_hash": "78626df395727df1",
+      "round_trip_u_hash": "78626df395727df1",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "iswap": 1
+      },
+      "qasm_path": ".pgf/adoption/qasm/du_gate_j8.qasm"
+    },
+    {
       "id": "fib_braid_s1",
       "n_sys": 1,
       "n_ops": 7,
@@ -2778,6 +2803,16 @@
       "round_trip_match": true,
       "unmapped_gates": {},
       "qasm_path": ".pgf/adoption/qasm/flag_synd_zzzz.qasm"
+    },
+    {
+      "id": "floquet4_uf",
+      "n_sys": 4,
+      "n_ops": 16,
+      "sealed_u_hash": "93c0ffec4ddacf34",
+      "round_trip_u_hash": "93c0ffec4ddacf34",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/floquet4_uf.qasm"
     },
     {
       "id": "fswap",
