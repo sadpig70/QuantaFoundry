@@ -556,6 +556,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   이차형식 엔진(행렬곱 0). 봉인 앱 128건 재검증·자가시험 24·teeth·skip 314 사유기록.
             #   새 봉인 0·root 32a44bfe 불변·오라클 무접촉. reproduce 3ar=--sample(1s) 계층화.
             # ★TrackHE4 총결: 봉인 +18·인프라 1·첫 비-Shor subspace 상환·사람게이트 0·module 0.
+    TrackHE4R2 // [[8,3,2]] triorthogonal + transversal CCZ — TrackHE4 예비 R2 실행 (done — 2026-07-06)
+        # ✅ code832_encoder(216565fa)·code832_tccz(101be8d1) Tier-0·module 0. code832_observe(3as):
+        #   triorth 정수 (0,0,1)·논리 CCZ 8/8+행렬 exact·거리-2 전수·teeth 2(전부-T→x=100 검출).
+        #   ★첫 비-Clifford 횡단 논리 게이트(W7.3 Clifford 횡단 너머). 제5경로 130/130 자동 편입.
+        #   368→370앱·root 32a44bfe→9b5964fad827f165. 잔여 예비 R1/R3~R7 = HE4 설계서 §4 보존.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

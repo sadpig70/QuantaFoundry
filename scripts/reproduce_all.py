@@ -455,6 +455,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3as. TrackHE4-R2: [[8,3,2]] triorthogonal — 첫 비-Clifford 횡단 논리 CCZ witness (observation)
+    rc, out = run(["scripts/code832_observe.py", "--quick"])
+    result["steps"]["code832_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

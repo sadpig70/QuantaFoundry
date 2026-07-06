@@ -669,6 +669,20 @@
       "match": true,
       "n": 5
     },
+    "code832_encoder": {
+      "branches": 1,
+      "cols": 3,
+      "gates": 17,
+      "match": true,
+      "n": 8
+    },
+    "code832_tccz": {
+      "branches": 256,
+      "cols": 3,
+      "gates": 12,
+      "match": true,
+      "n": 8
+    },
     "cuccaro_add2": {
       "branches": 256,
       "cols": 3,
@@ -1223,6 +1237,6 @@
       "n": 3
     }
   },
-  "verified_pass": 128,
-  "verified_total": 128
+  "verified_pass": 130,
+  "verified_total": 130
 }

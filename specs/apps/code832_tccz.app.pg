@@ -1,0 +1,38 @@
+# code832_tccz — [[8,3,2]] transversal 비-Clifford 게이트: U = ⊗_v T^{s_v}, s_v=+1(짝수 패리티 정점
+#   {0,3,5,6})·−1(홀수 {1,2,4,7}, T†=t·sdg). 8q Tier-0 대각. TrackHE4-R2 (#QEC #C3).
+# ★첫 비-Clifford 횡단 논리 게이트: 코드공간 사영 == 논리 CCZ (triorthogonality mod2=(0,0,1) 가 보장,
+#   Campbell smallest-interesting-code). 기존 QEC 자산(W7.3 transversal H/S/CNOT)은 Clifford 횡단까지.
+# plan = t×4 + (t·sdg)×4 = 12스텝, 신규 module 0. golden = diag(ω₈^{Σ s_v w_v}) 정수 산술 직접.
+# witness(triorthogonality 정수·논리작용 8/8·코드공간 보존·거리-2·teeth)=code832_observe(INV-Q3).
+#   ★제5 경로 자동 소비: T-count 8 → 256분기 — stabrank_verify 커버리지 포함.
+# 정직 경계: 봉인=물리 유니터리뿐. '논리 CCZ' = 코드공간 제한 관측. magic 증류·FT threshold=범위 밖.
+```json id=app_meta
+{"id": "code832_tccz", "n_sys": 8, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+w8 = np.exp(1j * np.pi / 4)
+d = np.ones(256, dtype=complex)
+for idx in range(256):
+    ph = 0
+    for q in range(8):
+        if (idx >> (7 - q)) & 1:
+            ph += 1 if bin(q).count("1") % 2 == 0 else -1
+    d[idx] = w8 ** (ph % 8)
+golden = np.diag(d)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/t_gate.pg", "targets": [0]},
+  {"spec": "../modules/t_gate.pg", "targets": [3]},
+  {"spec": "../modules/t_gate.pg", "targets": [5]},
+  {"spec": "../modules/t_gate.pg", "targets": [6]},
+  {"spec": "../modules/t_gate.pg", "targets": [1]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"spec": "../modules/t_gate.pg", "targets": [2]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [2]},
+  {"spec": "../modules/t_gate.pg", "targets": [4]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [4]},
+  {"spec": "../modules/t_gate.pg", "targets": [7]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [7]}]}
+```

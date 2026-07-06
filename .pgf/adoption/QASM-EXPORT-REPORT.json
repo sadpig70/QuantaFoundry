@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 368,
-  "round_trip_checked": 333,
-  "round_trip_matched": 333,
+  "exported": 370,
+  "round_trip_checked": 335,
+  "round_trip_matched": 335,
   "round_trip_skipped_large": 35,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -2470,6 +2470,28 @@
       "round_trip_match": true,
       "unmapped_gates": {},
       "qasm_path": ".pgf/adoption/qasm/code513_encoder.qasm"
+    },
+    {
+      "id": "code832_encoder",
+      "n_sys": 8,
+      "n_ops": 17,
+      "sealed_u_hash": "216565faf2598128",
+      "round_trip_u_hash": "216565faf2598128",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/code832_encoder.qasm"
+    },
+    {
+      "id": "code832_tccz",
+      "n_sys": 8,
+      "n_ops": 12,
+      "sealed_u_hash": "101be8d11f4bad7f",
+      "round_trip_u_hash": "101be8d11f4bad7f",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "sdg_gate": 4
+      },
+      "qasm_path": ".pgf/adoption/qasm/code832_tccz.qasm"
     },
     {
       "id": "cry_pi",

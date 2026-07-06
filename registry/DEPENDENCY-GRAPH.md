@@ -281,6 +281,14 @@ code513_encoder
 ├─ cz (module×5)
 └─ h_gate (module×5)
 
+code832_encoder
+├─ cnot (module×16)
+└─ h_gate (module)
+
+code832_tccz
+├─ sdg_gate (module×4)
+└─ t_gate (module×8)
+
 cuccaro_add2
 ├─ cnot (module×9)
 └─ toffoli (module×4)

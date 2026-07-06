@@ -259,6 +259,9 @@ APP_LIST = [
     ("mub4_meas_b3.app.pg",              None),  # (S₁H₁S₀H₀)† — Y⊗Y 기저
     ("mub4_meas_b4.app.pg",              None),  # (CZ·S₁·H₁·H₀)† — 얽힘기저
     ("mub4_meas_b5.app.pg",              None),  # (CZ·H₁·S₀·H₀)† — 얽힘기저 (5기저 완성)
+    # TrackHE4-R2: [[8,3,2]] triorthogonal — 첫 비-Clifford 횡단 논리 게이트 (module 0)
+    ("code832_encoder.app.pg",           None),  # 정육면체 CSS 인코더 — CNOT 16 + H
+    ("code832_tccz.app.pg",              None),  # ⊗T^{±1} (짝parity +·홀 −) → 논리 CCZ 사영
 ]
 
 

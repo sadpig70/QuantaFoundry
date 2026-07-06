@@ -1,0 +1,41 @@
+{
+  "_note": "[[8,3,2]] triorthogonal + 첫 비-Clifford 횡단 논리 게이트 witness. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "code832-observe-v1",
+  "observation": {
+    "code": "[[8,3,2]] triorthogonal 색부호(정육면체) — smallest interesting code",
+    "distance2": {
+      "css_commutation": true,
+      "error_escapes_codespace_sample": true,
+      "note": "검출 전용(d=2) — 정정 아님",
+      "weight1_detected_16of16_integer": true
+    },
+    "encoder_def_cols_8of8": true,
+    "fifth_path": "code832_tccz(256분기)·encoder = stabrank_verify 자동 커버(정본 proofs 참조)",
+    "honest_boundary": "봉인=물리 유니터리 2뿐. 논리 CCZ·triorthogonality·거리=관측(INV-Q3). magic 증류·FT threshold·d≥3=범위 밖.",
+    "ok": true,
+    "seal_links_2": true,
+    "teeth": {
+      "all_T_pattern_fails_CCZ": true,
+      "f3_corrupt_breaks_triorth": true
+    },
+    "transversal_logical_CCZ": {
+      "codespace_projector_preserved": true,
+      "logical_matrix_eq_CCZ": true,
+      "phase_8of8": true
+    },
+    "triorthogonality_mod2": {
+      "condition_0_0_1": true,
+      "pair": [
+        2,
+        2,
+        2
+      ],
+      "triple": 1,
+      "weights": [
+        4,
+        4,
+        4
+      ]
+    }
+  }
+}

@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 368 sealed applications** · registry root `32a44bfe…`
+- **89 sealed modules · 370 sealed applications** · registry root `9b5964fa…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 32a44bfe… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 9b5964fa… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -59,6 +59,10 @@ python scripts/reproduce_all.py
   path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
   each branch as an affine-support quadratic form — no matrix products; 128 sealed Clifford+T apps
   re-verified, skips recorded with reasons), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
+  the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
+  cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
+  triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal
+  logical gate in the registry),
   a **3/4-qubit Schur-Weyl transform pair with decoders** (direct Clebsch-Gordan cascade, J²/Jz
   simultaneous-diagonalization witness + S₃/S₄ duality sector preservation; the decoders make weak
   Schur sampling executable, with a symmetric-subspace reflector 2P−I and a Dicke |D⁴₂⟩ preparation
