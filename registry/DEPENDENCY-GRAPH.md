@@ -76,6 +76,16 @@ bv3_s101
 ├─ h_gate (module×7)
 └─ x_gate (module)
 
+c3_diag_full3
+├─ ccz (module)
+├─ cs_gate (module×3)
+└─ t_gate (module×3)
+
+c3_diag_ladder3
+├─ ccz (module)
+├─ cs_gate (module)
+└─ t_gate (module)
+
 ccz_rediscovered
 ├─ h_gate (module×2)
 └─ toffoli (module)

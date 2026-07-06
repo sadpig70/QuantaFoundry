@@ -242,6 +242,9 @@ APP_LIST = [
     ("fib_trefoil.app.pg",               None),  # σ₁³ — 폐포 = 삼엽 T(2,3)⊔O (s1 sub-app ×3)
     ("fib_solomon.app.pg",               None),  # σ₁⁴ — 폐포 = Solomon T(2,4)⊔O (s1 sub-app ×4)
     ("fib_trefoil_m.app.pg",             None),  # σ₁³σ₂ — Markov 안정화판 삼엽 (s2 경로 최초 소비)
+    # TrackHE4 P2: C₃ 대각 phase-polynomial 정규형 (report4 5/8 합의) — T/CS/CCZ 사전 (module 0)
+    ("c3_diag_ladder3.app.pg",           None),  # f=x₀+2x₀x₁+4x₀x₁x₂ — 차수 1·2·3 사다리 각 1항
+    ("c3_diag_full3.app.pg",             None),  # f=Σxᵢ+2Σxᵢxⱼ+4x₀x₁x₂ — 전 계수 1 정준형 (7스텝)
 ]
 
 

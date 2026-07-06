@@ -137,6 +137,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "09db3d7ca2850ee95081f37d83547bdf3517448bdf8c8a7ade6f5964672cd009"
     },
+    "app:c3_diag_full3": {
+      "kind": "app",
+      "id": "c3_diag_full3",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "f6c81e5ca27994345d956feaf2c9287ae57ee607ecf77c7f38565125dce9a99a"
+    },
+    "app:c3_diag_ladder3": {
+      "kind": "app",
+      "id": "c3_diag_ladder3",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "20471a176d3f0cebe25a42e5c8eeb6b6f605b0752d6a001f36d5498a2c5e7620"
+    },
     "app:c3x": {
       "kind": "app",
       "id": "c3x",
@@ -4956,7 +4974,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 410,
+        "unitary_equiv": 412,
         "unitary_equiv_sampled": 1,
         "subspace_permutation_verified": 18
       },
@@ -4965,7 +4983,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 499,
+      "unitary_equiv": 501,
       "unitary_equiv_sampled": 1,
       "subspace_permutation_verified": 18
     }

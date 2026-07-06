@@ -1,0 +1,26 @@
+# c3_diag_ladder3 — C₃ 대각 phase-polynomial 정규형: f(x)=x₀+2x₀x₁+4x₀x₁x₂ (mod 8, 차수 1·2·3
+#   사다리 각 1항). U=diag(ω₈^f). Tier-0 3q. TrackHE4 P2 (#C3, report4 5/8 합의축).
+# plan = T(0)·CS(0,1)·CCZ(0,1,2) — 선형항→T·이차항→CS·삼차항→CCZ 정규형 사전(전부 기봉인 module 0).
+# golden = 정수 산술 f 직접 평가 (닫힌형, 탐색 0; big-endian x₀=MSB). 기봉인 t/s_teleport(실현층)의
+#   자매 정규형층 — 재봉인 아님(기소비 경계).
+# witness(강하 사다리 U X_j U†=X_j·diag(ω₈^{Δ_j f}) 두 경로·C₃∖C₂ 멤버십·컴파일러 항등)=
+#   hierarchy_observe 가산 확장(INV-Q3, seal 아님).
+# 정직 경계: 봉인=정규형 인스턴스 유니터리뿐. 임의 f 컴파일 일반론=관측·비대각 C₃=범위 밖.
+```json id=app_meta
+{"id": "c3_diag_ladder3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+w8 = np.exp(1j * np.pi / 4)
+d = np.ones(8, dtype=complex)
+for idx in range(8):
+    x0, x1, x2 = (idx >> 2) & 1, (idx >> 1) & 1, idx & 1
+    d[idx] = w8 ** ((x0 + 2 * x0 * x1 + 4 * x0 * x1 * x2) % 8)
+golden = np.diag(d)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/t_gate.pg", "targets": [0]},
+  {"spec": "../modules/cs_gate.pg", "targets": [0, 1]},
+  {"spec": "../modules/ccz.pg", "targets": [0, 1, 2]}]}
+```

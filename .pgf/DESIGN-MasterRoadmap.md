@@ -532,7 +532,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   fib_jones_observe(3aq): ★Jones 두 독립 경로 exact(가중 trace (1,φ) vs skein 재귀;
             #   t^½=A⁻² 분지 규약)·unknot==1·T(2,n)⊔O 3건·★Markov 소멸 σ₁³σ₂==V(삼엽)·teeth 2종.
             #   350→355앱·root ddeb6079→4c28b6b8df22e95c. honest: 봉인=word 유니터리뿐·Jones 값=관측.
-        P2_C3PhasePoly // C3 대각 phase-polynomial 정규형 + 계층/semi-Clifford witness (designing)
+        P2_C3PhasePoly // C3 대각 phase-polynomial 정규형 + 계층/semi-Clifford witness (done — 2026-07-06)
+            # ✅ c3_diag_ladder3(u_hash 20471a17)·c3_diag_full3(f6c81e5c) Tier-0·module 0(T/CS/CCZ 사전).
+            #   hierarchy_observe 가산 확장: ★강하 두 경로(행렬 켤레 vs Δ_j f 정수 다항)·2단→Pauli·
+            #   멤버십 C₃∖C₂·컴파일러 항등 40표본·semi-Clifford U_t==CS·CNOT(탐색 0)·teeth CT교란.
+            #   355→357앱·root 4c28b6b8→4f2a333fa5bbd165. honest: 봉인=인스턴스 2뿐·일반론=관측.
         P3_GF8Field // gf8_mul + RS 신드롬 코어 + rs73 structural capstone (designing) @dep:P2_C3PhasePoly
         P4_SchurSampling // 반사자 R + label register + Dicke k=2 조건부 (designing)
         P5_MubShadow // MUB 측정 word 4 + frame channel 대수 관측 (designing)

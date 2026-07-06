@@ -418,6 +418,52 @@
       }
     ]
   },
+  "c3_diag_full3": {
+    "u_hash": "f6c81e5ca27994345d956feaf2c9287ae57ee607ecf77c7f38565125dce9a99a",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ccz",
+        "uses": 1,
+        "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 3,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 3,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
+  "c3_diag_ladder3": {
+    "u_hash": "20471a176d3f0cebe25a42e5c8eeb6b6f605b0752d6a001f36d5498a2c5e7620",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "ccz",
+        "uses": 1,
+        "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
+      },
+      {
+        "kind": "module",
+        "id": "cs_gate",
+        "uses": 1,
+        "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 1,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "ccz_rediscovered": {
     "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
     "depends_on": [
