@@ -449,6 +449,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ar. TrackHE4 P6: stabilizer-rank 제5 독립 검증경로 — 표본 모드(INV-F1 계층화; 정본=full proofs)
+    rc, out = run(["scripts/stabrank_verify.py", "--quick", "--sample"])
+    result["steps"]["stabrank_verify_sample"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

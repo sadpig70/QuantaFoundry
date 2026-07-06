@@ -55,7 +55,10 @@ python scripts/reproduce_all.py
   t = e^(−2πi/5) — sealed unitaries only, invariant values are observations), **measurement-based computation** (cluster state + coherent gate teleportation),
   a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **fermionic SWAP**,
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
-  (Clifford fragment), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
+  (Clifford fragment), a **path-sum ℤ[ω₈] fourth and a stabilizer-decomposition fifth verification
+  path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
+  each branch as an affine-support quadratic form — no matrix products; 128 sealed Clifford+T apps
+  re-verified, skips recorded with reasons), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
   a **3/4-qubit Schur-Weyl transform pair with decoders** (direct Clebsch-Gordan cascade, J²/Jz
   simultaneous-diagonalization witness + S₃/S₄ duality sector preservation; the decoders make weak
   Schur sampling executable, with a symmetric-subspace reflector 2P−I and a Dicke |D⁴₂⟩ preparation

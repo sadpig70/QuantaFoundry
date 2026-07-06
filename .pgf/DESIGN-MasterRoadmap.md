@@ -523,7 +523,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   (S보정↔T·Z보정↔S), coherent 제어 보정 = 대상과 동일 계층. 신규 module 0(cnot·cs_gate·cz).
         #   witness: 촉매 exact·계층 판정(독립 정의: C₂=Pauli保·C₃=Clifford保 — T/CS/CCZ∈C₃∖C₂·
         #   S∈C₂∖C₁·T²=S 재발견·비-C₃ 검출 teeth). 측정 기반 프로토콜(Clifford-only 소비)=관측 경계.
-    TrackHE4 // report4 소비 — 수평확장 4차 통합 6축 (in-progress — 2026-07-06 개시) @dep:TrackC3Hierarchy
+    TrackHE4 // report4 소비 — 수평확장 4차 통합 6축 (done — 2026-07-06 폐합, 350→368앱) @dep:TrackC3Hierarchy
         # 설계 정본: _workspace/integrated_horizontal_expansion4.md (35제안→기소비 4 차감→13클러스터→
         #   자율 6축 P1~P6 + 예비 R1~R7 + 조건부 사람게이트 2. 기본경로 = 신규 module 0·사람게이트 0).
         P1_FibConsume // Fibonacci 소비층 — F-move+매듭 word+Jones 관측 (done — 2026-07-06)
@@ -551,7 +551,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         P5_MubShadow // MUB 측정 word 4 + frame channel 대수 관측 (done — 2026-07-06)
             # ✅ mub4_meas_b2~b5(V_b†, sdg 소비). 측정측↔기봉인 준비 20앱 역회전 16/16 ·
             #   frame channel (ρ+I)/5·역재구성·Bell Pauli 회복 유리 exact. 360→368앱·root 32a44bfe.
-        P6_StabRank // stabilizer-rank 제5 검증경로 인프라 (designing)
+        P6_StabRank // stabilizer-rank 제5 검증경로 인프라 (done — 2026-07-06, ★TrackHE4 폐합)
+            # ✅ scripts/stabrank_verify.py: Clifford-합 분기(T/CS/CT 2·CCZ/CCCZ 4) + 아핀/ℤ₄
+            #   이차형식 엔진(행렬곱 0). 봉인 앱 128건 재검증·자가시험 24·teeth·skip 314 사유기록.
+            #   새 봉인 0·root 32a44bfe 불변·오라클 무접촉. reproduce 3ar=--sample(1s) 계층화.
+            # ★TrackHE4 총결: 봉인 +18·인프라 1·첫 비-Shor subspace 상환·사람게이트 0·module 0.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
