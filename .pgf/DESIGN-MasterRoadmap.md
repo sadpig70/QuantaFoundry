@@ -561,6 +561,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   triorth 정수 (0,0,1)·논리 CCZ 8/8+행렬 exact·거리-2 전수·teeth 2(전부-T→x=100 검출).
         #   ★첫 비-Clifford 횡단 논리 게이트(W7.3 Clifford 횡단 너머). 제5경로 130/130 자동 편입.
         #   368→370앱·root 32a44bfe→9b5964fad827f165. 잔여 예비 R1/R3~R7 = HE4 설계서 §4 보존.
+    RequestV5 // 수평확장 5차 요청문 배치 (done — 2026-07-07) @dep:TrackHE4R2
+        # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v5.md — §3e(v4 소비분 6축+R2 EXCLUDE)·
+        #   §3f(예비 보강조건)·§4′(e) 패턴 4(기소비 선점 대조·교차 복리·게이트 구조 회피·인프라 소비)·
+        #   검증경로 5개 공시. 회신 정본 규약 = _workspace/HORIZONTAL-EXPANSION-report5.md → TrackHE5.
+        #   외부 전달·수집 = 정욱님 액션. 대기 중 자율 대안 = frontier(N=143+)·예비 재정식화.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
