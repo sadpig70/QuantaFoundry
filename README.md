@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **92 sealed modules · 402 sealed applications** · registry root `496796ca…`
+- **92 sealed modules · 411 sealed applications** · registry root `012703982c37…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 496796ca… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 012703982c37… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -123,10 +123,10 @@ python scripts/reproduce_all.py
   honestly scoped as an observation (concatenation theorem + block-local minimum weight, not an
   exhaustive 2²⁴ search; the seal certifies only the encoder's stabilizer structure).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
-  structural frontier (`shor69 … shor155 … shor3683`, 18 apps, sealed via a `c7x→c12x` multi-control
+  structural frontier (`shor69 … shor159 … shor3683`, 19 apps, sealed via a `c7x→c12x` multi-control
   ladder; every one subspace-permutation verified against independent integer arithmetic — the newest
   ones discovered and sealed unattended by the autonomous factory loop, then auto-repaid to that grade,
-  the latest being `shor155 = 5×31` at 16 qubits with an exhaustive 65536/65536 basis-permutation check).
+  the latest being `shor159 = 3×53` at 16 qubits).
 - **Key-free cross-model establishment**: the first *live* cross-model truth (`sx` = √X) settled by
   six distinct runtimes + an algebraic proof — no answer key.
 - **Autonomous loop** (`qfa-loop` skill): discover → seal → verify → commit, gated end-to-end by the
