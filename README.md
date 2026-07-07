@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 374 sealed applications** · registry root `6871f793…`
+- **89 sealed modules · 376 sealed applications** · registry root `b8ba9989…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 6871f793… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash b8ba9989… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -59,8 +59,8 @@ python scripts/reproduce_all.py
   matches a closed-form one-qubit transfer-channel power — two independent paths; quasi-energies
   recorded as observations), a **fermionic SWAP**,
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
-  (Clifford fragment), a **path-sum ℤ[ω₈] fourth and a stabilizer-decomposition fifth verification
-  path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
+  (Clifford fragment), a **path-sum ℤ[ω₈] fourth, a stabilizer-decomposition fifth, and a free-fermion/Majorana SO(2n)
+  sixth verification path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
   each branch as an affine-support quadratic form — no matrix products; 128 sealed Clifford+T apps
   re-verified, skips recorded with reasons), a **magic resource-theory exact certificate layer**
   (stabilizer extent/robustness with primal + dual + zero-gap certificates in exact ℚ(√2) arithmetic

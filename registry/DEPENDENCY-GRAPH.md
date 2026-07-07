@@ -398,9 +398,20 @@ floquet4_uf
 ├─ h_gate (module×8)
 └─ t_gate (module×4)
 
-fswap
-├─ cz (module)
-└─ swap2 (module)
+gauss_braid3
+├─ fswap (app)
+│  ├─ cz (module)
+│  └─ swap2 (module)
+├─ iswap (module×2)
+├─ s_gate (module)
+├─ sdg_gate (module)
+└─ t_gate (module)
+
+gauss_hop4
+├─ iswap (module×3)
+├─ s_gate (module)
+├─ sdg_gate (module)
+└─ t_gate (module×6)
 
 gf4_frob
 └─ cnot (module)

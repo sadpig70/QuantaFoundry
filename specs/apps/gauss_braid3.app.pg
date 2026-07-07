@@ -1,0 +1,36 @@
+# gauss_braid3 — Gaussian 연쇄 (3q: 위상 + iSWAP + ★fswap sub-app 복리). Tier-0 8×8. TrackHE5 P3 (#GAUSS).
+# plan = [s(0), iswap(0,1), t(2), iswap(1,2), sdg(1), fswap(1,2)] 6스텝 — 비-Clifford(T) Gaussian,
+#   기봉인 fswap(페르미온 SWAP) 을 제6 검증경로 테이블 항목이자 sub-app 으로 이중 소비.
+# golden = 게이트 정의 직접 곱(닫힌형). witness = matchgate_verify(INV-Q3).
+# 정직 경계: 봉인=유니터리뿐. Gaussian성·R 인증=검증경로 관측.
+```json id=app_meta
+{"id": "gauss_braid3", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+T = np.diag([1, np.exp(1j * np.pi / 4)]).astype(complex)
+S = np.diag([1, 1j]).astype(complex)
+Sd = np.diag([1, -1j]).astype(complex)
+ISW = np.array([[1, 0, 0, 0], [0, 0, 1j, 0], [0, 1j, 0, 0], [0, 0, 0, 1]], dtype=complex)
+SWAP = np.array([[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 1]], dtype=complex)
+CZ = np.diag([1, 1, 1, -1]).astype(complex)
+FS = CZ @ SWAP
+def e1(g, i):
+    m = np.eye(1, dtype=complex)
+    for q in range(3):
+        m = np.kron(m, g if q == i else I2)
+    return m
+def e2(g, i):
+    return np.kron(np.kron(np.eye(2 ** i, dtype=complex), g), np.eye(2 ** (1 - i), dtype=complex))
+golden = (e2(FS, 1) @ e1(Sd, 1) @ e2(ISW, 1) @ e1(T, 2) @ e2(ISW, 0) @ e1(S, 0))
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/s_gate.pg", "targets": [0]},
+  {"spec": "../modules/iswap.pg", "targets": [0, 1]},
+  {"spec": "../modules/t_gate.pg", "targets": [2]},
+  {"spec": "../modules/iswap.pg", "targets": [1, 2]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"app": "fswap.app.pg", "targets": [1, 2]}]}
+```

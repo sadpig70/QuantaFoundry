@@ -1,0 +1,77 @@
+{
+  "_note": "제6 독립 검증경로(Majorana/SO(2n) — 자유 페르미온). plan 독립 R 컴파일 vs golden 켤레 두 경로. 인프라 — 새 봉인 0·오라클 무접촉(INV-Q3).",
+  "_schema": "matchgate-verify-v1",
+  "coverage_note": "커버={1q 대각 회전, 인접 iswap/fswap} 조립 · n≤8 · pairing 게이트 팔레트 무 — 전면 아님(정직)",
+  "engine_selftest": true,
+  "independence": "dense(행렬곱)·tableau(안정군)·ZX(그래프)·path-sum(ℤ[ω₈])·stab-rank(Clifford-합)와 다른 SO(2n)/자유페르미온 전제 — 여섯 번째 경로.",
+  "ok": true,
+  "skipped_count": 445,
+  "table_golden_consistency": {
+    "fswap": true,
+    "iswap": true
+  },
+  "teeth": {
+    "angle_corrupt_mismatch": true,
+    "cz_cnot_nongaussian": true,
+    "nonadjacent_rejected": true
+  },
+  "unitary_level_census": {
+    "du_gate_j8": false,
+    "fswap": true,
+    "ising_braid_b2": true,
+    "magic_cs": false,
+    "note": "golden 수준 Gaussian성 관측 — as-written 커버리지와 구분(경로 독립성은 plan-커버리지에만 주장). 예: fswap golden=Gaussian, plan=swap·cz 비인식"
+  },
+  "verified": {
+    "cliff1_s": {
+      "R_two_path": true,
+      "SO2n": true,
+      "gates": 1,
+      "n": 1,
+      "pass": true,
+      "vacuum_det": true
+    },
+    "cliff1_ss": {
+      "R_two_path": true,
+      "SO2n": true,
+      "gates": 2,
+      "n": 1,
+      "pass": true,
+      "vacuum_det": true
+    },
+    "cliff1_sss": {
+      "R_two_path": true,
+      "SO2n": true,
+      "gates": 3,
+      "n": 1,
+      "pass": true,
+      "vacuum_det": true
+    },
+    "code832_tccz": {
+      "R_two_path": true,
+      "SO2n": true,
+      "gates": 12,
+      "n": 8,
+      "pass": true,
+      "vacuum_det": true
+    },
+    "gauss_braid3": {
+      "R_two_path": true,
+      "SO2n": true,
+      "gates": 6,
+      "n": 3,
+      "pass": true,
+      "vacuum_det": true
+    },
+    "gauss_hop4": {
+      "R_two_path": true,
+      "SO2n": true,
+      "gates": 11,
+      "n": 4,
+      "pass": true,
+      "vacuum_det": true
+    }
+  },
+  "verified_pass": 6,
+  "verified_total": 6
+}

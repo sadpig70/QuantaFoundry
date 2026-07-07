@@ -6630,6 +6630,70 @@
       }
     ]
   },
+  "gauss_braid3": {
+    "u_hash": "f57f8f07dc9d7ce59ae9ad6155519b600eb256e5cd0ed34e8455fd4e6bd94533",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fswap",
+        "uses": 1,
+        "child_u_hash": "719fb6081419883895b4213563a404997b0a7f5f933c76aacbe82eba610539d2"
+      },
+      {
+        "kind": "module",
+        "id": "iswap",
+        "uses": 2,
+        "child_u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 1,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      },
+      {
+        "kind": "module",
+        "id": "sdg_gate",
+        "uses": 1,
+        "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 1,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
+  "gauss_hop4": {
+    "u_hash": "a7802439239a240cb35c1e3edef4b5722c9c9fecb2c95abfb59d1b4a912c2ec5",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "iswap",
+        "uses": 3,
+        "child_u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
+      },
+      {
+        "kind": "module",
+        "id": "s_gate",
+        "uses": 1,
+        "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
+      },
+      {
+        "kind": "module",
+        "id": "sdg_gate",
+        "uses": 1,
+        "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 6,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "gf4_frob": {
     "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
     "depends_on": [

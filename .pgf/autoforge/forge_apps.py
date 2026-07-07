@@ -268,6 +268,9 @@ APP_LIST = [
     ("floquet4_uf.app.pg",               None),  # CZ링+T킥 주기 유니터리 — 첫 Floquet (16스텝)
     # TrackHE5 P2: magic 자원 이론 exact 코어 (report5 6/8 합의) — 자원상태 (module 0)
     ("magic_cs.app.pg",                  None),  # |CS⟩=CS|++⟩ — T→CS→CCZ 사슬 기착지 (3스텝)
+    # TrackHE5 P3: Gaussian/matchgate — 제6 검증경로(Majorana/SO(2n)) 표적 (module 0)
+    ("gauss_hop4.app.pg",                None),  # 자유 페르미온 hopping 브릭워크 — 비-Clifford Gaussian
+    ("gauss_braid3.app.pg",              None),  # 위상+iswap+fswap sub-app 연쇄 (6스텝)
 ]
 
 

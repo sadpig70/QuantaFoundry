@@ -1,0 +1,41 @@
+# gauss_hop4 — 자유 페르미온 hopping 브릭워크 (4q: T-위상 + iSWAP 사다리, 수보존 Gaussian).
+#   Tier-0 16×16. TrackHE5 P3 (#GAUSS, report5 5/8 합의축). ★비-Clifford인데 Gaussian —
+#   stab-rank(제5경로)와 상보인 제6 검증경로(Majorana/SO(2n))의 첫 봉인 표적.
+# plan = [t×4, iswap(0,1), iswap(2,3), sdg(1), s(2), iswap(1,2), t(1), t(2)] 11스텝, 신규 module 0.
+# golden = 게이트 정의 직접 곱(닫힌형). witness(R∈SO(8) 두 경로: plan 독립 컴파일 vs golden 켤레·
+#   RᵀR=I·진공 |det A|^½)=matchgate_verify(제6 경로, INV-Q3).
+# 정직 경계: 봉인=유니터리뿐. Gaussian성·R 인증=검증경로 관측. 비-수보존(pairing)=범위 밖(팔레트 무).
+```json id=app_meta
+{"id": "gauss_hop4", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+T = np.diag([1, np.exp(1j * np.pi / 4)]).astype(complex)
+S = np.diag([1, 1j]).astype(complex)
+Sd = np.diag([1, -1j]).astype(complex)
+ISW = np.array([[1, 0, 0, 0], [0, 0, 1j, 0], [0, 1j, 0, 0], [0, 0, 0, 1]], dtype=complex)
+def e1(g, i):
+    m = np.eye(1, dtype=complex)
+    for q in range(4):
+        m = np.kron(m, g if q == i else I2)
+    return m
+def e2(g, i):
+    return np.kron(np.kron(np.eye(2 ** i, dtype=complex), g), np.eye(2 ** (2 - i), dtype=complex))
+golden = (e1(T, 1) @ e1(T, 2) @ e2(ISW, 1) @ e1(S, 2) @ e1(Sd, 1)
+          @ e2(ISW, 0) @ e2(ISW, 2) @ e1(T, 0) @ e1(T, 1) @ e1(T, 2) @ e1(T, 3))
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/t_gate.pg", "targets": [0]},
+  {"spec": "../modules/t_gate.pg", "targets": [1]},
+  {"spec": "../modules/t_gate.pg", "targets": [2]},
+  {"spec": "../modules/t_gate.pg", "targets": [3]},
+  {"spec": "../modules/iswap.pg", "targets": [0, 1]},
+  {"spec": "../modules/iswap.pg", "targets": [2, 3]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"spec": "../modules/s_gate.pg", "targets": [2]},
+  {"spec": "../modules/iswap.pg", "targets": [1, 2]},
+  {"spec": "../modules/t_gate.pg", "targets": [1]},
+  {"spec": "../modules/t_gate.pg", "targets": [2]}]}
+```

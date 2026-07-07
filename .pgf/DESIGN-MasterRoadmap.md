@@ -579,7 +579,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   완전 증명서(ℚ(√2) Fraction 정확산술 격차0)·ξ(CS) bounded [8/5,(11+2√10)/9]·R(T)=√2·
             #   T-count 인증 magic_a≥1/magic_cs≥3 타이트·★A6-1 반증(F 불변량: T⊗T↛CS).
             #   373→374앱·root 860fdf32→6871f793fa2d5f0b.
-        P3_MatchgatePfaffian // 제6 독립 검증경로 (designing) @dep:P2_MagicResource
+        P3_MatchgatePfaffian // 제6 독립 검증경로 (done — 2026-07-07)
+            # ✅ matchgate_verify.py: plan→R∈SO(2n) 독립 컴파일 vs golden 켤레 두 경로·진공 행렬식.
+            #   커버 6/6(gauss_hop4·gauss_braid3 신규 봉인 2 + cliff1_s* + code832_tccz 3중커버)·
+            #   census 골든/as-written 정직 구분·teeth 3·reproduce 3av. 검증경로 5→6.
+            #   374→376앱·root 6871f793→b8ba9989672232fc. ★합성=오른쪽 곱 함정 교정.
         P4_RM15 // RM [[15,1,3]] transversal T (designing) @dep:P3_MatchgatePfaffian
         P5_KnotDeepening // 3-strand word family + 다중 불변량 (designing) @dep:P4_RM15
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
