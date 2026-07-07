@@ -595,7 +595,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   377→380앱·root ba32a65c→12244b5cc2136f41.
             # ★TrackHE5 총결: 봉인 +13·모듈 90(Tier-2 7)·검증경로 6·자원 증명서·A6-1 반증.
     RequestV6 // 수평확장 6차 요청문 배치 (done — 2026-07-07) @dep:TrackHE5
-    TrackHE6 // report6 소비 — 수평확장 6차 통합 6축 (in-progress — 2026-07-07) @dep:RequestV6
+    TrackHE6 // report6 소비 — 수평확장 6차 통합 6축 (done — 2026-07-07 폐합, 380→386앱·모듈 91·검증경로 7) @dep:RequestV6
         # 설계 정본: _workspace/integrated_horizontal_expansion6.md (33제안→차감0→13클러스터→6축).
         P4_S4Fourier // S₄ 정수표현 비아벨 — 곱셈 오라클 + ζ₃ 반증 (done — 2026-07-07)
             # ✅ s4_mult(b2c8f624, V₄⋊S₃ 곱셈 10q, ★s3_mult sub-app 복리). s4_observe(3ax): 군법칙≅S₄·
@@ -617,7 +617,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ rm15_decoder_t2(모듈 91, 8번째 Tier-2 — 인코더 역 = 측정 전 syndrome 추출 코어).
             #   rm15_observe(3aw) 가산: 디코더==인코더†·부호어→syndrome0(accept)·weight-1→syndrome≠0.
             #   봉인=디코더 tableau뿐·증류 성공률=관측. 모듈 90→91·root 034c36e0→60a6de09b237c8b1.
-        P5_TNPath // 텐서망 제7 검증경로 (designing)
+        P5_TNPath // 텐서망 제7 검증경로 (done — 2026-07-07, ★TrackHE6 폐합)
+            # ✅ tncontract_verify.py: 게이트 텐서 인덱스 수축(dense 미실체화, 열 벡터). 봉인 360앱
+            #   재검증(up-to-phase)·reproduce 3az. 새 봉인 0·root 불변. 검증경로 6→7.
         # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v6.md — §3g(v5 5축 EXCLUDE)·§3h(예비 조건)·
         #   §4′(f) 패턴 4·검증경로 6 공시·★공개 저장소 URL(실측 novelty). 회신 규약 = report6 →
         #   TrackHE6. 전달·수집 = 정욱님 액션. 대안 = frontier(N=143+)·예비 S1.

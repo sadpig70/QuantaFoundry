@@ -68,8 +68,8 @@ python scripts/reproduce_all.py
   exp(iπ/4·XX), extending the sixth matchgate/SO(2n) path to the pairing sector — with a 4-site
   Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign),
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
-  (Clifford fragment), a **path-sum ℤ[ω₈] fourth, a stabilizer-decomposition fifth, and a free-fermion/Majorana SO(2n)
-  sixth verification path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
+  (Clifford fragment), a **path-sum ℤ[ω₈] fourth, a stabilizer-decomposition fifth, a free-fermion/Majorana SO(2n)
+  sixth, and a tensor-network exact-contraction seventh verification path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
   each branch as an affine-support quadratic form — no matrix products; 128 sealed Clifford+T apps
   re-verified, skips recorded with reasons), a **magic resource-theory exact certificate layer**
   (stabilizer extent/robustness with primal + dual + zero-gap certificates in exact ℚ(√2) arithmetic
