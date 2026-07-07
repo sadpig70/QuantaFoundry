@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **91 sealed modules · 402 sealed applications** · registry root `bc0a9599…`
+- **92 sealed modules · 402 sealed applications** · registry root `496796ca…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash bc0a9599… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 496796ca… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -114,7 +114,14 @@ python scripts/reproduce_all.py
   dilation by partial trace; the diamond distance between Pauli channels equals the ℓ₁ distance of
   their Pauli spectra — a dyadic exact value — with the maximally-entangled state as the primal
   witness confirmed optimal against a global pure-state search; the exactness is honestly scoped to
-  the Pauli-diagonal island, general non-Pauli channels remaining observation-only).
+  the Pauli-diagonal island, general non-Pauli channels remaining observation-only), and the
+  registry's first **code-concatenation layer** — `concat_513_513` = [[5,1,3]]∘[[5,1,3]] = [[25,1,9]],
+  a 25-qubit Tier-2 Clifford encoder built purely from six [[5,1,3]] encoder blocks (H/CNOT/CZ, no
+  new modules), sealed via a canonical stabilizer tableau (no dense 2²⁵); its witness reconstructs
+  all 24 stabilizers by symbolic symplectic back-propagation and matches the concatenation-theorem
+  structure exactly (20 inner-block + 4 outer-lifted generators), with the distance-9 = 3×3 claim
+  honestly scoped as an observation (concatenation theorem + block-local minimum weight, not an
+  exhaustive 2²⁴ search; the seal certifies only the encoder's stabilizer structure).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
   structural frontier (`shor69 … shor155 … shor3683`, 18 apps, sealed via a `c7x→c12x` multi-control
   ladder; every one subspace-permutation verified against independent integer arithmetic — the newest

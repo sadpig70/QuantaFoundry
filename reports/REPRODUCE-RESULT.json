@@ -5,14 +5,66 @@
       "rc": 0,
       "apps_sealed": "213/213",
       "rediscovery": "12/12",
-      "pass": true,
-      "reassembled": 0,
-      "coherence": 213
+      "pass": true
     },
-    "frontier_coherence": {
-      "coherence_checked": 168,
-      "failed": [],
-      "n_failed": 0,
+    "shor_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c8x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor221_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c9x_shor381_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c10x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor635_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor1285_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor3683_frontier": {
+      "rc": 0,
+      "all_ok": true,
       "pass": true
     },
     "frontier_factory": {
@@ -22,10 +74,10 @@
     },
     "registry": {
       "rc": 0,
-      "modules": "91",
+      "modules": "92",
       "unique_apps": "402",
       "cached": "75",
-      "root_hash": "bc0a9599927645d7",
+      "root_hash": "496796ca609540bc",
       "pass": true
     },
     "second_oracle": {
@@ -309,6 +361,11 @@
       "pass": true
     },
     "op_ee_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "concat_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true

@@ -4728,6 +4728,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
     },
+    "module:concat_513_513": {
+      "kind": "module",
+      "id": "concat_513_513",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "bc89ab5d10409c3cbfa15b11f49250589780a54dc31ee8be39e6e698286f1199"
+    },
     "module:cr3_dag_gate": {
       "kind": "module",
       "id": "cr3_dag_gate",
@@ -5450,11 +5459,11 @@
         "subspace_permutation_verified": 21
       },
       "module": {
-        "unitary_equiv": 91
+        "unitary_equiv": 92
       }
     },
     "by_class": {
-      "unitary_equiv": 545,
+      "unitary_equiv": 546,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 21
