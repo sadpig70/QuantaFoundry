@@ -595,6 +595,17 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   377→380앱·root ba32a65c→12244b5cc2136f41.
             # ★TrackHE5 총결: 봉인 +13·모듈 90(Tier-2 7)·검증경로 6·자원 증명서·A6-1 반증.
     RequestV6 // 수평확장 6차 요청문 배치 (done — 2026-07-07) @dep:TrackHE5
+    TrackHE6 // report6 소비 — 수평확장 6차 통합 6축 (in-progress — 2026-07-07) @dep:RequestV6
+        # 설계 정본: _workspace/integrated_horizontal_expansion6.md (33제안→차감0→13클러스터→6축).
+        P4_S4Fourier // S₄ 정수표현 비아벨 — 곱셈 오라클 + ζ₃ 반증 (done — 2026-07-07)
+            # ✅ s4_mult(b2c8f624, V₄⋊S₃ 곱셈 10q, ★s3_mult sub-app 복리). s4_observe(3ax): 군법칙≅S₄·
+            #   ★(3,1) 정팔면체 signed-perm 정수표현 회수·★(2,2) ζ₃ closed-negative(A8 통찰 절반 반증 —
+            #   완전 Fourier ζ₃ 필연, rational group ≠ 정수-유니터리). 380→381앱·root c252010e91071e2b.
+        P2_Bogoliubov // Kitaev pairing free-fermion — 제6경로 비수보존 확장 (designing)
+        P3_OTOC // OTOC/scrambling + Floquet winding (designing)
+        P6_ChannelMagic // 채널 magic 자원 증명서 (designing)
+        P1_Distill15 // Coherent 15-to-1 증류 프로토콜 (designing)
+        P5_TNPath // 텐서망 제7 검증경로 (designing)
         # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v6.md — §3g(v5 5축 EXCLUDE)·§3h(예비 조건)·
         #   §4′(f) 패턴 4·검증경로 6 공시·★공개 저장소 URL(실측 novelty). 회신 규약 = report6 →
         #   TrackHE6. 전달·수집 = 정욱님 액션. 대안 = frontier(N=143+)·예비 S1.

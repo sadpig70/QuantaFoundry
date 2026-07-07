@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **90 sealed modules · 380 sealed applications** · registry root `12244b5c…`
+- **90 sealed modules · 381 sealed applications** · registry root `c252010e…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 12244b5c… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash c252010e… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -43,7 +43,10 @@ python scripts/reproduce_all.py
   fermionic encodings (Jordan-Wigner **and Bravyi-Kitaev/parity**), an H₂ molecular block-encoding,
   a generic qROM + SELECT-PREPARE data-oracle layer, the [[5,1,3]] code as a pentagon graph code
   (5-to-1 magic-state distillation core), the first **non-abelian group oracles + Fourier transform**
-  (S₃ and D₄, driving a dihedral hidden-subgroup sampling observation), a **qutrit-embedded
+  (S₃ and D₄, driving a dihedral hidden-subgroup sampling observation, extended by an **S₄ = V₄⋊S₃
+  multiplication oracle** whose companion witness recovers the octahedral integer (3,1) irrep and
+  proves — as a closed-negative — that a full S₄ Fourier still needs ζ₃ because its (2,2) irrep
+  cannot be an integer unitary), a **qutrit-embedded
   ternary-arithmetic** layer (qudit axis), a **topological logical-operation stack** (surface-code
   encoder + coherent lattice surgery + 2×2 toric ground state, closing the FTQC logical stack),
   **GF(2ᵏ) finite-field arithmetic** (multiply/inverse/Frobenius/primitive-orbit, completed by a

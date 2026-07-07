@@ -485,6 +485,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3ax. TrackHE6 P4: S₄ 비아벨 곱셈 witness + (2,2) ζ₃ closed-negative 반증 (observation)
+    rc, out = run(["scripts/s4_observe.py", "--quick"])
+    result["steps"]["s4_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -963,11 +963,16 @@ rs73_encoder
 rs_synd_core
 └─ cnot (module×9)
 
-s3_mult
-├─ c3x (module×4)
-├─ cnot (module)
+s4_mult
+├─ s3_mult (app)
+│  ├─ c3x (module×4)
+│  ├─ cnot (module)
+│  ├─ fredkin (module)
+│  └─ x_gate (module×12)
+├─ c3x (module×8)
+├─ cnot (module×2)
 ├─ fredkin (module)
-└─ x_gate (module×12)
+└─ x_gate (module×4)
 
 s_teleport
 ├─ cnot (module)

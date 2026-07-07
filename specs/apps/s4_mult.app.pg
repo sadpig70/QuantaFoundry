@@ -1,0 +1,62 @@
+# s4_mult — S₄(대칭군, 24원소) 곱셈 오라클 |g⟩|h⟩→|g⟩|gh⟩. 10q Tier-0 1024×1024. TrackHE6 P4 (#axis-E).
+# ★비아벨 축 3번째 군(S₃·D₄ 다음). 반직접곱 S₄ = V₄ ⋊ S₃ 인코딩(★s3_mult sub-app 수직 복리):
+#   g=(v,σ) — v∈V₄=Z₂²(q0q1) · σ∈S₃=r^a s^b(q2q3q4, s3_mult 규약). 곱셈 (v,σ)(w,τ)=(v⊕σ·w, στ):
+#   ① στ = s3_mult(σ,τ) [app 참조] · ② σ·w = M(σ)w, M(σ)=M_r^a·M_s^b ∈ GL(2,2)(V₄ 자기동형):
+#      M_s=swap(fredkin b) · M_r=SWAP·CNOT (a-제어 c3x) · ③ v⊕: CNOT v→w.
+# golden = 반직접곱 공식 직접 순열(닫힌형, 전 1024 검증). invalid(σ or τ 의 a=11)=항등 계약.
+# ★계산기저 순열 = 정수 유니터리(module 0). 완전 S₄ Fourier 는 (2,2) irrep ζ₃ 필요(별개 — s4_observe
+#   closed-negative). witness(군법칙·비아벨·정팔면체 (3,1) 정수표현 회수)=s4_observe(INV-Q3).
+# 정직 경계: 봉인=곱셈 순열 유니터리뿐. HSP 확률·표본복잡도=관측. 완전 Fourier ζ₃=반증 문서.
+```json id=app_meta
+{"id": "s4_mult", "n_sys": 10, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+def s3_mul(a1, a0, bb, c1, c0, dd):
+    dd ^= bb
+    if bb:
+        c1, c0 = c0, c1
+    if (a1, a0) == (0, 1):
+        if c1 == 0: c0 ^= 1
+        if c0 == 0: c1 ^= 1
+    if (a1, a0) == (1, 0):
+        if c0 == 0: c1 ^= 1
+        if c1 == 0: c0 ^= 1
+    return c1, c0, dd
+def msig_w(a1, a0, b, w1, w0):
+    if b:
+        w1, w0 = w0, w1
+    a = (a1 << 1) | a0
+    for _ in range(a if a <= 2 else 0):
+        w1, w0 = (w1 ^ w0, w1)
+    return w1, w0
+golden = np.zeros((1024, 1024), dtype=complex)
+for x in range(1024):
+    q = [(x >> (9 - i)) & 1 for i in range(10)]
+    st1, st0, dd = s3_mul(q[2], q[3], q[4], q[7], q[8], q[9])
+    sw1, sw0 = msig_w(q[2], q[3], q[4], q[5], q[6])
+    out = [q[0], q[1], q[2], q[3], q[4], q[0] ^ sw1, q[1] ^ sw0, st1, st0, dd]
+    y = 0
+    for i in range(10):
+        y = (y << 1) | out[i]
+    golden[y, x] = 1.0
+```
+```json id=plan
+{"steps": [
+  {"app": "s3_mult.app.pg", "targets": [2, 3, 4, 7, 8, 9]},
+  {"spec": "../modules/fredkin.pg", "targets": [4, 5, 6]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 5, 6]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 6, 5]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 5, 6]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 6, 5]},
+  {"spec": "../modules/x_gate.pg", "targets": [2]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 6, 5]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 5, 6]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 6, 5]},
+  {"spec": "../modules/c3x.pg", "targets": [2, 3, 5, 6]},
+  {"spec": "../modules/x_gate.pg", "targets": [3]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 5]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 6]}]}
+```

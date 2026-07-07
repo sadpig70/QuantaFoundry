@@ -277,6 +277,8 @@ APP_LIST = [
     ("fib_yb.app.pg",                    None),  # σ₁σ₂σ₁ — 폐포=Hopf (s2 진짜 소비)
     ("fib_word5.app.pg",                 None),  # σ₁²σ₂² — 폐포=사슬(Hopf#Hopf, 연결합 곱법)
     ("fib_fig8.app.pg",                  None),  # σ₁σ₂⁻¹σ₁σ₂⁻¹ — 첫 비-토러스 매듭(σ⁻¹=z5³)
+    # TrackHE6 P4: S₄ 정수표현 비아벨 (report6 5/8) — 곱셈 오라클 (module 0, s3_mult 복리)
+    ("s4_mult.app.pg",                   None),  # S₄=V₄⋊S₃ 곱셈 |g⟩|h⟩→|g⟩|gh⟩ (10q, s3_mult sub-app)
 ]
 
 

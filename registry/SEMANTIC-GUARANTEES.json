@@ -3478,6 +3478,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "f8a0c5e9b8a922240978d856d7c6bc2336404ffac4b710f20ff12c5bf021b61b"
     },
+    "app:s4_mult": {
+      "kind": "app",
+      "id": "s4_mult",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b2c8f624a8361767d54c5a08ef720a8b4432219a4fe5afadcb08bec5ff79dcec"
+    },
     "app:s_gate": {
       "kind": "app",
       "id": "s_gate",
@@ -5211,7 +5220,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 434,
+        "unitary_equiv": 435,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "subspace_permutation_verified": 19
@@ -5221,7 +5230,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 524,
+      "unitary_equiv": 525,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 19
