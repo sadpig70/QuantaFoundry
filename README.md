@@ -71,7 +71,10 @@ python scripts/reproduce_all.py
   infinite-temperature two-point function vanishes off the light ray exactly and the on-ray value
   matches a closed-form one-qubit transfer-channel power — two independent paths; plus an OTOC
   operator circuit whose trace reproduces the dense out-of-time-order correlator with light-cone
-  operator growth, and an integer Floquet winding Σε/2π — all observations), a **fermionic SWAP** and a **Bogoliubov pairing gate** (particle-number-breaking Gaussian —
+  operator growth, and an integer Floquet winding Σε/2π; plus an **operator-entanglement witness**
+  confirming the dual-unitary gate has a maximally flat operator-Schmidt spectrum (s²=¼ each →
+  EE=2 exactly, a dyadic value with no irrational-log ambiguity, unlike EE=1 for CNOT/CZ) — all
+  observations), a **fermionic SWAP** and a **Bogoliubov pairing gate** (particle-number-breaking Gaussian —
   exp(iπ/4·XX), extending the sixth matchgate/SO(2n) path to the pairing sector — with a 4-site
   Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign),
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
