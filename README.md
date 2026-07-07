@@ -106,7 +106,12 @@ python scripts/reproduce_all.py
   contraction match + parent-Hamiltonian annihilation witness), and **open-system CPTP channels**
   (Stinespring dilation of bit-flip / phase-damping / amplitude-damping at the dyadic ½ point plus a
   fully-depolarizing 4-Kraus Pauli-twirl; the sealed dilation unitary's environment partial-trace
-  reproduces the target Kraus map exactly, and composing sealed dilations yields the composite channel).
+  reproduces the target Kraus map exactly, and composing sealed dilations yields the composite channel),
+  plus an **exact Pauli-channel diamond-norm distance certificate** (consuming the sealed bit-flip
+  dilation by partial trace; the diamond distance between Pauli channels equals the ℓ₁ distance of
+  their Pauli spectra — a dyadic exact value — with the maximally-entangled state as the primal
+  witness confirmed optimal against a global pure-state search; the exactness is honestly scoped to
+  the Pauli-diagonal island, general non-Pauli channels remaining observation-only).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
   structural frontier (`shor69 … shor3683`, 16 apps, sealed via a `c7x→c12x` multi-control ladder;
   every one subspace-permutation verified against independent integer arithmetic — the newest ones
