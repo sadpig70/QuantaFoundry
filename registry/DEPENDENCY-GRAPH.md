@@ -931,6 +931,9 @@ ring9
 ├─ cz (module×9)
 └─ h_gate (module×9)
 
+rm15_tt
+└─ t_gate (module×15)
+
 rs73_encoder
 └─ cnot (module×60)
 

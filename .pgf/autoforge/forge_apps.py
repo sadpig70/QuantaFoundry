@@ -271,6 +271,8 @@ APP_LIST = [
     # TrackHE5 P3: Gaussian/matchgate — 제6 검증경로(Majorana/SO(2n)) 표적 (module 0)
     ("gauss_hop4.app.pg",                None),  # 자유 페르미온 hopping 브릭워크 — 비-Clifford Gaussian
     ("gauss_braid3.app.pg",              None),  # 위상+iswap+fswap sub-app 연쇄 (6스텝)
+    # TrackHE5 P4: RM [[15,1,3]] — 부호축 capstone (module rm15_encoder_t2 는 Tier-2 드라이버 봉인)
+    ("rm15_tt.app.pg",                   None),  # T^⊗15 — 논리 T† 사영 (15q STRUCTURAL)
 ]
 
 

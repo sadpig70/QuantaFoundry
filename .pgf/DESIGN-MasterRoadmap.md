@@ -584,7 +584,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   커버 6/6(gauss_hop4·gauss_braid3 신규 봉인 2 + cliff1_s* + code832_tccz 3중커버)·
             #   census 골든/as-written 정직 구분·teeth 3·reproduce 3av. 검증경로 5→6.
             #   374→376앱·root 6871f793→b8ba9989672232fc. ★합성=오른쪽 곱 함정 교정.
-        P4_RM15 // RM [[15,1,3]] transversal T (designing) @dep:P3_MatchgatePfaffian
+        P4_RM15 // RM [[15,1,3]] transversal T (done — 2026-07-07)
+            # ✅ rm15_encoder_t2(모듈 90, 7번째 Tier-2, 0052db4c — ★완전 논리-입력 인코더, W7.2
+            #   future work 상환)·rm15_tt(T^⊗15 Tier-1, 8cedd324). rm15_observe(3aw, dense-free):
+            #   심볼릭 역전파 14안정자·T^15==논리T†(mod-8 정수)·거리=3 전수·teeth 3.
+            #   376→377앱·89→90모듈·root b8ba9989→ba32a65cc8bbce81.
         P5_KnotDeepening // 3-strand word family + 다중 불변량 (designing) @dep:P4_RM15
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.

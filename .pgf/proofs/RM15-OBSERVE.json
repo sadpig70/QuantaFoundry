@@ -1,0 +1,32 @@
+{
+  "_note": "RM [[15,1,3]] + transversal T witness — 전부 정수/심볼릭(dense-free). 봉인=인코더·T-패턴뿐(INV-Q3).",
+  "_schema": "rm15-observe-v1",
+  "observation": {
+    "code": "[[15,1,3]] punctured Reed-Muller — 15-to-1 magic 증류 정준 기판 (거리-3 transversal-T)",
+    "distance_exactly_3": true,
+    "encoder_symbolic_propagation": {
+      "gates_38": true,
+      "note": "봉인 spec 배선 파싱 — dense 미실체화",
+      "stabilizers_14_and_logicals_plus_sign": true,
+      "steane_selftest": true
+    },
+    "family": "code832(d=2, CCZ 횡단, 8q) → rm15(d=3, T 횡단, 15q) — triorthogonal 계보",
+    "honest_boundary": "봉인=인코더 tableau(Tier-2 module)·T-패턴(Tier-1)뿐. 논리 작용·거리=정수/심볼릭 witness(INV-Q3). 증류 성공률·후선택=범위 밖. dense 미실체화.",
+    "ok": true,
+    "seal_links_module_app": true,
+    "structure_integer": {
+      "css_commutation": true,
+      "logical_pair_X7_Z3": true,
+      "seeds_disjoint_key": true
+    },
+    "teeth": {
+      "T_to_Tdg_breaks_uniform_phase": true,
+      "cnot_drop_propagation_fails": true,
+      "fake_logical_rejected": true
+    },
+    "transversal_T": {
+      "CX_weights_mod8_zero_coset_7": true,
+      "logical_action": "T^⊗15 == 논리 T† (diag(1, ω₈⁻¹))"
+    }
+  }
+}

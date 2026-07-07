@@ -2989,6 +2989,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "234dd855a657e68112fb9fb26451390b00079de7baa9717cb226a9e1db4f03bd"
     },
+    "app:rm15_tt": {
+      "kind": "app",
+      "id": "rm15_tt",
+      "tier": 1,
+      "tier_source": "explicit",
+      "semantic_guarantee": "structural_wellformed",
+      "method": "Merkle(자식 sealed u_hash + 배선). ⚠ unitary 동등성 미증명",
+      "u_hash": "8cedd324c0e0e4c4d1582fade2dfae4e9824c0b8eb5716aea0f93f73af967003"
+    },
     "app:rs73_encoder": {
       "kind": "app",
       "id": "rs73_encoder",
@@ -4657,6 +4666,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8"
     },
+    "module:rm15_encoder_t2": {
+      "kind": "module",
+      "id": "rm15_encoder_t2",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "0052db4cfd09620cd9f9c4abebd02b139de9c4a5529b704e9e56efe39b147f88"
+    },
     "module:rx_negpi4": {
       "kind": "module",
       "id": "rx_negpi4",
@@ -5168,15 +5186,17 @@
       "app": {
         "unitary_equiv": 431,
         "unitary_equiv_sampled": 1,
+        "structural_wellformed": 1,
         "subspace_permutation_verified": 19
       },
       "module": {
-        "unitary_equiv": 89
+        "unitary_equiv": 90
       }
     },
     "by_class": {
-      "unitary_equiv": 520,
+      "unitary_equiv": 521,
       "unitary_equiv_sampled": 1,
+      "structural_wellformed": 1,
       "subspace_permutation_verified": 19
     }
   }

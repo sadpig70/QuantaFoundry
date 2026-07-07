@@ -479,6 +479,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aw. TrackHE5 P4: RM [[15,1,3]] + transversal T — 정수/심볼릭 witness (observation)
+    rc, out = run(["scripts/rm15_observe.py", "--quick"])
+    result["steps"]["rm15_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

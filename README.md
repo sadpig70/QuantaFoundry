@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **89 sealed modules · 376 sealed applications** · registry root `b8ba9989…`
+- **90 sealed modules · 377 sealed applications** · registry root `ba32a65c…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash b8ba9989… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash ba32a65c… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -70,7 +70,11 @@ python scripts/reproduce_all.py
   the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
   cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
   triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal
-  logical gate in the registry),
+  logical gate in the registry), the **[[15,1,3]] punctured Reed-Muller code** (the canonical
+  15-to-1 magic-state-distillation substrate: a full logical-input Clifford encoder sealed at
+  Tier-2 by canonical stabilizer tableau, plus T^⊗15 whose code-space action equals logical T† —
+  proven by the mod-8 codeword-weight integer witness and a dense-free symbolic stabilizer
+  back-propagation of all 14 stabilizers; distance exactly 3, exhaustively checked),
   a **3/4-qubit Schur-Weyl transform pair with decoders** (direct Clebsch-Gordan cascade, J²/Jz
   simultaneous-diagonalization witness + S₃/S₄ duality sector preservation; the decoders make weak
   Schur sampling executable, with a symmetric-subspace reflector 2P−I and a Dicke |D⁴₂⟩ preparation
