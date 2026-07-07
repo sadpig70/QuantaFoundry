@@ -160,15 +160,23 @@
     "diffusion": "no-targets-module",
     "diffusion3": "no-targets-module",
     "draper_add2": "unsupported:qft2",
+    "du_brick6_t2": "unsupported:iswap",
+    "du_gate_dag": "unsupported:iswap",
+    "du_gate_j8": "unsupported:iswap",
     "fib_braid_s1": "unsupported:z5_gate",
     "fib_braid_s2": "unsupported:ry_fib",
+    "fib_fig8": "unsupported:z5_gate",
     "fib_fmove": "unsupported:ry_fib",
     "fib_hopf": "unsupported:z5_gate",
     "fib_solomon": "unsupported:z5_gate",
     "fib_trefoil": "unsupported:z5_gate",
     "fib_trefoil_m": "unsupported:z5_gate",
+    "fib_word5": "unsupported:z5_gate",
+    "fib_yb": "unsupported:z5_gate",
     "fredkin": "no-spec",
     "fswap": "unsupported:swap2",
+    "gauss_braid3": "unsupported:iswap",
+    "gauss_hop4": "unsupported:iswap",
     "gf8_mul": "branches=16777216>cap",
     "ghz16_structural": "n=16>cap",
     "grover2": "no-targets-module",
@@ -184,7 +192,9 @@
     "iqft3": "unsupported:swap2",
     "iqft7": "unsupported:swap2",
     "iqft8": "unsupported:swap2",
+    "iswap": "no-spec",
     "naimark_ud3": "unsupported:ry_cg_half_dag",
+    "otoc_du_t1": "unsupported:iswap",
     "peps22_rvb": "unsupported:ry_pi2",
     "qae3_pi2": "unsupported:ry_pi2",
     "qae3_pi8": "unsupported:ry_pi4",
@@ -211,6 +221,7 @@
     "qw_c8_3steps": "branches=16777216>cap",
     "reflect00": "no-targets-module",
     "reflect000": "no-targets-module",
+    "rm15_tt": "n=15>cap",
     "rs73_encoder": "n=21>cap",
     "rx_negpi4": "no-spec",
     "rx_y4_p": "no-spec",
@@ -259,6 +270,7 @@
     "rzz_y4_p_half": "unsupported:rz_y4_p",
     "rzz_y4_q_half": "unsupported:rz_y4_q",
     "s3_mult": "unsupported:fredkin",
+    "s4_mult": "unsupported:fredkin",
     "s_gate": "no-spec",
     "schur3": "unsupported:ry_cg_half_dag",
     "schur3_dag": "unsupported:ry_negpi4",
@@ -396,6 +408,13 @@
       "match": true,
       "n": 3
     },
+    "bogoliubov_pair": {
+      "branches": 1,
+      "cols": 3,
+      "gates": 7,
+      "match": true,
+      "n": 2
+    },
     "bv3_s101": {
       "branches": 1,
       "cols": 3,
@@ -416,6 +435,13 @@
       "gates": 3,
       "match": true,
       "n": 3
+    },
+    "chan_magic_t": {
+      "branches": 2,
+      "cols": 3,
+      "gates": 3,
+      "match": true,
+      "n": 2
     },
     "choi_depol": {
       "branches": 1,
@@ -732,6 +758,13 @@
       "match": true,
       "n": 6
     },
+    "floquet4_uf": {
+      "branches": 16,
+      "cols": 3,
+      "gates": 16,
+      "match": true,
+      "n": 4
+    },
     "gf4_frob": {
       "branches": 1,
       "cols": 3,
@@ -830,12 +863,26 @@
       "match": true,
       "n": 2
     },
+    "kitaev4_gs": {
+      "branches": 1,
+      "cols": 3,
+      "gates": 6,
+      "match": true,
+      "n": 4
+    },
     "magic_a": {
       "branches": 2,
       "cols": 2,
       "gates": 2,
       "match": true,
       "n": 1
+    },
+    "magic_cs": {
+      "branches": 2,
+      "cols": 3,
+      "gates": 3,
+      "match": true,
+      "n": 2
     },
     "mbqc_h": {
       "branches": 1,
@@ -1237,6 +1284,6 @@
       "n": 3
     }
   },
-  "verified_pass": 130,
-  "verified_total": 130
+  "verified_pass": 135,
+  "verified_total": 135
 }

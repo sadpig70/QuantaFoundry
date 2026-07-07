@@ -318,12 +318,16 @@ def discover_and_verify(sample=False):
         if gold is None:
             skipped[aid] = "no-dense-golden"
             continue
-        cols = [0, 1 % 2 ** n, (2 ** n) - 1]
-        ok = True
-        for x0 in sorted(set(cols)):
+        cols = sorted(set([0, 1 % 2 ** n, (2 ** n) - 1]))
+        # 전역위상(C4 up-to-phase) 일관: 첫 열에서 φ 추출 후 전 열 동일 φ 대조
+        c0 = run_column(ops, n, 0)
+        i0 = int(np.argmax(np.abs(gold[:, 0])))
+        ph = c0[i0] / gold[i0, 0] if abs(gold[i0, 0]) > 1e-12 else 1.0
+        ok = bool(abs(abs(ph) - 1) < 1e-9)
+        for x0 in cols:
             col = run_column(ops, n, x0)
-            ok &= bool(np.allclose(col, gold[:, x0], atol=1e-9))
-        verified[aid] = {"n": n, "branches": bc, "gates": len(ops), "cols": len(set(cols)),
+            ok &= bool(np.allclose(col, ph * gold[:, x0], atol=1e-9))
+        verified[aid] = {"n": n, "branches": bc, "gates": len(ops), "cols": len(cols),
                          "match": ok}
     return verified, skipped
 
