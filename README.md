@@ -69,9 +69,12 @@ python scripts/reproduce_all.py
   Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign),
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **path-sum ℤ[ω₈] fourth, a stabilizer-decomposition fifth, a free-fermion/Majorana SO(2n)
-  sixth, and a tensor-network exact-contraction seventh verification path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
+  sixth, a tensor-network exact-contraction seventh, and a QMDD reduction-canonical-form eighth
+  verification path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves
   each branch as an affine-support quadratic form — no matrix products; 128 sealed Clifford+T apps
-  re-verified, skips recorded with reasons), a **magic resource-theory exact certificate layer**
+  re-verified, skips recorded with reasons; the eighth executes circuits over a shared-node decision
+  diagram — reduction/merge, not tensor contraction — re-verifying 158 sealed apps with observed
+  node compression, e.g. ghz10 in 51 nodes vs dense dim 1024), a **magic resource-theory exact certificate layer**
   (stabilizer extent/robustness with primal + dual + zero-gap certificates in exact ℚ(√2) arithmetic
   — ξ(|T⟩)=4−2√2, R(|T⟩)=√2, bounded ξ(|CS⟩) ∈ [8/5, (11+2√10)/9]; tight T-count lower-bound
   certificates, and a Clifford-invariant proof that |T⟩⊗|T⟩ cannot be deterministically converted
