@@ -1901,6 +1901,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a0b1603a1659a2becc5f0c2715e3fd08438809b58675705d83e070c5196dc3a3"
     },
+    "app:du_gate_dag": {
+      "kind": "app",
+      "id": "du_gate_dag",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "35733059adf0e2ff7c2f5ccf532545cd5c472c729b712f1f9008a2ecde8df65c"
+    },
     "app:du_gate_j8": {
       "kind": "app",
       "id": "du_gate_j8",
@@ -2628,6 +2637,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "75306045bb0ec5b3c4599165ebe4cb368fff718fd79000c7b8ddb034fbe10fe0"
+    },
+    "app:otoc_du_t1": {
+      "kind": "app",
+      "id": "otoc_du_t1",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "befbb07400f65175dea48e44ae92bf8d9f482e961b0e6792fe0cb012eca72753"
     },
     "app:parity4_transform": {
       "kind": "app",
@@ -5238,7 +5256,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 437,
+        "unitary_equiv": 439,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "subspace_permutation_verified": 19
@@ -5248,7 +5266,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 527,
+      "unitary_equiv": 529,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 19

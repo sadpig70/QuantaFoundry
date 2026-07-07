@@ -1,0 +1,27 @@
+# du_gate_dag — dual-unitary 게이트 역 V† = (iSWAP†·e^{−iπ/8 ZZ})† = e^{iπ/8 ZZ}·iSWAP. 2q Tier-0.
+#   TrackHE6 P3 (#DYN). ★OTOC 회로(du_gate_j8 소비)의 부품 — 시간 역행 U†ᵗ 구성. plan 역분해:
+#   [cnot, t, sdg, cnot, iswap³(=iSWAP†), z, z] (tdg=t·sdg·iswap†=iswap³ 재발견, 성분 ℤ[ω₈]), module 0.
+# golden = du_gate_j8 golden 의 conj-transpose 직접(up-to-phase C4). witness=dyn_observe(OTOC).
+# 정직 경계: 봉인=게이트 유니터리뿐(du_gate_j8 짝).
+```json id=app_meta
+{"id": "du_gate_dag", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+F1 = np.array([[1, 0, 0, 0], [0, 0, -1j, 0], [0, -1j, 0, 0], [0, 0, 0, 1]], dtype=complex)
+p = np.exp(-1j * np.pi / 8)
+V = F1 @ np.diag([p, np.conj(p), np.conj(p), p]).astype(complex)
+golden = V.conj().T
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/t_gate.pg", "targets": [1]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/iswap.pg", "targets": [0, 1]},
+  {"spec": "../modules/iswap.pg", "targets": [0, 1]},
+  {"spec": "../modules/iswap.pg", "targets": [0, 1]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [1]}]}
+```

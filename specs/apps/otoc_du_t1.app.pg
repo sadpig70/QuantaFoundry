@@ -1,0 +1,77 @@
+# otoc_du_t1 — OTOC 연산자 회로 O = U†·X₁·U·X₀·U†·X₁·U·X₀ (W=X@1, V=X@0, t=1). 6q Tier-0 64×64.
+#   TrackHE6 P3 (#DYN, report6 6/8). ★§3g P1 관문("OTOC/스크램블링 witness 아직 없음") 직격 —
+#   기봉인 du_gate_j8/du_gate_dag sub-app 소비(★인프라 즉시 소비). U = du 브릭워크 1 step
+#   (짝층 (0,1)(2,3)(4,5)·홀층 (1,2)(3,4)(5,0)). O 는 측정 없는 유니터리(controlled 아님).
+# ★무한온도 OTOC 값 = Tr(O)/2⁶ = 0 (x=1 완전 scramble — X-basis 비대각, Z 는 대각 유지라 trivial).
+# plan = X₀·U·X₁·U†·X₀·U·X₁·U† 순 (du/du_dag sub-app ×24 + X ×4), module 0.
+# golden = O 유니터리 직접(닫힌형). witness(OTOC 값·operator growth·광원뿔 소멸)=dyn_observe(INV-Q3).
+# 정직 경계: 봉인=OTOC 회로 유니터리뿐. OTOC 값·스크램블링 해석·유한온도=관측·하드웨어=범위 밖.
+```json id=app_meta
+{"id": "otoc_du_t1", "n_sys": 6, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+F1 = np.array([[1, 0, 0, 0], [0, 0, -1j, 0], [0, -1j, 0, 0], [0, 0, 0, 1]], dtype=complex)
+p = np.exp(-1j * np.pi / 8)
+Vg = F1 @ np.diag([p, np.conj(p), np.conj(p), p]).astype(complex)
+N = 6
+X1 = np.array([[0, 1], [1, 0]], dtype=complex)
+I2 = np.eye(2, dtype=complex)
+def e1(g, i):
+    m = np.eye(1, dtype=complex)
+    for k in range(N):
+        m = np.kron(m, g if k == i else I2)
+    return m
+def e2(g, i, j):
+    d = 2 ** N
+    M = np.zeros((d, d), dtype=complex)
+    for x in range(d):
+        b = [(x >> (N - 1 - k)) & 1 for k in range(N)]
+        si = (b[i] << 1) | b[j]
+        for so in range(4):
+            a = g[so, si]
+            if abs(a) < 1e-16:
+                continue
+            nb = list(b)
+            nb[i], nb[j] = (so >> 1) & 1, so & 1
+            y = 0
+            for k in range(N):
+                y = (y << 1) | nb[k]
+            M[y, x] += a
+    return M
+U = (e2(Vg, 1, 2) @ e2(Vg, 3, 4) @ e2(Vg, 5, 0)) @ (e2(Vg, 0, 1) @ e2(Vg, 2, 3) @ e2(Vg, 4, 5))
+Ud = U.conj().T
+XA, XB = e1(X1, 1), e1(X1, 0)
+golden = Ud @ XA @ U @ XB @ Ud @ XA @ U @ XB
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"app": "du_gate_j8.app.pg", "targets": [0, 1]},
+  {"app": "du_gate_j8.app.pg", "targets": [2, 3]},
+  {"app": "du_gate_j8.app.pg", "targets": [4, 5]},
+  {"app": "du_gate_j8.app.pg", "targets": [1, 2]},
+  {"app": "du_gate_j8.app.pg", "targets": [3, 4]},
+  {"app": "du_gate_j8.app.pg", "targets": [5, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"app": "du_gate_dag.app.pg", "targets": [5, 0]},
+  {"app": "du_gate_dag.app.pg", "targets": [3, 4]},
+  {"app": "du_gate_dag.app.pg", "targets": [1, 2]},
+  {"app": "du_gate_dag.app.pg", "targets": [4, 5]},
+  {"app": "du_gate_dag.app.pg", "targets": [2, 3]},
+  {"app": "du_gate_dag.app.pg", "targets": [0, 1]},
+  {"spec": "../modules/x_gate.pg", "targets": [0]},
+  {"app": "du_gate_j8.app.pg", "targets": [0, 1]},
+  {"app": "du_gate_j8.app.pg", "targets": [2, 3]},
+  {"app": "du_gate_j8.app.pg", "targets": [4, 5]},
+  {"app": "du_gate_j8.app.pg", "targets": [1, 2]},
+  {"app": "du_gate_j8.app.pg", "targets": [3, 4]},
+  {"app": "du_gate_j8.app.pg", "targets": [5, 0]},
+  {"spec": "../modules/x_gate.pg", "targets": [1]},
+  {"app": "du_gate_dag.app.pg", "targets": [5, 0]},
+  {"app": "du_gate_dag.app.pg", "targets": [3, 4]},
+  {"app": "du_gate_dag.app.pg", "targets": [1, 2]},
+  {"app": "du_gate_dag.app.pg", "targets": [4, 5]},
+  {"app": "du_gate_dag.app.pg", "targets": [2, 3]},
+  {"app": "du_gate_dag.app.pg", "targets": [0, 1]}]}
+```

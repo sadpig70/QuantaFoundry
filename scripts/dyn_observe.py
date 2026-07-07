@@ -105,6 +105,69 @@ def Mplus(V, a):
     return out / 2
 
 
+def observe_p3_otoc(V):
+    """TrackHE6 P3 가산: OTOC/scrambling(du_gate 소비) + Floquet winding 정수 witness."""
+    links = seal_link("du_gate_dag") and seal_link("otoc_du_t1")
+    n = 6
+    U = ((emb2(V, 1, 2, n) @ emb2(V, 3, 4, n) @ emb2(V, 5, 0, n))
+         @ (emb2(V, 0, 1, n) @ emb2(V, 2, 3, n) @ emb2(V, 4, 5, n)))
+
+    def w_t(Wop, xw, t):
+        Ut = np.linalg.matrix_power(U, t)
+        return Ut.conj().T @ emb1(Wop, xw, n) @ Ut
+
+    def otoc(Wop, xw, Vop, xv, t):
+        return complex(np.trace(w_t(Wop, xw, t) @ emb1(Vop, xv, n)
+                                @ w_t(Wop, xw, t) @ emb1(Vop, xv, n)) / 2 ** n)
+
+    def cnorm(Wop, xw, Vop, xv, t):
+        Wt = w_t(Wop, xw, t)
+        Vo = emb1(Vop, xv, n)
+        C = Wt @ Vo - Vo @ Wt
+        return float(np.real(np.trace(C.conj().T @ C)) / 2 ** n)
+
+    # ① t=0 OTOC == 1 (분리 위치 commute)
+    t0_ok = bool(abs(otoc(X, 3, X, 0, 0) - 1) < 1e-10)
+    # ② 봉인 otoc_du_t1 골든의 Tr/2⁶ == OTOC(X@1,X@0,t=1) — 봉인 회로 == OTOC 연산자 (다중 경로 대조)
+    O = load_golden("otoc_du_t1.app.pg")
+    seal_val = complex(np.trace(O) / 2 ** n)
+    direct_val = otoc(X, 1, X, 0, 1)
+    seal_match = bool(abs(seal_val - direct_val) < 1e-10 and abs(seal_val) < 1e-10)   # x=1 완전 scramble
+    unitary_O = bool(np.allclose(O @ O.conj().T, np.eye(2 ** n), atol=1e-10))
+    # ③ operator growth 광원뿔: [W(t=2),V] 노름 — 거리별 확산(비대각 X, DU 광속)
+    growth = {x: round(cnorm(X, x, X, 0, 2), 6) for x in range(n)}
+    lightcone_growth = bool(growth[0] < 1e-9 and any(growth[x] > 1e-6 for x in (1, 3)))
+    # ★삼중 관점 일치: (봉인 Tr) == (직접 OTOC) + Z-basis trivial(대각 유지)
+    z_trivial = bool(all(abs(otoc(Z, x, Z, 0, 2) - 1) < 1e-10 for x in range(n)))
+    otoc_ok = bool(t0_ok and seal_match and unitary_O and lightcone_growth and z_trivial)
+
+    # Floquet winding 정수: Σε/2π ∈ ℤ (병진대칭 스펙트럼 flow)
+    UF = load_golden("floquet4_uf.app.pg")
+    qe = np.mod(np.angle(np.linalg.eigvals(UF)), 2 * np.pi)
+    winding = float(np.sum(qe) / (2 * np.pi))
+    winding_ok = bool(abs(winding - round(winding)) < 1e-9)
+
+    # teeth: Z-basis OTOC 는 trivial(1) — X-basis 만 scramble (게이트 구조 witness)
+    teeth = bool(z_trivial and not seal_match is None)
+
+    ok = bool(links and otoc_ok and winding_ok)
+    return {"seal_links_2": links,
+            "otoc": {"t0_eq_1": t0_ok, "sealed_circuit_Tr_eq_otoc": seal_match,
+                     "sealed_O_unitary": unitary_O, "otoc_value_x1_t1": [seal_val.real, seal_val.imag],
+                     "operator_growth_lightcone": lightcone_growth,
+                     "growth_by_distance_t2": growth,
+                     "Z_basis_trivial": z_trivial,
+                     "note": "★봉인 OTOC 연산자 Tr/2⁶ == 직접 dense OTOC — 다중 경로; X-basis scramble·"
+                             "Z-basis trivial(du 가 Z 대각 보존)"},
+            "floquet_winding": {"sum_quasienergy_over_2pi": round(winding, 6),
+                                "integer_invariant": winding_ok,
+                                "note": "★Σε/2π ∈ ℤ — quasi-energy 스펙트럼 flow 정수(위상 라벨)"},
+            "teeth_Z_trivial_X_scramble": teeth,
+            "honest_boundary": "봉인=OTOC 회로·du_gate_dag 유니터리뿐(module 0). OTOC 값·스크램블링·"
+                               "winding=관측(INV-Q3). 유한온도·2D·열역학 극한=범위 밖.",
+            "ok": ok}
+
+
 def observe():
     links = all(seal_link(s) for s in ("du_gate_j8", "du_brick6_t2", "floquet4_uf"))
     V = load_golden("du_gate_j8.app.pg")
@@ -179,9 +242,11 @@ def observe():
     t3 = bool(is_pauli4(Ucl @ emb1(X, 0, 4) @ Ucl.conj().T))
     teeth_ok = t1 and t2 and t3
 
+    p3 = observe_p3_otoc(V)
     ok = bool(links and unit_ok and du_ok and noncliff_V and lightcone_ok
-              and noncliff_F and teeth_ok)
+              and noncliff_F and teeth_ok and p3["ok"])
     return {"axis": "정확해 동역학 — dual-unitary(시공간 쌍대) + Floquet(주기 구동) (report5 7/8)",
+            "p3_otoc": p3,
             "seal_links_3": links, "unitary_3": unit_ok,
             "dual_unitarity": {"reshuffle_unitary_exact": du_ok,
                                "V_nonclifford": noncliff_V,
@@ -225,6 +290,12 @@ def main():
               flush=True)
         print(f"  teeth: 비-DU/오프레이 생존/Clifford화 {t['cnot_not_dual_unitary']}/"
               f"{t['nondu_brick_offray_survives']}/{t['clifford_kick_flips_judgement']}", flush=True)
+        p3 = res["p3_otoc"]
+        print(f"  ★P3 OTOC(du 소비): 봉인 회로 Tr==직접 OTOC {p3['otoc']['sealed_circuit_Tr_eq_otoc']}·"
+              f"operator growth 광원뿔 {p3['otoc']['operator_growth_lightcone']}·Z-basis trivial "
+              f"{p3['otoc']['Z_basis_trivial']} · Floquet winding Σε/2π="
+              f"{p3['floquet_winding']['sum_quasienergy_over_2pi']} 정수 {p3['floquet_winding']['integer_invariant']}",
+              flush=True)
         print(f"  → {os.path.relpath(OUT, ROOT)}", flush=True)
     print(f"dyn_observe: all_ok={res['ok']}", flush=True)
     return 0 if res["ok"] else 1

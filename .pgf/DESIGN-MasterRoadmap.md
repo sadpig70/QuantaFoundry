@@ -605,7 +605,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ bogoliubov_pair(c98a3788, B=exp(iπ/4·XX) 수보존 깸)·kitaev4_gs(860607b8, sweet dimer).
             #   bogoliubov_observe(3ay): R∈SO(4)·Kitaev sweet 바닥·fermion parity·★Pfaffian Z₂ 다중경로.
             #   matchgate_verify census 에 pairing 편입. 381→383앱·root c252010e→62aac895ae906cc3.
-        P3_OTOC // OTOC/scrambling + Floquet winding (designing)
+        P3_OTOC // OTOC/scrambling + Floquet winding (done — 2026-07-07)
+            # ✅ du_gate_dag(35733059, V†)·otoc_du_t1(befbb074, OTOC 연산자 Tr/2⁶=0). dyn_observe(3at)
+            #   가산: 봉인 Tr==직접 OTOC·operator growth 광원뿔·Z-basis trivial·Floquet winding Σε/2π=6
+            #   정수. du_gate 소비 sub-app 복리. 383→385앱·root 62aac895→c86ced4ea43d3443.
         P6_ChannelMagic // 채널 magic 자원 증명서 (designing)
         P1_Distill15 // Coherent 15-to-1 증류 프로토콜 (designing)
         P5_TNPath // 텐서망 제7 검증경로 (designing)

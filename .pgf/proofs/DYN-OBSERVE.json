@@ -52,6 +52,37 @@
       }
     },
     "ok": true,
+    "p3_otoc": {
+      "floquet_winding": {
+        "integer_invariant": true,
+        "note": "★Σε/2π ∈ ℤ — quasi-energy 스펙트럼 flow 정수(위상 라벨)",
+        "sum_quasienergy_over_2pi": 6.0
+      },
+      "honest_boundary": "봉인=OTOC 회로·du_gate_dag 유니터리뿐(module 0). OTOC 값·스크램블링·winding=관측(INV-Q3). 유한온도·2D·열역학 극한=범위 밖.",
+      "ok": true,
+      "otoc": {
+        "Z_basis_trivial": true,
+        "growth_by_distance_t2": {
+          "0": 0.0,
+          "1": 2.0,
+          "2": 0.0,
+          "3": 4.0,
+          "4": 2.0,
+          "5": 2.0
+        },
+        "note": "★봉인 OTOC 연산자 Tr/2⁶ == 직접 dense OTOC — 다중 경로; X-basis scramble·Z-basis trivial(du 가 Z 대각 보존)",
+        "operator_growth_lightcone": true,
+        "otoc_value_x1_t1": [
+          1.4942721138108684e-16,
+          -8.673617379884035e-18
+        ],
+        "sealed_O_unitary": true,
+        "sealed_circuit_Tr_eq_otoc": true,
+        "t0_eq_1": true
+      },
+      "seal_links_2": true,
+      "teeth_Z_trivial_X_scramble": true
+    },
     "seal_links_3": true,
     "teeth": {
       "clifford_kick_flips_judgement": true,

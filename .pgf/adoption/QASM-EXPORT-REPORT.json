@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 383,
-  "round_trip_checked": 347,
-  "round_trip_matched": 347,
+  "exported": 385,
+  "round_trip_checked": 349,
+  "round_trip_matched": 349,
   "round_trip_skipped_large": 36,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -2699,6 +2699,19 @@
       "qasm_path": ".pgf/adoption/qasm/du_brick6_t2.qasm"
     },
     {
+      "id": "du_gate_dag",
+      "n_sys": 2,
+      "n_ops": 9,
+      "sealed_u_hash": "35733059adf0e2ff",
+      "round_trip_u_hash": "35733059adf0e2ff",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "sdg_gate": 1,
+        "iswap": 3
+      },
+      "qasm_path": ".pgf/adoption/qasm/du_gate_dag.qasm"
+    },
+    {
       "id": "du_gate_j8",
       "n_sys": 2,
       "n_ops": 6,
@@ -3497,6 +3510,19 @@
         "ry_negpi2": 1
       },
       "qasm_path": ".pgf/adoption/qasm/naimark_ud3.qasm"
+    },
+    {
+      "id": "otoc_du_t1",
+      "n_sys": 6,
+      "n_ops": 184,
+      "sealed_u_hash": "befbb07400f65175",
+      "round_trip_u_hash": "befbb07400f65175",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "iswap": 48,
+        "sdg_gate": 12
+      },
+      "qasm_path": ".pgf/adoption/qasm/otoc_du_t1.qasm"
     },
     {
       "id": "parity4_transform",

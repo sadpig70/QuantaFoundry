@@ -709,6 +709,20 @@ naimark_ud3
 ├─ toffoli (module×3)
 └─ x_gate (module×2)
 
+otoc_du_t1
+├─ du_gate_dag (app×12)
+│  ├─ cnot (module×2)
+│  ├─ iswap (module×3)
+│  ├─ sdg_gate (module)
+│  ├─ t_gate (module)
+│  └─ z_gate (module×2)
+├─ du_gate_j8 (app×12)
+│  ├─ cnot (module×2)
+│  ├─ iswap (module)
+│  ├─ t_gate (module)
+│  └─ z_gate (module×2)
+└─ x_gate (module×4)
+
 parity4_transform
 └─ cnot (module×6)
 

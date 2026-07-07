@@ -282,6 +282,9 @@ APP_LIST = [
     # TrackHE6 P2: Bogoliubov/Kitaev pairing (report6 6/8) — 제6경로 비수보존 확장 (module 0)
     ("bogoliubov_pair.app.pg",           None),  # B=exp(iπ/4·XX) pairing 게이트 (γ₁γ₂=iXX, 수보존 깸)
     ("kitaev4_gs.app.pg",                None),  # 4-site sweet-point 바닥 (even-parity dimer)
+    # TrackHE6 P3: OTOC/scrambling (report6 6/8) — du_gate_j8 소비 (module 0)
+    ("du_gate_dag.app.pg",               None),  # V† = e^{iπ/8 ZZ}·iSWAP (OTOC 시간역행 부품)
+    ("otoc_du_t1.app.pg",                None),  # OTOC 연산자 U†X₁UX₀·U†X₁UX₀ (Tr/2⁶=0 scramble)
 ]
 
 

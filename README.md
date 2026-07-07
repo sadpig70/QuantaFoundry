@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **90 sealed modules · 383 sealed applications** · registry root `62aac895…`
+- **90 sealed modules · 385 sealed applications** · registry root `c86ced4e…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 62aac895… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash c86ced4e… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -62,8 +62,9 @@ python scripts/reproduce_all.py
   a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **non-Clifford
   dual-unitary brickwork + kicked Floquet unitary** (space-time-dual gate at J=π/8; the
   infinite-temperature two-point function vanishes off the light ray exactly and the on-ray value
-  matches a closed-form one-qubit transfer-channel power — two independent paths; quasi-energies
-  recorded as observations), a **fermionic SWAP** and a **Bogoliubov pairing gate** (particle-number-breaking Gaussian —
+  matches a closed-form one-qubit transfer-channel power — two independent paths; plus an OTOC
+  operator circuit whose trace reproduces the dense out-of-time-order correlator with light-cone
+  operator growth, and an integer Floquet winding Σε/2π — all observations), a **fermionic SWAP** and a **Bogoliubov pairing gate** (particle-number-breaking Gaussian —
   exp(iπ/4·XX), extending the sixth matchgate/SO(2n) path to the pairing sector — with a 4-site
   Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign),
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
