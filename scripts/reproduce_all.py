@@ -509,6 +509,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aab. TrackHE7 P2: 4-Majorana braiding 구조 관측 witness (§3i 축 개창, seal 아님)
+    rc, out = run(["scripts/maj_observe.py", "--quick"])
+    result["steps"]["maj_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

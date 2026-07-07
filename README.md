@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **91 sealed modules · 387 sealed applications** · registry root `b06fcdf6…`
+- **91 sealed modules · 388 sealed applications** · registry root `6e0b1eb4…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash b06fcdf6… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 6e0b1eb4… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -57,7 +57,10 @@ python scripts/reproduce_all.py
   general GF(8) product and a **Reed-Solomon RS(7,3) systematic encoder + syndrome core** — the
   21-qubit encoder is structural, repaid to an exhaustively verified message→parity permutation
   with an exhaustive distance-5 MDS observation), **Ising/Majorana braiding**
-  (Yang-Baxter), a **Fibonacci-anyon braid + knot-word layer** (field ℚ(ζ₅,√φ); F-move basis change
+  (Yang-Baxter — including a **physical 4-Majorana braid word** B₁₂B₂₃B₁₂ over Jordan-Wigner modes,
+  whose companion witness confirms the braid-group representation is entirely Clifford, its Majorana
+  conjugation an SO(4) signed permutation, and B₂₃ a rediscovery of the sealed Bogoliubov gate — a
+  pre-seal check that refuted the external "non-Clifford braid word" claim), a **Fibonacci-anyon braid + knot-word layer** (field ℚ(ζ₅,√φ); F-move basis change
   and 3-strand braid words up to the figure-eight knot — inverse generators realized as z5 powers —
   whose closures feed a **three-path** Jones observation (weighted trace vs Temperley-Lieb state-sum
   vs skein) plus an integer Alexander third invariant; connected-sum multiplicativity and

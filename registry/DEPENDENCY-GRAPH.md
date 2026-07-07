@@ -588,6 +588,10 @@ magic_cs
 ├─ cs_gate (module)
 └─ h_gate (module×2)
 
+maj_braid_ybe
+├─ cnot (module×2)
+└─ h_gate (module)
+
 mbqc_h
 ├─ cnot (module)
 ├─ cz (module)

@@ -7425,6 +7425,23 @@
       }
     ]
   },
+  "maj_braid_ybe": {
+    "u_hash": "1abafed7914f94cf2f90e2e984907c986becaed8f37117058a9c0490c22ecbac",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
   "mbqc_h": {
     "u_hash": "f5df6dd2cde76dfd3bab793e7f1fcb8f00ec31fa105503499142af9d93d52729",
     "depends_on": [

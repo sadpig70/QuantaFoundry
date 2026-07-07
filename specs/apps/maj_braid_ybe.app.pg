@@ -1,0 +1,30 @@
+# maj_braid_ybe — 4-Majorana Yang-Baxter braid word B12·B23·B12: 위상적 braiding 게이트의 첫 봉인. 2q. Tier-0.
+# TrackHE7 P2 (#free-fermion-심화): §3i "Majorana braiding 위상 게이트 아직 없음" 축 개창.
+#   JW 2큐빗 4-Majorana(γ1=X⊗I,γ2=Y⊗I,γ3=Z⊗X,γ4=Z⊗Y), braid B_ij=exp(π/4·γ_iγ_j)=(I+γ_iγ_j)/√2.
+#   Yang-Baxter word W=B12·B23·B12 == B23·B12·B23 (braid 관계). golden=Majorana 공식 직접(C4 독립참조).
+# ★봉인 전 선검증(정직): 개별 braid·word 전부 Clifford → 외부 "non-Clifford matchgate" 주장 반증.
+#   W 가 기봉인 primitive 로 환원: W == CNOT(0,1)·H(0)·CNOT(0,1) (up-to-phase). 신규 module 0.
+#   B23=exp(iπ/4 XX)==기봉인 bogoliubov_pair(§4′f 동치 재발견). witness=maj_observe(SO(4) 부호순열·
+#   Yang-Baxter·parity 위상큐빗 P=γ1γ2γ3γ4=−Z⊗Z, 오라클 독립).
+# 정직 경계: 봉인=회로==golden exact(Clifford)뿐. 위상 보호·anyon 통계·universality(Ising=Clifford only)
+#   =관측/범위 밖.
+```json id=app_meta
+{"id": "maj_braid_ybe", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+# Majorana braid word W=B12·B23·B12 직접 구성 (C4 독립참조)
+I2 = np.eye(2, dtype=complex)
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+Y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+Z = np.diag([1, -1]).astype(complex)
+def kron(a, b): return np.kron(a, b)
+G = {1: kron(X, I2), 2: kron(Y, I2), 3: kron(Z, X), 4: kron(Z, Y)}
+def braid(i, j): return (np.eye(4) + G[i] @ G[j]) / np.sqrt(2)
+golden = braid(1, 2) @ np.eye(4)
+golden = braid(2, 3) @ golden
+golden = braid(1, 2) @ golden
+```
+```json id=plan
+{"steps": [{"spec": "../modules/cnot.pg", "targets": [0, 1]}, {"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```
