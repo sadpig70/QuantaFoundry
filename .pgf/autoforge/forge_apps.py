@@ -279,6 +279,9 @@ APP_LIST = [
     ("fib_fig8.app.pg",                  None),  # σ₁σ₂⁻¹σ₁σ₂⁻¹ — 첫 비-토러스 매듭(σ⁻¹=z5³)
     # TrackHE6 P4: S₄ 정수표현 비아벨 (report6 5/8) — 곱셈 오라클 (module 0, s3_mult 복리)
     ("s4_mult.app.pg",                   None),  # S₄=V₄⋊S₃ 곱셈 |g⟩|h⟩→|g⟩|gh⟩ (10q, s3_mult sub-app)
+    # TrackHE6 P2: Bogoliubov/Kitaev pairing (report6 6/8) — 제6경로 비수보존 확장 (module 0)
+    ("bogoliubov_pair.app.pg",           None),  # B=exp(iπ/4·XX) pairing 게이트 (γ₁γ₂=iXX, 수보존 깸)
+    ("kitaev4_gs.app.pg",                None),  # 4-site sweet-point 바닥 (even-parity dimer)
 ]
 
 

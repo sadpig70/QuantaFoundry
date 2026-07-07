@@ -128,6 +128,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0852e31c11ff95a47d8f412c07e3c84577757d379b0ff899cc1a1a048431da86"
     },
+    "app:bogoliubov_pair": {
+      "kind": "app",
+      "id": "bogoliubov_pair",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c98a37880edd00e119c7c1632a676ca4cf3a0876afc5c16277faafba0c6ecf83"
+    },
     "app:bv3_s101": {
       "kind": "app",
       "id": "bv3_s101",
@@ -2358,6 +2367,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
+    },
+    "app:kitaev4_gs": {
+      "kind": "app",
+      "id": "kitaev4_gs",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "860607b82d9bafa3cb31d5478011eb180f06f391e3102d0811c45a955948d034"
     },
     "app:magic_a": {
       "kind": "app",
@@ -5220,7 +5238,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 435,
+        "unitary_equiv": 437,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "subspace_permutation_verified": 19
@@ -5230,7 +5248,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 525,
+      "unitary_equiv": 527,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 19

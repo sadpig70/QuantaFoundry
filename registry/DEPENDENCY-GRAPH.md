@@ -71,6 +71,11 @@ bk_num1
 ├─ h_gate (module×2)
 └─ x_gate (module×2)
 
+bogoliubov_pair
+├─ cnot (module×2)
+├─ h_gate (module×4)
+└─ sdg_gate (module)
+
 bv3_s101
 ├─ cnot (module×2)
 ├─ h_gate (module×7)
@@ -565,6 +570,10 @@ ising_braid_b2
 ├─ cz (module)
 ├─ h_gate (module×4)
 └─ sdg_gate (module×2)
+
+kitaev4_gs
+├─ cnot (module×3)
+└─ h_gate (module×3)
 
 magic_a
 ├─ h_gate (module)

@@ -1,0 +1,26 @@
+# bogoliubov_pair — Majorana pairing(비수보존 Bogoliubov) 게이트 B = exp(iπ/4·XX) = (I+i·XX)/√2.
+#   2q Tier-0. TrackHE6 P2 (#GAUSS, report6 6/8). ★제6 검증경로(matchgate, 수보존 hopping)를 비수보존
+#   pairing 섹터로 확장 — γ₁γ₂ = i·XX (Kitaev pairing bond, matchgate hopping c†c 와 다른 생성자).
+# ★수보존 깸: [B, N] ≠ 0 (N=입자수) — hopping(수보존)과 질적 다른 Gaussian. R∈SO(4)(제6경로 커버).
+# plan = [h,h, cnot(0,1), sdg(1), cnot(0,1), h,h] = HH·CNOT·(I⊗sdg)·CNOT·HH (up-to-phase C4, 성분 ℤ[1/√2]).
+#   신규 module 0. golden = (I+i·XX)/√2 직접.
+# witness(수보존 깸·R∈SO(4)·Kitaev Z₂ parity)=bogoliubov_observe + matchgate_verify(제6경로, INV-Q3).
+# 정직 경계: 봉인=pairing 게이트뿐. 위상 보호(노이즈)·일반 parametrization·2D=범위 밖.
+```json id=app_meta
+{"id": "bogoliubov_pair", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+X = np.array([[0, 1], [1, 0]], dtype=complex)
+golden = (np.eye(4) + 1j * np.kron(X, X)) / np.sqrt(2)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/sdg_gate.pg", "targets": [1]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]},
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]}]}
+```

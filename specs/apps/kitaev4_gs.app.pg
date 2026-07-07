@@ -1,0 +1,43 @@
+# kitaev4_gs — 4-site Kitaev 사슬 sweet-point(μ=0, t=Δ) 바닥상태 준비 (even-parity 섹터). 4q Tier-0.
+#   TrackHE6 P2 (#GAUSS #TOPO). ★위상 초전도체 Majorana dimer: sweet-point H ∝ i·Σ_j γ_{2j+1}γ_{2j+2}
+#   (bond Majorana 쌍 정렬, edge γ₀·γ₇ 자유 → 2-fold 위상 겹침). even-parity 바닥 = 짝수무게 균등중첩
+#   (I+ZZZZ)/2 사영 = stabilizer 상태 → dyadic 진폭 1/√8 (선검증 확정).
+# 정의 열(|0000⟩ 입력) = sweet 바닥. plan = [h,h,h, cnot(0→3), cnot(1→3), cnot(2→3)] — q3=q0⊕q1⊕q2
+#   (even-weight 강제), 신규 module 0. golden = 준비 유니터리 직접(정의 열만 물리 — mub 선례).
+# witness(H_sweet 고유·fermion parity +1·Majorana bond)=bogoliubov_observe(INV-Q3).
+# 정직 경계: 봉인=준비 유니터리뿐. Z₂ 위상·에너지갭·sweet 이탈(μ≠0)·finite-size=관측/범위 밖.
+```json id=app_meta
+{"id": "kitaev4_gs", "n_sys": 4, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+def e1(g, i):
+    m = np.eye(1, dtype=complex)
+    for k in range(4):
+        m = np.kron(m, g if k == i else I2)
+    return m
+def cnot(c, t):
+    d = 16
+    M = np.zeros((d, d), dtype=complex)
+    for x in range(d):
+        b = [(x >> (3 - k)) & 1 for k in range(4)]
+        if b[c]:
+            b[t] ^= 1
+        y = 0
+        for k in range(4):
+            y = (y << 1) | b[k]
+        M[y, x] = 1.0
+    return M
+golden = (cnot(2, 3) @ cnot(1, 3) @ cnot(0, 3) @ e1(H, 0) @ e1(H, 1) @ e1(H, 2))
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/h_gate.pg", "targets": [1]},
+  {"spec": "../modules/h_gate.pg", "targets": [2]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [1, 3]},
+  {"spec": "../modules/cnot.pg", "targets": [2, 3]}]}
+```

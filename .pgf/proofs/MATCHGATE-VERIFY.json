@@ -5,7 +5,7 @@
   "engine_selftest": true,
   "independence": "dense(행렬곱)·tableau(안정군)·ZX(그래프)·path-sum(ℤ[ω₈])·stab-rank(Clifford-합)와 다른 SO(2n)/자유페르미온 전제 — 여섯 번째 경로.",
   "ok": true,
-  "skipped_count": 445,
+  "skipped_count": 452,
   "table_golden_consistency": {
     "fswap": true,
     "iswap": true
@@ -16,6 +16,7 @@
     "nonadjacent_rejected": true
   },
   "unitary_level_census": {
+    "bogoliubov_pair": true,
     "du_gate_j8": false,
     "fswap": true,
     "ising_braid_b2": true,

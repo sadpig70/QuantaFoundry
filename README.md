@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **90 sealed modules · 381 sealed applications** · registry root `c252010e…`
+- **90 sealed modules · 383 sealed applications** · registry root `62aac895…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash c252010e… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 62aac895… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -63,7 +63,9 @@ python scripts/reproduce_all.py
   dual-unitary brickwork + kicked Floquet unitary** (space-time-dual gate at J=π/8; the
   infinite-temperature two-point function vanishes off the light ray exactly and the on-ray value
   matches a closed-form one-qubit transfer-channel power — two independent paths; quasi-energies
-  recorded as observations), a **fermionic SWAP**,
+  recorded as observations), a **fermionic SWAP** and a **Bogoliubov pairing gate** (particle-number-breaking Gaussian —
+  exp(iπ/4·XX), extending the sixth matchgate/SO(2n) path to the pairing sector — with a 4-site
+  Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign),
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **path-sum ℤ[ω₈] fourth, a stabilizer-decomposition fifth, and a free-fermion/Majorana SO(2n)
   sixth verification path** (the fifth expands non-Clifford diagonal gates into exact Clifford-sum branches and evolves

@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 381,
-  "round_trip_checked": 345,
-  "round_trip_matched": 345,
+  "exported": 383,
+  "round_trip_checked": 347,
+  "round_trip_matched": 347,
   "round_trip_skipped_large": 36,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -181,6 +181,18 @@
       "round_trip_match": true,
       "unmapped_gates": {},
       "qasm_path": ".pgf/adoption/qasm/bk_num1.qasm"
+    },
+    {
+      "id": "bogoliubov_pair",
+      "n_sys": 2,
+      "n_ops": 7,
+      "sealed_u_hash": "c98a37880edd00e1",
+      "round_trip_u_hash": "c98a37880edd00e1",
+      "round_trip_match": true,
+      "unmapped_gates": {
+        "sdg_gate": 1
+      },
+      "qasm_path": ".pgf/adoption/qasm/bogoliubov_pair.qasm"
     },
     {
       "id": "bv3_s101",
@@ -3182,6 +3194,16 @@
         "sdg_gate": 2
       },
       "qasm_path": ".pgf/adoption/qasm/ising_braid_b2.qasm"
+    },
+    {
+      "id": "kitaev4_gs",
+      "n_sys": 4,
+      "n_ops": 6,
+      "sealed_u_hash": "860607b82d9bafa3",
+      "round_trip_u_hash": "860607b82d9bafa3",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/kitaev4_gs.qasm"
     },
     {
       "id": "magic_a",

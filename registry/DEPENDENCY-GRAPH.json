@@ -395,6 +395,29 @@
       }
     ]
   },
+  "bogoliubov_pair": {
+    "u_hash": "c98a37880edd00e119c7c1632a676ca4cf3a0876afc5c16277faafba0c6ecf83",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 2,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 4,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "sdg_gate",
+        "uses": 1,
+        "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+      }
+    ]
+  },
   "bv3_s101": {
     "u_hash": "09db3d7ca2850ee95081f37d83547bdf3517448bdf8c8a7ade6f5964672cd009",
     "depends_on": [
@@ -7290,6 +7313,23 @@
         "id": "sdg_gate",
         "uses": 2,
         "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
+      }
+    ]
+  },
+  "kitaev4_gs": {
+    "u_hash": "860607b82d9bafa3cb31d5478011eb180f06f391e3102d0811c45a955948d034",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 3,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 3,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
       }
     ]
   },

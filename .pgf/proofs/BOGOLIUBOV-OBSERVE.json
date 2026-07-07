@@ -1,0 +1,37 @@
+{
+  "_note": "Bogoliubov pairing + Kitaev sweet witness: 수보존 깸·R∈SO(4)·fermion parity·Pfaffian Z₂·teeth. 봉인=유니터리뿐(INV-Q3).",
+  "_schema": "bogoliubov-observe-v1",
+  "observation": {
+    "axis": "Bogoliubov/Kitaev pairing — 제6 검증경로 비수보존 확장 (report6 6/8)",
+    "honest_boundary": "봉인=pairing 게이트·sweet 준비 유니터리뿐(module 0). 수보존 깸·R·parity·Pfaffian=witness(INV-Q3). Z₂ 보호(노이즈)·sweet 이탈·2D=범위 밖.",
+    "kitaev_sweet_point": {
+      "energy": -2.9999999999999982,
+      "even_sector": true,
+      "fermion_parity": 0.9999999999999998,
+      "ground_eigenstate": true
+    },
+    "matchgate_path6_extend": {
+      "R_in_SO4": true,
+      "distinct_from_hopping": true,
+      "note": "★제6경로(matchgate/SO(2n))를 pairing 섹터로 확장 — hopping(수보존) R 과 교집합 없음"
+    },
+    "ok": true,
+    "pairing_breaks_number": {
+      "breaks": true,
+      "comm_BN_max": 1.414213562373095,
+      "gate": "B=exp(iπ/4·XX)=(I+i·XX)/√2, γ₁γ₂=i·XX (pairing bond)"
+    },
+    "seal_links_2": true,
+    "teeth": {
+      "corrupt_flips_parity": true,
+      "hopping_conserves_number": true
+    },
+    "unitary": true,
+    "z2_topological_pfaffian": {
+      "note": "★다중 경로: parity·상관행렬 Pfaffian·det 정수 대조",
+      "pfaffian_abs": 0.9999999999999991,
+      "pfaffian_sign": 1,
+      "z2_invariant_ok": true
+    }
+  }
+}

@@ -248,12 +248,13 @@ def main():
                              gate_R("fswap", [0, 1], 2), atol=1e-10))
 
     # ★census(관측): 유니터리-수준 Gaussian성 (n≤4 표본 — as-written 과 구분)
+    #   bogoliubov_pair = pairing(비수보존) Gaussian — 제6경로 pairing 확장(TrackHE6 P2)
     census = {}
-    for aid in ("fswap", "ising_braid_b2", "du_gate_j8", "magic_cs"):
+    for aid in ("fswap", "ising_braid_b2", "du_gate_j8", "magic_cs", "bogoliubov_pair"):
         U = load_golden(f"{aid}.app.pg")
         nq = int(round(np.log2(U.shape[0])))
         census[aid] = bool(fit_R(U, majorana(nq)) is not None)
-    census_ok = (census["fswap"] and census["ising_braid_b2"]
+    census_ok = (census["fswap"] and census["ising_braid_b2"] and census["bogoliubov_pair"]
                  and not census["du_gate_j8"] and not census["magic_cs"])
 
     # teeth

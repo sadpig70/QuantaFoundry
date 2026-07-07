@@ -1,13 +1,13 @@
 {
-  "bundle": "REPRODUCED",
+  "bundle": "FAILED",
   "steps": {
     "forge_apps": {
       "rc": 0,
-      "apps_sealed": "208/208",
+      "apps_sealed": "210/210",
       "rediscovery": "12/12",
       "pass": true,
-      "reassembled": 1,
-      "coherence": 207
+      "reassembled": 2,
+      "coherence": 208
     },
     "frontier_coherence": {
       "coherence_checked": 166,
@@ -23,9 +23,9 @@
     "registry": {
       "rc": 0,
       "modules": "90",
-      "unique_apps": "381",
+      "unique_apps": "383",
       "cached": "75",
-      "root_hash": "c252010e91071e2b",
+      "root_hash": "62aac895ae906cc3",
       "pass": true
     },
     "second_oracle": {
@@ -249,9 +249,9 @@
       "pass": true
     },
     "stabrank_verify_sample": {
-      "rc": 0,
-      "all_ok": true,
-      "pass": true
+      "rc": 1,
+      "all_ok": false,
+      "pass": false
     },
     "code832_observe": {
       "rc": 0,
@@ -279,6 +279,11 @@
       "pass": true
     },
     "s4_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "bogoliubov_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true
