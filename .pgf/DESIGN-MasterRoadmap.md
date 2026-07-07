@@ -623,6 +623,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v6.md — §3g(v5 5축 EXCLUDE)·§3h(예비 조건)·
         #   §4′(f) 패턴 4·검증경로 6 공시·★공개 저장소 URL(실측 novelty). 회신 규약 = report6 →
         #   TrackHE6. 전달·수집 = 정욱님 액션. 대안 = frontier(N=143+)·예비 S1.
+    RequestV7 // 수평확장 7차 요청문 배치 (done — 2026-07-07) @dep:TrackHE6
+        # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v7.md — §3i(v6 6축)·§3j(예비)·§4′(g) 패턴 4·
+        #   검증경로 7·저장소 URL. 회신 규약 report7 → TrackHE7. 대안 = frontier(N=143+)·예비 T2.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
