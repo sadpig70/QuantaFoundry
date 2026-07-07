@@ -1302,6 +1302,53 @@
       }
     ]
   },
+  "cmul101_mod155": {
+    "u_hash": "faf6ffbc03b706e3bc25369218756e563df0f262a80da58ad5582b94d50e0575",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 96,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 183,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 236,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "c6x",
+        "uses": 204,
+        "child_u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+      },
+      {
+        "kind": "module",
+        "id": "c7x",
+        "uses": 126,
+        "child_u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
+      },
+      {
+        "kind": "module",
+        "id": "c8x",
+        "uses": 44,
+        "child_u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 27,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "cmul10_mod123": {
     "u_hash": "0682117c99c7922236cc0a9a8b7893effebf6613b05dcd9c55d9d4b05a7f8a2a",
     "depends_on": [
@@ -1574,6 +1621,53 @@
         "kind": "module",
         "id": "toffoli",
         "uses": 29,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "cmul126_mod155": {
+    "u_hash": "2e5a1f5569b5ec7caea042a6f3faf606029c551ca0c59115359d00552ea41a8b",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 99,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 196,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 229,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "c6x",
+        "uses": 208,
+        "child_u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+      },
+      {
+        "kind": "module",
+        "id": "c7x",
+        "uses": 126,
+        "child_u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
+      },
+      {
+        "kind": "module",
+        "id": "c8x",
+        "uses": 44,
+        "child_u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 32,
         "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
       }
     ]
@@ -2091,6 +2185,53 @@
         "kind": "module",
         "id": "toffoli",
         "uses": 16,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "cmul16_mod155": {
+    "u_hash": "e9964800852c4a15520e952ababeb704533034087937803af09ef6a3a149648d",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 80,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 171,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 221,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "c6x",
+        "uses": 202,
+        "child_u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+      },
+      {
+        "kind": "module",
+        "id": "c7x",
+        "uses": 117,
+        "child_u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
+      },
+      {
+        "kind": "module",
+        "id": "c8x",
+        "uses": 36,
+        "child_u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 22,
         "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
       }
     ]
@@ -3575,6 +3716,53 @@
       }
     ]
   },
+  "cmul2_mod155": {
+    "u_hash": "4d3f29121da69720a6b75c5f50591fca1fb664ea66357f1cb6a14a7cf1e6f163",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 17,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 34,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 50,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "c6x",
+        "uses": 46,
+        "child_u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+      },
+      {
+        "kind": "module",
+        "id": "c7x",
+        "uses": 32,
+        "child_u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
+      },
+      {
+        "kind": "module",
+        "id": "c8x",
+        "uses": 9,
+        "child_u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 18,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "cmul2_mod187": {
     "u_hash": "bb974c6dca0a1f1769dd38c3e24d6fccab2b3eff2201a7b7c8563769a79f4fb4",
     "depends_on": [
@@ -5035,6 +5223,53 @@
       }
     ]
   },
+  "cmul4_mod155": {
+    "u_hash": "bc8fb03300af2e54fa76a1f5edf1122e0b87c764f8cfb1b388cf886a01fee0f1",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 32,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 105,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 183,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "c6x",
+        "uses": 157,
+        "child_u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+      },
+      {
+        "kind": "module",
+        "id": "c7x",
+        "uses": 98,
+        "child_u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
+      },
+      {
+        "kind": "module",
+        "id": "c8x",
+        "uses": 22,
+        "child_u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 16,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
   "cmul4_mod21": {
     "u_hash": "1f73313e8be267e2ecc941ecc4209bd3e462c3655a7c62f38e66cc3529c60a6b",
     "depends_on": [
@@ -5811,6 +6046,53 @@
         "kind": "module",
         "id": "toffoli",
         "uses": 21,
+        "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
+      }
+    ]
+  },
+  "cmul66_mod155": {
+    "u_hash": "e111ab902ec56141db203aa05f8a62e2c44a6ef49be033df1c584502dcb3a1ae",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "c3x",
+        "uses": 100,
+        "child_u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
+      },
+      {
+        "kind": "module",
+        "id": "c4x",
+        "uses": 200,
+        "child_u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
+      },
+      {
+        "kind": "module",
+        "id": "c5x",
+        "uses": 237,
+        "child_u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
+      },
+      {
+        "kind": "module",
+        "id": "c6x",
+        "uses": 231,
+        "child_u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
+      },
+      {
+        "kind": "module",
+        "id": "c7x",
+        "uses": 112,
+        "child_u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
+      },
+      {
+        "kind": "module",
+        "id": "c8x",
+        "uses": 40,
+        "child_u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
+      },
+      {
+        "kind": "module",
+        "id": "toffoli",
+        "uses": 34,
         "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
       }
     ]
@@ -10401,6 +10683,59 @@
         "id": "cmul4_mod143",
         "uses": 1,
         "child_u_hash": "4b756c9d5736c37bd854d9b495b2a1d0ecceb85570bac4722e4d09df178cb272"
+      },
+      {
+        "kind": "app",
+        "id": "iqft8",
+        "uses": 1,
+        "child_u_hash": "99f0e17dcaace55e5a8d0b255b0fb9bafd1dff1dd2e18279a04217da7ff1ee3f"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 8,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      }
+    ]
+  },
+  "shor155": {
+    "u_hash": "449bed9163b9dca1faeb871986a85baa22b309dffca2bfacfd5f4e8c8f87687b",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "cmul101_mod155",
+        "uses": 2,
+        "child_u_hash": "faf6ffbc03b706e3bc25369218756e563df0f262a80da58ad5582b94d50e0575"
+      },
+      {
+        "kind": "app",
+        "id": "cmul126_mod155",
+        "uses": 1,
+        "child_u_hash": "2e5a1f5569b5ec7caea042a6f3faf606029c551ca0c59115359d00552ea41a8b"
+      },
+      {
+        "kind": "app",
+        "id": "cmul16_mod155",
+        "uses": 2,
+        "child_u_hash": "e9964800852c4a15520e952ababeb704533034087937803af09ef6a3a149648d"
+      },
+      {
+        "kind": "app",
+        "id": "cmul2_mod155",
+        "uses": 1,
+        "child_u_hash": "4d3f29121da69720a6b75c5f50591fca1fb664ea66357f1cb6a14a7cf1e6f163"
+      },
+      {
+        "kind": "app",
+        "id": "cmul4_mod155",
+        "uses": 1,
+        "child_u_hash": "bc8fb03300af2e54fa76a1f5edf1122e0b87c764f8cfb1b388cf886a01fee0f1"
+      },
+      {
+        "kind": "app",
+        "id": "cmul66_mod155",
+        "uses": 1,
+        "child_u_hash": "e111ab902ec56141db203aa05f8a62e2c44a6ef49be033df1c584502dcb3a1ae"
       },
       {
         "kind": "app",

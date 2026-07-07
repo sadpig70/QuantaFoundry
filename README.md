@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **91 sealed modules · 395 sealed applications** · registry root `15632fcf…`
+- **91 sealed modules · 402 sealed applications** · registry root `bc0a9599…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 15632fcf… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash bc0a9599… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -116,10 +116,10 @@ python scripts/reproduce_all.py
   witness confirmed optimal against a global pure-state search; the exactness is honestly scoped to
   the Pauli-diagonal island, general non-Pauli channels remaining observation-only).
 - **Shor period-finding** that factors 15 = 3×5 and **genuinely 21 = 3×7**, up to a distinct-prime
-  structural frontier (`shor69 … shor143 … shor3683`, 17 apps, sealed via a `c7x→c12x` multi-control
+  structural frontier (`shor69 … shor155 … shor3683`, 18 apps, sealed via a `c7x→c12x` multi-control
   ladder; every one subspace-permutation verified against independent integer arithmetic — the newest
   ones discovered and sealed unattended by the autonomous factory loop, then auto-repaid to that grade,
-  the latest being `shor143 = 11×13` at 16 qubits with an exhaustive 65536/65536 basis-permutation check).
+  the latest being `shor155 = 5×31` at 16 qubits with an exhaustive 65536/65536 basis-permutation check).
 - **Key-free cross-model establishment**: the first *live* cross-model truth (`sx` = √X) settled by
   six distinct runtimes + an algebraic proof — no answer key.
 - **Autonomous loop** (`qfa-loop` skill): discover → seal → verify → commit, gated end-to-end by the
