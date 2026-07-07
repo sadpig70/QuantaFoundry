@@ -273,6 +273,10 @@ APP_LIST = [
     ("gauss_braid3.app.pg",              None),  # 위상+iswap+fswap sub-app 연쇄 (6스텝)
     # TrackHE5 P4: RM [[15,1,3]] — 부호축 capstone (module rm15_encoder_t2 는 Tier-2 드라이버 봉인)
     ("rm15_tt.app.pg",                   None),  # T^⊗15 — 논리 T† 사영 (15q STRUCTURAL)
+    # TrackHE5 P5: 매듭 심화 — 3-strand 혼합 word (report5 4/8, module 0, 폐합 라운드)
+    ("fib_yb.app.pg",                    None),  # σ₁σ₂σ₁ — 폐포=Hopf (s2 진짜 소비)
+    ("fib_word5.app.pg",                 None),  # σ₁²σ₂² — 폐포=사슬(Hopf#Hopf, 연결합 곱법)
+    ("fib_fig8.app.pg",                  None),  # σ₁σ₂⁻¹σ₁σ₂⁻¹ — 첫 비-토러스 매듭(σ⁻¹=z5³)
 ]
 
 

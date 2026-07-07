@@ -1,0 +1,37 @@
+# fib_fig8 — 3-strand word σ₁σ₂⁻¹σ₁σ₂⁻¹ (폐포 = figure-eight 매듭 4₁ — ★첫 비-토러스 매듭,
+#   writhe 0·amphichiral). Tier-0 2×2. TrackHE5 P5 (#TOPO).
+# ★역생성원 개창: σ₂⁻¹ = F·z5³·F up-to-phase (z5¹⁰=I → R⁻¹≅z5³ — 신규 module 0, 게이트 구조 회피).
+#   plan = [s1, (z·ry_fib·z5³·z·ry_fib)=σ₂⁻¹] ×2 = 16스텝.
+# golden = (Fσ₁⁻¹F·σ₁)² 정의 직접. Jones: V(4₁)=t⁻²−t⁻¹+1−t+t² (amphichiral → 실수 1−√5) ·
+#   Alexander Δ=−t+3−t⁻¹ (정수 제3경로) = fib_jones_observe 가산 확장(INV-Q3, seal 아님).
+# 정직 경계: 봉인=word 유니터리뿐. 불변량 값·amphichirality=관측.
+```json id=app_meta
+{"id": "fib_fig8", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+F = np.array([[1/phi, 1/np.sqrt(phi)], [1/np.sqrt(phi), -1/phi]], dtype=complex)
+S2i = F @ np.linalg.inv(R) @ F
+golden = S2i @ R @ S2i @ R
+```
+```json id=plan
+{"steps": [
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z5_gate.pg", "targets": [0]},
+  {"spec": "../modules/z_gate.pg", "targets": [0]},
+  {"spec": "../modules/ry_fib.pg", "targets": [0]}]}
+```

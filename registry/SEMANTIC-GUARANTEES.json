@@ -1919,6 +1919,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bda39df22964a1258e353513b2b0be69fffc8d36e62d7245feb869cd0ddfc406"
     },
+    "app:fib_fig8": {
+      "kind": "app",
+      "id": "fib_fig8",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "ab6c523412daf236f435fafaa33793d23d4412711df90f3954b4c50a8a4faf6d"
+    },
     "app:fib_fmove": {
       "kind": "app",
       "id": "fib_fmove",
@@ -1963,6 +1972,24 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "02bf1c2773563d91490caa3a66fb21e6e1387a950139ee820d3f73dd3cd3a396"
+    },
+    "app:fib_word5": {
+      "kind": "app",
+      "id": "fib_word5",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "7c32bc4cacd709fee5304554cf00d068f71b98e36367129313131adbe98a5157"
+    },
+    "app:fib_yb": {
+      "kind": "app",
+      "id": "fib_yb",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "86782086af311dd7fe14afe86803ef12c0aeb67528f1e2fd32bc2f3a0994fedf"
     },
     "app:flag_synd_xxxx": {
       "kind": "app",
@@ -5184,7 +5211,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 431,
+        "unitary_equiv": 434,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "subspace_permutation_verified": 19
@@ -5194,7 +5221,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 521,
+      "unitary_equiv": 524,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 19

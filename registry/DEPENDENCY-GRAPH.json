@@ -6489,6 +6489,35 @@
       }
     ]
   },
+  "fib_fig8": {
+    "u_hash": "ab6c523412daf236f435fafaa33793d23d4412711df90f3954b4c50a8a4faf6d",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 2,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      },
+      {
+        "kind": "module",
+        "id": "ry_fib",
+        "uses": 4,
+        "child_u_hash": "256147502bcb8da36800a3bcc2d43701ae99690ac2783c30d6d7fab0ac5154b5"
+      },
+      {
+        "kind": "module",
+        "id": "z5_gate",
+        "uses": 6,
+        "child_u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4"
+      },
+      {
+        "kind": "module",
+        "id": "z_gate",
+        "uses": 4,
+        "child_u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
+      }
+    ]
+  },
   "fib_fmove": {
     "u_hash": "86782086af311dd7fe14afe86803ef12c0aeb67528f1e2fd32bc2f3a0994fedf",
     "depends_on": [
@@ -6546,6 +6575,40 @@
         "kind": "app",
         "id": "fib_braid_s1",
         "uses": 3,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      },
+      {
+        "kind": "app",
+        "id": "fib_braid_s2",
+        "uses": 1,
+        "child_u_hash": "bda39df22964a1258e353513b2b0be69fffc8d36e62d7245feb869cd0ddfc406"
+      }
+    ]
+  },
+  "fib_word5": {
+    "u_hash": "7c32bc4cacd709fee5304554cf00d068f71b98e36367129313131adbe98a5157",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 2,
+        "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
+      },
+      {
+        "kind": "app",
+        "id": "fib_braid_s2",
+        "uses": 2,
+        "child_u_hash": "bda39df22964a1258e353513b2b0be69fffc8d36e62d7245feb869cd0ddfc406"
+      }
+    ]
+  },
+  "fib_yb": {
+    "u_hash": "86782086af311dd7fe14afe86803ef12c0aeb67528f1e2fd32bc2f3a0994fedf",
+    "depends_on": [
+      {
+        "kind": "app",
+        "id": "fib_braid_s1",
+        "uses": 2,
         "child_u_hash": "20b006c63c66422a3a2211628a0b05e24e35c6a4e124ed492f97516cf2224c6b"
       },
       {

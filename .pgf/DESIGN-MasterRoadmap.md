@@ -566,7 +566,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   §3f(예비 보강조건)·§4′(e) 패턴 4(기소비 선점 대조·교차 복리·게이트 구조 회피·인프라 소비)·
         #   검증경로 5개 공시. 회신 정본 규약 = _workspace/HORIZONTAL-EXPANSION-report5.md → TrackHE5.
         #   외부 전달·수집 = 정욱님 액션. 대기 중 자율 대안 = frontier(N=143+)·예비 재정식화.
-    TrackHE5 // report5 소비 — 수평확장 5차 통합 5축 (in-progress — 2026-07-07 개시) @dep:RequestV5
+    TrackHE5 // report5 소비 — 수평확장 5차 통합 5축 (done — 2026-07-07 폐합, 373→380앱·모듈 90) @dep:RequestV5
         # 설계 정본: _workspace/integrated_horizontal_expansion5.md (35제안→기소비 차감 0→12클러스터→
         #   자율 5축 P1~P5 + 예비 S1~S7. 실측 정정 2: A8 cr6≠ζ₃·A5 Burau 비유니터리).
         P1_ExactDynamics // dual-unitary + Floquet — 새 동역학 클래스 (done — 2026-07-07)
@@ -589,7 +589,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   future work 상환)·rm15_tt(T^⊗15 Tier-1, 8cedd324). rm15_observe(3aw, dense-free):
             #   심볼릭 역전파 14안정자·T^15==논리T†(mod-8 정수)·거리=3 전수·teeth 3.
             #   376→377앱·89→90모듈·root b8ba9989→ba32a65cc8bbce81.
-        P5_KnotDeepening // 3-strand word family + 다중 불변량 (designing) @dep:P4_RM15
+        P5_KnotDeepening // 3-strand word family + 다중 불변량 (done — 2026-07-07, ★TrackHE5 폐합)
+            # ✅ fib_yb·fib_word5·fib_fig8(첫 비-토러스, σ⁻¹=z5³). fib_jones_observe 가산: TL₃ 상태합
+            #   제3경로·연결합 곱법·amphichiral 1−√5·Alexander 정수(Burau)·★반꼬임≅F 재발견.
+            #   377→380앱·root ba32a65c→12244b5cc2136f41.
+            # ★TrackHE5 총결: 봉인 +13·모듈 90(Tier-2 7)·검증경로 6·자원 증명서·A6-1 반증.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

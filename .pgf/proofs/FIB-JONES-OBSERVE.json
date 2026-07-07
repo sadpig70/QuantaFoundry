@@ -25,6 +25,44 @@
       ]
     },
     "ok": true,
+    "p5_knot_deepening": {
+      "alexander_integer": {
+        "fig8": {
+          "-1": -1,
+          "0": 3,
+          "1": -1
+        },
+        "ok": true,
+        "trefoil": {
+          "-1": 1,
+          "0": -1,
+          "1": 1
+        }
+      },
+      "honest_boundary": "봉인=word 유니터리 3뿐(σ⁻¹=z5³ module 0). 불변량 값·연결합 곱법·amphichirality=관측(INV-Q3).",
+      "ok": true,
+      "rediscovery_halftwist_eq_fmove": true,
+      "seal_links_3": true,
+      "teeth": {
+        "delta_corrupt_statesum_mismatch": true,
+        "word_perturb_V_shifts": true
+      },
+      "triple_path_trace_vs_statesum": {
+        "fib_fig8": true,
+        "fib_trefoil_m": true,
+        "fib_word5": true,
+        "fib_yb": true
+      },
+      "values": {
+        "chain_eq_hopf_squared_connectedsum": true,
+        "fig8_closed_form_amphichiral_real": true,
+        "fig8_value": [
+          -1.23606797749979,
+          1.7058475536893684e-16
+        ],
+        "yb_eq_hopf": true
+      }
+    },
     "seal_links_7apps": true,
     "teeth": {
       "detects": true,

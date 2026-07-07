@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **90 sealed modules · 377 sealed applications** · registry root `ba32a65c…`
+- **90 sealed modules · 380 sealed applications** · registry root `12244b5c…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash ba32a65c… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 12244b5c… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -51,8 +51,11 @@ python scripts/reproduce_all.py
   21-qubit encoder is structural, repaid to an exhaustively verified message→parity permutation
   with an exhaustive distance-5 MDS observation), **Ising/Majorana braiding**
   (Yang-Baxter), a **Fibonacci-anyon braid + knot-word layer** (field ℚ(ζ₅,√φ); F-move basis change
-  and torus-knot braid words whose closures feed a two-path Jones-polynomial observation at
-  t = e^(−2πi/5) — sealed unitaries only, invariant values are observations), **measurement-based computation** (cluster state + coherent gate teleportation),
+  and 3-strand braid words up to the figure-eight knot — inverse generators realized as z5 powers —
+  whose closures feed a **three-path** Jones observation (weighted trace vs Temperley-Lieb state-sum
+  vs skein) plus an integer Alexander third invariant; connected-sum multiplicativity and
+  amphichirality observed exactly, and the half-twist σ₁σ₂σ₁ rediscovered as the F-move —
+  sealed unitaries only, invariant values are observations), **measurement-based computation** (cluster state + coherent gate teleportation),
   a **Clifford quantum cellular automaton** (exact discrete-time dynamics), a **non-Clifford
   dual-unitary brickwork + kicked Floquet unitary** (space-time-dual gate at J=π/8; the
   infinite-temperature two-point function vanishes off the light ray exactly and the on-ray value

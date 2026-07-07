@@ -1,0 +1,23 @@
+# fib_word5 — 3-strand word σ₁²σ₂² (폐포 = 3-고리 사슬 링크 = Hopf # Hopf 연결합). Tier-0 2×2.
+#   TrackHE5 P5 (#TOPO). ★연결합 곱법의 관측 표적: V(사슬) == V(Hopf)² — Jones 의 connected-sum
+#   승법성이 봉인 word 위에서 exact 실증. sub-app 4개(s1×2·s2×2).
+# golden = σ₂²σ₁² 정의 직접(적용 순 σ₁²→σ₂²). witness = fib_jones_observe(INV-Q3, seal 아님).
+# 정직 경계: 봉인=word 유니터리뿐. 연결합 정리 일반론=범위 밖(인스턴스 관측).
+```json id=app_meta
+{"id": "fib_word5", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+F = np.array([[1/phi, 1/np.sqrt(phi)], [1/np.sqrt(phi), -1/phi]], dtype=complex)
+S2 = F @ R @ F
+golden = S2 @ S2 @ R @ R
+```
+```json id=plan
+{"steps": [
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s2.app.pg", "targets": [0]},
+  {"app": "fib_braid_s2.app.pg", "targets": [0]}]}
+```

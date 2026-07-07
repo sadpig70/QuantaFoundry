@@ -1,0 +1,22 @@
+# fib_yb — 3-strand 혼합 word σ₁σ₂σ₁ (YB 관계의 좌변 — 폐포 = Hopf 링크, Markov 소거로 σ₁² 등가).
+#   Tier-0 2×2. TrackHE5 P5 (#TOPO, report5 4/8). ★σ₂ 혼합 = fib_fmove 경유 s2 의 진짜 소비 —
+#   sub-app 3개(s1·s2·s1)뿐인 최소 혼합 word.
+# golden = σ₁σ₂σ₁ 정의 직접(닫힌형). Jones 3중 경로(가중 trace vs ★TL₃ 상태합 vs skein V(Hopf))=
+#   fib_jones_observe 가산 확장(INV-Q3, seal 아님).
+# 정직 경계: 봉인=word 유니터리뿐. 불변량 값·Markov 등가=관측.
+```json id=app_meta
+{"id": "fib_yb", "n_sys": 1, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+phi = (1.0 + np.sqrt(5.0)) / 2.0
+R = np.diag([np.exp(-4j * np.pi / 5), np.exp(3j * np.pi / 5)]).astype(complex)
+F = np.array([[1/phi, 1/np.sqrt(phi)], [1/np.sqrt(phi), -1/phi]], dtype=complex)
+golden = R @ (F @ R @ F) @ R
+```
+```json id=plan
+{"steps": [
+  {"app": "fib_braid_s1.app.pg", "targets": [0]},
+  {"app": "fib_braid_s2.app.pg", "targets": [0]},
+  {"app": "fib_braid_s1.app.pg", "targets": [0]}]}
+```

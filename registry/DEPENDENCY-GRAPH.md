@@ -361,6 +361,13 @@ du_brick6_t2
    ├─ t_gate (module)
    └─ z_gate (module×2)
 
+fib_fig8
+├─ fib_braid_s1 (app×2)
+│  └─ z5_gate (module×7)
+├─ ry_fib (module×4)
+├─ z5_gate (module×6)
+└─ z_gate (module×4)
+
 fib_fmove
 ├─ ry_fib (module)
 └─ z_gate (module)
@@ -379,6 +386,22 @@ fib_trefoil
 
 fib_trefoil_m
 ├─ fib_braid_s1 (app×3)
+│  └─ z5_gate (module×7)
+└─ fib_braid_s2 (app)
+   ├─ ry_fib (module×2)
+   ├─ z5_gate (module×7)
+   └─ z_gate (module×2)
+
+fib_word5
+├─ fib_braid_s1 (app×2)
+│  └─ z5_gate (module×7)
+└─ fib_braid_s2 (app×2)
+   ├─ ry_fib (module×2)
+   ├─ z5_gate (module×7)
+   └─ z_gate (module×2)
+
+fib_yb
+├─ fib_braid_s1 (app×2)
 │  └─ z5_gate (module×7)
 └─ fib_braid_s2 (app)
    ├─ ry_fib (module×2)
