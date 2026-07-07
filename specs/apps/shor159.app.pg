@@ -1,0 +1,7 @@
+# shor159 - Shor period-finding structural frontier (N=159=3*53, a=2). 16q: counting=8, work=8. H^8 controlled-U^(2^j)(powa=[13, 121, 148, 28, 97, 16, 4, 2]) iqft8. 16q>EXACT_BOUND -> Tier-1 STRUCTURAL only.
+```json id=app_meta
+{"id": "shor159", "n_sys": 16, "n_anc": 0}
+```
+```json id=plan
+{"tier": "structural", "steps": [{"spec": "../modules/h_gate.pg", "targets": [0]}, {"spec": "../modules/h_gate.pg", "targets": [1]}, {"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/h_gate.pg", "targets": [3]}, {"spec": "../modules/h_gate.pg", "targets": [4]}, {"spec": "../modules/h_gate.pg", "targets": [5]}, {"spec": "../modules/h_gate.pg", "targets": [6]}, {"spec": "../modules/h_gate.pg", "targets": [7]}, {"app": "cmul13_mod159.app.pg", "targets": [0, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul121_mod159.app.pg", "targets": [1, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul148_mod159.app.pg", "targets": [2, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul28_mod159.app.pg", "targets": [3, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul97_mod159.app.pg", "targets": [4, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul16_mod159.app.pg", "targets": [5, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul4_mod159.app.pg", "targets": [6, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "cmul2_mod159.app.pg", "targets": [7, 8, 9, 10, 11, 12, 13, 14, 15]}, {"app": "iqft8.app.pg", "targets": [0, 1, 2, 3, 4, 5, 6, 7]}]}
+```
