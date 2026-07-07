@@ -1,8 +1,8 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 385,
-  "round_trip_checked": 349,
-  "round_trip_matched": 349,
+  "exported": 386,
+  "round_trip_checked": 350,
+  "round_trip_matched": 350,
   "round_trip_skipped_large": 36,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
@@ -237,6 +237,16 @@
       "round_trip_match": true,
       "unmapped_gates": {},
       "qasm_path": ".pgf/adoption/qasm/ccz_rediscovered.qasm"
+    },
+    {
+      "id": "chan_magic_t",
+      "n_sys": 2,
+      "n_ops": 3,
+      "sealed_u_hash": "f977e8bfeb682dee",
+      "round_trip_u_hash": "f977e8bfeb682dee",
+      "round_trip_match": true,
+      "unmapped_gates": {},
+      "qasm_path": ".pgf/adoption/qasm/chan_magic_t.qasm"
     },
     {
       "id": "choi_ampdamp",

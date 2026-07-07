@@ -285,6 +285,8 @@ APP_LIST = [
     # TrackHE6 P3: OTOC/scrambling (report6 6/8) — du_gate_j8 소비 (module 0)
     ("du_gate_dag.app.pg",               None),  # V† = e^{iπ/8 ZZ}·iSWAP (OTOC 시간역행 부품)
     ("otoc_du_t1.app.pg",                None),  # OTOC 연산자 U†X₁UX₀·U†X₁UX₀ (Tr/2⁶=0 scramble)
+    # TrackHE6 P6: 채널 magic 자원 (report6 3/8) — Choi 상태 (module 0)
+    ("chan_magic_t.app.pg",              None),  # T-채널 Choi |J_T⟩=(I⊗T)|Φ⁺⟩ (동적 자원)
 ]
 
 

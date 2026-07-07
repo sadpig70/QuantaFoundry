@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **90 sealed modules · 385 sealed applications** · registry root `c86ced4e…`
+- **90 sealed modules · 386 sealed applications** · registry root `034c36e0…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash c86ced4e… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 034c36e0… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -75,7 +75,8 @@ python scripts/reproduce_all.py
   (stabilizer extent/robustness with primal + dual + zero-gap certificates in exact ℚ(√2) arithmetic
   — ξ(|T⟩)=4−2√2, R(|T⟩)=√2, bounded ξ(|CS⟩) ∈ [8/5, (11+2√10)/9]; tight T-count lower-bound
   certificates, and a Clifford-invariant proof that |T⟩⊗|T⟩ cannot be deterministically converted
-  to |CS⟩), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
+  to |CS⟩; extended to **channel magic** via the T-channel Choi state — ξ(Φ_T)=ξ(|T⟩)=4−2√2 by the
+  Choi isomorphism, with catalysis preserving the resource state), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
   the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
   cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
   triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal

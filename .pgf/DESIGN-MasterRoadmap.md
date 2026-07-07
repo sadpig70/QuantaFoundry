@@ -609,7 +609,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ du_gate_dag(35733059, V†)·otoc_du_t1(befbb074, OTOC 연산자 Tr/2⁶=0). dyn_observe(3at)
             #   가산: 봉인 Tr==직접 OTOC·operator growth 광원뿔·Z-basis trivial·Floquet winding Σε/2π=6
             #   정수. du_gate 소비 sub-app 복리. 383→385앱·root 62aac895→c86ced4ea43d3443.
-        P6_ChannelMagic // 채널 magic 자원 증명서 (designing)
+        P6_ChannelMagic // 채널 magic 자원 증명서 (done — 2026-07-07)
+            # ✅ chan_magic_t(f977e8bf, T-채널 Choi |J_T⟩). magic_resource_observe(3au) 가산:
+            #   ★채널 extent ξ(Φ_T)=4−2√2=게이트 magic(Choi 동형)·catalysis(t_teleport 자원보존).
+            #   385→386앱·root c86ced4e→034c36e0175e8146.
         P1_Distill15 // Coherent 15-to-1 증류 프로토콜 (designing)
         P5_TNPath // 텐서망 제7 검증경로 (designing)
         # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v6.md — §3g(v5 5축 EXCLUDE)·§3h(예비 조건)·

@@ -181,10 +181,42 @@ def observe():
     t3 = bool(1.7 > 8 / 5)                               # 사칭 하한 1.7 > 증명서 8/5 → 기각 논리
     teeth_ok = t1 and t2 and t3
 
+    # 8. ★TrackHE6 P6: 채널(동적) magic — Choi 상태 |J_T⟩=(I⊗T)|Φ⁺⟩
+    chan_link = seal_link("chan_magic_t")
+    JT = load_golden("chan_magic_t.app.pg")[:, 0]                # 정의 열
+    XI_JT = Q2(4, -2)                                            # ξ(Φ_T)=ξ(|J_T⟩)=4−2√2 (Choi 동형)
+    CNOT = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], dtype=complex)
+    e0 = np.array([1, 0], dtype=complex)
+    s1J = CNOT @ np.kron(xp, e0)
+    s2J = CNOT @ np.kron(yp, e0)
+    chan_primal = bool(np.allclose(a * s1J + b * s2J, JT, atol=1e-13)
+                       and abs((abs(a) + abs(b)) ** 2 - XI_JT.val()) < 1e-12)
+    F_JT = max(abs(np.vdot(s, JT)) ** 2 for s in st2)
+    chan_choi_iso = bool(abs(1 / F_JT - XI_JT.val()) < 1e-12)   # ξ(채널)==ξ(게이트) 정리
+    # catalysis: t_teleport 촉매 — 자원상태 |A⟩ 보존 (magic monotone 불변)
+    Uc = load_golden("t_teleport.app.pg")
+    A_st = load_golden("magic_a.app.pg")[:, 0]
+    rng = np.random.default_rng(1)
+    catal_ok = True
+    for _ in range(4):
+        v = rng.standard_normal(2) + 1j * rng.standard_normal(2)
+        v = v / np.linalg.norm(v)
+        Tgate = np.diag([1, W8]).astype(complex)
+        out = Uc @ np.kron(v, A_st)
+        catal_ok &= bool(np.allclose(out, np.kron(Tgate @ v, A_st), atol=1e-12))  # |A⟩ 보존(자원 불변)
+    chan_ok = bool(chan_link and chan_primal and chan_choi_iso and catal_ok)
+
     ok = bool(links and enum_ok and gap0_T and primal_T and dual_T and mult_ok
               and primal_TT and dual_TT and lower_ok and dual_CS and upper_ok and phi_stab
-              and R_ok_scalar and R_primal and R_dual and tcount_ok and no_conv and teeth_ok)
+              and R_ok_scalar and R_primal and R_dual and tcount_ok and no_conv and teeth_ok
+              and chan_ok)
     return {"axis": "magic 자원 이론 exact 증명서 — 제5 검증경로 첫 downstream (report5 6/8)",
+            "channel_magic": {"seal_link": chan_link,
+                              "extent_J_T": "4−2√2 (Choi 동형: ξ(채널)=ξ(게이트))",
+                              "primal_2term": chan_primal, "choi_isomorphism_xi_eq": chan_choi_iso,
+                              "catalysis_resource_preserved": catal_ok,
+                              "note": "★TrackHE6 P6 — 채널(동적) magic; T-채널 Choi |J_T⟩ Clifford-동치 "
+                                      "|T⟩ → ξ 동일. t_teleport 촉매 = 자원 |A⟩ 보존(monotone 불변)"},
             "seal_links": links, "stab_enumeration_6_60": enum_ok,
             "extent_T": {"value": "4−2√2", "primal_2term": primal_T, "dual_feasible_6": dual_T,
                          "zero_gap_exact_Q_sqrt2": bool(gap0_T)},
@@ -237,6 +269,9 @@ def main():
               f"{res['clifford_conversion_verdict']['T2_to_CS_impossible']} · teeth "
               f"{res['teeth']['primal_corrupt']}/{res['teeth']['dual_scaled_violates']}/"
               f"{res['teeth']['fake_lower_rejected']}", flush=True)
+        c = res["channel_magic"]
+        print(f"  ★채널 magic(P6): Choi ξ(J_T)=4−2√2 동형 {c['choi_isomorphism_xi_eq']}·primal "
+              f"{c['primal_2term']}·catalysis 자원보존 {c['catalysis_resource_preserved']}", flush=True)
         print(f"  → {os.path.relpath(OUT, ROOT)}", flush=True)
     print(f"magic_resource_observe: all_ok={res['ok']}", flush=True)
     return 0 if res["ok"] else 1

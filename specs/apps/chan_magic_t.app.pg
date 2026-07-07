@@ -1,0 +1,23 @@
+# chan_magic_t — T-채널 Choi 상태 |J_T⟩ = (I⊗T)|Φ⁺⟩ = (|00⟩+ω₈|11⟩)/√2. 2q Tier-0. TrackHE6 P6 (#RESOURCE).
+# ★채널(동적) magic 자원: Choi-Jamiołkowski 동형으로 채널 → 상태. |J_T⟩ = CNOT(|T⟩⊗|0⟩) — 국소
+#   Clifford 동치 |T⟩ → ξ(Φ_T)=ξ(|J_T⟩)=4−2√2 = 게이트 magic(정리: 채널 magic = 게이트 magic).
+# plan = [h(0), t(0), cnot(0,1)] 3스텝(신규 module 0). golden = CNOT·(T·H ⊗ I) 정의 직접(정의 열=|J_T⟩).
+# witness(채널 extent 격차0·R_channel·catalysis)=magic_resource_observe 가산(INV-Q3, seal 아님).
+# 정직 경계: 봉인=Choi 준비 유니터리뿐. 채널 magic 값·catalysis·noisy channel·diamond norm=관측/범위 밖.
+```json id=app_meta
+{"id": "chan_magic_t", "n_sys": 2, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+I2 = np.eye(2, dtype=complex)
+H = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+T = np.diag([1, np.exp(1j * np.pi / 4)]).astype(complex)
+CNOT = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], dtype=complex)
+golden = CNOT @ np.kron(T @ H, I2)
+```
+```json id=plan
+{"steps": [
+  {"spec": "../modules/h_gate.pg", "targets": [0]},
+  {"spec": "../modules/t_gate.pg", "targets": [0]},
+  {"spec": "../modules/cnot.pg", "targets": [0, 1]}]}
+```

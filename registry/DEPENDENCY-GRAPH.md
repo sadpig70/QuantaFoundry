@@ -95,6 +95,11 @@ ccz_rediscovered
 ├─ h_gate (module×2)
 └─ toffoli (module)
 
+chan_magic_t
+├─ cnot (module)
+├─ h_gate (module)
+└─ t_gate (module)
+
 choi_ampdamp
 ├─ stinespring_ampdamp (app)
 │  ├─ cnot (module×3)

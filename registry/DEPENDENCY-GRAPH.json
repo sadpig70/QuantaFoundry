@@ -504,6 +504,29 @@
       }
     ]
   },
+  "chan_magic_t": {
+    "u_hash": "f977e8bfeb682dee06887c26db8ff05f1847eb2ca66cfbaab11a79c7442f5594",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "cnot",
+        "uses": 1,
+        "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
+      },
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 1,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 1,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "choi_ampdamp": {
     "u_hash": "24d1a0023fc86b158d14f2c57d75d340bbeaeb43b88a37761431ec8dfda2f58a",
     "depends_on": [
