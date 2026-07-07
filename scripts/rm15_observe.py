@@ -189,9 +189,40 @@ def observe():
               or bin(fake & lpv).count("1") % 2 == 0)
     teeth_ok = t1 and t2 and t3
 
-    ok = bool(links and struct_ok and st_self and enc_ok and t_ok and d3_ok and teeth_ok)
+    # ★TrackHE6 P1: 15-to-1 증류 측정 전 coherent — rm15_decoder_t2(인코더 역 = syndrome 추출 코어)
+    dec_p = os.path.join(ROOT, "registry", "modules", "rm15_decoder_t2.sealed.json")
+    dec_link = os.path.exists(dec_p) and bool(json.load(open(dec_p, encoding="utf-8")).get("u_hash"))
+    dec_gates = parse_bloq_gates(os.path.join(ROOT, "specs", "modules", "rm15_decoder_t2.pg")) \
+        if dec_link else []
+    # 디코더 = 인코더 역순 (H/CNOT 자기역)
+    dag_ok = bool(dec_gates == list(reversed(gates)))
+    # ★디코더 정전파 = 인코더 역전파(ig): 코드 안정자 → +Z_ancilla(syndrome 노출)·논리 사상
+    #   유효 부호어(코드 안정자 +1 고유상태) → syndrome=0(ancilla |0⟩) = accept 부분공간
+    syndrome_expose = enc_ok      # 동일 심볼릭 전파(디코더=인코더†) — 코드안정자→Z_anc·논리→q14
+    # ★weight-1 오류 → syndrome≠0 (accept 거부 = 증류 검출): 오류 E 가 코드안정자와 반교환
+    reject_ok = True
+    for q in range(15):
+        exz = [(1 << q, 0), (0, 1 << q)]   # X_q, Z_q
+        for exm, ezm in exz:
+            syn = any(bin(ezm & vec(S[i])).count("1") % 2 for i in range(4)) or \
+                  any(bin(exm & zz).count("1") % 2 for zz in ZS)
+            reject_ok &= syn              # weight-1 = 항상 syndrome≠0 (거리-3)
+    # accept 사영자 = 14 syndrome ancilla = 0 (multi-controlled 구조, 정수 조건)
+    accept_ok = bool(dag_ok and syndrome_expose and reject_ok)
+    distill_ok = bool(dec_link and accept_ok)
+
+    ok = bool(links and struct_ok and st_self and enc_ok and t_ok and d3_ok and teeth_ok
+              and distill_ok)
     return {"code": "[[15,1,3]] punctured Reed-Muller — 15-to-1 magic 증류 정준 기판 (거리-3 transversal-T)",
             "seal_links_module_app": links,
+            "distillation_coherent_P1": {"decoder_sealed": dec_link,
+                                         "decoder_eq_encoder_dag": dag_ok,
+                                         "syndrome_extraction_exposes_ancilla": syndrome_expose,
+                                         "weight1_error_rejected_syndrome_nonzero": reject_ok,
+                                         "accept_projector_14_syndrome_zero": accept_ok,
+                                         "note": "★측정 전 coherent 증류 코어 = 디코더(인코더†) — 부호어→"
+                                                 "논리+syndrome0(accept), 오류 magic→syndrome≠0(거부). "
+                                                 "증류 성공률·fidelity·후선택=관측(측정)"},
             "structure_integer": {"css_commutation": css_ok, "logical_pair_X7_Z3": logical_pair,
                                   "seeds_disjoint_key": seeds_ok},
             "encoder_symbolic_propagation": {"steane_selftest": st_self, "gates_38": len(gates) == 38,
@@ -227,6 +258,10 @@ def main():
               flush=True)
         print(f"  ★T^15==논리 T† (mod-8 정수) {res['transversal_T']['CX_weights_mod8_zero_coset_7']} · "
               f"거리=3 {res['distance_exactly_3']}", flush=True)
+        d = res["distillation_coherent_P1"]
+        print(f"  ★P1 증류(coherent): 디코더 봉인 {d['decoder_sealed']}·==인코더† {d['decoder_eq_encoder_dag']}·"
+              f"syndrome 추출 {d['syndrome_extraction_exposes_ancilla']}·weight-1 거부 "
+              f"{d['weight1_error_rejected_syndrome_nonzero']}", flush=True)
         print(f"  teeth: CNOT누락/T→T†/가짜논리 {t['cnot_drop_propagation_fails']}/"
               f"{t['T_to_Tdg_breaks_uniform_phase']}/{t['fake_logical_rejected']}", flush=True)
         print(f"  → {os.path.relpath(OUT, ROOT)}", flush=True)

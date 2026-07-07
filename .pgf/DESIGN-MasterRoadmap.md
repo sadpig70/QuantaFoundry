@@ -613,7 +613,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ chan_magic_t(f977e8bf, T-채널 Choi |J_T⟩). magic_resource_observe(3au) 가산:
             #   ★채널 extent ξ(Φ_T)=4−2√2=게이트 magic(Choi 동형)·catalysis(t_teleport 자원보존).
             #   385→386앱·root c86ced4e→034c36e0175e8146.
-        P1_Distill15 // Coherent 15-to-1 증류 프로토콜 (designing)
+        P1_Distill15 // Coherent 15-to-1 증류 프로토콜 (done — 2026-07-07)
+            # ✅ rm15_decoder_t2(모듈 91, 8번째 Tier-2 — 인코더 역 = 측정 전 syndrome 추출 코어).
+            #   rm15_observe(3aw) 가산: 디코더==인코더†·부호어→syndrome0(accept)·weight-1→syndrome≠0.
+            #   봉인=디코더 tableau뿐·증류 성공률=관측. 모듈 90→91·root 034c36e0→60a6de09b237c8b1.
         P5_TNPath // 텐서망 제7 검증경로 (designing)
         # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v6.md — §3g(v5 5축 EXCLUDE)·§3h(예비 조건)·
         #   §4′(f) 패턴 4·검증경로 6 공시·★공개 저장소 URL(실측 novelty). 회신 규약 = report6 →

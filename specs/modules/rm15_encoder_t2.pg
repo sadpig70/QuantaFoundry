@@ -1,4 +1,4 @@
-# rm15_encoder_t2 — [[15,1,3]] punctured Reed-Muller **완전 논리-입력 인코더**(입력 |x⟩=q14): 15-to-1 magic 증류 정준 기판, 거리-3 transversal-T 코드. Tier-2 CLIFFORD(정준 stabilizer tableau, dense 미사용). plan=H·CNOT 38게이트, no MatrixGate. 코드-정확성 witness=rm15_observe(심볼릭 안정군 역전파, 오라클 독립).
+# rm15_encoder_t2 — [[15,1,3]] punctured Reed-Muller **완전 논리-입력 인코더**(입력 |x⟩=q14): 15-to-1 magic 증류 정준 기판, 거리-3 transversal-T 코드. Tier-2 CLIFFORD(정준 stabilizer tableau). plan=H·CNOT 38게이트, no MatrixGate. 코드-정확성 witness=rm15_observe(심볼릭 안정군 역전파, 오라클 독립).
 ```python id=bloq
 from qualtran import BloqBuilder
 from qualtran.bloqs.basic_gates import Hadamard, CNOT

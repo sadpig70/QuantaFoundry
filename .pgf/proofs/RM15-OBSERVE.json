@@ -4,6 +4,14 @@
   "observation": {
     "code": "[[15,1,3]] punctured Reed-Muller — 15-to-1 magic 증류 정준 기판 (거리-3 transversal-T)",
     "distance_exactly_3": true,
+    "distillation_coherent_P1": {
+      "accept_projector_14_syndrome_zero": true,
+      "decoder_eq_encoder_dag": true,
+      "decoder_sealed": true,
+      "note": "★측정 전 coherent 증류 코어 = 디코더(인코더†) — 부호어→논리+syndrome0(accept), 오류 magic→syndrome≠0(거부). 증류 성공률·fidelity·후선택=관측(측정)",
+      "syndrome_extraction_exposes_ancilla": true,
+      "weight1_error_rejected_syndrome_nonzero": true
+    },
     "encoder_symbolic_propagation": {
       "gates_38": true,
       "note": "봉인 spec 배선 파싱 — dense 미실체화",
