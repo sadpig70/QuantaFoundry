@@ -743,6 +743,17 @@ peps22_rvb
 ├─ x_gate (module×8)
 └─ z_gate (module)
 
+q8_qft
+├─ cs_gate (module×2)
+├─ cz (module×3)
+├─ fredkin (module)
+├─ h_gate (module)
+├─ ry_negpi4 (module×3)
+├─ ry_pi4 (module×3)
+├─ swap2 (module×2)
+├─ toffoli (module×2)
+└─ x_gate (module×2)
+
 qae3_pi2
 ├─ cry_pi (app)
 │  ├─ cnot (module×2)

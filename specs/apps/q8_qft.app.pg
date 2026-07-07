@@ -1,0 +1,49 @@
+# q8_qft — 쿼터니언 군 Q₈ 완전 Fourier 변환: ζ 불필요 정수-유니터리 비아벨 군의 첫 실증. 3q. Tier-0 8×8.
+# TrackHE7 P5 (#표현론-심화): S₄ (2,2) irrep ζ₃-필연 closed-negative(HE6 P4)의 ★상보 쌍 = "가능 실증".
+#   Q₈={±1,±i,±j,±k}(order 8, 비아벨)은 order-3 원소가 전무 → S₄의 ζ₃ 강제 원인이 부재 →
+#   Fourier 가 ℤ[i](ω₄ 팔레트) 에서 완전히 닫힘(선검증 확정). 정수-유니터리 완전 비아벨 군의 최소 사례.
+# ★게이트 우회(§4′(a)) — 새 module 0: 2-dim irrep entries ∈ {0,±1,±i}, 1-dim irrep 전부 실수 ±1.
+#   coset Fourier(정규부분군 N={±1}=Z₂): F = C_{q0}(A_orig|q0=0, M_orig|q0=1) · ROT · H(b0).
+#   A_orig=H⊗H·SWAP(V₄ 지표) · M_orig=S·CNOT·S·H·CNOT(2-dim irrep 기저) — 각 게이트 q0-제어
+#   (CH=ry_pi4·cz·ry_negpi4, CS=cs_gate, Toffoli, Fredkin). ROT=(b2,b1,b0)→(b0,b2,b1)=swap2×2.
+# 기저: in |b2,b1,b0> (g=(-1)^{b0}·e_{(b2,b1)}, e∈{1,i,j,k}) → out |m2,m1,m0>: m2=0 → χ₀..χ₃(1차원 4종,
+#   V₄=Q₈/{±1} 지표) · m2=1 → ρ(g)_{jk}(2차원 기약표현 행렬원소, (m1,m0)=(j,k)).
+# C4 독립참조(설계 검증): golden=기약표현 공식 직접 구성(√(d/8)·성분) · Peter-Weyl(F·R(g)·F† 가
+#   전 8원소에서 1차원↔2차원 누설 0) · 유니터리. plan=h·swap2·x·ry_pi4/negpi4·cz·fredkin·cs_gate·toffoli(전부 기봉인).
+```json id=app_meta
+{"id": "q8_qft", "n_sys": 3, "n_anc": 0}
+```
+```python id=app_golden
+import numpy as np
+import itertools
+# 기약표현 공식으로 직접 구성 (C4 독립참조): 행=irrep 성분, 열=g=(-1)^{b0}·e_{(b2,b1)}
+I2 = np.eye(2, dtype=complex)
+Qv = {0:(1,0,0,0),1:(-1,0,0,0),2:(0,1,0,0),3:(0,-1,0,0),
+      4:(0,0,1,0),5:(0,0,-1,0),6:(0,0,0,1),7:(0,0,0,-1)}
+VEC = {v: i for i, v in Qv.items()}
+def qmul(x, y):
+    a0,a1,a2,a3 = Qv[x]; b0,b1,b2,b3 = Qv[y]
+    return VEC[(a0*b0-a1*b1-a2*b2-a3*b3, a0*b1+a1*b0+a2*b3-a3*b2,
+                a0*b2-a1*b3+a2*b0+a3*b1, a0*b3+a1*b2-a2*b1+a3*b0)]
+rho = {0:I2, 1:-I2, 2:np.array([[1j,0],[0,-1j]]), 3:np.array([[-1j,0],[0,1j]]),
+       4:np.array([[0,1],[-1,0]],dtype=complex), 5:np.array([[0,-1],[1,0]],dtype=complex)}
+rho[6] = rho[2] @ rho[4]; rho[7] = -rho[6]
+v4 = {0:(0,0),1:(0,0),2:(1,0),3:(1,0),4:(0,1),5:(0,1),6:(1,1),7:(1,1)}
+elt = {(0,0):0,(0,1):2,(1,0):4,(1,1):6}
+chars = [{g: ((-1)**(ci*v4[g][0]))*((-1)**(cj*v4[g][1])) for g in range(8)}
+         for (ci, cj) in itertools.product([0, 1], repeat=2)]
+golden = np.zeros((8, 8), dtype=complex)
+for x in range(8):
+    b2, b1, b0 = (x >> 2) & 1, (x >> 1) & 1, x & 1
+    g = elt[(b2, b1)] if b0 == 0 else qmul(1, elt[(b2, b1)])
+    for c in range(4):
+        golden[c, x] = chars[c][g] / np.sqrt(8)            # 1-dim (√(1/8)·χ)
+    r = 4
+    for j in range(2):
+        for k in range(2):
+            golden[r, x] = rho[g][j, k] / 2                # 2-dim (√(2/8)·ρ_{jk})
+            r += 1
+```
+```json id=plan
+{"steps": [{"spec": "../modules/h_gate.pg", "targets": [2]}, {"spec": "../modules/swap2.pg", "targets": [0, 2]}, {"spec": "../modules/swap2.pg", "targets": [1, 2]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/ry_negpi4.pg", "targets": [1]}, {"spec": "../modules/cz.pg", "targets": [0, 1]}, {"spec": "../modules/ry_pi4.pg", "targets": [1]}, {"spec": "../modules/ry_negpi4.pg", "targets": [2]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/ry_pi4.pg", "targets": [2]}, {"spec": "../modules/fredkin.pg", "targets": [0, 1, 2]}, {"spec": "../modules/x_gate.pg", "targets": [0]}, {"spec": "../modules/cs_gate.pg", "targets": [0, 1]}, {"spec": "../modules/toffoli.pg", "targets": [0, 1, 2]}, {"spec": "../modules/cs_gate.pg", "targets": [0, 2]}, {"spec": "../modules/ry_negpi4.pg", "targets": [2]}, {"spec": "../modules/cz.pg", "targets": [0, 2]}, {"spec": "../modules/ry_pi4.pg", "targets": [2]}, {"spec": "../modules/toffoli.pg", "targets": [0, 2, 1]}]}
+```

@@ -5,7 +5,9 @@
       "rc": 0,
       "apps_sealed": "213/213",
       "rediscovery": "12/12",
-      "pass": true
+      "pass": true,
+      "reassembled": 0,
+      "coherence": 213
     },
     "shor_frontier": {
       "rc": 0,
@@ -75,9 +77,9 @@
     "registry": {
       "rc": 0,
       "modules": "91",
-      "unique_apps": "386",
+      "unique_apps": "387",
       "cached": "75",
-      "root_hash": "60a6de09b237c8b1",
+      "root_hash": "b06fcdf6488b813a",
       "pass": true
     },
     "second_oracle": {
@@ -398,5 +400,5 @@
       "pass": true
     }
   },
-  "mode": "full"
+  "mode": "changed-only"
 }
