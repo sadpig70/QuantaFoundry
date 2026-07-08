@@ -545,6 +545,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aaq. TrackHE9 P4: A₄ ζ₃-필연 문자표 witness (선검증·비-rational 군-Fourier 닫힘, seal 아님)
+    rc, out = run(["scripts/a4_observe.py", "--quick"])
+    result["steps"]["a4_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
