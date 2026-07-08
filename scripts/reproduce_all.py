@@ -563,6 +563,18 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aat. TrackHE9 P6: Ising 애니온 융합 범주 witness (Fibonacci 상보=두 번째 정준 애니온 모델, seal 아님)
+    rc, out = run(["scripts/ising_fusion_observe.py", "--quick"])
+    result["steps"]["ising_fusion_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3aau. TrackHE9 P6: qutrit Gross 이산 Wigner witness (맥락성/magic phase-space 판별, seal 아님) — TrackHE9 폐합
+    rc, out = run(["scripts/qutrit_wigner_observe.py", "--quick"])
+    result["steps"]["qutrit_wigner_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
