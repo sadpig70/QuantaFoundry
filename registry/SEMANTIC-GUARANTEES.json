@@ -5130,6 +5130,15 @@
       "method": "Clifford tableau",
       "u_hash": "6ae05af3ebb0c5fbfcc68973f12820ebb3fc86afce171d0e33d409ea59482b14"
     },
+    "module:bch31_encoder": {
+      "kind": "module",
+      "id": "bch31_encoder",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "15e3dc15fb7db30650325d9244e2a77b89914636b66ed07f4c91d5fc93d77556"
+    },
     "module:c10x": {
       "kind": "module",
       "id": "c10x",
@@ -5978,11 +5987,11 @@
         "subspace_permutation_verified": 27
       },
       "module": {
-        "unitary_equiv": 94
+        "unitary_equiv": 95
       }
     },
     "by_class": {
-      "unitary_equiv": 589,
+      "unitary_equiv": 590,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 27

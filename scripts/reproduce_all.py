@@ -575,6 +575,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aam. distance-5 순환 BCH CSS [[31,11,5]] 코드-정확성 witness (§4 d≥5·BCH 관문, seal 아님)
+    rc, out = run(["scripts/bch31_observe.py", "--quick"])
+    result["steps"]["bch31_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

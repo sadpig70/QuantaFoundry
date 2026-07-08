@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **94 sealed modules · 449 sealed applications** · registry root `324c2a41c96e…`
+- **95 sealed modules · 449 sealed applications** · registry root `0a1d3f643501…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 324c2a41c96e… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash 0a1d3f643501… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -124,7 +124,10 @@ python scripts/reproduce_all.py
   x⁴+x+1), its |0_L⟩ prep sealed dense-free as a 15-qubit Tier-2 stabilizer tableau, with a witness
   confirming the CSS orthogonality (H·Hᵀ=0), the exhaustive distance-3 (minimum weight over C∖C^⊥), the
   cyclic-shift invariance that distinguishes it from the punctured Reed-Muller code, and the |0_L⟩
-  stabilization by every X- and Z-check with +1 sign,
+  stabilization by every X- and Z-check with +1 sign, extended to a **distance-5 [[31,11,5]] quantum BCH
+  code** from the dual-containing narrow-sense BCH [31,21,5] over GF(2⁵) (generator m₁·m₃, the first d≥5
+  code in the registry), its 31-qubit |0_L⟩ prep sealed as a Tier-2 stabilizer tableau with a witness
+  that exhaustively rules out any weight-≤4 codeword (so d(C)≥5, matching the BCH designed distance),
   a **3/4-qubit Schur-Weyl transform pair with decoders** (direct Clebsch-Gordan cascade, J²/Jz
   simultaneous-diagonalization witness + S₃/S₄ duality sector preservation; the decoders make weak
   Schur sampling executable, with a symmetric-subspace reflector 2P−I and a Dicke |D⁴₂⟩ preparation
