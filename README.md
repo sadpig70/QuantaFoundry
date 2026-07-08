@@ -81,7 +81,12 @@ python scripts/reproduce_all.py
   EE=2 exactly, a dyadic value with no irrational-log ambiguity, unlike EE=1 for CNOT/CZ) — all
   observations), a **fermionic SWAP** and a **Bogoliubov pairing gate** (particle-number-breaking Gaussian —
   exp(iπ/4·XX), extending the sixth matchgate/SO(2n) path to the pairing sector — with a 4-site
-  Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign),
+  Kitaev sweet-point ground state whose Z₂ topological invariant is read off as a Pfaffian sign,
+  lifted to **2D ℤ topology** by a Qi-Wu-Zhang Chern-insulator witness that pins the lower-band Chern
+  number as an exact integer two independent ways — a closed-form Dirac mass-sign formula over the
+  four high-symmetry points and a gauge-invariant Fukui-Hatsugai-Suzuki lattice sum — recovering the
+  phase diagram C=±1 for 0<|m|<2 and C=0 for |m|>2, with the gap closing exactly at the Dirac points
+  m∈{−2,0,2}),
   a **Z₂ lattice gauge theory** (Gauss-law encoder), a **ZX-calculus third verification path**
   (Clifford fragment), a **path-sum ℤ[ω₈] fourth, a stabilizer-decomposition fifth, a free-fermion/Majorana SO(2n)
   sixth, a tensor-network exact-contraction seventh, a QMDD reduction-canonical-form eighth, and an
