@@ -545,6 +545,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aah. TrackHE8 P4: 하이퍼그래프곱 qLDPC [[27,4,3]] 코드-정확성 witness (§3k P6 대형 HGP 개창, seal 아님)
+    rc, out = run(["scripts/hgp_observe.py", "--quick"])
+    result["steps"]["hgp_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np

@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **92 sealed modules · 418 sealed applications** · registry root `e2068a001f23…`
+- **93 sealed modules · 418 sealed applications** · registry root `b5df121bed7e…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash e2068a001f23… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash b5df121bed7e… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -98,7 +98,7 @@ python scripts/reproduce_all.py
   — ξ(|T⟩)=4−2√2, R(|T⟩)=√2, bounded ξ(|CS⟩) ∈ [8/5, (11+2√10)/9]; tight T-count lower-bound
   certificates, and a Clifford-invariant proof that |T⟩⊗|T⟩ cannot be deterministically converted
   to |CS⟩; extended to **channel magic** via the T-channel Choi state — ξ(Φ_T)=ξ(|T⟩)=4−2√2 by the
-  Choi isomorphism, with catalysis preserving the resource state), a **hypergraph-product qLDPC code** (generic classical→CSS construction),
+  Choi isomorphism, with catalysis preserving the resource state), a **hypergraph-product qLDPC code** (generic classical→CSS construction; the small [[8,1,2]] instance plus a **distance-3 [[27,4,3]]** Tillich-Zémor product of the Hamming [7,4,3] and repetition [3] codes, sealed dense-free as a 27-qubit Tier-2 stabilizer tableau — both classical seeds full-rank so the transpose sectors are trivial and the distance stays 3, verified by an explicit weight-≤2 logical-operator search),
   the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
   cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
   triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal

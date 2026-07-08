@@ -5060,6 +5060,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
     },
+    "module:hgp_qldpc27": {
+      "kind": "module",
+      "id": "hgp_qldpc27",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "aef638b1d5d6056d7ca3e7a1c8f166aa21001799acb6bf1e7ec1407b5e176720"
+    },
     "module:iswap": {
       "kind": "module",
       "id": "iswap",
@@ -5629,11 +5638,11 @@
         "subspace_permutation_verified": 23
       },
       "module": {
-        "unitary_equiv": 92
+        "unitary_equiv": 93
       }
     },
     "by_class": {
-      "unitary_equiv": 560,
+      "unitary_equiv": 561,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 23
