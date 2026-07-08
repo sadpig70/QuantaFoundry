@@ -557,6 +557,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aas. TrackHE9 P5-후속: Steane↔RM15 code-switching 논리보존 isometry witness (보편완성 상보, seal 아님)
+    rc, out = run(["scripts/code_switch_rm15_observe.py", "--quick"])
+    result["steps"]["code_switch_rm15_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
