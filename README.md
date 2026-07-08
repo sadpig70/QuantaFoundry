@@ -49,7 +49,12 @@ python scripts/reproduce_all.py
   cannot be an integer unitary, and the **complementary positive** — a full **Q₈ (quaternion group)
   Fourier transform** sealed with no new modules, since Q₈ has no order-3 element so its 2-dim irrep
   closes in ℤ[i] and every 1-dim irrep is real ±1: the minimal non-abelian group whose Fourier needs
-  no ζ, built by a coset transform over N={±1} using only sealed H/S/CZ/SWAP/Toffoli/Fredkin gates),
+  no ζ, built by a coset transform over N={±1} using only sealed H/S/CZ/SWAP/Toffoli/Fredkin gates,
+  extended by a witness that the **hyperoctahedral group B₃ = (ℤ₂)³⋊S₃** (48 signed permutations) is a
+  **rational group** — every element is conjugate to all its coprime powers, so its entire character
+  table is integer and its Fourier closes ζ-free, the ζ-free monomial lineage beyond Q₈; its 12-qubit
+  multiplication oracle is shown circuit-realizable by a 154-gate reversible synthesis, observed rather
+  than sealed since dense 12-qubit assembly is impractical),
   a **qutrit-embedded
   ternary-arithmetic** layer (qudit axis), a **topological logical-operation stack** (surface-code
   encoder + coherent lattice surgery + 2×2 toric ground state, closing the FTQC logical stack),
