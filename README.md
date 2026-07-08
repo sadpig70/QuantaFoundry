@@ -103,7 +103,12 @@ python scripts/reproduce_all.py
   — ξ(|T⟩)=4−2√2, R(|T⟩)=√2, bounded ξ(|CS⟩) ∈ [8/5, (11+2√10)/9]; tight T-count lower-bound
   certificates, and a Clifford-invariant proof that |T⟩⊗|T⟩ cannot be deterministically converted
   to |CS⟩; extended to **channel magic** via the T-channel Choi state — ξ(Φ_T)=ξ(|T⟩)=4−2√2 by the
-  Choi isomorphism, with catalysis preserving the resource state), a **hypergraph-product qLDPC code** (generic classical→CSS construction; the small [[8,1,2]] instance plus a **distance-3 [[27,4,3]]** Tillich-Zémor product of the Hamming [7,4,3] and repetition [3] codes, sealed dense-free as a 27-qubit Tier-2 stabilizer tableau — both classical seeds full-rank so the transpose sectors are trivial and the distance stays 3, verified by an explicit weight-≤2 logical-operator search),
+  Choi isomorphism, with catalysis preserving the resource state), a **state-independent contextuality
+  certificate** — the Peres-Mermin magic square of nine two-qubit Pauli observables, where every row and
+  the first two columns multiply to +I while the last column multiplies to −I, so the product of all nine
+  counted by rows (+1) contradicts the count by columns (−1): a purely algebraic parity proof that no
+  noncontextual ±1 value assignment exists, independent of any quantum state — a different resource lens
+  from magic (extent/robustness), a **hypergraph-product qLDPC code** (generic classical→CSS construction; the small [[8,1,2]] instance plus a **distance-3 [[27,4,3]]** Tillich-Zémor product of the Hamming [7,4,3] and repetition [3] codes, sealed dense-free as a 27-qubit Tier-2 stabilizer tableau — both classical seeds full-rank so the transpose sectors are trivial and the distance stays 3, verified by an explicit weight-≤2 logical-operator search),
   the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
   cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
   triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal

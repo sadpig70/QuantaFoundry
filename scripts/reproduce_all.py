@@ -563,6 +563,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aak. TrackHE8 P5: Peres-Mermin state-independent 맥락성 증명서 (§3j 맥락성 개창, seal 아님)
+    rc, out = run(["scripts/peres_mermin_observe.py", "--quick"])
+    result["steps"]["peres_mermin_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
