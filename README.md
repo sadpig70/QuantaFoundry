@@ -108,7 +108,12 @@ python scripts/reproduce_all.py
   the first two columns multiply to +I while the last column multiplies to −I, so the product of all nine
   counted by rows (+1) contradicts the count by columns (−1): a purely algebraic parity proof that no
   noncontextual ±1 value assignment exists, independent of any quantum state — a different resource lens
-  from magic (extent/robustness), a **hypergraph-product qLDPC code** (generic classical→CSS construction; the small [[8,1,2]] instance plus a **distance-3 [[27,4,3]]** Tillich-Zémor product of the Hamming [7,4,3] and repetition [3] codes, sealed dense-free as a 27-qubit Tier-2 stabilizer tableau — both classical seeds full-rank so the transpose sectors are trivial and the distance stays 3, verified by an explicit weight-≤2 logical-operator search),
+  from magic (extent/robustness), quantified further by an **exact-rational contextual-fraction certificate**
+  that lifts the qualitative parity proof to a number: an internal exact-rational linear program (no external
+  solver, no floating point) whose noncontextual fraction is 0 because every one of the 512 global ±1
+  assignments violates at least one context, giving contextual fraction CF=1, with a depolarizing-visibility
+  family CF(v)=v recovered exactly from an explicit uniform primal witness and the parity dual certificate,
+  a **hypergraph-product qLDPC code** (generic classical→CSS construction; the small [[8,1,2]] instance plus a **distance-3 [[27,4,3]]** Tillich-Zémor product of the Hamming [7,4,3] and repetition [3] codes, sealed dense-free as a 27-qubit Tier-2 stabilizer tableau — both classical seeds full-rank so the transpose sectors are trivial and the distance stays 3, verified by an explicit weight-≤2 logical-operator search),
   the **[[8,3,2]] triorthogonal colour code with a transversal non-Clifford logical gate** (the
   cube code: T^±1 on all 8 vertices projects to a logical CCZ, witnessed by the integer
   triorthogonality condition and an exact logical-matrix check — the first non-Clifford transversal
