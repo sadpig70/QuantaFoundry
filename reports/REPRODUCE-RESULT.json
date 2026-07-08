@@ -23,9 +23,9 @@
     "registry": {
       "rc": 0,
       "modules": "95",
-      "unique_apps": "457",
+      "unique_apps": "466",
       "cached": "75",
-      "root_hash": "f6f1f0fcc0e2ff28",
+      "root_hash": "6e7d2a70ef9e1790",
       "pass": true
     },
     "second_oracle": {
@@ -323,6 +323,41 @@
       "all_ok": true,
       "pass": true
     },
+    "groebner_verify_sample": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "a4_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "code_switch_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "code_switch_rm15_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "ising_fusion_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "qutrit_wigner_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "groebner_monomial_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
     "b3_observe": {
       "rc": 0,
       "all_ok": true,
@@ -359,6 +394,11 @@
       "pass": true
     },
     "contextual_fraction_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "chern_higher_observe": {
       "rc": 0,
       "all_ok": true,
       "pass": true
