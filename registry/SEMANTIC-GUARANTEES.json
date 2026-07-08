@@ -4960,6 +4960,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
     },
+    "module:bch15_encoder": {
+      "kind": "module",
+      "id": "bch15_encoder",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "6ae05af3ebb0c5fbfcc68973f12820ebb3fc86afce171d0e33d409ea59482b14"
+    },
     "module:c10x": {
       "kind": "module",
       "id": "c10x",
@@ -5808,11 +5817,11 @@
         "subspace_permutation_verified": 25
       },
       "module": {
-        "unitary_equiv": 93
+        "unitary_equiv": 94
       }
     },
     "by_class": {
-      "unitary_equiv": 575,
+      "unitary_equiv": 576,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 25

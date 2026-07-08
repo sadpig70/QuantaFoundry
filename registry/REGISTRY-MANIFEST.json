@@ -1,9 +1,10 @@
 {
   "schema": "registry-manifest/v1",
   "modules": {
-    "count": 93,
+    "count": 94,
     "path": "registry/modules",
     "items": [
+      "bch15_encoder",
       "c10x",
       "c11x",
       "c12x",
@@ -695,7 +696,7 @@
     "z5_gate": "registry/modules/z5_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "2b5aa5adbb32d201f17896a9575806d91b43564c005eaffbbcd7ddcd4cc60e30",
+  "registry_root_hash": "b12a88d1122c591d59d733d9063fb4e19ed7c698e530249abd038d97581ff02c",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

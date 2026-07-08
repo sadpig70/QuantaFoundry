@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **93 sealed modules · 434 sealed applications** · registry root `2b5aa5adbb32…`
+- **94 sealed modules · 434 sealed applications** · registry root `b12a88d1122c…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
@@ -30,7 +30,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash 2b5aa5adbb32… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash b12a88d1122c… · second_oracle 83/83 · behavior pass
 ```
 
 ---
@@ -119,7 +119,12 @@ python scripts/reproduce_all.py
   back-propagation of all 14 stabilizers; distance exactly 3, exhaustively checked; the encoder's inverse is sealed as a **decoder** that is
   the measurement-free coherent syndrome-extraction core of 15-to-1 distillation — valid codewords
   decode to logic + zero syndrome (accept), weight-1 errors expose a non-zero syndrome; success
-  rate is an observation),
+  rate is an observation), the registry's first **cyclic algebraic CSS code** — a **[[15,7,3]] quantum
+  Hamming/BCH code** built from the dual-containing binary cyclic code [15,11,3] (generator polynomial
+  x⁴+x+1), its |0_L⟩ prep sealed dense-free as a 15-qubit Tier-2 stabilizer tableau, with a witness
+  confirming the CSS orthogonality (H·Hᵀ=0), the exhaustive distance-3 (minimum weight over C∖C^⊥), the
+  cyclic-shift invariance that distinguishes it from the punctured Reed-Muller code, and the |0_L⟩
+  stabilization by every X- and Z-check with +1 sign,
   a **3/4-qubit Schur-Weyl transform pair with decoders** (direct Clebsch-Gordan cascade, J²/Jz
   simultaneous-diagonalization witness + S₃/S₄ duality sector preservation; the decoders make weak
   Schur sampling executable, with a symmetric-subspace reflector 2P−I and a Dicke |D⁴₂⟩ preparation

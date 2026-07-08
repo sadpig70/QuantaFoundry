@@ -1,0 +1,43 @@
+# bch15_encoder — 순환 Hamming/BCH CSS [[15,7,3]] |0_L⟩ prep (dual-containing C=[15,11,3], g(x)=x⁴+x+1). registry 첫 cyclic algebraic CSS 계보(cyclic shift 대칭·생성다항식 witness), rm15([[15,1,3]] punctured RM)와 다른 부호 클래스. Tier-2 CLIFFORD(정준 tableau, dense 2^15 불필요). ★선검증: C dmin 3·dual-containing(C^⊥⊆C·H·H^T=0)→CSS [[15,7,3]] 직교. plan=X-안정자 RREF H·CNOT, no MatrixGate, 신규 module 0. witness=bch_observe(CSS·dual-containing·거리·cyclic·|0_L⟩ stabilized).
+```python id=bloq
+from qualtran import BloqBuilder
+from qualtran.bloqs.basic_gates import Hadamard, CNOT
+bb = BloqBuilder()
+qs = [bb.add_register(f'q{i}', 1) for i in range(15)]
+qs[0] = bb.add(Hadamard(), q=qs[0])
+qs[0], qs[4] = bb.add(CNOT(), ctrl=qs[0], target=qs[4])
+qs[0], qs[7] = bb.add(CNOT(), ctrl=qs[0], target=qs[7])
+qs[0], qs[8] = bb.add(CNOT(), ctrl=qs[0], target=qs[8])
+qs[0], qs[10] = bb.add(CNOT(), ctrl=qs[0], target=qs[10])
+qs[0], qs[12] = bb.add(CNOT(), ctrl=qs[0], target=qs[12])
+qs[0], qs[13] = bb.add(CNOT(), ctrl=qs[0], target=qs[13])
+qs[0], qs[14] = bb.add(CNOT(), ctrl=qs[0], target=qs[14])
+qs[1] = bb.add(Hadamard(), q=qs[1])
+qs[1], qs[4] = bb.add(CNOT(), ctrl=qs[1], target=qs[4])
+qs[1], qs[5] = bb.add(CNOT(), ctrl=qs[1], target=qs[5])
+qs[1], qs[7] = bb.add(CNOT(), ctrl=qs[1], target=qs[7])
+qs[1], qs[9] = bb.add(CNOT(), ctrl=qs[1], target=qs[9])
+qs[1], qs[10] = bb.add(CNOT(), ctrl=qs[1], target=qs[10])
+qs[1], qs[11] = bb.add(CNOT(), ctrl=qs[1], target=qs[11])
+qs[1], qs[12] = bb.add(CNOT(), ctrl=qs[1], target=qs[12])
+qs[2] = bb.add(Hadamard(), q=qs[2])
+qs[2], qs[5] = bb.add(CNOT(), ctrl=qs[2], target=qs[5])
+qs[2], qs[6] = bb.add(CNOT(), ctrl=qs[2], target=qs[6])
+qs[2], qs[8] = bb.add(CNOT(), ctrl=qs[2], target=qs[8])
+qs[2], qs[10] = bb.add(CNOT(), ctrl=qs[2], target=qs[10])
+qs[2], qs[11] = bb.add(CNOT(), ctrl=qs[2], target=qs[11])
+qs[2], qs[12] = bb.add(CNOT(), ctrl=qs[2], target=qs[12])
+qs[2], qs[13] = bb.add(CNOT(), ctrl=qs[2], target=qs[13])
+qs[3] = bb.add(Hadamard(), q=qs[3])
+qs[3], qs[6] = bb.add(CNOT(), ctrl=qs[3], target=qs[6])
+qs[3], qs[7] = bb.add(CNOT(), ctrl=qs[3], target=qs[7])
+qs[3], qs[9] = bb.add(CNOT(), ctrl=qs[3], target=qs[9])
+qs[3], qs[11] = bb.add(CNOT(), ctrl=qs[3], target=qs[11])
+qs[3], qs[12] = bb.add(CNOT(), ctrl=qs[3], target=qs[12])
+qs[3], qs[13] = bb.add(CNOT(), ctrl=qs[3], target=qs[13])
+qs[3], qs[14] = bb.add(CNOT(), ctrl=qs[3], target=qs[14])
+bloq = bb.finalize(**{f'q{i}': qs[i] for i in range(15)})
+```
+```json id=meta
+{"id": "bch15_encoder", "n_sys": 15, "n_anc": 0, "tier": "clifford"}
+```
