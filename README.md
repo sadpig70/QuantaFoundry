@@ -128,7 +128,12 @@ python scripts/reproduce_all.py
   dilation by partial trace; the diamond distance between Pauli channels equals the ℓ₁ distance of
   their Pauli spectra — a dyadic exact value — with the maximally-entangled state as the primal
   witness confirmed optimal against a global pure-state search; the exactness is honestly scoped to
-  the Pauli-diagonal island, general non-Pauli channels remaining observation-only), and the
+  the Pauli-diagonal island, general non-Pauli channels remaining observation-only), complemented by
+  an **exact diamond-norm certificate for coherent (unitary) channels** — the complementary non-Pauli
+  island — where the Aharonov-Kitaev-Nisan/Watrous arc formula ‖Φ_U−Φ_V‖◇ = 2·sin(min(Θ/2,π/2)) over
+  the eigenphase arc Θ of U†V yields cyclotomic-surd exact values (‖Φ_T−Φ_I‖◇ = √(2−√2), ‖Φ_S−Φ_I‖◇ =
+  √2, and the integer ‖Φ_CZ−Φ_I‖◇ = 2 at maximal distinguishability), cross-checked three ways (arc
+  formula, convex-hull distance, and a doubled-space state search), and the
   registry's first **code-concatenation layer** — `concat_513_513` = [[5,1,3]]∘[[5,1,3]] = [[25,1,9]],
   a 25-qubit Tier-2 Clifford encoder built purely from six [[5,1,3]] encoder blocks (H/CNOT/CZ, no
   new modules), sealed via a canonical stabilizer tableau (no dense 2²⁵); its witness reconstructs

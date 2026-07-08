@@ -557,6 +557,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aaj. TrackHE8 P6: non-Pauli(coherent) 유니터리 채널 diamond-norm exact witness (§3k P3 상보, seal 아님)
+    rc, out = run(["scripts/diamond_unitary_observe.py", "--quick"])
+    result["steps"]["diamond_unitary_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 4. 행동 검증 — Shor 인수분해 (15=3×5 via a2,a7) + cmul21 orbit(period 6 → 21=3×7)
     beh = {}
     import numpy as np
