@@ -71,11 +71,11 @@ QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1
         # process: add canonical module keys such as gate/x, gate/h, gate/cnot
         # output: expanded registry/CANON.json and tests
         # criteria: validate-canon PASS; no cached app-side module exposure; base gate lookup/attest tests PASS. ✅ done
-    V05CirqBaseCoverage // extend attest_circuit positive tests beyond QFT (designing) @dep:V04BaseGateCanon
+    V05CirqBaseCoverage // extend attest_circuit positive tests beyond QFT (done) @dep:V04BaseGateCanon
         # input: base gate Canon entries and Cirq unitary circuits
         # process: test X/H/CNOT/CZ/SWAP/Toffoli/Fredkin where Cirq conventions are exact
         # output: adapter regression suite for base gates
-        # criteria: global phase/endian/unit-order mistakes are caught; unsupported or measured circuits fail closed
+        # criteria: base Cirq hashes match Canon; qubit-order mistake is caught; unsupported or measured circuits fail closed. ✅ done
     V06CanonUX // category/index/query UX (designing) @dep:V04BaseGateCanon
         # input: Canon entries with stable categories
         # process: expose list --category, categories, and machine-readable summary

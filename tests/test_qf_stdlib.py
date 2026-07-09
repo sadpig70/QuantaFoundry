@@ -178,6 +178,51 @@ class QFStdlibTests(unittest.TestCase):
         self.assertEqual(lookup(circuit_hash)["key"], "qft/3")
 
     @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_base_gate_hashes_match_canon_when_convention_pinned(self):
+        q1 = cirq.LineQubit.range(1)
+        q2 = cirq.LineQubit.range(2)
+        q3 = cirq.LineQubit.range(3)
+        cases = [
+            ("gate/x", cirq.Circuit(cirq.X(q1[0])), q1),
+            ("gate/h", cirq.Circuit(cirq.H(q1[0])), q1),
+            ("gate/cnot", cirq.Circuit(cirq.CNOT(q2[0], q2[1])), q2),
+            ("gate/cz", cirq.Circuit(cirq.CZ(q2[0], q2[1])), q2),
+            ("gate/swap", cirq.Circuit(cirq.SWAP(q2[0], q2[1])), q2),
+            ("gate/toffoli", cirq.Circuit(cirq.CCX(q3[0], q3[1], q3[2])), q3),
+            ("gate/fredkin", cirq.Circuit(cirq.CSWAP(q3[0], q3[1], q3[2])), q3),
+        ]
+        for key, circuit, order in cases:
+            with self.subTest(key=key):
+                circuit_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=order)
+                self.assertEqual(circuit_hash, lookup(key)["u_hash"])
+                self.assertEqual(lookup(circuit_hash)["key"], key)
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_base_gate_attest_circuit_returns_canon_proofs(self):
+        q1 = cirq.LineQubit.range(1)
+        q2 = cirq.LineQubit.range(2)
+        cases = [
+            ("gate/x", cirq.Circuit(cirq.X(q1[0])), q1),
+            ("gate/h", cirq.Circuit(cirq.H(q1[0])), q1),
+            ("gate/cnot", cirq.Circuit(cirq.CNOT(q2[0], q2[1])), q2),
+            ("gate/cz", cirq.Circuit(cirq.CZ(q2[0], q2[1])), q2),
+            ("gate/swap", cirq.Circuit(cirq.SWAP(q2[0], q2[1])), q2),
+        ]
+        for key, circuit, order in cases:
+            with self.subTest(key=key):
+                proof = attest_circuit(circuit, "cirq", qubit_order=order)
+                self.assertIsNotNone(proof)
+                self.assertEqual(proof["subject"]["key"], key)
+                self.assertEqual(proof["proof"]["adapter"]["computed_u_hash"], lookup(key)["u_hash"])
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_qubit_order_mismatch_does_not_match_cnot_canon(self):
+        qubits = cirq.LineQubit.range(2)
+        circuit = cirq.Circuit(cirq.CNOT(qubits[0], qubits[1]))
+        reversed_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=list(reversed(qubits)))
+        self.assertNotEqual(reversed_hash, lookup("gate/cnot")["u_hash"])
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
     def test_cirq_adapter_requires_explicit_qubit_order(self):
         qubits = cirq.LineQubit.range(2)
         circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=False))

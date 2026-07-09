@@ -30,10 +30,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
         # output: gate/x, gate/z, gate/h, gate/s, gate/t, gate/cnot, gate/swap, gate/cz, gate/toffoli, gate/fredkin, gate/cs, gate/ct, gate/ccz
         # tests: validate-canon, lookup by key/alias/id/hash, no cached app-side exposure
         # gate: unittest + py_compile + changed-only reproduce. ✅ done
-    V05CirqBaseCoverage // attest_circuit positive/negative coverage for base gates (pending) @dep:V04BaseGateCanon
+    V05CirqBaseCoverage // attest_circuit positive/negative coverage for base gates (done) @dep:V04BaseGateCanon
         # output: Cirq X/H/CNOT/CZ/SWAP/Toffoli/Fredkin tests where conventions match Canon
         # tests: positive hash match, qubit_order mistakes, measurement rejection, unsupported adapter
-        # gate: unittest + adapter-info + py_compile
+        # gate: unittest + adapter-info + py_compile. ✅ done
     V06CanonUX // category and summary query surface (pending) @dep:V04BaseGateCanon
         # output: Canon category metadata, CLI categories/list --category/summary, API helpers
         # tests: deterministic category ordering, unknown category fail-closed, docs examples
