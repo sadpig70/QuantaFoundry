@@ -33,4 +33,7 @@ QFStdlibImplementation // implement user-facing stdlib sidecar layer (done) @v:0
     VerificationGate // run deterministic gates and update roadmap status (done) @dep:TestsDocs
         # commands: validate-canon, lookup, attest, validate/build-template, unittest, second_oracle, contested_guard, changed-only reproduce
         # criteria: stdlib gates pass; registry/oracle/sealed artifacts are not mutated except CANON sidecar/report. ✅ done
+    V01Hardening // root drift guard + expanded Canon palette + docs examples (done) @dep:VerificationGate
+        # output: check-root CLI/API, 42-entry Canon, expanded unit tests, concrete docs examples
+        # criteria: check-root·validate-canon·lookup·attest·template·unittest·py_compile·changed-only reproduce PASS. ✅ done
 ```

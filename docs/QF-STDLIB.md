@@ -9,7 +9,11 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 - `registry/CANON.json`: canonical names for selected sealed primitives.
 - `qf_stdlib.lookup()`: exact lookup by canonical key, alias, registry id, or `u_hash`.
 - `qf_stdlib.attest()`: proof object anchored to `registry_root_hash`.
+- `qf_stdlib.check_root()`: fast drift guard between Canon and the live registry manifest root.
 - `qf_stdlib.templates`: proof-carrying recipes that compose canonical attestations without pretending to create a new seal.
+
+The current Canon contains 42 entries across QFT/iQFT, adders, Grover, QPE, Trotter/Suzuki, block-encoding,
+QSP/QSVT, qROM, SELECT-PREPARE, RM15 code substrates, and Shor-237 modular multiplier components.
 
 ## What It Does Not Claim
 
@@ -23,6 +27,7 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 
 ```bash
 python scripts/qf_stdlib.py validate-canon
+python scripts/qf_stdlib.py check-root
 python scripts/qf_stdlib.py list
 python scripts/qf_stdlib.py lookup qft/8
 python scripts/qf_stdlib.py attest qft/8
@@ -48,6 +53,31 @@ cert = build_with_proof("qpe_skeleton")
 
 Unknown primitives return `None`; they are not approximated or guessed.
 
+## Examples
+
+Root drift guard before using the stdlib:
+
+```bash
+python scripts/qf_stdlib.py check-root
+python scripts/qf_stdlib.py list
+```
+
+Exact Fourier lookup and attestation:
+
+```bash
+python scripts/qf_stdlib.py lookup qft/7
+python scripts/qf_stdlib.py attest fourier/qft/7
+```
+
+Proof-carrying recipe certificate:
+
+```bash
+python scripts/qf_stdlib.py build-template qpe_skeleton
+python scripts/qf_stdlib.py build-template trotter_stack
+```
+
+These certificates aggregate existing Canon attestations. They are not new registry seals.
+
 ## Honesty Boundary
 
 An attestation means:
@@ -65,4 +95,3 @@ This derived template is a new sealed registry artifact.
 ```
 
 For structural Shor entries, QF-STDLIB preserves the existing scope: the modexp core may be `subspace_permutation_verified`, while full dense unitary equivalence including H and iQFT remains unclaimed.
-

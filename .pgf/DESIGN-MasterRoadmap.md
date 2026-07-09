@@ -636,6 +636,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_ImplementationV0 // Canon sidecar + lookup/attest package + template v0 (done) @dep:QFStdlib_DetailedDesign
             # output: registry/CANON.json, qf_stdlib/, scripts/qf_stdlib.py, tests/test_qf_stdlib.py, docs/QF-STDLIB.md
             # criteria: validate-canon·lookup·attest·template·unittest·second_oracle·contested_guard·reproduce --changed-only PASS. ✅ done
+        QFStdlib_V01Hardening // root drift guard + Canon palette expansion (done) @dep:QFStdlib_ImplementationV0
+            # output: check-root CLI/API, 42 canonical entries, expanded unit tests, concrete docs examples
+            # criteria: check-root·validate-canon·lookup·attest·template·unittest·py_compile·reproduce --changed-only PASS. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

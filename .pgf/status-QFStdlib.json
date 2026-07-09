@@ -4,7 +4,7 @@
   "workplan": ".pgf/WORKPLAN-QFStdlib.md",
   "started_at": "2026-07-09T00:00:00+09:00",
   "updated_at": "2026-07-09T00:00:00+09:00",
-  "iteration": 2,
+  "iteration": 3,
   "nodes": {
     "DesignReview": {
       "status": "done",
@@ -76,11 +76,27 @@
         "files_modified": [],
         "notes": "validate-canon, lookup, attest, validate/build-template, unittest, py_compile, second_oracle, contested_guard, and reproduce_all --changed-only all passed."
       }
+    },
+    "V01Hardening": {
+      "status": "done",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [
+          "qf_stdlib/canon.py",
+          "qf_stdlib/__init__.py",
+          "scripts/qf_stdlib.py",
+          "registry/CANON.json",
+          "reports/QF-STDLIB-CANON-REPORT.json",
+          "tests/test_qf_stdlib.py",
+          "docs/QF-STDLIB.md"
+        ],
+        "notes": "Added check-root CLI/API, expanded Canon to 42 entries, and documented concrete usage examples."
+      }
     }
   },
   "summary": {
-    "total": 6,
-    "done": 6,
+    "total": 7,
+    "done": 7,
     "in-progress": 0,
     "designing": 0,
     "blocked": 0

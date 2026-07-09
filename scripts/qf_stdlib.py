@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from qf_stdlib.attest import attest
-from qf_stdlib.canon import build_canon, load_canon, lookup, validate_canon, write_canon, write_report
+from qf_stdlib.canon import build_canon, check_root, load_canon, lookup, validate_canon, write_report
 from qf_stdlib.errors import NotFoundError, QFStdlibError, UnsupportedAdapter, ValidationError
 from qf_stdlib.registry import json_dump_stable, load_snapshot
 from qf_stdlib.templates import build_with_proof, load_template, validate_template
@@ -49,6 +49,14 @@ def cmd_validate_canon(args: argparse.Namespace) -> int:
     report = validate_canon(canon, snapshot)
     if args.write_report:
         write_report(report, ROOT)
+    _print_json(report.to_json())
+    return 0 if report.ok else 1
+
+
+def cmd_check_root(_args: argparse.Namespace) -> int:
+    snapshot = load_snapshot(ROOT)
+    canon = load_canon(ROOT)
+    report = check_root(canon, snapshot)
     _print_json(report.to_json())
     return 0 if report.ok else 1
 
@@ -107,6 +115,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--write-report", action="store_true")
     p.set_defaults(func=cmd_validate_canon)
 
+    p = sub.add_parser("check-root", help="fail if CANON.json root differs from the live registry manifest root")
+    p.set_defaults(func=cmd_check_root)
+
     p = sub.add_parser("list", help="list canonical stdlib keys")
     p.set_defaults(func=cmd_list)
 
@@ -150,4 +161,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

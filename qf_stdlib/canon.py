@@ -39,7 +39,13 @@ SEED_ENTRIES: list[dict[str, Any]] = [
     {"key": "qft/2", "kind": "app", "id": "qft2_pipeline", "aliases": ["qft2", "fourier/qft/2"], "reason": "small QFT pipeline"},
     {"key": "qft/3", "kind": "app", "id": "qft3_pipeline", "aliases": ["qft3", "fourier/qft/3"], "reason": "small QFT pipeline"},
     {"key": "qft/4", "kind": "app", "id": "qft4_pipeline", "aliases": ["qft4", "fourier/qft/4"], "reason": "baseline QFT pipeline"},
+    {"key": "qft/5", "kind": "app", "id": "qft5_pipeline", "aliases": ["qft5", "fourier/qft/5"], "reason": "5-qubit QFT pipeline"},
+    {"key": "qft/6", "kind": "app", "id": "qft6_pipeline", "aliases": ["qft6", "fourier/qft/6"], "reason": "6-qubit QFT pipeline"},
+    {"key": "qft/7", "kind": "app", "id": "qft7_pipeline", "aliases": ["qft7", "fourier/qft/7"], "reason": "7-qubit QFT pipeline"},
     {"key": "qft/8", "kind": "app", "id": "qft8_pipeline", "aliases": ["qft8", "fourier/qft/8"], "reason": "largest sealed QFT pipeline"},
+    {"key": "iqft/2", "kind": "app", "id": "iqft2", "aliases": ["iqft2", "fourier/iqft/2"], "reason": "small inverse QFT"},
+    {"key": "iqft/3", "kind": "app", "id": "iqft3", "aliases": ["iqft3", "fourier/iqft/3"], "reason": "small inverse QFT"},
+    {"key": "iqft/7", "kind": "app", "id": "iqft7", "aliases": ["iqft7", "fourier/iqft/7"], "reason": "7-qubit inverse QFT"},
     {"key": "iqft/8", "kind": "app", "id": "iqft8", "aliases": ["iqft8", "fourier/iqft/8"], "reason": "QPE-ready inverse QFT"},
     {"key": "adder/cuccaro/2", "kind": "app", "id": "cuccaro_add2", "aliases": ["cuccaro_add2"], "reason": "small canonical reversible adder"},
     {"key": "adder/cuccaro/3", "kind": "app", "id": "cuccaro_add3", "aliases": ["cuccaro_add3"], "reason": "larger canonical reversible adder"},
@@ -49,12 +55,28 @@ SEED_ENTRIES: list[dict[str, Any]] = [
     {"key": "qpe/t", "kind": "app", "id": "qpe_t", "aliases": ["qpe_t"], "reason": "phase estimation over T gate"},
     {"key": "trotter/tfim3/first_order", "kind": "app", "id": "tfim3_trotter_step", "aliases": ["tfim3_trotter_step"], "reason": "canonical first-order TFIM step"},
     {"key": "suzuki4/tfim3/step", "kind": "app", "id": "tfim3_suzuki4_step", "aliases": ["tfim3_suzuki4_step"], "reason": "canonical fourth-order Suzuki TFIM step"},
+    {"key": "block-encoding/xz", "kind": "app", "id": "be_xz", "aliases": ["be_xz"], "reason": "block-encoding seed for QSVT"},
+    {"key": "block-encoding/proj", "kind": "app", "id": "be_proj", "aliases": ["be_proj"], "reason": "projector block-encoding seed for QSVT"},
+    {"key": "block-encoding/pauli2", "kind": "app", "id": "be_pauli2", "aliases": ["be_pauli2"], "reason": "two-qubit Pauli block-encoding seed"},
+    {"key": "block-encoding/h2", "kind": "app", "id": "be_h2", "aliases": ["be_h2"], "reason": "molecular block-encoding seed"},
+    {"key": "block-encoding/hop", "kind": "app", "id": "be_hop", "aliases": ["be_hop"], "reason": "fermionic hopping block-encoding seed"},
+    {"key": "block-encoding/num", "kind": "app", "id": "be_num", "aliases": ["be_num"], "reason": "fermionic number block-encoding seed"},
+    {"key": "qsp/d1", "kind": "app", "id": "qsp_d1", "aliases": ["qsp_d1"], "reason": "degree-1 QSP primitive"},
     {"key": "qsp/d3", "kind": "app", "id": "qsp_d3", "aliases": ["qsp_d3"], "reason": "degree-3 QSP primitive"},
+    {"key": "qsp/d5", "kind": "app", "id": "qsp_d5", "aliases": ["qsp_d5"], "reason": "degree-5 QSP primitive"},
+    {"key": "qsvt/proj/d2", "kind": "app", "id": "qsvt_proj_d2", "aliases": ["qsvt_proj_d2"], "reason": "degree-2 projector QSVT consumer"},
+    {"key": "qsvt/proj/d2b", "kind": "app", "id": "qsvt_proj_d2b", "aliases": ["qsvt_proj_d2b"], "reason": "alternate degree-2 projector QSVT consumer"},
     {"key": "qsvt/proj/d3", "kind": "app", "id": "qsvt_proj_d3", "aliases": ["qsvt_proj_d3"], "reason": "projector QSVT consumer"},
+    {"key": "qsvt/pauli2/d2", "kind": "app", "id": "qsvt_pauli2_d2", "aliases": ["qsvt_pauli2_d2"], "reason": "degree-2 Pauli QSVT consumer"},
+    {"key": "qsvt/pauli2/d3", "kind": "app", "id": "qsvt_pauli2_d3", "aliases": ["qsvt_pauli2_d3"], "reason": "degree-3 Pauli QSVT consumer"},
     {"key": "qrom/2x2", "kind": "app", "id": "qrom22", "aliases": ["qrom22"], "reason": "canonical qROM data oracle"},
     {"key": "select-prepare/4", "kind": "app", "id": "select_prepare4", "aliases": ["select_prepare4"], "reason": "canonical SELECT-PREPARE layer"},
     {"key": "code/rm15/encoder", "kind": "module", "id": "rm15_encoder_t2", "aliases": ["rm15_encoder_t2"], "reason": "punctured Reed-Muller encoder substrate"},
     {"key": "code/rm15/decoder", "kind": "module", "id": "rm15_decoder_t2", "aliases": ["rm15_decoder_t2"], "reason": "coherent RM15 decoder substrate"},
+    {"key": "cmul/237/a2", "kind": "app", "id": "cmul2_mod237", "aliases": ["cmul2_mod237"], "reason": "frontier Shor-237 modular multiplier component"},
+    {"key": "cmul/237/a4", "kind": "app", "id": "cmul4_mod237", "aliases": ["cmul4_mod237"], "reason": "frontier Shor-237 modular multiplier component"},
+    {"key": "cmul/237/a16", "kind": "app", "id": "cmul16_mod237", "aliases": ["cmul16_mod237"], "reason": "frontier Shor-237 modular multiplier component"},
+    {"key": "cmul/237/a124", "kind": "app", "id": "cmul124_mod237", "aliases": ["cmul124_mod237"], "reason": "frontier Shor-237 modular multiplier component"},
     {"key": "shor/237/structural", "kind": "app", "id": "shor237", "aliases": ["shor237"], "reason": "latest root-synced structural Shor frontier"},
 ]
 
@@ -247,6 +269,25 @@ def validate_canon(canon: dict[str, Any], snapshot: RegistrySnapshot | None = No
     )
 
 
+def check_root(canon: dict[str, Any], snapshot: RegistrySnapshot | None = None) -> ValidationReport:
+    """Check only root drift between CANON.json and the live manifest."""
+    snap = snapshot or load_snapshot()
+    errors: list[str] = []
+    generated = canon.get("_generated_from", {})
+    if generated.get("registry_root_hash") != snap.registry_root_hash:
+        errors.append("generated_root_mismatch")
+    for key, entry in sorted(canon.get("canon", {}).items()):
+        if entry.get("registry_root") != snap.registry_root_hash:
+            errors.append(f"{key}:root_mismatch")
+    return ValidationReport(
+        ok=not errors,
+        errors=errors,
+        warnings=[],
+        entries=len(canon.get("canon", {})),
+        registry_root_hash=snap.registry_root_hash,
+    )
+
+
 def write_canon(root: Path | None = None) -> ValidationReport:
     snapshot = load_snapshot(root)
     canon = build_canon(snapshot)
@@ -305,4 +346,3 @@ def require_lookup(query: str, canon: dict[str, Any] | None = None, root: Path |
     if entry is None:
         raise NotFoundError(query)
     return entry
-

@@ -1,7 +1,7 @@
 import copy
 import unittest
 
-from qf_stdlib import attest, build_with_proof, load_canon, lookup, validate_canon
+from qf_stdlib import attest, build_with_proof, check_root, load_canon, lookup, validate_canon
 from qf_stdlib.adapters import canonical_hash_with_adapter
 from qf_stdlib.errors import UnsupportedAdapter
 from qf_stdlib.registry import load_snapshot
@@ -13,8 +13,35 @@ class QFStdlibTests(unittest.TestCase):
         canon = load_canon()
         report = validate_canon(canon, snapshot)
         self.assertTrue(report.ok, report.errors)
-        self.assertGreaterEqual(report.entries, 20)
+        self.assertGreaterEqual(report.entries, 42)
         self.assertEqual(canon["_generated_from"]["registry_root_hash"], snapshot.registry_root_hash)
+
+    def test_root_check_is_fast_drift_guard(self):
+        snapshot = load_snapshot()
+        canon = load_canon()
+        report = check_root(canon, snapshot)
+        self.assertTrue(report.ok, report.errors)
+        self.assertEqual(report.entries, len(canon["canon"]))
+
+    def test_root_check_detects_entry_drift(self):
+        snapshot = load_snapshot()
+        canon = copy.deepcopy(load_canon())
+        canon["canon"]["qft/7"]["registry_root"] = "0" * 64
+        report = check_root(canon, snapshot)
+        self.assertFalse(report.ok)
+        self.assertIn("qft/7:root_mismatch", report.errors)
+
+    def test_expanded_palette_entries_exist(self):
+        canon = load_canon()
+        for key in (
+            "qft/7",
+            "iqft/2",
+            "block-encoding/xz",
+            "qsp/d5",
+            "qsvt/pauli2/d3",
+            "cmul/237/a2",
+        ):
+            self.assertIn(key, canon["canon"])
 
     def test_lookup_by_key_alias_id_and_hash(self):
         canon = load_canon()
@@ -91,4 +118,3 @@ class QFStdlibTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
