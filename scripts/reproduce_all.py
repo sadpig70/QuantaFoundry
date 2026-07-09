@@ -653,6 +653,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3abi. TrackHE11 후속: A₅ 3-dim 기약표현 ℚ(√5) 명시 유니터리 실현 + 봉인가능성 (√5 승인 후 pre-seal, seal 아님)
+    rc, out = run(["scripts/a5_rep3_observe.py", "--quick"])
+    result["steps"]["a5_rep3_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
