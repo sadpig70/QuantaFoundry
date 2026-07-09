@@ -1,7 +1,7 @@
 """QF stdlib: canonical lookup and proof-carrying attestations over QuantaFoundry."""
 
 from .attest import attest, attest_circuit
-from .adapters import adapter_convention, canonical_hash_with_adapter
+from .adapters import adapter_convention, adapter_decision, canonical_hash_with_adapter
 from .canon import (
     build_canon,
     check_root,
@@ -18,6 +18,7 @@ __all__ = [
     "attest",
     "attest_circuit",
     "adapter_convention",
+    "adapter_decision",
     "build_canon",
     "build_with_proof",
     "check_root",

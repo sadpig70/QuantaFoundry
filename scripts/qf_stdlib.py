@@ -16,7 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from qf_stdlib.attest import attest
-from qf_stdlib.adapters import adapter_convention
+from qf_stdlib.adapters import adapter_convention, adapter_decision
 from qf_stdlib.canon import (
     build_canon,
     check_root,
@@ -133,6 +133,11 @@ def cmd_adapter_info(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_adapter_decision(args: argparse.Namespace) -> int:
+    _print_json(adapter_decision(args.adapter))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="QF stdlib sidecar/lookup CLI")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -179,6 +184,10 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("adapter-info", help="show a pinned adapter convention")
     p.add_argument("adapter")
     p.set_defaults(func=cmd_adapter_info)
+
+    p = sub.add_parser("adapter-decision", help="show whether an adapter is enabled or deferred")
+    p.add_argument("adapter")
+    p.set_defaults(func=cmd_adapter_decision)
 
     return parser
 

@@ -660,6 +660,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_V07TemplateLibrary // proof-carrying template catalog 확장 (done) @dep:QFStdlib_V06CanonUX
             # output: base_gate_bundle, qpe_minimal, qsvt_consumer, shor_modexp_attest
             # criteria: all refs resolve through Canon; mixed Shor structural scope preserved; full standard gates PASS. ✅ done
+        QFStdlib_V08AdapterDecisionGate // optional adapter convention gate (done) @dep:QFStdlib_V05CirqBaseCoverage
+            # output: PennyLane adapter enabled; Qiskit deferred decision record
+            # criteria: Pennylane base gate Canon hash tests + fail-closed negatives PASS; qiskit no-evidence deferred. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

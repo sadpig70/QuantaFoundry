@@ -6,6 +6,7 @@ import numpy as np
 from qf_stdlib import (
     attest,
     attest_circuit,
+    adapter_decision,
     build_with_proof,
     check_root,
     filter_canon_entries,
@@ -25,6 +26,11 @@ try:
     import cirq
 except Exception:  # pragma: no cover - optional dependency may be absent outside this workspace
     cirq = None
+
+try:
+    import pennylane as qml
+except Exception:  # pragma: no cover - optional dependency may be absent outside this workspace
+    qml = None
 
 
 class QFStdlibTests(unittest.TestCase):
@@ -254,6 +260,9 @@ class QFStdlibTests(unittest.TestCase):
     def test_optional_framework_adapter_is_explicitly_unsupported(self):
         with self.assertRaises(UnsupportedAdapter):
             canonical_hash_with_adapter(object(), "qiskit")
+        decision = adapter_decision("qiskit")
+        self.assertEqual(decision["status"], "deferred")
+        self.assertIn("not installed", decision["reason"])
 
     @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
     def test_cirq_qft_hash_matches_canon_when_convention_pinned(self):
@@ -343,6 +352,58 @@ class QFStdlibTests(unittest.TestCase):
         info = adapter_convention("cirq")
         self.assertTrue(info["qubit_order_required"])
         self.assertEqual(info["global_phase"], "normalized by QPGF hash_unitary")
+
+    @unittest.skipUnless(qml is not None, "pennylane optional dependency is unavailable")
+    def test_pennylane_adapter_reports_pinned_contract(self):
+        info = adapter_convention("pennylane")
+        self.assertEqual(info["adapter"], "pennylane")
+        self.assertTrue(info["wire_order_required"])
+        self.assertEqual(info["global_phase"], "normalized by QPGF hash_unitary")
+        self.assertEqual(adapter_decision("pennylane")["status"], "enabled")
+
+    @unittest.skipUnless(qml is not None, "pennylane optional dependency is unavailable")
+    def test_pennylane_base_gate_hashes_match_canon_when_convention_pinned(self):
+        cases = [
+            ("gate/x", qml.tape.QuantumScript([qml.X(0)]), [0]),
+            ("gate/h", qml.tape.QuantumScript([qml.Hadamard(0)]), [0]),
+            ("gate/s", qml.tape.QuantumScript([qml.S(0)]), [0]),
+            ("gate/t", qml.tape.QuantumScript([qml.T(0)]), [0]),
+            ("gate/cnot", qml.tape.QuantumScript([qml.CNOT(wires=[0, 1])]), [0, 1]),
+            ("gate/cz", qml.tape.QuantumScript([qml.CZ(wires=[0, 1])]), [0, 1]),
+            ("gate/swap", qml.tape.QuantumScript([qml.SWAP(wires=[0, 1])]), [0, 1]),
+            ("gate/toffoli", qml.tape.QuantumScript([qml.Toffoli(wires=[0, 1, 2])]), [0, 1, 2]),
+            ("gate/fredkin", qml.tape.QuantumScript([qml.CSWAP(wires=[0, 1, 2])]), [0, 1, 2]),
+        ]
+        for key, circuit, order in cases:
+            with self.subTest(key=key):
+                circuit_hash = canonical_hash_with_adapter(circuit, "pennylane", qubit_order=order)
+                self.assertEqual(circuit_hash, lookup(key)["u_hash"])
+                self.assertEqual(lookup(circuit_hash)["key"], key)
+
+    @unittest.skipUnless(qml is not None, "pennylane optional dependency is unavailable")
+    def test_pennylane_base_gate_attest_circuit_returns_canon_proofs(self):
+        cases = [
+            ("gate/x", qml.tape.QuantumScript([qml.X(0)]), [0]),
+            ("gate/h", qml.tape.QuantumScript([qml.Hadamard(0)]), [0]),
+            ("gate/cnot", qml.tape.QuantumScript([qml.CNOT(wires=[0, 1])]), [0, 1]),
+        ]
+        for key, circuit, order in cases:
+            with self.subTest(key=key):
+                proof = attest_circuit(circuit, "pennylane", qubit_order=order)
+                self.assertIsNotNone(proof)
+                self.assertEqual(proof["subject"]["key"], key)
+                self.assertEqual(proof["proof"]["adapter"]["computed_u_hash"], lookup(key)["u_hash"])
+
+    @unittest.skipUnless(qml is not None, "pennylane optional dependency is unavailable")
+    def test_pennylane_adapter_fails_closed_on_convention_errors(self):
+        circuit = qml.tape.QuantumScript([qml.CNOT(wires=[0, 1])])
+        with self.assertRaises(AdapterConventionError):
+            canonical_hash_with_adapter(circuit, "pennylane")
+        reversed_hash = canonical_hash_with_adapter(circuit, "pennylane", qubit_order=[1, 0])
+        self.assertNotEqual(reversed_hash, lookup("gate/cnot")["u_hash"])
+        measured = qml.tape.QuantumScript([qml.X(0)], [qml.expval(qml.Z(0))])
+        with self.assertRaises(AdapterConventionError):
+            canonical_hash_with_adapter(measured, "pennylane", qubit_order=[0])
 
 
 if __name__ == "__main__":

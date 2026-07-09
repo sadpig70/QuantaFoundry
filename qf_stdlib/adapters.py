@@ -26,13 +26,58 @@ CIRQ_CONVENTION: dict[str, Any] = {
     "qf_reference": "LineQubit.range(n) with cirq.qft(..., without_reverse=False) matches qft/n Canon entries",
 }
 
+PENNYLANE_CONVENTION: dict[str, Any] = {
+    "adapter": "pennylane",
+    "version": "pennylane-qml-matrix-v1",
+    "basis_order": "qml.matrix(obj, wire_order=<explicit order>)",
+    "wire_order_required": True,
+    "qid_dimension": 2,
+    "global_phase": "normalized by QPGF hash_unitary",
+    "measurements": "rejected",
+    "qf_reference": "qml.tape.QuantumScript over base gates matches gate/* Canon entries when wire_order is explicit",
+}
+
+DEFERRED_ADAPTERS: dict[str, dict[str, Any]] = {
+    "qiskit": {
+        "adapter": "qiskit",
+        "status": "deferred",
+        "reason": "qiskit is not installed in the current workspace; no convention-pinned positive/negative evidence was generated",
+        "required_before_enable": [
+            "exact unitary extraction API pinned",
+            "explicit qubit order pinned",
+            "global phase normalized through QPGF hash_unitary",
+            "positive Canon hash tests",
+            "negative ordering/non-unitary tests",
+        ],
+    }
+}
+
 
 def adapter_convention(adapter: str) -> dict[str, Any]:
-    if adapter.lower() == "cirq":
+    name = adapter.lower()
+    if name == "cirq":
         return dict(CIRQ_CONVENTION)
+    if name == "pennylane":
+        return dict(PENNYLANE_CONVENTION)
+    if name in DEFERRED_ADAPTERS:
+        decision = DEFERRED_ADAPTERS[name]
+        raise UnsupportedAdapter(
+            f"adapter '{adapter}' is deferred: {decision['reason']}"
+        )
     raise UnsupportedAdapter(
-        f"adapter '{adapter}' is not enabled; supported adapters: cirq"
+        f"adapter '{adapter}' is not enabled; supported adapters: cirq, pennylane"
     )
+
+
+def adapter_decision(adapter: str) -> dict[str, Any]:
+    name = adapter.lower()
+    if name == "cirq":
+        return {"adapter": "cirq", "status": "enabled", "convention": adapter_convention("cirq")}
+    if name == "pennylane":
+        return {"adapter": "pennylane", "status": "enabled", "convention": adapter_convention("pennylane")}
+    if name in DEFERRED_ADAPTERS:
+        return dict(DEFERRED_ADAPTERS[name])
+    raise UnsupportedAdapter(f"adapter '{adapter}' is not enabled and has no recorded decision")
 
 
 def _hash_unitary(unitary: np.ndarray) -> str:
@@ -81,14 +126,51 @@ def _canonical_cirq_hash(circuit: object, qubit_order: Iterable[object] | None) 
     return _hash_unitary(unitary)
 
 
+def _canonical_pennylane_hash(circuit: object, wire_order: Iterable[object] | None) -> str:
+    try:
+        import pennylane as qml  # noqa: PLC0415
+    except Exception as exc:  # pragma: no cover - depends on optional environment
+        raise UnsupportedAdapter(f"pennylane adapter requested but pennylane import failed: {exc}") from exc
+
+    if wire_order is None:
+        raise AdapterConventionError("pennylane adapter requires explicit wire_order via qubit_order")
+    order = list(wire_order)
+    if not order:
+        raise AdapterConventionError("pennylane adapter requires at least one wire in wire_order")
+    if len(set(order)) != len(order):
+        raise AdapterConventionError("pennylane adapter wire_order contains duplicate wires")
+    if hasattr(circuit, "measurements") and getattr(circuit, "measurements"):
+        raise AdapterConventionError("pennylane adapter rejects measurements")
+    if hasattr(circuit, "wires"):
+        missing = set(circuit.wires) - set(order)
+        if missing:
+            raise AdapterConventionError(f"pennylane adapter wire_order is missing circuit wires: {sorted(map(str, missing))}")
+    try:
+        unitary = qml.matrix(circuit, wire_order=order)
+    except Exception as exc:
+        raise AdapterConventionError(f"pennylane object is not an exact unitary under the pinned convention: {exc}") from exc
+    dim = 1 << len(order)
+    if unitary.shape != (dim, dim):
+        raise AdapterConventionError(f"pennylane unitary shape mismatch: got {unitary.shape}, expected {(dim, dim)}")
+    return _hash_unitary(unitary)
+
+
 def canonical_hash_with_adapter(
     circuit: object,
     adapter: str,
     *,
     qubit_order: Iterable[object] | None = None,
 ) -> str:
-    if adapter.lower() == "cirq":
+    name = adapter.lower()
+    if name == "cirq":
         return _canonical_cirq_hash(circuit, qubit_order)
+    if name == "pennylane":
+        return _canonical_pennylane_hash(circuit, qubit_order)
+    if name in DEFERRED_ADAPTERS:
+        decision = DEFERRED_ADAPTERS[name]
+        raise UnsupportedAdapter(
+            f"adapter '{adapter}' is deferred: {decision['reason']}"
+        )
     raise UnsupportedAdapter(
-        f"adapter '{adapter}' is not enabled; use exact key/id/u_hash lookup or the convention-pinned cirq adapter"
+        f"adapter '{adapter}' is not enabled; use exact key/id/u_hash lookup or a convention-pinned adapter"
     )

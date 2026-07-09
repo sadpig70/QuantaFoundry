@@ -42,10 +42,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
         # output: qsvt_consumer, shor_modexp_attest, base_gate_bundle, qpe_minimal templates
         # tests: validate-template/build-template for every template; structural limits preserved
         # gate: unittest + docs examples. ✅ done
-    V08AdapterDecisionGate // decide optional non-Cirq adapters (pending) @dep:V05CirqBaseCoverage
+    V08AdapterDecisionGate // decide optional non-Cirq adapters (done) @dep:V05CirqBaseCoverage
         # output: implementation for a convention-proven adapter OR explicit deferred decision record
         # tests: if implemented, positive/negative convention tests equivalent to Cirq; if deferred, docs/status record why
-        # gate: unittest + py_compile
+        # gate: unittest + py_compile. ✅ done
     V09PackagingPolish // public user surface cleanup (pending) @dep:V07TemplateLibrary,V08AdapterDecisionGate
         # output: docs/API/CLI help aligned, README link/status updated if needed, optional dependency note
         # tests: import qf_stdlib without Cirq heavy path; CLI help exits 0; examples smoke test
@@ -77,24 +77,21 @@ python scripts/reproduce_all.py --changed-only
 
 ## Next Node Contract
 
-The next executable node is `V08AdapterDecisionGate`.
+The next executable node is `V09PackagingPolish`.
 
 ```python
-def execute_v08_adapter_decision_gate() -> None:
-    """Decide optional non-Cirq adapters by convention evidence only."""
-    candidates = ["qiskit", "pennylane"]
-    for adapter in candidates:
-        evidence = probe_adapter_convention(adapter)
-        if evidence.can_pin_qubit_order and evidence.can_pin_global_phase and evidence.has_positive_negative_tests:
-            implement_adapter(adapter, evidence)
-        else:
-            record_deferred_adapter(adapter, evidence.reason)
+def execute_v09_packaging_polish() -> None:
+    """Polish the public QF-STDLIB user surface without changing seal semantics."""
+    assert import_qf_stdlib_is_lightweight()
+    assert cli_help_covers_supported_commands()
+    update_readme_or_docs_links_if_needed()
+    smoke_public_examples()
     run_standard_gates()
     # acceptance_criteria:
-    #   - no adapter is implemented without exact convention evidence
-    #   - unsupported adapters keep fail-closed behavior
-    #   - lookup-only imports remain lightweight
-    #   - docs/status record implemented or deferred decision
+    #   - package import does not require optional quantum frameworks
+    #   - CLI help names every supported command
+    #   - README/docs point to QF-STDLIB entrypoint
+    #   - examples still pass deterministic smoke tests
 ```
 
 ## Status Update Rule

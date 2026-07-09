@@ -5,7 +5,7 @@
 
 ## Current Anchor
 
-- Current completed stdlib state: v0.7
+- Current completed stdlib state: v0.8
 - Registry root: `d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7`
 - Registry counts: 95 modules / 475 unique apps / 550 app files / 75 cached app-side module files
 - Canon state: 55 entries
@@ -19,7 +19,7 @@
   - `qf_stdlib.filter_canon_entries`
   - `qf_stdlib.summarize_canon`
   - proof-carrying templates: `qft_import`, `qpe_skeleton`, `trotter_stack`, `base_gate_bundle`, `qpe_minimal`, `qsvt_consumer`, `shor_modexp_attest`
-- Implemented adapter: Cirq, explicit `qubit_order`, QPGF `hash_unitary`, fail-closed convention errors.
+- Implemented adapters: Cirq and PennyLane, explicit order, QPGF `hash_unitary`, fail-closed convention errors. Qiskit deferred.
 
 ## Final Goal
 
@@ -89,11 +89,11 @@ QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1
         # process: add qsvt_consumer, shor_modexp_attest, base_gate_bundle, qpe_minimal
         # output: templates + validation tests + docs examples
         # criteria: all refs resolve through Canon; template certs clearly say not new seals. ✅ done
-    V08AdapterDecisionGate // decide Qiskit/PennyLane by convention evidence, not desire (designing) @dep:V05CirqBaseCoverage
+    V08AdapterDecisionGate // decide Qiskit/PennyLane by convention evidence, not desire (done) @dep:V05CirqBaseCoverage
         # input: installed deps and convention probes
         # process: implement only if exact unitary ordering/global phase can be pinned with positive/negative tests
         # output: either adapter implementation or explicit deferred record
-        # criteria: no silent approximate adapter; lookup-only imports remain light
+        # criteria: no silent approximate adapter; lookup-only imports remain light. ✅ done
     V09PackagingPolish // stable public import and packaging polish (designing) @dep:V07TemplateLibrary,V08AdapterDecisionGate
         # input: qf_stdlib package, CLI, docs
         # process: API __all__, help text, README doc links, examples, optional dependency notes

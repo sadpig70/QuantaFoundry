@@ -12,7 +12,7 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 - `qf_stdlib.attest()`: proof object anchored to `registry_root_hash`.
 - `qf_stdlib.attest_circuit()`: adapter-computed circuit hash lookup that returns an attestation only on Canon match.
 - `qf_stdlib.check_root()`: fast drift guard between Canon and the live registry manifest root.
-- `qf_stdlib.canonical_hash_with_adapter()`: convention-pinned circuit hash adapters, currently Cirq only.
+- `qf_stdlib.canonical_hash_with_adapter()`: convention-pinned circuit hash adapters, currently Cirq and PennyLane.
 - `qf_stdlib.templates`: proof-carrying recipes that compose canonical attestations without pretending to create a new seal.
 
 The current Canon contains 55 entries across base gates, QFT/iQFT, adders, Grover, QPE, Trotter/Suzuki,
@@ -40,6 +40,8 @@ python scripts/qf_stdlib.py summary
 python scripts/qf_stdlib.py lookup qft/8
 python scripts/qf_stdlib.py attest qft/8
 python scripts/qf_stdlib.py adapter-info cirq
+python scripts/qf_stdlib.py adapter-info pennylane
+python scripts/qf_stdlib.py adapter-decision qiskit
 python scripts/qf_stdlib.py validate-template qpe_skeleton
 python scripts/qf_stdlib.py build-template qpe_skeleton
 python scripts/qf_stdlib.py build-template base_gate_bundle
@@ -141,6 +143,23 @@ assert proof["proof"]["adapter"]["computed_u_hash"] == proof["subject"]["u_hash"
 The Cirq adapter requires explicit `qubit_order`. `without_reverse=True`, omitted qubit order, measurements, and
 unsupported frameworks fail closed instead of being normalized silently. CLI `attest --adapter cirq` is intentionally
 rejected because arbitrary circuit objects must enter through the Python API.
+
+Convention-pinned PennyLane hash:
+
+```python
+import pennylane as qml
+
+from qf_stdlib import canonical_hash_with_adapter, lookup
+
+circuit = qml.tape.QuantumScript([qml.CNOT(wires=[0, 1])])
+circuit_hash = canonical_hash_with_adapter(circuit, "pennylane", qubit_order=[0, 1])
+
+assert circuit_hash == lookup("gate/cnot")["u_hash"]
+```
+
+The PennyLane adapter uses `qml.matrix(obj, wire_order=<explicit order>)`, rejects measurements, and normalizes global
+phase through the same QPGF `hash_unitary` path. Qiskit is recorded as deferred until a local install and equivalent
+positive/negative convention evidence exist.
 
 ## Honesty Boundary
 
