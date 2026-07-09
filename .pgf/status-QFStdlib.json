@@ -1,0 +1,88 @@
+{
+  "project": "QFStdlib",
+  "design": ".pgf/DESIGN-QFStdlib.md",
+  "workplan": ".pgf/WORKPLAN-QFStdlib.md",
+  "started_at": "2026-07-09T00:00:00+09:00",
+  "updated_at": "2026-07-09T00:00:00+09:00",
+  "iteration": 2,
+  "nodes": {
+    "DesignReview": {
+      "status": "done",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [
+          ".pgf/DESIGN-QFStdlib.md",
+          "_workspace/upgrade-design/qf-stdlib-detailed-design.md"
+        ],
+        "notes": "Design accepted as sidecar-only implementation basis."
+      }
+    },
+    "CanonMinimal": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "registry/CANON.json",
+          "reports/QF-STDLIB-CANON-REPORT.json"
+        ],
+        "files_modified": [
+          "scripts/qf_stdlib.py",
+          "qf_stdlib/canon.py",
+          "qf_stdlib/registry.py"
+        ],
+        "notes": "Generated Canon v1 from live registry root."
+      }
+    },
+    "PackageSurface": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "qf_stdlib/__init__.py",
+          "qf_stdlib/attest.py",
+          "qf_stdlib/adapters.py",
+          "qf_stdlib/errors.py",
+          "qf_stdlib/templates.py"
+        ],
+        "files_modified": [],
+        "notes": "Lookup-only import surface added."
+      }
+    },
+    "TemplateV0": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "qf_stdlib/templates/qft_import.json",
+          "qf_stdlib/templates/qpe_skeleton.json",
+          "qf_stdlib/templates/trotter_stack.json"
+        ],
+        "files_modified": [],
+        "notes": "Initial proof-carrying recipes added."
+      }
+    },
+    "TestsDocs": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          "tests/test_qf_stdlib.py",
+          "docs/QF-STDLIB.md"
+        ],
+        "files_modified": [],
+        "notes": "Positive and fail-closed test coverage plus user-facing docs."
+      }
+    },
+    "VerificationGate": {
+      "status": "done",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": "validate-canon, lookup, attest, validate/build-template, unittest, py_compile, second_oracle, contested_guard, and reproduce_all --changed-only all passed."
+      }
+    }
+  },
+  "summary": {
+    "total": 6,
+    "done": 6,
+    "in-progress": 0,
+    "designing": 0,
+    "blocked": 0
+  }
+}

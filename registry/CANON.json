@@ -1,0 +1,1030 @@
+{
+  "_generated_from": {
+    "dependency_graph": "registry/DEPENDENCY-GRAPH.json",
+    "registry_manifest": "registry/REGISTRY-MANIFEST.json",
+    "registry_root_hash": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+    "semantic_guarantees": "registry/SEMANTIC-GUARANTEES.json"
+  },
+  "_note": "Canonical user-facing stdlib surface. This sidecar creates no new seals and does not modify registry artifacts.",
+  "_schema": "qf-canon-v1",
+  "canon": {
+    "adder/cuccaro/2": {
+      "aliases": [
+        "cuccaro_add2"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+          "id": "cnot",
+          "kind": "module",
+          "uses": 9
+        },
+        {
+          "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+          "id": "toffoli",
+          "kind": "module",
+          "uses": 4
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "cuccaro_add2",
+      "kind": "app",
+      "n_sys": 6,
+      "registry_path": "registry/apps/cuccaro_add2.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 9,
+        "toffoli": 4,
+        "total_t": 16
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "small canonical reversible adder"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "ec7ea7b2129bee98ee05bf1d481e20c92bf8f67ed31bb1e3df17b86c198e2c4a",
+      "tier": 0,
+      "u_hash": "a5f85ecffc24b15b0749696bd2047ebc483e235fff63581b6c44411e550b1727"
+    },
+    "adder/cuccaro/3": {
+      "aliases": [
+        "cuccaro_add3"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5",
+          "id": "cnot",
+          "kind": "module",
+          "uses": 13
+        },
+        {
+          "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+          "id": "toffoli",
+          "kind": "module",
+          "uses": 6
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "cuccaro_add3",
+      "kind": "app",
+      "n_sys": 8,
+      "registry_path": "registry/apps/cuccaro_add3.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 13,
+        "toffoli": 6,
+        "total_t": 24
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "larger canonical reversible adder"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "191f5554b10afb430987c9b1c387482862ecfb362d5a15ec60b5452bce95a4ed",
+      "tier": 0,
+      "u_hash": "4306d79dabab8fdd42319bd26e24e3c21b9d00f9f2487aa6d15ee39f36867333"
+    },
+    "code/rm15/decoder": {
+      "aliases": [
+        "rm15_decoder_t2"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "rm15_decoder_t2",
+      "kind": "module",
+      "n_sys": 15,
+      "registry_path": "registry/modules/rm15_decoder_t2.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 38,
+        "total_t": 0
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "coherent RM15 decoder substrate"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "5cb0ef87d8b853c15be62814219e364199fba7af07ea3103979447b6c8f9080d",
+      "tier": 2,
+      "u_hash": "beaca392500638aaa6d8b6db21db44e9212d0fafbac182ce60714d3e6b867167"
+    },
+    "code/rm15/encoder": {
+      "aliases": [
+        "rm15_encoder_t2"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "rm15_encoder_t2",
+      "kind": "module",
+      "n_sys": 15,
+      "registry_path": "registry/modules/rm15_encoder_t2.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 38,
+        "total_t": 0
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "punctured Reed-Muller encoder substrate"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "e0e4e650f376622647df8c33fa4923bfd23b94a39cfe7a52d2675f327324550a",
+      "tier": 2,
+      "u_hash": "0052db4cfd09620cd9f9c4abebd02b139de9c4a5529b704e9e56efe39b147f88"
+    },
+    "grover/search2/1iter": {
+      "aliases": [
+        "grover2"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "067db05d7cb8783118c6a018cff3bacad229213e99535c2f7faf73bf8a651636",
+          "id": "diffusion",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+          "id": "cz",
+          "kind": "module",
+          "uses": 1
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "grover2",
+      "kind": "app",
+      "n_sys": 2,
+      "registry_path": "registry/apps/grover2.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 10,
+        "total_t": 0
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "minimal Grover application"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "6c8f253fb42f0e40daa1d095abfd8b2b3522fc31145ccbe9c57fefe1561bc89a",
+      "tier": 0,
+      "u_hash": "eadf3919812307d8c18f67925fc39f9c386ef757f60e4e2b4467af3f1a475b2f"
+    },
+    "grover/search3/1iter": {
+      "aliases": [
+        "grover3"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "c173a81678999daa5dca9210d5c0fbe78b55e2e2ee56cc3a1412bc7e1414783f",
+          "id": "diffusion3",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+          "id": "ccz",
+          "kind": "module",
+          "uses": 1
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "grover3",
+      "kind": "app",
+      "n_sys": 3,
+      "registry_path": "registry/apps/grover3.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 2,
+        "clifford": 16,
+        "measurement": 2,
+        "total_t": 8
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "3-qubit Grover application"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "b7e3fb10ca415590a0390350ecf83ff582d5298da3f4cd48f3723cf05b6469c8",
+      "tier": 0,
+      "u_hash": "87e3303ffc39ad17d8badadfd83234edf21cf8b727842bcf5acd6aa2327a15ac"
+    },
+    "iqft/8": {
+      "aliases": [
+        "fourier/iqft/8",
+        "iqft8"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030",
+          "id": "cr3_dag_gate",
+          "kind": "module",
+          "uses": 6
+        },
+        {
+          "child_u_hash": "4f91946338960687aa67371951b3cd1c9aad7ec3e6209971f07615872e25e848",
+          "id": "cr4_dag_gate",
+          "kind": "module",
+          "uses": 5
+        },
+        {
+          "child_u_hash": "278e1c16651c7181fdad10f0c7afa3bdf52e062792483005396c427143490670",
+          "id": "cr5_dag_gate",
+          "kind": "module",
+          "uses": 4
+        },
+        {
+          "child_u_hash": "dc1d1ac1dd3d0f762ce2dc3455f2bdbbb14ce77df2c7a45bb7e6f4b4cd0c1fd4",
+          "id": "cr6_dag_gate",
+          "kind": "module",
+          "uses": 3
+        },
+        {
+          "child_u_hash": "6472e31bb7d132a1a9bf58c26af607494a4b90f71ad42475e74f1836477929ad",
+          "id": "cr7_dag_gate",
+          "kind": "module",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "198f6cade30501ccf515dcefaad411eb52a0a8514718b7c646a46198aa9d3922",
+          "id": "cr8_dag_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab",
+          "id": "cs_dag",
+          "kind": "module",
+          "uses": 7
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 8
+        },
+        {
+          "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+          "id": "swap2",
+          "kind": "module",
+          "uses": 4
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "iqft8",
+      "kind": "app",
+      "n_sys": 8,
+      "registry_path": "registry/apps/iqft8.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 21,
+        "clifford": 33,
+        "measurement": 21,
+        "rotation": 22,
+        "t": 6,
+        "total_t": 332
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "QPE-ready inverse QFT"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "911c84a8d2e9be240c5871873064e42a9cd91316b24d30465baa00d833b2cb6f",
+      "tier": 0,
+      "u_hash": "99f0e17dcaace55e5a8d0b255b0fb9bafd1dff1dd2e18279a04217da7ff1ee3f"
+    },
+    "qft/2": {
+      "aliases": [
+        "fourier/qft/2",
+        "qft2"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+          "id": "cs_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+          "id": "swap2",
+          "kind": "module",
+          "uses": 1
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qft2_pipeline",
+      "kind": "app",
+      "n_sys": 2,
+      "registry_path": "registry/apps/qft2_pipeline.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 3,
+        "rotation": 1,
+        "total_t": 11
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "small QFT pipeline"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "449bd2a1918f49ad9d221c634d63b2126d8982156a695e6e04ecd360bf864881",
+      "tier": 0,
+      "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82"
+    },
+    "qft/3": {
+      "aliases": [
+        "fourier/qft/3",
+        "qft3"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+          "id": "cs_gate",
+          "kind": "module",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4",
+          "id": "ct_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 3
+        },
+        {
+          "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+          "id": "swap2",
+          "kind": "module",
+          "uses": 1
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qft3_pipeline",
+      "kind": "app",
+      "n_sys": 3,
+      "registry_path": "registry/apps/qft3_pipeline.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 4,
+        "rotation": 3,
+        "total_t": 33
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "small QFT pipeline"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "166ad956410ccf87b71ed543c4bb3de8c5304e1e10ccaacabce965190c9e435c",
+      "tier": 0,
+      "u_hash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed"
+    },
+    "qft/4": {
+      "aliases": [
+        "fourier/qft/4",
+        "qft4"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615",
+          "id": "cr4_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+          "id": "cs_gate",
+          "kind": "module",
+          "uses": 3
+        },
+        {
+          "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4",
+          "id": "ct_gate",
+          "kind": "module",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 4
+        },
+        {
+          "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+          "id": "swap2",
+          "kind": "module",
+          "uses": 2
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qft4_pipeline",
+      "kind": "app",
+      "n_sys": 4,
+      "registry_path": "registry/apps/qft4_pipeline.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 1,
+        "clifford": 7,
+        "measurement": 1,
+        "rotation": 6,
+        "total_t": 70
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "baseline QFT pipeline"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "9f419780934dcfddfbdb782f17fc2b8d9f562cefcbf1a4e3d9a109a6bab5a21d",
+      "tier": 0,
+      "u_hash": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8"
+    },
+    "qft/8": {
+      "aliases": [
+        "fourier/qft/8",
+        "qft8"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615",
+          "id": "cr4_gate",
+          "kind": "module",
+          "uses": 5
+        },
+        {
+          "child_u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb",
+          "id": "cr5_gate",
+          "kind": "module",
+          "uses": 4
+        },
+        {
+          "child_u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d",
+          "id": "cr6_gate",
+          "kind": "module",
+          "uses": 3
+        },
+        {
+          "child_u_hash": "a39c4dc9beb02627240765f4565cbb4323a1e5ec2b86afef6a2cac47bdf70b97",
+          "id": "cr7_gate",
+          "kind": "module",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "bc8cc0eca1d564a17380dc28d9bc79d55b1e52e11a26e668e43bac4bd47a4c0b",
+          "id": "cr8_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+          "id": "cs_gate",
+          "kind": "module",
+          "uses": 7
+        },
+        {
+          "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4",
+          "id": "ct_gate",
+          "kind": "module",
+          "uses": 6
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 8
+        },
+        {
+          "child_u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e",
+          "id": "swap2",
+          "kind": "module",
+          "uses": 4
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qft8_pipeline",
+      "kind": "app",
+      "n_sys": 8,
+      "registry_path": "registry/apps/qft8_pipeline.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 15,
+        "clifford": 27,
+        "measurement": 15,
+        "rotation": 28,
+        "total_t": 368
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "largest sealed QFT pipeline"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "58f46d7ce42705f4f8b641ddaac74078249aac5f09a0abd382e96bd76ec7fb02",
+      "tier": 0,
+      "u_hash": "d3d5d684d007b025db6ebd6c3f043296d2228e66d4336d9a77b8ad2aed823f9b"
+    },
+    "qpe/s": {
+      "aliases": [
+        "qpe_s"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "8348a57b43f39dbc276ed150bd8e5e3cc96a66fe8428b1e403b6b86c1325f82f",
+          "id": "iqft2",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+          "id": "cs_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+          "id": "cz",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 2
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qpe_s",
+      "kind": "app",
+      "n_sys": 3,
+      "registry_path": "registry/apps/qpe_s.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 6,
+        "rotation": 2,
+        "total_t": 22
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "phase estimation over S gate"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "34e4683f4d00876898e78006a5dad92501f38b0b77d84434cedddfd90bfed6c8",
+      "tier": 0,
+      "u_hash": "f222bc16eef5d891a5de9f0664b1ef3b1cf89752c4e689db24e2087f112c861f"
+    },
+    "qpe/t": {
+      "aliases": [
+        "qpe_t"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "74eacbc5b74d93674d42b98cf175ea0131063a76b2c77231252c17a788898b55",
+          "id": "iqft3",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6",
+          "id": "cs_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4",
+          "id": "ct_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f",
+          "id": "cz",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 3
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qpe_t",
+      "kind": "app",
+      "n_sys": 4,
+      "registry_path": "registry/apps/qpe_t.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 1,
+        "clifford": 9,
+        "measurement": 1,
+        "rotation": 4,
+        "t": 1,
+        "total_t": 49
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "phase estimation over T gate"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "8d54b98409b124311cc26e5152962e128eb8dd91d2b6d4e542eb9316289a95f8",
+      "tier": 0,
+      "u_hash": "d20776ca44d88feb8c5426a7697c9600b137da60daa4553c8e924a252f4bd270"
+    },
+    "qrom/2x2": {
+      "aliases": [
+        "qrom22"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+          "id": "toffoli",
+          "kind": "module",
+          "uses": 4
+        },
+        {
+          "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+          "id": "x_gate",
+          "kind": "module",
+          "uses": 8
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qrom22",
+      "kind": "app",
+      "n_sys": 4,
+      "registry_path": "registry/apps/qrom22.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 8,
+        "toffoli": 4,
+        "total_t": 16
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "canonical qROM data oracle"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "f2729628cf6f85deaef738aa7e8aa44a79608c374faf5ca0fa7eeb1afe4050ec",
+      "tier": 0,
+      "u_hash": "ded68349bf68661fce768918fdace66d53bf0769e2f044d0dbf517f73f9c6d16"
+    },
+    "qsp/d3": {
+      "aliases": [
+        "qsp_d3"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e",
+          "id": "rx_negpi4",
+          "kind": "module",
+          "uses": 3
+        },
+        {
+          "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc",
+          "id": "rz_negpi4",
+          "kind": "module",
+          "uses": 4
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qsp_d3",
+      "kind": "app",
+      "n_sys": 1,
+      "registry_path": "registry/apps/qsp_d3.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "t": 7,
+        "total_t": 7
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "degree-3 QSP primitive"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "e301b711758305c0dbfab240d1fa183c17e3a67c13082bbaae6c0f9277e5042c",
+      "tier": 0,
+      "u_hash": "942f93e2cf952cb18a8758c176f89df46a5a45859d766cae206c805a7829996b"
+    },
+    "qsvt/proj/d3": {
+      "aliases": [
+        "qsvt_proj_d3"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "2776579e691eda6cfa6057c6d759a3f99c1abd91728cf5139afa70a63b79371e",
+          "id": "be_proj",
+          "kind": "app",
+          "uses": 3
+        },
+        {
+          "child_u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc",
+          "id": "rz_negpi4",
+          "kind": "module",
+          "uses": 4
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "qsvt_proj_d3",
+      "kind": "app",
+      "n_sys": 2,
+      "registry_path": "registry/apps/qsvt_proj_d3.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 9,
+        "t": 4,
+        "total_t": 4
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "projector QSVT consumer"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "6c347d3be7113407df2b19fd9a5218cb5408630a32449e8c576d44bca7f0ec2e",
+      "tier": 0,
+      "u_hash": "8ffa3e2484084a659e84650ddfd2ea7a8e8e72374fdd5ef412226bd02d49b299"
+    },
+    "select-prepare/4": {
+      "aliases": [
+        "select_prepare4"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da",
+          "id": "ccz",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 4
+        },
+        {
+          "child_u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1",
+          "id": "s_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed",
+          "id": "sdg_gate",
+          "kind": "module",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d",
+          "id": "toffoli",
+          "kind": "module",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a",
+          "id": "x_gate",
+          "kind": "module",
+          "uses": 4
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "select_prepare4",
+      "kind": "app",
+      "n_sys": 3,
+      "registry_path": "registry/apps/select_prepare4.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 1,
+        "clifford": 12,
+        "measurement": 1,
+        "toffoli": 2,
+        "total_t": 12
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "canonical SELECT-PREPARE layer"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "55de80d9c5cd3f0f3e74f60908ccd64bf875d1bfc445c7884d76639372b09e62",
+      "tier": 0,
+      "u_hash": "305401a7909513f2e179b2616a1c3fe85b7f18f1ede0879c36a72e189fe97ee2"
+    },
+    "shor/237/structural": {
+      "aliases": [
+        "shor237"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "1a3e32a354da79b020ee9e3b5bc29a9c6b70ffe3f1cefe135b3a80570ef2cac8",
+          "id": "cmul124_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "c33fd1cc9b28314a135b9138ab17c3bb598c902bb8b68530271399ea5669c8e5",
+          "id": "cmul130_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "550466ff0611bb5e71463ab9ee6572cadf0bd55b59fe68c3a260d0cabe9e0952",
+          "id": "cmul16_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "c480f1c4a8036ec62160e0cb3c6723160b9a55d93cebbf1034317f5890027bcb",
+          "id": "cmul19_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "45b2536aaef08a0bf18b3f66474d3a32be30a44dde03b18c1ae5ba05393294a8",
+          "id": "cmul208_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "b8aca750ccc7c3f3396a1f2550898d8a7d76d069680ce783eb8e8dea5a1f405d",
+          "id": "cmul2_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "df3ccbec0970530d984716f63b0407abb022e58d231f6ca07a29c83b45ed094f",
+          "id": "cmul4_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "65751b0a573ea7531b2e9205c5376e8300bd04ec41bcf1bf17a4231f2aa25236",
+          "id": "cmul73_mod237",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "99f0e17dcaace55e5a8d0b255b0fb9bafd1dff1dd2e18279a04217da7ff1ee3f",
+          "id": "iqft8",
+          "kind": "app",
+          "uses": 1
+        },
+        {
+          "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c",
+          "id": "h_gate",
+          "kind": "module",
+          "uses": 8
+        }
+      ],
+      "honesty_scope": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 65536/65536; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "id": "shor237",
+      "kind": "app",
+      "n_sys": 16,
+      "registry_path": "registry/apps/shor237.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "and_bloq": 23201,
+        "clifford": 28606,
+        "measurement": 23201,
+        "rotation": 22,
+        "t": 6,
+        "toffoli": 220,
+        "total_t": 93932
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "latest root-synced structural Shor frontier"
+      },
+      "semantic_guarantee": "subspace_permutation_verified",
+      "sig": "e47265dac9783c8955be12c034ef154dc8f02466f87d290fc654957acccbc07d",
+      "tier": 1,
+      "u_hash": "7fd2d22533046d4edfac26e510f8822e1afac46008e34d1c8778bcd0a278f828"
+    },
+    "suzuki4/tfim3/step": {
+      "aliases": [
+        "tfim3_suzuki4_step"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "7cad7b6a2d6b999c96395ad2f96d93f59a64c822edbf9a6b3af58ef574d78c42",
+          "id": "rzz_y4_p_half",
+          "kind": "app",
+          "uses": 16
+        },
+        {
+          "child_u_hash": "865d7a0438d52394fb7b96cb03faf249474ea18cb82b4fb66a2a8109aa73db66",
+          "id": "rzz_y4_q_half",
+          "kind": "app",
+          "uses": 4
+        },
+        {
+          "child_u_hash": "1502b55ef70bbe85dfe64e5cc2b907cbf1d709cba46505e6f763dd7103889cc0",
+          "id": "rx_y4_p",
+          "kind": "module",
+          "uses": 12
+        },
+        {
+          "child_u_hash": "92b380debf18d6022314faec7fa559ea404a551574fa89652d1a0fd23a0c2055",
+          "id": "rx_y4_q",
+          "kind": "module",
+          "uses": 3
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "tfim3_suzuki4_step",
+      "kind": "app",
+      "n_sys": 3,
+      "registry_path": "registry/apps/tfim3_suzuki4_step.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 40,
+        "rotation": 35,
+        "total_t": 385
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "canonical fourth-order Suzuki TFIM step"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "5a0b31d1fbeb23eab4a9b25b53ed4737323a008d04d7b390f67ad8e79487f079",
+      "tier": 0,
+      "u_hash": "b74f4a8616e70a846b2ec8c4883b984efe524034364cd192c45a3a5d317b43d7"
+    },
+    "trotter/tfim3/first_order": {
+      "aliases": [
+        "tfim3_trotter_step"
+      ],
+      "convention": "qualtran-raw",
+      "dependencies": [
+        {
+          "child_u_hash": "fcb32f198b5f6a150d885946aa72dc0c3a4e425d78979b15f6088abc764eb131",
+          "id": "rzz_pi8",
+          "kind": "app",
+          "uses": 2
+        },
+        {
+          "child_u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e",
+          "id": "rx_negpi4",
+          "kind": "module",
+          "uses": 3
+        }
+      ],
+      "honesty_scope": "Tier-0/Tier-2 exact registry guarantee as stated by semantic layer; no hardware execution claim",
+      "id": "tfim3_trotter_step",
+      "kind": "app",
+      "n_sys": 3,
+      "registry_path": "registry/apps/tfim3_trotter_step.sealed.json",
+      "registry_root": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+      "resource": {
+        "clifford": 4,
+        "t": 5,
+        "total_t": 5
+      },
+      "selection": {
+        "method": "explicit_seed",
+        "reason": "canonical first-order TFIM step"
+      },
+      "semantic_guarantee": "unitary_equiv",
+      "sig": "e0bc48593ec936f14e53bfb8d9d59863fda1f6b595879ff9a227805dafd2244c",
+      "tier": 0,
+      "u_hash": "ce3db4425f2e8a953ddcd1acee927cfb8e5f9cdab709308c0a8c9e7dad8e9414"
+    }
+  },
+  "honesty_limits": [
+    "seal != hardware run",
+    "attestation is lookup, not new verification",
+    "derived template certificates are not new sealed artifacts"
+  ],
+  "selection_rule": [
+    "explicit_seed_if_valid",
+    "highest_semantic_guarantee_rank",
+    "smallest_declared_scope",
+    "lowest_total_resource_cost",
+    "lexicographic_id_tiebreak"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "qf-template-v1",
+  "template_id": "qft_import",
+  "description": "Import a canonical QF-attested 8-qubit QFT primitive.",
+  "parameters": {},
+  "requires": [
+    {
+      "name": "qft",
+      "canon_key": "qft/8",
+      "role": "canonical Fourier transform primitive"
+    }
+  ],
+  "assembly": [
+    {
+      "op": "use",
+      "name": "qft",
+      "targets": "all"
+    }
+  ],
+  "certificate_rule": {
+    "type": "single_primitive_attestation",
+    "claim": "The imported primitive is exactly the canonical registry entry."
+  },
+  "limits": [
+    "No new circuit is sealed by this template.",
+    "The certificate only anchors the selected primitive to the registry root."
+  ]
+}
+

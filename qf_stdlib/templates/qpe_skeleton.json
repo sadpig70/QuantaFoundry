@@ -1,0 +1,39 @@
+{
+  "schema": "qf-template-v1",
+  "template_id": "qpe_skeleton",
+  "description": "A QPE skeleton anchored by the canonical 8-qubit inverse QFT.",
+  "parameters": {
+    "counting_qubits": {
+      "type": "int",
+      "default": 8
+    }
+  },
+  "requires": [
+    {
+      "name": "iqft",
+      "canon_key": "iqft/8",
+      "role": "inverse Fourier transform on the counting register"
+    }
+  ],
+  "assembly": [
+    {
+      "op": "placeholder",
+      "name": "controlled_U_powers",
+      "certification": "external_attestation_required"
+    },
+    {
+      "op": "use",
+      "name": "iqft",
+      "targets": "counting_register"
+    }
+  ],
+  "certificate_rule": {
+    "type": "partial_structural_template",
+    "claim": "Only the IQFT component is QF-attested unless the user supplies separate attestations for controlled-U powers."
+  },
+  "limits": [
+    "This template does not certify the target unitary U.",
+    "Full QPE behavior is not claimed without separately attested controlled-U components."
+  ]
+}
+

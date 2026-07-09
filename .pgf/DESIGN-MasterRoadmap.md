@@ -626,6 +626,16 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     RequestV7 // 수평확장 7차 요청문 배치 (done — 2026-07-07) @dep:TrackHE6
         # ✅ .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v7.md — §3i(v6 6축)·§3j(예비)·§4′(g) 패턴 4·
         #   검증경로 7·저장소 URL. 회신 규약 report7 → TrackHE7. 대안 = frontier(N=143+)·예비 T2.
+
+    TrackQFStdlib // QF-STDLIB 사용자 진입 계층 설계·구현 (done) @dep:TrackV08_ProofCarrying
+        QFStdlib_DetailedDesign // Canon·Import·Proof-Carrying Template 상세 설계 저장 (done)
+            # input: _workspace/upgrade-design/qf-stdlib-proposal.md, registry/REGISTRY-MANIFEST.json, SEMANTIC-GUARANTEES.json
+            # process: PGF DESIGN + 상세 실행 설계. 신규 봉인 0, oracle/root 불변, sidecar/lookup/template only.
+            # output: .pgf/DESIGN-QFStdlib.md + _workspace/upgrade-design/qf-stdlib-detailed-design.md
+            # criteria: Canon/Import/Template 노드가 구현 가능한 원자 작업으로 분해되고, 정직 경계/검증 게이트가 명시됨. ✅ done
+        QFStdlib_ImplementationV0 // Canon sidecar + lookup/attest package + template v0 (done) @dep:QFStdlib_DetailedDesign
+            # output: registry/CANON.json, qf_stdlib/, scripts/qf_stdlib.py, tests/test_qf_stdlib.py, docs/QF-STDLIB.md
+            # criteria: validate-canon·lookup·attest·template·unittest·second_oracle·contested_guard·reproduce --changed-only PASS. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
