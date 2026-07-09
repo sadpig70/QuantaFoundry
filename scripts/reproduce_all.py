@@ -659,6 +659,42 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3abj. TrackHE12 P1: 2.A₅ binary icosahedral FS=−1 quaternionic — FS 삼분 ℝ/ℂ/ℍ 완성 witness (seal 아님)
+    rc, out = run(["scripts/2a5_fs_observe.py", "--quick"])
+    result["steps"]["2a5_fs_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abk. TrackHE12 P2: Peres-33 진짜 uncolorable d=3 state-independent KS witness (Yu-Oh 정정 후속, seal 아님)
+    rc, out = run(["scripts/peres33_ks_observe.py", "--quick"])
+    result["steps"]["peres33_ks_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abl. TrackHE12 P3: 2D class-D p+ip Chern ℤ (닫힌형==FHS 격자) witness (1D Kitaev ℤ₂ 상보, seal 아님)
+    rc, out = run(["scripts/class_d_2d_chern_observe.py", "--quick"])
+    result["steps"]["class_d_2d_chern_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abm. TrackHE12 P4: 완전 MTC SU(2)₃ modular data (S·T·Verlinde·Fibonacci fusion) witness (seal 아님)
+    rc, out = run(["scripts/su2_3_mtc_observe.py", "--quick"])
+    result["steps"]["su2_3_mtc_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abn. TrackHE12 P5: Matsumoto-Amano 정규형 제11 경로 honest verdict (ℤ[ω] 재인코딩 자가강등) witness (seal 아님)
+    rc, out = run(["scripts/matsumoto_amano_verdict_observe.py", "--quick"])
+    result["steps"]["matsumoto_amano_verdict_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abo. TrackHE12 P6: Temperley-Lieb TL(δ=2) 정수 뼈대 (Hecke q=i Markov특이 상보) witness (seal 아님)
+    rc, out = run(["scripts/temperley_lieb_observe.py", "--quick"])
+    result["steps"]["temperley_lieb_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
