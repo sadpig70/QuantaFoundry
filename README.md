@@ -185,11 +185,20 @@ python scripts/reproduce_all.py
   correctness. Correctness comes from the oracle's independent checks (C1–C4, a second dense oracle,
   and the subspace/resource witnesses) — not from the fact that a run reproduces.
 - Modules + most apps are `unitary_equiv` (exact). `ghz16` is `unitary_equiv_sampled`. The large Shor
-  apps (15–20 qubits) stay Tier-1 (dense infeasible), but their **modexp core is now
-  `subspace_permutation_verified`** — exact permutation on the computational basis by *independent*
-  integer arithmetic (path A = circuit-gate permutation vs path B = `w·a^c mod N`), with adversarial
-  teeth. This is a real strengthening over bare Merkle structure, yet **still weaker than full dense
-  unitary equivalence** (H·iQFT are excluded); period/factor readout stays illustrative only.
+  apps stay Tier-1 (dense infeasible), but **27 of them (15–18 qubits) are now
+  `unitary_equiv_column_exact`** — the *full* unitary (H-wall · modexp · iQFT **included**) verified
+  column-by-column over the entire computational basis, matrix-free, by two independent paths
+  (path A′ = the wiring as planned: module-golden H-wall, MCT-expanded permutation, iqft recomposed
+  from its plan; path B′ = the Shor spectral formula with independent integer arithmetic), with
+  adversarial teeth. This closes the composition gap at float-atol grade (the same evidence class as
+  Tier-0 dense C4 — **not** ring-exact). The two n≥19 apps (`shor1285`, `shor3683`) remain
+  `subspace_permutation_verified` (modexp core only, sampled); period/factor readout stays
+  illustrative only.
+- **Approximation is now certified, orthogonally**: Trotter/Suzuki apps carry ε-bounded certificates
+  in [`registry/APPROX-GUARANTEES.json`](registry/APPROX-GUARANTEES.json) — a symbolic-exact
+  **upper bound** on the op-norm distance to the target `e^{-iHt}` (analytic commutator bounds,
+  no float in the bound; dense witness + negative control). The ε is a bound, not the actual error;
+  the seals themselves are unchanged (still "the circuit's own unitary", exact).
 - Authoritative tier split: [`registry/SEMANTIC-GUARANTEES.json`](registry/SEMANTIC-GUARANTEES.json) `headline_split`.
 
 ---

@@ -695,6 +695,16 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3abp. TrackIU IU_A: CQV 컬럼 전수 검증 경량 재확인 (shor 전체 유니터리 조립 논증, sidecar 정합)
+    rc, out = run(["scripts/column_verify.py", "--quick"])
+    result["steps"]["column_verify"] = {
+        "rc": rc, "pass": rc == 0 and "PASS" in out}
+
+    # 3abq. TrackIU IU_B: ε-bounded 근사 인증 경량 재확인 (Trotter 상한 symbolic 재현 + heis2 ε=0)
+    rc, out = run(["scripts/approx_certify.py", "--quick"])
+    result["steps"]["approx_certify"] = {
+        "rc": rc, "pass": rc == 0 and "PASS" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {

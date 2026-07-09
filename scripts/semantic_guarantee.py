@@ -200,6 +200,15 @@ def main():
             pr = json.load(open(pp, encoding="utf-8"))
             if pr.get("verified"):
                 subspace[f"app:{pr['id']}"] = pr
+    # TrackIU IU_A: column proof 로드(비파괴 sidecar; column_verify.py 산출)
+    #   shor 전체 유니터리 컬럼 전수(H·iQFT 포함, 조립 논증 폐합) → unitary_equiv_column_exact.
+    #   float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님. subspace 보다 강한 상향.
+    column = {}
+    if os.path.isdir(pdir):
+        for pp in sorted(glob.glob(os.path.join(pdir, "*.column_proof.json"))):
+            pr = json.load(open(pp, encoding="utf-8"))
+            if pr.get("verified") and pr.get("exhaustive"):
+                column[f"app:{pr['id']}"] = pr
     print("=" * 84)
     print("semantic_guarantee 비파괴 레이어 (R-K) — sealed/oracle 미변경")
     print("=" * 84)
@@ -220,7 +229,9 @@ def main():
            "_note": "비파괴 레이어. sealed.json/oracle 불변. Tier-1=structural_wellformed(Merkle)≠unitary_equiv; "
                     "부분검증 첨부 시 명시된 입력부분공간에서 의도 일치 확인됨. "
                     "subspace_permutation_verified=structural Shor modexp 코어를 계산기저에서 exact 순열로 강검증"
-                    "(V08 P0, structural 상향; 전체 unitary 동등은 아님, INV-R5).",
+                    "(V08 P0, structural 상향; 전체 unitary 동등은 아님, INV-R5). "
+                    "unitary_equiv_column_exact=shor 전체 유니터리 컬럼 전수(H·iQFT 포함, 조립 논증 폐합; "
+                    "TrackIU IU_A, float-atol 계급 — INV-R5 는 해당 앱 한정 축소, n_sys≥19 는 잔존).",
            "tier_legend": TIER_GUARANTEE, "guarantees": {}}
     by_class = {}
     by_kind_class = {}   # W0.2: 헤드라인 분리표기 — kind(module/app)별 보증등급 분포
@@ -237,6 +248,14 @@ def main():
                            f"modexp 코어 계산기저 부분공간 순열 강검증({pr['method']}, "
                            f"basis {pr['basis_matched']}/{pr['basis_tested']}; path A=회로 게이트순열(cmul→MCT 전개) "
                            "vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).")}
+        if key in column and g["class"] in ("structural_wellformed", "subspace_permutation_verified"):
+            # TrackIU IU_A 격상: 전체 유니터리 컬럼 전수(H·iQFT 포함) — INV-R5 이 앱 한정 축소
+            pr = column[key]
+            g = {"class": "unitary_equiv_column_exact",
+                 "method": (f"전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, "
+                            f"columns {pr['columns_tested']}/{pr['columns_total']}, max_dev {pr['max_abs_dev']:.2e}; "
+                            "path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). "
+                            "float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).")}
         entry = {"kind": s["kind"], "id": s["id"], "tier": s["tier"], "tier_source": s["tier_source"],
                  "semantic_guarantee": g["class"], "method": g["method"], "u_hash": s["u_hash"]}
         if key in sampled:
@@ -248,6 +267,12 @@ def main():
                 "grade", "method", "basis_tested", "basis_matched", "exact_permutation",
                 "negative_control_reject", "n_modexp_gates", "dense_materialized", "scope",
                 "seed", "proof_digest") if k in pr}
+        if key in column:
+            pr = column[key]
+            entry["column_verification"] = {k: pr[k] for k in (
+                "grade", "columns_tested", "columns_total", "exhaustive", "max_abs_dev",
+                "atol", "arith", "negative_control_reject", "dense_materialized",
+                "proof_digest") if k in pr}
         if s["id"] == "ghz16_structural" and pv:
             entry["partial_verification"] = pv
         out["guarantees"][key] = entry

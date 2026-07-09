@@ -1,0 +1,29 @@
+{
+  "N": 115,
+  "_note": "비파괴 sidecar. registry root/sealed/oracle/frozen 무영향. shor 전체 유니터리 컬럼 전수 검증(조립 논증 폐합, float-atol 계급). INV-R5 는 이 앱에 한해 축소: 전 컬럼 A'==B' (H·iQFT 포함).",
+  "_schema": "column-proof-v1",
+  "a": 2,
+  "arith": "float64_atol",
+  "atol": 1e-12,
+  "columns_tested": 32768,
+  "columns_total": 32768,
+  "counting_t": 8,
+  "dense_materialized": false,
+  "deterministic": true,
+  "exhaustive": true,
+  "grade": "unitary_equiv_column_exact",
+  "id": "shor115",
+  "max_abs_dev": 5.487979216269057e-14,
+  "n_sys": 15,
+  "negative_control_reject": true,
+  "negative_controls": {
+    "arith_perturb": true,
+    "iqft_gate_drop": true,
+    "wiring_perturb": true
+  },
+  "path_A": "circuit: h_gate golden kron-wall · perm_subspace MCT permutation · iqft plan recomposed from module goldens (app golden unreferenced)",
+  "path_B": "math: Shor spectral formula 2^{-t/2}(−1)^{c·c0}·ω^{−c'c}/√2^t · integer arithmetic w0·a^c mod N (wiring-free)",
+  "proof_digest": "4ff1f201c3cd7af2",
+  "verified": true,
+  "work": 7
+}

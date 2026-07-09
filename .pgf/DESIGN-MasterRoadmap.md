@@ -672,6 +672,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_V11ReleaseTag // QF-STDLIB v1.0 release note + annotated tag 고정 (done) @dep:QFStdlib_V10FinalReleaseGate
             # output: docs/releases/QF-STDLIB-v1.0.md + tag qf-stdlib-v1.0
             # criteria: release note committed; annotated tag pushed; GitHub release created from the committed note. ✅ done
+    TrackIU // 통합 업그레이드 — ex-upgrade-design 3문서 소비, 상세=.pgf/DESIGN-IntegratedUpgrade.md (done — 2026-07-09 L1 폐합) @dep:TrackQFStdlib (decomposed)
+        # input: _workspace/ex-upgrade-design/upgrade-design01~03.md (외부 발전설계 3종)
+        # 판정: design01(검증심화)=L1 척추 · design02(신뢰외부화)=L2/L3 백로그 · design03(장기)=L4 백로그(non-goal 필터)
+        IU_L1_CQV // Tier-1 shor → unitary_equiv_column_exact (컬럼 전수, 조립논증 폐합) (done — 27종 ALL VERIFIED)
+        IU_L1_EpsilonTier // ε-bounded 근사 인증 sidecar (Trotter 파일럿, exact-only 한계 돌파) (done — 9종 ALL CERTIFIED)
+        IU_L2_L4_Backlog // qf inspect·Explorer·제11 perm-group·QML 등 — 상세 트리 참조, 착수 금지 (blocked)
+        # criteria: root d177ce9a 불변 · sidecar/guarantee 레이어만 · second_oracle 83/83 · reproduce --changed-only REPRODUCED. ✅ 전부 충족 (math-crux 5/5 독립 CONFIRMED)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
