@@ -36,4 +36,7 @@ QFStdlibImplementation // implement user-facing stdlib sidecar layer (done) @v:0
     V01Hardening // root drift guard + expanded Canon palette + docs examples (done) @dep:VerificationGate
         # output: check-root CLI/API, 42-entry Canon, expanded unit tests, concrete docs examples
         # criteria: check-root·validate-canon·lookup·attest·template·unittest·py_compile·changed-only reproduce PASS. ✅ done
+    V02CirqAdapter // convention-pinned Cirq circuit hash adapter (done) @dep:V01Hardening
+        # output: qf_stdlib.adapters cirq path, adapter-info CLI, docs/tests
+        # criteria: explicit qubit_order required; qft/3 Cirq hash matches Canon; endian/global-phase/CLI-fail-closed tests PASS. ✅ done
 ```

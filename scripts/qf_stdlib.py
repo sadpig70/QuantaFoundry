@@ -16,8 +16,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from qf_stdlib.attest import attest
+from qf_stdlib.adapters import adapter_convention
 from qf_stdlib.canon import build_canon, check_root, load_canon, lookup, validate_canon, write_report
-from qf_stdlib.errors import NotFoundError, QFStdlibError, UnsupportedAdapter, ValidationError
+from qf_stdlib.errors import AdapterConventionError, NotFoundError, QFStdlibError, UnsupportedAdapter, ValidationError
 from qf_stdlib.registry import json_dump_stable, load_snapshot
 from qf_stdlib.templates import build_with_proof, load_template, validate_template
 
@@ -79,6 +80,8 @@ def cmd_lookup(args: argparse.Namespace) -> int:
 
 def cmd_attest(args: argparse.Namespace) -> int:
     if args.adapter:
+        if args.adapter.lower() == "cirq":
+            raise UnsupportedAdapter("cirq adapter requires Python API circuit input; CLI attest remains lookup-only")
         raise UnsupportedAdapter(args.adapter)
     data = attest(args.query, root=ROOT)
     if data is None:
@@ -99,6 +102,11 @@ def cmd_validate_template(args: argparse.Namespace) -> int:
 def cmd_build_template(args: argparse.Namespace) -> int:
     cert = build_with_proof(args.template_id, root=ROOT)
     _print_json(cert)
+    return 0
+
+
+def cmd_adapter_info(args: argparse.Namespace) -> int:
+    _print_json(adapter_convention(args.adapter))
     return 0
 
 
@@ -138,6 +146,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("template_id")
     p.set_defaults(func=cmd_build_template)
 
+    p = sub.add_parser("adapter-info", help="show a pinned adapter convention")
+    p.add_argument("adapter")
+    p.set_defaults(func=cmd_adapter_info)
+
     return parser
 
 
@@ -147,6 +159,9 @@ def main(argv: list[str] | None = None) -> int:
         return args.func(args)
     except UnsupportedAdapter as exc:
         print(f"unsupported_adapter: {exc}", file=sys.stderr)
+        return 2
+    except AdapterConventionError as exc:
+        print(f"adapter_convention_error: {exc}", file=sys.stderr)
         return 2
     except NotFoundError as exc:
         print(f"not_found: {exc}", file=sys.stderr)

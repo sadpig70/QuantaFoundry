@@ -1,10 +1,17 @@
 import copy
 import unittest
 
+import numpy as np
+
 from qf_stdlib import attest, build_with_proof, check_root, load_canon, lookup, validate_canon
-from qf_stdlib.adapters import canonical_hash_with_adapter
-from qf_stdlib.errors import UnsupportedAdapter
+from qf_stdlib.adapters import adapter_convention, canonical_hash_with_adapter
+from qf_stdlib.errors import AdapterConventionError, UnsupportedAdapter
 from qf_stdlib.registry import load_snapshot
+
+try:
+    import cirq
+except Exception:  # pragma: no cover - optional dependency may be absent outside this workspace
+    cirq = None
 
 
 class QFStdlibTests(unittest.TestCase):
@@ -114,6 +121,50 @@ class QFStdlibTests(unittest.TestCase):
     def test_optional_framework_adapter_is_explicitly_unsupported(self):
         with self.assertRaises(UnsupportedAdapter):
             canonical_hash_with_adapter(object(), "qiskit")
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_qft_hash_matches_canon_when_convention_pinned(self):
+        qubits = cirq.LineQubit.range(3)
+        circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=False))
+        circuit_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=qubits)
+        self.assertEqual(circuit_hash, lookup("qft/3")["u_hash"])
+        self.assertEqual(lookup(circuit_hash)["key"], "qft/3")
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_adapter_requires_explicit_qubit_order(self):
+        qubits = cirq.LineQubit.range(2)
+        circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=False))
+        with self.assertRaises(AdapterConventionError):
+            canonical_hash_with_adapter(circuit, "cirq")
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_endian_variant_does_not_match_qft_canon(self):
+        qubits = cirq.LineQubit.range(3)
+        circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=True))
+        circuit_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=qubits)
+        self.assertNotEqual(circuit_hash, lookup("qft/3")["u_hash"])
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_global_phase_matches_canon(self):
+        qubits = cirq.LineQubit.range(2)
+        size = 1 << len(qubits)
+        omega = np.exp(2j * np.pi / size)
+        qft = np.array([[omega ** (j * k) for k in range(size)] for j in range(size)], dtype=complex) / np.sqrt(size)
+        circuit = cirq.Circuit(cirq.MatrixGate(np.exp(0.321j) * qft).on(*qubits))
+        circuit_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=qubits)
+        self.assertEqual(circuit_hash, lookup("qft/2")["u_hash"])
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_cirq_measurement_is_rejected(self):
+        qubits = cirq.LineQubit.range(1)
+        circuit = cirq.Circuit(cirq.measure(qubits[0]))
+        with self.assertRaises(AdapterConventionError):
+            canonical_hash_with_adapter(circuit, "cirq", qubit_order=qubits)
+
+    def test_adapter_convention_reports_pinned_cirq_contract(self):
+        info = adapter_convention("cirq")
+        self.assertTrue(info["qubit_order_required"])
+        self.assertEqual(info["global_phase"], "normalized by QPGF hash_unitary")
 
 
 if __name__ == "__main__":

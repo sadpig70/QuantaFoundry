@@ -10,6 +10,7 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 - `qf_stdlib.lookup()`: exact lookup by canonical key, alias, registry id, or `u_hash`.
 - `qf_stdlib.attest()`: proof object anchored to `registry_root_hash`.
 - `qf_stdlib.check_root()`: fast drift guard between Canon and the live registry manifest root.
+- `qf_stdlib.canonical_hash_with_adapter()`: convention-pinned circuit hash adapters, currently Cirq only.
 - `qf_stdlib.templates`: proof-carrying recipes that compose canonical attestations without pretending to create a new seal.
 
 The current Canon contains 42 entries across QFT/iQFT, adders, Grover, QPE, Trotter/Suzuki, block-encoding,
@@ -31,6 +32,7 @@ python scripts/qf_stdlib.py check-root
 python scripts/qf_stdlib.py list
 python scripts/qf_stdlib.py lookup qft/8
 python scripts/qf_stdlib.py attest qft/8
+python scripts/qf_stdlib.py adapter-info cirq
 python scripts/qf_stdlib.py validate-template qpe_skeleton
 python scripts/qf_stdlib.py build-template qpe_skeleton
 ```
@@ -44,7 +46,7 @@ python scripts/qf_stdlib.py build-canon --write-report
 ## Python API
 
 ```python
-from qf_stdlib import attest, build_with_proof, lookup
+from qf_stdlib import attest, build_with_proof, canonical_hash_with_adapter, lookup
 
 entry = lookup("qft/8")
 proof = attest("qft/8")
@@ -77,6 +79,24 @@ python scripts/qf_stdlib.py build-template trotter_stack
 ```
 
 These certificates aggregate existing Canon attestations. They are not new registry seals.
+
+Convention-pinned Cirq hash:
+
+```python
+import cirq
+
+from qf_stdlib import canonical_hash_with_adapter, lookup
+
+qubits = cirq.LineQubit.range(3)
+circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=False))
+circuit_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=qubits)
+
+assert circuit_hash == lookup("qft/3")["u_hash"]
+```
+
+The Cirq adapter requires explicit `qubit_order`. `without_reverse=True`, omitted qubit order, measurements, and
+unsupported frameworks fail closed instead of being normalized silently. CLI `attest --adapter cirq` is intentionally
+rejected because arbitrary circuit objects must enter through the Python API.
 
 ## Honesty Boundary
 

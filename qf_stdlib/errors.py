@@ -16,3 +16,6 @@ class NotFoundError(QFStdlibError):
 class UnsupportedAdapter(QFStdlibError):
     """Circuit framework adapter is not available or not yet supported."""
 
+
+class AdapterConventionError(QFStdlibError):
+    """A circuit adapter input does not satisfy the pinned convention."""
