@@ -1,0 +1,88 @@
+{
+  "project": "QFStdlibFinal",
+  "design": ".pgf/DESIGN-QFStdlib-Final.md",
+  "workplan": ".pgf/WORKPLAN-QFStdlib-Final.md",
+  "started_at": "2026-07-09T00:00:00+09:00",
+  "updated_at": "2026-07-09T00:00:00+09:00",
+  "iteration": 1,
+  "registry_root_hash": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
+  "nodes": {
+    "FinalDesignPlan": {
+      "status": "done",
+      "outputs": {
+        "files_created": [
+          ".pgf/DESIGN-QFStdlib-Final.md",
+          ".pgf/WORKPLAN-QFStdlib-Final.md",
+          ".pgf/status-QFStdlib-Final.json"
+        ],
+        "files_modified": [
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "QF-STDLIB v1.0 target and finite execution path are frozen; JSON/status files validated."
+      }
+    },
+    "V04BaseGateCanon": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": "Next executable node."
+      }
+    },
+    "V05CirqBaseCoverage": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": ""
+      }
+    },
+    "V06CanonUX": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": ""
+      }
+    },
+    "V07TemplateLibrary": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": ""
+      }
+    },
+    "V08AdapterDecisionGate": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": ""
+      }
+    },
+    "V09PackagingPolish": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": ""
+      }
+    },
+    "V10FinalReleaseGate": {
+      "status": "pending",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [],
+        "notes": ""
+      }
+    }
+  },
+  "summary": {
+    "total": 8,
+    "done": 1,
+    "in-progress": 0,
+    "pending": 7,
+    "blocked": 0
+  }
+}
