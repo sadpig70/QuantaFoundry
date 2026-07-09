@@ -654,6 +654,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_V05CirqBaseCoverage // Cirq base gate convention coverage 확장 (done) @dep:QFStdlib_V04BaseGateCanon
             # output: X/H/CNOT/CZ/SWAP/Toffoli/Fredkin Cirq hash+attest tests, qubit_order negative test
             # criteria: unittest·adapter-info·py_compile·second_oracle·contested_guard·reproduce --changed-only PASS. ✅ done
+        QFStdlib_V06CanonUX // Canon category/index/query UX 추가 (done) @dep:QFStdlib_V05CirqBaseCoverage
+            # output: qf_stdlib.list_categories/filter_canon_entries/summarize_canon + CLI categories/list --category/summary
+            # criteria: deterministic category counts, unknown category fail-closed, docs examples, full standard gates PASS. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

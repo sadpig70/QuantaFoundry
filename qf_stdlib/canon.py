@@ -12,6 +12,7 @@ from .registry import RegistrySnapshot, json_dump_stable, json_load, load_snapsh
 
 CANON_SCHEMA = "qf-canon-v1"
 REPORT_SCHEMA = "qf-stdlib-canon-report-v1"
+SUMMARY_SCHEMA = "qf-canon-summary-v1"
 
 SELECTION_RULE = [
     "explicit_seed_if_valid",
@@ -299,6 +300,54 @@ def check_root(canon: dict[str, Any], snapshot: RegistrySnapshot | None = None) 
         entries=len(canon.get("canon", {})),
         registry_root_hash=snap.registry_root_hash,
     )
+
+
+def category_for_key(key: str) -> str:
+    """Return the stable Canon category prefix for a key."""
+    if "/" not in key:
+        return key
+    return key.split("/", 1)[0]
+
+
+def list_categories(canon: dict[str, Any]) -> list[dict[str, Any]]:
+    entries = canon.get("canon", {})
+    counts: dict[str, int] = {}
+    for key in entries:
+        category = category_for_key(key)
+        counts[category] = counts.get(category, 0) + 1
+    return [{"category": category, "entries": counts[category]} for category in sorted(counts)]
+
+
+def filter_canon_entries(canon: dict[str, Any], category: str | None = None) -> dict[str, dict[str, Any]]:
+    entries = canon.get("canon", {})
+    if category is None:
+        return dict(sorted(entries.items()))
+    wanted = category.strip().lower()
+    if not wanted:
+        raise NotFoundError("category:<empty>")
+    filtered = {key: entry for key, entry in sorted(entries.items()) if category_for_key(key) == wanted}
+    if not filtered:
+        raise NotFoundError(f"category:{category}")
+    return filtered
+
+
+def summarize_canon(canon: dict[str, Any]) -> dict[str, Any]:
+    entries = canon.get("canon", {})
+    kinds: dict[str, int] = {}
+    guarantees: dict[str, int] = {}
+    for entry in entries.values():
+        kind = entry.get("kind", "unknown")
+        guarantee = entry.get("semantic_guarantee", "unknown")
+        kinds[kind] = kinds.get(kind, 0) + 1
+        guarantees[guarantee] = guarantees.get(guarantee, 0) + 1
+    return {
+        "_schema": SUMMARY_SCHEMA,
+        "entries": len(entries),
+        "registry_root_hash": canon.get("_generated_from", {}).get("registry_root_hash"),
+        "categories": list_categories(canon),
+        "kinds": dict(sorted(kinds.items())),
+        "semantic_guarantees": dict(sorted(guarantees.items())),
+    }
 
 
 def write_canon(root: Path | None = None) -> ValidationReport:

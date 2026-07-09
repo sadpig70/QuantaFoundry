@@ -34,10 +34,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
         # output: Cirq X/H/CNOT/CZ/SWAP/Toffoli/Fredkin tests where conventions match Canon
         # tests: positive hash match, qubit_order mistakes, measurement rejection, unsupported adapter
         # gate: unittest + adapter-info + py_compile. ✅ done
-    V06CanonUX // category and summary query surface (pending) @dep:V04BaseGateCanon
+    V06CanonUX // category and summary query surface (done) @dep:V04BaseGateCanon
         # output: Canon category metadata, CLI categories/list --category/summary, API helpers
         # tests: deterministic category ordering, unknown category fail-closed, docs examples
-        # gate: validate-canon + unittest
+        # gate: validate-canon + unittest. ✅ done
     V07TemplateLibrary // expand proof-carrying recipe catalog (pending) @dep:V06CanonUX
         # output: qsvt_consumer, shor_modexp_attest, base_gate_bundle, qpe_minimal templates
         # tests: validate-template/build-template for every template; structural limits preserved
@@ -77,28 +77,29 @@ python scripts/reproduce_all.py --changed-only
 
 ## Next Node Contract
 
-The next executable node is `V04BaseGateCanon`.
+The next executable node is `V07TemplateLibrary`.
 
 ```python
-def execute_v04_base_gate_canon() -> None:
-    """Add base sealed modules to Canon without touching sealed artifacts."""
-    seeds = [
-        "x_gate", "z_gate", "h_gate", "s_gate", "t_gate",
-        "cnot", "swap2", "cz", "toffoli", "fredkin",
-        "cs_gate", "ct_gate", "ccz",
+def execute_v07_template_library() -> None:
+    """Expand proof-carrying recipes without creating new seals."""
+    templates = [
+        "qsvt_consumer",
+        "shor_modexp_attest",
+        "base_gate_bundle",
+        "qpe_minimal",
     ]
-    for module_id in seeds:
-        assert registry_module_exists(module_id)
-        add_canon_seed(kind="module", id=module_id, key=stable_gate_key(module_id))
-    build_canon()
-    validate_canon()
-    add_lookup_and_cirq_tests()
+    for template_id in templates:
+        refs = design_template_refs(template_id)
+        assert all(ref_resolves_through_canon(ref) for ref in refs)
+        assert template_claims_no_new_seal(template_id)
+    add_templates()
+    validate_all_templates()
     run_standard_gates()
     # acceptance_criteria:
-    #   - Canon count increases deterministically
-    #   - every new entry resolves to registry/modules/<id>.sealed.json
-    #   - base module aliases are unique
-    #   - no app-side cached module is exposed as an app
+    #   - every template ref resolves through Canon
+    #   - every certificate aggregates existing attestations only
+    #   - structural frontier templates preserve structural/subspace limits
+    #   - docs examples build successfully
 ```
 
 ## Status Update Rule

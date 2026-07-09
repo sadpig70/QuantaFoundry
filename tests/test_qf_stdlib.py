@@ -3,9 +3,20 @@ import unittest
 
 import numpy as np
 
-from qf_stdlib import attest, attest_circuit, build_with_proof, check_root, load_canon, lookup, validate_canon
+from qf_stdlib import (
+    attest,
+    attest_circuit,
+    build_with_proof,
+    check_root,
+    filter_canon_entries,
+    list_categories,
+    load_canon,
+    lookup,
+    summarize_canon,
+    validate_canon,
+)
 from qf_stdlib.adapters import adapter_convention, canonical_hash_with_adapter
-from qf_stdlib.errors import AdapterConventionError, UnsupportedAdapter
+from qf_stdlib.errors import AdapterConventionError, NotFoundError, UnsupportedAdapter
 from qf_stdlib.registry import load_snapshot
 
 try:
@@ -71,6 +82,33 @@ class QFStdlibTests(unittest.TestCase):
         self.assertEqual(proof["subject"]["kind"], "module")
         self.assertEqual(proof["subject"]["id"], "h_gate")
         self.assertEqual(proof["claim"]["semantic_guarantee"], "unitary_equiv")
+
+    def test_canon_category_index_is_deterministic(self):
+        canon = load_canon()
+        categories = list_categories(canon)
+        self.assertEqual(categories, sorted(categories, key=lambda item: item["category"]))
+        counts = {item["category"]: item["entries"] for item in categories}
+        self.assertEqual(counts["gate"], 13)
+        self.assertEqual(counts["qft"], 7)
+        self.assertEqual(counts["qsvt"], 5)
+        self.assertEqual(sum(counts.values()), len(canon["canon"]))
+
+    def test_canon_summary_counts_are_machine_readable(self):
+        canon = load_canon()
+        summary = summarize_canon(canon)
+        self.assertEqual(summary["_schema"], "qf-canon-summary-v1")
+        self.assertEqual(summary["entries"], len(canon["canon"]))
+        self.assertEqual(summary["kinds"]["module"], 15)
+        self.assertEqual(summary["kinds"]["app"], 40)
+        self.assertEqual(summary["registry_root_hash"], canon["_generated_from"]["registry_root_hash"])
+
+    def test_filter_canon_entries_by_category_fails_closed(self):
+        canon = load_canon()
+        gates = filter_canon_entries(canon, "gate")
+        self.assertEqual(len(gates), 13)
+        self.assertTrue(all(key.startswith("gate/") for key in gates))
+        with self.assertRaises(NotFoundError):
+            filter_canon_entries(canon, "not-a-category")
 
     def test_lookup_by_key_alias_id_and_hash(self):
         canon = load_canon()

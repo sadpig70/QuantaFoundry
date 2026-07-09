@@ -17,7 +17,17 @@ if str(ROOT) not in sys.path:
 
 from qf_stdlib.attest import attest
 from qf_stdlib.adapters import adapter_convention
-from qf_stdlib.canon import build_canon, check_root, load_canon, lookup, validate_canon, write_report
+from qf_stdlib.canon import (
+    build_canon,
+    check_root,
+    filter_canon_entries,
+    list_categories,
+    load_canon,
+    lookup,
+    summarize_canon,
+    validate_canon,
+    write_report,
+)
 from qf_stdlib.errors import AdapterConventionError, NotFoundError, QFStdlibError, UnsupportedAdapter, ValidationError
 from qf_stdlib.registry import json_dump_stable, load_snapshot
 from qf_stdlib.templates import build_with_proof, load_template, validate_template
@@ -62,11 +72,24 @@ def cmd_check_root(_args: argparse.Namespace) -> int:
     return 0 if report.ok else 1
 
 
-def cmd_list(_args: argparse.Namespace) -> int:
+def cmd_categories(_args: argparse.Namespace) -> int:
     canon = load_canon(ROOT)
-    for key in sorted(canon.get("canon", {})):
-        entry = canon["canon"][key]
+    for item in list_categories(canon):
+        print(f"{item['category']}\t{item['entries']}")
+    return 0
+
+
+def cmd_list(args: argparse.Namespace) -> int:
+    canon = load_canon(ROOT)
+    entries = filter_canon_entries(canon, args.category)
+    for key, entry in entries.items():
         print(f"{key}\t{entry['kind']}:{entry['id']}\t{entry['semantic_guarantee']}")
+    return 0
+
+
+def cmd_summary(_args: argparse.Namespace) -> int:
+    canon = load_canon(ROOT)
+    _print_json(summarize_canon(canon))
     return 0
 
 
@@ -126,8 +149,15 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("check-root", help="fail if CANON.json root differs from the live registry manifest root")
     p.set_defaults(func=cmd_check_root)
 
+    p = sub.add_parser("categories", help="list Canon categories and entry counts")
+    p.set_defaults(func=cmd_categories)
+
     p = sub.add_parser("list", help="list canonical stdlib keys")
+    p.add_argument("--category", default=None, help="filter by Canon category, for example gate or qsvt")
     p.set_defaults(func=cmd_list)
+
+    p = sub.add_parser("summary", help="emit a machine-readable Canon category/kind/guarantee summary")
+    p.set_defaults(func=cmd_summary)
 
     p = sub.add_parser("lookup", help="lookup by key, alias, id, or exact u_hash")
     p.add_argument("query")

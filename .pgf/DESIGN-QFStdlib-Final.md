@@ -5,16 +5,19 @@
 
 ## Current Anchor
 
-- Current completed stdlib state: v0.3
+- Current completed stdlib state: v0.6
 - Registry root: `d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7`
 - Registry counts: 95 modules / 475 unique apps / 550 app files / 75 cached app-side module files
-- Canon state: 42 entries
+- Canon state: 55 entries
 - Implemented surface:
   - `qf_stdlib.lookup`
   - `qf_stdlib.attest`
   - `qf_stdlib.attest_circuit`
   - `qf_stdlib.check_root`
   - `qf_stdlib.canonical_hash_with_adapter`
+  - `qf_stdlib.list_categories`
+  - `qf_stdlib.filter_canon_entries`
+  - `qf_stdlib.summarize_canon`
   - proof-carrying templates: `qft_import`, `qpe_skeleton`, `trotter_stack`
 - Implemented adapter: Cirq, explicit `qubit_order`, QPGF `hash_unitary`, fail-closed convention errors.
 
@@ -76,11 +79,11 @@ QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1
         # process: test X/H/CNOT/CZ/SWAP/Toffoli/Fredkin where Cirq conventions are exact
         # output: adapter regression suite for base gates
         # criteria: base Cirq hashes match Canon; qubit-order mistake is caught; unsupported or measured circuits fail closed. ✅ done
-    V06CanonUX // category/index/query UX (designing) @dep:V04BaseGateCanon
+    V06CanonUX // category/index/query UX (done) @dep:V04BaseGateCanon
         # input: Canon entries with stable categories
         # process: expose list --category, categories, and machine-readable summary
         # output: CLI/API category index
-        # criteria: category output is deterministic and validated against Canon
+        # criteria: category output is deterministic and validated against Canon. ✅ done
     V07TemplateLibrary // expand proof-carrying recipes (designing) @dep:V06CanonUX
         # input: current Canon and templates
         # process: add qsvt_consumer, shor_modexp_attest, base_gate_bundle, qpe_minimal

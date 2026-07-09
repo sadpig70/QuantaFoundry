@@ -8,6 +8,7 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 
 - `registry/CANON.json`: canonical names for selected sealed primitives.
 - `qf_stdlib.lookup()`: exact lookup by canonical key, alias, registry id, or `u_hash`.
+- `qf_stdlib.list_categories()`, `filter_canon_entries()`, `summarize_canon()`: deterministic Canon discovery helpers.
 - `qf_stdlib.attest()`: proof object anchored to `registry_root_hash`.
 - `qf_stdlib.attest_circuit()`: adapter-computed circuit hash lookup that returns an attestation only on Canon match.
 - `qf_stdlib.check_root()`: fast drift guard between Canon and the live registry manifest root.
@@ -30,7 +31,10 @@ block-encoding, QSP/QSVT, qROM, SELECT-PREPARE, RM15 code substrates, and Shor-2
 ```bash
 python scripts/qf_stdlib.py validate-canon
 python scripts/qf_stdlib.py check-root
+python scripts/qf_stdlib.py categories
 python scripts/qf_stdlib.py list
+python scripts/qf_stdlib.py list --category gate
+python scripts/qf_stdlib.py summary
 python scripts/qf_stdlib.py lookup qft/8
 python scripts/qf_stdlib.py attest qft/8
 python scripts/qf_stdlib.py adapter-info cirq
@@ -47,11 +51,24 @@ python scripts/qf_stdlib.py build-canon --write-report
 ## Python API
 
 ```python
-from qf_stdlib import attest, attest_circuit, build_with_proof, canonical_hash_with_adapter, lookup
+from qf_stdlib import (
+    attest,
+    attest_circuit,
+    build_with_proof,
+    canonical_hash_with_adapter,
+    filter_canon_entries,
+    list_categories,
+    load_canon,
+    lookup,
+    summarize_canon,
+)
 
+categories = list_categories(load_canon())
+gates = filter_canon_entries(load_canon(), "gate")
 entry = lookup("qft/8")
 proof = attest("qft/8")
 cert = build_with_proof("qpe_skeleton")
+summary = summarize_canon(load_canon())
 ```
 
 Unknown primitives return `None`; they are not approximated or guessed.
@@ -63,6 +80,9 @@ Root drift guard before using the stdlib:
 ```bash
 python scripts/qf_stdlib.py check-root
 python scripts/qf_stdlib.py list
+python scripts/qf_stdlib.py categories
+python scripts/qf_stdlib.py list --category qsvt
+python scripts/qf_stdlib.py summary
 ```
 
 Exact Fourier lookup and attestation:
