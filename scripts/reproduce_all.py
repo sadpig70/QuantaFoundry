@@ -635,6 +635,18 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3abf. TrackHE11 P5: 1D Kitaev chain class-D ℤ₂ 위상초전도체 (Pfaffian) witness (seal 아님)
+    rc, out = run(["scripts/kitaev_class_d_observe.py", "--quick"])
+    result["steps"]["kitaev_class_d_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abg. TrackHE11 P6: Hecke 대수 H₃(q=i) Burau 표현 (MTC braid 대수층 상보) witness (seal 아님)
+    rc, out = run(["scripts/hecke_h3_observe.py", "--quick"])
+    result["steps"]["hecke_h3_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
