@@ -581,6 +581,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aaw. TrackHE10 P1: Kochen-Specker 18-벡터 state-independent 맥락성 witness (ray-coloring 불가, seal 아님)
+    rc, out = run(["scripts/ks18_observe.py", "--quick"])
+    result["steps"]["ks18_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
