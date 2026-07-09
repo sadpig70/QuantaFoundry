@@ -5,7 +5,7 @@
 
 ## Current Anchor
 
-- Current completed stdlib state: v0.8
+- Current completed stdlib state: v0.9
 - Registry root: `d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7`
 - Registry counts: 95 modules / 475 unique apps / 550 app files / 75 cached app-side module files
 - Canon state: 55 entries
@@ -94,11 +94,11 @@ QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1
         # process: implement only if exact unitary ordering/global phase can be pinned with positive/negative tests
         # output: either adapter implementation or explicit deferred record
         # criteria: no silent approximate adapter; lookup-only imports remain light. ✅ done
-    V09PackagingPolish // stable public import and packaging polish (designing) @dep:V07TemplateLibrary,V08AdapterDecisionGate
+    V09PackagingPolish // stable public import and packaging polish (done) @dep:V07TemplateLibrary,V08AdapterDecisionGate
         # input: qf_stdlib package, CLI, docs
         # process: API __all__, help text, README doc links, examples, optional dependency notes
         # output: stable v1.0 user surface
-        # criteria: python import is lightweight; CLI help covers every supported command
+        # criteria: python import is lightweight; CLI help covers every supported command. ✅ done
     V10FinalReleaseGate // v1.0 verification and final report (designing) @dep:V09PackagingPolish
         # input: all previous nodes
         # process: run full stdlib + deterministic project gates, update docs/status/roadmap

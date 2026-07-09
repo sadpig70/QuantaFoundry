@@ -22,6 +22,8 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 - **95 sealed modules · 475 sealed applications** · registry root `d177ce9a438a…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
+- **QF-STDLIB** exposes a stable Canon lookup, root-anchored attestation, proof-template, and
+  convention-pinned adapter surface; start at [`docs/QF-STDLIB.md`](docs/QF-STDLIB.md).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle
   fingerprint files reproduce **byte-identically**.
@@ -198,6 +200,7 @@ python scripts/reproduce_all.py
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Full architecture, components, trust model, and the milestone narrative |
 | [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md) | Complete technical specification + evidence (for independent design review) |
 | [`docs/QF-STDLIB.md`](docs/QF-STDLIB.md) | Canonical import and root-anchored attestation layer over the sealed registry |
+| [`docs/QF-STDLIB-ADAPTER-DECISIONS.md`](docs/QF-STDLIB-ADAPTER-DECISIONS.md) | Adapter enable/defer decisions and convention evidence |
 | [`.pgf/external/REVIEW-REQUEST.md`](.pgf/external/REVIEW-REQUEST.md) | Adversarial review request (proposal questions) for external critique |
 | [`.agents/skills/qfa-loop/SKILL.md`](.agents/skills/qfa-loop/SKILL.md) | The autonomous seal loop (engine, modes, invariants) |
 | [`.agents/skills/qpgf-oracle/SKILL.md`](.agents/skills/qpgf-oracle/SKILL.md) | The deterministic termination oracle (ContractGate) |

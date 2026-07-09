@@ -1,4 +1,7 @@
 import copy
+from pathlib import Path
+import subprocess
+import sys
 import unittest
 
 import numpy as np
@@ -34,6 +37,97 @@ except Exception:  # pragma: no cover - optional dependency may be absent outsid
 
 
 class QFStdlibTests(unittest.TestCase):
+    def test_public_api_exports_expected_surface(self):
+        import qf_stdlib
+
+        expected = {
+            "attest",
+            "attest_circuit",
+            "adapter_convention",
+            "adapter_decision",
+            "build_canon",
+            "build_with_proof",
+            "canonical_hash_with_adapter",
+            "check_root",
+            "filter_canon_entries",
+            "list_categories",
+            "load_canon",
+            "load_template",
+            "lookup",
+            "summarize_canon",
+            "validate_canon",
+            "validate_template",
+        }
+        self.assertTrue(expected.issubset(set(qf_stdlib.__all__)))
+
+    def test_import_qf_stdlib_does_not_import_optional_frameworks(self):
+        root = Path(__file__).resolve().parents[1]
+        code = (
+            "import sys, qf_stdlib; "
+            "forbidden = {'cirq', 'pennylane'} & set(sys.modules); "
+            "print(','.join(sorted(forbidden))); "
+            "raise SystemExit(1 if forbidden else 0)"
+        )
+        result = subprocess.run(
+            [sys.executable, "-c", code],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_cli_help_and_public_examples_smoke(self):
+        root = Path(__file__).resolve().parents[1]
+        commands = [
+            "build-canon",
+            "validate-canon",
+            "check-root",
+            "categories",
+            "list",
+            "summary",
+            "lookup",
+            "attest",
+            "validate-template",
+            "build-template",
+            "adapter-info",
+            "adapter-decision",
+        ]
+        help_result = subprocess.run(
+            [sys.executable, "scripts/qf_stdlib.py", "--help"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(help_result.returncode, 0, help_result.stdout + help_result.stderr)
+        for command in commands:
+            self.assertIn(command, help_result.stdout)
+
+        smoke = [
+            ["check-root"],
+            ["categories"],
+            ["list", "--category", "gate"],
+            ["summary"],
+            ["lookup", "qft/8"],
+            ["attest", "gate/cnot"],
+            ["adapter-info", "cirq"],
+            ["adapter-info", "pennylane"],
+            ["adapter-decision", "qiskit"],
+            ["validate-template", "qpe_skeleton"],
+            ["build-template", "qsvt_consumer"],
+        ]
+        for args in smoke:
+            with self.subTest(args=args):
+                result = subprocess.run(
+                    [sys.executable, "scripts/qf_stdlib.py", *args],
+                    cwd=root,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_canon_validates_against_live_registry(self):
         snapshot = load_snapshot()
         canon = load_canon()

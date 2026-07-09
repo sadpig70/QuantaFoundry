@@ -19,6 +19,8 @@ The current Canon contains 55 entries across base gates, QFT/iQFT, adders, Grove
 block-encoding, QSP/QSVT, qROM, SELECT-PREPARE, RM15 code substrates, and Shor-237 modular multiplier components.
 The template library contains `qft_import`, `qpe_skeleton`, `trotter_stack`, `base_gate_bundle`, `qpe_minimal`,
 `qsvt_consumer`, and `shor_modexp_attest`.
+Importing `qf_stdlib` itself does not import Cirq or PennyLane; optional framework imports happen only inside
+adapter calls. Adapter enable/defer rationale is tracked in [`QF-STDLIB-ADAPTER-DECISIONS.md`](QF-STDLIB-ADAPTER-DECISIONS.md).
 
 ## What It Does Not Claim
 
@@ -47,6 +49,7 @@ python scripts/qf_stdlib.py build-template qpe_skeleton
 python scripts/qf_stdlib.py build-template base_gate_bundle
 python scripts/qf_stdlib.py build-template qsvt_consumer
 python scripts/qf_stdlib.py build-template shor_modexp_attest
+python scripts/qf_stdlib.py --help
 ```
 
 `build-canon` is the only command that writes `registry/CANON.json`:
@@ -159,7 +162,7 @@ assert circuit_hash == lookup("gate/cnot")["u_hash"]
 
 The PennyLane adapter uses `qml.matrix(obj, wire_order=<explicit order>)`, rejects measurements, and normalizes global
 phase through the same QPGF `hash_unitary` path. Qiskit is recorded as deferred until a local install and equivalent
-positive/negative convention evidence exist.
+positive/negative convention evidence exist. See [`QF-STDLIB-ADAPTER-DECISIONS.md`](QF-STDLIB-ADAPTER-DECISIONS.md).
 
 ## Honesty Boundary
 

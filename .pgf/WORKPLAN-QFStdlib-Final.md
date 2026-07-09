@@ -46,10 +46,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
         # output: implementation for a convention-proven adapter OR explicit deferred decision record
         # tests: if implemented, positive/negative convention tests equivalent to Cirq; if deferred, docs/status record why
         # gate: unittest + py_compile. ✅ done
-    V09PackagingPolish // public user surface cleanup (pending) @dep:V07TemplateLibrary,V08AdapterDecisionGate
+    V09PackagingPolish // public user surface cleanup (done) @dep:V07TemplateLibrary,V08AdapterDecisionGate
         # output: docs/API/CLI help aligned, README link/status updated if needed, optional dependency note
         # tests: import qf_stdlib without Cirq heavy path; CLI help exits 0; examples smoke test
-        # gate: docs/code smoke + unittest
+        # gate: docs/code smoke + unittest. ✅ done
     V10FinalReleaseGate // final deterministic v1.0 verification (pending) @dep:V09PackagingPolish
         # commands: check-root, validate-canon --write-report, unittest, py_compile, second_oracle, contested_guard, reproduce_all --changed-only
         # output: final status done, roadmap done, release report in final answer
@@ -77,21 +77,20 @@ python scripts/reproduce_all.py --changed-only
 
 ## Next Node Contract
 
-The next executable node is `V09PackagingPolish`.
+The next executable node is `V10FinalReleaseGate`.
 
 ```python
-def execute_v09_packaging_polish() -> None:
-    """Polish the public QF-STDLIB user surface without changing seal semantics."""
-    assert import_qf_stdlib_is_lightweight()
-    assert cli_help_covers_supported_commands()
-    update_readme_or_docs_links_if_needed()
-    smoke_public_examples()
+def execute_v10_final_release_gate() -> None:
+    """Run the final deterministic QF-STDLIB v1.0 release gate."""
+    assert qfstdlib_nodes_done(["FinalDesignPlan", "V04", "V05", "V06", "V07", "V08", "V09"])
+    run_release_commands()
+    update_final_status_and_roadmap()
     run_standard_gates()
     # acceptance_criteria:
-    #   - package import does not require optional quantum frameworks
-    #   - CLI help names every supported command
-    #   - README/docs point to QF-STDLIB entrypoint
-    #   - examples still pass deterministic smoke tests
+    #   - all stdlib and project gates pass
+    #   - root remains unchanged
+    #   - final report names deferred adapters honestly
+    #   - QF-STDLIB v1.0 status is terminal done
 ```
 
 ## Status Update Rule

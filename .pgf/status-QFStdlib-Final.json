@@ -4,7 +4,7 @@
   "workplan": ".pgf/WORKPLAN-QFStdlib-Final.md",
   "started_at": "2026-07-09T00:00:00+09:00",
   "updated_at": "2026-07-09T00:00:00+09:00",
-  "iteration": 6,
+  "iteration": 7,
   "registry_root_hash": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
   "nodes": {
     "FinalDesignPlan": {
@@ -107,11 +107,18 @@
       }
     },
     "V09PackagingPolish": {
-      "status": "pending",
+      "status": "done",
       "outputs": {
         "files_created": [],
-        "files_modified": [],
-        "notes": ""
+        "files_modified": [
+          "README.md",
+          "docs/QF-STDLIB.md",
+          "tests/test_qf_stdlib.py",
+          ".pgf/DESIGN-QFStdlib-Final.md",
+          ".pgf/WORKPLAN-QFStdlib-Final.md",
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "Polished public user surface: README/docs links, lightweight import smoke, CLI help coverage, and public example smoke tests."
       }
     },
     "V10FinalReleaseGate": {
@@ -125,9 +132,9 @@
   },
   "summary": {
     "total": 8,
-    "done": 6,
+    "done": 7,
     "in-progress": 0,
-    "pending": 2,
+    "pending": 1,
     "blocked": 0
   }
 }
