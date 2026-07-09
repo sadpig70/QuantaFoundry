@@ -593,6 +593,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aay. TrackHE10 P3: Galois-orbit ℤ[ω] 검증 (제11 경로 후보/certificate layer, seal 아님)
+    rc, out = run(["scripts/galois_orbit_verify.py", "--quick"])
+    result["steps"]["galois_orbit_verify"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
