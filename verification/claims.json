@@ -1,0 +1,154 @@
+{
+  "schema": "qf-claims/v1",
+  "_note": "claim 정본 — docs/EVIDENCE-MAP.md(수동 v0)의 기계가독 후계. evidence_steps 는 reports/REPRODUCE-RESULT.json 의 스텝 키. boundary 는 정직 경계(증거가 증명하지 않는 것) 필수.",
+  "claims": [
+    {
+      "id": "claim.registry.root_reproducible",
+      "title": "Registry root reproduces byte-identically (95 modules / 475 apps)",
+      "guarantee_class": "determinism",
+      "boundary": "Byte-identical reproduction is determinism, not correctness (INV-R1) — correctness comes from the independent-check claims below.",
+      "evidence_steps": [
+        "registry"
+      ],
+      "authoritative_files": [
+        "registry/REGISTRY-MANIFEST.json",
+        "reports/REPRODUCE-RESULT.json"
+      ]
+    },
+    {
+      "id": "claim.registry.apps_reproducible",
+      "title": "Every template app re-seals byte-identically with rediscovery cross-check",
+      "guarantee_class": "determinism",
+      "boundary": "Covers template apps managed by forge; frontier/factory apps are covered by claim.frontier.reproducible.",
+      "evidence_steps": [
+        "forge_apps"
+      ],
+      "authoritative_files": [
+        "registry/apps"
+      ]
+    },
+    {
+      "id": "claim.frontier.reproducible",
+      "title": "Frontier/factory Shor apps re-seal (or coherence-verify) deterministically",
+      "guarantee_class": "determinism",
+      "boundary": "changed-only mode uses fingerprint coherence for unchanged specs + factory byte-identity re-seal; full mode re-runs every frontier generator.",
+      "evidence_steps": [
+        "frontier_factory"
+      ],
+      "authoritative_files": [
+        ".pgf/arith/FACTORY-FRONTIER.json"
+      ]
+    },
+    {
+      "id": "claim.modules.second_oracle_pass",
+      "title": "All sealed modules pass an independently implemented dense oracle (83/83)",
+      "guarantee_class": "independent_verification",
+      "boundary": "Independent implementation, shared conventions (endian/phase/atol) — the convention gap is audited by claim.oracle.convention_independence.",
+      "evidence_steps": [
+        "second_oracle"
+      ],
+      "authoritative_files": [
+        "scripts/second_oracle.py"
+      ]
+    },
+    {
+      "id": "claim.oracle.convention_independence",
+      "title": "Seal verdicts survive convention variation (global phase, atol)",
+      "guarantee_class": "independent_verification",
+      "boundary": "Audits the shared-assumption gap between oracles; does not eliminate it.",
+      "evidence_steps": [
+        "convention_independence"
+      ],
+      "authoritative_files": [
+        "scripts/inverted_second_oracle.py"
+      ]
+    },
+    {
+      "id": "claim.shor.modexp_subspace_permutation_verified",
+      "title": "Structural Shor modexp cores compute w·a^c mod N exactly on the computational basis",
+      "guarantee_class": "subspace_exact",
+      "boundary": "Modexp core only — computational-basis permutation by independent integer arithmetic; not the full unitary (that is the column_exact claim, for n≤18).",
+      "evidence_steps": [
+        "perm_subspace"
+      ],
+      "authoritative_files": [
+        ".pgf/proofs"
+      ]
+    },
+    {
+      "id": "claim.shor.column_exact_float_atol",
+      "title": "27 Shor apps (n≤18): full unitary (H·iQFT included) matches the Shor spectral formula on every column",
+      "guarantee_class": "column_exact",
+      "boundary": "float-atol grade (same evidence class as Tier-0 dense C4) — NOT ring-exact; n≥19 apps remain subspace-grade.",
+      "evidence_steps": [
+        "column_verify"
+      ],
+      "authoritative_files": [
+        "registry/SEMANTIC-GUARANTEES.json"
+      ]
+    },
+    {
+      "id": "claim.approx.epsilon_bounds_certified",
+      "title": "Sealed Trotter/Suzuki apps carry symbolic-exact upper bounds vs their target e^{-iHt}",
+      "guarantee_class": "approximation_bound",
+      "boundary": "ε is an upper bound (no tightness claim); unitary channels only; the seals themselves stay exact circuit-unitaries.",
+      "evidence_steps": [
+        "approx_certify"
+      ],
+      "authoritative_files": [
+        "registry/APPROX-GUARANTEES.json"
+      ]
+    },
+    {
+      "id": "claim.resource.accounting_consistent",
+      "title": "Sealed resource counts equal the independently recomputed child sums",
+      "guarantee_class": "independent_verification",
+      "boundary": "Resource bookkeeping only — not a statement about circuit semantics.",
+      "evidence_steps": [
+        "resource_witness"
+      ],
+      "authoritative_files": [
+        "scripts/resource_witness.py"
+      ]
+    },
+    {
+      "id": "claim.behavior.shor_factoring",
+      "title": "Sealed Shor-15 unitaries produce the textbook period peaks; cmul2_mod21 has orbit period 6",
+      "guarantee_class": "behavioral_observation",
+      "boundary": "Behavioral illustration on sealed goldens — execution is not seal evidence; readouts stay illustrative.",
+      "evidence_steps": [
+        "behavior"
+      ],
+      "authoritative_files": [
+        "specs/apps/shor15_a2.app.pg"
+      ]
+    },
+    {
+      "id": "claim.observations.witnesses_deterministic",
+      "title": "All observation witnesses (verification paths, topology, contextuality, MTC, knots, …) re-verify",
+      "guarantee_class": "observation",
+      "boundary": "Observations, not seals — exact math checks recorded as sidecars; they add no sealed circuits and leave the root unchanged.",
+      "evidence_steps": [
+        "blockencoding_audit",
+        "discovery_superopt",
+        "anf_verify_sample",
+        "groebner_verify_sample",
+        "qmdd_verify_sample",
+        "zx_verify",
+        "pathsum_verify",
+        "stabrank_verify_sample",
+        "matchgate_verify",
+        "galois_orbit_verify",
+        "class_diii_observe",
+        "dsr3_double_observe",
+        "conway31_ks_observe",
+        "kauffman_bracket_observe",
+        "ising_fr_observe",
+        "su2_4_mtc_observe"
+      ],
+      "authoritative_files": [
+        ".pgf/proofs"
+      ]
+    }
+  ]
+}

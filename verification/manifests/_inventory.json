@@ -1,0 +1,1507 @@
+{
+  "_schema": "qf-reproduce-inventory/v0",
+  "_note": "Phase0 자동 추출 — manifest 이식 1:1 대조 기준. 의미 불변(INV-RA3).",
+  "source": "scripts/reproduce_all.py",
+  "n_standard_steps": 101,
+  "standard_steps": [
+    {
+      "id": "convention_independence",
+      "argv": [
+        "scripts/inverted_second_oracle.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "perm_subspace",
+      "argv": [
+        "scripts/perm_subspace_verify.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "resource_witness",
+      "argv": [
+        "scripts/resource_witness.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "blockencoding_audit",
+      "argv": [
+        "scripts/blockencoding_audit.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "discovery_superopt",
+      "argv": [
+        "scripts/discovery_superopt.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "qsvt_hamsim_observe",
+      "argv": [
+        "scripts/qsvt_hamsim_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "qsvt_ampamp_observe",
+      "argv": [
+        "scripts/qsvt_ampamp_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "fermionic_jw_observe",
+      "argv": [
+        "scripts/fermionic_jw_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "hubbard_observe",
+      "argv": [
+        "scripts/hubbard_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "matrix_inversion_observe",
+      "argv": [
+        "scripts/matrix_inversion_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "spinful_hubbard_observe",
+      "argv": [
+        "scripts/spinful_hubbard_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "magic_state_observe",
+      "argv": [
+        "scripts/magic_state_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "h2_molecule_observe",
+      "argv": [
+        "scripts/h2_molecule_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "bk_equiv_observe",
+      "argv": [
+        "scripts/bk_equiv_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "parity_taper_observe",
+      "argv": [
+        "scripts/parity_taper_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "distill5to1_observe",
+      "argv": [
+        "scripts/distill5to1_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "steane_encoded_t_observe",
+      "argv": [
+        "scripts/steane_encoded_t_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "d4_hsp_observe",
+      "argv": [
+        "scripts/d4_hsp_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "qutrit_arith_observe",
+      "argv": [
+        "scripts/qutrit_arith_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "logical_stack_observe",
+      "argv": [
+        "scripts/logical_stack_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "braid_observe",
+      "argv": [
+        "scripts/braid_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "mbqc_observe",
+      "argv": [
+        "scripts/mbqc_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "gnvw_index_observe",
+      "argv": [
+        "scripts/gnvw_index_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "z2gauge_observe",
+      "argv": [
+        "scripts/z2gauge_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "zx_verify",
+      "argv": [
+        "scripts/zx_verify.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "schur_observe",
+      "argv": [
+        "scripts/schur_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "aklt_observe",
+      "argv": [
+        "scripts/aklt_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "channel_observe",
+      "argv": [
+        "scripts/channel_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "qec_channel_observe",
+      "argv": [
+        "scripts/qec_channel_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "twodesign_observe",
+      "argv": [
+        "scripts/twodesign_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "arithmetic_observe",
+      "argv": [
+        "scripts/arithmetic_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "szegedy_observe",
+      "argv": [
+        "scripts/szegedy_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "choi_observe",
+      "argv": [
+        "scripts/choi_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "pathsum_verify",
+      "argv": [
+        "scripts/pathsum_verify.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "peps_observe",
+      "argv": [
+        "scripts/peps_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "mub_observe",
+      "argv": [
+        "scripts/mub_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "naimark_observe",
+      "argv": [
+        "scripts/naimark_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "schur4_observe",
+      "argv": [
+        "scripts/schur4_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "fib_braid_observe",
+      "argv": [
+        "scripts/fib_braid_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "flag_syndrome_observe",
+      "argv": [
+        "scripts/flag_syndrome_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "gf8_observe",
+      "argv": [
+        "scripts/gf8_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "hierarchy_observe",
+      "argv": [
+        "scripts/hierarchy_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "fib_jones_observe",
+      "argv": [
+        "scripts/fib_jones_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "stabrank_verify_sample",
+      "argv": [
+        "scripts/stabrank_verify.py",
+        "--quick",
+        "--sample"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "code832_observe",
+      "argv": [
+        "scripts/code832_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "dyn_observe",
+      "argv": [
+        "scripts/dyn_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "magic_resource_observe",
+      "argv": [
+        "scripts/magic_resource_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "matchgate_verify",
+      "argv": [
+        "scripts/matchgate_verify.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "rm15_observe",
+      "argv": [
+        "scripts/rm15_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "s4_observe",
+      "argv": [
+        "scripts/s4_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "bogoliubov_observe",
+      "argv": [
+        "scripts/bogoliubov_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "tncontract_verify_sample",
+      "argv": [
+        "scripts/tncontract_verify.py",
+        "--quick",
+        "--sample"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "qmdd_verify_sample",
+      "argv": [
+        "scripts/qmdd_verify.py",
+        "--quick",
+        "--sample"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "maj_observe",
+      "argv": [
+        "scripts/maj_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "diamond_observe",
+      "argv": [
+        "scripts/diamond_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "op_ee_observe",
+      "argv": [
+        "scripts/op_ee_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "concat_observe",
+      "argv": [
+        "scripts/concat_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "anf_verify_sample",
+      "argv": [
+        "scripts/anf_verify.py",
+        "--quick",
+        "--sample"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "groebner_verify_sample",
+      "argv": [
+        "scripts/groebner_verify.py",
+        "--quick",
+        "--sample"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "a4_observe",
+      "argv": [
+        "scripts/a4_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "code_switch_observe",
+      "argv": [
+        "scripts/code_switch_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "code_switch_rm15_observe",
+      "argv": [
+        "scripts/code_switch_rm15_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "ising_fusion_observe",
+      "argv": [
+        "scripts/ising_fusion_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "qutrit_wigner_observe",
+      "argv": [
+        "scripts/qutrit_wigner_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "groebner_monomial_observe",
+      "argv": [
+        "scripts/groebner_monomial_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "ks18_observe",
+      "argv": [
+        "scripts/ks18_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "a5_observe",
+      "argv": [
+        "scripts/a5_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "galois_orbit_verify",
+      "argv": [
+        "scripts/galois_orbit_verify.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "mtc_braid_observe",
+      "argv": [
+        "scripts/mtc_braid_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "z2_fukane_observe",
+      "argv": [
+        "scripts/z2_fukane_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "lattice_surgery_observe",
+      "argv": [
+        "scripts/lattice_surgery_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "psl27_observe",
+      "argv": [
+        "scripts/psl27_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "a5_fourier_observe",
+      "argv": [
+        "scripts/a5_fourier_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "ks_qutrit_observe",
+      "argv": [
+        "scripts/ks_qutrit_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "kitaev_class_d_observe",
+      "argv": [
+        "scripts/kitaev_class_d_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "hecke_h3_observe",
+      "argv": [
+        "scripts/hecke_h3_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "treewidth_verdict_observe",
+      "argv": [
+        "scripts/treewidth_verdict_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "a5_rep3_observe",
+      "argv": [
+        "scripts/a5_rep3_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "2a5_fs_observe",
+      "argv": [
+        "scripts/2a5_fs_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "peres33_ks_observe",
+      "argv": [
+        "scripts/peres33_ks_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "class_d_2d_chern_observe",
+      "argv": [
+        "scripts/class_d_2d_chern_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "su2_3_mtc_observe",
+      "argv": [
+        "scripts/su2_3_mtc_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "matsumoto_amano_verdict_observe",
+      "argv": [
+        "scripts/matsumoto_amano_verdict_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "temperley_lieb_observe",
+      "argv": [
+        "scripts/temperley_lieb_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "column_verify",
+      "argv": [
+        "scripts/column_verify.py",
+        "--quick"
+      ],
+      "kind": "contains",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "PASS"
+        ]
+      }
+    },
+    {
+      "id": "approx_certify",
+      "argv": [
+        "scripts/approx_certify.py",
+        "--quick"
+      ],
+      "kind": "contains",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "PASS"
+        ]
+      }
+    },
+    {
+      "id": "class_diii_observe",
+      "argv": [
+        "scripts/class_diii_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "dsr3_double_observe",
+      "argv": [
+        "scripts/dsr3_double_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "conway31_ks_observe",
+      "argv": [
+        "scripts/conway31_ks_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "kauffman_bracket_observe",
+      "argv": [
+        "scripts/kauffman_bracket_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "ising_fr_observe",
+      "argv": [
+        "scripts/ising_fr_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "su2_4_mtc_observe",
+      "argv": [
+        "scripts/su2_4_mtc_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "b3_observe",
+      "argv": [
+        "scripts/b3_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "hgp_observe",
+      "argv": [
+        "scripts/hgp_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "chern_observe",
+      "argv": [
+        "scripts/chern_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "diamond_unitary_observe",
+      "argv": [
+        "scripts/diamond_unitary_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "peres_mermin_observe",
+      "argv": [
+        "scripts/peres_mermin_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "bch_observe",
+      "argv": [
+        "scripts/bch_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "bch31_observe",
+      "argv": [
+        "scripts/bch31_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "contextual_fraction_observe",
+      "argv": [
+        "scripts/contextual_fraction_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    },
+    {
+      "id": "chern_higher_observe",
+      "argv": [
+        "scripts/chern_higher_observe.py",
+        "--quick"
+      ],
+      "kind": "witness",
+      "expect": {
+        "return_code": 0,
+        "contains": [
+          "all_ok=True"
+        ]
+      }
+    }
+  ],
+  "special_blocks": {
+    "forge_apps": {
+      "kind": "special",
+      "note": "regex 캡처(앱봉인/재발견) + changed-only 캡처(재조립/coherence)"
+    },
+    "frontier_block": {
+      "kind": "special",
+      "note": "changed-only & frontier 무변경 → coherence sweep + factory --reproduce; 그 외 → FRONTIER_STEPS 전량 + factory --reproduce",
+      "frontier_steps": [
+        {
+          "id": "shor_frontier",
+          "script": "scripts/shor_frontier.py"
+        },
+        {
+          "id": "c8x_frontier",
+          "script": "scripts/c8x_frontier.py"
+        },
+        {
+          "id": "shor221_frontier",
+          "script": "scripts/shor221_frontier.py"
+        },
+        {
+          "id": "c9x_shor381_frontier",
+          "script": "scripts/c9x_shor381_frontier.py"
+        },
+        {
+          "id": "c10x_frontier",
+          "script": "scripts/c10x_frontier.py"
+        },
+        {
+          "id": "shor635_frontier",
+          "script": "scripts/shor635_frontier.py"
+        },
+        {
+          "id": "c11x_frontier",
+          "script": "scripts/c11x_frontier.py"
+        },
+        {
+          "id": "c11x_payoff_family",
+          "script": "scripts/c11x_payoff_family.py"
+        },
+        {
+          "id": "shor1285_frontier",
+          "script": "scripts/shor1285_frontier.py"
+        },
+        {
+          "id": "c12x_frontier",
+          "script": "scripts/c12x_frontier.py"
+        },
+        {
+          "id": "c12x_payoff_family",
+          "script": "scripts/c12x_payoff_family.py"
+        },
+        {
+          "id": "shor3683_frontier",
+          "script": "scripts/shor3683_frontier.py"
+        }
+      ],
+      "factory": {
+        "id": "frontier_factory",
+        "script": "scripts/frontier_factory.py",
+        "args": [
+          "--reproduce"
+        ],
+        "expect_contains": "all_ok=True"
+      }
+    },
+    "registry": {
+      "kind": "special",
+      "note": "registry_tools build + regex 캡처(modules/apps/cached/root)"
+    },
+    "second_oracle": {
+      "kind": "special",
+      "note": "rc==0 판정 + 모듈 N/N 캡처"
+    },
+    "behavior": {
+      "kind": "special",
+      "note": "인라인 numpy — shor15_a2/a7 peak {0,2,4,6} + cmul2_mod21 orbit period 6"
+    }
+  }
+}

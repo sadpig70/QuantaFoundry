@@ -1,0 +1,43 @@
+{
+  "schema": "qf-verification-manifest/v1",
+  "group": "core",
+  "description": "Core reproduction gates (special code steps, ported verbatim from legacy)",
+  "steps": [
+    {
+      "id": "forge_apps",
+      "title": "Forge sealed apps + rediscovery cross-check",
+      "special": "forge_apps",
+      "severity": "critical",
+      "claims": [
+        "claim.registry.apps_reproducible"
+      ]
+    },
+    {
+      "id": "frontier_block",
+      "title": "Frontier/factory reproduction (conditional coherence path)",
+      "special": "frontier_block",
+      "severity": "critical",
+      "claims": [
+        "claim.frontier.reproducible"
+      ]
+    },
+    {
+      "id": "registry_build",
+      "title": "Registry manifest build (root hash)",
+      "special": "registry_build",
+      "severity": "critical",
+      "claims": [
+        "claim.registry.root_reproducible"
+      ]
+    },
+    {
+      "id": "second_oracle",
+      "title": "Independent second oracle",
+      "special": "second_oracle",
+      "severity": "critical",
+      "claims": [
+        "claim.modules.second_oracle_pass"
+      ]
+    }
+  ]
+}

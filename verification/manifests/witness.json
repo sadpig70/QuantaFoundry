@@ -1,0 +1,748 @@
+{
+  "schema": "qf-verification-manifest/v1",
+  "group": "witness",
+  "description": "Standard --quick witnesses (batch: shared expectation, legacy order preserved) + contains-graded steps (column_verify/approx_certify)",
+  "steps": [
+    {
+      "id": "column_verify",
+      "title": "column_verify",
+      "argv": [
+        "scripts/column_verify.py",
+        "--quick"
+      ],
+      "expectations": {
+        "return_code": 0,
+        "contains": [
+          "PASS"
+        ]
+      },
+      "severity": "high",
+      "claims": []
+    },
+    {
+      "id": "approx_certify",
+      "title": "approx_certify",
+      "argv": [
+        "scripts/approx_certify.py",
+        "--quick"
+      ],
+      "expectations": {
+        "return_code": 0,
+        "contains": [
+          "PASS"
+        ]
+      },
+      "severity": "high",
+      "claims": []
+    }
+  ],
+  "witness_batch": {
+    "expectations": {
+      "return_code": 0,
+      "contains": [
+        "all_ok=True"
+      ]
+    },
+    "severity": "high",
+    "steps": [
+      {
+        "id": "convention_independence",
+        "argv": [
+          "scripts/inverted_second_oracle.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "perm_subspace",
+        "argv": [
+          "scripts/perm_subspace_verify.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "resource_witness",
+        "argv": [
+          "scripts/resource_witness.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "blockencoding_audit",
+        "argv": [
+          "scripts/blockencoding_audit.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "discovery_superopt",
+        "argv": [
+          "scripts/discovery_superopt.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "qsvt_hamsim_observe",
+        "argv": [
+          "scripts/qsvt_hamsim_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "qsvt_ampamp_observe",
+        "argv": [
+          "scripts/qsvt_ampamp_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "fermionic_jw_observe",
+        "argv": [
+          "scripts/fermionic_jw_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "hubbard_observe",
+        "argv": [
+          "scripts/hubbard_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "matrix_inversion_observe",
+        "argv": [
+          "scripts/matrix_inversion_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "spinful_hubbard_observe",
+        "argv": [
+          "scripts/spinful_hubbard_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "magic_state_observe",
+        "argv": [
+          "scripts/magic_state_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "h2_molecule_observe",
+        "argv": [
+          "scripts/h2_molecule_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "bk_equiv_observe",
+        "argv": [
+          "scripts/bk_equiv_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "parity_taper_observe",
+        "argv": [
+          "scripts/parity_taper_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "distill5to1_observe",
+        "argv": [
+          "scripts/distill5to1_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "steane_encoded_t_observe",
+        "argv": [
+          "scripts/steane_encoded_t_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "d4_hsp_observe",
+        "argv": [
+          "scripts/d4_hsp_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "qutrit_arith_observe",
+        "argv": [
+          "scripts/qutrit_arith_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "logical_stack_observe",
+        "argv": [
+          "scripts/logical_stack_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "braid_observe",
+        "argv": [
+          "scripts/braid_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "mbqc_observe",
+        "argv": [
+          "scripts/mbqc_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "gnvw_index_observe",
+        "argv": [
+          "scripts/gnvw_index_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "z2gauge_observe",
+        "argv": [
+          "scripts/z2gauge_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "zx_verify",
+        "argv": [
+          "scripts/zx_verify.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "schur_observe",
+        "argv": [
+          "scripts/schur_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "aklt_observe",
+        "argv": [
+          "scripts/aklt_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "channel_observe",
+        "argv": [
+          "scripts/channel_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "qec_channel_observe",
+        "argv": [
+          "scripts/qec_channel_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "twodesign_observe",
+        "argv": [
+          "scripts/twodesign_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "arithmetic_observe",
+        "argv": [
+          "scripts/arithmetic_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "szegedy_observe",
+        "argv": [
+          "scripts/szegedy_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "choi_observe",
+        "argv": [
+          "scripts/choi_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "pathsum_verify",
+        "argv": [
+          "scripts/pathsum_verify.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "peps_observe",
+        "argv": [
+          "scripts/peps_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "mub_observe",
+        "argv": [
+          "scripts/mub_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "naimark_observe",
+        "argv": [
+          "scripts/naimark_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "schur4_observe",
+        "argv": [
+          "scripts/schur4_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "fib_braid_observe",
+        "argv": [
+          "scripts/fib_braid_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "flag_syndrome_observe",
+        "argv": [
+          "scripts/flag_syndrome_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "gf8_observe",
+        "argv": [
+          "scripts/gf8_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "hierarchy_observe",
+        "argv": [
+          "scripts/hierarchy_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "fib_jones_observe",
+        "argv": [
+          "scripts/fib_jones_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "stabrank_verify_sample",
+        "argv": [
+          "scripts/stabrank_verify.py",
+          "--quick",
+          "--sample"
+        ]
+      },
+      {
+        "id": "code832_observe",
+        "argv": [
+          "scripts/code832_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "dyn_observe",
+        "argv": [
+          "scripts/dyn_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "magic_resource_observe",
+        "argv": [
+          "scripts/magic_resource_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "matchgate_verify",
+        "argv": [
+          "scripts/matchgate_verify.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "rm15_observe",
+        "argv": [
+          "scripts/rm15_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "s4_observe",
+        "argv": [
+          "scripts/s4_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "bogoliubov_observe",
+        "argv": [
+          "scripts/bogoliubov_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "tncontract_verify_sample",
+        "argv": [
+          "scripts/tncontract_verify.py",
+          "--quick",
+          "--sample"
+        ]
+      },
+      {
+        "id": "qmdd_verify_sample",
+        "argv": [
+          "scripts/qmdd_verify.py",
+          "--quick",
+          "--sample"
+        ]
+      },
+      {
+        "id": "maj_observe",
+        "argv": [
+          "scripts/maj_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "diamond_observe",
+        "argv": [
+          "scripts/diamond_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "op_ee_observe",
+        "argv": [
+          "scripts/op_ee_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "concat_observe",
+        "argv": [
+          "scripts/concat_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "anf_verify_sample",
+        "argv": [
+          "scripts/anf_verify.py",
+          "--quick",
+          "--sample"
+        ]
+      },
+      {
+        "id": "groebner_verify_sample",
+        "argv": [
+          "scripts/groebner_verify.py",
+          "--quick",
+          "--sample"
+        ]
+      },
+      {
+        "id": "a4_observe",
+        "argv": [
+          "scripts/a4_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "code_switch_observe",
+        "argv": [
+          "scripts/code_switch_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "code_switch_rm15_observe",
+        "argv": [
+          "scripts/code_switch_rm15_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "ising_fusion_observe",
+        "argv": [
+          "scripts/ising_fusion_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "qutrit_wigner_observe",
+        "argv": [
+          "scripts/qutrit_wigner_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "groebner_monomial_observe",
+        "argv": [
+          "scripts/groebner_monomial_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "ks18_observe",
+        "argv": [
+          "scripts/ks18_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "a5_observe",
+        "argv": [
+          "scripts/a5_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "galois_orbit_verify",
+        "argv": [
+          "scripts/galois_orbit_verify.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "mtc_braid_observe",
+        "argv": [
+          "scripts/mtc_braid_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "z2_fukane_observe",
+        "argv": [
+          "scripts/z2_fukane_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "lattice_surgery_observe",
+        "argv": [
+          "scripts/lattice_surgery_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "psl27_observe",
+        "argv": [
+          "scripts/psl27_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "a5_fourier_observe",
+        "argv": [
+          "scripts/a5_fourier_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "ks_qutrit_observe",
+        "argv": [
+          "scripts/ks_qutrit_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "kitaev_class_d_observe",
+        "argv": [
+          "scripts/kitaev_class_d_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "hecke_h3_observe",
+        "argv": [
+          "scripts/hecke_h3_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "treewidth_verdict_observe",
+        "argv": [
+          "scripts/treewidth_verdict_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "a5_rep3_observe",
+        "argv": [
+          "scripts/a5_rep3_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "2a5_fs_observe",
+        "argv": [
+          "scripts/2a5_fs_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "peres33_ks_observe",
+        "argv": [
+          "scripts/peres33_ks_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "class_d_2d_chern_observe",
+        "argv": [
+          "scripts/class_d_2d_chern_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "su2_3_mtc_observe",
+        "argv": [
+          "scripts/su2_3_mtc_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "matsumoto_amano_verdict_observe",
+        "argv": [
+          "scripts/matsumoto_amano_verdict_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "temperley_lieb_observe",
+        "argv": [
+          "scripts/temperley_lieb_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "class_diii_observe",
+        "argv": [
+          "scripts/class_diii_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "dsr3_double_observe",
+        "argv": [
+          "scripts/dsr3_double_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "conway31_ks_observe",
+        "argv": [
+          "scripts/conway31_ks_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "kauffman_bracket_observe",
+        "argv": [
+          "scripts/kauffman_bracket_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "ising_fr_observe",
+        "argv": [
+          "scripts/ising_fr_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "su2_4_mtc_observe",
+        "argv": [
+          "scripts/su2_4_mtc_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "b3_observe",
+        "argv": [
+          "scripts/b3_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "hgp_observe",
+        "argv": [
+          "scripts/hgp_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "chern_observe",
+        "argv": [
+          "scripts/chern_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "diamond_unitary_observe",
+        "argv": [
+          "scripts/diamond_unitary_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "peres_mermin_observe",
+        "argv": [
+          "scripts/peres_mermin_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "bch_observe",
+        "argv": [
+          "scripts/bch_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "bch31_observe",
+        "argv": [
+          "scripts/bch31_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "contextual_fraction_observe",
+        "argv": [
+          "scripts/contextual_fraction_observe.py",
+          "--quick"
+        ]
+      },
+      {
+        "id": "chern_higher_observe",
+        "argv": [
+          "scripts/chern_higher_observe.py",
+          "--quick"
+        ]
+      }
+    ]
+  }
+}

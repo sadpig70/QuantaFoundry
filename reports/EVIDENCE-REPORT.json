@@ -1,0 +1,1238 @@
+{
+  "schema": "qf-evidence-report/v1",
+  "run": {
+    "profile": "full",
+    "mode": "full",
+    "bundle": "REPRODUCED"
+  },
+  "summary": {
+    "status": "pass",
+    "steps_total": 106,
+    "steps_failed": 0,
+    "failed_by_severity": {},
+    "duration_ms": 867575
+  },
+  "steps": [
+    {
+      "id": "forge_apps",
+      "ids": [
+        "forge_apps"
+      ],
+      "status": "pass",
+      "duration_ms": 177916,
+      "severity": "critical",
+      "claims": [
+        "claim.registry.apps_reproducible"
+      ],
+      "group": "core"
+    },
+    {
+      "id": "frontier_block",
+      "ids": [
+        "shor_frontier",
+        "c8x_frontier",
+        "shor221_frontier",
+        "c9x_shor381_frontier",
+        "c10x_frontier",
+        "shor635_frontier",
+        "c11x_frontier",
+        "c11x_payoff_family",
+        "shor1285_frontier",
+        "c12x_frontier",
+        "c12x_payoff_family",
+        "shor3683_frontier",
+        "frontier_factory"
+      ],
+      "status": "pass",
+      "duration_ms": 423058,
+      "severity": "critical",
+      "claims": [
+        "claim.frontier.reproducible"
+      ],
+      "group": "core"
+    },
+    {
+      "id": "registry_build",
+      "ids": [
+        "registry"
+      ],
+      "status": "pass",
+      "duration_ms": 2189,
+      "severity": "critical",
+      "claims": [
+        "claim.registry.root_reproducible"
+      ],
+      "group": "core"
+    },
+    {
+      "id": "second_oracle",
+      "ids": [
+        "second_oracle"
+      ],
+      "status": "pass",
+      "duration_ms": 13628,
+      "severity": "critical",
+      "claims": [
+        "claim.modules.second_oracle_pass"
+      ],
+      "group": "core"
+    },
+    {
+      "id": "column_verify",
+      "ids": [
+        "column_verify"
+      ],
+      "status": "pass",
+      "duration_ms": 1221,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "approx_certify",
+      "ids": [
+        "approx_certify"
+      ],
+      "status": "pass",
+      "duration_ms": 915,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "convention_independence",
+      "ids": [
+        "convention_independence"
+      ],
+      "status": "pass",
+      "duration_ms": 63778,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "perm_subspace",
+      "ids": [
+        "perm_subspace"
+      ],
+      "status": "pass",
+      "duration_ms": 9341,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "resource_witness",
+      "ids": [
+        "resource_witness"
+      ],
+      "status": "pass",
+      "duration_ms": 59871,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "blockencoding_audit",
+      "ids": [
+        "blockencoding_audit"
+      ],
+      "status": "pass",
+      "duration_ms": 226,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "discovery_superopt",
+      "ids": [
+        "discovery_superopt"
+      ],
+      "status": "pass",
+      "duration_ms": 5647,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "qsvt_hamsim_observe",
+      "ids": [
+        "qsvt_hamsim_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 259,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "qsvt_ampamp_observe",
+      "ids": [
+        "qsvt_ampamp_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 216,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "fermionic_jw_observe",
+      "ids": [
+        "fermionic_jw_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 224,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "hubbard_observe",
+      "ids": [
+        "hubbard_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 216,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "matrix_inversion_observe",
+      "ids": [
+        "matrix_inversion_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 213,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "spinful_hubbard_observe",
+      "ids": [
+        "spinful_hubbard_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 215,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "magic_state_observe",
+      "ids": [
+        "magic_state_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 245,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "h2_molecule_observe",
+      "ids": [
+        "h2_molecule_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 214,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "bk_equiv_observe",
+      "ids": [
+        "bk_equiv_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 496,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "parity_taper_observe",
+      "ids": [
+        "parity_taper_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 290,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "distill5to1_observe",
+      "ids": [
+        "distill5to1_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 228,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "steane_encoded_t_observe",
+      "ids": [
+        "steane_encoded_t_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 226,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "d4_hsp_observe",
+      "ids": [
+        "d4_hsp_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 219,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "qutrit_arith_observe",
+      "ids": [
+        "qutrit_arith_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 223,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "logical_stack_observe",
+      "ids": [
+        "logical_stack_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 422,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "braid_observe",
+      "ids": [
+        "braid_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 236,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "mbqc_observe",
+      "ids": [
+        "mbqc_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 761,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "gnvw_index_observe",
+      "ids": [
+        "gnvw_index_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 409,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "z2gauge_observe",
+      "ids": [
+        "z2gauge_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 217,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "zx_verify",
+      "ids": [
+        "zx_verify"
+      ],
+      "status": "pass",
+      "duration_ms": 214,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "schur_observe",
+      "ids": [
+        "schur_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 219,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "aklt_observe",
+      "ids": [
+        "aklt_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 1008,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "channel_observe",
+      "ids": [
+        "channel_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 237,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "qec_channel_observe",
+      "ids": [
+        "qec_channel_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 279,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "twodesign_observe",
+      "ids": [
+        "twodesign_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 257,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "arithmetic_observe",
+      "ids": [
+        "arithmetic_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 214,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "szegedy_observe",
+      "ids": [
+        "szegedy_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 221,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "choi_observe",
+      "ids": [
+        "choi_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 217,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "pathsum_verify",
+      "ids": [
+        "pathsum_verify"
+      ],
+      "status": "pass",
+      "duration_ms": 240,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "peps_observe",
+      "ids": [
+        "peps_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 219,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "mub_observe",
+      "ids": [
+        "mub_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 289,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "naimark_observe",
+      "ids": [
+        "naimark_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 235,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "schur4_observe",
+      "ids": [
+        "schur4_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 232,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "fib_braid_observe",
+      "ids": [
+        "fib_braid_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 221,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "flag_syndrome_observe",
+      "ids": [
+        "flag_syndrome_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 230,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "gf8_observe",
+      "ids": [
+        "gf8_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 299,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "hierarchy_observe",
+      "ids": [
+        "hierarchy_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 53437,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "fib_jones_observe",
+      "ids": [
+        "fib_jones_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 223,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "stabrank_verify_sample",
+      "ids": [
+        "stabrank_verify_sample"
+      ],
+      "status": "pass",
+      "duration_ms": 589,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "code832_observe",
+      "ids": [
+        "code832_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 246,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "dyn_observe",
+      "ids": [
+        "dyn_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 357,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "magic_resource_observe",
+      "ids": [
+        "magic_resource_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 254,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "matchgate_verify",
+      "ids": [
+        "matchgate_verify"
+      ],
+      "status": "pass",
+      "duration_ms": 1213,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "rm15_observe",
+      "ids": [
+        "rm15_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 218,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "s4_observe",
+      "ids": [
+        "s4_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 312,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "bogoliubov_observe",
+      "ids": [
+        "bogoliubov_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 654,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "tncontract_verify_sample",
+      "ids": [
+        "tncontract_verify_sample"
+      ],
+      "status": "pass",
+      "duration_ms": 337,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "qmdd_verify_sample",
+      "ids": [
+        "qmdd_verify_sample"
+      ],
+      "status": "pass",
+      "duration_ms": 347,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "maj_observe",
+      "ids": [
+        "maj_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 330,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "diamond_observe",
+      "ids": [
+        "diamond_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 344,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "op_ee_observe",
+      "ids": [
+        "op_ee_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 211,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "concat_observe",
+      "ids": [
+        "concat_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 3252,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "anf_verify_sample",
+      "ids": [
+        "anf_verify_sample"
+      ],
+      "status": "pass",
+      "duration_ms": 435,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "groebner_verify_sample",
+      "ids": [
+        "groebner_verify_sample"
+      ],
+      "status": "pass",
+      "duration_ms": 250,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "a4_observe",
+      "ids": [
+        "a4_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 228,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "code_switch_observe",
+      "ids": [
+        "code_switch_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 227,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "code_switch_rm15_observe",
+      "ids": [
+        "code_switch_rm15_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 346,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "ising_fusion_observe",
+      "ids": [
+        "ising_fusion_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 206,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "qutrit_wigner_observe",
+      "ids": [
+        "qutrit_wigner_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 215,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "groebner_monomial_observe",
+      "ids": [
+        "groebner_monomial_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 2315,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "ks18_observe",
+      "ids": [
+        "ks18_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 75,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "a5_observe",
+      "ids": [
+        "a5_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 96,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "galois_orbit_verify",
+      "ids": [
+        "galois_orbit_verify"
+      ],
+      "status": "pass",
+      "duration_ms": 1821,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "mtc_braid_observe",
+      "ids": [
+        "mtc_braid_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 208,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "z2_fukane_observe",
+      "ids": [
+        "z2_fukane_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 545,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "lattice_surgery_observe",
+      "ids": [
+        "lattice_surgery_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 219,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "psl27_observe",
+      "ids": [
+        "psl27_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 291,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "a5_fourier_observe",
+      "ids": [
+        "a5_fourier_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 218,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "ks_qutrit_observe",
+      "ids": [
+        "ks_qutrit_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 207,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "kitaev_class_d_observe",
+      "ids": [
+        "kitaev_class_d_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 206,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "hecke_h3_observe",
+      "ids": [
+        "hecke_h3_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 205,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "treewidth_verdict_observe",
+      "ids": [
+        "treewidth_verdict_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 80,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "a5_rep3_observe",
+      "ids": [
+        "a5_rep3_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 3742,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "2a5_fs_observe",
+      "ids": [
+        "2a5_fs_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 339,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "peres33_ks_observe",
+      "ids": [
+        "peres33_ks_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 310,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "class_d_2d_chern_observe",
+      "ids": [
+        "class_d_2d_chern_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 275,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "su2_3_mtc_observe",
+      "ids": [
+        "su2_3_mtc_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 223,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "matsumoto_amano_verdict_observe",
+      "ids": [
+        "matsumoto_amano_verdict_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 225,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "temperley_lieb_observe",
+      "ids": [
+        "temperley_lieb_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 208,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "class_diii_observe",
+      "ids": [
+        "class_diii_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 2222,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "dsr3_double_observe",
+      "ids": [
+        "dsr3_double_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 499,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "conway31_ks_observe",
+      "ids": [
+        "conway31_ks_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 1447,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "kauffman_bracket_observe",
+      "ids": [
+        "kauffman_bracket_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 915,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "ising_fr_observe",
+      "ids": [
+        "ising_fr_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 1704,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "su2_4_mtc_observe",
+      "ids": [
+        "su2_4_mtc_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 3718,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "b3_observe",
+      "ids": [
+        "b3_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 372,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "hgp_observe",
+      "ids": [
+        "hgp_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 3212,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "chern_observe",
+      "ids": [
+        "chern_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 295,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "diamond_unitary_observe",
+      "ids": [
+        "diamond_unitary_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 610,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "peres_mermin_observe",
+      "ids": [
+        "peres_mermin_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 255,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "bch_observe",
+      "ids": [
+        "bch_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 3434,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "bch31_observe",
+      "ids": [
+        "bch31_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 3405,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "contextual_fraction_observe",
+      "ids": [
+        "contextual_fraction_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 88,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "chern_higher_observe",
+      "ids": [
+        "chern_higher_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 387,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "behavior",
+      "ids": [
+        "behavior"
+      ],
+      "status": "pass",
+      "duration_ms": 823,
+      "severity": "critical",
+      "claims": [
+        "claim.behavior.shor_factoring"
+      ],
+      "group": "behavior"
+    }
+  ],
+  "claims": {
+    "claim.registry.apps_reproducible": {
+      "status": "pass",
+      "evidence_steps": [
+        "forge_apps"
+      ]
+    },
+    "claim.frontier.reproducible": {
+      "status": "pass",
+      "evidence_steps": [
+        "frontier_block"
+      ]
+    },
+    "claim.registry.root_reproducible": {
+      "status": "pass",
+      "evidence_steps": [
+        "registry_build"
+      ]
+    },
+    "claim.modules.second_oracle_pass": {
+      "status": "pass",
+      "evidence_steps": [
+        "second_oracle"
+      ]
+    },
+    "claim.behavior.shor_factoring": {
+      "status": "pass",
+      "evidence_steps": [
+        "behavior"
+      ]
+    }
+  },
+  "_note": "가산 리포트 — 정본 판정은 REPRODUCE-RESULT.json(REPRODUCED ≠ correct, INV-R1). 실패 시 어떤 claim 이 무효화되는지 claims 필드가 표시한다."
+}

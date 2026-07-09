@@ -682,6 +682,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     TrackHE13 // report13 소비 — 수평확장 13차 통합 6축, 상세=.pgf/DESIGN-TrackHE13.md (done — 2026-07-10 폐합) @dep:TrackIU (decomposed)
         # 수렴: class DIII 8/8·D(S₃) 6/8·Conway-31 6/8·SU(2)₄ 3/8(★D²=12 외부오류 정정)·Kauffman 3/8·Ising F/R 2/8
         # 전 축 관측·신규 module 0·root d177ce9a 불변 · 제11 후보 2건 불채택(자가강등) · 완료 후 REQUEST-v14
+    TrackReproduceUpgrade // reproduce_all 비대화 해소 — manifest runner 전환, 확정플랜=_workspace/reproduce_all_upgrade_plan.md (done — 2026-07-10 폐합) @dep:TrackHE13 (decomposed)
+        # Phase0 Inventory(111스텝 추출)→Phase1 qf_verify+core.json→Phase2 전량이동+witness_batch→Phase3 wrapper(신구 diff 게이트)→Phase4 Evidence/Claim map
+        # INV: 기존 명령·REPRODUCE-RESULT.json 의미 불변·판정 동치·pip 의존성 0·순차 실행·root 무접촉·legacy 보존(--legacy)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

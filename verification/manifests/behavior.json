@@ -1,0 +1,16 @@
+{
+  "schema": "qf-verification-manifest/v1",
+  "group": "behavior",
+  "description": "Behavioral verification (Shor factoring peaks + cmul orbit, inline numpy)",
+  "steps": [
+    {
+      "id": "behavior",
+      "title": "Shor 15 factoring peaks + cmul2_mod21 orbit period 6",
+      "special": "behavior",
+      "severity": "critical",
+      "claims": [
+        "claim.behavior.shor_factoring"
+      ]
+    }
+  ]
+}

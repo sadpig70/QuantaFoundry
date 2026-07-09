@@ -5,14 +5,66 @@
       "rc": 0,
       "apps_sealed": "213/213",
       "rediscovery": "12/12",
-      "pass": true,
-      "reassembled": 0,
-      "coherence": 213
+      "pass": true
     },
-    "frontier_coherence": {
-      "coherence_checked": 167,
-      "failed": [],
-      "n_failed": 0,
+    "shor_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c8x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor221_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c9x_shor381_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c10x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor635_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c11x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor1285_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_frontier": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "c12x_payoff_family": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
+    "shor3683_frontier": {
+      "rc": 0,
+      "all_ok": true,
       "pass": true
     },
     "frontier_factory": {
@@ -31,6 +83,14 @@
     "second_oracle": {
       "rc": 0,
       "modules": "83/83",
+      "pass": true
+    },
+    "column_verify": {
+      "rc": 0,
+      "pass": true
+    },
+    "approx_certify": {
+      "rc": 0,
       "pass": true
     },
     "convention_independence": {
@@ -453,14 +513,6 @@
       "all_ok": true,
       "pass": true
     },
-    "column_verify": {
-      "rc": 0,
-      "pass": true
-    },
-    "approx_certify": {
-      "rc": 0,
-      "pass": true
-    },
     "class_diii_observe": {
       "rc": 0,
       "all_ok": true,
@@ -584,5 +636,5 @@
       "pass": true
     }
   },
-  "mode": "changed-only"
+  "mode": "full"
 }
