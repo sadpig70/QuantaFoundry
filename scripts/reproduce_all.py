@@ -705,6 +705,42 @@ def main():
     result["steps"]["approx_certify"] = {
         "rc": rc, "pass": rc == 0 and "PASS" in out}
 
+    # 3abr. TrackHE13 P1: class DIII 1D ℤ₂ (TRS Kramers, AZ 사다리) witness (seal 아님)
+    rc, out = run(["scripts/class_diii_observe.py", "--quick"])
+    result["steps"]["class_diii_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abs. TrackHE13 P2: Drinfeld double D(S₃) 완전 modular data (유한군 MTC 축) witness (seal 아님)
+    rc, out = run(["scripts/dsr3_double_observe.py", "--quick"])
+    result["steps"]["dsr3_double_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abt. TrackHE13 P3: Conway-31 I_h 궤도 KS 정직 판정 (colorable closed-negative) witness (seal 아님)
+    rc, out = run(["scripts/conway31_ks_observe.py", "--quick"])
+    result["steps"]["conway31_ks_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abu. TrackHE13 P4: Kauffman bracket generic-A state-sum (TL/Jones 특수화 다리) witness (seal 아님)
+    rc, out = run(["scripts/kauffman_bracket_observe.py", "--quick"])
+    result["steps"]["kauffman_bracket_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abv. TrackHE13 P5: Ising MTC pentagon/hexagon 전역 일관성 (F/R gauge) witness (seal 아님)
+    rc, out = run(["scripts/ising_fr_observe.py", "--quick"])
+    result["steps"]["ising_fr_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
+    # 3abw. TrackHE13 P6: SU(2)₄ 완전 MTC modular data (D²=12 외부오류 정정) witness (seal 아님)
+    rc, out = run(["scripts/su2_4_mtc_observe.py", "--quick"])
+    result["steps"]["su2_4_mtc_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {

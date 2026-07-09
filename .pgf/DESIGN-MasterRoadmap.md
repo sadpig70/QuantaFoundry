@@ -679,6 +679,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         IU_L1_EpsilonTier // ε-bounded 근사 인증 sidecar (Trotter 파일럿, exact-only 한계 돌파) (done — 9종 ALL CERTIFIED)
         IU_L2_L4_Backlog // qf inspect·Explorer·제11 perm-group·QML 등 — 상세 트리 참조, 착수 금지 (blocked)
         # criteria: root d177ce9a 불변 · sidecar/guarantee 레이어만 · second_oracle 83/83 · reproduce --changed-only REPRODUCED. ✅ 전부 충족 (math-crux 5/5 독립 CONFIRMED)
+    TrackHE13 // report13 소비 — 수평확장 13차 통합 6축, 상세=.pgf/DESIGN-TrackHE13.md (done — 2026-07-10 폐합) @dep:TrackIU (decomposed)
+        # 수렴: class DIII 8/8·D(S₃) 6/8·Conway-31 6/8·SU(2)₄ 3/8(★D²=12 외부오류 정정)·Kauffman 3/8·Ising F/R 2/8
+        # 전 축 관측·신규 module 0·root d177ce9a 불변 · 제11 후보 2건 불채택(자가강등) · 완료 후 REQUEST-v14
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

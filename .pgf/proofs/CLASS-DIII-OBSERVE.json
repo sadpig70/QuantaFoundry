@@ -1,0 +1,82 @@
+{
+  "_note": "1D class-DIII TR 초전도체 ℤ₂ witness: T²=−1 Kramers·C²=+1·chiral S=TC·Pfaffian(운동량) == open-chain Majorana Kramers 쌍(실공간)·teeth. 관측·신규 module 0·root 불변.",
+  "_schema": "class-diii-observe-v1",
+  "observation": {
+    "axis": "AZ class DIII — 1D 시간역전 초전도체 ℤ₂ (Majorana Kramers pair), report13 P1 (8/8)",
+    "checks": {
+      "C_sq_plus1": true,
+      "PHS_holds": true,
+      "S_eq_TC": true,
+      "S_sq_plus1": true,
+      "TRS_holds": true,
+      "T_sq_minus1": true,
+      "chiral_holds": true,
+      "closed_form_eq_pfaffian": true,
+      "detq_winding_zero_both": true,
+      "gap_closes_at_pm2t": true,
+      "gap_open_in_phase": true,
+      "kramers_full_degeneracy": true,
+      "pathA_eq_pathB": true,
+      "real_chain_TRS": true,
+      "teeth_alpha0_decouples": true,
+      "teeth_break_trs_lifts_kramers": true,
+      "topological_4_zero_modes": true,
+      "trivial_0_zero_modes": true
+    },
+    "deterministic": true,
+    "honest_boundary": "관측(위상불변량 산출) — 회로 봉인 아님. invariant = exact 정수(부호규약 고정)·spectrum 연속체 = 관측. free-fermion(BdG 2차) 한정·T/C 규약 고정·Δ=0 gapless 제외. 운동량공간 same-k Kramers 겹침은 TRIM 한정(generic k 비겹침, 짝은 k↔−k) — 전-겹침은 open chain 성질. chiral det-q winding=0(양 상)→DIII ℤ₂=Pfaffian(AIII winding 아님). 신규 module 0·root 불변 sidecar.",
+    "invariant": {
+      "detq_winding_both_phases": [
+        0,
+        0
+      ],
+      "path_A_closed_form": "(−1)^ν = sign(μ²−4t²) ; |μ|<2t ⟺ ν=1",
+      "path_A_pfaffian": "∏_{k*∈{0,π}} Pf[q(k*)]/√det[q(k*)] (T-adapted chiral basis, 연속 branch)",
+      "path_B": "open chain ED — 위상 ν=1 ⟺ near-zero mode 4개(끝단 Majorana Kramers 쌍)",
+      "phase_scan": {
+        "-3.0": {
+          "nu_closed": 0,
+          "nu_pfaffian": 0,
+          "zero_modes": 0
+        },
+        "0.0": {
+          "nu_closed": 1,
+          "nu_pfaffian": 1,
+          "zero_modes": 4
+        },
+        "0.5": {
+          "nu_closed": 1,
+          "nu_pfaffian": 1,
+          "zero_modes": 4
+        },
+        "1.0": {
+          "nu_closed": 1,
+          "nu_pfaffian": 1,
+          "zero_modes": 4
+        },
+        "1.5": {
+          "nu_closed": 1,
+          "nu_pfaffian": 1,
+          "zero_modes": 4
+        },
+        "2.5": {
+          "nu_closed": 0,
+          "nu_pfaffian": 0,
+          "zero_modes": 0
+        },
+        "3.0": {
+          "nu_closed": 0,
+          "nu_pfaffian": 0,
+          "zero_modes": 0
+        },
+        "4.0": {
+          "nu_closed": 0,
+          "nu_pfaffian": 0,
+          "zero_modes": 0
+        }
+      }
+    },
+    "model": "H(k)=(−2t cos k−μ)σ0τz + Δ sin k·σzτx + α sin k·σyτ0 ; T=i σyτ0 K (T²=−1), C=σzτx K (C²=+1), S=T·C∝σxτx (chiral)",
+    "ok": true
+  }
+}

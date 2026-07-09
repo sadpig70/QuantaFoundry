@@ -1,0 +1,87 @@
+{
+  "_note": "Kauffman bracket 완전 상태합(2^n smoothing)으로 generic-A exact Laurent 불변량 ⟨L⟩∈ℤ[A,A⁻¹] 생성(fib_jones 의 특정-A trace 값과 스코프 구분). R1·Jones·A=i→TL δ=2(ℤ[i] 착지)·fib_jones 교차(mirror 규약) 다리 + teeth. ★관측·seal 아님·신규 module 0·root 불변.",
+  "_schema": "kauffman-bracket-observe-v1",
+  "checks": {
+    "A_i_all_gaussian_integer": true,
+    "A_i_jones_V1_eq_neg2_pow_comps": true,
+    "A_i_trefoil_not_real_integer": true,
+    "R1_invariance_jones_unchanged": true,
+    "R1_kinked_bracket_times_minusA_inv3": true,
+    "R1_positive_kink_times_minusA3": true,
+    "bracket_fig8": true,
+    "bracket_fig8_amphichiral": true,
+    "bracket_hopf": true,
+    "bracket_trefoil": true,
+    "bracket_unknot_eq_1": true,
+    "delta_at_A_i_eq_2": true,
+    "fib_cross_fig8_direct_matches": true,
+    "fib_cross_trefoil_direct_differs_by_mirror": true,
+    "fib_cross_trefoil_mirror_symbolic": true,
+    "fib_cross_trefoil_numeric_mirror_matches": true,
+    "jones_fig8": true,
+    "jones_fig8_amphichiral_V_t_eq_V_1overt": true,
+    "jones_hopf": true,
+    "jones_trefoil": true,
+    "teeth_drop_one_state": true,
+    "teeth_unknot_kink_corrupted": true,
+    "teeth_wrong_delta_exponent": true
+  },
+  "detail": {
+    "A_i_specialization": {
+      "fig8": {
+        "bracket_at_A_i": "1",
+        "gaussian_integer": true,
+        "real_integer": true
+      },
+      "hopf": {
+        "bracket_at_A_i": "-2",
+        "gaussian_integer": true,
+        "real_integer": true
+      },
+      "trefoil": {
+        "bracket_at_A_i": "I",
+        "gaussian_integer": true,
+        "real_integer": false
+      },
+      "unknot": {
+        "bracket_at_A_i": "1",
+        "gaussian_integer": true,
+        "real_integer": true
+      }
+    },
+    "brackets_generic_A": {
+      "fig8": "A**8 - A**4 + 1 - 1/A**4 + A**(-8)",
+      "hopf": "-A**4 - 1/A**4",
+      "kink_positive": "-A**3",
+      "trefoil": "A**7 - A**3 - 1/A**5",
+      "unknot": "1"
+    },
+    "fib_cross": {
+      "fig8": "amphichiral → direct 일치 (둘 다 1−√5 at t=e^{−2πi/5})",
+      "trefoil_convention": "fib_jones V=t+t³−t⁴ = 본 규약의 mirror(t↔t⁻¹) → mirror-V 로 exact 일치 · direct 는 mirror 만큼 상이"
+    },
+    "handedness": "삼엽 ⟨L⟩=−A⁻⁵−A³+A⁷ · writhe w=−3(본 PD 교차 전부 음) → V=−t⁻⁴+t⁻³+t⁻¹ (음멱 지지). 경상(A→A⁻¹ / t↔t⁻¹) = −t⁴+t³+t. Hopf w=−2·fig8 w=0(amphichiral).",
+    "jones_at_t1": {
+      "fig8": {
+        "V_at_t_1": "1",
+        "ok": true
+      },
+      "hopf": {
+        "V_at_t_1": "-2",
+        "ok": true
+      },
+      "trefoil": {
+        "V_at_t_1": "1",
+        "ok": true
+      }
+    },
+    "jones_t": {
+      "fig8": "t**2 - t + 1 - 1/t + t**(-2)",
+      "hopf": "-1/sqrt(t) - 1/t**(5/2)",
+      "trefoil": "1/t + t**(-3) - 1/t**4"
+    }
+  },
+  "deterministic": true,
+  "honest_boundary": "witness=상태합 알고리즘 exact Laurent 불변량. 매듭 다항식=exact 대수 불변량(유니터리 아님)·소형 매듭만(2^n·일반 #P-hard)·Jones 값/동치판정/mirror=관측. fib_jones INV-Q3 경계 상속.",
+  "ok": true
+}
