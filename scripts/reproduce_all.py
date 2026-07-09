@@ -587,6 +587,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3aax. TrackHE10 P2: A₅ 문자표 ζ₅-vs-√5 redirect 선검증 (ambivalent→√5 충분·ζ₅ 불필요, seal 아님)
+    rc, out = run(["scripts/a5_observe.py", "--quick"])
+    result["steps"]["a5_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
