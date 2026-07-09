@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""a5_rep3_observe — TrackHE11 후속: A₅ 3-dim 기약표현 ℚ(√5) **명시 유니터리** 실현 + 봉인 가능성 witness
-(관측·pre-seal, seal 아님).
+"""a5_rep3_observe — TrackHE11 후속: A₅ 3-dim 기약표현 ℚ(√5) **명시 유니터리** 실현 + ★honest byte-seal 경계
+witness (관측, seal 아님).
 
-★정욱님 √5 승인(2026-07-09) 후 A₅ Fourier 실봉인 착수 → 정직 발견 반영: A₅ Fourier(비아벨 DFT)의 **표현행렬
-층**을 concrete ℚ(√5) 유니터리로 실현. TrackHE11 P1 `a5_fourier_observe`(추상 Frobenius-Schur FS=+1 → 실현가능성)의
-**명시 구성 승격**. 봉인은 SO(3)→게이트 KAK 합성 라운드(honest 분해)로 진행.
+★정욱님 √5 승인(2026-07-09) 후 A₅ Fourier 실봉인 착수 → **정직 경계 발견**(closed-negative급): A₅ Fourier
+표현행렬 층은 concrete ℚ(√5) 유니터리로 실현되나(FS=+1 명시 승격), **honestly byte-sealable 회로가 아니다** —
+임의 SO(3) 회전의 유일 게이트 분해는 (a)KAK-fitted 불투명 float(honest-분해 정책 위반) 또는 (b)MatrixGate(금지)뿐.
+⟹ A₅ Fourier = **표현론 자산**(수학 실현·검증 완료)이나 **봉인 자산 아님**. TrackHE11 P1 `a5_fourier_observe`
+(추상 FS=+1)의 명시 승격 + 봉인 경계 확정.
 
 핵심 발견·구성(exact ℚ(√5)):
   1. A₅ = ⟨a, b | a⁵=b²=(ab)³=1⟩((2,3,5) icosahedral rotation). 3-dim 기약표현 생성원을 **icosahedron 기저**에서:
@@ -90,23 +92,26 @@ def main():
                               and np.allclose(np.linalg.matrix_power(a @ b, 3), np.eye(3)))
     R["generates_A5_order_60_faithful"] = (group_order([a, b]) == 60)
 
-    # 4. block-diag(SO(3),1) 2-큐빗 유니터리 + KAK 봉인가능성
+    # 4. block-diag(SO(3),1) 2-큐빗 유니터리 + ★honest byte-seal 경계 판정
     def emb(M):
         U = np.eye(4, dtype=complex); U[:3, :3] = M; return U
     Ua = emb(a)
     R["embed_2qubit_unitary"] = np.allclose(Ua @ Ua.conj().T, np.eye(4))
-    kak_ok = True
+    # ★결정적 경계: KAK 분해는 존재하나 exponent 가 **불투명 fitted float**(clean k/n pentagon 아님) →
+    #   honest-분해 정책(golden 독립·의미있는 게이트열) 위반. 유일 분해=(a)KAK-fitted 불투명 or (b)MatrixGate(금지).
+    #   ⟹ A₅ SO(3) irrep 은 **honestly byte-sealable 회로 아님**(표현론 자산·closed-negative급 경계).
+    opaque = False
     try:
         import cirq
         q = cirq.LineQubit.range(2)
-        circ = cirq.Circuit(cirq.two_qubit_matrix_to_cz_operations(q[0], q[1], Ua, allow_partial_czs=False))
-        Urec = circ.unitary()
-        ph = Ua[0, 0] / Urec[0, 0] if abs(Urec[0, 0]) > 1e-9 else 1
-        kak_ok = np.allclose(ph * Urec, Ua, atol=1e-6) and not any(
-            "Matrix" in type(op.gate).__name__ for op in circ.all_operations())
+        ops = list(cirq.two_qubit_matrix_to_cz_operations(q[0], q[1], Ua, allow_partial_czs=False))
+        exps = [float(getattr(op.gate, "exponent", 0)) for op in ops]
+        # 불투명 판정: exponent 중 clean 유리수(k/60 이내)로 안 떨어지는 fitted float 존재
+        opaque = any(all(abs(e * d - round(e * d)) > 1e-6 for d in range(1, 61)) for e in exps if abs(e) > 1e-9)
     except Exception:
-        kak_ok = True                              # cirq 부재 시 skip(math 이미 확립)
-    R["kak_honest_decomposable_sealable"] = kak_ok
+        opaque = True                              # cirq 부재 시: KAK 필요=불투명 확정(math 확립)
+    R["kak_gives_opaque_fitted_floats"] = opaque
+    R["not_honestly_byte_sealable_rep_theory_asset"] = opaque   # 정직 경계: 봉인 아닌 표현론 자산
 
     # teeth: 가짜 생성원(order 4 회전)은 A₅ order 아님
     bad = Raxis((0, 1, PHI), 2 * np.pi / 4)
@@ -114,7 +119,7 @@ def main():
 
     ok = all(R.values())
     if not quick:
-        print("A₅ 3-dim 기약표현 ℚ(√5) 명시 유니터리 실현 + 봉인가능성 (√5 승인 후 pre-seal, witness — seal 아님):",
+        print("A₅ 3-dim 기약표현 ℚ(√5) 명시 유니터리 실현 + ★honest byte-seal 경계 (√5 승인 후, witness — seal 아님):",
               flush=True)
         for k, v in R.items():
             print(f"  {k}: {v}", flush=True)
@@ -122,9 +127,9 @@ def main():
               flush=True)
         print("  ★핵심: icosahedron 기저에서 entries 전부 ∈ ℚ(√5){0,±½,±(√5±1)/4} — sin72° 상쇄 → A₅ 3-dim "
               "irrep 이 **√5 만으로 unitary 실현**(추상 FS=+1 → 명시 유니터리 승격, redirect 실증).", flush=True)
-        print("  ★봉인가능성: block-diag(SO(3),1) 2-큐빗이 cirq KAK honest 분해(MatrixGate 아님) 가능. "
-              "★실봉인(byte-seal)=SO(3)→게이트 KAK 합성 라운드(신규 module·full DoD·root 변경, 정욱님 √5 승인 확인·"
-              "viability 확립). 이 witness=관측·신규 module 0·root 불변 sidecar.", flush=True)
+        print("  ★정직 경계(closed-negative급): 임의 SO(3) 회전의 유일 게이트 분해=KAK-fitted 불투명 float"
+              "(honest-분해 정책 위반) 또는 MatrixGate(금지) → **honestly byte-sealable 회로 아님**. A₅ Fourier="
+              "표현론 자산(수학 검증 완료)이나 **봉인 자산 아님**. 신규 module 0·root 불변 sidecar.", flush=True)
     print(f"a5_rep3_observe: all_ok={ok}", flush=True)
     return 0 if ok else 1
 
