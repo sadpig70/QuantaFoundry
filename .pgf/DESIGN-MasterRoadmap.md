@@ -666,6 +666,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_V09PackagingPolish // public QF-STDLIB surface 정리 (done) @dep:QFStdlib_V07TemplateLibrary,QFStdlib_V08AdapterDecisionGate
             # output: README/docs links, lightweight import test, CLI help coverage, public smoke examples
             # criteria: qf_stdlib import no Cirq/PennyLane load; CLI help covers all commands; docs entrypoints linked. ✅ done
+        QFStdlib_V10FinalReleaseGate // QF-STDLIB v1.0 최종 release gate 폐합 (done) @dep:QFStdlib_V09PackagingPolish
+            # output: QF-STDLIB v1.0 terminal status + final deterministic gate report
+            # criteria: check-root·validate-canon·unittest·py_compile·second_oracle·contested_guard·reproduce --changed-only PASS; root d177ce9a 불변. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

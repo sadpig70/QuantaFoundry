@@ -22,7 +22,7 @@ POLICY = {
 ## Execution Tree
 
 ```text
-QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
+QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (done) @v:1.0
     FinalDesignPlan // freeze v1.0 goal, node order, and gates (done)
         # output: DESIGN-QFStdlib-Final, WORKPLAN-QFStdlib-Final, status-QFStdlib-Final, MasterRoadmap node
         # criteria: JSON status valid; workplan has finite v0.4-v1.0 sequence; no code behavior change required. ✅ done
@@ -50,10 +50,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
         # output: docs/API/CLI help aligned, README link/status updated if needed, optional dependency note
         # tests: import qf_stdlib without Cirq heavy path; CLI help exits 0; examples smoke test
         # gate: docs/code smoke + unittest. ✅ done
-    V10FinalReleaseGate // final deterministic v1.0 verification (pending) @dep:V09PackagingPolish
+    V10FinalReleaseGate // final deterministic v1.0 verification (done) @dep:V09PackagingPolish
         # commands: check-root, validate-canon --write-report, unittest, py_compile, second_oracle, contested_guard, reproduce_all --changed-only
         # output: final status done, roadmap done, release report in final answer
-        # criteria: all gates PASS; root unchanged; deferred scope explicit
+        # criteria: all gates PASS; root unchanged; deferred scope explicit. ✅ done
 ```
 
 ## Standard Gates
@@ -77,15 +77,14 @@ python scripts/reproduce_all.py --changed-only
 
 ## Next Node Contract
 
-The next executable node is `V10FinalReleaseGate`.
+There is no remaining executable QF-STDLIB v1.0 node.
 
 ```python
-def execute_v10_final_release_gate() -> None:
-    """Run the final deterministic QF-STDLIB v1.0 release gate."""
-    assert qfstdlib_nodes_done(["FinalDesignPlan", "V04", "V05", "V06", "V07", "V08", "V09"])
-    run_release_commands()
-    update_final_status_and_roadmap()
-    run_standard_gates()
+def qfstdlib_v1_terminal_state() -> None:
+    """State after the final deterministic QF-STDLIB v1.0 release gate."""
+    assert all_nodes_terminal()
+    assert release_commands_passed()
+    assert registry_root() == "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7"
     # acceptance_criteria:
     #   - all stdlib and project gates pass
     #   - root remains unchanged

@@ -5,7 +5,7 @@
 
 ## Current Anchor
 
-- Current completed stdlib state: v0.9
+- Current completed stdlib state: v1.0
 - Registry root: `d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7`
 - Registry counts: 95 modules / 475 unique apps / 550 app files / 75 cached app-side module files
 - Canon state: 55 entries
@@ -24,13 +24,13 @@
 ## Final Goal
 
 ```text
-QFStdlibV1 // sealed registry consumer stdlib for exact lookup, circuit attestation, and proof-carrying recipes (designing) @v:1.0
-    CanonComplete // curated Canon for base gates, algorithms, arithmetic, templates, and structural frontiers (designing)
-    AdapterComplete // convention-pinned external circuit hash adapters with fail-closed semantics (designing)
-    AttestationComplete // user circuit -> Canon proof flow with no false promotion (designing)
-    TemplateComplete // useful proof-carrying recipes over Canon entries, not new seals (designing)
-    UserSurfaceComplete // CLI/API/docs/examples stable enough for public consumption (designing)
-    VerificationComplete // deterministic v1.0 gate suite and release checklist (designing)
+QFStdlibV1 // sealed registry consumer stdlib for exact lookup, circuit attestation, and proof-carrying recipes (done) @v:1.0
+    CanonComplete // curated Canon for base gates, algorithms, arithmetic, templates, and structural frontiers (done)
+    AdapterComplete // convention-pinned external circuit hash adapters with fail-closed semantics (done)
+    AttestationComplete // user circuit -> Canon proof flow with no false promotion (done)
+    TemplateComplete // useful proof-carrying recipes over Canon entries, not new seals (done)
+    UserSurfaceComplete // CLI/API/docs/examples stable enough for public consumption (done)
+    VerificationComplete // deterministic v1.0 gate suite and release checklist (done)
 ```
 
 QF-STDLIB v1.0 is complete when a downstream user can:
@@ -68,7 +68,7 @@ INVARIANTS = {
 ## Gantree
 
 ```text
-QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1.0
+QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (done) @v:1.0
     V04BaseGateCanon // add sealed base modules to Canon (done)
         # input: registry/modules/{x,z,h,s,t,cnot,swap2,cz,toffoli,fredkin,cs,ct,ccz}.sealed.json
         # process: add canonical module keys such as gate/x, gate/h, gate/cnot
@@ -99,11 +99,11 @@ QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1
         # process: API __all__, help text, README doc links, examples, optional dependency notes
         # output: stable v1.0 user surface
         # criteria: python import is lightweight; CLI help covers every supported command. ✅ done
-    V10FinalReleaseGate // v1.0 verification and final report (designing) @dep:V09PackagingPolish
+    V10FinalReleaseGate // v1.0 verification and final report (done) @dep:V09PackagingPolish
         # input: all previous nodes
         # process: run full stdlib + deterministic project gates, update docs/status/roadmap
         # output: QF-STDLIB v1.0 release report and commit
-        # criteria: check-root, validate-canon, unittest, py_compile, second_oracle, contested_guard, reproduce_all --changed-only PASS
+        # criteria: check-root, validate-canon, unittest, py_compile, second_oracle, contested_guard, reproduce_all --changed-only PASS. ✅ done
 ```
 
 ## PPR

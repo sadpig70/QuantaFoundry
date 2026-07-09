@@ -22,7 +22,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 - **95 sealed modules · 475 sealed applications** · registry root `d177ce9a438a…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
-- **QF-STDLIB** exposes a stable Canon lookup, root-anchored attestation, proof-template, and
+- **QF-STDLIB v1.0** exposes a stable Canon lookup, root-anchored attestation, proof-template, and
   convention-pinned adapter surface; start at [`docs/QF-STDLIB.md`](docs/QF-STDLIB.md).
 - Verification core is public as **QPGF** → https://github.com/sadpig70/QPGF (157 self-tests green).
 - Pure non-destructive growth: every prior seal, the 23 frozen consensus keys, and the oracle

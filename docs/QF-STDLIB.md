@@ -2,6 +2,9 @@
 
 QF-STDLIB is a user-facing import and attestation layer over the sealed QuantaFoundry registry.
 
+Status: v1.0 complete. Release gate: `check-root`, `validate-canon`, `unittest`, `py_compile`, `second_oracle`,
+`contested_guard`, and `reproduce_all --changed-only` pass at registry root `d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7`.
+
 It does not create new quantum seals. It lets downstream users name canonical primitives, look them up by key/alias/id/hash, and receive a root-anchored attestation for the exact sealed artifact.
 
 ## What It Adds

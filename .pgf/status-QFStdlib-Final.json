@@ -4,7 +4,7 @@
   "workplan": ".pgf/WORKPLAN-QFStdlib-Final.md",
   "started_at": "2026-07-09T00:00:00+09:00",
   "updated_at": "2026-07-09T00:00:00+09:00",
-  "iteration": 7,
+  "iteration": 8,
   "registry_root_hash": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
   "nodes": {
     "FinalDesignPlan": {
@@ -122,19 +122,26 @@
       }
     },
     "V10FinalReleaseGate": {
-      "status": "pending",
+      "status": "done",
       "outputs": {
         "files_created": [],
-        "files_modified": [],
-        "notes": ""
+        "files_modified": [
+          ".pgf/DESIGN-QFStdlib-Final.md",
+          ".pgf/WORKPLAN-QFStdlib-Final.md",
+          ".pgf/status-QFStdlib-Final.json",
+          ".pgf/DESIGN-MasterRoadmap.md",
+          "README.md",
+          "docs/QF-STDLIB.md"
+        ],
+        "notes": "Closed QF-STDLIB v1.0 with all stdlib/project gates passing; root unchanged; Qiskit deferred scope remains explicit."
       }
     }
   },
   "summary": {
     "total": 8,
-    "done": 7,
+    "done": 8,
     "in-progress": 0,
-    "pending": 1,
+    "pending": 0,
     "blocked": 0
   }
 }
