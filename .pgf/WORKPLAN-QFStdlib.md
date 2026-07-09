@@ -39,4 +39,7 @@ QFStdlibImplementation // implement user-facing stdlib sidecar layer (done) @v:0
     V02CirqAdapter // convention-pinned Cirq circuit hash adapter (done) @dep:V01Hardening
         # output: qf_stdlib.adapters cirq path, adapter-info CLI, docs/tests
         # criteria: explicit qubit_order required; qft/3 Cirq hash matches Canon; endian/global-phase/CLI-fail-closed tests PASS. ✅ done
+    V03AttestCircuit // circuit hash → Canon lookup → root-anchored attestation (done) @dep:V02CirqAdapter
+        # output: qf_stdlib.attest_circuit API, docs/tests
+        # criteria: Cirq qft/3 returns attestation; unknown circuit hash returns None; adapter convention errors propagate. ✅ done
 ```

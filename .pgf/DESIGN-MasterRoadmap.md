@@ -642,6 +642,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_V02CirqAdapter // convention-pinned Cirq exact circuit hash adapter (done) @dep:QFStdlib_V01Hardening
             # output: canonical_hash_with_adapter(..., "cirq", qubit_order=...), adapter-info CLI, docs/tests
             # criteria: qft/3 Cirq hash==Canon; explicit qubit_order required; endian/global-phase/CLI-fail-closed tests PASS. ✅ done
+        QFStdlib_V03AttestCircuit // circuit hash → Canon lookup → attestation API (done) @dep:QFStdlib_V02CirqAdapter
+            # output: attest_circuit(circuit, "cirq", qubit_order=...) Python API, docs/tests
+            # criteria: matched qft/3 returns root-anchored attestation; unknown hash returns None; convention errors propagate. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

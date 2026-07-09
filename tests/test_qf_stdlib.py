@@ -3,7 +3,7 @@ import unittest
 
 import numpy as np
 
-from qf_stdlib import attest, build_with_proof, check_root, load_canon, lookup, validate_canon
+from qf_stdlib import attest, attest_circuit, build_with_proof, check_root, load_canon, lookup, validate_canon
 from qf_stdlib.adapters import adapter_convention, canonical_hash_with_adapter
 from qf_stdlib.errors import AdapterConventionError, UnsupportedAdapter
 from qf_stdlib.registry import load_snapshot
@@ -68,6 +68,31 @@ class QFStdlibTests(unittest.TestCase):
         self.assertEqual(proof["claim"]["semantic_guarantee"], "unitary_equiv")
         self.assertIn("registry_root", proof["anchor"])
         self.assertIn("not a new oracle run", proof["limits"][1])
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_attest_circuit_returns_root_anchored_proof_for_canon_match(self):
+        qubits = cirq.LineQubit.range(3)
+        circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=False))
+        proof = attest_circuit(circuit, "cirq", qubit_order=qubits)
+        self.assertIsNotNone(proof)
+        self.assertEqual(proof["schema"], "qf-attestation-v1")
+        self.assertEqual(proof["subject"]["key"], "qft/3")
+        self.assertEqual(proof["subject"]["u_hash"], lookup("qft/3")["u_hash"])
+        self.assertEqual(proof["proof"]["adapter"]["computed_u_hash"], lookup("qft/3")["u_hash"])
+        self.assertEqual(proof["proof"]["adapter"]["convention"]["adapter"], "cirq")
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_attest_circuit_unknown_hash_fails_closed(self):
+        qubits = cirq.LineQubit.range(1)
+        circuit = cirq.Circuit(cirq.X(qubits[0]))
+        self.assertIsNone(attest_circuit(circuit, "cirq", qubit_order=qubits))
+
+    @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
+    def test_attest_circuit_preserves_adapter_convention_errors(self):
+        qubits = cirq.LineQubit.range(2)
+        circuit = cirq.Circuit(cirq.qft(*qubits, without_reverse=False))
+        with self.assertRaises(AdapterConventionError):
+            attest_circuit(circuit, "cirq")
 
     def test_template_certificate_keeps_partial_scope(self):
         cert = build_with_proof("qpe_skeleton")

@@ -4,7 +4,7 @@
   "workplan": ".pgf/WORKPLAN-QFStdlib.md",
   "started_at": "2026-07-09T00:00:00+09:00",
   "updated_at": "2026-07-09T00:00:00+09:00",
-  "iteration": 4,
+  "iteration": 5,
   "nodes": {
     "DesignReview": {
       "status": "done",
@@ -107,11 +107,24 @@
         ],
         "notes": "Added a convention-pinned Cirq adapter using QPGF hash_unitary with explicit qubit_order, global-phase normalization, endian negative coverage, and CLI fail-closed behavior."
       }
+    },
+    "V03AttestCircuit": {
+      "status": "done",
+      "outputs": {
+        "files_created": [],
+        "files_modified": [
+          "qf_stdlib/attest.py",
+          "qf_stdlib/__init__.py",
+          "tests/test_qf_stdlib.py",
+          "docs/QF-STDLIB.md"
+        ],
+        "notes": "Added attest_circuit() to convert a convention-pinned adapter hash into a Canon lookup attestation; unknown hashes fail closed with None."
+      }
     }
   },
   "summary": {
-    "total": 8,
-    "done": 8,
+    "total": 9,
+    "done": 9,
     "in-progress": 0,
     "designing": 0,
     "blocked": 0

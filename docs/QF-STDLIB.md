@@ -9,6 +9,7 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 - `registry/CANON.json`: canonical names for selected sealed primitives.
 - `qf_stdlib.lookup()`: exact lookup by canonical key, alias, registry id, or `u_hash`.
 - `qf_stdlib.attest()`: proof object anchored to `registry_root_hash`.
+- `qf_stdlib.attest_circuit()`: adapter-computed circuit hash lookup that returns an attestation only on Canon match.
 - `qf_stdlib.check_root()`: fast drift guard between Canon and the live registry manifest root.
 - `qf_stdlib.canonical_hash_with_adapter()`: convention-pinned circuit hash adapters, currently Cirq only.
 - `qf_stdlib.templates`: proof-carrying recipes that compose canonical attestations without pretending to create a new seal.
@@ -46,7 +47,7 @@ python scripts/qf_stdlib.py build-canon --write-report
 ## Python API
 
 ```python
-from qf_stdlib import attest, build_with_proof, canonical_hash_with_adapter, lookup
+from qf_stdlib import attest, attest_circuit, build_with_proof, canonical_hash_with_adapter, lookup
 
 entry = lookup("qft/8")
 proof = attest("qft/8")
@@ -94,6 +95,14 @@ circuit_hash = canonical_hash_with_adapter(circuit, "cirq", qubit_order=qubits)
 assert circuit_hash == lookup("qft/3")["u_hash"]
 ```
 
+Root-anchored circuit attestation:
+
+```python
+proof = attest_circuit(circuit, "cirq", qubit_order=qubits)
+assert proof["subject"]["key"] == "qft/3"
+assert proof["proof"]["adapter"]["computed_u_hash"] == proof["subject"]["u_hash"]
+```
+
 The Cirq adapter requires explicit `qubit_order`. `without_reverse=True`, omitted qubit order, measurements, and
 unsupported frameworks fail closed instead of being normalized silently. CLI `attest --adapter cirq` is intentionally
 rejected because arbitrary circuit objects must enter through the Python API.
@@ -113,5 +122,8 @@ This arbitrary user circuit is correct.
 This circuit ran on hardware.
 This derived template is a new sealed registry artifact.
 ```
+
+For `attest_circuit()`, a returned proof means only that the adapter-computed `u_hash` exactly matches an existing
+Canon entry. Unknown circuit hashes return `None`; they are not approximate-matched or promoted.
 
 For structural Shor entries, QF-STDLIB preserves the existing scope: the modexp core may be `subspace_permutation_verified`, while full dense unitary equivalence including H and iQFT remains unclaimed.
