@@ -629,6 +629,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3abe. TrackHE11 P4: qutrit(d=3) 맥락성 — Yu-Oh 13 자체정정 + KCBS pentagon witness (seal 아님)
+    rc, out = run(["scripts/ks_qutrit_observe.py", "--quick"])
+    result["steps"]["ks_qutrit_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
