@@ -647,6 +647,12 @@ def main():
         "rc": rc, "all_ok": "all_ok=True" in out,
         "pass": rc == 0 and "all_ok=True" in out}
 
+    # 3abh. TrackHE11 P3: treewidth "제11 검증경로" 정직 판정 (certificate layer 강등) witness (seal 아님)
+    rc, out = run(["scripts/treewidth_verdict_observe.py", "--quick"])
+    result["steps"]["treewidth_verdict_observe"] = {
+        "rc": rc, "all_ok": "all_ok=True" in out,
+        "pass": rc == 0 and "all_ok=True" in out}
+
     # 3aag. TrackHE8 P2: B₃ 초팔면체군 ζ-free 정수-monomial 구조 witness (S₄ ζ₃ 상보 positive, seal 아님)
     rc, out = run(["scripts/b3_observe.py", "--quick"])
     result["steps"]["b3_observe"] = {
