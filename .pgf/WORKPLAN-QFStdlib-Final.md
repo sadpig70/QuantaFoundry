@@ -38,10 +38,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
         # output: Canon category metadata, CLI categories/list --category/summary, API helpers
         # tests: deterministic category ordering, unknown category fail-closed, docs examples
         # gate: validate-canon + unittest. ✅ done
-    V07TemplateLibrary // expand proof-carrying recipe catalog (pending) @dep:V06CanonUX
+    V07TemplateLibrary // expand proof-carrying recipe catalog (done) @dep:V06CanonUX
         # output: qsvt_consumer, shor_modexp_attest, base_gate_bundle, qpe_minimal templates
         # tests: validate-template/build-template for every template; structural limits preserved
-        # gate: unittest + docs examples
+        # gate: unittest + docs examples. ✅ done
     V08AdapterDecisionGate // decide optional non-Cirq adapters (pending) @dep:V05CirqBaseCoverage
         # output: implementation for a convention-proven adapter OR explicit deferred decision record
         # tests: if implemented, positive/negative convention tests equivalent to Cirq; if deferred, docs/status record why
@@ -77,29 +77,24 @@ python scripts/reproduce_all.py --changed-only
 
 ## Next Node Contract
 
-The next executable node is `V07TemplateLibrary`.
+The next executable node is `V08AdapterDecisionGate`.
 
 ```python
-def execute_v07_template_library() -> None:
-    """Expand proof-carrying recipes without creating new seals."""
-    templates = [
-        "qsvt_consumer",
-        "shor_modexp_attest",
-        "base_gate_bundle",
-        "qpe_minimal",
-    ]
-    for template_id in templates:
-        refs = design_template_refs(template_id)
-        assert all(ref_resolves_through_canon(ref) for ref in refs)
-        assert template_claims_no_new_seal(template_id)
-    add_templates()
-    validate_all_templates()
+def execute_v08_adapter_decision_gate() -> None:
+    """Decide optional non-Cirq adapters by convention evidence only."""
+    candidates = ["qiskit", "pennylane"]
+    for adapter in candidates:
+        evidence = probe_adapter_convention(adapter)
+        if evidence.can_pin_qubit_order and evidence.can_pin_global_phase and evidence.has_positive_negative_tests:
+            implement_adapter(adapter, evidence)
+        else:
+            record_deferred_adapter(adapter, evidence.reason)
     run_standard_gates()
     # acceptance_criteria:
-    #   - every template ref resolves through Canon
-    #   - every certificate aggregates existing attestations only
-    #   - structural frontier templates preserve structural/subspace limits
-    #   - docs examples build successfully
+    #   - no adapter is implemented without exact convention evidence
+    #   - unsupported adapters keep fail-closed behavior
+    #   - lookup-only imports remain lightweight
+    #   - docs/status record implemented or deferred decision
 ```
 
 ## Status Update Rule

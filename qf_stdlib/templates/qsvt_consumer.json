@@ -1,0 +1,62 @@
+{
+  "schema": "qf-template-v1",
+  "template_id": "qsvt_consumer",
+  "description": "Import a canonical projector QSVT consumer with its block-encoding and QSP context.",
+  "parameters": {
+    "degree": {
+      "type": "enum",
+      "values": [
+        "2",
+        "3"
+      ],
+      "default": "3"
+    }
+  },
+  "requires": [
+    {
+      "name": "projector_block_encoding",
+      "canon_key": "block-encoding/proj",
+      "role": "projector block-encoding substrate"
+    },
+    {
+      "name": "qsp_degree_3",
+      "canon_key": "qsp/d3",
+      "role": "degree-3 QSP primitive"
+    },
+    {
+      "name": "qsvt_projector_degree_2",
+      "canon_key": "qsvt/proj/d2",
+      "role": "degree-2 projector QSVT consumer"
+    },
+    {
+      "name": "qsvt_projector_degree_3",
+      "canon_key": "qsvt/proj/d3",
+      "role": "degree-3 projector QSVT consumer"
+    }
+  ],
+  "assembly": [
+    {
+      "op": "choose",
+      "param": "degree",
+      "options": {
+        "2": "qsvt_projector_degree_2",
+        "3": "qsvt_projector_degree_3"
+      }
+    },
+    {
+      "op": "context",
+      "names": [
+        "projector_block_encoding",
+        "qsp_degree_3"
+      ]
+    }
+  ],
+  "certificate_rule": {
+    "type": "exact_consumer_import_with_context",
+    "claim": "The selected QSVT consumer is a sealed Canon entry; context refs are separately attested entries."
+  },
+  "limits": [
+    "This template does not derive a new polynomial transformation.",
+    "Changing phases, block encodings, or degree requires separate attestation."
+  ]
+}

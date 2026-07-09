@@ -4,7 +4,7 @@
   "workplan": ".pgf/WORKPLAN-QFStdlib-Final.md",
   "started_at": "2026-07-09T00:00:00+09:00",
   "updated_at": "2026-07-09T00:00:00+09:00",
-  "iteration": 4,
+  "iteration": 5,
   "registry_root_hash": "d177ce9a438a1b2f6a9f9f042e69f5263267148fb3f90930fe611e8ec0a48af7",
   "nodes": {
     "FinalDesignPlan": {
@@ -69,11 +69,22 @@
       }
     },
     "V07TemplateLibrary": {
-      "status": "pending",
+      "status": "done",
       "outputs": {
-        "files_created": [],
-        "files_modified": [],
-        "notes": ""
+        "files_created": [
+          "qf_stdlib/templates/base_gate_bundle.json",
+          "qf_stdlib/templates/qpe_minimal.json",
+          "qf_stdlib/templates/qsvt_consumer.json",
+          "qf_stdlib/templates/shor_modexp_attest.json"
+        ],
+        "files_modified": [
+          "tests/test_qf_stdlib.py",
+          "docs/QF-STDLIB.md",
+          ".pgf/DESIGN-QFStdlib-Final.md",
+          ".pgf/WORKPLAN-QFStdlib-Final.md",
+          ".pgf/DESIGN-MasterRoadmap.md"
+        ],
+        "notes": "Added four proof-carrying templates; all refs resolve through Canon and shor_modexp_attest preserves structural/subspace scope."
       }
     },
     "V08AdapterDecisionGate": {
@@ -103,9 +114,9 @@
   },
   "summary": {
     "total": 8,
-    "done": 4,
+    "done": 5,
     "in-progress": 0,
-    "pending": 4,
+    "pending": 3,
     "blocked": 0
   }
 }

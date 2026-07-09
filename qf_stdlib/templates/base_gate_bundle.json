@@ -1,0 +1,101 @@
+{
+  "schema": "qf-template-v1",
+  "template_id": "base_gate_bundle",
+  "description": "A compact import bundle for the canonical sealed base gate surface.",
+  "parameters": {},
+  "requires": [
+    {
+      "name": "x",
+      "canon_key": "gate/x",
+      "role": "Pauli-X base gate"
+    },
+    {
+      "name": "z",
+      "canon_key": "gate/z",
+      "role": "Pauli-Z base gate"
+    },
+    {
+      "name": "h",
+      "canon_key": "gate/h",
+      "role": "Hadamard base gate"
+    },
+    {
+      "name": "s",
+      "canon_key": "gate/s",
+      "role": "S phase base gate"
+    },
+    {
+      "name": "t",
+      "canon_key": "gate/t",
+      "role": "T phase base gate"
+    },
+    {
+      "name": "cnot",
+      "canon_key": "gate/cnot",
+      "role": "controlled-X base gate"
+    },
+    {
+      "name": "swap",
+      "canon_key": "gate/swap",
+      "role": "two-qubit SWAP base gate"
+    },
+    {
+      "name": "cz",
+      "canon_key": "gate/cz",
+      "role": "controlled-Z base gate"
+    },
+    {
+      "name": "toffoli",
+      "canon_key": "gate/toffoli",
+      "role": "Toffoli base gate"
+    },
+    {
+      "name": "fredkin",
+      "canon_key": "gate/fredkin",
+      "role": "Fredkin base gate"
+    },
+    {
+      "name": "cs",
+      "canon_key": "gate/cs",
+      "role": "controlled-S base gate"
+    },
+    {
+      "name": "ct",
+      "canon_key": "gate/ct",
+      "role": "controlled-T base gate"
+    },
+    {
+      "name": "ccz",
+      "canon_key": "gate/ccz",
+      "role": "controlled-controlled-Z base gate"
+    }
+  ],
+  "assembly": [
+    {
+      "op": "import_bundle",
+      "names": [
+        "x",
+        "z",
+        "h",
+        "s",
+        "t",
+        "cnot",
+        "swap",
+        "cz",
+        "toffoli",
+        "fredkin",
+        "cs",
+        "ct",
+        "ccz"
+      ]
+    }
+  ],
+  "certificate_rule": {
+    "type": "attestation_bundle",
+    "claim": "Each listed base gate is individually anchored to its canonical registry entry."
+  },
+  "limits": [
+    "This bundle imports existing sealed primitives only.",
+    "The bundle does not certify any circuit assembled from these gates."
+  ]
+}

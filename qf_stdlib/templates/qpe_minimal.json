@@ -1,0 +1,63 @@
+{
+  "schema": "qf-template-v1",
+  "template_id": "qpe_minimal",
+  "description": "Minimal QPE import recipe over the sealed S/T phase-estimation examples and small inverse QFT entries.",
+  "parameters": {
+    "target": {
+      "type": "enum",
+      "values": [
+        "s",
+        "t"
+      ],
+      "default": "s"
+    }
+  },
+  "requires": [
+    {
+      "name": "qpe_s",
+      "canon_key": "qpe/s",
+      "role": "sealed minimal QPE over the canonical S gate"
+    },
+    {
+      "name": "qpe_t",
+      "canon_key": "qpe/t",
+      "role": "sealed minimal QPE over the canonical T gate"
+    },
+    {
+      "name": "iqft2",
+      "canon_key": "iqft/2",
+      "role": "small inverse Fourier component for user-side variants"
+    },
+    {
+      "name": "iqft3",
+      "canon_key": "iqft/3",
+      "role": "three-qubit inverse Fourier component for user-side variants"
+    }
+  ],
+  "assembly": [
+    {
+      "op": "choose",
+      "param": "target",
+      "options": {
+        "s": "qpe_s",
+        "t": "qpe_t"
+      }
+    },
+    {
+      "op": "optional_reference",
+      "names": [
+        "iqft2",
+        "iqft3"
+      ],
+      "purpose": "building externally attested small QPE variants"
+    }
+  ],
+  "certificate_rule": {
+    "type": "exact_import_plus_variant_refs",
+    "claim": "The selected qpe/s or qpe/t primitive is exact; optional IQFT refs do not certify a new user variant."
+  },
+  "limits": [
+    "User-modified QPE variants require separate circuit attestation.",
+    "Optional IQFT refs are imported attestations, not a proof of a newly assembled QPE circuit."
+  ]
+}

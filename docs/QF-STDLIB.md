@@ -17,6 +17,8 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 
 The current Canon contains 55 entries across base gates, QFT/iQFT, adders, Grover, QPE, Trotter/Suzuki,
 block-encoding, QSP/QSVT, qROM, SELECT-PREPARE, RM15 code substrates, and Shor-237 modular multiplier components.
+The template library contains `qft_import`, `qpe_skeleton`, `trotter_stack`, `base_gate_bundle`, `qpe_minimal`,
+`qsvt_consumer`, and `shor_modexp_attest`.
 
 ## What It Does Not Claim
 
@@ -40,6 +42,9 @@ python scripts/qf_stdlib.py attest qft/8
 python scripts/qf_stdlib.py adapter-info cirq
 python scripts/qf_stdlib.py validate-template qpe_skeleton
 python scripts/qf_stdlib.py build-template qpe_skeleton
+python scripts/qf_stdlib.py build-template base_gate_bundle
+python scripts/qf_stdlib.py build-template qsvt_consumer
+python scripts/qf_stdlib.py build-template shor_modexp_attest
 ```
 
 `build-canon` is the only command that writes `registry/CANON.json`:
@@ -68,6 +73,9 @@ gates = filter_canon_entries(load_canon(), "gate")
 entry = lookup("qft/8")
 proof = attest("qft/8")
 cert = build_with_proof("qpe_skeleton")
+gate_bundle = build_with_proof("base_gate_bundle")
+qsvt = build_with_proof("qsvt_consumer")
+shor = build_with_proof("shor_modexp_attest")
 summary = summarize_canon(load_canon())
 ```
 
@@ -98,9 +106,15 @@ Proof-carrying recipe certificate:
 ```bash
 python scripts/qf_stdlib.py build-template qpe_skeleton
 python scripts/qf_stdlib.py build-template trotter_stack
+python scripts/qf_stdlib.py build-template base_gate_bundle
+python scripts/qf_stdlib.py build-template qpe_minimal
+python scripts/qf_stdlib.py build-template qsvt_consumer
+python scripts/qf_stdlib.py build-template shor_modexp_attest
 ```
 
-These certificates aggregate existing Canon attestations. They are not new registry seals.
+These certificates aggregate existing Canon attestations. They are not new registry seals. `shor_modexp_attest`
+intentionally preserves the `subspace_permutation_verified` scope of `shor/237/structural`; it does not upgrade
+the frontier to dense unitary equivalence or claim hardware execution.
 
 Convention-pinned Cirq hash:
 

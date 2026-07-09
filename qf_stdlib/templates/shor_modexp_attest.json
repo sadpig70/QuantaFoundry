@@ -1,0 +1,65 @@
+{
+  "schema": "qf-template-v1",
+  "template_id": "shor_modexp_attest",
+  "description": "Aggregate the Shor-237 structural frontier with its canonical modular multiplier components.",
+  "parameters": {
+    "N": {
+      "type": "int",
+      "default": 237
+    }
+  },
+  "requires": [
+    {
+      "name": "shor_frontier",
+      "canon_key": "shor/237/structural",
+      "role": "structural Shor-237 frontier"
+    },
+    {
+      "name": "cmul_a2",
+      "canon_key": "cmul/237/a2",
+      "role": "modular multiplier component"
+    },
+    {
+      "name": "cmul_a4",
+      "canon_key": "cmul/237/a4",
+      "role": "modular multiplier component"
+    },
+    {
+      "name": "cmul_a16",
+      "canon_key": "cmul/237/a16",
+      "role": "modular multiplier component"
+    },
+    {
+      "name": "cmul_a124",
+      "canon_key": "cmul/237/a124",
+      "role": "modular multiplier component"
+    },
+    {
+      "name": "iqft",
+      "canon_key": "iqft/8",
+      "role": "Fourier post-processing reference"
+    }
+  ],
+  "assembly": [
+    {
+      "op": "aggregate_attestations",
+      "names": [
+        "shor_frontier",
+        "cmul_a2",
+        "cmul_a4",
+        "cmul_a16",
+        "cmul_a124",
+        "iqft"
+      ]
+    }
+  ],
+  "certificate_rule": {
+    "type": "mixed_structural_attestation_bundle",
+    "claim": "The modular components are exact Canon entries while the Shor frontier keeps its structural/subspace scope."
+  },
+  "limits": [
+    "The Shor frontier entry is not promoted to dense unitary equivalence.",
+    "This certificate does not claim full Shor factoring behavior or hardware execution.",
+    "The IQFT reference is anchored separately and does not upgrade the structural frontier."
+  ]
+}

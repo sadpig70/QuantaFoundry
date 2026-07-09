@@ -11,9 +11,11 @@ from qf_stdlib import (
     filter_canon_entries,
     list_categories,
     load_canon,
+    load_template,
     lookup,
     summarize_canon,
     validate_canon,
+    validate_template,
 )
 from qf_stdlib.adapters import adapter_convention, canonical_hash_with_adapter
 from qf_stdlib.errors import AdapterConventionError, NotFoundError, UnsupportedAdapter
@@ -160,6 +162,52 @@ class QFStdlibTests(unittest.TestCase):
         self.assertEqual(cert["template_id"], "qpe_skeleton")
         self.assertEqual(cert["steps"][0]["attestation"]["subject"]["id"], "iqft8")
         self.assertTrue(any("does not certify the target unitary" in limit for limit in cert["limits"]))
+
+    def test_template_library_resolves_all_canon_refs(self):
+        canon = load_canon()
+        template_ids = [
+            "qft_import",
+            "qpe_skeleton",
+            "trotter_stack",
+            "base_gate_bundle",
+            "qpe_minimal",
+            "qsvt_consumer",
+            "shor_modexp_attest",
+        ]
+        for template_id in template_ids:
+            with self.subTest(template_id=template_id):
+                template = load_template(template_id)
+                self.assertEqual(validate_template(template, canon=canon), [])
+                cert = build_with_proof(template_id, canon=canon)
+                self.assertEqual(cert["schema"], "qf-template-cert-v1")
+                self.assertEqual(cert["template_id"], template_id)
+                self.assertEqual(cert["root_anchor"], canon["_generated_from"]["registry_root_hash"])
+                self.assertTrue(cert["steps"])
+                self.assertTrue(any("not a sealed registry artifact" in limit for limit in cert["limits"]))
+                for step in cert["steps"]:
+                    key = step["attestation"]["subject"]["key"]
+                    self.assertIsNotNone(lookup(key, canon=canon))
+
+    def test_new_template_library_preserves_scope_boundaries(self):
+        base = build_with_proof("base_gate_bundle")
+        self.assertEqual(len(base["steps"]), 13)
+        self.assertEqual({step["attestation"]["subject"]["kind"] for step in base["steps"]}, {"module"})
+
+        qsvt = build_with_proof("qsvt_consumer")
+        qsvt_keys = {step["attestation"]["subject"]["key"] for step in qsvt["steps"]}
+        self.assertIn("block-encoding/proj", qsvt_keys)
+        self.assertIn("qsvt/proj/d3", qsvt_keys)
+
+        qpe = build_with_proof("qpe_minimal")
+        qpe_keys = {step["attestation"]["subject"]["key"] for step in qpe["steps"]}
+        self.assertIn("qpe/s", qpe_keys)
+        self.assertIn("qpe/t", qpe_keys)
+
+        shor = build_with_proof("shor_modexp_attest")
+        guarantees = {step["attestation"]["claim"]["semantic_guarantee"] for step in shor["steps"]}
+        self.assertIn("subspace_permutation_verified", guarantees)
+        self.assertEqual(shor["composition_claim"]["scope"], "mixed guarantees; see per-step limits and template certificate_rule")
+        self.assertTrue(any("not promoted to dense unitary equivalence" in limit for limit in shor["limits"]))
 
     def test_duplicate_alias_fails_closed(self):
         snapshot = load_snapshot()
