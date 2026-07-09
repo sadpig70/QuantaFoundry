@@ -66,11 +66,11 @@ INVARIANTS = {
 
 ```text
 QFStdlibFinal // v1.0 convergence plan for user-facing stdlib (in-progress) @v:1.0
-    V04BaseGateCanon // add sealed base modules to Canon (designing)
+    V04BaseGateCanon // add sealed base modules to Canon (done)
         # input: registry/modules/{x,z,h,s,t,cnot,swap2,cz,toffoli,fredkin,cs,ct,ccz}.sealed.json
         # process: add canonical module keys such as gate/x, gate/h, gate/cnot
         # output: expanded registry/CANON.json and tests
-        # criteria: validate-canon PASS; no cached app-side module exposure; Cirq base gate positive coverage begins
+        # criteria: validate-canon PASS; no cached app-side module exposure; base gate lookup/attest tests PASS. ✅ done
     V05CirqBaseCoverage // extend attest_circuit positive tests beyond QFT (designing) @dep:V04BaseGateCanon
         # input: base gate Canon entries and Cirq unitary circuits
         # process: test X/H/CNOT/CZ/SWAP/Toffoli/Fredkin where Cirq conventions are exact

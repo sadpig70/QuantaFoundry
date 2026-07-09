@@ -26,10 +26,10 @@ QFStdlibFinalWorkplan // finite path from v0.3 to v1.0 (in-progress) @v:1.0
     FinalDesignPlan // freeze v1.0 goal, node order, and gates (done)
         # output: DESIGN-QFStdlib-Final, WORKPLAN-QFStdlib-Final, status-QFStdlib-Final, MasterRoadmap node
         # criteria: JSON status valid; workplan has finite v0.4-v1.0 sequence; no code behavior change required. ✅ done
-    V04BaseGateCanon // expand Canon with sealed base gate modules (pending) @dep:FinalDesignPlan
+    V04BaseGateCanon // expand Canon with sealed base gate modules (done) @dep:FinalDesignPlan
         # output: gate/x, gate/z, gate/h, gate/s, gate/t, gate/cnot, gate/swap, gate/cz, gate/toffoli, gate/fredkin, gate/cs, gate/ct, gate/ccz
         # tests: validate-canon, lookup by key/alias/id/hash, no cached app-side exposure
-        # gate: unittest + py_compile + changed-only reproduce
+        # gate: unittest + py_compile + changed-only reproduce. ✅ done
     V05CirqBaseCoverage // attest_circuit positive/negative coverage for base gates (pending) @dep:V04BaseGateCanon
         # output: Cirq X/H/CNOT/CZ/SWAP/Toffoli/Fredkin tests where conventions match Canon
         # tests: positive hash match, qubit_order mistakes, measurement rejection, unsupported adapter

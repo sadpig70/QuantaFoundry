@@ -648,6 +648,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         QFStdlib_FinalPlan // v1.0 최종목표·유한 단계 설계 고정 (done) @dep:QFStdlib_V03AttestCircuit
             # output: .pgf/DESIGN-QFStdlib-Final.md, .pgf/WORKPLAN-QFStdlib-Final.md, .pgf/status-QFStdlib-Final.json
             # criteria: v0.4~v1.0 단계·검증게이트·정직경계가 구현 전 고정됨. ✅ done
+        QFStdlib_V04BaseGateCanon // sealed base module Canon 확장 (done) @dep:QFStdlib_FinalPlan
+            # output: gate/x,z,h,s,t,cnot,swap,cz,toffoli,fredkin,cs,ct,ccz + Canon 55 entries
+            # criteria: validate-canon·lookup·attest·unittest·py_compile·second_oracle·contested_guard·reproduce --changed-only PASS. ✅ done
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

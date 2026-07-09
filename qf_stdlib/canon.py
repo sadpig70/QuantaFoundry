@@ -36,6 +36,19 @@ GUARANTEE_RANK = {
 
 
 SEED_ENTRIES: list[dict[str, Any]] = [
+    {"key": "gate/x", "kind": "module", "id": "x_gate", "aliases": ["x", "pauli/x", "x_gate"], "reason": "canonical Pauli-X base gate"},
+    {"key": "gate/z", "kind": "module", "id": "z_gate", "aliases": ["z", "pauli/z", "z_gate"], "reason": "canonical Pauli-Z base gate"},
+    {"key": "gate/h", "kind": "module", "id": "h_gate", "aliases": ["h", "hadamard", "h_gate"], "reason": "canonical Hadamard base gate"},
+    {"key": "gate/s", "kind": "module", "id": "s_gate", "aliases": ["s", "phase/s", "s_gate"], "reason": "canonical S phase base gate"},
+    {"key": "gate/t", "kind": "module", "id": "t_gate", "aliases": ["t", "phase/t", "t_gate"], "reason": "canonical T phase base gate"},
+    {"key": "gate/cnot", "kind": "module", "id": "cnot", "aliases": ["cnot", "cx"], "reason": "canonical controlled-X base gate"},
+    {"key": "gate/swap", "kind": "module", "id": "swap2", "aliases": ["swap", "swap2"], "reason": "canonical two-qubit SWAP base gate"},
+    {"key": "gate/cz", "kind": "module", "id": "cz", "aliases": ["cz", "controlled-z"], "reason": "canonical controlled-Z base gate"},
+    {"key": "gate/toffoli", "kind": "module", "id": "toffoli", "aliases": ["toffoli", "ccx"], "reason": "canonical Toffoli base gate"},
+    {"key": "gate/fredkin", "kind": "module", "id": "fredkin", "aliases": ["fredkin", "cswap"], "reason": "canonical Fredkin base gate"},
+    {"key": "gate/cs", "kind": "module", "id": "cs_gate", "aliases": ["cs", "controlled-s", "cs_gate"], "reason": "canonical controlled-S base gate"},
+    {"key": "gate/ct", "kind": "module", "id": "ct_gate", "aliases": ["ct", "controlled-t", "ct_gate"], "reason": "canonical controlled-T base gate"},
+    {"key": "gate/ccz", "kind": "module", "id": "ccz", "aliases": ["ccz", "controlled-controlled-z"], "reason": "canonical controlled-controlled-Z base gate"},
     {"key": "qft/2", "kind": "app", "id": "qft2_pipeline", "aliases": ["qft2", "fourier/qft/2"], "reason": "small QFT pipeline"},
     {"key": "qft/3", "kind": "app", "id": "qft3_pipeline", "aliases": ["qft3", "fourier/qft/3"], "reason": "small QFT pipeline"},
     {"key": "qft/4", "kind": "app", "id": "qft4_pipeline", "aliases": ["qft4", "fourier/qft/4"], "reason": "baseline QFT pipeline"},

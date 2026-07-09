@@ -20,7 +20,7 @@ class QFStdlibTests(unittest.TestCase):
         canon = load_canon()
         report = validate_canon(canon, snapshot)
         self.assertTrue(report.ok, report.errors)
-        self.assertGreaterEqual(report.entries, 42)
+        self.assertGreaterEqual(report.entries, 55)
         self.assertEqual(canon["_generated_from"]["registry_root_hash"], snapshot.registry_root_hash)
 
     def test_root_check_is_fast_drift_guard(self):
@@ -47,8 +47,30 @@ class QFStdlibTests(unittest.TestCase):
             "qsp/d5",
             "qsvt/pauli2/d3",
             "cmul/237/a2",
+            "gate/x",
+            "gate/h",
+            "gate/cnot",
+            "gate/toffoli",
+            "gate/ccz",
         ):
             self.assertIn(key, canon["canon"])
+
+    def test_base_gate_lookup_by_key_alias_id_and_hash(self):
+        canon = load_canon()
+        entry = lookup("gate/cnot", canon=canon)
+        self.assertIsNotNone(entry)
+        self.assertEqual(entry["kind"], "module")
+        self.assertEqual(entry["id"], "cnot")
+        self.assertEqual(lookup("cx", canon=canon)["key"], "gate/cnot")
+        self.assertEqual(lookup("cnot", canon=canon)["key"], "gate/cnot")
+        self.assertEqual(lookup(entry["u_hash"], canon=canon)["key"], "gate/cnot")
+
+    def test_base_gate_attestation_preserves_module_scope(self):
+        proof = attest("gate/h")
+        self.assertIsNotNone(proof)
+        self.assertEqual(proof["subject"]["kind"], "module")
+        self.assertEqual(proof["subject"]["id"], "h_gate")
+        self.assertEqual(proof["claim"]["semantic_guarantee"], "unitary_equiv")
 
     def test_lookup_by_key_alias_id_and_hash(self):
         canon = load_canon()
@@ -84,7 +106,7 @@ class QFStdlibTests(unittest.TestCase):
     @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")
     def test_attest_circuit_unknown_hash_fails_closed(self):
         qubits = cirq.LineQubit.range(1)
-        circuit = cirq.Circuit(cirq.X(qubits[0]))
+        circuit = cirq.Circuit(cirq.MatrixGate(np.diag([1, np.exp(0.123j)])).on(qubits[0]))
         self.assertIsNone(attest_circuit(circuit, "cirq", qubit_order=qubits))
 
     @unittest.skipUnless(cirq is not None, "cirq optional dependency is unavailable")

@@ -14,8 +14,8 @@ It does not create new quantum seals. It lets downstream users name canonical pr
 - `qf_stdlib.canonical_hash_with_adapter()`: convention-pinned circuit hash adapters, currently Cirq only.
 - `qf_stdlib.templates`: proof-carrying recipes that compose canonical attestations without pretending to create a new seal.
 
-The current Canon contains 42 entries across QFT/iQFT, adders, Grover, QPE, Trotter/Suzuki, block-encoding,
-QSP/QSVT, qROM, SELECT-PREPARE, RM15 code substrates, and Shor-237 modular multiplier components.
+The current Canon contains 55 entries across base gates, QFT/iQFT, adders, Grover, QPE, Trotter/Suzuki,
+block-encoding, QSP/QSVT, qROM, SELECT-PREPARE, RM15 code substrates, and Shor-237 modular multiplier components.
 
 ## What It Does Not Claim
 
@@ -70,6 +70,7 @@ Exact Fourier lookup and attestation:
 ```bash
 python scripts/qf_stdlib.py lookup qft/7
 python scripts/qf_stdlib.py attest fourier/qft/7
+python scripts/qf_stdlib.py attest gate/cnot
 ```
 
 Proof-carrying recipe certificate:
