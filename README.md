@@ -60,7 +60,7 @@ CLI: `python scripts/qf_stdlib.py categories | lookup gate/h | attest gate/h` �
 | Grade | What it means | Where |
 |---|---|---|
 | `unitary_equiv` (Tier-0/2) | exact unitary equality vs an independent golden (dense or Clifford tableau) | 95 modules + 518 app entries |
-| `unitary_equiv_column_exact` | **full unitary** verified column-by-column vs the Shor spectral formula (float-atol grade, *not* ring-exact) | 27 large Shor apps (n≤18) |
+| `unitary_equiv_column_exact` | **full unitary** verified column-by-column vs the Shor spectral formula (float-atol grade, *not* ring-exact) | 28 large Shor apps (n≤18) |
 | `subspace_permutation_verified` | modexp core exact on the computational basis (independent integer arithmetic) | shor1285/3683, rs73 |
 | ε-certified (orthogonal axis) | symbolic-exact **upper bound** on distance to the target `e^{-iHt}` | 9 Trotter/Suzuki apps, [`APPROX-GUARANTEES.json`](registry/APPROX-GUARANTEES.json) |
 | observation | exact math witnesses (topology, contextuality, MTC, knots, …) — **not seals** | `.pgf/proofs/*-OBSERVE.json` |
@@ -75,7 +75,7 @@ large Shor apps stay illustrative only.
 ## What's inside (short version)
 
 Bell/GHZ → QFT/QPE → Grover/amplitude estimation → **Shor period-finding** (15, 21, and a
-27-app distinct-semiprime frontier with full-unitary column verification) → Trotter/Suzuki/VQE/QAOA
+28-app distinct-semiprime frontier with full-unitary column verification) → Trotter/Suzuki/VQE/QAOA
 → QEC stabilizer codes (Steane, RM15, BCH d≥5, HGP, concatenated [[25,1,9]], [[8,3,2]] transversal
 CCZ) → QSVT → fermionic encodings → non-abelian group Fourier (S₃/D₄/Q₈/B₃) → topological logical
 operations, MTC modular data (SU(2)₃/SU(2)₄, Drinfeld double D(S₃)), knot invariants, magic/
