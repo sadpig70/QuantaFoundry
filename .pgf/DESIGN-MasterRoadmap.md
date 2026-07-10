@@ -691,6 +691,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     TrackRingColumn // PathsumRingExt — shor 27종 ring-exact 컬럼 증인(ℤ[ω_2^t]·float 0), design01 §2.4 소비 (done — 2026-07-10 폐합: iQFT ℤ[ζ256] 65536/65536 float 0·27종 커버·root 불변)
         # CQV column_exact(float-atol)의 이종 exact 증인 병기: path A=회로 기호실행(정수 ℤ[ω] 벡터) vs
         # path B=스펙트럼 공식 — 정수 완전일치 판정(atol 없음). 신규 module 0·root 불변 sidecar
+    TrackFrontier247 // frontier 무인 연속 — shor247=13×19 자율봉인 + 인프라 통합 first real seal (done — 2026-07-10: 484앱·root cf7a8ca8·CQV+ring 자동커버 실증)
+        # next_unsealed_target=247(a=2·t=8·c8x 기봉인·synthesizable). factory --seal→build→semantic→citation→앵커→second_oracle→reproduce --changed-only→commit
+        # ★검증: 신규 frontier 앱이 CQV column_exact + ring_exact_companion 자동 커버(runner/재구조화/ring 인프라 통합 실증)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
