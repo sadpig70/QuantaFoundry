@@ -756,6 +756,13 @@
           "scripts/ring_column_verify.py",
           "--quick"
         ]
+      },
+      {
+        "id": "cuc_verify",
+        "argv": [
+          "scripts/cuc_verify.py",
+          "--quick"
+        ]
       }
     ]
   }

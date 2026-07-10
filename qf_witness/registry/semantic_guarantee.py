@@ -211,6 +211,15 @@ def main():
                 column[f"app:{pr['id']}"] = pr
     # TrackRingColumn: ring-exact 이종 증인(RING-COLUMN.json) — iQFT 인자를 ℤ[ζ_256] 정수환
     #   float 0 으로 검증(design01 §2.4). column_exact(float-atol)의 hard 인자 계급 상향 상보.
+    # TrackCUC (design01 §2.3): CUC 조립 인증(cuc_verify.py) — n≥19 shor(column_verify 범위 밖).
+    #   iqft8 ring-exact + modexp exhaustive + H-wall ±1 + 배선 정형성 → compositionally_verified.
+    #   subspace_permutation_verified 보다 강함(sampled→exhaustive+인자분해), column_exact 보다 약함.
+    cuc = {}
+    if os.path.isdir(pdir):
+        for pp in sorted(glob.glob(os.path.join(pdir, "*.cuc_proof.json"))):
+            pr = json.load(open(pp, encoding="utf-8"))
+            if pr.get("verified") and pr.get("grade") == "compositionally_verified":
+                cuc[f"app:{pr['id']}"] = pr
     ring = None
     rp = os.path.join(pdir, "RING-COLUMN.json")
     if os.path.exists(rp):
@@ -256,6 +265,15 @@ def main():
                            f"modexp 코어 계산기저 부분공간 순열 강검증({pr['method']}, "
                            f"basis {pr['basis_matched']}/{pr['basis_tested']}; path A=회로 게이트순열(cmul→MCT 전개) "
                            "vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).")}
+        if key in cuc and g["class"] in ("structural_wellformed", "subspace_permutation_verified"):
+            # TrackCUC 격상(design01 §2.3): n≥19 조립 인증 — subspace_permutation_verified 보다 강함
+            pr = cuc[key]
+            g = {"class": "compositionally_verified",
+                 "method": (f"CUC 조립 인증(n≥19, column_verify 범위 밖): iqft8 인자 ring-exact(ℤ[ζ_256] float 0) + "
+                            f"modexp exhaustive 순열({pr['basis_matched']}/{pr['basis_tested']} 전수) + H-wall ±1 + "
+                            f"배선 정형성({pr['wiring_steps']} steps)·자식 등급({pr['n_sealed'] if 'n_sealed' in pr else len(pr.get('sealed_children',[]))} 봉인). "
+                            "structural/subspace 보다 강함(sampled→exhaustive+인자분해), column_exact 보다 약함"
+                            "(전체 컬럼 dense 아닌 조립 논증). INV-R5 잔여 축소.")}
         if key in column and g["class"] in ("structural_wellformed", "subspace_permutation_verified"):
             # TrackIU IU_A 격상: 전체 유니터리 컬럼 전수(H·iQFT 포함) — INV-R5 이 앱 한정 축소
             pr = column[key]
@@ -278,6 +296,12 @@ def main():
                 "grade", "method", "basis_tested", "basis_matched", "exact_permutation",
                 "negative_control_reject", "n_modexp_gates", "dense_materialized", "scope",
                 "seed", "proof_digest") if k in pr}
+        if key in cuc:
+            pr = cuc[key]
+            entry["cuc_verification"] = {k: pr[k] for k in (
+                "grade", "basis_tested", "basis_matched", "modexp_exhaustive_exact",
+                "iqft_ring_exact", "wiring_ok", "child_ok", "negative_control_reject",
+                "scope", "proof_digest") if k in pr}
         if key in column:
             pr = column[key]
             entry["column_verification"] = {k: pr[k] for k in (
