@@ -10,7 +10,7 @@
 
 | # | Claim | Command | Expected | Artifact / authority | Honest boundary |
 |---|---|---|---|---|---|
-| 1 | The whole registry (95 modules / 475 apps) reproduces byte-identically | `python scripts/reproduce_all.py` | `REPRODUCED`, root `d177ce9a438a1b2f…` | `reports/REPRODUCE-RESULT.json`, `registry/REGISTRY-MANIFEST.json` | **Determinism, not correctness** (INV-R1). Correctness comes from rows 2–8. |
+| 1 | The whole registry (95 modules / 484 apps) reproduces byte-identically | `python scripts/reproduce_all.py` | `REPRODUCED`, root `cf7a8ca801c7f4c9…` | `reports/REPRODUCE-RESULT.json`, `registry/REGISTRY-MANIFEST.json` | **Determinism, not correctness** (INV-R1). Correctness comes from rows 2–8. |
 | 2 | Every sealed module passes an independent dense oracle | `python scripts/second_oracle.py` | `83/83` + app pass | script output | Independent *implementation*, shared conventions (endian/phase/atol) — see convention audit (row 3). |
 | 3 | Verification does not hinge on one convention choice | `python scripts/inverted_second_oracle.py --quick` | `all_ok=True` | script output | Audits the shared-assumption gap; does not eliminate it. |
 | 4 | Frozen consensus keys & oracle fingerprints are intact | `python scripts/verify_contested_guard.py` + `sha256sum` of the two oracle files | `ALL PASS · pass=20 fail=0`; hashes in `HANDOFF.md` | `consensus_keys.json`, oracle skill files | Tamper-*evidence* (SHA-256), not cryptographic non-forgeability. |

@@ -20,7 +20,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **95 sealed modules · 475 sealed applications** · registry root `d177ce9a438a…`
+- **95 sealed modules · 484 sealed applications** · registry root `cf7a8ca801c7…`
   (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 - **10 independent verification paths** · 23 frozen consensus keys · verification core public as
   **QPGF** → https://github.com/sadpig70/QPGF.
@@ -31,7 +31,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ```bash
 python scripts/reproduce_all.py
-# expect: REPRODUCED · root_hash d177ce9a438a… · second_oracle 83/83 · behavior pass
+# expect: REPRODUCED · root_hash cf7a8ca801c7… · second_oracle 83/83 · behavior pass
 ```
 
 `REPRODUCED` proves byte-identical **determinism** — not correctness. Correctness comes from the
