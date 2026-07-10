@@ -20,7 +20,7 @@ schur_reflect4 에 대해 — 디코더==인코더† 재발견·Dicke family(k=
   - 봉인 = 회로==CG golden exact 뿐. J²/Jz 동시대각·S₄ duality = witness 관측.
   - n≥5 Schur·irrep 레지스터 분리(경로 라벨 재배열)=차기. 부호 규약(0111=−|1,−1⟩_A 등)=문서화 자유.
 
-사용: python scripts/schur4_observe.py [--quick]
+사용: python -m qf_witness.observe.schur4_observe [--quick]
 """
 import os, sys, re, json
 from collections import Counter

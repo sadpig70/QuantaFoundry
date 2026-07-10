@@ -22,7 +22,7 @@ symmetry-protected topological — 직교 분류축.
   holonomy(inversion 없는 경우)·weak indices·표면상태 = 범위밖. 신규 module 0. [[chern-higher-observe]](2D ℤ)
   상보(TR-broken vs TR-preserved).
 
-사용: python scripts/z2_fukane_observe.py [--quick]
+사용: python -m qf_witness.observe.z2_fukane_observe [--quick]
 """
 from __future__ import annotations
 import sys

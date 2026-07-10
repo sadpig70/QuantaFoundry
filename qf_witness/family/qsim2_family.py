@@ -22,7 +22,7 @@ W8.1(HamiltonianSimulation)을 *instance*에서 *family*로 키운다. Pauli-상
  - ★honest 미묘함: single-bond Heisenberg는 XX,YY,ZZ 교환 → step이 e^{-iHt}와 *정확*(근사 아님).
    모든 Trotter가 근사인 것은 아님 — 정직 구별 표기.
 
-사용:  python scripts/qsim2_family.py
+사용:  python -m qf_witness.family.qsim2_family
 """
 from __future__ import annotations
 

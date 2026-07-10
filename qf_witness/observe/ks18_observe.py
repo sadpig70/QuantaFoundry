@@ -22,7 +22,7 @@ P5, qubit 9-관측가능 operator-product parity)·contextual fraction LP(TrackH
   봉인 아님(§5, no-go 정리). Peres-Mermin(operator-product) 과 **대상 상이**(ray-coloring). 신규 module 0.
   [[trackhe8-report8]](Peres-Mermin)·contextual fraction(HE9 P2)·qutrit Wigner(HE9 P6) 맥락성 계보와 교차.
 
-사용: python scripts/ks18_observe.py [--quick]
+사용: python -m qf_witness.observe.ks18_observe [--quick]
 """
 from __future__ import annotations
 import sys

@@ -22,7 +22,7 @@ exact. 봉인은 √5 승인 module 대기(=관측: Fourier 실현가능성 확�
   가치) 필요(사람게이트). Fourier 정규화 스칼라(√(dim/60))는 별도 실수(ℚ(√5) 밖일 수 있음, 대각 스칼라). witness=
   승인 결정근거. 신규 module 0. [[a5-observe]] 승격·Fibonacci φ(§3n P4)·A₅ 이중피복=차기.
 
-사용: python scripts/a5_fourier_observe.py [--quick]
+사용: python -m qf_witness.observe.a5_fourier_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, itertools

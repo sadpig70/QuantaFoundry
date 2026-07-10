@@ -21,7 +21,7 @@ report11 수렴축(Hecke H₃, 3/8). §3j "Hecke 브레이드(H₃(q=i) Burau·M
   ★MTC braid(HE10 P4, TQFT 층)와 **대수층 상보**(Hecke=braid 군 q-변형). Markov trace 정규화=q=i 특이(관측만)·
   일반 q Jones·Hₙ(n>3)·knot 불변량=차기/범위밖. 신규 module 0. [[mtc-braid-observe]]·Ising 계보 교차.
 
-사용: python scripts/hecke_h3_observe.py [--quick]
+사용: python -m qf_witness.observe.hecke_h3_observe [--quick]
 """
 from __future__ import annotations
 import sys

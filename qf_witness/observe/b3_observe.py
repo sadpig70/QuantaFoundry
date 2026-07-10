@@ -20,7 +20,7 @@ S₃/D₄/S₄ 비아벨 곱셈 계보의 **하이퍼팔면체 B_n(n≥3) 개창
   ★12q b3_mult dense 봉인(EXACT_BOUND=12 경계, 154×4096² compose ~9분+)은 실용 밖 → 여기선 관측.
   실제 Fourier 행렬(b3_qft)·HSP 응용 = 차기/범위밖. 신규 module 0.
 
-사용: python scripts/b3_observe.py [--quick]
+사용: python -m qf_witness.observe.b3_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

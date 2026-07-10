@@ -17,7 +17,7 @@
   - 거리-2 = 오류 **검출** 전용(정정 아님). magic 증류·FT threshold·d≥3 색부호 = 범위 밖.
   - ★제5 경로 소비: code832_tccz(T-count 8=256분기)·encoder(Clifford) 가 stabrank_verify 자동 커버.
 
-사용: python scripts/code832_observe.py [--quick]
+사용: python -m qf_witness.observe.code832_observe [--quick]
 """
 import os, sys, re, json
 from itertools import product

@@ -13,7 +13,7 @@
 정직 경계(INV-Q3 상속): 봉인=Choi 상태 *준비 유니터리*(Tier-0 exact)뿐. Choi 행렬 J(부분대각합)·
   채널 재구성·CP/TP=비유니터리 관측(seal 아님). V6 채널 dilation 봉인의 duality 짝 자산화.
 
-사용: python scripts/choi_observe.py [--quick]
+사용: python -m qf_witness.observe.choi_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

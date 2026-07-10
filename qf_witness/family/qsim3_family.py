@@ -19,7 +19,7 @@ W8.1/W8.2(1차 Trotter)에 **2차 Suzuki-Trotter(대칭 분할)**를 추가하�
    1차 ratio≈2(O(1/k), per-step O(dt²)) vs 2차 ratio≈4(O(1/k²), per-step O(dt³)). 고정 T=π/4.
    W8.2가 "근사는 수렴"을 보였다면, W8.3은 "근사의 *품질(차수)* 도 정량화"를 보인다.
 
-사용:  python scripts/qsim3_family.py
+사용:  python -m qf_witness.family.qsim3_family
 """
 from __future__ import annotations
 

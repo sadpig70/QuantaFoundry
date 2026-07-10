@@ -21,7 +21,7 @@ Peres-Mermin 3×3 magic square (2큐빗 Pauli 관측가능량):
   ★증명서(certificate) — 회로 유니터리 아님(봉인 아님). contextual fraction·LP 정량화 = 차기/범위밖.
   신규 module 0. magic 자원(ξ/R)·채널 magic 과 다른 축(맥락성 렌즈).
 
-사용: python scripts/peres_mermin_observe.py [--quick]
+사용: python -m qf_witness.observe.peres_mermin_observe [--quick]
 """
 from __future__ import annotations
 import sys

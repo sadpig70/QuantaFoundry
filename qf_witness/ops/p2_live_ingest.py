@@ -16,8 +16,8 @@ P2a 봉인 게이트(gated_panel)에 투입한다. distinct-weights 수렴 → S
  - consensus.py/gated_panel/crossmodel_adapter *사용만*. frozen·sealed 무변경.
 
 사용:
-  python scripts/p2_live_ingest.py            # submissions/ 있으면 ingest, 없으면 dry-run
-  python scripts/p2_live_ingest.py --dry-run  # mock wiring 검증 강제
+  python -m qf_witness.ops.p2_live_ingest            # submissions/ 있으면 ingest, 없으면 dry-run
+  python -m qf_witness.ops.p2_live_ingest --dry-run  # mock wiring 검증 강제
 """
 from __future__ import annotations
 

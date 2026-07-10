@@ -16,7 +16,7 @@
   - 1/2 감쇠점만 dyadic-exact. 일반 감쇠율·depolarizing(3-Kraus)·다큐빗·noise 모델 합성 = 차기.
   - 하드웨어 노이즈 실측 아님(이상적 수학 채널). 신규 봉인 0.
 
-사용: python scripts/channel_observe.py [--quick]
+사용: python -m qf_witness.observe.channel_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

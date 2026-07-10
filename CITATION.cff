@@ -13,7 +13,7 @@ abstract: >-
   oracle seal (byte-identical reproduction) to exist. This release seals 95 modules and
   502 unique apps with registry_root_hash 0a6fbab08c76bf5a…, independently re-derivable via
   `python scripts/reproduce_all.py`; dense Tier-0 module formulas are independently
-  cross-checked by `scripts/second_oracle.py` while Clifford Tier-2 artifacts use tableau seals.
+  cross-checked by `python -m qf_witness.verify.second_oracle` while Clifford Tier-2 artifacts use tableau seals.
 keywords:
   - quantum-computing
   - deterministic-verification

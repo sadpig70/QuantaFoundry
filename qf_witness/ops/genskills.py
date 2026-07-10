@@ -16,12 +16,12 @@ general → cluster_ring)은 공유 프리미티브 위에 올려 "방법 추가
 산출물은 오라클 봉인 roundtrip 으로 검증한다.
 
 CLI:
-  python scripts/genskills.py list                  # catalog 요약 출력
-  python scripts/genskills.py show <skill>          # skill 상세 + 샘플 spec
-  python scripts/genskills.py emit <skill> <n> [--out DIR]   # spec 산출(기본 stdout)
-  python scripts/genskills.py catalog               # registry/GENSKILL-CATALOG.json 갱신(+ method self-seal)
-  python scripts/genskills.py verify                # method self-seal 재검증(생성방법 변조탐지)
-  python scripts/genskills.py selftest              # byte-identity + forge roundtrip 검증
+  python -m qf_witness.ops.genskills list                  # catalog 요약 출력
+  python -m qf_witness.ops.genskills show <skill>          # skill 상세 + 샘플 spec
+  python -m qf_witness.ops.genskills emit <skill> <n> [--out DIR]   # spec 산출(기본 stdout)
+  python -m qf_witness.ops.genskills catalog               # registry/GENSKILL-CATALOG.json 갱신(+ method self-seal)
+  python -m qf_witness.ops.genskills verify                # method self-seal 재검증(생성방법 변조탐지)
+  python -m qf_witness.ops.genskills selftest              # byte-identity + forge roundtrip 검증
 """
 import os, sys, json, re
 

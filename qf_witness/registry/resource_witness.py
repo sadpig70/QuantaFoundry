@@ -11,7 +11,7 @@
 비파괴: 읽기 전용 + 리포트 `.pgf/proofs/RESOURCE-WITNESS.json`. sealed/oracle/frozen/root 무영향.
 teeth: 임의 자식 resource 를 변조하면 합이 어긋나 witness 실패(공허하지 않음).
 
-사용: python scripts/resource_witness.py [--quick]
+사용: python -m qf_witness.registry.resource_witness [--quick]
 """
 import os, re, sys, json, glob
 

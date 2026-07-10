@@ -12,7 +12,7 @@ Honesty boundary:
     noisy_error > zne_error > 0.
   - registry_root_hash must remain unchanged.
 
-Usage: python scripts/error_mitigation_obs.py
+Usage: python -m qf_witness.ops.error_mitigation_obs
 """
 from __future__ import annotations
 

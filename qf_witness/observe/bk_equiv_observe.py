@@ -14,7 +14,7 @@ number n_p·hopping H_ij 전부를 JW vs BK Pauli weight 로 대비한다.
   - 봉인된 bk_num1·bk_hop01 의 top-left block 이 BK conjugate 와 일치함을 재확인.
   - weight 감소(=BK 이점)는 **관측**(observation). 신규 봉인 0.
 
-사용: python scripts/bk_equiv_observe.py [--quick]
+사용: python -m qf_witness.observe.bk_equiv_observe [--quick]
 """
 import os, sys, re, json, itertools
 import numpy as np

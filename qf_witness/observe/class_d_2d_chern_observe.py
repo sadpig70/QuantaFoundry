@@ -23,7 +23,7 @@ class D 는 1D 에서 ℤ₂(Majorana sign) 이지만 **2D 에서 ℤ**(Chern nu
   edge mode/임계값=범위밖. 신규 module 0. 1D class-D ℤ₂([[kitaev_class_d_observe]])·QWZ class A
   ([[chern_observe]]) 와 AZ 대칭클래스 상보(1D ℤ₂ → 2D ℤ 차원사다리).
 
-사용: python scripts/class_d_2d_chern_observe.py [--quick]
+사용: python -m qf_witness.observe.class_d_2d_chern_observe [--quick]
 """
 from __future__ import annotations
 import sys

@@ -31,7 +31,7 @@ T(T²=−1, Kramers)·particle-hole C(C²=+1)·chiral S=T·C 를 모두 가진 �
   Kramers 짝은 k↔−k) — 전-겹침은 실공간 open chain 성질. chiral det-q **winding**=0(양 상) → DIII ℤ₂
   는 AIII winding 아니라 Pfaffian(정직). 신규 module 0.
 
-사용: python scripts/class_diii_observe.py [--quick]
+사용: python -m qf_witness.observe.class_diii_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, json

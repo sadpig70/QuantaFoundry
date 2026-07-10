@@ -14,7 +14,7 @@
   ★봉인(hgp_seal)=|0_L⟩ prep Clifford tableau exact(Tier-2). 거리 3 달성·decoder(BP+OSD)·임계값·
   더 큰 HGP 일반화 = 관측/범위밖. 신규 module 0. 기봉인 qldpc_hgp([[8,1,2]])의 거리-3 대형 확장.
 
-사용: python scripts/hgp_observe.py [--quick]
+사용: python -m qf_witness.observe.hgp_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, itertools

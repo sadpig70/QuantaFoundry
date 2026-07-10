@@ -13,7 +13,7 @@
     + 앵커: path A(|0..0>) == GHZ16 상태 (의도 정의) → structural seal 이 GHZ16 을 실제 구현함을 부분보증.
     + negative control: plan 1수 변형 시 검증이 실패함을 확인(테스트가 공허하지 않음 = teeth).
 
-사용:  python scripts/semantic_guarantee.py
+사용:  python -m qf_witness.registry.semantic_guarantee
 """
 import os, sys, json, glob
 import numpy as np

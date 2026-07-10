@@ -15,7 +15,7 @@ Honesty boundary:
   - seal = exact unitary decomposition of the oracle algorithm circuit (Tier-0 C-app)
   - query advantage / readout = backend_adapter observation, not a seal
 
-Usage: python scripts/query_family.py
+Usage: python -m qf_witness.family.query_family
 """
 from __future__ import annotations
 

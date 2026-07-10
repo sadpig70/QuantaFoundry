@@ -17,7 +17,7 @@
   - 봉인 = d4_mult·d4_qft(exact 유니터리)뿐. HSP 분포·불변성·구별성 = 관측(문자론 참조와 대조).
   - 완전한 HSP 알고리즘(다항 표본→부분군 복원 고전후처리)은 범위 밖. 신규 봉인 0.
 
-사용: python scripts/d4_hsp_observe.py [--quick]
+사용: python -m qf_witness.observe.d4_hsp_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

@@ -16,7 +16,7 @@
   = 관측(exact 값은 dyadic 유리수). ★**Pauli-diagonal exact island** 만 정확 — 일반 non-Pauli
   (amplitude-damping)은 SDP exactness 미보장 → 관측 상·하한만(exact 주장 안 함, 정직). 신규 module 0.
 
-사용: python scripts/diamond_observe.py [--quick]
+사용: python -m qf_witness.observe.diamond_observe [--quick]
 """
 import os, sys, re
 import numpy as np

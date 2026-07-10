@@ -22,7 +22,7 @@ TrackHE11 P4 Yu-Oh 13 자체정정(13 ray 는 {0,1}-**colorable** — state-inde
   봉인 아님(§5). Peres-Mermin(operator-product parity)·contextual fraction(정량 LP)·KS-18(4D ray-coloring)·
   qutrit Wigner 맥락성 계보와 교차(대상 상이: 여기는 d=3 ray-coloring). 좌표 필드 ℚ(√2). 신규 module 0.
 
-사용: python scripts/peres33_ks_observe.py [--quick]
+사용: python -m qf_witness.observe.peres33_ks_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

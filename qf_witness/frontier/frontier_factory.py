@@ -16,10 +16,10 @@ Honesty (inherited): cmul = Tier-0 EXACT permutation app; shor{N} = Tier-1 STRUC
 (reuses sealed c8x..c12x primitives).
 
 Usage:
-  python scripts/frontier_factory.py --verify-regression          # INV-F1 gate (must pass)
-  python scripts/frontier_factory.py --reproduce                  # re-seal all FACTORY-FRONTIER N
-  python scripts/frontier_factory.py --seal N [N ...]             # seal new N(s)
-  python scripts/frontier_factory.py --resolve N                  # primitive feasibility report
+  python -m qf_witness.frontier.frontier_factory --verify-regression          # INV-F1 gate (must pass)
+  python -m qf_witness.frontier.frontier_factory --reproduce                  # re-seal all FACTORY-FRONTIER N
+  python -m qf_witness.frontier.frontier_factory --seal N [N ...]             # seal new N(s)
+  python -m qf_witness.frontier.frontier_factory --resolve N                  # primitive feasibility report
 """
 from __future__ import annotations
 

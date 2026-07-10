@@ -20,7 +20,7 @@
     .pgf/proofs/TWOQ-2DESIGN-BOUND.json)의 대체 payoff. 용어 정직.
   - 단층재구성 데모=해석 확률(유한샘플 shadow tomography 미구현 — 그 기반 자산만 확보).
 
-사용: python scripts/mub_observe.py [--quick]
+사용: python -m qf_witness.observe.mub_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

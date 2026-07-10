@@ -20,7 +20,7 @@ report9 수렴축(|C|≥2 고차 Chern 3/8). TrackHE8 P3(2D QWZ, |C|≤1)의 질
   유한격자 Berry sum·edge mode·bulk-boundary = 관측/범위밖. 신규 module 0. [[chern_observe]](|C|≤1)와
   교차(같은 d-벡터, 밴드/스핀만 확장 = 고차 위상 관측).
 
-사용: python scripts/chern_higher_observe.py [--quick]
+사용: python -m qf_witness.observe.chern_higher_observe [--quick]
 """
 from __future__ import annotations
 import os

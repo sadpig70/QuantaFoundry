@@ -14,7 +14,7 @@
     (|00⟩+|11⟩+|22⟩)/√3 — 신규 module 필요, 산술 계층과 **분리 명시**(INV-Q3).
   - 임베딩(|11> sink)은 해석 — 오라클은 표준 2ⁿ 유니터리로만 검증.
 
-사용: python scripts/qutrit_arith_observe.py [--quick]
+사용: python -m qf_witness.observe.qutrit_arith_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

@@ -20,7 +20,7 @@ Clifford-계열**(d_σ=√2) 모델 → 애니온 그림 완성.
   실제 braid 유니터리 회로 봉인·MTC 완전 (pentagon/hexagon 전체)·topological 계산 = 범위밖/차기.
   신규 module 0. [[trackhe5-report5]](Jones/knot)·Fibonacci(G5)·Majorana(HE7 P2) 애니온 계보와 교차.
 
-사용: python scripts/ising_fusion_observe.py [--quick]
+사용: python -m qf_witness.observe.ising_fusion_observe [--quick]
 """
 from __future__ import annotations
 import sys

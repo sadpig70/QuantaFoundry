@@ -19,7 +19,7 @@ concat_513_513 = [[5,1,3]] ∘ [[5,1,3]] = [[25,1,9]] (25q, 거리 9):
 정직 경계(seal 아님): 봉인 = 연접 인코더 stabilizer 구조 exact(Tier-2)뿐. 거리 9 달성·임계값·
   디코드·오류율 = 관측/범위밖. 신규 module 0(bloq 기본 게이트만).
 
-사용: python scripts/concat_clifford.py
+사용: python -m qf_witness.ops.concat_clifford
 """
 from __future__ import annotations
 import os, sys, json, subprocess

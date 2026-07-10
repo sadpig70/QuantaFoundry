@@ -17,7 +17,7 @@
   - 실제 측정·decoder(flag 조건부 정정표)·반복 추출 프로토콜·d≥3 코드 = 범위 밖(차기).
   - 기존 syndrome3_bitflip(비-FT 추출)·surf422(인코더)와의 관계: 이 앱들이 FT-추출 층을 새로 개창.
 
-사용: python scripts/flag_syndrome_observe.py [--quick]
+사용: python -m qf_witness.observe.flag_syndrome_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

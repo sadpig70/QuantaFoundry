@@ -13,7 +13,7 @@ Tier-2 CLIFFORD(정준 stabilizer tableau, dense 2^15 불필요, HGP 선례).
   독립 재확인 = clifford_seal.canonical_tableau_hash. 신규 module 0(bloq H/CNOT). 정직: 봉인=|0_L⟩ prep
   Clifford tableau exact; 거리 3 달성·decoder·cyclic 자기동형 물리 = 관측/범위밖. witness=bch_observe.
 
-사용: python scripts/bch_seal.py
+사용: python -m qf_witness.seal.bch_seal
 """
 from __future__ import annotations
 import os, sys, json, subprocess

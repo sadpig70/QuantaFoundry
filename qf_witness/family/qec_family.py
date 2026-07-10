@@ -19,7 +19,7 @@ qec_family.py — Stage 6 W7.1 QECStabilizerFamily
  - 측정은 비-unitary → syndrome 은 측정前 parity-copy unitary 만 봉인(정직 경계).
  - 비파괴: 모듈 0 추가(h_gate·cnot 재사용), 앱 +4. frozen 23키·fingerprint byte-identical 불변.
 
-사용:  python scripts/qec_family.py
+사용:  python -m qf_witness.family.qec_family
 """
 from __future__ import annotations
 

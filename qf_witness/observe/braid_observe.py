@@ -14,7 +14,7 @@
   - Ising anyon = Clifford 만(non-universal). Fibonacci anyon(황금비 진폭)·Jones 다항식·
     universality = 비-dyadic 차기 게이트. 신규 봉인 0.
 
-사용: python scripts/braid_observe.py [--quick]
+사용: python -m qf_witness.observe.braid_observe [--quick]
 """
 import os, sys, re, json, itertools
 import numpy as np

@@ -28,7 +28,7 @@
 > self-seal** (per-skill source hash + `catalog_root_hash`, tamper-evident — the method-side counterpart
 > of `registry_root_hash`). The library grew to **46 sealed modules → 57 sealed applications**
 > (24 forged autonomously, human seed 0, zero new modules beyond the Ry primitives).
-> **What changed in v0.5:** a **GenSkill library** (`scripts/genskills.py`,
+> **What changed in v0.5:** a **GenSkill library** (`qf_witness/ops/genskills.py`,
 > `registry/GENSKILL-CATALOG.json`) promotes generation *methods* — previously ad-hoc code — to a
 > first-class, introspectable catalog, the method-side counterpart of the result registry. goal-autonomy
 > consumes it. GenSkill mints no trust; its output still must pass the oracle to be sealed (§8.7).
@@ -179,7 +179,7 @@
 > `second_oracle` stays 61/61), root `a916c8da…→2cfe8dc3…`**.
 > **(W10.1 VQE ansatz)** opens a new horizontal class — the **variational quantum eigensolver**. A hardware-efficient ansatz (`Ry(θ)^⊗n · CNOT` ladder) is sealed *structurally* at fixed-θ instances (new module `ry_3pi4`=`Ry(3π/4)`; apps `vqe_he2_pi4/pi2/3pi4` (2q) and `vqe_he3_pi4` (3q), all **Tier-0 EXACT**, `composite==golden` up-to-phase, no `MatrixGate`, reusing `ry_pi4/pi2/3pi4`·`cnot`). The honest boundary gains a **variational** sibling of *approximation != exact*: the variational energy `<H_TFIM(θ)>` (computed via `backend_adapter`, an observation — not a seal) obeys the variational principle `<H> >= E_ground`, and a continuous θ-sweep approaches but never reaches the exact ground energy — an **ansatz-limited gap > 0** persists (TFIM2 gap≈0.071, TFIM3 gap≈0.097). VQE is a bound/approximation, not the exact ground. Growing **modules 67→68 (1 Tier-0 `ry_3pi4`; `second_oracle` to 62/62), apps 97→101, root `2cfe8dc3…→1a2a874d…`**.
 > **(W10.2 VQE deepening)** seals a **2-layer per-qubit** hardware-efficient ansatz (`vqe_he2_L2_*`, zero new modules); the variational gap shrinks with expressibility (0.071→~0.006) but stays >0 — depth *deepens* `variational != exact`, it does not remove it. **(W11.1 QAOA)** opens the combinatorial-optimization sibling: MaxCut QAOA p=1 sealed Tier-0 at fixed angles (`qaoa_p3`, `qaoa_c4`, **zero new modules** — reuses `cnot`/`rz_negpi4`/`rx_negpi4`/`h_gate`), the approximation ratio an observation that stays <1 even at optimal angles (P3 0.825, C4 0.75). **(W10.3 parameter-shift)** executes sealed `Ry` modules to show the parameter-shift rule yields the *exact* analytic gradient, contrasted with finite-difference (O(h²) approximation) — no new seals. Growing **apps 101→105 (modules unchanged at 68; `second_oracle` stays 62/62), root `1a2a874d…→fa06bd80…`**.
-> **(W12 — new horizontal classes + Shor arithmetic frontier; cross-runtime)** the **codex** runtime drove W12.1–W12.18, W12.20, and W12.21, while the **Claude Opus** runtime drove W12.19 + determinism verification — the first byte-identical cross-runtime seals (one runtime's seals re-verified deterministically by the other). **(W12.1 query/oracle)** Deutsch-Jozsa, Bernstein-Vazirani, Simon sealed (`dj2_const1`, `dj2_balanced_xor`, `bv3_s101`, `simon2_s11`, **zero new modules**) — here the quantum advantage itself is *exact* (BV recovers the secret in one query; Simon's measured support is orthogonal to the period), a new honesty type beside approximation/variational. **(W12.2 quantum walk)** coined C4/C8 cycle walks (zero new modules; walk dynamics an observation — C8 3-step TV distance 0.25 vs classical). **(W12.3 Suzuki-4)** 4th-order Yoshida-Suzuki Trotter steps (4 new analytic-coefficient modules `rz_y4_p/rx_y4_p/rz_y4_q/rx_y4_q`; late k-doubling ratio ≈16 vs 1st-order ≈2, 2nd ≈4 — convergence-order observation, not a seal). **(W12.4 ZNE)** a deterministic zero-noise-extrapolation observation layer that **seals nothing** (root unchanged; mitigation ≠ exact recovery, residual bias remains). **(W12.5–W12.19 Shor frontier)** a `c8x→c9x→c10x→c11x` multi-control primitive ladder (4 new Tier-0 MCT modules, `gen_modmul` cap evolved each step) unlocks distinct-prime **Shor structural apps** `shor119`/`shor221`/`shor381`/`shor635`/`shor1285` (N = 7×17, 13×17, 3×127, 5×127, 5×257), each a **Tier-1 STRUCTURAL** Merkle over exact Tier-0 `cmul*` modular-multiplier families (max control 7→11; independent arithmetic `u_hash` matched per multiplier). **(W12.20–W12.23 C12x frontier → payoff → shor3683)** reviewed the memory boundary, sealed `c12x` and the exact payoff app `cmul2_mod3683` (`N=3683=29×127`, 13 qubits, 1848 gates, max-control 12, independent arithmetic `u_hash` matched), then completed the `mod3683` payoff family (`cmul{4,16,256,2925}_mod3683`, Tier-0 exact, independent arithmetic 4/4) and lifted it to the structural Shor app `shor3683` (Tier-1 STRUCTURAL, 20 qubits, deterministic reassembly; readout illustrative ord_3683(2)=28→[29,127]). The W12.22/23 rounds were driven autonomously by the AutonomyLoop runner (real determinism gates, fingerprint+frozen byte-identical, verified-only commit). **(W12.24 FrontierFactory)** packaged that runner as the `qfa-loop` skill and added a **parametric frontier factory** (`scripts/frontier_factory.py`): the verified payoff/structural templates become N-parameter sealing functions, regression-gated to reproduce every prior sealed N byte-identically (INV-F1) before sealing any new N. The loop then auto-discovers the smallest unsealed distinct-semiprime and seals it — `shor69` (3×23) and `shor77` (7×11), both 15q structural with their cmul payoff families, **zero new modules**. Growing **modules 68→77 (4 Suzuki-4 + c8x/c9x/c10x/c11x/c12x; `second_oracle` 62→71), apps 105→166, root `fa06bd80…→a0b4f678…`**.
+> **(W12 — new horizontal classes + Shor arithmetic frontier; cross-runtime)** the **codex** runtime drove W12.1–W12.18, W12.20, and W12.21, while the **Claude Opus** runtime drove W12.19 + determinism verification — the first byte-identical cross-runtime seals (one runtime's seals re-verified deterministically by the other). **(W12.1 query/oracle)** Deutsch-Jozsa, Bernstein-Vazirani, Simon sealed (`dj2_const1`, `dj2_balanced_xor`, `bv3_s101`, `simon2_s11`, **zero new modules**) — here the quantum advantage itself is *exact* (BV recovers the secret in one query; Simon's measured support is orthogonal to the period), a new honesty type beside approximation/variational. **(W12.2 quantum walk)** coined C4/C8 cycle walks (zero new modules; walk dynamics an observation — C8 3-step TV distance 0.25 vs classical). **(W12.3 Suzuki-4)** 4th-order Yoshida-Suzuki Trotter steps (4 new analytic-coefficient modules `rz_y4_p/rx_y4_p/rz_y4_q/rx_y4_q`; late k-doubling ratio ≈16 vs 1st-order ≈2, 2nd ≈4 — convergence-order observation, not a seal). **(W12.4 ZNE)** a deterministic zero-noise-extrapolation observation layer that **seals nothing** (root unchanged; mitigation ≠ exact recovery, residual bias remains). **(W12.5–W12.19 Shor frontier)** a `c8x→c9x→c10x→c11x` multi-control primitive ladder (4 new Tier-0 MCT modules, `gen_modmul` cap evolved each step) unlocks distinct-prime **Shor structural apps** `shor119`/`shor221`/`shor381`/`shor635`/`shor1285` (N = 7×17, 13×17, 3×127, 5×127, 5×257), each a **Tier-1 STRUCTURAL** Merkle over exact Tier-0 `cmul*` modular-multiplier families (max control 7→11; independent arithmetic `u_hash` matched per multiplier). **(W12.20–W12.23 C12x frontier → payoff → shor3683)** reviewed the memory boundary, sealed `c12x` and the exact payoff app `cmul2_mod3683` (`N=3683=29×127`, 13 qubits, 1848 gates, max-control 12, independent arithmetic `u_hash` matched), then completed the `mod3683` payoff family (`cmul{4,16,256,2925}_mod3683`, Tier-0 exact, independent arithmetic 4/4) and lifted it to the structural Shor app `shor3683` (Tier-1 STRUCTURAL, 20 qubits, deterministic reassembly; readout illustrative ord_3683(2)=28→[29,127]). The W12.22/23 rounds were driven autonomously by the AutonomyLoop runner (real determinism gates, fingerprint+frozen byte-identical, verified-only commit). **(W12.24 FrontierFactory)** packaged that runner as the `qfa-loop` skill and added a **parametric frontier factory** (`qf_witness/frontier/frontier_factory.py`): the verified payoff/structural templates become N-parameter sealing functions, regression-gated to reproduce every prior sealed N byte-identically (INV-F1) before sealing any new N. The loop then auto-discovers the smallest unsealed distinct-semiprime and seals it — `shor69` (3×23) and `shor77` (7×11), both 15q structural with their cmul payoff families, **zero new modules**. Growing **modules 68→77 (4 Suzuki-4 + c8x/c9x/c10x/c11x/c12x; `second_oracle` 62→71), apps 105→166, root `fa06bd80…→a0b4f678…`**.
 > The post-W12 bridge maps five external relay items (CI pilot,
 > weak-model poison panel, runtime keys, backend evidence, ServerLink scope) but does not execute external work. Companion docs:
 > `docs/CONVENTION-AUDIT.md`, `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`,
@@ -456,7 +456,7 @@ large Tier-1 artifact (`ghz16_structural`), a **partial verification** raises th
 state-vector executes the sealed plan and is checked to (i) produce the exact GHZ₁₆ state on |0…0⟩, and
 (ii) match a plan-independent GHZ unitary on 48 basis + 16 random inputs, with a negative control
 confirming a mutated plan is rejected. This is a *partial* (sampled) semantic check, not full unitary
-equivalence — and is labelled as such (`scripts/semantic_guarantee.py`).
+equivalence — and is labelled as such (`qf_witness/registry/semantic_guarantee.py`).
 
 ### 6.4 Registry invariants and provenance
 
@@ -667,7 +667,7 @@ independent axes** (the LLM-authored analytic golden, runtime A ⊕ the Qualtran
 one consistency check** (sympy symbolic proof, no LLM). The golden and the symbolic proof share the
 same mathematical definition (endianness / phase convention), so a *convention* error could in
 principle corrupt both at once — they are not a fully independent third axis. The genuine third axis is
-recomputing the unitary on a **Qualtran-independent path**: `scripts/second_oracle.py` reconstructs each
+recomputing the unitary on a **Qualtran-independent path**: `qf_witness/verify/second_oracle.py` reconstructs each
 sealed unitary in pure numpy (using neither Qualtran, nor the spec's golden code, nor the oracle's
 internals) and re-checks the `u_hash` — **71/71 modules + cmul2_mod21**, closing the shared-stack risk
 on the dense path. Corpus note: six LLMs agreeing on a *textbook* primitive is partly a shared-training
@@ -766,7 +766,7 @@ gives continued-fraction P(r=6) ⇒ 21 = 3 × 7. This escapes the N=15 special c
 
 Artifacts: `specs/apps/*.app.pg`, `registry/apps/*.sealed.json` (incl. `shor15_a2`, `shor15_a7`,
 `shor21_a2`, `cmul*_mod21`), `.pgf/autoforge/forge_apps.py`, `.pgf/status-F3Compose.json`,
-`.pgf/keyfree/seal_crk.py`, `scripts/second_oracle.py`.
+`.pgf/keyfree/seal_crk.py`, `qf_witness/verify/second_oracle.py`.
 
 ### 8.5 Library-wide regression (current totals)
 
@@ -805,7 +805,7 @@ diverge (shared Schelling defaults), which is why v05 uses free parameters.
 
 **Corpus-correlation (R-I).** Distinct model weights can still share training priors, so "N models
 agree" ≠ N independent confirmations. A discount `N_eff = N/(1+(N−1)ρ)` is implemented
-(`scripts/corpus_discount.py`); ρ is estimated only on answer-free intents (clean signal). Measured
+(`qf_witness/ops/corpus_discount.py`); ρ is estimated only on answer-free intents (clean signal). Measured
 ρ ≈ **0.0** on v05 free-parameter intents (frontier models choose independently when there is no
 correct answer), correcting an earlier contaminated upper-bound of 1.0 on textbook-ambiguous intents.
 It is **analysis-only** (default ρ=0; the sealing path is unchanged, determinism preserved).
@@ -818,14 +818,14 @@ independently checked (cluster = stabilizer +1 eigenstate; GHZ = state anchor). 
 (W-state) is honestly reported as needing an unsealed Ry primitive — the system names its own missing
 prerequisite. `COMPOUNDING-CURVE.json`: 2 compounding families at marginal-new-module-cost 0; the
 post-forge scan proposes the next members itself (self-growing loop). Artifacts:
-`scripts/goal_autonomy.py`, `.pgf/autoforge/{GOAL-SCAN,GOAL-FORGE-RESULT,COMPOUNDING-CURVE}.json`,
+`qf_witness/ops/goal_autonomy.py`, `.pgf/autoforge/{GOAL-SCAN,GOAL-FORGE-RESULT,COMPOUNDING-CURVE}.json`,
 `_workspace/crossmodel/EXT-V0{4,5}-INGEST-REPORT.md`, `_workspace/CORPUS-DISCOUNT-NOTE.md`.
 
 ### 8.7 v0.5–0.6 evidence — GenSkill library (generation *methods* as first-class assets)
 
 Until v0.4 the foundry libraried only *results* (sealed unitaries); the *methods* that produced them
 lived as one-off code (e.g. `goal_autonomy.gen_ghz/gen_cluster`). v0.5 promotes generation methods to a
-first-class catalog (`scripts/genskills.py`): named, parametrized **GenSkills**, each with metadata
+first-class catalog (`qf_witness/ops/genskills.py`): named, parametrized **GenSkills**, each with metadata
 (kind, params, required sealed modules, golden-construction method) and a deterministic `make_spec(n)`.
 `registry/GENSKILL-CATALOG.json` serializes the catalog as data — the method-side counterpart of
 `REGISTRY-MANIFEST.json`. Eight skills ship (v0.6): `ghz_linear`, `cluster_line` (byte-frozen — they
@@ -836,7 +836,7 @@ analytic-golden `zpow_phase`/`crk_phase`/`qft_dft` (detailed under *v0.6 additio
 *candidate* spec that still must pass the `app_assemble` oracle (C-app) to be sealed. The library is a
 reuse / introspection / provenance layer only.
 
-**Determinism is enforced as the acceptance test** (`python scripts/genskills.py selftest` → 55/55):
+**Determinism is enforced as the acceptance test** (`python -m qf_witness.ops.genskills selftest` → 55/55):
 (i) *byte-identity* — frozen skills regenerate committed specs byte-for-byte (16 skill-authored
 members); two legacy-format members (`ghz3/4`, authored by an earlier generator) are byte-exempt and
 instead verified by (ii); (ii) *reproduce-seal* — every family member reassembles (temp store) to a
@@ -885,7 +885,7 @@ frozen keys are untouched (temp store, scratch specs removed). `goal_autonomy.py
 **Scope (honest).** Still not captured as skills: permutation/arbitrary-isometry golden recipes, and
 autonomous *creation* of new primitive modules (the loop names missing prerequisites but a
 human/next-autonomy-level still seals them — preserving the loop's "zero new modules" invariant).
-Artifacts: `scripts/genskills.py`, `registry/GENSKILL-CATALOG.json`,
+Artifacts: `qf_witness/ops/genskills.py`, `registry/GENSKILL-CATALOG.json`,
 `.pgf/autoforge/{GOAL-SCAN,GOAL-FORGE-RESULT,GOAL-LOOP-RESULT,COMPOUNDING-CURVE}.json`,
 `_workspace/GENSKILL-LIBRARY-NOTE.md`.
 
@@ -896,7 +896,7 @@ Every item below is reproduced from the working tree; all are **non-destructive*
 use the oracle/consensus **only** (no reimplementation). Each sub-phase was re-designed as its own
 sub-PG before execution.
 
-- **P0 — Clifford → Tier-2 routing** (`scripts/clifford_routing.py`, `.pgf/clifford/`). The one app
+- **P0 — Clifford → Tier-2 routing** (`qf_witness/ops/clifford_routing.py`, `.pgf/clifford/`). The one app
   that previously held only a STRUCTURAL (Tier-1) seal, `ghz16`, now also carries a stabilizer-tableau
   **Tier-2** seal (via the oracle's `clifford_seal`), closing the sole weak-guarantee gap. The Tier-2
   `u_hash` ≠ the dense `u_hash` by construction (the oracle says so); this is a **companion** seal, not
@@ -904,7 +904,7 @@ sub-PG before execution.
   Clifford-only apps cross-validated dense == registry; `ghz20` (n>EXACT_BOUND) tableau-sealed as a
   scale demonstration.
 
-- **P1 — distinct-prime arithmetic** (`scripts/arith_family.py`, `.pgf/arith/`). Sealing the Shor
+- **P1 — distinct-prime arithmetic** (`qf_witness/family/arith_family.py`, `.pgf/arith/`). Sealing the Shor
   targets 33 = 3×11 and 35 = 5×7 required a 6-control multiply-controlled-X (`c6x`/MCT-6) that the
   prior library (≤ MCT-5) lacked. **Honest finding:** "infinite reuse of one engine" has a limit — a
   new primitive opens a family. Resolution: seal `c6x` key-free, then *evolve* the GenSkill engine
@@ -923,7 +923,7 @@ sub-PG before execution.
   proof (PROOF_BACKED) — was sealed as module `sx` (Tier-0, `XPowGate(0.5)`) with a frozen consensus
   key appended (existing keys byte-preserved).
 
-- **P3 — falsification front** (`scripts/red_team.py`, `.pgf/redteam/`). The oracle/gate/consensus are
+- **P3 — falsification front** (`qf_witness/ops/red_team.py`, `.pgf/redteam/`). The oracle/gate/consensus are
   attacked adversarially: golden self-reference, identity golden, ancilla-leak (C3), convention-split
   (DIVERGENT), and B4 co-error are all caught (5/6); the §7-flagged top risk is confirmed by a true
   falsification — a mis-wired but structurally-valid app **does** seal at Tier-1 STRUCTURAL while the
@@ -1148,7 +1148,7 @@ QuantaFoundry/
 > same commit — reproducible by checkout, no environment reconstruction. Because `oracle_fingerprint` is
 > bound into every seal signature, an oracle/dependency change can alter seal u_hashes; automatic syncing
 > would risk that silently, so syncing is deliberate and gated. `VENDOR.json` records provenance (upstream
-> tag/commit, `BUNDLE.sha256` root, `DEPENDENCIES.lock`, fingerprint); `scripts/sync_qpgf.py check`
+> tag/commit, `BUNDLE.sha256` root, `DEPENDENCIES.lock`, fingerprint); `qf_witness/ops/sync_qpgf.py check`
 > verifies vendor integrity, dependency match, and **seal-u_hash invariance** before any oracle upgrade is
 > committed (a semver-gated event).
 
@@ -1159,12 +1159,12 @@ python .agents/skills/qpgf-oracle/scripts/test_verify_seal.py           # 11 PAS
 python .pgf/autoforge/autoforge.py                                      # base gates SEALED
 python .pgf/keyfree/ingest_crossmodel.py                                # cross-model consensus (needs submissions/)
 python .pgf/autoforge/forge_apps.py                                     # apps SEALED · rediscovery 6/6
-python scripts/second_oracle.py                                        # Qualtran-independent 71/71
-python scripts/goal_autonomy.py scan                                   # autonomous gap detection (families)
-python scripts/goal_autonomy.py loop                                   # unmanned forge-to-frontier (self-growing)
-python scripts/genskills.py verify                                     # method self-seal (tamper-evident)
-python scripts/genskills.py selftest                                   # GenSkill library determinism 55/55
-python scripts/semantic_guarantee.py                                   # per-seal guarantees + ghz16 partial verify
+python -m qf_witness.verify.second_oracle                                        # Qualtran-independent 71/71
+python -m qf_witness.ops.goal_autonomy scan                                   # autonomous gap detection (families)
+python -m qf_witness.ops.goal_autonomy loop                                   # unmanned forge-to-frontier (self-growing)
+python -m qf_witness.ops.genskills verify                                     # method self-seal (tamper-evident)
+python -m qf_witness.ops.genskills selftest                                   # GenSkill library determinism 55/55
+python -m qf_witness.registry.semantic_guarantee                                   # per-seal guarantees + ghz16 partial verify
 ```
 
 ---

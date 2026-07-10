@@ -19,7 +19,7 @@
      별도 대체 payoff 후보(G2b, 규모 게이트).
 
 정직 경계: 이 리포트는 반증 문서(관측/수학)이며 봉인 아님. rank 수치는 float SVD(tol 1e-8) 기반이나
-  하한 정리 자체는 해석적 사실 — 수치는 재현 witness. 사용: python scripts/twoq_2design_bound.py
+  하한 정리 자체는 해석적 사실 — 수치는 재현 witness. 사용: python -m qf_witness.ops.twoq_2design_bound
 """
 import os, sys, json
 import numpy as np

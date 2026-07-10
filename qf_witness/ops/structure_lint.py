@@ -10,7 +10,7 @@
         codemod 감사와 동일 규칙 (§2-b).
   (iii) qpgf-oracle 코드 사본 금지(INV-SR4) — qf_witness/ 에 oracle 모듈명 파일 존재 불가.
 
-사용: python scripts/structure_lint.py [--quick]   (--quick 도 전수 — 검사 자체가 초 단위)
+사용: python -m qf_witness.ops.structure_lint [--quick]   (--quick 도 전수 — 검사 자체가 초 단위)
 """
 import os
 import re

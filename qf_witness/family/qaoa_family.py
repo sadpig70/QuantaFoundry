@@ -11,7 +11,7 @@ qaoa_family.py — W11.1 QAOA (MasterRoadmap › TrackSC)
   qaoa_p3 = path P3 (n=3, edges 01·12)
   qaoa_c4 = cycle C4 (n=4, edges 01·12·23·03)
 
-사용:  python scripts/qaoa_family.py
+사용:  python -m qf_witness.family.qaoa_family
 """
 from __future__ import annotations
 import os, sys, json

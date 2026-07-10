@@ -21,7 +21,7 @@
   - 봉인 = 유니터리 3개뿐. 쌍대성·상관 소멸/인수분해·quasi-energy = witness 관측.
   - 무한계 정리의 유한 적용 = t<n/2 무랩 창 한정(명시). 열화·연속구동·winding 일반론 = 범위 밖.
 
-사용: python scripts/dyn_observe.py [--quick]
+사용: python -m qf_witness.observe.dyn_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

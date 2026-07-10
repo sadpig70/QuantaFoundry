@@ -8,7 +8,7 @@ establish_truth 에 추가된 contested guard(top-2 독립단위 동률 → CONT
      establish_truth 재확립 → status==ESTABLISHED & key==저장값 & grade==저장값 대조 (단일-그룹 수렴 = runner_up 0 = guard 미발동).
   2. guard 동작 단위테스트: 단일그룹→ESTABLISHED, 4-2→ESTABLISHED, 3-3→CONTESTED, 2-2→CONTESTED.
 
-사용:  python scripts/verify_contested_guard.py
+사용:  python -m qf_witness.verify.verify_contested_guard
 """
 import sys, os, json
 HERE = os.path.dirname(os.path.abspath(__file__))

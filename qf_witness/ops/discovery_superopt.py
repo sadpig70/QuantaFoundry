@@ -14,7 +14,7 @@
 발견 결과가 알려진 항등식(cz=H·CNOT·H)이어도 "AI 탐색이 자동 발견 + 오라클 검증"이 능력 실증.
 미발견 시 정직 음성. registry 에 봉인하지 않음(관측/실증) → root 불변.
 
-사용: python scripts/discovery_superopt.py [--quick]
+사용: python -m qf_witness.ops.discovery_superopt [--quick]
 """
 import os, sys, json, shutil
 import numpy as np

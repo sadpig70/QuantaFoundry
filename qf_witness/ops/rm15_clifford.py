@@ -13,7 +13,7 @@
 코드-정확성 witness(오라클 독립, dense-free) = rm15_observe: 심볼릭 안정군 역전파(코드 안정자 14개
   → +Z_ancilla 군·X̄'→X_{q14}·Z̄→Z-string(q14 포함), Steane 7q 자가대조 포함).
 
-사용: python scripts/rm15_clifford.py
+사용: python -m qf_witness.ops.rm15_clifford
 """
 from __future__ import annotations
 import os, sys, json, subprocess

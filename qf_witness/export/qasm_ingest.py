@@ -12,8 +12,8 @@ cp(λ)/ry(θ) 는 INDEP 봉인 게이트의 실제 λ/θ 와 대조해 gate_id �
 소비 자산(사용만): second_oracle(INDEP) · app_assemble(assemble) · qasm_export(역검증용).
 
 사용:
-  python scripts/qasm_ingest.py <app_id>   # export→ingest→재봉인 폐루프 데모(단일)
-  python scripts/qasm_ingest.py --demo      # 대표 앱 폐루프 요약
+  python -m qf_witness.export.qasm_ingest <app_id>   # export→ingest→재봉인 폐루프 데모(단일)
+  python -m qf_witness.export.qasm_ingest --demo      # 대표 앱 폐루프 요약
 """
 from __future__ import annotations
 import os, sys, json, re, math, shutil

@@ -18,7 +18,7 @@ v1(non-Clifford 3부작)+v2(위상적 논리연산)의 봉인 자산들이 **하
   - 봉인 = 각 자산의 exact 유니터리뿐. 스택 정합성·논리 연산 대수 = 관측.
   - 실측정·decoder·threshold·거리·완전 encoder(논리 X 확산) = 하드웨어/차기. 신규 봉인 0.
 
-사용: python scripts/logical_stack_observe.py [--quick]
+사용: python -m qf_witness.observe.logical_stack_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

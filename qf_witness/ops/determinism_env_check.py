@@ -10,7 +10,7 @@ byte-identical u_hash 를 산출함을 실증한다 → byte-identity 가 환경
 비파괴: 분석/검증 전용. registry/sealed/oracle/frozen 불변. `.pgf/hardening/`·`requirements.lock` 가산.
 소비 자산(사용만): second_oracle(INDEP) · verify_seal(hash_unitary).
 
-사용:  python scripts/determinism_env_check.py [--write-lock]
+사용:  python -m qf_witness.ops.determinism_env_check [--write-lock]
 """
 from __future__ import annotations
 import os, sys, json, platform, subprocess
@@ -78,7 +78,7 @@ def write_lock():
         return None, str(e)
     open(LOCK, "w", encoding="utf-8", newline="\n").write(
         "# requirements.lock — Stage 5 W5.1 환경 핀 (외부 재검증 신뢰조건)\n"
-        "# 생성: python scripts/determinism_env_check.py --write-lock\n" + out)
+        "# 생성: python -m qf_witness.ops.determinism_env_check --write-lock\n" + out)
     return len(out.splitlines()), None
 
 

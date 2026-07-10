@@ -15,7 +15,7 @@ Honesty boundary:
   - seal = exact unitary decomposition of the coin+shift circuit (Tier-0 C-app)
   - position distributions / interference / quantum-vs-classical contrast = backend_adapter observation, not a seal
 
-Usage: python scripts/quantum_walk_family.py
+Usage: python -m qf_witness.family.quantum_walk_family
 """
 from __future__ import annotations
 

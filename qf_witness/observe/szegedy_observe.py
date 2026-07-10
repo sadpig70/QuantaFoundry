@@ -13,7 +13,7 @@
 정직 경계(INV-Q3): 봉인=walk 유니터리 W(Tier-0 exact)뿐. spectral gap 증폭·hitting time 가속 등
   알고리즘 성능 주장=관측/차기(여기선 스펙트럼 관계만 exact witness). 일반(비-dyadic) P=사람게이트.
 
-사용: python scripts/szegedy_observe.py [--quick]
+사용: python -m qf_witness.observe.szegedy_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

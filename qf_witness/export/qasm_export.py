@@ -13,8 +13,8 @@ gate 선언 + 경고로 정직 노출(은폐 금지). round-trip 은 INDEP 가 �
 소비 자산(사용만): second_oracle(INDEP/embed/vs.hash_unitary) · registry_tools 경로.
 
 사용:
-  python scripts/qasm_export.py <app_id>     # 단일 앱 export + round-trip
-  python scripts/qasm_export.py --all         # 전 앱 round-trip 검증 요약
+  python -m qf_witness.export.qasm_export <app_id>     # 단일 앱 export + round-trip
+  python -m qf_witness.export.qasm_export --all         # 전 앱 round-trip 검증 요약
 """
 from __future__ import annotations
 import os, sys, json, re, math

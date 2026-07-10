@@ -19,7 +19,7 @@
   - universality(braid 조밀성)·근사 컴파일(Solovay-Kitaev류)·n≥4 anyon = 범위 밖(차기).
   - field ℚ(ζ₅,√φ) 차수 8 = 승인분(.pgf/approvals/G5-fibonacci.md). 기존 braid_observe(Ising) 불변.
 
-사용: python scripts/fib_braid_observe.py [--quick]
+사용: python -m qf_witness.observe.fib_braid_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

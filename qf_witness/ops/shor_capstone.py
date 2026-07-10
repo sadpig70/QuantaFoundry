@@ -19,7 +19,7 @@ EXACT_BOUND(12) → Tier-1 STRUCTURAL(dense 미봉인, 봉인부품의 Merkle �
  - period readout(r=12→7,13)은 illustrative only(§8.4) — 봉인 증거 아님.
  - 생성≠검증: app_assemble Tier-1 통과로만 SEALED. plan=봉인부품, MatrixGate 0.
 
-사용:  python scripts/shor_capstone.py
+사용:  python -m qf_witness.ops.shor_capstone
 """
 from __future__ import annotations
 

@@ -20,7 +20,7 @@ agent08 "A₅ 문자 전부 실수→√5 충분, ζ₅ 불필요(redirect)" vs 
   ★**봉인은 멈춤**: A₅ Fourier(DFT over A₅)는 **√5 실수-surd 승인 module**(ζ₅ 복소보다 **경량** — redirect 의
   핵심 가치)이 필요(사람게이트). witness=승인 결정근거. a5_qft 봉인·PSL(2,7) ζ₇=승인 후/범위밖. 신규 module 0.
 
-사용: python scripts/a5_observe.py [--quick]
+사용: python -m qf_witness.observe.a5_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

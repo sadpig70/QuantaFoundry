@@ -13,7 +13,7 @@ parity basis 마지막 qubit q_{n-1} 은 **총 occupation parity**(= 입자수 �
   - taperability(마지막 qubit 자명/대각 + Z_{n-1} 교환) = 관측. sector 물리 선택은 별도 contract.
   - qubit 절감 이점 = 관측. 신규 봉인 0.
 
-사용: python scripts/parity_taper_observe.py [--quick]
+사용: python -m qf_witness.observe.parity_taper_observe [--quick]
 """
 import os, sys, json, itertools
 import numpy as np

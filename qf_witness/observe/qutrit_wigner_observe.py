@@ -20,7 +20,7 @@ qutrit 의 이산 Wigner 음수성**(Gross 2006) = 보편 양자계산에 필요
   실제 qutrit 회로 봉인·증류·완전 이산 Hudson 증명 = 범위밖/차기. 신규 module 0. [[trackhe8-report8]]
   (Peres-Mermin 맥락성)·contextual fraction(HE9 P2)·magic(HE5) 자원 계보와 교차(다른 렌즈=phase-space).
 
-사용: python scripts/qutrit_wigner_observe.py [--quick]
+사용: python -m qf_witness.observe.qutrit_wigner_observe [--quick]
 """
 from __future__ import annotations
 import sys

@@ -13,7 +13,7 @@
   = 관측. ★DU 는 s² 가 정확히 dyadic(¼) → EE 정확; 일반 게이트는 Schmidt 계수가 무리수일 수
   있어 EE **값** 은 근사/관측(봉인 아님). scrambling/광원뿔 연결 = 관측. 신규 module 0.
 
-사용: python scripts/op_ee_observe.py [--quick]
+사용: python -m qf_witness.observe.op_ee_observe [--quick]
 """
 import os, sys, re
 import numpy as np

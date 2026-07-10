@@ -11,7 +11,7 @@ second_oracle 은 risk(d)[Qualtran 구성버그]를 닫는다고 주장하나, c
 비파괴: 분석전용. registry/sealed/oracle/frozen 불변. `.pgf/consensus/`·`docs/` 가산.
 소비 자산(사용만): second_oracle(INDEP/embed/my_canonical_hash) · verify_seal(hash_unitary).
 
-사용:  python scripts/convention_audit.py
+사용:  python -m qf_witness.ops.convention_audit
 """
 from __future__ import annotations
 import os, sys, json, math

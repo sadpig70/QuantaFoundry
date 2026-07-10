@@ -13,7 +13,7 @@ tableau, dense 2^27 불필요, concat_513_513 선례).
   prep Clifford 회로 tableau exact; 거리 3 달성·decoder(BP+OSD)·임계값·대형 일반화=관측/범위밖.
 witness=hgp_observe(CSS·k·거리·|0_L⟩ 코드공간 stabilized, 오라클 독립).
 
-사용: python scripts/hgp_seal.py
+사용: python -m qf_witness.seal.hgp_seal
 """
 from __future__ import annotations
 import os, sys, json, subprocess

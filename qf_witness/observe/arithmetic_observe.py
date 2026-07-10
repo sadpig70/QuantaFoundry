@@ -14,7 +14,7 @@
 정직 경계: 봉인=가역 산술 유니터리(exact)뿐. mod 2^n wrap-around 는 사양(오류 아님).
   cmp2_ge 의 전체 유니터리 사양은 z⊕=[a≥b+cin] (cin=strict 선택자). n>3 수직 확장=차기.
 
-사용: python scripts/arithmetic_observe.py [--quick]
+사용: python -m qf_witness.observe.arithmetic_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

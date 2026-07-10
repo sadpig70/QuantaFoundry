@@ -19,7 +19,7 @@ report8 수렴축(2D Chern 5/8). §3k P2·§4 "2D Chern 은 아직 없음" 관�
   회로는 일반 k 에서 무리수 Bogoliubov 각도 → 봉인 아님(신규 module 회피). 유한격자 Berry sum·edge mode·
   임계값 = 관측/범위밖. 신규 module 0. 기봉인 제6경로(matchgate)·bogoliubov_pair 와 교차(다른 층=위상 관측).
 
-사용: python scripts/chern_observe.py [--quick]
+사용: python -m qf_witness.observe.chern_observe [--quick]
 """
 from __future__ import annotations
 import sys

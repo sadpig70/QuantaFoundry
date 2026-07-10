@@ -16,7 +16,7 @@
   - QCA vs Trotter: QCA = exact discrete unitary(근사 아님) — 이 구별이 핵심 정직 경계.
   - 비-Clifford QCA·연속시간 극한 = 차기/범위 밖. 신규 봉인 0.
 
-사용: python scripts/gnvw_index_observe.py [--quick]
+사용: python -m qf_witness.observe.gnvw_index_observe [--quick]
 """
 import os, sys, re, json, itertools
 from functools import reduce

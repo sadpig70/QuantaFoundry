@@ -27,7 +27,7 @@ closed-form 으로 독립구성할 수 있었다. 그러나 일반 stabilizer �
  - 미착수(정직 future work): full logical-input Steane 인코더, 5-qubit [[5,1,3]](비-CSS, 일반 stabilizer
    인코더 합성 필요).
 
-사용:  python scripts/qec_clifford.py
+사용:  python -m qf_witness.ops.qec_clifford
 """
 from __future__ import annotations
 

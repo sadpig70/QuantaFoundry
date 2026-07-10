@@ -25,7 +25,7 @@ witness (관측, seal 아님).
   full DoD·root 변경)이 별도 careful 라운드(정욱님 √5 승인 확인·viability 확립). 전체 60-dim DFT(정규화 √(dim/60)
   스칼라 별도)·PSL(2,7) 복소 Fourier=차기. 신규 module 0(이 witness). [[a5-fourier-observe]] 명시 승격.
 
-사용: python scripts/a5_rep3_observe.py [--quick]
+사용: python -m qf_witness.observe.a5_rep3_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

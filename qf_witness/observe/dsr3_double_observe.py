@@ -28,7 +28,7 @@ D(S₃) anyon = (켤레류 C, 대표원 centralizer Z(g_C)의 기약표현 ρ) �
   무관·우회). D(ℤ₂)=toric code 의 비아벨 일반화. SU(2)₃(Lie)[[su2-3-mtc-observe]] vs
   D(S₃)(유한군) = MTC 양대 원천. Fourier/braid 표현 계층은 별도 소관.
 
-사용: python scripts/dsr3_double_observe.py [--quick]
+사용: python -m qf_witness.observe.dsr3_double_observe [--quick]
 """
 from __future__ import annotations
 import sys

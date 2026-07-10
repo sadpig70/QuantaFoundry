@@ -18,7 +18,7 @@ power QAE(QPE-free) — P_good(m)=sin²((2m+1)θ) 곡선의 고전 fit으로 *�
    (u_hash 게이트)→P_good(m) 곡선→고전 fit. execution≠verification; 추정치는 관찰.
  - ★QPE-QAE(특수진폭만 exact) vs iterative-QAE(임의진폭, 정밀도=측정수 의존) trade-off 정직 표기.
 
-사용:  python scripts/qae2_family.py
+사용:  python -m qf_witness.family.qae2_family
 """
 from __future__ import annotations
 

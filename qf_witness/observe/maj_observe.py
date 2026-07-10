@@ -19,7 +19,7 @@
   없음(Ising anyon = Clifford only, 정직). braid word 는 기봉인 primitive(S/bogoliubov/CNOT·H·CNOT)로
   환원 — 새 게이트 불요(정수-Clifford 닫힌 영역). 신규 module 0.
 
-사용: python scripts/maj_observe.py [--quick]
+사용: python -m qf_witness.observe.maj_observe [--quick]
 """
 import os, sys, re, itertools
 import numpy as np

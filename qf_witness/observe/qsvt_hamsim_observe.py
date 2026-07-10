@@ -15,7 +15,7 @@ e^{-iAt} 를 근사할 때의 **오차(차수↑→오차↓)를 고전 관측**
   - A 는 commuting Paulis(비축퇴 위해) → 이 A 는 Trotter 도 exact(e^{-iXXt/2}e^{-iZZt/2}); QSVT 의
     이점은 일반(비가환) A 의 점근 스케일링(알려진 이론)이며, 여기선 Chebyshev 수렴을 관측한다.
 
-사용: python scripts/qsvt_hamsim_observe.py [--quick]
+사용: python -m qf_witness.observe.qsvt_hamsim_observe [--quick]
 """
 import os, sys, json
 import numpy as np

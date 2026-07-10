@@ -23,7 +23,7 @@ report10 수렴축(Galois-orbit 제11경로, 6/8). §3j "제11 경로"·§3m P1 
   Toffoli,SWAP,CS} ℚ(ζ₈) 표현 가능) 회로만·n≤3. 진폭 동일성+Galois 불변량 검증(전체 unitary 봉인 아님).
   비-ℚ(ζ₈) 게이트(임의 각도)·큰 n = skip 전수 사유. 신규 module 0. [[groebner-verify 제10경로]]·path-sum 과 교차.
 
-사용: python scripts/galois_orbit_verify.py [--quick]
+사용: python -m qf_witness.verify.galois_orbit_verify [--quick]
 """
 from __future__ import annotations
 import os, sys, re, json, glob

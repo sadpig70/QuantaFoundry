@@ -19,7 +19,7 @@ Peres-Mermin 3×3 magic square 관측가능량 9개·context 6개(row3+col3)·pr
   ★LP=최적화→봉인 아님(certificate). 내장 유리수 산술(부동소수·외부 solver 무의존). P5 parity 승격.
   큰 KS 집합·SDP·양자 상한 = 범위밖. 신규 module 0.
 
-사용: python scripts/contextual_fraction_observe.py [--quick]
+사용: python -m qf_witness.observe.contextual_fraction_observe [--quick]
 """
 from __future__ import annotations
 import sys

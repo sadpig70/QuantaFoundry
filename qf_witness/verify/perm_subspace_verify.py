@@ -18,7 +18,7 @@ modular-exponentiation 순열을 계산기저에서 구현함"을 독립 2-경�
 비파괴: sidecar `.pgf/proofs/<shor_id>.subspace_proof.json` 만 생성.
   registry root(module/app u_hash Merkle)·기존 sealed·oracle fingerprint·frozen 무영향.
 
-사용: python scripts/perm_subspace_verify.py [shor69 shor91 ...]  (인자 없으면 9개 전부)
+사용: python -m qf_witness.verify.perm_subspace_verify [shor69 shor91 ...]  (인자 없으면 9개 전부)
 """
 import os, re, sys, json, glob, hashlib
 import numpy as np

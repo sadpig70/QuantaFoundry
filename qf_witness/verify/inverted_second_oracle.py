@@ -17,7 +17,7 @@ honest 경계: endian 은 표현 규약이라 seal 은 특정 endian(big)에 *�
 bit-reversal 로 연결된 다른 표현) — 규약-불변이 아니라 규약-고정. 이는 정직하게 표기하며, 규약-불변
 축은 위상/atol 이다. 측정도구 vs.hash_unitary 는 공유(사용만) — 변주는 *입력 규약*에 가한다.
 
-사용: python scripts/inverted_second_oracle.py [--quick]
+사용: python -m qf_witness.verify.inverted_second_oracle [--quick]
 """
 import os, sys, json
 import numpy as np

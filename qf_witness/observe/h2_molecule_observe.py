@@ -17,7 +17,7 @@
     block-encoding(be_hop·be_num)으로 정확 표현. ground energy·bond curve·e^{-iHt}=고전/관측.
   - 신규 봉인 0 (be_hop·be_num 재사용) — 실제 분자 응용은 봉인 자산의 조합 관측.
 
-사용: python scripts/h2_molecule_observe.py [--quick]
+사용: python -m qf_witness.observe.h2_molecule_observe [--quick]
 """
 import os, sys, json
 import numpy as np

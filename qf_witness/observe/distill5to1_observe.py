@@ -21,7 +21,7 @@ T-type magic state: ρ=(I + (X+Y+Z)/√3)/2 의 순수상태 — Bloch 축 (±1,
   - T-type 상태 자체(β=½arccos(1/√3) 비-dyadic 각) = 봉인 불가 → 관측에서 수학적 정의로만 사용.
   - 신규 봉인 = code513_encoder 1개(Clifford). distillation *프로토콜*은 봉인 아님.
 
-사용: python scripts/distill5to1_observe.py [--quick]
+사용: python -m qf_witness.observe.distill5to1_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

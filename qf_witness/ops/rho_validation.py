@@ -14,7 +14,7 @@
 (인메모리 establish_truth 만 호출). `.pgf/consensus/`·`docs/`·패널패키지 가산.
 소비 자산(사용만): consensus(Source/establish_truth/effective_independent_count) · second_oracle(INDEP/perm_gate).
 
-사용:  python scripts/rho_validation.py
+사용:  python -m qf_witness.ops.rho_validation
 """
 from __future__ import annotations
 import os, sys, json

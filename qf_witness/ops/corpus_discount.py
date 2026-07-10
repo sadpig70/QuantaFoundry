@@ -10,8 +10,8 @@
   - v0.5(v05_div) Class C 자유파라미터는 정답이 부재 → ρ 의 *정본* 추정원(EXT 수급 후).
 
 사용:
-  python scripts/corpus_discount.py                 # 기본 v04_hard (상한 추정)
-  python scripts/corpus_discount.py --dir v05_div   # v0.5 Class C (정본, 수급 후)
+  python -m qf_witness.ops.corpus_discount                 # 기본 v04_hard (상한 추정)
+  python -m qf_witness.ops.corpus_discount --dir v05_div   # v0.5 Class C (정본, 수급 후)
 """
 import sys, os, json, glob
 import numpy as np

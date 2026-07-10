@@ -22,7 +22,7 @@ ambivalent→ℚ(√5) 실수)의 허수 쌍**: PSL(2,7)(두 번째 최소 비�
   ζ₇(차수 6)일 수 있음**(character field ⊂ Fourier realization field, A₅ 처럼 일치할지 미확정=차기). 어느 쪽이든
   A₄(ζ₃)·A₅(√5)·PSL(2,7)(√−7/ζ₇) 사다리의 복소 지층. 신규 module 0.
 
-사용: python scripts/psl27_observe.py [--quick]
+사용: python -m qf_witness.observe.psl27_observe [--quick]
 """
 from __future__ import annotations
 import sys

@@ -13,7 +13,7 @@
   - 봉인 = schur3 회로==CG golden exact(C-app) 뿐. J²/Jz 대각화·duality = 관측(witness).
   - n≥4 Schur·S₃ irrep 레지스터 명시 분리 = 차기. 신규 봉인 0.
 
-사용: python scripts/schur_observe.py [--quick]
+사용: python -m qf_witness.observe.schur_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

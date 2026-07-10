@@ -16,7 +16,7 @@
   golden 열은 **검증경로**지 봉인 자산 아님. w>N_CAP(대형 treewidth)은 skip 전수 사유 기록(silent cap
   금지). 소형은 상태벡터, 대형 treewidth 수축(부분 진폭)은 차기 확장.
 
-사용: python scripts/tncontract_verify.py [--quick] [--sample]
+사용: python -m qf_witness.verify.tncontract_verify [--quick] [--sample]
 """
 import os, sys, re, json, glob
 import numpy as np

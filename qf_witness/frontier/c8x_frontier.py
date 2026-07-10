@@ -16,7 +16,7 @@ Honesty boundary:
   - This unlocks 8-work-bit modular arithmetic. N>=256 remains blocked until
     c9x or another 9-control strategy is sealed.
 
-Usage: python scripts/c8x_frontier.py
+Usage: python -m qf_witness.frontier.c8x_frontier
 """
 from __future__ import annotations
 

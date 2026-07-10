@@ -27,7 +27,7 @@ skip 하는 교집합 맹점** = monomial 비대각 위상 유니터리(CNOT+pha
   위상회로만(plan 게이트가 순열 또는 대각-위상; H/Ry 등 non-perm-non-diag 게이트 포함 앱은 skip 전수 사유
   기록). Toffoli 등 비선형 순열도 π 추적 가능(계산기저). exact(정수·ℤ_M). 신규 module 0.
 
-사용: python scripts/groebner_monomial_observe.py [--quick] [--sample]
+사용: python -m qf_witness.observe.groebner_monomial_observe [--quick] [--sample]
 """
 import os, sys, glob
 import numpy as np

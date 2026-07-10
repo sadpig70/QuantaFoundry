@@ -20,7 +20,7 @@ cr_k_gate(non-dag) 봉인: bloq=ZPowGate(exponent=1/2**(k-1)).controlled(), gold
  - 비파괴 성장: 모듈 3+앱 4 가산, 기존 봉인(qft2/3/4_pipeline)/frozen 23키/fingerprint byte-identical.
  - second_oracle INDEP 에 cr6/7/8_gate(=cphase(k)) 추가 필요(coverage 50→53 유지) — 별도 편집.
 
-사용:  python scripts/qft_family.py
+사용:  python -m qf_witness.family.qft_family
 """
 from __future__ import annotations
 

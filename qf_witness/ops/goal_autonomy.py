@@ -8,9 +8,9 @@ honest: 새 진리를 발명하지 않는다. 이미 봉인된 부품의 *알려
 다음 빌드 타깃을 시스템이 스스로 고른다. 인간 seed 0, 봉인 게이트만 재조립(no MatrixGate).
 
 사용:
-  python scripts/goal_autonomy.py scan      # gap 탐지 + 점수화 (빌드 안 함)
-  python scripts/goal_autonomy.py forge      # 최고점 app-gap 자동 생성 + 봉인
-  python scripts/goal_autonomy.py compound   # compounding curve 측정
+  python -m qf_witness.ops.goal_autonomy scan      # gap 탐지 + 점수화 (빌드 안 함)
+  python -m qf_witness.ops.goal_autonomy forge      # 최고점 app-gap 자동 생성 + 봉인
+  python -m qf_witness.ops.goal_autonomy compound   # compounding curve 측정
 """
 import os, sys, json, re
 

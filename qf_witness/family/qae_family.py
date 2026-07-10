@@ -21,7 +21,7 @@ controlled-U^{2^j} + 봉인 iqft3 근육 복리. honest 분해(controlled-Ry = �
    exact instance라 양 peak y∈{1,7}이 정확히 a_est=sin²(π/8). W9.1 amplification → W9.2 estimation.
  - QAE 원리: Grover Q 고유위상 ±2θ 를 QPE 가 읽음 → a=sin²θ.
 
-사용:  python scripts/qae_family.py
+사용:  python -m qf_witness.family.qae_family
 """
 from __future__ import annotations
 

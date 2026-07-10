@@ -10,18 +10,18 @@ provenance 와 (2) 오라클 변경 시 봉인 u_hash 불변 게이트를 이 �
 자동 동기화(submodule/pip)는 이 불변식을 조용히 깰 수 있어 의도적으로 채택하지 않는다.
 
 사용:
-  python scripts/sync_qpgf.py stamp [--commit SHA] [--version vX] [--date YYYY-MM-DD]
+  python -m qf_witness.ops.sync_qpgf stamp [--commit SHA] [--version vX] [--date YYYY-MM-DD]
       # 현재 벤더본 기준으로 VENDOR.json 생성/갱신 (fingerprint·bundle root·deps·upstream meta)
-  python scripts/sync_qpgf.py check
+  python -m qf_witness.ops.sync_qpgf check
       # VENDOR.json ↔ 현재 벤더본 일치(변조탐지) + 결정론 게이트(대표 봉인 u_hash 불변) 검증
 
 오라클 업그레이드 절차(adopt — 수동, 이 순서 엄수):
   1. D:\QPGF 를 태그본으로 동기화하고 skill 번들을 .agents/skills/qpgf-oracle/ 에 복사.
   2. python .agents/skills/qpgf-oracle/scripts/bundle_manifest.py --verify   # 번들 무결성
   3. python .agents/skills/qpgf-oracle/scripts/test_verify_seal.py            # 오라클 자가시험
-  4. python scripts/sync_qpgf.py check                                        # 봉인 u_hash 불변 게이트
+  4. python -m qf_witness.ops.sync_qpgf check                                        # 봉인 u_hash 불변 게이트
      → u_hash 가 하나라도 바뀌면 BREAKING: 재봉인 + frozen 키 검토 없이는 커밋 금지.
-  5. python scripts/sync_qpgf.py stamp --commit <SHA> --version <tag> --date <YYYY-MM-DD>
+  5. python -m qf_witness.ops.sync_qpgf stamp --commit <SHA> --version <tag> --date <YYYY-MM-DD>
 """
 import os, sys, json, hashlib, subprocess
 
@@ -87,7 +87,7 @@ def cmd_stamp(argv):
     date = args.get("--date", "unknown")  # 결정론: 날짜는 명시 전달 권장(미전달 시 'unknown')
     vendor = {
         "schema": "qpgf-vendor/v1",
-        "consumption": "vendored (copied into repo; not submodule/pip — see scripts/sync_qpgf.py)",
+        "consumption": "vendored (copied into repo; not submodule/pip — see qf_witness/ops/sync_qpgf.py)",
         "upstream": UPSTREAM,
         "version": version,
         "upstream_commit": commit,
@@ -98,7 +98,7 @@ def cmd_stamp(argv):
         "oracle_fingerprint": fingerprint(),
         "policy": "Manual, deliberate sync only. Oracle code/deps changes can alter seal u_hash/signature "
                   "(oracle_fingerprint is bound into every seal). Any upgrade is a semver-gated event "
-                  "verified by `python scripts/sync_qpgf.py check` (seal u_hash invariance) before commit.",
+                  "verified by `python -m qf_witness.ops.sync_qpgf check` (seal u_hash invariance) before commit.",
     }
     json.dump(vendor, open(VENDOR_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(f"wrote {VENDOR_PATH}")

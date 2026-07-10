@@ -19,7 +19,7 @@
   - rank-1 Kraus 자유도(G3a 판정)로 기존 팔레트(ry_cg_half+dyadic) 격자 실현 — 신규 module 0.
   - SIC/trine 등 비-골든각 POVM=봉인불가 정직경계. 유한샘플 측정=미구현(해석 확률만).
 
-사용: python scripts/naimark_observe.py [--quick]
+사용: python -m qf_witness.observe.naimark_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

@@ -23,7 +23,7 @@ MA 정규형: 모든 1-qubit Clifford+T unitary 는 유일한 canonical word (T|
   강등 판정. ★검증경로 카운트 **불변**(제11 독립경로 미발견, MA=ℤ[ω] 재인코딩). 신규 module 0.
   [[treewidth-verdict]](certificate layer 강등)·[[galois-orbit-verify]](제11 후보 강등)와 동급.
 
-사용: python scripts/matsumoto_amano_verdict_observe.py [--quick]
+사용: python -m qf_witness.observe.matsumoto_amano_verdict_observe [--quick]
 """
 from __future__ import annotations
 import sys

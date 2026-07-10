@@ -23,7 +23,7 @@ lattice surgery = **동일 surface-code 패밀리** 논리큐빗 간 **측정 �
   물리 surface-code 패치(distance-d [[d²,1,d]]) 실현=Tier-2 tableau(범위밖·dense 미실체화)·오류문턱/FT=하드웨어
   out. 신규 module 0. [[code-switch-rm15-observe]](다른 부호 coherent) 상보(동일 부호 측정).
 
-사용: python scripts/lattice_surgery_observe.py [--quick]
+사용: python -m qf_witness.observe.lattice_surgery_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

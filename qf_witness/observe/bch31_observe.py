@@ -15,7 +15,7 @@
   거리 = weight≤4 부재(전수) + BCH bound(정리)로 5 확립(전체 2^21 열거 아님, honest). 신규 module 0.
   bch15([[15,7,3]] d=3)의 거리-5 확장(같은 cyclic 대수부호 계보).
 
-사용: python scripts/bch31_observe.py [--quick]
+사용: python -m qf_witness.observe.bch31_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, itertools

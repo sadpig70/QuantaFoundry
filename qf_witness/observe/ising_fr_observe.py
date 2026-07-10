@@ -32,7 +32,7 @@ exact 엔진: ℚ(ζ₁₆) 순환체 산술을 Fraction 기반 Cyc(ζ⁸=−1, 
   (ζ₁₆ 위상 module=사람게이트, 범위밖). gauge 선택(진공 F=1·+Hadamard) 명시. 기존 fusion/braid/modular
   관측과 검증객체 상이. [[ising-fusion-observe]]·[[mtc-braid-observe]]·[[su2-3-mtc-observe]] 교차.
 
-사용: python scripts/ising_fr_observe.py [--quick]
+사용: python -m qf_witness.observe.ising_fr_observe [--quick]
 """
 from __future__ import annotations
 

@@ -24,7 +24,7 @@ treewidth 그래프-조합)" 관문. ★**v11 §4′(j) 셋째 — certificate l
   판정. ★검증경로 카운트 **불변**(제11 독립경로 미발견, treewidth=certificate layer). 신규 module 0. v11 §4′(j)
   셋째 규율(억지 제11 대신 정직 강등)의 실증. [[galois-orbit-verify]](제11 후보)와 동급 강등.
 
-사용: python scripts/treewidth_verdict_observe.py [--quick]
+사용: python -m qf_witness.observe.treewidth_verdict_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

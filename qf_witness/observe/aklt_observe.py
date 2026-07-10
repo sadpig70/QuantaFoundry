@@ -17,7 +17,7 @@
   - 봉인 = aklt4 회로==golden exact(C-app) 뿐. AKLT-상태 정합·parent-H·string order = 관측 witness.
   - 정의 열만 AKLT 물리; 여타 열 = 회로-유도 완성. n>4·PBC·bond>2 일반 MPS = 차기. 신규 봉인 0.
 
-사용: python scripts/aklt_observe.py [--quick]
+사용: python -m qf_witness.observe.aklt_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

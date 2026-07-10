@@ -26,7 +26,7 @@
   - 봉인 = 계산기저 순열 유니터리 2개뿐. 체 구조(Galois·자기동형·궤도) = 독립 산술 대조 관측.
   - GF(2ᵏ) 일반 k·다항식 인수분해·Reed-Solomon 부호 산술 = 차기. 신규 module 0(MMD 6게이트+CNOT 2).
 
-사용: python scripts/gf8_observe.py [--quick]
+사용: python -m qf_witness.observe.gf8_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

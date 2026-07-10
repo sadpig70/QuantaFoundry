@@ -9,7 +9,7 @@ state Ry(θ)|0>, observable Z: ⟨Z⟩=cosθ, exact ∂⟨Z⟩/∂θ=−sinθ.
 봉인 모듈 실행(u_hash 게이트): θ=π/4 → ry_pi4 · θ+π/2=3π/4 → ry_3pi4 · θ−π/2=−π/4 → ry_negpi4.
 param-shift = (⟨Z⟩(3π/4) − ⟨Z⟩(−π/4))/2 == −sin(π/4).
 
-사용:  python scripts/paramshift_obs.py
+사용:  python -m qf_witness.ops.paramshift_obs
 """
 from __future__ import annotations
 import os, sys, json

@@ -21,7 +21,7 @@ report9 수렴축(code switching 2-3/8). ★**closed-negative + 올바른 타깃
   Steane↔RM15 switch isometry 봉인 = **차기 타깃**(본 witness 가 well-formedness 근거 확보). 15q RM15 codeword
   실체화·FT 전환 프로토콜 = 봉인 시/범위밖.
 
-사용: python scripts/code_switch_observe.py [--quick]
+사용: python -m qf_witness.observe.code_switch_observe [--quick]
 """
 from __future__ import annotations
 import os, re, sys

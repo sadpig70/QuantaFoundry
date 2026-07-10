@@ -20,7 +20,7 @@
   - 봉인 = 인코더 tableau(Tier-2)·T-패턴 구조(Tier-1 정직 라벨)뿐. 논리 작용·거리 = 정수 witness.
   - 15-to-1 증류의 성공확률·후선택·반복 = 범위 밖. n=15 dense 미실체화(전 witness 가 비트연산).
 
-사용: python scripts/rm15_observe.py [--quick]
+사용: python -m qf_witness.observe.rm15_observe [--quick]
 """
 import os, sys, re, json
 from itertools import combinations, product

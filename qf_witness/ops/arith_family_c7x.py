@@ -18,7 +18,7 @@ nq-qubit MCT의 max control = nq-1 = work bits. c7x는 work bits≥7 ⟺ N>64일
  - 행동관찰(BehavioralObserve)=illustrative only(§8.4) — 봉인 증거 아님.
  - 비파괴 성장: 앱만 가산(모듈 50 불변), 기존 봉인/frozen 23키/fingerprint byte-identical.
 
-사용:  python scripts/arith_family_c7x.py
+사용:  python -m qf_witness.ops.arith_family_c7x
 """
 from __future__ import annotations
 

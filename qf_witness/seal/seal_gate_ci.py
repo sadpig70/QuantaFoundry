@@ -10,7 +10,7 @@ self-contained 부분(본 스크립트 + .github/workflows/seal-gate.yml)은 완
 비파괴: 검증/조회만. `.pgf/adoption/seal-badge.json` 가산. registry/sealed/frozen 불변.
 
 사용:
-  python scripts/seal_gate_ci.py [--expect-root <hash>]   # 게이트 통과 시 badge 생성
+  python -m qf_witness.seal.seal_gate_ci [--expect-root <hash>]   # 게이트 통과 시 badge 생성
 """
 from __future__ import annotations
 import os, sys, json, glob

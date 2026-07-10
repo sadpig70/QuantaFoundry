@@ -19,7 +19,7 @@ Grover(grover2)를 amplitude amplification 패밀리로 일반화: 3큐비트 �
    최적-k(N=8→k=2, P=0.945)·over-rotation(N=4→k=2, P=0.25)은 관찰이지 봉인 아님(이론 sin²((2k+1)θ) 대조).
  - 신규 모듈 0 → second_oracle 57/57 불변. 앱만 +5.
 
-사용:  python scripts/ampamp_family.py
+사용:  python -m qf_witness.family.ampamp_family
 """
 from __future__ import annotations
 

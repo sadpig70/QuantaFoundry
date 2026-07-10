@@ -28,8 +28,8 @@ registry 는 exact-only 다: Trotter/Suzuki 앱은 "그 회로의 unitary" 를 e
 비파괴: registry/APPROX-GUARANTEES.json (직교축 sidecar) 만 생성 — root/oracle/frozen 무영향.
 
 사용:
-  python scripts/approx_certify.py            # 카탈로그 전체 인증
-  python scripts/approx_certify.py --quick    # reproduce_all 용 경량 재검증
+  python -m qf_witness.ops.approx_certify            # 카탈로그 전체 인증
+  python -m qf_witness.ops.approx_certify --quick    # reproduce_all 용 경량 재검증
 """
 import os
 import re

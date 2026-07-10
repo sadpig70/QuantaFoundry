@@ -26,7 +26,7 @@ R 은 봉인 golden 을 읽지 않고 **plan 구조(게이트 이름·각도·�
   커버 = {1q 대각 회전, 인접 iswap/fswap} 조립 앱(수보존 중심) — 전면 아님·pairing 게이트 팔레트 무.
   수치 = 부동소수(테이블 성분은 dyadic-π 닫힌형) — 전제 독립(안정군·행렬곱·경로합 아닌 SO(2n))이 요점.
 
-사용: python scripts/matchgate_verify.py [--quick]
+사용: python -m qf_witness.verify.matchgate_verify [--quick]
 """
 import os, sys, re, json, glob
 from functools import reduce

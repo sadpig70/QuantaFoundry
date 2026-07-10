@@ -33,7 +33,7 @@ fib_fig8(σ₁σ₂⁻¹σ₁σ₂⁻¹ — 첫 비-토러스 매듭, σ⁻¹=z5
   - 봉인 = braid word 유니터리뿐. Jones/Alexander 값·Markov 정리 일반론·매듭 동치판정 = 관측.
   - 대형 링크는 표본 근사 영역 = 범위 밖. universality 정량화 = 범위 밖(기존 경계 상속).
 
-사용: python scripts/fib_jones_observe.py [--quick]
+사용: python -m qf_witness.observe.fib_jones_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

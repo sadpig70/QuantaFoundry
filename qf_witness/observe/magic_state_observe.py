@@ -16,7 +16,7 @@ QEC(W7)는 transversal **Clifford**(H/S/CNOT)까지만 제공한다. universal �
 정직 경계(INV): magic_a=Tier-0 EXACT 봉인. non-stabilizer·injection 정확성=EXACT(수학 항등식·독립검증).
   실제 magic state *distillation*(잡음→고순도)은 하드웨어 잡음 맥락이므로 범위 밖(정체성: 하드웨어 out).
 
-사용: python scripts/magic_state_observe.py [--quick]
+사용: python -m qf_witness.observe.magic_state_observe [--quick]
 """
 import os, sys, json
 import numpy as np

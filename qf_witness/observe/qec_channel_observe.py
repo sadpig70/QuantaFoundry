@@ -20,7 +20,7 @@
   - 봉인 = 인코더/dilation/syndrome 유니터리(각 Tier-0 exact)뿐. 채널·복원·측정후처리 = 관측.
   - 단일큐빗 채널만 거리-3로 exact 정정. 2큐빗 동시오류·측정 실측·decoder threshold = 차기. 신규 봉인 0.
 
-사용: python scripts/qec_channel_observe.py [--quick]
+사용: python -m qf_witness.observe.qec_channel_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

@@ -19,7 +19,7 @@ Honesty boundary:
   - seal = exact decomposition of the 4th-order Suzuki step
   - approximation error vs true exp(-iHT) and order ratios = observation, not a seal
 
-Usage: python scripts/suzuki4_family.py
+Usage: python -m qf_witness.family.suzuki4_family
 """
 from __future__ import annotations
 

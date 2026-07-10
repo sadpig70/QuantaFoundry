@@ -28,7 +28,7 @@ ANF/bit-vector)에 이은 열 번째. ★**제9 ANF 와의 함정 회피**: 순�
   silent cap 금지). 검증 결과 == golden 은 **검증경로**지 봉인 자산 아님. exact(ℤ_M 정수 대수, 부동소수 없음
   — 위상은 args→가장 가까운 ℤ_M 정수로 반올림, root-of-unity 아니면 skip).
 
-사용: python scripts/groebner_verify.py [--quick] [--sample]
+사용: python -m qf_witness.verify.groebner_verify [--quick] [--sample]
 """
 import os, sys, re, json, glob
 import numpy as np

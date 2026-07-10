@@ -35,7 +35,7 @@
 Jones 값·매듭 동치판정·mirror 관계 = 관측(fib_jones INV-Q3 경계 상속). [[fib-jones-observe]]·
 [[temperley-lieb-observe]] 교차.
 
-사용: python scripts/kauffman_bracket_observe.py [--quick]
+사용: python -m qf_witness.observe.kauffman_bracket_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, json, itertools

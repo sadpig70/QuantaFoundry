@@ -29,7 +29,7 @@ iQFT ring-exact (핵심):
       hard 인자(iQFT)에서 float 를 제거하는 상보 증인(계급 상향, 대체 아님).
     - ℤ[ζ_M] = 원분정수환(Φ_M = x^{M/2}+1, ζ^{M/2}=−1) — 벡터 일치 ⟺ 복소값 일치(sound+complete).
 
-사용: python scripts/ring_column_verify.py [--quick]   (--quick: basis 표본 32; full: 전 256)
+사용: python -m qf_witness.verify.ring_column_verify [--quick]   (--quick: basis 표본 32; full: 전 256)
 """
 import os
 import re

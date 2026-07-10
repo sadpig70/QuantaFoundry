@@ -20,7 +20,7 @@ Hecke H₃(q=i) (`hecke_h3_observe`)의 **정수층 상보**. 거기서 q+q⁻¹
   ★Hecke H₃(q=i, q+q⁻¹=0 Markov특이)의 정수 상보(δ=−(q+q⁻¹)=2, q=−1). 일반 δ Jones·TL_n(n>4)·knot 불변량=범위밖.
   신규 module 0. [[hecke-h3-observe]] 교차.
 
-사용: python scripts/temperley_lieb_observe.py [--quick]
+사용: python -m qf_witness.observe.temperley_lieb_observe [--quick]
 """
 from __future__ import annotations
 import sys

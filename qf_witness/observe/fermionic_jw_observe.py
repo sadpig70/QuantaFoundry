@@ -14,7 +14,7 @@ teeth(공허하지 않음): Z-string 을 뺀 *잘못된* 매핑은 반교환관�
 정직 경계: JW 반교환 보존은 EXACT(수학 항등식). 봉인 = be_hop(fermionic hopping block-encoding).
   시간발전 e^{-iHt} 근사는 observation(INV-Q3, qsvt_hamsim_observe 와 동일 경계).
 
-사용: python scripts/fermionic_jw_observe.py [--quick]
+사용: python -m qf_witness.observe.fermionic_jw_observe [--quick]
 """
 import os, sys, json
 import numpy as np

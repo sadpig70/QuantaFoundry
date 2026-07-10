@@ -22,7 +22,7 @@ teeth: (a) dim-2 spinor(2w) FS=−1 ≠ dim-3 proxy FS=+1 — 차원이 FS 구�
        (b) 8원소 quaternion군만으론 FS=−1 안 나옴(teeth_partial_not_2a5).
 
 관측·root 불변 sidecar, 신규 module 0, seal 아님.
-사용: python scripts/2a5_fs_observe.py [--quick]
+사용: python -m qf_witness.observe.2a5_fs_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

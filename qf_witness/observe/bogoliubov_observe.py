@@ -18,7 +18,7 @@
   - 봉인 = pairing 게이트·sweet 준비 유니터리뿐. 수보존 깸·R·parity·Pfaffian = witness 관측.
   - Z₂ 위상 보호(노이즈)·에너지갭·sweet 이탈(μ≠0,Δ≠t)·2D·일반 parametrization = 범위 밖.
 
-사용: python scripts/bogoliubov_observe.py [--quick]
+사용: python -m qf_witness.observe.bogoliubov_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

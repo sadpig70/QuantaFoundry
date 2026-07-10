@@ -15,7 +15,7 @@ Honesty boundary:
   - period/factor readout is illustrative only, not seal evidence.
   - N>=256 remains blocked until c9x or another 9-control strategy is sealed.
 
-Usage: python scripts/shor221_frontier.py
+Usage: python -m qf_witness.frontier.shor221_frontier
 """
 from __future__ import annotations
 

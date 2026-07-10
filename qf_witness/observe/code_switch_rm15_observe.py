@@ -27,7 +27,7 @@ CSS 이며 ★**횡단 게이트 상보**(Steane=Clifford {H,S,CNOT} 횡단 / RM
   신규 봉인 module 아님(신규 module 0). 물리적 FT 전환 프로토콜(측정/게이지고정·성공확률·후선택) = 범위밖.
   거리(둘 다 d=3)·논리작용 = exact(정수·벡터). dense 2¹⁵×2¹⁵ 미실체화(Pauli-string matrix-free).
 
-사용: python scripts/code_switch_rm15_observe.py [--quick]
+사용: python -m qf_witness.observe.code_switch_rm15_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, json

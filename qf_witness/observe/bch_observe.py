@@ -14,7 +14,7 @@
   ★봉인(bch_seal)=|0_L⟩ prep Clifford tableau exact(Tier-2). 거리 3 달성·decoder·순환 자기동형 물리·더 큰
   BCH(δ≥5) = 관측/범위밖. 신규 module 0. rm15([[15,1,3]] punctured RM)와 다른 부호 클래스(순환 대수부호).
 
-사용: python scripts/bch_observe.py [--quick]
+사용: python -m qf_witness.observe.bch_observe [--quick]
 """
 from __future__ import annotations
 import os, sys

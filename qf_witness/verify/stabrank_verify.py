@@ -25,7 +25,7 @@ Dehaene–De Moor 계열)으로 **행렬 곱 없이** 진화시켜 진폭을 유
   커버리지 = Clifford+{T,CS,CT,CCZ,Toffoli,C3X} 단편 + 분기곱≤4096 (비용 2^t — honest 한계 명문).
   ry/z5/ω₈ 밖 게이트 앱·대형 T-count 앱은 skip 목록에 기록. 수치=부동소수(전제 독립이 요점).
 
-사용: python scripts/stabrank_verify.py [--quick]
+사용: python -m qf_witness.verify.stabrank_verify [--quick]
 """
 import os, sys, re, json, glob
 from itertools import product

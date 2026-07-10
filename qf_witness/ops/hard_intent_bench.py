@@ -12,7 +12,7 @@ necessity = (B)·(C)에서 *단일 출처라면 거짓 봉인*이 일어났을 �
 SC 한계: 진짜 cross-model 발산율은 6런타임 EXT 필요 — 본 벤치는 proof⊕structural⊕(동일가중치 모사)로
 necessity 의 구조를 입증한다(브리프는 _workspace 로 분리).
 
-사용:  python scripts/hard_intent_bench.py
+사용:  python -m qf_witness.ops.hard_intent_bench
 """
 import os, sys, json
 import numpy as np

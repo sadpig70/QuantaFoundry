@@ -18,7 +18,7 @@ reduction rule(중복 노드 병합·zero 억제·leading-nonzero 정규화)로 
   지원 = 인접(연속)-target k-qubit 게이트(1q 포함). 비인접-target·미지원 = skip 전수 사유 기록
   (silent cap 금지). canonicity=규약층 → 정규화 규칙 명문화 + teeth(고의 오염 검출) 필수.
 
-사용: python scripts/qmdd_verify.py [--quick] [--sample]
+사용: python -m qf_witness.verify.qmdd_verify [--quick] [--sample]
 """
 import os, sys, re, json, glob
 import numpy as np

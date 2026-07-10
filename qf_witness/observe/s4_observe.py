@@ -21,7 +21,7 @@
   - 완전 S₄ Fourier(모든 irrep)는 ζ₃ 사람게이트 필요(반증 문서) — 곱셈 오라클은 그와 무관(순열).
   - HSP 표본·고전후처리 = 범위 밖. A₄ 도 동일 ζ₃ 장벽(§3h) — S₄ 우회 실패의 정직 기록.
 
-사용: python scripts/s4_observe.py [--quick]
+사용: python -m qf_witness.observe.s4_observe [--quick]
 """
 import os, sys, re, json
 from itertools import product, permutations

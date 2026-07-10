@@ -21,7 +21,7 @@
   (H·phase·CZ·QFT 등 비-permutation 게이트 포함 앱은 skip 전수 사유 기록, silent cap 금지). ANF 검증
   결과 == golden 은 **검증경로**지 봉인 자산 아님. exact(GF(2) 정수 대수, 부동소수 없음).
 
-사용: python scripts/anf_verify.py [--quick] [--sample]
+사용: python -m qf_witness.verify.anf_verify [--quick] [--sample]
 """
 import os, sys, re, json, glob
 import numpy as np

@@ -13,7 +13,7 @@ exact(보간). QSVT 가 그 홀수 다항식을 실현(qsp_d1/d3/**d5** 봉인 =
   - 봉인 = 정확한 QSP 홀수 다항식 유니터리(qsp_d1/d3/d5, Tier-0). 1/x 근사 프로파일 = 고전 관측.
   - matrix inversion 은 0 고유값에서 발산 → well-conditioned A 로 한정(honest). c=min λ 로 |P(λ)|≤1 정규화.
 
-사용: python scripts/matrix_inversion_observe.py [--quick]
+사용: python -m qf_witness.observe.matrix_inversion_observe [--quick]
 """
 import os, sys, json
 import numpy as np

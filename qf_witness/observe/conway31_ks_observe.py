@@ -29,7 +29,7 @@ Kochen-Specker 후보 집합의 **정직 판정** (관측·자체생성, seal �
 분석 완결"(반드시 UNSAT 이라는 뜻 아님). Peres-33(d=3 ℚ(√2))·KS-18(4D)·Yu-Oh(colorable)·KCBS
 (state-dependent) 맥락성 계보와 교차(대상·필드 상이).
 
-사용: python scripts/conway31_ks_observe.py [--quick]
+사용: python -m qf_witness.observe.conway31_ks_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, json, itertools, math

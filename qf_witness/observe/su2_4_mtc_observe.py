@@ -35,7 +35,7 @@ SU(2)₄ anyon: j∈{0,1/2,1,3/2,2} → label a=2j∈{0,1,2,3,4}(5개). k=4, k+2
   pentagon·hexagon 열거는 braid 표현 계층 소관(범위 밖). 위상값의 module 봉인(ζ₂₄ 등)은 범위밖(사람게이트).
   [[su2-3-mtc-observe]](HE12 P4, k=3 형제)·[[mtc-braid-observe]]·[[ising-fusion-observe]] 교차.
 
-사용: python scripts/su2_4_mtc_observe.py [--quick]
+사용: python -m qf_witness.observe.su2_4_mtc_observe [--quick]
 """
 from __future__ import annotations
 import json

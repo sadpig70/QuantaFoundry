@@ -22,7 +22,7 @@ Fibonacci(보편) 상보.
   는 전역 ζ₁₆ 위상 포함(ζ₁₆ module=사람게이트). 완전 MTC(전 F/R symbol pentagon/hexagon 열거)·Chern-Simons
   level-k = 범위밖. 신규 module 0. [[ising-fusion-observe]](TrackHE9 P6)·Fibonacci(G5)·Majorana(HE7) braid 계보 교차.
 
-사용: python scripts/mtc_braid_observe.py [--quick]
+사용: python -m qf_witness.observe.mtc_braid_observe [--quick]
 """
 from __future__ import annotations
 import sys

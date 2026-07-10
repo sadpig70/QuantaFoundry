@@ -11,7 +11,7 @@ QSP 앱은 ⟨0|U|0> = P(a) 다항식값을 관측한다(observation, INV-Q3 —
 비파괴: 읽기 전용 + sidecar `.pgf/proofs/BLOCKENCODING-AUDIT.json`. sealed/oracle/frozen/root 무영향.
 봉인 자체는 app_assemble(Tier-0 EXACT, composite==golden)이 담당 — 본 스크립트는 block == A/α *의미* 를 관측.
 
-사용: python scripts/blockencoding_audit.py [--quick]
+사용: python -m qf_witness.ops.blockencoding_audit [--quick]
 """
 import os, re, sys, json
 import numpy as np

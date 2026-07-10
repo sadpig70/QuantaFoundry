@@ -11,7 +11,7 @@
   - 실측정(사영=비유니터리)·byproduct Pauli·gflow 의존구조·비-Clifford(π/4 T-텔레포트) = 관측.
   - 신규 봉인 0.
 
-사용: python scripts/mbqc_observe.py [--quick]
+사용: python -m qf_witness.observe.mbqc_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

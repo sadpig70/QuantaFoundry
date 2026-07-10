@@ -18,7 +18,7 @@
   거리 9 달성·임계값·디코드·오류율·물리 = 관측/범위밖. 전수 거리(2^24) 아님 = 연접 정리 + 블록-국소
   최소무게 논거(honest). 신규 module 0.
 
-사용: python scripts/concat_observe.py [--quick]
+사용: python -m qf_witness.observe.concat_observe [--quick]
 """
 from __future__ import annotations
 import os, sys

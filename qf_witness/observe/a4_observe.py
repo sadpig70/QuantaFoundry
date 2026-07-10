@@ -21,7 +21,7 @@ report9 수렴축(A₄ ζ₃ Fourier 4/8). ★비-rational 군-Fourier 계보의
   승인 module 이 필요**(정욱님 사람게이트). 본 witness 는 "ω₃ 게이트를 열 가치가 있는가"의 **결정 근거**를
   제공할 뿐 신규 module 0·봉인 0. 실제 a4_qft·HSP 응용 = 승인 후/범위밖.
 
-사용: python scripts/a4_observe.py [--quick]
+사용: python -m qf_witness.observe.a4_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

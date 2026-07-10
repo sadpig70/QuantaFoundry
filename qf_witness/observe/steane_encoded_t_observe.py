@@ -23,7 +23,7 @@ Eastin-Knill: Steane 에 transversal T 는 없다 → 논리 T 의 유일한 정
     magic(|+_L⟩)→identity teleport(≠T_L).
   - 신규 봉인 0. 14q dense unitary 미실체화(벡터만) — Tier-0 dense 한계 정직 준수.
 
-사용: python scripts/steane_encoded_t_observe.py [--quick]
+사용: python -m qf_witness.observe.steane_encoded_t_observe [--quick]
 """
 import os, sys, json
 from itertools import product

@@ -9,7 +9,7 @@ CITATION.cff(Citation File Format 1.2.0) + release 메타를 생성한다. Zenod
 비파괴: registry/sealed/frozen/fingerprint 불변. CITATION.cff(루트) + `.pgf/adoption/RELEASE-META.json` 가산.
 
 사용:
-  python scripts/citation_gen.py [--version X.Y] [--date YYYY-MM-DD]
+  python -m qf_witness.registry.citation_gen [--version X.Y] [--date YYYY-MM-DD]
 """
 from __future__ import annotations
 import os, sys, json
@@ -43,7 +43,7 @@ abstract: >-
   oracle seal (byte-identical reproduction) to exist. This release seals {n_mod} modules and
   {n_app} unique apps with registry_root_hash {root[:16]}…, independently re-derivable via
   `python scripts/reproduce_all.py`; dense Tier-0 module formulas are independently
-  cross-checked by `scripts/second_oracle.py` while Clifford Tier-2 artifacts use tableau seals.
+  cross-checked by `python -m qf_witness.verify.second_oracle` while Clifford Tier-2 artifacts use tableau seals.
 keywords:
   - quantum-computing
   - deterministic-verification
@@ -73,8 +73,8 @@ preferred-citation:
         #   (Codex 가 구 RELEASE-META 의 --expect-root d231fbf4 를 실행해 실패한 케이스). reproduce 는
         #   재현 후 자기 root 를 출력만 하고, 사용자가 아래 registry_root_hash 와 대조한다.
         "verify_commands": ["python scripts/reproduce_all.py",
-                            "python scripts/second_oracle.py",
-                            "python scripts/qf_cli.py reproduce"],
+                            "python -m qf_witness.verify.second_oracle",
+                            "python -m qf_witness.ops.qf_cli reproduce"],
         "doi_placeholder": "10.5281/zenodo.PLACEHOLDER (release 시 발급)",
         "_note": "registry_root_hash 가 결정론 봉인 전체의 인용가능 단일지문. 논문/소프트웨어 인용 시 "
                  "이 root 를 명시하면 제3자가 byte-identity 로 재현·검증 가능(재현성 위기 대응). "

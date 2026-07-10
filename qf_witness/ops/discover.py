@@ -15,9 +15,9 @@
 resource_report(_load). 신규 봉인 없음(랭킹/제안만; 실제 봉인은 goal_autonomy/app_assemble 경유).
 
 사용:
-  python scripts/discover.py rank        # 후보(app+prereq) 8항 가치랭킹 → CANDIDATE-RANK.json
-  python scripts/discover.py validate    # RetroValidate: c6x/distinct-prime 사전포착 검증
-  python scripts/discover.py guard        # GoalSelectionGuard 적용 → 선택/거부 로그
+  python -m qf_witness.ops.discover rank        # 후보(app+prereq) 8항 가치랭킹 → CANDIDATE-RANK.json
+  python -m qf_witness.ops.discover validate    # RetroValidate: c6x/distinct-prime 사전포착 검증
+  python -m qf_witness.ops.discover guard        # GoalSelectionGuard 적용 → 선택/거부 로그
 """
 from __future__ import annotations
 import os, sys, json, re

@@ -27,7 +27,7 @@ SU(2)₃ anyon: j∈{0,1/2,1,3/2} → label a=2j∈{0,1,2,3}(4개). k=3, k+2=5.
   hexagon 열거는 mtc_braid_observe/fib_braid_observe 소관(braid 표현 계층). 위상값의 module 봉인(ζ₂₀ 등)은
   범위밖(사람게이트). [[mtc-braid-observe]](HE10 P4)·[[fib-braid-observe]](G5)·[[ising-fusion-observe]](HE9 P6) 교차.
 
-사용: python scripts/su2_3_mtc_observe.py [--quick]
+사용: python -m qf_witness.observe.su2_3_mtc_observe [--quick]
 """
 from __future__ import annotations
 import sys

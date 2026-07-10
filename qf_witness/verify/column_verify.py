@@ -26,9 +26,9 @@ subspace proof(modexp 순열 확정) 이후 남은 갭 = "조립 논증 하나"(
   registry root(u_hash Merkle)·기존 sealed·oracle fingerprint·frozen consensus 무영향.
 
 사용:
-  python scripts/column_verify.py shor69 shor95      # 지정 앱
-  python scripts/column_verify.py                    # Tier-1 shor n_sys<=18 전종
-  python scripts/column_verify.py --quick            # reproduce_all 용 경량 재검증
+  python -m qf_witness.verify.column_verify shor69 shor95      # 지정 앱
+  python -m qf_witness.verify.column_verify                    # Tier-1 shor n_sys<=18 전종
+  python -m qf_witness.verify.column_verify --quick            # reproduce_all 용 경량 재검증
 """
 import os
 import re

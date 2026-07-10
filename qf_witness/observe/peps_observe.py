@@ -16,7 +16,7 @@
   — 여타 열=회로-유도 유니터리 완성. S_tot²·reduced ρ=witness 관측(seal 아님).
   n>2×2 격자·PBC·bond>1 일반 PEPS·parent-H gap=차기.
 
-사용: python scripts/peps_observe.py [--quick]
+사용: python -m qf_witness.observe.peps_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

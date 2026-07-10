@@ -13,7 +13,7 @@
   - QEC-isomorphic 우려: 대수는 stabilizer code 와 유사하나 **gauge 정체성**(Gauss law 제약·link 변수)이 구별점.
   - 신규 봉인 0.
 
-사용: python scripts/z2gauge_observe.py [--quick]
+사용: python -m qf_witness.observe.z2gauge_observe [--quick]
 """
 import os, sys, re, json
 from functools import reduce

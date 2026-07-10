@@ -26,7 +26,7 @@ CUC 인증 3항(design01 §2.3):
   - INV-R5 잔여 축소: n≥19 도 modexp exhaustive + iQFT ring-exact → 인자 전부 exact
     (기존 subspace_permutation_sampled 대비 강화). 전체 유니터리 dense 동등은 여전히 미검증.
 
-사용: python scripts/cuc_verify.py [shor1285 shor3683] [--quick]
+사용: python -m qf_witness.verify.cuc_verify [shor1285 shor3683] [--quick]
   --quick: sidecar verified + 배선/자식/ring 재확인 + modexp 표본 재검(전수 재실행 회피, ~수초)
 """
 import os

@@ -20,7 +20,7 @@ Ry(W9.2)·CNOT 복리. 새 정직 경계: 변분 상한 ≠ exact 바닥에너�
    접근하나 ansatz-limited gap>0(exact 미도달). VQE 는 근사/상한이지 exact 아님.
  - ry_3pi4 1개만 신규 모듈(second_oracle 61→62).
 
-사용:  python scripts/vqe_family.py
+사용:  python -m qf_witness.family.vqe_family
 """
 from __future__ import annotations
 

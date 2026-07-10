@@ -11,7 +11,7 @@ vqe2_family.py — W10.2 VQEDeepening (MasterRoadmap › TrackSC)
   vqe_he2_L2_pi4  = 2-layer 단일각(π/4×4)
   vqe_he2_L2_mix  = 2-layer 혼합각(π/4,π/2,−π/4,π/4) — ry_pi4/pi2/negpi4 복리
 
-사용:  python scripts/vqe2_family.py
+사용:  python -m qf_witness.family.vqe2_family
 """
 from __future__ import annotations
 import os, sys, json

@@ -9,7 +9,7 @@ honest 한계: 측정도구(vs.hash_unitary)는 공유한다(공통 canonicaliza
 어떻게 구성했나*에 있다 — 본 검증기는 Qualtran bloq 도, specs 의 golden 코드도 실행하지 않고
 제1원리 수학으로 재구성한다. 추가로 자체 canonical hash 도 계산해 내부 일관성을 함께 보고한다.
 
-사용:  python scripts/second_oracle.py
+사용:  python -m qf_witness.verify.second_oracle
 """
 import os, sys, json, hashlib
 import numpy as np

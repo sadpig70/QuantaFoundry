@@ -13,7 +13,7 @@ narrow-sense BCH C=[31,21,5](GF(2^5), primitive x^5+x^2+1, 생성다항식 g=m�
   신규 module 0(bloq H/CNOT). 정직: 봉인=|0_L⟩ prep Clifford tableau exact; 거리 5 달성·decoder·임계값=관측.
 witness=bch31_observe. bch15_encoder 무손상(별도 드라이버).
 
-사용: python scripts/bch31_seal.py
+사용: python -m qf_witness.seal.bch31_seal
 """
 from __future__ import annotations
 import os, sys, json, subprocess

@@ -21,7 +21,7 @@ Trotter 오차는 *관찰*(seal 아님) — "approximation ≠ exact" 정직 경
  - compose(a,b)=b@a → plan순서 [s₁..sₖ]=sₖ@…@s₁. golden 동일순서 구성.
  - second_oracle INDEP 에 rz/rx 추가(dense 53→55 full coverage 유지). 비파괴: 모듈 59→61·앱 75→77.
 
-사용:  python scripts/qsim_family.py
+사용:  python -m qf_witness.family.qsim_family
 """
 from __future__ import annotations
 

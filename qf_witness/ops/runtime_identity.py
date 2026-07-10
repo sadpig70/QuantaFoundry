@@ -13,7 +13,7 @@ weights) → 1 unit 병합 → 합의 붕괴 (3) 진짜 2런타임(다른 pubkey
 비파괴: 검증/스키마 전용. registry/sealed/frozen 불변. `.pgf/hardening/`·패널패키지 가산.
 소비 자산(사용만): consensus(Source/establish_truth) · cryptography(ed25519).
 
-사용:  python scripts/runtime_identity.py
+사용:  python -m qf_witness.ops.runtime_identity
 """
 from __future__ import annotations
 import os, sys, json, hashlib

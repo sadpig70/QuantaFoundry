@@ -13,7 +13,7 @@ amplitude amplification(Grover)의 핵심: 초기 진폭 a=sinθ 를 k회 반복
   - 봉인 = 정확한 QSP 홀수 다항식 유니터리(qsp_d1/d3, Tier-0). 증폭 프로파일 자체는 고전 관측.
   - 기존 W9 amplitude amplification/estimation(grover3·qae) 봉인과 동일 수학(sin((2k+1)θ))을 QSP 로 통합.
 
-사용: python scripts/qsvt_ampamp_observe.py [--quick]
+사용: python -m qf_witness.observe.qsvt_ampamp_observe [--quick]
 """
 import os, sys, json
 import numpy as np

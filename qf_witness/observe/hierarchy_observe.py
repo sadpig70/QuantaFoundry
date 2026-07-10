@@ -27,7 +27,7 @@
   - 측정 기반 프로토콜(Clifford-only 소비+고전 조건 보정) = magic_state_observe 기존 관측 —
     본 자산은 measurement-free coherent 판. semi-Clifford 일반론·C₄+ 탑·자원 이론 정량화 = 차기.
 
-사용: python scripts/hierarchy_observe.py [--quick]
+사용: python -m qf_witness.observe.hierarchy_observe [--quick]
 """
 import os, sys, re, json
 from itertools import product

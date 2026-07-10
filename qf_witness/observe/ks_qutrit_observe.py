@@ -24,7 +24,7 @@ report11 수렴축(qutrit d=3 KS, 3/8). §3n P1·§4 "qutrit(d=3) KS·상태의�
   ★KCBS 는 **state-dependent**(|ψ⟩ 의존)·§5 관측. 진짜 d=3 KS-uncolorable(Peres-33·Conway-31)=차기/범위밖.
   신규 module 0. [[ks18-observe]](d=4)·qutrit Gross-Wigner(HE9 P6, phase-space)·Peres-Mermin 맥락성 계보 교차.
 
-사용: python scripts/ks_qutrit_observe.py [--quick]
+사용: python -m qf_witness.observe.ks_qutrit_observe [--quick]
 """
 from __future__ import annotations
 import sys, itertools

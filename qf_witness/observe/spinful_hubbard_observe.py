@@ -13,7 +13,7 @@ Jordan-Wigner(4 modes: 0=0↑,1=0↓,2=1↑,3=1↓):
 
 정직 경계(INV-Q3): 4-mode JW 반교환 보존=EXACT. 봉인=be_hopz·be_num. e^{-iHt}=observation.
 
-사용: python scripts/spinful_hubbard_observe.py [--quick]
+사용: python -m qf_witness.observe.spinful_hubbard_observe [--quick]
 """
 import os, sys, json
 import numpy as np

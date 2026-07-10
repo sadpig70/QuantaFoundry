@@ -18,7 +18,7 @@ AKN/Watrous 정리: 두 유니터리 채널 Φ_U, Φ_V 의 diamond 거리 = **�
   ★Pauli island 과 disjoint(Pauli 채널은 유니터리 아님→dilation 필요; 유니터리 채널=coherent island).
   primal 최적 상태·물리적 구별 프로토콜 = 관측/범위밖. 신규 module 0. TrackHE7 P3(diamond_observe) 상보.
 
-사용: python scripts/diamond_unitary_observe.py [--quick]
+사용: python -m qf_witness.observe.diamond_unitary_observe [--quick]
 """
 from __future__ import annotations
 import os, sys, re

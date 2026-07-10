@@ -19,7 +19,7 @@ Tier-2 의 dense-free 강점을 *처음으로 스케일*에서 실증.
  - second_oracle(dense)=Tier-0 53 범위 → 이 Tier-2 모듈은 tableau+witness(정직 분리).
  - plan=Clifford(H·CNOT·ZPowGate(-0.5)), MatrixGate 0. 비파괴: 모듈 56→59, 앱 75 불변.
 
-사용:  python scripts/qec_logical.py
+사용:  python -m qf_witness.ops.qec_logical
 """
 from __future__ import annotations
 

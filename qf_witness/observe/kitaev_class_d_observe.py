@@ -20,7 +20,7 @@ report11 수렴축(topological superconductor, 3/8). §3n P6·§4 "topological s
   ★위상불변량=정수(부호규약 고정)·봉인 아님. free-fermion(2차) 한정(상호작용=ℤ→ℤ₈ 축소 범위밖)·PHS 규약 고정·
   Δ=0 gapless 제외. 신규 module 0. [[chern-higher-observe]](class A)·3D ℤ₂(class AII)와 AZ class 상보.
 
-사용: python scripts/kitaev_class_d_observe.py [--quick]
+사용: python -m qf_witness.observe.kitaev_class_d_observe [--quick]
 """
 from __future__ import annotations
 import sys

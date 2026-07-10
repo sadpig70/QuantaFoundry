@@ -27,7 +27,7 @@
   - 스칼라 증명서 = ℚ(√2) 정확산술(Fraction 쌍) · 벡터 재구성 = 닫힌형 계수의 수치 1e-12 검증(명문).
   - 문헌값 선험 인용 없음 — 값은 자체 증명서가 확정.
 
-사용: python scripts/magic_resource_observe.py [--quick]
+사용: python -m qf_witness.observe.magic_resource_observe [--quick]
 """
 import os, sys, re, json
 from fractions import Fraction

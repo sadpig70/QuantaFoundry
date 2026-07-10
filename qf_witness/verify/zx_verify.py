@@ -16,7 +16,7 @@ self-contained(pyzx 없이 hand-code):
   - 봉인 무변경(검증 강화만). ZX = Clifford fragment 완전; Clifford+T = 불완전(관측, ZX 한계).
   - 신규 봉인 0. reproduce_all 등록.
 
-사용: python scripts/zx_verify.py [--quick]
+사용: python -m qf_witness.verify.zx_verify [--quick]
 """
 import os, sys, re, json
 import numpy as np

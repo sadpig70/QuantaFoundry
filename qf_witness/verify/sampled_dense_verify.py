@@ -14,7 +14,7 @@
 경계(정직): 부분(샘플) 보증이며 전수 unitary_equiv 아님. dense 미실체화(statevector 만). 비파괴
 (sealed.json/oracle/frozen 미변경; registry/SAMPLED-DENSE-REPORT.json 가산 레이어).
 
-사용:  python scripts/sampled_dense_verify.py
+사용:  python -m qf_witness.verify.sampled_dense_verify
 """
 import os, sys, json, hashlib
 import numpy as np

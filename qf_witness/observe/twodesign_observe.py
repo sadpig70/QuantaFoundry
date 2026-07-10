@@ -18,7 +18,7 @@
   - RB(randomized benchmarking)·shadow tomography 자체는 미구현 — 그 기반(정확 2-design)만 확보.
   - 2q Clifford 군(11520원소)=차기(전수 봉인 비현실 → 표본화/생성원 설계 필요).
 
-사용: python scripts/twodesign_observe.py [--quick]
+사용: python -m qf_witness.observe.twodesign_observe [--quick]
 """
 import os, sys, re, json
 import numpy as np

@@ -20,8 +20,8 @@
 소비 자산(사용만): app_assemble(assemble) · resource_report(_load).
 
 사용:
-  python scripts/decomp_optimizer.py probe     # registry 동일 u_hash 최소자원 선택(자원감소 실증)
-  python scripts/decomp_optimizer.py reward     # HardReward 오라클 동적 + reward-hacking teeth
+  python -m qf_witness.ops.decomp_optimizer probe     # registry 동일 u_hash 최소자원 선택(자원감소 실증)
+  python -m qf_witness.ops.decomp_optimizer reward     # HardReward 오라클 동적 + reward-hacking teeth
 """
 from __future__ import annotations
 import os, sys, json, glob, shutil

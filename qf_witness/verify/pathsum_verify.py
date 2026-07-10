@@ -15,7 +15,7 @@ dense golden 과 대조. 검증 대상: plan 이 {h,s,sdg,t,x,z,cnot,cz,cs,ct,sw
   - 전역위상: C-app 은 전역위상 흡수 규약 → 첫 비영 성분으로 정규화 후 대조.
   - T-count/큐빗수 큰 회로는 항 수 증가 → 소형 봉인분 한정(범위 명시). 비지원 게이트 앱=정직 스킵.
 
-사용: python scripts/pathsum_verify.py [--quick]
+사용: python -m qf_witness.verify.pathsum_verify [--quick]
 """
 import os, sys, re, json
 import numpy as np

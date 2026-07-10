@@ -18,7 +18,7 @@ counting register = 위상추정 정밀도. Tier-0(256² ≤ EXACT_BOUND 12), se
  - 생성≠검증: 오라클(app_assemble) 통과로만 SEALED. plan=봉인 모듈(h/swap/cs_dag/cr*_dag), MatrixGate 0.
  - 비파괴 성장: 앱만 가산(모듈 50 불변), 기존 봉인(iqft7/shor21)/frozen 23키/fingerprint byte-identical.
 
-사용:  python scripts/iqft_family.py
+사용:  python -m qf_witness.family.iqft_family
 """
 from __future__ import annotations
 

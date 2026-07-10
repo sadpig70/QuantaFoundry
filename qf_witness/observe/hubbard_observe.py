@@ -12,7 +12,7 @@ QSVT Hamiltonian sim(V08_14) 적용 가능. 본 스크립트는 JW 상호작용 
 정직 경계(INV-Q3): number operator JW 성질(commuting projector, n²=n)·interaction=|11><11|=EXACT.
   봉인=be_hop·be_num. 완전 H 의 e^{-iHt} 시간발전=observation. teeth: 잘못된 n=(I+Z)/2 → interaction 오류.
 
-사용: python scripts/hubbard_observe.py [--quick]
+사용: python -m qf_witness.observe.hubbard_observe [--quick]
 """
 import os, sys, json
 import numpy as np

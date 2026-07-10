@@ -19,7 +19,7 @@ qsim_dynamics.py — Stage 8 W8.4 TrotterDynamics (관찰 전용 계층, 봉인 
 이 도구는 backend_adapter(load_sealed_app·get_backends·expect_z·corr_zz)를 *사용만* 한다.
 exact 참조는 독립 대각화(봉인 아님, 명시적 대조용).
 
-사용:  python scripts/qsim_dynamics.py
+사용:  python -m qf_witness.ops.qsim_dynamics
 """
 from __future__ import annotations
 
