@@ -209,6 +209,14 @@ def main():
             pr = json.load(open(pp, encoding="utf-8"))
             if pr.get("verified") and pr.get("exhaustive"):
                 column[f"app:{pr['id']}"] = pr
+    # TrackRingColumn: ring-exact 이종 증인(RING-COLUMN.json) — iQFT 인자를 ℤ[ζ_256] 정수환
+    #   float 0 으로 검증(design01 §2.4). column_exact(float-atol)의 hard 인자 계급 상향 상보.
+    ring = None
+    rp = os.path.join(pdir, "RING-COLUMN.json")
+    if os.path.exists(rp):
+        rpr = json.load(open(rp, encoding="utf-8"))
+        if rpr.get("verified"):
+            ring = rpr
     print("=" * 84)
     print("semantic_guarantee 비파괴 레이어 (R-K) — sealed/oracle 미변경")
     print("=" * 84)
@@ -255,7 +263,10 @@ def main():
                  "method": (f"전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, "
                             f"columns {pr['columns_tested']}/{pr['columns_total']}, max_dev {pr['max_abs_dev']:.2e}; "
                             "path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). "
-                            "float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).")}
+                            "float-atol 계급(Tier-0 dense C4 동급).")
+                 + (" ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + "
+                    "modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json)."
+                    if ring and s["id"] in set(ring.get("shor_apps_covered", [])) else "")}
         entry = {"kind": s["kind"], "id": s["id"], "tier": s["tier"], "tier_source": s["tier_source"],
                  "semantic_guarantee": g["class"], "method": g["method"], "u_hash": s["u_hash"]}
         if key in sampled:
@@ -273,6 +284,12 @@ def main():
                 "grade", "columns_tested", "columns_total", "exhaustive", "max_abs_dev",
                 "atol", "arith", "negative_control_reject", "dense_materialized",
                 "proof_digest") if k in pr}
+            if ring and s["id"] in set(ring.get("shor_apps_covered", [])):
+                entry["ring_exact_companion"] = {
+                    "ring": ring["ring"], "iqft_ring_exact": ring["iqft_ring_exact"],
+                    "iqft_checked": ring["iqft_checked"], "float_operations": ring["float_operations"],
+                    "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+                    "proof_digest": ring["proof_digest"]}
         if s["id"] == "ghz16_structural" and pv:
             entry["partial_verification"] = pv
         out["guarantees"][key] = entry

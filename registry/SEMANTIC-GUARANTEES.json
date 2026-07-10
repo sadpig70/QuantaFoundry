@@ -4321,7 +4321,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "9bc2bb07d1519e37f49fb3cd583e90a4123c11f9bfdf25743637cbc59d4c2d5e",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4347,6 +4347,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "4613a9d125a7bc21"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor115": {
@@ -4355,7 +4363,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "b12ffb2f46447148e6049855818364aba85986efbab7f038d8f10c6767b78f73",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4381,6 +4389,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "4ff1f201c3cd7af2"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor119": {
@@ -4389,7 +4405,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "7271095f0377ea076dedc929328911b2ae31070f3876315b0ac7fec7d9413690",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4415,6 +4431,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "b0be288912d5fbc6"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor123": {
@@ -4423,7 +4447,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "acb88961f733121969ddcd654a8a0a58ba0fe3566d38f47f9e2015bbe0de1665",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4449,6 +4473,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "073b0523a6481bc1"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor1285": {
@@ -4479,7 +4511,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "542ea85fb653e2f9fac098e778d76777740b1e6bb4b0bedadbe14698b59b6459",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4505,6 +4537,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "5e52add1ad35ec5a"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor141": {
@@ -4513,7 +4553,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "7cdd75703ecc884aaf0435d974a734b08c5fbf411e1296c03abbfccd4664a2e5",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4539,6 +4579,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "0612b3906028f687"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor143": {
@@ -4547,7 +4595,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "f9d1364cd862c22a1fd4e6dfc981b4cb2ed88046d14f527ef5d9a5faa349cd70",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4573,6 +4621,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "7bd7c4b3bc33822e"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor155": {
@@ -4581,7 +4637,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "449bed9163b9dca1faeb871986a85baa22b309dffca2bfacfd5f4e8c8f87687b",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4607,6 +4663,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "f14b2c44355b596d"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor159": {
@@ -4615,7 +4679,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "27eb3325bb82fa1eebbc536c4d0f1cf5fc6bc45824464628f27ee6484deaadce",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4641,6 +4705,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "dce899bec491c617"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor15_a2": {
@@ -4667,7 +4739,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "6975fa4747b6b9f07bb3b9ec3218819fb777283ccfa7730e76c3967e7bac4f45",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4693,6 +4765,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "4e9e7df287e15c01"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor187": {
@@ -4701,7 +4781,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "ee7b4f42540d3169f69504fc196c5c52656c06be41bef2c2567c2e1a9ae823d2",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4727,6 +4807,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "a61a9fce3a53b1ae"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor203": {
@@ -4735,7 +4823,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "dd37684def46ea69eab1456a818f89a0322bbf36a06bf25648b303959e0afb07",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4761,6 +4849,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "d8c9e06981dece1e"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor213": {
@@ -4769,7 +4865,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "90e707cc84255192ecb3738a59baefb7bb0dfa69c441410cab5a0db4bade39ed",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4795,6 +4891,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "33af2ebae84ca77e"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor215": {
@@ -4803,7 +4907,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "202cbf018478e1bb316d8c56a25f2cfc0c75910151b15e6151c3284e42a8cb92",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4829,6 +4933,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "c763ef443accaaea"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor219": {
@@ -4837,7 +4949,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "45a180580e10a3f1c898ca2fd3438abba9fafe6fed34b40afa1153ec3bcea532",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4863,6 +4975,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "322624f2ea6169f2"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor21_a2": {
@@ -4880,7 +5000,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "4ab5cb39c5d6e7179bfff60cd732600f8376524d9c12a348ad77e472abaf293b",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4906,6 +5026,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "d0dcdc049223afe9"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor235": {
@@ -4914,7 +5042,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "2e870ef356bb923997c87d115d3b8916b67b62d983401c0a9f987c4e0f5d83a2",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4940,6 +5068,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "d53f8b377c05b0d6"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor237": {
@@ -4948,7 +5084,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "7fd2d22533046d4edfac26e510f8822e1afac46008e34d1c8778bcd0a278f828",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -4974,6 +5110,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "7ab88b89149658db"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor3683": {
@@ -5004,7 +5148,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 131072/131072, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 131072/131072, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "08e08864499ce9062c54b7e2944234a9466438198bc37ef59b9b358570e4aebe",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5030,6 +5174,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "28e196421103da09"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor635": {
@@ -5038,7 +5190,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 262144/262144, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 262144/262144, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "ca75c6224e94c6fea9fead630b90b39cc6705fa3704a1203b58e7b32dc2eb450",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5064,6 +5216,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "e6b55ac506e9fa07"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor69": {
@@ -5072,7 +5232,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "4676368ce4d7f10b801e437538e8aef0b7a49cae47f002c9be7014f6aba35857",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5098,6 +5258,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "16c4f79f5211dc71"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor77": {
@@ -5106,7 +5274,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "fd1d78a5e369a8dc45cd22eaacba93d02c4006b12f5a3e9f183b5c8fce819e0b",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5132,6 +5300,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "0146a7c39ffb64f8"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor85": {
@@ -5140,7 +5316,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "ce3eff48a9968eb44a742dd3176555b26a4f5a3fc81a25a39184d933dac41eb1",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5166,6 +5342,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "3f6d20bf3c3b4fb4"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor87": {
@@ -5174,7 +5358,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "e809290635a5e0d8b53d121f311b67b017a0700d806671d8a0b2926338c29893",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5200,6 +5384,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "5c9d8ee132a16a41"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor91": {
@@ -5208,7 +5400,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "ea39b003c0d2e0a1de31ce004303b6c65b7825f69671ab00dbbaf05b3ee6d0c8",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5234,6 +5426,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "07f5dba6783d549f"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor93": {
@@ -5242,7 +5442,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "072c81191677f90f355c27cf26e2b247d8acebafb5753e8f248a538a5441fe92",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5268,6 +5468,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "c7ee6716d649f83c"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor95": {
@@ -5276,7 +5484,7 @@
       "tier": 1,
       "tier_source": "explicit",
       "semantic_guarantee": "unitary_equiv_column_exact",
-      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급) — ring-exact 아님(TrackIU IU_A).",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 32768/32768, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
       "u_hash": "f62bf45b1cf2c8d8678955eb60dbdb2ea080cc26e23feb0f4d3a2ef1c0face5a",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -5302,6 +5510,14 @@
         "negative_control_reject": true,
         "dense_materialized": false,
         "proof_digest": "1146f252cbba7aff"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "cf1dd6842489824b"
       }
     },
     "app:shor9_encoder": {

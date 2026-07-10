@@ -749,6 +749,13 @@
           "scripts/structure_lint.py",
           "--quick"
         ]
+      },
+      {
+        "id": "ring_column_verify",
+        "argv": [
+          "scripts/ring_column_verify.py",
+          "--quick"
+        ]
       }
     ]
   }
