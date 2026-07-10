@@ -1046,6 +1046,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1a77aabc8ed1359daca075353a1f0668335bc0de41f53375b47f77085d6a29ab"
     },
+    "app:cmul16_mod253": {
+      "kind": "app",
+      "id": "cmul16_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "68e57f6a3914d5c2b6fa25156a782efdb07a3eec6d2e31153ec9146c3d5a4157"
+    },
     "app:cmul16_mod3683": {
       "kind": "app",
       "id": "cmul16_mod3683",
@@ -1225,6 +1234,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "07f5b7ccf95622193e635e2c931279dc28e50d080851fa2bf9b74f840343de76"
+    },
+    "app:cmul236_mod253": {
+      "kind": "app",
+      "id": "cmul236_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0de4de0ffe04db13cdebf1e43818b6234901d04bbcf4081fc5a71b4fecc1826f"
     },
     "app:cmul256_mod1285": {
       "kind": "app",
@@ -1532,6 +1550,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "167438ecd6d2bf9457afbef5222c1216390aae4dc9d0e561daef7894db3b9f34"
     },
+    "app:cmul2_mod253": {
+      "kind": "app",
+      "id": "cmul2_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "92f378a92d9e60d1d015e3131952b1b776e8566b115625d76d57de4835606fce"
+    },
     "app:cmul2_mod33": {
       "kind": "app",
       "id": "cmul2_mod33",
@@ -1667,6 +1694,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "2f9471543a4acb2d815a0dff05fb3f208413fa0e4132ef563d6d5cc7e3ae3035"
     },
+    "app:cmul36_mod253": {
+      "kind": "app",
+      "id": "cmul36_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "7080ecd30681e255fbb1f0daf3c120eec5b52bca14d59405f059d9dd56227e91"
+    },
     "app:cmul36_mod95": {
       "kind": "app",
       "id": "cmul36_mod95",
@@ -1693,6 +1729,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1a35009627f06b949258dcab96cfd16ebe21e99427b4205ab37daf71070f5a2b"
+    },
+    "app:cmul3_mod253": {
+      "kind": "app",
+      "id": "cmul3_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "ba6f367d335f97c54b305c27934336fef6edb848276efb0186e19f23da9048da"
     },
     "app:cmul41_mod215": {
       "kind": "app",
@@ -1954,6 +1999,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "22552798edf88d1ca36fe2123b4086c13239e6edccf7553d048bcb08056b1350"
+    },
+    "app:cmul4_mod253": {
+      "kind": "app",
+      "id": "cmul4_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b56d4181e7ef8bc0a8c29bbd193a3acd3128d1ea437a1c0820abae9155b8faa0"
     },
     "app:cmul4_mod3683": {
       "kind": "app",
@@ -2279,6 +2333,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "4470e5793687c92f1c904cae3b7fc0d612fe05468a356e73672bb1f6dfb1b0e6"
     },
+    "app:cmul81_mod253": {
+      "kind": "app",
+      "id": "cmul81_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "6c4fa2c4a52feeaeff3fa7a7b65a6d7642df5ef820b16e9ae2be74caa2ca1363"
+    },
     "app:cmul81_mod95": {
       "kind": "app",
       "id": "cmul81_mod95",
@@ -2341,6 +2404,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "18942940f8945cd6eb26f9d0f2e5def00251c9c22a3340080828df40619d9b30"
+    },
+    "app:cmul9_mod253": {
+      "kind": "app",
+      "id": "cmul9_mod253",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "0784e6ec74837ae07c4ea8adf70362ca281218d430020a4e5b62dc9447d14da0"
     },
     "app:cmul9_mod77": {
       "kind": "app",
@@ -4426,7 +4498,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor115": {
@@ -4468,7 +4540,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor119": {
@@ -4510,7 +4582,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor123": {
@@ -4552,7 +4624,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor1285": {
@@ -4616,7 +4688,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor141": {
@@ -4658,7 +4730,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor143": {
@@ -4700,7 +4772,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor155": {
@@ -4742,7 +4814,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor159": {
@@ -4784,7 +4856,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor15_a2": {
@@ -4844,7 +4916,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor187": {
@@ -4886,7 +4958,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor203": {
@@ -4928,7 +5000,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor213": {
@@ -4970,7 +5042,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor215": {
@@ -5012,7 +5084,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor219": {
@@ -5054,7 +5126,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor21_a2": {
@@ -5105,7 +5177,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor235": {
@@ -5147,7 +5219,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor237": {
@@ -5189,7 +5261,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor247": {
@@ -5231,7 +5303,49 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
+      }
+    },
+    "app:shor253": {
+      "kind": "app",
+      "id": "shor253",
+      "tier": 1,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv_column_exact",
+      "method": "전체 유니터리 컬럼 전수 검증(H·iQFT 포함 조립 논증 폐합, columns 65536/65536, max_dev 5.49e-14; path A'=회로(h_gate kron·MCT 순열·iqft plan 재합성) vs path B'=Shor 스펙트럼 공식 독립). float-atol 계급(Tier-0 dense C4 동급). ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json).",
+      "u_hash": "e96c520d02400a7aa6be26621731cb88fa210a2a2d89eb41743025f9bd1f0658",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 65536,
+        "basis_matched": 65536,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 4480,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "bdf670c9fb9f5850"
+      },
+      "column_verification": {
+        "grade": "unitary_equiv_column_exact",
+        "columns_tested": 65536,
+        "columns_total": 65536,
+        "exhaustive": true,
+        "max_abs_dev": 5.487979216269057e-14,
+        "atol": 1e-12,
+        "arith": "float64_atol",
+        "negative_control_reject": true,
+        "dense_materialized": false,
+        "proof_digest": "8ca6ca22d52ee555"
+      },
+      "ring_exact_companion": {
+        "ring": "Z[zeta_256] (Phi_256 = x^128+1, zeta^128=-1)",
+        "iqft_ring_exact": true,
+        "iqft_checked": 65536,
+        "float_operations": 0,
+        "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor3683": {
@@ -5295,7 +5409,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor635": {
@@ -5337,7 +5451,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor69": {
@@ -5379,7 +5493,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor77": {
@@ -5421,7 +5535,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor85": {
@@ -5463,7 +5577,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor87": {
@@ -5505,7 +5619,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor91": {
@@ -5547,7 +5661,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor93": {
@@ -5589,7 +5703,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor95": {
@@ -5631,7 +5745,7 @@
         "iqft_checked": 65536,
         "float_operations": 0,
         "scope": "iQFT factor ring-exact + modexp integer-exact + H-wall trivial",
-        "proof_digest": "2fa0beee3c2ef042"
+        "proof_digest": "1f707b8c0ce15669"
       }
     },
     "app:shor9_encoder": {
@@ -6908,22 +7022,22 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 526,
+        "unitary_equiv": 534,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "subspace_permutation_verified": 3,
-        "unitary_equiv_column_exact": 28
+        "unitary_equiv_column_exact": 29
       },
       "module": {
         "unitary_equiv": 95
       }
     },
     "by_class": {
-      "unitary_equiv": 621,
+      "unitary_equiv": 629,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 3,
-      "unitary_equiv_column_exact": 28
+      "unitary_equiv_column_exact": 29
     }
   }
 }
