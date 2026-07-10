@@ -1,0 +1,99 @@
+{
+  "schema": "dsr3-double-observe/v1",
+  "_note": "관측(observation) — Drinfeld double D(S₃) 완전 modular data(S·T)의 MTC 공리 exact ℚ(ζ₃) 자체검증. 신규 module 0 · root 불변 · seal 아님(modular data 표는 봉인 아님, anyon braid 게이트 유니터리 module 봉인 별도).",
+  "anyons": [
+    {
+      "index": 0,
+      "label": "(e,1)",
+      "class": "e",
+      "irrep": "triv",
+      "dim": 1,
+      "theta": "1"
+    },
+    {
+      "index": 1,
+      "label": "(e,sgn)",
+      "class": "e",
+      "irrep": "sign",
+      "dim": 1,
+      "theta": "1"
+    },
+    {
+      "index": 2,
+      "label": "(e,2)",
+      "class": "e",
+      "irrep": "std",
+      "dim": 2,
+      "theta": "1"
+    },
+    {
+      "index": 3,
+      "label": "(τ,+)",
+      "class": "t",
+      "irrep": "triv",
+      "dim": 3,
+      "theta": "1"
+    },
+    {
+      "index": 4,
+      "label": "(τ,−)",
+      "class": "t",
+      "irrep": "sign",
+      "dim": 3,
+      "theta": "−1"
+    },
+    {
+      "index": 5,
+      "label": "(σ,1)",
+      "class": "c",
+      "irrep": "0",
+      "dim": 2,
+      "theta": "1"
+    },
+    {
+      "index": 6,
+      "label": "(σ,ω)",
+      "class": "c",
+      "irrep": "1",
+      "dim": 2,
+      "theta": "ω"
+    },
+    {
+      "index": 7,
+      "label": "(σ,ω²)",
+      "class": "c",
+      "irrep": "2",
+      "dim": 2,
+      "theta": "ω²"
+    }
+  ],
+  "total_D2": 36,
+  "charge_conjugation": "identity (self-dual)",
+  "central_charge_lambda": "1",
+  "S_convention": "(1/|G|) Σ_{g∈A,h∈B,[g,h]=e} χ_A(x⁻¹hx)* ψ_B(y⁻¹gy)*  (both conjugated, with rep-transport)",
+  "results": {
+    "S_real_symmetric": true,
+    "S_unitary": true,
+    "S_squared_charge_conj": true,
+    "charge_conj_self_dual": true,
+    "quantum_dims": true,
+    "total_D2_36": true,
+    "ST_cubed_lambda_S2": true,
+    "lambda_is_one": true,
+    "T_finite_order_6": true,
+    "verlinde_nonneg_integer": true,
+    "fusion_vacuum_unit": true,
+    "fusion_symmetric": true,
+    "fusion_dim_consistent": true,
+    "fusion_associative": true,
+    "teeth_perturbed_S_breaks": true,
+    "teeth_no_transport_breaks": true,
+    "crosscheck_float_unitary": true
+  },
+  "teeth": {
+    "perturbed_S": "unitarity+Verlinde break",
+    "no_transport": "S non-symmetric / non-unitary"
+  },
+  "deterministic": true,
+  "all_ok": true
+}

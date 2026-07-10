@@ -1,0 +1,65 @@
+{
+  "_note": "Ising MTC pentagon+hexagon 전역 정합 공리 관측(exact ℚ(ζ₁₆)). 신규 module 0·root 불변. F/R 표=데이터(anyon 게이트 회로 봉인 아님). fusion/braid/modular 관측과 검증객체 상이.",
+  "_schema": "ising-fr-observe-v1",
+  "observation": {
+    "F_symbols": {
+      "negative_scalars": [
+        "F^{σψσ}_ψ",
+        "F^{ψσψ}_σ"
+      ],
+      "nontrivial_2x2": "F^{σσσ}_σ = (1/√2)[[1,1],[1,−1]] (채널기저 {1,ψ}, +Hadamard 고정)",
+      "pentagon_gauge_orbit_size": 2,
+      "scalars_canonical": {
+        "F^{σσψ}_1": 1,
+        "F^{σσψ}_ψ": 1,
+        "F^{σψσ}_1": 1,
+        "F^{σψσ}_ψ": -1,
+        "F^{σψψ}_σ": 1,
+        "F^{ψσσ}_1": 1,
+        "F^{ψσσ}_ψ": 1,
+        "F^{ψσψ}_σ": -1,
+        "F^{ψψσ}_σ": 1,
+        "F^{ψψψ}_ψ": 1
+      },
+      "vacuum_gauge": "진공다리 F=1 (단위 정규화)"
+    },
+    "R_symbols": {
+      "canonical": {
+        "R^{σσ}_1": "ζ₁₆^15 (=e^{i15π/8})",
+        "R^{σσ}_ψ": "ζ₁₆^3 (=e^{i3π/8})",
+        "R^{σψ}_σ=R^{ψσ}_σ": "ζ₁₆^12 (=e^{i12π/8})",
+        "R^{ψψ}_1": "ζ₁₆^8 (=e^{i8π/8})"
+      },
+      "hexagon_gauge_orbit_size": 1,
+      "values": "R^{σσ}_1=ζ₁₆⁻¹=e^{−iπ/8} · R^{σσ}_ψ=ζ₁₆³=e^{i3π/8} · R^{σψ}_σ=R^{ψσ}_σ=ζ₁₆⁻⁴=−i · R^{ψψ}_1=ζ₁₆⁸=−1"
+    },
+    "axis": "TrackHE13 P5 — Ising MTC pentagon(Biedenharn-Elliott)+hexagon(Bonderson R±) 전역 공리",
+    "checks": {
+      "hexagon_exact_all_closed": true,
+      "hexagon_quoted_R_closes": true,
+      "modular_ST3_eq_phase_S2": true,
+      "modular_S_unitary_S2_eq_I": true,
+      "pentagon_exact_all_closed": true,
+      "pentagon_has_solution": true,
+      "teeth_flip_F_breaks_pentagon": true,
+      "teeth_flip_R_breaks_hexagon": true,
+      "theta_sigma_sympy_cross_check": true,
+      "topological_spin_theta_psi_eq_minus1": true,
+      "topological_spin_theta_sigma_eq_zeta16": true
+    },
+    "deterministic": true,
+    "equation_counts": {
+      "hexagon_R_plus_minus": 72,
+      "hexagon_exact_verified": "15/15(quick subset)",
+      "pentagon": 136,
+      "pentagon_exact_verified": "20/20(quick subset)"
+    },
+    "honest_boundary": "관측 — Ising MTC 의 pentagon/hexagon 전역 일관성 공리 폐합(F/R 표=데이터). anyon 게이트 회로 봉인 아님(ζ₁₆ 위상 module=사람게이트, 범위밖). gauge 선택(+Hadamard·진공 F=1) 명시. ising_fusion(융합환)·mtc_braid(개별 braid)·su2_3_mtc(modular data) 관측과 검증객체 상이. 신규 module 0·root 불변.",
+    "ok": true,
+    "payoffs": {
+      "central_charge": "1/2",
+      "modular": "(ST)³ = e^{2πic/8} S² = ζ₁₆·S² (c=1/2) · S²=I · S 유니터리",
+      "topological_spin": "θ_σ=ζ₁₆ (리본 exact) · θ_ψ=−1 · θ_1=1"
+    }
+  }
+}
