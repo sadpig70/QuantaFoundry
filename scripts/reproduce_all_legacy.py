@@ -41,8 +41,27 @@ FRONTIER_STEPS = [
 FACTORY_STEP = ("frontier_factory", "scripts/frontier_factory.py")
 
 
+# C안 호환 브리지(2026-07-11): scripts/ shim 폐기 후, 이 legacy 탈출구의 118개 `scripts/X.py`
+#   호출을 무수정 보존하면서 실체(qf_witness/<cat>/X.py)로 라우팅한다. run() 단일 관문에서만 번역.
+_ALLOW_SCRIPTS = {"reproduce_all", "reproduce_all_legacy", "qf_stdlib"}
+_MOVE_MAP = json.load(open(os.path.join(ROOT, "verification", "manifests", "_move_map.json"),
+                            encoding="utf-8"))["map"]
+
+
+def _to_module_argv(args):
+    """`scripts/NAME.py` → `-m qf_witness.<cat>.NAME` (진입점 3개는 통과). 그 외 인자 불변."""
+    out = []
+    for a in args:
+        m = re.match(r"scripts/([a-zA-Z0-9_]+)\.py$", a) if isinstance(a, str) else None
+        if m and m.group(1) in _MOVE_MAP and m.group(1) not in _ALLOW_SCRIPTS:
+            out += ["-m", f"qf_witness.{_MOVE_MAP[m.group(1)]}.{m.group(1)}"]
+        else:
+            out.append(a)
+    return out
+
+
 def run(args, cwd=ROOT):
-    p = subprocess.run(["python"] + args, cwd=cwd, capture_output=True, text=True)
+    p = subprocess.run(["python"] + _to_module_argv(args), cwd=cwd, capture_output=True, text=True)
     return p.returncode, p.stdout + p.stderr
 
 

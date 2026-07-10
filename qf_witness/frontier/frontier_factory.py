@@ -376,8 +376,8 @@ REGRESSION_N = [91, 119, 221, 381, 635, 1285, 3683]
 SAMPLE_REGRESSION_N = [91, 381, 635]
 # codegen-critical 파일: 하나라도 변경되면 전 N 이 영향 → full 회귀 강제(INV-F1 안전).
 _CODEGEN_FILES = [
-    "scripts/frontier_factory.py",                                   # 템플릿(payoff/structural)
-    "scripts/genskills.py",                                          # mmd_synthesize·_modmul_perm
+    "qf_witness/frontier/frontier_factory.py",                       # 템플릿(payoff/structural)
+    "qf_witness/ops/genskills.py",                                   # mmd_synthesize·_modmul_perm
     ".agents/skills/qpgf-oracle/scripts/app_assemble.py",            # _structural_hash·_seal_dict
     ".agents/skills/qpgf-oracle/scripts/verify_seal.py",            # fingerprint(봉인 baked)
     ".agents/skills/qpgf-oracle/scripts/contracts.py",

@@ -688,6 +688,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     TrackScriptsRestructure // scripts 189→qf_witness 패키지+shim 영구호환, 확정플랜=_workspace/final_scripts_refactoring_plan.md (done — 2026-07-10 폐합) @dep:TrackReproduceUpgrade
         # P0 골격/codemod/baseline→P1 verify15 파일럿(shim import-모드 버그 수정)→P2 3라운드 186 전량→P3 structure_lint+FinalGate
         # 게이트: 라운드별 reproduce REPRODUCED·FinalGate full 119=baseline 값동일+lint·root d177ce9a 불변·oracle 사본 0
+    TrackScriptsShimCleanup // C안(관례적 절충): shim 186 제거, scripts/=진입점 3개만, 내부호출 -m 전환 (in-progress — 2026-07-11) @dep:TrackScriptsRestructure
+        # 배경: 189 shim=관례 밖(정욱님 지적). bootstrap sys.path 가 flat peer import 처리→shim 삭제 안전.
+        # R1 실행호출 -m 전환(special.py·witness.json·autonomy_loop+import fix·_CODEGEN/stage_paths 실체경로)+shim 186 삭제+structure_lint allow-list 강화
+        # R2 코스메틱 codemod(qf_witness 160독스트링·docs·citation/registry/sync_qpgf 생성물 재생성)
+        # INV: 검증로직 무수정(이동/삭제만)·root 0a6fbab0 불변·second_oracle 83/83·진입점3(reproduce_all/legacy/qf_stdlib) 보존
     TrackRingColumn // PathsumRingExt — shor 27종 ring-exact 컬럼 증인(ℤ[ω_2^t]·float 0), design01 §2.4 소비 (done — 2026-07-10 폐합: iQFT ℤ[ζ256] 65536/65536 float 0·27종 커버·root 불변)
         # CQV column_exact(float-atol)의 이종 exact 증인 병기: path A=회로 기호실행(정수 ℤ[ω] 벡터) vs
         # path B=스펙트럼 공식 — 정수 완전일치 판정(atol 없음). 신규 module 0·root 불변 sidecar

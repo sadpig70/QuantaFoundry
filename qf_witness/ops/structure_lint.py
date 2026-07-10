@@ -3,8 +3,9 @@
 """structure_lint — scripts 재구조화 회귀 방지 상시 검사 (final_scripts_refactoring_plan P3).
 
 검사 3종 (위반 = fail, reproduce witness batch 에 등록되어 상시 실행):
-  (i)   scripts/ 의 .py 는 shim 템플릿(runpy 위임) 또는 허용 목록(thin 진입점)만 —
-        플랫 구조 재발 차단. 신규 검증 스크립트는 qf_witness/<cat>/ 에 두고 shim 을 생성하라.
+  (i)   scripts/ 의 .py 는 허용 목록(thin 진입점 3개)만 — 플랫 구조·shim 재발 차단.
+        신규 검증 스크립트는 qf_witness/<cat>/ 에 두고 `python -m qf_witness.<cat>.<name>` 로 호출하라
+        (C안 2026-07-11: shim 186 제거·내부호출 -m 전환 이후, scripts/ 는 진입점 전용).
   (ii)  qf_witness/ 본체에 ROOT 깊이 함정 패턴(dirname(dirname / join(HERE,"..")) 잔존 금지 —
         codemod 감사와 동일 규칙 (§2-b).
   (iii) qpgf-oracle 코드 사본 금지(INV-SR4) — qf_witness/ 에 oracle 모듈명 파일 존재 불가.
@@ -20,9 +21,8 @@ from qf_witness.core.paths import ROOT, ORACLE_DIR
 SCRIPTS = os.path.join(ROOT, "scripts")
 WITNESS = os.path.join(ROOT, "qf_witness")
 
-# thin 진입점 허용 목록 (shim 아님이 정당한 파일)
-ALLOW_NON_SHIM = {"reproduce_all.py", "reproduce_all_legacy.py", "qf_stdlib.py"}
-SHIM_MARK = "# shim — 본체: qf_witness/"
+# thin 진입점 허용 목록 (scripts/ 에 정당하게 존재하는 유일한 .py 3개)
+ALLOW_SCRIPTS = {"reproduce_all.py", "reproduce_all_legacy.py", "qf_stdlib.py"}
 
 DEPTH_TRAPS = [
     re.compile(r"ROOT\s*=\s*os\.path\.dirname\(os\.path\.dirname"),
@@ -31,15 +31,10 @@ DEPTH_TRAPS = [
 ]
 
 
-def check_scripts_shim_only():
-    bad = []
-    for fn in sorted(os.listdir(SCRIPTS)):
-        if not fn.endswith(".py") or fn in ALLOW_NON_SHIM:
-            continue
-        head = open(os.path.join(SCRIPTS, fn), encoding="utf-8").read(400)
-        if SHIM_MARK not in head:
-            bad.append(fn)
-    return bad
+def check_scripts_allowlist_only():
+    # scripts/ 의 .py 는 허용 진입점 3개만 — 그 외(shim 포함) 전부 위반.
+    return [fn for fn in sorted(os.listdir(SCRIPTS))
+            if fn.endswith(".py") and fn not in ALLOW_SCRIPTS]
 
 
 def check_no_depth_trap():
@@ -66,7 +61,7 @@ def check_no_oracle_copy():
 
 def main():
     checks = {
-        "scripts_shim_only": check_scripts_shim_only(),
+        "scripts_allowlist_only": check_scripts_allowlist_only(),
         "no_depth_trap": check_no_depth_trap(),
         "no_oracle_copy": check_no_oracle_copy(),
     }

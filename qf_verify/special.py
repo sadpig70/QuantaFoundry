@@ -11,21 +11,22 @@ from . import context as cx
 
 ROOT = cx.ROOT
 
+# argv 는 `-m qf_witness.<cat>.<name>` 모듈 호출 형태(scripts/ shim 폐기, C안). cx.run 이 앞에 python 을 붙인다.
 FRONTIER_STEPS = [
-    ("shor_frontier", "scripts/shor_frontier.py"),
-    ("c8x_frontier", "scripts/c8x_frontier.py"),
-    ("shor221_frontier", "scripts/shor221_frontier.py"),
-    ("c9x_shor381_frontier", "scripts/c9x_shor381_frontier.py"),
-    ("c10x_frontier", "scripts/c10x_frontier.py"),
-    ("shor635_frontier", "scripts/shor635_frontier.py"),
-    ("c11x_frontier", "scripts/c11x_frontier.py"),
-    ("c11x_payoff_family", "scripts/c11x_payoff_family.py"),
-    ("shor1285_frontier", "scripts/shor1285_frontier.py"),
-    ("c12x_frontier", "scripts/c12x_frontier.py"),
-    ("c12x_payoff_family", "scripts/c12x_payoff_family.py"),
-    ("shor3683_frontier", "scripts/shor3683_frontier.py"),
+    ("shor_frontier", ["-m", "qf_witness.frontier.shor_frontier"]),
+    ("c8x_frontier", ["-m", "qf_witness.frontier.c8x_frontier"]),
+    ("shor221_frontier", ["-m", "qf_witness.frontier.shor221_frontier"]),
+    ("c9x_shor381_frontier", ["-m", "qf_witness.frontier.c9x_shor381_frontier"]),
+    ("c10x_frontier", ["-m", "qf_witness.frontier.c10x_frontier"]),
+    ("shor635_frontier", ["-m", "qf_witness.frontier.shor635_frontier"]),
+    ("c11x_frontier", ["-m", "qf_witness.frontier.c11x_frontier"]),
+    ("c11x_payoff_family", ["-m", "qf_witness.family.c11x_payoff_family"]),
+    ("shor1285_frontier", ["-m", "qf_witness.frontier.shor1285_frontier"]),
+    ("c12x_frontier", ["-m", "qf_witness.frontier.c12x_frontier"]),
+    ("c12x_payoff_family", ["-m", "qf_witness.family.c12x_payoff_family"]),
+    ("shor3683_frontier", ["-m", "qf_witness.frontier.shor3683_frontier"]),
 ]
-FACTORY_STEP = ("frontier_factory", "scripts/frontier_factory.py")
+FACTORY_STEP = ("frontier_factory", ["-m", "qf_witness.frontier.frontier_factory"])
 
 
 def forge_apps(changed_only):
@@ -48,17 +49,17 @@ def frontier_block(changed_only):
     specs_changed = cx.frontier_specs_changed() if changed_only else True
     if changed_only and not specs_changed:
         steps["frontier_coherence"] = cx.coherence_sweep_frontier()
-        fstep_id, fscript = FACTORY_STEP
-        rc, out = cx.run([fscript, "--reproduce"])
+        fstep_id, fargv = FACTORY_STEP
+        rc, out = cx.run([*fargv, "--reproduce"])
         steps[fstep_id] = {"rc": rc, "all_ok": "all_ok=True" in out,
                            "pass": rc == 0 and "all_ok=True" in out}
     else:
-        for step_id, script in FRONTIER_STEPS:
-            rc, out = cx.run([script])
+        for step_id, argv in FRONTIER_STEPS:
+            rc, out = cx.run(argv)
             steps[step_id] = {"rc": rc, "all_ok": "all_ok=True" in out,
                               "pass": rc == 0 and "all_ok=True" in out}
-        fstep_id, fscript = FACTORY_STEP
-        rc, out = cx.run([fscript, "--reproduce"])
+        fstep_id, fargv = FACTORY_STEP
+        rc, out = cx.run([*fargv, "--reproduce"])
         steps[fstep_id] = {"rc": rc, "all_ok": "all_ok=True" in out,
                            "pass": rc == 0 and "all_ok=True" in out}
     return steps
@@ -66,7 +67,7 @@ def frontier_block(changed_only):
 
 def registry_build(changed_only):
     """2. registry manifest + dependency graph (regex 캡처 — 이식)."""
-    rc, out = cx.run(["scripts/registry_tools.py", "build"])
+    rc, out = cx.run(["-m", "qf_witness.registry.registry_tools", "build"])
     mm = re.search(r"modules=(\d+) unique_apps=(\d+) cached=(\d+) root=(\w+)", out)
     return {"registry": {
         "rc": rc, "modules": mm.group(1) if mm else "?", "unique_apps": mm.group(2) if mm else "?",
@@ -75,7 +76,7 @@ def registry_build(changed_only):
 
 def second_oracle(changed_only):
     """3. 독립 2차 검증 (rc 판정 + 모듈 N/N 캡처 — 이식)."""
-    rc, out = cx.run(["scripts/second_oracle.py"])
+    rc, out = cx.run(["-m", "qf_witness.verify.second_oracle"])
     sm = re.search(r"모듈 독립검증 (\d+)/(\d+)", out)
     return {"second_oracle": {"rc": rc, "modules": f"{sm.group(1)}/{sm.group(2)}" if sm else "?",
                               "pass": rc == 0}}

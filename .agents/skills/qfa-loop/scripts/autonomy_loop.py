@@ -97,24 +97,24 @@ TRANSIENT_ARTIFACTS = [
 #   deterministic-reassembly 가 implement 안에서 검증한다. FULL 재현은 세션 종결 시 보증된다.
 GATES_FULL = [
     ("reproduce_all", ["scripts/reproduce_all.py"], "REPRODUCED"),
-    ("second_oracle", ["scripts/second_oracle.py"], None),
-    ("seal_gate_ci", ["scripts/seal_gate_ci.py"], "PASS"),
-    ("contested_guard", ["scripts/verify_contested_guard.py"], "ALL PASS"),
+    ("second_oracle", ["-m", "qf_witness.verify.second_oracle"], None),
+    ("seal_gate_ci", ["-m", "qf_witness.seal.seal_gate_ci"], "PASS"),
+    ("contested_guard", ["-m", "qf_witness.verify.verify_contested_guard"], "ALL PASS"),
 ]
 GATES_INCREMENTAL = [
-    ("registry_build", ["scripts/registry_tools.py", "build"], "root="),
-    ("second_oracle", ["scripts/second_oracle.py"], None),
-    ("seal_gate_ci", ["scripts/seal_gate_ci.py"], "PASS"),
-    ("contested_guard", ["scripts/verify_contested_guard.py"], "ALL PASS"),
+    ("registry_build", ["-m", "qf_witness.registry.registry_tools", "build"], "root="),
+    ("second_oracle", ["-m", "qf_witness.verify.second_oracle"], None),
+    ("seal_gate_ci", ["-m", "qf_witness.seal.seal_gate_ci"], "PASS"),
+    ("contested_guard", ["-m", "qf_witness.verify.verify_contested_guard"], "ALL PASS"),
 ]
 # ★changed(2026-07-04): reproduce_all --changed-only(변경 spec 재합성 byte-identity + 무변경 coherence,
 #   동일 root 산출·~230s vs full 600s+). full 과 동일한 byte-identity 보증을 신규 봉인분에 대해 제공하므로
 #   verified-commit 허용(무인 다라운드 #1 병목 해소). full 은 세션종결/CI 의 전량 재합성 최종보증으로 존치.
 GATES_CHANGED = [
     ("reproduce_all", ["scripts/reproduce_all.py", "--changed-only"], "REPRODUCED"),
-    ("second_oracle", ["scripts/second_oracle.py"], None),
-    ("seal_gate_ci", ["scripts/seal_gate_ci.py"], "PASS"),
-    ("contested_guard", ["scripts/verify_contested_guard.py"], "ALL PASS"),
+    ("second_oracle", ["-m", "qf_witness.verify.second_oracle"], None),
+    ("seal_gate_ci", ["-m", "qf_witness.seal.seal_gate_ci"], "PASS"),
+    ("contested_guard", ["-m", "qf_witness.verify.verify_contested_guard"], "ALL PASS"),
 ]
 # fast: reproduce_all·registry build 둘 다 제외(직전 상태 신뢰). 비-verified 점검용.
 GATES_FAST = [g for g in GATES_FULL if g[0] != "reproduce_all"]
@@ -226,7 +226,7 @@ def discover_frontier() -> dict:
     try:
         rpt = os.path.join(ROOT, ".pgf", "arith", "FRONTIER-SELECTOR-REPORT.json")
         if not os.path.exists(rpt):   # 비싼 전수 합성은 리포트 부재 시 1회만(매 라운드 재실행 금지)
-            run_cmd(["scripts/frontier_selector.py"])
+            run_cmd(["-m", "qf_witness.frontier.frontier_selector"])
         d = json.load(open(rpt, encoding="utf-8"))
         obs = d.get("current_frontier_observations", {})
         return {
@@ -353,9 +353,9 @@ def anchor_sync() -> dict:
         open(sgci, "w", encoding="utf-8", newline="\n").write(txt)
         updated = True
     regen = {}
-    for name, script in [("citation", "scripts/citation_gen.py"),
-                         ("semantic", "scripts/semantic_guarantee.py")]:
-        rc, _ = run_cmd([script])
+    for name, argv in [("citation", ["-m", "qf_witness.registry.citation_gen"]),
+                       ("semantic", ["-m", "qf_witness.registry.semantic_guarantee"])]:
+        rc, _ = run_cmd(argv)
         regen[name] = rc == 0
     return {"anchor_root": cur16, "seal_gate_ci_updated": updated, "regen": regen}
 
@@ -500,7 +500,7 @@ def autonomy_round(queue: list[Candidate], state: dict, base: dict,
     #   anchor_sync 해야 한다. (이전: anchor_sync 가 registry build 전에 옛 root 를 앵커 →
     #   verify_gate 의 reproduce_all 이 root 를 바꿔 seal_gate_ci 가 불일치로 실패했음.)
     if cand.kind == "frontier":
-        rb_rc, rb_out = run_cmd(["scripts/registry_tools.py", "build"])
+        rb_rc, rb_out = run_cmd(["-m", "qf_witness.registry.registry_tools", "build"])
         log["registry_build"] = {"rc": rb_rc, "root": read_root()[:16]}
         log["anchor_sync"] = anchor_sync()          # 이제 새 root 로 seal_gate_ci 앵커 갱신
         progress(f"round {r}: sealed → registry root={read_root()[:12]} anchor-synced")
@@ -590,7 +590,7 @@ def build_queue(mode: str) -> list[Candidate]:
         return [Candidate(
             "c12x-payoff+shor3683",
             kind="frontier",
-            driver=[["scripts/c12x_payoff_family.py"], ["scripts/shor3683_frontier.py"]],
+            driver=[["-m", "qf_witness.family.c12x_payoff_family"], ["-m", "qf_witness.frontier.shor3683_frontier"]],
             new_module=False,
         )]
     if mode == "frontier-factory":
@@ -599,8 +599,9 @@ def build_queue(mode: str) -> list[Candidate]:
         # ★budget>1 무인: 정적 큐 대신 refill 훅 등록 → 매 라운드 disk 에서 다음 N 재발견
         #   (방금 봉인분이 반영돼 연속 봉인 가능). 큐는 비워 두고 select_next 가 refill 을 소비.
         global _REFILL
-        sys.path.insert(0, os.path.join(ROOT, "scripts"))
-        import frontier_factory as ff
+        if ROOT not in sys.path:
+            sys.path.insert(0, ROOT)
+        from qf_witness.frontier import frontier_factory as ff
 
         def _factory_refill() -> Candidate | None:
             N, m = ff.next_unsealed_target()
@@ -609,7 +610,7 @@ def build_queue(mode: str) -> list[Candidate]:
             progress(f"factory discover: next unsealed N={N}={'×'.join(map(str, m['factors']))} "
                      f"n_sys={m['t'] + m['work']} prim={m['primitive']}")
             return Candidate(f"shor{N}", kind="frontier",
-                             driver=["scripts/frontier_factory.py", "--seal", str(N)],
+                             driver=["-m", "qf_witness.frontier.frontier_factory", "--seal", str(N)],
                              new_module=False, all_ok_token="sealed=True")
 
         _REFILL = _factory_refill
@@ -630,8 +631,8 @@ def factory_cfg(args) -> dict:
             "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
         ),
         "stage_paths": [
-            "scripts/frontier_factory.py", "scripts/perm_subspace_verify.py",
-            "scripts/reproduce_all.py", "scripts/seal_gate_ci.py",
+            "qf_witness/frontier/frontier_factory.py", "qf_witness/verify/perm_subspace_verify.py",
+            "scripts/reproduce_all.py", "qf_witness/seal/seal_gate_ci.py",
             "registry/apps", "specs/apps",
             "registry/REGISTRY-MANIFEST.json", "registry/DEPENDENCY-GRAPH.json",
             "registry/DEPENDENCY-GRAPH.md", "registry/SEMANTIC-GUARANTEES.json",
@@ -658,10 +659,10 @@ def frontier_cfg(args) -> dict:
             "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
         ),
         "stage_paths": [
-            "scripts/c12x_payoff_family.py",
-            "scripts/shor3683_frontier.py",
+            "qf_witness/family/c12x_payoff_family.py",
+            "qf_witness/frontier/shor3683_frontier.py",
             "scripts/reproduce_all.py",
-            "scripts/seal_gate_ci.py",
+            "qf_witness/seal/seal_gate_ci.py",
             "reports/REPRODUCE-RESULT.json",
             ".pgf/adoption/seal-badge.json",
             "registry/REGISTRY-MANIFEST.json",
