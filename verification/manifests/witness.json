@@ -742,6 +742,13 @@
           "scripts/chern_higher_observe.py",
           "--quick"
         ]
+      },
+      {
+        "id": "structure_lint",
+        "argv": [
+          "scripts/structure_lint.py",
+          "--quick"
+        ]
       }
     ]
   }

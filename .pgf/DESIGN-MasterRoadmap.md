@@ -685,6 +685,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     TrackReproduceUpgrade // reproduce_all 비대화 해소 — manifest runner 전환, 확정플랜=_workspace/reproduce_all_upgrade_plan.md (done — 2026-07-10 폐합) @dep:TrackHE13 (decomposed)
         # Phase0 Inventory(111스텝 추출)→Phase1 qf_verify+core.json→Phase2 전량이동+witness_batch→Phase3 wrapper(신구 diff 게이트)→Phase4 Evidence/Claim map
         # INV: 기존 명령·REPRODUCE-RESULT.json 의미 불변·판정 동치·pip 의존성 0·순차 실행·root 무접촉·legacy 보존(--legacy)
+    TrackScriptsRestructure // scripts 189→qf_witness 패키지+shim 영구호환, 확정플랜=_workspace/final_scripts_refactoring_plan.md (done — 2026-07-10 폐합) @dep:TrackReproduceUpgrade
+        # P0 골격/codemod/baseline→P1 verify15 파일럿(shim import-모드 버그 수정)→P2 3라운드 186 전량→P3 structure_lint+FinalGate
+        # 게이트: 라운드별 reproduce REPRODUCED·FinalGate full 119=baseline 값동일+lint·root d177ce9a 불변·oracle 사본 0
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
