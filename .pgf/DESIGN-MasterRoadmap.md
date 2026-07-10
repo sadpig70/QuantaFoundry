@@ -698,6 +698,8 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # next_unsealed_target=253(a=2·t=8·c8x 기봉인). DoD: factory --seal→build→semantic→citation→앵커→second_oracle→reproduce --changed-only→commit. CQV/ring 자동커버
     TrackCUC // CqvLargeSampled — shor1285/3683(n≥19) CUC 조립 인증 → compositionally_verified (done — 2026-07-10) @dep:TrackRingColumn
         # design01 §2.3: iqft8 ring-exact + modexp exhaustive(524288·1048576 전수) + H-wall ±1 + 배선/자식 → INV-R5 잔여 축소(subspace 3→1)
+    TrackFrontier259 // frontier 무인 연속 — shor259=7×37 자율봉인 (done — 2026-07-10: 502앱·root 0a6fbab0·tier1 35·CQV/ring 30)
+        # next_unsealed_target=259(n=17·c9x 기봉인). DoD: factory --seal→build→column_verify→ring→semantic→citation→앵커→second_oracle→reproduce→commit
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

@@ -17,7 +17,7 @@ import os, sys, json, glob
 
 from qf_witness.core.paths import ROOT
 MANIFEST = os.path.join(ROOT, "registry", "REGISTRY-MANIFEST.json")
-EXPECT_DEFAULT = "6d0f0c62ca614f09"
+EXPECT_DEFAULT = "0a6fbab08c76bf5a"
 
 
 def _tier_distribution():
