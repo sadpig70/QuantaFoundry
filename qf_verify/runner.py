@@ -85,6 +85,7 @@ def run_profile(profile_id, echo=print, jobs=1):
     import subprocess as _sp                 # QF-0711 U8: settled sidecar 기준 커버리지 생성(post-run, race 회피)
     _sp.run(["python", "-m", "qf_witness.registry.coverage_matrix"], cwd=cx.ROOT, capture_output=True)
     _sp.run(["python", "-m", "qf_witness.registry.quality_scorecard"], cwd=cx.ROOT, capture_output=True)  # U13
+    _sp.run(["python", "-m", "qf_witness.registry.release_root"], cwd=cx.ROOT, capture_output=True)  # U11
 
     # legacy 와 동일한 콘솔 출력
     echo("=" * 70)

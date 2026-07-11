@@ -30,6 +30,10 @@ def _attestation_from_entry(entry: dict[str, Any]) -> dict[str, Any]:
             "registry_root": entry["registry_root"],
             "registry_path": entry["registry_path"],
             "semantic_path": "registry/SEMANTIC-GUARANTEES.json",
+            # QF-0711 U11: 이 attestation 이 보장하는 root 범위 = seal_root(봉인 unitary 정체성).
+            #   evidence/toolchain 을 함께 인용하는 release_root 는 .pgf/adoption/RELEASE-ROOT.json 참조.
+            "attested_up_to": "seal_root",
+            "release_root_ref": ".pgf/adoption/RELEASE-ROOT.json",
         },
         "proof": {
             "dependencies": entry.get("dependencies", []),
