@@ -716,9 +716,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             U2_SemanticGuaranteeV2 // GUARANTEE_CLASSES 7종·C1-C4 정직 relabel·fail-closed·legend guard (done — 0641d0b) #C3
                 # ★agent01 F3 재판단: default-dense 158=명시 C1-C4 dense(건전)→강등 거부. +부수 ring --quick 클로버 버그 수정(593688b)
             U5_DocCurrentHistorySplit // CHANGELOG 추출·Spec §1 재작성·ARCH 배너+Layout 현행화·CURRENT-SPEC (done — 72900ed) #C4
-        P1_EvidenceAutomation // 감사 자동화 (sidecar) (designing) @dep:P0_TruthSurface
-            # JIT 설계 대기. U7 ClaimManifestRunner ★scripts/rp_all(외부 Rust parity+CLAIM-EVIDENCE-MAP, 오늘 신규)와 겹침→정욱님 확인 필요.
-            # U8 VerificationCoverage·U9 DriftGate·U10 RoadmapArchive 는 독립(overlap 없음).
+        P1_EvidenceAutomation // 감사 자동화 (sidecar/doc/gate, root 불변) (designing) @dep:P0_TruthSurface
+            # 상세설계=.pgf/DESIGN-QF0711-P1.md. 실측으로 범위 축소: rp_all(_legacy 미채택)→U7 Python 단일화.
+            U10_RoadmapArchive // done 144→HISTORY 분리·roadmap-lint (ready, 먼저·독립) #C7
+            U7_ClaimManifestRunner // ★80% 기구축(claims.json 11+claims.py+cli)→배선·EVIDENCE-MAP 정합만 (ready) #C2
+            U8_VerificationCoverage // 경로 sidecar(STABRANK 등 존재) 집계→VERIFICATION-COVERAGE.json+PATHS.md (ready) #C8
+            U9_DriftGate // seal_gate_ci 에 doc_counts/doc_paths/coverage --check 통합 (ready) @dep:U8 #C1 #C5
         P2_TrustPackaging // 릴리스 외부화·rs73 Tier-2·scorecard·메타위생 (blocked) @dep:P1_EvidenceAutomation
         P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
     TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
