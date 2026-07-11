@@ -468,7 +468,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # 상세설계=.pgf/DESIGN-QF0711-P1.md. 실측으로 범위 축소: rp_all(_legacy 미채택)→U7 Python 단일화.
             U10_RoadmapArchive // done 23트랙 상세→HISTORY(765→509줄)·roadmap-lint (done — 690589a) #C7
             U7_ClaimManifestRunner // CLAIM-EVIDENCE-MAP 자동생성 배선·claims 11→12(+compositionally)·check-claims drift gate (done — 04831ff) #C2
-            U8_VerificationCoverage // 경로 sidecar(STABRANK 등 존재) 집계→VERIFICATION-COVERAGE.json+PATHS.md (ready) #C8
+            U8_VerificationCoverage // coverage_matrix→VERIFICATION-COVERAGE.json(11경로·primary_only 109)·PATHS.md·★coverage 이름충돌 수정 (done — 7e030ea) #C8
             U9_DriftGate // seal_gate_ci 에 doc_counts/doc_paths/coverage --check 통합 (ready) @dep:U8 #C1 #C5
         P2_TrustPackaging // 릴리스 외부화·rs73 Tier-2·scorecard·메타위생 (blocked) @dep:P1_EvidenceAutomation
         P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
