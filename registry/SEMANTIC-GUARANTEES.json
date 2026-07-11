@@ -19,6 +19,71 @@
       "method": "Clifford+T ZX (conservative, safe false-negative)"
     }
   },
+  "guarantee_classes": {
+    "unitary_equiv": {
+      "seal_tier": [
+        0,
+        2,
+        3
+      ],
+      "coverage_domain": "full_unitary",
+      "method_en": "exact unitary equality vs an independent golden (dense C4 / Clifford tableau / ZX)",
+      "honest_boundary": "global phase ignored; Tier-3 ZX is conservative (safe false-negative)",
+      "introduced_in": "core"
+    },
+    "structural_wellformed": {
+      "seal_tier": [
+        1
+      ],
+      "coverage_domain": "structure",
+      "method_en": "Merkle over sealed child u_hashes + wiring; unitary equivalence NOT proven",
+      "honest_boundary": "structural ≠ dense — whole-unitary identity is not established",
+      "introduced_in": "core"
+    },
+    "unitary_equiv_column_exact": {
+      "seal_tier": [
+        1
+      ],
+      "coverage_domain": "full_unitary",
+      "method_en": "full Shor unitary verified column-by-column (H·iQFT included) vs spectral formula",
+      "honest_boundary": "float-atol grade (Tier-0 dense C4 class), not ring-exact",
+      "introduced_in": "TrackIU"
+    },
+    "compositionally_verified": {
+      "seal_tier": [
+        1
+      ],
+      "coverage_domain": "composition",
+      "method_en": "exhaustive modexp permutation + ring-exact iQFT + H-wall, composed (n≥19 Shor)",
+      "honest_boundary": "composition argument (not whole-column dense); stronger than subspace, weaker than column_exact",
+      "introduced_in": "TrackCUC"
+    },
+    "subspace_permutation_verified": {
+      "seal_tier": [
+        1
+      ],
+      "coverage_domain": "basis_subspace",
+      "method_en": "modexp core exact permutation on the computational basis (independent integer arithmetic)",
+      "honest_boundary": "modexp core only; full unitary (H·iQFT) not verified (INV-R5)",
+      "introduced_in": "TrackV08"
+    },
+    "unitary_equiv_sampled": {
+      "seal_tier": [
+        1
+      ],
+      "coverage_domain": "sampled_columns",
+      "method_en": "sampled-dense two independent-path statevectors (sealed seed)",
+      "honest_boundary": "partial (sampled) evidence — not exhaustive unitary_equiv",
+      "introduced_in": "W1.1"
+    },
+    "unclassified": {
+      "seal_tier": [],
+      "coverage_domain": "none",
+      "method_en": "no explicit tier and empty/unrecognized contract",
+      "honest_boundary": "fail-closed — excluded from headline; never inferred as a strong grade",
+      "introduced_in": "QF-0711 U2"
+    }
+  },
   "guarantees": {
     "app:aklt4": {
       "kind": "app",
@@ -168,7 +233,7 @@
       "kind": "app",
       "id": "c3x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
@@ -177,7 +242,7 @@
       "kind": "app",
       "id": "c4x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
@@ -186,7 +251,7 @@
       "kind": "app",
       "id": "c5x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
@@ -195,7 +260,7 @@
       "kind": "app",
       "id": "c6x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
@@ -204,7 +269,7 @@
       "kind": "app",
       "id": "c7x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
@@ -213,7 +278,7 @@
       "kind": "app",
       "id": "c8x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
@@ -222,7 +287,7 @@
       "kind": "app",
       "id": "ccz",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
@@ -2499,7 +2564,7 @@
       "kind": "app",
       "id": "cnot",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
@@ -2535,7 +2600,7 @@
       "kind": "app",
       "id": "cr3_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030"
@@ -2544,7 +2609,7 @@
       "kind": "app",
       "id": "cr4_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "4f91946338960687aa67371951b3cd1c9aad7ec3e6209971f07615872e25e848"
@@ -2553,7 +2618,7 @@
       "kind": "app",
       "id": "cr4_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
@@ -2562,7 +2627,7 @@
       "kind": "app",
       "id": "cr5_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "278e1c16651c7181fdad10f0c7afa3bdf52e062792483005396c427143490670"
@@ -2571,7 +2636,7 @@
       "kind": "app",
       "id": "cr5_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb"
@@ -2580,7 +2645,7 @@
       "kind": "app",
       "id": "cr6_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "dc1d1ac1dd3d0f762ce2dc3455f2bdbbb14ce77df2c7a45bb7e6f4b4cd0c1fd4"
@@ -2589,7 +2654,7 @@
       "kind": "app",
       "id": "cr6_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d"
@@ -2598,7 +2663,7 @@
       "kind": "app",
       "id": "cr7_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "6472e31bb7d132a1a9bf58c26af607494a4b90f71ad42475e74f1836477929ad"
@@ -2607,7 +2672,7 @@
       "kind": "app",
       "id": "cr7_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a39c4dc9beb02627240765f4565cbb4323a1e5ec2b86afef6a2cac47bdf70b97"
@@ -2616,7 +2681,7 @@
       "kind": "app",
       "id": "cr8_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "198f6cade30501ccf515dcefaad411eb52a0a8514718b7c646a46198aa9d3922"
@@ -2625,7 +2690,7 @@
       "kind": "app",
       "id": "cr8_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bc8cc0eca1d564a17380dc28d9bc79d55b1e52e11a26e668e43bac4bd47a4c0b"
@@ -2652,7 +2717,7 @@
       "kind": "app",
       "id": "cs_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab"
@@ -2661,7 +2726,7 @@
       "kind": "app",
       "id": "cs_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
@@ -2670,7 +2735,7 @@
       "kind": "app",
       "id": "ct_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
@@ -2697,7 +2762,7 @@
       "kind": "app",
       "id": "cz",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
@@ -2949,7 +3014,7 @@
       "kind": "app",
       "id": "fredkin",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711"
@@ -3209,7 +3274,7 @@
       "kind": "app",
       "id": "h_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
@@ -3281,7 +3346,7 @@
       "kind": "app",
       "id": "iswap",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
@@ -3641,7 +3706,7 @@
       "kind": "app",
       "id": "qft2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82"
@@ -4022,7 +4087,7 @@
       "kind": "app",
       "id": "rx_negpi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
@@ -4031,7 +4096,7 @@
       "kind": "app",
       "id": "rx_y4_p",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1502b55ef70bbe85dfe64e5cc2b907cbf1d709cba46505e6f763dd7103889cc0"
@@ -4040,7 +4105,7 @@
       "kind": "app",
       "id": "rx_y4_q",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "92b380debf18d6022314faec7fa559ea404a551574fa89652d1a0fd23a0c2055"
@@ -4058,7 +4123,7 @@
       "kind": "app",
       "id": "ry_3pi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "f407cd052ffcbbea04a478c3a9ebb739da65d03c1576932d776e38dbb2d783a4"
@@ -4067,7 +4132,7 @@
       "kind": "app",
       "id": "ry_ak13",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "798eecb68e5cea76af7b4dfe5d269feb9a55245aacfadcc2e405ec6713646867"
@@ -4076,7 +4141,7 @@
       "kind": "app",
       "id": "ry_ak13_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "dfc05fb61cd5ef69848aae4d6f0bad355edb8b9e3d228c5b3e98591bf694dbf2"
@@ -4085,7 +4150,7 @@
       "kind": "app",
       "id": "ry_ak41_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c3d3c7d299a86962696a99a77367e131c74b99b7b23da3dd4313f8d4570e9963"
@@ -4094,7 +4159,7 @@
       "kind": "app",
       "id": "ry_ak7",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "ceb1b0f533c445b143e8b5db81574a048bf7861dbab66744e9311ef0ce7c9ad2"
@@ -4103,7 +4168,7 @@
       "kind": "app",
       "id": "ry_ak7_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "fa4d65722c17d2c18219900134ef8b911321274c90bbe62f55bf6318e8d2ba16"
@@ -4112,7 +4177,7 @@
       "kind": "app",
       "id": "ry_cg_half",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b76f699acc27599f9b1ffca91dcb4b009c1174a2967781c08b05e94ddf0304e7"
@@ -4121,7 +4186,7 @@
       "kind": "app",
       "id": "ry_cg_half_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c60de30edbc2aedf0bf01fa72d05c11bcf6cebcd1b9328723e242fb97ac1bd9f"
@@ -4130,7 +4195,7 @@
       "kind": "app",
       "id": "ry_fib",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "256147502bcb8da36800a3bcc2d43701ae99690ac2783c30d6d7fab0ac5154b5"
@@ -4139,7 +4204,7 @@
       "kind": "app",
       "id": "ry_k10",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "739149f6bc94b846de172ea59f0ad511aaf8f75481a768d6b93114262003c5df"
@@ -4148,7 +4213,7 @@
       "kind": "app",
       "id": "ry_k10_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b34b83be11eda8de7eacbb46e021db38d217514baf0f3c5eece1f5355d842e63"
@@ -4157,7 +4222,7 @@
       "kind": "app",
       "id": "ry_k2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
@@ -4166,7 +4231,7 @@
       "kind": "app",
       "id": "ry_k2_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
@@ -4175,7 +4240,7 @@
       "kind": "app",
       "id": "ry_k3",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
@@ -4184,7 +4249,7 @@
       "kind": "app",
       "id": "ry_k3_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
@@ -4193,7 +4258,7 @@
       "kind": "app",
       "id": "ry_k4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
@@ -4202,7 +4267,7 @@
       "kind": "app",
       "id": "ry_k4_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
@@ -4211,7 +4276,7 @@
       "kind": "app",
       "id": "ry_k5",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
@@ -4220,7 +4285,7 @@
       "kind": "app",
       "id": "ry_k5_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
@@ -4229,7 +4294,7 @@
       "kind": "app",
       "id": "ry_k6",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
@@ -4238,7 +4303,7 @@
       "kind": "app",
       "id": "ry_k6_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
@@ -4247,7 +4312,7 @@
       "kind": "app",
       "id": "ry_k7",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
@@ -4256,7 +4321,7 @@
       "kind": "app",
       "id": "ry_k7_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
@@ -4265,7 +4330,7 @@
       "kind": "app",
       "id": "ry_k8",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
@@ -4274,7 +4339,7 @@
       "kind": "app",
       "id": "ry_k8_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
@@ -4283,7 +4348,7 @@
       "kind": "app",
       "id": "ry_k9",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "deea74b86411ad7daa4a331468474a5f1199dd3e0bf4ab92cc7fc65da606a799"
@@ -4292,7 +4357,7 @@
       "kind": "app",
       "id": "ry_k9_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0953b0e845319668e8b9bcb44efd9d92f1aeb2359eb2615f0038de64f78f63e5"
@@ -4301,7 +4366,7 @@
       "kind": "app",
       "id": "ry_negpi2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
@@ -4310,7 +4375,7 @@
       "kind": "app",
       "id": "ry_negpi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
@@ -4319,7 +4384,7 @@
       "kind": "app",
       "id": "ry_negpi6",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "6cd2dc18b0917761339b43904e4635392c086ca1fc39a72660a0cbb0c538981f"
@@ -4328,7 +4393,7 @@
       "kind": "app",
       "id": "ry_pi2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
@@ -4337,7 +4402,7 @@
       "kind": "app",
       "id": "ry_pi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
@@ -4346,7 +4411,7 @@
       "kind": "app",
       "id": "ry_pi6",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
@@ -4364,7 +4429,7 @@
       "kind": "app",
       "id": "rz_negpi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
@@ -4373,7 +4438,7 @@
       "kind": "app",
       "id": "rz_negpi8",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e48f30ca9f9e309c01f9d4e46314c670836044394c39be947458b44fd6d91a66"
@@ -4382,7 +4447,7 @@
       "kind": "app",
       "id": "rz_y4_p",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "781f39f48576f03ccb0a1b0098cb6d97f86d3f1fa52836ce5d14e1a8bc28084c"
@@ -4391,7 +4456,7 @@
       "kind": "app",
       "id": "rz_y4_q",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "dbe030a4cb10ad4fa67b932f4c35ade21f7e316ffd103909fa6e6180aeea2af6"
@@ -4454,7 +4519,7 @@
       "kind": "app",
       "id": "s_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
@@ -4517,7 +4582,7 @@
       "kind": "app",
       "id": "sdg_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
@@ -5989,7 +6054,7 @@
       "kind": "app",
       "id": "swap2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
@@ -6043,7 +6108,7 @@
       "kind": "app",
       "id": "t_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
@@ -6124,7 +6189,7 @@
       "kind": "app",
       "id": "toffoli",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
@@ -6268,7 +6333,7 @@
       "kind": "app",
       "id": "x_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
@@ -6286,7 +6351,7 @@
       "kind": "app",
       "id": "z5_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4"
@@ -6295,7 +6360,7 @@
       "kind": "app",
       "id": "z_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"
@@ -6322,7 +6387,7 @@
       "kind": "module",
       "id": "c10x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c708b7738d327805b0039cad0c1461a4b59ccf5157ace0b34b06b373a2fe6728"
@@ -6331,7 +6396,7 @@
       "kind": "module",
       "id": "c11x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3481dda93163578d231eb1462438c0a06fc6ff2cba66c48336e38324e0f95eaf"
@@ -6340,7 +6405,7 @@
       "kind": "module",
       "id": "c12x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "16cacaec94c446a944331e0b4064400ce6130ed025f7240ef00dae1b48e97ed2"
@@ -6349,7 +6414,7 @@
       "kind": "module",
       "id": "c3x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d764049404dc379f2197a829086404e1248b78df032b69c129ac6e1fe4ce811a"
@@ -6358,7 +6423,7 @@
       "kind": "module",
       "id": "c4x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0a6fb6e1181a377f5ef70ea99c4811edb7e9bbb37c3bc54a9525a018f54d25c6"
@@ -6367,7 +6432,7 @@
       "kind": "module",
       "id": "c5x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9286e92137c4cb567087847717a1e9f8a713695b1103abfaa1afe7e24fd7427f"
@@ -6376,7 +6441,7 @@
       "kind": "module",
       "id": "c6x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "5695deafab4f111b6b32bf9af7ac2049e16a40c6047e047f1f02e035c71392bd"
@@ -6385,7 +6450,7 @@
       "kind": "module",
       "id": "c7x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "18ef5d9b37aae74702a2de09955afcb29b2dc99e9a044e90820a7da88aa9f2fe"
@@ -6394,7 +6459,7 @@
       "kind": "module",
       "id": "c8x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "50e84ffe3e8aa4bb722f34d1df622297029e08bba84eea5f3a3f897766a0dd7f"
@@ -6403,7 +6468,7 @@
       "kind": "module",
       "id": "c9x",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9b4e4c940fb79ca930c4660af60fbcea56374a052854990cb6bcbafc33f6363b"
@@ -6412,7 +6477,7 @@
       "kind": "module",
       "id": "ccz",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be7749314540f6a68ab865236ac9fd8151323d2b8453812c62d4a4e389ef25da"
@@ -6421,7 +6486,7 @@
       "kind": "module",
       "id": "cnot",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3913bcef764f36b8b170748f1fe1641d3aa3d06e9e317cb0b553bd9bc58fd4a5"
@@ -6439,7 +6504,7 @@
       "kind": "module",
       "id": "cr3_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "84f3f01240c9d808d4ec2b6e258ec4f8ad6bac7a5b507f4f9dad3d8a7aeed030"
@@ -6448,7 +6513,7 @@
       "kind": "module",
       "id": "cr4_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "4f91946338960687aa67371951b3cd1c9aad7ec3e6209971f07615872e25e848"
@@ -6457,7 +6522,7 @@
       "kind": "module",
       "id": "cr4_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "948f3dd24178e5bccdf5d6f26fe82b651cd8a55a7e46e5240f6649ef2131e615"
@@ -6466,7 +6531,7 @@
       "kind": "module",
       "id": "cr5_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "278e1c16651c7181fdad10f0c7afa3bdf52e062792483005396c427143490670"
@@ -6475,7 +6540,7 @@
       "kind": "module",
       "id": "cr5_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bbea5ab439fa5450507176ce07ae1f67f6812cb8a8ade7811ee0bd3bd23e51fb"
@@ -6484,7 +6549,7 @@
       "kind": "module",
       "id": "cr6_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "dc1d1ac1dd3d0f762ce2dc3455f2bdbbb14ce77df2c7a45bb7e6f4b4cd0c1fd4"
@@ -6493,7 +6558,7 @@
       "kind": "module",
       "id": "cr6_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d7e435f237bf9a5e99c86688d2ec559bb21de55a417eba41c76632425140e42d"
@@ -6502,7 +6567,7 @@
       "kind": "module",
       "id": "cr7_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "6472e31bb7d132a1a9bf58c26af607494a4b90f71ad42475e74f1836477929ad"
@@ -6511,7 +6576,7 @@
       "kind": "module",
       "id": "cr7_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a39c4dc9beb02627240765f4565cbb4323a1e5ec2b86afef6a2cac47bdf70b97"
@@ -6520,7 +6585,7 @@
       "kind": "module",
       "id": "cr8_dag_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "198f6cade30501ccf515dcefaad411eb52a0a8514718b7c646a46198aa9d3922"
@@ -6529,7 +6594,7 @@
       "kind": "module",
       "id": "cr8_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "bc8cc0eca1d564a17380dc28d9bc79d55b1e52e11a26e668e43bac4bd47a4c0b"
@@ -6538,7 +6603,7 @@
       "kind": "module",
       "id": "cs_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "83e2a0e62fed7de9f0ed6902ebdeb323d8c0fac8ad7c8d85889a6a4d2a410cab"
@@ -6547,7 +6612,7 @@
       "kind": "module",
       "id": "cs_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a2193b0fcfb6deb3014937d191fdd29f3326c5bcb97e35367ad93feece172fc6"
@@ -6556,7 +6621,7 @@
       "kind": "module",
       "id": "ct_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e52c0c690a4372918f53acc2b1ff280a693f9e542c33b13aede1a240be47d0e4"
@@ -6565,7 +6630,7 @@
       "kind": "module",
       "id": "cz",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "8d39767cd8c3871740835e4cc09ed24b8ddccb7d87562f933a5e66b61688a73f"
@@ -6574,7 +6639,7 @@
       "kind": "module",
       "id": "fredkin",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "af88aadc0775f7bff3cf714df9527a9cd6725b775e31b077162f048e65bbb711"
@@ -6583,7 +6648,7 @@
       "kind": "module",
       "id": "h_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
@@ -6601,7 +6666,7 @@
       "kind": "module",
       "id": "iswap",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b5b50c52e0c472332ef3f9549a6e1d91d17ec8ad699e2a8bd12576225db0f180"
@@ -6610,7 +6675,7 @@
       "kind": "module",
       "id": "qft2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "90dbc731bb8c7e80f8ff62b9be6975bf453dbbb3dc645a25960cfba3477dad82"
@@ -6619,7 +6684,7 @@
       "kind": "module",
       "id": "qft3",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "340b5f344fae9b997d17883cd1bc10bbcbd4c1c37252ce889c26d0e4adc74bed"
@@ -6628,7 +6693,7 @@
       "kind": "module",
       "id": "qft4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "d997d21f5cfb148785dc122f2d6ae31f7b338b04fc2fae2aab253fa8696c27d8"
@@ -6655,7 +6720,7 @@
       "kind": "module",
       "id": "rx_negpi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9fececd8d059cb65722acd722f8e0837b96c04da7285340f04a6dd3cac85876e"
@@ -6664,7 +6729,7 @@
       "kind": "module",
       "id": "rx_y4_p",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1502b55ef70bbe85dfe64e5cc2b907cbf1d709cba46505e6f763dd7103889cc0"
@@ -6673,7 +6738,7 @@
       "kind": "module",
       "id": "rx_y4_q",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "92b380debf18d6022314faec7fa559ea404a551574fa89652d1a0fd23a0c2055"
@@ -6682,7 +6747,7 @@
       "kind": "module",
       "id": "ry_3pi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "f407cd052ffcbbea04a478c3a9ebb739da65d03c1576932d776e38dbb2d783a4"
@@ -6691,7 +6756,7 @@
       "kind": "module",
       "id": "ry_ak13",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "798eecb68e5cea76af7b4dfe5d269feb9a55245aacfadcc2e405ec6713646867"
@@ -6700,7 +6765,7 @@
       "kind": "module",
       "id": "ry_ak13_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "dfc05fb61cd5ef69848aae4d6f0bad355edb8b9e3d228c5b3e98591bf694dbf2"
@@ -6709,7 +6774,7 @@
       "kind": "module",
       "id": "ry_ak41",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b869d4ebb755b2deb4b6eda98327fa9417eb3828f752f51fa01caa6294d8cd35"
@@ -6718,7 +6783,7 @@
       "kind": "module",
       "id": "ry_ak41_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c3d3c7d299a86962696a99a77367e131c74b99b7b23da3dd4313f8d4570e9963"
@@ -6727,7 +6792,7 @@
       "kind": "module",
       "id": "ry_ak7",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "ceb1b0f533c445b143e8b5db81574a048bf7861dbab66744e9311ef0ce7c9ad2"
@@ -6736,7 +6801,7 @@
       "kind": "module",
       "id": "ry_ak7_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "fa4d65722c17d2c18219900134ef8b911321274c90bbe62f55bf6318e8d2ba16"
@@ -6745,7 +6810,7 @@
       "kind": "module",
       "id": "ry_cg_half",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b76f699acc27599f9b1ffca91dcb4b009c1174a2967781c08b05e94ddf0304e7"
@@ -6754,7 +6819,7 @@
       "kind": "module",
       "id": "ry_cg_half_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c60de30edbc2aedf0bf01fa72d05c11bcf6cebcd1b9328723e242fb97ac1bd9f"
@@ -6763,7 +6828,7 @@
       "kind": "module",
       "id": "ry_fib",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "256147502bcb8da36800a3bcc2d43701ae99690ac2783c30d6d7fab0ac5154b5"
@@ -6772,7 +6837,7 @@
       "kind": "module",
       "id": "ry_k10",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "739149f6bc94b846de172ea59f0ad511aaf8f75481a768d6b93114262003c5df"
@@ -6781,7 +6846,7 @@
       "kind": "module",
       "id": "ry_k10_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b34b83be11eda8de7eacbb46e021db38d217514baf0f3c5eece1f5355d842e63"
@@ -6790,7 +6855,7 @@
       "kind": "module",
       "id": "ry_k2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
@@ -6799,7 +6864,7 @@
       "kind": "module",
       "id": "ry_k2_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
@@ -6808,7 +6873,7 @@
       "kind": "module",
       "id": "ry_k3",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "08efaf52fa501e26d1dc7cdfd3f9933228eb0652c2c8f012a00fd2f790b4f072"
@@ -6817,7 +6882,7 @@
       "kind": "module",
       "id": "ry_k3_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "519c988291263315cf4227c5ae27009d61f4cdb538ac32bfa37a8ece12ed1e59"
@@ -6826,7 +6891,7 @@
       "kind": "module",
       "id": "ry_k4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "2753791976b4005a6653604be0d88259890ef8c2abaafb5f82445ab427e11d73"
@@ -6835,7 +6900,7 @@
       "kind": "module",
       "id": "ry_k4_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "81fa1340f7c11d65c02a849475a8828bc88c420b25a234e25d7c1f3d04b42ee2"
@@ -6844,7 +6909,7 @@
       "kind": "module",
       "id": "ry_k5",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "841fc404ac13ec5e8f9643c6f2737400f19b3f2c885154217747b7b4ebeeb7f6"
@@ -6853,7 +6918,7 @@
       "kind": "module",
       "id": "ry_k5_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b9461e232a3ee618035a4c09ea3c3079ab1abd16cfbcaf2bfd03ab8dd968d989"
@@ -6862,7 +6927,7 @@
       "kind": "module",
       "id": "ry_k6",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a4369ac0fb17ee4ed560be2dc87e9b5cd2e1162fa4cb199b23386029686f58ca"
@@ -6871,7 +6936,7 @@
       "kind": "module",
       "id": "ry_k6_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1b2474e7ac31a58c068131cc23b7813e68c4ed95b15e5e2d16ccd9fb4ff4983e"
@@ -6880,7 +6945,7 @@
       "kind": "module",
       "id": "ry_k7",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0e99abc55b83d1ea7306e0268db86845f3f6f0bf86c8c881f5e2352afa23acc6"
@@ -6889,7 +6954,7 @@
       "kind": "module",
       "id": "ry_k7_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c2acee32c17f1b297ae1621c0483fe57f7c8e8b1cb61e75056574a5a0a6de52f"
@@ -6898,7 +6963,7 @@
       "kind": "module",
       "id": "ry_k8",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1fbd11d566af4b7c14b5f741bf06777d58034890f31fd3ae66ab1637a3e35739"
@@ -6907,7 +6972,7 @@
       "kind": "module",
       "id": "ry_k8_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "5a22f57191d3a43d1b2c94bf4174d4d2165362ba0c7a3565f58740e64c1501c5"
@@ -6916,7 +6981,7 @@
       "kind": "module",
       "id": "ry_k9",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "deea74b86411ad7daa4a331468474a5f1199dd3e0bf4ab92cc7fc65da606a799"
@@ -6925,7 +6990,7 @@
       "kind": "module",
       "id": "ry_k9_dag",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0953b0e845319668e8b9bcb44efd9d92f1aeb2359eb2615f0038de64f78f63e5"
@@ -6934,7 +6999,7 @@
       "kind": "module",
       "id": "ry_negpi2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "393986b2b2ec0634d902ae31e2edf153be51ac6864c1ce9c2a022ea09e3fc126"
@@ -6943,7 +7008,7 @@
       "kind": "module",
       "id": "ry_negpi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0a13895efe686c90b760f69adfaadf7792f1cc2679a213790e9e89194507e101"
@@ -6952,7 +7017,7 @@
       "kind": "module",
       "id": "ry_negpi6",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "6cd2dc18b0917761339b43904e4635392c086ca1fc39a72660a0cbb0c538981f"
@@ -6961,7 +7026,7 @@
       "kind": "module",
       "id": "ry_pi2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1b2d054bd3ea0cbfce7ebfe4f4791ecf9eda5deb2265d8e9add9ef512832f643"
@@ -6970,7 +7035,7 @@
       "kind": "module",
       "id": "ry_pi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "be2336be311b3a6657e3547bb676c37ebfed320f009dd9b7ad7b77156ea730e3"
@@ -6979,7 +7044,7 @@
       "kind": "module",
       "id": "ry_pi6",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "9372e7370911c3a2aac9dc875c2010e80d2a3e2efef97b16b7ce2d509af97e8b"
@@ -6988,7 +7053,7 @@
       "kind": "module",
       "id": "rz_negpi4",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "f26ada5c445274c62bace4fb4151c0030f3b290aa16b896482c90818504d7ddc"
@@ -6997,7 +7062,7 @@
       "kind": "module",
       "id": "rz_negpi8",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e48f30ca9f9e309c01f9d4e46314c670836044394c39be947458b44fd6d91a66"
@@ -7006,7 +7071,7 @@
       "kind": "module",
       "id": "rz_y4_p",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "781f39f48576f03ccb0a1b0098cb6d97f86d3f1fa52836ce5d14e1a8bc28084c"
@@ -7015,7 +7080,7 @@
       "kind": "module",
       "id": "rz_y4_q",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "dbe030a4cb10ad4fa67b932f4c35ade21f7e316ffd103909fa6e6180aeea2af6"
@@ -7024,7 +7089,7 @@
       "kind": "module",
       "id": "s_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "7c739c3b4c3a0ac8c6867314dfcff8622faf683aff79497e6383e015e5c7bfe1"
@@ -7033,7 +7098,7 @@
       "kind": "module",
       "id": "sdg_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "2018838054253fb250fd6fda90e5e5b2fb73c401d73e572c11eae26491b5f8ed"
@@ -7096,7 +7161,7 @@
       "kind": "module",
       "id": "swap2",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e6255e2f105a97829f59ec648c92ef42d7fb19bd952f0c8534371e352e77153e"
@@ -7105,7 +7170,7 @@
       "kind": "module",
       "id": "sx",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "c49a2b4d6367c172f9edd000553d6175ff07bfbb383b3c3ba08c40cb9ba5dbef"
@@ -7114,7 +7179,7 @@
       "kind": "module",
       "id": "t_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
@@ -7123,7 +7188,7 @@
       "kind": "module",
       "id": "toffoli",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
@@ -7132,7 +7197,7 @@
       "kind": "module",
       "id": "x_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "7dc1df52d07dd7428a4c2ab9ba2e3f982b6dea78d0ee6eb2f7ea865faa19ba5a"
@@ -7141,7 +7206,7 @@
       "kind": "module",
       "id": "z5_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "a60ac94b41b84ac4c00c9098b05aa057058c966f0e60f1a05ca2202edc890ae4"
@@ -7150,7 +7215,7 @@
       "kind": "module",
       "id": "z_gate",
       "tier": 0,
-      "tier_source": "inferred(default-dense)",
+      "tier_source": "contract(C1-C4-dense)",
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "1e3c0f2fa747f4fac16a11dd3959f83cc23b71b26e66528032c6223af01846e4"

@@ -33,6 +33,47 @@ TIER_GUARANTEE = {
     3: {"class": "unitary_equiv", "method": "Clifford+T ZX (conservative, safe false-negative)"},
 }
 
+# guarantee class catalogue (QF-0711 U2): headline 에 등장하는 모든 보증 class 의 권위 정의.
+# seal_tier(봉인 계층)와 semantic_guarantee(증거 등급)를 독립 축으로 명시 — 같은 class 가 여러 tier 에서
+# 올 수 있고(unitary_equiv: Tier-0 dense/Tier-2 tableau/Tier-3 ZX), override(proof sidecar)로 승격되기도 한다.
+GUARANTEE_CLASSES = {
+    "unitary_equiv": {
+        "seal_tier": [0, 2, 3], "coverage_domain": "full_unitary",
+        "method_en": "exact unitary equality vs an independent golden (dense C4 / Clifford tableau / ZX)",
+        "honest_boundary": "global phase ignored; Tier-3 ZX is conservative (safe false-negative)",
+        "introduced_in": "core"},
+    "structural_wellformed": {
+        "seal_tier": [1], "coverage_domain": "structure",
+        "method_en": "Merkle over sealed child u_hashes + wiring; unitary equivalence NOT proven",
+        "honest_boundary": "structural ≠ dense — whole-unitary identity is not established",
+        "introduced_in": "core"},
+    "unitary_equiv_column_exact": {
+        "seal_tier": [1], "coverage_domain": "full_unitary",
+        "method_en": "full Shor unitary verified column-by-column (H·iQFT included) vs spectral formula",
+        "honest_boundary": "float-atol grade (Tier-0 dense C4 class), not ring-exact",
+        "introduced_in": "TrackIU"},
+    "compositionally_verified": {
+        "seal_tier": [1], "coverage_domain": "composition",
+        "method_en": "exhaustive modexp permutation + ring-exact iQFT + H-wall, composed (n≥19 Shor)",
+        "honest_boundary": "composition argument (not whole-column dense); stronger than subspace, weaker than column_exact",
+        "introduced_in": "TrackCUC"},
+    "subspace_permutation_verified": {
+        "seal_tier": [1], "coverage_domain": "basis_subspace",
+        "method_en": "modexp core exact permutation on the computational basis (independent integer arithmetic)",
+        "honest_boundary": "modexp core only; full unitary (H·iQFT) not verified (INV-R5)",
+        "introduced_in": "TrackV08"},
+    "unitary_equiv_sampled": {
+        "seal_tier": [1], "coverage_domain": "sampled_columns",
+        "method_en": "sampled-dense two independent-path statevectors (sealed seed)",
+        "honest_boundary": "partial (sampled) evidence — not exhaustive unitary_equiv",
+        "introduced_in": "W1.1"},
+    "unclassified": {
+        "seal_tier": [], "coverage_domain": "none",
+        "method_en": "no explicit tier and empty/unrecognized contract",
+        "honest_boundary": "fail-closed — excluded from headline; never inferred as a strong grade",
+        "introduced_in": "QF-0711 U2"},
+}
+
 
 def resolve_tier(d):
     """sealed dict → (tier:int, source). tier 명시 없으면 contract 로 추론.
@@ -41,13 +82,18 @@ def resolve_tier(d):
     if t is not None:
         return int(t), "explicit"
     c = d.get("contract", "")
-    if "structural" in c:
+    cl = c.lower()
+    if "structural" in cl:
         return 1, "inferred(contract)"
-    if "clifford+t" in c or "zx" in c:
+    if "clifford+t" in cl or "zx" in cl:
         return 3, "inferred(contract)"
-    if "clifford" in c:
+    if "clifford" in cl:
         return 2, "inferred(contract)"
-    return 0, "inferred(default-dense)"   # plain C1-C4 = Tier-0 EXACT
+    if cl.strip().startswith("c1-c4"):
+        return 0, "contract(C1-C4-dense)"   # 명시적 dense 계약 = Tier-0 EXACT (건전, 추측 아님)
+    # QF-0711 U2 fail-closed: tier 없음 ∧ 빈/미인식 contract → 강등이 아니라 미분류(headline 제외).
+    #   기존 정책(default-dense Tier-0)의 fail-open 구멍을 닫는다. 현 corpus 는 전부 C1-C4 라 영향 0.
+    return None, "unclassified"
 
 # ── ghz16 부분검증: 독립 두 경로 statevector ──
 _H = np.array([[1, 1], [1, -1]], complex) / np.sqrt(2)
@@ -249,11 +295,14 @@ def main():
                     "(V08 P0, structural 상향; 전체 unitary 동등은 아님, INV-R5). "
                     "unitary_equiv_column_exact=shor 전체 유니터리 컬럼 전수(H·iQFT 포함, 조립 논증 폐합; "
                     "TrackIU IU_A, float-atol 계급 — INV-R5 는 해당 앱 한정 축소, n_sys≥19 는 잔존).",
-           "tier_legend": TIER_GUARANTEE, "guarantees": {}}
+           "tier_legend": TIER_GUARANTEE, "guarantee_classes": GUARANTEE_CLASSES, "guarantees": {}}
     by_class = {}
     by_kind_class = {}   # W0.2: 헤드라인 분리표기 — kind(module/app)별 보증등급 분포
     for key, s in sorted(sealed.items()):
-        g = dict(TIER_GUARANTEE.get(s["tier"], {"class": "unknown", "method": "?"}))
+        if s["tier"] is None:   # QF-0711 U2 fail-closed: 미분류
+            g = {"class": "unclassified", "method": GUARANTEE_CLASSES["unclassified"]["method_en"]}
+        else:
+            g = dict(TIER_GUARANTEE.get(s["tier"], {"class": "unknown", "method": "?"}))
         if key in sampled and g["class"] == "structural_wellformed":   # W1.1 격상
             g = {"class": "unitary_equiv_sampled",
                  "method": "sampled-dense 두 독립경로 statevector(seed 봉인, W1.1). 부분(샘플) 보증 — 전수 unitary_equiv 아님"}
@@ -325,6 +374,12 @@ def main():
                  "structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
         "by_kind_class": by_kind_class, "by_class": by_class}
 
+    # QF-0711 U2c legend guard: 방출된 모든 class 는 GUARANTEE_CLASSES 카탈로그에 등재돼야 한다
+    #   (신규 미등재 class 도입 시 fail — 등급 catalogue 동기화 강제).
+    unlisted = sorted(set(by_class) - set(GUARANTEE_CLASSES))
+    if unlisted:
+        print(f"❌ U2c legend guard FAIL: class ∉ GUARANTEE_CLASSES: {unlisted}")
+
     json.dump(out, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print("\n" + "-" * 84)
     print("headline_split: " + " | ".join(
@@ -336,7 +391,7 @@ def main():
         print(f"ghz16 부분검증: {'✅ verified (약한 의미보증 상향)' if pv['verified'] else '❌ FAIL'}")
     print(f"리포트: {os.path.relpath(OUT, ROOT)}")
     print("=" * 84)
-    ok = (pv["verified"] if pv else True)
+    ok = (pv["verified"] if pv else True) and not unlisted
     return 0 if ok else 1
 
 
