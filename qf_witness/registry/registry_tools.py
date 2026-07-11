@@ -109,7 +109,10 @@ def build_manifest(graph):
         "cached_canonical_map": {c: f"registry/modules/{c}.sealed.json" for c in cached},
         "registry_root_hash": root,
         "revocation_list": [],
-        "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인. canonical 은 registry/modules. "
+        "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인(canonical 은 "
+                "registry/modules). cached_app_side_module_count 는 앱 합성 트리에서 leaf 로 직접 쓰인 모듈 "
+                "재봉인 수 — ★새 unique app 이 아니다(unique_app_count 와 분리). 나머지 (modules.count - "
+                "cached) 모듈은 앱에서 직접 leaf 로 안 쓰이거나 다른 모듈 경유(인프라 전용)라 map 에 없다. "
                 "단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
     }
 

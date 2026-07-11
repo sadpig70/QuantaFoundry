@@ -82,7 +82,8 @@ See [`docs/QF-STDLIB.md`](docs/QF-STDLIB.md).
 
 Authoritative split: [`registry/SEMANTIC-GUARANTEES.json`](registry/SEMANTIC-GUARANTEES.json) `headline_split`.
 
-**Honest boundaries (no overclaim)** — the project's core discipline:
+**Honest boundaries (no overclaim)** — the project's core discipline
+(full page: [`docs/HONESTY-BOUNDARIES.md`](docs/HONESTY-BOUNDARIES.md)):
 `seal ≠ run ≠ verify` · `approximation ≠ exact` · `structural ≠ dense` · `REPRODUCED ≠ correct` ·
 `observation ≠ seal`. Every artifact carries its boundary inline; period/factor readouts of the
 large Shor apps stay illustrative only.

@@ -1,0 +1,233 @@
+{
+  "_schema": "consensus-keys-meta/v1",
+  "_note": "QF-0711 U14: consensus_keys.json(FROZEN·guard byte-identical) 파생 요약 sidecar. 원본은 절대 무편집 — 이 파일만 갱신. 외부 리뷰어가 frozen 키의 수·grade·provenance 를 원본 파싱 없이 확인하도록.",
+  "count": 23,
+  "all_frozen": true,
+  "generated_from_root16": "0a6fbab08c76bf5a",
+  "keys": {
+    "ccz": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "cnot": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "cr3_dag_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:sympy",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "cr4_dag_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:sympy",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "cr4_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:sympy",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "cr5_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:sympy",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "cs_dag": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:sympy",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "cs_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "ct_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:sympy",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "cz": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "fredkin": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "proof:perm",
+        "structural:projector"
+      ],
+      "key_version": 1
+    },
+    "h_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "iswap": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "qft2": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "qft3": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "qft4": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "s_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "swap2": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "sx": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok",
+        "proof:algebraic_sqrtX"
+      ],
+      "key_version": 1
+    },
+    "t_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:alibaba-qwen",
+        "model:deepseek-v4-pro",
+        "model:google-gemini-3.5-flash-high",
+        "model:moonshot-kimi",
+        "model:openai-gpt-5",
+        "model:xai-grok-code-fast-1",
+        "proof:formal-spec"
+      ],
+      "key_version": 1
+    },
+    "toffoli": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "x_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    },
+    "z_gate": {
+      "grade": "PROOF_BACKED",
+      "provenance": [
+        "model:claude",
+        "proof:algebraic"
+      ],
+      "key_version": 1
+    }
+  }
+}
