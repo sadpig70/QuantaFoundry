@@ -705,6 +705,22 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # design01 §2.3: iqft8 ring-exact + modexp exhaustive(524288·1048576 전수) + H-wall ±1 + 배선/자식 → INV-R5 잔여 축소(subspace 3→1)
     TrackFrontier259 // frontier 무인 연속 — shor259=7×37 자율봉인 (done — 2026-07-10: 502앱·root 0a6fbab0·tier1 35·CQV/ring 30)
         # next_unsealed_target=259(n=17·c9x 기봉인). DoD: factory --seal→build→column_verify→ring→semantic→citation→앵커→second_oracle→reproduce→commit
+    TrackQF0711Upgrade // 제어면 봉인 — 8-리뷰 통합(_workspace/0711-upgrade-plan.md); 검증엔진 불변, claim surface 정합 (in-progress — 2026-07-11)
+        # 진단: 엔진 성숙·병목=제어면 드리프트(문서·수치·메타·스킬경로). 상세설계=.pgf/DESIGN-QF0711-P0.md (P0 우선, P1~P3 JIT)
+        # 가정해소(2026-07-11 실측): root=봉인 module/app u_hash만 → SEMANTIC/consensus sidecar 무변경 · rs73=순수Clifford(60cnot+8x,total_t0)→Tier-2 성립 · commit-policy=INV5 텍스트 정정(런타임 changed 허용)
+        P0_TruthSurface // 사실·계약 정합 (doc/sidecar, root 불변) (designing)
+            U3_SkillPathFix // qfa-loop/qpgf-oracle SKILL 경로 + doc-path lint (ready) #quickwin #C5
+            U4_AutonomyContractFix // commit-policy {full,changed} 정합 + --describe-contract (ready) #quickwin #C6
+            U6_ReadmeFix // 518→정본·pipe CLI·external-reviewer 경로 (ready) @dep:U1 #quickwin #C9
+            U1_CountOntology // 5-튜플 수치 온톨로지 + 생성블록 단일출처 (designing) #C1
+            U2_SemanticGuaranteeV2 // tier_legend→class catalogue, fail-closed (designing) @dep:U1 #C3
+            U5_DocCurrentHistorySplit // ARCH/Spec 현재↔CHANGELOG 분리 (designing) @dep:U1 #C4
+        P1_EvidenceAutomation // 감사 자동화 (sidecar) (blocked) @dep:P0_TruthSurface
+            # U7 ClaimManifestRunner·U8 VerificationCoverage·U9 DriftGate·U10 RoadmapArchive — P0 폐합 후 JIT 설계
+        P2_TrustPackaging // 릴리스 외부화·rs73 Tier-2·scorecard·메타위생 (blocked) @dep:P1_EvidenceAutomation
+        P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
+    TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
+        # S1 검증코어 심화(agent02·07: ZX backup·incremental·compositional prover·제3경로) · S2 멀티런타임(H1) · S3 백엔드/PyPI(승인)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
