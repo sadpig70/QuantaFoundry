@@ -23,7 +23,8 @@ ONTOLOGY = os.path.join(ROOT, "registry", "COUNT-ONTOLOGY.json")
 
 MARK_BEGIN = "<!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->"
 MARK_END = "<!-- END generated:counts -->"
-DOC_TARGETS = ["README.md"]   # ARCH/Spec 은 U5(DocCurrentHistorySplit) 재작성 시 마커 추가
+DOC_TARGETS = ["README.md", "docs/ARCHITECTURE.md", "docs/QuantaFoundry-Technical-Spec.md",
+               "docs/CURRENT-SPEC.md"]   # QF-0711 U5
 
 
 def _compute():
@@ -69,14 +70,15 @@ def _compute():
     }
 
 
-def _readme_block(o):
+def _counts_block(o, prefix):
+    # prefix = 대상 파일 위치→repo-root 상대경로("" for root, "../" for docs/). 링크 정합용.
     h = o["headline"]
     return (f"{MARK_BEGIN}\n"
             f"- **{h['modules']} sealed modules · {h['unique_apps']} unique applications** · "
             f"registry root `{h['root16']}…`\n"
             f"  ({h['app_files']} app-file entries = {h['unique_apps']} unique + {h['cached_leaf']} "
             f"cached app-side re-seals;\n"
-            f"  live source [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).\n"
+            f"  live source [`registry/REGISTRY-MANIFEST.json`]({prefix}registry/REGISTRY-MANIFEST.json)).\n"
             f"{MARK_END}")
 
 
@@ -88,7 +90,6 @@ def _sub_markers(text, block):
 def run(check):
     o = _compute()
     ont_new = json.dumps(o, ensure_ascii=False, indent=2) + "\n"
-    block = _readme_block(o)
     ok, stale = True, []
 
     cur = open(ONTOLOGY, encoding="utf-8").read() if os.path.exists(ONTOLOGY) else None
@@ -102,6 +103,7 @@ def run(check):
         p = os.path.join(ROOT, rel)
         if not os.path.exists(p):
             continue
+        block = _counts_block(o, "../" * rel.replace(os.sep, "/").count("/"))
         t = open(p, encoding="utf-8", newline="").read()
         filled = _sub_markers(t, block)
         if filled is None:

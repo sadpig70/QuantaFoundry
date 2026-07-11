@@ -11,6 +11,20 @@
 
 It generates quantum software modules from high-level intent, verifies them with deterministic contract oracles, seals only proven outputs, and composes sealed modules into larger quantum applications.
 
+> ⚠️ **Point-in-time snapshot (v0.7, 2026-06).** The module/app counts (77/152, `85cdc459…`) and the
+> `scripts/` file layout embedded below are **historical**. Current invocation is
+> `python -m qf_witness.<cat>.<name>` (ScriptsShimCleanup, 2026-07; `scripts/` now holds only three
+> entry points: `reproduce_all.py`, `reproduce_all_legacy.py`, `qf_stdlib.py`). **Live counts +
+> guarantee split are authoritative in** [`README.md`](../README.md) ·
+> [`registry/REGISTRY-MANIFEST.json`](../registry/REGISTRY-MANIFEST.json) ·
+> [`registry/COUNT-ONTOLOGY.json`](../registry/COUNT-ONTOLOGY.json).
+
+<!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->
+- **95 sealed modules · 502 unique applications** · registry root `0a6fbab08c76bf5a…`
+  (577 app-file entries = 502 unique + 75 cached app-side re-seals;
+  live source [`registry/REGISTRY-MANIFEST.json`](../registry/REGISTRY-MANIFEST.json)).
+<!-- END generated:counts -->
+
 > **Status (v0.7, 2026-06):** the verification core is public as **QPGF** →
 > **https://github.com/sadpig70/QPGF** (157 self-verification tests green). The foundry layer
 > around it is **substantially realized**: a key-free, cross-model-established library of
@@ -413,16 +427,25 @@ QuantaFoundry/
 │   ├── apps/*.sealed.json (59+)  #   application seals (C-app) + cached leaf re-seals
 │   └── {REGISTRY-MANIFEST,DEPENDENCY-GRAPH,SEMANTIC-GUARANTEES,GENSKILL-CATALOG}.json
 │
-├── scripts/                      # foundry-layer tooling (v0.4–0.7)
-│   ├── genskills.py, goal_autonomy.py        #   GenSkill library + goal-autonomy loop
-│   ├── gated_panel.py, live_dispatch.py, seal_sx.py   #   multi-model panel + live cross-model
-│   ├── red_team.py, bounty_adjudicate.py, cross_runtime_round.py  #   falsification front
-│   ├── seal_module.py, verify_t1_closure.py  #   honest-decomposition closure (decomp guard)
-│   ├── arith_family.py, clifford_routing.py, resource_report.py, dep_graph.py, second_oracle.py
-│   ├── sampled_dense_verify.py, zx_routing.py, global_phase_tracker.py   #   S1: Tier-1 trust-closure
-│   ├── discover.py, decomp_optimizer.py      #   S2: QF-Discover value function + decomposition optimizer
-│   ├── qasm_export.py, qasm_ingest.py, qf_cli.py, citation_gen.py, seal_gate_ci.py  #   S3: OpenQASM3 + qf CLI + citable + CI
-│   └── convention_audit.py, rho_validation.py, determinism_env_check.py, oracle_rollback_protocol.py, runtime_identity.py  #   S4–S5: consensus audit + hardening
+├── scripts/                      # entry points ONLY (ScriptsShimCleanup 2026-07)
+│   ├── reproduce_all.py          #   one-command full reproduction (thin wrapper → qf_verify.runner)
+│   ├── reproduce_all_legacy.py   #   pre-refactor monolith (`--legacy` escape hatch)
+│   └── qf_stdlib.py              #   user-facing stdlib CLI (Canon lookup/attest)
+│
+├── qf_witness/                   # verification/registry logic package — invoke `python -m qf_witness.<cat>.<name>`
+│   ├── verify/    #   second_oracle, inverted_second_oracle, perm_subspace_verify, column_verify,
+│   │              #     ring_column_verify, cuc_verify, anf/groebner/matchgate/tncontract/stabrank/qmdd… (10+ paths)
+│   ├── ops/       #   genskills, goal_autonomy, discover, decomp_optimizer, gated_panel, red_team,
+│   │              #     convention_audit, rho_validation, determinism_env_check, structure_lint, sync_qpgf…
+│   ├── registry/  #   registry_tools, semantic_guarantee, doc_counts, citation_gen, resource_witness, dep_graph
+│   ├── family/    #   qft/qae/qaoa/vqe/qsim/quantum_walk/query/suzuki4 families
+│   ├── frontier/  #   frontier_factory, shor{,221,635,1285,3683}_frontier, c{8..12}x_frontier
+│   ├── seal/      #   seal_module, seal_gate_ci, bch/hgp encoders
+│   ├── observe/   #   *_observe witnesses (topology, contextuality, MTC, knots, …)
+│   ├── export/    #   qasm_export, qasm_ingest
+│   └── core/      #   paths (ROOT constants)
+│
+├── qf_verify/                    # manifest-driven reproduce runner (context/runner/special + verification/manifests/*.json)
 │
 ├── .pgf/                         # the foundry implementation (PG/PGF orchestration)
 │   ├── autoforge/
