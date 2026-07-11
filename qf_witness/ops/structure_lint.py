@@ -30,6 +30,16 @@ DEPTH_TRAPS = [
     re.compile(r"ROOT\s*=\s*Path\(__file__\)\.resolve\(\)\.parents\[1\]"),
 ]
 
+# doc-path lint (QF-0711 U3c): 리팩토링(ScriptsRestructure/ShimCleanup)마다 반복된 서술문서의
+# repo-경로 참조 파손을 상시 차단. '이사 위험 실재' 경로만 검사 = qf_witness/·qf_verify/ 또는
+# full .agents/skills/<skill>/scripts/… (bare scripts/ 는 skill 내부 bundle-relative 라 모호→제외).
+DOC_PATH_TARGETS = [
+    "README.md", "docs/EVIDENCE-MAP.md", "docs/QuantaFoundry-Technical-Spec.md",
+    "docs/ARCHITECTURE.md", ".agents/skills/qfa-loop/SKILL.md",
+]
+DOC_PATH_RE = re.compile(
+    r'(?<![\w./-])((?:qf_witness|qf_verify)/[\w./-]+\.py|\.agents/skills/[\w-]+/scripts/[\w./-]+\.py)')
+
 
 def check_scripts_allowlist_only():
     # scripts/ 의 .py 는 허용 진입점 3개만 — 그 외(shim 포함) 전부 위반.
@@ -59,11 +69,24 @@ def check_no_oracle_copy():
     return bad
 
 
+def check_doc_paths():
+    bad = []
+    for rel in DOC_PATH_TARGETS:
+        p = os.path.join(ROOT, rel)
+        if not os.path.exists(p):
+            continue
+        for m in DOC_PATH_RE.finditer(open(p, encoding="utf-8").read()):
+            if not os.path.exists(os.path.join(ROOT, m.group(1))):
+                bad.append(f"{rel}→{m.group(1)}")
+    return bad
+
+
 def main():
     checks = {
         "scripts_allowlist_only": check_scripts_allowlist_only(),
         "no_depth_trap": check_no_depth_trap(),
         "no_oracle_copy": check_no_oracle_copy(),
+        "doc_paths": check_doc_paths(),
     }
     ok = True
     for name, bad in checks.items():

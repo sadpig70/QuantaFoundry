@@ -25,9 +25,10 @@ MVP 범위:
     착수는 별도 라운드.
 
 사용:
-  python _workspace/loop/autonomy_loop.py --mode infra --budget 1            # 게이트만(가동, no git)
-  python _workspace/loop/autonomy_loop.py --mode infra --budget 1 --commit   # verified-only commit/push
-  python _workspace/loop/autonomy_loop.py --mode infra --budget 1 --gates fast
+  python .agents/skills/qfa-loop/scripts/autonomy_loop.py --mode infra --budget 1            # 게이트만(가동, no git)
+  python .agents/skills/qfa-loop/scripts/autonomy_loop.py --mode infra --budget 1 --commit   # verified-only commit/push
+  python .agents/skills/qfa-loop/scripts/autonomy_loop.py --mode infra --budget 1 --gates fast
+  python .agents/skills/qfa-loop/scripts/autonomy_loop.py --describe-contract --json          # commit 계약·경로 출력(부작용 0)
 """
 from __future__ import annotations
 
@@ -416,9 +417,9 @@ def sync_checkpoint(state: dict, cfg: dict, verified: bool, base: dict,
                     gates_mode: str = "full") -> dict:
     """C: 적정시기(K라운드마다 or 종결)에만 발화. verified-only commit/push.
 
-    ★self-improvement 2026-07-01: commit 은 *full* 게이트(reproduce_all 재합성 REPRODUCED)에서만.
-    incremental/fast 모드는 게이트 통과해도 커밋하지 않는다(빠른 반복·무인 연쇄 개발용 — 결정론
-    최종 보증은 full 만 제공). verified-only 의 'verified'를 full-재현으로 엄격 정의."""
+    commit 은 verified-commit 게이트(_COMMIT_GATES={full, changed})에서만 — 둘 다 신규 봉인분을
+    byte-identity 재합성(full=전량, changed=변경분+나머지 coherence, 동일 root)하므로 verified.
+    incremental/fast 는 게이트 통과해도 커밋하지 않는다(재합성 미보증, 점검용)."""
     due = final or (state["round"] % cfg["commit_every"] == 0)
     if not due:
         return {"synced": False, "reason": "not-due"}
@@ -699,7 +700,33 @@ def main() -> int:
     ap.add_argument("--commit", action="store_true", help="verified-only commit (先브랜치)")
     ap.add_argument("--push", action="store_true", help="commit 후 origin push")
     ap.add_argument("--branch", default=None)
+    ap.add_argument("--describe-contract", action="store_true",
+                    help="commit-allowed gates·엔진/factory 경로·INV 를 출력하고 종료(부작용 0)")
+    ap.add_argument("--json", action="store_true", help="--describe-contract 를 JSON 으로 출력")
     args = ap.parse_args()
+
+    if args.describe_contract:
+        # SKILL.md commit-policy 표의 생성 원천 — _COMMIT_GATES(강제 지점과 동일 상수) 를 그대로 노출.
+        contract = {
+            "commit_allowed_gates": sorted(_COMMIT_GATES),
+            "gates": {k: ("verified-commit" if k in _COMMIT_GATES else "commit-withheld")
+                      for k in ("full", "changed", "incremental", "fast")},
+            "engine_path": os.path.relpath(os.path.abspath(__file__), ROOT).replace(os.sep, "/"),
+            "factory_path": "qf_witness/frontier/frontier_factory.py",
+            "invariants": {
+                "INV1_2": "fingerprint 2 files + frozen consensus keys READ-ONLY (guard_check)",
+                "INV3": "no self-judge — machine gate only",
+                "INV5": "verified-only commit: only {full, changed} commit/push",
+                "INV6": "runaway guard: dry_limit>0 ∧ budget>0",
+                "INV_F1": "factory regression byte-identical before new N",
+            },
+        }
+        if args.json:
+            print(json.dumps(contract, ensure_ascii=False, indent=2))
+        else:
+            print("commit-allowed gates:", ", ".join(contract["commit_allowed_gates"]))
+            print("engine:", contract["engine_path"], "· factory:", contract["factory_path"])
+        return 0
 
     if args.mode == "infra":
         if args.branch is None:

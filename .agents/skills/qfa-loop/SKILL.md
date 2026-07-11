@@ -41,9 +41,9 @@ Bootstrap → Round(SelectNext → PlanNode → Implement → VerifyGate → Gua
         sim_autonomy_loop.py          # v1
 ```
 
-The **engine is here (tracked, immutable)**; the **mutable runtime state lives in `_workspace/loop/`**
-(`rounds/round-NN.json`, `loop_state.json` — gitignored). The factory's sealing infrastructure is
-`scripts/frontier_factory.py` (tracked, repo-level) and is **not** part of this skill — the loop calls
+The **engine is here (tracked, immutable)**; the **mutable runtime state lives in `.runtime/`**
+(`.agents/skills/qfa-loop/.runtime/rounds/round-NN.json`, `.runtime/loop_state.json` — gitignored). The factory's sealing infrastructure is
+`qf_witness/frontier/frontier_factory.py` (tracked, repo-level) and is **not** part of this skill — the loop calls
 it as a subprocess driver.
 
 ## Modes
@@ -73,9 +73,10 @@ Commit-allowed gates: `{full, changed}` (both re-synthesize newly-sealed apps by
 #         guard_check re-hashes them byte-identical every round; violation = fatal stop.
 # INV3    no self-judge: pass/fail is the machine gate (reproduce_all/second_oracle/seal_gate_ci/
 #         contested_guard) only — never the AI's opinion.
-# INV5    verified-only commit: only --gates full (reproduce_all REPRODUCED) commits/pushes.
+# INV5    verified-only commit: only --gates full or changed commit/push (both re-synthesize the
+#         newly-sealed apps byte-identically → reproduce_all REPRODUCED); incremental/fast withhold commit.
 # INV6    runaway guard: bootstrap refuses to start without stop conditions (dry_limit>0 ∧ budget>0).
-# INV-F1  factory regression: scripts/frontier_factory.py must reproduce already-sealed N
+# INV-F1  factory regression: qf_witness/frontier/frontier_factory.py must reproduce already-sealed N
 #         byte-identically before sealing any new N (codegen-safety proof).
 ```
 
@@ -83,10 +84,10 @@ Commit-allowed gates: `{full, changed}` (both re-synthesize newly-sealed apps by
 
 ```text
 1. invoke deliberately (this skill is not auto-triggered)
-2. python scripts/autonomy_loop.py --mode <infra|frontier-factory> --gates <full|incremental|fast>
+2. python .agents/skills/qfa-loop/scripts/autonomy_loop.py --mode <infra|frontier-factory> --gates <full|changed|incremental|fast>
 3. exit 0 + invariants_held=True + REPRODUCED  <=>  round verified
-   commit/push happens only on --gates full --commit (verified-only)
-4. runtime artefacts land in _workspace/loop/rounds/ and loop_state.json
+   commit/push happens only on --gates full|changed --commit (verified-only)
+4. runtime artefacts land in .runtime/rounds/ and .runtime/loop_state.json
 ```
 
 ## Honesty boundaries (inherited)
