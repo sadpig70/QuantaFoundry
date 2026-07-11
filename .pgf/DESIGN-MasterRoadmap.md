@@ -466,7 +466,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             U5_DocCurrentHistorySplit // CHANGELOG 추출·Spec §1 재작성·ARCH 배너+Layout 현행화·CURRENT-SPEC (done — 72900ed) #C4
         P1_EvidenceAutomation // 감사 자동화 (sidecar/doc/gate, root 불변) (designing) @dep:P0_TruthSurface
             # 상세설계=.pgf/DESIGN-QF0711-P1.md. 실측으로 범위 축소: rp_all(_legacy 미채택)→U7 Python 단일화.
-            U10_RoadmapArchive // done 144→HISTORY 분리·roadmap-lint (ready, 먼저·독립) #C7
+            U10_RoadmapArchive // done 23트랙 상세→HISTORY(765→509줄)·roadmap-lint (done — 690589a) #C7
             U7_ClaimManifestRunner // ★80% 기구축(claims.json 11+claims.py+cli)→배선·EVIDENCE-MAP 정합만 (ready) #C2
             U8_VerificationCoverage // 경로 sidecar(STABRANK 등 존재) 집계→VERIFICATION-COVERAGE.json+PATHS.md (ready) #C8
             U9_DriftGate // seal_gate_ci 에 doc_counts/doc_paths/coverage --check 통합 (ready) @dep:U8 #C1 #C5
