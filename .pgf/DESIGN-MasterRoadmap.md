@@ -470,12 +470,13 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             U7_ClaimManifestRunner // CLAIM-EVIDENCE-MAP 자동생성 배선·claims 11→12(+compositionally)·check-claims drift gate (done — 04831ff) #C2
             U8_VerificationCoverage // coverage_matrix→VERIFICATION-COVERAGE.json(11경로·primary_only 109)·PATHS.md·★coverage 이름충돌 수정 (done — 7e030ea) #C8
             U9_DriftGate // seal_gate_ci 에 doc_counts/doc_paths/coverage --check 통합·의도적 stale→머지차단 실증 (done — 2b11305) @dep:U8 #C1 #C5
-        P2_TrustPackaging // 릴리스 외부화·잔여 폐합 (designing) @dep:P1_EvidenceAutomation
+        P2_TrustPackaging // 릴리스 외부화·잔여 폐합 (done — 2026-07-11: d1b2f5f~8392071) @dep:P1_EvidenceAutomation
             # 상세설계=.pgf/DESIGN-QF0711-P2.md. ★제약: consensus_keys FROZEN(무편집)·U12=실제 tableau 구현(등급 flip 아님).
             U13_QualityScorecard // QF-QUALITY-SCORECARD.json(100% classified·0 unclassified·243 multi-path·109 primary-only) (done — d1b2f5f) #C12
             U14_MetadataHygiene // consensus-keys-meta sidecar(frozen 무접촉)·INVARIANTS/HONESTY-BOUNDARIES doc·cached-map note 확장 (done — aa01f0c) #C13
             U11_ReleaseRoot // seal/evidence/release 3층 root(RELEASE-ROOT.json)·attest attested_up_to·seal_gate drift (done — 63d13d7) #C10
-            U12_Rs73Tier2 // rs73 hand-rolled tableau 전체 unitary 검증→unitary_equiv 격상·INV-R5 잔여 0 (ready, escape 有) #C11
+            U12_Rs73Tier2 // rs73 pure-CNOT GF(2) affine map(21/21열·bijection·teeth) 전체 unitary 검증→unitary_equiv 격상·INV-R5 잔여 0 (done — 8392071) #C11
+                # ★설계 진화: hand-rolled tableau→GF(2) affine map(순수 CNOT 선형성 활용, 60 CNOT·0 X). path A 회로 비트시뮬 vs path B 독립 golden [[I,0],[G,I]](G=RS 다항). subspace 638→unitary_equiv 638·subspace_permutation_verified 1→0.
         P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
     TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
     TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
