@@ -36,6 +36,7 @@ _GLOB_SOURCES = {
     "column": "*.column_proof.json",
     "subspace": "*.subspace_proof.json",
     "cuc": "*.cuc_proof.json",
+    "affine": "*.affine_proof.json",
 }
 # per-app census 아닌 method/instance 증인(참고 표기)
 _INSTANCE_WITNESSES = {

@@ -76,7 +76,6 @@ See [`docs/QF-STDLIB.md`](docs/QF-STDLIB.md).
 | `unitary_equiv` (Tier-0/2) | exact unitary equality vs an independent golden (dense or Clifford tableau) | 95 modules + 542 app entries |
 | `unitary_equiv_column_exact` | **full unitary** verified column-by-column vs the Shor spectral formula (float-atol grade, *not* ring-exact) | 30 large Shor apps (n≤18) |
 | `compositionally_verified` | exhaustive modexp permutation + ring-exact iQFT, composed (n≥19 Shor) | shor1285/3683 (2 apps) |
-| `subspace_permutation_verified` | modexp core exact on the computational basis (independent integer arithmetic) | rs73 (1 app) |
 | ε-certified (orthogonal axis) | symbolic-exact **upper bound** on distance to the target `e^{-iHt}` | 9 Trotter/Suzuki apps, [`APPROX-GUARANTEES.json`](registry/APPROX-GUARANTEES.json) |
 | observation | exact math witnesses (topology, contextuality, MTC, knots, …) — **not seals** | `.pgf/proofs/*-OBSERVE.json` |
 

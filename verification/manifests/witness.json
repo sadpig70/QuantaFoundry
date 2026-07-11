@@ -883,6 +883,14 @@
           "qf_verify",
           "check-claims"
         ]
+      },
+      {
+        "id": "rs73_affine",
+        "argv": [
+          "-m",
+          "qf_witness.verify.rs73_affine_verify",
+          "--quick"
+        ]
       }
     ]
   }

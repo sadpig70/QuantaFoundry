@@ -1,0 +1,18 @@
+{
+  "_note": "rs73_encoder 전체 유니터리(GF(2) 선형맵) 강검증. 순수 CNOT → 21 단위벡터 상이 전체 2^21 순열 완전결정. path A=회로 비트시뮬 vs path B=독립 golden([[I,0],[G,I]], G=RS 다항). subspace(512 message space) → 전체 unitary 확장. 봉인/root 무접촉.",
+  "_schema": "affine-proof-v1",
+  "affine_map_exact": true,
+  "bijection_gf2": true,
+  "full_columns_checked": 21,
+  "full_columns_matched": 21,
+  "gates": 60,
+  "grade": "affine_map_full_unitary_exact",
+  "id": "rs73_encoder",
+  "independent_golden": "A=[[I9,0],[G,I12]] · G from _rs_parity(RS(7,3) polynomial division)",
+  "linear_offset_zero": true,
+  "n_qubits": 21,
+  "negative_control_cnot_drop": true,
+  "proof_digest": "ab0d4a74d00edd63",
+  "verified": true,
+  "x_gates": 0
+}

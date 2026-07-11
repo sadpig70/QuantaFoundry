@@ -15,10 +15,9 @@
     "app_files": 577,
     "cached_leaf": 75,
     "app_by_guarantee": {
-      "unitary_equiv": 542,
+      "unitary_equiv": 543,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
-      "subspace_permutation_verified": 1,
       "unitary_equiv_column_exact": 30,
       "compositionally_verified": 2
     },
@@ -77,16 +76,8 @@
       "entity": "app",
       "namespace": "semantic",
       "population": "file",
-      "guarantee": "subspace_permutation_verified",
-      "count": 1,
-      "source": "SEMANTIC-GUARANTEES.headline_split.by_kind_class.app.subspace_permutation_verified"
-    },
-    {
-      "entity": "app",
-      "namespace": "semantic",
-      "population": "file",
       "guarantee": "unitary_equiv",
-      "count": 542,
+      "count": 543,
       "source": "SEMANTIC-GUARANTEES.headline_split.by_kind_class.app.unitary_equiv"
     },
     {

@@ -266,6 +266,14 @@ def main():
             pr = json.load(open(pp, encoding="utf-8"))
             if pr.get("verified") and pr.get("grade") == "compositionally_verified":
                 cuc[f"app:{pr['id']}"] = pr
+    # QF-0711 U12: rs73_encoder full-unitary affine map(rs73_affine_verify.py) — 순수 CNOT 선형맵
+    #   전체 A(21×21 GF(2)) exact + bijection → subspace_permutation_verified → unitary_equiv 격상.
+    affine = {}
+    if os.path.isdir(pdir):
+        for pp in sorted(glob.glob(os.path.join(pdir, "*.affine_proof.json"))):
+            pr = json.load(open(pp, encoding="utf-8"))
+            if pr.get("verified") and pr.get("affine_map_exact") and pr.get("bijection_gf2"):
+                affine[f"app:{pr['id']}"] = pr
     ring = None
     rp = os.path.join(pdir, "RING-COLUMN.json")
     if os.path.exists(rp):
@@ -334,6 +342,14 @@ def main():
                  + (" ★ring-exact 이종 증인(TrackRingColumn): iQFT 인자 ℤ[ζ_256] float 0 검증 + "
                     "modexp 정수 순열 exact + H-wall ±1 → hard 인자 float 제거(RING-COLUMN.json)."
                     if ring and s["id"] in set(ring.get("shor_apps_covered", [])) else "")}
+        if key in affine and g["class"] in ("structural_wellformed", "subspace_permutation_verified"):
+            # QF-0711 U12 격상: 순수 CNOT 선형맵 전체 유니터리(GF(2) affine map) exact — INV-R5 잔여 0
+            pr = affine[key]
+            g = {"class": "unitary_equiv",
+                 "method": (f"전체 유니터리 GF(2) affine map exact — 순수 CNOT 선형맵의 단위벡터 상이 전체 "
+                            f"2^{pr['n_qubits']} 순열 완전결정({pr['full_columns_matched']}/{pr['full_columns_checked']} 열, "
+                            "bijection). path A=회로 비트시뮬 vs path B=독립 golden [[I,0],[G,I]](G=RS(7,3) 다항 나눗셈); "
+                            "teeth(CNOT drop→불일치). subspace(512 message space)→전체 unitary 격상, INV-R5 잔여 0.")}
         entry = {"kind": s["kind"], "id": s["id"], "tier": s["tier"], "tier_source": s["tier_source"],
                  "semantic_guarantee": g["class"], "method": g["method"], "u_hash": s["u_hash"]}
         if key in sampled:

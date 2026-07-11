@@ -4058,8 +4058,8 @@
       "id": "rs73_encoder",
       "tier": 1,
       "tier_source": "explicit",
-      "semantic_guarantee": "subspace_permutation_verified",
-      "method": "RS(7,3) 인코더 계산기저 순열 강검증(exhaustive, basis 512/512; path A=spec plan CNOT 비트시뮬 vs path B=독립 다항 나눗셈 m(x)x⁴ mod g). +부호어 신드롬-제로 2048건·최소무게 5 전수 511(MDS). 전체 unitary dense 미검증(INV-R5).",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "전체 유니터리 GF(2) affine map exact — 순수 CNOT 선형맵의 단위벡터 상이 전체 2^21 순열 완전결정(21/21 열, bijection). path A=회로 비트시뮬 vs path B=독립 golden [[I,0],[G,I]](G=RS(7,3) 다항 나눗셈); teeth(CNOT drop→불일치). subspace(512 message space)→전체 unitary 격상, INV-R5 잔여 0.",
       "u_hash": "af6f688dfa7882c1ceb90f127aa1fd93e8517242207c9cefc5de303d4ac521ff",
       "subspace_verification": {
         "grade": "subspace_permutation_exhaustive",
@@ -7225,10 +7225,9 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 542,
+        "unitary_equiv": 543,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
-        "subspace_permutation_verified": 1,
         "unitary_equiv_column_exact": 30,
         "compositionally_verified": 2
       },
@@ -7237,10 +7236,9 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 637,
+      "unitary_equiv": 638,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
-      "subspace_permutation_verified": 1,
       "unitary_equiv_column_exact": 30,
       "compositionally_verified": 2
     }

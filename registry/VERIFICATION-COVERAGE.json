@@ -1,8 +1,12 @@
 {
   "_schema": "qf-verification-coverage/v1",
   "_note": "app×path 커버리지 — 각 봉인 자산을 커버하는 *독립 보조 검증경로* 집합(primary dense/tableau/zx seal 은 별도 baseline). 경로별 .pgf/proofs sidecar 합성·root 불변. primary_seal_only = 보조경로 0개(다음 검증 투자 후보). coverage_note = 'complementary, not universal'(EVIDENCE-MAP row 11)의 정량화.",
-  "n_supplementary_paths": 11,
+  "n_supplementary_paths": 12,
   "paths": {
+    "affine": {
+      "covered": 1,
+      "sidecar": "*.affine_proof.json"
+    },
     "anf": {
       "covered": 144,
       "sidecar": "ANF-VERIFY.json"
@@ -53,8 +57,8 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 299,
-    "2": 124,
+    "1": 298,
+    "2": 125,
     "3": 112,
     "4": 7
   },
@@ -332,7 +336,6 @@
     "qutrit_sum.app.pg": "anf",
     "qutrit_x3.app.pg": "anf",
     "repcode3_bitflip.app.pg": "anf",
-    "rs73_encoder": "subspace",
     "rs_synd_core.app.pg": "anf",
     "s3_mult": "tncontract",
     "s3_mult.app.pg": "anf",
@@ -2079,6 +2082,7 @@
       "tncontract"
     ],
     "rs73_encoder": [
+      "affine",
       "subspace"
     ],
     "rs_synd_core": [
