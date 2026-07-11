@@ -708,15 +708,17 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     TrackQF0711Upgrade // 제어면 봉인 — 8-리뷰 통합(_workspace/0711-upgrade-plan.md); 검증엔진 불변, claim surface 정합 (in-progress — 2026-07-11)
         # 진단: 엔진 성숙·병목=제어면 드리프트(문서·수치·메타·스킬경로). 상세설계=.pgf/DESIGN-QF0711-P0.md (P0 우선, P1~P3 JIT)
         # 가정해소(2026-07-11 실측): root=봉인 module/app u_hash만 → SEMANTIC/consensus sidecar 무변경 · rs73=순수Clifford(60cnot+8x,total_t0)→Tier-2 성립 · commit-policy=INV5 텍스트 정정(런타임 changed 허용)
-        P0_TruthSurface // 사실·계약 정합 (doc/sidecar, root 불변) (designing)
-            U3_SkillPathFix // qfa-loop/qpgf-oracle SKILL 경로 + doc-path lint (ready) #quickwin #C5
-            U4_AutonomyContractFix // commit-policy {full,changed} 정합 + --describe-contract (ready) #quickwin #C6
-            U6_ReadmeFix // 518→정본·pipe CLI·external-reviewer 경로 (ready) @dep:U1 #quickwin #C9
-            U1_CountOntology // 5-튜플 수치 온톨로지 + 생성블록 단일출처 (designing) #C1
-            U2_SemanticGuaranteeV2 // tier_legend→class catalogue, fail-closed (designing) @dep:U1 #C3
-            U5_DocCurrentHistorySplit // ARCH/Spec 현재↔CHANGELOG 분리 (designing) @dep:U1 #C4
-        P1_EvidenceAutomation // 감사 자동화 (sidecar) (blocked) @dep:P0_TruthSurface
-            # U7 ClaimManifestRunner·U8 VerificationCoverage·U9 DriftGate·U10 RoadmapArchive — P0 폐합 후 JIT 설계
+        P0_TruthSurface // 사실·계약 정합 (doc/sidecar, root 불변) (done — 2026-07-11: 892148e~72900ed·root 0a6fbab0 불변)
+            U3_SkillPathFix // qfa-loop SKILL 경로 4치환·qpgf-oracle bundle-note(AGENTS)·doc-path lint (done — 2a3c897) #C5
+            U4_AutonomyContractFix // INV5 {full,changed} 정정·--describe-contract 단일출처 (done — 2a3c897) #C6
+            U1_CountOntology // COUNT-ONTOLOGY.json + doc_counts 생성마커·drift gate (done — d8642e5) #C1
+            U6_ReadmeFix // 518→542·subspace→rs73+compositionally 행·pipe CLI·reviewer 경로 (done — f817215) #C9
+            U2_SemanticGuaranteeV2 // GUARANTEE_CLASSES 7종·C1-C4 정직 relabel·fail-closed·legend guard (done — 0641d0b) #C3
+                # ★agent01 F3 재판단: default-dense 158=명시 C1-C4 dense(건전)→강등 거부. +부수 ring --quick 클로버 버그 수정(593688b)
+            U5_DocCurrentHistorySplit // CHANGELOG 추출·Spec §1 재작성·ARCH 배너+Layout 현행화·CURRENT-SPEC (done — 72900ed) #C4
+        P1_EvidenceAutomation // 감사 자동화 (sidecar) (designing) @dep:P0_TruthSurface
+            # JIT 설계 대기. U7 ClaimManifestRunner ★scripts/rp_all(외부 Rust parity+CLAIM-EVIDENCE-MAP, 오늘 신규)와 겹침→정욱님 확인 필요.
+            # U8 VerificationCoverage·U9 DriftGate·U10 RoadmapArchive 는 독립(overlap 없음).
         P2_TrustPackaging // 릴리스 외부화·rs73 Tier-2·scorecard·메타위생 (blocked) @dep:P1_EvidenceAutomation
         P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
     TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
