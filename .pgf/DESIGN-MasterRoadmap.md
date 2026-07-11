@@ -470,7 +470,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             U7_ClaimManifestRunner // CLAIM-EVIDENCE-MAP 자동생성 배선·claims 11→12(+compositionally)·check-claims drift gate (done — 04831ff) #C2
             U8_VerificationCoverage // coverage_matrix→VERIFICATION-COVERAGE.json(11경로·primary_only 109)·PATHS.md·★coverage 이름충돌 수정 (done — 7e030ea) #C8
             U9_DriftGate // seal_gate_ci 에 doc_counts/doc_paths/coverage --check 통합·의도적 stale→머지차단 실증 (done — 2b11305) @dep:U8 #C1 #C5
-        P2_TrustPackaging // 릴리스 외부화·rs73 Tier-2·scorecard·메타위생 (blocked) @dep:P1_EvidenceAutomation
+        P2_TrustPackaging // 릴리스 외부화·잔여 폐합 (designing) @dep:P1_EvidenceAutomation
+            # 상세설계=.pgf/DESIGN-QF0711-P2.md. ★제약: consensus_keys FROZEN(무편집)·U12=실제 tableau 구현(등급 flip 아님).
+            U13_QualityScorecard // QF-QUALITY-SCORECARD.json(질적 지표) (ready, 먼저·독립) #C12
+            U14_MetadataHygiene // consensus-meta sidecar(frozen 무접촉)·INVARIANTS/HONESTY doc·cached-map note (ready) #C13
+            U11_ReleaseRoot // seal_root/evidence_root/release_root 3층 attestation (ready) #C10
+            U12_Rs73Tier2 // rs73 hand-rolled tableau 전체 unitary 검증→unitary_equiv 격상·INV-R5 잔여 0 (ready, escape 有) #C11
         P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
     TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
     TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
