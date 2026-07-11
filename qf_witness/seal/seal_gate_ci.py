@@ -13,11 +13,25 @@ self-contained 부분(본 스크립트 + .github/workflows/seal-gate.yml)은 완
   python -m qf_witness.seal.seal_gate_ci [--expect-root <hash>]   # 게이트 통과 시 badge 생성
 """
 from __future__ import annotations
-import os, sys, json, glob
+import os, sys, json, glob, subprocess
 
 from qf_witness.core.paths import ROOT
 MANIFEST = os.path.join(ROOT, "registry", "REGISTRY-MANIFEST.json")
 EXPECT_DEFAULT = "0a6fbab08c76bf5a"
+
+# QF-0711 U9 DriftGate: root 결정론 외에 문서 수치·경로·커버리지 드리프트도 머지 차단 대상.
+#   각 --check 는 커밋된 생성물 == 정본 재생성 을 확인(불일치=드리프트).
+DRIFT_CHECKS = [
+    ("doc_counts", ["-m", "qf_witness.registry.doc_counts", "--check"]),
+    ("structure_lint", ["-m", "qf_witness.ops.structure_lint", "--quick"]),
+    ("coverage", ["-m", "qf_witness.registry.coverage_matrix", "--check"]),
+]
+
+
+def _run_check(argv):
+    p = subprocess.run(["python"] + argv, cwd=ROOT, capture_output=True, text=True)
+    out = (p.stdout + p.stderr).strip().splitlines()
+    return p.returncode == 0, (out[-1] if out else "")
 
 
 def _tier_distribution():
@@ -38,15 +52,26 @@ def main():
     expect = args[args.index("--expect-root") + 1] if "--expect-root" in args else EXPECT_DEFAULT
     man = json.load(open(MANIFEST, encoding="utf-8"))
     root = man["registry_root_hash"]
-    gate_ok = root.startswith(expect)
+    root_ok = root.startswith(expect)
 
     dist, total_t, total_toff = _tier_distribution()
     print("=" * 72)
     print("SealGateCI (W3.5 [EXT]) — 봉인 게이트 + seal-badge")
     print("=" * 72)
     print(f"  registry_root_hash = {root[:16]}…")
-    print(f"  expect-root {expect} → {'PASS ✓' if gate_ok else 'FAIL ✗ (결정론 위반 — 머지 차단)'}")
+    print(f"  expect-root {expect} → {'PASS ✓' if root_ok else 'FAIL ✗ (결정론 위반 — 머지 차단)'}")
     print(f"  tier 분포: {dist} · ΣT={total_t} ΣToffoli={total_toff}")
+
+    # QF-0711 U9: 드리프트 게이트 (문서 수치·경로·커버리지)
+    drift_ok = True
+    print("  drift checks (doc/path/coverage):")
+    for name, argv in DRIFT_CHECKS:
+        ok, last = _run_check(argv)
+        drift_ok &= ok
+        print(f"    [{'OK ' if ok else 'FAIL'}] {name}: {last}")
+    gate_ok = root_ok and drift_ok
+    if not drift_ok:
+        print("  ✗ 드리프트 감지 — 머지 차단(생성물 재생성 필요)")
 
     # shields.io endpoint 형식 badge
     badge = {"schemaVersion": 1, "label": "QPGF seal",
