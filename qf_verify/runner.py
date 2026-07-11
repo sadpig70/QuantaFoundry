@@ -63,13 +63,24 @@ def _execute_all(steps, changed_only, jobs):
     return results
 
 
-def run_profile(profile_id, echo=print, jobs=1):
+def run_profile(profile_id, echo=print, jobs=1, incremental=False):
     """profile 전체 실행 → (result dict, evidence list, exit_code).
-    jobs>1 이면 독립 argv 스텝을 병렬 실행(root 불변; 결과 조립은 원순서 고정)."""
+    jobs>1 이면 독립 argv 스텝을 병렬 실행(root 불변; 결과 조립은 원순서 고정).
+    incremental=True: 지문 불변 스텝 캐시 스킵(cached 명시, INV-INC1: full 이 authoritative)."""
     steps, changed_only = mf.load_profile(profile_id)
-    results = _execute_all(steps, changed_only, jobs)
+    cstat = None
+    if incremental:
+        if changed_only:
+            raise ValueError("incremental 은 full profile 전용 (changed-only 와 조합 금지)")
+        from . import incremental as inc
+        results, cstat = inc.execute_with_cache(steps, changed_only, jobs, _execute_all)
+    else:
+        results = _execute_all(steps, changed_only, jobs)
     result = {"bundle": "UNKNOWN", "steps": {}}
-    result["mode"] = "changed-only" if changed_only else "full"
+    result["mode"] = "incremental" if incremental else (
+        "changed-only" if changed_only else "full")
+    if cstat is not None:
+        result["incremental"] = cstat
     evidence = []
     for idx, st in enumerate(steps):                    # 조립 = 원래 manifest 순서
         frag, meta = results[idx]
@@ -96,5 +107,8 @@ def run_profile(profile_id, echo=print, jobs=1):
     echo("-" * 70)
     echo("INV-R1: 'REPRODUCED'=결정론적 byte-identical 재현이지 correctness 증명이 아니다.")
     echo("  정확성은 오라클의 독립검증(C1-C4·second_oracle·subspace/resource witness)에서 온다.")
+    if cstat is not None:
+        echo(f"INV-INC1: incremental 모드(cached={cstat['cached']} executed={cstat['executed']} "
+             f"uncacheable={cstat['uncacheable']}) 는 부가 가속 — authoritative 는 full 재실행.")
     echo("=" * 70)
     return result, evidence, (0 if allpass else 1)

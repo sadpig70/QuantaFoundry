@@ -21,7 +21,7 @@ PROFILE_DIR = os.path.join(cx.ROOT, "verification", "profiles")
 
 _STEP_REQUIRED = ("id",)          # special 스텝은 argv 불요
 _VALID_KEYS = {"id", "title", "argv", "expectations", "special", "claims",
-               "severity", "cost", "report_key"}
+               "severity", "cost", "report_key", "inputs"}
 
 
 class ManifestError(Exception):
@@ -58,6 +58,8 @@ def load_manifest(name):
             merged = {"id": st["id"], "argv": st["argv"], "expectations": exp,
                       "severity": wb.get("severity", "high"),
                       "claims": st.get("claims", wb.get("claims", []))}
+            if "inputs" in st:
+                merged["inputs"] = st["inputs"]
             _check_step(merged, name)
             merged["_group"] = doc.get("group", name)
             steps.append(merged)

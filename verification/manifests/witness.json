@@ -850,6 +850,11 @@
           "-m",
           "qf_witness.ops.structure_lint",
           "--quick"
+        ],
+        "inputs": [
+          "qf_witness/**/*.py",
+          "qf_stdlib/**/*.py",
+          "scripts/*.py"
         ]
       },
       {
