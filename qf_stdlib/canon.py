@@ -30,7 +30,9 @@ HONESTY_LIMITS = [
 
 GUARANTEE_RANK = {
     "unitary_equiv": 50,
+    "unitary_equiv_column_exact": 45,   # QF-0711: full unitary, float-atol (TrackIU) — was missing → CANON stale
     "unitary_equiv_sampled": 40,
+    "compositionally_verified": 35,     # QF-0711: n>=19 composed (TrackCUC) — was missing
     "subspace_permutation_verified": 30,
     "structural_wellformed": 20,
 }

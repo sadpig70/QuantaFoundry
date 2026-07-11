@@ -305,7 +305,10 @@ class QFStdlibTests(unittest.TestCase):
 
         shor = build_with_proof("shor_modexp_attest")
         guarantees = {step["attestation"]["claim"]["semantic_guarantee"] for step in shor["steps"]}
-        self.assertIn("subspace_permutation_verified", guarantees)
+        # QF-0711: the modexp-core Shor apps were promoted subspace_permutation_verified →
+        # unitary_equiv_column_exact (TrackIU); the template still carries mixed, non-dense-overclaimed
+        # grades — assert the current graded (float-atol, boundaried) guarantee is present.
+        self.assertIn("unitary_equiv_column_exact", guarantees)
         self.assertEqual(shor["composition_claim"]["scope"], "mixed guarantees; see per-step limits and template certificate_rule")
         self.assertTrue(any("not promoted to dense unitary equivalence" in limit for limit in shor["limits"]))
 
