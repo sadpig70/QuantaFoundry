@@ -273,11 +273,14 @@ def run(quick=False):
         "grade": "iqft_factor_ring_exact + modexp_integer_exact + hwall_trivial",
     }
     payload["proof_digest"] = _digest(payload)
-    os.makedirs(PROOFS, exist_ok=True)
     out_path = os.path.join(PROOFS, "RING-COLUMN.json")
-    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
-        f.write("\n")
+    # QF-0711: --quick(표본 32열)는 authoritative full sidecar(256열/65536)를 덮어쓰지 않는다.
+    #   witness batch 의 --quick 재실행이 sidecar 를 열화시키던 선재 버그 차단. full 만 정본 기록.
+    if not quick:
+        os.makedirs(PROOFS, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
+            f.write("\n")
     return payload, out_path
 
 
