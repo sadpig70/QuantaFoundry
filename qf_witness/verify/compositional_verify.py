@@ -16,7 +16,8 @@ honest 한계(second_oracle 와 동일 계열):
  - 배선 plan(steps) 을 의도 명세로 신뢰하고 **그 조립이 sealed unitary 를 산출함**을 검증한다
    (알고리즘 의미 정당성은 별개 — Shor 는 column/subspace/cuc 경로가 담당).
  - dense-가능 부분집합만: cost=(2^n)^2·steps ≤ BUDGET. 초과 대형앱은 column/ring/cuc/subspace 커버.
-   n>13 및 sub-app(모듈 아닌 앱 조립) 스텝 포함 앱은 제외(전부 명시 카운트, silent cap 없음).
+   sub-app 스텝은 targets 합성으로 재귀 인라인(S1ext, 2026-07-11) — 모듈 환원 불가·n>13 은
+   제외(전부 명시 카운트, silent cap 없음).
 
 메모리 안전(S1fix_MemSafety, 2026-07-11 OOM 사후):
  - 파싱은 lazy — _parse_app 은 (gid, targets, k)만 보유, 모듈 유니터리는 **검증 시점에** 앱 단위
@@ -77,23 +78,62 @@ def apply_left(U, targets, n, V):
     return T.reshape(D, D)
 
 
-def _parse_app(appid):
-    """app.pg → (n, steps). steps=[(gid, targets, k)] — 행렬 미구성(lazy). 모듈조립 아니면 ValueError."""
-    src = open(os.path.join(APPS, f"{appid}.app.pg"), encoding="utf-8").read()
-    meta = json.loads(re.search(r"```json id=app_meta\n(.*?)```", src, re.S).group(1))
-    plan = json.loads(re.search(r"```json id=plan\n(.*?)```", src, re.S).group(1))
-    n = meta.get("n_sys", 0) + meta.get("n_anc", 0)
-    steps = plan.get("steps", [])
-    parsed = []
+MAX_INLINE_DEPTH = 8            # sub-app 재귀 인라인 안전 상한 (실측 최대 깊이 << 8)
+
+_PLAN_CACHE: dict = {}          # appid → (n, steps) 원본 plan (행렬 미구성)
+
+
+def _app_plan(appid):
+    """app.pg → (n, steps) 원본 plan (캐시)."""
+    if appid not in _PLAN_CACHE:
+        src = open(os.path.join(APPS, f"{appid}.app.pg"), encoding="utf-8").read()
+        meta = json.loads(re.search(r"```json id=app_meta\n(.*?)```", src, re.S).group(1))
+        plan = json.loads(re.search(r"```json id=plan\n(.*?)```", src, re.S).group(1))
+        _PLAN_CACHE[appid] = (meta.get("n_sys", 0) + meta.get("n_anc", 0), plan.get("steps", []))
+    return _PLAN_CACHE[appid]
+
+
+def _flat_steps(appid, targets, depth):
+    """plan 을 모듈 스텝으로 재귀 인라인. targets=이 앱 큐빗→최상위 좌표 remap. → (steps, inlined).
+
+    sub-app 스텝 {"app": ..., "targets": [...]} 은 그 앱의 plan 을 targets 합성으로 전개한다
+    (스텝 targets t → parent targets[t] — remap 의 remap). 모듈조립으로 환원 불가면 ValueError.
+    """
+    if depth > MAX_INLINE_DEPTH:
+        raise ValueError("sub-app inline depth exceeded")
+    n, steps = _app_plan(appid)
+    if len(targets) != n:
+        raise ValueError(f"sub-app '{appid}' targets arity {len(targets)} != n {n}")
+    out, inlined = [], False
     for s in steps:
-        if not isinstance(s, dict) or "spec" not in s:
-            raise ValueError("sub-app or non-module step")
-        gid = os.path.basename(s["spec"])[:-3]
-        if gid not in INDEP:
-            raise ValueError(f"module '{gid}' not in INDEP")
-        k = _module_k(gid)
-        parsed.append((gid, s.get("targets", list(range(k))), k))
-    return n, parsed
+        if not isinstance(s, dict):
+            raise ValueError("non-dict step")
+        if "spec" in s:
+            gid = os.path.basename(s["spec"])[:-3]
+            if gid not in INDEP:
+                raise ValueError(f"module '{gid}' not in INDEP")
+            k = _module_k(gid)
+            tg = s.get("targets", list(range(k)))
+            out.append((gid, [targets[t] for t in tg], k))
+        elif "app" in s:
+            sub = os.path.basename(s["app"])
+            if sub.endswith(".app.pg"):
+                sub = sub[:-7]
+            sub_n = _app_plan(sub)[0]
+            sub_tg = s.get("targets", list(range(sub_n)))
+            sub_steps, _ = _flat_steps(sub, [targets[t] for t in sub_tg], depth + 1)
+            out.extend(sub_steps)
+            inlined = True
+        else:
+            raise ValueError(f"unknown step keys: {sorted(s)}")
+    return out, inlined
+
+
+def _parse_app(appid):
+    """app.pg → (n, steps, inlined). steps=[(gid, targets, k)] — sub-app 재귀 인라인·행렬 미구성."""
+    n, _ = _app_plan(appid)
+    parsed, inlined = _flat_steps(appid, list(range(n)), 0)
+    return n, parsed, inlined
 
 
 def _reassemble(n, parsed, drop=None, swap=None):
@@ -122,22 +162,22 @@ def _mem_pred(n, parsed):
 
 
 def _eligible():
-    """모듈조립앱 → [(appid, n, steps, cost, pred)]. cost=(2^n)^2·steps. 스킵 사유 카운트 동반."""
-    elig, skip = [], {"sub_app": 0, "n_gt_max": 0}
+    """모듈환원앱 → [(appid, n, steps, cost, pred, inlined)]. cost=(2^n)^2·steps(인라인 후). 스킵 카운트 동반."""
+    elig, skip = [], {"unflattenable": 0, "n_gt_max": 0}
     for f in sorted(os.listdir(APPS)):
         if not f.endswith(".app.pg"):
             continue
         appid = f[:-7]
         try:
-            n, parsed = _parse_app(appid)
+            n, parsed, inlined = _parse_app(appid)
         except ValueError:
-            skip["sub_app"] += 1
+            skip["unflattenable"] += 1
             continue
         if n > N_MAX:
             skip["n_gt_max"] += 1
             continue
         cost = (1 << n) * (1 << n) * len(parsed)
-        elig.append((appid, n, parsed, cost, _mem_pred(n, parsed)))
+        elig.append((appid, n, parsed, cost, _mem_pred(n, parsed), inlined))
     return elig, skip
 
 
@@ -149,32 +189,38 @@ def run(quick=False):
                      key=lambda e: e[3])
     over_budget = [e for e in elig if e[3] > budget]
     verified, failed = {}, []
-    for appid, n, parsed, cost, pred in covered:
+    for appid, n, parsed, cost, pred, inlined in covered:
         sealed = json.load(open(os.path.join(APPREG, f"{appid}.sealed.json"), encoding="utf-8"))["u_hash"]
         got = _reassemble(n, parsed)
         if got == sealed:
-            verified[appid] = {"n": n, "steps": len(parsed)}
+            verified[appid] = {"n": n, "steps": len(parsed), "inlined": inlined}
         else:
             failed.append(appid)
-    # teeth: 커버된 앱 중 targets 가 서로 다른 2 스텝을 가진 첫 앱을 골라 swap → mismatch 여야
-    teeth = None
-    for appid, n, parsed, cost, pred in covered:
-        idxs = [(i, tuple(t)) for i, (_, t, _) in enumerate(parsed)]
-        pair = next(((i, j) for i, ti in idxs for j, tj in idxs
-                     if i < j and ti != tj and len(ti) == len(tj)), None)
-        if pair is None:
-            continue
-        sealed = json.load(open(os.path.join(APPREG, f"{appid}.sealed.json"), encoding="utf-8"))["u_hash"]
-        perturbed = _reassemble(n, parsed, swap=pair)
-        teeth = {"app": appid, "swap": list(pair), "mismatch": perturbed != sealed}
-        break
-    all_ok = (not failed) and bool(teeth and teeth["mismatch"]) and len(verified) > 0
+
+    def _teeth(pool):
+        """pool 첫 앱 중 targets 가 서로 다른 같은-크기 2 스텝을 골라 swap → mismatch 여야."""
+        for appid, n, parsed, cost, pred, inlined in pool:
+            idxs = [(i, tuple(t)) for i, (_, t, _) in enumerate(parsed)]
+            pair = next(((i, j) for i, ti in idxs for j, tj in idxs
+                         if i < j and ti != tj and len(ti) == len(tj)), None)
+            if pair is None:
+                continue
+            sealed = json.load(open(os.path.join(APPREG, f"{appid}.sealed.json"), encoding="utf-8"))["u_hash"]
+            perturbed = _reassemble(n, parsed, swap=pair)
+            return {"app": appid, "swap": list(pair), "mismatch": perturbed != sealed}
+        return None
+
+    teeth = _teeth(covered)
+    # teeth_inline: sub-app 인라인(remap 합성)을 거친 앱에서도 교란이 잡히는지 별도 확인
+    teeth_inline = _teeth([e for e in covered if e[5]])
+    all_ok = ((not failed) and bool(teeth and teeth["mismatch"]) and len(verified) > 0
+              and (teeth_inline is None or teeth_inline["mismatch"]))
     payload = {
         "_schema": "compositional-verify/v1",
         "_note": ("앱 조립 독립 재구성 — app_assemble/qualtran/spec-golden 미사용. second_oracle 제1원리 "
                   "모듈 유니터리를 app.pg 배선(plan.steps)대로 embed·compose → sealed u_hash 대조. "
-                  "dense-가능 부분집합(cost=(2^n)^2·steps≤budget)만; 초과·sub-app·n>13·mem_guard "
-                  "(예측 peak>MEM_BUDGET) 는 명시 스킵."),
+                  "sub-app 스텝은 targets 합성으로 재귀 인라인(모듈 환원). dense-가능 부분집합"
+                  "(cost=(2^n)^2·steps≤budget)만; 초과·환원불가·n>13·mem_guard 는 명시 스킵."),
         "budget": budget,
         "mem_budget": MEM_BUDGET,
         "n_verified": len(verified),
@@ -184,6 +230,7 @@ def run(quick=False):
         "over_budget_note": (f"{len(over_budget)} 앱 cost>budget → column/ring/cuc/subspace 경로 커버; "
                              "본 경로는 dense-가능 조립에 한함(정직 경계)."),
         "teeth": teeth,
+        "teeth_inline": teeth_inline,
         "failed": sorted(failed),
         "verified": {k: verified[k] for k in sorted(verified)},
         "all_ok": all_ok,
@@ -201,7 +248,8 @@ def main():
             f.write("\n")
     print(f"compositional_verify: verified={payload['n_verified']} eligible={payload['n_eligible']} "
           f"over_budget={payload['n_over_budget']} skip={payload['skipped']} "
-          f"teeth={payload['teeth']['mismatch'] if payload['teeth'] else None}")
+          f"teeth={payload['teeth']['mismatch'] if payload['teeth'] else None} "
+          f"teeth_inline={payload['teeth_inline']['mismatch'] if payload['teeth_inline'] else None}")
     print(f"compositional_verify: all_ok={payload['all_ok']}")
     return 0 if payload["all_ok"] else 1
 

@@ -492,6 +492,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
                 # 원인: _parse_app 이 전 앱×전 스텝 INDEP dense 실체화(전체 ~2.66TB 상당)+MemoryError 를 except Exception 이 삼켜 sub_app 오분류(208, 실제 91).
                 # 수정: lazy parse(gid,targets,k)·앱 단위 모듈캐시·MEM_BUDGET 6GB 결정론 사전스킵(mem_guard 명시 카운트)·fail-loud.
                 # 실측(6GB 워치독): peak 0.47GB·full 64s·quick 12s. 기준선 234 전부 보존+오분류 55앱 회복→289. teeth 불변(mub4_b1_s3 swap mismatch).
+            S1ext_SubAppInline // sub-app 스텝({"app",targets}) 재귀 인라인(targets 합성 remap) — sub_app 스킵 91 해소 (done — 2026-07-11)
+                # verified 289→347(+58, census 예측 일치)·기준선 289 전부 보존·failed 0. eligible 467·unflattenable 0·n>13 35·mem_guard 0.
+                # teeth 2중: 기존 swap(mub4_b1_s3)+★teeth_inline(rxx_pi8 — remap 합성 경로 교란도 mismatch). 실측 peak 0.57GB·full 110s·quick 14s.
+                # coverage hist 1:213→200·3:113→152 (58앱 다경로 상향). 봉인/root 불변, sidecar 스키마 +teeth_inline·verified.inlined.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

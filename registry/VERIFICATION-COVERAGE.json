@@ -16,7 +16,7 @@
       "sidecar": "*.column_proof.json"
     },
     "compositional": {
-      "covered": 289,
+      "covered": 347,
       "sidecar": "COMPOSITIONAL-VERIFY.json"
     },
     "cuc": {
@@ -61,10 +61,10 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 213,
-    "2": 149,
-    "3": 113,
-    "4": 79,
+    "1": 200,
+    "2": 120,
+    "3": 152,
+    "4": 82,
     "5": 7
   },
   "n_apps_with_supplementary": 561,
@@ -248,8 +248,6 @@
     "cuccaro_add2.app.pg": "anf",
     "cuccaro_add3.app.pg": "anf",
     "d4_mult.app.pg": "anf",
-    "draper_add2": "tncontract",
-    "du_brick6_t2": "tncontract",
     "gf4_frob.app.pg": "anf",
     "gf4_mul.app.pg": "anf",
     "gf8_frob.app.pg": "anf",
@@ -261,28 +259,17 @@
     "mub4_b1_s1.app.pg": "anf",
     "mub4_b1_s2.app.pg": "anf",
     "mub4_b1_s3.app.pg": "anf",
-    "otoc_du_t1": "tncontract",
     "parity4_transform.app.pg": "anf",
     "q8_qft": "compositional",
-    "qae3_pi8": "tncontract",
-    "qpe_s": "tncontract",
-    "qpe_t": "tncontract",
     "qrom22.app.pg": "anf",
     "qutrit_sum.app.pg": "anf",
     "qutrit_x3.app.pg": "anf",
     "repcode3_bitflip.app.pg": "anf",
     "rs_synd_core.app.pg": "anf",
     "s3_mult.app.pg": "anf",
-    "s4_mult": "tncontract",
-    "schur4": "tncontract",
-    "schur4_dag": "tncontract",
-    "schur_reflect4": "tncontract",
-    "shor15_a2": "tncontract",
-    "shor15_a7": "tncontract",
     "shor21_a2": "tncontract",
     "swap_via_cnot.app.pg": "anf",
-    "syndrome3_bitflip.app.pg": "anf",
-    "szegedy_c4_p12": "tncontract"
+    "syndrome3_bitflip.app.pg": "anf"
   },
   "primary_seal_only": [
     "cmul100_mod213",
@@ -483,19 +470,23 @@
       "tncontract"
     ],
     "choi_ampdamp": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "choi_bitflip": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "choi_depol": [
+      "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
     ],
     "choi_phasedamp": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -859,6 +850,7 @@
       "anf"
     ],
     "cmul16_mod21": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1284,6 +1276,7 @@
       "anf"
     ],
     "cmul4_mod15": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1300,6 +1293,7 @@
       "anf"
     ],
     "cmul4_mod21": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1576,10 +1570,12 @@
       "tncontract"
     ],
     "d4_hsp_shot_r2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "d4_hsp_shot_s": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1597,14 +1593,17 @@
       "tncontract"
     ],
     "dicke4_k2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "diffusion": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "diffusion3": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1620,9 +1619,11 @@
       "tncontract"
     ],
     "draper_add2": [
+      "compositional",
       "tncontract"
     ],
     "du_brick6_t2": [
+      "compositional",
       "tncontract"
     ],
     "du_gate_dag": [
@@ -1646,6 +1647,7 @@
       "tncontract"
     ],
     "fib_fig8": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1655,26 +1657,32 @@
       "tncontract"
     ],
     "fib_hopf": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "fib_solomon": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "fib_trefoil": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "fib_trefoil_m": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "fib_word5": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "fib_yb": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -1699,6 +1707,7 @@
       "tncontract"
     ],
     "gauss_braid3": [
+      "compositional",
       "matchgate",
       "qmdd",
       "tncontract"
@@ -1807,34 +1816,42 @@
       "tncontract"
     ],
     "grover2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "grover2_2iter": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "grover2_3iter": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "grover3": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "grover3_2iter": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "grover3_3iter": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "heis2_trotter_step": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "heis3_trotter_step": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -2048,6 +2065,7 @@
       "tncontract"
     ],
     "otoc_du_t1": [
+      "compositional",
       "tncontract"
     ],
     "parity4_transform": [
@@ -2066,10 +2084,12 @@
       "compositional"
     ],
     "qae3_pi2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "qae3_pi8": [
+      "compositional",
       "tncontract"
     ],
     "qaoa_c4": [
@@ -2120,9 +2140,11 @@
       "tncontract"
     ],
     "qpe_s": [
+      "compositional",
       "tncontract"
     ],
     "qpe_t": [
+      "compositional",
       "tncontract"
     ],
     "qrom22": [
@@ -2149,22 +2171,27 @@
       "tncontract"
     ],
     "qsvt_pauli2_d2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "qsvt_pauli2_d3": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "qsvt_proj_d2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "qsvt_proj_d2b": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "qsvt_proj_d3": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -2185,6 +2212,7 @@
       "anf"
     ],
     "qw_c4_2steps": [
+      "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
@@ -2195,6 +2223,7 @@
       "tncontract"
     ],
     "qw_c8_3steps": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -2280,10 +2309,12 @@
       "anf"
     ],
     "rxx_pi8": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "ryy_pi8": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
@@ -2315,6 +2346,7 @@
       "anf"
     ],
     "s4_mult": [
+      "compositional",
       "tncontract"
     ],
     "s_teleport": [
@@ -2332,12 +2364,15 @@
       "tncontract"
     ],
     "schur4": [
+      "compositional",
       "tncontract"
     ],
     "schur4_dag": [
+      "compositional",
       "tncontract"
     ],
     "schur_reflect4": [
+      "compositional",
       "tncontract"
     ],
     "select_prepare4": [
@@ -2396,9 +2431,11 @@
       "subspace"
     ],
     "shor15_a2": [
+      "compositional",
       "tncontract"
     ],
     "shor15_a7": [
+      "compositional",
       "tncontract"
     ],
     "shor183": [
@@ -2592,6 +2629,7 @@
       "tncontract"
     ],
     "szegedy_c4_p12": [
+      "compositional",
       "tncontract"
     ],
     "t_teleport": [
@@ -2601,30 +2639,37 @@
       "tncontract"
     ],
     "tfim3_suzuki4_step": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "tfim3_trotter_2steps": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "tfim3_trotter_step": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "tfim3_trotter_step2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "tfim4_suzuki4_step": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "tfim4_trotter_step": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
     "tfim4_trotter_step2": [
+      "compositional",
       "qmdd",
       "tncontract"
     ],
