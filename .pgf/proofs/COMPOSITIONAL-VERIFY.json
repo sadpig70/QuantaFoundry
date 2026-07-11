@@ -1,0 +1,1183 @@
+{
+  "_note": "앱 조립 독립 재구성 — app_assemble/qualtran/spec-golden 미사용. second_oracle 제1원리 모듈 유니터리를 app.pg 배선(plan.steps)대로 embed·compose → sealed u_hash 대조. dense-가능 부분집합(cost=(2^n)^2·steps≤budget)만; 초과·sub-app·n>13·mem_guard (예측 peak>MEM_BUDGET) 는 명시 스킵.",
+  "_schema": "compositional-verify/v1",
+  "all_ok": true,
+  "budget": 100000000,
+  "failed": [],
+  "mem_budget": 6442450944,
+  "n_eligible": 408,
+  "n_over_budget": 119,
+  "n_verified": 289,
+  "over_budget_note": "119 앱 cost>budget → column/ring/cuc/subspace 경로 커버; 본 경로는 dense-가능 조립에 한함(정직 경계).",
+  "skipped": {
+    "mem_guard": 0,
+    "n_gt_max": 3,
+    "sub_app": 91
+  },
+  "teeth": {
+    "app": "mub4_b1_s3",
+    "mismatch": true,
+    "swap": [
+      0,
+      1
+    ]
+  },
+  "verified": {
+    "aklt4": {
+      "n": 9,
+      "steps": 75
+    },
+    "be_h2": {
+      "n": 4,
+      "steps": 23
+    },
+    "be_hop": {
+      "n": 3,
+      "steps": 12
+    },
+    "be_hopz": {
+      "n": 4,
+      "steps": 14
+    },
+    "be_num": {
+      "n": 2,
+      "steps": 5
+    },
+    "be_pauli2": {
+      "n": 3,
+      "steps": 8
+    },
+    "be_proj": {
+      "n": 2,
+      "steps": 3
+    },
+    "be_xz": {
+      "n": 2,
+      "steps": 6
+    },
+    "bell": {
+      "n": 2,
+      "steps": 2
+    },
+    "bk4_transform": {
+      "n": 4,
+      "steps": 4
+    },
+    "bk_hop01": {
+      "n": 3,
+      "steps": 5
+    },
+    "bk_num1": {
+      "n": 3,
+      "steps": 6
+    },
+    "bogoliubov_pair": {
+      "n": 2,
+      "steps": 7
+    },
+    "bv3_s101": {
+      "n": 4,
+      "steps": 10
+    },
+    "c3_diag_full3": {
+      "n": 3,
+      "steps": 7
+    },
+    "c3_diag_ladder3": {
+      "n": 3,
+      "steps": 3
+    },
+    "ccz_rediscovered": {
+      "n": 3,
+      "steps": 3
+    },
+    "chan_magic_t": {
+      "n": 2,
+      "steps": 3
+    },
+    "cliff1_h": {
+      "n": 1,
+      "steps": 1
+    },
+    "cliff1_hs": {
+      "n": 1,
+      "steps": 2
+    },
+    "cliff1_hsh": {
+      "n": 1,
+      "steps": 3
+    },
+    "cliff1_hshs": {
+      "n": 1,
+      "steps": 4
+    },
+    "cliff1_hshss": {
+      "n": 1,
+      "steps": 5
+    },
+    "cliff1_hshssh": {
+      "n": 1,
+      "steps": 6
+    },
+    "cliff1_hshsss": {
+      "n": 1,
+      "steps": 6
+    },
+    "cliff1_hss": {
+      "n": 1,
+      "steps": 3
+    },
+    "cliff1_hssh": {
+      "n": 1,
+      "steps": 4
+    },
+    "cliff1_hsshs": {
+      "n": 1,
+      "steps": 5
+    },
+    "cliff1_hsshss": {
+      "n": 1,
+      "steps": 6
+    },
+    "cliff1_hsss": {
+      "n": 1,
+      "steps": 4
+    },
+    "cliff1_id": {
+      "n": 1,
+      "steps": 2
+    },
+    "cliff1_s": {
+      "n": 1,
+      "steps": 1
+    },
+    "cliff1_sh": {
+      "n": 1,
+      "steps": 2
+    },
+    "cliff1_shs": {
+      "n": 1,
+      "steps": 3
+    },
+    "cliff1_shss": {
+      "n": 1,
+      "steps": 4
+    },
+    "cliff1_shssh": {
+      "n": 1,
+      "steps": 5
+    },
+    "cliff1_shsss": {
+      "n": 1,
+      "steps": 5
+    },
+    "cliff1_ss": {
+      "n": 1,
+      "steps": 2
+    },
+    "cliff1_ssh": {
+      "n": 1,
+      "steps": 3
+    },
+    "cliff1_sshs": {
+      "n": 1,
+      "steps": 4
+    },
+    "cliff1_sshss": {
+      "n": 1,
+      "steps": 5
+    },
+    "cliff1_sss": {
+      "n": 1,
+      "steps": 3
+    },
+    "cluster10": {
+      "n": 10,
+      "steps": 19
+    },
+    "cluster3": {
+      "n": 3,
+      "steps": 5
+    },
+    "cluster3x3_prep": {
+      "n": 9,
+      "steps": 21
+    },
+    "cluster4": {
+      "n": 4,
+      "steps": 7
+    },
+    "cluster5": {
+      "n": 5,
+      "steps": 9
+    },
+    "cluster6": {
+      "n": 6,
+      "steps": 11
+    },
+    "cluster7": {
+      "n": 7,
+      "steps": 13
+    },
+    "cluster8": {
+      "n": 8,
+      "steps": 15
+    },
+    "cluster9": {
+      "n": 9,
+      "steps": 17
+    },
+    "cmp2_ge": {
+      "n": 6,
+      "steps": 19
+    },
+    "cmul100_mod123": {
+      "n": 8,
+      "steps": 372
+    },
+    "cmul101_mod115": {
+      "n": 8,
+      "steps": 421
+    },
+    "cmul10_mod123": {
+      "n": 8,
+      "steps": 391
+    },
+    "cmul13_mod69": {
+      "n": 8,
+      "steps": 384
+    },
+    "cmul16_mod111": {
+      "n": 8,
+      "steps": 174
+    },
+    "cmul16_mod115": {
+      "n": 8,
+      "steps": 284
+    },
+    "cmul16_mod119": {
+      "n": 8,
+      "steps": 270
+    },
+    "cmul16_mod123": {
+      "n": 8,
+      "steps": 308
+    },
+    "cmul16_mod253": {
+      "n": 9,
+      "steps": 333
+    },
+    "cmul16_mod69": {
+      "n": 8,
+      "steps": 360
+    },
+    "cmul16_mod77": {
+      "n": 8,
+      "steps": 388
+    },
+    "cmul16_mod85": {
+      "n": 8,
+      "steps": 314
+    },
+    "cmul16_mod87": {
+      "n": 8,
+      "steps": 389
+    },
+    "cmul16_mod91": {
+      "n": 8,
+      "steps": 390
+    },
+    "cmul16_mod93": {
+      "n": 8,
+      "steps": 379
+    },
+    "cmul16_mod95": {
+      "n": 8,
+      "steps": 359
+    },
+    "cmul18_mod119": {
+      "n": 8,
+      "steps": 366
+    },
+    "cmul25_mod77": {
+      "n": 8,
+      "steps": 395
+    },
+    "cmul25_mod87": {
+      "n": 8,
+      "steps": 390
+    },
+    "cmul26_mod115": {
+      "n": 8,
+      "steps": 411
+    },
+    "cmul2_mod111": {
+      "n": 8,
+      "steps": 41
+    },
+    "cmul2_mod115": {
+      "n": 8,
+      "steps": 49
+    },
+    "cmul2_mod119": {
+      "n": 8,
+      "steps": 34
+    },
+    "cmul2_mod123": {
+      "n": 8,
+      "steps": 27
+    },
+    "cmul2_mod141": {
+      "n": 9,
+      "steps": 356
+    },
+    "cmul2_mod143": {
+      "n": 9,
+      "steps": 286
+    },
+    "cmul2_mod15": {
+      "n": 5,
+      "steps": 3
+    },
+    "cmul2_mod155": {
+      "n": 9,
+      "steps": 206
+    },
+    "cmul2_mod159": {
+      "n": 9,
+      "steps": 92
+    },
+    "cmul2_mod183": {
+      "n": 9,
+      "steps": 160
+    },
+    "cmul2_mod187": {
+      "n": 9,
+      "steps": 105
+    },
+    "cmul2_mod203": {
+      "n": 9,
+      "steps": 171
+    },
+    "cmul2_mod21": {
+      "n": 6,
+      "steps": 66
+    },
+    "cmul2_mod213": {
+      "n": 9,
+      "steps": 158
+    },
+    "cmul2_mod215": {
+      "n": 9,
+      "steps": 104
+    },
+    "cmul2_mod219": {
+      "n": 9,
+      "steps": 106
+    },
+    "cmul2_mod221": {
+      "n": 9,
+      "steps": 107
+    },
+    "cmul2_mod235": {
+      "n": 9,
+      "steps": 72
+    },
+    "cmul2_mod237": {
+      "n": 9,
+      "steps": 71
+    },
+    "cmul2_mod247": {
+      "n": 9,
+      "steps": 38
+    },
+    "cmul2_mod253": {
+      "n": 9,
+      "steps": 28
+    },
+    "cmul2_mod33": {
+      "n": 7,
+      "steps": 113
+    },
+    "cmul2_mod35": {
+      "n": 7,
+      "steps": 79
+    },
+    "cmul2_mod69": {
+      "n": 8,
+      "steps": 215
+    },
+    "cmul2_mod77": {
+      "n": 8,
+      "steps": 128
+    },
+    "cmul2_mod85": {
+      "n": 8,
+      "steps": 148
+    },
+    "cmul2_mod87": {
+      "n": 8,
+      "steps": 106
+    },
+    "cmul2_mod91": {
+      "n": 8,
+      "steps": 77
+    },
+    "cmul2_mod93": {
+      "n": 8,
+      "steps": 72
+    },
+    "cmul2_mod95": {
+      "n": 8,
+      "steps": 48
+    },
+    "cmul34_mod111": {
+      "n": 8,
+      "steps": 369
+    },
+    "cmul36_mod115": {
+      "n": 8,
+      "steps": 417
+    },
+    "cmul36_mod95": {
+      "n": 8,
+      "steps": 395
+    },
+    "cmul37_mod123": {
+      "n": 8,
+      "steps": 389
+    },
+    "cmul3_mod253": {
+      "n": 9,
+      "steps": 375
+    },
+    "cmul46_mod111": {
+      "n": 8,
+      "steps": 368
+    },
+    "cmul49_mod111": {
+      "n": 8,
+      "steps": 408
+    },
+    "cmul49_mod69": {
+      "n": 8,
+      "steps": 362
+    },
+    "cmul4_mod111": {
+      "n": 8,
+      "steps": 196
+    },
+    "cmul4_mod115": {
+      "n": 8,
+      "steps": 249
+    },
+    "cmul4_mod119": {
+      "n": 8,
+      "steps": 314
+    },
+    "cmul4_mod123": {
+      "n": 8,
+      "steps": 178
+    },
+    "cmul4_mod235": {
+      "n": 9,
+      "steps": 355
+    },
+    "cmul4_mod247": {
+      "n": 9,
+      "steps": 358
+    },
+    "cmul4_mod253": {
+      "n": 9,
+      "steps": 227
+    },
+    "cmul4_mod69": {
+      "n": 8,
+      "steps": 298
+    },
+    "cmul4_mod77": {
+      "n": 8,
+      "steps": 265
+    },
+    "cmul4_mod85": {
+      "n": 8,
+      "steps": 212
+    },
+    "cmul4_mod87": {
+      "n": 8,
+      "steps": 317
+    },
+    "cmul4_mod91": {
+      "n": 8,
+      "steps": 261
+    },
+    "cmul4_mod93": {
+      "n": 8,
+      "steps": 195
+    },
+    "cmul4_mod95": {
+      "n": 8,
+      "steps": 287
+    },
+    "cmul52_mod69": {
+      "n": 8,
+      "steps": 329
+    },
+    "cmul55_mod69": {
+      "n": 8,
+      "steps": 390
+    },
+    "cmul58_mod69": {
+      "n": 8,
+      "steps": 378
+    },
+    "cmul61_mod95": {
+      "n": 8,
+      "steps": 392
+    },
+    "cmul64_mod93": {
+      "n": 8,
+      "steps": 361
+    },
+    "cmul66_mod95": {
+      "n": 8,
+      "steps": 368
+    },
+    "cmul6_mod115": {
+      "n": 8,
+      "steps": 367
+    },
+    "cmul6_mod95": {
+      "n": 8,
+      "steps": 394
+    },
+    "cmul70_mod111": {
+      "n": 8,
+      "steps": 377
+    },
+    "cmul70_mod93": {
+      "n": 8,
+      "steps": 416
+    },
+    "cmul74_mod91": {
+      "n": 8,
+      "steps": 387
+    },
+    "cmul7_mod111": {
+      "n": 8,
+      "steps": 327
+    },
+    "cmul7_mod15": {
+      "n": 5,
+      "steps": 7
+    },
+    "cmul81_mod115": {
+      "n": 8,
+      "steps": 356
+    },
+    "cmul81_mod95": {
+      "n": 8,
+      "steps": 381
+    },
+    "cmul82_mod87": {
+      "n": 8,
+      "steps": 421
+    },
+    "cmul86_mod119": {
+      "n": 8,
+      "steps": 375
+    },
+    "cmul9_mod77": {
+      "n": 8,
+      "steps": 371
+    },
+    "code513_encoder": {
+      "n": 5,
+      "steps": 14
+    },
+    "code832_encoder": {
+      "n": 8,
+      "steps": 17
+    },
+    "code832_tccz": {
+      "n": 8,
+      "steps": 12
+    },
+    "cry_pi": {
+      "n": 2,
+      "steps": 4
+    },
+    "cry_pi2": {
+      "n": 2,
+      "steps": 4
+    },
+    "cuccaro_add2": {
+      "n": 6,
+      "steps": 13
+    },
+    "cuccaro_add3": {
+      "n": 8,
+      "steps": 19
+    },
+    "cz_rediscovered": {
+      "n": 2,
+      "steps": 3
+    },
+    "d4_mult": {
+      "n": 6,
+      "steps": 5
+    },
+    "d4_qft": {
+      "n": 3,
+      "steps": 6
+    },
+    "dj2_balanced_xor": {
+      "n": 3,
+      "steps": 8
+    },
+    "dj2_const1": {
+      "n": 3,
+      "steps": 7
+    },
+    "du_gate_dag": {
+      "n": 2,
+      "steps": 9
+    },
+    "du_gate_j8": {
+      "n": 2,
+      "steps": 6
+    },
+    "fib_braid_s1": {
+      "n": 1,
+      "steps": 7
+    },
+    "fib_braid_s2": {
+      "n": 1,
+      "steps": 11
+    },
+    "fib_fmove": {
+      "n": 1,
+      "steps": 2
+    },
+    "flag_synd_xxxx": {
+      "n": 6,
+      "steps": 16
+    },
+    "flag_synd_zzzz": {
+      "n": 6,
+      "steps": 8
+    },
+    "floquet4_uf": {
+      "n": 4,
+      "steps": 16
+    },
+    "fswap": {
+      "n": 2,
+      "steps": 2
+    },
+    "gauss_hop4": {
+      "n": 4,
+      "steps": 11
+    },
+    "gf4_frob": {
+      "n": 2,
+      "steps": 1
+    },
+    "gf4_mul": {
+      "n": 6,
+      "steps": 5
+    },
+    "gf8_frob": {
+      "n": 3,
+      "steps": 2
+    },
+    "gf8_inv": {
+      "n": 3,
+      "steps": 6
+    },
+    "gf8_mul": {
+      "n": 9,
+      "steps": 12
+    },
+    "gf8_mulx": {
+      "n": 3,
+      "steps": 5
+    },
+    "ghz10": {
+      "n": 10,
+      "steps": 10
+    },
+    "ghz3": {
+      "n": 3,
+      "steps": 3
+    },
+    "ghz4": {
+      "n": 4,
+      "steps": 4
+    },
+    "ghz5": {
+      "n": 5,
+      "steps": 5
+    },
+    "ghz6": {
+      "n": 6,
+      "steps": 6
+    },
+    "ghz7": {
+      "n": 7,
+      "steps": 7
+    },
+    "ghz8": {
+      "n": 8,
+      "steps": 8
+    },
+    "ghz9": {
+      "n": 9,
+      "steps": 9
+    },
+    "iqft2": {
+      "n": 2,
+      "steps": 4
+    },
+    "iqft3": {
+      "n": 3,
+      "steps": 7
+    },
+    "iqft7": {
+      "n": 7,
+      "steps": 31
+    },
+    "iqft8": {
+      "n": 8,
+      "steps": 40
+    },
+    "ising_braid_b2": {
+      "n": 2,
+      "steps": 7
+    },
+    "kitaev4_gs": {
+      "n": 4,
+      "steps": 6
+    },
+    "magic_a": {
+      "n": 1,
+      "steps": 2
+    },
+    "magic_cs": {
+      "n": 2,
+      "steps": 3
+    },
+    "maj_braid_ybe": {
+      "n": 2,
+      "steps": 3
+    },
+    "mbqc_h": {
+      "n": 2,
+      "steps": 3
+    },
+    "mub4_b1_s0": {
+      "n": 2,
+      "steps": 2
+    },
+    "mub4_b1_s1": {
+      "n": 2,
+      "steps": 1
+    },
+    "mub4_b1_s2": {
+      "n": 2,
+      "steps": 1
+    },
+    "mub4_b1_s3": {
+      "n": 2,
+      "steps": 2
+    },
+    "mub4_b2_s0": {
+      "n": 2,
+      "steps": 2
+    },
+    "mub4_b2_s1": {
+      "n": 2,
+      "steps": 3
+    },
+    "mub4_b2_s2": {
+      "n": 2,
+      "steps": 3
+    },
+    "mub4_b2_s3": {
+      "n": 2,
+      "steps": 4
+    },
+    "mub4_b3_s0": {
+      "n": 2,
+      "steps": 4
+    },
+    "mub4_b3_s1": {
+      "n": 2,
+      "steps": 5
+    },
+    "mub4_b3_s2": {
+      "n": 2,
+      "steps": 5
+    },
+    "mub4_b3_s3": {
+      "n": 2,
+      "steps": 6
+    },
+    "mub4_b4_s0": {
+      "n": 2,
+      "steps": 4
+    },
+    "mub4_b4_s1": {
+      "n": 2,
+      "steps": 5
+    },
+    "mub4_b4_s2": {
+      "n": 2,
+      "steps": 5
+    },
+    "mub4_b4_s3": {
+      "n": 2,
+      "steps": 6
+    },
+    "mub4_b5_s0": {
+      "n": 2,
+      "steps": 4
+    },
+    "mub4_b5_s1": {
+      "n": 2,
+      "steps": 5
+    },
+    "mub4_b5_s2": {
+      "n": 2,
+      "steps": 5
+    },
+    "mub4_b5_s3": {
+      "n": 2,
+      "steps": 6
+    },
+    "mub4_meas_b2": {
+      "n": 2,
+      "steps": 2
+    },
+    "mub4_meas_b3": {
+      "n": 2,
+      "steps": 4
+    },
+    "mub4_meas_b4": {
+      "n": 2,
+      "steps": 4
+    },
+    "mub4_meas_b5": {
+      "n": 2,
+      "steps": 4
+    },
+    "naimark_ud3": {
+      "n": 3,
+      "steps": 23
+    },
+    "parity4_transform": {
+      "n": 4,
+      "steps": 6
+    },
+    "peps22_rvb": {
+      "n": 4,
+      "steps": 33
+    },
+    "q8_qft": {
+      "n": 3,
+      "steps": 19
+    },
+    "qaoa_c4": {
+      "n": 4,
+      "steps": 20
+    },
+    "qaoa_p3": {
+      "n": 3,
+      "steps": 12
+    },
+    "qca_step": {
+      "n": 4,
+      "steps": 8
+    },
+    "qft2_pipeline": {
+      "n": 2,
+      "steps": 4
+    },
+    "qft3_pipeline": {
+      "n": 3,
+      "steps": 7
+    },
+    "qft4_pipeline": {
+      "n": 4,
+      "steps": 12
+    },
+    "qft5_pipeline": {
+      "n": 5,
+      "steps": 17
+    },
+    "qft6_pipeline": {
+      "n": 6,
+      "steps": 24
+    },
+    "qft7_pipeline": {
+      "n": 7,
+      "steps": 31
+    },
+    "qft8_pipeline": {
+      "n": 8,
+      "steps": 40
+    },
+    "qldpc_hgp": {
+      "n": 8,
+      "steps": 14
+    },
+    "qrom22": {
+      "n": 4,
+      "steps": 12
+    },
+    "qsp_d1": {
+      "n": 1,
+      "steps": 3
+    },
+    "qsp_d3": {
+      "n": 1,
+      "steps": 7
+    },
+    "qsp_d5": {
+      "n": 1,
+      "steps": 11
+    },
+    "qutrit_sum": {
+      "n": 4,
+      "steps": 24
+    },
+    "qutrit_x3": {
+      "n": 2,
+      "steps": 6
+    },
+    "qw_c4_step": {
+      "n": 3,
+      "steps": 4
+    },
+    "qw_c8_step": {
+      "n": 4,
+      "steps": 9
+    },
+    "reflect00": {
+      "n": 2,
+      "steps": 5
+    },
+    "reflect000": {
+      "n": 3,
+      "steps": 7
+    },
+    "repcode3_bitflip": {
+      "n": 3,
+      "steps": 2
+    },
+    "repcode3_phaseflip": {
+      "n": 3,
+      "steps": 5
+    },
+    "ring10": {
+      "n": 10,
+      "steps": 20
+    },
+    "ring3": {
+      "n": 3,
+      "steps": 6
+    },
+    "ring4": {
+      "n": 4,
+      "steps": 8
+    },
+    "ring5": {
+      "n": 5,
+      "steps": 10
+    },
+    "ring6": {
+      "n": 6,
+      "steps": 12
+    },
+    "ring7": {
+      "n": 7,
+      "steps": 14
+    },
+    "ring8": {
+      "n": 8,
+      "steps": 16
+    },
+    "ring9": {
+      "n": 9,
+      "steps": 18
+    },
+    "rs_synd_core": {
+      "n": 9,
+      "steps": 9
+    },
+    "rzz_pi16": {
+      "n": 2,
+      "steps": 3
+    },
+    "rzz_pi8": {
+      "n": 2,
+      "steps": 3
+    },
+    "rzz_y4_p_half": {
+      "n": 2,
+      "steps": 3
+    },
+    "rzz_y4_q_half": {
+      "n": 2,
+      "steps": 3
+    },
+    "s3_mult": {
+      "n": 6,
+      "steps": 18
+    },
+    "s_teleport": {
+      "n": 2,
+      "steps": 2
+    },
+    "schur3": {
+      "n": 3,
+      "steps": 21
+    },
+    "schur3_dag": {
+      "n": 3,
+      "steps": 21
+    },
+    "select_prepare4": {
+      "n": 3,
+      "steps": 13
+    },
+    "shor9_encoder": {
+      "n": 9,
+      "steps": 11
+    },
+    "simon2_s11": {
+      "n": 3,
+      "steps": 6
+    },
+    "stinespring_ampdamp": {
+      "n": 2,
+      "steps": 5
+    },
+    "stinespring_ampdamp_g14": {
+      "n": 2,
+      "steps": 5
+    },
+    "stinespring_bitflip": {
+      "n": 2,
+      "steps": 2
+    },
+    "stinespring_bitflip_g14": {
+      "n": 2,
+      "steps": 3
+    },
+    "stinespring_depol": {
+      "n": 3,
+      "steps": 4
+    },
+    "stinespring_phasedamp": {
+      "n": 2,
+      "steps": 4
+    },
+    "stinespring_phasedamp_g14": {
+      "n": 2,
+      "steps": 4
+    },
+    "surf422_encoder": {
+      "n": 4,
+      "steps": 6
+    },
+    "surf_ls_merge_zz": {
+      "n": 9,
+      "steps": 6
+    },
+    "swap_via_cnot": {
+      "n": 2,
+      "steps": 3
+    },
+    "syndrome3_bitflip": {
+      "n": 5,
+      "steps": 4
+    },
+    "szegedy_2state_p12": {
+      "n": 2,
+      "steps": 8
+    },
+    "szegedy_2state_p14": {
+      "n": 2,
+      "steps": 12
+    },
+    "t_teleport": {
+      "n": 2,
+      "steps": 2
+    },
+    "toric22_gs": {
+      "n": 8,
+      "steps": 12
+    },
+    "vqe_he2_3pi4": {
+      "n": 2,
+      "steps": 3
+    },
+    "vqe_he2_L2_mix": {
+      "n": 2,
+      "steps": 6
+    },
+    "vqe_he2_L2_pi4": {
+      "n": 2,
+      "steps": 6
+    },
+    "vqe_he2_pi2": {
+      "n": 2,
+      "steps": 3
+    },
+    "vqe_he2_pi4": {
+      "n": 2,
+      "steps": 3
+    },
+    "vqe_he3_pi4": {
+      "n": 3,
+      "steps": 5
+    },
+    "wstate10": {
+      "n": 10,
+      "steps": 46
+    },
+    "wstate3": {
+      "n": 3,
+      "steps": 11
+    },
+    "wstate4": {
+      "n": 4,
+      "steps": 16
+    },
+    "wstate5": {
+      "n": 5,
+      "steps": 21
+    },
+    "wstate6": {
+      "n": 6,
+      "steps": 26
+    },
+    "wstate7": {
+      "n": 7,
+      "steps": 31
+    },
+    "wstate8": {
+      "n": 8,
+      "steps": 36
+    },
+    "wstate9": {
+      "n": 9,
+      "steps": 41
+    },
+    "z2gauge3": {
+      "n": 3,
+      "steps": 3
+    }
+  }
+}

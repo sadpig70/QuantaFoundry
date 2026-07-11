@@ -5,9 +5,7 @@
       "rc": 0,
       "apps_sealed": "213/213",
       "rediscovery": "12/12",
-      "pass": true,
-      "reassembled": 0,
-      "coherence": 213
+      "pass": true
     },
     "shor_frontier": {
       "rc": 0,
@@ -620,6 +618,11 @@
       "all_ok": true,
       "pass": true
     },
+    "compositional_verify": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
     "behavior": {
       "detail": {
         "shor15_a2": {
@@ -668,5 +671,5 @@
       "pass": true
     }
   },
-  "mode": "changed-only"
+  "mode": "full"
 }

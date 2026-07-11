@@ -35,6 +35,8 @@
 | `matchgate` | matchgate SO(2n) / Majorana | `python -m qf_witness.verify.matchgate_verify` | matchgate-representable only |
 | `tncontract` | tensor-network contraction | `python -m qf_witness.verify.tncontract_verify` | bond-dimension bounded |
 | `qmdd` | decision-diagram (QMDD) | `python -m qf_witness.verify.qmdd_verify` | DD-representable fragment |
+| `affine` | rs73 pure-CNOT GF(2) affine map, full unitary | `python -m qf_witness.verify.rs73_affine_verify` | pure-CNOT (linear) circuits only |
+| `compositional` | app assembly re-composed from first-principles module unitaries (no app_assemble/qualtran) | `python -m qf_witness.verify.compositional_verify` | dense-feasible apps (cost≤budget, n≤13, top-level); shares the dense formalism — an app-level extension, **not** a new independent formalism |
 
 ## Coverage summary
 

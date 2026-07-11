@@ -30,6 +30,7 @@ _VERIFY_SOURCES = {
     "pathsum": ("PATHSUM-VERIFY.json",
                 lambda d: [a["app"] for a in d.get("observation", {}).get("apps", [])]),
     "ring": ("RING-COLUMN.json", lambda d: list(d.get("shor_apps_covered", []))),
+    "compositional": ("COMPOSITIONAL-VERIFY.json", lambda d: list(d.get("verified", {}))),
 }
 # per-app proof 파일(app_id = 파일명 prefix)
 _GLOB_SOURCES = {

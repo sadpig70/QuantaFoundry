@@ -482,8 +482,16 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # inspect=등급·honest_boundary·검증경로(SEMANTIC/COVERAGE) · claims=주장↔증거(claims.json 12) · plan=로드맵 트랙/노드.
             # 봉인/root 0a6fbab0 무접촉. ★QF-0711 P0/P1/P2/P3 전부 폐합.
     TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
-    TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
+    TrackQF0711Strategic // 차기 역량 — S1 착수 승인(2026-07-11), S2/S3 결정 대기 (active)
         # S1 검증코어 심화(agent02·07: ZX backup·incremental·compositional prover·제3경로) · S2 멀티런타임(H1) · S3 백엔드/PyPI(승인)
+        S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
+            # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
+            # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).
+            # 잔여 정직 스킵: over_budget 119(column/ring/cuc/subspace 커버)·sub_app 91·n>13 3·mem_guard 0.
+            S1fix_MemSafety // OOM 사후수정 — eager 파싱 커밋 59GB(시스템 OOM·터미널 크래시 2회) 근절 (done — 2026-07-11)
+                # 원인: _parse_app 이 전 앱×전 스텝 INDEP dense 실체화(전체 ~2.66TB 상당)+MemoryError 를 except Exception 이 삼켜 sub_app 오분류(208, 실제 91).
+                # 수정: lazy parse(gid,targets,k)·앱 단위 모듈캐시·MEM_BUDGET 6GB 결정론 사전스킵(mem_guard 명시 카운트)·fail-loud.
+                # 실측(6GB 워치독): peak 0.47GB·full 64s·quick 12s. 기준선 234 전부 보존+오분류 55앱 회복→289. teeth 불변(mub4_b1_s3 swap mismatch).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
