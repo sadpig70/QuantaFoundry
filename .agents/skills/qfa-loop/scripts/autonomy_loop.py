@@ -356,7 +356,8 @@ def anchor_sync() -> dict:
     regen = {}
     for name, argv in [("citation", ["-m", "qf_witness.registry.citation_gen"]),
                        ("semantic", ["-m", "qf_witness.registry.semantic_guarantee"]),
-                       ("doc_counts", ["-m", "qf_witness.registry.doc_counts"])]:  # QF-0711 U1: 카운트 자동갱신
+                       ("doc_counts", ["-m", "qf_witness.registry.doc_counts"]),  # QF-0711 U1: 카운트 자동갱신
+                       ("coverage", ["-m", "qf_witness.registry.coverage_matrix"])]:       # QF-0711 U8: 커버리지 자동갱신
         rc, _ = run_cmd(argv)
         regen[name] = rc == 0
     return {"anchor_root": cur16, "seal_gate_ci_updated": updated, "regen": regen}
@@ -641,7 +642,7 @@ def factory_cfg(args) -> dict:
             ".pgf/arith", ".pgf/proofs",   # ★subspace 자동상환 sidecar(shor{N}.subspace_proof.json) 커밋
             "reports/REPRODUCE-RESULT.json", ".pgf/adoption/seal-badge.json",
             ".pgf/adoption/RELEASE-META.json", "CITATION.cff",
-            "registry/COUNT-ONTOLOGY.json", "README.md",   # QF-0711 U1: 카운트 단일출처 자동갱신
+            "registry/COUNT-ONTOLOGY.json", "registry/VERIFICATION-COVERAGE.json", "README.md",   # QF-0711 U1/U8
         ],
     }
 

@@ -1,0 +1,2472 @@
+{
+  "_schema": "qf-verification-coverage/v1",
+  "_note": "app×path 커버리지 — 각 봉인 자산을 커버하는 *독립 보조 검증경로* 집합(primary dense/tableau/zx seal 은 별도 baseline). 경로별 .pgf/proofs sidecar 합성·root 불변. primary_seal_only = 보조경로 0개(다음 검증 투자 후보). coverage_note = 'complementary, not universal'(EVIDENCE-MAP row 11)의 정량화.",
+  "n_supplementary_paths": 11,
+  "paths": {
+    "anf": {
+      "covered": 144,
+      "sidecar": "ANF-VERIFY.json"
+    },
+    "column": {
+      "covered": 30,
+      "sidecar": "*.column_proof.json"
+    },
+    "cuc": {
+      "covered": 2,
+      "sidecar": "*.cuc_proof.json"
+    },
+    "groebner": {
+      "covered": 5,
+      "sidecar": "GROEBNER-VERIFY.json"
+    },
+    "matchgate": {
+      "covered": 6,
+      "sidecar": "MATCHGATE-VERIFY.json"
+    },
+    "pathsum": {
+      "covered": 8,
+      "sidecar": "PATHSUM-VERIFY.json"
+    },
+    "qmdd": {
+      "covered": 158,
+      "sidecar": "QMDD-VERIFY.json"
+    },
+    "ring": {
+      "covered": 30,
+      "sidecar": "RING-COLUMN.json"
+    },
+    "stabrank": {
+      "covered": 135,
+      "sidecar": "STABRANK-VERIFY.json"
+    },
+    "subspace": {
+      "covered": 33,
+      "sidecar": "*.subspace_proof.json"
+    },
+    "tncontract": {
+      "covered": 360,
+      "sidecar": "TNCONTRACT-VERIFY.json"
+    }
+  },
+  "instance_witnesses": {
+    "zx": "Tier-3 ZX method-level (Clifford reconstruction identities; not a per-app census)",
+    "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
+  },
+  "coverage_histogram": {
+    "1": 299,
+    "2": 124,
+    "3": 112,
+    "4": 7
+  },
+  "n_apps_with_supplementary": 542,
+  "n_primary_seal_only": 109,
+  "single_supplementary_path": {
+    "aklt4": "tncontract",
+    "bk4_transform.app.pg": "anf",
+    "c3_diag_full3.app.pg": "groebner",
+    "c3_diag_ladder3.app.pg": "groebner",
+    "cliff1_s.app.pg": "groebner",
+    "cliff1_sss.app.pg": "groebner",
+    "cmp2_ge.app.pg": "anf",
+    "cmul100_mod123": "tncontract",
+    "cmul100_mod123.app.pg": "anf",
+    "cmul100_mod133": "tncontract",
+    "cmul100_mod133.app.pg": "anf",
+    "cmul101_mod115": "tncontract",
+    "cmul101_mod115.app.pg": "anf",
+    "cmul101_mod155.app.pg": "anf",
+    "cmul10_mod123": "tncontract",
+    "cmul10_mod123.app.pg": "anf",
+    "cmul112_mod141": "tncontract",
+    "cmul112_mod141.app.pg": "anf",
+    "cmul113_mod143.app.pg": "anf",
+    "cmul115_mod141": "tncontract",
+    "cmul115_mod141.app.pg": "anf",
+    "cmul118_mod183.app.pg": "anf",
+    "cmul120_mod221": "tncontract",
+    "cmul120_mod221.app.pg": "anf",
+    "cmul121_mod159.app.pg": "anf",
+    "cmul123_mod133": "tncontract",
+    "cmul123_mod133.app.pg": "anf",
+    "cmul126_mod155.app.pg": "anf",
+    "cmul131_mod635": "tncontract",
+    "cmul136_mod141": "tncontract",
+    "cmul136_mod141.app.pg": "anf",
+    "cmul13_mod159.app.pg": "anf",
+    "cmul13_mod69": "tncontract",
+    "cmul13_mod69.app.pg": "anf",
+    "cmul148_mod159.app.pg": "anf",
+    "cmul16_mod111": "tncontract",
+    "cmul16_mod111.app.pg": "anf",
+    "cmul16_mod115": "tncontract",
+    "cmul16_mod115.app.pg": "anf",
+    "cmul16_mod119": "tncontract",
+    "cmul16_mod119.app.pg": "anf",
+    "cmul16_mod123": "tncontract",
+    "cmul16_mod123.app.pg": "anf",
+    "cmul16_mod1285": "tncontract",
+    "cmul16_mod133": "tncontract",
+    "cmul16_mod133.app.pg": "anf",
+    "cmul16_mod141": "tncontract",
+    "cmul16_mod141.app.pg": "anf",
+    "cmul16_mod143.app.pg": "anf",
+    "cmul16_mod155.app.pg": "anf",
+    "cmul16_mod159.app.pg": "anf",
+    "cmul16_mod183.app.pg": "anf",
+    "cmul16_mod21.app.pg": "anf",
+    "cmul16_mod221": "tncontract",
+    "cmul16_mod221.app.pg": "anf",
+    "cmul16_mod381": "tncontract",
+    "cmul16_mod635": "tncontract",
+    "cmul16_mod69": "tncontract",
+    "cmul16_mod69.app.pg": "anf",
+    "cmul16_mod77": "tncontract",
+    "cmul16_mod77.app.pg": "anf",
+    "cmul16_mod85": "tncontract",
+    "cmul16_mod85.app.pg": "anf",
+    "cmul16_mod87": "tncontract",
+    "cmul16_mod87.app.pg": "anf",
+    "cmul16_mod91": "tncontract",
+    "cmul16_mod91.app.pg": "anf",
+    "cmul16_mod93": "tncontract",
+    "cmul16_mod93.app.pg": "anf",
+    "cmul16_mod95": "tncontract",
+    "cmul16_mod95.app.pg": "anf",
+    "cmul18_mod119": "tncontract",
+    "cmul18_mod119.app.pg": "anf",
+    "cmul22_mod183.app.pg": "anf",
+    "cmul256_mod1285": "tncontract",
+    "cmul256_mod381": "tncontract",
+    "cmul256_mod635": "tncontract",
+    "cmul25_mod133": "tncontract",
+    "cmul25_mod133.app.pg": "anf",
+    "cmul25_mod141": "tncontract",
+    "cmul25_mod141.app.pg": "anf",
+    "cmul25_mod77": "tncontract",
+    "cmul25_mod77.app.pg": "anf",
+    "cmul25_mod87": "tncontract",
+    "cmul25_mod87.app.pg": "anf",
+    "cmul26_mod115": "tncontract",
+    "cmul26_mod115.app.pg": "anf",
+    "cmul28_mod159.app.pg": "anf",
+    "cmul2_mod111": "tncontract",
+    "cmul2_mod111.app.pg": "anf",
+    "cmul2_mod115": "tncontract",
+    "cmul2_mod115.app.pg": "anf",
+    "cmul2_mod119": "tncontract",
+    "cmul2_mod119.app.pg": "anf",
+    "cmul2_mod123": "tncontract",
+    "cmul2_mod123.app.pg": "anf",
+    "cmul2_mod1285": "tncontract",
+    "cmul2_mod133": "tncontract",
+    "cmul2_mod133.app.pg": "anf",
+    "cmul2_mod141": "tncontract",
+    "cmul2_mod141.app.pg": "anf",
+    "cmul2_mod143.app.pg": "anf",
+    "cmul2_mod15": "tncontract",
+    "cmul2_mod15.app.pg": "anf",
+    "cmul2_mod155.app.pg": "anf",
+    "cmul2_mod159.app.pg": "anf",
+    "cmul2_mod183.app.pg": "anf",
+    "cmul2_mod187": "tncontract",
+    "cmul2_mod187.app.pg": "anf",
+    "cmul2_mod21": "tncontract",
+    "cmul2_mod21.app.pg": "anf",
+    "cmul2_mod221": "tncontract",
+    "cmul2_mod221.app.pg": "anf",
+    "cmul2_mod33": "tncontract",
+    "cmul2_mod33.app.pg": "anf",
+    "cmul2_mod35": "tncontract",
+    "cmul2_mod35.app.pg": "anf",
+    "cmul2_mod381": "tncontract",
+    "cmul2_mod635": "tncontract",
+    "cmul2_mod69": "tncontract",
+    "cmul2_mod69.app.pg": "anf",
+    "cmul2_mod77": "tncontract",
+    "cmul2_mod77.app.pg": "anf",
+    "cmul2_mod85": "tncontract",
+    "cmul2_mod85.app.pg": "anf",
+    "cmul2_mod87": "tncontract",
+    "cmul2_mod87.app.pg": "anf",
+    "cmul2_mod91": "tncontract",
+    "cmul2_mod91.app.pg": "anf",
+    "cmul2_mod93": "tncontract",
+    "cmul2_mod93.app.pg": "anf",
+    "cmul2_mod95": "tncontract",
+    "cmul2_mod95.app.pg": "anf",
+    "cmul34_mod111": "tncontract",
+    "cmul34_mod111.app.pg": "anf",
+    "cmul35_mod221": "tncontract",
+    "cmul35_mod221.app.pg": "anf",
+    "cmul36_mod115": "tncontract",
+    "cmul36_mod115.app.pg": "anf",
+    "cmul36_mod95": "tncontract",
+    "cmul36_mod95.app.pg": "anf",
+    "cmul37_mod123": "tncontract",
+    "cmul37_mod123.app.pg": "anf",
+    "cmul42_mod143.app.pg": "anf",
+    "cmul46_mod111": "tncontract",
+    "cmul46_mod111.app.pg": "anf",
+    "cmul48_mod143.app.pg": "anf",
+    "cmul49_mod111": "tncontract",
+    "cmul49_mod111.app.pg": "anf",
+    "cmul49_mod69": "tncontract",
+    "cmul49_mod69.app.pg": "anf",
+    "cmul4_mod111": "tncontract",
+    "cmul4_mod111.app.pg": "anf",
+    "cmul4_mod115": "tncontract",
+    "cmul4_mod115.app.pg": "anf",
+    "cmul4_mod119": "tncontract",
+    "cmul4_mod119.app.pg": "anf",
+    "cmul4_mod123": "tncontract",
+    "cmul4_mod123.app.pg": "anf",
+    "cmul4_mod1285": "tncontract",
+    "cmul4_mod133": "tncontract",
+    "cmul4_mod133.app.pg": "anf",
+    "cmul4_mod141": "tncontract",
+    "cmul4_mod141.app.pg": "anf",
+    "cmul4_mod143.app.pg": "anf",
+    "cmul4_mod15.app.pg": "anf",
+    "cmul4_mod155.app.pg": "anf",
+    "cmul4_mod159.app.pg": "anf",
+    "cmul4_mod183.app.pg": "anf",
+    "cmul4_mod21.app.pg": "anf",
+    "cmul4_mod221": "tncontract",
+    "cmul4_mod221.app.pg": "anf",
+    "cmul4_mod381": "tncontract",
+    "cmul4_mod635": "tncontract",
+    "cmul4_mod69": "tncontract",
+    "cmul4_mod69.app.pg": "anf",
+    "cmul4_mod77": "tncontract",
+    "cmul4_mod77.app.pg": "anf",
+    "cmul4_mod85": "tncontract",
+    "cmul4_mod85.app.pg": "anf",
+    "cmul4_mod87": "tncontract",
+    "cmul4_mod87.app.pg": "anf",
+    "cmul4_mod91": "tncontract",
+    "cmul4_mod91.app.pg": "anf",
+    "cmul4_mod93": "tncontract",
+    "cmul4_mod93.app.pg": "anf",
+    "cmul4_mod95": "tncontract",
+    "cmul4_mod95.app.pg": "anf",
+    "cmul52_mod69": "tncontract",
+    "cmul52_mod69.app.pg": "anf",
+    "cmul55_mod69": "tncontract",
+    "cmul55_mod69.app.pg": "anf",
+    "cmul58_mod69": "tncontract",
+    "cmul58_mod69.app.pg": "anf",
+    "cmul61_mod141": "tncontract",
+    "cmul61_mod141.app.pg": "anf",
+    "cmul61_mod95": "tncontract",
+    "cmul61_mod95.app.pg": "anf",
+    "cmul64_mod93": "tncontract",
+    "cmul64_mod93.app.pg": "anf",
+    "cmul66_mod155.app.pg": "anf",
+    "cmul66_mod95": "tncontract",
+    "cmul66_mod95.app.pg": "anf",
+    "cmul6_mod115": "tncontract",
+    "cmul6_mod115.app.pg": "anf",
+    "cmul6_mod95": "tncontract",
+    "cmul6_mod95.app.pg": "anf",
+    "cmul70_mod111": "tncontract",
+    "cmul70_mod111.app.pg": "anf",
+    "cmul70_mod93": "tncontract",
+    "cmul70_mod93.app.pg": "anf",
+    "cmul73_mod183.app.pg": "anf",
+    "cmul74_mod91": "tncontract",
+    "cmul74_mod91.app.pg": "anf",
+    "cmul7_mod111": "tncontract",
+    "cmul7_mod111.app.pg": "anf",
+    "cmul7_mod15": "tncontract",
+    "cmul7_mod15.app.pg": "anf",
+    "cmul81_mod115": "tncontract",
+    "cmul81_mod115.app.pg": "anf",
+    "cmul81_mod95": "tncontract",
+    "cmul81_mod95.app.pg": "anf",
+    "cmul82_mod87": "tncontract",
+    "cmul82_mod87.app.pg": "anf",
+    "cmul86_mod119": "tncontract",
+    "cmul86_mod119.app.pg": "anf",
+    "cmul93_mod133": "tncontract",
+    "cmul93_mod133.app.pg": "anf",
+    "cmul97_mod159.app.pg": "anf",
+    "cmul9_mod77": "tncontract",
+    "cmul9_mod77.app.pg": "anf",
+    "code832_tccz.app.pg": "groebner",
+    "cuccaro_add2.app.pg": "anf",
+    "cuccaro_add3.app.pg": "anf",
+    "d4_mult.app.pg": "anf",
+    "draper_add2": "tncontract",
+    "du_brick6_t2": "tncontract",
+    "gf4_frob.app.pg": "anf",
+    "gf4_mul.app.pg": "anf",
+    "gf8_frob.app.pg": "anf",
+    "gf8_inv.app.pg": "anf",
+    "gf8_mul": "tncontract",
+    "gf8_mul.app.pg": "anf",
+    "gf8_mulx.app.pg": "anf",
+    "iqft2": "tncontract",
+    "iqft3": "tncontract",
+    "iqft7": "tncontract",
+    "iqft8": "tncontract",
+    "mub4_b1_s0.app.pg": "anf",
+    "mub4_b1_s1.app.pg": "anf",
+    "mub4_b1_s2.app.pg": "anf",
+    "mub4_b1_s3.app.pg": "anf",
+    "naimark_ud3": "tncontract",
+    "otoc_du_t1": "tncontract",
+    "parity4_transform.app.pg": "anf",
+    "peps22_rvb": "tncontract",
+    "qae3_pi8": "tncontract",
+    "qaoa_c4": "tncontract",
+    "qft2_pipeline": "tncontract",
+    "qft3_pipeline": "tncontract",
+    "qft4_pipeline": "tncontract",
+    "qft5_pipeline": "tncontract",
+    "qft6_pipeline": "tncontract",
+    "qft7_pipeline": "tncontract",
+    "qft8_pipeline": "tncontract",
+    "qpe_s": "tncontract",
+    "qpe_t": "tncontract",
+    "qrom22.app.pg": "anf",
+    "qutrit_sum.app.pg": "anf",
+    "qutrit_x3.app.pg": "anf",
+    "repcode3_bitflip.app.pg": "anf",
+    "rs73_encoder": "subspace",
+    "rs_synd_core.app.pg": "anf",
+    "s3_mult": "tncontract",
+    "s3_mult.app.pg": "anf",
+    "s4_mult": "tncontract",
+    "schur3": "tncontract",
+    "schur3_dag": "tncontract",
+    "schur4": "tncontract",
+    "schur4_dag": "tncontract",
+    "schur_reflect4": "tncontract",
+    "shor15_a2": "tncontract",
+    "shor15_a7": "tncontract",
+    "shor21_a2": "tncontract",
+    "stinespring_ampdamp": "tncontract",
+    "stinespring_ampdamp_g14": "tncontract",
+    "stinespring_bitflip": "tncontract",
+    "stinespring_bitflip_g14": "tncontract",
+    "swap_via_cnot.app.pg": "anf",
+    "syndrome3_bitflip.app.pg": "anf",
+    "szegedy_c4_p12": "tncontract",
+    "wstate10": "tncontract",
+    "wstate3": "tncontract",
+    "wstate4": "tncontract",
+    "wstate5": "tncontract",
+    "wstate6": "tncontract",
+    "wstate7": "tncontract",
+    "wstate8": "tncontract",
+    "wstate9": "tncontract"
+  },
+  "primary_seal_only": [
+    "cmul100_mod213",
+    "cmul101_mod155",
+    "cmul103_mod187",
+    "cmul10_mod213",
+    "cmul113_mod143",
+    "cmul118_mod183",
+    "cmul121_mod159",
+    "cmul124_mod237",
+    "cmul126_mod155",
+    "cmul130_mod237",
+    "cmul136_mod235",
+    "cmul137_mod187",
+    "cmul139_mod247",
+    "cmul13_mod159",
+    "cmul144_mod259",
+    "cmul145_mod213",
+    "cmul148_mod159",
+    "cmul148_mod219",
+    "cmul151_mod213",
+    "cmul166_mod235",
+    "cmul16_mod143",
+    "cmul16_mod155",
+    "cmul16_mod159",
+    "cmul16_mod183",
+    "cmul16_mod187",
+    "cmul16_mod203",
+    "cmul16_mod213",
+    "cmul16_mod215",
+    "cmul16_mod219",
+    "cmul16_mod235",
+    "cmul16_mod237",
+    "cmul16_mod247",
+    "cmul16_mod253",
+    "cmul16_mod259",
+    "cmul16_mod3683",
+    "cmul170_mod203",
+    "cmul176_mod215",
+    "cmul178_mod219",
+    "cmul198_mod203",
+    "cmul19_mod237",
+    "cmul206_mod235",
+    "cmul208_mod237",
+    "cmul21_mod235",
+    "cmul22_mod183",
+    "cmul236_mod253",
+    "cmul256_mod259",
+    "cmul256_mod3683",
+    "cmul25_mod203",
+    "cmul28_mod159",
+    "cmul2925_mod3683",
+    "cmul2_mod143",
+    "cmul2_mod155",
+    "cmul2_mod159",
+    "cmul2_mod183",
+    "cmul2_mod203",
+    "cmul2_mod213",
+    "cmul2_mod215",
+    "cmul2_mod219",
+    "cmul2_mod235",
+    "cmul2_mod237",
+    "cmul2_mod247",
+    "cmul2_mod253",
+    "cmul2_mod259",
+    "cmul2_mod3683",
+    "cmul36_mod253",
+    "cmul37_mod219",
+    "cmul3_mod253",
+    "cmul41_mod215",
+    "cmul42_mod143",
+    "cmul43_mod213",
+    "cmul48_mod143",
+    "cmul4_mod143",
+    "cmul4_mod155",
+    "cmul4_mod159",
+    "cmul4_mod183",
+    "cmul4_mod187",
+    "cmul4_mod203",
+    "cmul4_mod213",
+    "cmul4_mod215",
+    "cmul4_mod219",
+    "cmul4_mod235",
+    "cmul4_mod237",
+    "cmul4_mod247",
+    "cmul4_mod253",
+    "cmul4_mod259",
+    "cmul4_mod3683",
+    "cmul53_mod203",
+    "cmul55_mod219",
+    "cmul55_mod247",
+    "cmul61_mod235",
+    "cmul61_mod247",
+    "cmul66_mod155",
+    "cmul69_mod187",
+    "cmul73_mod183",
+    "cmul73_mod237",
+    "cmul74_mod203",
+    "cmul81_mod247",
+    "cmul81_mod253",
+    "cmul81_mod259",
+    "cmul86_mod187",
+    "cmul86_mod259",
+    "cmul97_mod159",
+    "cmul9_mod247",
+    "cmul9_mod253",
+    "cmul9_mod259",
+    "ghz16_structural",
+    "maj_braid_ybe",
+    "q8_qft",
+    "rm15_tt"
+  ],
+  "by_app": {
+    "aklt4": [
+      "tncontract"
+    ],
+    "be_h2": [
+      "stabrank",
+      "tncontract"
+    ],
+    "be_hop": [
+      "stabrank",
+      "tncontract"
+    ],
+    "be_hopz": [
+      "stabrank",
+      "tncontract"
+    ],
+    "be_num": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "be_pauli2": [
+      "stabrank",
+      "tncontract"
+    ],
+    "be_proj": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "be_xz": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "bell": [
+      "pathsum",
+      "qmdd",
+      "tncontract"
+    ],
+    "bk4_transform": [
+      "stabrank",
+      "tncontract"
+    ],
+    "bk4_transform.app.pg": [
+      "anf"
+    ],
+    "bk_hop01": [
+      "stabrank",
+      "tncontract"
+    ],
+    "bk_num1": [
+      "stabrank",
+      "tncontract"
+    ],
+    "bogoliubov_pair": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "bv3_s101": [
+      "stabrank",
+      "tncontract"
+    ],
+    "c3_diag_full3": [
+      "stabrank",
+      "tncontract"
+    ],
+    "c3_diag_full3.app.pg": [
+      "groebner"
+    ],
+    "c3_diag_ladder3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "c3_diag_ladder3.app.pg": [
+      "groebner"
+    ],
+    "ccz_rediscovered": [
+      "qmdd",
+      "tncontract"
+    ],
+    "chan_magic_t": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "choi_ampdamp": [
+      "qmdd",
+      "tncontract"
+    ],
+    "choi_bitflip": [
+      "qmdd",
+      "tncontract"
+    ],
+    "choi_depol": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "choi_phasedamp": [
+      "qmdd",
+      "tncontract"
+    ],
+    "cliff1_h": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hs": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hsh": [
+      "pathsum",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hshs": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hshss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hshssh": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hshsss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hssh": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hsshs": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hsshss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_hsss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_id": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_s": [
+      "matchgate",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_s.app.pg": [
+      "groebner"
+    ],
+    "cliff1_sh": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_shs": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_shss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_shssh": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_shsss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_ss": [
+      "matchgate",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_ssh": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_sshs": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_sshss": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_sss": [
+      "matchgate",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cliff1_sss.app.pg": [
+      "groebner"
+    ],
+    "cluster10": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster3x3_prep": [
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster4": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster5": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster6": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster7": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster8": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cluster9": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "cmp2_ge": [
+      "pathsum",
+      "stabrank",
+      "tncontract"
+    ],
+    "cmp2_ge.app.pg": [
+      "anf"
+    ],
+    "cmul100_mod123": [
+      "tncontract"
+    ],
+    "cmul100_mod123.app.pg": [
+      "anf"
+    ],
+    "cmul100_mod133": [
+      "tncontract"
+    ],
+    "cmul100_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul101_mod115": [
+      "tncontract"
+    ],
+    "cmul101_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul101_mod155.app.pg": [
+      "anf"
+    ],
+    "cmul10_mod123": [
+      "tncontract"
+    ],
+    "cmul10_mod123.app.pg": [
+      "anf"
+    ],
+    "cmul112_mod141": [
+      "tncontract"
+    ],
+    "cmul112_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul113_mod143.app.pg": [
+      "anf"
+    ],
+    "cmul115_mod141": [
+      "tncontract"
+    ],
+    "cmul115_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul118_mod183.app.pg": [
+      "anf"
+    ],
+    "cmul120_mod221": [
+      "tncontract"
+    ],
+    "cmul120_mod221.app.pg": [
+      "anf"
+    ],
+    "cmul121_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul123_mod133": [
+      "tncontract"
+    ],
+    "cmul123_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul126_mod155.app.pg": [
+      "anf"
+    ],
+    "cmul131_mod635": [
+      "tncontract"
+    ],
+    "cmul136_mod141": [
+      "tncontract"
+    ],
+    "cmul136_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul13_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul13_mod69": [
+      "tncontract"
+    ],
+    "cmul13_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul148_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod111": [
+      "tncontract"
+    ],
+    "cmul16_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod115": [
+      "tncontract"
+    ],
+    "cmul16_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod119": [
+      "tncontract"
+    ],
+    "cmul16_mod119.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod123": [
+      "tncontract"
+    ],
+    "cmul16_mod123.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod1285": [
+      "tncontract"
+    ],
+    "cmul16_mod133": [
+      "tncontract"
+    ],
+    "cmul16_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod141": [
+      "tncontract"
+    ],
+    "cmul16_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod143.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod155.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod183.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod21": [
+      "qmdd",
+      "tncontract"
+    ],
+    "cmul16_mod21.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod221": [
+      "tncontract"
+    ],
+    "cmul16_mod221.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod381": [
+      "tncontract"
+    ],
+    "cmul16_mod635": [
+      "tncontract"
+    ],
+    "cmul16_mod69": [
+      "tncontract"
+    ],
+    "cmul16_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod77": [
+      "tncontract"
+    ],
+    "cmul16_mod77.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod85": [
+      "tncontract"
+    ],
+    "cmul16_mod85.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod87": [
+      "tncontract"
+    ],
+    "cmul16_mod87.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod91": [
+      "tncontract"
+    ],
+    "cmul16_mod91.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod93": [
+      "tncontract"
+    ],
+    "cmul16_mod93.app.pg": [
+      "anf"
+    ],
+    "cmul16_mod95": [
+      "tncontract"
+    ],
+    "cmul16_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul18_mod119": [
+      "tncontract"
+    ],
+    "cmul18_mod119.app.pg": [
+      "anf"
+    ],
+    "cmul22_mod183.app.pg": [
+      "anf"
+    ],
+    "cmul256_mod1285": [
+      "tncontract"
+    ],
+    "cmul256_mod381": [
+      "tncontract"
+    ],
+    "cmul256_mod635": [
+      "tncontract"
+    ],
+    "cmul25_mod133": [
+      "tncontract"
+    ],
+    "cmul25_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul25_mod141": [
+      "tncontract"
+    ],
+    "cmul25_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul25_mod77": [
+      "tncontract"
+    ],
+    "cmul25_mod77.app.pg": [
+      "anf"
+    ],
+    "cmul25_mod87": [
+      "tncontract"
+    ],
+    "cmul25_mod87.app.pg": [
+      "anf"
+    ],
+    "cmul26_mod115": [
+      "tncontract"
+    ],
+    "cmul26_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul28_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod111": [
+      "tncontract"
+    ],
+    "cmul2_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod115": [
+      "tncontract"
+    ],
+    "cmul2_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod119": [
+      "tncontract"
+    ],
+    "cmul2_mod119.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod123": [
+      "tncontract"
+    ],
+    "cmul2_mod123.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod1285": [
+      "tncontract"
+    ],
+    "cmul2_mod133": [
+      "tncontract"
+    ],
+    "cmul2_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod141": [
+      "tncontract"
+    ],
+    "cmul2_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod143.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod15": [
+      "tncontract"
+    ],
+    "cmul2_mod15.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod155.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod183.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod187": [
+      "tncontract"
+    ],
+    "cmul2_mod187.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod21": [
+      "tncontract"
+    ],
+    "cmul2_mod21.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod221": [
+      "tncontract"
+    ],
+    "cmul2_mod221.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod33": [
+      "tncontract"
+    ],
+    "cmul2_mod33.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod35": [
+      "tncontract"
+    ],
+    "cmul2_mod35.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod381": [
+      "tncontract"
+    ],
+    "cmul2_mod635": [
+      "tncontract"
+    ],
+    "cmul2_mod69": [
+      "tncontract"
+    ],
+    "cmul2_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod77": [
+      "tncontract"
+    ],
+    "cmul2_mod77.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod85": [
+      "tncontract"
+    ],
+    "cmul2_mod85.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod87": [
+      "tncontract"
+    ],
+    "cmul2_mod87.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod91": [
+      "tncontract"
+    ],
+    "cmul2_mod91.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod93": [
+      "tncontract"
+    ],
+    "cmul2_mod93.app.pg": [
+      "anf"
+    ],
+    "cmul2_mod95": [
+      "tncontract"
+    ],
+    "cmul2_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul34_mod111": [
+      "tncontract"
+    ],
+    "cmul34_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul35_mod221": [
+      "tncontract"
+    ],
+    "cmul35_mod221.app.pg": [
+      "anf"
+    ],
+    "cmul36_mod115": [
+      "tncontract"
+    ],
+    "cmul36_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul36_mod95": [
+      "tncontract"
+    ],
+    "cmul36_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul37_mod123": [
+      "tncontract"
+    ],
+    "cmul37_mod123.app.pg": [
+      "anf"
+    ],
+    "cmul42_mod143.app.pg": [
+      "anf"
+    ],
+    "cmul46_mod111": [
+      "tncontract"
+    ],
+    "cmul46_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul48_mod143.app.pg": [
+      "anf"
+    ],
+    "cmul49_mod111": [
+      "tncontract"
+    ],
+    "cmul49_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul49_mod69": [
+      "tncontract"
+    ],
+    "cmul49_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod111": [
+      "tncontract"
+    ],
+    "cmul4_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod115": [
+      "tncontract"
+    ],
+    "cmul4_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod119": [
+      "tncontract"
+    ],
+    "cmul4_mod119.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod123": [
+      "tncontract"
+    ],
+    "cmul4_mod123.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod1285": [
+      "tncontract"
+    ],
+    "cmul4_mod133": [
+      "tncontract"
+    ],
+    "cmul4_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod141": [
+      "tncontract"
+    ],
+    "cmul4_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod143.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod15": [
+      "qmdd",
+      "tncontract"
+    ],
+    "cmul4_mod15.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod155.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod183.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod21": [
+      "qmdd",
+      "tncontract"
+    ],
+    "cmul4_mod21.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod221": [
+      "tncontract"
+    ],
+    "cmul4_mod221.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod381": [
+      "tncontract"
+    ],
+    "cmul4_mod635": [
+      "tncontract"
+    ],
+    "cmul4_mod69": [
+      "tncontract"
+    ],
+    "cmul4_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod77": [
+      "tncontract"
+    ],
+    "cmul4_mod77.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod85": [
+      "tncontract"
+    ],
+    "cmul4_mod85.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod87": [
+      "tncontract"
+    ],
+    "cmul4_mod87.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod91": [
+      "tncontract"
+    ],
+    "cmul4_mod91.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod93": [
+      "tncontract"
+    ],
+    "cmul4_mod93.app.pg": [
+      "anf"
+    ],
+    "cmul4_mod95": [
+      "tncontract"
+    ],
+    "cmul4_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul52_mod69": [
+      "tncontract"
+    ],
+    "cmul52_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul55_mod69": [
+      "tncontract"
+    ],
+    "cmul55_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul58_mod69": [
+      "tncontract"
+    ],
+    "cmul58_mod69.app.pg": [
+      "anf"
+    ],
+    "cmul61_mod141": [
+      "tncontract"
+    ],
+    "cmul61_mod141.app.pg": [
+      "anf"
+    ],
+    "cmul61_mod95": [
+      "tncontract"
+    ],
+    "cmul61_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul64_mod93": [
+      "tncontract"
+    ],
+    "cmul64_mod93.app.pg": [
+      "anf"
+    ],
+    "cmul66_mod155.app.pg": [
+      "anf"
+    ],
+    "cmul66_mod95": [
+      "tncontract"
+    ],
+    "cmul66_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul6_mod115": [
+      "tncontract"
+    ],
+    "cmul6_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul6_mod95": [
+      "tncontract"
+    ],
+    "cmul6_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul70_mod111": [
+      "tncontract"
+    ],
+    "cmul70_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul70_mod93": [
+      "tncontract"
+    ],
+    "cmul70_mod93.app.pg": [
+      "anf"
+    ],
+    "cmul73_mod183.app.pg": [
+      "anf"
+    ],
+    "cmul74_mod91": [
+      "tncontract"
+    ],
+    "cmul74_mod91.app.pg": [
+      "anf"
+    ],
+    "cmul7_mod111": [
+      "tncontract"
+    ],
+    "cmul7_mod111.app.pg": [
+      "anf"
+    ],
+    "cmul7_mod15": [
+      "tncontract"
+    ],
+    "cmul7_mod15.app.pg": [
+      "anf"
+    ],
+    "cmul81_mod115": [
+      "tncontract"
+    ],
+    "cmul81_mod115.app.pg": [
+      "anf"
+    ],
+    "cmul81_mod95": [
+      "tncontract"
+    ],
+    "cmul81_mod95.app.pg": [
+      "anf"
+    ],
+    "cmul82_mod87": [
+      "tncontract"
+    ],
+    "cmul82_mod87.app.pg": [
+      "anf"
+    ],
+    "cmul86_mod119": [
+      "tncontract"
+    ],
+    "cmul86_mod119.app.pg": [
+      "anf"
+    ],
+    "cmul93_mod133": [
+      "tncontract"
+    ],
+    "cmul93_mod133.app.pg": [
+      "anf"
+    ],
+    "cmul97_mod159.app.pg": [
+      "anf"
+    ],
+    "cmul9_mod77": [
+      "tncontract"
+    ],
+    "cmul9_mod77.app.pg": [
+      "anf"
+    ],
+    "code513_encoder": [
+      "stabrank",
+      "tncontract"
+    ],
+    "code832_encoder": [
+      "stabrank",
+      "tncontract"
+    ],
+    "code832_tccz": [
+      "matchgate",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "code832_tccz.app.pg": [
+      "groebner"
+    ],
+    "cry_pi": [
+      "qmdd",
+      "tncontract"
+    ],
+    "cry_pi2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "cuccaro_add2": [
+      "pathsum",
+      "stabrank",
+      "tncontract"
+    ],
+    "cuccaro_add2.app.pg": [
+      "anf"
+    ],
+    "cuccaro_add3": [
+      "stabrank",
+      "tncontract"
+    ],
+    "cuccaro_add3.app.pg": [
+      "anf"
+    ],
+    "cz_rediscovered": [
+      "qmdd",
+      "tncontract"
+    ],
+    "d4_hsp_shot_r2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "d4_hsp_shot_s": [
+      "qmdd",
+      "tncontract"
+    ],
+    "d4_mult": [
+      "stabrank",
+      "tncontract"
+    ],
+    "d4_mult.app.pg": [
+      "anf"
+    ],
+    "d4_qft": [
+      "qmdd",
+      "tncontract"
+    ],
+    "dicke4_k2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "diffusion": [
+      "qmdd",
+      "tncontract"
+    ],
+    "diffusion3": [
+      "qmdd",
+      "tncontract"
+    ],
+    "dj2_balanced_xor": [
+      "stabrank",
+      "tncontract"
+    ],
+    "dj2_const1": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "draper_add2": [
+      "tncontract"
+    ],
+    "du_brick6_t2": [
+      "tncontract"
+    ],
+    "du_gate_dag": [
+      "qmdd",
+      "tncontract"
+    ],
+    "du_gate_j8": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_braid_s1": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_braid_s2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_fig8": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_fmove": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_hopf": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_solomon": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_trefoil": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_trefoil_m": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_word5": [
+      "qmdd",
+      "tncontract"
+    ],
+    "fib_yb": [
+      "qmdd",
+      "tncontract"
+    ],
+    "flag_synd_xxxx": [
+      "stabrank",
+      "tncontract"
+    ],
+    "flag_synd_zzzz": [
+      "stabrank",
+      "tncontract"
+    ],
+    "floquet4_uf": [
+      "stabrank",
+      "tncontract"
+    ],
+    "fswap": [
+      "qmdd",
+      "tncontract"
+    ],
+    "gauss_braid3": [
+      "matchgate",
+      "qmdd",
+      "tncontract"
+    ],
+    "gauss_hop4": [
+      "matchgate",
+      "qmdd",
+      "tncontract"
+    ],
+    "gf4_frob": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "gf4_frob.app.pg": [
+      "anf"
+    ],
+    "gf4_mul": [
+      "stabrank",
+      "tncontract"
+    ],
+    "gf4_mul.app.pg": [
+      "anf"
+    ],
+    "gf8_frob": [
+      "stabrank",
+      "tncontract"
+    ],
+    "gf8_frob.app.pg": [
+      "anf"
+    ],
+    "gf8_inv": [
+      "stabrank",
+      "tncontract"
+    ],
+    "gf8_inv.app.pg": [
+      "anf"
+    ],
+    "gf8_mul": [
+      "tncontract"
+    ],
+    "gf8_mul.app.pg": [
+      "anf"
+    ],
+    "gf8_mulx": [
+      "stabrank",
+      "tncontract"
+    ],
+    "gf8_mulx.app.pg": [
+      "anf"
+    ],
+    "ghz10": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz3": [
+      "pathsum",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz4": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz5": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz6": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz7": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz8": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "ghz9": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "grover2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "grover2_2iter": [
+      "qmdd",
+      "tncontract"
+    ],
+    "grover2_3iter": [
+      "qmdd",
+      "tncontract"
+    ],
+    "grover3": [
+      "qmdd",
+      "tncontract"
+    ],
+    "grover3_2iter": [
+      "qmdd",
+      "tncontract"
+    ],
+    "grover3_3iter": [
+      "qmdd",
+      "tncontract"
+    ],
+    "heis2_trotter_step": [
+      "qmdd",
+      "tncontract"
+    ],
+    "heis3_trotter_step": [
+      "qmdd",
+      "tncontract"
+    ],
+    "iqft2": [
+      "tncontract"
+    ],
+    "iqft3": [
+      "tncontract"
+    ],
+    "iqft7": [
+      "tncontract"
+    ],
+    "iqft8": [
+      "tncontract"
+    ],
+    "ising_braid_b2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "kitaev4_gs": [
+      "stabrank",
+      "tncontract"
+    ],
+    "magic_a": [
+      "pathsum",
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "magic_cs": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mbqc_h": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b1_s0": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b1_s0.app.pg": [
+      "anf"
+    ],
+    "mub4_b1_s1": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b1_s1.app.pg": [
+      "anf"
+    ],
+    "mub4_b1_s2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b1_s2.app.pg": [
+      "anf"
+    ],
+    "mub4_b1_s3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b1_s3.app.pg": [
+      "anf"
+    ],
+    "mub4_b2_s0": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b2_s1": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b2_s2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b2_s3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b3_s0": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b3_s1": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b3_s2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b3_s3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b4_s0": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b4_s1": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b4_s2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b4_s3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b5_s0": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b5_s1": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b5_s2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_b5_s3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_meas_b2": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_meas_b3": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_meas_b4": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "mub4_meas_b5": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "naimark_ud3": [
+      "tncontract"
+    ],
+    "otoc_du_t1": [
+      "tncontract"
+    ],
+    "parity4_transform": [
+      "stabrank",
+      "tncontract"
+    ],
+    "parity4_transform.app.pg": [
+      "anf"
+    ],
+    "peps22_rvb": [
+      "tncontract"
+    ],
+    "qae3_pi2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qae3_pi8": [
+      "tncontract"
+    ],
+    "qaoa_c4": [
+      "tncontract"
+    ],
+    "qaoa_p3": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qca_step": [
+      "stabrank",
+      "tncontract"
+    ],
+    "qft2_pipeline": [
+      "tncontract"
+    ],
+    "qft3_pipeline": [
+      "tncontract"
+    ],
+    "qft4_pipeline": [
+      "tncontract"
+    ],
+    "qft5_pipeline": [
+      "tncontract"
+    ],
+    "qft6_pipeline": [
+      "tncontract"
+    ],
+    "qft7_pipeline": [
+      "tncontract"
+    ],
+    "qft8_pipeline": [
+      "tncontract"
+    ],
+    "qldpc_hgp": [
+      "stabrank",
+      "tncontract"
+    ],
+    "qpe_s": [
+      "tncontract"
+    ],
+    "qpe_t": [
+      "tncontract"
+    ],
+    "qrom22": [
+      "stabrank",
+      "tncontract"
+    ],
+    "qrom22.app.pg": [
+      "anf"
+    ],
+    "qsp_d1": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsp_d3": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsp_d5": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsvt_pauli2_d2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsvt_pauli2_d3": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsvt_proj_d2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsvt_proj_d2b": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qsvt_proj_d3": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qutrit_sum": [
+      "stabrank",
+      "tncontract"
+    ],
+    "qutrit_sum.app.pg": [
+      "anf"
+    ],
+    "qutrit_x3": [
+      "stabrank",
+      "tncontract"
+    ],
+    "qutrit_x3.app.pg": [
+      "anf"
+    ],
+    "qw_c4_2steps": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "qw_c4_step": [
+      "stabrank",
+      "tncontract"
+    ],
+    "qw_c8_3steps": [
+      "qmdd",
+      "tncontract"
+    ],
+    "qw_c8_step": [
+      "stabrank",
+      "tncontract"
+    ],
+    "reflect00": [
+      "pathsum",
+      "qmdd",
+      "tncontract"
+    ],
+    "reflect000": [
+      "qmdd",
+      "tncontract"
+    ],
+    "repcode3_bitflip": [
+      "stabrank",
+      "tncontract"
+    ],
+    "repcode3_bitflip.app.pg": [
+      "anf"
+    ],
+    "repcode3_phaseflip": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring10": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring3": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring4": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring5": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring6": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring7": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring8": [
+      "stabrank",
+      "tncontract"
+    ],
+    "ring9": [
+      "stabrank",
+      "tncontract"
+    ],
+    "rs73_encoder": [
+      "subspace"
+    ],
+    "rs_synd_core": [
+      "stabrank",
+      "tncontract"
+    ],
+    "rs_synd_core.app.pg": [
+      "anf"
+    ],
+    "rxx_pi8": [
+      "qmdd",
+      "tncontract"
+    ],
+    "ryy_pi8": [
+      "qmdd",
+      "tncontract"
+    ],
+    "rzz_pi16": [
+      "qmdd",
+      "tncontract"
+    ],
+    "rzz_pi8": [
+      "qmdd",
+      "tncontract"
+    ],
+    "rzz_y4_p_half": [
+      "qmdd",
+      "tncontract"
+    ],
+    "rzz_y4_q_half": [
+      "qmdd",
+      "tncontract"
+    ],
+    "s3_mult": [
+      "tncontract"
+    ],
+    "s3_mult.app.pg": [
+      "anf"
+    ],
+    "s4_mult": [
+      "tncontract"
+    ],
+    "s_teleport": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "schur3": [
+      "tncontract"
+    ],
+    "schur3_dag": [
+      "tncontract"
+    ],
+    "schur4": [
+      "tncontract"
+    ],
+    "schur4_dag": [
+      "tncontract"
+    ],
+    "schur_reflect4": [
+      "tncontract"
+    ],
+    "select_prepare4": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "shor111": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor115": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor119": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor123": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor1285": [
+      "cuc",
+      "subspace"
+    ],
+    "shor133": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor141": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor143": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor155": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor159": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor15_a2": [
+      "tncontract"
+    ],
+    "shor15_a7": [
+      "tncontract"
+    ],
+    "shor183": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor187": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor203": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor213": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor215": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor219": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor21_a2": [
+      "tncontract"
+    ],
+    "shor221": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor235": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor237": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor247": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor253": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor259": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor3683": [
+      "cuc",
+      "subspace"
+    ],
+    "shor381": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor635": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor69": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor77": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor85": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor87": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor91": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor93": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor95": [
+      "column",
+      "ring",
+      "subspace"
+    ],
+    "shor9_encoder": [
+      "stabrank",
+      "tncontract"
+    ],
+    "simon2_s11": [
+      "stabrank",
+      "tncontract"
+    ],
+    "stinespring_ampdamp": [
+      "tncontract"
+    ],
+    "stinespring_ampdamp_g14": [
+      "tncontract"
+    ],
+    "stinespring_bitflip": [
+      "tncontract"
+    ],
+    "stinespring_bitflip_g14": [
+      "tncontract"
+    ],
+    "stinespring_depol": [
+      "stabrank",
+      "tncontract"
+    ],
+    "stinespring_phasedamp": [
+      "qmdd",
+      "tncontract"
+    ],
+    "stinespring_phasedamp_g14": [
+      "qmdd",
+      "tncontract"
+    ],
+    "surf422_encoder": [
+      "stabrank",
+      "tncontract"
+    ],
+    "surf_ls_merge_zz": [
+      "stabrank",
+      "tncontract"
+    ],
+    "swap_via_cnot": [
+      "stabrank",
+      "tncontract"
+    ],
+    "swap_via_cnot.app.pg": [
+      "anf"
+    ],
+    "syndrome3_bitflip": [
+      "stabrank",
+      "tncontract"
+    ],
+    "syndrome3_bitflip.app.pg": [
+      "anf"
+    ],
+    "szegedy_2state_p12": [
+      "pathsum",
+      "qmdd",
+      "tncontract"
+    ],
+    "szegedy_2state_p14": [
+      "qmdd",
+      "tncontract"
+    ],
+    "szegedy_c4_p12": [
+      "tncontract"
+    ],
+    "t_teleport": [
+      "qmdd",
+      "stabrank",
+      "tncontract"
+    ],
+    "tfim3_suzuki4_step": [
+      "qmdd",
+      "tncontract"
+    ],
+    "tfim3_trotter_2steps": [
+      "qmdd",
+      "tncontract"
+    ],
+    "tfim3_trotter_step": [
+      "qmdd",
+      "tncontract"
+    ],
+    "tfim3_trotter_step2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "tfim4_suzuki4_step": [
+      "qmdd",
+      "tncontract"
+    ],
+    "tfim4_trotter_step": [
+      "qmdd",
+      "tncontract"
+    ],
+    "tfim4_trotter_step2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "toric22_gs": [
+      "stabrank",
+      "tncontract"
+    ],
+    "vqe_he2_3pi4": [
+      "qmdd",
+      "tncontract"
+    ],
+    "vqe_he2_L2_mix": [
+      "qmdd",
+      "tncontract"
+    ],
+    "vqe_he2_L2_pi4": [
+      "qmdd",
+      "tncontract"
+    ],
+    "vqe_he2_pi2": [
+      "qmdd",
+      "tncontract"
+    ],
+    "vqe_he2_pi4": [
+      "qmdd",
+      "tncontract"
+    ],
+    "vqe_he3_pi4": [
+      "qmdd",
+      "tncontract"
+    ],
+    "wstate10": [
+      "tncontract"
+    ],
+    "wstate3": [
+      "tncontract"
+    ],
+    "wstate4": [
+      "tncontract"
+    ],
+    "wstate5": [
+      "tncontract"
+    ],
+    "wstate6": [
+      "tncontract"
+    ],
+    "wstate7": [
+      "tncontract"
+    ],
+    "wstate8": [
+      "tncontract"
+    ],
+    "wstate9": [
+      "tncontract"
+    ],
+    "z2gauge3": [
+      "stabrank",
+      "tncontract"
+    ]
+  }
+}
