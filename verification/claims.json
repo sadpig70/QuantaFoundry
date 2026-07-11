@@ -4,7 +4,7 @@
   "claims": [
     {
       "id": "claim.registry.root_reproducible",
-      "title": "Registry root reproduces byte-identically (95 modules / 475 apps)",
+      "title": "Registry root reproduces byte-identically (95 modules / 502 apps)",
       "guarantee_class": "determinism",
       "boundary": "Byte-identical reproduction is determinism, not correctness (INV-R1) — correctness comes from the independent-check claims below.",
       "evidence_steps": [
@@ -79,9 +79,21 @@
       "id": "claim.shor.column_exact_float_atol",
       "title": "27 Shor apps (n≤18): full unitary (H·iQFT included) matches the Shor spectral formula on every column",
       "guarantee_class": "column_exact",
-      "boundary": "float-atol grade (same evidence class as Tier-0 dense C4) — NOT ring-exact; n≥19 apps remain subspace-grade.",
+      "boundary": "float-atol grade (same evidence class as Tier-0 dense C4) — NOT ring-exact; the ring_exact_companion (iQFT ℤ[ζ256] float 0) supplies a heterogeneous exact witness.",
       "evidence_steps": [
         "column_verify"
+      ],
+      "authoritative_files": [
+        "registry/SEMANTIC-GUARANTEES.json"
+      ]
+    },
+    {
+      "id": "claim.shor.compositionally_verified",
+      "title": "2 large Shor apps (n≥19: shor1285/3683): compositionally verified — exhaustive modexp permutation + ring-exact iQFT + H-wall, composed",
+      "guarantee_class": "compositionally_verified",
+      "boundary": "composition argument (not whole-column dense); stronger than subspace_permutation, weaker than column_exact. Only shor1285/3683; rs73 stays subspace-grade.",
+      "evidence_steps": [
+        "cuc_verify"
       ],
       "authoritative_files": [
         "registry/SEMANTIC-GUARANTEES.json"

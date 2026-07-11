@@ -875,6 +875,14 @@
           "qf_witness.registry.doc_counts",
           "--check"
         ]
+      },
+      {
+        "id": "check_claims",
+        "argv": [
+          "-m",
+          "qf_verify",
+          "check-claims"
+        ]
       }
     ]
   }

@@ -6,7 +6,7 @@
 
 ## claim.registry.root_reproducible
 
-**Registry root reproduces byte-identically (95 modules / 475 apps)**  
+**Registry root reproduces byte-identically (95 modules / 502 apps)**  
 class: `determinism` · latest: **pass**
 
 - Evidence steps: `registry`
@@ -66,7 +66,16 @@ class: `column_exact` · latest: **pass**
 
 - Evidence steps: `column_verify`
 - Authority: `registry/SEMANTIC-GUARANTEES.json`
-- **Boundary**: float-atol grade (same evidence class as Tier-0 dense C4) — NOT ring-exact; n≥19 apps remain subspace-grade.
+- **Boundary**: float-atol grade (same evidence class as Tier-0 dense C4) — NOT ring-exact; the ring_exact_companion (iQFT ℤ[ζ256] float 0) supplies a heterogeneous exact witness.
+
+## claim.shor.compositionally_verified
+
+**2 large Shor apps (n≥19: shor1285/3683): compositionally verified — exhaustive modexp permutation + ring-exact iQFT + H-wall, composed**  
+class: `compositionally_verified` · latest: **pass**
+
+- Evidence steps: `cuc_verify`
+- Authority: `registry/SEMANTIC-GUARANTEES.json`
+- **Boundary**: composition argument (not whole-column dense); stronger than subspace_permutation, weaker than column_exact. Only shor1285/3683; rs73 stays subspace-grade.
 
 ## claim.approx.epsilon_bounds_certified
 

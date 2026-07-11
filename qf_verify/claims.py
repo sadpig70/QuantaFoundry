@@ -57,6 +57,28 @@ def explain(claim_id):
     return "\n".join(lines)
 
 
+def check_claims():
+    """claims.json 무결성 drift gate (QF-0711 U7a) — 필드 존재(load_claims) +
+    evidence_steps 비어있지 않음 + 최신 REPRODUCE-RESULT 스텝에 실존(스텝 rename/삭제 시 포착).
+    result 부재 시 구조만 검증. 반환: 문제 리스트(빈 리스트=all_ok)."""
+    claims = load_claims()
+    res = _latest_result()
+    keys = set(res.get("steps", {})) if res else set()
+    problems = []
+    seen = set()
+    for c in claims:
+        if c["id"] in seen:
+            problems.append(f"{c['id']}: duplicate id")
+        seen.add(c["id"])
+        if not c["evidence_steps"]:
+            problems.append(f"{c['id']}: empty evidence_steps")
+        if keys:
+            miss = [s for s in c["evidence_steps"] if s not in keys]
+            if miss:
+                problems.append(f"{c['id']}: evidence_steps not in latest result {miss}")
+    return problems
+
+
 def write_claim_map():
     """reviewer-facing Markdown 생성 (docs/EVIDENCE-MAP.md 수동 v0 의 자동 후계)."""
     claims = load_claims()

@@ -4,9 +4,10 @@
 > run one command, and see the evidence — without reading the codebase.
 > Every claim comes with its **honest boundary** (what the evidence does *not* prove).
 >
-> *Status: manually maintained v0 (2026-07-10). A machine-generated successor
-> (`reports/CLAIM-EVIDENCE-MAP.md`, driven by a manifest runner) is planned — see
-> `_workspace/reproduce_all_upgrade_plan.md` Phase 4.*
+> *Status: this file is the **human-readable summary**. The **machine-generated successor is live**
+> (QF-0711 U7): `reports/CLAIM-EVIDENCE-MAP.md` is regenerated on every `reproduce_all` from
+> `verification/claims.json` (12 claims), each carrying its honest boundary; `python -m qf_verify
+> check-claims` gates claim↔step drift (witness batch). This table stays as the curated overview.*
 
 | # | Claim | Command | Expected | Artifact / authority | Honest boundary |
 |---|---|---|---|---|---|

@@ -14,6 +14,7 @@ def main(argv=None):
     exp = sub.add_parser("explain", help="explain a claim")
     exp.add_argument("--claim", required=True)
     sub.add_parser("write-claim-map", help="generate reports/CLAIM-EVIDENCE-MAP.md")
+    sub.add_parser("check-claims", help="validate claims.json vs latest result (drift gate)")
     args = p.parse_args(argv)
 
     if args.cmd == "run":
@@ -36,6 +37,11 @@ def main(argv=None):
         from . import claims
         print("→", claims.write_claim_map())
         return 0
+    if args.cmd == "check-claims":
+        from . import claims
+        probs = claims.check_claims()
+        print(f"check-claims: all_ok={not probs}" + (f" · {probs}" if probs else ""))
+        return 0 if not probs else 1
     return 2
 
 

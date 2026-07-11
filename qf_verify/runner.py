@@ -80,6 +80,8 @@ def run_profile(profile_id, echo=print, jobs=1):
 
     rp.write_reproduce_result(result)
     rp.write_evidence_report(profile_id, result, evidence)
+    from . import claims                    # QF-0711 U7b: 방금 완료한 run 기준 CLAIM-EVIDENCE-MAP 자동 생성
+    claims.write_claim_map()
 
     # legacy 와 동일한 콘솔 출력
     echo("=" * 70)
