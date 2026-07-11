@@ -3,6 +3,7 @@
 기존 명령 그대로 (INV-RA1):
   python scripts/reproduce_all.py                  # full: 전 앱 byte-identity 재합성
   python scripts/reproduce_all.py --changed-only   # 변경 spec 만 재합성 + coherence
+  python scripts/reproduce_all.py --jobs 6         # 독립 검증 스텝 병렬(root 불변, 벽시계 단축)
 출력: reports/REPRODUCE-RESULT.json (기존 형식, INV-RA2) + reports/EVIDENCE-REPORT.json (가산)
 
 내부 위임 (TrackReproduceUpgrade — 확정 플랜 _workspace/reproduce_all_upgrade_plan.md):
@@ -28,9 +29,15 @@ def main(argv=None):
         p = subprocess.run(["python", os.path.join("scripts", "reproduce_all_legacy.py")] + argv,
                            cwd=ROOT)
         return p.returncode
+    jobs = 1
+    for flag in ("--jobs", "-j"):
+        if flag in argv:
+            k = argv.index(flag)
+            jobs = int(argv[k + 1])
+            del argv[k:k + 2]
     profile = "changed" if "--changed-only" in argv else "full"
     from qf_verify import runner
-    _, _, code = runner.run_profile(profile)
+    _, _, code = runner.run_profile(profile, jobs=jobs)
     return code
 
 

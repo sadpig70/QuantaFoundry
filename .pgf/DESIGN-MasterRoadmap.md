@@ -721,6 +721,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # U8 VerificationCoverage·U9 DriftGate·U10 RoadmapArchive 는 독립(overlap 없음).
         P2_TrustPackaging // 릴리스 외부화·rs73 Tier-2·scorecard·메타위생 (blocked) @dep:P1_EvidenceAutomation
         P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
+    TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
+        # 동기: full 89%가 heavy Python 스텝(rp_all Rust 포트는 동일 worker shell-out→가속 0 판정). 병렬이 정공법.
+        # 설계=.pgf/DESIGN-QFVerifyParallel.md: special(변경 백본) 순차·연속 argv(독립 read-only) ThreadPool·결과 원순서 조립.
+        # 실측: --jobs 6 changed-only 436s(순차 ~694s 대비 ~1.6×)·REPRODUCED·root 0a6fbab0 불변·83/83. jobs=1 기본=순차 불변.
+        # ★rp_all(codex Rust 컨트롤플레인 시범)=사용자 _legacy 보존. native oracle 추구 시에만 Rust 정당(전략 결정).
     TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
         # S1 검증코어 심화(agent02·07: ZX backup·incremental·compositional prover·제3경로) · S2 멀티런타임(H1) · S3 백엔드/PyPI(승인)
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)

@@ -5,6 +5,7 @@ result["steps"] 의 키 순서 = manifest 실행 순서 = legacy reproduce_all.p
 스텝 dict 필드도 legacy 와 동일 (witness: rc/all_ok/pass · special: 각자 고유 필드).
 """
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 from . import context as cx
 from . import special as sp
@@ -35,14 +36,43 @@ def execute_step(st, changed_only):
     return frag, meta
 
 
-def run_profile(profile_id, echo=print):
-    """profile 전체 실행 → (result dict, evidence list, exit_code)."""
+def _execute_all(steps, changed_only, jobs):
+    """스텝 실행 → results[i]=(frag,meta) 원래 순서 슬롯.
+    jobs=1: 완전 순차(기존 불변). jobs>1: 연속 argv(독립 read-only) run 을 ThreadPool 로 병렬,
+    special(변경·순서 백본)은 순차 배리어. 결과 조립은 항상 원순서(INV-RA2)."""
+    results = [None] * len(steps)
+    if jobs <= 1:
+        for i, st in enumerate(steps):
+            results[i] = execute_step(st, changed_only)
+        return results
+    i, n = 0, len(steps)
+    while i < n:
+        if "special" not in steps[i]:                 # 연속 argv run → 병렬
+            j = i
+            while j < n and "special" not in steps[j]:
+                j += 1
+            batch = list(range(i, j))
+            with ThreadPoolExecutor(max_workers=min(jobs, len(batch))) as pool:
+                futs = {pool.submit(execute_step, steps[k], changed_only): k for k in batch}
+                for fut, k in futs.items():
+                    results[k] = fut.result()
+            i = j
+        else:                                          # special → 순차(원순서 보존)
+            results[i] = execute_step(steps[i], changed_only)
+            i += 1
+    return results
+
+
+def run_profile(profile_id, echo=print, jobs=1):
+    """profile 전체 실행 → (result dict, evidence list, exit_code).
+    jobs>1 이면 독립 argv 스텝을 병렬 실행(root 불변; 결과 조립은 원순서 고정)."""
     steps, changed_only = mf.load_profile(profile_id)
+    results = _execute_all(steps, changed_only, jobs)
     result = {"bundle": "UNKNOWN", "steps": {}}
     result["mode"] = "changed-only" if changed_only else "full"
     evidence = []
-    for st in steps:
-        frag, meta = execute_step(st, changed_only)
+    for idx, st in enumerate(steps):                    # 조립 = 원래 manifest 순서
+        frag, meta = results[idx]
         result["steps"].update(frag)
         evidence.append({"id": st["id"], **meta})
     allpass = all(s.get("pass") for s in result["steps"].values())
