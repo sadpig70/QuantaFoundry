@@ -453,7 +453,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     TrackFrontier253 // frontier 무인 연속 — shor253=11×23 자율봉인 (done — 2026-07-10: 493앱·root 6d0f0c62·tier1 34·CQV/ring 29)
     TrackCUC // CqvLargeSampled — shor1285/3683(n≥19) CUC 조립 인증 → compositionally_verified (done — 2026-07-10) @dep:TrackRingColumn
     TrackFrontier259 // frontier 무인 연속 — shor259=7×37 자율봉인 (done — 2026-07-10: 502앱·root 0a6fbab0·tier1 35·CQV/ring 30)
-    TrackQF0711Upgrade // 제어면 봉인 — 8-리뷰 통합(_workspace/0711-upgrade-plan.md); 검증엔진 불변, claim surface 정합 (in-progress — 2026-07-11)
+    TrackQF0711Upgrade // 제어면 봉인 — 8-리뷰 통합(_workspace/0711-upgrade-plan.md); 검증엔진 불변, claim surface 정합 (done — 2026-07-11: P0/P1/P2/P3 폐합·root 0a6fbab0 불변)
         # 진단: 엔진 성숙·병목=제어면 드리프트(문서·수치·메타·스킬경로). 상세설계=.pgf/DESIGN-QF0711-P0.md (P0 우선, P1~P3 JIT)
         # 가정해소(2026-07-11 실측): root=봉인 module/app u_hash만 → SEMANTIC/consensus sidecar 무변경 · rs73=순수Clifford(60cnot+8x,total_t0)→Tier-2 성립 · commit-policy=INV5 텍스트 정정(런타임 changed 허용)
         P0_TruthSurface // 사실·계약 정합 (doc/sidecar, root 불변) (done — 2026-07-11: 892148e~72900ed·root 0a6fbab0 불변)
@@ -477,7 +477,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             U11_ReleaseRoot // seal/evidence/release 3층 root(RELEASE-ROOT.json)·attest attested_up_to·seal_gate drift (done — 63d13d7) #C10
             U12_Rs73Tier2 // rs73 pure-CNOT GF(2) affine map(21/21열·bijection·teeth) 전체 unitary 검증→unitary_equiv 격상·INV-R5 잔여 0 (done — 8392071) #C11
                 # ★설계 진화: hand-rolled tableau→GF(2) affine map(순수 CNOT 선형성 활용, 60 CNOT·0 X). path A 회로 비트시뮬 vs path B 독립 golden [[I,0],[G,I]](G=RS 다항). subspace 638→unitary_equiv 638·subspace_permutation_verified 1→0.
-        P3_ProductSurface // qf inspect/explain/plan read-only (blocked) @dep:P1_EvidenceAutomation
+        P3_ProductSurface // qf inspect/claims/plan read-only 소비 CLI (done — 2026-07-11) @dep:P1_EvidenceAutomation
+            # 상세설계=.pgf/DESIGN-QF0711-P3.md. qf_witness/ops/product_surface.py(신규 검증 0·read-only 조회)+qf_cli 배선.
+            # inspect=등급·honest_boundary·검증경로(SEMANTIC/COVERAGE) · claims=주장↔증거(claims.json 12) · plan=로드맵 트랙/노드.
+            # 봉인/root 0a6fbab0 무접촉. ★QF-0711 P0/P1/P2/P3 전부 폐합.
     TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
     TrackQF0711Strategic // 차기 역량 — 제어면 아님, 정욱님 결정 전 착수금지 (blocked)
         # S1 검증코어 심화(agent02·07: ZX backup·incremental·compositional prover·제3경로) · S2 멀티런타임(H1) · S3 백엔드/PyPI(승인)

@@ -11,8 +11,11 @@
   qf ingest   <app_id>|--demo            → qasm_ingest.py (QASM→spec→봉인 폐루프)
   qf discover [rank|validate|guard|propose] → discover.py (QF-Discover 발견엔진)
   qf explain  <id>                       → registry 조회: dependents(blast) + resource
+  qf inspect  <id>                       → 검증상태 조회: 등급·method·honest_boundary·경로 (P3)
+  qf claims   [<id>]                     → 주장↔증거↔정직경계 조회 (P3)
+  qf plan     [<query>]                  → MasterRoadmap 트랙/노드 read-only 조회 (P3)
 
-비파괴: 래핑만. 봉인/오라클/frozen/fingerprint 불변.
+비파괴: 래핑만. 봉인/오라클/frozen/fingerprint 불변. inspect/claims/plan=조회이지 검증 아님.
 """
 from __future__ import annotations
 import os, sys, json, subprocess
@@ -30,6 +33,9 @@ USAGE = """qf — QuantaFoundry CLI (기존 스크립트 단일 진입점, 신�
   qf ingest   <app_id>|--demo               QASM → spec → 봉인 폐루프 (qasm_ingest.py)
   qf discover [rank|validate|guard|propose] QF-Discover 발견엔진 (discover.py)
   qf explain  <id>                          의존/재사용/자원 조회 (registry)
+  qf inspect  <id>                          봉인 등급·honest_boundary·검증경로 조회 (P3)
+  qf claims   [<id>]                         주장↔증거↔정직경계 조회 (P3)
+  qf plan     [<query>]                      MasterRoadmap 트랙/노드 read-only 조회 (P3)
 """
 
 
@@ -106,6 +112,15 @@ def main():
         return _run(os.path.join(HERE, "discover.py"), rest)
     if cmd == "explain":
         return cmd_explain(rest)
+    if cmd in ("inspect", "claims", "plan"):
+        from qf_witness.ops import product_surface as ps
+        if cmd == "inspect":
+            if not rest:
+                print("usage: qf inspect <id>"); return 2
+            return ps.inspect(rest[0])
+        if cmd == "claims":
+            return ps.claims(rest[0] if rest else None)
+        return ps.plan(rest[0] if rest else None)
     print(f"unknown command: {cmd}\n"); print(USAGE); return 2
 
 
