@@ -81,12 +81,26 @@ def check_doc_paths():
     return bad
 
 
+def check_roadmap_archive():
+    # QF-0711 U10c: 척추(MasterRoadmap)의 done-트랙 상세는 HISTORY 로 이관. 분할 무결성 검사 —
+    # HISTORY 파일 존재 + 척추가 그것을 참조(아카이브 규약). 둘 중 하나라도 없으면 위반.
+    rm = os.path.join(ROOT, ".pgf", "DESIGN-MasterRoadmap.md")
+    hist = os.path.join(ROOT, ".pgf", "DESIGN-MasterRoadmap-HISTORY.md")
+    bad = []
+    if not os.path.exists(hist):
+        bad.append("DESIGN-MasterRoadmap-HISTORY.md 부재")
+    elif os.path.exists(rm) and "DESIGN-MasterRoadmap-HISTORY.md" not in open(rm, encoding="utf-8").read():
+        bad.append("척추가 HISTORY 미참조(아카이브 규약 누락)")
+    return bad
+
+
 def main():
     checks = {
         "scripts_allowlist_only": check_scripts_allowlist_only(),
         "no_depth_trap": check_no_depth_trap(),
         "no_oracle_copy": check_no_oracle_copy(),
         "doc_paths": check_doc_paths(),
+        "roadmap_archive": check_roadmap_archive(),
     }
     ok = True
     for name, bad in checks.items():
