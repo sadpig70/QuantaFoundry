@@ -41,6 +41,10 @@ python scripts/reproduce_all.py
 oracle's independent checks; the claim-by-claim commands are in
 [`docs/EVIDENCE-MAP.md`](docs/EVIDENCE-MAP.md).
 
+**For external reviewers** — audit any claim: [`docs/EVIDENCE-MAP.md`](docs/EVIDENCE-MAP.md) ·
+challenge the design: [`docs/QuantaFoundry-Technical-Spec.md`](docs/QuantaFoundry-Technical-Spec.md) §13 ·
+falsification requests: [`.pgf/external/REVIEW-REQUEST.md`](.pgf/external/REVIEW-REQUEST.md).
+
 ## Use it in 30 seconds (QF-STDLIB)
 
 The sealed registry is consumable as a verified standard library
@@ -55,16 +59,24 @@ att   = qf_stdlib.attest("gate/h")          # root-anchored attestation:
 #  "subject": {"u_hash": "0d6a0b7a…"}, ...}  — anchored to the registry root above
 ```
 
-CLI: `python scripts/qf_stdlib.py categories | lookup gate/h | attest gate/h` — see
-[`docs/QF-STDLIB.md`](docs/QF-STDLIB.md).
+CLI (each is a separate subcommand, not a pipe):
+
+```bash
+python scripts/qf_stdlib.py categories       # list Canon categories
+python scripts/qf_stdlib.py lookup gate/h    # resolve a Canon entry
+python scripts/qf_stdlib.py attest gate/h    # print its root-anchored attestation
+```
+
+See [`docs/QF-STDLIB.md`](docs/QF-STDLIB.md).
 
 ## What you can trust, at which grade
 
 | Grade | What it means | Where |
 |---|---|---|
-| `unitary_equiv` (Tier-0/2) | exact unitary equality vs an independent golden (dense or Clifford tableau) | 95 modules + 518 app entries |
+| `unitary_equiv` (Tier-0/2) | exact unitary equality vs an independent golden (dense or Clifford tableau) | 95 modules + 542 app entries |
 | `unitary_equiv_column_exact` | **full unitary** verified column-by-column vs the Shor spectral formula (float-atol grade, *not* ring-exact) | 30 large Shor apps (n≤18) |
-| `subspace_permutation_verified` | modexp core exact on the computational basis (independent integer arithmetic) | shor1285/3683, rs73 |
+| `compositionally_verified` | exhaustive modexp permutation + ring-exact iQFT, composed (n≥19 Shor) | shor1285/3683 (2 apps) |
+| `subspace_permutation_verified` | modexp core exact on the computational basis (independent integer arithmetic) | rs73 (1 app) |
 | ε-certified (orthogonal axis) | symbolic-exact **upper bound** on distance to the target `e^{-iHt}` | 9 Trotter/Suzuki apps, [`APPROX-GUARANTEES.json`](registry/APPROX-GUARANTEES.json) |
 | observation | exact math witnesses (topology, contextuality, MTC, knots, …) — **not seals** | `.pgf/proofs/*-OBSERVE.json` |
 
