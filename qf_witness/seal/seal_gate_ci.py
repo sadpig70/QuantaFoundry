@@ -25,6 +25,7 @@ DRIFT_CHECKS = [
     ("doc_counts", ["-m", "qf_witness.registry.doc_counts", "--check"]),
     ("structure_lint", ["-m", "qf_witness.ops.structure_lint", "--quick"]),
     ("coverage", ["-m", "qf_witness.registry.coverage_matrix", "--check"]),
+    ("quality_scorecard", ["-m", "qf_witness.registry.quality_scorecard", "--check"]),
 ]
 
 

@@ -25,7 +25,7 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
   (577 app-file entries = 502 unique + 75 cached app-side re-seals;
   live source [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 <!-- END generated:counts -->
-- **10 independent verification paths** ([`docs/VERIFICATION-PATHS.md`](docs/VERIFICATION-PATHS.md)) · 23 frozen consensus keys · verification core public as
+- **10 independent verification paths** ([`docs/VERIFICATION-PATHS.md`](docs/VERIFICATION-PATHS.md)) · 23 frozen consensus keys · **100% classified, 0 orphan** ([quality scorecard](registry/QF-QUALITY-SCORECARD.json)) · verification core public as
   **QPGF** → https://github.com/sadpig70/QPGF.
 - Pure non-destructive growth: every prior seal, frozen key, and oracle fingerprint reproduces
   **byte-identically**.
