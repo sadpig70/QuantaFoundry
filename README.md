@@ -20,8 +20,11 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 
 ## Status
 
-- **95 sealed modules · 502 sealed applications** · registry root `0a6fbab08c76…`
-  (live counts are authoritative in [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
+<!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->
+- **95 sealed modules · 502 unique applications** · registry root `0a6fbab08c76bf5a…`
+  (577 app-file entries = 502 unique + 75 cached app-side re-seals;
+  live source [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
+<!-- END generated:counts -->
 - **10 independent verification paths** · 23 frozen consensus keys · verification core public as
   **QPGF** → https://github.com/sadpig70/QPGF.
 - Pure non-destructive growth: every prior seal, frozen key, and oracle fingerprint reproduces
