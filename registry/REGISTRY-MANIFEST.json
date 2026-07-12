@@ -102,9 +102,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 611,
+    "unique_app_count": 617,
     "cached_app_side_module_count": 75,
-    "total_files": 686,
+    "total_files": 692,
     "path": "registry/apps",
     "unique": [
       "aklt4",
@@ -242,6 +242,7 @@
       "cmul16_mod327",
       "cmul16_mod335",
       "cmul16_mod339",
+      "cmul16_mod341",
       "cmul16_mod3683",
       "cmul16_mod381",
       "cmul16_mod635",
@@ -294,6 +295,7 @@
       "cmul256_mod327",
       "cmul256_mod335",
       "cmul256_mod339",
+      "cmul256_mod341",
       "cmul256_mod3683",
       "cmul256_mod381",
       "cmul256_mod635",
@@ -348,6 +350,7 @@
       "cmul2_mod33",
       "cmul2_mod335",
       "cmul2_mod339",
+      "cmul2_mod341",
       "cmul2_mod35",
       "cmul2_mod3683",
       "cmul2_mod381",
@@ -414,6 +417,7 @@
       "cmul4_mod327",
       "cmul4_mod335",
       "cmul4_mod339",
+      "cmul4_mod341",
       "cmul4_mod3683",
       "cmul4_mod381",
       "cmul4_mod635",
@@ -438,6 +442,7 @@
       "cmul61_mod247",
       "cmul61_mod291",
       "cmul61_mod95",
+      "cmul64_mod341",
       "cmul64_mod93",
       "cmul66_mod155",
       "cmul66_mod95",
@@ -668,6 +673,7 @@
       "shor327",
       "shor335",
       "shor339",
+      "shor341",
       "shor3683",
       "shor381",
       "shor635",
@@ -874,7 +880,7 @@
     "z5_gate": "registry/modules/z5_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "a0cd4e91c3b5c7bf72b6473900df14f914cc4a311e932298a63de801b7079711",
+  "registry_root_hash": "a79e6be6dc7935cea235c1449a9d74821fe8dad1f7cd1f0e0e3524ac065ed02e",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인(canonical 은 registry/modules). cached_app_side_module_count 는 앱 합성 트리에서 leaf 로 직접 쓰인 모듈 재봉인 수 — ★새 unique app 이 아니다(unique_app_count 와 분리). 나머지 (modules.count - cached) 모듈은 앱에서 직접 leaf 로 안 쓰이거나 다른 모듈 경유(인프라 전용)라 map 에 없다. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }
