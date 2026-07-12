@@ -482,8 +482,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # inspect=등급·honest_boundary·검증경로(SEMANTIC/COVERAGE) · claims=주장↔증거(claims.json 12) · plan=로드맵 트랙/노드.
             # 봉인/root 0a6fbab0 무접촉. ★QF-0711 P0/P1/P2/P3 전부 폐합.
     TrackQFVerifyParallel // reproduce 벽시계 단축 — 독립 argv 스텝 병렬(--jobs N), root 불변 (done — 2026-07-11)
-    TrackQF0711Strategic // 차기 역량 — S1 착수 승인(2026-07-11), S2/S3 결정 대기 (active)
-        # S1 검증코어 심화(agent02·07: ZX backup·incremental·compositional prover·제3경로) · S2 멀티런타임(H1) · S3 백엔드/PyPI(승인)
+    TrackQF0711Strategic // S1 폐합(2026-07-12, 7커밋 2631a7e~87ec0d1+폐합) — S2/S3·S1 잔여(외부의존) 정욱님 결정 대기 (blocked)
+        # ★S1 완결: compositional 467(=모듈환원 전체)·--incremental·--deep 120/120·순열커널 1057×·primary-seal-only 90→2. 상세=HANDOFF-HISTORY.
+        # 잔여(전부 게이트): S1 ZX backup·stim/Aer 제3경로·Sigstore(외부 pip 의존) · S2 멀티런타임(H1) · S3 백엔드/PyPI.
+        # 폐합 부수정정: coverage_matrix id 정규화(anf/groebner .app.pg 유령 149 제거 → 500/502 커버·hist 3:226·6경로 3 정합).
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).

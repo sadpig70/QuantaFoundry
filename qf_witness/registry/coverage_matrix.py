@@ -55,7 +55,9 @@ def compute():
     covered = {}   # path -> sorted set of app_ids
     for name, (fn, extract) in _VERIFY_SOURCES.items():
         d = _load(fn)
-        covered[name] = sorted(set(extract(d))) if d else []
+        # id 정규화: anf/groebner sidecar 는 'x.app.pg' 파일명 기록 → appid 로 통일(유령 키·과소계상 방지)
+        ids = {(i[:-len(".app.pg")] if i.endswith(".app.pg") else i) for i in extract(d)} if d else set()
+        covered[name] = sorted(ids)
     deep = _load("COMPOSITIONAL-DEEP.json")   # S1deep: 동일 형식론 → 같은 경로에 union(이중계상 금지)
     if deep:
         covered["compositional"] = sorted(set(covered["compositional"]) | set(deep.get("verified", {})))

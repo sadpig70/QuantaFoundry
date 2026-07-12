@@ -61,271 +61,97 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 256,
-    "2": 152,
-    "3": 152,
-    "4": 82,
-    "5": 7
+    "1": 81,
+    "2": 85,
+    "3": 226,
+    "4": 93,
+    "5": 12,
+    "6": 3
   },
-  "n_apps_with_supplementary": 649,
+  "n_apps_with_supplementary": 500,
   "n_primary_seal_only": 2,
   "single_supplementary_path": {
-    "bk4_transform.app.pg": "anf",
-    "c3_diag_full3.app.pg": "groebner",
-    "c3_diag_ladder3.app.pg": "groebner",
-    "cliff1_s.app.pg": "groebner",
-    "cliff1_sss.app.pg": "groebner",
-    "cmp2_ge.app.pg": "anf",
-    "cmul100_mod123.app.pg": "anf",
-    "cmul100_mod133.app.pg": "anf",
     "cmul100_mod213": "compositional",
-    "cmul101_mod115.app.pg": "anf",
-    "cmul101_mod155": "compositional",
-    "cmul101_mod155.app.pg": "anf",
     "cmul103_mod187": "compositional",
-    "cmul10_mod123.app.pg": "anf",
     "cmul10_mod213": "compositional",
-    "cmul112_mod141.app.pg": "anf",
-    "cmul113_mod143": "compositional",
-    "cmul113_mod143.app.pg": "anf",
-    "cmul115_mod141.app.pg": "anf",
-    "cmul118_mod183": "compositional",
-    "cmul118_mod183.app.pg": "anf",
-    "cmul120_mod221.app.pg": "anf",
-    "cmul121_mod159": "compositional",
-    "cmul121_mod159.app.pg": "anf",
-    "cmul123_mod133.app.pg": "anf",
     "cmul124_mod237": "compositional",
-    "cmul126_mod155": "compositional",
-    "cmul126_mod155.app.pg": "anf",
     "cmul130_mod237": "compositional",
-    "cmul136_mod141.app.pg": "anf",
     "cmul136_mod235": "compositional",
     "cmul137_mod187": "compositional",
     "cmul139_mod247": "compositional",
-    "cmul13_mod159": "compositional",
-    "cmul13_mod159.app.pg": "anf",
-    "cmul13_mod69.app.pg": "anf",
     "cmul144_mod259": "compositional",
     "cmul145_mod213": "compositional",
-    "cmul148_mod159": "compositional",
-    "cmul148_mod159.app.pg": "anf",
     "cmul148_mod219": "compositional",
     "cmul151_mod213": "compositional",
     "cmul166_mod235": "compositional",
-    "cmul16_mod111.app.pg": "anf",
-    "cmul16_mod115.app.pg": "anf",
-    "cmul16_mod119.app.pg": "anf",
-    "cmul16_mod123.app.pg": "anf",
-    "cmul16_mod133.app.pg": "anf",
-    "cmul16_mod141.app.pg": "anf",
-    "cmul16_mod143": "compositional",
-    "cmul16_mod143.app.pg": "anf",
-    "cmul16_mod155": "compositional",
-    "cmul16_mod155.app.pg": "anf",
-    "cmul16_mod159": "compositional",
-    "cmul16_mod159.app.pg": "anf",
-    "cmul16_mod183": "compositional",
-    "cmul16_mod183.app.pg": "anf",
     "cmul16_mod187": "compositional",
     "cmul16_mod203": "compositional",
-    "cmul16_mod21.app.pg": "anf",
     "cmul16_mod213": "compositional",
     "cmul16_mod215": "compositional",
     "cmul16_mod219": "compositional",
-    "cmul16_mod221.app.pg": "anf",
     "cmul16_mod235": "compositional",
     "cmul16_mod237": "compositional",
     "cmul16_mod247": "compositional",
     "cmul16_mod253": "compositional",
     "cmul16_mod259": "compositional",
     "cmul16_mod3683": "compositional",
-    "cmul16_mod69.app.pg": "anf",
-    "cmul16_mod77.app.pg": "anf",
-    "cmul16_mod85.app.pg": "anf",
-    "cmul16_mod87.app.pg": "anf",
-    "cmul16_mod91.app.pg": "anf",
-    "cmul16_mod93.app.pg": "anf",
-    "cmul16_mod95.app.pg": "anf",
     "cmul170_mod203": "compositional",
     "cmul176_mod215": "compositional",
     "cmul178_mod219": "compositional",
-    "cmul18_mod119.app.pg": "anf",
     "cmul198_mod203": "compositional",
     "cmul19_mod237": "compositional",
     "cmul206_mod235": "compositional",
     "cmul208_mod237": "compositional",
     "cmul21_mod235": "compositional",
-    "cmul22_mod183": "compositional",
-    "cmul22_mod183.app.pg": "anf",
     "cmul236_mod253": "compositional",
     "cmul256_mod259": "compositional",
     "cmul256_mod3683": "compositional",
-    "cmul25_mod133.app.pg": "anf",
-    "cmul25_mod141.app.pg": "anf",
     "cmul25_mod203": "compositional",
-    "cmul25_mod77.app.pg": "anf",
-    "cmul25_mod87.app.pg": "anf",
-    "cmul26_mod115.app.pg": "anf",
-    "cmul28_mod159": "compositional",
-    "cmul28_mod159.app.pg": "anf",
     "cmul2925_mod3683": "compositional",
-    "cmul2_mod111.app.pg": "anf",
-    "cmul2_mod115.app.pg": "anf",
-    "cmul2_mod119.app.pg": "anf",
-    "cmul2_mod123.app.pg": "anf",
-    "cmul2_mod133.app.pg": "anf",
-    "cmul2_mod141.app.pg": "anf",
-    "cmul2_mod143": "compositional",
-    "cmul2_mod143.app.pg": "anf",
-    "cmul2_mod15.app.pg": "anf",
-    "cmul2_mod155": "compositional",
-    "cmul2_mod155.app.pg": "anf",
-    "cmul2_mod159": "compositional",
-    "cmul2_mod159.app.pg": "anf",
-    "cmul2_mod183": "compositional",
-    "cmul2_mod183.app.pg": "anf",
-    "cmul2_mod187.app.pg": "anf",
     "cmul2_mod203": "compositional",
-    "cmul2_mod21.app.pg": "anf",
     "cmul2_mod213": "compositional",
     "cmul2_mod215": "compositional",
     "cmul2_mod219": "compositional",
-    "cmul2_mod221.app.pg": "anf",
     "cmul2_mod235": "compositional",
     "cmul2_mod237": "compositional",
     "cmul2_mod247": "compositional",
     "cmul2_mod253": "compositional",
     "cmul2_mod259": "compositional",
-    "cmul2_mod33.app.pg": "anf",
-    "cmul2_mod35.app.pg": "anf",
     "cmul2_mod3683": "compositional",
-    "cmul2_mod69.app.pg": "anf",
-    "cmul2_mod77.app.pg": "anf",
-    "cmul2_mod85.app.pg": "anf",
-    "cmul2_mod87.app.pg": "anf",
-    "cmul2_mod91.app.pg": "anf",
-    "cmul2_mod93.app.pg": "anf",
-    "cmul2_mod95.app.pg": "anf",
-    "cmul34_mod111.app.pg": "anf",
-    "cmul35_mod221.app.pg": "anf",
-    "cmul36_mod115.app.pg": "anf",
     "cmul36_mod253": "compositional",
-    "cmul36_mod95.app.pg": "anf",
-    "cmul37_mod123.app.pg": "anf",
     "cmul37_mod219": "compositional",
     "cmul3_mod253": "compositional",
     "cmul41_mod215": "compositional",
-    "cmul42_mod143": "compositional",
-    "cmul42_mod143.app.pg": "anf",
     "cmul43_mod213": "compositional",
-    "cmul46_mod111.app.pg": "anf",
-    "cmul48_mod143": "compositional",
-    "cmul48_mod143.app.pg": "anf",
-    "cmul49_mod111.app.pg": "anf",
-    "cmul49_mod69.app.pg": "anf",
-    "cmul4_mod111.app.pg": "anf",
-    "cmul4_mod115.app.pg": "anf",
-    "cmul4_mod119.app.pg": "anf",
-    "cmul4_mod123.app.pg": "anf",
-    "cmul4_mod133.app.pg": "anf",
-    "cmul4_mod141.app.pg": "anf",
-    "cmul4_mod143": "compositional",
-    "cmul4_mod143.app.pg": "anf",
-    "cmul4_mod15.app.pg": "anf",
-    "cmul4_mod155": "compositional",
-    "cmul4_mod155.app.pg": "anf",
-    "cmul4_mod159": "compositional",
-    "cmul4_mod159.app.pg": "anf",
-    "cmul4_mod183": "compositional",
-    "cmul4_mod183.app.pg": "anf",
     "cmul4_mod187": "compositional",
     "cmul4_mod203": "compositional",
-    "cmul4_mod21.app.pg": "anf",
     "cmul4_mod213": "compositional",
     "cmul4_mod215": "compositional",
     "cmul4_mod219": "compositional",
-    "cmul4_mod221.app.pg": "anf",
     "cmul4_mod235": "compositional",
     "cmul4_mod237": "compositional",
     "cmul4_mod247": "compositional",
     "cmul4_mod253": "compositional",
     "cmul4_mod259": "compositional",
     "cmul4_mod3683": "compositional",
-    "cmul4_mod69.app.pg": "anf",
-    "cmul4_mod77.app.pg": "anf",
-    "cmul4_mod85.app.pg": "anf",
-    "cmul4_mod87.app.pg": "anf",
-    "cmul4_mod91.app.pg": "anf",
-    "cmul4_mod93.app.pg": "anf",
-    "cmul4_mod95.app.pg": "anf",
-    "cmul52_mod69.app.pg": "anf",
     "cmul53_mod203": "compositional",
     "cmul55_mod219": "compositional",
     "cmul55_mod247": "compositional",
-    "cmul55_mod69.app.pg": "anf",
-    "cmul58_mod69.app.pg": "anf",
-    "cmul61_mod141.app.pg": "anf",
     "cmul61_mod235": "compositional",
     "cmul61_mod247": "compositional",
-    "cmul61_mod95.app.pg": "anf",
-    "cmul64_mod93.app.pg": "anf",
-    "cmul66_mod155": "compositional",
-    "cmul66_mod155.app.pg": "anf",
-    "cmul66_mod95.app.pg": "anf",
     "cmul69_mod187": "compositional",
-    "cmul6_mod115.app.pg": "anf",
-    "cmul6_mod95.app.pg": "anf",
-    "cmul70_mod111.app.pg": "anf",
-    "cmul70_mod93.app.pg": "anf",
-    "cmul73_mod183": "compositional",
-    "cmul73_mod183.app.pg": "anf",
     "cmul73_mod237": "compositional",
     "cmul74_mod203": "compositional",
-    "cmul74_mod91.app.pg": "anf",
-    "cmul7_mod111.app.pg": "anf",
-    "cmul7_mod15.app.pg": "anf",
-    "cmul81_mod115.app.pg": "anf",
     "cmul81_mod247": "compositional",
     "cmul81_mod253": "compositional",
     "cmul81_mod259": "compositional",
-    "cmul81_mod95.app.pg": "anf",
-    "cmul82_mod87.app.pg": "anf",
-    "cmul86_mod119.app.pg": "anf",
     "cmul86_mod187": "compositional",
     "cmul86_mod259": "compositional",
-    "cmul93_mod133.app.pg": "anf",
-    "cmul97_mod159": "compositional",
-    "cmul97_mod159.app.pg": "anf",
     "cmul9_mod247": "compositional",
     "cmul9_mod253": "compositional",
     "cmul9_mod259": "compositional",
-    "cmul9_mod77.app.pg": "anf",
-    "code832_tccz.app.pg": "groebner",
-    "cuccaro_add2.app.pg": "anf",
-    "cuccaro_add3.app.pg": "anf",
-    "d4_mult.app.pg": "anf",
-    "gf4_frob.app.pg": "anf",
-    "gf4_mul.app.pg": "anf",
-    "gf8_frob.app.pg": "anf",
-    "gf8_inv.app.pg": "anf",
-    "gf8_mul.app.pg": "anf",
-    "gf8_mulx.app.pg": "anf",
     "maj_braid_ybe": "compositional",
-    "mub4_b1_s0.app.pg": "anf",
-    "mub4_b1_s1.app.pg": "anf",
-    "mub4_b1_s2.app.pg": "anf",
-    "mub4_b1_s3.app.pg": "anf",
-    "parity4_transform.app.pg": "anf",
-    "q8_qft": "compositional",
-    "qrom22.app.pg": "anf",
-    "qutrit_sum.app.pg": "anf",
-    "qutrit_x3.app.pg": "anf",
-    "repcode3_bitflip.app.pg": "anf",
-    "rs_synd_core.app.pg": "anf",
-    "s3_mult.app.pg": "anf",
-    "swap_via_cnot.app.pg": "anf",
-    "syndrome3_bitflip.app.pg": "anf"
+    "q8_qft": "compositional"
   },
   "primary_seal_only": [
     "ghz16_structural",
@@ -381,12 +207,10 @@
       "tncontract"
     ],
     "bk4_transform": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "bk4_transform.app.pg": [
-      "anf"
     ],
     "bk_hop01": [
       "compositional",
@@ -411,20 +235,16 @@
     ],
     "c3_diag_full3": [
       "compositional",
+      "groebner",
       "stabrank",
       "tncontract"
-    ],
-    "c3_diag_full3.app.pg": [
-      "groebner"
     ],
     "c3_diag_ladder3": [
       "compositional",
+      "groebner",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "c3_diag_ladder3.app.pg": [
-      "groebner"
     ],
     "ccz_rediscovered": [
       "compositional",
@@ -539,13 +359,11 @@
     ],
     "cliff1_s": [
       "compositional",
+      "groebner",
       "matchgate",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "cliff1_s.app.pg": [
-      "groebner"
     ],
     "cliff1_sh": [
       "compositional",
@@ -604,13 +422,11 @@
     ],
     "cliff1_sss": [
       "compositional",
+      "groebner",
       "matchgate",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "cliff1_sss.app.pg": [
-      "groebner"
     ],
     "cluster10": [
       "compositional",
@@ -666,111 +482,83 @@
       "tncontract"
     ],
     "cmp2_ge": [
+      "anf",
       "compositional",
       "pathsum",
       "stabrank",
       "tncontract"
     ],
-    "cmp2_ge.app.pg": [
-      "anf"
-    ],
     "cmul100_mod123": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul100_mod123.app.pg": [
-      "anf"
     ],
     "cmul100_mod133": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul100_mod133.app.pg": [
-      "anf"
     ],
     "cmul100_mod213": [
       "compositional"
     ],
     "cmul101_mod115": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "cmul101_mod115.app.pg": [
-      "anf"
-    ],
     "cmul101_mod155": [
+      "anf",
       "compositional"
-    ],
-    "cmul101_mod155.app.pg": [
-      "anf"
     ],
     "cmul103_mod187": [
       "compositional"
     ],
     "cmul10_mod123": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul10_mod123.app.pg": [
-      "anf"
     ],
     "cmul10_mod213": [
       "compositional"
     ],
     "cmul112_mod141": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul112_mod141.app.pg": [
-      "anf"
     ],
     "cmul113_mod143": [
+      "anf",
       "compositional"
-    ],
-    "cmul113_mod143.app.pg": [
-      "anf"
     ],
     "cmul115_mod141": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul115_mod141.app.pg": [
-      "anf"
     ],
     "cmul118_mod183": [
+      "anf",
       "compositional"
-    ],
-    "cmul118_mod183.app.pg": [
-      "anf"
     ],
     "cmul120_mod221": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul120_mod221.app.pg": [
-      "anf"
     ],
     "cmul121_mod159": [
+      "anf",
       "compositional"
     ],
-    "cmul121_mod159.app.pg": [
-      "anf"
-    ],
     "cmul123_mod133": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul123_mod133.app.pg": [
-      "anf"
     ],
     "cmul124_mod237": [
       "compositional"
     ],
     "cmul126_mod155": [
+      "anf",
       "compositional"
-    ],
-    "cmul126_mod155.app.pg": [
-      "anf"
     ],
     "cmul130_mod237": [
       "compositional"
@@ -780,11 +568,9 @@
       "tncontract"
     ],
     "cmul136_mod141": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul136_mod141.app.pg": [
-      "anf"
     ],
     "cmul136_mod235": [
       "compositional"
@@ -796,17 +582,13 @@
       "compositional"
     ],
     "cmul13_mod159": [
+      "anf",
       "compositional"
     ],
-    "cmul13_mod159.app.pg": [
-      "anf"
-    ],
     "cmul13_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul13_mod69.app.pg": [
-      "anf"
     ],
     "cmul144_mod259": [
       "compositional"
@@ -815,10 +597,8 @@
       "compositional"
     ],
     "cmul148_mod159": [
+      "anf",
       "compositional"
-    ],
-    "cmul148_mod159.app.pg": [
-      "anf"
     ],
     "cmul148_mod219": [
       "compositional"
@@ -830,74 +610,54 @@
       "compositional"
     ],
     "cmul16_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod111.app.pg": [
-      "anf"
     ],
     "cmul16_mod115": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod115.app.pg": [
-      "anf"
     ],
     "cmul16_mod119": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod119.app.pg": [
-      "anf"
     ],
     "cmul16_mod123": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod123.app.pg": [
-      "anf"
     ],
     "cmul16_mod1285": [
       "compositional",
       "tncontract"
     ],
     "cmul16_mod133": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod133.app.pg": [
-      "anf"
     ],
     "cmul16_mod141": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "cmul16_mod141.app.pg": [
-      "anf"
-    ],
     "cmul16_mod143": [
+      "anf",
       "compositional"
-    ],
-    "cmul16_mod143.app.pg": [
-      "anf"
     ],
     "cmul16_mod155": [
+      "anf",
       "compositional"
-    ],
-    "cmul16_mod155.app.pg": [
-      "anf"
     ],
     "cmul16_mod159": [
+      "anf",
       "compositional"
-    ],
-    "cmul16_mod159.app.pg": [
-      "anf"
     ],
     "cmul16_mod183": [
+      "anf",
       "compositional"
-    ],
-    "cmul16_mod183.app.pg": [
-      "anf"
     ],
     "cmul16_mod187": [
       "compositional"
@@ -906,12 +666,10 @@
       "compositional"
     ],
     "cmul16_mod21": [
+      "anf",
       "compositional",
       "qmdd",
       "tncontract"
-    ],
-    "cmul16_mod21.app.pg": [
-      "anf"
     ],
     "cmul16_mod213": [
       "compositional"
@@ -923,11 +681,9 @@
       "compositional"
     ],
     "cmul16_mod221": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod221.app.pg": [
-      "anf"
     ],
     "cmul16_mod235": [
       "compositional"
@@ -956,53 +712,39 @@
       "tncontract"
     ],
     "cmul16_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod69.app.pg": [
-      "anf"
     ],
     "cmul16_mod77": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod77.app.pg": [
-      "anf"
     ],
     "cmul16_mod85": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod85.app.pg": [
-      "anf"
     ],
     "cmul16_mod87": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod87.app.pg": [
-      "anf"
     ],
     "cmul16_mod91": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod91.app.pg": [
-      "anf"
     ],
     "cmul16_mod93": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod93.app.pg": [
-      "anf"
     ],
     "cmul16_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul16_mod95.app.pg": [
-      "anf"
     ],
     "cmul170_mod203": [
       "compositional"
@@ -1014,11 +756,9 @@
       "compositional"
     ],
     "cmul18_mod119": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul18_mod119.app.pg": [
-      "anf"
     ],
     "cmul198_mod203": [
       "compositional"
@@ -1036,10 +776,8 @@
       "compositional"
     ],
     "cmul22_mod183": [
+      "anf",
       "compositional"
-    ],
-    "cmul22_mod183.app.pg": [
-      "anf"
     ],
     "cmul236_mod253": [
       "compositional"
@@ -1063,145 +801,107 @@
       "tncontract"
     ],
     "cmul25_mod133": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul25_mod133.app.pg": [
-      "anf"
     ],
     "cmul25_mod141": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul25_mod141.app.pg": [
-      "anf"
     ],
     "cmul25_mod203": [
       "compositional"
     ],
     "cmul25_mod77": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul25_mod77.app.pg": [
-      "anf"
     ],
     "cmul25_mod87": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul25_mod87.app.pg": [
-      "anf"
     ],
     "cmul26_mod115": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "cmul26_mod115.app.pg": [
-      "anf"
-    ],
     "cmul28_mod159": [
+      "anf",
       "compositional"
-    ],
-    "cmul28_mod159.app.pg": [
-      "anf"
     ],
     "cmul2925_mod3683": [
       "compositional"
     ],
     "cmul2_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod111.app.pg": [
-      "anf"
     ],
     "cmul2_mod115": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod115.app.pg": [
-      "anf"
     ],
     "cmul2_mod119": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod119.app.pg": [
-      "anf"
     ],
     "cmul2_mod123": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod123.app.pg": [
-      "anf"
     ],
     "cmul2_mod1285": [
       "compositional",
       "tncontract"
     ],
     "cmul2_mod133": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod133.app.pg": [
-      "anf"
     ],
     "cmul2_mod141": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod141.app.pg": [
-      "anf"
     ],
     "cmul2_mod143": [
+      "anf",
       "compositional"
-    ],
-    "cmul2_mod143.app.pg": [
-      "anf"
     ],
     "cmul2_mod15": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod15.app.pg": [
-      "anf"
     ],
     "cmul2_mod155": [
+      "anf",
       "compositional"
-    ],
-    "cmul2_mod155.app.pg": [
-      "anf"
     ],
     "cmul2_mod159": [
+      "anf",
       "compositional"
-    ],
-    "cmul2_mod159.app.pg": [
-      "anf"
     ],
     "cmul2_mod183": [
+      "anf",
       "compositional"
     ],
-    "cmul2_mod183.app.pg": [
-      "anf"
-    ],
     "cmul2_mod187": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod187.app.pg": [
-      "anf"
     ],
     "cmul2_mod203": [
       "compositional"
     ],
     "cmul2_mod21": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod21.app.pg": [
-      "anf"
     ],
     "cmul2_mod213": [
       "compositional"
@@ -1213,11 +913,9 @@
       "compositional"
     ],
     "cmul2_mod221": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod221.app.pg": [
-      "anf"
     ],
     "cmul2_mod235": [
       "compositional"
@@ -1235,18 +933,14 @@
       "compositional"
     ],
     "cmul2_mod33": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod33.app.pg": [
-      "anf"
     ],
     "cmul2_mod35": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod35.app.pg": [
-      "anf"
     ],
     "cmul2_mod3683": [
       "compositional"
@@ -1260,91 +954,67 @@
       "tncontract"
     ],
     "cmul2_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod69.app.pg": [
-      "anf"
     ],
     "cmul2_mod77": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod77.app.pg": [
-      "anf"
     ],
     "cmul2_mod85": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod85.app.pg": [
-      "anf"
     ],
     "cmul2_mod87": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod87.app.pg": [
-      "anf"
     ],
     "cmul2_mod91": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod91.app.pg": [
-      "anf"
     ],
     "cmul2_mod93": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod93.app.pg": [
-      "anf"
     ],
     "cmul2_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul2_mod95.app.pg": [
-      "anf"
     ],
     "cmul34_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul34_mod111.app.pg": [
-      "anf"
     ],
     "cmul35_mod221": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul35_mod221.app.pg": [
-      "anf"
     ],
     "cmul36_mod115": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul36_mod115.app.pg": [
-      "anf"
     ],
     "cmul36_mod253": [
       "compositional"
     ],
     "cmul36_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul36_mod95.app.pg": [
-      "anf"
     ],
     "cmul37_mod123": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul37_mod123.app.pg": [
-      "anf"
     ],
     "cmul37_mod219": [
       "compositional"
@@ -1356,118 +1026,86 @@
       "compositional"
     ],
     "cmul42_mod143": [
+      "anf",
       "compositional"
-    ],
-    "cmul42_mod143.app.pg": [
-      "anf"
     ],
     "cmul43_mod213": [
       "compositional"
     ],
     "cmul46_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul46_mod111.app.pg": [
-      "anf"
     ],
     "cmul48_mod143": [
+      "anf",
       "compositional"
     ],
-    "cmul48_mod143.app.pg": [
-      "anf"
-    ],
     "cmul49_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul49_mod111.app.pg": [
-      "anf"
     ],
     "cmul49_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul49_mod69.app.pg": [
-      "anf"
     ],
     "cmul4_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod111.app.pg": [
-      "anf"
     ],
     "cmul4_mod115": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod115.app.pg": [
-      "anf"
     ],
     "cmul4_mod119": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod119.app.pg": [
-      "anf"
     ],
     "cmul4_mod123": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod123.app.pg": [
-      "anf"
     ],
     "cmul4_mod1285": [
       "compositional",
       "tncontract"
     ],
     "cmul4_mod133": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod133.app.pg": [
-      "anf"
     ],
     "cmul4_mod141": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "cmul4_mod141.app.pg": [
-      "anf"
-    ],
     "cmul4_mod143": [
+      "anf",
       "compositional"
     ],
-    "cmul4_mod143.app.pg": [
-      "anf"
-    ],
     "cmul4_mod15": [
+      "anf",
       "compositional",
       "qmdd",
       "tncontract"
     ],
-    "cmul4_mod15.app.pg": [
-      "anf"
-    ],
     "cmul4_mod155": [
+      "anf",
       "compositional"
-    ],
-    "cmul4_mod155.app.pg": [
-      "anf"
     ],
     "cmul4_mod159": [
+      "anf",
       "compositional"
-    ],
-    "cmul4_mod159.app.pg": [
-      "anf"
     ],
     "cmul4_mod183": [
+      "anf",
       "compositional"
-    ],
-    "cmul4_mod183.app.pg": [
-      "anf"
     ],
     "cmul4_mod187": [
       "compositional"
@@ -1476,12 +1114,10 @@
       "compositional"
     ],
     "cmul4_mod21": [
+      "anf",
       "compositional",
       "qmdd",
       "tncontract"
-    ],
-    "cmul4_mod21.app.pg": [
-      "anf"
     ],
     "cmul4_mod213": [
       "compositional"
@@ -1493,11 +1129,9 @@
       "compositional"
     ],
     "cmul4_mod221": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod221.app.pg": [
-      "anf"
     ],
     "cmul4_mod235": [
       "compositional"
@@ -1526,60 +1160,44 @@
       "tncontract"
     ],
     "cmul4_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod69.app.pg": [
-      "anf"
     ],
     "cmul4_mod77": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod77.app.pg": [
-      "anf"
     ],
     "cmul4_mod85": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod85.app.pg": [
-      "anf"
     ],
     "cmul4_mod87": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod87.app.pg": [
-      "anf"
     ],
     "cmul4_mod91": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod91.app.pg": [
-      "anf"
     ],
     "cmul4_mod93": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod93.app.pg": [
-      "anf"
     ],
     "cmul4_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul4_mod95.app.pg": [
-      "anf"
     ],
     "cmul52_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul52_mod69.app.pg": [
-      "anf"
     ],
     "cmul53_mod203": [
       "compositional"
@@ -1591,25 +1209,19 @@
       "compositional"
     ],
     "cmul55_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul55_mod69.app.pg": [
-      "anf"
     ],
     "cmul58_mod69": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul58_mod69.app.pg": [
-      "anf"
     ],
     "cmul61_mod141": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul61_mod141.app.pg": [
-      "anf"
     ],
     "cmul61_mod235": [
       "compositional"
@@ -1618,68 +1230,50 @@
       "compositional"
     ],
     "cmul61_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul61_mod95.app.pg": [
-      "anf"
     ],
     "cmul64_mod93": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul64_mod93.app.pg": [
-      "anf"
     ],
     "cmul66_mod155": [
+      "anf",
       "compositional"
     ],
-    "cmul66_mod155.app.pg": [
-      "anf"
-    ],
     "cmul66_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul66_mod95.app.pg": [
-      "anf"
     ],
     "cmul69_mod187": [
       "compositional"
     ],
     "cmul6_mod115": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul6_mod115.app.pg": [
-      "anf"
     ],
     "cmul6_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul6_mod95.app.pg": [
-      "anf"
     ],
     "cmul70_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul70_mod111.app.pg": [
-      "anf"
     ],
     "cmul70_mod93": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "cmul70_mod93.app.pg": [
-      "anf"
-    ],
     "cmul73_mod183": [
+      "anf",
       "compositional"
-    ],
-    "cmul73_mod183.app.pg": [
-      "anf"
     ],
     "cmul73_mod237": [
       "compositional"
@@ -1688,32 +1282,24 @@
       "compositional"
     ],
     "cmul74_mod91": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul74_mod91.app.pg": [
-      "anf"
     ],
     "cmul7_mod111": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul7_mod111.app.pg": [
-      "anf"
     ],
     "cmul7_mod15": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul7_mod15.app.pg": [
-      "anf"
     ],
     "cmul81_mod115": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul81_mod115.app.pg": [
-      "anf"
     ],
     "cmul81_mod247": [
       "compositional"
@@ -1725,25 +1311,19 @@
       "compositional"
     ],
     "cmul81_mod95": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul81_mod95.app.pg": [
-      "anf"
     ],
     "cmul82_mod87": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul82_mod87.app.pg": [
-      "anf"
     ],
     "cmul86_mod119": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul86_mod119.app.pg": [
-      "anf"
     ],
     "cmul86_mod187": [
       "compositional"
@@ -1752,17 +1332,13 @@
       "compositional"
     ],
     "cmul93_mod133": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "cmul93_mod133.app.pg": [
-      "anf"
-    ],
     "cmul97_mod159": [
+      "anf",
       "compositional"
-    ],
-    "cmul97_mod159.app.pg": [
-      "anf"
     ],
     "cmul9_mod247": [
       "compositional"
@@ -1774,11 +1350,9 @@
       "compositional"
     ],
     "cmul9_mod77": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "cmul9_mod77.app.pg": [
-      "anf"
     ],
     "code513_encoder": [
       "compositional",
@@ -1792,13 +1366,11 @@
     ],
     "code832_tccz": [
       "compositional",
+      "groebner",
       "matchgate",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "code832_tccz.app.pg": [
-      "groebner"
     ],
     "cry_pi": [
       "compositional",
@@ -1811,21 +1383,17 @@
       "tncontract"
     ],
     "cuccaro_add2": [
+      "anf",
       "compositional",
       "pathsum",
       "stabrank",
       "tncontract"
     ],
-    "cuccaro_add2.app.pg": [
-      "anf"
-    ],
     "cuccaro_add3": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "cuccaro_add3.app.pg": [
-      "anf"
     ],
     "cz_rediscovered": [
       "compositional",
@@ -1843,12 +1411,10 @@
       "tncontract"
     ],
     "d4_mult": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "d4_mult.app.pg": [
-      "anf"
     ],
     "d4_qft": [
       "compositional",
@@ -1982,52 +1548,40 @@
       "tncontract"
     ],
     "gf4_frob": [
+      "anf",
       "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
     ],
-    "gf4_frob.app.pg": [
-      "anf"
-    ],
     "gf4_mul": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "gf4_mul.app.pg": [
-      "anf"
     ],
     "gf8_frob": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "gf8_frob.app.pg": [
-      "anf"
     ],
     "gf8_inv": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "gf8_inv.app.pg": [
-      "anf"
     ],
     "gf8_mul": [
+      "anf",
       "compositional",
       "tncontract"
     ],
-    "gf8_mul.app.pg": [
-      "anf"
-    ],
     "gf8_mulx": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "gf8_mulx.app.pg": [
-      "anf"
     ],
     "ghz10": [
       "compositional",
@@ -2168,40 +1722,32 @@
       "tncontract"
     ],
     "mub4_b1_s0": [
+      "anf",
       "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "mub4_b1_s0.app.pg": [
-      "anf"
     ],
     "mub4_b1_s1": [
+      "anf",
       "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "mub4_b1_s1.app.pg": [
-      "anf"
     ],
     "mub4_b1_s2": [
+      "anf",
       "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "mub4_b1_s2.app.pg": [
-      "anf"
     ],
     "mub4_b1_s3": [
+      "anf",
       "compositional",
       "qmdd",
       "stabrank",
       "tncontract"
-    ],
-    "mub4_b1_s3.app.pg": [
-      "anf"
     ],
     "mub4_b2_s0": [
       "compositional",
@@ -2332,12 +1878,10 @@
       "tncontract"
     ],
     "parity4_transform": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "parity4_transform.app.pg": [
-      "anf"
     ],
     "peps22_rvb": [
       "compositional",
@@ -2411,12 +1955,10 @@
       "tncontract"
     ],
     "qrom22": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "qrom22.app.pg": [
-      "anf"
     ],
     "qsp_d1": [
       "compositional",
@@ -2459,20 +2001,16 @@
       "tncontract"
     ],
     "qutrit_sum": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "qutrit_sum.app.pg": [
-      "anf"
     ],
     "qutrit_x3": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "qutrit_x3.app.pg": [
-      "anf"
     ],
     "qw_c4_2steps": [
       "compositional",
@@ -2507,12 +2045,10 @@
       "tncontract"
     ],
     "repcode3_bitflip": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "repcode3_bitflip.app.pg": [
-      "anf"
     ],
     "repcode3_phaseflip": [
       "compositional",
@@ -2564,12 +2100,10 @@
       "subspace"
     ],
     "rs_synd_core": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "rs_synd_core.app.pg": [
-      "anf"
     ],
     "rxx_pi8": [
       "compositional",
@@ -2602,11 +2136,9 @@
       "tncontract"
     ],
     "s3_mult": [
+      "anf",
       "compositional",
       "tncontract"
-    ],
-    "s3_mult.app.pg": [
-      "anf"
     ],
     "s4_mult": [
       "compositional",
@@ -2866,20 +2398,16 @@
       "tncontract"
     ],
     "swap_via_cnot": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "swap_via_cnot.app.pg": [
-      "anf"
     ],
     "syndrome3_bitflip": [
+      "anf",
       "compositional",
       "stabrank",
       "tncontract"
-    ],
-    "syndrome3_bitflip.app.pg": [
-      "anf"
     ],
     "szegedy_2state_p12": [
       "compositional",
