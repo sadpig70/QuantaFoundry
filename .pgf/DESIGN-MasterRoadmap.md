@@ -490,6 +490,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # INV-F1 3/3 byte-identical → --seal 267(a=2·work 9·c9x·신규모듈 0) → subspace 즉시상환(131072/131072 전수) → build(511앱·root a59d709d) →
         # semantic/citation → 앵커갱신 → second_oracle 83/83·guard 20/0 → ★S1 인프라 첫 통합실증: 신규 cmul 8앱 compositional deep 자동커버(128)·
         # coverage 509/511·primary-seal-only 2 유지 → doc_counts 5문서 동기화 → reproduce --changed-only + full REPRODUCED. tier1 35→36.
+    QfaLoopRun_20260712 // qfa-loop frontier-factory 무인 연속 3라운드 — shor291·295·299 자율봉인 (done — 2026-07-12)
+        # 3/3 verified-commit(gates changed·invariants_held=True): shor291=3×97(8033cbe5)·shor295=5×59(ddde8c26)·shor299=13×23(0fd3fe16). 95/543앱·tier1 39.
+        # ★선행수정: 엔진 stale 경로 2건(scripts/seal_gate_ci.py→qf_witness/seal/, ScriptsShimCleanup 누락분) — SkillPath 류 버그.
+        # 후처리: compositional deep 재개(150 — 킬된 재개 run 의 사이드카 일시 결손 자가치유 확인)·coverage 541/543·primary-only 2 유지·앵커 PASS·full 최종보증.
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).

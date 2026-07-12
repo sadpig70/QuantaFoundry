@@ -321,7 +321,7 @@ def scan_stale(base: dict) -> dict:
     # root16 = 정확·저오탐 신호(결정론 앵커). app-count narrative 는 표현이 다양해 정규식 오탐이
     # 많으므로 자동탐지하지 않는다(task_record 누적 규율로 관리 — 정직성 > 노이즈).
     root_re = re.compile(r"([0-9a-f]{16})[0-9a-f]*[…\.]*")
-    targets = EXT_DOCS + [os.path.join(ROOT, "scripts", "seal_gate_ci.py")]
+    targets = EXT_DOCS + [os.path.join(ROOT, "qf_witness", "seal", "seal_gate_ci.py")]
     stale = []
     for p in targets:
         if not os.path.exists(p):
@@ -345,7 +345,7 @@ def anchor_sync() -> dict:
     """멱등 결정론 앵커 자동 동기화(frontier 라운드 필수): seal_gate_ci EXPECT_DEFAULT → 현재 root.
     + CITATION/SEMANTIC 자동재생성(citation_gen·semantic_guarantee). narrative 문서는 건드리지 않음."""
     cur16 = read_root()[:16]
-    sgci = os.path.join(ROOT, "scripts", "seal_gate_ci.py")
+    sgci = os.path.join(ROOT, "qf_witness", "seal", "seal_gate_ci.py")
     txt = open(sgci, encoding="utf-8").read()
     m = re.search(r'EXPECT_DEFAULT\s*=\s*"([0-9a-f]+)"', txt)
     updated = False
