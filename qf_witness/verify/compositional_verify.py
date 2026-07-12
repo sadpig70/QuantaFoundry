@@ -54,10 +54,13 @@ SIDECAR = os.path.join(PROOFS, "COMPOSITIONAL-VERIFY.json")
 INDEP = so.INDEP
 BUDGET_FULL = 100_000_000       # (2^n)^2·steps ≤ 1e8 (1회 sidecar 생성)
 BUDGET_QUICK = 20_000_000       # reproduce witness 스모크 (sidecar 미기록)
-BUDGET_DEEP = 100_000_000_000   # --deep 상한 1e11 — 초과 몬스터(cmul*_mod3683 등)=deep_excluded
+BUDGET_DEEP = 100_000_000_000   # --deep 기본 상한 1e11 (--budget 으로 확장 가능 — 몬스터 청크용)
 N_MAX = 13
 MEM_BUDGET = 6 * 2**30          # 예측 peak 상한 6GB (물리 16GB 머신 안전 마진, 결정론적 상수)
 DEEP_SIDECAR = os.path.join(PROOFS, "COMPOSITIONAL-DEEP.json")
+CKPT_DIR = os.path.join(ROOT, "_workspace", "deep_ckpt")   # gitignored 머신로컬
+CKPT_MIN_COST = 50_000_000_000  # 이 cost 이상 앱만 intra-app 체크포인트 (오버헤드 회피)
+CKPT_INTERVAL = 600             # 초 — 체크포인트 주기 (V 1GB 저장 ~수 초)
 
 _MOD_K: dict = {}               # gid → qubit 수 k (spec meta, 행렬 미구성)
 
@@ -254,6 +257,74 @@ def _teeth_one(appid, n, parsed):
     return {"app": appid, "swap": list(pair), "mismatch": perturbed != sealed}
 
 
+def _ckpt_paths(appid, idx=None):
+    meta = os.path.join(CKPT_DIR, f"{appid}.meta.json")
+    arr = None if idx is None else os.path.join(CKPT_DIR, f"{appid}.V.{idx}.npy")
+    return meta, arr
+
+
+def _reassemble_ckpt(appid, n, parsed, deadline=None):
+    """intra-app 체크포인트 재조립(몬스터용): V+idx 주기 저장·재개. 결정론 — 재개 == 무중단.
+
+    deadline(epoch 초) 초과 시 체크포인트 저장 후 None(미완, 다음 run 이 이어감).
+    저장 순서(크래시 안전): V.{idx}.npy 기록 → meta 원자 교체 → 옛 V 파일 삭제.
+    완료 시 체크포인트 삭제 후 u_hash 반환.
+    """
+    import time
+    os.makedirs(CKPT_DIR, exist_ok=True)
+    meta_p, _ = _ckpt_paths(appid)
+    V, start = None, 0
+    if os.path.exists(meta_p):
+        try:
+            m = json.load(open(meta_p, encoding="utf-8"))
+            _, arr_p = _ckpt_paths(appid, m["idx"])
+            if (m.get("n") == n and m.get("n_steps") == len(parsed)
+                    and arr_p and os.path.exists(arr_p)):
+                V = np.load(arr_p)
+                start = m["idx"]
+        except Exception:
+            V, start = None, 0
+    if V is None:
+        V = np.eye(1 << n, dtype=complex)
+        start = 0
+
+    def save(idx):
+        _, arr_new = _ckpt_paths(appid, idx)
+        tmp = arr_new + ".tmp.npy"
+        np.save(tmp, V)
+        os.replace(tmp, arr_new)
+        mtmp = meta_p + ".tmp"
+        with open(mtmp, "w", encoding="utf-8") as f:
+            json.dump({"appid": appid, "n": n, "n_steps": len(parsed), "idx": idx}, f)
+        os.replace(mtmp, meta_p)
+        for old in glob.glob(os.path.join(CKPT_DIR, f"{appid}.V.*.npy")):
+            if old != arr_new:
+                try:
+                    os.remove(old)
+                except OSError:
+                    pass
+
+    cache, last = {}, time.time()
+    for idx in range(start, len(parsed)):
+        gid, tg, _k = parsed[idx]
+        if gid not in cache:
+            cache[gid] = INDEP[gid]()
+        V = apply_left(cache[gid], tg, n, V)
+        now = time.time()
+        if now - last >= CKPT_INTERVAL or (deadline is not None and now > deadline):
+            save(idx + 1)
+            last = now
+            if deadline is not None and now > deadline:
+                return None
+    h = vs.hash_unitary(V)
+    for p in glob.glob(os.path.join(CKPT_DIR, f"{appid}.V.*.npy")) + [meta_p]:
+        try:
+            os.remove(p)
+        except OSError:
+            pass
+    return h
+
+
 def _write_deep(payload):
     """앱 단위 원자적 재기록 — kill 시에도 진행분 보존(resumable)."""
     os.makedirs(PROOFS, exist_ok=True)
@@ -264,16 +335,23 @@ def _write_deep(payload):
     os.replace(tmp, DEEP_SIDECAR)
 
 
-def run_deep(max_hours=None):
-    """over_budget(BUDGET_FULL<cost≤BUDGET_DEEP·mem 통과) 앱 심층 검증 — cost 오름차순·resumable."""
+def run_deep(max_hours=None, budget=None):
+    """over_budget(BUDGET_FULL<cost≤budget·mem 통과) 앱 심층 검증 — cost 오름차순·resumable.
+
+    budget 기본=BUDGET_DEEP(1e11). --budget 확장 시 몬스터가 target 에 들어오며, cost≥CKPT_MIN_COST
+    앱은 intra-app 체크포인트로 세션 청크(--max-hours) 를 넘어 이어진다. 이전 sidecar 의 verified 는
+    현재 budget 과 무관하게 sealed 불변이면 단조 보존(예산 축소 rerun 이 기록을 지우지 않음).
+    """
     import time
     t0 = time.time()
+    deadline = None if max_hours is None else t0 + max_hours * 3600
+    budget = BUDGET_DEEP if budget is None else int(budget)
     elig, _skip = _eligible()
-    targets = sorted([e for e in elig if BUDGET_FULL < e[3] <= BUDGET_DEEP and e[4] <= MEM_BUDGET],
+    targets = sorted([e for e in elig if BUDGET_FULL < e[3] <= budget and e[4] <= MEM_BUDGET],
                      key=lambda e: e[3])
-    excluded = sorted(e[0] for e in elig if e[3] > BUDGET_DEEP)
+    excluded = sorted(e[0] for e in elig if e[3] > budget)
     mem_excluded = sorted(e[0] for e in elig
-                          if BUDGET_FULL < e[3] <= BUDGET_DEEP and e[4] > MEM_BUDGET)
+                          if BUDGET_FULL < e[3] <= budget and e[4] > MEM_BUDGET)
     prev = {}
     if os.path.exists(DEEP_SIDECAR):
         try:
@@ -284,16 +362,24 @@ def run_deep(max_hours=None):
             prev = {}
     verified, failed, remaining = {}, [], []
     teeth = None
+    target_ids = {e[0] for e in targets}
+    for appid, pv in prev.items():                     # 단조 보존: 예산 밖 기존 기록도 sealed 불변이면 유지
+        if appid in target_ids:
+            continue
+        sp = os.path.join(APPREG, f"{appid}.sealed.json")
+        if os.path.exists(sp) and json.load(open(sp, encoding="utf-8"))["u_hash"] == pv.get("u_hash"):
+            verified[appid] = pv
 
     def payload():
         return {
             "_schema": "compositional-deep/v1",
             "_note": ("compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). "
                       "동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 "
-                      "금지). cost>BUDGET_DEEP 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 "
+                      "금지). cost>budget 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 "
                       "tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 "
-                      "CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님)."),
-            "budget_low": BUDGET_FULL, "budget_high": BUDGET_DEEP, "mem_budget": MEM_BUDGET,
+                      "CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님). "
+                      "cost≥CKPT_MIN_COST 앱은 intra-app 체크포인트(결정론: 재개==무중단)로 청크 소화."),
+            "budget_low": BUDGET_FULL, "budget_high": budget, "mem_budget": MEM_BUDGET,
             "n_verified": len(verified), "n_targets": len(targets),
             "deep_excluded": excluded, "mem_excluded": mem_excluded,
             "remaining": sorted(remaining), "teeth": teeth,
@@ -311,12 +397,21 @@ def run_deep(max_hours=None):
         if pv and pv.get("u_hash") == sealed and pv.get("steps") == len(parsed):
             verified[appid] = pv                       # resume: sealed·배선 불변 → 보존
             continue
-        if stopped or (max_hours is not None and time.time() - t0 > max_hours * 3600):
+        if stopped or (deadline is not None and time.time() > deadline):
             stopped = True
             remaining.append(appid)
             continue
         t1 = time.time()
-        got = _reassemble(n, parsed)
+        if cost >= CKPT_MIN_COST:
+            got = _reassemble_ckpt(appid, n, parsed, deadline=deadline)
+            if got is None:                            # 청크 소진 — ckpt 보존, 다음 run 이 이어감
+                print(f"deep: {appid} checkpointed (chunk limit) — resume next run", flush=True)
+                stopped = True
+                remaining.append(appid)
+                _write_deep(payload())
+                continue
+        else:
+            got = _reassemble(n, parsed)
         entry = {"n": n, "steps": len(parsed), "inlined": inlined, "cost": cost,
                  "u_hash": sealed, "seconds": round(time.time() - t1, 1)}
         if got == sealed:
@@ -344,7 +439,10 @@ def main():
         hours = None
         if "--max-hours" in argv:
             hours = float(argv[argv.index("--max-hours") + 1])
-        p = run_deep(max_hours=hours)
+        budget = None
+        if "--budget" in argv:
+            budget = float(argv[argv.index("--budget") + 1])
+        p = run_deep(max_hours=hours, budget=budget)
         print(f"compositional_deep: verified={p['n_verified']}/{p['n_targets']} "
               f"remaining={len(p['remaining'])} excluded={len(p['deep_excluded'])} "
               f"mem_excluded={len(p['mem_excluded'])} failed={p['failed']} "

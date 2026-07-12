@@ -16,7 +16,7 @@
       "sidecar": "*.column_proof.json"
     },
     "compositional": {
-      "covered": 459,
+      "covered": 460,
       "sidecar": "COMPOSITIONAL-VERIFY.json"
     },
     "cuc": {
@@ -61,8 +61,8 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 254,
-    "2": 149,
+    "1": 253,
+    "2": 150,
     "3": 152,
     "4": 82,
     "5": 7
@@ -226,7 +226,6 @@
     "cmul4_mod115.app.pg": "anf",
     "cmul4_mod119.app.pg": "anf",
     "cmul4_mod123.app.pg": "anf",
-    "cmul4_mod1285": "tncontract",
     "cmul4_mod133.app.pg": "anf",
     "cmul4_mod141.app.pg": "anf",
     "cmul4_mod143": "compositional",
@@ -1409,6 +1408,7 @@
       "anf"
     ],
     "cmul4_mod1285": [
+      "compositional",
       "tncontract"
     ],
     "cmul4_mod133": [

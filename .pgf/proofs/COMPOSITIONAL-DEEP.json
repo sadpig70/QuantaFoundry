@@ -1,25 +1,24 @@
 {
-  "_note": "compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). 동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 금지). cost>BUDGET_DEEP 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님).",
+  "_note": "compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). 동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 금지). cost>budget 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님). cost≥CKPT_MIN_COST 앱은 intra-app 체크포인트(결정론: 재개==무중단)로 청크 소화.",
   "_schema": "compositional-deep/v1",
   "all_ok": true,
-  "budget_high": 100000000000,
+  "budget_high": 1600000000000,
   "budget_low": 100000000,
-  "deep_excluded": [
+  "deep_excluded": [],
+  "failed": [],
+  "mem_budget": 6442450944,
+  "mem_excluded": [],
+  "n_targets": 120,
+  "n_verified": 113,
+  "remaining": [
     "cmul16_mod1285",
     "cmul16_mod3683",
     "cmul256_mod1285",
     "cmul256_mod3683",
     "cmul2925_mod3683",
     "cmul2_mod3683",
-    "cmul4_mod1285",
     "cmul4_mod3683"
   ],
-  "failed": [],
-  "mem_budget": 6442450944,
-  "mem_excluded": [],
-  "n_targets": 112,
-  "n_verified": 112,
-  "remaining": [],
   "teeth": {
     "app": "cmul4_mod237",
     "mismatch": true,
@@ -620,6 +619,14 @@
       "seconds": 7.9,
       "steps": 783,
       "u_hash": "5cc924ff28759be31cca0d8a4e889aa88854d3dcc8548fcb5acc9e5f5930a707"
+    },
+    "cmul4_mod1285": {
+      "cost": 114336727040,
+      "inlined": false,
+      "n": 12,
+      "seconds": 4432.7,
+      "steps": 6815,
+      "u_hash": "a87f825debcf09bdba30b4de74470b69e4a26fc6c82a1defee2258e7db3e2c13"
     },
     "cmul4_mod133": {
       "cost": 195297280,

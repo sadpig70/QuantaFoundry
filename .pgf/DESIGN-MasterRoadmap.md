@@ -505,6 +505,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
                 # ★112/112 전원 sealed u_hash 일치(failed 0)·teeth 통과·총 ~1.7h(최대 단일 cmul2_mod1285 44min). cost-오름차순·앱 단위 resumable 실증(2회 재개).
                 # coverage=compositional 경로 union(이중계상 금지) 347→**459**·전체 644 커버·primary-seal-only **90→7**(잔여=cmul*_mod3683 5+ghz16_structural+rm15_tt).
                 # deep_excluded 8 정직 표기: mod1285 3=tncontract 보유·mod3683 5=per-app 보조경로 없음(부모 CUC≠sub-app census). reproduce 스텝 아님(오프라인 CUC 류).
+            S1deep2_MonsterCheckpoint // intra-app 체크포인트(V np.save+idx 원자적·크래시 안전 순서)·--budget 확장 → 몬스터 멀티세션 청크 (done — 2026-07-12, 인프라+청크1)
+                # ★등가성 실증: 132/934 스텝 중단→재개 == 무중단 hash·sealed 일치·ckpt 자동정리. mid-app graceful stop·verified 단조 보존(예산변동 무관) 구현.
+                # 청크1(2h): cmul4_mod1285(n=12, 6815스텝, 4433s) 검증 OK → 113/120·failed 0·all_ok. cmul2_mod3683 ckpt 397/1848 보존·remaining 7 명시.
+                # ★실측 정정: n=13 ≈10s/step(스텝당 V 1GB×3 memcpy 지배, n=12 의 15배) → 몬스터 잔여 총 ~220h(원 견적 56h 과소) — 무최적화 청크 소화 비실용.
+                # → 차기: 블록-컬럼 재조립(V 열블록 독립 진화, 64MB 작업집합)로 memory-locality ~10×+ 기대. 재개는 ckpt 인프라 그대로.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
