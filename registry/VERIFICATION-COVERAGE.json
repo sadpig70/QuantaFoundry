@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 44,
+      "covered": 45,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 128,
+    "1": 129,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 547,
-  "n_primary_seal_only": 49,
+  "n_apps_with_supplementary": 548,
+  "n_primary_seal_only": 57,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -198,7 +198,8 @@
     "shor309": "subspace",
     "shor319": "subspace",
     "shor323": "subspace",
-    "shor327": "subspace"
+    "shor327": "subspace",
+    "shor335": "subspace"
   },
   "primary_seal_only": [
     "cmul102_mod301",
@@ -207,6 +208,7 @@
     "cmul136_mod327",
     "cmul137_mod323",
     "cmul141_mod319",
+    "cmul151_mod335",
     "cmul166_mod309",
     "cmul169_mod303",
     "cmul16_mod301",
@@ -215,13 +217,16 @@
     "cmul16_mod319",
     "cmul16_mod323",
     "cmul16_mod327",
+    "cmul16_mod335",
     "cmul170_mod301",
     "cmul175_mod327",
     "cmul181_mod303",
     "cmul184_mod327",
     "cmul188_mod323",
+    "cmul211_mod335",
     "cmul214_mod327",
     "cmul219_mod301",
+    "cmul21_mod335",
     "cmul244_mod309",
     "cmul256_mod301",
     "cmul256_mod303",
@@ -229,6 +234,7 @@
     "cmul256_mod319",
     "cmul256_mod323",
     "cmul256_mod327",
+    "cmul256_mod335",
     "cmul25_mod319",
     "cmul28_mod309",
     "cmul290_mod323",
@@ -238,12 +244,15 @@
     "cmul2_mod319",
     "cmul2_mod323",
     "cmul2_mod327",
+    "cmul2_mod335",
+    "cmul301_mod335",
     "cmul4_mod301",
     "cmul4_mod303",
     "cmul4_mod309",
     "cmul4_mod319",
     "cmul4_mod323",
     "cmul4_mod327",
+    "cmul4_mod335",
     "cmul55_mod309",
     "cmul79_mod303",
     "cmul82_mod319",
@@ -2530,6 +2539,9 @@
       "subspace"
     ],
     "shor327": [
+      "subspace"
+    ],
+    "shor335": [
       "subspace"
     ],
     "shor3683": [
