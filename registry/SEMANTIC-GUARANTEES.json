@@ -679,6 +679,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "ffff0408cc7b1bc1130618c5c641e7231f1649d3175771e59de0fdff554c9089"
     },
+    "app:cmul100_mod287": {
+      "kind": "app",
+      "id": "cmul100_mod287",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "708f1fdee1450a559e50d4e84cc8949bd672ac292c0f9997187524a7e8d81f29"
+    },
     "app:cmul101_mod115": {
       "kind": "app",
       "id": "cmul101_mod115",
@@ -1156,6 +1165,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e3064e940509331a50b8c6a9c0b84f6da8e4340393be7ce3d0ab3ac103094d53"
     },
+    "app:cmul16_mod287": {
+      "kind": "app",
+      "id": "cmul16_mod287",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "ddcc55918a189d0b29e195d0322900d06ff7c231b9f3fd1deddaf5b4a7a195d6"
+    },
+    "app:cmul16_mod291": {
+      "kind": "app",
+      "id": "cmul16_mod291",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "110da42c993baf4a1c8b87a0bc58ea8e9cbefa427ada97a3ca13a96540dc50da"
+    },
     "app:cmul16_mod3683": {
       "kind": "app",
       "id": "cmul16_mod3683",
@@ -1345,6 +1372,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0015b28a555363f9e7634864e9487b9c2ec4522da7691070b92209adcd975b7f"
     },
+    "app:cmul229_mod291": {
+      "kind": "app",
+      "id": "cmul229_mod291",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "edf23162bd6331b3bd1d93cc299d7d738366a009a77a7718cc35b2b39e0ce016"
+    },
     "app:cmul22_mod183": {
       "kind": "app",
       "id": "cmul22_mod183",
@@ -1362,6 +1398,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0de4de0ffe04db13cdebf1e43818b6234901d04bbcf4081fc5a71b4fecc1826f"
+    },
+    "app:cmul242_mod287": {
+      "kind": "app",
+      "id": "cmul242_mod287",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "b89fa706cce21c75811daa52a64bd2a6a9f4deb235cdb82b995145164511f29e"
     },
     "app:cmul256_mod1285": {
       "kind": "app",
@@ -1389,6 +1434,24 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "0486f68892ceccf96ff08c61dd6f0e4529390624fdc3a41dee0ef9ac4514abb2"
+    },
+    "app:cmul256_mod287": {
+      "kind": "app",
+      "id": "cmul256_mod287",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "2152f258e009df509827c730ddf4d832fcb08fbf68c8dcf7ba3533f0fb6c4b36"
+    },
+    "app:cmul256_mod291": {
+      "kind": "app",
+      "id": "cmul256_mod291",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "edae972dfac6bc1aaa5ef9de223d218b0c597909bdc11b05b1b63fbc102e42fb"
     },
     "app:cmul256_mod3683": {
       "kind": "app",
@@ -1713,6 +1776,24 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "82e84bd72f2b2248aa9fb60ede84c867dd636dabf5c7df5ee7ef535cbf72ba8f"
+    },
+    "app:cmul2_mod287": {
+      "kind": "app",
+      "id": "cmul2_mod287",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "c0a6e15cd997127615639e6144c5a674d9065b2fbfeb3eee267f74243a06f255"
+    },
+    "app:cmul2_mod291": {
+      "kind": "app",
+      "id": "cmul2_mod291",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "ae6bb5b0c50235bdb1e563f43b34832e72cc1f7e2ae597fc5bec092c701defdf"
     },
     "app:cmul2_mod33": {
       "kind": "app",
@@ -2182,6 +2263,24 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "db613efec659a84754e21760216fdde244b0f3edd60b1d984be60c6bb892ea2c"
     },
+    "app:cmul4_mod287": {
+      "kind": "app",
+      "id": "cmul4_mod287",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "a5024c647382fe6faa747d6aa5fb3e966e25b5f40cbc7b4a5dda207e755190c9"
+    },
+    "app:cmul4_mod291": {
+      "kind": "app",
+      "id": "cmul4_mod291",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "92f3501c127629b3e423b64ddae0589a3bcb0fe5db62e3c62b623cecdde6b0ac"
+    },
     "app:cmul4_mod3683": {
       "kind": "app",
       "id": "cmul4_mod3683",
@@ -2352,6 +2451,15 @@
       "semantic_guarantee": "unitary_equiv",
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "b50aabf7d25eb7d381a3e47844e5ba8059715fc1fd382b818abc0fe6b6e8cc0c"
+    },
+    "app:cmul61_mod291": {
+      "kind": "app",
+      "id": "cmul61_mod291",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "1e7cee4c28c45ad4f79dc7b6d459f8a42aad479d761e5803dc5ac2a24fa75ba8"
     },
     "app:cmul61_mod95": {
       "kind": "app",
@@ -5633,6 +5741,50 @@
         "proof_digest": "b17433556bedab4a"
       }
     },
+    "app:shor287": {
+      "kind": "app",
+      "id": "shor287",
+      "tier": 1,
+      "tier_source": "explicit",
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 131072/131072; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "92ef09dc1b5a283355db3df2f908863b37420ee72638104e7e017d2c55652f43",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 131072,
+        "basis_matched": 131072,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 14347,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "23d8f52322c95c68"
+      }
+    },
+    "app:shor291": {
+      "kind": "app",
+      "id": "shor291",
+      "tier": 1,
+      "tier_source": "explicit",
+      "semantic_guarantee": "subspace_permutation_verified",
+      "method": "modexp 코어 계산기저 부분공간 순열 강검증(exhaustive, basis 131072/131072; path A=회로 게이트순열(cmul→MCT 전개) vs path B=정수산술 w·a^c mod N 독립). H·iQFT 포함 전체 unitary 미검증(INV-R5).",
+      "u_hash": "5f00e4a3a73da296c5fddf65dd7da9599f286e60a952a88563ceaf4ede8c022e",
+      "subspace_verification": {
+        "grade": "subspace_permutation_exhaustive",
+        "method": "exhaustive",
+        "basis_tested": 131072,
+        "basis_matched": 131072,
+        "exact_permutation": true,
+        "negative_control_reject": true,
+        "n_modexp_gates": 15061,
+        "dense_materialized": false,
+        "scope": "modexp core only (H·iQFT excluded); NOT full-unitary equivalence — INV-R5",
+        "seed": 20260701,
+        "proof_digest": "33d17a4cd51a129c"
+      }
+    },
     "app:shor3683": {
       "kind": "app",
       "id": "shor3683",
@@ -7319,24 +7471,24 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 551,
+        "unitary_equiv": 563,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "unitary_equiv_column_exact": 30,
         "compositionally_verified": 2,
-        "subspace_permutation_verified": 1
+        "subspace_permutation_verified": 3
       },
       "module": {
         "unitary_equiv": 95
       }
     },
     "by_class": {
-      "unitary_equiv": 646,
+      "unitary_equiv": 658,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "unitary_equiv_column_exact": 30,
       "compositionally_verified": 2,
-      "subspace_permutation_verified": 1
+      "subspace_permutation_verified": 3
     }
   }
 }
