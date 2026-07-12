@@ -405,13 +405,14 @@ def run_deep(max_hours=None, budget=None):
             prev = {}
     verified, failed, remaining = {}, [], []
     teeth = None
-    target_ids = {e[0] for e in targets}
-    for appid, pv in prev.items():                     # 단조 보존: 예산 밖 기존 기록도 sealed 불변이면 유지
-        if appid in target_ids:
+    tlen = {e[0]: len(e[2]) for e in targets}
+    for appid, pv in prev.items():                     # 단조 보존: sealed·배선 불변이면 전부 선탑재
+        sp = os.path.join(APPREG, f"{appid}.sealed.json")   # (target 미도달분 포함 — mid-run kill 시 결손 방지)
+        if not os.path.exists(sp) or json.load(open(sp, encoding="utf-8"))["u_hash"] != pv.get("u_hash"):
             continue
-        sp = os.path.join(APPREG, f"{appid}.sealed.json")
-        if os.path.exists(sp) and json.load(open(sp, encoding="utf-8"))["u_hash"] == pv.get("u_hash"):
-            verified[appid] = pv
+        if appid in tlen and pv.get("steps") != tlen[appid]:
+            continue                                   # 배선 변경 → 재검증 대상
+        verified[appid] = pv
 
     def payload():
         return {
@@ -434,12 +435,10 @@ def run_deep(max_hours=None, budget=None):
 
     stopped = False
     for appid, n, parsed, cost, pred, inlined in targets:
+        if appid in verified:                          # 선탑재분(resume) — 재검증 불필요
+            continue
         sealed = json.load(open(os.path.join(APPREG, f"{appid}.sealed.json"),
                                 encoding="utf-8"))["u_hash"]
-        pv = prev.get(appid)
-        if pv and pv.get("u_hash") == sealed and pv.get("steps") == len(parsed):
-            verified[appid] = pv                       # resume: sealed·배선 불변 → 보존
-            continue
         if stopped or (deadline is not None and time.time() > deadline):
             stopped = True
             remaining.append(appid)
