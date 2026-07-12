@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 43,
+      "covered": 44,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 127,
+    "1": 128,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 546,
-  "n_primary_seal_only": 41,
+  "n_apps_with_supplementary": 547,
+  "n_primary_seal_only": 49,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -197,12 +197,14 @@
     "shor303": "subspace",
     "shor309": "subspace",
     "shor319": "subspace",
-    "shor323": "subspace"
+    "shor323": "subspace",
+    "shor327": "subspace"
   },
   "primary_seal_only": [
     "cmul102_mod301",
     "cmul103_mod319",
     "cmul120_mod323",
+    "cmul136_mod327",
     "cmul137_mod323",
     "cmul141_mod319",
     "cmul166_mod309",
@@ -212,9 +214,13 @@
     "cmul16_mod309",
     "cmul16_mod319",
     "cmul16_mod323",
+    "cmul16_mod327",
     "cmul170_mod301",
+    "cmul175_mod327",
     "cmul181_mod303",
+    "cmul184_mod327",
     "cmul188_mod323",
+    "cmul214_mod327",
     "cmul219_mod301",
     "cmul244_mod309",
     "cmul256_mod301",
@@ -222,6 +228,7 @@
     "cmul256_mod309",
     "cmul256_mod319",
     "cmul256_mod323",
+    "cmul256_mod327",
     "cmul25_mod319",
     "cmul28_mod309",
     "cmul290_mod323",
@@ -230,11 +237,13 @@
     "cmul2_mod309",
     "cmul2_mod319",
     "cmul2_mod323",
+    "cmul2_mod327",
     "cmul4_mod301",
     "cmul4_mod303",
     "cmul4_mod309",
     "cmul4_mod319",
     "cmul4_mod323",
+    "cmul4_mod327",
     "cmul55_mod309",
     "cmul79_mod303",
     "cmul82_mod319",
@@ -2518,6 +2527,9 @@
       "subspace"
     ],
     "shor323": [
+      "subspace"
+    ],
+    "shor327": [
       "subspace"
     ],
     "shor3683": [
