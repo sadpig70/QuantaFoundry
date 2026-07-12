@@ -510,6 +510,12 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
                 # 청크1(2h): cmul4_mod1285(n=12, 6815스텝, 4433s) 검증 OK → 113/120·failed 0·all_ok. cmul2_mod3683 ckpt 397/1848 보존·remaining 7 명시.
                 # ★실측 정정: n=13 ≈10s/step(스텝당 V 1GB×3 memcpy 지배, n=12 의 15배) → 몬스터 잔여 총 ~220h(원 견적 56h 과소) — 무최적화 청크 소화 비실용.
                 # → 차기: 블록-컬럼 재조립(V 열블록 독립 진화, 64MB 작업집합)로 memory-locality ~10×+ 기대. 재개는 ckpt 인프라 그대로.
+            S1deep3_PermKernelOpt // 순열 커널 최적화 — 몬스터 전원 소화, compositional 완결(467=eligible 전체) (done — 2026-07-12)
+                # 경로: 블록-컬럼 시도(2.1×, tensordot strided transpose 병목으로 기각) → ★게이트분포 분석: 몬스터=c5x~c12x 지배 = 전부 순열행렬(modexp=고전 가역).
+                # _module_kernel(행당 비영 1 → perm+phase)·_perm_plan(변경 sub-index 만 전역 행 gather)·_reassemble_fast(in-place·V+idx ckpt·dense=tensordot 폴백).
+                # ★값 동일 논증: 0·x,1·x IEEE 정확 → hash 불변. 등가성 fast==row==sealed 14표본·재개==무중단 실증.
+                # ★실측: cmul2_mod3683 17.5s(구경로 308min, ~1057×)·최대 cmul2925_mod3683(23,025스텝) 248s → 몬스터 잔여 '~220h' 예측이 ~15min 으로.
+                # deep 120/120 폐합·failed 0·teeth. coverage: compositional 467(=eligible 전체)·649 커버·★primary-seal-only 90→**2**(ghz16_structural·rm15_tt=tier 고유, 정직 최소치).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

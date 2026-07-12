@@ -75,14 +75,18 @@ def _module_k(gid):
 
 
 def apply_left(U, targets, n, V):
-    """U 를 V(2^n×2^n)의 row 축(targets)에 직접 작용. ≡ so.embed(U,targets,n) @ V (검증필)."""
+    """U 를 V(2^n×m)의 row 축(targets)에 직접 작용. ≡ so.embed(U,targets,n) @ V (검증필).
+
+    열 축 m 은 임의(정방 V 든 열블록이든 동일 산술 — 열들은 row-작용 하에 독립).
+    """
     k = len(targets)
     g = U.reshape([2] * k + [2] * k)
     D = 1 << n
-    T = V.reshape([2] * n + [D])
+    m = V.shape[1]
+    T = V.reshape([2] * n + [m])
     T = np.tensordot(g, T, axes=(list(range(k, 2 * k)), targets))
     T = np.moveaxis(T, list(range(k)), targets)
-    return T.reshape(D, D)
+    return T.reshape(D, m)
 
 
 MAX_INLINE_DEPTH = 8            # sub-app 재귀 인라인 안전 상한 (실측 최대 깊이 << 8)
@@ -257,29 +261,62 @@ def _teeth_one(appid, n, parsed):
     return {"app": appid, "swap": list(pair), "mismatch": perturbed != sealed}
 
 
-def _ckpt_paths(appid, idx=None):
-    meta = os.path.join(CKPT_DIR, f"{appid}.meta.json")
-    arr = None if idx is None else os.path.join(CKPT_DIR, f"{appid}.V.{idx}.npy")
-    return meta, arr
+def _module_kernel(gid, _cache={}):
+    """모듈 → 적용 커널 (1회 분석·캐시). ('perm', perm, phase) = 스케일 순열행렬(대각 포함,
+    modexp 의 c*x 류 — 행당 비영 1개), 아니면 ('dense', U). 순열 적용은 행 gather 로
+    tensordot 과 값 동일(0·x, 1·x 는 IEEE 정확) → hash 불변."""
+    if gid not in _cache:
+        U = INDEP[gid]()
+        rows, cols = np.nonzero(U)
+        if len(rows) == U.shape[0] and np.array_equal(rows, np.arange(U.shape[0])):
+            _cache[gid] = ("perm", cols.astype(np.int64), U[rows, cols].copy())
+        else:
+            _cache[gid] = ("dense", U)
+    return _cache[gid]
 
 
-def _reassemble_ckpt(appid, n, parsed, deadline=None):
-    """intra-app 체크포인트 재조립(몬스터용): V+idx 주기 저장·재개. 결정론 — 재개 == 무중단.
+def _sub_rows(sub, targets, n):
+    """target 비트=sub 인 전역 행 인덱스 배열 (2^(n-k)개). 축 p ↔ 비트 (n-1-p), MSB-우선."""
+    k = len(targets)
+    rest = [p for p in range(n) if p not in targets]
+    idx = np.arange(1 << len(rest), dtype=np.int64)
+    r = np.zeros_like(idx)
+    for j, p in enumerate(rest):
+        r |= ((idx >> (len(rest) - 1 - j)) & 1) << (n - 1 - p)
+    base = 0
+    for j, p in enumerate(targets):
+        base |= ((sub >> (k - 1 - j)) & 1) << (n - 1 - p)
+    return r + base
 
-    deadline(epoch 초) 초과 시 체크포인트 저장 후 None(미완, 다음 run 이 이어감).
-    저장 순서(크래시 안전): V.{idx}.npy 기록 → meta 원자 교체 → 옛 V 파일 삭제.
-    완료 시 체크포인트 삭제 후 u_hash 반환.
-    """
+
+def _perm_plan(perm, phase, targets, n, _cache={}):
+    """(perm, targets, n) → (dsts, srcs, ph) 전역 행 인덱스 (identity 부분 제외, 캐시)."""
+    key = (id(perm), tuple(targets), n)
+    if key not in _cache:
+        changed = [i for i in range(len(perm)) if perm[i] != i or phase[i] != 1]
+        if not changed:
+            _cache[key] = None
+        else:
+            dsts = np.concatenate([_sub_rows(i, targets, n) for i in changed])
+            srcs = np.concatenate([_sub_rows(int(perm[i]), targets, n) for i in changed])
+            ph = np.concatenate([np.full(1 << (n - len(targets)), phase[i]) for i in changed])
+            _cache[key] = (dsts, srcs, ph)
+    return _cache[key]
+
+
+def _reassemble_fast(appid, n, parsed, deadline=None):
+    """in-place 고속 재조립(몬스터용): 순열/대각 모듈=행 gather(스텝당 수 MB), dense=tensordot
+    폴백. 값은 경로와 무관하게 동일 → hash 불변. 체크포인트 = V + step idx (원자적,
+    결정론: 재개 == 무중단). deadline 초과 시 저장 후 None. 완료 시 정리 후 u_hash 반환."""
     import time
     os.makedirs(CKPT_DIR, exist_ok=True)
-    meta_p, _ = _ckpt_paths(appid)
+    meta_p = os.path.join(CKPT_DIR, f"{appid}.fst.meta.json")
     V, start = None, 0
     if os.path.exists(meta_p):
         try:
             m = json.load(open(meta_p, encoding="utf-8"))
-            _, arr_p = _ckpt_paths(appid, m["idx"])
-            if (m.get("n") == n and m.get("n_steps") == len(parsed)
-                    and arr_p and os.path.exists(arr_p)):
+            arr_p = os.path.join(CKPT_DIR, f"{appid}.fst.V.{m['idx']}.npy")
+            if m.get("n") == n and m.get("n_steps") == len(parsed) and os.path.exists(arr_p):
                 V = np.load(arr_p)
                 start = m["idx"]
         except Exception:
@@ -289,7 +326,7 @@ def _reassemble_ckpt(appid, n, parsed, deadline=None):
         start = 0
 
     def save(idx):
-        _, arr_new = _ckpt_paths(appid, idx)
+        arr_new = os.path.join(CKPT_DIR, f"{appid}.fst.V.{idx}.npy")
         tmp = arr_new + ".tmp.npy"
         np.save(tmp, V)
         os.replace(tmp, arr_new)
@@ -297,27 +334,33 @@ def _reassemble_ckpt(appid, n, parsed, deadline=None):
         with open(mtmp, "w", encoding="utf-8") as f:
             json.dump({"appid": appid, "n": n, "n_steps": len(parsed), "idx": idx}, f)
         os.replace(mtmp, meta_p)
-        for old in glob.glob(os.path.join(CKPT_DIR, f"{appid}.V.*.npy")):
+        for old in glob.glob(os.path.join(CKPT_DIR, f"{appid}.fst.V.*.npy")):
             if old != arr_new:
                 try:
                     os.remove(old)
                 except OSError:
                     pass
 
-    cache, last = {}, time.time()
+    last = time.time()
     for idx in range(start, len(parsed)):
         gid, tg, _k = parsed[idx]
-        if gid not in cache:
-            cache[gid] = INDEP[gid]()
-        V = apply_left(cache[gid], tg, n, V)
-        now = time.time()
-        if now - last >= CKPT_INTERVAL or (deadline is not None and now > deadline):
-            save(idx + 1)
-            last = now
-            if deadline is not None and now > deadline:
-                return None
+        kern = _module_kernel(gid)
+        if kern[0] == "perm":
+            plan = _perm_plan(kern[1], kern[2], tg, n)
+            if plan is not None:
+                dsts, srcs, ph = plan
+                V[dsts] = ph[:, None] * V[srcs]
+        else:
+            V[:] = apply_left(kern[1], tg, n, V)
+        if idx % 200 == 199 or kern[0] == "dense":
+            now = time.time()
+            if now - last >= CKPT_INTERVAL or (deadline is not None and now > deadline):
+                save(idx + 1)
+                last = now
+                if deadline is not None and now > deadline:
+                    return None
     h = vs.hash_unitary(V)
-    for p in glob.glob(os.path.join(CKPT_DIR, f"{appid}.V.*.npy")) + [meta_p]:
+    for p in glob.glob(os.path.join(CKPT_DIR, f"{appid}.fst.*")):
         try:
             os.remove(p)
         except OSError:
@@ -403,7 +446,7 @@ def run_deep(max_hours=None, budget=None):
             continue
         t1 = time.time()
         if cost >= CKPT_MIN_COST:
-            got = _reassemble_ckpt(appid, n, parsed, deadline=deadline)
+            got = _reassemble_fast(appid, n, parsed, deadline=deadline)
             if got is None:                            # 청크 소진 — ckpt 보존, 다음 run 이 이어감
                 print(f"deep: {appid} checkpointed (chunk limit) — resume next run", flush=True)
                 stopped = True
