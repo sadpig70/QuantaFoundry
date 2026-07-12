@@ -21,8 +21,8 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 ## Status
 
 <!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->
-- **95 sealed modules · 653 unique applications** · registry root `a9a7d9818b23180c…`
-  (728 app-file entries = 653 unique + 75 cached app-side re-seals;
+- **95 sealed modules · 662 unique applications** · registry root `79c19e8745ad4b0f…`
+  (737 app-file entries = 662 unique + 75 cached app-side re-seals;
   live source [`registry/REGISTRY-MANIFEST.json`](registry/REGISTRY-MANIFEST.json)).
 <!-- END generated:counts -->
 - **10 independent verification paths** ([`docs/VERIFICATION-PATHS.md`](docs/VERIFICATION-PATHS.md)) · 23 frozen consensus keys · **100% classified, 0 orphan** ([quality scorecard](registry/QF-QUALITY-SCORECARD.json)) · verification core public as
