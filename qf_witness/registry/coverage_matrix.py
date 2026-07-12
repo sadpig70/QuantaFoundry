@@ -56,6 +56,9 @@ def compute():
     for name, (fn, extract) in _VERIFY_SOURCES.items():
         d = _load(fn)
         covered[name] = sorted(set(extract(d))) if d else []
+    deep = _load("COMPOSITIONAL-DEEP.json")   # S1deep: 동일 형식론 → 같은 경로에 union(이중계상 금지)
+    if deep:
+        covered["compositional"] = sorted(set(covered["compositional"]) | set(deep.get("verified", {})))
     for name, pat in _GLOB_SOURCES.items():
         ids = [os.path.basename(p)[:-len(pat) + 1] for p in glob.glob(os.path.join(PROOFS, pat))]
         covered[name] = sorted(set(ids))

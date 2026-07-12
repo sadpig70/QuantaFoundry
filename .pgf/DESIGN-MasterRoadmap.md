@@ -501,6 +501,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
                 # ∪ 정적 import 폐쇄(qf_witness/qf_verify 한정) ∪ manifest "inputs" glob(가산). special 5종=선언 매핑(frontier 모듈 폐쇄 등). fail 미캐시·cached 명시.
                 # 실측: cold=full 동치(125 report 값 diff NONE)·warm 113/113 cached **2.95s**(>100×)·teeth=1파일 교란 시 정확히 2스텝만 재실행(해당+structure_lint 선언 glob).
                 # INV-INC1: 부가 모드 — verified-only 커밋·최종보증은 full 재실행만. 캐시=_workspace(gitignored, 머신로컬).
+            S1deep_CompositionalDeep // over_budget 1회 deep 검증(--deep, cost≤1e11) → COMPOSITIONAL-DEEP.json 영구 기록 (done — 2026-07-12)
+                # ★112/112 전원 sealed u_hash 일치(failed 0)·teeth 통과·총 ~1.7h(최대 단일 cmul2_mod1285 44min). cost-오름차순·앱 단위 resumable 실증(2회 재개).
+                # coverage=compositional 경로 union(이중계상 금지) 347→**459**·전체 644 커버·primary-seal-only **90→7**(잔여=cmul*_mod3683 5+ghz16_structural+rm15_tt).
+                # deep_excluded 8 정직 표기: mod1285 3=tncontract 보유·mod3683 5=per-app 보조경로 없음(부모 CUC≠sub-app census). reproduce 스텝 아님(오프라인 CUC 류).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

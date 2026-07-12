@@ -25,8 +25,10 @@ honest 한계(second_oracle 와 동일 계열):
  - MEM_BUDGET: 예측 peak(4·(2^n)^2·16B + Σ distinct 모듈 dense) > MEM_BUDGET 앱은 결정론적으로
    skip["mem_guard"] (환경 비의존 상수 — 커버리지 재현성 보존, silent cap 없음).
 
-사용:  python -m qf_witness.verify.compositional_verify [--quick]
-  (full=BUDGET_FULL 커버·sidecar 기록 / --quick=BUDGET_QUICK 빠른 부분집합·sidecar 미기록[reproduce])
+사용:  python -m qf_witness.verify.compositional_verify [--quick | --deep [--max-hours H]]
+  (full=BUDGET_FULL 커버·sidecar 기록 / --quick=BUDGET_QUICK 빠른 부분집합·sidecar 미기록[reproduce]
+   / --deep=over_budget 1회 심층 검증 → COMPOSITIONAL-DEEP.json, 앱 단위 resumable·cost 오름차순·
+     soft 시간상한 graceful stop(잔여 명시). reproduce 스텝 아님 — CUC 류 오프라인 영구 기록.)
 """
 from __future__ import annotations
 import glob
@@ -52,8 +54,10 @@ SIDECAR = os.path.join(PROOFS, "COMPOSITIONAL-VERIFY.json")
 INDEP = so.INDEP
 BUDGET_FULL = 100_000_000       # (2^n)^2·steps ≤ 1e8 (1회 sidecar 생성)
 BUDGET_QUICK = 20_000_000       # reproduce witness 스모크 (sidecar 미기록)
+BUDGET_DEEP = 100_000_000_000   # --deep 상한 1e11 — 초과 몬스터(cmul*_mod3683 등)=deep_excluded
 N_MAX = 13
 MEM_BUDGET = 6 * 2**30          # 예측 peak 상한 6GB (물리 16GB 머신 안전 마진, 결정론적 상수)
+DEEP_SIDECAR = os.path.join(PROOFS, "COMPOSITIONAL-DEEP.json")
 
 _MOD_K: dict = {}               # gid → qubit 수 k (spec meta, 행렬 미구성)
 
@@ -238,8 +242,116 @@ def run(quick=False):
     return payload
 
 
+def _teeth_one(appid, n, parsed):
+    """단일 앱 teeth: targets 가 다른 같은-크기 2 스텝 swap → mismatch 여야. 불가하면 None."""
+    idxs = [(i, tuple(t)) for i, (_, t, _) in enumerate(parsed)]
+    pair = next(((i, j) for i, ti in idxs for j, tj in idxs
+                 if i < j and ti != tj and len(ti) == len(tj)), None)
+    if pair is None:
+        return None
+    sealed = json.load(open(os.path.join(APPREG, f"{appid}.sealed.json"), encoding="utf-8"))["u_hash"]
+    perturbed = _reassemble(n, parsed, swap=pair)
+    return {"app": appid, "swap": list(pair), "mismatch": perturbed != sealed}
+
+
+def _write_deep(payload):
+    """앱 단위 원자적 재기록 — kill 시에도 진행분 보존(resumable)."""
+    os.makedirs(PROOFS, exist_ok=True)
+    tmp = DEEP_SIDECAR + ".tmp"
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
+        f.write("\n")
+    os.replace(tmp, DEEP_SIDECAR)
+
+
+def run_deep(max_hours=None):
+    """over_budget(BUDGET_FULL<cost≤BUDGET_DEEP·mem 통과) 앱 심층 검증 — cost 오름차순·resumable."""
+    import time
+    t0 = time.time()
+    elig, _skip = _eligible()
+    targets = sorted([e for e in elig if BUDGET_FULL < e[3] <= BUDGET_DEEP and e[4] <= MEM_BUDGET],
+                     key=lambda e: e[3])
+    excluded = sorted(e[0] for e in elig if e[3] > BUDGET_DEEP)
+    mem_excluded = sorted(e[0] for e in elig
+                          if BUDGET_FULL < e[3] <= BUDGET_DEEP and e[4] > MEM_BUDGET)
+    prev = {}
+    if os.path.exists(DEEP_SIDECAR):
+        try:
+            doc = json.load(open(DEEP_SIDECAR, encoding="utf-8"))
+            if doc.get("_schema") == "compositional-deep/v1":
+                prev = doc.get("verified", {})
+        except Exception:
+            prev = {}
+    verified, failed, remaining = {}, [], []
+    teeth = None
+
+    def payload():
+        return {
+            "_schema": "compositional-deep/v1",
+            "_note": ("compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). "
+                      "동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 "
+                      "금지). cost>BUDGET_DEEP 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 "
+                      "tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 "
+                      "CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님)."),
+            "budget_low": BUDGET_FULL, "budget_high": BUDGET_DEEP, "mem_budget": MEM_BUDGET,
+            "n_verified": len(verified), "n_targets": len(targets),
+            "deep_excluded": excluded, "mem_excluded": mem_excluded,
+            "remaining": sorted(remaining), "teeth": teeth,
+            "failed": sorted(failed),
+            "verified": {k: verified[k] for k in sorted(verified)},
+            "all_ok": ((not failed) and len(verified) > 0
+                       and (teeth is None or teeth["mismatch"])),
+        }
+
+    stopped = False
+    for appid, n, parsed, cost, pred, inlined in targets:
+        sealed = json.load(open(os.path.join(APPREG, f"{appid}.sealed.json"),
+                                encoding="utf-8"))["u_hash"]
+        pv = prev.get(appid)
+        if pv and pv.get("u_hash") == sealed and pv.get("steps") == len(parsed):
+            verified[appid] = pv                       # resume: sealed·배선 불변 → 보존
+            continue
+        if stopped or (max_hours is not None and time.time() - t0 > max_hours * 3600):
+            stopped = True
+            remaining.append(appid)
+            continue
+        t1 = time.time()
+        got = _reassemble(n, parsed)
+        entry = {"n": n, "steps": len(parsed), "inlined": inlined, "cost": cost,
+                 "u_hash": sealed, "seconds": round(time.time() - t1, 1)}
+        if got == sealed:
+            verified[appid] = entry
+        else:
+            failed.append(appid)
+        print(f"deep: {appid} n={n} steps={len(parsed)} cost={cost:.1e} "
+              f"{entry['seconds']}s {'OK' if got == sealed else 'FAIL'} "
+              f"[{len(verified)}/{len(targets)}]", flush=True)
+        _write_deep(payload())
+    # teeth: 최저 cost 대상 1건 교란 (resume 시에도 재확인 — 수 초)
+    for appid, n, parsed, cost, pred, inlined in targets:
+        if appid in verified:
+            t = _teeth_one(appid, n, parsed)
+            if t is not None:
+                teeth = t
+                break
+    _write_deep(payload())
+    return payload()
+
+
 def main():
-    quick = "--quick" in sys.argv[1:]
+    argv = sys.argv[1:]
+    if "--deep" in argv:
+        hours = None
+        if "--max-hours" in argv:
+            hours = float(argv[argv.index("--max-hours") + 1])
+        p = run_deep(max_hours=hours)
+        print(f"compositional_deep: verified={p['n_verified']}/{p['n_targets']} "
+              f"remaining={len(p['remaining'])} excluded={len(p['deep_excluded'])} "
+              f"mem_excluded={len(p['mem_excluded'])} failed={p['failed']} "
+              f"teeth={p['teeth']['mismatch'] if p['teeth'] else None}")
+        print(f"compositional_deep: all_ok={p['all_ok']}")
+        return 0 if p["all_ok"] else 1
+    quick = "--quick" in argv
     payload = run(quick=quick)
     if not quick:                       # full 만 authoritative sidecar 기록(--quick 클로버 방지)
         os.makedirs(PROOFS, exist_ok=True)
