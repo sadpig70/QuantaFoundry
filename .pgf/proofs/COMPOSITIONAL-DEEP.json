@@ -2,14 +2,23 @@
   "_note": "compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). 동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 금지). cost>budget 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님). cost≥CKPT_MIN_COST 앱은 intra-app 체크포인트(결정론: 재개==무중단)로 청크 소화.",
   "_schema": "compositional-deep/v1",
   "all_ok": true,
-  "budget_high": 1600000000000,
+  "budget_high": 100000000000,
   "budget_low": 100000000,
-  "deep_excluded": [],
+  "deep_excluded": [
+    "cmul16_mod1285",
+    "cmul16_mod3683",
+    "cmul256_mod1285",
+    "cmul256_mod3683",
+    "cmul2925_mod3683",
+    "cmul2_mod3683",
+    "cmul4_mod1285",
+    "cmul4_mod3683"
+  ],
   "failed": [],
   "mem_budget": 6442450944,
   "mem_excluded": [],
   "n_targets": 120,
-  "n_verified": 120,
+  "n_verified": 128,
   "remaining": [],
   "teeth": {
     "app": "cmul4_mod237",
@@ -107,6 +116,14 @@
       "seconds": 5.2,
       "steps": 894,
       "u_hash": "5a72516bdbeb0ce0371d3d4e35c1a13d37128162fb6a0aeee74db2370e8c0573"
+    },
+    "cmul121_mod267": {
+      "cost": 2189426688,
+      "inlined": false,
+      "n": 10,
+      "seconds": 50.9,
+      "steps": 2088,
+      "u_hash": "a10617d803222eec73afc3dbbe5c7de474ea6876c21d59d9be36f113f165d9a6"
     },
     "cmul123_mod133": {
       "cost": 222298112,
@@ -372,6 +389,14 @@
       "steps": 1958,
       "u_hash": "8862c6582f8e1e9261aea7fa2ef94661553199814133b5143a40780a2c988d06"
     },
+    "cmul16_mod267": {
+      "cost": 2059403264,
+      "inlined": false,
+      "n": 10,
+      "seconds": 49.0,
+      "steps": 1964,
+      "u_hash": "e3064e940509331a50b8c6a9c0b84f6da8e4340393be7ce3d0ab3ac103094d53"
+    },
     "cmul16_mod3683": {
       "cost": 1233326702592,
       "inlined": false,
@@ -452,6 +477,14 @@
       "steps": 933,
       "u_hash": "45b2536aaef08a0bf18b3f66474d3a32be30a44dde03b18c1ae5ba05393294a8"
     },
+    "cmul217_mod267": {
+      "cost": 2129657856,
+      "inlined": false,
+      "n": 10,
+      "seconds": 50.9,
+      "steps": 2031,
+      "u_hash": "18c29f252b4f00b888a4ff8446dfde1016e08ba9c72676099600c0282393df2b"
+    },
     "cmul21_mod235": {
       "cost": 214958080,
       "inlined": false,
@@ -459,6 +492,14 @@
       "seconds": 4.8,
       "steps": 820,
       "u_hash": "7ded2e79ea08c765b8f9dab6043bf4677e59c8d114212ef687f9367f81edf9af"
+    },
+    "cmul223_mod267": {
+      "cost": 2165309440,
+      "inlined": false,
+      "n": 10,
+      "seconds": 50.8,
+      "steps": 2065,
+      "u_hash": "0015b28a555363f9e7634864e9487b9c2ec4522da7691070b92209adcd975b7f"
     },
     "cmul22_mod183": {
       "cost": 230424576,
@@ -491,6 +532,14 @@
       "seconds": 52.1,
       "steps": 2029,
       "u_hash": "19773f65c3bc1db237b02fdcdb2ddbf766b8c97ba945f0df55a5fc134f4252ae"
+    },
+    "cmul256_mod267": {
+      "cost": 2255486976,
+      "inlined": false,
+      "n": 10,
+      "seconds": 52.7,
+      "steps": 2151,
+      "u_hash": "0486f68892ceccf96ff08c61dd6f0e4529390624fdc3a41dee0ef9ac4514abb2"
     },
     "cmul256_mod3683": {
       "cost": 1524109410304,
@@ -579,6 +628,14 @@
       "seconds": 27.6,
       "steps": 1086,
       "u_hash": "8ccf271b9b42bfb1bb1c28bd784c7edbff40879870a5f78c8669ae6fd5569839"
+    },
+    "cmul2_mod267": {
+      "cost": 1018167296,
+      "inlined": false,
+      "n": 10,
+      "seconds": 25.0,
+      "steps": 971,
+      "u_hash": "82e84bd72f2b2248aa9fb60ede84c867dd636dabf5c7df5ee7ef535cbf72ba8f"
     },
     "cmul2_mod3683": {
       "cost": 124017180672,
@@ -780,6 +837,14 @@
       "steps": 1599,
       "u_hash": "8e86c45d01dd65d6116bdb45032d84926339459863be08441d50e5a0fe468356"
     },
+    "cmul4_mod267": {
+      "cost": 1599078400,
+      "inlined": false,
+      "n": 10,
+      "seconds": 41.0,
+      "steps": 1525,
+      "u_hash": "db613efec659a84754e21760216fdde244b0f3edd60b1d984be60c6bb892ea2c"
+    },
     "cmul4_mod3683": {
       "cost": 912009461760,
       "inlined": false,
@@ -859,6 +924,14 @@
       "seconds": 5.4,
       "steps": 954,
       "u_hash": "e111ab902ec56141db203aa05f8a62e2c44a6ef49be033df1c584502dcb3a1ae"
+    },
+    "cmul67_mod267": {
+      "cost": 1927282688,
+      "inlined": false,
+      "n": 10,
+      "seconds": 45.3,
+      "steps": 1838,
+      "u_hash": "1b2b77ed35d7d45a819f012a6c7b9c570869427982de4732affbd26a9c5c6f2f"
     },
     "cmul69_mod187": {
       "cost": 230686720,

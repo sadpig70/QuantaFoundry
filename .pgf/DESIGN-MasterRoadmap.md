@@ -486,6 +486,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # ★S1 완결: compositional 467(=모듈환원 전체)·--incremental·--deep 120/120·순열커널 1057×·primary-seal-only 90→2. 상세=HANDOFF-HISTORY.
         # 잔여(전부 게이트): S1 ZX backup·stim/Aer 제3경로·Sigstore(외부 pip 의존) · S2 멀티런타임(H1) · S3 백엔드/PyPI.
         # 폐합 부수정정: coverage_matrix id 정규화(anf/groebner .app.pg 유령 149 제거 → 500/502 커버·hist 3:226·6경로 3 정합).
+    FrontierRound_20260712 // frontier 자율 확장 — shor267=3×89 봉인(견고경로 완주) (done — 2026-07-12)
+        # INV-F1 3/3 byte-identical → --seal 267(a=2·work 9·c9x·신규모듈 0) → subspace 즉시상환(131072/131072 전수) → build(511앱·root a59d709d) →
+        # semantic/citation → 앵커갱신 → second_oracle 83/83·guard 20/0 → ★S1 인프라 첫 통합실증: 신규 cmul 8앱 compositional deep 자동커버(128)·
+        # coverage 509/511·primary-seal-only 2 유지 → doc_counts 5문서 동기화 → reproduce --changed-only + full REPRODUCED. tier1 35→36.
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).
