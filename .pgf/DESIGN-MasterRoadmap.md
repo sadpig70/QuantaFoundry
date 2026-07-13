@@ -509,10 +509,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # O2 ✓: 순열커널 전면 라우팅 — deep 표본 **36×**(51.7→1.45s)·compositional full 64→11-17s·등가성 14표본·teeth·sidecar 값 diff 0.
         # O1 △(정직): 병렬 frontier_block — AV(ASDSvc) 일시잠금 간헐실패 실측 → 2상분리+순차재시도 1회(self-heal)로 3/3 안정, 730→334-457s(1.6-2.2×, 목표 3× 미달=구조적 floor).
         # VerifyGate ✓: full REPRODUCED·root 3c953d32 불변·벽시계 1152→867s(1.33×)·배치 후처리 30-50분→~2분.
-    FrontierCron_20260713 // 야간 상시화(정욱님 승인) — Task Scheduler 매일 03:00 frontier_batch --budget 8 (done — 2026-07-13)
-        # 등록: schtasks "QuantaFoundry-FrontierBatch" DAILY 03:00 → _workspace/frontier_batch_nightly.cmd(머신로컬 래퍼, 로그 동일 dir append).
-        # ★검증 3종: 스케줄러 경유 스모크(smoke 인자→--skip-loop --no-commit) 전 게이트 PASS·rc=0·HEAD 불변 / 중복실행 락(살아있는 PID→rc=2 생략, 죽은 락 자동회수) / 실패 시 무커밋 정지(기실증 T1).
-        # 한계 명시: 사용자 로그온 세션 필요·절전 시 미실행(WakeToRun 미설정)·후보 소진 시 무커밋 자연 종료. 해제=schtasks /Delete /TN QuantaFoundry-FrontierBatch.
+    FrontierCron_20260713 // 야간 자동화 — ★방식 확정(2026-07-13 정욱님): CLI 세션 cron(켜고 끄기=제어 스위치), Windows 스케줄러는 검증 후 해제 (done)
+        # 1차: schtasks DAILY 03:00 구축·검증 3종(스케줄러 경유 스모크 전 게이트 PASS·HEAD 불변 / 중복실행 락 rc=2 / 무커밋 정지) — 이후 정욱님 지시로 해제.
+        # 2차(현행): CronCreate "7 3 * * *" — 세션 켜져 있으면 매일 03:07 배치+Claude 감독+보고, 끄면 중단. 세션 휘발·7일 만료 → 재등록 한 줄(HANDOFF 기록).
+        # frontier_batch 내장 안전장치(중복실행 락·실패 시 무커밋 정지)는 방식 무관 유지. _workspace 래퍼/로그 정리.
     SessionClosure_20260713 // 세션 총결산 — README 수치 동기화(710/712·652)·FrontierAutomation 이력 이관·Recently Completed 갱신 (done — 2026-07-13, b9cf625)
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
