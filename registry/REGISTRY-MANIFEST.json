@@ -102,9 +102,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 770,
+    "unique_app_count": 777,
     "cached_app_side_module_count": 75,
-    "total_files": 845,
+    "total_files": 852,
     "path": "registry/apps",
     "unique": [
       "aklt4",
@@ -268,6 +268,7 @@
       "cmul16_mod453",
       "cmul16_mod469",
       "cmul16_mod471",
+      "cmul16_mod485",
       "cmul16_mod635",
       "cmul16_mod69",
       "cmul16_mod77",
@@ -357,6 +358,7 @@
       "cmul256_mod453",
       "cmul256_mod469",
       "cmul256_mod471",
+      "cmul256_mod485",
       "cmul256_mod635",
       "cmul25_mod133",
       "cmul25_mod141",
@@ -436,6 +438,7 @@
       "cmul2_mod453",
       "cmul2_mod469",
       "cmul2_mod471",
+      "cmul2_mod485",
       "cmul2_mod635",
       "cmul2_mod69",
       "cmul2_mod77",
@@ -448,6 +451,7 @@
       "cmul304_mod453",
       "cmul306_mod445",
       "cmul326_mod415",
+      "cmul326_mod485",
       "cmul328_mod471",
       "cmul334_mod411",
       "cmul345_mod469",
@@ -546,6 +550,7 @@
       "cmul4_mod453",
       "cmul4_mod469",
       "cmul4_mod471",
+      "cmul4_mod485",
       "cmul4_mod635",
       "cmul4_mod69",
       "cmul4_mod77",
@@ -570,6 +575,7 @@
       "cmul61_mod235",
       "cmul61_mod247",
       "cmul61_mod291",
+      "cmul61_mod485",
       "cmul61_mod95",
       "cmul64_mod341",
       "cmul64_mod93",
@@ -829,6 +835,7 @@
       "shor453",
       "shor469",
       "shor471",
+      "shor485",
       "shor635",
       "shor69",
       "shor77",
@@ -1033,7 +1040,7 @@
     "z5_gate": "registry/modules/z5_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "ca1911b367b7e4142c698ed597541a37f564c49ec4ffbce045950bfb0382a2dd",
+  "registry_root_hash": "398e528599f155934a856a2b70e6dc1cc4765096d14ac0f7cbfa4f365e56c937",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인(canonical 은 registry/modules). cached_app_side_module_count 는 앱 합성 트리에서 leaf 로 직접 쓰인 모듈 재봉인 수 — ★새 unique app 이 아니다(unique_app_count 와 분리). 나머지 (modules.count - cached) 모듈은 앱에서 직접 leaf 로 안 쓰이거나 다른 모듈 경유(인프라 전용)라 map 에 없다. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }
