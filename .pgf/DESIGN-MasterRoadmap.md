@@ -505,6 +505,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 순수 오케스트레이션(검증 무수정·self-judge 금지 상속): qfa-loop→deep→coverage/scorecard/release_root/check-claims/seal_gate→full reproduce→전부 PASS 시에만 마감 커밋·push.
         # ★T1 실패주입: 앵커 훼손 → seal_gate 에서 정지·HEAD 불변(커밋 0) 실증. ★T2 end-to-end(budget 2): 개입 0회 완주 — shor415·427 봉인→자동 마감 28a5b50.
         # 현재 95모듈/712앱·root 3c953d32·tier1 60. 누적 무인 24라운드(267~427). 다음 후보 4xx+. 상태파일=_workspace/frontier_batch_status.json.
+    SpeedOpt_20260713 // reproduce 속도 최적화 O1+O2 — PGF full-cycle(설계·검토·rework 2회) 폐합, 상세=.pgf/DESIGN-SpeedOpt.md (done — 2026-07-13)
+        # O2 ✓: 순열커널 전면 라우팅 — deep 표본 **36×**(51.7→1.45s)·compositional full 64→11-17s·등가성 14표본·teeth·sidecar 값 diff 0.
+        # O1 △(정직): 병렬 frontier_block — AV(ASDSvc) 일시잠금 간헐실패 실측 → 2상분리+순차재시도 1회(self-heal)로 3/3 안정, 730→334-457s(1.6-2.2×, 목표 3× 미달=구조적 floor).
+        # VerifyGate ✓: full REPRODUCED·root 3c953d32 불변·벽시계 1152→867s(1.33×)·배치 후처리 30-50분→~2분.
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).

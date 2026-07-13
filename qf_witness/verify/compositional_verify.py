@@ -59,7 +59,6 @@ N_MAX = 13
 MEM_BUDGET = 6 * 2**30          # 예측 peak 상한 6GB (물리 16GB 머신 안전 마진, 결정론적 상수)
 DEEP_SIDECAR = os.path.join(PROOFS, "COMPOSITIONAL-DEEP.json")
 CKPT_DIR = os.path.join(ROOT, "_workspace", "deep_ckpt")   # gitignored 머신로컬
-CKPT_MIN_COST = 50_000_000_000  # 이 cost 이상 앱만 intra-app 체크포인트 (오버헤드 회피)
 CKPT_INTERVAL = 600             # 초 — 체크포인트 주기 (V 1GB 저장 ~수 초)
 
 _MOD_K: dict = {}               # gid → qubit 수 k (spec meta, 행렬 미구성)
@@ -150,18 +149,23 @@ def _parse_app(appid):
 def _reassemble(n, parsed, drop=None, swap=None):
     """제1원리 모듈로 재조립. drop=스텝 인덱스 제거 / swap=(i,j) targets 교란(teeth).
 
-    모듈 유니터리는 여기서 lazy 구성 — 앱당 distinct 모듈 1회, 반환 시 캐시 해제.
+    SpeedOpt O2: _module_kernel dispatch — 순열/대각 모듈=행 gather(in-place),
+    dense=tensordot. 값은 경로와 무관하게 동일(0·x, 1·x 는 IEEE 정확) → hash 불변.
     """
     V = np.eye(1 << n, dtype=complex)
-    cache = {}
     for idx, (gid, tg, _k) in enumerate(parsed):
         if drop is not None and idx == drop:
             continue
         if swap is not None and idx == swap[0]:
             tg = parsed[swap[1]][1] if len(parsed[swap[1]][1]) == len(tg) else tg
-        if gid not in cache:
-            cache[gid] = INDEP[gid]()
-        V = apply_left(cache[gid], tg, n, V)
+        kern = _module_kernel(gid)
+        if kern[0] == "perm":
+            plan = _perm_plan(kern[1], kern[2], tg, n)
+            if plan is not None:
+                dsts, srcs, ph = plan
+                V[dsts] = ph[:, None] * V[srcs]
+        else:
+            V = apply_left(kern[1], tg, n, V)
     return vs.hash_unitary(V)
 
 
@@ -381,8 +385,8 @@ def _write_deep(payload):
 def run_deep(max_hours=None, budget=None):
     """over_budget(BUDGET_FULL<cost≤budget·mem 통과) 앱 심층 검증 — cost 오름차순·resumable.
 
-    budget 기본=BUDGET_DEEP(1e11). --budget 확장 시 몬스터가 target 에 들어오며, cost≥CKPT_MIN_COST
-    앱은 intra-app 체크포인트로 세션 청크(--max-hours) 를 넘어 이어진다. 이전 sidecar 의 verified 는
+    budget 기본=BUDGET_DEEP(1e11). --budget 확장 시 몬스터가 target 에 들어오며, 전 앱이 fast 경로
+    (intra-app 체크포인트 내장 — CKPT_INTERVAL 초과 앱만 자연 발동)로 세션 청크를 넘어 이어진다. 이전 sidecar 의 verified 는
     현재 budget 과 무관하게 sealed 불변이면 단조 보존(예산 축소 rerun 이 기록을 지우지 않음).
     """
     import time
@@ -422,7 +426,7 @@ def run_deep(max_hours=None, budget=None):
                       "금지). cost>budget 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 "
                       "tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 "
                       "CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님). "
-                      "cost≥CKPT_MIN_COST 앱은 intra-app 체크포인트(결정론: 재개==무중단)로 청크 소화."),
+                      "전 앱 fast 경로(순열 커널·intra-app 체크포인트 내장, 결정론: 재개==무중단)로 청크 소화."),
             "budget_low": BUDGET_FULL, "budget_high": budget, "mem_budget": MEM_BUDGET,
             "n_verified": len(verified), "n_targets": len(targets),
             "deep_excluded": excluded, "mem_excluded": mem_excluded,
@@ -444,16 +448,13 @@ def run_deep(max_hours=None, budget=None):
             remaining.append(appid)
             continue
         t1 = time.time()
-        if cost >= CKPT_MIN_COST:
-            got = _reassemble_fast(appid, n, parsed, deadline=deadline)
-            if got is None:                            # 청크 소진 — ckpt 보존, 다음 run 이 이어감
-                print(f"deep: {appid} checkpointed (chunk limit) — resume next run", flush=True)
-                stopped = True
-                remaining.append(appid)
-                _write_deep(payload())
-                continue
-        else:
-            got = _reassemble(n, parsed)
+        got = _reassemble_fast(appid, n, parsed, deadline=deadline)   # SpeedOpt O2: 전량 fast 경로
+        if got is None:                                # 청크 소진 — ckpt 보존, 다음 run 이 이어감
+            print(f"deep: {appid} checkpointed (chunk limit) — resume next run", flush=True)
+            stopped = True
+            remaining.append(appid)
+            _write_deep(payload())
+            continue
         entry = {"n": n, "steps": len(parsed), "inlined": inlined, "cost": cost,
                  "u_hash": sealed, "seconds": round(time.time() - t1, 1)}
         if got == sealed:

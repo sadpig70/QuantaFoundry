@@ -44,7 +44,13 @@ def forge_apps(changed_only):
 
 
 def frontier_block(changed_only):
-    """1b. frontier/factory — changed-only & 무변경 시 coherence+factory, 그 외 전량 (이식)."""
+    """1b. frontier/factory — changed-only & 무변경 시 coherence+factory, 그 외 전량 (이식).
+
+    SpeedOpt O1(rework): FRONTIER_STEPS 는 N-가족별 직렬 그룹으로 묶어 그룹 간만 병렬
+    (같은 가족은 같은 앱 재봉인 파일을 공유 — 동시 기록 레이스가 실측 재현되어 직렬화).
+    factory --reproduce 는 sealed_N(legacy 가족과 disjoint) 청크로 병렬(O1b). 결과 조립은
+    원순서 고정(INV-RA2 계열)·report 형태 불변.
+    """
     steps = {}
     specs_changed = cx.frontier_specs_changed() if changed_only else True
     if changed_only and not specs_changed:
@@ -54,14 +60,59 @@ def frontier_block(changed_only):
         steps[fstep_id] = {"rc": rc, "all_ok": "all_ok=True" in out,
                            "pass": rc == 0 and "all_ok=True" in out}
     else:
-        for step_id, argv in FRONTIER_STEPS:
-            rc, out = cx.run(argv)
-            steps[step_id] = {"rc": rc, "all_ok": "all_ok=True" in out,
-                              "pass": rc == 0 and "all_ok=True" in out}
+        from concurrent.futures import ThreadPoolExecutor
+        workers = min(6, max(1, (os.cpu_count() or 2) - 2))
         fstep_id, fargv = FACTORY_STEP
-        rc, out = cx.run([*fargv, "--reproduce"])
-        steps[fstep_id] = {"rc": rc, "all_ok": "all_ok=True" in out,
-                           "pass": rc == 0 and "all_ok=True" in out}
+        # ★레이스 경계(SpeedOpt O1 rework): legacy frontier 스크립트는 REPORT 외에 같은 N-가족
+        #   앱 재봉인 파일도 기록 → 같은 가족은 직렬 체인, 가족 간(N disjoint)만 병렬.
+        groups = [["shor_frontier"],
+                  ["c8x_frontier", "shor221_frontier"],
+                  ["c9x_shor381_frontier"],
+                  ["c10x_frontier", "shor635_frontier"],
+                  ["c11x_frontier", "c11x_payoff_family", "shor1285_frontier"],
+                  ["c12x_frontier", "c12x_payoff_family", "shor3683_frontier"]]
+        argv_of = dict(FRONTIER_STEPS)
+
+        def _run_group(ids):
+            return [(sid, cx.run(argv_of[sid])) for sid in ids]
+
+        # SpeedOpt O1b: factory sealed_N(legacy 가족과 disjoint)을 청크 분할 --reproduce --only 병렬
+        try:
+            db = json.load(open(os.path.join(ROOT, ".pgf", "arith", "FACTORY-FRONTIER.json"),
+                                encoding="utf-8"))
+            ns = [e["N"] for e in db["sealed_N"]]
+        except Exception:
+            ns = []
+        chunks = [c for c in ([ns[i::workers] for i in range(workers)] if ns else []) if c]
+        # ★2상 분리 + 실패분 순차 재시도 1회: 병렬 쓰기는 상주 AV 의 일시 파일잠금으로 간헐
+        #   실패할 수 있다(실측). 스크립트는 결정론 재유도라 재실행이 byte-identical 로 수렴 —
+        #   transient 는 self-heal, 진짜 실패는 재시도에서도 실패(정직 유지). 최종 판정은 재시도값.
+        def _verdict(rc, out):
+            return {"rc": rc, "all_ok": "all_ok=True" in out,
+                    "pass": rc == 0 and "all_ok=True" in out}
+
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            got = {}
+            for f in [pool.submit(_run_group, g) for g in groups]:   # Phase A: legacy 그룹 병렬
+                for sid, (rc, out) in f.result():
+                    got[sid] = _verdict(rc, out)
+            for sid in [s for s, v in got.items() if not v["pass"]]:
+                got[sid] = _verdict(*cx.run(argv_of[sid]))           # 순차 재시도 1회
+            if chunks:                                               # Phase B: factory 청크 병렬
+                cfuts = [pool.submit(cx.run, [*fargv, "--reproduce", "--only",
+                                              *map(str, c)]) for c in chunks]
+            else:
+                cfuts = [pool.submit(cx.run, [*fargv, "--reproduce"])]
+            cres = [_verdict(*f.result()) for f in cfuts]
+        for i, v in enumerate(cres):
+            if not v["pass"] and chunks:                             # 청크 순차 재시도 1회
+                cres[i] = _verdict(*cx.run([*fargv, "--reproduce", "--only",
+                                            *map(str, chunks[i])]))
+        for step_id, _argv in FRONTIER_STEPS:            # 원순서 조립 (INV-RA2 계열)
+            steps[step_id] = got[step_id]
+        steps[fstep_id] = {"rc": max(v["rc"] for v in cres),         # factory = 합산 단일 항목
+                           "all_ok": all(v["all_ok"] for v in cres),
+                           "pass": all(v["pass"] for v in cres)}
     return steps
 
 

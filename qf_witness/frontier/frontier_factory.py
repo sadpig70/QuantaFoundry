@@ -450,9 +450,11 @@ def _run_regression(scope: str = "auto") -> int:
     return 0 if all_ok else 1
 
 
-def _run_reproduce() -> int:
+def _run_reproduce(only=None) -> int:
     db = _load_db()
     ns = [e["N"] for e in db["sealed_N"]]
+    if only is not None:                     # SpeedOpt O1b: 병렬 청크용 부분집합 (N별 산출물 disjoint)
+        ns = [N for N in ns if N in set(only)]
     if not ns:
         print("frontier_factory --reproduce: no factory N registered yet. all_ok=True")
         return 0
@@ -475,6 +477,8 @@ def main() -> int:
     ap.add_argument("--regression-scope", choices=["auto", "full", "sample"], default="auto",
                     help="full=전량(CI/세션종결) · sample=표본(codegen 무변경 가드) · auto=codegen 변경시 full")
     ap.add_argument("--reproduce", action="store_true")
+    ap.add_argument("--only", type=int, nargs="+", default=None,
+                    help="--reproduce 대상 N 부분집합 (병렬 청크용, SpeedOpt O1b)")
     ap.add_argument("--resolve", type=int, default=None)
     ap.add_argument("--seal", type=int, nargs="+", default=None)
     args = ap.parse_args()
@@ -482,7 +486,7 @@ def main() -> int:
     if args.verify_regression:
         return _run_regression(args.regression_scope)
     if args.reproduce:
-        return _run_reproduce()
+        return _run_reproduce(args.only)
     if args.resolve is not None:
         print(json.dumps(resolve_primitive(args.resolve), ensure_ascii=False, indent=2))
         return 0
