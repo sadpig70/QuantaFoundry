@@ -513,6 +513,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 등록: schtasks "QuantaFoundry-FrontierBatch" DAILY 03:00 → _workspace/frontier_batch_nightly.cmd(머신로컬 래퍼, 로그 동일 dir append).
         # ★검증 3종: 스케줄러 경유 스모크(smoke 인자→--skip-loop --no-commit) 전 게이트 PASS·rc=0·HEAD 불변 / 중복실행 락(살아있는 PID→rc=2 생략, 죽은 락 자동회수) / 실패 시 무커밋 정지(기실증 T1).
         # 한계 명시: 사용자 로그온 세션 필요·절전 시 미실행(WakeToRun 미설정)·후보 소진 시 무커밋 자연 종료. 해제=schtasks /Delete /TN QuantaFoundry-FrontierBatch.
+    SessionClosure_20260713 // 세션 총결산 — README 수치 동기화(710/712·652)·FrontierAutomation 이력 이관·Recently Completed 갱신 (done — 2026-07-13, b9cf625)
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).
