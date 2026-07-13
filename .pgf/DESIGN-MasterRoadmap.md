@@ -546,6 +546,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
                 # ★값 동일 논증: 0·x,1·x IEEE 정확 → hash 불변. 등가성 fast==row==sealed 14표본·재개==무중단 실증.
                 # ★실측: cmul2_mod3683 17.5s(구경로 308min, ~1057×)·최대 cmul2925_mod3683(23,025스텝) 248s → 몬스터 잔여 '~220h' 예측이 ~15min 으로.
                 # deep 120/120 폐합·failed 0·teeth. coverage: compositional 467(=eligible 전체)·649 커버·★primary-seal-only 90→**2**(ghz16_structural·rm15_tt=tier 고유, 정직 최소치).
+    FrontierBatchNightly1_20260714 // 야간 배치 1차 — CLI 세션 cron 경유 frontier_batch --budget 8 무인 완주 (done — 2026-07-14, d309ea8)
+        # 8/8 verified: shor437·445·447·451·453·469·471·485 자율봉인(라운드별 verified-commit·신규 모듈 0). 712→777앱·tier1 60→68·root 3c953d32→398e528599f15593.
+        # 후처리 전 게이트 PASS: deep_resume all_ok·coverage 774(primary-only 3)·scorecard 100%·release_root b839d511·check-claims·seal_gate·full reproduce 764s REPRODUCED → 마감 커밋·push.
+        # 운영: detached+foreground 유한폴링 감독·개입 0·중복실행 락 정상. 누적 무인 32라운드(267~485). 다음 후보 487+.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
