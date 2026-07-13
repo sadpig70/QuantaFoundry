@@ -90,6 +90,26 @@ def _finalize_commit(state, push):
     return ok
 
 
+LOCK = os.path.join(ROOT, "_workspace", "frontier_batch.lock")
+
+
+def _acquire_lock():
+    """중복 실행 방지(야간 스케줄 겹침 대비): 살아있는 PID 의 락이 있으면 정지."""
+    if os.path.exists(LOCK):
+        try:
+            pid = int(open(LOCK, encoding="utf-8").read().strip())
+            rc, out, _ = _run(["tasklist", "/FI", f"PID eq {pid}"], timeout=30)
+            if str(pid) in out:
+                print(f"[batch] ABORT: 이미 실행 중 (lock pid={pid}) — 이번 회차 생략", flush=True)
+                return False
+        except Exception:
+            pass                                        # 죽은/손상 락 → 회수
+    os.makedirs(os.path.dirname(LOCK), exist_ok=True)
+    with open(LOCK, "w", encoding="utf-8") as f:
+        f.write(str(os.getpid()))
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser(description="qfa-loop batch + standard post-processing")
     ap.add_argument("--budget", type=int, default=8)
@@ -98,6 +118,18 @@ def main():
     ap.add_argument("--no-commit", action="store_true", help="마감 커밋 생략 (검사만)")
     ap.add_argument("--no-push", action="store_true")
     a = ap.parse_args()
+    if not _acquire_lock():
+        return 2
+    try:
+        return _run_batch(a)
+    finally:
+        try:
+            os.remove(LOCK)
+        except OSError:
+            pass
+
+
+def _run_batch(a):
     state = {"_schema": "frontier-batch/v1", "budget": a.budget, "steps": []}
 
     if not a.skip_loop:

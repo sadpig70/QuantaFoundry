@@ -1,5 +1,5 @@
 {
-  "_note": "compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). 동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 금지). cost>budget 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님). cost≥CKPT_MIN_COST 앱은 intra-app 체크포인트(결정론: 재개==무중단)로 청크 소화.",
+  "_note": "compositional 의 over_budget 잔여 1회 심층 검증(오프라인, reproduce 스텝 아님). 동일 형식론·동일 제1원리 재조립 — coverage 는 compositional 경로에 union(이중계상 금지). cost>budget 몬스터=deep_excluded — 정직 표기: cmul*_mod1285 는 tncontract 경로 보유, cmul*_mod3683 5앱은 앱 자체 보조경로 없음(부모 shor3683 의 CUC 인증은 부모 앱 단위이지 이 sub-app 들의 per-app census 가 아님). 전 앱 fast 경로(순열 커널·intra-app 체크포인트 내장, 결정론: 재개==무중단)로 청크 소화.",
   "_schema": "compositional-deep/v1",
   "all_ok": true,
   "budget_high": 100000000000,
