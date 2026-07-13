@@ -2,7 +2,7 @@
   "_schema": "release-root/v1",
   "_note": "릴리스 3층 root. seal_root=기존 registry_root(봉인 unitary 정체성, 불변). release_root=seal+evidence+toolchain+claim 을 함께 인용하는 상위 해시. qf_stdlib attest 는 seal_root 까지만 보장(anchor.attested_up_to). 신규 가산·기존 봉인 불변.",
   "seal_root": "3c953d321c7777552ec6d4e422940b57e5f9897c602ad99a68391b9e84ed987c",
-  "evidence_root": "972306a7a069d0680711b79667f611901eaea1e9457014630f9ec397d4d4e3ad",
+  "evidence_root": "f7b8822a8eaa178beb8d05601e4d4348f0302ec25ec02283e458d899e1fa606e",
   "evidence_inputs": [
     "registry/SEMANTIC-GUARANTEES.json",
     "registry/APPROX-GUARANTEES.json",
@@ -17,5 +17,5 @@
     ".agents/skills/qpgf-oracle/BUNDLE.sha256"
   ],
   "claim_manifest_hash": "21416c98b2d68d5ec3ac07f3e9bc46372e54194f4ac3072b05c2bf2a52eec029",
-  "release_root": "bc890d920a0c328bda9f42b9ec12e02e5ada3df38ab4610612dd33947d23df12"
+  "release_root": "68efacb61dfdabea69a4f0580438f5ccc33b2370743f550240668b590e7b05f6"
 }

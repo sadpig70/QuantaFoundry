@@ -16,7 +16,7 @@
       "sidecar": "*.column_proof.json"
     },
     "compositional": {
-      "covered": 638,
+      "covered": 652,
       "sidecar": "COMPOSITIONAL-VERIFY.json"
     },
     "cuc": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 277,
+    "1": 291,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 696,
-  "n_primary_seal_only": 16,
+  "n_apps_with_supplementary": 710,
+  "n_primary_seal_only": 2,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -132,6 +132,8 @@
     "cmul16_mod407": "compositional",
     "cmul16_mod411": "compositional",
     "cmul16_mod413": "compositional",
+    "cmul16_mod415": "compositional",
+    "cmul16_mod427": "compositional",
     "cmul170_mod203": "compositional",
     "cmul170_mod301": "compositional",
     "cmul171_mod355": "compositional",
@@ -140,6 +142,7 @@
     "cmul175_mod411": "compositional",
     "cmul176_mod215": "compositional",
     "cmul178_mod219": "compositional",
+    "cmul179_mod427": "compositional",
     "cmul181_mod303": "compositional",
     "cmul184_mod327": "compositional",
     "cmul187_mod411": "compositional",
@@ -147,6 +150,7 @@
     "cmul198_mod203": "compositional",
     "cmul19_mod237": "compositional",
     "cmul201_mod365": "compositional",
+    "cmul205_mod427": "compositional",
     "cmul206_mod235": "compositional",
     "cmul208_mod237": "compositional",
     "cmul211_mod335": "compositional",
@@ -195,6 +199,8 @@
     "cmul256_mod407": "compositional",
     "cmul256_mod411": "compositional",
     "cmul256_mod413": "compositional",
+    "cmul256_mod415": "compositional",
+    "cmul256_mod427": "compositional",
     "cmul25_mod203": "compositional",
     "cmul25_mod319": "compositional",
     "cmul25_mod413": "compositional",
@@ -238,7 +244,10 @@
     "cmul2_mod407": "compositional",
     "cmul2_mod411": "compositional",
     "cmul2_mod413": "compositional",
+    "cmul2_mod415": "compositional",
+    "cmul2_mod427": "compositional",
     "cmul301_mod335": "compositional",
+    "cmul326_mod415": "compositional",
     "cmul334_mod411": "compositional",
     "cmul34_mod411": "compositional",
     "cmul358_mod391": "compositional",
@@ -250,7 +259,9 @@
     "cmul366_mod395": "compositional",
     "cmul366_mod407": "compositional",
     "cmul36_mod253": "compositional",
+    "cmul36_mod415": "compositional",
     "cmul37_mod219": "compositional",
+    "cmul381_mod415": "compositional",
     "cmul3_mod253": "compositional",
     "cmul41_mod215": "compositional",
     "cmul43_mod213": "compositional",
@@ -290,8 +301,11 @@
     "cmul4_mod407": "compositional",
     "cmul4_mod411": "compositional",
     "cmul4_mod413": "compositional",
+    "cmul4_mod415": "compositional",
+    "cmul4_mod427": "compositional",
     "cmul51_mod295": "compositional",
     "cmul51_mod395": "compositional",
+    "cmul51_mod415": "compositional",
     "cmul52_mod391": "compositional",
     "cmul53_mod203": "compositional",
     "cmul55_mod219": "compositional",
@@ -350,20 +364,6 @@
     "shor427": "subspace"
   },
   "primary_seal_only": [
-    "cmul16_mod415",
-    "cmul16_mod427",
-    "cmul179_mod427",
-    "cmul205_mod427",
-    "cmul256_mod415",
-    "cmul256_mod427",
-    "cmul2_mod415",
-    "cmul2_mod427",
-    "cmul326_mod415",
-    "cmul36_mod415",
-    "cmul381_mod415",
-    "cmul4_mod415",
-    "cmul4_mod427",
-    "cmul51_mod415",
     "ghz16_structural",
     "rm15_tt"
   ],
@@ -1028,6 +1028,12 @@
     "cmul16_mod413": [
       "compositional"
     ],
+    "cmul16_mod415": [
+      "compositional"
+    ],
+    "cmul16_mod427": [
+      "compositional"
+    ],
     "cmul16_mod635": [
       "compositional",
       "tncontract"
@@ -1091,6 +1097,9 @@
     "cmul178_mod219": [
       "compositional"
     ],
+    "cmul179_mod427": [
+      "compositional"
+    ],
     "cmul181_mod303": [
       "compositional"
     ],
@@ -1115,6 +1124,9 @@
       "compositional"
     ],
     "cmul201_mod365": [
+      "compositional"
+    ],
+    "cmul205_mod427": [
       "compositional"
     ],
     "cmul206_mod235": [
@@ -1271,6 +1283,12 @@
       "compositional"
     ],
     "cmul256_mod413": [
+      "compositional"
+    ],
+    "cmul256_mod415": [
+      "compositional"
+    ],
+    "cmul256_mod427": [
       "compositional"
     ],
     "cmul256_mod635": [
@@ -1519,6 +1537,12 @@
     "cmul2_mod413": [
       "compositional"
     ],
+    "cmul2_mod415": [
+      "compositional"
+    ],
+    "cmul2_mod427": [
+      "compositional"
+    ],
     "cmul2_mod635": [
       "compositional",
       "tncontract"
@@ -1559,6 +1583,9 @@
       "tncontract"
     ],
     "cmul301_mod335": [
+      "compositional"
+    ],
+    "cmul326_mod415": [
       "compositional"
     ],
     "cmul334_mod411": [
@@ -1609,6 +1636,9 @@
     "cmul36_mod253": [
       "compositional"
     ],
+    "cmul36_mod415": [
+      "compositional"
+    ],
     "cmul36_mod95": [
       "anf",
       "compositional",
@@ -1620,6 +1650,9 @@
       "tncontract"
     ],
     "cmul37_mod219": [
+      "compositional"
+    ],
+    "cmul381_mod415": [
       "compositional"
     ],
     "cmul3_mod253": [
@@ -1833,6 +1866,12 @@
     "cmul4_mod413": [
       "compositional"
     ],
+    "cmul4_mod415": [
+      "compositional"
+    ],
+    "cmul4_mod427": [
+      "compositional"
+    ],
     "cmul4_mod635": [
       "compositional",
       "tncontract"
@@ -1876,6 +1915,9 @@
       "compositional"
     ],
     "cmul51_mod395": [
+      "compositional"
+    ],
+    "cmul51_mod415": [
       "compositional"
     ],
     "cmul52_mod391": [

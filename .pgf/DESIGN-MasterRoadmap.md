@@ -501,6 +501,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     QfaLoopBatch8_20260713 // qfa-loop 무인 배치 2차(budget 8) — shor365~413 (done — 2026-07-13)
         # 8/8 verified-commit·invariants_held=True·stopped_by=ok: shor365(5×73)·371(7×53)·391(17×23)·395(5×79)·403(13×31)·407(11×37)·411(3×137)·413(7×59).
         # 후처리: deep 291(failed 0)·coverage 694/696·primary-only 2 불변·앵커 PASS(f7716fc6). 95모듈/696앱·tier1 58. 누적 무인 22라운드 무결.
+    FrontierBatchOps_20260713 // 배치+후처리 원커맨드 오케스트레이터 qf_witness/ops/frontier_batch.py (in-progress — 2026-07-13)
+        # 순수 오케스트레이션(검증 무수정): qfa-loop→deep 재개→coverage/scorecard/release_root/check-claims/seal_gate→full reproduce→전부 PASS 시에만 마감 커밋.
+        # criteria: budget 2 end-to-end 개입 0회 완주·실패주입(앵커 불일치) 시 커밋 없이 정지·root/봉인 규율 유지.
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).
