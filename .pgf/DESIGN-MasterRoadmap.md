@@ -498,6 +498,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 10/10 verified-commit·invariants_held=True·stopped_by=ok: shor301(7×43)·303(3×101)·309(3×103)·319(11×29)·323(17×19)·327(3×109)·335(5×67)·339(3×113)·341(11×31)·355(5×71).
         # 선행: deep 사이드카 단조성 보강(prev 전량 선탑재 — mid-run kill 결손 근절). 후처리: deep 229(failed 0)·coverage 624/626·primary-only 2 불변·앵커 PASS(e872b0fe).
         # 최종: 95모듈/626앱·tier1 50·root 0fd3fe16→e872b0fe. 누적 무인 14라운드(267~355) 무결.
+    QfaLoopBatch8_20260713 // qfa-loop 무인 배치 2차(budget 8) — shor365~413 (done — 2026-07-13)
+        # 8/8 verified-commit·invariants_held=True·stopped_by=ok: shor365(5×73)·371(7×53)·391(17×23)·395(5×79)·403(13×31)·407(11×37)·411(3×137)·413(7×59).
+        # 후처리: deep 291(failed 0)·coverage 694/696·primary-only 2 불변·앵커 PASS(f7716fc6). 95모듈/696앱·tier1 58. 누적 무인 22라운드 무결.
         S1_CompositionalVerify // 앱 조립 독립 재구성 검증기 — second_oracle 제1원리 모듈 유니터리로 plan.steps embed·compose→sealed u_hash 대조 (done — 2026-07-11)
             # qf_witness/verify/compositional_verify.py. 독립 재조립 앱 1(cmul2_mod21)→289(all_ok·teeth). app_assemble/qualtran 미사용.
             # coverage 13번째 소스(COMPOSITIONAL-VERIFY.json)·witness_batch --quick 스텝. ★정직 경계: dense 제1원리의 앱-레벨 확장 — 새 형식론 아님(제11 검증경로 주장 안 함).
