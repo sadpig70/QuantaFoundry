@@ -550,6 +550,14 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 8/8 verified: shor437·445·447·451·453·469·471·485 자율봉인(라운드별 verified-commit·신규 모듈 0). 712→777앱·tier1 60→68·root 3c953d32→398e528599f15593.
         # 후처리 전 게이트 PASS: deep_resume all_ok·coverage 774(primary-only 3)·scorecard 100%·release_root b839d511·check-claims·seal_gate·full reproduce 764s REPRODUCED → 마감 커밋·push.
         # 운영: detached+foreground 유한폴링 감독·개입 0·중복실행 락 정상. 누적 무인 32라운드(267~485). 다음 후보 487+.
+    CIRecovery_20260714 // seal-gate CI 07-09 이후 전 run 실패 복구 — shim 잔존 경로 -m 전환 (done — 2026-07-14, 2c46c29·2264e58)
+        # 원인=ScriptsShimCleanup 후 CI 워크플로·qf_cli만 구 scripts/ 경로 잔존. seal-gate.yml 7개 + qf_cli 위임(reproduce→scripts/reproduce_all.py 공인 진입점·export/ingest/discover→_run_mod -m 고정).
+        # 검증: 로컬 second_oracle 83/83·qf reproduce 전 스텝 PASS + CI oracle~contested-guard 전부 green(07-09 이후 처음). 검증 로직 무수정·root 불변.
+        # ★잔여 공개과제: QASM round-trip 스텝 852앱 규모 CI 6h 한도 초과(cancelled). 옵션 A=--jobs 병렬 / B=push 게이트 --changed+주간 --all 분리 — 게이트 표면 결정, 정욱님 대기.
+    FrontierBatchNightly2_20260715 // 야간 배치 2차 — frontier_batch --budget 8 무인 완주 (done — 2026-07-15, 75e0e76)
+        # 8/8 verified: shor493·501·515·517·519·527·535·543 자율봉인(신규 모듈 0). 777→846앱·tier1 68→76·root 398e5285→59ddbf7edd6751c8. 누적 무인 40라운드.
+        # 후처리 전 게이트 PASS: deep_resume all_ok(296s)·coverage 841·scorecard 100%·release_root a5c7baf3·check-claims·seal_gate·full reproduce 976s REPRODUCED → 마감 커밋·push(로컬 재수출 QASM 223 포함).
+        # ★관찰: primary-seal-only 3→5(cmul2_mod447/493/501 — cmul2_modN 계열 deep_resume 체계적 누락 패턴). PrimaryOnlyRedeem 후보로 상신(아침 결정).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
