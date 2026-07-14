@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 73,
+      "covered": 74,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 362,
+    "1": 363,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 781,
-  "n_primary_seal_only": 56,
+  "n_apps_with_supplementary": 782,
+  "n_primary_seal_only": 64,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -432,7 +432,8 @@
     "shor517": "subspace",
     "shor519": "subspace",
     "shor527": "subspace",
-    "shor535": "subspace"
+    "shor535": "subspace",
+    "shor543": "subspace"
   },
   "primary_seal_only": [
     "cmul103_mod493",
@@ -452,8 +453,10 @@
     "cmul16_mod519",
     "cmul16_mod527",
     "cmul16_mod535",
+    "cmul16_mod543",
     "cmul171_mod527",
     "cmul188_mod527",
+    "cmul196_mod543",
     "cmul220_mod519",
     "cmul256_mod493",
     "cmul256_mod501",
@@ -462,6 +465,7 @@
     "cmul256_mod519",
     "cmul256_mod527",
     "cmul256_mod535",
+    "cmul256_mod543",
     "cmul261_mod515",
     "cmul266_mod535",
     "cmul2_mod447",
@@ -472,12 +476,16 @@
     "cmul2_mod519",
     "cmul2_mod527",
     "cmul2_mod535",
+    "cmul2_mod543",
     "cmul306_mod535",
+    "cmul307_mod543",
     "cmul35_mod527",
+    "cmul376_mod543",
     "cmul394_mod517",
     "cmul397_mod501",
     "cmul401_mod517",
     "cmul406_mod501",
+    "cmul406_mod543",
     "cmul442_mod519",
     "cmul460_mod493",
     "cmul49_mod501",
@@ -488,6 +496,7 @@
     "cmul4_mod519",
     "cmul4_mod527",
     "cmul4_mod535",
+    "cmul4_mod543",
     "cmul7_mod501",
     "ghz16_structural",
     "rm15_tt"
@@ -3482,6 +3491,9 @@
       "subspace"
     ],
     "shor535": [
+      "subspace"
+    ],
+    "shor543": [
       "subspace"
     ],
     "shor635": [
