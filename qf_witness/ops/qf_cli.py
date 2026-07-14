@@ -46,9 +46,14 @@ def _run(script, args, cwd=ROOT, extra_path=None):
     return subprocess.call([sys.executable, script] + list(args), cwd=cwd, env=env)
 
 
+def _run_mod(module, args, cwd=ROOT):
+    """qf_witness 패키지 모듈 위임 — 직접 파일 실행은 패키지 import 가 깨지므로 -m 고정."""
+    return subprocess.call([sys.executable, "-m", module] + list(args), cwd=cwd)
+
+
 def cmd_reproduce(args):
     """reproduce_all.py 위임(전수 재현 검증) + REGISTRY-MANIFEST root 조회·대조(신규 검증로직 아님)."""
-    rc = _run(os.path.join(HERE, "reproduce_all.py"), [])
+    rc = _run(os.path.join(ROOT, "scripts", "reproduce_all.py"), [])
     if rc != 0:
         print("reproduce_all FAILED"); return rc
     expect = None
@@ -105,11 +110,11 @@ def main():
     if cmd == "reproduce":
         return cmd_reproduce(rest)
     if cmd == "export":
-        return _run(os.path.join(HERE, "qasm_export.py"), rest)
+        return _run_mod("qf_witness.export.qasm_export", rest)
     if cmd == "ingest":
-        return _run(os.path.join(HERE, "qasm_ingest.py"), rest)
+        return _run_mod("qf_witness.export.qasm_ingest", rest)
     if cmd == "discover":
-        return _run(os.path.join(HERE, "discover.py"), rest)
+        return _run_mod("qf_witness.ops.discover", rest)
     if cmd == "explain":
         return cmd_explain(rest)
     if cmd in ("inspect", "claims", "plan"):
