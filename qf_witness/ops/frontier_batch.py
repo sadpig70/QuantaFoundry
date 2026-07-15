@@ -142,6 +142,10 @@ def _run_batch(a):
             return 1
 
     chain = [
+        # full 패스 sidecar 재생성 — cost≤1e8 신규 앱 사각지대 폐쇄(deep 은 1e8<cost 만 target,
+        # PrimaryOnlyRedeem 2026-07-15: cmul2_mod447/493/501 실사례). 순열 커널로 초 단위.
+        ("compositional_full", ["-m", "qf_witness.verify.compositional_verify"],
+         lambda rc, out: rc == 0 and "all_ok=True" in out),
         ("deep_resume", ["-m", "qf_witness.verify.compositional_verify", "--deep"],
          lambda rc, out: rc == 0 and "all_ok=True" in out),
         ("coverage", ["-m", "qf_witness.registry.coverage_matrix"],

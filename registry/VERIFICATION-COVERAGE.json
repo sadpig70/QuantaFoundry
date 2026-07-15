@@ -16,7 +16,7 @@
       "sidecar": "*.column_proof.json"
     },
     "compositional": {
-      "covered": 767,
+      "covered": 770,
       "sidecar": "COMPOSITIONAL-VERIFY.json"
     },
     "cuc": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 422,
+    "1": 425,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 841,
-  "n_primary_seal_only": 5,
+  "n_apps_with_supplementary": 844,
+  "n_primary_seal_only": 2,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -304,11 +304,14 @@
     "cmul2_mod427": "compositional",
     "cmul2_mod437": "compositional",
     "cmul2_mod445": "compositional",
+    "cmul2_mod447": "compositional",
     "cmul2_mod451": "compositional",
     "cmul2_mod453": "compositional",
     "cmul2_mod469": "compositional",
     "cmul2_mod471": "compositional",
     "cmul2_mod485": "compositional",
+    "cmul2_mod493": "compositional",
+    "cmul2_mod501": "compositional",
     "cmul2_mod515": "compositional",
     "cmul2_mod517": "compositional",
     "cmul2_mod519": "compositional",
@@ -495,9 +498,6 @@
     "shor543": "subspace"
   },
   "primary_seal_only": [
-    "cmul2_mod447",
-    "cmul2_mod493",
-    "cmul2_mod501",
     "ghz16_structural",
     "rm15_tt"
   ],
@@ -1851,6 +1851,9 @@
     "cmul2_mod445": [
       "compositional"
     ],
+    "cmul2_mod447": [
+      "compositional"
+    ],
     "cmul2_mod451": [
       "compositional"
     ],
@@ -1864,6 +1867,12 @@
       "compositional"
     ],
     "cmul2_mod485": [
+      "compositional"
+    ],
+    "cmul2_mod493": [
+      "compositional"
+    ],
+    "cmul2_mod501": [
       "compositional"
     ],
     "cmul2_mod515": [
