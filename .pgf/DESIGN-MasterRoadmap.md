@@ -568,7 +568,8 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # AV 병렬쓰기 교훈([[speedopt-pgf-cycle]]) 상속: 파일쓰기 결정론 재시도. seal-gate.yml --jobs 4(러너 4vCPU).
         # ★로컬 실측: --all --jobs 6 완주 round-trip 708/708·all_checked_match=True·기존 커밋 QASM 609 전원 byte-identical(git diff 0)·신규 237(846 완비).
         # ★CI 예측(사전분석): dense units 20.4×(5.08e11)·jobs4 스텝 ≈3.1h·총 job 3.4~4.1h<6h·성장 +8min/night→~2주 여유. 후속=순열커널 라우팅(옵션 C) 상신.
-        # DoD 잔여: CI run green 실측 → done.
+        # ★CI 실측(2026-07-16 run 29421023888): QASM 스텝 355min+에도 미완 → 6h 한도 cancelled(2연속). 예측 대비 ~1.6× 느림(러너 코어 성능/메모리대역 보정 오차).
+        #   판정: A(코드·로컬 검증·846 완비) 완료하되 CI green DoD 미달 — A 단독 불충분 확정. 에스컬레이션(C 순열커널/B 게이트 분리) 정욱님 결정 대기.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
