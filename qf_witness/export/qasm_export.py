@@ -14,10 +14,10 @@ gate 선언 + 경고로 정직 노출(은폐 금지). round-trip 은 INDEP 가 �
 
 사용:
   python -m qf_witness.export.qasm_export <app_id>     # 단일 앱 export + round-trip
-  python -m qf_witness.export.qasm_export --all         # 전 앱 round-trip 검증 요약
+  python -m qf_witness.export.qasm_export --all [--jobs N]  # 전 앱 round-trip 검증 요약(앱 독립 병렬)
 """
 from __future__ import annotations
-import os, sys, json, re, math
+import os, sys, json, re, math, time
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -179,17 +179,36 @@ def export_one(app_id, write=True):
     rec["unmapped_gates"] = unmapped
     if write:
         os.makedirs(OUTDIR, exist_ok=True)
-        open(os.path.join(OUTDIR, f"{app_id}.qasm"), "w", encoding="utf-8", newline="\n").write(qasm)
+        # 병렬쓰기 시 AV 일시잠금 간헐실패 → 결정론 재시도(내용 불변 self-heal)
+        for attempt in (1, 2, 3):
+            try:
+                open(os.path.join(OUTDIR, f"{app_id}.qasm"), "w", encoding="utf-8", newline="\n").write(qasm)
+                break
+            except OSError:
+                if attempt == 3:
+                    raise
+                time.sleep(0.5 * attempt)
         rec["qasm_path"] = f".pgf/adoption/qasm/{app_id}.qasm"
     return rec
 
 
 def main():
     args = sys.argv[1:]
+    jobs = 1
+    if "--jobs" in args:
+        i = args.index("--jobs")
+        jobs = max(1, int(args[i + 1]))
+        args = args[:i] + args[i + 2:]
     os.makedirs(OUTDIR, exist_ok=True)
     if args and args[0] == "--all":
         ids = sorted(f[:-7] for f in os.listdir(APPS) if f.endswith(".app.pg"))
-        recs = [export_one(a) for a in ids]
+        if jobs > 1:
+            # 앱 독립 병렬 — map 이 입력순서를 보존하므로 records/보고서는 직렬과 결정론 동일
+            import multiprocessing
+            with multiprocessing.Pool(jobs) as pool:
+                recs = pool.map(export_one, ids, chunksize=1)
+        else:
+            recs = [export_one(a) for a in ids]
         checked = [r for r in recs if r.get("round_trip_match") is not None]
         matched = [r for r in checked if r["round_trip_match"]]
         skipped = [r for r in recs if r.get("round_trip_match") is None]
@@ -220,7 +239,7 @@ def main():
         r = export_one(args[0])
         print(json.dumps(r, ensure_ascii=False, indent=2))
         return 0 if r.get("round_trip_match") in (True, None) else 1
-    print("usage: qasm_export.py <app_id> | --all")
+    print("usage: qasm_export.py <app_id> | --all [--jobs N]")
     return 2
 
 

@@ -41,7 +41,7 @@ jobs:
         run: python -m qf_witness.verify.verify_contested_guard
 
       - name: QASM export round-trip (export honesty)
-        run: python -m qf_witness.export.qasm_export --all
+        run: python -m qf_witness.export.qasm_export --all --jobs 4
 
       # root gate: 정적 앵커 하드코딩 금지(anchor drift 방지) — seal_gate_ci.py 의
       # EXPECT_DEFAULT(anchor_sync 가 갱신)를 사용. root 결정론 깨지면 여기서 머지 차단.

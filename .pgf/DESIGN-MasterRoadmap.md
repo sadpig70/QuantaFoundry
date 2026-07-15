@@ -558,6 +558,17 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 8/8 verified: shor493·501·515·517·519·527·535·543 자율봉인(신규 모듈 0). 777→846앱·tier1 68→76·root 398e5285→59ddbf7edd6751c8. 누적 무인 40라운드.
         # 후처리 전 게이트 PASS: deep_resume all_ok(296s)·coverage 841·scorecard 100%·release_root a5c7baf3·check-claims·seal_gate·full reproduce 976s REPRODUCED → 마감 커밋·push(로컬 재수출 QASM 223 포함).
         # ★관찰: primary-seal-only 3→5(cmul2_mod447/493/501 — cmul2_modN 계열 deep_resume 체계적 누락 패턴). PrimaryOnlyRedeem 후보로 상신(아침 결정).
+    PrimaryOnlyRedeem_20260715 // primary-seal-only 5→2 상환 + 사각지대 폐쇄 (done — 2026-07-15) @dep:FrontierBatchNightly2_20260715
+        # ★진단: "cmul2 체계적 누락"은 오진 — 진범=cost≤1e8(BUDGET_FULL) 신규 앱의 배치 사각지대. deep_resume 는 1e8<cost≤1e11 만 target,
+        #   full 패스 sidecar(COMPOSITIONAL-VERIFY)는 --quick 미기록 규약이라 07-13 이후 동결(652 eligible). 경계앱=cmul2_mod447(6.6e7)/493(8.1e7)/501(6.2e7).
+        # 상환: compositional_verify full 1회 → 3앱 재조립 검증(steps 59~77)·all_ok·teeth 2종 통과 → coverage 844·primary-seal-only 5→2(=tier 고유 최소치)·scorecard·release_root(evidence만 갱신, seal root 59ddbf7e 불변).
+        # 재발방지: frontier_batch chain 에 compositional_full 스텝 추가(deep_resume 앞, 순열 커널 초 단위) — cost≤1e8 신규 앱 자동 커버.
+    QasmExportParallel_20260715 // QASM CI 6h 한도 해소 옵션 A — qasm_export --jobs 병렬화 (in-progress: CI green 확인 대기) @dep:CIRecovery_20260714
+        # 정욱님 결정(2026-07-15): A 채택. export_one=앱 독립 → multiprocessing 병렬(기록 순서=ids 정렬 보존, 보고서 결정론 불변).
+        # AV 병렬쓰기 교훈([[speedopt-pgf-cycle]]) 상속: 파일쓰기 결정론 재시도. seal-gate.yml --jobs 4(러너 4vCPU).
+        # ★로컬 실측: --all --jobs 6 완주 round-trip 708/708·all_checked_match=True·기존 커밋 QASM 609 전원 byte-identical(git diff 0)·신규 237(846 완비).
+        # ★CI 예측(사전분석): dense units 20.4×(5.08e11)·jobs4 스텝 ≈3.1h·총 job 3.4~4.1h<6h·성장 +8min/night→~2주 여유. 후속=순열커널 라우팅(옵션 C) 상신.
+        # DoD 잔여: CI run green 실측 → done.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
