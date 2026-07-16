@@ -21,8 +21,9 @@
 
 ## 현재 열린 노드 (RoadmapHygiene 2026-07-16 기준 — 이 블록은 상태 변경 시 갱신)
 
+- **활성 자율**: `TrackHE14`(report14 6축 P1–P6 소비 중)
 - **결정 대기 (정욱님)**: `TrackQF0711Strategic`(S2/S3·S1 잔여)
-- **외부 입력 대기**: report14(→TrackHE14) · `TrackEXT` 5건(Relay/CIpilot/PoisonPanel/RuntimeKeys/BackendEvidence/ServerLink)
+- **외부 입력 대기**: `TrackEXT` 5건(Relay/CIpilot/PoisonPanel/RuntimeKeys/BackendEvidence/ServerLink)
 - **사람게이트 blocked**: `H2_MolecularSeal`(H2.2/H2.3) · `H6_Exploratory`(ω/무리수 게이트) · c13x(메모리) · TrackIU 백로그(착수 금지 표기)
 - **상시(in-progress 유지)**: `TrackMaintenance` · FrontierCron 야간 배치(★정책 A 확정: N≤1023 소진까지 ~10일 후 FrontierClosureA 폐합·주간 헬스체크 전환)
 - 그 외 트랙 전부 done — 신규 작업은 착수 직전 노드 先추가 규율 유지.
@@ -201,6 +202,10 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 재확장(hi 상향)은 정욱님 결정으로만 — factory 능력은 결정론 코드로 보존(INV-F1 회귀로 언제든 재가동 검증).
         # 데이터: factory N 72(69→583)·nq분포 8q9/9q15/10q36/11q12·specs 84MB(cmul 99%)·잔여 활주로 nq11 84개(~10일)→nq12 601개(~75일, 비용 2-4×)→c13x 메모리 벽.
         # 옵션: A 경계 폐합(N≤1023 완결 후 종료, 권고)/B 감속 유지(budget 2)/C 현행(c13x 벽까지 ~85일). 근거=인스턴스 한계가치 0 수렴, 방법·인프라 자산은 기봉인.
+    TrackHE14 // report14 소비 — 수평확장 14차 통합 6축(P1–P6), 정본=_workspace/integrated_horizontal_expansion14.md (in-progress) @dep:FrontierPolicyBrief_20260716
+        # 8런타임 39제안→수렴 클러스터→6축. 성격=대부분 관측(modular-data/다항식/불변량)·신규 module ~0·root 대체로 불변(TrackHE 계열 상속).
+        # P1 유한군 double D(D₄)+D(Q₈) 쌍(8/8, ★문자표 동치≠double MTC 동치)·P2 HOMFLY Hecke Ocneanu(7/8)·P3 twisted D^ω(ℤ₂²) H³·P4 2D class DIII+Fidkowski-Kitaev ℤ₈·P5 H²(A₅) cocycle causal(§3j)·P6 gridsynth Clifford+T 실봉인(§2 부분해제).
+        # 정직 경계: modular data=관측(봉인 아님)·float Chern 금지(closed-form/Pfaffian만)·§2 Fourier 경계(P5 cocycle 회피·P6 특정각 부분해제)·외부값 자체 재검증(§5).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
