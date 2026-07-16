@@ -275,9 +275,13 @@ def is_distinct_semiprime(n: int) -> bool:
     return len(f) == 2 and f[0] != f[1]
 
 
-def next_unsealed_target(lo: int = 33, hi: int = 4096, a: int = DEFAULT_A, t: int = DEFAULT_T):
+def next_unsealed_target(lo: int = 33, hi: int = 1024, a: int = DEFAULT_A, t: int = DEFAULT_T):
     """결정론적 자율 발견: 가장 작은 distinct-semiprime · 미봉인 shor{N} · structural-eligible
-    (n_sys≥15) · primitive_ok · readout-valid N 을 반환. 없으면 (None, None) (frontier-exhausted)."""
+    (n_sys≥15) · primitive_ok · readout-valid N 을 반환. 없으면 (None, None) (frontier-exhausted).
+
+    ★FrontierPolicy A(2026-07-16 정욱님 확정): 탐색 상한 hi=1024 — 10-bit 전 구간(N≤1023) 완결에서
+    frontier 폐합(자기집행형 경계). 이후 (None,None)=frontier-exhausted 가 자연 정지·폐합 신호.
+    상세=.pgf/DESIGN-FrontierPolicyBrief.md. 재확장은 정욱님 결정으로만(hi 인자 명시 호출)."""
     for N in range(lo, hi):
         if not is_distinct_semiprime(N) or gcd(a, N) != 1:
             continue

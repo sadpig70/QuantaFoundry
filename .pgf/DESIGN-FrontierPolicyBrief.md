@@ -1,5 +1,9 @@
 # DESIGN-FrontierPolicyBrief — frontier 확장 정책 결정 브리프 (2026-07-16)
 
+> ★**결정 확정 (2026-07-16, 정욱님): 옵션 A — 경계 폐합.** N≤1023(10-bit 전 구간) 완결 후 frontier 종료.
+> 집행: `next_unsealed_target` 기본 상한 hi=1024(자기집행형 경계) — 소진 시 (None,None)=폐합 신호.
+> 폐합 절차=FrontierClosureA_20260716 노드. 재확장은 정욱님 결정으로만.
+
 > 목적: 야간 frontier 무인 확장의 **지속 범위·정지 조건**을 정욱님이 결정할 수 있도록 데이터 정리.
 > 작성=Claude(분석만), 결정=정욱님 게이트. 관련: [[project-identity-future-qpc]] · FrontierFactory · FrontierCron.
 

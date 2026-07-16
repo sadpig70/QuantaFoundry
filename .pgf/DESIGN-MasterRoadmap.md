@@ -21,10 +21,10 @@
 
 ## 현재 열린 노드 (RoadmapHygiene 2026-07-16 기준 — 이 블록은 상태 변경 시 갱신)
 
-- **결정 대기 (정욱님)**: `FrontierPolicyBrief_20260716`(확장 정책 A/B/C) · `TrackQF0711Strategic`(S2/S3·S1 잔여)
+- **결정 대기 (정욱님)**: `TrackQF0711Strategic`(S2/S3·S1 잔여)
 - **외부 입력 대기**: report14(→TrackHE14) · `TrackEXT` 5건(Relay/CIpilot/PoisonPanel/RuntimeKeys/BackendEvidence/ServerLink)
 - **사람게이트 blocked**: `H2_MolecularSeal`(H2.2/H2.3) · `H6_Exploratory`(ω/무리수 게이트) · c13x(메모리) · TrackIU 백로그(착수 금지 표기)
-- **상시(in-progress 유지)**: `TrackMaintenance` · FrontierCron 야간 배치(정책 결정 전 현행 유지)
+- **상시(in-progress 유지)**: `TrackMaintenance` · FrontierCron 야간 배치(★정책 A 확정: N≤1023 소진까지 ~10일 후 FrontierClosureA 폐합·주간 헬스체크 전환)
 - 그 외 트랙 전부 done — 신규 작업은 착수 직전 노드 先추가 규율 유지.
 
 ---
@@ -194,7 +194,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 수정 1건: _SEALED_CACHE (런 중 파일 정적 → 값 동일). 실측: --quick 359→8.4s(43×)·full 387→11.5s(34×).
         # 검증: all_ok 양 모드·in-memory teeth(자식 resource 변조→consistent=False 검출)·값-동일 증명(구 report 166항목 전원 동일·신규 747 순가산)·incremental reproduce 113/113 REPRODUCED.
         # 부수: RESOURCE-WITNESS.json 화석(166앱 시절) → 899앱 정직 갱신. 게이트 잔여 상위 = ring_column 187s·forge_apps 248s (수확체감 — 인프라 최적화 이 지점에서 종료 권고).
-    FrontierPolicyBrief_20260716 // frontier 확장 정책 결정 브리프 — .pgf/DESIGN-FrontierPolicyBrief.md (done — 2026-07-16, 결정=정욱님 대기)
+    FrontierPolicyBrief_20260716 // frontier 확장 정책 결정 브리프 — .pgf/DESIGN-FrontierPolicyBrief.md (done — 2026-07-16, ★결정 확정: A 경계 폐합)
+    FrontierClosureA_20260716 // ★정책 A 집행 — N≤1023 완결 후 frontier 폐합 (in-progress — 잔여 84개 야간 자동 소진, ~10일) @dep:FrontierPolicyBrief_20260716
+        # 집행 1(코드): next_unsealed_target 기본 hi=4096→1024 — 자기집행형 경계, 소진 시 (None,None)=frontier-exhausted 자연 정지.
+        # 집행 2(운영): 야간 cron 현행 유지(budget 8) → 소진 배치에서 폐합 절차: 마지막 full 검증 → 본 노드 done → cron 프롬프트를 주간 헬스체크(full reproduce)로 전환 → HANDOFF/외부문서 마일스톤 "10-bit 전 구간 완결" 기록.
+        # 재확장(hi 상향)은 정욱님 결정으로만 — factory 능력은 결정론 코드로 보존(INV-F1 회귀로 언제든 재가동 검증).
         # 데이터: factory N 72(69→583)·nq분포 8q9/9q15/10q36/11q12·specs 84MB(cmul 99%)·잔여 활주로 nq11 84개(~10일)→nq12 601개(~75일, 비용 2-4×)→c13x 메모리 벽.
         # 옵션: A 경계 폐합(N≤1023 완결 후 종료, 권고)/B 감속 유지(budget 2)/C 현행(c13x 벽까지 ~85일). 근거=인스턴스 한계가치 0 수렴, 방법·인프라 자산은 기봉인.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
