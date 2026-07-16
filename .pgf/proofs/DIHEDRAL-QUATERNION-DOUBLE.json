@@ -1,0 +1,284 @@
+{
+  "D_D4": {
+    "D2": 64,
+    "T_multiset": [
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "-1"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ]
+    ],
+    "all_pass": true,
+    "checks": {
+      "C_squared_I": true,
+      "S2_is_perm": true,
+      "S_symmetric": true,
+      "S_unitary": true,
+      "T_unit_modulus": true,
+      "first_row_dims": true,
+      "n_anyon_22": true,
+      "stcubed_lambda1": true,
+      "total_dim_64": true,
+      "verlinde_nonneg_int": true
+    },
+    "group": "D4",
+    "lambda": "(1+0i)",
+    "n_anyon": 22,
+    "quantum_dims": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "self_dual": true
+  },
+  "D_Q8": {
+    "D2": 64,
+    "T_multiset": [
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "-1"
+      ],
+      [
+        "0",
+        "-1"
+      ],
+      [
+        "0",
+        "-1"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ]
+    ],
+    "all_pass": true,
+    "checks": {
+      "C_squared_I": true,
+      "S2_is_perm": true,
+      "S_symmetric": true,
+      "S_unitary": true,
+      "T_unit_modulus": true,
+      "first_row_dims": true,
+      "n_anyon_22": true,
+      "stcubed_lambda1": true,
+      "total_dim_64": true,
+      "verlinde_nonneg_int": true
+    },
+    "group": "Q8",
+    "lambda": "(1+0i)",
+    "n_anyon": 22,
+    "quantum_dims": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ],
+    "self_dual": true
+  },
+  "_note": "D(D₄)·D(Q₈) 완전 modular data 자체구성 + 쌍 대조(관측·seal 아님). ★군 문자표 동치≠double MTC 동치: T 다중집합 분기. root 불변 sidecar·신규 module 0.",
+  "_schema": "dihedral-quaternion-double/v1",
+  "all_ok": true,
+  "pair_contrast": {
+    "T_multiset_differs": true,
+    "both_22_anyon": true,
+    "both_D2_64": true,
+    "insight": "동일 문자표/차원/D² 이나 T 다중집합 상이 → double 비동형(관측)",
+    "same_quantum_dims": true
+  },
+  "teeth": {
+    "D4_perturbation_breaks": true,
+    "Q8_perturbation_breaks": true
+  }
+}
