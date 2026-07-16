@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 87,
+      "covered": 88,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 438,
+    "1": 439,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 857,
-  "n_primary_seal_only": 105,
+  "n_apps_with_supplementary": 858,
+  "n_primary_seal_only": 113,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -508,7 +508,8 @@
     "shor611": "subspace",
     "shor629": "subspace",
     "shor655": "subspace",
-    "shor667": "subspace"
+    "shor667": "subspace",
+    "shor669": "subspace"
   },
   "primary_seal_only": [
     "cmul103_mod573",
@@ -531,6 +532,7 @@
     "cmul16_mod629",
     "cmul16_mod655",
     "cmul16_mod667",
+    "cmul16_mod669",
     "cmul170_mod667",
     "cmul175_mod591",
     "cmul194_mod589",
@@ -553,6 +555,7 @@
     "cmul256_mod629",
     "cmul256_mod655",
     "cmul256_mod667",
+    "cmul256_mod669",
     "cmul264_mod589",
     "cmul277_mod579",
     "cmul278_mod583",
@@ -570,12 +573,14 @@
     "cmul2_mod629",
     "cmul2_mod655",
     "cmul2_mod667",
+    "cmul2_mod669",
     "cmul301_mod579",
     "cmul325_mod597",
     "cmul326_mod581",
     "cmul354_mod611",
     "cmul360_mod559",
     "cmul36_mod655",
+    "cmul394_mod669",
     "cmul426_mod655",
     "cmul460_mod551",
     "cmul463_mod597",
@@ -586,6 +591,7 @@
     "cmul471_mod559",
     "cmul477_mod559",
     "cmul477_mod629",
+    "cmul49_mod669",
     "cmul4_mod551",
     "cmul4_mod559",
     "cmul4_mod573",
@@ -599,6 +605,7 @@
     "cmul4_mod629",
     "cmul4_mod655",
     "cmul4_mod667",
+    "cmul4_mod669",
     "cmul500_mod589",
     "cmul518_mod551",
     "cmul526_mod591",
@@ -612,6 +619,8 @@
     "cmul61_mod611",
     "cmul634_mod667",
     "cmul641_mod655",
+    "cmul643_mod669",
+    "cmul7_mod669",
     "cmul86_mod629",
     "cmul88_mod591",
     "ghz16_structural",
@@ -3840,6 +3849,9 @@
       "subspace"
     ],
     "shor667": [
+      "subspace"
+    ],
+    "shor669": [
       "subspace"
     ],
     "shor69": [
