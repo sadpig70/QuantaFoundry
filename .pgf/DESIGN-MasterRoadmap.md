@@ -570,6 +570,14 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # ★CI 예측(사전분석): dense units 20.4×(5.08e11)·jobs4 스텝 ≈3.1h·총 job 3.4~4.1h<6h·성장 +8min/night→~2주 여유. 후속=순열커널 라우팅(옵션 C) 상신.
         # ★CI 실측(2026-07-16 run 29421023888): QASM 스텝 355min+에도 미완 → 6h 한도 cancelled(2연속). 예측 대비 ~1.6× 느림(러너 코어 성능/메모리대역 보정 오차).
         #   판정: A(코드·로컬 검증·846 완비) 완료하되 CI green DoD 미달 — A 단독 불충분 확정. 에스컬레이션(C 순열커널/B 게이트 분리) 정욱님 결정 대기.
+    PermKernelRoundTrip_20260716 // 옵션 C — qasm round-trip 순열커널 라우팅 (in-progress) @dep:QasmExportParallel_20260715
+        # 승인: 2026-07-16 정욱님 "1번(성장 벽 대응) 진행". 설계(PG 캡슐):
+        #   문제: round_trip_u_hash=op당 embed@V dense matmul O(8^n) → n=10 heavy cmul에서 CI 6h·라운드게이트 1800s 성장 벽.
+        #   해법: 전 op가 exact-monomial(열마다 비영 정확 1)일 때만 perm+phase 합성 O(ops·2^n) 후 dense 실체화 → 동일 hash_unitary. 아니면 dense 폴백(기존 경로 무변경).
+        #   판정 데이터-주도: INDEP[gid]() 행렬에서 !=0 정확 검사(근사 아님). 값-동일 논증(S1deep3 상속): monomial 곱=단일 비영 경로, phase 곱 순서 동일 → float 곱 시퀀스 bit-identical;
+        #   0-항은 hash_unitary 1e-12 사전반올림+1e-9 격자가 ±0.0 흡수. 최종 등가성은 표본 dense==fast 해시 일치 + teeth(targets swap→mismatch)로 실증.
+        #   가정 A1: heavy cmul=X-족(0/1 순열)만 — INDEP에서 검증. A2: hash 양자화가 -0.0 흡수 — hash_unitary 코드로 확인됨.
+        # DoD: 표본 등가성(클래스별)+teeth → full --all 로컬 완주 all_checked_match=True·기존 846 대비 diff 0 → CI green 실측 → changed-only 게이트 실측 보고.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

@@ -1,9 +1,9 @@
 {
   "_schema": "qasm-export-v1",
-  "exported": 846,
+  "exported": 899,
   "round_trip_checked": 708,
   "round_trip_matched": 708,
-  "round_trip_skipped_large": 138,
+  "round_trip_skipped_large": 191,
   "all_checked_match": true,
   "unmapped_gate_kinds": [
     "c10x",
@@ -809,6 +809,25 @@
       "qasm_path": ".pgf/adoption/qasm/cmul103_mod493.qasm"
     },
     {
+      "id": "cmul103_mod573",
+      "n_sys": 11,
+      "n_ops": 4664,
+      "sealed_u_hash": "4c8afe2505d1a395",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 88,
+        "c9x": 359,
+        "c8x": 705,
+        "c7x": 975,
+        "c6x": 1035,
+        "c5x": 823,
+        "c4x": 458,
+        "c3x": 167
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul103_mod573.qasm"
+    },
+    {
       "id": "cmul109_mod339",
       "n_sys": 10,
       "n_ops": 2019,
@@ -825,6 +844,25 @@
         "c3x": 128
       },
       "qasm_path": ".pgf/adoption/qasm/cmul109_mod339.qasm"
+    },
+    {
+      "id": "cmul109_mod579",
+      "n_sys": 11,
+      "n_ops": 4751,
+      "sealed_u_hash": "f02d86a604e4591e",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 88,
+        "c9x": 348,
+        "c8x": 685,
+        "c7x": 948,
+        "c6x": 1063,
+        "c5x": 838,
+        "c4x": 516,
+        "c3x": 226
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul109_mod579.qasm"
     },
     {
       "id": "cmul10_mod123",
@@ -1176,6 +1214,25 @@
         "c3x": 181
       },
       "qasm_path": ".pgf/adoption/qasm/cmul133_mod519.qasm"
+    },
+    {
+      "id": "cmul133_mod559",
+      "n_sys": 11,
+      "n_ops": 4879,
+      "sealed_u_hash": "93b883cfd80dfbd6",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 106,
+        "c9x": 364,
+        "c8x": 705,
+        "c7x": 980,
+        "c6x": 1079,
+        "c5x": 887,
+        "c4x": 515,
+        "c3x": 207
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul133_mod559.qasm"
     },
     {
       "id": "cmul136_mod141",
@@ -1656,6 +1713,25 @@
         "c3x": 126
       },
       "qasm_path": ".pgf/adoption/qasm/cmul169_mod303.qasm"
+    },
+    {
+      "id": "cmul169_mod551",
+      "n_sys": 11,
+      "n_ops": 4721,
+      "sealed_u_hash": "39c355771e37ba10",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 92,
+        "c9x": 315,
+        "c8x": 688,
+        "c7x": 983,
+        "c6x": 1073,
+        "c5x": 843,
+        "c4x": 470,
+        "c3x": 208
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul169_mod551.qasm"
     },
     {
       "id": "cmul16_mod111",
@@ -2829,6 +2905,120 @@
       "qasm_path": ".pgf/adoption/qasm/cmul16_mod543.qasm"
     },
     {
+      "id": "cmul16_mod551",
+      "n_sys": 11,
+      "n_ops": 4560,
+      "sealed_u_hash": "6a01ea75045b0f33",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 98,
+        "c9x": 328,
+        "c8x": 683,
+        "c7x": 967,
+        "c6x": 1063,
+        "c5x": 817,
+        "c4x": 434,
+        "c3x": 139
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod551.qasm"
+    },
+    {
+      "id": "cmul16_mod559",
+      "n_sys": 11,
+      "n_ops": 4032,
+      "sealed_u_hash": "e14b80a80bb97967",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 84,
+        "c9x": 312,
+        "c8x": 582,
+        "c7x": 894,
+        "c6x": 955,
+        "c5x": 703,
+        "c4x": 366,
+        "c3x": 107
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod559.qasm"
+    },
+    {
+      "id": "cmul16_mod573",
+      "n_sys": 11,
+      "n_ops": 4415,
+      "sealed_u_hash": "d90c6e8324213490",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 100,
+        "c9x": 338,
+        "c8x": 653,
+        "c7x": 948,
+        "c6x": 996,
+        "c5x": 797,
+        "c4x": 419,
+        "c3x": 134
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod573.qasm"
+    },
+    {
+      "id": "cmul16_mod579",
+      "n_sys": 11,
+      "n_ops": 4440,
+      "sealed_u_hash": "63ad3e7aa5e06d4b",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 82,
+        "c9x": 333,
+        "c8x": 677,
+        "c7x": 940,
+        "c6x": 1002,
+        "c5x": 788,
+        "c4x": 456,
+        "c3x": 127
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod579.qasm"
+    },
+    {
+      "id": "cmul16_mod581",
+      "n_sys": 11,
+      "n_ops": 4499,
+      "sealed_u_hash": "e86a03ce69713075",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 90,
+        "c9x": 350,
+        "c8x": 695,
+        "c7x": 957,
+        "c6x": 993,
+        "c5x": 796,
+        "c4x": 441,
+        "c3x": 146
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod581.qasm"
+    },
+    {
+      "id": "cmul16_mod583",
+      "n_sys": 11,
+      "n_ops": 4545,
+      "sealed_u_hash": "073dae2f4ac1897e",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 82,
+        "c9x": 328,
+        "c8x": 688,
+        "c7x": 981,
+        "c6x": 1024,
+        "c5x": 831,
+        "c4x": 437,
+        "c3x": 140
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul16_mod583.qasm"
+    },
+    {
       "id": "cmul16_mod635",
       "n_sys": 11,
       "n_ops": 4194,
@@ -3440,6 +3630,25 @@
       "qasm_path": ".pgf/adoption/qasm/cmul214_mod327.qasm"
     },
     {
+      "id": "cmul214_mod573",
+      "n_sys": 11,
+      "n_ops": 4754,
+      "sealed_u_hash": "60325ba85ffd930f",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 84,
+        "c9x": 349,
+        "c8x": 689,
+        "c7x": 960,
+        "c6x": 1063,
+        "c5x": 853,
+        "c4x": 505,
+        "c3x": 205
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul214_mod573.qasm"
+    },
+    {
       "id": "cmul216_mod355",
       "n_sys": 10,
       "n_ops": 2120,
@@ -3474,6 +3683,25 @@
         "c3x": 127
       },
       "qasm_path": ".pgf/adoption/qasm/cmul217_mod267.qasm"
+    },
+    {
+      "id": "cmul217_mod573",
+      "n_sys": 11,
+      "n_ops": 4806,
+      "sealed_u_hash": "247168a537fb813e",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 88,
+        "c9x": 337,
+        "c8x": 694,
+        "c7x": 974,
+        "c6x": 1087,
+        "c5x": 868,
+        "c4x": 516,
+        "c3x": 197
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul217_mod573.qasm"
     },
     {
       "id": "cmul219_mod301",
@@ -3706,6 +3934,25 @@
         "c3x": 144
       },
       "qasm_path": ".pgf/adoption/qasm/cmul240_mod371.qasm"
+    },
+    {
+      "id": "cmul240_mod583",
+      "n_sys": 11,
+      "n_ops": 4703,
+      "sealed_u_hash": "c149b9eaf46f3bd6",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 76,
+        "c9x": 321,
+        "c8x": 656,
+        "c7x": 984,
+        "c6x": 1054,
+        "c5x": 883,
+        "c4x": 483,
+        "c3x": 195
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul240_mod583.qasm"
     },
     {
       "id": "cmul241_mod295",
@@ -4655,6 +4902,120 @@
       "qasm_path": ".pgf/adoption/qasm/cmul256_mod543.qasm"
     },
     {
+      "id": "cmul256_mod551",
+      "n_sys": 11,
+      "n_ops": 4762,
+      "sealed_u_hash": "1a3d23d5ed235042",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 100,
+        "c9x": 351,
+        "c8x": 693,
+        "c7x": 961,
+        "c6x": 1048,
+        "c5x": 863,
+        "c4x": 497,
+        "c3x": 204
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul256_mod551.qasm"
+    },
+    {
+      "id": "cmul256_mod559",
+      "n_sys": 11,
+      "n_ops": 4841,
+      "sealed_u_hash": "09aea0be791d5382",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 106,
+        "c9x": 353,
+        "c8x": 706,
+        "c7x": 989,
+        "c6x": 1071,
+        "c5x": 865,
+        "c4x": 508,
+        "c3x": 195
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul256_mod559.qasm"
+    },
+    {
+      "id": "cmul256_mod573",
+      "n_sys": 11,
+      "n_ops": 4763,
+      "sealed_u_hash": "69f0b689039cbe9a",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c9x": 336,
+        "c10x": 84,
+        "c8x": 693,
+        "c7x": 974,
+        "c6x": 1057,
+        "c5x": 891,
+        "c4x": 493,
+        "c3x": 184
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul256_mod573.qasm"
+    },
+    {
+      "id": "cmul256_mod579",
+      "n_sys": 11,
+      "n_ops": 4762,
+      "sealed_u_hash": "aa74ef0af007fa7f",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 92,
+        "c9x": 333,
+        "c8x": 687,
+        "c7x": 990,
+        "c6x": 1051,
+        "c5x": 887,
+        "c4x": 477,
+        "c3x": 203
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul256_mod579.qasm"
+    },
+    {
+      "id": "cmul256_mod581",
+      "n_sys": 11,
+      "n_ops": 4767,
+      "sealed_u_hash": "414020f56558c541",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 90,
+        "c9x": 332,
+        "c8x": 725,
+        "c7x": 989,
+        "c6x": 1044,
+        "c5x": 837,
+        "c4x": 501,
+        "c3x": 210
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul256_mod581.qasm"
+    },
+    {
+      "id": "cmul256_mod583",
+      "n_sys": 11,
+      "n_ops": 4777,
+      "sealed_u_hash": "f62c86042d52c7a8",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 82,
+        "c9x": 353,
+        "c8x": 700,
+        "c7x": 980,
+        "c6x": 1056,
+        "c5x": 848,
+        "c4x": 505,
+        "c3x": 209
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul256_mod583.qasm"
+    },
+    {
       "id": "cmul256_mod635",
       "n_sys": 11,
       "n_ops": 4633,
@@ -4881,6 +5242,63 @@
         "c3x": 145
       },
       "qasm_path": ".pgf/adoption/qasm/cmul274_mod447.qasm"
+    },
+    {
+      "id": "cmul277_mod579",
+      "n_sys": 11,
+      "n_ops": 4756,
+      "sealed_u_hash": "1af31390b8aa425c",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 84,
+        "c9x": 347,
+        "c8x": 697,
+        "c7x": 989,
+        "c6x": 1066,
+        "c5x": 844,
+        "c4x": 480,
+        "c3x": 208
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul277_mod579.qasm"
+    },
+    {
+      "id": "cmul278_mod583",
+      "n_sys": 11,
+      "n_ops": 4749,
+      "sealed_u_hash": "9373dd79a05baf6b",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 80,
+        "c9x": 339,
+        "c8x": 682,
+        "c7x": 995,
+        "c6x": 1049,
+        "c5x": 846,
+        "c4x": 497,
+        "c3x": 216
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul278_mod583.qasm"
+    },
+    {
+      "id": "cmul280_mod583",
+      "n_sys": 11,
+      "n_ops": 4741,
+      "sealed_u_hash": "1d1ee001529311df",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 74,
+        "c9x": 340,
+        "c8x": 677,
+        "c7x": 994,
+        "c6x": 1067,
+        "c5x": 867,
+        "c4x": 487,
+        "c3x": 192
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul280_mod583.qasm"
     },
     {
       "id": "cmul282_mod413",
@@ -6230,6 +6648,120 @@
       "qasm_path": ".pgf/adoption/qasm/cmul2_mod543.qasm"
     },
     {
+      "id": "cmul2_mod551",
+      "n_sys": 11,
+      "n_ops": 2053,
+      "sealed_u_hash": "f3c4212f8919dded",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c9x": 207,
+        "c10x": 64,
+        "c8x": 368,
+        "c7x": 473,
+        "c6x": 446,
+        "c5x": 303,
+        "c4x": 138,
+        "c3x": 32
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod551.qasm"
+    },
+    {
+      "id": "cmul2_mod559",
+      "n_sys": 11,
+      "n_ops": 1730,
+      "sealed_u_hash": "c40fb3977f65dc7e",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 62,
+        "c9x": 203,
+        "c8x": 328,
+        "c7x": 405,
+        "c6x": 355,
+        "c5x": 221,
+        "c4x": 101,
+        "c3x": 32
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod559.qasm"
+    },
+    {
+      "id": "cmul2_mod573",
+      "n_sys": 11,
+      "n_ops": 1534,
+      "sealed_u_hash": "ffe01875d7c8ce0a",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 51,
+        "c9x": 174,
+        "c8x": 320,
+        "c7x": 365,
+        "c6x": 300,
+        "c5x": 178,
+        "c4x": 90,
+        "c3x": 33
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod573.qasm"
+    },
+    {
+      "id": "cmul2_mod579",
+      "n_sys": 11,
+      "n_ops": 2098,
+      "sealed_u_hash": "fbd8ff15791d14a1",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 53,
+        "c9x": 190,
+        "c8x": 364,
+        "c7x": 489,
+        "c6x": 471,
+        "c5x": 346,
+        "c4x": 139,
+        "c3x": 25
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod579.qasm"
+    },
+    {
+      "id": "cmul2_mod581",
+      "n_sys": 11,
+      "n_ops": 2150,
+      "sealed_u_hash": "30a8a4fa345f0ea3",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 59,
+        "c9x": 204,
+        "c8x": 385,
+        "c7x": 533,
+        "c6x": 486,
+        "c5x": 326,
+        "c4x": 112,
+        "c3x": 24
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod581.qasm"
+    },
+    {
+      "id": "cmul2_mod583",
+      "n_sys": 11,
+      "n_ops": 1918,
+      "sealed_u_hash": "0273490cd3979a3e",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 52,
+        "c9x": 198,
+        "c8x": 354,
+        "c7x": 447,
+        "c6x": 414,
+        "c5x": 289,
+        "c4x": 118,
+        "c3x": 24
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul2_mod583.qasm"
+    },
+    {
       "id": "cmul2_mod635",
       "n_sys": 11,
       "n_ops": 638,
@@ -6377,6 +6909,25 @@
       "qasm_path": ".pgf/adoption/qasm/cmul301_mod335.qasm"
     },
     {
+      "id": "cmul301_mod579",
+      "n_sys": 11,
+      "n_ops": 4760,
+      "sealed_u_hash": "44bbfdc8c8dbdca6",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 90,
+        "c9x": 361,
+        "c8x": 707,
+        "c7x": 979,
+        "c6x": 1060,
+        "c5x": 845,
+        "c4x": 494,
+        "c3x": 179
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul301_mod579.qasm"
+    },
+    {
       "id": "cmul304_mod453",
       "n_sys": 10,
       "n_ops": 2080,
@@ -6485,6 +7036,25 @@
         "c3x": 113
       },
       "qasm_path": ".pgf/adoption/qasm/cmul326_mod485.qasm"
+    },
+    {
+      "id": "cmul326_mod581",
+      "n_sys": 11,
+      "n_ops": 4851,
+      "sealed_u_hash": "ad9de08cb4d5ecfc",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 86,
+        "c9x": 367,
+        "c8x": 718,
+        "c7x": 970,
+        "c6x": 1086,
+        "c5x": 854,
+        "c4x": 512,
+        "c3x": 212
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul326_mod581.qasm"
     },
     {
       "id": "cmul328_mod471",
@@ -6717,6 +7287,25 @@
         "c3x": 179
       },
       "qasm_path": ".pgf/adoption/qasm/cmul35_mod527.qasm"
+    },
+    {
+      "id": "cmul360_mod559",
+      "n_sys": 11,
+      "n_ops": 4834,
+      "sealed_u_hash": "289c4393fd3fde4a",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 90,
+        "c9x": 355,
+        "c8x": 699,
+        "c7x": 1021,
+        "c6x": 1051,
+        "c5x": 869,
+        "c4x": 504,
+        "c3x": 194
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul360_mod559.qasm"
     },
     {
       "id": "cmul361_mod395",
@@ -7252,6 +7841,82 @@
       "qasm_path": ".pgf/adoption/qasm/cmul460_mod493.qasm"
     },
     {
+      "id": "cmul460_mod551",
+      "n_sys": 11,
+      "n_ops": 4747,
+      "sealed_u_hash": "f4aec0c950adac69",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 86,
+        "c9x": 355,
+        "c8x": 687,
+        "c7x": 992,
+        "c6x": 1074,
+        "c5x": 828,
+        "c4x": 472,
+        "c3x": 197
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul460_mod551.qasm"
+    },
+    {
+      "id": "cmul464_mod581",
+      "n_sys": 11,
+      "n_ops": 4747,
+      "sealed_u_hash": "addc4174682ce64f",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c9x": 346,
+        "c8x": 693,
+        "c10x": 86,
+        "c7x": 1002,
+        "c6x": 1049,
+        "c5x": 845,
+        "c4x": 474,
+        "c3x": 200
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul464_mod581.qasm"
+    },
+    {
+      "id": "cmul466_mod581",
+      "n_sys": 11,
+      "n_ops": 4713,
+      "sealed_u_hash": "cae5cf3498f3c4e2",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 96,
+        "c9x": 347,
+        "c8x": 697,
+        "c7x": 968,
+        "c6x": 1041,
+        "c5x": 823,
+        "c4x": 504,
+        "c3x": 187
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul466_mod581.qasm"
+    },
+    {
+      "id": "cmul466_mod583",
+      "n_sys": 11,
+      "n_ops": 4707,
+      "sealed_u_hash": "cb19f6dfb3a37098",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 90,
+        "c9x": 331,
+        "c8x": 698,
+        "c7x": 957,
+        "c6x": 1069,
+        "c5x": 859,
+        "c4x": 469,
+        "c3x": 186
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul466_mod583.qasm"
+    },
+    {
       "id": "cmul46_mod111",
       "n_sys": 8,
       "n_ops": 368,
@@ -7284,6 +7949,44 @@
         "c3x": 144
       },
       "qasm_path": ".pgf/adoption/qasm/cmul46_mod295.qasm"
+    },
+    {
+      "id": "cmul471_mod559",
+      "n_sys": 11,
+      "n_ops": 4772,
+      "sealed_u_hash": "4b93119e1df95189",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 96,
+        "c9x": 320,
+        "c8x": 688,
+        "c7x": 989,
+        "c6x": 1065,
+        "c5x": 863,
+        "c4x": 513,
+        "c3x": 192
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul471_mod559.qasm"
+    },
+    {
+      "id": "cmul477_mod559",
+      "n_sys": 11,
+      "n_ops": 4646,
+      "sealed_u_hash": "73fff3cda919ab62",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c9x": 347,
+        "c10x": 88,
+        "c8x": 675,
+        "c7x": 952,
+        "c6x": 1031,
+        "c5x": 808,
+        "c4x": 497,
+        "c3x": 200
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul477_mod559.qasm"
     },
     {
       "id": "cmul48_mod143",
@@ -8552,6 +9255,120 @@
       "qasm_path": ".pgf/adoption/qasm/cmul4_mod543.qasm"
     },
     {
+      "id": "cmul4_mod551",
+      "n_sys": 11,
+      "n_ops": 3881,
+      "sealed_u_hash": "ca6422a026aa16c0",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 84,
+        "c9x": 307,
+        "c8x": 636,
+        "c7x": 858,
+        "c6x": 868,
+        "c5x": 657,
+        "c4x": 352,
+        "c3x": 92
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod551.qasm"
+    },
+    {
+      "id": "cmul4_mod559",
+      "n_sys": 11,
+      "n_ops": 3111,
+      "sealed_u_hash": "c18aa9257bea3a07",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 74,
+        "c9x": 271,
+        "c8x": 526,
+        "c7x": 703,
+        "c6x": 731,
+        "c5x": 499,
+        "c4x": 225,
+        "c3x": 59
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod559.qasm"
+    },
+    {
+      "id": "cmul4_mod573",
+      "n_sys": 11,
+      "n_ops": 3280,
+      "sealed_u_hash": "2ea3df24d2a49935",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 84,
+        "c9x": 309,
+        "c8x": 553,
+        "c7x": 764,
+        "c6x": 708,
+        "c5x": 500,
+        "c4x": 254,
+        "c3x": 80
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod573.qasm"
+    },
+    {
+      "id": "cmul4_mod579",
+      "n_sys": 11,
+      "n_ops": 3431,
+      "sealed_u_hash": "e3f906cfe79fbbfe",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 70,
+        "c9x": 268,
+        "c8x": 531,
+        "c7x": 760,
+        "c6x": 814,
+        "c5x": 586,
+        "c4x": 293,
+        "c3x": 85
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod579.qasm"
+    },
+    {
+      "id": "cmul4_mod581",
+      "n_sys": 11,
+      "n_ops": 3279,
+      "sealed_u_hash": "098320a2cfc9b6f3",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 76,
+        "c9x": 265,
+        "c8x": 521,
+        "c7x": 754,
+        "c6x": 770,
+        "c5x": 546,
+        "c4x": 260,
+        "c3x": 62
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod581.qasm"
+    },
+    {
+      "id": "cmul4_mod583",
+      "n_sys": 11,
+      "n_ops": 3719,
+      "sealed_u_hash": "7a133c1aefd4fffe",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 78,
+        "c9x": 301,
+        "c8x": 588,
+        "c7x": 844,
+        "c6x": 851,
+        "c5x": 623,
+        "c4x": 318,
+        "c3x": 91
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul4_mod583.qasm"
+    },
+    {
       "id": "cmul4_mod635",
       "n_sys": 11,
       "n_ops": 3048,
@@ -8683,6 +9500,25 @@
       "qasm_path": ".pgf/adoption/qasm/cmul4_mod95.qasm"
     },
     {
+      "id": "cmul518_mod551",
+      "n_sys": 11,
+      "n_ops": 4691,
+      "sealed_u_hash": "bb7473e07e081f2a",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 86,
+        "c9x": 340,
+        "c8x": 680,
+        "c7x": 994,
+        "c6x": 1031,
+        "c5x": 833,
+        "c4x": 475,
+        "c3x": 203
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul518_mod551.qasm"
+    },
+    {
       "id": "cmul51_mod295",
       "n_sys": 10,
       "n_ops": 2174,
@@ -8737,6 +9573,25 @@
       "qasm_path": ".pgf/adoption/qasm/cmul51_mod415.qasm"
     },
     {
+      "id": "cmul529_mod573",
+      "n_sys": 11,
+      "n_ops": 4742,
+      "sealed_u_hash": "560b7e15eb9db27c",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 88,
+        "c9x": 325,
+        "c8x": 657,
+        "c7x": 1003,
+        "c6x": 1043,
+        "c5x": 879,
+        "c4x": 490,
+        "c3x": 206
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul529_mod573.qasm"
+    },
+    {
       "id": "cmul52_mod391",
       "n_sys": 10,
       "n_ops": 2110,
@@ -8769,6 +9624,44 @@
         "c3x": 49
       },
       "qasm_path": ".pgf/adoption/qasm/cmul52_mod69.qasm"
+    },
+    {
+      "id": "cmul534_mod581",
+      "n_sys": 11,
+      "n_ops": 4786,
+      "sealed_u_hash": "6dc78af29a1425b8",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 84,
+        "c9x": 334,
+        "c8x": 703,
+        "c7x": 991,
+        "c6x": 1064,
+        "c5x": 839,
+        "c4x": 503,
+        "c3x": 214
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul534_mod581.qasm"
+    },
+    {
+      "id": "cmul538_mod551",
+      "n_sys": 11,
+      "n_ops": 4756,
+      "sealed_u_hash": "26834e78fc451c00",
+      "round_trip_match": null,
+      "round_trip_note": "n=11 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 94,
+        "c9x": 360,
+        "c8x": 703,
+        "c7x": 967,
+        "c6x": 1059,
+        "c5x": 849,
+        "c4x": 479,
+        "c3x": 202
+      },
+      "qasm_path": ".pgf/adoption/qasm/cmul538_mod551.qasm"
     },
     {
       "id": "cmul53_mod203",
@@ -12666,6 +13559,120 @@
         "c3x": 1225
       },
       "qasm_path": ".pgf/adoption/qasm/shor543.qasm"
+    },
+    {
+      "id": "shor551",
+      "n_sys": 18,
+      "n_ops": 34219,
+      "sealed_u_hash": "dcd63689cf2b7b73",
+      "round_trip_match": null,
+      "round_trip_note": "n=18 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 704,
+        "c9x": 2563,
+        "c8x": 5138,
+        "c7x": 7195,
+        "c6x": 7662,
+        "c5x": 5993,
+        "c4x": 3317,
+        "c3x": 1277
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor551.qasm"
+    },
+    {
+      "id": "shor559",
+      "n_sys": 18,
+      "n_ops": 32893,
+      "sealed_u_hash": "602879e41c57ca2e",
+      "round_trip_match": null,
+      "round_trip_note": "n=18 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c9x": 2525,
+        "c10x": 706,
+        "c8x": 4909,
+        "c7x": 6933,
+        "c6x": 7338,
+        "c5x": 5715,
+        "c4x": 3229,
+        "c3x": 1186
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor559.qasm"
+    },
+    {
+      "id": "shor573",
+      "n_sys": 18,
+      "n_ops": 33006,
+      "sealed_u_hash": "fdefe2657af28d33",
+      "round_trip_match": null,
+      "round_trip_note": "n=18 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 667,
+        "c9x": 2527,
+        "c8x": 4964,
+        "c7x": 6963,
+        "c6x": 7289,
+        "c5x": 5789,
+        "c4x": 3225,
+        "c3x": 1206
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor573.qasm"
+    },
+    {
+      "id": "shor579",
+      "n_sys": 18,
+      "n_ops": 33806,
+      "sealed_u_hash": "24ad728de3958066",
+      "round_trip_match": null,
+      "round_trip_note": "n=18 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 649,
+        "c9x": 2541,
+        "c8x": 5055,
+        "c7x": 7074,
+        "c6x": 7587,
+        "c5x": 5979,
+        "c4x": 3349,
+        "c3x": 1232
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor579.qasm"
+    },
+    {
+      "id": "shor581",
+      "n_sys": 18,
+      "n_ops": 33840,
+      "sealed_u_hash": "46d15fdd8ed6279e",
+      "round_trip_match": null,
+      "round_trip_note": "n=18 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 667,
+        "c9x": 2545,
+        "c8x": 5137,
+        "c7x": 7164,
+        "c6x": 7533,
+        "c5x": 5866,
+        "c4x": 3307,
+        "c3x": 1255
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor581.qasm"
+    },
+    {
+      "id": "shor583",
+      "n_sys": 18,
+      "n_ops": 33907,
+      "sealed_u_hash": "9f727e01b96124f6",
+      "round_trip_match": null,
+      "round_trip_note": "n=18 > 10: dense round-trip skip(정직)",
+      "unmapped_gates": {
+        "c10x": 614,
+        "c9x": 2511,
+        "c8x": 5043,
+        "c7x": 7182,
+        "c6x": 7584,
+        "c5x": 6046,
+        "c4x": 3314,
+        "c3x": 1253
+      },
+      "qasm_path": ".pgf/adoption/qasm/shor583.qasm"
     },
     {
       "id": "shor635",

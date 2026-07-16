@@ -146,7 +146,9 @@ def read_counts() -> tuple[int, int]:
     return d["modules"]["count"], d["apps"]["unique_app_count"]
 
 
-def run_cmd(argv: list[str], timeout: int = 1800) -> tuple[int, str]:
+def run_cmd(argv: list[str], timeout: int = 5400) -> tuple[int, str]:
+    # 2026-07-16 실측: N=5xx 대 changed-only 게이트 38m05s(REPRODUCED) > 구 1800s → 상향.
+    # 근본 해소는 PermKernelRoundTrip 후속(게이트 병목 스텝 순열커널화) — 로드맵 참조.
     p = subprocess.run(["python"] + argv, cwd=ROOT, capture_output=True,
                        text=True, timeout=timeout)
     return p.returncode, (p.stdout or "") + (p.stderr or "")

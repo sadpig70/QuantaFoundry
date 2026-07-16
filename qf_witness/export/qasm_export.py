@@ -97,8 +97,63 @@ def flatten(app_id, qmap=None, depth=0):
 
 
 # ─────────────── RoundTrip: flat_ops → dense → u_hash ───────────────
+def _monomial(M):
+    """M 이 exact-monomial(각 열의 비영이 정확히 1개, !=0 정확 판정)이면 (rowof, phase), 아니면 None.
+
+    보수적 게이트: 판정 실패 = dense 폴백이므로 오탐 없음. rowof[j]=열 j 의 비영 행, phase[j]=그 값.
+    """
+    dim = M.shape[0]
+    rowof = np.empty(dim, dtype=np.int64)
+    phase = np.empty(dim, dtype=complex)
+    for j in range(dim):
+        nz = np.flatnonzero(M[:, j] != 0)
+        if nz.size != 1:
+            return None
+        rowof[j] = nz[0]
+        phase[j] = M[nz[0], j]
+    return rowof, phase
+
+
+def _round_trip_perm(flat_ops, n, kernels):
+    """전 op exact-monomial 전제의 perm+phase 합성 — dense 와 값 동일(PermKernelRoundTrip 논증).
+
+    V=Σ_j W[j]|P[j]⟩⟨j| 표현을 op 순서대로 갱신: monomial 곱=열마다 단일 비영 경로라 dense 와
+    동일한 순서의 float 곱 시퀀스(bit-identical), 0-항은 hash_unitary 격자 양자화가 흡수.
+    비트 규약은 so.embed 와 동일(axis i=qubit i, MSB-first) — 표본 dense==fast 등가성으로 실증.
+    """
+    dim = 1 << n
+    P = np.arange(dim, dtype=np.int64)          # 열 j 의 비영 행
+    W = np.ones(dim, dtype=complex)             # 그 값(위상)
+    for gid, q in flat_ops:
+        rowof, phase = kernels[gid]
+        k = len(q)
+        s = np.zeros(dim, dtype=np.int64)       # targets 부분 인덱스 gather
+        for t, qt in enumerate(q):
+            s = (s << 1) | ((P >> (n - 1 - qt)) & 1)
+        p = rowof[s]
+        W = W * phase[s]
+        for t, qt in enumerate(q):              # 새 부분 인덱스 scatter
+            mask = np.int64(1 << (n - 1 - qt))
+            bit = (p >> (k - 1 - t)) & 1
+            P = (P & ~mask) | (bit << (n - 1 - qt))
+    V = np.zeros((dim, dim), dtype=complex)
+    V[P, np.arange(dim)] = W
+    return vs.hash_unitary(V)
+
+
 def round_trip_u_hash(flat_ops, n):
-    """second_oracle INDEP+embed 로 dense 재구성 → hash_unitary. == sealed 면 export 정직."""
+    """second_oracle INDEP 제1원리 재구성 → hash_unitary. == sealed 면 export 정직.
+
+    전 op 가 exact-monomial(X-족 순열 등)이면 perm 커널 O(ops·2^n) — dense O(ops·8^n)와 값 동일
+    (S1deep3 논증 상속·표본 등가성 실증). 하나라도 아니면 기존 dense 경로 그대로.
+    """
+    kernels = {}
+    for gid in {g for g, _ in flat_ops}:
+        kernels[gid] = _monomial(so.INDEP[gid]())
+        if kernels[gid] is None:
+            break
+    else:
+        return _round_trip_perm(flat_ops, n, kernels)
     V = np.eye(1 << n, dtype=complex)
     for gid, q in flat_ops:
         V = so.embed(so.INDEP[gid](), q, n) @ V
