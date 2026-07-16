@@ -25,9 +25,15 @@ STRUCTURAL_SHOR = ["shor69", "shor77", "shor91", "shor119", "shor221",
                    "shor381", "shor635", "shor1285", "shor3683"]
 
 
+_SEALED_CACHE = {}   # ResourceWitnessProfile(2026-07-16): 자식 sealed 재판독(스텝당 open) 캐시 — 런 중 파일 정적, 값 동일
+
+
 def _sealed(reg, id_):
-    p = os.path.join(reg, f"{id_}.sealed.json")
-    return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
+    key = (reg, id_)
+    if key not in _SEALED_CACHE:
+        p = os.path.join(reg, f"{id_}.sealed.json")
+        _SEALED_CACHE[key] = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
+    return _SEALED_CACHE[key]
 
 
 def _plan_steps(app_id):
