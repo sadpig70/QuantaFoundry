@@ -580,6 +580,11 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # DoD 전부 충족: 표본 7클래스 EQ(최대 639×)+teeth+폴백 EQ → full 72s(6.3h→, ~315×)·708/708·846 diff 0·신규 53 완비 → ★CI green: QASM 58s(전날 6h+ cancelled→~370×)·job 총 ~20min.
         # 부수: shor583 라운드 게이트 재실행 38m05s REPRODUCED→round 5 완결 커밋(f15b03d, 899앱·tier1 82·root 09ec49f6)·loop timeout 1800→5400s(실측 근거).
         # 잔여 관찰: changed-only 게이트 38m 자체는 미해소(성장 지속) — 병목 스텝 프로파일→순열커널 확장 후속 후보.
+    GateProfilePermExt_20260716 // changed-only 게이트 38m 병목 프로파일→정수 벡터화 (done — 2026-07-16) @dep:PermKernelRoundTrip_20260716
+        # 프로파일(EVIDENCE duration_ms): 게이트 2284s 중 frontier_block 1336s(58%) 지배. 내부: genskills.apply_out 37.3s/N583(47%)+_simulate_mct_plan 16.3s(20%)+게이트당 module sealed.json 재판독 42k open(7.4s).
+        # 수정 3건(전부 정수/판독 semantics 동일·산출물 불변): apply_out·_simulate_mct_plan numpy 정수 벡터화 + resource mid 캐시. dense/오라클(hash_unitary) 무접촉.
+        # 실측: factory --reproduce N=583 81.7→18.7s(4.4×)·전량 8m31s 전 N byte_identical(INV-F1 회귀=산출물 게이트)·full reproduce REPRODUCED에서 frontier_block 1336→420s(3.2×).
+        # 효과: 야간 라운드 게이트 38m→~23m 전망(timeout 5400s 재소진 여유 대폭). 차기 병목=resource_witness 387s(공동 1위) — 후속 후보.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT

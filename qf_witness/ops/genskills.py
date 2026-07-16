@@ -179,27 +179,30 @@ def mmd_synthesize(target_perm, nq):
     transformation-based(MMD): 출력측 변환으로 f→identity 수집 후 역순(자기역원).
     각 게이트=(controls_tuple, target_wire). 결정론(perm 만의 함수)."""
     dim = 1 << nq
-    f = list(target_perm)
+    # GateProfilePermExt(2026-07-16): 게이트당 dim 파이썬 루프 → numpy 정수 벡터화.
+    # 정수 비트연산 semantics 동일 → collected 게이트열 byte-identical(INV-F1 회귀가 게이트).
+    import numpy as _np
+    f = _np.array(target_perm, dtype=_np.int64)
     collected = []
 
     def apply_out(controls, tb):
         cm = _wmask(controls, nq); tm = 1 << (nq - 1 - tb)
-        for k in range(dim):
-            if (f[k] & cm) == cm:
-                f[k] ^= tm
+        sel = (f & cm) == cm
+        f[sel] ^= tm
 
     for x in range(dim):
-        if f[x] == x:
+        fx = int(f[x])
+        if fx == x:
             continue
         xset = set(_set_wires(x, nq))
-        yset = set(_set_wires(f[x], nq))
+        yset = set(_set_wires(fx, nq))
         for b in sorted(xset - yset):                      # x엔 있고 y엔 없는 비트 ON
             controls = tuple(sorted(yset))
             collected.append((controls, b)); apply_out(controls, b); yset.add(b)
-        for b in sorted(set(_set_wires(f[x], nq)) - xset):  # y엔 있고 x엔 없는 비트 OFF
+        for b in sorted(set(_set_wires(int(f[x]), nq)) - xset):  # y엔 있고 x엔 없는 비트 OFF
             controls = tuple(sorted(xset))
             collected.append((controls, b)); apply_out(controls, b)
-    if f != list(range(dim)):
+    if not _np.array_equal(f, _np.arange(dim, dtype=_np.int64)):
         raise ValueError("mmd_synthesize: 합성 실패(f≠identity)")
     return collected[::-1]
 

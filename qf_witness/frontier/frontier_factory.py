@@ -78,14 +78,14 @@ def _wire_mask(wire: int, nq: int) -> int:
 
 
 def _simulate_mct_plan(gates, nq: int) -> list[int]:
-    perm = list(range(1 << nq))
+    # GateProfilePermExt(2026-07-16): 게이트당 2^nq 파이썬 루프 → numpy 정수 벡터화(semantics 동일).
+    perm = np.arange(1 << nq, dtype=np.int64)
     masks = [(sum(_wire_mask(c, nq) for c in controls), _wire_mask(target, nq))
              for controls, target in gates]
     for control_mask, target_mask in masks:
-        for s, v in enumerate(perm):
-            if (v & control_mask) == control_mask:
-                perm[s] = v ^ target_mask
-    return perm
+        sel = (perm & control_mask) == control_mask
+        perm[sel] ^= target_mask
+    return [int(v) for v in perm]
 
 
 def _perm_hash(perm: list[int]) -> str:
@@ -145,10 +145,13 @@ def _seal_exact_permutation_app(app_id: str, nq: int, gates, target_perm) -> dic
         raise RuntimeError(f"{app_id}: MCT plan permutation does not match arithmetic golden")
     u_hash = _perm_hash(plan_perm)
     resources = []
+    _res_cache = {}   # GateProfilePermExt: 게이트당 재판독(앱당 수천 open) → mid 캐시(값·순서 동일)
     for controls, _ in gates:
         mid = gs._MCT_MODULE[len(controls)]
-        resources.append(json.load(open(os.path.join(MODREG, f"{mid}.sealed.json"),
-                                         encoding="utf-8"))["resource"])
+        if mid not in _res_cache:
+            _res_cache[mid] = json.load(open(os.path.join(MODREG, f"{mid}.sealed.json"),
+                                             encoding="utf-8"))["resource"]
+        resources.append(_res_cache[mid])
     resource = aa._aggregate_cost(resources)
     sealed = aa._seal_dict(app_id, nq, "C1-C4(app)", u_hash, resource, 0)
     aa.Registry(APPREG)._admit(sealed)
