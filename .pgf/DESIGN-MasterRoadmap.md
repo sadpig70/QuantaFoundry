@@ -199,6 +199,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     FrontierClosureA_20260716 // ★정책 A 집행 — N≤1023 완결 후 frontier 폐합 (in-progress — 잔여 84개 야간 자동 소진, ~10일) @dep:FrontierPolicyBrief_20260716
         # 집행 1(코드): next_unsealed_target 기본 hi=4096→1024 — 자기집행형 경계, 소진 시 (None,None)=frontier-exhausted 자연 정지.
         # 집행 2(운영): 야간 cron 현행 유지(budget 8) → 소진 배치에서 폐합 절차: 마지막 full 검증 → 본 노드 done → cron 프롬프트를 주간 헬스체크(full reproduce)로 전환 → HANDOFF/외부문서 마일스톤 "10-bit 전 구간 완결" 기록.
+        # 진행: 2026-07-17 야간 3차 배치 shor589~669 8개 소진(899→971앱·tier1 82→90·root d1a47a72). 게이트 최적화 실증=라운드 ~18.6분(이전 38분 절반). 잔여 N≤1023 약 76개.
         # 재확장(hi 상향)은 정욱님 결정으로만 — factory 능력은 결정론 코드로 보존(INV-F1 회귀로 언제든 재가동 검증).
         # 데이터: factory N 72(69→583)·nq분포 8q9/9q15/10q36/11q12·specs 84MB(cmul 99%)·잔여 활주로 nq11 84개(~10일)→nq12 601개(~75일, 비용 2-4×)→c13x 메모리 벽.
         # 옵션: A 경계 폐합(N≤1023 완결 후 종료, 권고)/B 감속 유지(budget 2)/C 현행(c13x 벽까지 ~85일). 근거=인스턴스 한계가치 0 수렴, 방법·인프라 자산은 기봉인.
