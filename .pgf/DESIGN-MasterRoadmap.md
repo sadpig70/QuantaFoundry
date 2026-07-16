@@ -590,6 +590,9 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 수정 1건: _SEALED_CACHE (런 중 파일 정적 → 값 동일). 실측: --quick 359→8.4s(43×)·full 387→11.5s(34×).
         # 검증: all_ok 양 모드·in-memory teeth(자식 resource 변조→consistent=False 검출)·값-동일 증명(구 report 166항목 전원 동일·신규 747 순가산)·incremental reproduce 113/113 REPRODUCED.
         # 부수: RESOURCE-WITNESS.json 화석(166앱 시절) → 899앱 정직 갱신. 게이트 잔여 상위 = ring_column 187s·forge_apps 248s (수확체감 — 인프라 최적화 이 지점에서 종료 권고).
+    FrontierPolicyBrief_20260716 // frontier 확장 정책 결정 브리프 — .pgf/DESIGN-FrontierPolicyBrief.md (done — 2026-07-16, 결정=정욱님 대기)
+        # 데이터: factory N 72(69→583)·nq분포 8q9/9q15/10q36/11q12·specs 84MB(cmul 99%)·잔여 활주로 nq11 84개(~10일)→nq12 601개(~75일, 비용 2-4×)→c13x 메모리 벽.
+        # 옵션: A 경계 폐합(N≤1023 완결 후 종료, 권고)/B 감속 유지(budget 2)/C 현행(c13x 벽까지 ~85일). 근거=인스턴스 한계가치 0 수렴, 방법·인프라 자산은 기봉인.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
