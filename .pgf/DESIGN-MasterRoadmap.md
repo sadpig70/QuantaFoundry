@@ -563,21 +563,23 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         #   full 패스 sidecar(COMPOSITIONAL-VERIFY)는 --quick 미기록 규약이라 07-13 이후 동결(652 eligible). 경계앱=cmul2_mod447(6.6e7)/493(8.1e7)/501(6.2e7).
         # 상환: compositional_verify full 1회 → 3앱 재조립 검증(steps 59~77)·all_ok·teeth 2종 통과 → coverage 844·primary-seal-only 5→2(=tier 고유 최소치)·scorecard·release_root(evidence만 갱신, seal root 59ddbf7e 불변).
         # 재발방지: frontier_batch chain 에 compositional_full 스텝 추가(deep_resume 앞, 순열 커널 초 단위) — cost≤1e8 신규 앱 자동 커버.
-    QasmExportParallel_20260715 // QASM CI 6h 한도 해소 옵션 A — qasm_export --jobs 병렬화 (in-progress: CI green 확인 대기) @dep:CIRecovery_20260714
+    QasmExportParallel_20260715 // QASM CI 6h 한도 해소 옵션 A — qasm_export --jobs 병렬화 (done — 2026-07-16, PermKernelRoundTrip 과 함께 CI green 실측) @dep:CIRecovery_20260714
         # 정욱님 결정(2026-07-15): A 채택. export_one=앱 독립 → multiprocessing 병렬(기록 순서=ids 정렬 보존, 보고서 결정론 불변).
         # AV 병렬쓰기 교훈([[speedopt-pgf-cycle]]) 상속: 파일쓰기 결정론 재시도. seal-gate.yml --jobs 4(러너 4vCPU).
         # ★로컬 실측: --all --jobs 6 완주 round-trip 708/708·all_checked_match=True·기존 커밋 QASM 609 전원 byte-identical(git diff 0)·신규 237(846 완비).
         # ★CI 예측(사전분석): dense units 20.4×(5.08e11)·jobs4 스텝 ≈3.1h·총 job 3.4~4.1h<6h·성장 +8min/night→~2주 여유. 후속=순열커널 라우팅(옵션 C) 상신.
         # ★CI 실측(2026-07-16 run 29421023888): QASM 스텝 355min+에도 미완 → 6h 한도 cancelled(2연속). 예측 대비 ~1.6× 느림(러너 코어 성능/메모리대역 보정 오차).
-        #   판정: A(코드·로컬 검증·846 완비) 완료하되 CI green DoD 미달 — A 단독 불충분 확정. 에스컬레이션(C 순열커널/B 게이트 분리) 정욱님 결정 대기.
-    PermKernelRoundTrip_20260716 // 옵션 C — qasm round-trip 순열커널 라우팅 (in-progress) @dep:QasmExportParallel_20260715
+        #   판정: A 단독 불충분 → C(PermKernelRoundTrip) 승인·적용으로 폐합: CI run 29466222771 green(QASM 58s). A 의 --jobs 는 유지(순열커널과 복리).
+    PermKernelRoundTrip_20260716 // 옵션 C — qasm round-trip 순열커널 라우팅 (done — 2026-07-16, 4a2e405·CI 29466222771 green) @dep:QasmExportParallel_20260715
         # 승인: 2026-07-16 정욱님 "1번(성장 벽 대응) 진행". 설계(PG 캡슐):
         #   문제: round_trip_u_hash=op당 embed@V dense matmul O(8^n) → n=10 heavy cmul에서 CI 6h·라운드게이트 1800s 성장 벽.
         #   해법: 전 op가 exact-monomial(열마다 비영 정확 1)일 때만 perm+phase 합성 O(ops·2^n) 후 dense 실체화 → 동일 hash_unitary. 아니면 dense 폴백(기존 경로 무변경).
         #   판정 데이터-주도: INDEP[gid]() 행렬에서 !=0 정확 검사(근사 아님). 값-동일 논증(S1deep3 상속): monomial 곱=단일 비영 경로, phase 곱 순서 동일 → float 곱 시퀀스 bit-identical;
         #   0-항은 hash_unitary 1e-12 사전반올림+1e-9 격자가 ±0.0 흡수. 최종 등가성은 표본 dense==fast 해시 일치 + teeth(targets swap→mismatch)로 실증.
         #   가정 A1: heavy cmul=X-족(0/1 순열)만 — INDEP에서 검증. A2: hash 양자화가 -0.0 흡수 — hash_unitary 코드로 확인됨.
-        # DoD: 표본 등가성(클래스별)+teeth → full --all 로컬 완주 all_checked_match=True·기존 846 대비 diff 0 → CI green 실측 → changed-only 게이트 실측 보고.
+        # DoD 전부 충족: 표본 7클래스 EQ(최대 639×)+teeth+폴백 EQ → full 72s(6.3h→, ~315×)·708/708·846 diff 0·신규 53 완비 → ★CI green: QASM 58s(전날 6h+ cancelled→~370×)·job 총 ~20min.
+        # 부수: shor583 라운드 게이트 재실행 38m05s REPRODUCED→round 5 완결 커밋(f15b03d, 899앱·tier1 82·root 09ec49f6)·loop timeout 1800→5400s(실측 근거).
+        # 잔여 관찰: changed-only 게이트 38m 자체는 미해소(성장 지속) — 병목 스텝 프로파일→순열커널 확장 후속 후보.
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
         W2_4_Relay // c7x/cr8 6런타임 패널 수거 (blocked) #EXT
