@@ -17,8 +17,15 @@
 > ★**아카이브 규약 (QF-0711 U10, 2026-07-11)**: 완료(`done`) 트랙의 **상세 서브트리**는
 > [`DESIGN-MasterRoadmap-HISTORY.md`](DESIGN-MasterRoadmap-HISTORY.md)(append-only)로 이관하고,
 > 이 척추엔 트랙 헤더 1줄만 남긴다. 활성(in-progress/blocked) 트랙은 상세 유지. 상세 이력이
-> 필요할 때만 HISTORY 검색. *일부 `in-progress` 트랙(W12·Maintenance·Infra·V08·HE2)은 실작업 완료
-> 후 상태 미갱신 가능성 — 정욱님 확인 후 `done` 전환 시 추가 압축.*
+> 필요할 때만 HISTORY 검색. ✅RoadmapHygiene(2026-07-16): 상태 미갱신 트랙 9건 실상태로 전환 완료.
+
+## 현재 열린 노드 (RoadmapHygiene 2026-07-16 기준 — 이 블록은 상태 변경 시 갱신)
+
+- **결정 대기 (정욱님)**: `FrontierPolicyBrief_20260716`(확장 정책 A/B/C) · `TrackQF0711Strategic`(S2/S3·S1 잔여)
+- **외부 입력 대기**: report14(→TrackHE14) · `TrackEXT` 5건(Relay/CIpilot/PoisonPanel/RuntimeKeys/BackendEvidence/ServerLink)
+- **사람게이트 blocked**: `H2_MolecularSeal`(H2.2/H2.3) · `H6_Exploratory`(ω/무리수 게이트) · c13x(메모리) · TrackIU 백로그(착수 금지 표기)
+- **상시(ongoing)**: `TrackMaintenance` · FrontierCron 야간 배치(정책 결정 전 현행 유지)
+- 그 외 트랙 전부 done — 신규 작업은 착수 직전 노드 先추가 규율 유지.
 
 ---
 
@@ -29,7 +36,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
 
     TrackSC // 내가 혼자 완료 — 변분/근사 알고리즘 마무리 클러스터 (done)
 
-    TrackW12 // 정욱님 지시로 재개된 신규 self-contained 방향 — guarded c-ladder continuation (in-progress) @dep:SC_Closure
+    TrackW12 // 정욱님 지시로 재개된 신규 self-contained 방향 — guarded c-ladder continuation (done — 계획 큐 소진 2026-07-01, c-ladder 는 W12_24 FrontierFactory 로 이관) @dep:SC_Closure
         W12_1_QueryOracleAlgos // Deutsch-Jozsa · Bernstein-Vazirani · Simon query/oracle algorithms (done)
             # input: 봉인 h_gate/x_gate/cnot, existing app_assemble Tier-0 path
             # process: query-oracle app specs + backend_adapter behavior observations
@@ -150,7 +157,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # criteria: 20q>EXACT_BOUND -> structural only · deterministic reassembly · cmul children Tier-0 exact · no dense claim
             # ✅ done(자율 루프): shor3683 Tier-1 structural 20q deterministic=True, root 1134ea04->85cdc459, 77모듈·152앱, structural 6->7.
 
-    TrackMaintenance // execution infrastructure and compact handoff maintenance (in-progress)
+    TrackMaintenance // execution infrastructure and compact handoff maintenance (ongoing — 상시 유지보수 트랙, 종결 없음)
         M1_ReproduceStepRegistry // reproduce_all frontier steps registry화 (done)
             # process: FRONTIER_STEPS declarative list in scripts/reproduce_all.py
             # criteria: reproduce_all remains REPRODUCED and includes c10x_frontier
@@ -167,7 +174,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # criteria: no external execution · no external docs batch sync · unblock conditions explicit
             # ✅ done: .pgf/external/POST-W12-EXT-BRIDGE.json maps all EXT blockers and trigger-based next actions
 
-    TrackInfra // 장기 자율 실행 인프라 — AutonomyLoop (in-progress)
+    TrackInfra // 장기 자율 실행 인프라 — AutonomyLoop (done — qfa-loop 스킬화(2026-07-01)·frontier_batch 원커맨드·FrontierCron 운영 이관 완결)
         AutonomyLoop_Design // 단독 자율 루프 PG 설계+시뮬검증 (_workspace/loop) (done)
             # 산출: DESIGN-AutonomyLoop.md(Gantree+PPR+§8 정교화 4 decomposed)·persona_contexts.md·sim×3
             # 검증: sim_autonomy_loop_v2(T1~T12)·sim_persona_diversity(D1~D5)·sim_seal_cycle ALL PASS
@@ -186,7 +193,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         AutonomyLoop_SelfImprove // 자율 루프 self-improvement (실측 마찰 검토→수정) (done) @dep:AutonomyLoop_Activate
             # process: reproduce_all 450s 병목→GATES_INCREMENTAL(46s) + commit-guard(full만 verified-commit) ·
             #   clean_eol_ghosts(autocrlf 유령 자동복원) · stdout 라인버퍼+progress() · main 직접 push
-        W12_24_FrontierFactory // 파라메트릭 Shor frontier 봉인 폐루프 (in-progress) @dep:AutonomyLoop_SelfImprove
+        W12_24_FrontierFactory // 파라메트릭 Shor frontier 봉인 폐루프 (done — 구축·실증 완결(무인 46라운드), 운영=FrontierCron·지속정책=FrontierPolicyBrief_20260716 결정 대기) @dep:AutonomyLoop_SelfImprove
             # design: _workspace/loop/DESIGN-FrontierFactory.md (PG Gantree+PPR+3관점 review)
             # impl: scripts/frontier_factory.py — c{11,12}x_payoff/shor{1285,3683} 템플릿을 N-파라미터 함수로 추출
             #   (자유 codegen 아님). seal_payoff_family·seal_structural_shor·factory_seal·verify_against_sealed.
@@ -196,7 +203,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   shor{69,77} Tier-1 structural 15q 봉인. 신규 모듈 0(c7x 재사용). 회귀 7/7·independent arith·deterministic.
             # criteria: 회귀 byte-identical · 신규 모듈 0 · structural n_sys≥15(dense-exact 침범 금지) · reproduce REPRODUCED
 
-    TrackV08_ProofCarrying // 8-review 통합 실행 — 부채상환→수평unlock→발견 (in-progress) @dep:W12_24_FrontierFactory
+    TrackV08_ProofCarrying // 8-review 통합 실행 — 부채상환→수평unlock→발견 (done — V08_1~21 전 하위 done, 2026-07 폐합) @dep:W12_24_FrontierFactory
         # 설계: _workspace/integrated_roadmap.md(8-review 통합) + _workspace/execution_plan_v08.md(실행계획).
         # 착수순서(feasibility×독립성): V08_1→V08_4(병행)→V08_5→V08_6/7/8→V08_9→V08_10.
         # 불변 상속: fingerprint 2파일·frozen 23키·기존 sealed byte-identical. 신규검증=sidecar/외부스크립트(oracle 무수정).
@@ -325,7 +332,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   swap2→3×cnot 자동 발견(reward 1.77, nc_fail teeth). 자유 codegen 아님(golden 이미 봉인, INV-S1).
             #   임시 store+specs/apps 임시 spec 정리 → registry/frozen/root 불변(신규 봉인 0). reproduce_all 통합.
 
-    TrackHE // 수평확장 — 외부 8런타임 제안 통합(6축 A–F), he_task_plan 단일지시 자율실행 (in-progress) @dep:TrackV08_ProofCarrying
+    TrackHE // 수평확장 — 외부 8런타임 제안 통합(6축 A–F), he_task_plan 단일지시 자율실행 (done — 2026-07-02 폐합, 잔여 2건은 하위 blocked 게이트로 이관) @dep:TrackV08_ProofCarrying
         # 정본: _workspace/integrated_horizontal_expansion.md(통합설계)·_workspace/he_task_plan.md(PPR 실행계획).
         # 2026-07-02 세션: 10커밋(939e502~591a2b2+체크포인트) · root 4bd59119→36f8bc09 · 181→190 apps · 전 구간 새 module 0.
         H1_BKEncoding // #axis-A 대체 페르미온 인코딩(8/8 합의 최우선) (done)
@@ -333,7 +340,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             #   bk_num1((I−Z0Z1)/2)·bk_hop01(X0(I−Z1)/2) block-encoding · bk_equiv_observe(★payoff
             #   H_03: JW w4→BK w3, 켤레변환=exact·weight감소=관측) · parity4_transform(cnot 6-gate)+
             #   parity_taper_observe(number/hopping이 총-parity Z_{n-1}과 교환+q3에 I/Z만→taperable).
-        H2_MolecularSeal // #axis-B 분자 봉인 pack (in-progress)
+        H2_MolecularSeal // #axis-B 분자 봉인 pack (blocked — 잔여 H2.2/H2.3=신규 module 사람게이트 대기, dyadic 경로로 필요성↓)
             # ✅ H2.1 be_h2: H₂ 부호구조 block-encoding — dyadic uniform LCU(정욱님 승인 방향),
             #   block=(−I+X0X1+Y0Y1+Z0Z1)/4 부호정확, PREPARE=H⊗H·SELECT 4-branch. 봉인=dyadic 계수 하
             #   exact; 실제 계수·ground energy=관측(h2_molecule_observe 유지).
@@ -359,14 +366,14 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
             # ✅ H5.2′ payoff d4_hsp_observe(봉인 0): 이면군 HSP 소비 — coset state→d4_qft→irrep 분포,
             #   g-불변·문자론 독립참조 일치·비정규{e,s} vs 정규{e,r2} 구별(↔격자문제 연결점).
             # 잔여: H5.3 Schur-Weyl — CG 계수 비-dyadic(√⅔)→신규 module 다수=he_task_plan §4 사람 게이트(승인 대기).
-        H6_Exploratory // #axis-F qudit 개창(임베딩 우회)·MPS/bosonic 잔여 (in-progress)
+        H6_Exploratory // #axis-F qudit 개창(임베딩 우회)·MPS/bosonic 잔여 (blocked — ω=e^{2πi/3}/무리수 게이트=신규 module §4 사람게이트 대기)
             # ✅ H6.1′ qutrit_x3+qutrit_sum: ★게이트 우회 — qutrit(3레벨)을 qubit 부분공간 {00,01,10}에
             #   임베딩(|11>=sink) → 오라클 표준 2ⁿ 프레임 유지, "차원≠2ⁿ" 진입 게이트 소멸. 삼진 산술(순열)만
             #   exact: X₃(+1 mod3, anti-CX×2)·SUM((a+b)mod3, ctrl-X₃/X₃²=c3x 켤레). qutrit_arith_observe:
             #   X₃ 위수3·궤도·SUM 교환/영원 + 게이트경계(ω=e^{2πi/3}·1/√3: Z₃/QFT₃/Bell₃=차기). C4=정수 삼진산술.
             # 잔여(게이트): qutrit QFT₃/Z₃(ω)·MPS(AKLT χ=2)·bosonic(절단근사) — 신규 module 다수=he_task_plan §4.
 
-    TrackHE2 // 2차 수평확장 — 외부 8런타임 report2(23제안)→통합6축(P1–P6) 자율실행 (in-progress) @dep:TrackHE
+    TrackHE2 // 2차 수평확장 — 외부 8런타임 report2(23제안)→통합6축(P1–P6) 자율실행 (done — 2026-07-03~05 폐합, 상세=HANDOFF-HISTORY·메모리 he2-track) @dep:TrackHE
         # 정본: _workspace/integrated_horizontal_expansion2.md(통합)·he_task_plan2.md(PPR 실행계획, 회로확정 명세).
         # 2026-07-03: 11커밋 · root eedb7aa8→d5557622 · 194→205 apps · 전 구간 새 module 0. ★시그니처=게이트 우회.
         P1_SurfaceLatticeSurgery // #TOPO 위상적 논리연산 (done)
