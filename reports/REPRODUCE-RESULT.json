@@ -538,6 +538,11 @@
       "all_ok": true,
       "pass": true
     },
+    "homfly_hecke_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
     "ising_fr_observe": {
       "rc": 0,
       "all_ok": true,
@@ -676,5 +681,10 @@
       "pass": true
     }
   },
-  "mode": "full"
+  "mode": "incremental",
+  "incremental": {
+    "cached": 0,
+    "executed": 115,
+    "uncacheable": 0
+  }
 }

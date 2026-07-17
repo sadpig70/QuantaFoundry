@@ -1,0 +1,25 @@
+{
+  "_note": "HOMFLY-PT 2변수 매듭 다항식을 Hecke H_n(q)+Ocneanu trace 로 계산(관측·seal 아님). 검증객체=Hecke 정준환원+Markov trace(state-sum 아님). Jones/Alexander=특수화 다리. root 불변 sidecar·신규 module 0.",
+  "_schema": "homfly-hecke/v1",
+  "alexander": {
+    "fig8": "-s**2 + 3 - 1/s**2",
+    "trefoil": "s**2 - 1 + s**(-2)"
+  },
+  "all_ok": true,
+  "checks": {
+    "alexander_fig8": true,
+    "alexander_trefoil": true,
+    "fig8_amphichiral": true,
+    "jones_crosscheck": true,
+    "skein_trefoil_triple": true,
+    "teeth_zeta": true,
+    "trefoil_chiral": true,
+    "unknot_is_1": true
+  },
+  "knots": {
+    "fig8": "a**2 - s**2 + 1 - 1/s**2 + a**(-2)",
+    "hopf": "(a**2*s**4 - a**2*s**2 + a**2 - s**2)/(a**3*s*(s**2 - 1))",
+    "trefoil": "(a**2*s**4 + a**2 - s**2)/(a**4*s**2)",
+    "unknot": "1"
+  }
+}
