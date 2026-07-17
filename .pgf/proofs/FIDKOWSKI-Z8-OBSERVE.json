@@ -1,0 +1,51 @@
+{
+  "T_sq_pattern": {
+    "2": -1,
+    "4": -1,
+    "6": 1,
+    "8": 1
+  },
+  "W_gamma_support_sizes": [
+    4
+  ],
+  "W_multiplicities": [
+    "1",
+    "12",
+    "3"
+  ],
+  "_note": "Fidkowski-Kitaev ℤ→ℤ₈ 붕괴 관측 코어(0D edge 유효이론, 전 과정 ℚ(i) 정확산술): T² mod-8 시그니처·quadratic 전면 T-odd·n=4 불가 전수·n=8 gappable 구성(unique GS·gap=¾ exact). 관측·seal 아님·신규 module 0·root 불변. 전체 ℤ₈ 분류는 무주장.",
+  "_schema": "fidkowski-z8-observe/v1",
+  "all_ok": true,
+  "checks": {
+    "T_fixes_all_gammas": true,
+    "Tsq_bott_signature": true,
+    "W_T_invariant": true,
+    "W_annihilating_poly": true,
+    "W_hermitian": true,
+    "W_pure_quartic": true,
+    "W_unique_gs_gap_3_4": true,
+    "all_quadratics_T_odd": true,
+    "clifford_n8": true,
+    "gs_T_singlet": true,
+    "n4_protected": true,
+    "su2_algebra": true,
+    "teeth_T_breaking_gaps_n4": true,
+    "teeth_perturbed_W_detected": true,
+    "teeth_quadratic_breaks_T": true
+  },
+  "gs_projector": {
+    "T_invariant": true,
+    "hermitian": true,
+    "idempotent": true,
+    "rank_1": true
+  },
+  "n4_exhaustive": {
+    "gamma1234_pm1_twofold": true,
+    "hermitian_g1234": true,
+    "invariant_span": [
+      "1",
+      "g1234"
+    ],
+    "span_is_1_and_g1234": true
+  }
+}

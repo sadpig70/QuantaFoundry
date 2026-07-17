@@ -1,0 +1,163 @@
+{
+  "_note": "2D class-DIII TR 초전도체 ℤ₂: mass-sign 닫힌형 == 라인 Pfaffian 차원환원 == edge Majorana Kramers(Dirac 위치가 line 추적)·Zeeman/s-wave teeth. 관측·신규 module 0·root 불변.",
+  "_schema": "class-diii-2d-observe-v1",
+  "observation": {
+    "axis": "AZ class DIII — 2D 시간역전 초전도체 ℤ₂ (helical Majorana edge), report14 P4a (1D DIII 차원 상승)",
+    "checks": {
+      "C_sq_plus1": true,
+      "PHS_holds": true,
+      "S_hermitian_sq1": true,
+      "TRS_holds": true,
+      "T_sq_minus1": true,
+      "bloch_reconstruction": true,
+      "chiral_holds": true,
+      "edge_dirac_tracks_line": true,
+      "edge_localized": true,
+      "gap_closes_at_transitions": true,
+      "gap_open_in_phase": true,
+      "mu0_even_dirac_nu_unchanged": true,
+      "pathA_eq_pathB": true,
+      "q_antisym_at_trim": true,
+      "teeth_swave_diii_symmetric": true,
+      "teeth_swave_scope": true,
+      "teeth_zeeman_breaks_trs_keeps_phs": true,
+      "teeth_zeeman_splits_kramers": true,
+      "topo_nu1": true,
+      "triv_nu0": true,
+      "trivial_no_edge_modes": true
+    },
+    "deterministic": true,
+    "honest_boundary": "관측(위상불변량 산출) — 회로 봉인 아님. 불변량=정수 부호(닫힌형·Pfaffian) — ★float Chern/Berry 적분 미사용. spectrum 연속체=관측·cylinder 유한크기=국소증거(분류정리 무주장)·free-fermion BdG 한정·d-vector/T/C 규약 고정. s-wave teeth = 닫힌형의 odd-parity 전제 스코프 노출. 신규 module 0·root 불변 sidecar.",
+    "invariant": {
+      "edge_scan": {
+        "-2.0": {
+          "ky0": [
+            4,
+            0.9876543213236766
+          ],
+          "kypi": [
+            0,
+            null
+          ]
+        },
+        "-5.0": {
+          "ky0": [
+            0,
+            null
+          ],
+          "kypi": [
+            0,
+            null
+          ]
+        },
+        "2.0": {
+          "ky0": [
+            0,
+            null
+          ],
+          "kypi": [
+            4,
+            0.9876543213236755
+          ]
+        },
+        "5.0": {
+          "ky0": [
+            0,
+            null
+          ],
+          "kypi": [
+            0,
+            null
+          ]
+        }
+      },
+      "path_A_closed_form": "(−1)^ν = ∏_{4 TRIM} sign(ξ) (odd-parity) ; 0<|μ|<4t ⟺ ν=1",
+      "path_B_pfaffian": "ν = ν₁D(ky=0) ⊕ ν₁D(ky=π) — TRS 라인 차원환원, 1D 기계 재사용",
+      "path_C_edge": "cylinder ED — near-zero 4(Kramers 쌍/edge)·★Dirac 위치=비자명 line",
+      "phase_scan": {
+        "-0.5": {
+          "lines": [
+            1,
+            0
+          ],
+          "nu_closed": 1,
+          "nu_pf": 1
+        },
+        "-2.0": {
+          "lines": [
+            1,
+            0
+          ],
+          "nu_closed": 1,
+          "nu_pf": 1
+        },
+        "-3.9": {
+          "lines": [
+            1,
+            0
+          ],
+          "nu_closed": 1,
+          "nu_pf": 1
+        },
+        "-4.5": {
+          "lines": [
+            0,
+            0
+          ],
+          "nu_closed": 0,
+          "nu_pf": 0
+        },
+        "-5.0": {
+          "lines": [
+            0,
+            0
+          ],
+          "nu_closed": 0,
+          "nu_pf": 0
+        },
+        "0.5": {
+          "lines": [
+            0,
+            1
+          ],
+          "nu_closed": 1,
+          "nu_pf": 1
+        },
+        "2.0": {
+          "lines": [
+            0,
+            1
+          ],
+          "nu_closed": 1,
+          "nu_pf": 1
+        },
+        "3.9": {
+          "lines": [
+            0,
+            1
+          ],
+          "nu_closed": 1,
+          "nu_pf": 1
+        },
+        "4.5": {
+          "lines": [
+            0,
+            0
+          ],
+          "nu_closed": 0,
+          "nu_pf": 0
+        },
+        "5.0": {
+          "lines": [
+            0,
+            0
+          ],
+          "nu_closed": 0,
+          "nu_pf": 0
+        }
+      }
+    },
+    "model": "H(k)=ξ_k τzσ0 + (d·σ)(iσy) Nambu, d=Δ(sin kx, sin ky, 0) ; T=τ0⊗iσy K (T²=−1), C=τx⊗σ0 K (C²=+1), S=i·T·C",
+    "ok": true
+  }
+}
