@@ -1,0 +1,952 @@
+{
+  "_note": "D^ω(ℤ₂×ℤ₂) twisted double — H³ 8클래스 전수 modular data 자체구성 + cocycle 2계층 certificate + untwisted(toric²) 대비 비동형 관측(관측·seal 아님·root 불변 sidecar·신규 module 0). ⟨i⟩-스코프 정직 한정·ζ₃ 필요 사례(D^ω(ℤ₃)) 미착수.",
+  "_schema": "dtw-z2z2-double/v1",
+  "all_ok": true,
+  "checks_global": {
+    "H3_F2_dim_4": true,
+    "crux_all7_nonequiv": true,
+    "iscope_classes_8": true,
+    "untwisted_eq_toric_squared": true,
+    "untwisted_fusion_Z2_4": true
+  },
+  "classes": {
+    "000": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "000",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z2^4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": true,
+      "iscope_coboundary": true,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": true
+    },
+    "001": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "001",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z4xZ4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000002102400004",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": false
+    },
+    "010": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "010",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z2^4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000000000210002",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": true
+    },
+    "011": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "011",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z4xZ4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000000000210002",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": false
+    },
+    "100": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "100",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z2^4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000040100000004",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": true
+    },
+    "101": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "101",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z4xZ4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000002102400004",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": false
+    },
+    "110": {
+      "T_multiset": [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "110",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z2^4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000000000210002",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": true
+    },
+    "111": {
+      "T_multiset": [
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "all_pass": true,
+      "checks": {
+        "C_squared_I": true,
+        "S2_is_perm": true,
+        "S_symmetric": true,
+        "S_unitary": true,
+        "T_unit_modulus": true,
+        "first_row_quarter": true,
+        "gauss_sum_4_c0mod8": true,
+        "stcubed_lambda1": true,
+        "verlinde_pointed": true
+      },
+      "class": "111",
+      "cocycle_identity": true,
+      "expected_certs": true,
+      "fusion_group": "Z4xZ4",
+      "fusion_order_multiset": [
+        1,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "gauss_sum": "(4+0i)",
+      "gf2_coboundary": false,
+      "gf2_uncobound_certificate_y": "0000000000210002",
+      "iscope_coboundary": false,
+      "lambda": "(1+0i)",
+      "n_anyon": 16,
+      "self_dual": false
+    }
+  },
+  "cohomology": {
+    "dim_B3_F2": 11,
+    "dim_H3_F2": 4,
+    "dim_Z3_F2": 15,
+    "iscope_pm1_cocycle_classes": 8,
+    "note": "H³(G,𝔽₂)=𝔽₂⁴(다항환 3차) vs ⟨i⟩-스코프 ±1-cocycle 클래스 8=|H³(G,U(1))|(=ℤ₂³) 자체 유도"
+  },
+  "crux_contrast": {
+    "001": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": true,
+      "nonequiv_witnessed": true
+    },
+    "010": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": false,
+      "nonequiv_witnessed": true
+    },
+    "011": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": true,
+      "nonequiv_witnessed": true
+    },
+    "100": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": false,
+      "nonequiv_witnessed": true
+    },
+    "101": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": true,
+      "nonequiv_witnessed": true
+    },
+    "110": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": false,
+      "nonequiv_witnessed": true
+    },
+    "111": {
+      "T_multiset_differs": true,
+      "fusion_group_differs": true,
+      "nonequiv_witnessed": true
+    }
+  },
+  "distinct_T_multisets": 4,
+  "fusion_groups": {
+    "000": "Z2^4",
+    "001": "Z4xZ4",
+    "010": "Z2^4",
+    "011": "Z4xZ4",
+    "100": "Z2^4",
+    "101": "Z4xZ4",
+    "110": "Z2^4",
+    "111": "Z4xZ4"
+  },
+  "teeth": {
+    "S_perturbation_breaks": true,
+    "coboundary_positive_control": {
+      "T_multiset_eq_untwisted": true,
+      "all_pass": true,
+      "cocycle_identity": true,
+      "fusion_eq_untwisted": true,
+      "gf2_coboundary": true,
+      "iscope_coboundary": true
+    },
+    "fake_cocycle_detected": true
+  }
+}

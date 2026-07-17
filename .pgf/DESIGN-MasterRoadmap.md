@@ -207,7 +207,8 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # 8런타임 39제안→수렴 클러스터→6축. 성격=대부분 관측(modular-data/다항식/불변량)·신규 module ~0·root 대체로 불변(TrackHE 계열 상속).
         # ✅P1 완주(dihedral_quaternion_double_observe): D(D₄)·D(Q₈) 각 22 anyon·D²=64·self-dual·λ=1(c≡0 mod8)·동일 양자차원(1×8,2×14) → ★T 다중집합 분기(D₄ ±i각1·−1 6개 vs Q₈ ±i각3·−1 4개)로 double 비동형 관측. 군 문자표 동치≠double MTC 동치 실증. 신규 module 0·관측(root 불변).
         # ✅P2 완주(homfly_hecke_observe): HOMFLY-PT 2변수를 Hecke H_n(q)+Ocneanu trace 로 계산(정규화=Markov 두 안정화 유도). trefoil 2a⁻²−a⁻⁴+a⁻²z²·fig8 a²+a⁻²−1−z²·Hopf exact. 검증=skein 삼중·★Jones 특수화 kauffman state-sum 교차동치(mirror t↔1/t)·Alexander·mirror(fig8 amphichiral/trefoil chiral)·teeth. 관측·신규 module 0.
-        # P3 twisted D^ω(ℤ₂²) H³·P4 2D class DIII+Fidkowski-Kitaev ℤ₈·P5 H²(A₅) cocycle causal(§3j)·P6 gridsynth Clifford+T 실봉인(§2 부분해제) — 순차 진행.
+        # ✅P3 완주(dtw_z2z2_double_observe): D^ω(ℤ₂²) H³ 8클래스 전수 — 대표 ω=(−1)^{n₁a₁b₁c₁+n₂a₂b₂c₂+n₁₂a₁b₂c₂} 자체구성·전 클래스 16 pointed anyon 공리 전량(SS†·S²=C·Verlinde pointed·(ST)³=S²·Gauss합=4=c≡0 mod8) ℚ(i) exact. ★crux: 비자명 7/7 untwisted(=toric² exact 확인) 비동형 — T 다중집합 4궤도 + ★n₁₂=1 계열 융합군 전이 ℤ₂⁴→ℤ₄×ℤ₄(twist가 융합환 자체를 바꿈, D(ℤ₄) 데이터 일치). cocycle certificate 2계층(GF(2) UNSAT 좌영벡터 + ⟨i⟩-스코프 도달공간)·H³ 자체 재유도(𝔽₂ dim4·⟨i⟩-스코프 8클래스)·teeth 3종(섭동·가짜cocycle·★coboundary 양성대조=untwisted 동일 데이터). H³ 비틀림 최초 입력 구조·관측·신규 module 0·root 불변.
+        # P4 2D class DIII+Fidkowski-Kitaev ℤ₈·P5 H²(A₅) cocycle causal(§3j)·P6 gridsynth Clifford+T 실봉인(§2 부분해제) — 순차 진행.
         # 정직 경계: modular data=관측(봉인 아님)·float Chern 금지(closed-form/Pfaffian만)·§2 Fourier 경계(P5 cocycle 회피·P6 특정각 부분해제)·외부값 자체 재검증(§5).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
         # 전부 self-contained 부분 완성·정욱님 수거 또는 하드웨어 확보 대기. 본 세션에서 착수하지 않는다.
