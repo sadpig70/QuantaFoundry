@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 91,
+      "covered": 92,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 553,
+    "1": 554,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 972,
-  "n_primary_seal_only": 22,
+  "n_apps_with_supplementary": 973,
+  "n_primary_seal_only": 30,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -623,28 +623,37 @@
     "shor669": "subspace",
     "shor671": "subspace",
     "shor679": "subspace",
-    "shor687": "subspace"
+    "shor687": "subspace",
+    "shor695": "subspace"
   },
   "primary_seal_only": [
     "cmul16_mod671",
     "cmul16_mod679",
     "cmul16_mod687",
+    "cmul16_mod695",
+    "cmul206_mod695",
     "cmul256_mod671",
     "cmul256_mod679",
     "cmul256_mod687",
+    "cmul256_mod695",
     "cmul271_mod687",
+    "cmul291_mod695",
     "cmul2_mod671",
     "cmul2_mod679",
     "cmul2_mod687",
+    "cmul2_mod695",
     "cmul301_mod671",
     "cmul326_mod679",
     "cmul352_mod679",
+    "cmul41_mod695",
     "cmul449_mod671",
     "cmul4_mod671",
     "cmul4_mod679",
     "cmul4_mod687",
+    "cmul4_mod695",
     "cmul502_mod687",
     "cmul562_mod687",
+    "cmul586_mod695",
     "cmul619_mod687",
     "ghz16_structural",
     "rm15_tt"
@@ -4222,6 +4231,9 @@
     "shor69": [
       "column",
       "ring",
+      "subspace"
+    ],
+    "shor695": [
       "subspace"
     ],
     "shor77": [
