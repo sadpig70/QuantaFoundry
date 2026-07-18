@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 95,
+      "covered": 96,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 557,
+    "1": 558,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 976,
-  "n_primary_seal_only": 53,
+  "n_apps_with_supplementary": 977,
+  "n_primary_seal_only": 61,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -627,7 +627,8 @@
     "shor695": "subspace",
     "shor697": "subspace",
     "shor699": "subspace",
-    "shor703": "subspace"
+    "shor703": "subspace",
+    "shor707": "subspace"
   },
   "primary_seal_only": [
     "cmul157_mod703",
@@ -638,6 +639,7 @@
     "cmul16_mod697",
     "cmul16_mod699",
     "cmul16_mod703",
+    "cmul16_mod707",
     "cmul18_mod697",
     "cmul206_mod695",
     "cmul241_mod699",
@@ -648,6 +650,8 @@
     "cmul256_mod697",
     "cmul256_mod699",
     "cmul256_mod703",
+    "cmul256_mod707",
+    "cmul270_mod707",
     "cmul271_mod687",
     "cmul291_mod695",
     "cmul2_mod671",
@@ -657,6 +661,7 @@
     "cmul2_mod697",
     "cmul2_mod699",
     "cmul2_mod703",
+    "cmul2_mod707",
     "cmul301_mod671",
     "cmul324_mod697",
     "cmul326_mod679",
@@ -666,6 +671,7 @@
     "cmul426_mod697",
     "cmul449_mod671",
     "cmul44_mod703",
+    "cmul492_mod707",
     "cmul4_mod671",
     "cmul4_mod679",
     "cmul4_mod687",
@@ -673,14 +679,17 @@
     "cmul4_mod697",
     "cmul4_mod699",
     "cmul4_mod703",
+    "cmul4_mod707",
     "cmul502_mod687",
     "cmul529_mod699",
     "cmul530_mod703",
     "cmul562_mod687",
+    "cmul585_mod707",
     "cmul586_mod695",
     "cmul601_mod699",
     "cmul619_mod687",
     "cmul64_mod699",
+    "cmul79_mod707",
     "ghz16_structural",
     "rm15_tt"
   ],
@@ -4269,6 +4278,9 @@
       "subspace"
     ],
     "shor703": [
+      "subspace"
+    ],
+    "shor707": [
       "subspace"
     ],
     "shor77": [
