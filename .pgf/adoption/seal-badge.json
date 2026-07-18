@@ -1,21 +1,21 @@
 {
   "_schema": "seal-badge-v1",
   "gate_pass": true,
-  "registry_root_hash": "f8f01ff348701c2b922468e4d7a4c50072d18607e2972d85e2bd62aa6263c2c9",
-  "expect_root": "f8f01ff348701c2b",
+  "registry_root_hash": "2075c0a8953c78b71938d13928e2ded778c3b8b9279237c345e63376674092bf",
+  "expect_root": "2075c0a8953c78b7",
   "tier_distribution": {
     "tier2": 12,
-    "tier0": 1067,
-    "tier1": 94
+    "tier0": 1074,
+    "tier1": 95
   },
-  "total_t": 63439516,
-  "total_toffoli": 43780,
+  "total_t": 64704720,
+  "total_toffoli": 44335,
   "modules": 95,
-  "unique_apps": 1003,
+  "unique_apps": 1011,
   "shields_endpoint": {
     "schemaVersion": 1,
     "label": "QPGF seal",
-    "message": "root f8f01ff34870 · 95mod/1003app",
+    "message": "root 2075c0a8953c · 95mod/1011app",
     "color": "brightgreen"
   },
   "_note": "CI gate=로컬 재현(root byte-identity) 성공해야 제출. 통과 시 seal-badge 노출. 외부 라이브러리 파일럿 협업은 [EXT] relay 의존."
