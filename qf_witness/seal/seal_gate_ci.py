@@ -17,7 +17,7 @@ import os, sys, json, glob, subprocess
 
 from qf_witness.core.paths import ROOT
 MANIFEST = os.path.join(ROOT, "registry", "REGISTRY-MANIFEST.json")
-EXPECT_DEFAULT = "a64282ea0d75b9a9"
+EXPECT_DEFAULT = "75c23c31d5890a58"
 
 # QF-0711 U9 DriftGate: root 결정론 외에 문서 수치·경로·커버리지 드리프트도 머지 차단 대상.
 #   각 --check 는 커밋된 생성물 == 정본 재생성 을 확인(불일치=드리프트).
