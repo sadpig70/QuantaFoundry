@@ -1,0 +1,56 @@
+{
+  "_note": "H²(A₅) Schur cocycle causal layer: SL(2,5)→PSL(2,5) factor set α — cocycle 216,000 전수·GF(2) UNSAT(support-2 certificate)·완전성→μ_{2^k} 스코프 상승·유일 involution 초등 논증·Sylow-2=Q₈. v12 2.A₅ FS=−1 의 원인층. 관측·seal 아님·신규 module 0·root 불변. M(A₅) 전체 차원 무주장.",
+  "_schema": "a5-schur-cocycle/v1",
+  "all_ok": true,
+  "certificate": {
+    "meaning": "동일 미지수 집합 {l(g),l(h),l(gh)}·상이한 우변 → 즉시 모순(최소 certificate)",
+    "support_pairs_gh": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        10
+      ]
+    ]
+  },
+  "checks": {
+    "E_order_120": true,
+    "E_perfect": true,
+    "G_order_60": true,
+    "G_perfect": true,
+    "G_simple": true,
+    "center_pmI": true,
+    "certificate_verified": true,
+    "class_sizes": true,
+    "coboundary_UNSAT": true,
+    "cocycle_216000": true,
+    "kernel_trivial_scope_escalation": true,
+    "normalized": true,
+    "order_multiset": true,
+    "projective_descent_3600": true,
+    "sylow2_Q8": true,
+    "teeth_bitflip_detected": true,
+    "teeth_s3_not_perfect": true,
+    "teeth_split_positive_control": true,
+    "unique_involution_negI": true
+  },
+  "observation_layers": [
+    "unique involution −I → complement 불가(초등)",
+    "GF(2) UNSAT + 좌영벡터 → [α]≠0 ∈ H²(G,ℤ₂) (확장 비분리)",
+    "kernel=0 (완전성) → μ_{2^k} 전 계층 UNSAT",
+    "사영 descent 3600 쌍 → 2차원 구조의 A₅ 참표현 불가 = 2.A₅ 필연(FS=−1 원인)",
+    "Sylow-2=Q₈ → quaternionic 발현(v12 ℍ·P1 D(Q₈) 연결)"
+  ],
+  "sylow2_order_multiset": [
+    1,
+    2,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ]
+}

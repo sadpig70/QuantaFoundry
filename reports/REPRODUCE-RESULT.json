@@ -543,6 +543,11 @@
       "all_ok": true,
       "pass": true
     },
+    "a5_schur_cocycle_observe": {
+      "rc": 0,
+      "all_ok": true,
+      "pass": true
+    },
     "conway31_ks_observe": {
       "rc": 0,
       "all_ok": true,
@@ -696,5 +701,10 @@
       "pass": true
     }
   },
-  "mode": "full"
+  "mode": "incremental",
+  "incremental": {
+    "cached": 0,
+    "executed": 119,
+    "uncacheable": 0
+  }
 }
