@@ -41,6 +41,46 @@
       "tier": 0,
       "u_hash": "9291988fec75733f2e311df8aa52063df14f55312dbdd4827c9bad83295f5d3d",
       "reason": ""
+    },
+    {
+      "id": "rz_pi8_rs",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "56941a1374d1907aad00f66a9ef3520105fbe81c2d834693aefd6572bd9a1caf",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi16_rs",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "b4320766f2d18458debcd22a3130371752f472d603042659f0fc6d7a07d2adb9",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi32_rs",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "4886a3fc750dec6731cadc2133c2e91324f346b8e02a7b6413d3c24bb452d94e",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi64_rs",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "bbb19e808ff7a3726e4b0350fe8d3f47366a36edaba35305106795b56fe60ac3",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi128_rs",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "521efc234979e82b259f6d0ff09fc88ffe9a2adf107d9f730817eef4b378fd6a",
+      "reason": ""
     }
   ],
   "ring_shadow": {
@@ -73,6 +113,36 @@
       "sqrt2_denom_exp": 14,
       "t_count": 32,
       "length": 46
+    },
+    "rz_pi8_rs": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 109,
+      "t_count": 220,
+      "length": 329
+    },
+    "rz_pi16_rs": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 107,
+      "t_count": 216,
+      "length": 323
+    },
+    "rz_pi32_rs": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 107,
+      "t_count": 198,
+      "length": 305
+    },
+    "rz_pi64_rs": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 107,
+      "t_count": 226,
+      "length": 333
+    },
+    "rz_pi128_rs": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 107,
+      "t_count": 216,
+      "length": 323
     }
   },
   "eps_observed_float": {
@@ -80,7 +150,12 @@
     "rz_pi16_ct": 0.047359946167167,
     "rz_pi32_ct": 0.031486125209856226,
     "rz_pi64_ct": 0.012532581860017678,
-    "rz_pi128_ct": 0.012271769298339183
+    "rz_pi128_ct": 0.012271769298339183,
+    "rz_pi8_rs": 4.592432961419661e-05,
+    "rz_pi16_rs": 1.259773990448653e-05,
+    "rz_pi32_rs": 7.347637173315972e-05,
+    "rz_pi64_rs": 4.149632016117533e-05,
+    "rz_pi128_rs": 5.60449174075372e-05
   },
   "all_ok": true
 }

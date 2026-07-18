@@ -40319,6 +40319,23 @@
       }
     ]
   },
+  "rz_pi128_rs": {
+    "u_hash": "521efc234979e82b259f6d0ff09fc88ffe9a2adf107d9f730817eef4b378fd6a",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 107,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 216,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "rz_pi16_ct": {
     "u_hash": "643cabf712dcf0bdf3047ec1989ed4e7d302b7b3e4a88b2cff3639af76d891bb",
     "depends_on": [
@@ -40332,6 +40349,23 @@
         "kind": "module",
         "id": "t_gate",
         "uses": 17,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
+  "rz_pi16_rs": {
+    "u_hash": "b4320766f2d18458debcd22a3130371752f472d603042659f0fc6d7a07d2adb9",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 107,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 216,
         "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
       }
     ]
@@ -40353,6 +40387,23 @@
       }
     ]
   },
+  "rz_pi32_rs": {
+    "u_hash": "4886a3fc750dec6731cadc2133c2e91324f346b8e02a7b6413d3c24bb452d94e",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 107,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 198,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "rz_pi64_ct": {
     "u_hash": "3eb4c4224f0f018a03000460421271f4504aff67a467d60301205209b76404b9",
     "depends_on": [
@@ -40370,6 +40421,23 @@
       }
     ]
   },
+  "rz_pi64_rs": {
+    "u_hash": "bbb19e808ff7a3726e4b0350fe8d3f47366a36edaba35305106795b56fe60ac3",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 107,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 226,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
   "rz_pi8_ct": {
     "u_hash": "e7d825267cf3a70f7a9a7ece630c8b9bd15d5838ea87b15dba95774cc7336ba8",
     "depends_on": [
@@ -40383,6 +40451,23 @@
         "kind": "module",
         "id": "t_gate",
         "uses": 32,
+        "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
+      }
+    ]
+  },
+  "rz_pi8_rs": {
+    "u_hash": "56941a1374d1907aad00f66a9ef3520105fbe81c2d834693aefd6572bd9a1caf",
+    "depends_on": [
+      {
+        "kind": "module",
+        "id": "h_gate",
+        "uses": 109,
+        "child_u_hash": "0d6a0b7a9a19ad2e65004d4811b3907a5f1c8f4edbde59c0fefd9d3ff260b90c"
+      },
+      {
+        "kind": "module",
+        "id": "t_gate",
+        "uses": 220,
         "child_u_hash": "3f0eeac929b02fe1245b6f9b18e26f5078f6f54a9fab61b67bc5102be31541ea"
       }
     ]

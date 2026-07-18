@@ -80,6 +80,32 @@
         "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
       }
     },
+    "rz_pi128_rs": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 5.604487418029995e-05,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((221047613677464 + 156304266596446*sqrt(2))*sin(pi/128)/9007199254740992 + 1591783353834555*sqrt(2)*cos(pi/128)/2251799813685248 + 9004486429410255*cos(pi/128)/9007199254740992 + 1592262913130099*sqrt(2)/2251799813685248 + 9007199226449139/9007199254740992))",
+      "exact_trotter": false,
+      "id": "rz_pi128_rs",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTHTHTHTHTTTHTHTHTHTTTHTHTHTTTHTHTHTHTTTHTTTHTHTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTTTHTHTTTHTTTHTHTTTHTHTHTTTHTHTHTTTHTHTHTTTHTHTHTHTTTHTTTHTTTHTTTHTTTHTHTTTHTHTHTTTHTHTTTHTHTTTHTTTHTHTTTHTHTTTHTTTHTHTHTTTHTHTHTTTHTTTHTHTTTHTHTHTHTTTHTHTHTTTHTTTHTTTHTHTHTTTHTHTTTHTHTHTHTTTHTHTHTTTHTHTTTHTTTHTTTHTTTHTHTTTHTTTHTTTHTTTHTTTHTTTH",
+      "spec_hash": "ae048369afc814b1",
+      "target_spec": "R_z(pi/128) target; Clifford+T sequence len=323 T-count=216",
+      "witness": {
+        "d_obs": 5.60449174075372e-05,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
     "rz_pi16_ct": {
       "audit": {
         "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
@@ -102,6 +128,32 @@
       "target_spec": "R_z(pi/16) target; Clifford+T sequence len=30 T-count=17",
       "witness": {
         "d_obs": 0.047359946167167,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
+    "rz_pi16_rs": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 1.2597487912536943e-05,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((1757217324116173 + 1242540285901072*sqrt(2))*sin(pi/16)/9007199254740992 + 3123336070307723*sqrt(2)*cos(pi/16)/4503599627370496 + 2208532115239141*cos(pi/16)/2251799813685248 + 796131458939375*sqrt(2)/1125899906842624 + 9007199253311615/9007199254740992))",
+      "exact_trotter": false,
+      "id": "rz_pi16_rs",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTTHTHTTTHTHTHTHTTTHTHTHTHTTTHTTTHTHTHTHTTTHTHTTTHTTTHTHTTTHTHTTTHTTTHTTTHTTTHTTTHTTTHTHTTTHTTTHTHTHTTTHTTTHTTTHTHTTTHTHTHTHTHTTTHTTTHTTTHTTTHTTTHTHTHTTTHTTTHTTTHTTTHTHTHTTTHTHTHTHTHTHTTTHTHTTTHTHTTTHTHTHTHTHTTTHTTTHTTTHTTTHTHTHTTTHTHTTTHTTTHTHTHTTTHTTTHTHTHTHTTTHTTTHTHTHTTTHTTTHTHTHTTTHTHTHTTTHTTTHTTTHTTTHTHTHTHTTTHTH",
+      "spec_hash": "d738776b906e8909",
+      "target_spec": "R_z(pi/16) target; Clifford+T sequence len=323 T-count=216",
+      "witness": {
+        "d_obs": 1.259773990448653e-05,
         "d_obs_eq_eps": true,
         "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
       }
@@ -132,6 +184,32 @@
         "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
       }
     },
+    "rz_pi32_rs": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 7.347633054303897e-05,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((882859857213119 + 624276191872784*sqrt(2))*sin(pi/32)/9007199254740992 + 1120478385634399*cos(pi/32)/1125899906842624 + 792297864655039*sqrt(2)*cos(pi/32)/1125899906842624 + 9007199206113185/9007199254740992 + 398065727383795*sqrt(2)/562949953421312))",
+      "exact_trotter": false,
+      "id": "rz_pi32_rs",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTHTHTHTHTHTHTTTHTTTHTTTHTHTHTHTTTHTTTHTTTHTHTTTHTHTTTHTHTTTHTTTHTHTTTHTHTHTHTHTHTHTTTHTTTHTTTHTTTHTHTTTHTHTTTHTTTHTTTHTHTTTHTTTHTHTHTHTTTHTHTTTHTHTTTHTTTHTTTHTTTHTHTHTTTHTHTHTTTHTHTHTHTHTHTHTHTHTHTHTTTHTHTHTTTHTHTTTHTHTTTHTHTHTHTHTTTHTHTTTHTHTTTHTTTHTHTHTHTHTHTTTHTHTHTTTHTHTHTTTHTHTTTHTHTHTTTHTTTHTHT",
+      "spec_hash": "27a908ab815373d1",
+      "target_spec": "R_z(pi/32) target; Clifford+T sequence len=305 T-count=198",
+      "witness": {
+        "d_obs": 7.347637173315972e-05,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
     "rz_pi64_ct": {
       "audit": {
         "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
@@ -158,6 +236,32 @@
         "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
       }
     },
+    "rz_pi64_rs": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 4.1496246043023504e-05,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((441962218353787 + 312514481626232*sqrt(2))*sin(pi/64)/9007199254740992 + 2249087419554229*cos(pi/64)/2251799813685248 + 3180689931696313*sqrt(2)*cos(pi/64)/4503599627370496 + 398065728847415*sqrt(2)/562949953421312 + 9007199239231175/9007199254740992))",
+      "exact_trotter": false,
+      "id": "rz_pi64_rs",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTTHTTTHTTTHTTTHTTTHTTTHTHTHTHTHTHTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTHTHTTTHTHTHTTTHTHTHTHTTTHTTTHTTTHTTTHTTTHTHTHTHTTTHTTTHTHTHTTTHTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTTTHTHTHTHTHTTTHTTTHTTTHTHTTTHTTTHTHTHTHTHTHTHTHTTTHTHTTTHTHTHTTTHTTTHTTTHTHTHTHTTTHTTTHTTTHTTTHTTTHTTTHTTTHTTTHTTTHTHTTTHTHTHTHTTTHTTTHTHTTTHTHTTTHTTTHTTTHTTTHTTTHTTTHTHTH",
+      "spec_hash": "d683676cf6f288d2",
+      "target_spec": "R_z(pi/64) target; Clifford+T sequence len=333 T-count=226",
+      "witness": {
+        "d_obs": 4.149632016117533e-05,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
     "rz_pi8_ct": {
       "audit": {
         "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
@@ -180,6 +284,32 @@
       "target_spec": "R_z(pi/8) target; Clifford+T sequence len=48 T-count=32",
       "witness": {
         "d_obs": 0.05617455067491281,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
+    "rz_pi8_rs": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 4.592428499603032e-05,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt(sqrt(2 - sqrt(2))*(2437330571727212*sqrt(2) + 3446905950523397)/18014398509481984 + 2942118230132893*sqrt(2*sqrt(2) + 4)/9007199254740992 + 2080391751579533*sqrt(sqrt(2) + 2)/4503599627370496 + 1592262914773279*sqrt(2)/2251799813685248 + 9007199235744551/9007199254740992))",
+      "exact_trotter": false,
+      "id": "rz_pi8_rs",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTHTTTTHHTTTHTHTTTHTTTHTHTTTHTHTTTHTHTTTHTHTTTHTHTHTTTHTHTTTHTTTHTTTHTHTHTHTHTHTTTHTHTTTHTTTHTHTTTHTTTHTTTHTHTHTTTHTHTHTTTHTTTHTTTHTHTTTHTTTHTHTHTTTHTTTHTHTTTHTTTHTHTHTTTHTTTHTTTHTHTTTHTTTHTHTTTHTTTHTHTHTHTHTHTHTTTHTHTTTHTHTHTTTHTTTHTHTTTHTTTHTTTHTTTHTTTHTHTTTHTTTHTTTHTTTHTHTTTHTHTTTHTHTTTHTTTHTTTHTHTTTHTHTTTHTHTHTHTHTHTHTHTHTH",
+      "spec_hash": "fbf530fd18e8cd82",
+      "target_spec": "R_z(pi/8) target; Clifford+T sequence len=329 T-count=220",
+      "witness": {
+        "d_obs": 4.592432961419661e-05,
         "d_obs_eq_eps": true,
         "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
       }

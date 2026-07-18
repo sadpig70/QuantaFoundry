@@ -16,7 +16,7 @@
      행렬(ℤ[ω₈]→ℤ[ζ₂₅₆] 임베드, ω₈=ζ₂₅₆³²) 정수 등식. 봉인앱·ε-인증·컬럼증인 3자 일관.
 
 스코프(정직 명시): qft5(32 전수)·qft6(64 전수)·qft7/qft8/iqft7/iqft8(각 표본 16, 결정론
-  스트라이드)·rz_ct 5앱(전수 2컬럼). 표본 앱은 전수 아님을 결과에 표기.
+  스트라이드)·rz gridsynth 10앱=_ct 5+_rs 5(전수 2컬럼). 표본 앱은 전수 아님을 결과에 표기.
 
 정직 경계: **기존 경로 강화 — 신규 독립 검증경로(제11) 주장 아님**. 봉인 판정 불참(sidecar
   witness)·oracle 무접촉·root 불변·신규 module 0. 경로합=exact 정수(부동소수 0), float 는
@@ -33,7 +33,7 @@ import sys
 import json
 
 from qf_witness.core.paths import ROOT
-from qf_witness.family.gridsynth_family import SEQS as RZ_SEQS, ring_shadow
+from qf_witness.family.gridsynth_family import ALL_SEQS as RZ_SEQS, ring_shadow
 
 OUT = os.path.join(ROOT, ".pgf", "proofs", "PATHSUM-RING-COLUMN.json")
 SPECS_APPS = os.path.join(ROOT, "specs", "apps")

@@ -102,9 +102,9 @@
     ]
   },
   "apps": {
-    "unique_app_count": 1043,
+    "unique_app_count": 1048,
     "cached_app_side_module_count": 75,
-    "total_files": 1118,
+    "total_files": 1123,
     "path": "registry/apps",
     "unique": [
       "aklt4",
@@ -995,10 +995,15 @@
       "rxx_pi8",
       "ryy_pi8",
       "rz_pi128_ct",
+      "rz_pi128_rs",
       "rz_pi16_ct",
+      "rz_pi16_rs",
       "rz_pi32_ct",
+      "rz_pi32_rs",
       "rz_pi64_ct",
+      "rz_pi64_rs",
       "rz_pi8_ct",
+      "rz_pi8_rs",
       "rzz_pi16",
       "rzz_pi8",
       "rzz_y4_p_half",
@@ -1306,7 +1311,7 @@
     "z5_gate": "registry/modules/z5_gate.sealed.json",
     "z_gate": "registry/modules/z_gate.sealed.json"
   },
-  "registry_root_hash": "cf8344befc76d28f3b2986c676bcd98d66e31b5d1b84209aa99ac28fa8c4b30b",
+  "registry_root_hash": "ee04ff5ef66b55c0118eaa0548a617a537a98bbdccb8194a040733ce41644802",
   "revocation_list": [],
   "note": "cached_leaf_modules 는 app_assemble 가 모듈 로드 시 app store 에 남긴 재봉인(canonical 은 registry/modules). cached_app_side_module_count 는 앱 합성 트리에서 leaf 로 직접 쓰인 모듈 재봉인 수 — ★새 unique app 이 아니다(unique_app_count 와 분리). 나머지 (modules.count - cached) 모듈은 앱에서 직접 leaf 로 안 쓰이거나 다른 모듈 경유(인프라 전용)라 map 에 없다. 단일 출처 검증은 registry_root_hash 로, 영향범위는 dependents 로 계산."
 }

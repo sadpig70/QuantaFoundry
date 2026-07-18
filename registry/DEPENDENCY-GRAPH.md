@@ -1001,21 +1001,41 @@ rz_pi128_ct
 ├─ h_gate (module×14)
 └─ t_gate (module×32)
 
+rz_pi128_rs
+├─ h_gate (module×107)
+└─ t_gate (module×216)
+
 rz_pi16_ct
 ├─ h_gate (module×13)
 └─ t_gate (module×17)
+
+rz_pi16_rs
+├─ h_gate (module×107)
+└─ t_gate (module×216)
 
 rz_pi32_ct
 ├─ h_gate (module×15)
 └─ t_gate (module×25)
 
+rz_pi32_rs
+├─ h_gate (module×107)
+└─ t_gate (module×198)
+
 rz_pi64_ct
 ├─ h_gate (module×15)
 └─ t_gate (module×25)
 
+rz_pi64_rs
+├─ h_gate (module×107)
+└─ t_gate (module×226)
+
 rz_pi8_ct
 ├─ h_gate (module×16)
 └─ t_gate (module×32)
+
+rz_pi8_rs
+├─ h_gate (module×109)
+└─ t_gate (module×220)
 
 s4_mult
 ├─ s3_mult (app)
