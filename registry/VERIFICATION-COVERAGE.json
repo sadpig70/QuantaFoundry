@@ -16,7 +16,7 @@
       "sidecar": "*.column_proof.json"
     },
     "compositional": {
-      "covered": 940,
+      "covered": 945,
       "sidecar": "COMPOSITIONAL-VERIFY.json"
     },
     "cuc": {
@@ -61,14 +61,14 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 617,
+    "1": 622,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 1036,
+  "n_apps_with_supplementary": 1041,
   "n_primary_seal_only": 2,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
@@ -625,6 +625,11 @@
     "cmul9_mod407": "compositional",
     "maj_braid_ybe": "compositional",
     "q8_qft": "compositional",
+    "rz_pi128_ct": "compositional",
+    "rz_pi16_ct": "compositional",
+    "rz_pi32_ct": "compositional",
+    "rz_pi64_ct": "compositional",
+    "rz_pi8_ct": "compositional",
     "shor267": "subspace",
     "shor287": "subspace",
     "shor291": "subspace",
@@ -4069,6 +4074,21 @@
       "compositional",
       "qmdd",
       "tncontract"
+    ],
+    "rz_pi128_ct": [
+      "compositional"
+    ],
+    "rz_pi16_ct": [
+      "compositional"
+    ],
+    "rz_pi32_ct": [
+      "compositional"
+    ],
+    "rz_pi64_ct": [
+      "compositional"
+    ],
+    "rz_pi8_ct": [
+      "compositional"
     ],
     "rzz_pi16": [
       "compositional",

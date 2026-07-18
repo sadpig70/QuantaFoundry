@@ -1,0 +1,86 @@
+{
+  "phase": "TrackHE14 P6a gridsynth Clifford+T",
+  "honesty": "Seals Clifford+T approximation circuits for R_z(pi/2^k), k=3..7, assembled ONLY from sealed h_gate/t_gate (ZERO new modules). Each seal is Tier-0 EXACT for the circuit's own unitary (entries exactly in Z[omega]/sqrt(2)^m, ring shadow verified); the distance to the TARGET R_z is NOT sealed — it is certified separately in the APPROX-GUARANTEES sidecar (phase-aligned op-norm, sympy exact) and observed here as eps_obs (~1e-2 grade; Ross-Selinger optimality NOT claimed — existence construction partially lifting the Section-2 Fourier real-seal boundary).",
+  "apps": [
+    {
+      "id": "rz_pi8_ct",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "e7d825267cf3a70f7a9a7ece630c8b9bd15d5838ea87b15dba95774cc7336ba8",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi16_ct",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "643cabf712dcf0bdf3047ec1989ed4e7d302b7b3e4a88b2cff3639af76d891bb",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi32_ct",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "fa614c6089bdfc28c41044234586b2e4bc2ce8507174e8f26663fe44259c0952",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi64_ct",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "3eb4c4224f0f018a03000460421271f4504aff67a467d60301205209b76404b9",
+      "reason": ""
+    },
+    {
+      "id": "rz_pi128_ct",
+      "n_sys": 1,
+      "sealed": true,
+      "tier": 0,
+      "u_hash": "9291988fec75733f2e311df8aa52063df14f55312dbdd4827c9bad83295f5d3d",
+      "reason": ""
+    }
+  ],
+  "ring_shadow": {
+    "rz_pi8_ct": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 16,
+      "t_count": 32,
+      "length": 48
+    },
+    "rz_pi16_ct": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 13,
+      "t_count": 17,
+      "length": 30
+    },
+    "rz_pi32_ct": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 15,
+      "t_count": 25,
+      "length": 40
+    },
+    "rz_pi64_ct": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 15,
+      "t_count": 25,
+      "length": 40
+    },
+    "rz_pi128_ct": {
+      "ring_exact": true,
+      "sqrt2_denom_exp": 14,
+      "t_count": 32,
+      "length": 46
+    }
+  },
+  "eps_observed_float": {
+    "rz_pi8_ct": 0.05617455067491281,
+    "rz_pi16_ct": 0.047359946167167,
+    "rz_pi32_ct": 0.031486125209856226,
+    "rz_pi64_ct": 0.012532581860017678,
+    "rz_pi128_ct": 0.012271769298339183
+  },
+  "all_ok": true
+}

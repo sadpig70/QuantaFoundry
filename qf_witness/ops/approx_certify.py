@@ -171,6 +171,84 @@ CATALOG = {
 }
 
 
+# ── gridsynth Clifford+T 가족 (TrackHE14 P6a — Trotter 밖 2번째 ε-가족) ────
+# 시퀀스·ring shadow 단일출처 = gridsynth_family (봉인 앱과 인증의 바인딩).
+from qf_witness.family.gridsynth_family import (  # noqa: E402
+    SEQS as GRID_SEQS, ring_shadow, w_mul)
+
+
+def _w_conj(x):
+    """ℤ[ω] 켤레: ω̄=−ω³ → conj(a,b,c,d)=(a,−d,−c,−b)."""
+    return (x[0], -x[3], -x[2], -x[1])
+
+
+def _w_sym(x):
+    """ℤ[ω] 4-튜플 → sympy exact (ω=e^{iπ/4})."""
+    om = sp.exp(sp.I * PI / 4)
+    return x[0] + x[1] * om + x[2] * om ** 2 + x[3] * om ** 3
+
+
+def certify_gridsynth(app_id):
+    """ε = √(2−|tr(U†R)|) = min_φ‖e^{iφ}U−R_z‖₂ (2×2 유니터리 등식 — 위상정렬 op-norm).
+    sympy exact — |tr|² 는 ℤ[ω] ring shadow 로 정수 축약 후 소형 잔여식만 simplify
+    (U=M/√2^m: tr(U†R)=z/√2^m, z=w̄₀e^{−iθ/2}+w̄₁e^{iθ/2}, |z|²=A+2Re(B·e^{−iθ}),
+     A=|w₀|²+|w₁|²·B=w₀conj(w₁) ∈ ℤ[ω] — 전부 정수산술).
+    ★시퀀스 합성 tightness 무주장(Ross-Selinger 최적 아님 — 존재 구성)."""
+    k, seq = GRID_SEQS[app_id]
+    theta = PI / 2 ** k
+    M, m = ring_shadow(seq)
+    w0 = _w_conj(M[0][0])                     # conj(M00)
+    w1 = _w_conj(M[1][1])                     # conj(M11)
+    A = tuple(p + q for p, q in
+              zip(w_mul(w0, _w_conj(w0)), w_mul(w1, _w_conj(w1))))
+    B = w_mul(w0, _w_conj(w1))
+    As, Bs = _w_sym(A), _w_sym(B)
+    z2 = As + Bs * sp.exp(-sp.I * theta) + sp.conjugate(Bs) * sp.exp(sp.I * theta)
+    tr2 = sp.simplify(sp.expand_complex(z2)) / 2 ** m             # |tr(U†R)|² exact
+    eps = sp.sqrt(2 - sp.sqrt(sp.nsimplify(tr2)))
+    eps_f = float(eps)
+
+    # 독립 witness (관측·float): 봉인 spec golden == 시퀀스 float 곱, 거리 재계산 일치
+    U_seal = app_golden(app_id)
+    Hf = np.array([[1, 1], [1, -1]], dtype=complex) / np.sqrt(2)
+    Tf = np.diag([1, np.exp(1j * np.pi / 4)]).astype(complex)
+    Uf = np.eye(2, dtype=complex)
+    for g in seq:
+        Uf = (Hf if g == "H" else Tf) @ Uf
+    Rf = np.diag([np.exp(-1j * np.pi / 2 ** (k + 1)), np.exp(1j * np.pi / 2 ** (k + 1))])
+    d_obs = float(np.sqrt(max(0.0, 2 - abs(np.trace(Uf.conj().T @ Rf)))))
+    witness_ok = (op_norm(U_seal - Uf) < 1e-12 and abs(d_obs - eps_f) < 1e-10)
+
+    # E4 teeth: 시퀀스 변조(마지막 게이트 제거) → ε 상이 검출 (certificate 는 시퀀스에 바인딩)
+    Up = np.eye(2, dtype=complex)
+    for g in seq[:-1]:
+        Up = (Hf if g == "H" else Tf) @ Up
+    d_pert = float(np.sqrt(max(0.0, 2 - abs(np.trace(Up.conj().T @ Rf)))))
+    teeth_ok = abs(d_pert - eps_f) > 1e-6
+
+    spec_str = f"R_z(pi/{2 ** k}) target; Clifford+T sequence len={len(seq)} T-count={seq.count('T')}"
+    return {
+        "id": app_id,
+        "kind": "gate_synthesis_clifford_t",
+        "target_spec": spec_str,
+        "spec_hash": hashlib.sha256((spec_str + seq).encode()).hexdigest()[:16],
+        "sequence": seq,
+        "epsilon_upper_symbolic": str(eps),
+        "epsilon_upper_float_display": eps_f,
+        "metric": ("phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) "
+                   "(equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)"),
+        "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+        "audit": {"arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+                  "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"},
+        "witness": {"kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute",
+                    "d_obs": d_obs, "d_obs_eq_eps": bool(abs(d_obs - eps_f) < 1e-10)},
+        "negative_control": {"perturbation": "sequence tamper (drop final gate)",
+                             "bound_violated_detected": bool(teeth_ok)},
+        "exact_trotter": False,
+        "certified": bool(witness_ok and teeth_ok),
+    }
+
+
 # ── dense witness (관측·float — 주 증거 아님) ──────────────────────────────
 _P1 = {"I": np.eye(2, dtype=complex),
        "X": np.array([[0, 1], [1, 0]], dtype=complex),
@@ -316,6 +394,12 @@ def quick_recheck():
         if not (s and r["certified"] and
                 r["epsilon_upper_symbolic"] == s["epsilon_upper_symbolic"]):
             return False
+    # gridsynth 대표 1종 (2번째 ε-가족)
+    rg = certify_gridsynth("rz_pi64_ct")
+    sg = saved.get("rz_pi64_ct")
+    if not (sg and rg["certified"] and
+            rg["epsilon_upper_symbolic"] == sg["epsilon_upper_symbolic"]):
+        return False
     return bool(saved["heis2_trotter_step"]["exact_trotter"])
 
 
@@ -333,6 +417,14 @@ def main():
         print(f"[{flag}] {app_id}: eps={r['epsilon_upper_symbolic']} "
               f"(~{r['epsilon_upper_float_display']:.4g}) d_obs={r['witness']['d_obs']:.4g} "
               f"teeth={r['negative_control']['bound_violated_detected']}{extra}")
+        all_ok &= r["certified"]
+    for app_id in GRID_SEQS:
+        r = certify_gridsynth(app_id)
+        certs[app_id] = r
+        flag = "OK " if r["certified"] else "FAIL"
+        print(f"[{flag}] {app_id}: eps~{r['epsilon_upper_float_display']:.4g} "
+              f"(exact radical) d_obs={r['witness']['d_obs']:.4g} "
+              f"teeth={r['negative_control']['bound_violated_detected']} [gridsynth]")
         all_ok &= r["certified"]
     _write(certs)
     print(f"approx_certify: {'ALL CERTIFIED' if all_ok else 'SOME FAILED'} "

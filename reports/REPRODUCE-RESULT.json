@@ -75,9 +75,9 @@
     "registry": {
       "rc": 0,
       "modules": "95",
-      "unique_apps": "1038",
+      "unique_apps": "1043",
       "cached": "75",
-      "root_hash": "c8c97c79aee21524",
+      "root_hash": "cf8344befc76d28f",
       "pass": true
     },
     "second_oracle": {
@@ -701,10 +701,5 @@
       "pass": true
     }
   },
-  "mode": "incremental",
-  "incremental": {
-    "cached": 0,
-    "executed": 119,
-    "uncacheable": 0
-  }
+  "mode": "full"
 }

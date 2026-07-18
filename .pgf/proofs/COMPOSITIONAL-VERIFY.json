@@ -5,9 +5,9 @@
   "budget": 100000000,
   "failed": [],
   "mem_budget": 6442450944,
-  "n_eligible": 940,
+  "n_eligible": 945,
   "n_over_budget": 590,
-  "n_verified": 350,
+  "n_verified": 355,
   "over_budget_note": "590 앱 cost>budget → column/ring/cuc/subspace 경로 커버; 본 경로는 dense-가능 조립에 한함(정직 경계).",
   "skipped": {
     "mem_guard": 0,
@@ -1505,6 +1505,31 @@
       "inlined": true,
       "n": 2,
       "steps": 11
+    },
+    "rz_pi128_ct": {
+      "inlined": false,
+      "n": 1,
+      "steps": 46
+    },
+    "rz_pi16_ct": {
+      "inlined": false,
+      "n": 1,
+      "steps": 30
+    },
+    "rz_pi32_ct": {
+      "inlined": false,
+      "n": 1,
+      "steps": 40
+    },
+    "rz_pi64_ct": {
+      "inlined": false,
+      "n": 1,
+      "steps": 40
+    },
+    "rz_pi8_ct": {
+      "inlined": false,
+      "n": 1,
+      "steps": 48
     },
     "rzz_pi16": {
       "inlined": false,

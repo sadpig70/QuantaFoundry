@@ -54,6 +54,136 @@
         "kind": "dense_exact_diagonalization (observation, float)"
       }
     },
+    "rz_pi128_ct": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 0.01227176929830895,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt(2*cos(pi/128) + 2))",
+      "exact_trotter": false,
+      "id": "rz_pi128_ct",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTTTHTHTTHTTHTTHTTHTTHTTHTTHTTHTHTTHTTHTTHT",
+      "spec_hash": "bec5e6a6ff6af8c9",
+      "target_spec": "R_z(pi/128) target; Clifford+T sequence len=46 T-count=32",
+      "witness": {
+        "d_obs": 0.012271769298339183,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
+    "rz_pi16_ct": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 0.04735994616716095,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((-14 + 21*sqrt(2))*sin(pi/16)/32 + 7*sqrt(2)/32 + 7*cos(pi/16)/8 + 3*sqrt(2)*cos(pi/16)/4 + 27/16))",
+      "exact_trotter": false,
+      "id": "rz_pi16_ct",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "HTHTHTHTHTHTHTTHTHTTHTHTTHTHTT",
+      "spec_hash": "15267c637ae4293e",
+      "target_spec": "R_z(pi/16) target; Clifford+T sequence len=30 T-count=17",
+      "witness": {
+        "d_obs": 0.047359946167167,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
+    "rz_pi32_ct": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 0.03148612520983548,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((-2 + 5*sqrt(2))*sin(pi/32)/64 + 41*sqrt(2)/64 + 15*cos(pi/32)/16 + 3*sqrt(2)*cos(pi/32)/4 + 35/32))",
+      "exact_trotter": false,
+      "id": "rz_pi32_ct",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTTTHTTHTHTHTHTTHTHTHTHTHTTHTHTHTHTHT",
+      "spec_hash": "3f3c5455f133a94f",
+      "target_spec": "R_z(pi/32) target; Clifford+T sequence len=40 T-count=25",
+      "witness": {
+        "d_obs": 0.031486125209856226,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
+    "rz_pi64_ct": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 0.012532581859975366,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt((-2 + 5*sqrt(2))*sin(pi/64)/64 + 41*sqrt(2)/64 + 15*cos(pi/64)/16 + 3*sqrt(2)*cos(pi/64)/4 + 35/32))",
+      "exact_trotter": false,
+      "id": "rz_pi64_ct",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTTTHTHTHTHTHTTHTHTHTHTHTTHTHTHTHTTHT",
+      "spec_hash": "40518edc81f00e74",
+      "target_spec": "R_z(pi/64) target; Clifford+T sequence len=40 T-count=25",
+      "witness": {
+        "d_obs": 0.012532581860017678,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
+    "rz_pi8_ct": {
+      "audit": {
+        "arith": "sympy_exact_symbolic (zeta8-algebraic entries; no float in bound)",
+        "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
+      },
+      "certified": true,
+      "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "epsilon_upper_float_display": 0.056174550674907585,
+      "epsilon_upper_symbolic": "sqrt(2 - sqrt(sqrt(2 - sqrt(2))*(sqrt(2) + 11)/32 + 7*sqrt(2)/16 + 11*sqrt(sqrt(2) + 2)/32 + 13*sqrt(2*sqrt(2) + 4)/32 + 11/8))",
+      "exact_trotter": false,
+      "id": "rz_pi8_ct",
+      "kind": "gate_synthesis_clifford_t",
+      "metric": "phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) (equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)",
+      "negative_control": {
+        "bound_violated_detected": true,
+        "perturbation": "sequence tamper (drop final gate)"
+      },
+      "sequence": "TTTTTTTHTHTHTTHTTHTTHTTHTHTHTHTTHTHTTHTTHTTHTHTT",
+      "spec_hash": "e29a127a47c34e6c",
+      "target_spec": "R_z(pi/8) target; Clifford+T sequence len=48 T-count=32",
+      "witness": {
+        "d_obs": 0.05617455067491281,
+        "d_obs_eq_eps": true,
+        "kind": "sealed-golden == sequence product (float, <1e-12) + d_obs recompute"
+      }
+    },
     "tfim3_suzuki4_step": {
       "audit": {
         "arith": "sympy_exact_symbolic (pi-closed form; no float in bound)",

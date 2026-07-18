@@ -8700,6 +8700,51 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e48f30ca9f9e309c01f9d4e46314c670836044394c39be947458b44fd6d91a66"
     },
+    "app:rz_pi128_ct": {
+      "kind": "app",
+      "id": "rz_pi128_ct",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "9291988fec75733f2e311df8aa52063df14f55312dbdd4827c9bad83295f5d3d"
+    },
+    "app:rz_pi16_ct": {
+      "kind": "app",
+      "id": "rz_pi16_ct",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "643cabf712dcf0bdf3047ec1989ed4e7d302b7b3e4a88b2cff3639af76d891bb"
+    },
+    "app:rz_pi32_ct": {
+      "kind": "app",
+      "id": "rz_pi32_ct",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "fa614c6089bdfc28c41044234586b2e4bc2ce8507174e8f26663fe44259c0952"
+    },
+    "app:rz_pi64_ct": {
+      "kind": "app",
+      "id": "rz_pi64_ct",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "3eb4c4224f0f018a03000460421271f4504aff67a467d60301205209b76404b9"
+    },
+    "app:rz_pi8_ct": {
+      "kind": "app",
+      "id": "rz_pi8_ct",
+      "tier": 0,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
+      "u_hash": "e7d825267cf3a70f7a9a7ece630c8b9bd15d5838ea87b15dba95774cc7336ba8"
+    },
     "app:rz_y4_p": {
       "kind": "app",
       "id": "rz_y4_p",
@@ -12868,7 +12913,7 @@
     "_note": "헤드라인 수치를 보증등급으로 분리(exact 과대표시 방지, A3/A8 blind-spot). structural_wellformed=Merkle 구조보증(unitary 미보증); 부분검증 첨부 시 명시 부분공간에서만 의도일치.",
     "by_kind_class": {
       "app": {
-        "unitary_equiv": 1016,
+        "unitary_equiv": 1021,
         "unitary_equiv_sampled": 1,
         "structural_wellformed": 1,
         "unitary_equiv_column_exact": 30,
@@ -12880,7 +12925,7 @@
       }
     },
     "by_class": {
-      "unitary_equiv": 1111,
+      "unitary_equiv": 1116,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "unitary_equiv_column_exact": 30,
