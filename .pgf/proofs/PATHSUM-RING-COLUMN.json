@@ -1,0 +1,89 @@
+{
+  "_note": "pathsum 제4경로의 ring-exact 컬럼 상향(ℤ[ζ_{2^t}] t≤8·√2 전역미룸·정수 등식 float 0) + QFT 가족 확장 + ★P6a gridsynth ring shadow 바인딩. 기존 경로 강화 — 신규 독립 검증경로(제11) 주장 아님. 관측 sidecar·봉인 판정 불참·신규 module 0·root 불변. 표본 앱은 전수 아님 명시.",
+  "_schema": "pathsum-ring-column/v1",
+  "all_ok": true,
+  "results": {
+    "iqft7": {
+      "columns": 16,
+      "entries_exact": 2048,
+      "ok": true,
+      "ring": "Z[zeta_128] ⊂ Z[zeta256]",
+      "scope": "sample16"
+    },
+    "iqft8": {
+      "columns": 16,
+      "entries_exact": 4096,
+      "ok": true,
+      "ring": "Z[zeta_256] ⊂ Z[zeta256]",
+      "scope": "sample16"
+    },
+    "qft5_pipeline": {
+      "columns": 32,
+      "entries_exact": 1024,
+      "ok": true,
+      "ring": "Z[zeta_32] ⊂ Z[zeta256]",
+      "scope": "exhaustive"
+    },
+    "qft6_pipeline": {
+      "columns": 64,
+      "entries_exact": 4096,
+      "ok": true,
+      "ring": "Z[zeta_64] ⊂ Z[zeta256]",
+      "scope": "exhaustive"
+    },
+    "qft7_pipeline": {
+      "columns": 16,
+      "entries_exact": 2048,
+      "ok": true,
+      "ring": "Z[zeta_128] ⊂ Z[zeta256]",
+      "scope": "sample16"
+    },
+    "qft8_pipeline": {
+      "columns": 16,
+      "entries_exact": 4096,
+      "ok": true,
+      "ring": "Z[zeta_256] ⊂ Z[zeta256]",
+      "scope": "sample16"
+    },
+    "rz_pi128_ct": {
+      "columns": 2,
+      "entries_exact": 4,
+      "ok": true,
+      "ring": "Z[omega8] ⊂ Z[zeta256] (P6a shadow binding)",
+      "scope": "exhaustive"
+    },
+    "rz_pi16_ct": {
+      "columns": 2,
+      "entries_exact": 4,
+      "ok": true,
+      "ring": "Z[omega8] ⊂ Z[zeta256] (P6a shadow binding)",
+      "scope": "exhaustive"
+    },
+    "rz_pi32_ct": {
+      "columns": 2,
+      "entries_exact": 4,
+      "ok": true,
+      "ring": "Z[omega8] ⊂ Z[zeta256] (P6a shadow binding)",
+      "scope": "exhaustive"
+    },
+    "rz_pi64_ct": {
+      "columns": 2,
+      "entries_exact": 4,
+      "ok": true,
+      "ring": "Z[omega8] ⊂ Z[zeta256] (P6a shadow binding)",
+      "scope": "exhaustive"
+    },
+    "rz_pi8_ct": {
+      "columns": 2,
+      "entries_exact": 4,
+      "ok": true,
+      "ring": "Z[omega8] ⊂ Z[zeta256] (P6a shadow binding)",
+      "scope": "exhaustive"
+    }
+  },
+  "teeth": {
+    "analytic_tamper_detected": true,
+    "plan_tamper_detected": true,
+    "shadow_tamper_detected": true
+  }
+}

@@ -781,6 +781,14 @@
         ]
       },
       {
+        "id": "pathsum_ring_column",
+        "argv": [
+          "-m",
+          "qf_witness.verify.pathsum_ring_column",
+          "--quick"
+        ]
+      },
+      {
         "id": "conway31_ks_observe",
         "argv": [
           "-m",
