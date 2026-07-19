@@ -1,4 +1,4 @@
-<!-- QuantaFoundry 수평 확장 아이디어 제안 요청 — v15 (2026-07-18). v1~v14 후속. self-contained. -->
+<!-- QuantaFoundry 수평 확장 아이디어 제안 요청 — v15 (2026-07-18 작성·07-19 정합 갱신). v1~v14 후속. self-contained. -->
 <!-- 외부 모델 런타임에게 전달용. 이 문서 하나만 읽고 제안 가능하도록 작성됨. -->
 
 # QuantaFoundry — 수평적 확장(Horizontal Expansion) 아이디어 제안 요청 · v15
@@ -32,7 +32,12 @@
 >   3자 바인딩. ★정직: 기존 경로 강화(제11 아님).
 > §3s 에 추가. §4′에 v15 신규 패턴 4(★**쌍/궤도 대조가 검증객체·융합환 전이=twist 판별지표·
 > ring shadow 정수 축약·부분해제=존재구성+ε-sidecar 분리**). 동기간 frontier: shor{N} 자율봉인
-> 671~707 (FrontierClosureA: N≤1023 완결 후 폐합 정책 진행 중).
+> 671~771 (FrontierClosureA: N≤1023 완결 후 폐합 정책 진행 중).
+>
+> **★07-19 후속(GridsynthDeepen — §3s gridsynth 항목 갱신)**: Ross-Selinger-형 합성기 자체구현
+> (ℤ[ω] 격자 후보 σ-이중구속·ℤ[√2] 노름방정식 Tonelli-Shanks·norm-Euclidean gcd·정확합성)으로
+> **rz_pi{8..128}_rs 5앱 추가 실봉인 — ε 1.3e-5~7.3e-5**(존재구성 _ct 대비 170~3700×·m=54·
+> T-count ~220·★T-count 최적화 무주장). ε-인증 sidecar 19종.
 
 ---
 
@@ -59,7 +64,7 @@ QuantaFoundry 는 **미래의 완전한 결함허용 양자컴퓨터(FTQC/QPC)�
 
 ## 3. EXCLUDE — 이미 구현·봉인·관측된 것 (재제안 금지)
 
-현재 **95 modules / 1043 sealed apps** (root `cf8344befc76d28f…`). **독립 검증경로 10개**
+현재 **95 modules / 1109 sealed apps** (root `75c23c31d5890a58…`). **독립 검증경로 10개**
 (dense·tableau·ZX·path-sum ℤ[ζ_{2^t}]·stabilizer-rank·matchgate/SO(2n)·tensor-network·QMDD·ANF/bit-vector·
 Gröbner/ℤ[ω] phase-ideal) **+ 제11 후보 6건 전부 강등/불채택**(Galois-orbit·treewidth·표현환 K(G)·Matsumoto-Amano·
 symplectic phase-space·ANF+Gröbner 결합). ★진짜 제11 독립경로 **미발견**(공개과제 유지).
@@ -101,9 +106,10 @@ symplectic phase-space·ANF+Gröbner 결합). ★진짜 제11 독립경로 **미
   Floquet SPT·비-abelian Berry 는 아직 없음.**)
 - **H²(A₅) cocycle(P5)**: `a5_schur_cocycle_observe` — non-split certificate·FS=−1 원인층·Sylow-2=Q₈.
   (**H²(Sₙ) spin 표현 계보·2.A₆/2.A₇ Schur cover·H³(G,U(1)) 비아벨 twist 분류·군 확장 일반론은 아직 없음.**)
-- ★**gridsynth 실봉인(P6a)**: `gridsynth_family`+`approx_certify` — rz_pi8..128_ct 5앱 Tier-0·ε-인증 2번째
-  가족. (**Ross-Selinger 진짜 알고리즘(ℤ[√2] Diophantine·ε 1e-4급)·T-count 최적성 하한·임의각/Fallback·
-  multi-qubit 합성(KAK honest 판별)은 아직 없음.**)
+- ★**gridsynth 실봉인(P6a + 07-19 GridsynthDeepen)**: `gridsynth_family`+`approx_certify` — 존재구성
+  rz_*_ct 5앱 + ★**RS-형 rz_*_rs 5앱(ε 1e-5급, ℤ[√2] Diophantine·노름방정식·정확합성 자체구현)** 전부
+  Tier-0·ε-인증 19종. (**T-count 최적 합성(최단성 증명/하한)·임의각(비-π/2^k)·Fallback(probabilistic
+  mix 정직 경계)·multi-qubit 합성(KAK honest 판별)은 아직 없음.**)
 - **pathsum ring-exact 컬럼(P6b)**: `pathsum_ring_column` — ℤ[ζ₂₅₆]·QFT 가족 정수 등식·3자 바인딩.
   (**전 registry 컬럼 ring-exact 자동 전파·비-2^t 위상(ζ₃·ζ₅ 혼합 환)·Toffoli 경로합 대형 앱은 아직 없음.**)
 
@@ -120,8 +126,8 @@ symplectic phase-space·ANF+Gröbner 결합). ★진짜 제11 독립경로 **미
 ## 4. 우리가 원하는 것 (방향 감 — 강요 아님)
 
 - **검증 메타** — ★진짜 제11 경로(공개과제)·ring-exact 자동 전파·arb 구간산술(QSVT)·비-2^t 혼합 환.
-- **합성 심화** — ★Ross-Selinger 진짜 gridsynth(ℤ[√2] Diophantine·ε 1e-4)·T-count 하한 증명·multi-qubit
-  honest 합성 판별 — v15 부분해제의 심화.
+- **합성 심화** — ★T-count 최적 합성(최단성 하한 증명)·임의각(비-π/2^k)·multi-qubit honest 합성 판별 —
+  v15 부분해제+RS-형(07-19 소비)의 심화. (RS-형 ε 1e-5 재제안은 무효 — §3s.)
 - **표현론 심화** — H²(Sₙ)/2.A₆/2.A₇ Schur cover·모듈러(Brauer) 표현·크리스탈 기저 — Fourier 실봉인은 §2 경계.
 - **애니온/TQC 심화** — D^ω(ℤ₂³) type-III(비아벨화)·twisted 비아벨 D^ω(S₃)·D(A₄)/D(S₄)·SU(2)_k(k≥5)·SO(N)_k·
   Witt 군 층위 MTC 비교·T-불변량의 한계(Mignard-Schauenburg).
