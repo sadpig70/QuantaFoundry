@@ -9,8 +9,8 @@
 ## Counts (authoritative source: `registry/REGISTRY-MANIFEST.json`)
 
 <!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->
-- **95 sealed modules · 1163 unique applications** · registry root `b57b8a58e8869156…`
-  (1238 app-file entries = 1163 unique + 75 cached app-side re-seals;
+- **95 sealed modules · 1172 unique applications** · registry root `21e6a04bbe946d91…`
+  (1247 app-file entries = 1172 unique + 75 cached app-side re-seals;
   live source [`registry/REGISTRY-MANIFEST.json`](../registry/REGISTRY-MANIFEST.json)).
 <!-- END generated:counts -->
 

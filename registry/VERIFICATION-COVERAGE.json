@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 110,
+      "covered": 111,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 694,
+    "1": 695,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 1113,
-  "n_primary_seal_only": 50,
+  "n_apps_with_supplementary": 1114,
+  "n_primary_seal_only": 58,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -764,18 +764,21 @@
     "shor789": "subspace",
     "shor791": "subspace",
     "shor799": "subspace",
-    "shor803": "subspace"
+    "shor803": "subspace",
+    "shor807": "subspace"
   },
   "primary_seal_only": [
     "cmul100_mod779",
     "cmul109_mod791",
     "cmul148_mod803",
+    "cmul169_mod807",
     "cmul16_mod779",
     "cmul16_mod781",
     "cmul16_mod789",
     "cmul16_mod791",
     "cmul16_mod799",
     "cmul16_mod803",
+    "cmul16_mod807",
     "cmul18_mod799",
     "cmul223_mod803",
     "cmul242_mod791",
@@ -785,14 +788,17 @@
     "cmul256_mod791",
     "cmul256_mod799",
     "cmul256_mod803",
+    "cmul256_mod807",
     "cmul2_mod779",
     "cmul2_mod781",
     "cmul2_mod789",
     "cmul2_mod791",
     "cmul2_mod799",
     "cmul2_mod803",
+    "cmul2_mod807",
     "cmul307_mod799",
     "cmul30_mod791",
+    "cmul316_mod807",
     "cmul324_mod799",
     "cmul34_mod789",
     "cmul367_mod789",
@@ -804,9 +810,12 @@
     "cmul4_mod791",
     "cmul4_mod799",
     "cmul4_mod803",
+    "cmul4_mod807",
     "cmul543_mod803",
     "cmul549_mod779",
     "cmul559_mod789",
+    "cmul559_mod807",
+    "cmul595_mod807",
     "cmul597_mod781",
     "cmul652_mod779",
     "cmul674_mod791",
@@ -4819,6 +4828,9 @@
       "subspace"
     ],
     "shor803": [
+      "subspace"
+    ],
+    "shor807": [
       "subspace"
     ],
     "shor85": [
