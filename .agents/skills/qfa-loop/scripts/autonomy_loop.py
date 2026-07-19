@@ -647,6 +647,9 @@ def factory_cfg(args) -> dict:
             "reports/REPRODUCE-RESULT.json", ".pgf/adoption/seal-badge.json",
             ".pgf/adoption/RELEASE-META.json", "CITATION.cff",
             "registry/COUNT-ONTOLOGY.json", "registry/VERIFICATION-COVERAGE.json", "registry/QF-QUALITY-SCORECARD.json", ".pgf/adoption/RELEASE-ROOT.json", "README.md",   # QF-0711 U1/U8/U13/U11
+            # ★doc_counts 대상 5종 완비(2026-07-19): docs/ 3종 누락 → 라운드 커밋 CI doc_counts 드리프트 red
+            #   (finalize add -A 만 수습). 라운드 커밋도 문서 자기완결이어야 per-push CI green.
+            "docs/ARCHITECTURE.md", "docs/QuantaFoundry-Technical-Spec.md", "docs/CURRENT-SPEC.md",
         ],
     }
 
