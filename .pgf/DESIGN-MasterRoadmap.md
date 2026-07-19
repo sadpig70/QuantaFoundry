@@ -217,7 +217,8 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
         # ✅완주: rz_pi8/16/32/64/128_rs 5앱 Tier-0(ε 1.3e-5~7.3e-5·m=54·T-count 198~226·기존 _ct 대비 170~3700×·T-count 최적화 무주장). RS 구현 요점: PSU 반경조건 scale≥1/ε²(수용판정을 실제 metric으로)·norm-Euclidean gcd 16코너 최소노름·λ² 짝수지수 보정·★lde 축소=m-유지 플래토(√2 한단계) visited-BFS 횡단. ★교훈: sympy nsimplify=근사 유리화(2−1e-9→2 스냅) — exact 주장 경로에서 금지·검출 즉시 제거. ε-인증 19종·1048앱·root ee04ff5ef66b55c0.
         # 설계: P6a 존재구성(브루트포스 T≤32·ε~1e-2)을 실용급으로. dev-time RS: ℤ[ω] 격자 후보(σ-임베딩 이중구속)→ξ=2^m−u†u ∈ ℤ[√2] 노름방정식(N(ξ) 소수 케이스·Tonelli-Shanks·ℤ[ω] norm-Euclidean gcd·totally-positive unit λ²=3+2√2 보정)→정확합성(컬럼 lde 축차감소→H/T 시퀀스). 생성≠검증: 최종 시퀀스는 고정 하드코딩, repo 검증=ring shadow+ε-인증(sympy exact)+pathsum 컬럼(기존 3자 인프라 재사용).
         # 산출: 신규 앱 rz_pi{8..128}_rs 5개 Tier-0(h/t만·신규 module 0·기존 _ct 5앱 불변 가산). ε-인증 14→19종.
-    RequestV15_20260718 // REQUEST-v15 작성 — .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v15.md (done — 작성+★07-19 정합갱신(GridsynthDeepen 소비 반영·counts 1109/root 75c23c31)·발행/전달=정욱님 게이트 대기) @dep:TrackHE14
+    RequestV15_20260718 // REQUEST-v15 작성·★발행(2026-07-19 정욱님 승인) — .pgf/external/HORIZONTAL-EXPANSION-REQUEST-v15.md (done) @dep:TrackHE14
+        # ★공개 발행 실물: GitHub Issue #1 (https://github.com/sadpig70/QuantaFoundry/issues/1) — permalink(aa14ff3 고정본)+요약+응답형식. 8런타임 전달=Issue 링크/본문으로 정욱님 진행 가능. 다음=report15 수집 대기(도착 시 TrackHE15 통합 소비).
         # v14 형식 상속(self-contained): 변경점=TrackHE14 8성과 요약·§3s EXCLUDE(각 축 "아직 없음" 관문 명시)·§2 부분해제 반영(gridsynth 존재구성 선례)·counts 95/1043·root cf8344be·§4′(n) 신규 패턴 4(쌍/궤도 대조=검증객체·융합환 전이=twist 판별·ring shadow 정수 축약·부분해제=존재구성+ε-sidecar)·ε-인증 2가족 용어집. 8런타임 전달·report15 수집=정욱님.
         # 정직 경계: modular data=관측(봉인 아님)·float Chern 금지(closed-form/Pfaffian만)·§2 Fourier 경계(P5 cocycle 회피·P6 특정각 부분해제)·외부값 자체 재검증(§5).
     TrackEXT // 외부작업 — 리스트만, 착수 금지 (blocked)
