@@ -1,0 +1,182 @@
+{
+  "_note": "MA 정규형 전수(T-count ≤ 15)로 _ct 가족 T-count 하한 인증 + MA 정준 T-count 재발견 + 비최적 gap 정량화(관측·seal 아님·root 불변). 하한은 위상정렬 op-norm·해당 ε_ct 임계 한정. 배제=float(margin 기록·fp 오차 1e-13 대비 안전)·달성=exact 재검증. _rs 전수 불가 스코프 제외. 더 짧은 달성 시퀀스는 기록만(봉인 자산 불변).",
+  "_schema": "tcount-bound/v1",
+  "all_ok": true,
+  "checks": {
+    "borderline_exact_ok": true,
+    "cliffords_24_unique": true,
+    "crossing_exact_verified": true,
+    "crossings_found": true,
+    "ct_unitaries_rediscovered": true,
+    "exclusion_margins_safe": true,
+    "teeth_threshold_tamper": true
+  },
+  "results": {
+    "rz_pi128_ct": {
+      "borderline_exact_rechecks": [],
+      "certified_min_t_for_eps": 0,
+      "crossing_witness": {
+        "eps_exact": 0.01151719903038925,
+        "le_eps_ct": true,
+        "letters": "TTTTHTTTHTHTTTHTHTTTHTHTHTTTHTHTHTTTHTHTTTHTHTTTH"
+      },
+      "dmin_curve_cummin": [
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.01227177,
+        0.0115172,
+        0.0115172
+      ],
+      "eps_ct_threshold": 0.01227176929830895,
+      "exclusion_float_margin": null,
+      "letter_t_count": 32,
+      "ma_canonical_t_count": 0,
+      "optimality_gap_vs_ma": 0
+    },
+    "rz_pi16_ct": {
+      "borderline_exact_rechecks": [],
+      "certified_min_t_for_eps": 9,
+      "crossing_witness": {
+        "eps_exact": 0.014317270583667803,
+        "le_eps_ct": true,
+        "letters": "TTHTTTTTHTHTTTHTTTHTTTHTTTHTTTHTHTHTTTHTHTTTHTH"
+      },
+      "dmin_curve_cummin": [
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.09813535,
+        0.04735995,
+        0.02453096,
+        0.02453096,
+        0.02453096,
+        0.01431727,
+        0.01431727,
+        0.01431727,
+        0.01431727
+      ],
+      "eps_ct_threshold": 0.04735994616716095,
+      "exclusion_float_margin": 0.050775402,
+      "letter_t_count": 17,
+      "ma_canonical_t_count": 9,
+      "optimality_gap_vs_ma": 0
+    },
+    "rz_pi32_ct": {
+      "borderline_exact_rechecks": [],
+      "certified_min_t_for_eps": 11,
+      "crossing_witness": {
+        "eps_exact": 0.020877179462747385,
+        "le_eps_ct": true,
+        "letters": "HTTTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTTTHTTTHTHTHTHTHT"
+      },
+      "dmin_curve_cummin": [
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.04908246,
+        0.03148613,
+        0.03148613,
+        0.03148613,
+        0.03148613,
+        0.02578226,
+        0.02087718
+      ],
+      "eps_ct_threshold": 0.03148612520983548,
+      "exclusion_float_margin": 0.017596332,
+      "letter_t_count": 25,
+      "ma_canonical_t_count": 13,
+      "optimality_gap_vs_ma": 2
+    },
+    "rz_pi64_ct": {
+      "borderline_exact_rechecks": [],
+      "certified_min_t_for_eps": 11,
+      "crossing_witness": {
+        "eps_exact": 0.0062512938096036886,
+        "le_eps_ct": true,
+        "letters": "TTTTHTTTHTHTTTHTHTTTHTHTHTTTHTHTHTTTHTHTTTHTHTTTH"
+      },
+      "dmin_curve_cummin": [
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.02454308,
+        0.01253258,
+        0.01253258,
+        0.01253258,
+        0.01253258,
+        0.00625129,
+        0.00625129
+      ],
+      "eps_ct_threshold": 0.012532581859975366,
+      "exclusion_float_margin": 0.012010495,
+      "letter_t_count": 25,
+      "ma_canonical_t_count": 13,
+      "optimality_gap_vs_ma": 2
+    },
+    "rz_pi8_ct": {
+      "borderline_exact_rechecks": [],
+      "certified_min_t_for_eps": 7,
+      "crossing_witness": {
+        "eps_exact": 0.029853000258368893,
+        "le_eps_ct": true,
+        "letters": "TTTTHTHTTTHTTTHTTTHTTTHTHTTTHTHTTTHTHTTTHTTTHTHTHTH"
+      },
+      "dmin_curve_cummin": [
+        0.19603428,
+        0.19603428,
+        0.19603428,
+        0.19603428,
+        0.15818456,
+        0.15818456,
+        0.15818456,
+        0.05617455,
+        0.05617455,
+        0.05617455,
+        0.05617455,
+        0.05617455,
+        0.05617455,
+        0.03662806,
+        0.03662806,
+        0.029853,
+        0.029853
+      ],
+      "eps_ct_threshold": 0.056174550674907585,
+      "exclusion_float_margin": 0.102010004,
+      "letter_t_count": 32,
+      "ma_canonical_t_count": 8,
+      "optimality_gap_vs_ma": 1
+    }
+  },
+  "tmax": 15
+}

@@ -789,6 +789,14 @@
         ]
       },
       {
+        "id": "tcount_bound_observe",
+        "argv": [
+          "-m",
+          "qf_witness.observe.tcount_bound_observe",
+          "--quick"
+        ]
+      },
+      {
         "id": "conway31_ks_observe",
         "argv": [
           "-m",
