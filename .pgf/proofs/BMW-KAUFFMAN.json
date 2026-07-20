@@ -1,0 +1,113 @@
+{
+  "_note": "BMW 대수 → Kauffman 2변수 F(a,z) (관측·seal 아님·신규 module 0·root 불변). ★규약 조건유도(Dubrovnik→Kauffman 오규약 선검출)·BMW₂ 한정 스코프(T(2,k) 족; BMW₃/fig-8 미착수)·HOMFLY 비포함은 문헌 사실로 무주장.",
+  "_schema": "bmw-kauffman/v1",
+  "all_ok": true,
+  "bmw_dimensions": {
+    "1": 1,
+    "2": 3,
+    "3": 15,
+    "4": 105
+  },
+  "checks": {
+    "F_unknot_is_1": true,
+    "bmw2_assoc_powers": true,
+    "bmw3_dim_15": true,
+    "bmw_dim_double_factorial": true,
+    "convention_consistent": true,
+    "g_ginv_identity": true,
+    "homfly_module_callable": true,
+    "jones_knots_integral_t": true,
+    "jones_links_need_sqrt_t": true,
+    "jones_trefoil_right": true,
+    "mirror_relation": true,
+    "oracle_cross_v13_mirror": true,
+    "teeth_delta_tamper": true,
+    "teeth_dubrovnik_not_laurent": true,
+    "teeth_trace_tamper": true
+  },
+  "homfly_same_object": {
+    "note": "같은 대상의 서로 다른 불변량 동시 산출 — 상호 비포함(Red-Hoffman)은 문헌 사실이며 본 witness 는 재증명하지 않음",
+    "trefoil_HOMFLY": "(a**2*s**4 + a**2 - s**2)/(a**4*s**2)",
+    "trefoil_KAUFFMAN_F": "1·a^-5z^1 + -1·a^-4z^0 + 1·a^-4z^2 + 1·a^-3z^1 + -2·a^-2z^0 + 1·a^-2z^2"
+  },
+  "jones_specialization": {
+    "T(2,4)": {
+      "V_in_s_halfinteger": "-1·s^6 + -1·s^14 + 1·s^18 + -1·s^22",
+      "V_in_t": null
+    },
+    "T(2,6)": {
+      "V_in_s_halfinteger": "-1·s^10 + -1·s^18 + 1·s^22 + -1·s^26 + 1·s^30 + -1·s^34",
+      "V_in_t": null
+    },
+    "cinquefoil": {
+      "V_in_s_halfinteger": null,
+      "V_in_t": "1·t^2 + 1·t^4 + -1·t^5 + 1·t^6 + -1·t^7"
+    },
+    "hopf": {
+      "V_in_s_halfinteger": "-1·s^2 + -1·s^10",
+      "V_in_t": null
+    },
+    "trefoil": {
+      "V_in_s_halfinteger": null,
+      "V_in_t": "1·t^1 + 1·t^3 + -1·t^4"
+    },
+    "unknot": {
+      "V_in_s_halfinteger": null,
+      "V_in_t": "1·t^0"
+    },
+    "unlink2": {
+      "V_in_s_halfinteger": "-1·s^-2 + -1·s^2",
+      "V_in_t": null
+    }
+  },
+  "oracle_cross": {
+    "ours_right_handed": "1·t^1 + 1·t^3 + -1·t^4",
+    "relation": "mirror (t ↔ 1/t) — 본 축은 positive braid(right), v13 은 left",
+    "v13_kauffman_bracket_trefoil": "(t**3 + t - 1)/t**4"
+  },
+  "scope_honesty": {
+    "covered": "BMW₂(dim 3) · T(2,k) 토러스 링크족 k=0..6",
+    "not_covered": [
+      "BMW₃(dim 15) Kauffman tangle 곱셈",
+      "fig-8 등 3-braid 대상",
+      "HOMFLY/Kauffman 상호 비포함 재증명"
+    ]
+  },
+  "torus_family": {
+    "T(2,4)": {
+      "F": "1·a^-7z^1 + 1·a^-6z^2 + 1·a^-5z^-1 + -2·a^-5z^1 + 1·a^-5z^3 + -1·a^-4z^0 + 1·a^-4z^2 + 1·a^-3z^-1 + -3·a^-3z^1 + 1·a^-3z^3",
+      "Lambda": "1·a^-3z^1 + 1·a^-2z^2 + 1·a^-1z^-1 + -2·a^-1z^1 + 1·a^-1z^3 + -1·a^0z^0 + 1·a^0z^2 + 1·a^1z^-1 + -3·a^1z^1 + 1·a^1z^3",
+      "k": 4
+    },
+    "T(2,6)": {
+      "F": "1·a^-11z^1 + 1·a^-10z^2 + -1·a^-9z^1 + 1·a^-9z^3 + -2·a^-8z^2 + 1·a^-8z^4 + -1·a^-7z^-1 + 4·a^-7z^1 + -4·a^-7z^3 + 1·a^-7z^5 + 1·a^-6z^0 + -3·a^-6z^2 + 1·a^-6z^4 + -1·a^-5z^-1 + 6·a^-5z^1 + -5·a^-5z^3 + 1·a^-5z^5",
+      "Lambda": "1·a^-5z^1 + 1·a^-4z^2 + -1·a^-3z^1 + 1·a^-3z^3 + -2·a^-2z^2 + 1·a^-2z^4 + -1·a^-1z^-1 + 4·a^-1z^1 + -4·a^-1z^3 + 1·a^-1z^5 + 1·a^0z^0 + -3·a^0z^2 + 1·a^0z^4 + -1·a^1z^-1 + 6·a^1z^1 + -5·a^1z^3 + 1·a^1z^5",
+      "k": 6
+    },
+    "cinquefoil": {
+      "F": "1·a^-9z^1 + 1·a^-8z^2 + -1·a^-7z^1 + 1·a^-7z^3 + 2·a^-6z^0 + -3·a^-6z^2 + 1·a^-6z^4 + -2·a^-5z^1 + 1·a^-5z^3 + 3·a^-4z^0 + -4·a^-4z^2 + 1·a^-4z^4",
+      "Lambda": "1·a^-4z^1 + 1·a^-3z^2 + -1·a^-2z^1 + 1·a^-2z^3 + 2·a^-1z^0 + -3·a^-1z^2 + 1·a^-1z^4 + -2·a^0z^1 + 1·a^0z^3 + 3·a^1z^0 + -4·a^1z^2 + 1·a^1z^4",
+      "k": 5
+    },
+    "hopf": {
+      "F": "-1·a^-3z^-1 + 1·a^-3z^1 + 1·a^-2z^0 + -1·a^-1z^-1 + 1·a^-1z^1",
+      "Lambda": "-1·a^-1z^-1 + 1·a^-1z^1 + 1·a^0z^0 + -1·a^1z^-1 + 1·a^1z^1",
+      "k": 2
+    },
+    "trefoil": {
+      "F": "1·a^-5z^1 + -1·a^-4z^0 + 1·a^-4z^2 + 1·a^-3z^1 + -2·a^-2z^0 + 1·a^-2z^2",
+      "Lambda": "1·a^-2z^1 + -1·a^-1z^0 + 1·a^-1z^2 + 1·a^0z^1 + -2·a^1z^0 + 1·a^1z^2",
+      "k": 3
+    },
+    "unknot": {
+      "F": "1·a^0z^0",
+      "Lambda": "1·a^1z^0",
+      "k": 1
+    },
+    "unlink2": {
+      "F": "1·a^-1z^-1 + -1·a^0z^0 + 1·a^1z^-1",
+      "Lambda": "1·a^-1z^-1 + -1·a^0z^0 + 1·a^1z^-1",
+      "k": 0
+    }
+  }
+}
