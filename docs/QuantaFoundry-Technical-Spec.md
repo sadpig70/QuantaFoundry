@@ -39,8 +39,8 @@ proven**, accumulates sealed modules in a registry, and **composes** sealed modu
 applications (each re-verified and re-sealed). All four functions are realized.
 
 <!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->
-- **95 sealed modules · 1226 unique applications** · registry root `ac79242d03735111…`
-  (1301 app-file entries = 1226 unique + 75 cached app-side re-seals;
+- **95 sealed modules · 1235 unique applications** · registry root `3800d96bdea404e5…`
+  (1310 app-file entries = 1235 unique + 75 cached app-side re-seals;
   live source [`registry/REGISTRY-MANIFEST.json`](../registry/REGISTRY-MANIFEST.json)).
 <!-- END generated:counts -->
 
