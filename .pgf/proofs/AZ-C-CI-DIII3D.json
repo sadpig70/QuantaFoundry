@@ -1,0 +1,110 @@
+{
+  "_note": "AZ 잔여칸: 2D class C(2ℤ)·CI(자명 0)·3D DIII(winding ℤ) — 관측·seal 아님·신규 module 0·root 불변. 불변량=정수(3D 닫힌형·2D FHS gauge-invariant 정수, float Berry 적분 아님). AZ 분류표 외부 인용 금지 — 모델별 산출값만.",
+  "_schema": "az-c-ci-diii3d/v1",
+  "all_ok": true,
+  "az_table": {
+    "2D_row": {
+      "class_C": "2ℤ (짝수 Chern, 본 — 관측값 [-2, 0])",
+      "class_CI": "0 (자명, 본)",
+      "class_D": "ℤ (Chern, v12)",
+      "class_DIII": "ℤ₂ (Pfaffian, v14)"
+    },
+    "DIII_dimension_transition": {
+      "1D": "ℤ₂ (v13)",
+      "2D": "ℤ₂ (v14)",
+      "3D": "ℤ (winding, 본 — [-1, 0, 2])"
+    },
+    "honesty": "각 칸은 **본 프로젝트 모델에서 산출한 값** — AZ 분류표 인용 아님"
+  },
+  "checks": {
+    "CI_PHS_holds": true,
+    "CI_TRS_holds": true,
+    "CI_TRS_squared_plus1": true,
+    "CI_chern_all_zero": true,
+    "CI_dy_identically_zero": true,
+    "CI_gapped_model_has_gap": true,
+    "CI_real_dwave_is_nodal": true,
+    "C_PHS_holds": true,
+    "C_PHS_squared_minus1": true,
+    "C_TRS_absent": true,
+    "C_chern_all_even": true,
+    "C_chern_nontrivial_exists": true,
+    "C_dvector_even": true,
+    "DIII3_C_squared_plus1": true,
+    "DIII3_PHS": true,
+    "DIII3_S_squared_plus1": true,
+    "DIII3_TRS": true,
+    "DIII3_T_squared_minus1": true,
+    "DIII3_Z_not_Z2": true,
+    "DIII3_chiral": true,
+    "DIII3_gamma_clifford": true,
+    "DIII3_gap_closes_at_transitions": true,
+    "DIII3_gap_open_in_phase": true,
+    "DIII3_winding_pattern": true,
+    "teeth_3d_sign_tamper": true,
+    "teeth_CI_halfplane_blocks_alone": true,
+    "teeth_CI_vs_C_contrast": true,
+    "teeth_C_odd_winding_possible": true
+  },
+  "class_C": {
+    "chern_by_mu": {
+      "-1.0": -2,
+      "-3.0": -2,
+      "-5.0": 0,
+      "1.0": -2,
+      "3.0": -2,
+      "5.0": 0
+    },
+    "model": "ξ σz + Δ(cos kx−cos ky) σx + 2Δ sin kx sin ky σy (singlet d+id)",
+    "verdict": "PHS 짝함수 d⃗ → degree 짝수 (2ℤ) — 모델 전 구간 실증"
+  },
+  "class_CI": {
+    "chern_by_mu": {
+      "-1.0": 0,
+      "-3.0": 0,
+      "1.0": 0,
+      "3.0": 0
+    },
+    "min_gap_by_mu": {
+      "-1.0": 1.344797,
+      "-3.0": 0.451231,
+      "1.0": 2.236068,
+      "3.0": 3.131849
+    },
+    "model": "ξ σz + Δ(2−cos kx−cos ky) σx (실수 갭, TRS 회복·gapped)",
+    "nodal_variant": {
+      "finding": "★표준 실수 d-wave 는 **nodal**(d⃗=0 점 존재) — gapped 위상 분류의 대상이 아님. 선검증에서 FHS 가 허위 정수를 낸 원인이었고, gapped 모델로 교체해 확정",
+      "lattice_caveat": "격자 gap 스캔은 노드가 샘플점에 걸리지 않으면 0 을 못 냄(실측 0.035) — 판정은 해석적 조건으로",
+      "lattice_gap_scan_by_mu": {
+        "-1.0": 0.035276,
+        "1.0": 0.035276
+      },
+      "model": "ξ σz + Δ(cos kx−cos ky) σx (표준 d_{x²−y²})",
+      "nodal_condition": "d⃗=0 ⟺ cos kx=cos ky=−μ/(4t), |−μ/(4t)|≤1 (해석적)"
+    },
+    "teeth_finding": "★TRS 파괴(d_y 복원)만으로는 비자명화되지 않음 — 확장 s-wave 는 d_x≥0(반평면 갇힘)이라 degree 0 의 두 번째 독립 원인이 있다(실측). 비자명 Chern 은 d⃗ 가 S² 전체를 덮어야 가능 — class C d+id 가 그 예",
+    "verdict": "★자명(0) — TRS 가 d_y≡0 을 강제 → d⃗ 가 S² 대원에 갇힘 → degree 0. 음성 결과를 그대로 보고(억지 비자명 탐색 없음)"
+  },
+  "class_DIII_3D": {
+    "min_gap_by_m": {
+      "-1": 0.0,
+      "-3": 0.0,
+      "-4": 1.0,
+      "0": 1.0,
+      "1": 0.0,
+      "3": 0.0,
+      "4": 1.0
+    },
+    "model": "Σ sin kᵢ Γᵢ + (m+Σcos kᵢ) Γ₄ ; Γ=(τxσx, τxσy, τxσz, τzσ0)",
+    "nu_by_m": {
+      "-2": -1,
+      "-4": 0,
+      "0": 2,
+      "2": -1,
+      "4": 0
+    },
+    "symmetry": "T=τ0⊗(iσy)K (T²=−1) · C=τy⊗(iσy)K (C²=+1) · S=τy⊗σ0 (S²=+1)",
+    "verdict": "|ν| = 0,1,2,1,0 — ★ℤ 분류(|ν|=2 존재 ⟹ ℤ₂ 아님)",
+    "winding_closed_form": "ν = −½ Σ_{8 TRIM} (−1)^{#π} sign(m+Σcos k*)  (정수 산술)"
+  }
+}
