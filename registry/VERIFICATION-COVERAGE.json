@@ -48,7 +48,7 @@
       "sidecar": "STABRANK-VERIFY.json"
     },
     "subspace": {
-      "covered": 119,
+      "covered": 120,
       "sidecar": "*.subspace_proof.json"
     },
     "tncontract": {
@@ -61,15 +61,15 @@
     "dense_second_oracle": "primary dense C4 (all sealed modules re-derived independently) — the baseline seal path"
   },
   "coverage_histogram": {
-    "1": 767,
+    "1": 768,
     "2": 85,
     "3": 226,
     "4": 93,
     "5": 12,
     "6": 3
   },
-  "n_apps_with_supplementary": 1186,
-  "n_primary_seal_only": 58,
+  "n_apps_with_supplementary": 1187,
+  "n_primary_seal_only": 66,
   "single_supplementary_path": {
     "cmul100_mod213": "compositional",
     "cmul100_mod287": "compositional",
@@ -837,7 +837,8 @@
     "shor851": "subspace",
     "shor869": "subspace",
     "shor871": "subspace",
-    "shor879": "subspace"
+    "shor879": "subspace",
+    "shor893": "subspace"
   },
   "primary_seal_only": [
     "cmul100_mod871",
@@ -850,6 +851,7 @@
     "cmul16_mod869",
     "cmul16_mod871",
     "cmul16_mod879",
+    "cmul16_mod893",
     "cmul175_mod831",
     "cmul211_mod871",
     "cmul216_mod835",
@@ -860,6 +862,7 @@
     "cmul256_mod869",
     "cmul256_mod871",
     "cmul256_mod879",
+    "cmul256_mod893",
     "cmul2_mod815",
     "cmul2_mod831",
     "cmul2_mod835",
@@ -867,9 +870,11 @@
     "cmul2_mod869",
     "cmul2_mod871",
     "cmul2_mod879",
+    "cmul2_mod893",
     "cmul304_mod831",
     "cmul336_mod815",
     "cmul341_mod835",
+    "cmul347_mod893",
     "cmul361_mod869",
     "cmul406_mod835",
     "cmul419_mod871",
@@ -884,13 +889,17 @@
     "cmul4_mod869",
     "cmul4_mod871",
     "cmul4_mod879",
+    "cmul4_mod893",
     "cmul546_mod815",
     "cmul588_mod851",
     "cmul604_mod851",
+    "cmul61_mod893",
     "cmul641_mod815",
     "cmul709_mod831",
     "cmul718_mod831",
     "cmul731_mod835",
+    "cmul747_mod893",
+    "cmul777_mod893",
     "cmul784_mod869",
     "cmul81_mod851",
     "cmul840_mod869",
@@ -5129,6 +5138,9 @@
       "subspace"
     ],
     "shor879": [
+      "subspace"
+    ],
+    "shor893": [
       "subspace"
     ],
     "shor91": [
