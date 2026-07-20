@@ -1,0 +1,116 @@
+{
+  "A6_structure": {
+    "class_sizes": [
+      1,
+      40,
+      40,
+      45,
+      72,
+      72,
+      90
+    ],
+    "element_orders": {
+      "1": 1,
+      "2": 45,
+      "3": 80,
+      "4": 90,
+      "5": 144
+    },
+    "n_classes": 7,
+    "order": 360
+  },
+  "_note": "H²(A₆) Schur 계보: 2.A₆=SL(2,9) non-split certificate(GF(2) UNSAT support-2) + ★Sylow-2 계보 Q₈→Q₁₆(자체 판별: 유일 involution+비순환) + A₅/A₆ 쌍 대조. 관측·seal 아님·신규 module 0·root 불변. ★2-torsion 한정 — H²(A₆)≅ℤ₆ 전체 차수·3.A₆ Valentiner cover 는 무주장/미착수.",
+  "_schema": "a6-schur-cocycle/v1",
+  "all_ok": true,
+  "certificate": {
+    "meaning": "동일 미지수 집합 {l(g),l(h),l(gh)}·상이 우변 → 즉시 모순(최소 certificate)",
+    "support_pairs_gh": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  },
+  "checks": {
+    "E_order_720": true,
+    "E_perfect": true,
+    "G_order_360": true,
+    "G_perfect": true,
+    "G_simple": true,
+    "center_pmI": true,
+    "certificate_support_2": true,
+    "certificate_verified": true,
+    "class_sizes_sum_360": true,
+    "coboundary_UNSAT": true,
+    "cocycle_46656000": true,
+    "gf9_irreducible": true,
+    "identity_index_0": true,
+    "kernel_trivial_scope_escalation": true,
+    "normalized": true,
+    "order_multiset_A6": true,
+    "projective_descent_129600": true,
+    "sylow2_A5_is_Q8": true,
+    "sylow2_A6_is_Q16": true,
+    "sylow2_order_grows_8_to_16": true,
+    "teeth_A5_same_recipe_UNSAT": true,
+    "teeth_bitflip_detected": true,
+    "teeth_split_positive_control": true,
+    "unique_involution_negI": true
+  },
+  "pair_contrast_A5_A6": {
+    "A5": {
+      "G": 60,
+      "cover": 120,
+      "cover_name": "SL(2,5)",
+      "sylow2": "Q8",
+      "unique_involution": true,
+      "unsat": true
+    },
+    "A6": {
+      "G": 360,
+      "cover": 720,
+      "cover_name": "SL(2,9)",
+      "sylow2": "Q16",
+      "unique_involution": true,
+      "unsat": true
+    }
+  },
+  "scope_honesty": {
+    "certified": "2-torsion (ℤ₂ 중심확대 비분리) · μ_{2^k} 스코프 상승",
+    "not_claimed": [
+      "H²(A₆,U(1)) 전체 차수(≅ℤ₆)",
+      "3-torsion / 3.A₆ Valentiner cover",
+      "FS 지표 재계산",
+      "표현행렬 게이트 분해"
+    ],
+    "reason": "C³ 차원 4.7e7 전수 불가 · ζ₃ 계수는 §4 승인 게이트"
+  },
+  "sylow2_genealogy": {
+    "A5_cover_2.A5": {
+      "element_orders": {
+        "1": 1,
+        "2": 1,
+        "4": 6
+      },
+      "generalized_quaternion": true,
+      "name": "Q8",
+      "order": 8
+    },
+    "A6_cover_2.A6": {
+      "element_orders": {
+        "1": 1,
+        "2": 1,
+        "4": 10,
+        "8": 4
+      },
+      "generalized_quaternion": true,
+      "name": "Q16",
+      "order": 16
+    },
+    "verdict": "일반화 사원수군 계보 승계 — v12 2.A₅ FS=−1(ℍ) 이 고립 사례가 아님을 구조 수준에서 실증(FS 재계산은 스코프 밖·연결만)"
+  }
+}
