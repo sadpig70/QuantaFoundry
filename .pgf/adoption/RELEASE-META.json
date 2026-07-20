@@ -2,10 +2,10 @@
   "_schema": "release-meta-v1",
   "version": "0.7.0",
   "date_released": "2026-06-28",
-  "registry_root_hash": "a40f6343a1fb7670fdc7d2b7c30e785aa24b456db94757f1afefa1302beb3577",
+  "registry_root_hash": "15d134d4410fa5b47805a0c269f7bbd2febb26e10d5b1679c9ff151f092f4526",
   "modules": 95,
-  "unique_apps": 1190,
-  "citation_string": "QuantaFoundry v0.7.0, QPGF-sealed root a40f6343a1fb7670 (verify: python scripts/reproduce_all.py).",
+  "unique_apps": 1199,
+  "citation_string": "QuantaFoundry v0.7.0, QPGF-sealed root 15d134d4410fa5b4 (verify: python scripts/reproduce_all.py).",
   "verify_commands": [
     "python scripts/reproduce_all.py",
     "python -m qf_witness.verify.second_oracle",
