@@ -1,0 +1,187 @@
+{
+  "D_D4": {
+    "D2": 64,
+    "H_dims": {
+      "H1": 2,
+      "H2": 3,
+      "H3": 4
+    },
+    "anyon_count": 22,
+    "cert_ok": true,
+    "cocycle_ok": true,
+    "group": "D4",
+    "n_dim_transition_sectors": 2,
+    "n_twistable_sectors": 5,
+    "noncoboundary": true,
+    "sectors": [
+      {
+        "Z_H2_mu2": null,
+        "Z_abelian": false,
+        "Z_order": 8,
+        "central": true,
+        "class": 0,
+        "dim_transition_possible": false,
+        "rep_order": 1,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": 1,
+        "Z_abelian": true,
+        "Z_order": 4,
+        "central": false,
+        "class": 1,
+        "dim_transition_possible": false,
+        "rep_order": 4,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": 3,
+        "Z_abelian": true,
+        "Z_order": 4,
+        "central": false,
+        "class": 2,
+        "dim_transition_possible": true,
+        "rep_order": 2,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": null,
+        "Z_abelian": false,
+        "Z_order": 8,
+        "central": true,
+        "class": 3,
+        "dim_transition_possible": false,
+        "rep_order": 2,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": 3,
+        "Z_abelian": true,
+        "Z_order": 4,
+        "central": false,
+        "class": 4,
+        "dim_transition_possible": true,
+        "rep_order": 2,
+        "twistable": true
+      }
+    ],
+    "untw_dims": {
+      "1": 8,
+      "2": 14
+    }
+  },
+  "D_Q8": {
+    "D2": 64,
+    "H_dims": {
+      "H1": 2,
+      "H2": 2,
+      "H3": 1
+    },
+    "anyon_count": 22,
+    "cert_ok": true,
+    "cocycle_ok": true,
+    "group": "Q8",
+    "n_dim_transition_sectors": 0,
+    "n_twistable_sectors": 5,
+    "noncoboundary": true,
+    "sectors": [
+      {
+        "Z_H2_mu2": null,
+        "Z_abelian": false,
+        "Z_order": 8,
+        "central": true,
+        "class": 0,
+        "dim_transition_possible": false,
+        "rep_order": 1,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": 1,
+        "Z_abelian": true,
+        "Z_order": 4,
+        "central": false,
+        "class": 1,
+        "dim_transition_possible": false,
+        "rep_order": 4,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": 1,
+        "Z_abelian": true,
+        "Z_order": 4,
+        "central": false,
+        "class": 2,
+        "dim_transition_possible": false,
+        "rep_order": 4,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": null,
+        "Z_abelian": false,
+        "Z_order": 8,
+        "central": true,
+        "class": 3,
+        "dim_transition_possible": false,
+        "rep_order": 2,
+        "twistable": true
+      },
+      {
+        "Z_H2_mu2": 1,
+        "Z_abelian": true,
+        "Z_order": 4,
+        "central": false,
+        "class": 4,
+        "dim_transition_possible": false,
+        "rep_order": 4,
+        "twistable": true
+      }
+    ],
+    "untw_dims": {
+      "1": 8,
+      "2": 14
+    }
+  },
+  "_note": "twisted 비아벨 double D^ω(D₄)/D^ω(Q₈) — 비아벨 군 위 비자명 twist 최초(관측·seal 아님·신규 module 0·root 불변). ★D₄≠Q₈ twist 자원 비대칭(H³(μ₂) dim 4 vs 1)·섹터 selectivity·차원 전이. 완전 22×22 S 미착수.",
+  "_schema": "dtw-d4-q8-double/v1",
+  "all_ok": true,
+  "checks": {
+    "D4_22_anyon_D2_64": true,
+    "D4_H3_mu2_is_4": true,
+    "D4_cocycle_ok": true,
+    "D4_dim_transition_present": true,
+    "D4_has_twistable_sectors": true,
+    "Q8_22_anyon_D2_64": true,
+    "Q8_H3_mu2_is_1": true,
+    "Q8_cocycle_ok": true,
+    "Q8_has_twistable_sectors": true,
+    "Q8_no_dim_transition": true,
+    "dim_transition_distinguishes_D4_Q8": true,
+    "teeth_coboundary_all_sectors_trivial": true,
+    "teeth_coboundary_is_cocycle": true,
+    "teeth_fake_cocycle": true,
+    "twist_resource_asymmetry": true
+  },
+  "scope_honesty": {
+    "covered": [
+      "H³(μ₂) 자체유도",
+      "섹터 selectivity",
+      "β-사영 irrep 차원분포",
+      "T 다중집합"
+    ],
+    "not_covered": [
+      "완전 twisted DPR 22×22 S 행렬",
+      "H³ 3-torsion(ζ₃)",
+      "범주 동치·braiding"
+    ]
+  },
+  "triple_contrast": {
+    "note": "D₄/Q₈ untwisted 동일(v14) → twist 자원(H³ 4 vs 1)·차원 전이(D₄ 有/Q₈ 無)로 구별",
+    "vs_D_D4_untwisted": {
+      "H3_dim": [
+        4,
+        0
+      ],
+      "note": "untwisted H³ twist=0 vs twisted 자원 16"
+    }
+  }
+}
