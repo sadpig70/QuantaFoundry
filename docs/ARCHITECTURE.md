@@ -20,8 +20,8 @@ It generates quantum software modules from high-level intent, verifies them with
 > [`registry/COUNT-ONTOLOGY.json`](../registry/COUNT-ONTOLOGY.json).
 
 <!-- BEGIN generated:counts src=registry/COUNT-ONTOLOGY.json -->
-- **95 sealed modules · 1316 unique applications** · registry root `16d971ff65d7dbb5…`
-  (1391 app-file entries = 1316 unique + 75 cached app-side re-seals;
+- **95 sealed modules · 1325 unique applications** · registry root `a89970bd181f5cad…`
+  (1400 app-file entries = 1325 unique + 75 cached app-side re-seals;
   live source [`registry/REGISTRY-MANIFEST.json`](../registry/REGISTRY-MANIFEST.json)).
 <!-- END generated:counts -->
 
