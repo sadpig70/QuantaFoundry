@@ -199,7 +199,7 @@ MasterRoadmap // 잔여 작업 정규화·종결 (in-progress) @v:1.0
     FrontierClosureA_20260716 // ★정책 A 집행 — N≤1023 완결 후 frontier 폐합 (in-progress — 잔여 84개 야간 자동 소진, ~10일) @dep:FrontierPolicyBrief_20260716
         # 집행 1(코드): next_unsealed_target 기본 hi=4096→1024 — 자기집행형 경계, 소진 시 (None,None)=frontier-exhausted 자연 정지.
         # 집행 2(운영): 야간 cron 현행 유지(budget 8) → 소진 배치에서 폐합 절차: 마지막 full 검증 → 본 노드 done → cron 프롬프트를 주간 헬스체크(full reproduce)로 전환 → HANDOFF/외부문서 마일스톤 "10-bit 전 구간 완결" 기록.
-        # 진행: 07-18 4차 shor671~707(→1038앱·tier1 98) · 07-19 5차 shor~771(→1109앱·tier1 106) · 07-20 6차 shor~813(→1181앱·tier1 114) · ★07-21 7차 무인 완주 8라운드 → **shor893**까지(1181→**1253앱**·tier1 **122**·root 27ba3282963b8c6f·qfa_loop 3.9h·full 1048s·개입 0). ★라운드 커밋 7/8 CI green; round4(4cdf5154) COUNT-ONTOLOGY.json 간헐 쓰기실패로 stale(1226 대신 1217) CI red → **다음 라운드 self-heal·tip green**([[speedopt-pgf-cycle]] AV 계열, 배치 게이트는 전량 PASS). 잔여 N≤1023 약 **28개**(~3~4일).
+        # 진행: 07-19 5차 shor~771(→1109앱) · 07-20 6차 shor~813(→1181앱) · 07-21 7차 shor~893(→1253앱·tier1 122) · ★07-22 8차 무인 완주 8라운드 → **shor943**까지(1253→**1325앱**·tier1 **130**·root a89970bd181f5cad·qfa_loop 4.0h·full 1431s·개입 0). ★라운드 커밋 7/8 CI green; round(ad70ca8e) COUNT-ONTOLOGY.json stale(1271 대신 1280) CI red → self-heal·tip green. ★근본 원인 재판정: atomic_io(7ceba1b) 적용 후에도 재발 → **파일쓰기 실패 아님**(README/MANIFEST는 새값·COUNT만 옛값=순서/경로 문제) → DocCountsRootCause 재조사 필요. 잔여 N≤1023 약 **20개**(~2~3일).
         # 재확장(hi 상향)은 정욱님 결정으로만 — factory 능력은 결정론 코드로 보존(INV-F1 회귀로 언제든 재가동 검증).
         # 데이터: factory N 72(69→583)·nq분포 8q9/9q15/10q36/11q12·specs 84MB(cmul 99%)·잔여 활주로 nq11 84개(~10일)→nq12 601개(~75일, 비용 2-4×)→c13x 메모리 벽.
         # 옵션: A 경계 폐합(N≤1023 완결 후 종료, 권고)/B 감속 유지(budget 2)/C 현행(c13x 벽까지 ~85일). 근거=인스턴스 한계가치 0 수렴, 방법·인프라 자산은 기봉인.
