@@ -1,0 +1,60 @@
+{
+  "_note": "D^ω(ℤ₂⁴) type-III — ★완전 비아벨화 불가(closed-negative, agent 제안 반증) + 부분 비아벨화 프로파일(관측·seal 아님·신규 module 0·root 불변). ★H³(μ₂)=20≠agent 'ℤ₂¹⁴'(U(1) 오적용)·slant rank≤2 상한. μ₂ 계수만.",
+  "_schema": "dtw-z2-4-typeiii/v1",
+  "all_ok": true,
+  "checks": {
+    "D2_256": true,
+    "H3_mu2_is_20": true,
+    "H3_mu2_not_14": true,
+    "dim_upper_bound_2": true,
+    "full_nonabelianization_impossible": true,
+    "has_d2_anyons": true,
+    "radical_ge_2_always": true,
+    "slant_rank_le_2_all": true,
+    "teeth_coboundary_is_cocycle": true,
+    "teeth_coboundary_rank0": true,
+    "teeth_fake_cocycle": true,
+    "teeth_rank4_form_exists": true,
+    "typeIII_cocycle_all_ok": true
+  },
+  "closed_negative": {
+    "claim_refuted": "D^ω(ℤ₂⁴) type-III 완전 비아벨화(radical=0·d=4)",
+    "max_slant_commutator_rank": 2,
+    "scope": "type-III cocycle basis 조합 한정(임의 μ₂ 3-cocycle 전체 무주장)",
+    "verdict": "type-III slant B_a rank ≤ 2 (전 삼중항 조합·전 a 전수) → radical ≥ 2 → d_a ≤ 2 → 완전 비아벨화 불가. ★부분(v15 ℤ₂³)만 ℤ₂⁴ 에서도 가능."
+  },
+  "coefficient_group_correction": {
+    "agent_claim_U1_14": 14,
+    "note": "H³(ℤ₂⁴,μ₂)=20=𝔽₂[x₁..x₄] degree-3 단항식 C(6,3) vs H³(ℤ₂⁴,U(1)) 2-torsion=14. v15 P2/P4 에 이은 세 번째 계수군 함정 검출(§4′o).",
+    "self_derived_mu2": 20
+  },
+  "comparison_z2n": {
+    "z2_3_v15": {
+      "D2": 64,
+      "anyon": 22,
+      "d2_sectors": 7,
+      "radical": "1(부분)"
+    },
+    "z2_4_this": {
+      "D2": 256,
+      "anyon": 88,
+      "d2_count": 56,
+      "radical": "≥2(부분·완전 불가)"
+    },
+    "共通": "type-III 는 부분 비아벨화만 — 완전(radical=0·d 최대) 불가 상한"
+  },
+  "dim_H3_mu2": 20,
+  "partial_profile_maximal_twist": {
+    "D2": 256,
+    "anyon_count": 88,
+    "dim_distribution": {
+      "1": 32,
+      "2": 56
+    },
+    "note": "d 상한 2(부분 비아벨화) — 완전(d=4) 부재 확인",
+    "rank_counts_over_a": {
+      "0": 2,
+      "2": 14
+    }
+  }
+}
