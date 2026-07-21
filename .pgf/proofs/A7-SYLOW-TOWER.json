@@ -1,0 +1,71 @@
+{
+  "An_2part": {
+    "5": 4,
+    "6": 8,
+    "7": 8,
+    "8": 64
+  },
+  "An_sylow2": {
+    "5": {
+      "element_orders": {
+        "1": 1,
+        "2": 3
+      },
+      "order": 4,
+      "structure": "V4(Z2^2)"
+    },
+    "6": {
+      "element_orders": {
+        "1": 1,
+        "2": 5,
+        "4": 2
+      },
+      "order": 8,
+      "structure": "D4"
+    },
+    "7": {
+      "element_orders": {
+        "1": 1,
+        "2": 5,
+        "4": 2
+      },
+      "order": 8,
+      "structure": "D4"
+    }
+  },
+  "_note": "Schur cover Sylow-2 계보 — ★Q₃₂ tower 반증(closed-negative, agent 제안) + 실제 tower(A₆→A₇ 정체). 관측·seal 아님·신규 module 0·root 불변. 2.A₇ Sylow-2=Q₁₆ 은 구조 논증(명시 구성 미착수).",
+  "_schema": "a7-sylow-tower/v1",
+  "all_ok": true,
+  "checks": {
+    "2A5_sylow2_Q8": true,
+    "2A6_sylow2_Q16": true,
+    "2part_tower_4_8_8_64": true,
+    "A5_sylow2_V4_order4": true,
+    "A6_A7_2part_stall": true,
+    "A6_eq_A7_sylow2": true,
+    "A6_sylow2_D4_order8": true,
+    "A7_sylow2_D4_order8": true,
+    "A8_jumps": true,
+    "Q32_refuted": true,
+    "teeth_A5_A6_do_grow": true,
+    "teeth_A8_jumps_not_stall": true
+  },
+  "closed_negative_Q32": {
+    "actual_tower": "Q₈(2.A₅) → Q₁₆(2.A₆) → Q₁₆(2.A₇, 정체) → [A₈ 에서 다음 도약]",
+    "claim_refuted": "Sylow-2 tower Q₈→Q₁₆→Q₃₂ (2.A₅→2.A₆→2.A₇)",
+    "reason": "A₆ Sylow-2 = A₇ Sylow-2 = D₄(위수 8) — |Aₙ|_2 정체(둘 다 2³). ⟹ spin lift 2.A₇ Sylow-2 ≅ 2.A₆ Sylow-2 = Q₁₆(위수 16), Q₃₂(32) 아님. 위수 도약은 A₅(4)→A₆(8)→A₈(64) 에서만.",
+    "scope": "2.A₇ Sylow-2=Q₁₆ 은 구조 논증(A₇ Sylow-2=A₆=D₄ lift)·명시 구성 미착수"
+  },
+  "cover_sylow2": {
+    "2.A5": {
+      "gen_quaternion": true,
+      "order": 8,
+      "struct": "Q8"
+    },
+    "2.A6": {
+      "gen_quaternion": true,
+      "order": 16,
+      "struct": "Q16"
+    }
+  }
+}
