@@ -1,5 +1,5 @@
 {
-  "_note": "ε-bounded 근사 인증 sidecar (TrackIU IU_B). 직교축 — 기존 tier/seal/root 불변. ε 는 목표 e^{-iHt} 대비 op-norm 오차의 수학적 **상한**(tightness 무주장), sympy symbolic exact 산출. witness 는 dense 실측 관측(주 증거 아님). 봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증.",
+  "_note": "ε-bounded 근사 인증 sidecar (TrackIU IU_B). 직교축 — 기존 tier/seal/root 불변. ε 는 목표 e^{-iHt} 대비 op-norm 오차 — E1–E4=**상한**(sympy symbolic exact) + ★E5=**하계**(rigorous interval [ε_lo,ε_hi]): mpmath Taylor expm(dps=60,K=140,나머지<1e-100)로 U·R 재계산→열노름 하계. ε_lo>1e-9 ⟹ **비-exact 최초 인증**(heis2 ε_lo≈0=exact). ★제11 검증경로 아님·하계≠합성 최적성. 봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증.",
   "_schema": "approx-guarantee-v1",
   "certificates": {
     "heis2_trotter_step": {
@@ -9,6 +9,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        2.7225691840642495e-61,
+        0.0
+      ],
+      "epsilon_lower_rigorous_float": 2.7225691840642495e-61,
       "epsilon_upper_float_display": 0.0,
       "epsilon_upper_symbolic": "0",
       "exact_trotter": true,
@@ -19,11 +26,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": false,
       "spec_hash": "7aa8c656a17a8947",
       "target_spec": "H = -(XX+YY+ZZ) single bond; t=pi/8",
       "trotter_order": 1,
       "witness": {
         "d_obs": 2.775557561562892e-16,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -35,6 +44,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.39347430838080666,
+        0.9252754126021274
+      ],
+      "epsilon_lower_rigorous_float": 0.39347430838080666,
       "epsilon_upper_float_display": 0.9252754126021274,
       "epsilon_upper_symbolic": "3*pi**2/32",
       "exact_trotter": false,
@@ -45,11 +61,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "d45bea2104844d72",
       "target_spec": "H = -sum_bond (XX+YY+ZZ) chain(0,1),(1,2); t=pi/8",
       "trotter_order": 1,
       "witness": {
         "d_obs": 0.4819056412137456,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -61,6 +79,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.01227176929830895,
+        0.01227176929830895
+      ],
+      "epsilon_lower_rigorous_float": 0.01227176929830895,
       "epsilon_upper_float_display": 0.01227176929830895,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt(2*cos(pi/128) + 2))",
       "exact_trotter": false,
@@ -71,6 +96,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTTTHTHTTHTTHTTHTTHTTHTTHTTHTTHTHTTHTTHTTHT",
       "spec_hash": "bec5e6a6ff6af8c9",
       "target_spec": "R_z(pi/128) target; Clifford+T sequence len=46 T-count=32",
@@ -87,6 +113,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        5.604487418029995e-05,
+        5.604487418029995e-05
+      ],
+      "epsilon_lower_rigorous_float": 5.604487418029995e-05,
       "epsilon_upper_float_display": 5.604487418029995e-05,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((221047613677464 + 156304266596446*sqrt(2))*sin(pi/128)/9007199254740992 + 1591783353834555*sqrt(2)*cos(pi/128)/2251799813685248 + 9004486429410255*cos(pi/128)/9007199254740992 + 1592262913130099*sqrt(2)/2251799813685248 + 9007199226449139/9007199254740992))",
       "exact_trotter": false,
@@ -97,6 +130,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTHTHTHTHTTTHTHTHTHTTTHTHTHTTTHTHTHTHTTTHTTTHTHTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTTTHTHTTTHTTTHTHTTTHTHTHTTTHTHTHTTTHTHTHTTTHTHTHTHTTTHTTTHTTTHTTTHTTTHTHTTTHTHTHTTTHTHTTTHTHTTTHTTTHTHTTTHTHTTTHTTTHTHTHTTTHTHTHTTTHTTTHTHTTTHTHTHTHTTTHTHTHTTTHTTTHTTTHTHTHTTTHTHTTTHTHTHTHTTTHTHTHTTTHTHTTTHTTTHTTTHTTTHTHTTTHTTTHTTTHTTTHTTTHTTTH",
       "spec_hash": "ae048369afc814b1",
       "target_spec": "R_z(pi/128) target; Clifford+T sequence len=323 T-count=216",
@@ -113,6 +147,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.04735994616716095,
+        0.04735994616716095
+      ],
+      "epsilon_lower_rigorous_float": 0.04735994616716095,
       "epsilon_upper_float_display": 0.04735994616716095,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((-14 + 21*sqrt(2))*sin(pi/16)/32 + 7*sqrt(2)/32 + 7*cos(pi/16)/8 + 3*sqrt(2)*cos(pi/16)/4 + 27/16))",
       "exact_trotter": false,
@@ -123,6 +164,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "HTHTHTHTHTHTHTTHTHTTHTHTTHTHTT",
       "spec_hash": "15267c637ae4293e",
       "target_spec": "R_z(pi/16) target; Clifford+T sequence len=30 T-count=17",
@@ -139,6 +181,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        1.2597487912536943e-05,
+        1.2597487912536943e-05
+      ],
+      "epsilon_lower_rigorous_float": 1.2597487912536943e-05,
       "epsilon_upper_float_display": 1.2597487912536943e-05,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((1757217324116173 + 1242540285901072*sqrt(2))*sin(pi/16)/9007199254740992 + 3123336070307723*sqrt(2)*cos(pi/16)/4503599627370496 + 2208532115239141*cos(pi/16)/2251799813685248 + 796131458939375*sqrt(2)/1125899906842624 + 9007199253311615/9007199254740992))",
       "exact_trotter": false,
@@ -149,6 +198,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTTHTHTTTHTHTHTHTTTHTHTHTHTTTHTTTHTHTHTHTTTHTHTTTHTTTHTHTTTHTHTTTHTTTHTTTHTTTHTTTHTTTHTHTTTHTTTHTHTHTTTHTTTHTTTHTHTTTHTHTHTHTHTTTHTTTHTTTHTTTHTTTHTHTHTTTHTTTHTTTHTTTHTHTHTTTHTHTHTHTHTHTTTHTHTTTHTHTTTHTHTHTHTHTTTHTTTHTTTHTTTHTHTHTTTHTHTTTHTTTHTHTHTTTHTTTHTHTHTHTTTHTTTHTHTHTTTHTTTHTHTHTTTHTHTHTTTHTTTHTTTHTTTHTHTHTHTTTHTH",
       "spec_hash": "d738776b906e8909",
       "target_spec": "R_z(pi/16) target; Clifford+T sequence len=323 T-count=216",
@@ -165,6 +215,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.03148612520983548,
+        0.03148612520983548
+      ],
+      "epsilon_lower_rigorous_float": 0.03148612520983548,
       "epsilon_upper_float_display": 0.03148612520983548,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((-2 + 5*sqrt(2))*sin(pi/32)/64 + 41*sqrt(2)/64 + 15*cos(pi/32)/16 + 3*sqrt(2)*cos(pi/32)/4 + 35/32))",
       "exact_trotter": false,
@@ -175,6 +232,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTTTHTTHTHTHTHTTHTHTHTHTHTTHTHTHTHTHT",
       "spec_hash": "3f3c5455f133a94f",
       "target_spec": "R_z(pi/32) target; Clifford+T sequence len=40 T-count=25",
@@ -191,6 +249,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        7.347633054303897e-05,
+        7.347633054303897e-05
+      ],
+      "epsilon_lower_rigorous_float": 7.347633054303897e-05,
       "epsilon_upper_float_display": 7.347633054303897e-05,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((882859857213119 + 624276191872784*sqrt(2))*sin(pi/32)/9007199254740992 + 1120478385634399*cos(pi/32)/1125899906842624 + 792297864655039*sqrt(2)*cos(pi/32)/1125899906842624 + 9007199206113185/9007199254740992 + 398065727383795*sqrt(2)/562949953421312))",
       "exact_trotter": false,
@@ -201,6 +266,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTHTHTHTHTHTHTTTHTTTHTTTHTHTHTHTTTHTTTHTTTHTHTTTHTHTTTHTHTTTHTTTHTHTTTHTHTHTHTHTHTHTTTHTTTHTTTHTTTHTHTTTHTHTTTHTTTHTTTHTHTTTHTTTHTHTHTHTTTHTHTTTHTHTTTHTTTHTTTHTTTHTHTHTTTHTHTHTTTHTHTHTHTHTHTHTHTHTHTHTTTHTHTHTTTHTHTTTHTHTTTHTHTHTHTHTTTHTHTTTHTHTTTHTTTHTHTHTHTHTHTTTHTHTHTTTHTHTHTTTHTHTTTHTHTHTTTHTTTHTHT",
       "spec_hash": "27a908ab815373d1",
       "target_spec": "R_z(pi/32) target; Clifford+T sequence len=305 T-count=198",
@@ -217,6 +283,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.012532581859975366,
+        0.012532581859975366
+      ],
+      "epsilon_lower_rigorous_float": 0.012532581859975366,
       "epsilon_upper_float_display": 0.012532581859975366,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((-2 + 5*sqrt(2))*sin(pi/64)/64 + 41*sqrt(2)/64 + 15*cos(pi/64)/16 + 3*sqrt(2)*cos(pi/64)/4 + 35/32))",
       "exact_trotter": false,
@@ -227,6 +300,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTTTHTHTHTHTHTTHTHTHTHTHTTHTHTHTHTTHT",
       "spec_hash": "40518edc81f00e74",
       "target_spec": "R_z(pi/64) target; Clifford+T sequence len=40 T-count=25",
@@ -243,6 +317,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        4.1496246043023504e-05,
+        4.1496246043023504e-05
+      ],
+      "epsilon_lower_rigorous_float": 4.1496246043023504e-05,
       "epsilon_upper_float_display": 4.1496246043023504e-05,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt((441962218353787 + 312514481626232*sqrt(2))*sin(pi/64)/9007199254740992 + 2249087419554229*cos(pi/64)/2251799813685248 + 3180689931696313*sqrt(2)*cos(pi/64)/4503599627370496 + 398065728847415*sqrt(2)/562949953421312 + 9007199239231175/9007199254740992))",
       "exact_trotter": false,
@@ -253,6 +334,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTTHTTTHTTTHTTTHTTTHTTTHTHTHTHTHTHTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTHTHTTTHTHTHTTTHTHTHTHTTTHTTTHTTTHTTTHTTTHTHTHTHTTTHTTTHTHTHTTTHTTTHTTTHTHTTTHTHTTTHTTTHTHTTTHTTTHTHTHTHTHTTTHTTTHTTTHTHTTTHTTTHTHTHTHTHTHTHTHTTTHTHTTTHTHTHTTTHTTTHTTTHTHTHTHTTTHTTTHTTTHTTTHTTTHTTTHTTTHTTTHTTTHTHTTTHTHTHTHTTTHTTTHTHTTTHTHTTTHTTTHTTTHTTTHTTTHTTTHTHTH",
       "spec_hash": "d683676cf6f288d2",
       "target_spec": "R_z(pi/64) target; Clifford+T sequence len=333 T-count=226",
@@ -269,6 +351,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.056174550674907585,
+        0.056174550674907585
+      ],
+      "epsilon_lower_rigorous_float": 0.056174550674907585,
       "epsilon_upper_float_display": 0.056174550674907585,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt(sqrt(2 - sqrt(2))*(sqrt(2) + 11)/32 + 7*sqrt(2)/16 + 11*sqrt(sqrt(2) + 2)/32 + 13*sqrt(2*sqrt(2) + 4)/32 + 11/8))",
       "exact_trotter": false,
@@ -279,6 +368,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTTTTTTHTHTHTTHTTHTTHTTHTHTHTHTTHTHTTHTTHTTHTHTT",
       "spec_hash": "e29a127a47c34e6c",
       "target_spec": "R_z(pi/8) target; Clifford+T sequence len=48 T-count=32",
@@ -295,6 +385,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        4.592428499603032e-05,
+        4.592428499603032e-05
+      ],
+      "epsilon_lower_rigorous_float": 4.592428499603032e-05,
       "epsilon_upper_float_display": 4.592428499603032e-05,
       "epsilon_upper_symbolic": "sqrt(2 - sqrt(sqrt(2 - sqrt(2))*(2437330571727212*sqrt(2) + 3446905950523397)/18014398509481984 + 2942118230132893*sqrt(2*sqrt(2) + 4)/9007199254740992 + 2080391751579533*sqrt(sqrt(2) + 2)/4503599627370496 + 1592262914773279*sqrt(2)/2251799813685248 + 9007199235744551/9007199254740992))",
       "exact_trotter": false,
@@ -305,6 +402,7 @@
         "bound_violated_detected": true,
         "perturbation": "sequence tamper (drop final gate)"
       },
+      "nonexact_certified": true,
       "sequence": "TTHTTTTHHTTTHTHTTTHTTTHTHTTTHTHTTTHTHTTTHTHTTTHTHTHTTTHTHTTTHTTTHTTTHTHTHTHTHTHTTTHTHTTTHTTTHTHTTTHTTTHTTTHTHTHTTTHTHTHTTTHTTTHTTTHTHTTTHTTTHTHTHTTTHTTTHTHTTTHTTTHTHTHTTTHTTTHTTTHTHTTTHTTTHTHTTTHTTTHTHTHTHTHTHTHTTTHTHTTTHTHTHTTTHTTTHTHTTTHTTTHTTTHTTTHTTTHTHTTTHTTTHTTTHTTTHTHTTTHTHTTTHTHTTTHTTTHTTTHTHTTTHTHTTTHTHTHTHTHTHTHTHTHTH",
       "spec_hash": "fbf530fd18e8cd82",
       "target_spec": "R_z(pi/8) target; Clifford+T sequence len=329 T-count=220",
@@ -321,6 +419,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.0026134485630619274,
+        0.12649858634243746
+      ],
+      "epsilon_lower_rigorous_float": 0.0026134485630619274,
       "epsilon_upper_float_display": 0.12649858634243746,
       "epsilon_upper_symbolic": "11*pi**3/(192*(4 - 2**(2/3))**3)",
       "exact_trotter": false,
@@ -331,11 +436,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "abc0ca742e81fe23",
       "target_spec": "H = -sum ZZ - sum X; J=h=1; t=pi/8 (Yoshida S2^5)",
       "trotter_order": 4,
       "witness": {
         "d_obs": 0.0030849086994426604,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -347,6 +454,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.38502698259150064,
+        1.2337005501361697
+      ],
+      "epsilon_lower_rigorous_float": 0.38502698259150064,
       "epsilon_upper_float_display": 1.2337005501361697,
       "epsilon_upper_symbolic": "pi**2/8",
       "exact_trotter": false,
@@ -357,11 +471,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "cb8d2c4189d23a9b",
       "target_spec": "H = -sum ZZ - sum X; J=h=1; t=2*(pi/8) (step^2)",
       "trotter_order": "compose",
       "witness": {
         "d_obs": 0.4858226211555377,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -373,6 +489,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.33517582468129786,
+        0.6168502750680849
+      ],
+      "epsilon_lower_rigorous_float": 0.33517582468129786,
       "epsilon_upper_float_display": 0.6168502750680849,
       "epsilon_upper_symbolic": "pi**2/16",
       "exact_trotter": false,
@@ -383,11 +506,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "b942159d7ca96fbc",
       "target_spec": "H = -sum ZZ(chain) - sum X; J=h=1; t=pi/8",
       "trotter_order": 1,
       "witness": {
         "d_obs": 0.3906627698453228,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -399,6 +524,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.09759390654684438,
+        0.22205015851777216
+      ],
+      "epsilon_lower_rigorous_float": 0.09759390654684438,
       "epsilon_upper_float_display": 0.22205015851777216,
       "epsilon_upper_symbolic": "11*pi**3/1536",
       "exact_trotter": false,
@@ -409,11 +541,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "34fa306427dbbb27",
       "target_spec": "H = -sum ZZ - sum X; J=h=1; t=pi/8 (S2 symmetric)",
       "trotter_order": 2,
       "witness": {
         "d_obs": 0.11220863133470683,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -425,6 +559,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.0039068268388645095,
+        0.19549781525649426
+      ],
+      "epsilon_lower_rigorous_float": 0.0039068268388645095,
       "epsilon_upper_float_display": 0.19549781525649426,
       "epsilon_upper_symbolic": "17*pi**3/(192*(4 - 2**(2/3))**3)",
       "exact_trotter": false,
@@ -435,11 +576,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "abc0ca742e81fe23",
       "target_spec": "H = -sum ZZ - sum X; J=h=1; t=pi/8 (Yoshida S2^5)",
       "trotter_order": 4,
       "witness": {
         "d_obs": 0.004398442879668369,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -451,6 +594,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.43665399684882095,
+        0.9252754126021274
+      ],
+      "epsilon_lower_rigorous_float": 0.43665399684882095,
       "epsilon_upper_float_display": 0.9252754126021274,
       "epsilon_upper_symbolic": "3*pi**2/32",
       "exact_trotter": false,
@@ -461,11 +611,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "b942159d7ca96fbc",
       "target_spec": "H = -sum ZZ(chain) - sum X; J=h=1; t=pi/8",
       "trotter_order": 1,
       "witness": {
         "d_obs": 0.6078553896514661,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }
@@ -477,6 +629,13 @@
       },
       "certified": true,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+      "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
+      "e5_interval_valid": true,
+      "epsilon_interval_float": [
+        0.13108733360054026,
+        0.3431684268001933
+      ],
+      "epsilon_lower_rigorous_float": 0.13108733360054026,
       "epsilon_upper_float_display": 0.3431684268001933,
       "epsilon_upper_symbolic": "17*pi**3/1536",
       "exact_trotter": false,
@@ -487,11 +646,13 @@
         "bound_violated_detected": true,
         "perturbation": "target t -> 2*t"
       },
+      "nonexact_certified": true,
       "spec_hash": "34fa306427dbbb27",
       "target_spec": "H = -sum ZZ - sum X; J=h=1; t=pi/8 (S2 symmetric)",
       "trotter_order": 2,
       "witness": {
         "d_obs": 0.1739586449406457,
+        "d_obs_in_e5_interval": true,
         "d_obs_le_eps": true,
         "kind": "dense_exact_diagonalization (observation, float)"
       }

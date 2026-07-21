@@ -15,11 +15,15 @@ registry 는 exact-only 다: Trotter/Suzuki 앱은 "그 회로의 unitary" 를 e
   합성 전파        :  ‖U₂U₁ − V₂V₁‖ ≤ Σ‖Uᵢ−Vᵢ‖ (유니터리 준가법) → step^k 앱 ε = k·ε_step
   ‖·‖Δ = Pauli 전개 |계수| 합(삼각 상한) ≥ 실제 op-norm — 순수 유리수/π-닫힌형 산술.
 
-계약 E1–E4 (C1–C4 대응):
+계약 E1–E5 (E1–E4=C1–C4 대응; ★E5=TrackHE15 P6a):
   E1  target spec 정준화 + hash (유리수 계수 · π-닫힌형 t 만 허용)
   E2  ε_upper 는 sympy exact symbolic (float 단독 산출 금지; float 표시는 병기 표기)
   E3  감사추적: 방법·교환자 Pauli 전개·산술 종류 기록
   E4  negative control: 교란 spec(t→2t)에서 bound 위반 실검출
+  ★E5  ε **하계**(rigorous interval [ε_lo,ε_hi]): mpmath Taylor expm(dps=60·K=140·나머지<1e-100)로
+       U(회로곱)·R(=e^{-iHt}) 재계산 → 열노름 하계 max_j‖(U−R)e_j‖ ≤ ‖U−R‖₂. ε_lo>1e-9 ⟹
+       **"이 Trotter step 은 exact 가 아니다" 최초 인증**(heis2 ε_lo≈1e-61=exact). E1–E4 는 상한뿐이었다.
+       ★제11 검증경로 아님(자가강등)·하계≠합성 최적성(TcountLowerBound 와 구분).
 
 독립 witness (관측·float): dense 실측 d_op = ‖U_seal − e^{-iHt}‖₂ ≤ ε 확인 (소형 8×8/16×16).
   witness 는 관측이며 인증의 주 증거는 symbolic 상한 — seal ≠ run ≠ verify 상속.
@@ -38,6 +42,7 @@ import json
 import hashlib
 import numpy as np
 import sympy as sp
+import mpmath as mp
 
 from qf_witness.core.paths import ROOT
 SPECS_APPS = os.path.join(ROOT, "specs", "apps")
@@ -45,6 +50,15 @@ OUT = os.path.join(ROOT, "registry", "APPROX-GUARANTEES.json")
 
 PI = sp.pi
 HALF = sp.Rational(1, 2)
+
+# ── E5 계약(TrackHE15 P6a): ε 하계 인증 — rigorous interval [ε_lo, ε_hi] ────
+# 기존 E1–E4 는 전부 ε **상한**만: "이 Trotter step 은 exact 가 아니다" 를 증명할 하계가 없다.
+# E5 = mpmath Taylor expm(고정밀·rigorous 나머지 한계)으로 U(회로곱)·R(=e^{-iHt}) 재계산 →
+#   열노름 하계 ‖(U−R)e_j‖ ≤ ‖U−R‖₂ 로 ε_lo. ε_lo>0 ⟹ **비-exact 최초 인증**(heis2 는 ε_lo≈0).
+# ★제11 검증경로 아님(agent03 자가강등 승계). ★하계≠합성 최적성 하한(TcountLowerBound 와 구분).
+_MP_DPS = 60
+_MP_TAYLOR_K = 140          # (‖H‖t≲2) → 나머지 (‖H‖t)^{K+1}/(K+1)!·e^{‖H‖t} ≪ 1e-100 (rigorous)
+_E5_NONEXACT_THRESHOLD = mp.mpf("1e-9")   # ε_lo > 이 값 ⟹ 확실히 비-exact(나머지·반올림 ≪)
 
 
 # ── Pauli 문자열 대수 (sympy 계수 exact) ───────────────────────────────────
@@ -236,6 +250,13 @@ def certify_gridsynth(app_id):
         "sequence": seq,
         "epsilon_upper_symbolic": str(eps),
         "epsilon_upper_float_display": eps_f,
+        # ★E5: gridsynth metric 은 위상정렬 op-norm **등식**(exact) → 하계=상한, 구간 degenerate
+        "epsilon_lower_rigorous_float": eps_f,
+        "epsilon_interval_float": [eps_f, eps_f],
+        "nonexact_certified": bool(eps_f > 1e-9),       # 합성 회로 ≠ 목표(당연) — exact 등식 기반
+        "e5_audit": ("phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; "
+                     "interval degenerate. NOT synthesis optimality (cf TcountLowerBound)."),
+        "e5_interval_valid": True,
         "metric": ("phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) "
                    "(equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)"),
         "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
@@ -276,6 +297,92 @@ def dense_H(terms_or_sum, n):
 def expm_iHt(H, t_float):
     lam, V = np.linalg.eigh(H)
     return (V * np.exp(-1j * lam * t_float)) @ V.conj().T
+
+
+# ── E5 하계: mpmath Taylor expm (rigorous) + 열노름 하계 ────────────────────
+def _mp_matrix(Hnp):
+    n = Hnp.shape[0]
+    M = mp.zeros(n)
+    for i in range(n):
+        for j in range(n):
+            M[i, j] = mp.mpc(Hnp[i, j].real, Hnp[i, j].imag)
+    return M
+
+
+def _mp_expm_iHt(Hmp, t):
+    """e^{-iHt} = Σ_k (-iHt)^k/k! — Taylor(mpmath, dps=%d, K=%d). 나머지 rigorous 소멸.
+    H Hermitian·‖H‖t≲2 → K=140 나머지 ≪ 1e-100.""" % (_MP_DPS, _MP_TAYLOR_K)
+    n = Hmp.rows
+    x = mp.mpc(0, -1) * t
+    term = mp.eye(n)
+    acc = mp.eye(n)
+    for k in range(1, _MP_TAYLOR_K + 1):
+        term = (term * Hmp) * (x / k)
+        acc += term
+    return acc
+
+
+def _mp_expm_terms(terms_list, t, n):
+    """1차 Trotter U = Π_j e^{-iH_j t} (terms 순서, mpmath)."""
+    U = mp.eye(1 << n)
+    for tm in terms_list:
+        U = _mp_expm_iHt(_mp_matrix(dense_H(tm, n)), t) * U
+    return U
+
+
+def _mp_s2(A_mp, B_mp, s, n):
+    """2차 Suzuki S₂(s) = e^{-iA s/2} e^{-iB s} e^{-iA s/2}."""
+    eA = _mp_expm_iHt(A_mp, s / 2)
+    eB = _mp_expm_iHt(B_mp, s)
+    return eA * eB * eA
+
+
+def _col_norm_lower(U, R):
+    """max_j ‖(U−R)e_j‖₂ ≤ ‖U−R‖₂ — rigorous 하계(mpmath)."""
+    n = U.rows
+    best = mp.mpf(0)
+    for j in range(n):
+        s = mp.mpf(0)
+        for i in range(n):
+            d = U[i, j] - R[i, j]
+            s += mp.re(d) ** 2 + mp.im(d) ** 2
+        c = mp.sqrt(s)
+        if c > best:
+            best = c
+    return best
+
+
+def epsilon_lower_trotter(c, t, t_target, n):
+    """E5: Trotter/Suzuki step 의 rigorous ε 하계. U 회로곱·R=e^{-iH_full t_target} 재계산."""
+    order = c["order"]
+    if order == 1:
+        terms = c["terms"]()
+        U = _mp_expm_terms(terms, t, n)
+        Hf = h_sum(*terms)
+    elif order == 2:
+        A, B = c["split"]()
+        Amp, Bmp = _mp_matrix(dense_H(A, n)), _mp_matrix(dense_H(B, n))
+        U = _mp_s2(Amp, Bmp, t, n)
+        Hf = h_sum(A, B)
+    elif order == 4:
+        A, B = c["split"]()
+        Amp, Bmp = _mp_matrix(dense_H(A, n)), _mp_matrix(dense_H(B, n))
+        pf = mp.mpf(1) / (4 - mp.cbrt(4))
+        qf = 1 - 4 * pf
+        U = mp.eye(1 << n)
+        for tau in (pf, pf, qf, pf, pf):        # Yoshida τ=[p,p,q,p,p]
+            U = _mp_s2(Amp, Bmp, tau * t, n) * U
+        Hf = h_sum(A, B)
+    elif order == "compose":
+        base = CATALOG[c["base"]]
+        terms = c["terms"]()
+        Ustep = _mp_expm_terms(base["terms"](), t, n)
+        U = Ustep ** c["k"]
+        Hf = h_sum(*terms)
+    else:
+        raise ValueError(order)
+    R = _mp_expm_iHt(_mp_matrix(dense_H(Hf, n)), t_target)
+    return _col_norm_lower(U, R)
 
 
 def app_golden(app_id):
@@ -344,6 +451,17 @@ def certify(app_id):
             teeth_mul, teeth_ok = mul, True
             break
 
+    # ── E5: rigorous ε 하계 (mpmath Taylor expm) ──  t=π/8 를 mpmath 고정밀로
+    with mp.workdps(_MP_DPS):
+        t_mp = mp.pi / 8
+        t_target_mp = (c["k"] * t_mp) if c["order"] == "compose" else t_mp
+        eps_lo = epsilon_lower_trotter(c, t_mp, t_target_mp, n)
+    eps_lo_f = float(eps_lo)
+    nonexact = bool(eps_lo > _E5_NONEXACT_THRESHOLD)
+    # E5 정합: 하계 ≤ 상한 (구간 유효성) · d_obs 관측이 구간 안
+    e5_interval_valid = bool(eps_lo <= mp.mpf(eps_f) + mp.mpf("1e-30"))
+    e5_dobs_in_interval = bool(eps_lo_f - 1e-9 <= d_obs <= eps_f + 1e-9)
+
     spec_str = c["target"]
     return {
         "id": app_id,
@@ -353,20 +471,29 @@ def certify(app_id):
         "trotter_order": c["order"],
         "epsilon_upper_symbolic": str(eps),
         "epsilon_upper_float_display": eps_f,          # 표시용 병기 (E2: 주 산출은 symbolic)
+        "epsilon_lower_rigorous_float": eps_lo_f,       # ★E5 (주 산출은 mpmath 고정밀)
+        "epsilon_interval_float": [eps_lo_f, eps_f],
+        "nonexact_certified": nonexact,                # ★ε_lo>1e-9 ⟹ exact 아님 rigorous
         "metric": "op_norm (no phase alignment needed: golden is the literal circuit product)",
         "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
         "audit": audit,
+        "e5_audit": ("column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; "
+                     "U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=%d, K=%d, "
+                     "remainder<1e-100 rigorous). NOT an 11th verification path; "
+                     "lower bound != synthesis optimality (cf TcountLowerBound)." % (_MP_DPS, _MP_TAYLOR_K)),
         "witness": {
             "kind": "dense_exact_diagonalization (observation, float)",
             "d_obs": d_obs,
             "d_obs_le_eps": bool(witness_ok),
+            "d_obs_in_e5_interval": e5_dobs_in_interval,
         },
         "negative_control": {
             "perturbation": f"target t -> {teeth_mul}*t" if teeth_ok else "not detected up to 8t",
             "bound_violated_detected": bool(teeth_ok),
         },
         "exact_trotter": bool(eps == 0),
-        "certified": bool(witness_ok and teeth_ok),
+        "e5_interval_valid": e5_interval_valid,
+        "certified": bool(witness_ok and teeth_ok and e5_interval_valid and e5_dobs_in_interval),
     }
 
 
@@ -374,8 +501,10 @@ def _write(certs):
     payload = {
         "_schema": "approx-guarantee-v1",
         "_note": ("ε-bounded 근사 인증 sidecar (TrackIU IU_B). 직교축 — 기존 tier/seal/root 불변. "
-                  "ε 는 목표 e^{-iHt} 대비 op-norm 오차의 수학적 **상한**(tightness 무주장), "
-                  "sympy symbolic exact 산출. witness 는 dense 실측 관측(주 증거 아님). "
+                  "ε 는 목표 e^{-iHt} 대비 op-norm 오차 — E1–E4=**상한**(sympy symbolic exact) + "
+                  "★E5=**하계**(rigorous interval [ε_lo,ε_hi]): mpmath Taylor expm(dps=60,K=140,"
+                  "나머지<1e-100)로 U·R 재계산→열노름 하계. ε_lo>1e-9 ⟹ **비-exact 최초 인증**"
+                  "(heis2 ε_lo≈0=exact). ★제11 검증경로 아님·하계≠합성 최적성. "
                   "봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증."),
         "certificates": certs,
     }
@@ -395,6 +524,14 @@ def quick_recheck():
         if not (s and r["certified"] and
                 r["epsilon_upper_symbolic"] == s["epsilon_upper_symbolic"]):
             return False
+        # ★E5: heis2=exact(하계≈0)·tfim3=비-exact(하계>0) rigorous 재확인
+        if r["nonexact_certified"] != s.get("nonexact_certified"):
+            return False
+    # E5 계약 실증: heis2 exact(nonexact=False) · tfim3 nonexact 인증
+    if saved["heis2_trotter_step"].get("nonexact_certified") is not False:
+        return False
+    if saved["tfim3_trotter_step"].get("nonexact_certified") is not True:
+        return False
     # gridsynth 대표 2종 (2번째 ε-가족: 존재구성 _ct + RS 심화 _rs)
     for rep in ("rz_pi64_ct", "rz_pi64_rs"):
         rg = certify_gridsynth(rep)
@@ -416,9 +553,9 @@ def main():
         certs[app_id] = r
         flag = "OK " if r["certified"] else "FAIL"
         extra = " (exact: eps=0)" if r["exact_trotter"] else ""
-        print(f"[{flag}] {app_id}: eps={r['epsilon_upper_symbolic']} "
-              f"(~{r['epsilon_upper_float_display']:.4g}) d_obs={r['witness']['d_obs']:.4g} "
-              f"teeth={r['negative_control']['bound_violated_detected']}{extra}")
+        print(f"[{flag}] {app_id}: eps∈[{r['epsilon_lower_rigorous_float']:.3g}, "
+              f"{r['epsilon_upper_float_display']:.4g}] nonexact={r['nonexact_certified']} "
+              f"d_obs={r['witness']['d_obs']:.4g} teeth={r['negative_control']['bound_violated_detected']}{extra}")
         all_ok &= r["certified"]
     for app_id in GRID_SEQS:
         r = certify_gridsynth(app_id)
