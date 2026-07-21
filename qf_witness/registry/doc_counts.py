@@ -16,6 +16,7 @@ import re
 import sys
 
 from qf_witness.core.paths import ROOT
+from qf_witness.core.atomic_io import atomic_write_text
 
 MANIFEST = os.path.join(ROOT, "registry", "REGISTRY-MANIFEST.json")
 SEMANTIC = os.path.join(ROOT, "registry", "SEMANTIC-GUARANTEES.json")
@@ -97,7 +98,7 @@ def run(check):
         ok = False
         stale.append("COUNT-ONTOLOGY.json")
         if not check:
-            open(ONTOLOGY, "w", encoding="utf-8", newline="\n").write(ont_new)
+            atomic_write_text(ONTOLOGY, ont_new, newline="\n")   # AV 잠금 견고(원자적·재시도)
 
     for rel in DOC_TARGETS:
         p = os.path.join(ROOT, rel)
@@ -113,7 +114,7 @@ def run(check):
             ok = False
             stale.append(rel)
             if not check:
-                open(p, "w", encoding="utf-8", newline="").write(filled)
+                atomic_write_text(p, filled, newline="")         # 문서 마커: 개행 변환 없음
     return ok, stale
 
 
