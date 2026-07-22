@@ -17,8 +17,8 @@
   "failed": [],
   "mem_budget": 6442450944,
   "mem_excluded": [],
-  "n_targets": 827,
-  "n_verified": 835,
+  "n_targets": 859,
+  "n_verified": 867,
   "remaining": [],
   "teeth": {
     "app": "cmul4_mod237",
@@ -1549,6 +1549,38 @@
       "steps": 3321,
       "u_hash": "19a36d3cc4e717456eeedadc914b9b9def64e4e1fa0e9fd9dbd9b70d8fdb63f9"
     },
+    "cmul16_mod949": {
+      "cost": 17712545792,
+      "inlined": false,
+      "n": 11,
+      "seconds": 6.3,
+      "steps": 4223,
+      "u_hash": "82d51da81d8a146a901b95e3a03deb97a14d8afbd42ad4ecac5d966bc2a6f579"
+    },
+    "cmul16_mod951": {
+      "cost": 17532190720,
+      "inlined": false,
+      "n": 11,
+      "seconds": 5.9,
+      "steps": 4180,
+      "u_hash": "6b2bde1bf6e0e39eb13d85dab36033d4ee06366ac760155b2026527e63c509e1"
+    },
+    "cmul16_mod955": {
+      "cost": 13367246848,
+      "inlined": false,
+      "n": 11,
+      "seconds": 4.0,
+      "steps": 3187,
+      "u_hash": "393e34f26cc72291d55ffb2521a1402b8c135281f1ed42a2c9586f2b0927cc99"
+    },
+    "cmul16_mod959": {
+      "cost": 14357102592,
+      "inlined": false,
+      "n": 11,
+      "seconds": 4.4,
+      "steps": 3423,
+      "u_hash": "0f0b55f60584ed2c223aac19b9f87906bcee61beb8002955b33a83738d1eb3ec"
+    },
     "cmul170_mod203": {
       "cost": 241434624,
       "inlined": false,
@@ -1652,6 +1684,14 @@
       "seconds": 6.1,
       "steps": 948,
       "u_hash": "51aa80ad85d0e59496b97456e75b05793449ae02970d169bbd9a12ee9828774a"
+    },
+    "cmul178_mod949": {
+      "cost": 20430454784,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.6,
+      "steps": 4871,
+      "u_hash": "9d61244c4e272d3a5a66a6893131c3697c5267e0524d5c8b65d18e3b07647abe"
     },
     "cmul179_mod427": {
       "cost": 2194669568,
@@ -2028,6 +2068,22 @@
       "seconds": 51.2,
       "steps": 2111,
       "u_hash": "1efd41db762a104689b911c4300bf69ecdd36b492800040307967be7011b9e18"
+    },
+    "cmul232_mod951": {
+      "cost": 19750977536,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.3,
+      "steps": 4709,
+      "u_hash": "25c2494d945c1ea7e8e0d9134f5ea81c210fd258c8d8d2ee184ff1bada4757a2"
+    },
+    "cmul235_mod951": {
+      "cost": 19872612352,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.5,
+      "steps": 4738,
+      "u_hash": "3cf61c142668cd4e9a78ce750e15a2f3b1a267ecd5caaabfebef3d2545088003"
     },
     "cmul236_mod253": {
       "cost": 233570304,
@@ -2941,6 +2997,38 @@
       "steps": 4699,
       "u_hash": "9b476f42ff2aa5e2b53d5a7b56e3720d2379836e6f052fc22ec704fcba003381"
     },
+    "cmul256_mod949": {
+      "cost": 19985858560,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.2,
+      "steps": 4765,
+      "u_hash": "010aa8e7e62b01ff77cf512850ad9308a522e4363031b68d5364db2b7f3bf5c1"
+    },
+    "cmul256_mod951": {
+      "cost": 19579011072,
+      "inlined": false,
+      "n": 11,
+      "seconds": 6.9,
+      "steps": 4668,
+      "u_hash": "be6e4a0c0529760f9a6b6f1339daf6af3d6f1e6c67cf15d6cd03ed8f29dea528"
+    },
+    "cmul256_mod955": {
+      "cost": 19146997760,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.0,
+      "steps": 4565,
+      "u_hash": "cfdc374fd9a7fcdf78f293cb3ebb1ce7d7473f6812308be011f613fec42bb226"
+    },
+    "cmul256_mod959": {
+      "cost": 16680747008,
+      "inlined": false,
+      "n": 11,
+      "seconds": 5.6,
+      "steps": 3977,
+      "u_hash": "e82a114fbcc5846a7438f58a2a57511d64151070313207e7fc7560d996029d8a"
+    },
     "cmul25_mod133": {
       "cost": 221249536,
       "inlined": false,
@@ -3020,6 +3108,14 @@
       "seconds": 7.0,
       "steps": 4816,
       "u_hash": "3b05b551db1168bc43573943b8cc25648aceb94c398972f04695a6cb4c702ef4"
+    },
+    "cmul26_mod955": {
+      "cost": 20283654144,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.2,
+      "steps": 4836,
+      "u_hash": "b9bd2ced917f7d1b05933fce9d5e24b4cf58b6195e02fafb54b49d3222e611e9"
     },
     "cmul270_mod707": {
       "cost": 19717423104,
@@ -3933,6 +4029,38 @@
       "steps": 247,
       "u_hash": "d808c38961928dbcb9398c8983f33d9414c5de3b7513cbee69fd878a5d6ffa1f"
     },
+    "cmul2_mod949": {
+      "cost": 1157627904,
+      "inlined": false,
+      "n": 11,
+      "seconds": 0.8,
+      "steps": 276,
+      "u_hash": "1a4530a4c6c88b91cdd3af0fcd9b8fb8a97dccea8431062ba3ab4b4a5d0b3326"
+    },
+    "cmul2_mod951": {
+      "cost": 939524096,
+      "inlined": false,
+      "n": 11,
+      "seconds": 0.8,
+      "steps": 224,
+      "u_hash": "fbb347abf796506f5ca0230c0d33a582de1328ea12ca0e3682bf319648d6d7c6"
+    },
+    "cmul2_mod955": {
+      "cost": 851443712,
+      "inlined": false,
+      "n": 11,
+      "seconds": 1.0,
+      "steps": 203,
+      "u_hash": "05a5be259d0d7a7ec7d27297508218bc536bf2aac948869c2e35b428c018a30f"
+    },
+    "cmul2_mod959": {
+      "cost": 281018368,
+      "inlined": false,
+      "n": 11,
+      "seconds": 0.8,
+      "steps": 67,
+      "u_hash": "d81a1e1f1b6598957cfe204fa025c88fa34f081ca9e54a48c9937eff0aae056c"
+    },
     "cmul301_mod335": {
       "cost": 2255486976,
       "inlined": false,
@@ -4037,6 +4165,14 @@
       "steps": 4608,
       "u_hash": "afd07f63059463df72cda4df00dd29aa4e77ad7fb03fd6f79740ab22db0f6033"
     },
+    "cmul312_mod959": {
+      "cost": 19813892096,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.4,
+      "steps": 4724,
+      "u_hash": "9ac6c2f7a61abf1a3ae1285eb5f3e872af4100bedd87b7363752d7dd4385ccc6"
+    },
     "cmul316_mod807": {
       "cost": 19822280704,
       "inlined": false,
@@ -4060,6 +4196,14 @@
       "seconds": 7.0,
       "steps": 4854,
       "u_hash": "eec82ef960d4dae57d2cff719600cd37b63292b7247fb583f4ef7d002289d2f6"
+    },
+    "cmul324_mod959": {
+      "cost": 19876806656,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.2,
+      "steps": 4739,
+      "u_hash": "8d993b4f485a507d304588d214c8c0f9f1dd3b1d2e5aa0b2d3bb0f5bd8b66264"
     },
     "cmul325_mod597": {
       "cost": 19881000960,
@@ -4324,6 +4468,14 @@
       "seconds": 7.2,
       "steps": 4780,
       "u_hash": "5dc53e47963b5ced28c2aecbb50748762eeea57611759810a77bf437553385b2"
+    },
+    "cmul367_mod949": {
+      "cost": 19906166784,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.7,
+      "steps": 4746,
+      "u_hash": "99fda6f223c6aea5d3254b767accf38d419869777b27ece748942902d0c8112d"
     },
     "cmul368_mod469": {
       "cost": 2230321152,
@@ -4613,6 +4765,14 @@
       "steps": 4817,
       "u_hash": "fcbee67e63a63c959594b20d505e0895f039107909972d94d77401e2eaee374d"
     },
+    "cmul445_mod959": {
+      "cost": 20241711104,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.6,
+      "steps": 4826,
+      "u_hash": "5a6420a0443e58a103904ae2a56d30ccebbf05623493133908c29ec50b305292"
+    },
     "cmul449_mod671": {
       "cost": 19742588928,
       "inlined": false,
@@ -4732,6 +4892,14 @@
       "seconds": 6.8,
       "steps": 4772,
       "u_hash": "4b93119e1df95189cbf106470d79b688e8c6c9f0a227b83676dc7695765258f6"
+    },
+    "cmul471_mod959": {
+      "cost": 20048773120,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.6,
+      "steps": 4780,
+      "u_hash": "f3026bd02de17b84efa0b939196d95f720c53ef254679fd95cd6ceb6404a5d57"
     },
     "cmul477_mod559": {
       "cost": 19486736384,
@@ -5749,6 +5917,38 @@
       "steps": 1429,
       "u_hash": "0303e7a613b77e76022abe62fbab063597ac78ae1d2c5ecce9fb99f1d133fd13"
     },
+    "cmul4_mod949": {
+      "cost": 9219080192,
+      "inlined": false,
+      "n": 11,
+      "seconds": 2.8,
+      "steps": 2198,
+      "u_hash": "d4acd3b8228b15a41f5c292681052f38eb98b35ba662d3f807aab9ba7630372c"
+    },
+    "cmul4_mod951": {
+      "cost": 11207180288,
+      "inlined": false,
+      "n": 11,
+      "seconds": 3.3,
+      "steps": 2672,
+      "u_hash": "71262d9bf0555be7f2048da0f5d4c6707b9615daf6367f62467eaf701e6f2aea"
+    },
+    "cmul4_mod955": {
+      "cost": 7033847808,
+      "inlined": false,
+      "n": 11,
+      "seconds": 1.9,
+      "steps": 1677,
+      "u_hash": "6e030b4ab87a58b87ad85bb79fb10cef9d47fd19cbc7a118353101039fa32b2b"
+    },
+    "cmul4_mod959": {
+      "cost": 2340421632,
+      "inlined": false,
+      "n": 11,
+      "seconds": 1.1,
+      "steps": 558,
+      "u_hash": "7bbbc5ce3ca67f08bf81275394274c4493443934592151c760483deccc78745b"
+    },
     "cmul500_mod589": {
       "cost": 19872612352,
       "inlined": false,
@@ -5973,6 +6173,14 @@
       "steps": 2132,
       "u_hash": "e88c616481b12d28e178198b654c6dfe1eabaded574555b71d8428bee6bdb566"
     },
+    "cmul55_mod949": {
+      "cost": 19436404736,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.6,
+      "steps": 4634,
+      "u_hash": "c0a273b79bdefa07877ac8125d3cd51453026523a1370600a2c58341197b7c8c"
+    },
     "cmul562_mod629": {
       "cost": 20283654144,
       "inlined": false,
@@ -5996,6 +6204,14 @@
       "seconds": 6.8,
       "steps": 4817,
       "u_hash": "c13078b079c86a8d677db0f6bafeeba05b9852dd3be49f7b308d8fd3855e9c29"
+    },
+    "cmul568_mod951": {
+      "cost": 20363345920,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.5,
+      "steps": 4855,
+      "u_hash": "416cecd39b38ee99f466f884d9efeae09364b0c6144019faff0669b203d6b8e7"
     },
     "cmul585_mod707": {
       "cost": 19792920576,
@@ -6036,6 +6252,14 @@
       "seconds": 6.7,
       "steps": 4721,
       "u_hash": "ff15eda51bc46a5be9cc32b3e7276d9568a7f6e48d5f28a12210607a5dddea7e"
+    },
+    "cmul596_mod955": {
+      "cost": 20208156672,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.7,
+      "steps": 4818,
+      "u_hash": "995f4686539d8d01ef520e96605cf0078cbe97716e7dfdfac10aa9181e148909"
     },
     "cmul597_mod781": {
       "cost": 20233322496,
@@ -6276,6 +6500,14 @@
       "seconds": 7.0,
       "steps": 4760,
       "u_hash": "d4a9a15b4dbbbbcf1064acb9f4932cf6dfc971eef33fc781c4b2e7405fab6d35"
+    },
+    "cmul676_mod955": {
+      "cost": 19558039552,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.2,
+      "steps": 4663,
+      "u_hash": "b698a58717b4bf5736dc07f5be9e5dce4ab25d2c22deb6a541789a4cc783f199"
     },
     "cmul67_mod267": {
       "cost": 1927282688,
@@ -6573,6 +6805,14 @@
       "steps": 4751,
       "u_hash": "67bcac058c4f495ae3053e215a9c309f7d7733d0b26fed955135dee51eb6f789"
     },
+    "cmul868_mod951": {
+      "cost": 19704840192,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.5,
+      "steps": 4698,
+      "u_hash": "947f156143e10d1442fe7f7f9ddb15a3416674cd301bfbb2ee288b4e6080b740"
+    },
     "cmul86_mod187": {
       "cost": 248774656,
       "inlined": false,
@@ -6597,6 +6837,14 @@
       "steps": 4750,
       "u_hash": "140da2fe5b11ad119dc88da328ea2091c409efa86c66e085d60593009c0aab1d"
     },
+    "cmul880_mod949": {
+      "cost": 19998441472,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.4,
+      "steps": 4768,
+      "u_hash": "c5d99c2d7f9fa62d856f6c561d0ebc26f03ffeb7bf258743a5b3550d811fb253"
+    },
     "cmul88_mod303": {
       "cost": 2222981120,
       "inlined": false,
@@ -6620,6 +6868,14 @@
       "seconds": 6.7,
       "steps": 4716,
       "u_hash": "15961555cea2db389f37463e0cb3f4f3cab975cdb6291a2dda4ecfca70364de4"
+    },
+    "cmul911_mod955": {
+      "cost": 19750977536,
+      "inlined": false,
+      "n": 11,
+      "seconds": 7.3,
+      "steps": 4709,
+      "u_hash": "6c8a353ae98871e2b56a94b6ff2b9db76b01b7f4fe55b277ab3ef14786571c9c"
     },
     "cmul93_mod133": {
       "cost": 246415360,
