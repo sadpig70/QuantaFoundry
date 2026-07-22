@@ -1,0 +1,118 @@
+{
+  "_note": "AZ 3D 잔여칸: AII(ℤ₂ 강한 TI·Fu-Kane parity) + AIII(ℤ chiral winding) — 관측·seal 아님·신규 module 0·root 불변. 불변량=정수(TRIM parity·mass-sign 닫힌형, float Berry 적분 아님). ★ℤ₂=DIII winding mod 2(PHS 제거 조대화). AZ 표 외부인용 금지.",
+  "_schema": "az-aiii-aii-3d/v1",
+  "all_ok": true,
+  "az_3d_column": {
+    "DIII_to_AII_coarsening": "PHS(C²=+1) 제거 → ℤ winding → ℤ₂ = winding mod 2",
+    "class_AII": "ℤ₂ (Fu-Kane strong, 본 — strong [0, 1])",
+    "class_AIII": "ℤ (chiral winding, 본 — [-1, 0, 2])",
+    "class_DIII": "ℤ (winding, v15 — [-1, 0, 2])",
+    "honesty": "각 칸=본 모델 산출값·대칭 논증 (AZ 표 인용 아님)"
+  },
+  "checks": {
+    "AIII_Z_not_Z2": true,
+    "AIII_chiral_S2_plus1": true,
+    "AIII_chiral_anticommute": true,
+    "AIII_gap_robust_adiabatic": true,
+    "AIII_genuine_perturb_S_only": true,
+    "AIII_winding_pattern_Z": true,
+    "AII_gap_robust_adiabatic": true,
+    "AII_genuine_perturb_T_only": true,
+    "AII_strong_TI_in_windows": true,
+    "AII_strong_z2_pattern": true,
+    "AII_weak_TI_at_center": true,
+    "AII_z2_equals_winding_mod2": true,
+    "base_TRS_T2_minus1": true,
+    "base_has_all_TPCS": true,
+    "base_inversion_P": true,
+    "teeth_break_T_loses_AII_protection": true,
+    "teeth_sign_conv_tamper": true,
+    "teeth_weak_vs_strong_distinct": true
+  },
+  "class_AIII_3D": {
+    "genuine_AIII_perturb": {
+      "gap_by_lambda_at_m=1.5": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "perturbed_symmetry": {
+        "C": false,
+        "P": false,
+        "S": true,
+        "T": false
+      },
+      "term": "λ·sinx·Γ₄ (T,C 깸·S 유지·TRIM 소멸)"
+    },
+    "invariant": "ℤ winding (mass-sign 닫힌형 ν=−½Σ(−1)^#π sign M)",
+    "nu_by_m": {
+      "-2": -1,
+      "-4": 0,
+      "0": 2,
+      "2": -1,
+      "4": 0
+    },
+    "verdict": "★3D chiral winding — ℤ, chiral S 단독 보호(genuine AIII)"
+  },
+  "class_AII_3D": {
+    "genuine_AII_perturb": {
+      "gap_by_lambda_at_m=1.5": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "perturbed_symmetry": {
+        "C": false,
+        "P": false,
+        "S": false,
+        "T": true
+      },
+      "term": "λ·sinx·siny·iΓ₁Γ₄ (C,S 깸·T 유지·TRIM 소멸)"
+    },
+    "invariant": "ℤ₂ strong (Fu-Kane parity Π_{8 TRIM} sign(M))",
+    "strong_TI_windows": "m ∈ (1,3) ∪ (−3,−1)",
+    "verdict": "★3D 강한 위상절연체 — ℤ₂, T 단독 보호(genuine AII)",
+    "z2_by_m": {
+      "-2": {
+        "strong": 1,
+        "weak": [
+          0,
+          0,
+          0
+        ]
+      },
+      "-4": {
+        "strong": 0,
+        "weak": [
+          0,
+          0,
+          0
+        ]
+      },
+      "0": {
+        "strong": 0,
+        "weak": [
+          1,
+          1,
+          1
+        ]
+      },
+      "2": {
+        "strong": 1,
+        "weak": [
+          1,
+          1,
+          1
+        ]
+      },
+      "4": {
+        "strong": 0,
+        "weak": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  }
+}
