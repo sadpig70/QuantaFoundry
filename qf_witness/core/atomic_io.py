@@ -3,9 +3,14 @@
 """atomic_io — 원자적 텍스트 쓰기 유틸 (Windows AV 간헐 잠금 견고).
 
 배경(DocCountsAtomicWrite, 2026-07-21): 야간 배치 라운드 커밋 하나에서 COUNT-ONTOLOGY.json
-쓰기가 실패해 stale(구값) 커밋 → CI doc_counts red(다음 라운드 self-heal·tip green). 원인은
-`open(path,"w").write(text)` 직접 truncate-write 가 Windows AV(Defender) 파일 스캔 중
-간헐 잠금에 취약했던 것 — 부분쓰기/PermissionError 가 stale 을 남긴다.
+이 stale(구값) 로 커밋 → CI doc_counts red(다음 라운드 self-heal·tip green).
+
+★진단 정정(DocCountsRootCause, 2026-07-22): 당초 원인을 "AV 잠금 직접 write 실패" 로 봤으나
+  이 유틸 적용 후에도 재발 → **파일쓰기 실패가 아니었다**. 진짜 원인은 autonomy_loop 의
+  `clean_eol_ghosts()` 가 git add 직전 racy-clean(atomic replace 직후 mtime+동일 크기)로 빈
+  `numstat` 을 EOL-ghost 로 오판해 COUNT-ONTOLOGY.json 을 checkout 되돌린 것(autonomy_loop
+  clean_eol_ghosts 2026-07-22 수정에서 정규화 내용비교로 해결). 이 유틸은 부분쓰기/잠금 방어의
+  일반 견고성으로 **유지**(원인은 아니었으나 유해하지 않고 정석적).
 
 해법(두 기존 패턴 결합):
   - 원자성: 같은 디렉토리 임시파일에 쓴 뒤 `os.replace`(원자적 rename) — 부분쓰기 노출 없음

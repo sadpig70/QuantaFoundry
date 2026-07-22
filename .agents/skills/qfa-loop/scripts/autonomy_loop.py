@@ -396,16 +396,29 @@ def clean_transient() -> list[str]:
 def clean_eol_ghosts() -> list[str]:
     """★self-improvement 2026-07-01: autocrlf 유령 diff 자동복원.
     봉인/spec 재실행 시 내용은 byte-identical 인데 git 이 EOL 정규화로 'M' 표시 → 이번 세션
-    수동 git checkout 10회 마찰. numstat 가 *빈 변경*(content delta 0)인 modified 파일을 유령으로
-    판정해 자동 restore(내용 delta 0 이므로 복원해도 손실 없음). 진짜 변경(N\\tM)·신규(-)는 보존."""
+    수동 git checkout 10회 마찰. EOL 정규화 외 실제 변경이 없는 modified 파일만 자동 restore.
+
+    ★버그수정 2026-07-22(DocCountsRootCause): 이전엔 `git diff --numstat` *빈값*을 유령 근거로
+    썼으나, git 의 racy-clean(atomic os.replace 직후 mtime 이 index 캐시 granularity 내 + 파일
+    크기 동일)이면 numstat 이 *실제 same-size 변경*도 빈값으로 오판 → COUNT-ONTOLOGY.json(자릿수
+    불변=크기 동일 잦음, LF 강제로 항상 EOL 불일치 후보)을 유령으로 오인해 checkout 되돌림 →
+    stale COUNT 커밋 → CI doc_counts red(매 배치 1라운드). numstat(racy stat 캐시 의존) 대신
+    HEAD blob 과 **정규화 내용 직접 비교** — 내용이 진짜 같을 때만 유령 판정(실제 변경 절대 유실 안 함)."""
+    def _norm(s: str) -> str:
+        return s.replace("\r\n", "\n").replace("\r", "\n")
     restored = []
     rc, out = git(["status", "--porcelain"])
     for line in out.splitlines():
         if len(line) < 4 or line[0] in "?!" or line[1] != "M":   # unstaged modified 만
             continue
         rel = line[3:].strip().strip('"')
-        rc2, ns = git(["diff", "--numstat", "--", rel])
-        if not ns.strip():                                       # 빈 numstat = EOL 유령
+        try:
+            _, head = git(["show", f"HEAD:{rel}"])                # repo blob(LF 정규화됨)
+            with open(os.path.join(ROOT, rel), encoding="utf-8", newline="") as f:
+                work = f.read()
+        except Exception:
+            continue                                             # 비교 불가 시 보존(안전측)
+        if _norm(head) == _norm(work):                           # EOL 정규화 후 동일 = 진짜 유령
             git(["checkout", "--", rel])
             restored.append(rel)
     return restored
