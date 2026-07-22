@@ -1,5 +1,5 @@
 {
-  "_note": "ε-bounded 근사 인증 sidecar (TrackIU IU_B). 직교축 — 기존 tier/seal/root 불변. ε 는 목표 e^{-iHt} 대비 op-norm 오차 — E1–E4=**상한**(sympy symbolic exact) + ★E5=**하계**(rigorous interval [ε_lo,ε_hi]): mpmath Taylor expm(dps=60,K=140,나머지<1e-100)로 U·R 재계산→열노름 하계. ε_lo>1e-9 ⟹ **비-exact 최초 인증**(heis2 ε_lo≈0=exact). ★제11 검증경로 아님·하계≠합성 최적성. 봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증.",
+  "_note": "ε-bounded 근사 인증 sidecar (TrackIU IU_B). 직교축 — 기존 tier/seal/root 불변. ε 는 목표 e^{-iHt} 대비 op-norm 오차 — E1–E4=**상한**(sympy symbolic exact) + ★E5=op-norm **하계**(rigorous [ε_lo,ε_hi]: mpmath Taylor expm dps=60,K=140,나머지<1e-100 로 U·R 재계산→열노름 하계) + ★E6=**diamond-norm 하계**(채널 수준: 최대얽힘 Choi 입력 트레이스거리 D_lo=2√(1−|Tr(U†R)|²/d²) ≤ ‖Φ_U−Φ_R‖_◇, 양측 bracket [D_lo,2ε]). ε_lo>1e-9 ⟹ 비-exact·D_lo>1e-9 ⟹ 채널 수준 비-exact(heis2 는 둘 다≈0=exact). ★E5/E6 제11 검증경로 아님·하계≠합성 최적성·E6≠exact Watrous 값. 봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증.",
   "_schema": "approx-guarantee-v1",
   "certificates": {
     "heis2_trotter_step": {
@@ -8,9 +8,17 @@
         "method": "analytic_commutator_first_order (t^2/2 * sum_{j<k} ||[Hj,Hk]||_tri)"
       },
       "certified": true,
+      "channel_nonexact_certified": false,
+      "diamond_interval_float": [
+        1.5777218104420236e-30,
+        0.0
+      ],
+      "diamond_lower_rigorous_float": 1.5777218104420236e-30,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         2.7225691840642495e-61,
         0.0
@@ -43,9 +51,17 @@
         "method": "analytic_commutator_first_order (t^2/2 * sum_{j<k} ||[Hj,Hk]||_tri)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.6715527135181804,
+        1.8505508252042548
+      ],
+      "diamond_lower_rigorous_float": 0.6715527135181804,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.39347430838080666,
         0.9252754126021274
@@ -78,9 +94,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.02454307657143985,
+        0.0245435385966179
+      ],
+      "diamond_lower_rigorous_float": 0.02454307657143985,
+      "diamond_lower_symbolic": "sqrt(2 - 2*cos(pi/128))",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.01227176929830895,
         0.01227176929830895
@@ -112,9 +137,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.00011208974831659028,
+        0.0001120897483605999
+      ],
+      "diamond_lower_rigorous_float": 0.00011208974831659028,
+      "diamond_lower_symbolic": "sqrt(-1592262913130099*sqrt(2)/2251799813685248 - 9004486429410255*cos(pi/128)/9007199254740992 - 1591783353834555*sqrt(2)*cos(pi/128)/2251799813685248 - (221047613677464 + 156304266596446*sqrt(2))*sin(pi/128)/9007199254740992 + 27021597792514829/9007199254740992)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         5.604487418029995e-05,
         5.604487418029995e-05
@@ -146,9 +180,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.09469333194091854,
+        0.0947198923343219
+      ],
+      "diamond_lower_rigorous_float": 0.09469333194091854,
+      "diamond_lower_symbolic": "sqrt(-3*sqrt(2)*cos(pi/16)/4 - 7*cos(pi/16)/8 - 7*sqrt(2)/32 - (-14 + 21*sqrt(2))*sin(pi/16)/32 + 37/16)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.04735994616716095,
         0.04735994616716095
@@ -180,9 +223,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        2.519497582457409e-05,
+        2.5194975825073886e-05
+      ],
+      "diamond_lower_rigorous_float": 2.519497582457409e-05,
+      "diamond_lower_symbolic": "sqrt(-796131458939375*sqrt(2)/1125899906842624 - 2208532115239141*cos(pi/16)/2251799813685248 - 3123336070307723*sqrt(2)*cos(pi/16)/4503599627370496 - (1757217324116173 + 1242540285901072*sqrt(2))*sin(pi/16)/9007199254740992 + 27021597765652353/9007199254740992)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         1.2597487912536943e-05,
         1.2597487912536943e-05
@@ -214,9 +266,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.0629644462882372,
+        0.06297225041967096
+      ],
+      "diamond_lower_rigorous_float": 0.0629644462882372,
+      "diamond_lower_symbolic": "sqrt(-3*sqrt(2)*cos(pi/32)/4 - 15*cos(pi/32)/16 - 41*sqrt(2)/64 - (-2 + 5*sqrt(2))*sin(pi/32)/64 + 93/32)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.03148612520983548,
         0.03148612520983548
@@ -248,9 +309,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.00014695266098690746,
+        0.00014695266108607794
+      ],
+      "diamond_lower_rigorous_float": 0.00014695266098690746,
+      "diamond_lower_symbolic": "sqrt(-398065727383795*sqrt(2)/562949953421312 - 792297864655039*sqrt(2)*cos(pi/32)/1125899906842624 - 1120478385634399*cos(pi/32)/1125899906842624 - (882859857213119 + 624276191872784*sqrt(2))*sin(pi/32)/9007199254740992 + 27021597812850783/9007199254740992)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         7.347633054303897e-05,
         7.347633054303897e-05
@@ -282,9 +352,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.025064671605722143,
+        0.025065163719950732
+      ],
+      "diamond_lower_rigorous_float": 0.025064671605722143,
+      "diamond_lower_symbolic": "sqrt(-3*sqrt(2)*cos(pi/64)/4 - 15*cos(pi/64)/16 - 41*sqrt(2)/64 - (-2 + 5*sqrt(2))*sin(pi/64)/64 + 93/32)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.012532581859975366,
         0.012532581859975366
@@ -316,9 +395,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        8.299249206818352e-05,
+        8.299249208604701e-05
+      ],
+      "diamond_lower_rigorous_float": 8.299249206818352e-05,
+      "diamond_lower_symbolic": "sqrt(-398065728847415*sqrt(2)/562949953421312 - 3180689931696313*sqrt(2)*cos(pi/64)/4503599627370496 - 2249087419554229*cos(pi/64)/2251799813685248 - (441962218353787 + 312514481626232*sqrt(2))*sin(pi/64)/9007199254740992 + 27021597779732793/9007199254740992)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         4.1496246043023504e-05,
         4.1496246043023504e-05
@@ -350,9 +438,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.11230477678206219,
+        0.11234910134981517
+      ],
+      "diamond_lower_rigorous_float": 0.11230477678206219,
+      "diamond_lower_symbolic": "sqrt(-13*sqrt(2*sqrt(2) + 4)/32 - 11*sqrt(sqrt(2) + 2)/32 - 7*sqrt(2)/16 - sqrt(2 - sqrt(2))*(sqrt(2) + 11)/32 + 21/8)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.056174550674907585,
         0.056174550674907585
@@ -384,9 +481,18 @@
         "method": "exact_trace_distance_on_PSU2 (|tr|^2 via expand_complex, exact radical)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        9.18485699678466e-05,
+        9.184856999206064e-05
+      ],
+      "diamond_lower_rigorous_float": 9.18485699678466e-05,
+      "diamond_lower_symbolic": "sqrt(-1592262914773279*sqrt(2)/2251799813685248 - 2080391751579533*sqrt(sqrt(2) + 2)/4503599627370496 - 2942118230132893*sqrt(2*sqrt(2) + 4)/9007199254740992 - sqrt(2 - sqrt(2))*(2437330571727212*sqrt(2) + 3446905950523397)/18014398509481984 + 27021597783219417/9007199254740992)",
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; interval degenerate. NOT synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         4.592428499603032e-05,
         4.592428499603032e-05
@@ -418,9 +524,17 @@
         "method": "triangle_decomposition_of_yoshida (sum_i eps_S2(|tau_i|), tau=[p,p,q,p,p]*t, p=1/(4-4^(1/3)); valid upper bound, 4th-order tightness NOT claimed)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.004296346864112508,
+        0.2529971726848749
+      ],
+      "diamond_lower_rigorous_float": 0.004296346864112508,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.0026134485630619274,
         0.12649858634243746
@@ -453,9 +567,17 @@
         "method": "subadditive_composition (||U^k - V^k|| <= k·||U-V||; base=tfim3_trotter_step)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.6720924239978385,
+        2.4674011002723395
+      ],
+      "diamond_lower_rigorous_float": 0.6720924239978385,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.38502698259150064,
         1.2337005501361697
@@ -488,9 +610,17 @@
         "method": "analytic_commutator_first_order (t^2/2 * sum_{j<k} ||[Hj,Hk]||_tri)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.546804715716026,
+        1.2337005501361697
+      ],
+      "diamond_lower_rigorous_float": 0.546804715716026,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.33517582468129786,
         0.6168502750680849
@@ -523,9 +653,17 @@
         "method": "analytic_nested_commutator_suzuki2 (CSTWZ 2021: t^3/12·||[B,[B,A]]|| + t^3/24·||[A,[A,B]]||)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.15768700169968133,
+        0.4441003170355443
+      ],
+      "diamond_lower_rigorous_float": 0.15768700169968133,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.09759390654684438,
         0.22205015851777216
@@ -558,9 +696,17 @@
         "method": "triangle_decomposition_of_yoshida (sum_i eps_S2(|tau_i|), tau=[p,p,q,p,p]*t, p=1/(4-4^(1/3)); valid upper bound, 4th-order tightness NOT claimed)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.005921139123333152,
+        0.3909956305129885
+      ],
+      "diamond_lower_rigorous_float": 0.005921139123333152,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.0039068268388645095,
         0.19549781525649426
@@ -593,9 +739,17 @@
         "method": "analytic_commutator_first_order (t^2/2 * sum_{j<k} ||[Hj,Hk]||_tri)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.6588634180687254,
+        1.8505508252042548
+      ],
+      "diamond_lower_rigorous_float": 0.6588634180687254,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.43665399684882095,
         0.9252754126021274
@@ -628,9 +782,17 @@
         "method": "analytic_nested_commutator_suzuki2 (CSTWZ 2021: t^3/12·||[B,[B,A]]|| + t^3/24·||[A,[A,B]]||)"
       },
       "certified": true,
+      "channel_nonexact_certified": true,
+      "diamond_interval_float": [
+        0.19430987434651786,
+        0.6863368536003867
+      ],
+      "diamond_lower_rigorous_float": 0.19430987434651786,
       "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
       "e5_audit": "column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=60, K=140, remainder<1e-100 rigorous). NOT an 11th verification path; lower bound != synthesis optimality (cf TcountLowerBound).",
       "e5_interval_valid": true,
+      "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
+      "e6_interval_valid": true,
       "epsilon_interval_float": [
         0.13108733360054026,
         0.3431684268001933

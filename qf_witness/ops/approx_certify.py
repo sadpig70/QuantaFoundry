@@ -15,7 +15,7 @@ registry 는 exact-only 다: Trotter/Suzuki 앱은 "그 회로의 unitary" 를 e
   합성 전파        :  ‖U₂U₁ − V₂V₁‖ ≤ Σ‖Uᵢ−Vᵢ‖ (유니터리 준가법) → step^k 앱 ε = k·ε_step
   ‖·‖Δ = Pauli 전개 |계수| 합(삼각 상한) ≥ 실제 op-norm — 순수 유리수/π-닫힌형 산술.
 
-계약 E1–E5 (E1–E4=C1–C4 대응; ★E5=TrackHE15 P6a):
+계약 E1–E6 (E1–E4=C1–C4 대응; ★E5=TrackHE15 P6a·★E6=TrackHE16 P4):
   E1  target spec 정준화 + hash (유리수 계수 · π-닫힌형 t 만 허용)
   E2  ε_upper 는 sympy exact symbolic (float 단독 산출 금지; float 표시는 병기 표기)
   E3  감사추적: 방법·교환자 Pauli 전개·산술 종류 기록
@@ -24,6 +24,10 @@ registry 는 exact-only 다: Trotter/Suzuki 앱은 "그 회로의 unitary" 를 e
        U(회로곱)·R(=e^{-iHt}) 재계산 → 열노름 하계 max_j‖(U−R)e_j‖ ≤ ‖U−R‖₂. ε_lo>1e-9 ⟹
        **"이 Trotter step 은 exact 가 아니다" 최초 인증**(heis2 ε_lo≈1e-61=exact). E1–E4 는 상한뿐이었다.
        ★제11 검증경로 아님(자가강등)·하계≠합성 최적성(TcountLowerBound 와 구분).
+  ★E6  **diamond-norm 하계**(채널 수준): 유니터리 채널쌍 Φ_U,Φ_R 의 최대얽힘(Choi) 입력 트레이스거리
+       D_lo = 2√(1−|Tr(U†R)|²/d²) ≤ ‖Φ_U−Φ_R‖_◇ (sup over inputs 중 한 입력 → 엄밀 하계, global-phase
+       불변). E5 의 U·R 재사용(고유분해 불필요). D_lo>1e-9 ⟹ **채널 수준 비-exact 인증**(op-norm E5 강화).
+       양측 bracket [D_lo, 2ε]. ★exact Watrous 고유위상값 아님(참값은 그 사이)·제11 검증경로 아님.
 
 독립 witness (관측·float): dense 실측 d_op = ‖U_seal − e^{-iHt}‖₂ ≤ ε 확인 (소형 8×8/16×16).
   witness 는 관측이며 인증의 주 증거는 symbolic 상한 — seal ≠ run ≠ verify 상속.
@@ -59,6 +63,9 @@ HALF = sp.Rational(1, 2)
 _MP_DPS = 60
 _MP_TAYLOR_K = 140          # (‖H‖t≲2) → 나머지 (‖H‖t)^{K+1}/(K+1)!·e^{‖H‖t} ≪ 1e-100 (rigorous)
 _E5_NONEXACT_THRESHOLD = mp.mpf("1e-9")   # ε_lo > 이 값 ⟹ 확실히 비-exact(나머지·반올림 ≪)
+# 구간유효성(하계 ≤ 상한) slack: exact 케이스(상한=0 symbolic)의 mpmath dps=60 반올림 floor 흡수용.
+# ≪ nonexact 임계 1e-9 (11자릿수 아래) → 실제 하계>상한 위반(1e-3~1 규모)은 절대 못 가림.
+_INTERVAL_SLACK = mp.mpf("1e-20")
 
 
 # ── Pauli 문자열 대수 (sympy 계수 exact) ───────────────────────────────────
@@ -221,6 +228,9 @@ def certify_gridsynth(app_id):
     tr2 = sp.simplify(sp.expand_complex(z2)) / 2 ** m             # |tr(U†R)|² exact
     eps = sp.sqrt(2 - sp.sqrt(tr2))
     eps_f = float(sp.N(eps, 40))          # 2−√tr2 상쇄 대비 고정밀 평가 (표시용)
+    # ★E6: diamond-norm 하계 D_lo = 2√(1−|tr|²/d²), d=2 (Choi 입력 트레이스거리). tr2 exact 라 symbolic.
+    diamond_lo = sp.sqrt(4 - tr2)         # 2√(1−tr2/4) = √(4−tr2) — exact radical
+    diamond_lo_f = float(sp.N(diamond_lo, 40))
 
     # 독립 witness (관측·float): 봉인 spec golden == 시퀀스 float 곱, 거리 재계산 일치
     U_seal = app_golden(app_id)
@@ -257,6 +267,15 @@ def certify_gridsynth(app_id):
         "e5_audit": ("phase-aligned metric is EXACT equality (sqrt(2-|tr|)) → lower=upper=symbolic; "
                      "interval degenerate. NOT synthesis optimality (cf TcountLowerBound)."),
         "e5_interval_valid": True,
+        # ★E6: diamond 하계(Choi 트레이스거리) — gridsynth 는 tr2 exact 라 symbolic radical
+        "diamond_lower_symbolic": str(diamond_lo),
+        "diamond_lower_rigorous_float": diamond_lo_f,
+        "diamond_interval_float": [diamond_lo_f, 2 * eps_f],
+        "channel_nonexact_certified": bool(diamond_lo_f > 1e-9),
+        "e6_audit": ("diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical "
+                     "from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact "
+                     "Watrous value; NOT an 11th verification path."),
+        "e6_interval_valid": bool(diamond_lo_f <= 2 * eps_f + 1e-30),
         "metric": ("phase-aligned op_norm: min_phi ||e^{i phi} U - R_z||_2 = sqrt(2-|tr(U^dag R)|) "
                    "(equality for 2x2 unitaries; synthesis tightness NOT claimed — existence construction)"),
         "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
@@ -267,7 +286,7 @@ def certify_gridsynth(app_id):
         "negative_control": {"perturbation": "sequence tamper (drop final gate)",
                              "bound_violated_detected": bool(teeth_ok)},
         "exact_trotter": False,
-        "certified": bool(witness_ok and teeth_ok),
+        "certified": bool(witness_ok and teeth_ok and diamond_lo_f <= 2 * eps_f + 1e-30),
     }
 
 
@@ -352,8 +371,8 @@ def _col_norm_lower(U, R):
     return best
 
 
-def epsilon_lower_trotter(c, t, t_target, n):
-    """E5: Trotter/Suzuki step 의 rigorous ε 하계. U 회로곱·R=e^{-iH_full t_target} 재계산."""
+def _trotter_UR(c, t, t_target, n):
+    """E5/E6 공용: U(회로곱)·R(=e^{-iH_full t_target}) mpmath 재계산 → (U, R) 반환."""
     order = c["order"]
     if order == 1:
         terms = c["terms"]()
@@ -382,7 +401,33 @@ def epsilon_lower_trotter(c, t, t_target, n):
     else:
         raise ValueError(order)
     R = _mp_expm_iHt(_mp_matrix(dense_H(Hf, n)), t_target)
+    return U, R
+
+
+def epsilon_lower_trotter(c, t, t_target, n):
+    """E5: Trotter/Suzuki step 의 rigorous ε 하계(열노름). U·R = _trotter_UR."""
+    U, R = _trotter_UR(c, t, t_target, n)
     return _col_norm_lower(U, R)
+
+
+def _diamond_lower(U, R):
+    """E6: 유니터리 채널쌍 Φ_U,Φ_R 의 diamond-norm **하계**(rigorous, mpmath).
+
+    최대얽힘(Choi) 입력 |Ω⟩=(1/√d)Σ|ii⟩ 하나의 출력 트레이스거리:
+      ‖Φ_U−Φ_R‖_◇ = sup_input ‖·‖₁ ≥ ‖(U⊗I)|Ω⟩ − (R⊗I)|Ω⟩ 상태거리‖₁
+                   = 2√(1−|⟨Ω|(U†R⊗I)|Ω⟩|²) = 2√(1−|Tr(U†R)|²/d²) =: D_lo.
+    한 입력 ≤ sup 이므로 엄밀 하계. global-phase 불변(|Tr| 은 U→e^{iφ}U 에 불변).
+    고유분해 불필요 — U,R(E5 Taylor rigorous)에서 Frobenius 내적만. ★exact Watrous
+    고유위상값 아님(그건 상·하 사이 참값)·제11 검증경로 아님."""
+    d = U.rows
+    tr = mp.mpc(0)                       # Tr(U†R) = Σ_{i,k} conj(U[k,i])·R[k,i] (Frobenius)
+    for i in range(d):
+        for k in range(d):
+            tr += mp.conj(U[k, i]) * R[k, i]
+    val = 1 - (mp.re(tr) ** 2 + mp.im(tr) ** 2) / (d * d)     # 1 − |Tr(U†R)|²/d²
+    if val < 0:
+        val = mp.mpf(0)                  # 반올림 하한 clamp(하계 유효성 보존)
+    return 2 * mp.sqrt(val)
 
 
 def app_golden(app_id):
@@ -451,16 +496,22 @@ def certify(app_id):
             teeth_mul, teeth_ok = mul, True
             break
 
-    # ── E5: rigorous ε 하계 (mpmath Taylor expm) ──  t=π/8 를 mpmath 고정밀로
+    # ── E5 ε 하계(열노름) + E6 diamond-norm 하계 (mpmath Taylor expm, 동일 U·R) ──
     with mp.workdps(_MP_DPS):
         t_mp = mp.pi / 8
         t_target_mp = (c["k"] * t_mp) if c["order"] == "compose" else t_mp
-        eps_lo = epsilon_lower_trotter(c, t_mp, t_target_mp, n)
+        U_mp, R_mp = _trotter_UR(c, t_mp, t_target_mp, n)
+        eps_lo = _col_norm_lower(U_mp, R_mp)          # E5
+        diamond_lo = _diamond_lower(U_mp, R_mp)       # ★E6
     eps_lo_f = float(eps_lo)
+    diamond_lo_f = float(diamond_lo)
     nonexact = bool(eps_lo > _E5_NONEXACT_THRESHOLD)
+    channel_nonexact = bool(diamond_lo > _E5_NONEXACT_THRESHOLD)   # ★E6: 채널 수준 비-exact
     # E5 정합: 하계 ≤ 상한 (구간 유효성) · d_obs 관측이 구간 안
-    e5_interval_valid = bool(eps_lo <= mp.mpf(eps_f) + mp.mpf("1e-30"))
+    e5_interval_valid = bool(eps_lo <= mp.mpf(eps_f) + _INTERVAL_SLACK)
     e5_dobs_in_interval = bool(eps_lo_f - 1e-9 <= d_obs <= eps_f + 1e-9)
+    # E6 정합: D_lo ≤ diamond ≤ 2ε (하계 ≤ 상한 2ε — unitary 채널 ‖Φ_U−Φ_R‖_◇ ≤ 2‖U−R‖)
+    e6_interval_valid = bool(diamond_lo <= mp.mpf(2) * mp.mpf(eps_f) + _INTERVAL_SLACK)
 
     spec_str = c["target"]
     return {
@@ -475,7 +526,16 @@ def certify(app_id):
         "epsilon_interval_float": [eps_lo_f, eps_f],
         "nonexact_certified": nonexact,                # ★ε_lo>1e-9 ⟹ exact 아님 rigorous
         "metric": "op_norm (no phase alignment needed: golden is the literal circuit product)",
+        "diamond_lower_rigorous_float": diamond_lo_f,   # ★E6 (Choi 입력 트레이스거리 하계)
+        "diamond_interval_float": [diamond_lo_f, 2 * eps_f],  # [D_lo, 2ε] 양측 bracket
+        "channel_nonexact_certified": channel_nonexact,       # ★D_lo>1e-9 ⟹ 채널 수준 비-exact
         "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
+        "e6_audit": ("diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance "
+                     "2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over "
+                     "inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase "
+                     "invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); "
+                     "NOT an 11th verification path; channel-level strengthening of E5 op-norm bound."),
+        "e6_interval_valid": e6_interval_valid,
         "audit": audit,
         "e5_audit": ("column-norm lower bound max_j ||(U-R)e_j||_2 <= ||U-R||_2 ; "
                      "U(circuit product) & R=e^{-iHt} via mpmath Taylor expm (dps=%d, K=%d, "
@@ -493,7 +553,8 @@ def certify(app_id):
         },
         "exact_trotter": bool(eps == 0),
         "e5_interval_valid": e5_interval_valid,
-        "certified": bool(witness_ok and teeth_ok and e5_interval_valid and e5_dobs_in_interval),
+        "certified": bool(witness_ok and teeth_ok and e5_interval_valid
+                          and e5_dobs_in_interval and e6_interval_valid),
     }
 
 
@@ -502,9 +563,11 @@ def _write(certs):
         "_schema": "approx-guarantee-v1",
         "_note": ("ε-bounded 근사 인증 sidecar (TrackIU IU_B). 직교축 — 기존 tier/seal/root 불변. "
                   "ε 는 목표 e^{-iHt} 대비 op-norm 오차 — E1–E4=**상한**(sympy symbolic exact) + "
-                  "★E5=**하계**(rigorous interval [ε_lo,ε_hi]): mpmath Taylor expm(dps=60,K=140,"
-                  "나머지<1e-100)로 U·R 재계산→열노름 하계. ε_lo>1e-9 ⟹ **비-exact 최초 인증**"
-                  "(heis2 ε_lo≈0=exact). ★제11 검증경로 아님·하계≠합성 최적성. "
+                  "★E5=op-norm **하계**(rigorous [ε_lo,ε_hi]: mpmath Taylor expm dps=60,K=140,나머지<1e-100 "
+                  "로 U·R 재계산→열노름 하계) + ★E6=**diamond-norm 하계**(채널 수준: 최대얽힘 Choi 입력 "
+                  "트레이스거리 D_lo=2√(1−|Tr(U†R)|²/d²) ≤ ‖Φ_U−Φ_R‖_◇, 양측 bracket [D_lo,2ε]). "
+                  "ε_lo>1e-9 ⟹ 비-exact·D_lo>1e-9 ⟹ 채널 수준 비-exact(heis2 는 둘 다≈0=exact). "
+                  "★E5/E6 제11 검증경로 아님·하계≠합성 최적성·E6≠exact Watrous 값. "
                   "봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증."),
         "certificates": certs,
     }
@@ -527,10 +590,18 @@ def quick_recheck():
         # ★E5: heis2=exact(하계≈0)·tfim3=비-exact(하계>0) rigorous 재확인
         if r["nonexact_certified"] != s.get("nonexact_certified"):
             return False
+        # ★E6: 채널 수준 비-exact 인증 재확인
+        if r["channel_nonexact_certified"] != s.get("channel_nonexact_certified"):
+            return False
     # E5 계약 실증: heis2 exact(nonexact=False) · tfim3 nonexact 인증
     if saved["heis2_trotter_step"].get("nonexact_certified") is not False:
         return False
     if saved["tfim3_trotter_step"].get("nonexact_certified") is not True:
+        return False
+    # ★E6 계약 실증: heis2 채널-exact(False) · tfim3 채널 비-exact(True)
+    if saved["heis2_trotter_step"].get("channel_nonexact_certified") is not False:
+        return False
+    if saved["tfim3_trotter_step"].get("channel_nonexact_certified") is not True:
         return False
     # gridsynth 대표 2종 (2번째 ε-가족: 존재구성 _ct + RS 심화 _rs)
     for rep in ("rz_pi64_ct", "rz_pi64_rs"):
@@ -554,8 +625,9 @@ def main():
         flag = "OK " if r["certified"] else "FAIL"
         extra = " (exact: eps=0)" if r["exact_trotter"] else ""
         print(f"[{flag}] {app_id}: eps∈[{r['epsilon_lower_rigorous_float']:.3g}, "
-              f"{r['epsilon_upper_float_display']:.4g}] nonexact={r['nonexact_certified']} "
-              f"d_obs={r['witness']['d_obs']:.4g} teeth={r['negative_control']['bound_violated_detected']}{extra}")
+              f"{r['epsilon_upper_float_display']:.4g}] ◇∈[{r['diamond_lower_rigorous_float']:.3g}, "
+              f"{r['diamond_interval_float'][1]:.4g}] nonexact={r['nonexact_certified']}/"
+              f"ch{r['channel_nonexact_certified']} teeth={r['negative_control']['bound_violated_detected']}{extra}")
         all_ok &= r["certified"]
     for app_id in GRID_SEQS:
         r = certify_gridsynth(app_id)
