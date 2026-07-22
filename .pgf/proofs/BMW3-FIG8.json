@@ -1,0 +1,59 @@
+{
+  "_note": "BMW₃(dim 15) 문맥의 3-braid figure-8(관측·seal 아님·신규 module 0·root 불변). fig-8=최초 비-토러스·amphichiral 매듭. Jones via 부호정확 Kauffman bracket. ★2변수 Kauffman F via BMW₃ Markov trace 미착수(다음) — v15 BMW₂ 2변수의 3-braid 확장.",
+  "_schema": "bmw3-fig8/v1",
+  "all_ok": true,
+  "bmw_dimensions": {
+    "1": 1,
+    "2": 3,
+    "3": 15,
+    "4": 105
+  },
+  "checks": {
+    "bmw3_dim_15": true,
+    "bmw_dim_double_factorial": true,
+    "braid_relation_jones_inv": true,
+    "fig8_amphichiral": true,
+    "fig8_determinant_5": true,
+    "fig8_genuinely_3braid": true,
+    "fig8_jones_correct": true,
+    "fig8_markov_conjugation_inv": true,
+    "fig8_two_diagrams_agree": true,
+    "fig8_unknotting_V1_is_1": true,
+    "teeth_sign_branch_matters": true,
+    "teeth_writhe_norm_matters": true,
+    "trefoil_chiral": true,
+    "trefoil_mirror_is_inverse": true,
+    "trefoil_right_correct": true,
+    "unknot_trivial": true
+  },
+  "controls": {
+    "cinquefoil_5_1_V": "-t**7 + t**6 - t**5 + t**4 + t**2",
+    "hopf_V": "-t**(5/2) - sqrt(t)",
+    "trefoil_chiral": true,
+    "trefoil_right_V": "-t**4 + t**3 + t"
+  },
+  "figure8": {
+    "V_t": "t**2 - t + 1 - 1/t + t**(-2)",
+    "amphichiral": true,
+    "braid_word": "(σ1 σ2^-1)^2 = [1,-2,1,-2]",
+    "determinant": 5,
+    "is_torus_knot": false,
+    "note": "first non-torus, amphichiral knot in track",
+    "strands": 3
+  },
+  "scope_honesty": {
+    "covered": [
+      "BMW₃ dim=15 자체유도",
+      "3-braid 폐포 Jones 파이프라인(부호정확 bracket)",
+      "figure-8 = 최초 비-토러스·amphichiral 매듭(V·det·amphichirality)",
+      "독립 diagram·Markov·braid 관계 교차검증",
+      "chiral 대조(trefoil)"
+    ],
+    "next": "2변수 Kauffman F via BMW₃ Markov trace (v15 BMW₂ 2변수의 3-braid 확장)",
+    "not_covered": [
+      "2변수 Kauffman F(a,z) via BMW₃ Markov trace(confluent dim-15 곱셈+Ocneanu trace)",
+      "BMW₃ 정규표현 행렬",
+      "HOMFLY 동시산출(v15 참조)"
+    ]
+  }
+}
