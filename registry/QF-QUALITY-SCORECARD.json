@@ -1,11 +1,11 @@
 {
   "_schema": "qf-quality-scorecard/v1",
   "_note": "질적 신뢰 지표(양적 성장 아님). 기존 산출물 파생·읽기전용·root 불변. 'classified 100% · 0 unclassified · N assets ≥2 independent paths' 형태의 quality 헤드라인.",
-  "generated_from_root": "1eca5bc7f4a76e2e",
+  "generated_from_root": "5d1f6bd8cc6ea235",
   "scale": {
     "modules": 95,
-    "unique_apps": 1414,
-    "app_files": 1489,
+    "unique_apps": 1423,
+    "app_files": 1498,
     "cached_leaf": 75
   },
   "classification": {
@@ -14,24 +14,24 @@
     "inferred_default_dense": 0,
     "tier_source_distribution": {
       "contract(C1-C4-dense)": 158,
-      "explicit": 1426
+      "explicit": 1435
     }
   },
   "guarantee_strength": {
-    "unitary_equiv": 1445,
+    "unitary_equiv": 1453,
     "unitary_equiv_sampled": 1,
     "structural_wellformed": 1,
-    "subspace_permutation_verified": 105,
+    "subspace_permutation_verified": 106,
     "unitary_equiv_column_exact": 30,
     "compositionally_verified": 2
   },
   "independent_paths": {
     "n_supplementary_paths": 13,
-    "assets_with_supplementary": 1365,
+    "assets_with_supplementary": 1366,
     "assets_multi_path_ge2": 419,
-    "primary_seal_only": 49,
+    "primary_seal_only": 57,
     "coverage_histogram": {
-      "1": 946,
+      "1": 947,
       "2": 85,
       "3": 226,
       "4": 93,
@@ -45,5 +45,5 @@
     "public_claims": 12,
     "stale_claims": 0
   },
-  "headline": "95 modules · 1414 unique apps · 100.0% classified · 0 unclassified · 0 fail-open-inferred · 419 assets with ≥2 independent paths · 49 primary-seal-only"
+  "headline": "95 modules · 1423 unique apps · 100.0% classified · 0 unclassified · 0 fail-open-inferred · 419 assets with ≥2 independent paths · 57 primary-seal-only"
 }
