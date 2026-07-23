@@ -1,0 +1,53 @@
+{
+  "S_matrix_00": "0.23192061",
+  "T_matrix": {
+    "ST3_over_S2_phase": "(1.0 + 4.1332771e-41j)",
+    "central_charge": "2.1428571",
+    "spins_h": [
+      "0.0",
+      "0.107143",
+      "0.285714",
+      "0.535714",
+      "0.857143",
+      "1.25"
+    ]
+  },
+  "_note": "SU(2)₅ MTC 완전 modular data(6 anyon) — 관측·seal 아님·module 0·root 불변. mpmath 고정밀 자체유도. ★D²=7/(2sin²π/7)(agent06 /4 오류 정정)·Verlinde 정수·(ST)³∝S². modular data=조합 exact 표(§2 Fourier 경계 무관).",
+  "_schema": "su2-5-mtc/v1",
+  "all_ok": true,
+  "checks": {
+    "A_6_anyons": true,
+    "A_selfdual_dims": true,
+    "B_D2_correct_formula": true,
+    "B_agent06_D2_wrong": true,
+    "C_S0a_gives_dim": true,
+    "C_S2_charge_conj": true,
+    "C_S_symmetric": true,
+    "C_S_unitary": true,
+    "D_fusion_half_half": true,
+    "D_verlinde_integer": true,
+    "D_verlinde_nonneg": true,
+    "E_ST3_prop_S2": true,
+    "E_central_charge_15_7": true,
+    "teeth_6_not_5_anyons": true,
+    "teeth_agent06_D2_caught": true,
+    "teeth_distinct_from_su2_4": true
+  },
+  "fusion_sample": {
+    "½×½": "0 + 1 (N=1 each)"
+  },
+  "quantum_dims": [
+    "1.0",
+    "1.8019377",
+    "2.2469796",
+    "2.2469796",
+    "1.8019377",
+    "1.0"
+  ],
+  "total_dim_squared": {
+    "agent06_wrong": "7/(4 sin²(π/7)) ≈ 9.296 (or 12.99) — factor-2 오류",
+    "formula_correct": "7/(2 sin²(π/7)) ≈ 18.592",
+    "identity": "Σ_{n=1}^{6} sin²(nπ/7) = 7/2",
+    "value": "18.5917938865"
+  }
+}
