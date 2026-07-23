@@ -1,0 +1,51 @@
+{
+  "_note": "두 번째 SO(4) 특수화 곡선(so₄=sl₂×sl₂) — bmw3_kauffman_so3(N=3) 다음 N. fig-8 palindromic/trefoil chiral. 완전 2변수 F(a,z)=미완(정규화 미묘·6-파라미터 잔여). 관측·seal 아님·module 0·root 불변.",
+  "_schema": "bmw3-kauffman-so4/v1",
+  "all_ok": true,
+  "bmw_params": {
+    "a": "q^3 = Q^(N-1), N=4",
+    "delta": "q^2+2+q^-2 = [2]_q^2 = qdim(V=(1/2)⊗(1/2))",
+    "eigenvalues": "q (x9, sym-tl), -q^-1 (x6, antisym), q^-3 (x1, singlet)",
+    "z": "q - q^-1 = Q - Q^-1"
+  },
+  "checks": {
+    "B_delta_eq_qdim": true,
+    "B_delta_qdim2": true,
+    "B_eigenvalues_so4": true,
+    "C_braid_relation": true,
+    "D_fig8_amphichiral": true,
+    "D_fig8_palindromic": true,
+    "D_fig8_writhe0": true,
+    "D_trefoil_chiral": true,
+    "D_unlink_delta2": true,
+    "E_Fa0_incompatible": true,
+    "E_two_curves_consistent": true,
+    "E_underdetermined_6param": true,
+    "teeth_delta_qdim": true,
+    "teeth_fig8_palindromic": true,
+    "teeth_trefoil_chiral": true
+  },
+  "curves_N4": {
+    "fig8": "palindromic (amphichiral)",
+    "fig8_F_in_t=q^2": "t**4 - 2*t**3 + 3*t**2 - 4*t + 5 - 4/t + 3/t**2 - 2/t**3 + t**(-4)",
+    "trefoil": "chiral",
+    "trefoil_F_in_t=q^2": "1/t + 2/t**2 + 3/t**3 + 2/t**4 - 1/t**5 - 2/t**6 - 2/t**7 + t**(-9)"
+  },
+  "reconstruction": {
+    "free_params": [
+      "c_4_0",
+      "c_4_1",
+      "c_5_0",
+      "c_5_1",
+      "c_6_0",
+      "c_6_1"
+    ],
+    "next": "3번째 곡선(so₅=sp₄/so₆=sl₄) or 도식적 Dubrovnik skein(정의적 2변수)",
+    "normalization_puzzle": "naive a^-w·RT/δ 결합이 매듭 정리 F(a,0)=1 과 충돌(z=0 곡선상 a=1만 통과)",
+    "status": "미완 — 2곡선 동시적합 가능하나 6-파라미터 pure-a 족 잔여"
+  },
+  "scope_honesty": {
+    "delivered": "두 번째 검증된 SO(4) 특수화선(a=q³) — 방법 일반성(N=3 우연 아님)",
+    "not_yet": "완전 2변수 Kauffman F(a,z) — 정규화 미묘성·6-파라미터 잔여(3번째 곡선/skein 다음)"
+  }
+}
