@@ -46,9 +46,11 @@ applications (each re-verified and re-sealed). All four functions are realized.
 
 The library is built entirely by recomposing sealed modules — up to **Shor period-finding circuits
 that factor 15 = 3 × 5, 21 = 3 × 7** (genuine modular arithmetic, not the N=15 special case) **and
-91 = 7 × 13** (the W6.5 capstone, Tier-1 STRUCTURAL), extended by the **frontier ladder** to
-distinct-prime structural Shor apps (119 … 3683, 15–20 qubits) plus their exact `cmul*` payoff
-families, and the QEC stabilizer encoders (`[[9,1,3]]` Shor, `[[7,1,3]]` Steane Tier-2, `[[15,1,3]]`
+91 = 7 × 13** (the W6.5 capstone, Tier-1 STRUCTURAL), extended by the **frontier ladder** to a
+distinct-semiprime structural Shor frontier now **complete through N ≤ 1023** (the full 10-bit range —
+every readout-valid distinct-semiprime N sealed, up to `shor1011`, 11 qubits) with larger structural
+instances through 3683 (15–20 qubits), plus their exact `cmul*` payoff families, and the QEC stabilizer
+encoders (`[[9,1,3]]` Shor, `[[7,1,3]]` Steane Tier-2, `[[15,1,3]]`
 Reed-Muller). **Per-milestone count history → [`docs/CHANGELOG.md`](CHANGELOG.md).**
 
 **Guarantee split (no exact-coverage overclaim)** — authoritative in

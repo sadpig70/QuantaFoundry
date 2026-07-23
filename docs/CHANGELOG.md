@@ -183,3 +183,22 @@
 > `docs/CONVENTION-AUDIT.md`, `docs/TRUST-MODEL-VALIDATION-REPORT.md`, `docs/EMERGENCY-RESEAL.md`,
 > `_workspace/crossmodel/discover_round1/SEAL-RESULT.json`.
 
+> **★ Milestone — Shor frontier complete through N ≤ 1023 (2026-07-23).** The `qfa-loop` frontier
+> factory ran to **frontier-exhaustion** over the full 10-bit range: every readout-valid distinct-semiprime
+> `N ≤ 1023` now has a sealed Tier-1 STRUCTURAL `shor{N}` app (final `shor1011`) with its exact `cmul*`
+> payoff family and auto-redeemed subspace-permutation witnesses — **zero new modules** across the entire
+> ladder (the parametric factory reuses the verified templates, INV-F1 regression-gated byte-identical).
+> `next_unsealed_target()` returns `None`; re-expansion is a deliberate `hi`-raise only. Registry at closure:
+> **95 modules · 1431 unique apps · tier1 142 · root `556d5e97322affa0…`**. Operationally, the nightly
+> sealing cron is proposed to transition to a **weekly determinism health-check** (full reproduce) — the
+> factory's sealing *capability* is preserved as deterministic code, not a running process.
+
+> **Horizontal-expansion tracks (TrackHE, report-driven).** In parallel, external multi-runtime proposal
+> rounds (`report13…17`) were consumed as **observation/certificate** tracks (seal root unchanged): twisted
+> Drinfeld doubles `D^ω(D₄)/D^ω(Q₈)/D^ω(S₃)`, closed-negative refutations of over-reaching proposals
+> (`D^ω(ℤ₂⁴)` full non-abelianization, `Q₃₂` Sylow tower), the figure-8 knot as the first non-torus
+> amphichiral 3-braid (BMW₃ dim-15 context), the Altland-Zirnbauer 3D column completed (class DIII ℤ / AII
+> ℤ₂ strong TI / AIII ℤ), and the **ε-certification contract** deepened from upper bounds to **rigorous
+> lower bounds** — E5 operator-norm (`ε_lo > 0` ⟹ "this Trotter step is not exact") and E6 diamond-norm
+> (channel-level). Independent verification paths held at **10** (an 11th remains an open problem).
+

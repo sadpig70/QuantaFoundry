@@ -27,8 +27,8 @@ The trust comes not from the AI's judgement but from **deterministic gates + tam
 <!-- END generated:counts -->
 - **10 independent verification paths** ([`docs/VERIFICATION-PATHS.md`](docs/VERIFICATION-PATHS.md)) · 23 frozen consensus keys · **100% classified, 0 orphan** ([quality scorecard](registry/QF-QUALITY-SCORECARD.json)) · verification core public as
   **QPGF** → https://github.com/sadpig70/QPGF.
-- **710 of 712 unique apps carry at least one supplementary verification path** beyond the primary seal
-  (the 2 exceptions are honestly tiered: `ghz16_structural`, `rm15_tt`); **652 apps are independently
+- **1429 of 1431 unique apps carry at least one supplementary verification path** beyond the primary seal
+  (the 2 exceptions are honestly tiered: `ghz16_structural`, `rm15_tt`); **1289 apps are independently
   re-composed** from first-principles module unitaries and match their sealed hash
   ([coverage matrix](registry/VERIFICATION-COVERAGE.json)).
 - Pure non-destructive growth: every prior seal, frozen key, and oracle fingerprint reproduces
@@ -94,7 +94,8 @@ large Shor apps stay illustrative only.
 ## What's inside (short version)
 
 Bell/GHZ → QFT/QPE → Grover/amplitude estimation → **Shor period-finding** (15, 21, and a
-30-app distinct-semiprime frontier with full-unitary column verification) → Trotter/Suzuki/VQE/QAOA
+distinct-semiprime frontier **complete through N ≤ 1023** — the full 10-bit range — with full-unitary
+column verification on the smaller instances) → Trotter/Suzuki/VQE/QAOA
 → QEC stabilizer codes (Steane, RM15, BCH d≥5, HGP, concatenated [[25,1,9]], [[8,3,2]] transversal
 CCZ) → QSVT → fermionic encodings → non-abelian group Fourier (S₃/D₄/Q₈/B₃) → topological logical
 operations, MTC modular data (SU(2)₃/SU(2)₄, Drinfeld double D(S₃)), knot invariants, magic/
