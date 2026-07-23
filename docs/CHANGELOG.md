@@ -202,3 +202,22 @@
 > lower bounds** — E5 operator-norm (`ε_lo > 0` ⟹ "this Trotter step is not exact") and E6 diamond-norm
 > (channel-level). Independent verification paths held at **10** (an 11th remains an open problem).
 
+> **★ TrackHE17 (report17, 5 of 6 axes, 2026-07-23).** The v18 request round consumed 8-runtime proposals
+> into a symmetric deepening of each TrackHE16 axis (observation/certificate tracks, seal root unchanged):
+> **AZ 2D class AII (QSH ℤ₂) + CII 3D (2ℤ even winding) + full weak indices + a coarsening graph**
+> (DIII ℤ → AII ℤ₂ = winding mod 2; AIII ℤ ⊃ CII 2ℤ); the **ε-certification ladder completed to E7 —
+> exact Watrous diamond norm** `2√(1−ν²)` (E6 lower bound promoted to the exact channel value, 3-rung
+> bracket `[D_lo, D_exact, 2ε]`, 19 apps); **D^ω(D₄) twisted anyon count is ω-varying (22/19/16)** — the
+> "fixed 22" fallacy refuted via centralizer Schur multipliers, with the `H³(D₄,μ₂)` (dim 4) vs
+> `H³(Q₈,μ₂)` (dim 1) asymmetry as the twist resource; **D^ω(ℤ₂⁴) radical fully stratified** to `{2,4}`
+> — **radical = 1 is impossible by a parity theorem** (the commutator form is GF(2)-alternating so its rank
+> is even), refuting the proposed "radical-1 subclass", with the 15 type-III cocycles forming a single
+> `GL(4,2)` orbit (`Λ³V* ≅ V`); **A₇ modular (Brauer) structure** self-derived (9 classes, Brauer-irrep
+> counts = p-regular classes 6/6/8/7, cyclic-defect at p=5,7, defect-0 blocks). Plus the **rotated d=3
+> surface code `[[9,1,3]]`** physical layer (distance 3 exhaustive, CSS, merge = physical logical
+> measurement) complementing the earlier logical lattice-surgery CNOT. Registry unchanged at
+> **95 modules / 1431 unique apps · root `556d5e97…`** (all observations/certificates, zero new modules).
+> The 6th axis — the **2-variable Kauffman polynomial via a BMW₃ Ocneanu Markov trace** — is diagnosed but
+> unresolved (the dim-15 multiplication core verifies, but a σ₂-interaction convention error blocks a
+> consistent Markov trace) and deferred; it is the headline ask of request v18.
+
