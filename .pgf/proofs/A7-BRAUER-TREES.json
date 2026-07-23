@@ -1,0 +1,121 @@
+{
+  "_note": "A₇ Brauer tree·D·Cartan 완결(p=5,7 cyclic defect) — 문자표 Dixon 완전 자체유도·트리 전수+GF(p) 결정적 판정. 관측·seal 아님·module 0·root 불변. p=2,3(비순환 defect)=다음.",
+  "_schema": "a7-brauer-trees/v1",
+  "all_ok": true,
+  "blocks": {
+    "p5_defect0": [
+      10,
+      10,
+      15,
+      35
+    ],
+    "p5_principal": [
+      1,
+      6,
+      14,
+      14,
+      21
+    ],
+    "p7_defect0": [
+      14,
+      14,
+      21,
+      35
+    ],
+    "p7_principal": [
+      1,
+      6,
+      10,
+      10,
+      15
+    ]
+  },
+  "char_table": {
+    "class_sizes": [
+      1,
+      70,
+      105,
+      504,
+      630,
+      280,
+      210,
+      360,
+      360
+    ],
+    "degrees": [
+      1,
+      6,
+      10,
+      10,
+      14,
+      14,
+      15,
+      21,
+      35
+    ],
+    "element_orders": [
+      1,
+      3,
+      2,
+      5,
+      4,
+      3,
+      6,
+      7,
+      7
+    ],
+    "irrational": "10-dim 쌍의 7A/7B(ℚ(√−7))만"
+  },
+  "checks": {
+    "A_9_classes": true,
+    "A_degrees": true,
+    "A_irrational_only_10pair_7AB": true,
+    "A_orthogonality": true,
+    "A_sizes": true,
+    "A_sum_d2_2520": true,
+    "B_p5_defect0_by_degree": true,
+    "B_p7_defect0": true,
+    "B_p7_principal": true,
+    "C_detC_7": true,
+    "C_gf7_trace_excludes_169": true,
+    "C_p7_tree_unique": true,
+    "C_two_dim_families": true,
+    "D_Q_dim14": true,
+    "D_detC_5": true,
+    "D_hom_Q_to_6": true,
+    "D_no_trivial_factor": true,
+    "D_p5_tree_unique": true,
+    "D_rank_incidence_7": true,
+    "D_two_candidates": true,
+    "teeth_D_01": true,
+    "teeth_detC_eq_p_both": true,
+    "teeth_exceptional_rows_equal": true
+  },
+  "p5": {
+    "det_Cartan": 5,
+    "simple_dims": [
+      1,
+      13,
+      8,
+      6
+    ],
+    "tree": "1 — 14' — 21 — 14 — 6  [line, m=1]",
+    "verdict_tool": "Q=pairs21/im(incidence)=χ₁₄̂: trivial 0·Hom(Q,6̂)=1 → χ₁₄̂=[8|6] → 14(pairs)는 6옆·14'는 1옆(=1+13)"
+  },
+  "p7": {
+    "det_Cartan": 7,
+    "simple_dims": [
+      1,
+      5,
+      10
+    ],
+    "tree": "1 — 6 — 15 — (10,10̄)exc  [line, m=2]",
+    "verdict_tool": "GF(7) V₅ trace=2≠5 → {1,6,9} 결정적 배제"
+  },
+  "scope_honesty": {
+    "delivered": "p=5,7 Brauer tree·D·C 완결 — 문자표 Dixon 완전 자체유도·결정적 모듈러 판정",
+    "deterministic": "GF(p) 판정 전부 정확 선형대수(trace·고정공간·Hom) — 확률적 meataxe 미사용",
+    "external_fact": "cyclic-defect Brauer tree 정리(Dade: D=트리 incidence) 하나",
+    "next": "p=2,3 비순환 defect(D₄·ℤ₃²)의 D·C — 트리 이론 부재·별도 모듈러 계산"
+  }
+}
