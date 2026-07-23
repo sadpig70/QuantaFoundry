@@ -1,0 +1,57 @@
+{
+  "_note": "D^ω(ℤ₂⁴) radical 층화 — 관측·seal 아님·신규 module 0·root 불변. ★radical=1 불가(parity: alternating rank 짝수)·radical=0 불가(rank≤2 전 cocycle·type-III 유일 원천)·GL(4,2) 단일궤도(Λ³V*≅V). radical∈{2,4} 완전 층화.",
+  "_schema": "dtw-z2-4-radical-strata/v1",
+  "all_ok": true,
+  "checks": {
+    "A_radical1_impossible": true,
+    "A_radical_never_odd": true,
+    "A_rank_always_even": true,
+    "B_max_rank_2": true,
+    "B_radical0_impossible": true,
+    "C_type2_all_zero": true,
+    "C_type2_comm_rank_zero": true,
+    "C_type2_is_cocycle": true,
+    "D_all15_same_profile": true,
+    "D_profile_14x2_1x4": true,
+    "D_single_eq_all4": true,
+    "h3_mu2_dim_20": true,
+    "radical_values_are_2_4": true,
+    "teeth_symplectic_rank4_exists": true,
+    "teeth_trivial_rank0": true,
+    "teeth_type2_contrast": true,
+    "type3_count_4": true
+  },
+  "gl42_orbit": {
+    "distinct_radical_profiles": 1,
+    "type3_space": "Λ³(V*) ≅ V (V=𝔽₂⁴) → GL(4,2) transitive on 15 nonzero",
+    "uniform_profile": {
+      "radical=2": 14,
+      "radical=4": 1
+    },
+    "verdict": "★단일 궤도(크기 15) — 단일 삼중항 ≡ 4-삼중항(균일 층화)"
+  },
+  "stratification": {
+    "by_(triples,radical)": {
+      "1,2": 56,
+      "1,4": 4,
+      "2,2": 84,
+      "2,4": 6,
+      "3,2": 56,
+      "3,4": 4,
+      "4,2": 14,
+      "4,4": 1
+    },
+    "max_comm_rank": 2,
+    "radical_values": [
+      2,
+      4
+    ],
+    "verdict": "radical ∈ {2,4} 정확 — radical=0(rank≤2)·radical=1(parity) 둘 다 불가"
+  },
+  "type2_contribution": {
+    "comm_form_rank": 0,
+    "is_cocycle": true,
+    "model": "ω(a,b,c)=a_i b_j c_j (type-II, i≠j)",
+    "verdict": "★commutator 유일 원천 = type-III → dim H³=20 전체에서도 radical=0 불가"
+  }
+}
