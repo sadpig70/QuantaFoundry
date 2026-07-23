@@ -1,0 +1,112 @@
+{
+  "_note": "AZ 잔여칸: 2D AII(QSH ℤ₂)·CII 3D(2ℤ 짝 winding)·3D AII 완전 weak·조대화 그래프 — 관측·seal 아님·신규 module 0·root 불변. 정수 불변량(TRIM parity·mass-sign 닫힌형, float Berry 아님). AZ 표 외부인용 금지.",
+  "_schema": "az-aii2d-cii3d/v1",
+  "all_ok": true,
+  "az_coarsening": {
+    "AIII(ℤ)⊃CII(2ℤ)": "C²=−1 추가 → 짝수 부분군(winding 2배)",
+    "CII(2ℤ)→AII(ℤ₂)": "½winding mod 2",
+    "DIII(ℤ)→AII(ℤ₂)": "PHS(C²=+1) 제거 → ℤ₂ = winding mod 2",
+    "honesty": "각 관계=본 모델 winding-parity 논증 (AZ 표 인용 아님)",
+    "pattern": "대칭 추가=세분(refine)·제거=조대화(coarsen) — §4′(p) 검증객체"
+  },
+  "checks": {
+    "AII2D_4TRIM_not_8": true,
+    "AII2D_QSH_pattern": true,
+    "AII2D_T2_minus1": true,
+    "AII2D_TRS": true,
+    "AII2D_genuine_T_only": true,
+    "AII2D_inversion": true,
+    "AII3D_strong_pattern": true,
+    "AII3D_weak_TI_center": true,
+    "CII_C2_minus1": true,
+    "CII_PHS": true,
+    "CII_T2_minus1": true,
+    "CII_TRS": true,
+    "CII_chiral": true,
+    "CII_gap_open": true,
+    "CII_winding_all_even": true,
+    "CII_winding_nontrivial": true,
+    "coarsen_AIII_super_CII": true,
+    "coarsen_CII_to_AII": true,
+    "coarsen_DIII_to_AII": true,
+    "teeth_2D_break_inversion": true,
+    "teeth_CII_needs_C2_minus1": true,
+    "teeth_sign_conv": true,
+    "teeth_weak_vs_strong": true
+  },
+  "class_AII_2D": {
+    "QSH_windows": "m ∈ (−2,0) ∪ (0,2)",
+    "invariant": "ℤ₂ (Fu-Kane 4-TRIM parity Π sign(M))",
+    "model": "BHZ 4-band: sin kx Γ1 + sin ky Γ2 + (m+cos kx+cos ky) Γ3",
+    "verdict": "★2D 양자스핀홀 — ℤ₂",
+    "z2_by_m": {
+      "-1": 1,
+      "-3": 0,
+      "1": 1,
+      "3": 0
+    }
+  },
+  "class_AII_3D_weak": {
+    "by_m": {
+      "-2": {
+        "strong": 1,
+        "weak": [
+          0,
+          0,
+          0
+        ]
+      },
+      "-4": {
+        "strong": 0,
+        "weak": [
+          0,
+          0,
+          0
+        ]
+      },
+      "0": {
+        "strong": 0,
+        "weak": [
+          1,
+          1,
+          1
+        ]
+      },
+      "2": {
+        "strong": 1,
+        "weak": [
+          1,
+          1,
+          1
+        ]
+      },
+      "4": {
+        "strong": 0,
+        "weak": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "index_tuple": "(ν₀;ν₁ν₂ν₃)",
+    "note": "m∈(−1,1): 강한 0·약한 (111) = 약한 TI(층상 QSH)"
+  },
+  "class_CII_3D": {
+    "min_gap_by_m": {
+      "-4": 1.0,
+      "0": 1.0,
+      "4": 1.0
+    },
+    "model": "Wilson-Dirac 2복사 HA⊗I₂ (8-band)",
+    "symmetry": "T²=−1 · C²=−1 · S=T·C chiral (★C²=−1 ⟹ 2ℤ)",
+    "verdict": "★3D CII — 2ℤ (짝 winding = 2·AIII)",
+    "winding_by_m": {
+      "-2": -2,
+      "-4": 0,
+      "0": 4,
+      "2": -2,
+      "4": 0
+    }
+  }
+}
