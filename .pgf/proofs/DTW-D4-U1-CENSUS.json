@@ -1,0 +1,62 @@
+{
+  "_note": "D^ω(D₄) U(1) 완전 census — Bockstein μ₂→μ₄→μ₈ lift 사다리·전 조합 anyon 22 고정 ⟹ '22→19→16 ω-가변' 완전 반증. 관측·seal 아님·module 0·root 불변. ζ₁₆-spins 필요조건 발견(완전 S·T ζ₁₆=다음).",
+  "_schema": "dtw-d4-u1-census/v1",
+  "all_ok": true,
+  "bockstein1": {
+    "liftable_mu2_classes": [
+      0,
+      3,
+      5,
+      6
+    ],
+    "note": "부분군 구조 {0,3,5,6} (3⊕5=6)",
+    "obstructed": 12
+  },
+  "census": {
+    "mu2_prior": "16 클래스 전부 22 (dtw_d4_full_modular_observe)",
+    "mu4": {
+      "all_22": true,
+      "combos": 64
+    },
+    "verdict": "★H³(D₄,U(1)) 전체(8-torsion, transfer 표준정리)에서 anyon 수 22 고정 — report17/18 '22→19→16 ω-가변' 완전 반증(계수 제한 없음)"
+  },
+  "checks": {
+    "A_12_obstructed": true,
+    "A_liftable_0356": true,
+    "A_subgroup": true,
+    "B_assoc_variant_a": true,
+    "B_assoc_variant_b_fails": true,
+    "C_mu4_64_combos": true,
+    "C_mu4_all_22": true,
+    "D_mu8_128_combos": true,
+    "D_mu8_all_22": true,
+    "D_mu8_second_bockstein_8_64": true,
+    "E_P_census_0246": true,
+    "E_zeta16_needed": true,
+    "H3_dim4": true,
+    "teeth_bockstein_obstruction_real": true,
+    "teeth_census_complete": true,
+    "teeth_convention_pinned": true
+  },
+  "mu8": {
+    "all_22": true,
+    "census_combos": 128,
+    "second_bockstein_pass": 8
+  },
+  "r_sector_P": {
+    "values_mod8": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "zeta16_case": "★P=2,6 → λ⁴=±i → spins ζ₁₆ 필요(μ₄-twist 새 위상)",
+    "zeta8_case": "P=4 → λ⁴=−1 (dtw_d4_full_modular 관측)"
+  },
+  "scope_honesty": {
+    "delivered": "U(1) 완전 census(μ₂ 16·μ₄ 64·μ₈ 128 전 조합 22) — 완전 반증·μ₂-한정 경계 해소",
+    "external_fact": "H³(G,U(1))=|G|-torsion (transfer 표준정리) — census 완전성의 유일 외부 사실",
+    "next": "ζ₁₆ spins 의 완전 twisted S·T(μ₄-twist·ζ₁₆ 산술) — P=2,6 필요조건 관측까지",
+    "no_claim": "개별 U(1)-클래스 라벨링(조합↔클래스 대응·중복도) 무주장"
+  }
+}
