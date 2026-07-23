@@ -1,0 +1,120 @@
+{
+  "_note": "회전 surface code d=3 [[9,1,3]] 물리 부호 (stabilizer·distance·merge) — 관측·seal 아님·module 0·root 불변. lattice_surgery_observe(논리 CNOT) 물리층 상보. 인코더 유니터리 실봉인은 별도(qec_family).",
+  "_schema": "surface-code-d3/v1",
+  "all_ok": true,
+  "checks": {
+    "A_8_stabilizers": true,
+    "A_all_commute": true,
+    "A_logical_commute_stab": true,
+    "A_logical_pair_anticommute": true,
+    "A_rank_8_one_logical": true,
+    "B_distance_exactly_3": true,
+    "B_no_weight_le2_logical": true,
+    "C_MZZ_anticommute_XA": true,
+    "C_MZZ_commute_XAXB": true,
+    "C_MZZ_commute_all_phys_stab": true,
+    "D_css_XZ_separated": true,
+    "D_logical_X_weight3": true,
+    "D_logical_Z_weight3": true,
+    "D_single_errors_detected": true,
+    "teeth_css_commute": true,
+    "teeth_distance_exact": true,
+    "teeth_merge_specificity": true
+  },
+  "code": {
+    "X_stab": [
+      [
+        0,
+        3,
+        1,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        7,
+        5,
+        8
+      ]
+    ],
+    "Z_stab": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2,
+        4,
+        5
+      ],
+      [
+        3,
+        4,
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ]
+    ],
+    "d": 3,
+    "k": 1,
+    "logical_X": [
+      0,
+      1,
+      2
+    ],
+    "logical_Z": [
+      0,
+      3,
+      6
+    ],
+    "n_data": 9,
+    "n_stab": 8,
+    "name": "rotated surface code d=3 [[9,1,3]]"
+  },
+  "code_properties": {
+    "d": 3,
+    "k": 1,
+    "logical_weights": {
+      "X": 3,
+      "Z": 3
+    },
+    "note": "2D 위상 부호 — Shor [[9,1,3]](연접) 와 배치 상이",
+    "type": "CSS"
+  },
+  "distance": {
+    "dX": 3,
+    "dZ": 3,
+    "distance": 3,
+    "method": "전수 2^8 stabilizer 곱 min-weight — 정확 3(silent cap 없음)"
+  },
+  "merge": {
+    "effect": "X̄^A → X̄^A·X̄^B (join, 논리큐빗 2→1)·M 새 stabilizer",
+    "logical_cnot_ref": "lattice_surgery_observe (Horsman M_ZZ+M_XX+ancilla)",
+    "operator": "M = Z̄^A · Z̄^B (물리 논리 ZZ 측정)"
+  },
+  "scope_honesty": {
+    "covered": [
+      "회전 d=3 [[9,1,3]] stabilizer 자체유도",
+      "distance=3 전수",
+      "merge=물리 논리측정",
+      "CSS·논리 string·1-오류 검출"
+    ],
+    "not_covered": [
+      "인코더 유니터리 Tier-0 실봉인(qec_family 별도)",
+      "d=5(min-weight 2^25 불가)",
+      "논리 CNOT(=lattice_surgery_observe)",
+      "syndrome 디코딩·오류문턱"
+    ]
+  }
+}
