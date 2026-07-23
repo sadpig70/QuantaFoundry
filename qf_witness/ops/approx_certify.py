@@ -15,7 +15,7 @@ registry 는 exact-only 다: Trotter/Suzuki 앱은 "그 회로의 unitary" 를 e
   합성 전파        :  ‖U₂U₁ − V₂V₁‖ ≤ Σ‖Uᵢ−Vᵢ‖ (유니터리 준가법) → step^k 앱 ε = k·ε_step
   ‖·‖Δ = Pauli 전개 |계수| 합(삼각 상한) ≥ 실제 op-norm — 순수 유리수/π-닫힌형 산술.
 
-계약 E1–E6 (E1–E4=C1–C4 대응; ★E5=TrackHE15 P6a·★E6=TrackHE16 P4):
+계약 E1–E7 (E1–E4=C1–C4 대응; ★E5=TrackHE15 P6a·★E6=TrackHE16 P4·★E7=TrackHE17 P3):
   E1  target spec 정준화 + hash (유리수 계수 · π-닫힌형 t 만 허용)
   E2  ε_upper 는 sympy exact symbolic (float 단독 산출 금지; float 표시는 병기 표기)
   E3  감사추적: 방법·교환자 Pauli 전개·산술 종류 기록
@@ -27,7 +27,12 @@ registry 는 exact-only 다: Trotter/Suzuki 앱은 "그 회로의 unitary" 를 e
   ★E6  **diamond-norm 하계**(채널 수준): 유니터리 채널쌍 Φ_U,Φ_R 의 최대얽힘(Choi) 입력 트레이스거리
        D_lo = 2√(1−|Tr(U†R)|²/d²) ≤ ‖Φ_U−Φ_R‖_◇ (sup over inputs 중 한 입력 → 엄밀 하계, global-phase
        불변). E5 의 U·R 재사용(고유분해 불필요). D_lo>1e-9 ⟹ **채널 수준 비-exact 인증**(op-norm E5 강화).
-       양측 bracket [D_lo, 2ε]. ★exact Watrous 고유위상값 아님(참값은 그 사이)·제11 검증경로 아님.
+       양측 bracket [D_lo, 2ε].
+  ★E7  **exact Watrous diamond**(TrackHE17 P3): 하계 D_lo 를 **exact 값**으로 승격. Watrous(2009):
+       ‖Φ_U−Φ_R‖_◇ = 2√(1−ν²), ν=원점→conv{W 고유값} 거리(W=U†R). 고유값 e^{iθ_j} 단위원 위 →
+       ν=cos(Δ/2)(0∉hull, Δ=최소포함호폭) ⟹ ◇=2 sin(Δ/2); 0∈hull 이면 ◇=2. 3-rung bracket
+       [D_lo, D_exact, 2ε] 폐합(D_lo≤D_exact≤2ε 검증). ★**unitary 채널 한정**(Watrous 공식 조건)·
+       非unitary 는 E6 하계 유지·mpmath eig(interval-rigorous 아님, 값담보=bracket 포함)·제11 아님.
 
 독립 witness (관측·float): dense 실측 d_op = ‖U_seal − e^{-iHt}‖₂ ≤ ε 확인 (소형 8×8/16×16).
   witness 는 관측이며 인증의 주 증거는 symbolic 상한 — seal ≠ run ≠ verify 상속.
@@ -240,6 +245,12 @@ def certify_gridsynth(app_id):
     for g in seq:
         Uf = (Hf if g == "H" else Tf) @ Uf
     Rf = np.diag([np.exp(-1j * np.pi / 2 ** (k + 1)), np.exp(1j * np.pi / 2 ** (k + 1))])
+    # ★E7: exact Watrous diamond (2×2 unitary 채널쌍) — W=U†R 고유위상 spread. mpmath 고정밀.
+    with mp.workdps(_MP_DPS):
+        Ump = mp.matrix([[mp.mpc(Uf[i, j].real, Uf[i, j].imag) for j in range(2)] for i in range(2)])
+        Rmp = mp.matrix([[mp.mpc(Rf[i, j].real, Rf[i, j].imag) for j in range(2)] for i in range(2)])
+        diamond_exact_g = _diamond_watrous_exact(Ump, Rmp)
+    diamond_exact_gf = float(diamond_exact_g)
     d_obs = float(np.sqrt(max(0.0, 2 - abs(np.trace(Uf.conj().T @ Rf)))))
     _tol = 1e-9 + 1e-3 * eps_f          # float64 2−|tr| 상쇄오차 대비 (주 증거=symbolic)
     witness_ok = (op_norm(U_seal - Uf) < 1e-12 and abs(d_obs - eps_f) < _tol)
@@ -270,7 +281,11 @@ def certify_gridsynth(app_id):
         # ★E6: diamond 하계(Choi 트레이스거리) — gridsynth 는 tr2 exact 라 symbolic radical
         "diamond_lower_symbolic": str(diamond_lo),
         "diamond_lower_rigorous_float": diamond_lo_f,
+        "diamond_exact_watrous_float": diamond_exact_gf,           # ★E7 (2×2 exact Watrous)
         "diamond_interval_float": [diamond_lo_f, 2 * eps_f],
+        "diamond_bracket_e7": [diamond_lo_f, diamond_exact_gf, 2 * eps_f],
+        "e7_bracket_valid": bool(diamond_lo_f <= diamond_exact_gf + 1e-12
+                                 and diamond_exact_gf <= 2 * eps_f + 1e-9),
         "channel_nonexact_certified": bool(diamond_lo_f > 1e-9),
         "e6_audit": ("diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical "
                      "from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact "
@@ -286,7 +301,9 @@ def certify_gridsynth(app_id):
         "negative_control": {"perturbation": "sequence tamper (drop final gate)",
                              "bound_violated_detected": bool(teeth_ok)},
         "exact_trotter": False,
-        "certified": bool(witness_ok and teeth_ok and diamond_lo_f <= 2 * eps_f + 1e-30),
+        "certified": bool(witness_ok and teeth_ok and diamond_lo_f <= 2 * eps_f + 1e-30
+                          and diamond_lo_f <= diamond_exact_gf + 1e-12
+                          and diamond_exact_gf <= 2 * eps_f + 1e-9),
     }
 
 
@@ -430,6 +447,32 @@ def _diamond_lower(U, R):
     return 2 * mp.sqrt(val)
 
 
+def _diamond_watrous_exact(U, R):
+    """E7: 유니터리 채널쌍 Φ_U,Φ_R 의 **exact** diamond-norm(Watrous 2009 Thm).
+      ‖Φ_U−Φ_R‖_◇ = 2√(1−ν²),  ν = 원점→conv{W 고유값} 거리,  W = U†R (unitary).
+    W 고유값 e^{iθ_j} 는 단위원 위 → ν 는 최소포함호폭 Δ 로: 0∈hull(호폭>π) 이면 ν=0(◇=2),
+    아니면 ν=cos(Δ/2) ⟹ ◇ = 2 sin(Δ/2). E6 하계(한 입력)를 **exact 값**(sup 달성)으로 승격.
+    ★unitary 채널 한정(Watrous 공식 조건)·mpmath 고유분해(E5/E6 rigorous Taylor U·R 재사용,
+    eig 자체는 interval-rigorous 아님 → 값은 [D_lo, 2ε] bracket 안 검증으로 담보)."""
+    d = U.rows
+    W = mp.zeros(d)                       # W = U†R : W[i,j] = Σ_k conj(U[k,i])·R[k,j]
+    for i in range(d):
+        for j in range(d):
+            s = mp.mpc(0)
+            for k in range(d):
+                s += mp.conj(U[k, i]) * R[k, j]
+            W[i, j] = s
+    ev, _ = mp.eig(W)
+    ph = sorted(mp.arg(e) for e in ev)    # (−π, π]
+    gaps = [ph[(i + 1) % len(ph)] - ph[i] for i in range(len(ph) - 1)]
+    gaps.append(ph[0] + 2 * mp.pi - ph[-1])   # 순환 gap
+    maxgap = max(gaps)
+    if maxgap <= mp.pi:                   # 최대 gap ≤ π ⟹ 0 ∈ convex hull
+        return mp.mpf(2)
+    span = 2 * mp.pi - maxgap             # 최소포함호폭 Δ ≤ π
+    return 2 * mp.sin(span / 2)
+
+
 def app_golden(app_id):
     """spec 의 app_golden 블록 exec → U_seal (Tier-0 봉인이 composite==golden 확정한 회로 unitary)."""
     txt = open(os.path.join(SPECS_APPS, f"{app_id}.app.pg"), encoding="utf-8").read()
@@ -503,8 +546,10 @@ def certify(app_id):
         U_mp, R_mp = _trotter_UR(c, t_mp, t_target_mp, n)
         eps_lo = _col_norm_lower(U_mp, R_mp)          # E5
         diamond_lo = _diamond_lower(U_mp, R_mp)       # ★E6
+        diamond_exact = _diamond_watrous_exact(U_mp, R_mp)   # ★E7
     eps_lo_f = float(eps_lo)
     diamond_lo_f = float(diamond_lo)
+    diamond_exact_f = float(diamond_exact)
     nonexact = bool(eps_lo > _E5_NONEXACT_THRESHOLD)
     channel_nonexact = bool(diamond_lo > _E5_NONEXACT_THRESHOLD)   # ★E6: 채널 수준 비-exact
     # E5 정합: 하계 ≤ 상한 (구간 유효성) · d_obs 관측이 구간 안
@@ -512,6 +557,9 @@ def certify(app_id):
     e5_dobs_in_interval = bool(eps_lo_f - 1e-9 <= d_obs <= eps_f + 1e-9)
     # E6 정합: D_lo ≤ diamond ≤ 2ε (하계 ≤ 상한 2ε — unitary 채널 ‖Φ_U−Φ_R‖_◇ ≤ 2‖U−R‖)
     e6_interval_valid = bool(diamond_lo <= mp.mpf(2) * mp.mpf(eps_f) + _INTERVAL_SLACK)
+    # ★E7 정합: D_lo(E6) ≤ D_exact(Watrous) ≤ 2ε — exact 값이 E6 하계와 상한 사이(bracket 폐합)
+    e7_bracket_valid = bool(diamond_lo <= diamond_exact + _INTERVAL_SLACK
+                            and diamond_exact <= mp.mpf(2) * mp.mpf(eps_f) + _INTERVAL_SLACK)
 
     spec_str = c["target"]
     return {
@@ -527,7 +575,14 @@ def certify(app_id):
         "nonexact_certified": nonexact,                # ★ε_lo>1e-9 ⟹ exact 아님 rigorous
         "metric": "op_norm (no phase alignment needed: golden is the literal circuit product)",
         "diamond_lower_rigorous_float": diamond_lo_f,   # ★E6 (Choi 입력 트레이스거리 하계)
+        "diamond_exact_watrous_float": diamond_exact_f,       # ★E7 (exact Watrous 값)
         "diamond_interval_float": [diamond_lo_f, 2 * eps_f],  # [D_lo, 2ε] 양측 bracket
+        "diamond_bracket_e7": [diamond_lo_f, diamond_exact_f, 2 * eps_f],   # ★E7 3-rung [D_lo, D_exact, 2ε]
+        "e7_bracket_valid": e7_bracket_valid,
+        "e7_audit": ("exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) "
+                     "(unitary channels, Watrous 2009). E6 lower bound promoted to exact point value "
+                     "(sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig "
+                     "(not interval-rigorous itself; value담보 = bracket containment). unitary-only."),
         "channel_nonexact_certified": channel_nonexact,       # ★D_lo>1e-9 ⟹ 채널 수준 비-exact
         "diamond_upper_note": "<= 2*epsilon for the unitary channel pair",
         "e6_audit": ("diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance "
@@ -554,7 +609,7 @@ def certify(app_id):
         "exact_trotter": bool(eps == 0),
         "e5_interval_valid": e5_interval_valid,
         "certified": bool(witness_ok and teeth_ok and e5_interval_valid
-                          and e5_dobs_in_interval and e6_interval_valid),
+                          and e5_dobs_in_interval and e6_interval_valid and e7_bracket_valid),
     }
 
 
@@ -565,9 +620,11 @@ def _write(certs):
                   "ε 는 목표 e^{-iHt} 대비 op-norm 오차 — E1–E4=**상한**(sympy symbolic exact) + "
                   "★E5=op-norm **하계**(rigorous [ε_lo,ε_hi]: mpmath Taylor expm dps=60,K=140,나머지<1e-100 "
                   "로 U·R 재계산→열노름 하계) + ★E6=**diamond-norm 하계**(채널 수준: 최대얽힘 Choi 입력 "
-                  "트레이스거리 D_lo=2√(1−|Tr(U†R)|²/d²) ≤ ‖Φ_U−Φ_R‖_◇, 양측 bracket [D_lo,2ε]). "
+                  "트레이스거리 D_lo=2√(1−|Tr(U†R)|²/d²) ≤ ‖Φ_U−Φ_R‖_◇, 양측 bracket [D_lo,2ε]) + "
+                  "★E7=**exact Watrous diamond**(2√(1−ν²), ν=원점→conv{eig(U†R)} 거리 — 하계를 exact 값으로 "
+                  "승격, 3-rung [D_lo,D_exact,2ε] 폐합·unitary 한정). "
                   "ε_lo>1e-9 ⟹ 비-exact·D_lo>1e-9 ⟹ 채널 수준 비-exact(heis2 는 둘 다≈0=exact). "
-                  "★E5/E6 제11 검증경로 아님·하계≠합성 최적성·E6≠exact Watrous 값. "
+                  "★E5/E6/E7 제11 검증경로 아님·하계≠합성 최적성·E7=unitary 채널 한정(非unitary=E6 하계). "
                   "봉인 앱 자체는 여전히 '그 회로의 unitary' exact — 이 파일은 목표 대비 근사 품질만 인증."),
         "certificates": certs,
     }
@@ -592,6 +649,9 @@ def quick_recheck():
             return False
         # ★E6: 채널 수준 비-exact 인증 재확인
         if r["channel_nonexact_certified"] != s.get("channel_nonexact_certified"):
+            return False
+        # ★E7: exact Watrous diamond bracket 폐합(D_lo≤D_exact≤2ε) 재확인
+        if not (r.get("e7_bracket_valid") and s.get("e7_bracket_valid")):
             return False
     # E5 계약 실증: heis2 exact(nonexact=False) · tfim3 nonexact 인증
     if saved["heis2_trotter_step"].get("nonexact_certified") is not False:

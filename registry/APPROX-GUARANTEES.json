@@ -9,6 +9,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": false,
+      "diamond_bracket_e7": [
+        1.5777218104420236e-30,
+        0.0,
+        0.0
+      ],
+      "diamond_exact_watrous_float": 0.0,
       "diamond_interval_float": [
         1.5777218104420236e-30,
         0.0
@@ -19,6 +25,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         2.7225691840642495e-61,
         0.0
@@ -52,6 +60,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.6715527135181804,
+        0.9354143466934853,
+        1.8505508252042548
+      ],
+      "diamond_exact_watrous_float": 0.9354143466934853,
       "diamond_interval_float": [
         0.6715527135181804,
         1.8505508252042548
@@ -62,6 +76,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.39347430838080666,
         0.9252754126021274
@@ -95,6 +111,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.02454307657143985,
+        0.02454307657143983,
+        0.0245435385966179
+      ],
+      "diamond_exact_watrous_float": 0.02454307657143983,
       "diamond_interval_float": [
         0.02454307657143985,
         0.0245435385966179
@@ -106,6 +128,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.01227176929830895,
         0.01227176929830895
@@ -138,6 +161,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.00011208974831659028,
+        0.00011208974831619348,
+        0.0001120897483605999
+      ],
+      "diamond_exact_watrous_float": 0.00011208974831619348,
       "diamond_interval_float": [
         0.00011208974831659028,
         0.0001120897483605999
@@ -149,6 +178,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         5.604487418029995e-05,
         5.604487418029995e-05
@@ -181,6 +211,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.09469333194091854,
+        0.09469333194091879,
+        0.0947198923343219
+      ],
+      "diamond_exact_watrous_float": 0.09469333194091879,
       "diamond_interval_float": [
         0.09469333194091854,
         0.0947198923343219
@@ -192,6 +228,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.04735994616716095,
         0.04735994616716095
@@ -224,6 +261,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        2.519497582457409e-05,
+        2.519497582435799e-05,
+        2.5194975825073886e-05
+      ],
+      "diamond_exact_watrous_float": 2.519497582435799e-05,
       "diamond_interval_float": [
         2.519497582457409e-05,
         2.5194975825073886e-05
@@ -235,6 +278,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         1.2597487912536943e-05,
         1.2597487912536943e-05
@@ -267,6 +311,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.0629644462882372,
+        0.06296444628823711,
+        0.06297225041967096
+      ],
+      "diamond_exact_watrous_float": 0.06296444628823711,
       "diamond_interval_float": [
         0.0629644462882372,
         0.06297225041967096
@@ -278,6 +328,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.03148612520983548,
         0.03148612520983548
@@ -310,6 +361,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.00014695266098690746,
+        0.00014695266098671398,
+        0.00014695266108607794
+      ],
+      "diamond_exact_watrous_float": 0.00014695266098671398,
       "diamond_interval_float": [
         0.00014695266098690746,
         0.00014695266108607794
@@ -321,6 +378,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         7.347633054303897e-05,
         7.347633054303897e-05
@@ -353,6 +411,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.025064671605722143,
+        0.025064671605722073,
+        0.025065163719950732
+      ],
+      "diamond_exact_watrous_float": 0.025064671605722073,
       "diamond_interval_float": [
         0.025064671605722143,
         0.025065163719950732
@@ -364,6 +428,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.012532581859975366,
         0.012532581859975366
@@ -396,6 +461,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        8.299249206818352e-05,
+        8.2992492067778e-05,
+        8.299249208604701e-05
+      ],
+      "diamond_exact_watrous_float": 8.2992492067778e-05,
       "diamond_interval_float": [
         8.299249206818352e-05,
         8.299249208604701e-05
@@ -407,6 +478,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         4.1496246043023504e-05,
         4.1496246043023504e-05
@@ -439,6 +511,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.11230477678206219,
+        0.11230477678206202,
+        0.11234910134981517
+      ],
+      "diamond_exact_watrous_float": 0.11230477678206202,
       "diamond_interval_float": [
         0.11230477678206219,
         0.11234910134981517
@@ -450,6 +528,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.056174550674907585,
         0.056174550674907585
@@ -482,6 +561,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        9.18485699678466e-05,
+        9.184856996730021e-05,
+        9.184856999206064e-05
+      ],
+      "diamond_exact_watrous_float": 9.184856996730021e-05,
       "diamond_interval_float": [
         9.18485699678466e-05,
         9.184856999206064e-05
@@ -493,6 +578,7 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond LOWER bound 2*sqrt(1-|tr(U^dag R)|^2/d^2)=sqrt(4-|tr|^2) (d=2, exact radical from ring shadow) <= ||Phi_U - Phi_R||_diamond. one Choi input <= sup. NOT exact Watrous value; NOT an 11th verification path.",
       "e6_interval_valid": true,
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         4.592428499603032e-05,
         4.592428499603032e-05
@@ -525,6 +611,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.004296346864112508,
+        0.006169810059372549,
+        0.2529971726848749
+      ],
+      "diamond_exact_watrous_float": 0.006169810059372549,
       "diamond_interval_float": [
         0.004296346864112508,
         0.2529971726848749
@@ -535,6 +627,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.0026134485630619274,
         0.12649858634243746
@@ -568,6 +662,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.6720924239978385,
+        0.9425430112589037,
+        2.4674011002723395
+      ],
+      "diamond_exact_watrous_float": 0.9425430112589037,
       "diamond_interval_float": [
         0.6720924239978385,
         2.4674011002723395
@@ -578,6 +678,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.38502698259150064,
         1.2337005501361697
@@ -611,6 +713,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.546804715716026,
+        0.7662750996009835,
+        1.2337005501361697
+      ],
+      "diamond_exact_watrous_float": 0.7662750996009835,
       "diamond_interval_float": [
         0.546804715716026,
         1.2337005501361697
@@ -621,6 +729,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.33517582468129786,
         0.6168502750680849
@@ -654,6 +764,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.15768700169968133,
+        0.22406378582878733,
+        0.4441003170355443
+      ],
+      "diamond_exact_watrous_float": 0.22406378582878733,
       "diamond_interval_float": [
         0.15768700169968133,
         0.4441003170355443
@@ -664,6 +780,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.09759390654684438,
         0.22205015851777216
@@ -697,6 +815,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.005921139123333152,
+        0.008796864485909888,
+        0.3909956305129885
+      ],
+      "diamond_exact_watrous_float": 0.008796864485909888,
       "diamond_interval_float": [
         0.005921139123333152,
         0.3909956305129885
@@ -707,6 +831,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.0039068268388645095,
         0.19549781525649426
@@ -740,6 +866,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.6588634180687254,
+        1.1582017042161805,
+        1.8505508252042548
+      ],
+      "diamond_exact_watrous_float": 1.1582017042161805,
       "diamond_interval_float": [
         0.6588634180687254,
         1.8505508252042548
@@ -750,6 +882,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.43665399684882095,
         0.9252754126021274
@@ -783,6 +917,12 @@
       },
       "certified": true,
       "channel_nonexact_certified": true,
+      "diamond_bracket_e7": [
+        0.19430987434651786,
+        0.3465987241025218,
+        0.6863368536003867
+      ],
+      "diamond_exact_watrous_float": 0.3465987241025218,
       "diamond_interval_float": [
         0.19430987434651786,
         0.6863368536003867
@@ -793,6 +933,8 @@
       "e5_interval_valid": true,
       "e6_audit": "diamond-norm LOWER bound via maximally-entangled (Choi) input trace distance 2*sqrt(1-|Tr(U^dag R)|^2/d^2) <= ||Phi_U - Phi_R||_diamond (one input <= sup over inputs). Rigorous (mpmath, from E5 Taylor U&R; no eigendecomposition). global-phase invariant. NOT the exact Watrous eigenphase value (that lies within [D_lo, 2eps]); NOT an 11th verification path; channel-level strengthening of E5 op-norm bound.",
       "e6_interval_valid": true,
+      "e7_audit": "exact Watrous diamond 2*sqrt(1-nu^2), nu=origin-to-conv-hull dist of eig(U^dag R) (unitary channels, Watrous 2009). E6 lower bound promoted to exact point value (sup over inputs attained). D_lo(E6) <= D_exact(E7) <= 2eps verified. mpmath eig (not interval-rigorous itself; value담보 = bracket containment). unitary-only.",
+      "e7_bracket_valid": true,
       "epsilon_interval_float": [
         0.13108733360054026,
         0.3431684268001933
