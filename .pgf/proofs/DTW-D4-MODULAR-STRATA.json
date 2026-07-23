@@ -1,0 +1,98 @@
+{
+  "_note": "D^ω(D₄) twisted anyon-count 층화 + untwisted 22 구조 — 관측·seal 아님·module 0·root 불변. ★anyon 수 ω-가변(22 고정 반증)·H³ 비대칭 4 vs 1·차원전이. 완전 22×22 twisted S(ζ₈)·D₄ 정확 사영은 미착수(다음).",
+  "_schema": "dtw-d4-modular-strata/v1",
+  "all_ok": true,
+  "checks": {
+    "A_5_classes": true,
+    "A_centralizer_orders": true,
+    "A_total_dim2_64": true,
+    "A_untwisted_22": true,
+    "B_Z2sq_reduces_4to1": true,
+    "B_Z4_rigid_4": true,
+    "B_anyon_count_varies": true,
+    "B_not_fixed_22": true,
+    "C_H3_D4_dim4": true,
+    "C_H3_Q8_dim1": true,
+    "C_H3_asymmetry": true,
+    "D_Z4_stays_dim1": true,
+    "D_reducible_get_dim2": true,
+    "teeth_Z2sq_symplectic_radical0": true,
+    "teeth_Z4_no_reduction": true,
+    "teeth_untwisted_regression": true
+  },
+  "dimension_transition": {
+    "reducible": "ℤ₂²·D₄ centralizer → 2차원 사영 irrep(anyon 차원 1→2)",
+    "rigid": "ℤ₄ centralizer → 1차원 유지",
+    "verdict": "★비아벨화 = ℤ₂² centralizer 섹터에서만(v16 재확인·정량화)"
+  },
+  "h3_asymmetry": {
+    "dim_H3_D4_mu2": 4,
+    "dim_H3_Q8_mu2": 1,
+    "verdict": "★D₄ twist 자원(16) ≫ Q₈(2) — untwisted 동형 double 구별"
+  },
+  "twisted_anyon_strata": {
+    "anyon_counts_by_z2sq_twists": {
+      "0": 22,
+      "1": 19,
+      "2": 16
+    },
+    "projective_by_class": {
+      "(0, 0)": {
+        "note": "abelianization ℤ₄ (cyclic·M=0)",
+        "twisted_projective": 5,
+        "untwisted": 5
+      },
+      "(0, 1)": {
+        "note": "ℤ₂² symplectic (β-regular 검증)",
+        "twisted_projective": 1,
+        "untwisted": 4
+      },
+      "(1, 0)": {
+        "note": "abelianization ℤ₄ (cyclic·M=0)",
+        "twisted_projective": 4,
+        "untwisted": 4
+      },
+      "(1, 1)": {
+        "note": "ℤ₂² symplectic (β-regular 검증)",
+        "twisted_projective": 1,
+        "untwisted": 4
+      },
+      "(2, 0)": {
+        "note": "abelianization ℤ₄ (cyclic·M=0)",
+        "twisted_projective": 5,
+        "untwisted": 5
+      }
+    },
+    "reducible_classes": 2,
+    "verdict": "★anyon 수 ω-가변 22/19/16(+D₄ 축소) — 22 고정 반증(agent08 정정)",
+    "z2sq_classes": [
+      "(0, 1)",
+      "(1, 1)"
+    ]
+  },
+  "untwisted": {
+    "D2": 64,
+    "centralizer_orders": {
+      "(0, 0)": 8,
+      "(0, 1)": 4,
+      "(1, 0)": 4,
+      "(1, 1)": 4,
+      "(2, 0)": 8
+    },
+    "classes": [
+      "(0, 0)",
+      "(1, 0)",
+      "(2, 0)",
+      "(0, 1)",
+      "(1, 1)"
+    ],
+    "irreps_per_class": {
+      "(0, 0)": 5,
+      "(0, 1)": 4,
+      "(1, 0)": 4,
+      "(1, 1)": 4,
+      "(2, 0)": 5
+    },
+    "total_anyons": 22
+  }
+}
