@@ -1,0 +1,48 @@
+{
+  "_note": "BMW₃ Markov-trace crux 방법 해결 — U_q(sl₂) spin-1 R-matrix + ribbon pivotal quantum trace(Markov 자동). fig-8 amphichiral/trefoil chiral Kauffman(SO(3) 특수화선). 관측·seal 아님·module 0·root 불변. 완전 2변수 F(a,z)=다중 N 다음단계.",
+  "_schema": "bmw3-kauffman-so3/v1",
+  "all_ok": true,
+  "bmw_params": {
+    "a": "q^4 = Q^(N-1), N=3",
+    "delta": "q^2+1+q^-2 = [3]_q = qdim(V_1)",
+    "eigenvalues": "q^2 (x5, sym), -q^-2 (x3, antisym), q^-4 (x1, singlet)",
+    "z": "q^2 - q^-2 = Q - Q^-1"
+  },
+  "checks": {
+    "A_EF_relation": true,
+    "A_KEK_q2E": true,
+    "B_delta_eq_qdim": true,
+    "B_eigenvalues_so3": true,
+    "C_braid_relation": true,
+    "D_unlink_delta2": true,
+    "E_fig8_amphichiral": true,
+    "E_fig8_laurent": true,
+    "E_fig8_palindromic": true,
+    "E_fig8_writhe0": true,
+    "F_amphichiral_vs_chiral": true,
+    "F_trefoil_chiral": true,
+    "F_trefoil_laurent": true,
+    "teeth_amphichiral_chiral_discriminate": true,
+    "teeth_braid": true,
+    "teeth_delta_qdim": true
+  },
+  "fig8": {
+    "F_so3_in_t=q^2": "t**6 - t**5 - t**4 + 2*t**3 - t**2 - t + 3 - 1/t - 1/t**2 + 2/t**3 - 1/t**4 - 1/t**5 + t**(-6)",
+    "amphichiral": "palindromic t↔1/t ⟺ F(a,z)=F(a^-1,z)",
+    "knot": "4_1 = closure (σ1 σ2^-1)^2",
+    "writhe": 0
+  },
+  "scope_honesty": {
+    "delivered": "SO(3) 특수화선 F|_{a=q^4,z=q^2-q^-2} — fig-8 amphichiral·trefoil chiral 검증",
+    "distinct_from": "spin-1 SO(3) colored — ordinary Jones(bmw3_fig8_observe)와 별개 특수화",
+    "not_yet": "완전 2변수 Kauffman F(a,z) = 다중 N(so_N) 보간 or 추상 BMW₃ trace (다음 단계)",
+    "resolved": "crux 방법 = ribbon pivotal quantum trace(Markov 자동), cyclicity-solve 우회"
+  },
+  "trefoil": {
+    "F_so3_in_t=q^2": "1/t + t**(-2) + t**(-3) + t**(-4) + t**(-5) - 1/t**8 - 1/t**9 - 1/t**10 + t**(-12)",
+    "chiral": "F ≠ F(mirror)",
+    "knot": "3_1 = closure σ1^3",
+    "mirror_F": "t**12 - t**10 - t**9 - t**8 + t**5 + t**4 + t**3 + t**2 + t",
+    "writhe": 3
+  }
+}
