@@ -1,0 +1,185 @@
+{
+  "_note": "A₇ 모듈러(Brauer) 표현 구조 — 관측·데이터·seal 아님·module 0·root 불변. 9 켤레류·Brauer 수(p-regular)·Sylow defect·defect-0 block 자체유도. 완전 decomposition matrix D·Cartan C·Brauer tree 구체형은 미착수(다음).",
+  "_schema": "a7-brauer/v1",
+  "all_ok": true,
+  "brauer_irreps": {
+    "by_prime": {
+      "2": 6,
+      "3": 6,
+      "5": 8,
+      "7": 7
+    },
+    "rule": "# = # p-regular classes (order ⊥ p)"
+  },
+  "checks": {
+    "A_7cycle_splits": true,
+    "A_9_classes": true,
+    "A_order_2520": true,
+    "A_orders": true,
+    "B_9_ordinary_irreps": true,
+    "B_sum_sq_2520": true,
+    "C_brauer_counts": true,
+    "D_cyclic_defect_5_7": true,
+    "D_noncyclic_2_3": true,
+    "D_sylow_orders": true,
+    "E_defect0_p2_p3_none": true,
+    "E_defect0_p5": true,
+    "E_defect0_p7": true,
+    "E_p5_block_count": true,
+    "teeth_brauer_le_ordinary": true,
+    "teeth_p7_regular_excludes_7": true,
+    "teeth_sylow2_D4": true
+  },
+  "conjugacy": {
+    "cycle_types": [
+      {
+        "cycle_type": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "order": 1,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        "order": 2,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "order": 3,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          3,
+          2,
+          2
+        ],
+        "order": 6,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          3,
+          3,
+          1
+        ],
+        "order": 3,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          4,
+          2,
+          1
+        ],
+        "order": 4,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          5,
+          1,
+          1
+        ],
+        "order": 5,
+        "split": false
+      },
+      {
+        "cycle_type": [
+          7
+        ],
+        "order": 7,
+        "split": true
+      }
+    ],
+    "n_classes": 9
+  },
+  "defect0_blocks": {
+    "by_prime": {
+      "2": [],
+      "3": [],
+      "5": [
+        10,
+        10,
+        15,
+        35
+      ],
+      "7": [
+        14,
+        14,
+        21,
+        35
+      ]
+    },
+    "note": "p-defect-0 기약 = dim 이 |A₇|_p 로 나눠짐(자체 projective simple block)",
+    "verdict": "★p=5,7 각 4 defect-0 + 나머지 principal(cyclic-defect Brauer tree)"
+  },
+  "ordinary": {
+    "dims": [
+      1,
+      6,
+      10,
+      10,
+      14,
+      14,
+      15,
+      21,
+      35
+    ],
+    "n_irreps": 9,
+    "sum_of_squares": 2520
+  },
+  "scope_honesty": {
+    "covered": [
+      "A₇ 9 켤레류·위수 자체유도",
+      "Brauer 기약 수(p-regular)",
+      "Sylow defect(cyclic 5,7)",
+      "defect-0 block 구성",
+      "ordinary Σd²=2520 불변량"
+    ],
+    "next": "decomposition matrix + Cartan + Brauer tree (GF(p) 모듈러 표현 계산)",
+    "not_covered": [
+      "완전 decomposition matrix D(9×ℓ_p)",
+      "Cartan C=DᵀD",
+      "Brauer tree 구체형",
+      "ordinary 문자표 자체유도(표준값 사용)",
+      "게이트 실현(데이터 한정)"
+    ]
+  },
+  "sylow_defect": {
+    "cyclic_defect": [
+      "5 (ℤ₅)",
+      "7 (ℤ₇)"
+    ],
+    "noncyclic": [
+      "2 (D₄)",
+      "3 (ℤ₃²)"
+    ],
+    "sylow_orders": {
+      "2": 8,
+      "3": 9,
+      "5": 5,
+      "7": 7
+    },
+    "verdict": "p=5,7 cyclic-defect block(Brauer tree)·p=2,3 non-cyclic. v16 Sylow-2=D₄ 재확인"
+  }
+}
