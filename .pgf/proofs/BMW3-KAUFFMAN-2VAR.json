@@ -1,0 +1,44 @@
+{
+  "D_4_1": {
+    "polynomial": "a**2*z**2 + a**2 - a*z**3 - a*z - 2*z**2 - 1 + z**3/a + z/a + z**2/a**2 + a**(-2)",
+    "z_coeffs_a_laurent": {
+      "0": "(a**4 - a**2 + 1)/a**2",
+      "1": "-(a - 1)*(a + 1)/a",
+      "2": "(a - 1)**2*(a + 1)**2/a**2",
+      "3": "-(a - 1)*(a + 1)/a"
+    }
+  },
+  "_note": "figure-8 완전 2변수 Kauffman/Dubrovnik D(a,z) — SO(3)+SO(4) quantum-trace 특수화선에서 유일 복원·Jones+Dubrovnik-amphichiral 독립확증. 트랙 최초 완전 2변수 매듭 불변량. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "bmw3-kauffman-2var/v1",
+  "all_ok": true,
+  "amphichirality": {
+    "holds": true,
+    "imposed": false,
+    "note": "fig-8 amphichiral 을 복원 없이 확증 — Kauffman F 의 D(a,z)=D(a^-1,z) 와 구별",
+    "relation": "D(a,z)=D(a^-1,-z) (Dubrovnik 관례)"
+  },
+  "checks": {
+    "A_solution_exists": true,
+    "A_unique_free0": true,
+    "B_reproduce_N3": true,
+    "B_reproduce_N4": true,
+    "C_jones_specialization": true,
+    "D_dubrovnik_amphichiral": true,
+    "D_not_kauffman_amphi": true,
+    "teeth_dubrovnik_amphi_independent": true,
+    "teeth_jones_independent": true,
+    "teeth_unique": true
+  },
+  "jones": {
+    "V_4_1": "t**2 - t + 1 - 1/t + t**(-2)",
+    "note": "복원에 미사용 — bmw3_fig8_observe(TrackHE16 P3) Jones 와 독립 일치",
+    "substitution": "a=i·t^(-3/4), z=i(t^(1/4)+t^(-1/4))"
+  },
+  "scope_honesty": {
+    "achievement": "★트랙 최초 완전 2변수 매듭 불변량 — figure-8 Kauffman/Dubrovnik D(a,z)",
+    "convention": "Dubrovnik(so_N RT quantum trace) — Kauffman F 와 부호변수변환",
+    "provenance": "N=3/N=4 곡선 = bmw3_kauffman_so3/so4(각 CI 검증) 출력",
+    "rigor": "a-span±2(4교차 Kauffman a-폭 한계) 가정이나, 결과가 복원 미사용 2독립 불변량(Jones 특수화선·Dubrovnik amphichirality)을 정확 만족 → 확증(가정 아님)",
+    "scope": "figure-8 한정 — 타 매듭은 동일 방법 확장(별도)"
+  }
+}
