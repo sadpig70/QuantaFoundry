@@ -1,0 +1,58 @@
+{
+  "_note": "D^ω(ℤ₂⁵) radical parity 정리 — 관측·seal 아님·module 0·root 불변. ★radical parity = n mod 2(commutator form 은 군 ℤ₂ⁿ 위 n×n·agent08 Λ³ 혼동 반증)·n=5 홀→radical{1,3,5}·radical=1 존재. TrackHE17 P5(n=4) 확장.",
+  "_schema": "dtw-z2-5-radical-parity/v1",
+  "all_ok": true,
+  "checks": {
+    "A_agent08_even_refuted": true,
+    "A_radical_all_odd": true,
+    "A_radical_parity_eq_n": true,
+    "A_rank_all_even": true,
+    "B_proj_dim_4": true,
+    "B_radical1_exists": true,
+    "B_radical1_max_nonabelian": true,
+    "C_n5_distinguishes": true,
+    "C_radical_parity_is_n_not_binom": true,
+    "teeth_n4_even_regression": true,
+    "teeth_radical_le_n": true,
+    "teeth_rank_even_always": true
+  },
+  "parity_tables": {
+    "C(n,3)_mod2_is_Lambda3_dim_NOT_radical": {
+      "3": 1,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 1
+    },
+    "D2": 1024,
+    "note": "★n=5: radical parity=n%2=1(홀) vs C(5,3)%2=0(짝) — agent08 이 후자로 오판",
+    "radical_parity_=_n_mod2": {
+      "3": 1,
+      "4": 0,
+      "5": 1,
+      "6": 0,
+      "7": 1
+    }
+  },
+  "parity_theorem": {
+    "agent08_error": "Λ³(dim C(n,3)) 혼동 — commutator form 은 cocycle 공간이 아니라 군 위 형",
+    "n5_radical_values": [
+      1,
+      3,
+      5
+    ],
+    "n5_rank_values": [
+      0,
+      2,
+      4
+    ],
+    "statement": "radical parity = n mod 2 (commutator form B_a: 군 ℤ₂ⁿ 위 n×n alternating)",
+    "verdict": "★n=5 홀 → radical 홀 {1,3,5} (request 힌트 옳음·agent08 'even' 반증)"
+  },
+  "radical1": {
+    "count": 13888,
+    "exists": true,
+    "projective_irrep_dim": 4,
+    "verdict": "★radical=1 존재(n=5 최대 비아벨화)·P5 의 n=4 불가와 대비"
+  }
+}
