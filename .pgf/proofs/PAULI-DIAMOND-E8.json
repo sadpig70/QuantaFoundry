@@ -1,0 +1,42 @@
+{
+  "_note": "ε-인증 E8 — Pauli-covariant 채널 exact diamond 폐형식 ‖Φ_p−Φ_q‖◇=Σ|Δp| (비유니터리 최초 exact·SDP-free·유리수). 관측·seal 아님·module 0·root 불변. 일반 CPTP 무주장(Pauli 부분류 한정).",
+  "_schema": "pauli-diamond-e8/v1",
+  "all_ok": true,
+  "checks": {
+    "A_CP_prob_nonneg": true,
+    "A_TP": true,
+    "A_pauli_covariant": true,
+    "B_bell_diagonal_symbolic": true,
+    "C_primal_eq_L1_fuzz": true,
+    "D_bitflip_2r": true,
+    "D_dephasing_1_minus_lam": true,
+    "D_depolarizing_3p_2": true,
+    "D_identical_0": true,
+    "D_orthogonal_pauli_2": true,
+    "E_e7_cross_consistent": true,
+    "F_dephasing_nonunitary_rank2": true,
+    "teeth_identical_zero": true,
+    "teeth_orthogonal_max_2": true,
+    "teeth_report_value_corrected": true
+  },
+  "closed_form": {
+    "dual": "삼각부등식+유니터리 불변 → ≤ L1 (상계) — SDP-free",
+    "fuzz_instances": 20,
+    "primal": "최대얽힘 입력 → Choi 차 Bell-대각 → 트레이스노름 = L1 (하계)",
+    "statement": "‖Φ_p − Φ_q‖◇ = Σ_P |p_P − q_P| (Pauli-covariant, exact rational)"
+  },
+  "instances": {
+    "correction": "★report18 '2p(d−1)/d=p' 는 d=2 에서 부정확 — 자체유도 3p/2 (§4′o)",
+    "id_vs_bitflip(r)": "2r",
+    "id_vs_dephasing(λ)": "1−λ",
+    "id_vs_depolarizing(p)": "3p/2 = 2p(1−1/d²), d=2",
+    "identical": 0,
+    "orthogonal_paulis": 2
+  },
+  "scope_honesty": {
+    "delivered": "E8 = Pauli-covariant exact diamond 폐형식(비유니터리 최초 exact·SDP-free)",
+    "external_facts": "트레이스노름 삼각부등식·유니터리 불변성(초등 노름 성질)",
+    "ladder": "E5 op-norm LB → E6 ◇-LB → E7 exact(unitary) → ★E8 exact(Pauli 채널)",
+    "not_claimed": "일반 CPTP exact diamond(SDP 요구·agent03 판단 존중)·d>2 검증"
+  }
+}
