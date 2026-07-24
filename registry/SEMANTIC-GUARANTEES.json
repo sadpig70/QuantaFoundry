@@ -16945,6 +16945,15 @@
       "method": "dense EXACT (composite == golden, C4, 전역위상 무시)",
       "u_hash": "e663b43043af6b78ca6b8fae14b5f38d2ae902d96db3aeafa16ce89efdf8f17d"
     },
+    "module:twist_defect16": {
+      "kind": "module",
+      "id": "twist_defect16",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "6c4747de7bd385e4724d1e44cee95c9c5e29673a3e9ddaf552eb4c441ffd001a"
+    },
     "module:x_gate": {
       "kind": "module",
       "id": "x_gate",
@@ -16985,11 +16994,11 @@
         "compositionally_verified": 2
       },
       "module": {
-        "unitary_equiv": 95
+        "unitary_equiv": 96
       }
     },
     "by_class": {
-      "unitary_equiv": 1460,
+      "unitary_equiv": 1461,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 107,

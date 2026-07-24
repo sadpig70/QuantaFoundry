@@ -1,0 +1,43 @@
+{
+  "_note": "twist-defect [[16,2,2]] 코드 성질 완전 검증 — 봉인 twist_defect16 의 오라클-독립 witness. d=2 전수·e↔m mixed-필수 9/15·pentagon 5-body Y1·기준 [[16,1,·]] 대비 논리 +1.",
+  "_schema": "twist-defect-observe/v1",
+  "all_ok": true,
+  "baseline": {
+    "found": true,
+    "verdict": "정상 4×4 k=1 vs twist k=2 — twist 가 논리 +1(rank 결손)"
+  },
+  "checks": {
+    "A_all_commute": true,
+    "A_covers": true,
+    "A_rank14_k2": true,
+    "B_mixed_chain": true,
+    "B_nonCSS": true,
+    "B_pentagon_5body_Y1": true,
+    "C_4_logicals": true,
+    "C_distance_2_exact": true,
+    "D_mixed_required_9_15": true,
+    "E_baseline_k1": true,
+    "E_twist_adds_logical": true,
+    "teeth_d2_not_d1": true,
+    "teeth_em_nontrivial": true,
+    "teeth_pentagon_odd_Y_nonmergeable": true
+  },
+  "code": {
+    "d": 2,
+    "k": 2,
+    "mixed_required_classes": 9,
+    "n": 16,
+    "verdict": "twist 를 지나는 string 이 X↔Z 전환 필수 = e↔m 실증"
+  },
+  "pentagon": {
+    "Y": 1,
+    "body": 5,
+    "nonCSS_pure_rank": 11,
+    "stab": "IIIIIZXIIYXIIXII"
+  },
+  "scope_honesty": {
+    "d2": "detection-only(소형·twist-경계 근접) — d≥3·twist-braid 게이트·측정 스케줄=대형/별도",
+    "em": "string-타입 강제(코셋 전수) 실증 — 애니온 동역학 아님",
+    "sealed_asset": "twist_defect16 (Tier-2 tableau, registry/modules) — 본 witness 는 성질 검증"
+  }
+}

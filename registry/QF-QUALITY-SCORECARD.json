@@ -1,9 +1,9 @@
 {
   "_schema": "qf-quality-scorecard/v1",
   "_note": "질적 신뢰 지표(양적 성장 아님). 기존 산출물 파생·읽기전용·root 불변. 'classified 100% · 0 unclassified · N assets ≥2 independent paths' 형태의 quality 헤드라인.",
-  "generated_from_root": "556d5e97322affa0",
+  "generated_from_root": "bc9be7a4dffc3324",
   "scale": {
-    "modules": 95,
+    "modules": 96,
     "unique_apps": 1431,
     "app_files": 1506,
     "cached_leaf": 75
@@ -14,11 +14,11 @@
     "inferred_default_dense": 0,
     "tier_source_distribution": {
       "contract(C1-C4-dense)": 158,
-      "explicit": 1443
+      "explicit": 1444
     }
   },
   "guarantee_strength": {
-    "unitary_equiv": 1460,
+    "unitary_equiv": 1461,
     "unitary_equiv_sampled": 1,
     "structural_wellformed": 1,
     "subspace_permutation_verified": 107,
@@ -45,5 +45,5 @@
     "public_claims": 12,
     "stale_claims": 0
   },
-  "headline": "95 modules · 1431 unique apps · 100.0% classified · 0 unclassified · 0 fail-open-inferred · 419 assets with ≥2 independent paths · 2 primary-seal-only"
+  "headline": "96 modules · 1431 unique apps · 100.0% classified · 0 unclassified · 0 fail-open-inferred · 419 assets with ≥2 independent paths · 2 primary-seal-only"
 }
