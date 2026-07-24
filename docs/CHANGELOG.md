@@ -221,3 +221,32 @@
 > unresolved (the dim-15 multiplication core verifies, but a σ₂-interaction convention error blocks a
 > consistent Markov trace) and deferred; it is the headline ask of request v18.
 
+
+> **★ TrackHE18 (report18, 7 headlines, closed 2026-07-24).** The v18 request round consumed 8-runtime
+> proposals into seven completed headlines (all observations/certificates, seal root unchanged, zero new
+> modules): (1) **the 2-variable Kauffman/Dubrovnik polynomial crux — fully closed** after three rounds:
+> the fix was a *representation-theoretic bypass* (U_q(sl₂) universal R-matrices for so₃/so₄ with a ribbon
+> pivotal **quantum trace, which is automatically Markovian**), two specialization curves (N=3 `a=Q²`,
+> N=4 `a=Q³`) pin the unique two-variable `D(4₁) = a²z² + a² − az³ − az − 2z² − 1 + z³/a + z/a + z²/a² + a⁻²`,
+> confirmed by two invariants *not used* in the reconstruction (the Jones specialization and Dubrovnik
+> amphichirality `D(a,z)=D(a⁻¹,−z)`) — the track's first complete 2-variable knot invariant; (2) the
+> **full 22×22 twisted S·T of D^ω(D₄)** with every convention machine-pinned (associativity 64³, module
+> axioms, unitary S, S²=C, (ST)³∝S², Verlinde integrality over ℤ[ζ₈]), plus a **Bockstein lift ladder
+> (μ₂→μ₄→μ₈ = all of H³(D₄,U(1)))** showing the anyon count is **22 for every twist** — fully refuting the
+> "22→19→16 ω-varying" claim (the earlier conditional Schur-collapse computation is corrected); the true
+> twist invariant is the **T-spectrum ζ₄→ζ₈→ζ₁₆**; (3) the **D^ω(ℤ₂ⁿ) radical-parity theorem**
+> (radical parity = n mod 2; for n=5 radical ∈ {1,3,5} with radical=1 realized); (4) **A₇ Brauer trees,
+> decomposition and Cartan matrices at p=5,7** with the **character table fully self-derived via Dixon's
+> algorithm** (GF(421) central characters + exact cyclotomic lift, zero literature citations): p=7 line
+> `1—6—15—(10,10̄)exc` (simples {1,5,10}, det C=7), p=5 line `1—14′—21—14—6` (simples {1,13,8,6},
+> det C=5), each pinned by deterministic GF(p) linear algebra (trace/fixed-space/Hom — the probabilistic
+> meataxe pitfall documented); (5) **ε-certification E8**: the exact diamond norm of Pauli-covariant
+> channels in closed form `‖Φ_p−Φ_q‖◇ = Σ|p_P−q_P|` (Bell-diagonal Choi, primal=dual, SDP-free, pure
+> rational — the first non-unitary exact rung); (6) **SU(3)₂ — the first rank-2 Lie-level MTC** (exact
+> ℚ(ζ₁₅) arithmetic, nontrivial charge conjugation 3↔3̄, dims {1×3, φ×3}, D²=3(2+φ)) with the exact
+> factorization **SU(3)₂ ≅ conj-Fib ⊠ ℤ₃^(q=2)** (S and T simultaneously); (7) four external numeric
+> corrections caught by self-derivation (Λ³-confusion in radical parity; the ω-varying anyon count;
+> depolarizing diamond `p` → correct `3p/2`; SU(3)₂ field `ℚ(ζ₅)` → correct `ℚ(ζ₁₅)`). Registry unchanged
+> at **95 modules / 1431 unique apps · root `556d5e97…`**; request v19 published with the new pattern set
+> (representation-theoretic bypass, Bockstein ladder, exact-linear-algebra module verdicts, direct
+> cyclotomic arithmetic).
