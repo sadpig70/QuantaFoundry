@@ -1,0 +1,27 @@
+{
+  "_note": "twist_em_h16(U=E·H(9)·E†) 오라클-독립 witness — 코드 자기동형·e↔m 논리 사상(논리 H₁)·U²=I. 인코더-conjugation 실현(정직 경계).",
+  "_schema": "twist-em-observe/v1",
+  "all_ok": true,
+  "checks": {
+    "A_stab_automorphism": true,
+    "B_L2_invariant": true,
+    "B_em_swap_L1": true,
+    "B_nontrivial": true,
+    "C_U2_identity": true,
+    "D_q15_is_L2": true,
+    "D_q9_is_L1": true,
+    "teeth_automorphism_sign": true,
+    "teeth_swap_not_identity": true
+  },
+  "gates": 107,
+  "logical_action": {
+    "L1": "LZ1 ↔ LX1 (논리 Hadamard₁ = e↔m 교환의 대수 내용)",
+    "L2": "불변",
+    "order": "U² = I"
+  },
+  "scope_honesty": {
+    "em_meaning": "tableau 사상 수준(논리 X↔Z 교환) — 애니온 동역학 아님",
+    "lesson": "논리 방향은 가정 대신 군 분해로 식별(합성 행-스왑이 순서를 바꿈)",
+    "realization": "인코더-conjugation(U=E·H·E†) — defect 물리 이동/측정 스케줄 아님"
+  }
+}

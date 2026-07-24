@@ -16954,6 +16954,15 @@
       "method": "Clifford tableau",
       "u_hash": "6c4747de7bd385e4724d1e44cee95c9c5e29673a3e9ddaf552eb4c441ffd001a"
     },
+    "module:twist_em_h16": {
+      "kind": "module",
+      "id": "twist_em_h16",
+      "tier": 2,
+      "tier_source": "explicit",
+      "semantic_guarantee": "unitary_equiv",
+      "method": "Clifford tableau",
+      "u_hash": "39cb72320e5fb3537689417fe0ad5610364f466c8364d55ccd317c6df8c420a9"
+    },
     "module:x_gate": {
       "kind": "module",
       "id": "x_gate",
@@ -16994,11 +17003,11 @@
         "compositionally_verified": 2
       },
       "module": {
-        "unitary_equiv": 96
+        "unitary_equiv": 97
       }
     },
     "by_class": {
-      "unitary_equiv": 1461,
+      "unitary_equiv": 1462,
       "unitary_equiv_sampled": 1,
       "structural_wellformed": 1,
       "subspace_permutation_verified": 107,
