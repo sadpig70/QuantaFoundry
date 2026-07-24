@@ -1,0 +1,46 @@
+{
+  "_note": "SU(3)₂ MTC 완전 modular data — 첫 rank-2 Lie 준위(Kac-Peterson·ℚ(ζ₁₅) 정확 산술)·비자명 C(3↔3̄)·★Fib⊠ℤ₃ 인수분해(S·T 동시)·★부호장 ℚ(ζ₁₅) (agent05 'ℚ(ζ₅)' 정정). 관측·seal 아님·module 0·root 불변.",
+  "_schema": "su3-2-mtc/v1",
+  "all_ok": true,
+  "checks": {
+    "B_C2_id": true,
+    "B_C_nontrivial": true,
+    "B_S00_pos_after_phase": true,
+    "B_S2_minus75C": true,
+    "B_symmetric": true,
+    "B_unitary_N75": true,
+    "C_D2_3_2plusphi": true,
+    "C_dims_1_phi": true,
+    "D_ST3_prop_S2": true,
+    "D_T_zeta30_integers": true,
+    "D_h_values": true,
+    "E_Z3_pointed": true,
+    "E_verlinde_nonneg_int": true,
+    "F_fib_z3_S_match": true,
+    "F_fib_z3_T_match": true,
+    "G_not_in_Qzeta3": true,
+    "G_not_in_Qzeta5": true,
+    "teeth_C_nontrivial_first_lie": true,
+    "teeth_factorization_both_ST": true,
+    "teeth_field_corrected": true
+  },
+  "factorization": {
+    "equivalence": "SU(3)₂ ≅ conj-Fib(h_τ=3/5) ⊠ ℤ₃^(q=2)  [S·T modular data 동시 정확]",
+    "mapping": "1=(1,0)·6=(1,2)·6̄=(1,1)·8=(τ,0)·3=(τ,1)·3̄=(τ,2)",
+    "not_claimed": "F/R-symbol 범주 동치"
+  },
+  "field": {
+    "S_matrix": "ℚ(ζ₁₅) 필요(σ₁₁·σ₇ 비불변 — 진부분장 아님)",
+    "correction": "★agent05 'field ℚ(ζ₅)' 부정확 — dims/D² 의 ℚ(√5) 와 혼동 추정 (§4′o)",
+    "dims_field": "ℚ(√5) ⊂ ℚ(ζ₅)"
+  },
+  "quantum_dims": {
+    "D2": "3(2+φ) = (15+3√5)/2 ≈ 10.854",
+    "pattern": "1×3 (1,6,6̄) · φ×3 (3,3̄,8)"
+  },
+  "scope_honesty": {
+    "delivered": "첫 rank-2 Lie MTC 완전 modular data·비자명 C·Fib⊠ℤ₃ 동치·부호장 정정",
+    "exact": "전부 ℚ(ζ₁₅) Fraction 산술(Φ₁₅ 8차 기저) — float/simplify 없음",
+    "not_claimed": "braiding 게이트 실봉인·F/R-symbol 범주 동치"
+  }
+}
