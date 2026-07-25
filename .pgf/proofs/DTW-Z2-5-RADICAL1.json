@@ -1,0 +1,52 @@
+{
+  "H3_verdict": {
+    "basis": "차수-3 단항식(중복조합 C(7,3)) — 전 35 cup-cocycle d³=0 확인",
+    "dim": 35,
+    "refuted": "agent05 '20' ✗ · agent06 '10+보정'(보정=25) · agent04 35 ✓",
+    "standard_fact": "H*(ℤ₂ⁿ,𝔽₂)=𝔽₂[x₁..xₙ] (Künneth — 인용 1건)"
+  },
+  "_note": "D^ω(ℤ₂⁵) radical=1 층 — anyon 3파전 판정(→184)·H³ 3파전 판정(→35)·대표 섹터 dim-4 실구성. 완전 184×184 S=미완(정직). 관측·module 0·root 불변.",
+  "_schema": "dtw-z2-5-radical1/v1",
+  "all_ok": true,
+  "census": {
+    "D2": 1024,
+    "anyons": 184,
+    "per_flux": "|G|/2^r (dim 2^{r/2})",
+    "radical_dist": "{5:1, 3:15, 1:16}",
+    "rank_dist": {
+      "0": 1,
+      "2": 15,
+      "4": 16
+    }
+  },
+  "checks": {
+    "A_cocycle_exhaustive": true,
+    "B_D2_1024": true,
+    "B_anyons_184": true,
+    "B_rank_distribution": true,
+    "C_256_refuted": true,
+    "C_96plus_imprecise": true,
+    "D_all_35_cocycles": true,
+    "D_monomials_35": true,
+    "E_dim4_projective_realized": true,
+    "E_symplectic_basis": true,
+    "E_two_irreps_sum32": true,
+    "teeth_184_not_256": true,
+    "teeth_H3_35_not_20": true,
+    "teeth_dim4_realized": true
+  },
+  "representative_sector": {
+    "construction": "symplectic 기저 + Heisenberg Pauli-텐서·사영관계 32² 전수",
+    "flux_rank": 4,
+    "irreps": "dim-4 × 2 (radical 문자 ±)"
+  },
+  "scope_honesty": {
+    "delivered": "anyon 184 확정(3파전 심판)·H³=35 확정·radical=1 섹터 dim-4 실구성",
+    "not_yet": "완전 184×184 twisted S·T(규모 — 다음)·H³ 독립성은 다항환 표준사실 인용"
+  },
+  "three_way_verdict": {
+    "agent01 (명시 cocycle, 184)": "✓ 확정 — 32+15·8+16·2=184·D²=1024 정합",
+    "agent06 (|G|²/|rad|²=256)": "✗ 반증 — 정확 공식 Σ_a |G|/2^{r_a}(flux 별 rank 상이)",
+    "요청/agent05 ('96+')": "부정확(정확값 184) — agent08 '자체유도 불가' 신중론이 정당"
+  }
+}
