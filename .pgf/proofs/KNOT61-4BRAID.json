@@ -1,0 +1,42 @@
+{
+  "D_6_1": "a**2*z**2 + a**2 - a*z**3 + z**4 - z**5/a - 2*z**3/a - 2*z/a - 2*z**4/a**2 - 4*z**2/a**2 - 1/a**2 + z**5/a**3 + 3*z**3/a**3 + 2*z/a**3 + z**4/a**4 + 3*z**2/a**4 + a**(-4)",
+  "LG_6_1": "p**4*q**4 + 3*p**4*q**2 - 3*p**2*q**4 - 10*p**2*q**2 - 7*p**2 + 2*q**4 + 10*q**2 + 17 + 4/q**2 - 3*q**2/p**2 - 10/p**2 - 7/(p**2*q**2) + p**(-4) + 3/(p**4*q**2)",
+  "V_6_1": "t**4 - t**3 + t**2 - 2*t + 2 - 1/t + t**(-2)",
+  "_note": "6₁ 4-braid 확장 — LG(6₁)+Kauffman D(6₁) 양 가족 동시 폐쇄·★q=i 부호 ε(6₁)=−1 신관측·패리티 정리·TL₄ bracket. 관측·module 0·root 불변.",
+  "_schema": "knot61-4braid/v1",
+  "all_ok": true,
+  "checks": {
+    "D61_all_eqs": true,
+    "D61_bracket_25pts": true,
+    "D61_chiral": true,
+    "D61_integer": true,
+    "D61_so3_eigen": true,
+    "D61_so4_ch_inverse": true,
+    "D61_unique": true,
+    "D62_regression_family": true,
+    "id_alexander_61": true,
+    "id_even_word_even_perm": true,
+    "id_not_granny": true,
+    "id_one_component": true,
+    "id_parity_odd": true,
+    "lg_11tangle_scalar": true,
+    "lg_alex2_q1": true,
+    "lg_alex_qi": true,
+    "lg_braiding_rederive": true,
+    "lg_chiral": true,
+    "lg_det2_81": true,
+    "lg_recon": true,
+    "lg_t0t1_sym": true,
+    "teeth_wrong_word": true,
+    "tl_62_stab_regression": true,
+    "tl_V61": true,
+    "tl_det9": true,
+    "tl_unknot": true
+  },
+  "scope_honesty": {
+    "convention_lesson": "★Δ 단위(±t^k) 함정: census 2t−5+2/t=Δ(1)=−1 — Δ(1)=+1 정규화에서 gl(1|1)·LG q=i 두 엔진 부호 정확 일치(초기 '부호 이상'은 참조값 오류)",
+    "delivered": "6₁=첫 4-braid 매듭 — LG 폐형식+Kauffman D 유일복원+TL₄ bracket 독립확증·패리티 정리·양 가족 사각지대 폐쇄",
+    "identification": "패리티 정리(홀수 길이 필수)+1성분+gl(1|1) Δ 심볼릭+granny 구별; 외부사실=≤7교차 census 에서 Δ=2t−5+2/t 는 6₁ 유일(1건)",
+    "not_yet": "7교차+·BMW₄·HOMFLY-Kauffman 비포함"
+  }
+}
