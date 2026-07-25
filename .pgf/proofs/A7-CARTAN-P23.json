@@ -1,0 +1,127 @@
+{
+  "_note": "A₇ p=3 완전 D(9×6)·Cartan + p=2 기초층 — 결정적 GF(p)/ℚ(√−7) 산술. p=3 주블록 simples {1,13,10,10̄(GF(9)-켤레)}·소블록 tree 6—21—15. p=2 완전 D=정직 미완(wild). 관측·module 0·root 불변.",
+  "_schema": "a7-cartan-p23/v1",
+  "all_ok": true,
+  "checks": {
+    "p2_Q15_indicators": true,
+    "p2_inc_rank6_degenerate": true,
+    "p2_l6": true,
+    "p2_main_l3": true,
+    "p2_nat6_no_triv": true,
+    "p2_other_l3": true,
+    "p2_sylow_D4": true,
+    "p2_two_blocks": true,
+    "p3_14hat_head1": true,
+    "p3_C_symmetric_posdef": true,
+    "p3_D_reconstructs_all9": true,
+    "p3_F2_minusI_GF9": true,
+    "p3_Q14": true,
+    "p3_blocks": true,
+    "p3_chi14_eq_chi14p": true,
+    "p3_detC_main_power3": true,
+    "p3_detC_small_3": true,
+    "p3_inc_rank7": true,
+    "p3_l6": true,
+    "p3_lambda3_end2": true,
+    "p3_lambda3_no_triv13": true,
+    "p3_small_e2": true,
+    "p3_small_tree_6_21_15": true,
+    "p3_sylow_Z3sq": true,
+    "teeth_gf9_pair": true,
+    "teeth_p3_complete_D": true,
+    "teeth_small_cyclic_tree": true
+  },
+  "p2_foundation": {
+    "blocks": "{1,14,15,21,35}(주·defect D₄) + {6,10,10̄,14′}(defect 위수4)",
+    "honest": "완전 D·C = 미완(양 블록 비순환 defect·wild 가능 — 트리 이론 부재)",
+    "l_per_block": "3 + 3 = ℓ₂=6",
+    "pairs_mod2": "incidence rank 6(퇴화)·Q(15): 고정1·dual1·End2",
+    "sylow2": "D₄ (프로파일 [1,2⁵,4²] 구성적)"
+  },
+  "p3_principal": {
+    "Cartan_main_4x4": [
+      [
+        7,
+        4,
+        2,
+        2
+      ],
+      [
+        4,
+        3,
+        1,
+        1
+      ],
+      [
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        2,
+        1,
+        1,
+        2
+      ]
+    ],
+    "D_rows": {
+      "1": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "10": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "10̄": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "14=14'": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "35": [
+        2,
+        1,
+        1,
+        1
+      ]
+    },
+    "det_Cartan_main": 9,
+    "det_Cartan_small": 3,
+    "simples": "1̂·13̂·10̂·10̄̂ (10쌍 = GF(9)-켤레·End(Λ³6̂)≅GF(9)·F²=−I certificate)"
+  },
+  "p3_small_block": {
+    "cartan": [
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "det": 3,
+    "simples": [
+      6,
+      15
+    ],
+    "tree": "6 — 21 — 15 (line·e=2·m=1)"
+  },
+  "scope_honesty": {
+    "method": "결정적 GF(p) 선형대수(고정공간·Hom·End·quotient)·확률적 meataxe 금지",
+    "p2": "기초층(블록·ℓ·Sylow·지표)까지 결정적 — 완전 D·C 는 wild 가능·정직 미완",
+    "p3": "완전 D(9×6)·C — 명시 모듈 구성(비순환 ℤ₃² defect 여도 트리 이론 불필요)"
+  }
+}
