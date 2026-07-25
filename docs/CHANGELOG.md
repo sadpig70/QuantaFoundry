@@ -250,3 +250,57 @@
 > at **95 modules / 1431 unique apps · root `556d5e97…`**; request v19 published with the new pattern set
 > (representation-theoretic bypass, Bockstein ladder, exact-linear-algebra module verdicts, direct
 > cyclotomic arithmetic).
+
+> **★ Twist-defect seals + Kauffman family (2026-07-25).** Two root-updating Tier-2 seals: the
+> **first non-CSS twist-defect surface code `[[16,2,2]]`** (`twist_defect16` — a 4×4 rotated lattice with a
+> dislocation line, mixed Z/X domino chain and a **5-body pentagon stabilizer `Z₅X₆Y₉X₁₀X₁₃` with a single
+> Y**; design theorems: an odd-Y stabilizer is impossible by merging commuting stabilizers, only by lattice
+> dislocation, and adjacent mixed-chain overlaps must be exactly 2; encoder synthesized by standard-form
+> reduction + Aaronson-Gottesman rowsum sign verification + a Pauli correction layer; e↔m exchange verified
+> on 9/15 nontrivial logical classes, distance-2 exhaustive), and **`twist_em_h16`** (`U = E·H(q9)·E†` —
+> the e↔m exchange realized as a physical Clifford circuit acting as the **logical Hadamard on logical
+> qubit 1**, a stabilizer-group automorphism with `U²=I`; the logical qubit was identified by target-group
+> decomposition, not assumption). Registry **95 → 97 modules · root `556d5e97…` → `e8738608fdc49295…`**
+> (Tier-2 count 14), second oracle 83/83, full reproduce re-anchored. Plus the **Kauffman 2-variable family
+> extension** (`bmw3_kauffman_family_observe`): unique integer-coefficient `D(a,z)` reconstructed for
+> **5₁, 5₂, 6₂ and the amphichiral 6₃** (`D(a,z)=D(a⁻¹,−z)` exact) via a *triple* specialization (N=2
+> spin-½ quantum-trace Jones at 40 rational points, N=3, N=4) with an independent TL₃ bracket engine
+> cross-check; knots self-identified from 3-braid word enumeration (no literature braid coordinates), and
+> two traps self-caught (det 9 = granny/square composite; 6₁ has braid index 4, absent from 3-braids).
+
+> **★ TrackHE19 (report19, 6 axes, closed 2026-07-25).** The v19 request round consumed 8-runtime proposals
+> into six completed axes (all observations/certificates, zero new modules, root `e8738608…` unchanged),
+> with every inter-runtime quantitative dispute adjudicated by a purpose-built verdict instance:
+> (1) **ε-certification E9 — exact diamond norm for qudit Weyl-Heisenberg channels**:
+> `‖Φ_p−Φ_q‖◇ = Σ|Δp|` with **coefficient 1, d-independent** — a four-way coefficient dispute (½, 1,
+> d/(d−1), d) settled by the exact diamond value 2 of an orthogonal Weyl unitary pair (eigenphase hull
+> contains 0; two candidates violate the upper bound 2, one fails the E7 cross-check); all arithmetic in
+> exact ℚ(ζ_d) (d=2,3,4,5, Weyl orthogonality exhaustive over d⁴ pairs), and orthogonality *holds* at
+> composite d=4, partially refuting a claimed breakdown; (2) the **ζ₁₆ layer of D^ω(D₄)**: full 22×22
+> twisted S for the μ₄ classes (P₄=1,3), completing the three-tier T-spectrum hierarchy ζ₄→ζ₈→ζ₁₆, with
+> the Galois pairing σ₃ pinned by the gauge-invariant S row-multiset — and a new honest **ribbon gap**:
+> the standard ribbon element `z = Σ δ_a⊗a` is ribbon only up to the μ₂ layer, failing `(ST)³=λS²`
+> structurally at μ₄ (a 256-case ε-correction search fails), leaving the quasi-Hopf ω-corrected ribbon
+> formula an open problem (S-data complete; only the T gauge unresolved); (3) **SU(3)₃ — the first
+> indecomposable genuinely rank-2 Lie-level MTC**: its simple currents have integer twist (θ=1, Tannakian)
+> and the pointed 3×3 S-block is rank-1 degenerate, so no Müger ⊠-factorization exists (the structural
+> opposite of SU(3)₂ ≅ conj-Fib ⊠ ℤ₃), dims {1×3, 2×6, 3×1}, D²=36 (weakly integral), exact ℚ(ζ₉)
+> arithmetic — two external corrections: field ℚ(ζ₆) refuted, and "G₂ level-1 rank 14" corrected to
+> **rank 2** (a dim(G₂) confusion, via self-derived G₂ root data); (4) **A₇ at p=3 — the complete 9×6
+> decomposition matrix and Cartan matrix**: a new defect-1 cyclic block {6,15,21} (line 6—21—15), principal
+> block simples {1,13,10,10̄} with the **10/10̄ pair certified as GF(9)-conjugate** (dim End=2 with F²=−I ⟹
+> End ≅ GF(9) — the mod-3 shadow of the ℚ(√−7) pair), det C = defect-group order in both blocks; p=2
+> foundations laid (constructive Sylow D₄, 3+3 simples per block) with the full wild-type D honestly
+> deferred; (5) **D^ω(ℤ₂⁵) radical=1 layer**: a three-way anyon-count dispute settled at **184** (explicit
+> cocycle, exhaustive flux census {rank0:1, rank2:15, rank4:16}, Σ_a |G|/2^{r_a}, D²=1024 consistent;
+> "256" refuted as a formula error, "96+" imprecise) and a three-way H³ dispute settled at **dim 35**
+> (all C(7,3) cubic monomial cup-cocycles exhaustively verified; "20" refuted), plus an explicit dim-4
+> projective irrep (self-derived symplectic basis, Heisenberg Pauli construction, 32² exhaustive);
+> (6) **the first quantum-superalgebra layer**: U_q(gl(1|1)) with a **quantum supertrace** yields the
+> Alexander polynomial for five knots — the sdim=0 trap demonstrated (the fully closed supertrace vanishes
+> identically) and resolved by the standard **(1,1)-tangle** partial supertrace (scalarity itself a gate),
+> with determinants triple-confirmed across three independent engines (TL-bracket, Kauffman D, Alexander:
+> {5,7,11,13,5}) and the split-link vanishing Δ=0 exact; the 2-variable Links-Gould invariant
+> (U_q(sl(2|1))) is honestly deferred with the pipeline established. Registry unchanged at **97 modules /
+> 1431 unique apps · root `e8738608…`**; request v20 published with four new patterns (verdict-instance
+> design, gauge-invariant adjudication, End-field certificates, (1,1)-tangle supertrace).
