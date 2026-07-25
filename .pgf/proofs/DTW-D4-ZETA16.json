@@ -1,0 +1,88 @@
+{
+  "P4_census_w3_coset": {
+    "1": 8,
+    "3": 8
+  },
+  "Q8_contrast": {
+    "note": "H³(Q₈,μ₂) dim=1(기확립) — D₄(dim 4)의 ζ₁₆ 층을 낳는 μ₄-코셋 다양성 부재. Q₈ 완전 μ₄ 사다리는 별도(정직: 구조 논거+기확립 참조)"
+  },
+  "_note": "D^ω(D₄) ζ₁₆ 층(μ₄·P₄=1,3) 완전 22×22 twisted S·T — u1_census 의 'spins ζ₁₆ 필요' 충분 실현·Galois 쌍대·Q₈ 무-ζ₁₆ 대조. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "dtw-d4-zeta16/v1",
+  "all_ok": true,
+  "checks": {
+    "A_P4_reps": true,
+    "A_census_odd_exists": true,
+    "B_p1_S2_C": true,
+    "B_p1_ST3_gap_observed_mu4": true,
+    "B_p1_S_symmetric": true,
+    "B_p1_S_unitary": true,
+    "B_p1_Svac_1_8": true,
+    "B_p1_T_order16_exists": true,
+    "B_p1_dims_pos_int": true,
+    "B_p1_module_axiom": true,
+    "B_p1_n22": true,
+    "B_p1_ribbon_scalar": true,
+    "B_p1_sum_d2_64": true,
+    "B_p1_sumdim2": true,
+    "B_p1_verlinde": true,
+    "E_galois_pair": true,
+    "E_p3_S2_C": true,
+    "E_p3_ST3_gap_observed_mu4": true,
+    "E_p3_S_symmetric": true,
+    "E_p3_S_unitary": true,
+    "E_p3_Svac_1_8": true,
+    "E_p3_T_order16": true,
+    "E_p3_T_order16_exists": true,
+    "E_p3_dims_pos_int": true,
+    "E_p3_module_axiom": true,
+    "E_p3_n22": true,
+    "E_p3_ribbon_scalar": true,
+    "E_p3_sum_d2_64": true,
+    "E_p3_sumdim2": true,
+    "E_p3_verlinde": true,
+    "F_q8_h3_dim1_established": true,
+    "teeth_full_gates": true,
+    "teeth_zeta16_realized": true
+  },
+  "galois": {
+    "sigma_k": 3,
+    "verdict": "P₄=1 ↔ P₄=3 층은 Galois σ_k 켤레(S-행렬 행-멀티셋 일치·게이지-불변)"
+  },
+  "layer_P4_1": {
+    "T_orders": [
+      1,
+      2,
+      4,
+      16
+    ],
+    "dims": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2",
+      "2"
+    ]
+  },
+  "scope_honesty": {
+    "delivered": "ζ₁₆ 층(P₄=1,3) 완전 22×22 S·T·order-16 T 실재·Galois 쌍대·Q₈ 구조 대조",
+    "hierarchy": "T-스펙트럼 ζ₄(untwisted)→ζ₈(μ₂)→ζ₁₆(μ₄) 3층 위계 완성",
+    "not_yet": "★modular T 게이지 확정 — z=Σδ_a⊗a 는 μ₄ 층에서 ribbon 아님((ST)³ 갭 실증·ε-보정 256 전수 불통) → quasi-Hopf ribbon ω-보정 일반식 = 다음. 그 외: μ₈ 층 S·T·Q₈ 완전 사다리·braiding 실봉인"
+  }
+}
