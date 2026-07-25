@@ -1,0 +1,66 @@
+{
+  "G2_correction": {
+    "comarks": [
+      "2",
+      "1"
+    ],
+    "dual_coxeter": 4,
+    "highest_marks": [
+      2,
+      3
+    ],
+    "level1_primaries": 2,
+    "roots": 12,
+    "verdict": "★G₂ level-1 rank = 2 (vacuum+ω) — agent07 'rank=14'는 dim(G₂) 혼동(§4′o)"
+  },
+  "_note": "SU(3)₃ MTC — 첫 비분해 진짜 rank-2 Lie MTC(pointed Tannakian·S-퇴화·⊠-분해 불가)·ℚ(ζ₉) 정확·필드 상충 심판(ζ₆ 반증·ζ₁₈ 확정)·G₂₁ rank=2 정정. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "su3-3-mtc/v1",
+  "all_ok": true,
+  "checks": {
+    "A_C2_id": true,
+    "A_C_nontrivial": true,
+    "A_S2_minus_NC": true,
+    "A_symmetric": true,
+    "A_unitary_N108": true,
+    "B_D2_36": true,
+    "B_dims": true,
+    "C_ST3_prop_S2": true,
+    "C_T_zeta18": true,
+    "C_h_simple_current_1": true,
+    "D_verlinde_nonneg_int": true,
+    "D_z3_orbit": true,
+    "E_not_transparent": true,
+    "E_pointed_rank1": true,
+    "E_theta_integer_tannakian": true,
+    "F_not_in_Qzeta3": true,
+    "F_not_real_subfield": true,
+    "G_comarks_sum3_hcheck4": true,
+    "G_g2_12_roots": true,
+    "G_g2_level1_rank2": true,
+    "G_highest_marks": true,
+    "G_two_lengths_ratio3": true,
+    "teeth_field_corrected": true,
+    "teeth_g2_corrected": true,
+    "teeth_structural_transition": true
+  },
+  "decomposition_verdict": {
+    "pointed_S_rank": "1 (완전 퇴화 — 전 성분 동일) — SU(3)₂ 의 비퇴화 ω^{2ab} 와 정반대",
+    "theta_simple_current": "θ=e^{2πi·1}=1 (Tannakian 보손) — SU(3)₂ 의 anyonic ℤ₃ 와 대조",
+    "transparent": "아님(monodromy ω 비자명) → Müger center 자명·전체 modular",
+    "verdict": "★⊠-분해 불가 — SU(3)₃ = 첫 비분해 진짜 rank-2 Lie MTC(구조 전이 실증)"
+  },
+  "field": {
+    "S_matrix": "ℚ(ζ₉)=ℚ(ζ₁₈) 필요(σ₄·σ₈ 비불변 — 진부분장 아님)",
+    "correction": "★agent07 'ℚ(ζ₆) dim 2' 반증·agent06 ζ₁₈ 확정 (§4′o)"
+  },
+  "quantum_dims": {
+    "D2": 36,
+    "multiset": "{1×3, 2×6, 3×1}",
+    "note": "weakly integral(D² 정수) — SU(2)₅ 비정수와 대조"
+  },
+  "scope_honesty": {
+    "delivered": "SU(3)₃ 완전 modular data·비분해 진짜 rank-2 판정·필드/G₂ 정정 2건",
+    "not_claimed": "braiding 실봉인·F/R-symbol·G₂₁ 완전 modular data(별도)",
+    "verdict_level": "S·T(modular data) 수준 Müger 논증 — 범주론적 완전 증명 무주장"
+  }
+}
