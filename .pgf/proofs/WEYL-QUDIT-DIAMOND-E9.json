@@ -1,0 +1,55 @@
+{
+  "_note": "E9 — 큐딧 Weyl-Heisenberg 채널 exact diamond Σ|Δp|(계수 1·d-무관) + 계수 4파전 판정(½/1/(d/(d−1))/d — Σ|Δp| 만 생존). 관측·seal 아님·module 0·root 불변. d=4 합성 직교성 성립(agent08 부분 반증).",
+  "_schema": "weyl-qudit-diamond-e9/v1",
+  "all_ok": true,
+  "checks": {
+    "A_composite_d4_orthogonal": true,
+    "A_weyl_group_phase_d2": true,
+    "A_weyl_group_phase_d3": true,
+    "A_weyl_group_phase_d4": true,
+    "A_weyl_group_phase_d5": true,
+    "A_weyl_orthogonality_d2": true,
+    "A_weyl_orthogonality_d3": true,
+    "A_weyl_orthogonality_d4": true,
+    "A_weyl_orthogonality_d5": true,
+    "B_bell_diagonal_structural": true,
+    "B_traceclass_L1_fuzz": true,
+    "C_M3_scalar_M_not": true,
+    "C_d_over_dm1_refuted": true,
+    "C_d_times_refuted": true,
+    "C_half_refuted": true,
+    "C_verdict_sigma_survives": true,
+    "D_d2_regression": true,
+    "E_depolarizing_2p_1m1dd": true,
+    "E_identical_0": true,
+    "E_wflip_2r": true,
+    "teeth_composite_d4": true,
+    "teeth_e7_cross_kills_half": true,
+    "teeth_upper_bound_2_kills_two": true
+  },
+  "composite_d4": {
+    "verdict": "★d=4(합성) 직교성·군 위상 성립 — 'closed form 은 합성 d 에서 붕괴'의 직교성 층 반증(agent08 §0.5 부분 정정)"
+  },
+  "four_way_verdict": {
+    "instance": "직교 Weyl 유니터리쌍(d=3) — 정확 diamond=2(고유위상 ω^k 전체·hull∋0·E7 교차)",
+    "predictions": {
+      "d/(d−1)·Σ (agent07)": "3 ✗ (상계 2 위반)",
+      "d·Σ (agent05)": "6 ✗ (상계 2 위반)",
+      "½Σ|Δp| (agent03)": "1 ✗",
+      "Σ|Δp| (agent04·08)": "2 ✓"
+    },
+    "verdict": "★‖Φ_p−Φ_q‖◇ = Σ|Δp| (계수 1·d-무관) 확정"
+  },
+  "instances": {
+    "id_vs_Wflip(r)": "2r",
+    "id_vs_depolarizing(p)": "2p(1−1/d²): d=2→3p/2·d=3→16p/9·d=5→48p/25",
+    "identical": 0,
+    "orthogonal_weyl_pair": 2
+  },
+  "ladder": "E5 op-LB → E6 ◇-LB → E7 exact(unitary) → E8 exact(qubit Pauli) → ★E9 exact(qudit Weyl)",
+  "scope_honesty": {
+    "delivered": "E9 폐형식 Σ|Δp|(d-무관) + 4파전 판정(3 후보 반증) + 합성 d=4 직교성",
+    "external_facts": "트레이스노름 삼각·유니터리 불변(초등)·E7 Watrous(기확립)",
+    "not_claimed": "일반 CPTP(SDP)·비-covariant 채널"
+  }
+}
