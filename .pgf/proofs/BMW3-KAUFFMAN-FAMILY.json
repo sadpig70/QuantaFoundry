@@ -1,0 +1,58 @@
+{
+  "D_5_1": "z**4/a**4 + 4*z**2/a**4 + 3/a**4 + z**3/a**5 + 2*z/a**5 - z**4/a**6 - 3*z**2/a**6 - 2/a**6 - z**3/a**7 - z/a**7 - z**2/a**8 - z/a**9",
+  "D_5_2": "a**7*z**3 + 2*a**7*z - a**6*z**4 - 2*a**6*z**2 - a**6 - 2*a**5*z**3 - 2*a**5*z + a**4*z**4 + a**4*z**2 + a**4 + a**3*z**3 + a**2*z**2 + a**2",
+  "D_6_2": "z**4 + 3*z**2 + 2 - z**5/a - 2*z**3/a - 3*z**4/a**2 - 6*z**2/a**2 - 2/a**2 + z**5/a**3 - z/a**3 + 2*z**4/a**4 + 2*z**2/a**4 + a**(-4) + 2*z**3/a**5 + z/a**5 + z**2/a**6",
+  "D_6_3": "a**3*z**3 + a**3*z - 2*a**2*z**4 - 3*a**2*z**2 - a**2 + a*z**5 - a*z**3 - 2*a*z + 4*z**4 + 6*z**2 + 3 - z**5/a + z**3/a + 2*z/a - 2*z**4/a**2 - 3*z**2/a**2 - 1/a**2 - z**3/a**3 - z/a**3",
+  "_note": "2변수 Dubrovnik D(a,z) 매듭 가족(5₁·5₂·6₂·6₃) — 3중 특수화 구성(N=2/3/4 quantum trace)+독립 확증(TL₃ bracket·det·chirality). 관측·seal 아님·module 0·root 불변.",
+  "_schema": "bmw3-kauffman-family/v1",
+  "all_ok": true,
+  "checks": {
+    "5_1_chirality": true,
+    "5_1_det": true,
+    "5_1_integer_coeffs": true,
+    "5_1_jones_bracket_independent": true,
+    "5_1_one_component": true,
+    "5_1_solution": true,
+    "5_1_unique": true,
+    "5_2_chirality": true,
+    "5_2_det": true,
+    "5_2_integer_coeffs": true,
+    "5_2_jones_bracket_independent": true,
+    "5_2_one_component": true,
+    "5_2_solution": true,
+    "5_2_unique": true,
+    "6_2_chirality": true,
+    "6_2_det": true,
+    "6_2_integer_coeffs": true,
+    "6_2_jones_bracket_independent": true,
+    "6_2_one_component": true,
+    "6_2_solution": true,
+    "6_2_unique": true,
+    "6_3_chirality": true,
+    "6_3_det": true,
+    "6_3_integer_coeffs": true,
+    "6_3_jones_bracket_independent": true,
+    "6_3_one_component": true,
+    "6_3_solution": true,
+    "6_3_unique": true,
+    "trap_granny_det9_composite": true
+  },
+  "convention": {
+    "lesson": "spin-½ quantum trace = TL-bracket 의 전면 mirror(σ 관례차)·Dubrovnik→Jones 치환이 상쇄 — 6₃ amphichiral 대질로 검출. sympy simplify 는 t^{1/4} 급 취약 → t=r⁴ 정확 유리 다점이 견고경로"
+  },
+  "identification": {
+    "dets": {
+      "5_1": 5,
+      "5_2": 7,
+      "6_2": 11,
+      "6_3": 13
+    },
+    "method": "3-braid 워드 자체 동정 — det+교차수 상한(합성 배제)",
+    "traps": "det=9=granny/square(3₁#3₁ 합성) 포착·6₁=braid index 4 → 3-braid 부재"
+  },
+  "scope_honesty": {
+    "construction": "N=2/3/4 quantum trace 3중 특수화(선형계·유일해·정수 계수)",
+    "independent": "TL₃ bracket 상태합(별도 엔진) 25점 정확 + det + chirality — 순환 아님",
+    "next": "6₁(braid index 4 — 4-braid quantum trace 확장)·HOMFLY-Kauffman 비포함"
+  }
+}
