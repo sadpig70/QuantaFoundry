@@ -1,0 +1,106 @@
+{
+  "_note": "M₁₁ 첫 산발군 층 — Dixon 자체유도·★차수 multiset 판정(agent03 반증)·p-블록 전 분포·p=11/p=5 Brauer tree 유일 확정. 관측·module 0·root 불변.",
+  "_schema": "m11-brauer/v1",
+  "all_ok": true,
+  "checks": {
+    "A_10_isqrt2_minpoly": true,
+    "A_16_sqrt11_minpoly": true,
+    "A_classes_10": true,
+    "A_order_7920": true,
+    "A_orders": true,
+    "B_agent03_refuted": true,
+    "B_degrees": true,
+    "B_orthogonality_2primes": true,
+    "B_sum_d2": true,
+    "C_em_p11_candidates": true,
+    "C_exc_pair_unique": true,
+    "C_p11_defect0": true,
+    "C_p11_principal7": true,
+    "C_p2_defect0_16pair": true,
+    "C_p3_defect0_45": true,
+    "C_p3_sylow_elem_abelian": true,
+    "C_p5_defect0": true,
+    "C_p5_principal5": true,
+    "D_p11_tree_star45": true,
+    "D_p11_tree_unique": true,
+    "D_perm11_1_plus_10r": true,
+    "D_perm11_cofixed_dim1": true,
+    "D_perm11_fixed_dim1": true,
+    "D_perm_dims_consistent": true,
+    "D_projectives_integral": true,
+    "E_p11_detC_11": true,
+    "E_p5_detC_5": true,
+    "E_p5_tree_star44": true,
+    "E_p5_tree_unique": true,
+    "E_projectives5_integral": true,
+    "teeth_proj_constraints_bite": true
+  },
+  "degrees": [
+    1,
+    10,
+    10,
+    10,
+    11,
+    16,
+    16,
+    44,
+    45,
+    55
+  ],
+  "p11_cartan": "[[2, 1, 0, 0, 0], [1, 2, 1, 1, 1], [0, 1, 2, 1, 1], [0, 1, 1, 2, 1], [0, 1, 1, 1, 3]]",
+  "p11_tree": [
+    [
+      "1",
+      "10r",
+      1
+    ],
+    [
+      "10c",
+      "45",
+      10
+    ],
+    [
+      "10cb",
+      "45",
+      10
+    ],
+    [
+      "10r",
+      "45",
+      9
+    ],
+    [
+      "45",
+      "EXC",
+      16
+    ]
+  ],
+  "p5_cartan": "[[2, 1, 1, 1], [1, 2, 1, 1], [1, 1, 2, 1], [1, 1, 1, 2]]",
+  "p5_tree": [
+    [
+      "1",
+      "44",
+      1
+    ],
+    [
+      "11",
+      "44",
+      11
+    ],
+    [
+      "16a",
+      "44",
+      16
+    ],
+    [
+      "16b",
+      "44",
+      16
+    ]
+  ],
+  "scope_honesty": {
+    "delivered": "첫 산발군 층 — Dixon 자체유도·★차수 multiset 판정(agent03 반증·오류 대장 소진)·p-블록 전 분포·p=11/p=5 Brauer tree 유일·det C=p",
+    "not_yet": "p=3(ℤ₃² 비순환)·p=2(위수 16 wild) 완전 D·단순성 증명·12점 작용",
+    "seed": "생성원 좌표=구성 seed(성질 전부 자체검증·문헌 문자표 인용 0)"
+  }
+}
