@@ -25,6 +25,8 @@
 
 정직 경계(★관측·seal 아님·root 불변 sidecar·신규 module 0):
   - **완전 184×184 twisted S·T = 미완**(규모 — 대표 섹터·카운트 전수까지) — 명시 목표 조정.
+    ★2026-07-26 해소: [[dtw_z2_5_full_modular_observe]] 가 구조 환원(χ=d·μ·[∈R_a])으로 완결
+    (S̃S̃†=1024I·S̃²=1024C·Verlinde 184³ 전수·(S̃T)³=32S̃²·c≡0 mod 8).
   - H³=다항환은 표준 사실(Künneth) 인용 1건 — 단, 35 단항 cocycle 성립은 전수 자체검증.
   - D² 산술 정합은 count-level — modular 게이트(S 유니터리 등)는 완전 S 구축 시(다음).
 
@@ -81,7 +83,8 @@ def main():
     R = {}
     out = {"_schema": "dtw-z2-5-radical1/v1",
            "_note": ("D^ω(ℤ₂⁵) radical=1 층 — anyon 3파전 판정(→184)·H³ 3파전 판정(→35)·"
-                     "대표 섹터 dim-4 실구성. 완전 184×184 S=미완(정직). "
+                     "대표 섹터 dim-4 실구성. 완전 184×184 S=후속 완결"
+                     "(dtw_z2_5_full_modular_observe, 2026-07-26). "
                      "관측·module 0·root 불변.")}
 
     # ── A. cocycle 전수 ───────────────────────────────────────────────────
@@ -267,7 +270,8 @@ def main():
     out["checks"] = R
     out["scope_honesty"] = {
         "delivered": "anyon 184 확정(3파전 심판)·H³=35 확정·radical=1 섹터 dim-4 실구성",
-        "not_yet": "완전 184×184 twisted S·T(규모 — 다음)·H³ 독립성은 다항환 표준사실 인용",
+        "resolved_2026_07_26": "완전 184×184 twisted S·T = [[dtw_z2_5_full_modular_observe]] 에서 완결",
+        "not_yet": "H³ 35 클래스 전체의 modular data · H³ 독립성은 다항환 표준사실 인용",
     }
     out["all_ok"] = ok2
 

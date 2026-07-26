@@ -1,0 +1,95 @@
+{
+  "_note": "D^ω(ℤ₂⁵) 완전 184×184 twisted S·T — 구조 환원(radical 위 스칼라)으로 규모 돌파·문자공식은 유도표현 명시 구성으로 검증. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "dtw-z2-5-full-modular/v1",
+  "all_ok": true,
+  "census": {
+    "D2": 1024,
+    "anyons": 184,
+    "dims": {
+      "1": 32,
+      "2": 120,
+      "4": 32
+    },
+    "formula": "Σ_a |G|/2^{r_a} = 32 + 15·8 + 16·2 = 184",
+    "rank_dist": {
+      "0": 1,
+      "2": 15,
+      "4": 16
+    }
+  },
+  "central_charge": {
+    "c_mod_8": 0,
+    "p_plus": "32 = D",
+    "p_plus_over_D": "1 = e^{2πi·0/8}",
+    "structural": "Drinfeld double 필연값과 일치"
+  },
+  "character_formula": {
+    "claim": "χ_{(a,μ)}(h) = d_a·μ(h)·[h ∈ R_a], 그 외 0",
+    "scale_key": "이 환원이 184×184 를 32 flux 의 μ₄ 사영문자로 닫는다",
+    "status": "★가정 아님 — 유도표현 Ind_L^G ψ 명시 구성으로 검증(사영관계 1024 쌍 전수)"
+  },
+  "checks": {
+    "A_anyons_184": true,
+    "A_cocycle": true,
+    "A_radical_size_matches": true,
+    "A_rank_dist": true,
+    "B_a_in_rad_a": true,
+    "B_dims_multiset": true,
+    "B_mu_count_matches_radical": true,
+    "B_rad_reciprocity": true,
+    "B_sum_d2_1024": true,
+    "C_character_formula_matches": true,
+    "C_distinct_chars_eq_radical": true,
+    "C_projective_relation_exhaustive": true,
+    "D_C_identity_all_selfdual": true,
+    "D_C_involution": true,
+    "D_S2_is_1024C": true,
+    "D_ST3_prop_S2": true,
+    "D_S_symmetric": true,
+    "D_S_unitary": true,
+    "D_lambda_one": true,
+    "D_vac_row_is_dims": true,
+    "D_verlinde_nonneg_int": true,
+    "E_S_real": true,
+    "E_criterion_prediction": true,
+    "F_c_zero_mod8": true,
+    "F_pp_pm_D2": true,
+    "F_pplus_eq_D": true,
+    "G_flux0_32_sectors": true,
+    "G_flux0_all_dim1_boson": true,
+    "G_pointed_S_rank1_degenerate": true,
+    "teeth_256_refuted": true,
+    "teeth_T_needs_a_in_rad": true,
+    "teeth_rank_varies": true
+  },
+  "convention": {
+    "criterion": "S̄ = S∘C — 켤레 규약이 문제되는 것은 C ≠ 항등일 때뿐 (dtw_d4_mu4_ribbon_observe 에서 확립)",
+    "here": "C = 항등(전 184 anyon 자기쌍대) ⟹ S 실수 예측 → 실제 S̃ 허수부 전부 0",
+    "verdict": "★본 층은 규약-무해(blind) — 기준의 독립 예측 성공"
+  },
+  "modular_data": {
+    "D": 32,
+    "S_normalization": "S = S̃/32 (S_vac,vac = 1/32)",
+    "gates": "S=Sᵀ · S̃S̃†=1024I · S̃²=1024C · C=항등 · Verlinde 184³ 비음정수 · (S̃T)³=32S̃²",
+    "rank": 184,
+    "theta_multiset": {
+      "0": 102,
+      "1": 6,
+      "2": 70,
+      "3": 6
+    },
+    "verlinde_triples": 6229504
+  },
+  "scope_honesty": {
+    "arithmetic": "GF(2)/ℤ[i] 정확 — numpy int64 만 사용(부동소수 없음)",
+    "completes": "dtw_z2_5_radical1_observe 의 '완전 184×184 S = 미완' 유보 해소",
+    "delivered": "완전 184×184 S·T + 전 modular 게이트(유니터리·S²=C·Verlinde 184³ 전수) + 문자공식 유도표현 검증 + Tannakian 부분범주 실증",
+    "not_claimed": "H³ 35 클래스 전체의 modular data(본 관측=agent01 대표 cocycle 1개) · braiding 실봉인 · F/R-symbol · H³ 차원 판정(선행 관측 소관)"
+  },
+  "tannakian": {
+    "evidence": "전부 d=1·θ=1(보손) + S-부분행렬 전 성분 동일(rank 1·완전 퇴화)",
+    "spectrum": "완전 퇴화 극(SU(3)₃·본 층) ↔ 비퇴화 극(SU(2)₃ pointed, ⊠-분해 가능) — 같은 판정기준의 양 끝",
+    "subcategory": "flux-0 섹터 32개 = Rep(ℤ₂⁵)",
+    "verdict": "★Tannakian — 모듈러 부분범주 아님"
+  }
+}
