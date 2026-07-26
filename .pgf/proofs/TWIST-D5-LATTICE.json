@@ -1,0 +1,58 @@
+{
+  "_note": "twist d=5 격자 실구성 시도 ② — 타입 GF(2) 연립·MITM 인증기·★계수 장벽 특정·6×5 전수 음성. ★봉인 미달성(module 0·root 불변).",
+  "_schema": "twist-d5-lattice/v1",
+  "all_ok": true,
+  "certifier": {
+    "cross_check": "6×5 후보에서 두 인증기 결론 일치",
+    "direct_cost": "직접 전수는 n=30 에서 2.3M Pauli · n=55 에서 27.6M",
+    "mitm": "weight≤4 판정 = 2+2 분해 + syndrome 그룹핑 — n=77 까지 즉시"
+  },
+  "checks": {
+    "A_candidates_exist": true,
+    "A_odd_Y_automatic": true,
+    "A_pentagon_weights": true,
+    "A_teeth_constant_solution_degenerate": true,
+    "B_mitm_matches_direct": true,
+    "C_faces_n_minus_1": true,
+    "C_one_merge_k2": true,
+    "C_twist_logical_bound": true,
+    "C_two_merge_k3": true,
+    "D_6x5_candidate_count": true,
+    "D_6x5_exhaustive_negative": true,
+    "E_large_lattice_not_exhaustive": true,
+    "F_next_direction_recorded": true,
+    "teeth_constant_degenerate": true,
+    "teeth_counting_barrier": true
+  },
+  "counting_obstruction": {
+    "consequence": "단일 병합 족에서는 두 번째 twist 가 반드시 경계에 흡수 ⟹ twist 논리 weight ≤ ⌊m/2⌋ ⟹ d=5 는 m ≥ 10 필요",
+    "faces": "n−1 (=[[n,1,·]] 기준)",
+    "one_merge": "생성원 n−2 → k=2 (정상)",
+    "two_merge": "생성원 n−3 → k=3 (bulk twist 쌍을 만들려면 면 1개 추가 필요)"
+  },
+  "exhaustive_6x5": {
+    "candidates": 1588,
+    "space": "경계 오프셋 16 × cut 열 4 × cut 길이 5 × 지정 겹침쌍 × 해공간 전수",
+    "verdict": "★전 후보가 weight≤4 논리 보유 ⟹ d≥5 없음(전수) — C 와 정합(⌊6/2⌋=3)"
+  },
+  "large_lattice": {
+    "result": "d≥5 미발견",
+    "tried": "11×5(n=55)·10×5(n=50)·11×7(n=77)",
+    "★honesty": "각 600/400/600s **예산 소진** — **전수 아님**"
+  },
+  "next_direction": {
+    "from_C": "cut 을 따라 **면 1개 추가**(추가 mixed 면) 후 **2회 병합** → 생성원 (n−1+1)−2 = n−2 → **k=2 유지 + bulk twist 2개**",
+    "then": "두 병합점을 ≥5 떨어뜨리면 twist 논리 weight ≥5 가능"
+  },
+  "scope_honesty": {
+    "exhaustive_vs_budget": "D(6×5)는 **전수**. E(대형 격자)는 **예산 제한이며 전수 아님** — 이 구분을 흐리지 않는다.",
+    "goal_vs_delivered": "★★목표 = 요건 ⑤ 집행 → d=5 **실봉인**(root 갱신). **봉인 미달성(2회 연속)** — 신규 module 0 · root 불변. 얻은 것 = 재사용 도구 2종 + 계수 장벽 특정 + 6×5 전수 음성.",
+    "not_claimed": "d=5 코드 구성 · 일반 twist 코드 불가능성(C 는 '면 수 n−1 고정 + 병합만' 가정 하의 장벽이며 F 가 우회 경로) · 봉인 자산 변경"
+  },
+  "type_system": {
+    "candidate_count_6x5": 1588,
+    "corollary": "지정 쌍 반교환 = 타입 불일치 겹침 홀수 ⟹ 병합 Y 개수 자동 홀수(설계 보장)",
+    "method": "면 집합 + '지정 1쌍만 반교환' 을 GF(2) 아핀 연립으로 풀어 타입 결정",
+    "pitfall": "해공간 자유변수 전수 열거 필수 — 특수해는 상수 타입으로 퇴화(weight-1 논리)"
+  }
+}
