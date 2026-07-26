@@ -23,6 +23,10 @@
 정직 경계(★관측·seal 아님·root 불변 sidecar·신규 module 0):
   - **p=2 완전 D·C = 미완**(양 블록 모두 비순환 defect(D₄·위수4)·wild 가능 — 트리 이론 부재·
     decomposition 유일성 비보장) — 기초층(블록·ℓ·Sylow·모듈 지표)까지 결정적으로.
+    ★**2026-07-26 해소**: [[a7_cartan_p2_observe]] 가 6 simple {1,4,4̄,6,14,20} 전부를
+    명시 GF(2)-모듈로 구성(A₇⊂GL(4,2))해 Φ 를 확정 → **D(9×6) 유일 결정**·C(주) det 8·
+    C(비주) det 4·det C=32. 위 유보 이유는 **일반론으로는 여전히 옳다**(명시 구성이 있었기에
+    유일성이 따라온 것).
   - p=3 주블록 defect ℤ₃²(비순환)이지만 D 는 **명시 모듈 구성으로 완전 결정**(트리 이론 불필요).
   - Brauer 문자 값은 10̂ 쌍의 7A/7B 에서 ℚ(√−7) — 정확 대수 산술.
 
@@ -187,7 +191,8 @@ def main():
     out = {"_schema": "a7-cartan-p23/v1",
            "_note": ("A₇ p=3 완전 D(9×6)·Cartan + p=2 기초층 — 결정적 GF(p)/ℚ(√−7) 산술. "
                      "p=3 주블록 simples {1,13,10,10̄(GF(9)-켤레)}·소블록 tree 6—21—15. "
-                     "p=2 완전 D=정직 미완(wild). 관측·module 0·root 불변.")}
+                     "p=2 완전 D=후속 해소(a7_cartan_p2_observe, 2026-07-26). "
+                     "관측·module 0·root 불변.")}
     T = dixon_char_table()
     K, sizes, orders, degs = T["K"], T["sizes"], T["orders"], T["degs"]
     int_table, rat = T["int_table"], T["rat"]
@@ -466,7 +471,7 @@ def main():
         "blocks": "{1,14,15,21,35}(주·defect D₄) + {6,10,10̄,14′}(defect 위수4)",
         "l_per_block": "3 + 3 = ℓ₂=6", "sylow2": "D₄ (프로파일 [1,2⁵,4²] 구성적)",
         "pairs_mod2": "incidence rank 6(퇴화)·Q(15): 고정1·dual1·End2",
-        "honest": "완전 D·C = 미완(양 블록 비순환 defect·wild 가능 — 트리 이론 부재)",
+        "honest": "완전 D·C = ★2026-07-26 해소(a7_cartan_p2_observe: 6 simple 명시 구성 → Φ 확정 → D 유일)",
     }
 
     # teeth
@@ -478,7 +483,7 @@ def main():
     out["checks"] = R
     out["scope_honesty"] = {
         "p3": "완전 D(9×6)·C — 명시 모듈 구성(비순환 ℤ₃² defect 여도 트리 이론 불필요)",
-        "p2": "기초층(블록·ℓ·Sylow·지표)까지 결정적 — 완전 D·C 는 wild 가능·정직 미완",
+        "p2": "기초층(블록·ℓ·Sylow·지표)까지 결정적 — 완전 D·C = a7_cartan_p2_observe 에서 완결",
         "method": "결정적 GF(p) 선형대수(고정공간·Hom·End·quotient)·확률적 meataxe 금지",
     }
     out["all_ok"] = ok
@@ -496,7 +501,8 @@ def main():
             print(f"  {k}: {v}", flush=True)
         print("  ★p=3: 소블록 tree 6—21—15·주블록 {1,13,10,10̄(GF(9)쌍)}·D 9×6 완전·det 게이트",
               flush=True)
-        print("  ★χ̂14=χ̂14′·χ̂35=2·1+13+10+10̄(√−7 방정식이 확정)·p=2 기초층+정직 미완", flush=True)
+        print("  ★χ̂14=χ̂14′·χ̂35=2·1+13+10+10̄(√−7 방정식이 확정)·p=2 기초층"
+              "(완전 D·C = a7_cartan_p2_observe 에서 완결)", flush=True)
         print("  → .pgf/proofs/A7-CARTAN-P23.json", flush=True)
     print(f"a7_cartan_p23_observe: all_ok={ok}", flush=True)
     return 0 if ok else 1

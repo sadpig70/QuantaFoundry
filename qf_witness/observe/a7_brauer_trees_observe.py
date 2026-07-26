@@ -227,7 +227,10 @@ def dixon_char_table():
         rat.append(rrow)
     return {"K": K, "sizes": sizes, "orders": orders, "invmap": invmap,
             "chi_mod": chi_mod, "int_table": int_table, "rat": rat,
-            "degs": [int_table[t][0] for t in range(K)]}
+            "degs": [int_table[t][0] for t in range(K)],
+            # ★2026-07-26 추가(비파괴): 클래스 대표·cyclotomic 다중도 —
+            # a7_cartan_p2_observe 가 동일 클래스 순서로 Brauer 문자를 계산하기 위해 필요.
+            "reps": reps, "exact": exact}
 
 
 def prufer_trees(n):

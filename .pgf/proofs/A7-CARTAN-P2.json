@@ -1,0 +1,222 @@
+{
+  "_note": "A₇ p=2 완전 D(9×6)·Cartan — 6 simple 전부 명시 GF(2)-모듈 구성으로 Φ 확정 → D 유일(트리 이론 불필요). 관측·seal 아님·module 0·root 불변.",
+  "_schema": "a7-cartan-p2/v1",
+  "all_ok": true,
+  "checks": {
+    "A_K9": true,
+    "A_degs": true,
+    "A_two_regular_6": true,
+    "B_15_cosets": true,
+    "B_H_168": true,
+    "B_faithful_2520": true,
+    "B_fano_7_lines": true,
+    "B_homomorphism": true,
+    "B_line_span_dim11": true,
+    "B_orbit3_sizes_35_420": true,
+    "B_quotient_dim4": true,
+    "C_I_in_tracezero": true,
+    "C_I_submodule": true,
+    "C_all_six_simple_exhaustive": true,
+    "C_dim14": true,
+    "C_dim20": true,
+    "C_ker_dim20_submodule": true,
+    "C_orbit_counts": true,
+    "C_tracezero_submodule_15": true,
+    "C_wedge2_dim6": true,
+    "C_wedge3_dim4": true,
+    "E_C_symmetric": true,
+    "E_Cmain_det8": true,
+    "E_Cmain_values": true,
+    "E_Coth_det4": true,
+    "E_Coth_values": true,
+    "E_D_nonneg_int": true,
+    "E_Phi_invertible": true,
+    "E_block_diagonal": true,
+    "E_degree_consistency": true,
+    "E_detC_32": true,
+    "F_phi14_identity": true,
+    "F_phi20_identity": true,
+    "F_phi6_is_natural": true,
+    "G_cartan_gauge_invariant": true,
+    "G_gauge1_also_nonneg_int": true,
+    "G_gauge_is_column_swap": true,
+    "teeth_Phi_needed_for_uniqueness": true,
+    "teeth_both_gauges_valid": true,
+    "teeth_sylow2_noncyclic": true
+  },
+  "decomposition": {
+    "Cartan_other": [
+      [
+        2,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        4
+      ]
+    ],
+    "Cartan_principal": [
+      [
+        4,
+        2,
+        2
+      ],
+      [
+        2,
+        3,
+        1
+      ],
+      [
+        2,
+        1,
+        2
+      ]
+    ],
+    "blocks": {
+      "other_simples": [
+        "4̂",
+        "4̄̂",
+        "6̂"
+      ],
+      "principal_simples": [
+        "1̂",
+        "14̂",
+        "20̂"
+      ]
+    },
+    "columns": [
+      "1",
+      "4",
+      "4b",
+      "6",
+      "14",
+      "20"
+    ],
+    "det": {
+      "note": "det C(주) = 8 = |A₇|₂ (full defect) · 비주 defect 2 → 4",
+      "other": 4,
+      "principal": 8,
+      "total": 32
+    },
+    "readable": {
+      "1": "1̂",
+      "10": "4̄̂+6̂",
+      "10̄": "4̂+6̂",
+      "14(주)": "14̂",
+      "14′": "4̂+4̄̂+6̂",
+      "15": "1̂+14̂",
+      "21": "1̂+20̂",
+      "35": "1̂+14̂+20̂",
+      "6": "6̂"
+    },
+    "rows_by_degree_and_index": {
+      "1#6": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "10#1": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "10#4": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "14#0": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "14#7": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "15#5": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "21#2": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "35#8": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "6#3": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  },
+  "gauge": {
+    "effect": "반대 게이지 = D 의 4̂↔4̄̂ 열 교환(= 10↔10̄ 행 교환) — 실증",
+    "invariant": "Cartan·det·블록 구조는 게이지 불변 ⟹ D 는 라벨링 게이지까지 유일",
+    "origin": "Brauer lift 의 μ₇(GF(8)) → μ₇(ℂ) 동형 선택(2중)"
+  },
+  "gl42_embedding": {
+    "H": "Fano 평면 안정화군 ≅ PSL(3,2)·|H|=168·index 15",
+    "construction": "F₂^15 / span(선벡터, dim 11) = 4차원 GF(2)-모듈 · 충실",
+    "orbits_on_3subsets": "{35, 420} — 35 = PG(3,2) 선(자체발견)"
+  },
+  "scope_honesty": {
+    "boundary": "선행 유보 이유(wild·유일성 비보장)는 **일반론으로 옳다** — 여기서는 6 simple 을 전부 명시 구성해 Φ 가 확정되어 유일성이 따라온 것. 일반 wild 블록에 대한 방법 주장 아님.",
+    "completes": "a7_cartan_p23_observe 의 'p=2 완전 D·C = 미완' 유보 해소",
+    "delivered": "A₇ p=2 완전 D(9×6)·Cartan(주 det 8·비주 det 4·전체 32) + 6 simple 전부 명시 구성·기약성 전수 + Brauer 문자표 + 게이지 고지",
+    "not_claimed": "봉인 게이트·Erdmann 분류 인용·p=2 사영 분해가능 모듈의 구조(Loewy 층)"
+  },
+  "simples": {
+    "irreducibility": "전수(궤도 대표 vector 가 전체 생성 — ⟨v⟩⊊M ⟹ ⟨gv⟩⊊M 로 축약 정당)",
+    "list": "1 · 4 · 4̄(dual) · 6=Λ²(4) · 14=sl₄(2)/⟨I⟩ · 20=ker(4⊗Λ²4→Λ³4)",
+    "orbit_counts": {
+      "1": 1,
+      "14": 27,
+      "20": 478,
+      "4": 1,
+      "4b": 1,
+      "6": 3
+    }
+  }
+}
