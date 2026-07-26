@@ -1,0 +1,86 @@
+{
+  "_note": "D^ω(D₄) μ₄ 층 ribbon-gap 폐합 — 근본원인=S 켤레 규약(ω-보정 불필요). TrackHE19 P2 'ribbon-gap' 해석 정정·철회. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "dtw-d4-mu4-ribbon/v1",
+  "all_ok": true,
+  "arbiters": {
+    "1_SL2Z": "(S̄T)³ = λS̄², λ = 1",
+    "2_balancing_formA": "S̄ 선택 (S 는 불성립)",
+    "3_gauss_sum": "p₊ = 8 = D · p₊p₋ = 64 = D² · p₊/D = 1 = λ (S 규약 미사용)",
+    "verdict": "★3중 독립 심판이 모두 수정 규약 S̄ 를 선택"
+  },
+  "blind_spot": {
+    "consequence": "S-단독 게이트(대칭·유니터리·S²=C·Verlinde·dims·S_vac)는 전부 켤레-blind",
+    "identity": "S̄ = S∘C — 켤레는 charge conjugation 라벨치환과 같다",
+    "why_mu2_passed": "μ₂ 층은 C = 항등(전 anyon 자기쌍대) ⟹ S 실수 ⟹ 규약 무해",
+    "why_mu4_exposed": "μ₄ ζ₁₆ 층 = 첫 비자기쌍대 층(C 는 6 호환) ⟹ 결함 = C 로 노출"
+  },
+  "central_charge": {
+    "p_plus_over_D": "1 = e^{2πi·0/8} ⟹ c ≡ 0 (mod 8)",
+    "role": "확증용 — 규약은 ①②③ 이 이미 독립 확정(이 사실로 정한 것 아님)",
+    "structural": "Drinfeld double(=center)은 반드시 c≡0 — 수정 데이터가 그 값을 준다"
+  },
+  "checks": {
+    "A_fib_selfdual": true,
+    "A_su31_ST3_holds": true,
+    "A_su31_formA_holds": true,
+    "A_su31_formB_fails": true,
+    "A_su31_non_selfdual": true,
+    "A_su31_rank3": true,
+    "A_teeth_selfdual_blind": true,
+    "B_C_nontrivial": true,
+    "B_P4_is_1": true,
+    "B_S2_is_perm_C": true,
+    "B_S_symmetric": true,
+    "B_S_unitary": true,
+    "B_defect_equals_C": true,
+    "B_defect_is_permutation": true,
+    "B_dims_1_8_2_14": true,
+    "B_n22": true,
+    "B_orig_ST3_fails": true,
+    "B_ribbon_scalar": true,
+    "B_sumdim2_64": true,
+    "C1_corrected_ST3_holds": true,
+    "C1_lam_is_one": true,
+    "C2_N_conj_invariant": true,
+    "C2_formA_selects_corrected": true,
+    "C2_verlinde_nonneg_int": true,
+    "C3_gauss_matches_lam": true,
+    "C3_gauss_pp_pm_D2": true,
+    "C3_gauss_pplus_eq_D": true,
+    "D_double_c_zero_mod8": true,
+    "E_Sbar_equals_S_compose_C": true,
+    "E_corrected_passes_all_S_gates": true,
+    "E_mu2_C_identity": true,
+    "F_P4_is_3": true,
+    "F_p3_C_nontrivial": true,
+    "F_p3_corrected_holds": true,
+    "F_p3_lam_one": true,
+    "F_p3_orig_fails": true,
+    "G_ribbon_needs_no_omega_correction": true,
+    "teeth_defect_not_diagonal": true,
+    "teeth_orig_convention_breaks": true,
+    "teeth_selfdual_cannot_decide": true
+  },
+  "closure": {
+    "T_gauge": "확정 — T = diag(θ), θ_I = z 의 고윳값(별도 게이지 자유도 불필요)",
+    "resolved": "★z = Σδ_a⊗a 는 μ₄ 층에서도 정확한 ribbon — quasi-Hopf ω-보정 **불필요**",
+    "retraction": "TrackHE19 P2 dtw_d4_zeta16_observe 의 'ribbon-gap = μ₄ 구조적 실패' 해석을 **규약 아티팩트로 판정·철회** (갭 현상 자체는 실재했음)",
+    "root_cause": "S-행렬 문자공식의 켤레 규약(수정 S = S̄ = S∘C)"
+  },
+  "convention": {
+    "determined_on": "SU(3)₁ (Kac-Peterson, 비자기쌍대 C=[0,2,1])",
+    "honesty": "문헌 인용 아님 — 독립 구성 MTC 에서 결정",
+    "teeth": "자기쌍대 Fib=(G₂)₁ 에서는 form A/B 둘 다 통과 ⟹ 자기쌍대 검증은 blind",
+    "verdict": "form A — D·S_ij = Σ_k N_{i,j*}^k d_k θ_k/(θ_iθ_j)"
+  },
+  "defect": {
+    "measurement": "(ST)³·(S²)⁻¹ = C 정확 — 즉 (ST)³ = I 이고 S² = C ≠ I",
+    "nature": "위상(diagonal)이 아니라 **순열**, 그것도 charge conjugation",
+    "why_eps_search_failed": "대각 ε-위상 보정은 순열 결함을 만들 수 없다"
+  },
+  "scope_honesty": {
+    "delivered": "μ₄ ribbon-gap 폐합(근본원인=켤레 규약·ω-보정 불필요) + balancing 규약 독립 확정 + blind-spot 국소화 + P₄=1,3 양 층 폐합",
+    "not_claimed": "braiding 실봉인·F/R-symbol·μ₈ 층 S·T·form A 의 문헌 인용(=SU(3)₁ 에서 결정한 것)",
+    "retracts": "dtw_d4_zeta16_observe 의 'ω-보정 필요' 해석 (본 관측이 정정)"
+  }
+}

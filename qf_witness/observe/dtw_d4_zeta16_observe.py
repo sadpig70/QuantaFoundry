@@ -15,6 +15,11 @@ twisted S·T** (관측, seal 아님). [[dtw_d4_u1_census_observe]]가 발견한 
      **P₄=1 대표 (w=3,z₄=1)·P₄=3 대표 (w=3,z₄=0)**.
   B. **모듈 구성 기계검증**: 22 모듈·Σdim²=64(정칙 완비)·단위원·**모듈 공리 전수**(대수쌍×기저)
      — κ = i^{θ(g,x,t_i)−θ(g,t_j,c)} 위상 관례 기계확정.
+  ★정정 고지(2026-07-26): 본 관측이 보고했던 "μ₄ 층 ribbon-gap = 구조적 실패(ω-보정 필요)"는
+  **해석이 틀렸다**. 갭 현상은 실재했으나 원인은 아래 S-문자공식의 **켤레 규약 누락**이며,
+  수정 규약 S̄=S∘C 에서 (ST)³=λS²(λ=1)가 성립한다. 근본원인·3중 독립 심판 =
+  [[dtw_d4_mu4_ribbon_observe]]. 본 스크립트는 두 규약의 결과를 모두 기록한다.
+
   C. ★**완전 22×22 twisted S·T(ζ₁₆ 층)**: S 대칭·SS†=I·S²=C(C²=1)·(ST)³=λS²·
      **Verlinde 22³ 전수 비음정수**·S_vac=1/8(D²=64)·dims {1⁸,2¹⁴}.
   D. ★**T-스펙트럼 order-16 실재**: ribbon 스칼라 θ_I 중 **원시 ζ₁₆**(θ¹⁶=1∧θ⁸≠1) 존재 —
@@ -509,10 +514,18 @@ def modular_data(th, quick=False):
     lam = next((ST3[i][j] for i in range(n) for j in range(n) if S2[i][j].eq(C16.one())), None)
     st3_holds = (lam is not None and all(
         ST3[i][j].eq(lam.mul(S2[i][j])) for i in range(n) for j in range(n)))
-    # ★μ₄-twist ribbon gap(정직 관측): z=Σδ_a⊗a 는 μ₂ 층에서 ribbon 이었으나(모든 게이트 통과)
-    # μ₄ 층에서는 (ST)³=λS² 를 깨뜨림 — ζ₁₆-스핀 쌍(켤레 호환·ε-위상 보정 256 전수 불통)에서
-    # 구조적 실패. quasi-Hopf ribbon 의 ω-보정 일반식 필요 = 다음(정직 미완).
-    R["ST3_gap_observed_mu4"] = (not st3_holds)
+    # ★정정(2026-07-26, [[dtw_d4_mu4_ribbon_observe]]): 원 규약에서 (ST)³=λS² 가 깨지는 것은
+    # 사실이나, 그 원인은 quasi-Hopf ribbon 의 ω-보정 부재가 **아니라** 이 S-문자공식의
+    # **켤레 규약 누락**이다. 수정 규약 S̄ = S∘C 에서 (ST)³=λS²(λ=1) 가 성립한다.
+    # μ₂ 층에서 보이지 않았던 이유 = 그 층은 C=항등(전 anyon 자기쌍대)이라 S 가 실수.
+    R["ST3_gap_orig_convention"] = (not st3_holds)
+    Sbar = [[S[i][j].conj() for j in range(n)] for i in range(n)]
+    S2b = mm(Sbar, Sbar)
+    STb = mm(Sbar, Tm)
+    ST3b = mm(mm(STb, STb), STb)
+    lamb = next((ST3b[i][j] for i in range(n) for j in range(n) if S2b[i][j].eq(C16.one())), None)
+    R["ST3_prop_S2_corrected"] = (lamb is not None and all(
+        ST3b[i][j].eq(lamb.mul(S2b[i][j])) for i in range(n) for j in range(n)))
     # Verlinde
     trip = itertools.product(range(n), repeat=3) if not quick else \
         [(i, j, k) for i in range(0, n, 3) for j in range(0, n, 3) for k in range(0, n, 3)]
@@ -573,7 +586,7 @@ def main():
             R[f"E_p3_{k}"] = v
         R["E_p3_T_order16"] = R3["T_order16_exists"]
         # Galois 쌍대 — 게이지-불변 판정: 확정된 S-행렬로(σ_k(S₁) vs S₃ 행-멀티셋 일치)
-        # (T 후보는 ribbon-gap 게이지 오염 가능 → S 기반이 견고)
+        # (S 기반이 견고 — T 는 규약 의존이었고 dtw_d4_mu4_ribbon_observe 에서 해소됨)
         def row_multiset(S):
             return sorted(sorted(str(x.c) for x in row) for row in S)
         gal_k = None
@@ -630,16 +643,19 @@ def main():
 
     # teeth
     R["teeth_zeta16_realized"] = R["B_p1_T_order16_exists"]
-    R["teeth_full_gates"] = all(v for k, v in R.items() if k.startswith("B_p1_"))   # ST3_gap 포함(True=갭 관측)
+    R["teeth_full_gates"] = all(v for k, v in R.items() if k.startswith("B_p1_"))   # 원규약 갭 관측 + 수정규약 성립 동시
 
     ok = bool(all(R.values()))
     out["checks"] = R
     out["scope_honesty"] = {
         "delivered": "ζ₁₆ 층(P₄=1,3) 완전 22×22 S·T·order-16 T 실재·Galois 쌍대·Q₈ 구조 대조",
         "hierarchy": "T-스펙트럼 ζ₄(untwisted)→ζ₈(μ₂)→ζ₁₆(μ₄) 3층 위계 완성",
-        "not_yet": ("★modular T 게이지 확정 — z=Σδ_a⊗a 는 μ₄ 층에서 ribbon 아님((ST)³ 갭 실증·"
-                    "ε-보정 256 전수 불통) → quasi-Hopf ribbon ω-보정 일반식 = 다음. "
-                    "그 외: μ₈ 층 S·T·Q₈ 완전 사다리·braiding 실봉인"),
+        "resolved_2026_07_26": ("★modular T 게이지 **확정** — 원 규약의 (ST)³ 갭은 quasi-Hopf "
+                    "ribbon ω-보정 부재가 **아니라 S-문자공식의 켤레 규약 누락**이었다"
+                    "(수정 S̄=S∘C 에서 (ST)³=λS², λ=1 성립). 3중 독립 심판·근본원인 상세 = "
+                    "[[dtw_d4_mu4_ribbon_observe]]. 본 스크립트는 원 규약 갭"
+                    "(ST3_gap_orig_convention)과 수정 규약 성립(ST3_prop_S2_corrected)을 함께 기록."),
+        "not_yet": "μ₈ 층 S·T · Q₈ 완전 μ₄ 사다리 · braiding 실봉인",
     }
     out["all_ok"] = ok
 

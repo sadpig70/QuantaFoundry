@@ -13,7 +13,8 @@
     "A_P4_reps": true,
     "A_census_odd_exists": true,
     "B_p1_S2_C": true,
-    "B_p1_ST3_gap_observed_mu4": true,
+    "B_p1_ST3_gap_orig_convention": true,
+    "B_p1_ST3_prop_S2_corrected": true,
     "B_p1_S_symmetric": true,
     "B_p1_S_unitary": true,
     "B_p1_Svac_1_8": true,
@@ -27,7 +28,8 @@
     "B_p1_verlinde": true,
     "E_galois_pair": true,
     "E_p3_S2_C": true,
-    "E_p3_ST3_gap_observed_mu4": true,
+    "E_p3_ST3_gap_orig_convention": true,
+    "E_p3_ST3_prop_S2_corrected": true,
     "E_p3_S_symmetric": true,
     "E_p3_S_unitary": true,
     "E_p3_Svac_1_8": true,
@@ -83,6 +85,7 @@
   "scope_honesty": {
     "delivered": "ζ₁₆ 층(P₄=1,3) 완전 22×22 S·T·order-16 T 실재·Galois 쌍대·Q₈ 구조 대조",
     "hierarchy": "T-스펙트럼 ζ₄(untwisted)→ζ₈(μ₂)→ζ₁₆(μ₄) 3층 위계 완성",
-    "not_yet": "★modular T 게이지 확정 — z=Σδ_a⊗a 는 μ₄ 층에서 ribbon 아님((ST)³ 갭 실증·ε-보정 256 전수 불통) → quasi-Hopf ribbon ω-보정 일반식 = 다음. 그 외: μ₈ 층 S·T·Q₈ 완전 사다리·braiding 실봉인"
+    "not_yet": "μ₈ 층 S·T · Q₈ 완전 μ₄ 사다리 · braiding 실봉인",
+    "resolved_2026_07_26": "★modular T 게이지 **확정** — 원 규약의 (ST)³ 갭은 quasi-Hopf ribbon ω-보정 부재가 **아니라 S-문자공식의 켤레 규약 누락**이었다(수정 S̄=S∘C 에서 (ST)³=λS², λ=1 성립). 3중 독립 심판·근본원인 상세 = [[dtw_d4_mu4_ribbon_observe]]. 본 스크립트는 원 규약 갭(ST3_gap_orig_convention)과 수정 규약 성립(ST3_prop_S2_corrected)을 함께 기록."
   }
 }
