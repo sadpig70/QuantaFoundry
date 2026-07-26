@@ -1,0 +1,170 @@
+{
+  "F4_level1": {
+    "c": "26/5",
+    "comarks": [
+      "2",
+      "3",
+      "2",
+      "1"
+    ],
+    "cross": "su3_2_mtc_observe 의 SU(3)₂ ≅ Fib̄⊠ℤ₃ 인수(h_τ=3/5)와 같은 쪽 ⟹ ★(G₂)₁ ≇ SU(3)₂ 의 Fib 인수(서로 복소켤레)",
+    "dim_g": 52,
+    "h_dual": 9,
+    "h_tau": "3/5",
+    "marks": [
+      2,
+      3,
+      4,
+      2
+    ],
+    "primaries": [
+      "0 (vacuum)",
+      "ω₄ (dim 26, comark 1)"
+    ],
+    "roots": 48,
+    "verdict": "★(F₄)₁ ≅ conj-Fib = σ₄((G₂)₁) — Galois 켤레 정확 일치"
+  },
+  "G2_level1": {
+    "c": "14/5",
+    "comarks": [
+      "2",
+      "1"
+    ],
+    "dim_g": 14,
+    "h": [
+      "0",
+      "2/5"
+    ],
+    "h_dual": 4,
+    "marks": [
+      2,
+      3
+    ],
+    "note": "★agent07 'rank=14' = dim(G₂) 혼동 — 정확 rank 2 (su3_3 정정 승격)",
+    "primaries": [
+      "0 (vacuum, dim 1)",
+      "ω₂ (dim 7, short-node comark 1)"
+    ],
+    "roots": 12
+  },
+  "_note": "(G₂)₁ 완전 modular data + Fibonacci 동형 판정 — 일반 level-1 Lie 엔진 자체유도·Gauss 합 c mod 8 exact·Galois 4-궤도·SU(2)₃ ⊠-분해 인증서·(F₄)₁=σ₄((G₂)₁) 켤레. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "g2-1-mtc/v1",
+  "all_ok": true,
+  "anomaly": {
+    "c_mod_8": "14/5 — Gauss 합 경로가 CFT 공식 k·dim𝔤/(k+h∨) 와 독립 일치",
+    "p_plus_over_D": "e^{2πi·7/20} = e^{2πi(14/5)/8}"
+  },
+  "checks": {
+    "A_central_charge_14_5": true,
+    "A_comarks_21": true,
+    "A_g2_12_roots": true,
+    "A_g2_dim14": true,
+    "A_gram_symmetric": true,
+    "A_h_dual_4": true,
+    "A_h_tau_2_5": true,
+    "A_highest_marks_23": true,
+    "A_level1_rank2": true,
+    "A_symmetrizable": true,
+    "A_two_lengths_ratio3": true,
+    "A_weyl_dim_7_and_14": true,
+    "A_weyl_order_12": true,
+    "B_D2_2_plus_phi": true,
+    "B_D2_field_Qsqrt5": true,
+    "B_S00_normalization_inv_D": true,
+    "B_S2_scalar_C_identity": true,
+    "B_ST3_prop_S2": true,
+    "B_S_symmetric": true,
+    "B_S_unitary_scalar": true,
+    "B_T_zeta60_integral": true,
+    "B_dims_1_phi": true,
+    "B_norm_rational_positive": true,
+    "C_dtau_golden": true,
+    "C_fibonacci_fusion": true,
+    "C_verlinde_nonneg_int": true,
+    "D_central_charge_mod8_exact": true,
+    "D_gauss_pp_pm_eq_D2": true,
+    "D_theta_tau_zeta5_sq": true,
+    "D_total_dim_sq_matches": true,
+    "E_YL_dim_is_neg_inv_phi": true,
+    "E_dtau_is_phi_positive": true,
+    "E_orbit_size_4_distinct": true,
+    "E_orbit_t13_conjYangLee": true,
+    "E_orbit_t19_conjFib": true,
+    "E_orbit_t1_Fib": true,
+    "E_orbit_t7_YangLee": true,
+    "E_verdict_is_Fib_not_conj": true,
+    "F_S_kronecker_exact": true,
+    "F_c_additive": true,
+    "F_g2_Shat_matrix": true,
+    "F_h_additive_mod1": true,
+    "F_pointed_nondegenerate": true,
+    "F_sqrt5_in_z40": true,
+    "F_su23_Shat_in_Qsqrt5": true,
+    "F_su23_c_9_5": true,
+    "F_su23_h": true,
+    "F_su23_rank4": true,
+    "G_f4_48_roots": true,
+    "G_f4_anomaly_26_5": true,
+    "G_f4_c_26_5": true,
+    "G_f4_comarks_2321": true,
+    "G_f4_dim26": true,
+    "G_f4_dim52": true,
+    "G_f4_dim_tau_phi": true,
+    "G_f4_h_3_5": true,
+    "G_f4_h_dual_9": true,
+    "G_f4_is_galois_sigma4_of_g2": true,
+    "G_f4_level1_rank2": true,
+    "G_f4_marks_2342": true,
+    "G_f4_symmetrizable": true,
+    "G_f4_theta_zeta5_cubed": true,
+    "G_f4_weyl_1152": true,
+    "teeth_comark2_not_level1": true,
+    "teeth_conj_theta_breaks_anomaly": true,
+    "teeth_level2_rank4_not_fib": true,
+    "teeth_wrong_level_not_unitary": true,
+    "z_field_sqrt5_squared_5": true,
+    "z_phi_golden_eq": true
+  },
+  "fib_verdict": {
+    "certificate": "(d_τ, θ_τ) = (φ, ζ₅²)",
+    "galois_orbit": {
+      "σ₁": "(φ, ζ₅²) = Fib = (G₂)₁",
+      "σ₂(t=7)": "(−1/φ, ζ₅⁴) = Yang-Lee (비유니터리)",
+      "σ₃(t=13)": "(−1/φ, ζ₅) = conj-Yang-Lee (비유니터리)",
+      "σ₄(t=19)": "(φ, ζ₅³) = conj-Fib = (F₄)₁"
+    },
+    "honesty": "궤도 크기 4 = 본 관측 자체유도 — 'Fib 융합환 MTC 는 정확히 4개' 분류정리 인용 아님",
+    "verdict": "★(G₂)₁ ≅ **Fib** (conj-Fib 아님 · Yang-Lee 계열 아님)"
+  },
+  "fusion": {
+    "N_tau_tau": {
+      "1": 1,
+      "tau": 1
+    },
+    "rule": "τ×τ = 1 + τ (Fibonacci)"
+  },
+  "modular_data": {
+    "D2": "2+φ = (5+√5)/2",
+    "S_norm": "75",
+    "T": "diag(e^{−2πi·7/60}, e^{2πi·17/60})",
+    "dims": [
+      "1",
+      "φ=(1+√5)/2"
+    ],
+    "field": "S̃ ∈ ℚ(ζ₁₅) ⊂ ℚ(ζ₆₀) · Ŝ=S̃/S̃₀₀ ∈ ℚ(√5) · θ ∈ ℚ(ζ₅)",
+    "rank": 2
+  },
+  "scope_honesty": {
+    "delivered": "(G₂)₁ 완전 modular data(S·T·dims·D²·Verlinde·c mod 8) + ★Fibonacci 동형 판정(Fib 확정) + Galois 4-궤도 + SU(2)₃ ⊠-분해 인증서 + (F₄)₁=σ₄((G₂)₁) 켤레",
+    "engine": "일반 level-k Lie 엔진 — 입력은 Cartan A 와 dᵢ 뿐(표 하드코딩 없음)",
+    "not_claimed": "braiding 게이트 실봉인 · pentagon/hexagon · 'Fib 융합환 MTC = 정확히 4개' 분류정리 인용 · (F₄)₁/SU(2)₃ 의 전 MTC 공리 전수",
+    "verdict_level": "S·T(modular data) 수준 동치 — F/R-symbol 범주동치 무주장"
+  },
+  "su2_3_factorization": {
+    "S": "Ŝ^{SU(2)₃} = Ŝ^{anti-semion} ⊗ Ŝ^{(G₂)₁} — 16성분 정확",
+    "T": "h_{SU(2)₃} = h_semion + h_{(G₂)₁} (mod 1) 정확 · c: 9/5 = (−1) + 14/5",
+    "contrast": "pointed {0,3/2} 부분 S 는 **비퇴화(det≠0)** → Müger ⊠-분해 가능 — su3_3_mtc_observe 의 SU(3)₃ pointed 완전퇴화(분해 불가)와 정반대 극",
+    "map": "0↔(1,1) · 1↔(g,τ) · 2↔(1,τ) · 3↔(g,1)",
+    "verdict": "★(G₂)₁ ≅ SU(2)₃ 의 Fib 인수 (modular data 수준)"
+  }
+}
