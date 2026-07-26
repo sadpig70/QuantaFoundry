@@ -1,0 +1,66 @@
+{
+  "_note": "twist-defect d=5 설계 요건 확정 + 잘못된 접근 2종 전수 배제. ★봉인 미달성(관측·module 0·root 불변) — 정직 보고.",
+  "_schema": "twist-d5-design/v1",
+  "all_ok": true,
+  "builder": {
+    "pitfall": "우측 경계 인접 plaquette 열은 c=d−2 (c=d−1 로 잡으면 비교환 3쌍)",
+    "rule": "bulk 체커보드 X iff (r+c) even · 경계쌍 타입 = 1-큐빗 겹침 plaquette 타입(교환 제약)",
+    "verified": {
+      "[[25,1,5]]": "k=1·d=5 witness=ZYYYYIIIIIIIIIIIIIIIIIIII",
+      "[[9,1,3]]": "k=1·d=3"
+    }
+  },
+  "checks": {
+    "A_d3_commute": true,
+    "A_d3_distance3": true,
+    "A_d3_k1": true,
+    "A_d5_commute": true,
+    "A_d5_distance5_exact": true,
+    "A_d5_no_weight4_logical": true,
+    "A_d5_rank24_k1": true,
+    "A_d5_stab24": true,
+    "A_teeth_wrong_right_boundary": true,
+    "B_flip_always_k1_commuting": true,
+    "B_flip_cases_16": true,
+    "C_candidates": true,
+    "C_d5_impossible_by_merge": true,
+    "C_max_logical_weight_4": true,
+    "C_no_counterexample": true,
+    "D_tw16_commute": true,
+    "D_tw16_distance2_exact": true,
+    "D_tw16_k2": true,
+    "D_tw16_pentagon_odd_Y": true,
+    "E_requirements_recorded": true,
+    "teeth_flip_cannot_twist": true,
+    "teeth_merge_bounded": true,
+    "teeth_wrong_boundary_detected": true
+  },
+  "cross_check_tw16": {
+    "code": "봉인 twist_defect16 의 안정군(값 복사·오라클 무접촉)",
+    "reproduced": "k=2 · d=2 정확(witness=IIIIIIIIIIXXIIII) · pentagon weight 5·Y 1",
+    "role": "본 거리 인증기의 독립 교차검증 + 정리와의 정합(twist 분리 2 ⟹ d=2)"
+  },
+  "d5_requirements": {
+    "1_cut_length": "cut(dislocation) 길이 ≥ 5 · 격자 ≥ 6행 — twist 쌍 분리거리가 d 를 제한",
+    "2_mixed_chain": "cut 을 따라 mixed 교대 사슬: 각 측 2 큐빗은 **동일** 타입이고 T_L ≠ T_R (인접 plaquette 와의 1-큐빗 겹침 교환 제약에서 유도)",
+    "3_twist_endpoint": "cut 끝에서 mixed 와 정상 plaquette 가 **정확히 1 큐빗에서 타입 불일치 ⟹ 반교환** → 병합 시 홀수-Y pentagon 발생. 이때 병합된 생성원은 곱과 **반교환**하므로 논리가 되지 않는다 — C 의 상한을 피하는 유일 경로",
+    "4_status": "★위 요건을 만족하는 격자의 실구성 = 미완(다음 작업)"
+  },
+  "scope_honesty": {
+    "delivered": "회전 surface code 빌더 + 거리 인증기(재사용) · [[25,1,5]]/[[9,1,3]] 검증 · region-flip 무해 정리(16/16) · 병합 상한 정리(4416/4416) · [[16,2,2]] 독립 재확인 · d=5 요건 명문화",
+    "goal_vs_delivered": "★착수 목표 = d=5 twist 코드 **실봉인**(root 갱신). 도달 = **설계 단계**(요건 확정 + 잘못된 접근 2종 전수 배제). **봉인 미달성** — 신규 module 0 · root 불변.",
+    "not_claimed": "d=5 코드 구성 · 일반 twist 코드 불가능성(B·C 는 정의된 후보 공간 내 배제) · 봉인 자산 변경"
+  },
+  "theorem_merge_bound": {
+    "consequence": "★d=5 는 flip+병합으로 원리적 불가 — 진짜 dislocation 필요",
+    "evidence": "후보 4416 전수 · 반례 0 · 그런 논리 최대 weight = 4",
+    "proof_sketch": "symp(S_i, S_iS_j) = symp(S_i,S_j) = 0 이고 S_i ∉ 새 안정군",
+    "statement": "교환하는 S_i,S_j 를 곱으로 병합(둘 제거·곱 추가)하면 k=2 이나 S_i 가 비자명 논리가 된다 ⟹ d ≤ wt(S_i)"
+  },
+  "theorem_region_flip": {
+    "consequence": "★region flip 만으로는 twist 를 만들 수 없다",
+    "evidence": "16/16 전수",
+    "reason": "region flip = Hadamard 켤레 — 도메인 벽 양 끝이 코드 경계에 닿아 bulk twist 부재",
+    "statement": "F={(r,c): r≤R, c≥C} 의 X↔Z flip 은 항상 전-교환·k=1"
+  }
+}
