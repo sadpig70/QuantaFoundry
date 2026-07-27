@@ -1,0 +1,200 @@
+{
+  "_note": "twist d=5 시도 ③ — [[16,2,2]] 격자 수정 규칙 역공학·일반화·4×4 재현 + 유효 base 오프셋 분류 + 확장 음성. ★봉인 미달성 3회 연속.",
+  "_schema": "twist-d5-rule/v1",
+  "all_ok": true,
+  "blind_spot": {
+    "found": "봉인 twist_defect16 stabilizer #11 = Z(0,1)·X(0,2) — cut 을 가로지르는 상단 경계쌍인데 **타입 혼합**",
+    "impact": "앞선 2회 시도의 빌더는 경계쌍에 단일 타입 변수만 부여 ⟹ dislocation 이 경계에서 시작하는 구조를 원리적으로 표현 불가"
+  },
+  "checks": {
+    "A_domino_is_top_boundary_pair": true,
+    "A_domino_mixed_types": true,
+    "B_exactly_two_each": true,
+    "B_standard_pattern": true,
+    "C_pent_equals_plaq_times_V": true,
+    "C_pent_support": true,
+    "C_pent_w5_Y1": true,
+    "C_plaq_V_anticommute": true,
+    "C_plaq_below_absent": true,
+    "D_reproduces_16_2_2": true,
+    "E_no_d5_found": true,
+    "E_saturates_at_4": true,
+    "E_square_reaches_4": true,
+    "F_next_hypothesis_recorded": true,
+    "teeth_boundary_split_needed": true,
+    "teeth_most_offsets_degenerate": true,
+    "teeth_support_replacement_needed": true
+  },
+  "extension": {
+    "honesty": "본 규칙 + 유효 base 오프셋 범위의 음성이며 전 파라미터 전수 아님",
+    "scanned": {
+      "11x5": {
+        "best_min_logical_weight": 3,
+        "candidates": 28
+      },
+      "6x5": {
+        "best_min_logical_weight": 3,
+        "candidates": 24
+      },
+      "7x7": {
+        "best_min_logical_weight": 4,
+        "candidates": 36
+      },
+      "8x8": {
+        "best_min_logical_weight": 4,
+        "candidates": 36
+      },
+      "9x5": {
+        "best_min_logical_weight": 3,
+        "candidates": 28
+      },
+      "9x9": {
+        "best_min_logical_weight": 4,
+        "candidates": 44
+      }
+    },
+    "verdict": "★★거리가 **4 에서 포화** — 4×4:2 · 6×5/9×5/11×5:3 · 7×7/8×8/9×9:4. 격자를 키워도 d≥5 가 나오지 않는다(세 번째 장벽)"
+  },
+  "next": {
+    "consistent_with": "twist_d5_lattice_observe 의 계수 장벽(면 n−1 고정 ⟹ 병합2회 → k=3)",
+    "diagnosis": "고정 격자 위의 '면 타입 + 국소 support 교체'로는 부족",
+    "required": "dislocation 을 **cut-and-reglue(면 support 의 전역 재배치)** 로 모델링"
+  },
+  "reproduction_4x4": {
+    "hits": [
+      {
+        "C": 2,
+        "R": 1,
+        "candidates": 8,
+        "off": [
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "C": 1,
+        "R": 1,
+        "candidates": 4,
+        "off": [
+          1,
+          1,
+          0,
+          0
+        ]
+      }
+    ],
+    "verdict": "★일반 규칙이 4×4 에서 k=2·pentagon(w=5·Y=1)·**d=2** 재현 ⟹ 봉인된 코드는 일회성 산물이 아니라 **파라메트릭 규칙의 한 인스턴스**"
+  },
+  "rule": {
+    "consequence": "twist 는 타입만이 아니라 **면의 support 를 교체**한다 — 고정 support 파라메트릭(시도 ①②)은 원리적으로 닿을 수 없다",
+    "statement": "pentagon = plaq(R,C−1)[mixed] × V, V = 세로 2-body {(R+1,C−1),(R+2,C−1)} · **plaq(R+1,C−1) 은 삭제**",
+    "verified_on": "봉인 twist_defect16 의 stabilizer 값 복사(오라클 무접촉)"
+  },
+  "scope_honesty": {
+    "goal_vs_delivered": "★★목표 = d=5 twist 코드 **실봉인**(root 갱신). **3회 연속 미달성** — 신규 module 0 · root 불변. 얻은 것 = 사각지대 2건 특정 + 규칙 역공학·일반화·4×4 재현 + 유효 base 오프셋 분류(재사용) + 확장 음성.",
+    "not_claimed": "d=5 코드 구성 · 일반 twist 코드 불가능성 · 봉인 자산 변경 · E 의 전 파라미터 전수성"
+  },
+  "valid_base_note": "2⁴=16 경계 오프셋 중 **정확히 2개**만 비퇴화 [[n,1,min(m,d)]] — 앞선 탐색이 예산 대부분을 퇴화 오프셋에 낭비한 원인",
+  "valid_base_offsets": {
+    "11x5": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "5x5": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "6x5": [
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        1
+      ]
+    ],
+    "6x6": [
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "7x5": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "7x7": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "9x5": [
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ]
+  }
+}

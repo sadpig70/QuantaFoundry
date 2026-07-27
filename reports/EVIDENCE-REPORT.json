@@ -7,10 +7,10 @@
   },
   "summary": {
     "status": "pass",
-    "steps_total": 166,
+    "steps_total": 167,
     "steps_failed": 0,
     "failed_by_severity": {},
-    "duration_ms": 1989440
+    "duration_ms": 2105405
   },
   "steps": [
     {
@@ -19,7 +19,7 @@
         "forge_apps"
       ],
       "status": "pass",
-      "duration_ms": 281288,
+      "duration_ms": 269851,
       "severity": "critical",
       "claims": [
         "claim.registry.apps_reproducible"
@@ -44,7 +44,7 @@
         "frontier_factory"
       ],
       "status": "pass",
-      "duration_ms": 899301,
+      "duration_ms": 1050487,
       "severity": "critical",
       "claims": [
         "claim.frontier.reproducible"
@@ -57,7 +57,7 @@
         "registry"
       ],
       "status": "pass",
-      "duration_ms": 21935,
+      "duration_ms": 16456,
       "severity": "critical",
       "claims": [
         "claim.registry.root_reproducible"
@@ -70,7 +70,7 @@
         "second_oracle"
       ],
       "status": "pass",
-      "duration_ms": 14478,
+      "duration_ms": 14133,
       "severity": "critical",
       "claims": [
         "claim.modules.second_oracle_pass"
@@ -83,7 +83,7 @@
         "column_verify"
       ],
       "status": "pass",
-      "duration_ms": 1904,
+      "duration_ms": 2029,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -94,7 +94,7 @@
         "approx_certify"
       ],
       "status": "pass",
-      "duration_ms": 4116,
+      "duration_ms": 3806,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -105,7 +105,7 @@
         "convention_independence"
       ],
       "status": "pass",
-      "duration_ms": 69162,
+      "duration_ms": 64212,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -116,7 +116,7 @@
         "perm_subspace"
       ],
       "status": "pass",
-      "duration_ms": 92650,
+      "duration_ms": 82313,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -127,7 +127,7 @@
         "resource_witness"
       ],
       "status": "pass",
-      "duration_ms": 13829,
+      "duration_ms": 13250,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -138,7 +138,7 @@
         "blockencoding_audit"
       ],
       "status": "pass",
-      "duration_ms": 337,
+      "duration_ms": 335,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -149,7 +149,7 @@
         "discovery_superopt"
       ],
       "status": "pass",
-      "duration_ms": 24787,
+      "duration_ms": 24066,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -160,7 +160,7 @@
         "qsvt_hamsim_observe"
       ],
       "status": "pass",
-      "duration_ms": 359,
+      "duration_ms": 366,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -171,7 +171,7 @@
         "qsvt_ampamp_observe"
       ],
       "status": "pass",
-      "duration_ms": 249,
+      "duration_ms": 235,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -182,7 +182,7 @@
         "fermionic_jw_observe"
       ],
       "status": "pass",
-      "duration_ms": 249,
+      "duration_ms": 233,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -193,7 +193,7 @@
         "hubbard_observe"
       ],
       "status": "pass",
-      "duration_ms": 238,
+      "duration_ms": 226,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -204,7 +204,7 @@
         "matrix_inversion_observe"
       ],
       "status": "pass",
-      "duration_ms": 327,
+      "duration_ms": 258,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -215,7 +215,7 @@
         "spinful_hubbard_observe"
       ],
       "status": "pass",
-      "duration_ms": 251,
+      "duration_ms": 228,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -226,7 +226,7 @@
         "magic_state_observe"
       ],
       "status": "pass",
-      "duration_ms": 229,
+      "duration_ms": 220,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -237,7 +237,7 @@
         "h2_molecule_observe"
       ],
       "status": "pass",
-      "duration_ms": 227,
+      "duration_ms": 220,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -248,7 +248,7 @@
         "bk_equiv_observe"
       ],
       "status": "pass",
-      "duration_ms": 502,
+      "duration_ms": 506,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -259,7 +259,7 @@
         "parity_taper_observe"
       ],
       "status": "pass",
-      "duration_ms": 306,
+      "duration_ms": 305,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -270,7 +270,7 @@
         "distill5to1_observe"
       ],
       "status": "pass",
-      "duration_ms": 248,
+      "duration_ms": 229,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -292,7 +292,7 @@
         "d4_hsp_observe"
       ],
       "status": "pass",
-      "duration_ms": 228,
+      "duration_ms": 232,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -303,7 +303,7 @@
         "qutrit_arith_observe"
       ],
       "status": "pass",
-      "duration_ms": 223,
+      "duration_ms": 214,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -314,7 +314,7 @@
         "logical_stack_observe"
       ],
       "status": "pass",
-      "duration_ms": 396,
+      "duration_ms": 394,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -325,7 +325,7 @@
         "braid_observe"
       ],
       "status": "pass",
-      "duration_ms": 261,
+      "duration_ms": 252,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -336,7 +336,7 @@
         "mbqc_observe"
       ],
       "status": "pass",
-      "duration_ms": 848,
+      "duration_ms": 735,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -347,7 +347,7 @@
         "gnvw_index_observe"
       ],
       "status": "pass",
-      "duration_ms": 415,
+      "duration_ms": 457,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -358,7 +358,7 @@
         "z2gauge_observe"
       ],
       "status": "pass",
-      "duration_ms": 230,
+      "duration_ms": 232,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -380,7 +380,7 @@
         "schur_observe"
       ],
       "status": "pass",
-      "duration_ms": 234,
+      "duration_ms": 228,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -391,7 +391,7 @@
         "aklt_observe"
       ],
       "status": "pass",
-      "duration_ms": 1075,
+      "duration_ms": 1039,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -402,7 +402,7 @@
         "channel_observe"
       ],
       "status": "pass",
-      "duration_ms": 227,
+      "duration_ms": 231,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -413,7 +413,7 @@
         "qec_channel_observe"
       ],
       "status": "pass",
-      "duration_ms": 302,
+      "duration_ms": 294,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -424,7 +424,7 @@
         "twodesign_observe"
       ],
       "status": "pass",
-      "duration_ms": 340,
+      "duration_ms": 287,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -435,7 +435,7 @@
         "arithmetic_observe"
       ],
       "status": "pass",
-      "duration_ms": 248,
+      "duration_ms": 270,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -446,7 +446,7 @@
         "szegedy_observe"
       ],
       "status": "pass",
-      "duration_ms": 240,
+      "duration_ms": 241,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -457,7 +457,7 @@
         "choi_observe"
       ],
       "status": "pass",
-      "duration_ms": 255,
+      "duration_ms": 244,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -479,7 +479,7 @@
         "peps_observe"
       ],
       "status": "pass",
-      "duration_ms": 228,
+      "duration_ms": 212,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -490,7 +490,7 @@
         "mub_observe"
       ],
       "status": "pass",
-      "duration_ms": 331,
+      "duration_ms": 329,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -501,7 +501,7 @@
         "naimark_observe"
       ],
       "status": "pass",
-      "duration_ms": 249,
+      "duration_ms": 258,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -512,7 +512,7 @@
         "schur4_observe"
       ],
       "status": "pass",
-      "duration_ms": 224,
+      "duration_ms": 222,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -523,7 +523,7 @@
         "fib_braid_observe"
       ],
       "status": "pass",
-      "duration_ms": 254,
+      "duration_ms": 250,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -534,7 +534,7 @@
         "flag_syndrome_observe"
       ],
       "status": "pass",
-      "duration_ms": 250,
+      "duration_ms": 253,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -545,7 +545,7 @@
         "gf8_observe"
       ],
       "status": "pass",
-      "duration_ms": 286,
+      "duration_ms": 290,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -556,7 +556,7 @@
         "hierarchy_observe"
       ],
       "status": "pass",
-      "duration_ms": 50634,
+      "duration_ms": 47928,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -567,7 +567,7 @@
         "fib_jones_observe"
       ],
       "status": "pass",
-      "duration_ms": 241,
+      "duration_ms": 259,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -578,7 +578,7 @@
         "stabrank_verify_sample"
       ],
       "status": "pass",
-      "duration_ms": 1498,
+      "duration_ms": 1472,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -589,7 +589,7 @@
         "code832_observe"
       ],
       "status": "pass",
-      "duration_ms": 280,
+      "duration_ms": 274,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -600,7 +600,7 @@
         "dyn_observe"
       ],
       "status": "pass",
-      "duration_ms": 364,
+      "duration_ms": 404,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -611,7 +611,7 @@
         "magic_resource_observe"
       ],
       "status": "pass",
-      "duration_ms": 277,
+      "duration_ms": 265,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -622,7 +622,7 @@
         "matchgate_verify"
       ],
       "status": "pass",
-      "duration_ms": 1861,
+      "duration_ms": 1853,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -633,7 +633,7 @@
         "rm15_observe"
       ],
       "status": "pass",
-      "duration_ms": 256,
+      "duration_ms": 262,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -655,7 +655,7 @@
         "bogoliubov_observe"
       ],
       "status": "pass",
-      "duration_ms": 769,
+      "duration_ms": 731,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -666,7 +666,7 @@
         "tncontract_verify_sample"
       ],
       "status": "pass",
-      "duration_ms": 343,
+      "duration_ms": 337,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -677,7 +677,7 @@
         "qmdd_verify_sample"
       ],
       "status": "pass",
-      "duration_ms": 381,
+      "duration_ms": 359,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -688,7 +688,7 @@
         "maj_observe"
       ],
       "status": "pass",
-      "duration_ms": 346,
+      "duration_ms": 352,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -699,7 +699,7 @@
         "diamond_observe"
       ],
       "status": "pass",
-      "duration_ms": 340,
+      "duration_ms": 349,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -710,7 +710,7 @@
         "op_ee_observe"
       ],
       "status": "pass",
-      "duration_ms": 237,
+      "duration_ms": 223,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -721,7 +721,7 @@
         "concat_observe"
       ],
       "status": "pass",
-      "duration_ms": 3218,
+      "duration_ms": 3146,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -732,7 +732,7 @@
         "anf_verify_sample"
       ],
       "status": "pass",
-      "duration_ms": 1038,
+      "duration_ms": 1078,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -743,7 +743,7 @@
         "groebner_verify_sample"
       ],
       "status": "pass",
-      "duration_ms": 279,
+      "duration_ms": 277,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -754,7 +754,7 @@
         "a4_observe"
       ],
       "status": "pass",
-      "duration_ms": 252,
+      "duration_ms": 236,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -765,7 +765,7 @@
         "code_switch_observe"
       ],
       "status": "pass",
-      "duration_ms": 235,
+      "duration_ms": 240,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -787,7 +787,7 @@
         "ising_fusion_observe"
       ],
       "status": "pass",
-      "duration_ms": 252,
+      "duration_ms": 241,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -798,7 +798,7 @@
         "qutrit_wigner_observe"
       ],
       "status": "pass",
-      "duration_ms": 244,
+      "duration_ms": 256,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -809,7 +809,7 @@
         "groebner_monomial_observe"
       ],
       "status": "pass",
-      "duration_ms": 8870,
+      "duration_ms": 9043,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -820,7 +820,7 @@
         "ks18_observe"
       ],
       "status": "pass",
-      "duration_ms": 110,
+      "duration_ms": 136,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -831,7 +831,7 @@
         "a5_observe"
       ],
       "status": "pass",
-      "duration_ms": 99,
+      "duration_ms": 204,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -842,7 +842,7 @@
         "galois_orbit_verify"
       ],
       "status": "pass",
-      "duration_ms": 8497,
+      "duration_ms": 8912,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -853,7 +853,7 @@
         "mtc_braid_observe"
       ],
       "status": "pass",
-      "duration_ms": 224,
+      "duration_ms": 254,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -864,7 +864,7 @@
         "z2_fukane_observe"
       ],
       "status": "pass",
-      "duration_ms": 550,
+      "duration_ms": 558,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -875,7 +875,7 @@
         "lattice_surgery_observe"
       ],
       "status": "pass",
-      "duration_ms": 243,
+      "duration_ms": 245,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -886,7 +886,7 @@
         "psl27_observe"
       ],
       "status": "pass",
-      "duration_ms": 304,
+      "duration_ms": 305,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -897,7 +897,7 @@
         "a5_fourier_observe"
       ],
       "status": "pass",
-      "duration_ms": 223,
+      "duration_ms": 228,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -908,7 +908,7 @@
         "ks_qutrit_observe"
       ],
       "status": "pass",
-      "duration_ms": 220,
+      "duration_ms": 221,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -919,7 +919,7 @@
         "kitaev_class_d_observe"
       ],
       "status": "pass",
-      "duration_ms": 238,
+      "duration_ms": 239,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -930,7 +930,7 @@
         "hecke_h3_observe"
       ],
       "status": "pass",
-      "duration_ms": 229,
+      "duration_ms": 218,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -941,7 +941,7 @@
         "treewidth_verdict_observe"
       ],
       "status": "pass",
-      "duration_ms": 80,
+      "duration_ms": 85,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -952,7 +952,7 @@
         "a5_rep3_observe"
       ],
       "status": "pass",
-      "duration_ms": 3923,
+      "duration_ms": 3858,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -963,7 +963,7 @@
         "2a5_fs_observe"
       ],
       "status": "pass",
-      "duration_ms": 380,
+      "duration_ms": 360,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -974,7 +974,7 @@
         "peres33_ks_observe"
       ],
       "status": "pass",
-      "duration_ms": 313,
+      "duration_ms": 309,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -985,7 +985,7 @@
         "class_d_2d_chern_observe"
       ],
       "status": "pass",
-      "duration_ms": 282,
+      "duration_ms": 285,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -996,7 +996,7 @@
         "su2_3_mtc_observe"
       ],
       "status": "pass",
-      "duration_ms": 221,
+      "duration_ms": 246,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1007,7 +1007,7 @@
         "matsumoto_amano_verdict_observe"
       ],
       "status": "pass",
-      "duration_ms": 225,
+      "duration_ms": 224,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1018,7 +1018,7 @@
         "temperley_lieb_observe"
       ],
       "status": "pass",
-      "duration_ms": 217,
+      "duration_ms": 218,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1029,7 +1029,7 @@
         "class_diii_observe"
       ],
       "status": "pass",
-      "duration_ms": 2249,
+      "duration_ms": 2209,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1040,7 +1040,7 @@
         "dsr3_double_observe"
       ],
       "status": "pass",
-      "duration_ms": 497,
+      "duration_ms": 505,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1051,7 +1051,7 @@
         "dihedral_quaternion_double_observe"
       ],
       "status": "pass",
-      "duration_ms": 10577,
+      "duration_ms": 10921,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1062,7 +1062,7 @@
         "dtw_z2z2_double_observe"
       ],
       "status": "pass",
-      "duration_ms": 16913,
+      "duration_ms": 16632,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1073,7 +1073,7 @@
         "class_diii_2d_observe"
       ],
       "status": "pass",
-      "duration_ms": 1653,
+      "duration_ms": 1761,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1084,7 +1084,7 @@
         "fidkowski_z8_observe"
       ],
       "status": "pass",
-      "duration_ms": 504,
+      "duration_ms": 495,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1095,7 +1095,7 @@
         "a5_schur_cocycle_observe"
       ],
       "status": "pass",
-      "duration_ms": 240,
+      "duration_ms": 222,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1106,7 +1106,7 @@
         "pathsum_ring_column"
       ],
       "status": "pass",
-      "duration_ms": 382,
+      "duration_ms": 328,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1117,7 +1117,7 @@
         "tcount_bound_observe"
       ],
       "status": "pass",
-      "duration_ms": 1873,
+      "duration_ms": 1943,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1128,7 +1128,7 @@
         "dtw_z2z2z2_typeiii_observe"
       ],
       "status": "pass",
-      "duration_ms": 16755,
+      "duration_ms": 17237,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1139,7 +1139,7 @@
         "a6_schur_cocycle_observe"
       ],
       "status": "pass",
-      "duration_ms": 8219,
+      "duration_ms": 8208,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1150,7 +1150,7 @@
         "bmw_kauffman_observe"
       ],
       "status": "pass",
-      "duration_ms": 86,
+      "duration_ms": 97,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1161,7 +1161,7 @@
         "az_c_ci_diii3d_observe"
       ],
       "status": "pass",
-      "duration_ms": 398,
+      "duration_ms": 400,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1172,7 +1172,7 @@
         "dtw_s3_double_observe"
       ],
       "status": "pass",
-      "duration_ms": 131,
+      "duration_ms": 161,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1183,7 +1183,7 @@
         "dtw_d4_q8_double_observe"
       ],
       "status": "pass",
-      "duration_ms": 708,
+      "duration_ms": 745,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1194,7 +1194,7 @@
         "dtw_z2_4_typeiii_observe"
       ],
       "status": "pass",
-      "duration_ms": 1068,
+      "duration_ms": 1129,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1205,7 +1205,7 @@
         "a7_sylow_tower_observe"
       ],
       "status": "pass",
-      "duration_ms": 93,
+      "duration_ms": 97,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1216,7 +1216,7 @@
         "bmw3_fig8_observe"
       ],
       "status": "pass",
-      "duration_ms": 1091,
+      "duration_ms": 1104,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1227,7 +1227,7 @@
         "az_aiii_aii_3d_observe"
       ],
       "status": "pass",
-      "duration_ms": 295,
+      "duration_ms": 297,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1238,7 +1238,7 @@
         "az_aii2d_cii3d_observe"
       ],
       "status": "pass",
-      "duration_ms": 290,
+      "duration_ms": 299,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1249,7 +1249,7 @@
         "dtw_z2_4_radical_strata_observe"
       ],
       "status": "pass",
-      "duration_ms": 28483,
+      "duration_ms": 27397,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1260,7 +1260,7 @@
         "dtw_d4_modular_strata_observe"
       ],
       "status": "pass",
-      "duration_ms": 384,
+      "duration_ms": 354,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1271,7 +1271,7 @@
         "a7_brauer_observe"
       ],
       "status": "pass",
-      "duration_ms": 99,
+      "duration_ms": 107,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1282,7 +1282,7 @@
         "surface_code_d3_observe"
       ],
       "status": "pass",
-      "duration_ms": 99,
+      "duration_ms": 84,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1293,7 +1293,7 @@
         "su2_5_mtc_observe"
       ],
       "status": "pass",
-      "duration_ms": 169,
+      "duration_ms": 161,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1304,7 +1304,7 @@
         "dtw_z2_5_radical_parity_observe"
       ],
       "status": "pass",
-      "duration_ms": 8330,
+      "duration_ms": 8637,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1315,7 +1315,7 @@
         "bmw3_kauffman_so3_observe"
       ],
       "status": "pass",
-      "duration_ms": 2861,
+      "duration_ms": 2932,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1326,7 +1326,7 @@
         "bmw3_kauffman_so4_observe"
       ],
       "status": "pass",
-      "duration_ms": 5007,
+      "duration_ms": 5105,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1337,7 +1337,7 @@
         "bmw3_kauffman_2var_observe"
       ],
       "status": "pass",
-      "duration_ms": 1126,
+      "duration_ms": 1163,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1348,7 +1348,7 @@
         "dtw_d4_full_modular_observe"
       ],
       "status": "pass",
-      "duration_ms": 4189,
+      "duration_ms": 4137,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1359,7 +1359,7 @@
         "dtw_d4_u1_census_observe"
       ],
       "status": "pass",
-      "duration_ms": 2216,
+      "duration_ms": 2322,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1370,7 +1370,7 @@
         "a7_brauer_trees_observe"
       ],
       "status": "pass",
-      "duration_ms": 3978,
+      "duration_ms": 3650,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1381,7 +1381,7 @@
         "pauli_diamond_e8_observe"
       ],
       "status": "pass",
-      "duration_ms": 1010,
+      "duration_ms": 995,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1392,7 +1392,7 @@
         "su3_2_mtc_observe"
       ],
       "status": "pass",
-      "duration_ms": 1612,
+      "duration_ms": 1669,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1403,7 +1403,7 @@
         "twist_defect_observe"
       ],
       "status": "pass",
-      "duration_ms": 228,
+      "duration_ms": 252,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1414,7 +1414,7 @@
         "twist_em_observe"
       ],
       "status": "pass",
-      "duration_ms": 3197,
+      "duration_ms": 3172,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1425,7 +1425,7 @@
         "bmw3_kauffman_family_observe"
       ],
       "status": "pass",
-      "duration_ms": 61650,
+      "duration_ms": 61788,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1436,7 +1436,7 @@
         "weyl_qudit_diamond_e9_observe"
       ],
       "status": "pass",
-      "duration_ms": 165,
+      "duration_ms": 153,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1447,7 +1447,7 @@
         "dtw_d4_zeta16_observe"
       ],
       "status": "pass",
-      "duration_ms": 3691,
+      "duration_ms": 3683,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1458,7 +1458,7 @@
         "su3_3_mtc_observe"
       ],
       "status": "pass",
-      "duration_ms": 720,
+      "duration_ms": 798,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1469,7 +1469,7 @@
         "a7_cartan_p23_observe"
       ],
       "status": "pass",
-      "duration_ms": 3650,
+      "duration_ms": 3774,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1480,7 +1480,7 @@
         "dtw_z2_5_radical1_observe"
       ],
       "status": "pass",
-      "duration_ms": 1794,
+      "duration_ms": 1822,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1491,7 +1491,7 @@
         "superalg_alexander_observe"
       ],
       "status": "pass",
-      "duration_ms": 1261,
+      "duration_ms": 1236,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1502,7 +1502,7 @@
         "links_gould_observe"
       ],
       "status": "pass",
-      "duration_ms": 5710,
+      "duration_ms": 5672,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1513,7 +1513,7 @@
         "knot61_4braid_observe"
       ],
       "status": "pass",
-      "duration_ms": 8640,
+      "duration_ms": 8801,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1524,7 +1524,7 @@
         "m11_brauer_observe"
       ],
       "status": "pass",
-      "duration_ms": 1163,
+      "duration_ms": 1152,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1535,7 +1535,7 @@
         "g2_1_mtc_observe"
       ],
       "status": "pass",
-      "duration_ms": 157,
+      "duration_ms": 156,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1546,7 +1546,7 @@
         "dtw_d4_mu4_ribbon_observe"
       ],
       "status": "pass",
-      "duration_ms": 5967,
+      "duration_ms": 5819,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1557,7 +1557,7 @@
         "dtw_z2_5_full_modular_observe"
       ],
       "status": "pass",
-      "duration_ms": 2440,
+      "duration_ms": 2354,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1568,7 +1568,7 @@
         "a7_cartan_p2_observe"
       ],
       "status": "pass",
-      "duration_ms": 5950,
+      "duration_ms": 5862,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1579,7 +1579,7 @@
         "twist_d5_design_observe"
       ],
       "status": "pass",
-      "duration_ms": 2818,
+      "duration_ms": 2777,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1590,7 +1590,7 @@
         "twist_d5_lattice_observe"
       ],
       "status": "pass",
-      "duration_ms": 647,
+      "duration_ms": 641,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1601,7 +1601,7 @@
         "dixon_f20_a6_observe"
       ],
       "status": "pass",
-      "duration_ms": 1385,
+      "duration_ms": 1361,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1612,7 +1612,18 @@
         "a6_cartan_p23_observe"
       ],
       "status": "pass",
-      "duration_ms": 1209,
+      "duration_ms": 1210,
+      "severity": "high",
+      "claims": [],
+      "group": "witness"
+    },
+    {
+      "id": "twist_d5_rule_observe",
+      "ids": [
+        "twist_d5_rule_observe"
+      ],
+      "status": "pass",
+      "duration_ms": 2670,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1623,7 +1634,7 @@
         "conway31_ks_observe"
       ],
       "status": "pass",
-      "duration_ms": 1489,
+      "duration_ms": 1469,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1634,7 +1645,7 @@
         "kauffman_bracket_observe"
       ],
       "status": "pass",
-      "duration_ms": 947,
+      "duration_ms": 931,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1645,7 +1656,7 @@
         "homfly_hecke_observe"
       ],
       "status": "pass",
-      "duration_ms": 1566,
+      "duration_ms": 1605,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1656,7 +1667,7 @@
         "ising_fr_observe"
       ],
       "status": "pass",
-      "duration_ms": 1738,
+      "duration_ms": 1760,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1667,7 +1678,7 @@
         "su2_4_mtc_observe"
       ],
       "status": "pass",
-      "duration_ms": 3858,
+      "duration_ms": 3841,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1678,7 +1689,7 @@
         "b3_observe"
       ],
       "status": "pass",
-      "duration_ms": 403,
+      "duration_ms": 380,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1689,7 +1700,7 @@
         "hgp_observe"
       ],
       "status": "pass",
-      "duration_ms": 3145,
+      "duration_ms": 3081,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1700,7 +1711,7 @@
         "chern_observe"
       ],
       "status": "pass",
-      "duration_ms": 309,
+      "duration_ms": 319,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1711,7 +1722,7 @@
         "diamond_unitary_observe"
       ],
       "status": "pass",
-      "duration_ms": 628,
+      "duration_ms": 617,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1722,7 +1733,7 @@
         "peres_mermin_observe"
       ],
       "status": "pass",
-      "duration_ms": 223,
+      "duration_ms": 228,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1733,7 +1744,7 @@
         "bch_observe"
       ],
       "status": "pass",
-      "duration_ms": 3344,
+      "duration_ms": 3292,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1744,7 +1755,7 @@
         "bch31_observe"
       ],
       "status": "pass",
-      "duration_ms": 3463,
+      "duration_ms": 3452,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1755,7 +1766,7 @@
         "contextual_fraction_observe"
       ],
       "status": "pass",
-      "duration_ms": 109,
+      "duration_ms": 126,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1766,7 +1777,7 @@
         "chern_higher_observe"
       ],
       "status": "pass",
-      "duration_ms": 408,
+      "duration_ms": 400,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1777,7 +1788,7 @@
         "structure_lint"
       ],
       "status": "pass",
-      "duration_ms": 4091,
+      "duration_ms": 3656,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1788,7 +1799,7 @@
         "ring_column_verify"
       ],
       "status": "pass",
-      "duration_ms": 124594,
+      "duration_ms": 124527,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1799,7 +1810,7 @@
         "cuc_verify"
       ],
       "status": "pass",
-      "duration_ms": 40962,
+      "duration_ms": 39955,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1810,7 +1821,7 @@
         "doc_counts"
       ],
       "status": "pass",
-      "duration_ms": 234,
+      "duration_ms": 262,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1821,7 +1832,7 @@
         "check_claims"
       ],
       "status": "pass",
-      "duration_ms": 236,
+      "duration_ms": 199,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1832,7 +1843,7 @@
         "rs73_affine"
       ],
       "status": "pass",
-      "duration_ms": 249,
+      "duration_ms": 232,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1843,7 +1854,7 @@
         "compositional_verify"
       ],
       "status": "pass",
-      "duration_ms": 36260,
+      "duration_ms": 36568,
       "severity": "high",
       "claims": [],
       "group": "witness"
@@ -1854,7 +1865,7 @@
         "behavior"
       ],
       "status": "pass",
-      "duration_ms": 705,
+      "duration_ms": 688,
       "severity": "critical",
       "claims": [
         "claim.behavior.shor_factoring"
