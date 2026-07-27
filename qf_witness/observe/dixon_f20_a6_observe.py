@@ -42,6 +42,8 @@
     일반 군에 대한 방법 주장이 아니다.
   - **A₆ 완전 D·C 는 미포함**: p=5 주블록(순환 defect)만 tree 로 확정했고, p=2·3 주블록은
     비순환 defect(2³·3²)이라 **범위 밖**(정직 유보 — [[a7_cartan_p2_observe]] 식 명시 구성 필요).
+    ★**2026-07-27 해소**: [[a6_cartan_p23_observe]] 가 simples 를 전부 명시 구성해
+    **p=2·3 완전 D(7×5)·Cartan**(det 8·9 = |A₆|_p) 확정. 위 유보 이유는 일반론으로 여전히 옳다.
   - Brauer 문자·블록은 표현론 수준 — 봉인 게이트 아님.
 
 사용: python -m qf_witness.observe.dixon_f20_a6_observe [--quick]
@@ -621,8 +623,8 @@ def main():
                       "(det = |G|_p) · A₆ 문자표 + 무리성 (1±√5)/2 확정 + 엄밀 𝔭-환원 블록 3소수 "
                       "+ ★p=5 Brauer tree 실산출 · A₆⊂A₇ 분기 정합"),
         "boundary": ("F₂₀ 의 D 유일성은 정규 Sylow 구조 덕 — 일반 방법 주장 아님. "
-                     "★A₆ 완전 D·C 는 **미포함**: p=5 순환 블록만 tree 확정, "
-                     "p=2·3 주블록(비순환 defect 2³·3²)은 범위 밖(정직 유보)."),
+                     "A₆ 완전 D·C 는 본 관측 범위 밖이었고 "
+                     "★a6_cartan_p23_observe(2026-07-27)에서 해소됨."),
         "not_claimed": "봉인 게이트 · A₆ p=2,3 분해행렬 · ATLAS 인용(전 수치 자체유도)",
     }
     out["all_ok"] = ok

@@ -1,0 +1,262 @@
+{
+  "_note": "A₆ p=2·3 완전 D(7×5)·Cartan — simples 전부 명시 구성으로 Φ 확정 → D 유일. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "a6-cartan-p23/v1",
+  "all_ok": true,
+  "checks": {
+    "A_K7_order360": true,
+    "A_degs": true,
+    "A_ell2_ell3_5": true,
+    "B_4a_faithful": true,
+    "B_4a_neq_4b": true,
+    "B_4a_selfdual": true,
+    "B_4a_simple": true,
+    "B_4b_dim4_simple": true,
+    "B_allones_in_sumzero": true,
+    "B_fano_H168": true,
+    "B_line_span_11": true,
+    "B_sumzero_dim5": true,
+    "B_teeth_dual_degenerate": true,
+    "C_C2_values": true,
+    "C_D2_degree_check": true,
+    "C_D2_nonneg_int": true,
+    "C_D2_reconstruct": true,
+    "C_Phi2_rank3": true,
+    "C_X2_rank3": true,
+    "C_detC2_8": true,
+    "D_p2_defect0_d1": true,
+    "D_p3_defect0_d1": true,
+    "E_4dim3_simple": true,
+    "E_End_dim2": true,
+    "E_F_sq_minus_I": true,
+    "E_allones3_in_sumzero": true,
+    "E_lambda2_dim6_simple_gf3": true,
+    "E_q9_homomorphism": true,
+    "E_q9basis_ok": true,
+    "E_sumzero3_dim5": true,
+    "F_D3_degree_check": true,
+    "F_D3_nonneg_int": true,
+    "F_detC3_9": true,
+    "F_phi3_4A_rational": true,
+    "F_phi3_plus_conj_eq_lambda2": true,
+    "F_s_distinct": true,
+    "F_s_in_roots": true,
+    "F_two_roots_y2py_m1": true,
+    "G_cartan_gauge_invariant": true,
+    "G_gauge1_nonneg_int": true,
+    "G_gauge_is_column_swap": true,
+    "H_detC_equals_group_order_part": true,
+    "H_p2_simple_dims": true,
+    "H_p2_total_ell5": true,
+    "H_p3_simple_dims": true,
+    "H_p3_total_ell5": true
+  },
+  "defect0": {
+    "note": "표준사실 인용이 아니라 대수적 정수성으로 검증",
+    "p2": "{8},{8} — ℓ=1 · d>1 이면 χ/d 가 5A 에서 (1±√5)/(2d) 로 대수적 정수 아님 ⟹ d=1",
+    "p3": "{9}(Steinberg) — 동일 논거로 d=1"
+  },
+  "gauge": {
+    "effect": "반대 게이지 = D 의 3↔3′ 열 교환(= 두 8 행 교환) — 실증",
+    "invariant": "Cartan·det·블록 구조 게이지 불변 ⟹ D 는 라벨링 게이지까지 유일",
+    "origin": "y²+y−1=0 의 두 GF(9) 근 중 어느 것을 (−1+√5)/2 로 올릴지(2중)"
+  },
+  "p2_principal": {
+    "Cartan": [
+      [
+        8,
+        4,
+        4
+      ],
+      [
+        4,
+        3,
+        2
+      ],
+      [
+        4,
+        2,
+        3
+      ]
+    ],
+    "D": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        2,
+        1,
+        1
+      ]
+    ],
+    "check": "det C = |A₆|₂ (full defect)",
+    "det": 8,
+    "ordinary": [
+      1,
+      5,
+      5,
+      9,
+      10
+    ],
+    "readable": {
+      "1": "1̂",
+      "10": "2·1̂+4_a+4_b",
+      "5": "1̂+4_b",
+      "5′": "1̂+4_a",
+      "9": "1̂+4_a+4_b"
+    },
+    "simples": [
+      "1̂",
+      "4_a",
+      "4_b"
+    ]
+  },
+  "p2_simples": {
+    "4a_selfdual": "dual 의 Brauer 문자 동일 ⟹ 동형(자기쌍대)",
+    "4a_vs_4b": "3A/3B 에서 (−2,1) vs (1,−2) — 외부 자기동형 쌍(dual 쌍 아님)",
+    "list": "1̂ · 4_a(A₇⊂GL(4,2) 의 A₆ 제한) · 4_b(6점 순열 heart) · 8̂ · 8̂′(defect 0)",
+    "pitfall": "4_a 와 그 dual 로 Φ 를 세우면 행 중복으로 퇴화(rank 2) — 실제 발생"
+  },
+  "p3_principal": {
+    "Cartan": [
+      [
+        5,
+        4,
+        1,
+        1
+      ],
+      [
+        4,
+        5,
+        2,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        2
+      ]
+    ],
+    "D": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        1
+      ]
+    ],
+    "check": "det C = |A₆|₃ (full defect)",
+    "det": 9,
+    "ordinary": [
+      1,
+      5,
+      5,
+      8,
+      8,
+      10
+    ],
+    "readable": {
+      "1": "1̂",
+      "10": "4+3+3′",
+      "5": "1̂+4",
+      "5′": "1̂+4",
+      "8": "1̂+4+3",
+      "8′": "1̂+4+3′"
+    },
+    "simples": [
+      "1̂",
+      "4",
+      "3",
+      "3′"
+    ]
+  },
+  "p3_simples": {
+    "certificate": "Λ²(4) 6차원 GF(3)-기약 · End_G 2차원 · F²=−I ⟹ End ≅ GF(9)",
+    "list": "1̂ · 4(6점 순열 heart, GF(3)) · 3 · 3′(Λ²4 의 GF(9)-반쪽) · 9(Steinberg, defect 0)"
+  },
+  "scope_honesty": {
+    "boundary": "선행 유보 이유(비순환 defect ⟹ 트리 이론 부재)는 **일반론으로 여전히 옳다** — 여기서는 simples 를 전부 명시 구성했기에 유일성이 따라온 것.",
+    "completes": "dixon_f20_a6_observe 의 'A₆ 완전 D·C 미포함' 유보 해소",
+    "not_claimed": "봉인 게이트 · Loewy 구조 · 사영 분해가능 모듈 · 일반 wild 블록에 대한 방법 주장",
+    "verified_not_cited": "defect-0 블록의 d=1 은 대수적 정수성으로 **검증**(표준사실 인용 아님)"
+  },
+  "summary": {
+    "p2": {
+      "blocks": "주(det 8) + {8} + {8}",
+      "detC_total": 8,
+      "ell": 5,
+      "simple_dims": [
+        1,
+        4,
+        4,
+        8,
+        8
+      ]
+    },
+    "p3": {
+      "blocks": "주(det 9) + {9}",
+      "detC_total": 9,
+      "ell": 5,
+      "simple_dims": [
+        1,
+        3,
+        3,
+        4,
+        9
+      ]
+    }
+  }
+}
