@@ -1,0 +1,306 @@
+{
+  "A6": {
+    "classes": 7,
+    "deg5_pair": "3A/3B 에서 (2,−1)/(−1,2) 로 구별(유리)",
+    "degrees": [
+      1,
+      5,
+      5,
+      8,
+      8,
+      9,
+      10
+    ],
+    "ell": {
+      "2": 5,
+      "3": 5,
+      "5": 5
+    },
+    "irrationality": "★오직 8차원 쌍의 5A/5B — 값 (1±√5)/2 (그 외 전부 유리)",
+    "order": 360,
+    "orders": [
+      1,
+      2,
+      3,
+      3,
+      4,
+      5,
+      5
+    ]
+  },
+  "A6_blocks": {
+    "2": [
+      [
+        1,
+        5,
+        5,
+        9,
+        10
+      ],
+      [
+        8
+      ],
+      [
+        8
+      ]
+    ],
+    "3": [
+      [
+        1,
+        5,
+        5,
+        8,
+        8,
+        10
+      ],
+      [
+        9
+      ]
+    ],
+    "5": [
+      [
+        1,
+        8,
+        8,
+        9
+      ],
+      [
+        10
+      ],
+      [
+        5
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  "A6_blocks_method": "ω_χ(K)=|K|χ/χ(1) 를 ℤ[ζ₆₀] 정수좌표로 계산 → 𝔭=(p, Φ₆₀ mod p 의 기약인수) 로 환원 비교 (무리성분 0 처리 휴리스틱 아님)",
+  "A6_p5_tree": {
+    "block": "{1, 8, 8, 9} · defect 1(Sylow-5 = ℤ₅) · ℓ = e = 2 · 예외중복 m = 2",
+    "brauer_degrees": [
+      1,
+      8
+    ],
+    "consistency": "중심정점 9 = 1 + 8 (인접 변 Brauer 차수 합) · det C(B) = 5",
+    "lineage": "a7_brauer_trees_observe(A₇ p=5,7) · m11_brauer_observe(M₁₁ p=11,5) 연장",
+    "tree": "1 — 9 — [8,8]^exc (경로·반사 제외 유일)"
+  },
+  "F20": {
+    "classes": 5,
+    "degrees": [
+      1,
+      1,
+      1,
+      1,
+      4
+    ],
+    "frobenius": "커널 ℤ₅(정규·고정점 자유) · 보체 Stab(0) ≅ ℤ₄ · 비자명 원소 고정점 정확히 1",
+    "note": "선형 4 = ℤ₄ 지표(그중 2개 ζ₄ 무리) · 4차원 = Ind(ℤ₅ 비자명), 5A 에서 −1",
+    "orders": [
+      1,
+      2,
+      4,
+      4,
+      5
+    ],
+    "structure": "ℤ₅⋊ℤ₄ = ⟨(01234), x↦2x⟩ (5점) — 첫 비아벨 Frobenius 군"
+  },
+  "F20_p2": {
+    "Cartan": "diag(4,1)",
+    "D": "선형 4 → 1̂ · 4차원 → 4̂",
+    "check": "det C = |G|₂",
+    "det": 4,
+    "ell": 2,
+    "simples": "1 · GF(16) 4차원(ℤ₅ ⊂ GF(16)^× · ℤ₄ = Gal Frobenius)",
+    "verification": "M₅⁵=I · M₄⁴=I · M₄M₅M₄⁻¹=M₅² · 기약성 전수(15 벡터)"
+  },
+  "F20_p5": {
+    "Cartan": "I+J (대각 2·비대각 1)",
+    "D": "선형 4 = 단위행 · 4차원 → 1̂+1̂′+1̂″+1̂‴",
+    "check": "det C = |G|₅",
+    "det": 5,
+    "ell": 4,
+    "simples": "G/ℤ₅ ≅ ℤ₄ 의 4 선형문자(정규 Sylow-5)"
+  },
+  "_note": "일반 Dixon 엔진 승격(A₇ 재현 교차검증) + F₂₀ 첫 비아벨 Frobenius p=2/5 완전 D·C + A₆ 문자표·엄밀 블록·p=5 Brauer tree. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "dixon-f20-a6/v1",
+  "all_ok": true,
+  "branching_A6_in_A7": {
+    "a6_degrees_order": [
+      10,
+      5,
+      8,
+      5,
+      1,
+      8,
+      9
+    ],
+    "a7_degrees_order": [
+      14,
+      10,
+      21,
+      6,
+      10,
+      15,
+      1,
+      14,
+      35
+    ],
+    "matrix_9x7": [
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "verdict": "A₇ 문자의 A₆-제한이 A₆ 문자의 비음정수 결합 — 두 자체유도 표 상호 무모순"
+  },
+  "checks": {
+    "B_K5": true,
+    "B_chi4_at_5A_is_minus1": true,
+    "B_complement_4": true,
+    "B_complement_fpf": true,
+    "B_degs": true,
+    "B_four_linear": true,
+    "B_kernel_5": true,
+    "B_kernel_normal": true,
+    "B_order20": true,
+    "B_orders": true,
+    "B_two_linear_irrational": true,
+    "C_4dim_row_all_ones": true,
+    "C_Cartan_I_plus_J": true,
+    "C_D_nonneg_int": true,
+    "C_Phi_invertible": true,
+    "C_detC_5": true,
+    "C_reg5_is_4": true,
+    "D_Cartan_diag_4_1": true,
+    "D_D_nonneg_int": true,
+    "D_M4_order4": true,
+    "D_M5_order5": true,
+    "D_detC_4": true,
+    "D_frobenius_relation": true,
+    "D_gf16_order5_elt": true,
+    "D_gf16_simple": true,
+    "D_reg2_is_2": true,
+    "E_K7": true,
+    "E_deg5_split_on_3classes": true,
+    "E_degs": true,
+    "E_ell_all_5": true,
+    "E_irrational_count4": true,
+    "E_irrational_is_half_1_pm_sqrt5": true,
+    "E_irrational_only_deg8": true,
+    "E_irrational_only_order5": true,
+    "E_order360": true,
+    "E_orders": true,
+    "E_sqrt5_ok": true,
+    "F_defect0_consistent": true,
+    "F_p2_blocks": true,
+    "F_p3_blocks": true,
+    "F_p5_blocks": true,
+    "G_block_size4": true,
+    "G_brauer_degrees_1_8": true,
+    "G_center_sum": true,
+    "G_detC_5": true,
+    "G_ell_is_2": true,
+    "G_exceptional_pair_is_8s": true,
+    "G_tree_shape": true,
+    "G_tree_unique_upto_reflection": true,
+    "H_a6_index7": true,
+    "H_a7_K9": true,
+    "H_a7_degs_match": true,
+    "H_a7_orders_match": true,
+    "H_a7_sizes_match": true,
+    "H_branching_degree_check": true,
+    "H_branching_nonneg_int": true,
+    "H_class_map_total": true,
+    "H_orders_divide_60": true
+  },
+  "engine": {
+    "cross_check": "A₇ 재현 → 기존 dixon_char_table 과 차수·류크기·위수 일치",
+    "exact_values": "Cyc(e) (g2_1_mtc_observe 재사용 — Φ_N 자체유도)",
+    "input": "생성원 순열 + 점수 + 소수 q(≡1 mod exp G)",
+    "pipeline": "군 열거 → 켤레류 → 클래스행렬 → Dixon 고유벡터 → 차수 → cyclotomic 다중도"
+  },
+  "scope_honesty": {
+    "boundary": "F₂₀ 의 D 유일성은 정규 Sylow 구조 덕 — 일반 방법 주장 아님. ★A₆ 완전 D·C 는 **미포함**: p=5 순환 블록만 tree 확정, p=2·3 주블록(비순환 defect 2³·3²)은 범위 밖(정직 유보).",
+    "delivered": "일반 Dixon 엔진(A₇ 교차검증) · F₂₀ Frobenius 판정 + p=5/p=2 완전 D·C (det = |G|_p) · A₆ 문자표 + 무리성 (1±√5)/2 확정 + 엄밀 𝔭-환원 블록 3소수 + ★p=5 Brauer tree 실산출 · A₆⊂A₇ 분기 정합",
+    "not_claimed": "봉인 게이트 · A₆ p=2,3 분해행렬 · ATLAS 인용(전 수치 자체유도)"
+  }
+}
