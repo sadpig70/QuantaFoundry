@@ -1,0 +1,207 @@
+{
+  "_note": "D^ω(ℤ₂⁵) cocycle census — 기저 35 단항 + type-III 2-항 합 45. ★anyon 184 의 조합 판정. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "dtw-z2-5-cocycle-census/v1",
+  "all_ok": true,
+  "basis_census": {
+    "D2": "1024 (전 35 단항 항등)",
+    "anyons": {
+      "I": 1024,
+      "II": 1024,
+      "III": 352
+    },
+    "count": 35,
+    "rank_dist": {
+      "III": "{0:4, 2:28}",
+      "I·II": "{0:32} (전 flux rank 0 — 전 anyon 아벨)"
+    },
+    "types": {
+      "I(x_i³)": 5,
+      "II(x_i²x_j)": 20,
+      "III(distinct)": 10
+    }
+  },
+  "checks": {
+    "A_35_monomials": true,
+    "A_D2_always_1024": true,
+    "A_all_cocycles": true,
+    "B_typeIII_gives_352": true,
+    "B_typeIII_rank_dist": true,
+    "B_typeI_II_give_1024": true,
+    "B_typeI_II_rank0": true,
+    "B_type_split_5_20_10": true,
+    "C_184_iff_spanning": true,
+    "C_agent01_gives_184": true,
+    "C_agent01_in_184_family": true,
+    "C_combinatorial_count_15": true,
+    "C_pair_distribution": true,
+    "C_typeIII_is_10": true,
+    "D_mixed_all_352": true,
+    "E_all_S2_C": true,
+    "E_all_ST3": true,
+    "E_all_sumd2_1024": true,
+    "E_all_symmetric": true,
+    "E_all_unitary": true,
+    "E_verlinde": true,
+    "F_c_zero_mod8": true,
+    "F_gauss_pp_is_D": true,
+    "F_gauss_ppm_D2": true,
+    "G_three_values": true,
+    "teeth_184_not_from_monomial": true,
+    "teeth_criterion_exact": true,
+    "teeth_typeI_II_inert_on_rank": true
+  },
+  "gauss": {
+    "c_mod_8": 0,
+    "note": "Drinfeld double 필연값 — S 미사용 독립 심판",
+    "p_plus": "32 = D (전 대표)",
+    "p_plus_p_minus": "1024 = D²"
+  },
+  "lineage": {
+    "anyon_values_observed": "본 census 범위에서 {1024, 352, 184} 3값",
+    "prior": "dtw_z2_5_full_modular_observe = 184(agent01 대표) — 본 census 가 그 위치를 확정"
+  },
+  "mixed": {
+    "distribution": {
+      "352": 100
+    },
+    "sampled": 100,
+    "verdict": "타입 I/II 는 **rank 구조에 무영향**(전부 352)"
+  },
+  "modular_reps": {
+    "sum184((0,1,2)+(0,3,4))": {
+      "S2_is_C": true,
+      "ST3": true,
+      "anyons": 184,
+      "convention": "S",
+      "dims": {
+        "1": 32,
+        "2": 120,
+        "4": 32
+      },
+      "gauss_p_plus": [
+        32,
+        0
+      ],
+      "gauss_pp_pm": [
+        1024,
+        0
+      ],
+      "self_dual": true,
+      "sum_d2": 1024,
+      "symmetric": true,
+      "unitary": true,
+      "verlinde": true,
+      "verlinde_exhaustive": true
+    },
+    "sum352((0,1,2)+(0,1,3))": {
+      "S2_is_C": true,
+      "ST3": true,
+      "anyons": 352,
+      "convention": "S",
+      "dims": {
+        "1": 128,
+        "2": 224
+      },
+      "gauss_p_plus": [
+        32,
+        0
+      ],
+      "gauss_pp_pm": [
+        1024,
+        0
+      ],
+      "self_dual": true,
+      "sum_d2": 1024,
+      "symmetric": true,
+      "unitary": true,
+      "verlinde": true,
+      "verlinde_exhaustive": true
+    },
+    "typeI(0,0,0)": {
+      "S2_is_C": true,
+      "ST3": true,
+      "anyons": 1024,
+      "convention": "S",
+      "dims": {
+        "1": 1024
+      },
+      "gauss_p_plus": [
+        32,
+        0
+      ],
+      "gauss_pp_pm": [
+        1024,
+        0
+      ],
+      "self_dual": true,
+      "sum_d2": 1024,
+      "symmetric": true,
+      "unitary": true,
+      "verlinde": true,
+      "verlinde_exhaustive": false
+    },
+    "typeII(0,0,1)": {
+      "S2_is_C": true,
+      "ST3": true,
+      "anyons": 1024,
+      "convention": "S",
+      "dims": {
+        "1": 1024
+      },
+      "gauss_p_plus": [
+        32,
+        0
+      ],
+      "gauss_pp_pm": [
+        1024,
+        0
+      ],
+      "self_dual": false,
+      "sum_d2": 1024,
+      "symmetric": true,
+      "unitary": true,
+      "verlinde": true,
+      "verlinde_exhaustive": false
+    },
+    "typeIII(0,1,2)": {
+      "S2_is_C": true,
+      "ST3": true,
+      "anyons": 352,
+      "convention": "S",
+      "dims": {
+        "1": 128,
+        "2": 224
+      },
+      "gauss_p_plus": [
+        32,
+        0
+      ],
+      "gauss_pp_pm": [
+        1024,
+        0
+      ],
+      "self_dual": true,
+      "sum_d2": 1024,
+      "symmetric": true,
+      "unitary": true,
+      "verlinde": true,
+      "verlinde_exhaustive": true
+    }
+  },
+  "pair_census": {
+    "agent01": "ω = x₅y₁z₂ + x₅y₃z₄ → 공유 {4}·덮개 {0,1,2,3,4} ⟹ **184-족 원소**",
+    "count_derivation": "5(공유 인덱스) × 3(나머지 4개의 2+2 분할) = 15 — 실측 일치",
+    "criterion": "★184 ⟺ |supp(m₁)∩supp(m₂)| = 1 ∧ |supp(m₁)∪supp(m₂)| = 5",
+    "distribution": {
+      "184": 15,
+      "352": 30
+    },
+    "pairs": 45,
+    "verdict": "★184 는 전형이 아니라 **특정 조합 조건의 산물**"
+  },
+  "scope_honesty": {
+    "delivered": "기저 35 단항 전수(타입 3분류·anyon·D²) + 2-항 합 45 전수 + ★184 의 조합 판정(공유 1·덮개 5 ⟺ 15개) + 대표 5종 완전 modular 게이트 + Gauss 합 c≡0",
+    "not_claimed": "전 클래스 anyon 값역 · braiding 실봉인 · F/R-symbol",
+    "★terminology": "H³(ℤ₂⁵,μ₂) 는 **차원 35** 이므로 클래스는 **2³⁵ 개**다. 본 census 는 **기저 35 단항 + type-III 2-항 합 45 + 혼합 샘플** 범위이며 **전 클래스 census 가 아니다**."
+  }
+}
