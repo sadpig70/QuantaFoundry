@@ -1,0 +1,132 @@
+{
+  "A6_p2_quiver": {
+    "cartan_principal": [
+      [
+        8,
+        4,
+        4
+      ],
+      [
+        4,
+        3,
+        2
+      ],
+      [
+        4,
+        2,
+        3
+      ]
+    ],
+    "checks": "자기고리 0 · 대칭 · Cartan 비영 패턴 내",
+    "ext1": {
+      "1->1": 0,
+      "1->4_a": 1,
+      "1->4_b": 1,
+      "4_a->1": 1,
+      "4_a->4_a": 0,
+      "4_a->4_b": 0,
+      "4_b->1": 1,
+      "4_b->4_a": 0,
+      "4_b->4_b": 0
+    },
+    "matrix": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "simples": [
+      "1",
+      "4_a",
+      "4_b"
+    ]
+  },
+  "A7_p2_nonprincipal_quiver": {
+    "cartan_nonprincipal": [
+      [
+        2,
+        1,
+        2
+      ],
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        4
+      ]
+    ],
+    "matrix": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "simples": [
+      "4̂",
+      "4̄̂",
+      "6̂"
+    ]
+  },
+  "_note": "A₆·A₇ p-modular Ext¹ 퀴버 — 제시 없이 Cayley 일관성으로 H¹ 계산. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "ext1-quiver/v1",
+  "all_ok": true,
+  "checks": {
+    "A6_4a_faithful": true,
+    "A6_4a_neq_4b": true,
+    "A6_4b_dim4": true,
+    "A6_4b_homomorphism": true,
+    "A_H1_A6_F2_zero": true,
+    "A_H1_A7_F2_zero": true,
+    "B_A6_quiver_computed": true,
+    "B_no_self_loops": true,
+    "C_support_within_cartan": true,
+    "D_ext1_symmetric": true,
+    "E_defect0_isolated": true,
+    "F_A7_2520": true,
+    "F_A7_nonprincipal_quiver": true,
+    "F_A7_symmetric": true,
+    "setup_A6_360": true
+  },
+  "defect0": {
+    "A6_p2": "{8},{8} — 블록에 simple 1개·C=[1] ⟹ 단순대수 ⟹ Ext¹=0(고립 정점)",
+    "A6_p3": "{9}(Steinberg) — 동일",
+    "note": "구조적 귀결로 기록(계산 아님)"
+  },
+  "method": {
+    "B1": "dim M − dim M^G",
+    "Z1": "f(xs) = f(x) + x·f(s) — BFS 신장트리 전개 후 **비트리 간선 일관성**이 커널을 준다",
+    "formula": "Ext¹(S_i,S_j) = H¹(G, Hom(S_i,S_j)) · dim = dim Z¹ − dim B¹",
+    "presentation_free": "★군 제시를 인용하지 않는다(자체유도 규율)"
+  },
+  "scope_honesty": {
+    "delivered": "Ext¹ 계산기(제시-free)+자체검증(H¹(A₆/A₇,𝔽₂)=0) · A₆ p=2 주블록 완전 3×3 퀴버 + Cartan 대조 + 대칭성 · A₇ p=2 비주블록 3×3 퀴버 · defect-0 고립 정점",
+    "not_claimed": "봉인 게이트 · Ext¹ 대칭성의 일반 정리(실측 보고)",
+    "not_yet": "★A₇ p=2 **주블록**(1,14,20) Ext¹ — Hom 최대 400 × |G| 2520 규모 · A₆ p=3(3,3′ = GF(9)-형) — GF(9) cocycle 필요 · Loewy 급수(사영 덮개 구성)"
+  }
+}
