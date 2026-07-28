@@ -1,0 +1,110 @@
+{
+  "_note": "D^ω(D₄) μ₈ 층 — 완전 S·T + ★T-스펙트럼이 ζ₁₆ 에서 멈춤(폐-음성·기전 2건). 관측·seal 아님·module 0·root 불변.",
+  "_schema": "dtw-d4-mu8/v1",
+  "all_ok": true,
+  "bockstein": {
+    "P4_by_layer": {
+      "0": [
+        0,
+        2
+      ],
+      "3": [
+        1,
+        3
+      ],
+      "5": [
+        1,
+        3
+      ],
+      "6": [
+        0,
+        2
+      ]
+    },
+    "P8_by_layer": {
+      "0": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "6": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "mu4_lift_exists": [
+      0,
+      3,
+      5,
+      6
+    ],
+    "mu8_lift_exists": [
+      0,
+      6
+    ],
+    "verdict": "★ζ₁₆ 을 낳는 층(P₄ 홀수 = w∈{3,5})은 **μ₈ 로 lift 되지 않고**(Bockstein 장애), μ₈ lift 가 존재하는 층(w∈{0,6})은 **P₈ 이 항상 짝수** ⟹ λ⁴=ζ₈^{P₈}∈μ₄ ⟹ λ∈μ₁₆ ⟹ **원시 ζ₃₂ 부재**"
+  },
+  "checks": {
+    "A_mu4_lift_set": true,
+    "A_mu8_lift_set": true,
+    "A_zeta16_layers_are_3_5": true,
+    "A_zeta16_layers_dont_lift": true,
+    "B_P4_consistent": true,
+    "B_P8_all_even": true,
+    "B_P8_set": true,
+    "B_no_primitive_zeta32": true,
+    "C_P8_is_2": true,
+    "C_S2_is_C": true,
+    "C_S_symmetric": true,
+    "C_S_unitary": true,
+    "C_Svac": true,
+    "C_dims_1_8_2_14": true,
+    "C_n22": true,
+    "C_representative_found": true,
+    "C_ribbon_scalar": true,
+    "C_sumdim2_64": true,
+    "C_verlinde": true,
+    "D_C_computed_first": true,
+    "D_C_nontrivial_detected": true,
+    "D_ST3_prop_S2": true,
+    "D_gauss_matches_lam": true,
+    "D_gauss_pp_pm_D2": true,
+    "E_no_order32": true,
+    "E_orders_subset_16": true,
+    "teeth_convention_fixed_first": true,
+    "teeth_gauss_independent": true,
+    "teeth_ladder_breaks_at_zeta16": true
+  },
+  "hierarchy": {
+    "ladder": "ζ₄(untwisted) → ζ₈(μ₂) → ζ₁₆(μ₄) → **μ₈ 층은 새 위수 없음**",
+    "mechanisms": [
+      "ζ₁₆ 층(P₄ 홀수)은 μ₈ 로 lift 불가(Bockstein 장애)",
+      "μ₈ lift 존재 층은 P₈ 짝수 ⟹ λ ∈ μ₁₆"
+    ],
+    "verdict": "★★D₄ twisted double 의 T-스펙트럼 위계는 **ζ₁₆ 에서 완결**(원시 ζ₃₂ 부재)"
+  },
+  "modular_data": {
+    "C_identity": false,
+    "convention": "★C 를 **먼저 계산**해 자기쌍대 판정 → 필요 시 S̄=S∘C 적용(μ₄ 함정 회피)",
+    "dims": "{1×8, 2×14}",
+    "gauss": "p₊p₋ = D² = 64 · p₊/D = λ (S 미사용 독립 심판)",
+    "layer": "w=6 · P₈=2",
+    "rank": 22,
+    "self_dual": false,
+    "sum_d2": 64,
+    "theta_orders": [
+      1,
+      2,
+      4,
+      16
+    ]
+  },
+  "scope_honesty": {
+    "boundary": "'ζ₃₂ 부재'는 **D₄ · 본 slant 규약 · Bockstein 사다리** 범위의 폐-음성이며 임의 유한군 twisted double 일반 주장이 아니다",
+    "delivered": "Bockstein 사다리 전수 census(μ₂ 16 → μ₄ 4 → μ₈ 2) + μ₈ 대표 층 완전 modular data(22·Σd²=64·유니터리·S²=C·Verlinde·(ST)³) + ★T-스펙트럼이 ζ₁₆ 에서 멈춤(폐-음성·기전 2건)",
+    "not_claimed": "braiding 실봉인 · F/R-symbol · μ₁₆ 이상 lift"
+  }
+}
