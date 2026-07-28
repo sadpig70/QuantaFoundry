@@ -52,6 +52,68 @@
       "4_b"
     ]
   },
+  "A6_p3_quiver": {
+    "cartan_principal": [
+      [
+        5,
+        4,
+        1,
+        1
+      ],
+      [
+        4,
+        5,
+        2,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        2
+      ]
+    ],
+    "features": "★별이지만 **중심이 4** · ★**1↔4 이중 화살(2)** · ★Ext¹(3,3′)=0(Frobenius 쌍 사이 화살 없음) · ★3 행 = 3′ 행(Frobenius σ-대칭 실측)",
+    "matrix": [
+      [
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ]
+    ],
+    "method": "GF(9) (a,b) ↦ [[a,−b],[b,a]] 실현화 ⟹ dim_GF(9) Ext¹ = dim_GF(3) H¹ / 2",
+    "simples": [
+      "1̂",
+      "4",
+      "3",
+      "3′"
+    ]
+  },
   "A7_p2_nonprincipal_quiver": {
     "cartan_nonprincipal": [
       [
@@ -111,6 +173,15 @@
     "F_A7_2520": true,
     "F_A7_nonprincipal_quiver": true,
     "F_A7_symmetric": true,
+    "G_A6p3_modules": true,
+    "G_double_arrow_1_4": true,
+    "G_ext1_3_3p_zero": true,
+    "G_frobenius_sigma_symmetry": true,
+    "G_matrix_star_center4": true,
+    "G_no_self_loops": true,
+    "G_realification_even": true,
+    "G_support_within_cartan": true,
+    "G_symmetric": true,
     "setup_A6_360": true
   },
   "defect0": {
