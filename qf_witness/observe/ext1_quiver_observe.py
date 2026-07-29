@@ -10,7 +10,7 @@ simples 사이의 **Ext¹ 차원**(퀴버 화살 수)을 명시 모듈에서 직
 **군 제시를 인용할 필요가 없다**(자체유도 규율). dim B¹ = dim M − dim M^G ·
 **dim Ext¹ = dim Z¹ − dim B¹**.
 
-관측 6축(전 산술 GF(2)/GF(3) 정확 — numpy 정수·부동소수 없음):
+관측 7축(전 산술 GF(2)/GF(3) 정확 — numpy 정수·부동소수 없음):
   A. ★**계산기 자체검증**: **Ext¹(1,1) = H¹(A₆,𝔽₂) = 0**(A₆ 는 완전군 ⟹ 𝔽₂ 로의 비자명 준동형
      부재) · **Ext¹(1,1) = H¹(A₇,𝔽₂) = 0** — 계산기가 알려진 소멸을 재현.
   B. ★**A₆ p=2 주블록 완전 퀴버**: simples **{1̂, 4_a, 4_b}**(4_a = A₇⊂GL(4,2) 의 A₆ 제한 ·
@@ -33,9 +33,21 @@ simples 사이의 **Ext¹ 차원**(퀴버 화살 수)을 명시 모듈에서 직
      ★**1↔4 는 이중 화살(dim 2)** · ★**Ext¹(3,3′) = 0**(Frobenius 쌍 사이 화살 없음) ·
      ★**3 행과 3′ 행이 동일**(Frobenius σ-대칭 실측).
 
+  H. ★★**A₇ p=2 주블록 {1̂, 14̂, 20̂} 완전 3×3 퀴버 — 규모 벽 돌파**: F 축이 "Hom 400 ×
+     |G| 2520 은 범위 밖"으로 유보한 축. ★**저장 대신 재계산**: 제약행렬(2520×400×800 ≈ 806MB)을
+     쌓지 않고 BFS 트리 경로로 F(g) 를 **on-demand 재계산**하며 **증분 RREF** 만 유지.
+     ★**상한/하한 협공으로 전 간선 순회 회피**: (a) 무작위 부분 간선의 Z¹_partial ⊇ Z¹ ⟹
+     **상한**(특히 dim Z¹_partial = dim B¹ 이면 **Ext¹ = 0 정확 인증**), (b) 자유벡터 해를
+     **전 2521 비트리 간선**에 명시 cocycle 로 검증 ⟹ **하한**. 상한 = 하한이면 정확값 —
+     ★**9 쌍 전부 인증**. 결과 **[[0,1,1],[1,1,0],[1,0,0]]** — ★**첫 자기고리**
+     **Ext¹(14̂,14̂) = 1** · ★**Ext¹(14̂,20̂) = 0 인데 C₁₄,₂₀ = 1 ≠ 0**(Cartan ⊋ 퀴버 지지).
+     ★**4 퀴버 종합**: A₆ p=2 · A₆ p=3 · A₇ 비주 · A₇ 주 — **전부 별(비대각 화살 2(n−1))**
+     이지만 **중심은 3종**(1̂ · 4 · 6̂) · **이중 화살은 A₆ p=3 뿐** · **자기고리는 A₇ 주블록 뿐**.
+
 정직 경계(★관측·seal 아님·root 불변 sidecar·신규 module 0):
-  - ★**A₇ p=2 주블록(1,14,20) Ext¹ 은 미완**(Hom 400 × |G| 2520 — 제약행렬 규모). 다음 축.
   - Loewy 급수(rad 필터)는 사영 덮개 구성이 필요 — 퀴버(화살 수)까지가 본 관측.
+  - 화살의 **관계식**(퀴버 대수 제시)은 본 관측 밖 — 화살의 **개수**까지가 산출.
+  - H 축의 "certified"는 **상한 = 하한**이라는 뜻이며, 인증 실패 시 값은 상한으로만 보고한다.
   - Ext¹ 대칭성은 **실측**이며 일반 정리 인용이 아니다.
 
 사용: python -m qf_witness.observe.ext1_quiver_observe [--quick]
@@ -43,6 +55,7 @@ simples 사이의 **Ext¹ 차원**(퀴버 화살 수)을 명시 모듈에서 직
 from __future__ import annotations
 import sys
 import json
+import random
 import itertools
 
 import numpy as np
@@ -472,6 +485,292 @@ def q9_hom_real(A6M, actA, actB, dA, dB, elems):
 
 
 # ══════════════════════════════════════════════════════════════════════════
+# H축 — A₇ p=2 주블록: 메모리-린 Ext¹ (저장 대신 재계산 + 상한/하한 협공)
+# ══════════════════════════════════════════════════════════════════════════
+def rref_rows(A, p):
+    """행 RREF — pivot 열에서 완전 축약된 (basis, pivots)."""
+    A = A % p
+    rows, cols = A.shape
+    piv, r = [], 0
+    for c in range(cols):
+        nz = np.nonzero(A[r:, c])[0]
+        if not len(nz):
+            continue
+        pr = r + nz[0]
+        A[[r, pr]] = A[[pr, r]]
+        A[r] = (A[r] * pow(int(A[r, c]), p - 2, p)) % p
+        col = A[:, c].copy()
+        col[r] = 0
+        if col.any():
+            A = (A - np.outer(col, A[r])) % p
+        piv.append(c)
+        r += 1
+        if r == rows:
+            break
+    return A[:r] % p, piv
+
+
+def reduce_vec(v, basis, piv, p):
+    """완전 RREF basis 로 v 축약 — 0 이면 span 안."""
+    v = v % p
+    for i, c in enumerate(piv):
+        if v[c]:
+            v = (v - int(v[c]) * basis[i]) % p
+    return v
+
+
+def _wedge_k(M, k, n):
+    """Λ^k(M) — GF(2)."""
+    keys = list(itertools.combinations(range(n), k))
+    idx = {t: i for i, t in enumerate(keys)}
+    O = np.zeros((len(keys), len(keys)), dtype=np.int64)
+    for jc, key in enumerate(keys):
+        cols = [[M[i][x] for i in range(n)] for x in key]
+        for combo in itertools.product(range(n), repeat=k):
+            if len(set(combo)) != k:
+                continue
+            v = 1
+            for t in range(k):
+                v &= int(cols[t][combo[t]])
+            if v:
+                O[idx[tuple(sorted(combo))], jc] ^= 1
+    return O % 2
+
+
+def _bit_rref_add(B, v):
+    for b in B:
+        if (v >> (b.bit_length() - 1)) & 1:
+            v ^= b
+    if v:
+        B.append(v)
+        B.sort(reverse=True)
+    return B
+
+
+def _bit_coords(B, pv, v):
+    c = [0] * len(B)
+    t = v
+    for i, x in enumerate(B):
+        if (t >> pv[i]) & 1:
+            t ^= x
+            c[i] = 1
+    if t:
+        raise ValueError("부분공간 밖")
+    return c
+
+
+def _bit_apply(M, n):
+    """GF(2) 행렬 M 의 비트벡터 작용."""
+    cols = [sum(int(M[i][j]) << i for i in range(n)) for j in range(n)]
+
+    def f(v):
+        r = 0
+        while v:
+            b = v & -v
+            r ^= cols[b.bit_length() - 1]
+            v ^= b
+        return r
+    return f
+
+
+def build_a7_principal_gens(a7_gens):
+    """A₇ p=2 **주블록** simples 의 생성원 행렬: 1 · 14 = sl₄/⟨I⟩ · 20 = ker(4⊗Λ²4 → Λ³4).
+
+    4 = Fano 평면 GL(4,2) 작용(a7_cartan_p2 와 동일 구성)."""
+    g4 = fano_gl42_gens(None, 7, a7_gens)
+
+    def conj_end(M):
+        n = len(M)
+        Mi = inv_mod(M, 2)
+        O = np.zeros((n * n, n * n), dtype=np.int64)
+        for a in range(n):
+            for b in range(n):
+                for i in range(n):
+                    for j in range(n):
+                        if M[i][a] and Mi[b][j]:
+                            O[i * n + j, a * n + b] ^= 1
+        return O % 2
+    # 16 = End(4) ⊃ 15 = sl₄(trace 0) ⊃ ⟨I⟩ ⟹ 14
+    A16 = [conj_end(m) for m in g4]
+    tz = ([1 << (i * 4 + j) for i in range(4) for j in range(4) if i != j]
+          + [(1 << 0) | (1 << (i * 4 + i)) for i in range(1, 4)])
+    Bb = []
+    for v in tz:
+        _bit_rref_add(Bb, v)
+    pv = [b.bit_length() - 1 for b in Bb]
+    A15 = []
+    for M in A16:
+        ap = _bit_apply(M, 16)
+        cm = [_bit_coords(Bb, pv, ap(b)) for b in Bb]
+        A15.append(np.array([[cm[j][i] for j in range(15)] for i in range(15)],
+                            dtype=np.int64))
+    Ivec = sum(1 << (i * 4 + i) for i in range(4))
+    Ic = sum(_bit_coords(Bb, pv, Ivec)[i] << i for i in range(15))
+    ipos = Ic.bit_length() - 1
+    frq = [i for i in range(15) if i != ipos]
+    g14 = []
+    for M in A15:
+        ap = _bit_apply(M, 15)
+
+        def red(v):
+            if (v >> ipos) & 1:
+                v ^= Ic
+            return [(v >> f) & 1 for f in frq]
+        cm = [red(ap(1 << f)) for f in frq]
+        g14.append(np.array([[cm[j][i] for j in range(14)] for i in range(14)],
+                            dtype=np.int64))
+    # 20 = ker(4 ⊗ Λ²4 → Λ³4)
+    def tensor(A, B):
+        na, nb = len(A), len(B)
+        d = na * nb
+        return np.array([[A[i // nb][j // nb] * B[i % nb][j % nb] % 2
+                          for j in range(d)] for i in range(d)], dtype=np.int64)
+    A24 = [tensor(g4[i], _wedge_k(g4[i], 2, 4)) for i in range(len(g4))]
+    pairs = list(itertools.combinations(range(4), 2))
+    tri = list(itertools.combinations(range(4), 3))
+    tidx = {t: i for i, t in enumerate(tri)}
+    PHI = [[0] * 24 for _ in range(4)]
+    for v in range(4):
+        for pi, (a, b) in enumerate(pairs):
+            if v in (a, b):
+                continue
+            PHI[tidx[tuple(sorted((v, a, b)))]][v * 6 + pi] = 1
+    Bk = []
+    for i in range(4):
+        _bit_rref_add(Bk, sum(PHI[i][j] << j for j in range(24)))
+    pvs = [b.bit_length() - 1 for b in Bk]
+    KB = []
+    for f in [j for j in range(24) if j not in pvs]:
+        x = 1 << f
+        for i, b in enumerate(Bk):
+            if bin(b & x).count("1") % 2:
+                x ^= 1 << pvs[i]
+        _bit_rref_add(KB, x)
+    kpv = [b.bit_length() - 1 for b in KB]
+    g20 = []
+    for M in A24:
+        ap = _bit_apply(M, 24)
+        cm = [_bit_coords(KB, kpv, ap(b)) for b in KB]
+        g20.append(np.array([[cm[j][i] for j in range(20)] for i in range(20)],
+                            dtype=np.int64))
+    return {"1": ([np.eye(1, dtype=np.int64)] * len(a7_gens), 1),
+            "14": (g14, 14), "20": (g20, 20)}
+
+
+def ext1_pair_lean(gens, mulf, idp, order, par, Ag, Bg, dA, dB, p=2, maxedges=60):
+    """★메모리-린 Ext¹(A,B) — 제약행렬을 **저장하지 않고** 상한/하한으로 협공.
+
+    상한: 무작위 부분 간선의 Z¹_partial ⊇ Z¹ ⟹ ub = dim Z¹_partial − dim B¹
+          (dim Z¹_partial = dim B¹ 이면 Z¹ = B¹ 이므로 **Ext¹ = 0 정확**).
+    하한: Z¹_partial 의 자유벡터 해를 **전 비트리 간선**에 대해 명시 cocycle 로 검증하고
+          B¹ 를 법으로 독립인 개수를 센다.
+    상한 = 하한이면 정확값(certified=True). 반환 (ext, certified, detail)."""
+    m, k = dB * dA, len(gens)
+    nv = k * m
+    cache = {}
+
+    def actH(g):
+        if g in cache:
+            return cache[g]
+        Ai, Bm = inv_mod(Ag[g], p), Bg[g] % p
+        M = np.zeros((m, m), dtype=np.int64)
+        for r2 in range(dB):
+            for c2 in range(dA):
+                M[:, r2 * dA + c2] = (np.outer(Bm[:, r2], Ai[c2, :]) % p).reshape(-1)
+        if len(cache) < 800:
+            cache[g] = M
+        return M
+
+    path = {}
+
+    def tpath(g):
+        if g in path:
+            return path[g]
+        out, x = [], g
+        while par[x] is not None:
+            px, gi = par[x]
+            out.append((px, gi))
+            x = px
+        out.reverse()
+        if len(path) < 3000:
+            path[g] = out
+        return out
+
+    def Fmat(g):
+        """f(g) 를 생성원 값 x 의 선형함수로 — m×nv (저장 없이 트리 경로로 재계산)."""
+        Fg = np.zeros((m, nv), dtype=np.int64)
+        for (px, gi) in tpath(g):
+            Fg[:, gi * m:(gi + 1) * m] = (Fg[:, gi * m:(gi + 1) * m] + actH(px)) % p
+        return Fg
+
+    dimB1 = gf_rank(np.concatenate(
+        [(actH(g) - np.eye(m, dtype=np.int64)) % p for g in gens], axis=0), p)
+    tree = {(par[g][0], par[g][1]) for g in order[1:]}
+    nontree = [(g, gi) for g in order for gi in range(k) if (g, gi) not in tree]
+    nt = list(nontree)
+    random.Random(11).shuffle(nt)          # 결정론 시드
+
+    basis = np.zeros((0, nv), dtype=np.int64)
+    piv, used = [], 0
+    for (g, gi) in nt[:maxedges]:
+        used += 1
+        R = (Fmat(mulf(g, gens[gi])) - Fmat(g)) % p
+        R[:, gi * m:(gi + 1) * m] = (R[:, gi * m:(gi + 1) * m] - actH(g)) % p
+        if piv:
+            R = (R - R[:, piv] @ basis) % p          # 누적 basis 로 1회 곱셈 축약
+        NR, npv = rref_rows(R, p)
+        if len(npv):
+            if len(piv):
+                basis = (basis - basis[:, npv] @ NR) % p
+            basis = np.vstack([basis, NR])
+            piv = piv + npv
+        if nv - len(piv) == dimB1:
+            break
+    ub = nv - len(piv) - dimB1
+    if ub == 0:
+        return 0, True, {"B1": dimB1, "Z1": dimB1, "mode": "Z1=B1", "edges": used}
+
+    Bmat = np.array([np.concatenate([((actH(gens[j]) @ v_) % p - v_) % p
+                                     for j in range(k)]) % p
+                     for v_ in np.eye(m, dtype=np.int64)], dtype=np.int64)
+    Cb, Cp = rref_rows(Bmat, p)
+
+    ainv = {}
+
+    def Ainv(g):
+        if g not in ainv:
+            ainv[g] = inv_mod(Ag[g], p)
+        return ainv[g]
+
+    def applyH(g, vec):
+        """(g·φ) = B(g) φ A(g)⁻¹ — m×m 행렬 없이 소형 곱 2회."""
+        return ((Bg[g] % p) @ vec.reshape(dB, dA) % p @ Ainv(g) % p).reshape(-1) % p
+
+    pset = set(piv)
+    lb = 0
+    for f in (c for c in range(nv) if c not in pset):
+        x = np.zeros(nv, dtype=np.int64)
+        x[f] = 1
+        for i, c in enumerate(piv):
+            x[c] = (-int(np.dot(basis[i], x))) % p
+        if not reduce_vec(x, Cb, Cp, p).any():
+            continue                                  # 이미 B¹ + 확인분 안
+        fv = {idp: np.zeros(m, dtype=np.int64)}
+        for g in order[1:]:
+            px, gi = par[g]
+            fv[g] = (fv[px] + applyH(px, x[gi * m:(gi + 1) * m])) % p
+        if any(((fv[mulf(g, gens[gi])] - fv[g]
+                 - applyH(g, x[gi * m:(gi + 1) * m])) % p).any()
+               for (g, gi) in nontree):
+            continue                                  # 전 간선 검증 실패 ⟹ cocycle 아님
+        Cb, Cp = rref_rows(np.vstack([Cb, x[None, :]]), p)
+        lb += 1
+        if lb == ub:
+            break
+    return ub, (ub == lb), {"B1": dimB1, "upper": ub, "lower": lb, "edges": used}
+
+
+# ══════════════════════════════════════════════════════════════════════════
 def main():
     quick = "--quick" in sys.argv
     R = {}
@@ -622,6 +921,84 @@ def main():
                          "★3 행 = 3′ 행(Frobenius σ-대칭 실측)"),
         }
 
+    # ── H. A₇ p=2 주블록 {1̂, 14̂, 20̂} — 메모리-린 협공 ────────────────────
+    if not quick:
+        gensP = build_a7_principal_gens(A7G)
+        R["H_dims_1_14_20"] = ([gensP[k][1] for k in ("1", "14", "20")] == [1, 14, 20])
+        actsP = {k: (extend_action(A7G, mul7, id7, gm, 2, ord7), d)
+                 for k, (gm, d) in gensP.items()}
+        R["H_homomorphism"] = all(
+            np.array_equal((actsP[k][0][x] @ actsP[k][0][y]) % 2, actsP[k][0][mul7(x, y)])
+            for k in ("14", "20") for x in ord7[:40] for y in A7G)
+        R["H_faithful"] = all(len({actsP[k][0][g].tobytes() for g in ord7}) == 2520
+                              for k in ("14", "20"))
+        parP, orderP = group_elems(A7G, mul7, id7)
+        namesP = ["1", "14", "20"]
+        QP, certP = {}, {}
+        for a in namesP:
+            for b in namesP:
+                (aa, da), (ab, db) = actsP[a], actsP[b]
+                e, cert, _det = ext1_pair_lean(A7G, mul7, id7, orderP, parP,
+                                               aa, ab, da, db, 2, maxedges=60)
+                QP[(a, b)], certP[(a, b)] = e, cert
+        R["H_all_certified"] = all(certP.values())
+        R["H_symmetric"] = all(QP[(a, b)] == QP[(b, a)] for a in namesP for b in namesP)
+        Mp = [[QP[(a, b)] for b in namesP] for a in namesP]
+        R["H_matrix"] = (Mp == [[0, 1, 1], [1, 1, 0], [1, 0, 0]])
+        # ★자기고리: 선행 3 퀴버는 전부 0 이었다 — 여기서 처음 깨진다
+        R["H_self_loop_at_14"] = (QP[("14", "14")] == 1)
+        R["H_no_other_self_loop"] = (QP[("1", "1")] == 0 and QP[("20", "20")] == 0)
+        R["H_trivial_H1_zero"] = (QP[("1", "1")] == 0)
+        Cp7 = [[4, 2, 2], [2, 3, 1], [2, 1, 2]]
+        R["H_support_within_cartan"] = all(
+            (QP[(namesP[i], namesP[j])] == 0) or (Cp7[i][j] != 0)
+            for i in range(3) for j in range(3))
+        # ★Cartan 비영이지만 Ext¹=0 인 쌍이 실재(포함이 진부분)
+        R["H_cartan_strictly_larger"] = any(
+            QP[(namesP[i], namesP[j])] == 0 and Cp7[i][j] != 0
+            for i in range(3) for j in range(3))
+        out["A7_p2_principal_quiver"] = {
+            "simples": ["1̂", "14̂ = sl₄/⟨I⟩", "20̂ = ker(4⊗Λ²4 → Λ³4)"],
+            "matrix": Mp,
+            "certified": [[bool(certP[(a, b)]) for b in namesP] for a in namesP],
+            "cartan_principal": Cp7,
+            "method": ("★저장 대신 재계산(트리 경로 F(g) on-demand)+증분 RREF · "
+                       "상한(부분 간선 Z¹_partial ⊇ Z¹)과 하한(명시 cocycle 전 2521 간선 검증)의 "
+                       "협공 — 상한=하한이면 정확값"),
+            "features": ("★**첫 자기고리** Ext¹(14̂,14̂)=1 — A₆ p=2·A₆ p=3·A₇ 비주블록 "
+                         "3 퀴버는 전부 자기고리 0 이었다 · ★나머지는 **중심 1̂ 의 별** · "
+                         "★Ext¹(14̂,20̂)=0 인데 C₁₄,₂₀=1 ≠ 0(Cartan ⊋ 퀴버 지지 — 진부분)"),
+        }
+
+        # ★4 퀴버 종합 — "별 패턴이 보편인가"
+        stars = {
+            "A6_p2_principal": {"center": "1̂", "matrix": [[0, 1, 1], [1, 0, 0], [1, 0, 0]],
+                                "self_loop": False, "multi_arrow": False},
+            "A6_p3_principal": {"center": "4", "matrix": [[0, 2, 0, 0], [2, 0, 1, 1],
+                                                          [0, 1, 0, 0], [0, 1, 0, 0]],
+                                "self_loop": False, "multi_arrow": True},
+            "A7_p2_nonprincipal": {"center": "6̂", "matrix": [[0, 0, 1], [0, 0, 1], [1, 1, 0]],
+                                   "self_loop": False, "multi_arrow": False},
+            "A7_p2_principal": {"center": "1̂", "matrix": Mp,
+                                "self_loop": True, "multi_arrow": False},
+        }
+        R["H_four_quivers_all_star"] = all(
+            sum(1 for i in range(len(v["matrix"])) for j in range(len(v["matrix"]))
+                if i != j and v["matrix"][i][j])
+            == 2 * (len(v["matrix"]) - 1) for v in stars.values())
+        R["H_star_center_varies"] = (len({v["center"] for v in stars.values()}) == 3)
+        R["H_self_loop_unique_to_A7_principal"] = (
+            [k for k, v in stars.items() if v["self_loop"]] == ["A7_p2_principal"])
+        R["H_multi_arrow_unique_to_A6_p3"] = (
+            [k for k, v in stars.items() if v["multi_arrow"]] == ["A6_p3_principal"])
+        out["four_quiver_synthesis"] = {
+            "quivers": stars,
+            "invariant": ("★4 퀴버 전부 **별(star)** — 비대각 화살이 정확히 2(n−1) 개이고 "
+                          "한 중심에서만 나온다"),
+            "varies": ("중심이 셋(1̂ · 4 · 6̂ · 1̂) · **이중 화살은 A₆ p=3 에서만** · "
+                       "★**자기고리는 A₇ p=2 주블록에서만**"),
+        }
+
     ok = bool(all(R.values()))
     out["checks"] = R
     out["method"] = {
@@ -633,9 +1010,9 @@ def main():
     out["scope_honesty"] = {
         "delivered": ("Ext¹ 계산기(제시-free)+자체검증(H¹(A₆/A₇,𝔽₂)=0) · A₆ p=2 주블록 완전 "
                       "3×3 퀴버 + Cartan 대조 + 대칭성 · A₇ p=2 비주블록 3×3 퀴버 · "
-                      "defect-0 고립 정점"),
-        "not_yet": ("★A₇ p=2 **주블록**(1,14,20) Ext¹ — Hom 최대 400 × |G| 2520 규모 · "
-                    "A₆ p=3(3,3′ = GF(9)-형) — GF(9) cocycle 필요 · Loewy 급수(사영 덮개 구성)"),
+                      "defect-0 고립 정점 · A₆ p=3 주블록 4×4(GF(9) 실현화) · "
+                      "★A₇ p=2 **주블록** 3×3(메모리-린 협공·전 쌍 정확 인증) · 4 퀴버 종합"),
+        "not_yet": "Loewy 급수(rad 필터 — 사영 덮개 구성 필요) · 화살의 **관계식**(퀴버 대수 제시)",
         "not_claimed": "봉인 게이트 · Ext¹ 대칭성의 일반 정리(실측 보고)",
     }
     out["all_ok"] = ok
@@ -659,8 +1036,13 @@ def main():
         print(f"  ★A₆ p=3 주블록 Ext¹ 행렬(1,4,3,3′): "
               f"{[[Q3[(a, b)] for b in names3] for a in names3]} — 중심 4·1↔4 이중화살",
               flush=True)
+        print(f"  ★★A₇ p=2 **주블록** Ext¹ 행렬(1̂,14̂,20̂): {Mp} — "
+              f"★첫 자기고리 Ext¹(14̂,14̂)=1 · 전 9쌍 정확 인증={R['H_all_certified']}",
+              flush=True)
+        print("  ★4 퀴버 종합: 전부 별(비대각 화살 2(n−1)) · 중심 3종 · "
+              "이중화살은 A₆ p=3 뿐 · **자기고리는 A₇ p=2 주블록 뿐**", flush=True)
         print("  ★제시-free 계산 · H¹(G,𝔽₂)=0 자체검증 · Cartan 비영 패턴 정합 · "
-              "GF(9) 실현화(H¹ 짝수 게이트)", flush=True)
+              "GF(9) 실현화(H¹ 짝수 게이트) · 메모리-린 상한/하한 협공", flush=True)
         print("  → .pgf/proofs/EXT1-QUIVER.json", flush=True)
     print(f"ext1_quiver_observe: all_ok={ok}", flush=True)
     return 0 if ok else 1

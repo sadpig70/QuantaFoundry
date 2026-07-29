@@ -155,6 +155,66 @@
       "6̂"
     ]
   },
+  "A7_p2_principal_quiver": {
+    "cartan_principal": [
+      [
+        4,
+        2,
+        2
+      ],
+      [
+        2,
+        3,
+        1
+      ],
+      [
+        2,
+        1,
+        2
+      ]
+    ],
+    "certified": [
+      [
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true
+      ],
+      [
+        true,
+        true,
+        true
+      ]
+    ],
+    "features": "★**첫 자기고리** Ext¹(14̂,14̂)=1 — A₆ p=2·A₆ p=3·A₇ 비주블록 3 퀴버는 전부 자기고리 0 이었다 · ★나머지는 **중심 1̂ 의 별** · ★Ext¹(14̂,20̂)=0 인데 C₁₄,₂₀=1 ≠ 0(Cartan ⊋ 퀴버 지지 — 진부분)",
+    "matrix": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "method": "★저장 대신 재계산(트리 경로 F(g) on-demand)+증분 RREF · 상한(부분 간선 Z¹_partial ⊇ Z¹)과 하한(명시 cocycle 전 2521 간선 검증)의 협공 — 상한=하한이면 정확값",
+    "simples": [
+      "1̂",
+      "14̂ = sl₄/⟨I⟩",
+      "20̂ = ker(4⊗Λ²4 → Λ³4)"
+    ]
+  },
   "_note": "A₆·A₇ p-modular Ext¹ 퀴버 — 제시 없이 Cayley 일관성으로 H¹ 계산. 관측·seal 아님·module 0·root 불변.",
   "_schema": "ext1-quiver/v1",
   "all_ok": true,
@@ -182,12 +242,130 @@
     "G_realification_even": true,
     "G_support_within_cartan": true,
     "G_symmetric": true,
+    "H_all_certified": true,
+    "H_cartan_strictly_larger": true,
+    "H_dims_1_14_20": true,
+    "H_faithful": true,
+    "H_four_quivers_all_star": true,
+    "H_homomorphism": true,
+    "H_matrix": true,
+    "H_multi_arrow_unique_to_A6_p3": true,
+    "H_no_other_self_loop": true,
+    "H_self_loop_at_14": true,
+    "H_self_loop_unique_to_A7_principal": true,
+    "H_star_center_varies": true,
+    "H_support_within_cartan": true,
+    "H_symmetric": true,
+    "H_trivial_H1_zero": true,
     "setup_A6_360": true
   },
   "defect0": {
     "A6_p2": "{8},{8} — 블록에 simple 1개·C=[1] ⟹ 단순대수 ⟹ Ext¹=0(고립 정점)",
     "A6_p3": "{9}(Steinberg) — 동일",
     "note": "구조적 귀결로 기록(계산 아님)"
+  },
+  "four_quiver_synthesis": {
+    "invariant": "★4 퀴버 전부 **별(star)** — 비대각 화살이 정확히 2(n−1) 개이고 한 중심에서만 나온다",
+    "quivers": {
+      "A6_p2_principal": {
+        "center": "1̂",
+        "matrix": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "multi_arrow": false,
+        "self_loop": false
+      },
+      "A6_p3_principal": {
+        "center": "4",
+        "matrix": [
+          [
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "multi_arrow": true,
+        "self_loop": false
+      },
+      "A7_p2_nonprincipal": {
+        "center": "6̂",
+        "matrix": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "multi_arrow": false,
+        "self_loop": false
+      },
+      "A7_p2_principal": {
+        "center": "1̂",
+        "matrix": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "multi_arrow": false,
+        "self_loop": true
+      }
+    },
+    "varies": "중심이 셋(1̂ · 4 · 6̂ · 1̂) · **이중 화살은 A₆ p=3 에서만** · ★**자기고리는 A₇ p=2 주블록에서만**"
   },
   "method": {
     "B1": "dim M − dim M^G",
@@ -196,8 +374,8 @@
     "presentation_free": "★군 제시를 인용하지 않는다(자체유도 규율)"
   },
   "scope_honesty": {
-    "delivered": "Ext¹ 계산기(제시-free)+자체검증(H¹(A₆/A₇,𝔽₂)=0) · A₆ p=2 주블록 완전 3×3 퀴버 + Cartan 대조 + 대칭성 · A₇ p=2 비주블록 3×3 퀴버 · defect-0 고립 정점",
+    "delivered": "Ext¹ 계산기(제시-free)+자체검증(H¹(A₆/A₇,𝔽₂)=0) · A₆ p=2 주블록 완전 3×3 퀴버 + Cartan 대조 + 대칭성 · A₇ p=2 비주블록 3×3 퀴버 · defect-0 고립 정점 · A₆ p=3 주블록 4×4(GF(9) 실현화) · ★A₇ p=2 **주블록** 3×3(메모리-린 협공·전 쌍 정확 인증) · 4 퀴버 종합",
     "not_claimed": "봉인 게이트 · Ext¹ 대칭성의 일반 정리(실측 보고)",
-    "not_yet": "★A₇ p=2 **주블록**(1,14,20) Ext¹ — Hom 최대 400 × |G| 2520 규모 · A₆ p=3(3,3′ = GF(9)-형) — GF(9) cocycle 필요 · Loewy 급수(사영 덮개 구성)"
+    "not_yet": "Loewy 급수(rad 필터 — 사영 덮개 구성 필요) · 화살의 **관계식**(퀴버 대수 제시)"
   }
 }
