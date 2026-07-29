@@ -374,6 +374,941 @@
     "symmetric_algebra": "head P(S) = soc P(S) = S 전수 실측",
     "verified": true
   },
+  "G_A7_p2_loewy": {
+    "End_S": {
+      "1": 1,
+      "14": 1,
+      "20": 1,
+      "4": 1,
+      "4b": 1,
+      "6": 1
+    },
+    "carriers": {
+      "C7": {
+        "dims": [
+          24,
+          24,
+          56,
+          56,
+          64,
+          64,
+          72
+        ],
+        "frobenius_m_S": {
+          "1": 1,
+          "14": 2,
+          "20": 2,
+          "4": 1,
+          "4b": 1,
+          "6": 0
+        },
+        "hecke_dim": 54,
+        "identified": {
+          "1": 1,
+          "14": 2,
+          "20": 2,
+          "4": 1,
+          "4b": 1
+        },
+        "index": 360,
+        "parts": 7
+      },
+      "F21": {
+        "dims": [
+          24,
+          24,
+          72
+        ],
+        "frobenius_m_S": {
+          "1": 1,
+          "14": 0,
+          "20": 0,
+          "4": 1,
+          "4b": 1,
+          "6": 0
+        },
+        "hecke_dim": 10,
+        "identified": {
+          "1": 1,
+          "4": 1,
+          "4b": 1
+        },
+        "index": 120,
+        "parts": 3
+      },
+      "Syl3": {
+        "dims": [
+          40,
+          40,
+          64,
+          64,
+          72
+        ],
+        "frobenius_m_S": {
+          "1": 1,
+          "14": 2,
+          "20": 0,
+          "4": 0,
+          "4b": 0,
+          "6": 2
+        },
+        "hecke_dim": 40,
+        "identified": {
+          "1": 1,
+          "14": 2,
+          "6": 2
+        },
+        "index": 280,
+        "parts": 5
+      }
+    },
+    "features": "★전부 **Loewy 길이 5**·head=soc=S · 단열(uniserial) = P(4̂)·P(4̄̂)·P(20̂) · ★★**P(14̂) = 14̂ / 1̂⊕14̂ / 20̂ / 1̂ / 14̂ — 2층에 14̂ 자신** ⟹ 전일의 **자기고리 Ext¹(14̂,14̂)=1 을 독립 산출물이 확인** · ★★**P(14̂) 만 비회문 = 비-rigid**(radical 급수 ≠ socle 급수) — 나머지 5개는 rigid · ★A₆ 는 LL=9 인데 A₇ 는 LL=5(둘 다 defect group 위수 8)",
+    "method": "정칙가군(2520차원) 대신 **지수 크기 사영 운반자** k[G/H](|H| 홀수) — ★Frobenius 상호율 m_S = dim S^H 로 성분을 **미리 예측**하고 Hecke 대수 End_G = X^H 의 멱등원으로 분해(예측↔실측 대조가 게이트)",
+    "pims": {
+      "1": {
+        "carrier": "F21",
+        "cartan_column": [
+          4,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "composition_total": [
+          4,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "dim": 72,
+        "ext1_row": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "head": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "loewy_layers": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "loewy_length": 5,
+        "palindromic": true,
+        "rad_over_rad2": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "rigid": true,
+        "soc": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "socle_layers": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "uniserial": false
+      },
+      "14": {
+        "carrier": "Syl3",
+        "cartan_column": [
+          2,
+          0,
+          0,
+          0,
+          3,
+          1
+        ],
+        "composition_total": [
+          2,
+          0,
+          0,
+          0,
+          3,
+          1
+        ],
+        "dim": 64,
+        "ext1_row": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "head": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "loewy_layers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "loewy_length": 5,
+        "palindromic": false,
+        "rad_over_rad2": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "rigid": false,
+        "soc": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "socle_layers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "uniserial": false
+      },
+      "20": {
+        "carrier": "C7",
+        "cartan_column": [
+          2,
+          0,
+          0,
+          0,
+          1,
+          2
+        ],
+        "composition_total": [
+          2,
+          0,
+          0,
+          0,
+          1,
+          2
+        ],
+        "dim": 56,
+        "ext1_row": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "head": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "loewy_layers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "loewy_length": 5,
+        "palindromic": true,
+        "rad_over_rad2": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rigid": true,
+        "soc": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "socle_layers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "uniserial": true
+      },
+      "4": {
+        "carrier": "F21",
+        "cartan_column": [
+          0,
+          2,
+          1,
+          2,
+          0,
+          0
+        ],
+        "composition_total": [
+          0,
+          2,
+          1,
+          2,
+          0,
+          0
+        ],
+        "dim": 24,
+        "ext1_row": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "head": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "loewy_layers": [
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "loewy_length": 5,
+        "palindromic": true,
+        "rad_over_rad2": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "rigid": true,
+        "soc": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "socle_layers": [
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "uniserial": true
+      },
+      "4b": {
+        "carrier": "F21",
+        "cartan_column": [
+          0,
+          1,
+          2,
+          2,
+          0,
+          0
+        ],
+        "composition_total": [
+          0,
+          1,
+          2,
+          2,
+          0,
+          0
+        ],
+        "dim": 24,
+        "ext1_row": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "head": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "loewy_layers": [
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "loewy_length": 5,
+        "palindromic": true,
+        "rad_over_rad2": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "rigid": true,
+        "soc": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "socle_layers": [
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "uniserial": true
+      },
+      "6": {
+        "carrier": "Syl3",
+        "cartan_column": [
+          0,
+          2,
+          2,
+          4,
+          0,
+          0
+        ],
+        "composition_total": [
+          0,
+          2,
+          2,
+          4,
+          0,
+          0
+        ],
+        "dim": 40,
+        "ext1_row": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "head": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "loewy_layers": [
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "loewy_length": 5,
+        "palindromic": true,
+        "rad_over_rad2": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "rigid": true,
+        "soc": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "socle_layers": [
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "uniserial": false
+      }
+    },
+    "prediction_corrected": "★설계 시 '전부 회문'을 예상했으나 **반증** — 자기고리를 가진 P(14̂) 만 비회문이자 비-rigid. socle 급수를 **직접 계산**해 논증이 아닌 실측으로 판정",
+    "splitting_field": "★**𝔽₂ 는 A₇(p=2)의 분해체다** — 6 simple 전부 End = 𝔽₂ 이고 Σ dim P(S)·dim S = 2520 = |A₇| · ★**A₆ 와 대조**(A₆ 는 defect-0 가 16차원으로 융합)"
+  },
   "_note": "사영 덮개 P(S) 명시 구성 → Loewy 급수 — D·Cartan·Ext¹ 삼중 교차검증. 관측·seal 아님·module 0·root 불변.",
   "_schema": "loewy-series/v1",
   "all_ok": true,
@@ -410,6 +1345,26 @@
     "F_all_projective": true,
     "F_head_equals_soc": true,
     "F_rad_over_rad2_equals_ext1": true,
+    "G_A7_2520": true,
+    "G_A7_LL5_vs_A6_LL9": true,
+    "G_A7_all_End_are_F2": true,
+    "G_A7_regular_dim_2520": true,
+    "G_A7_syl2_order8": true,
+    "G_all_loewy_length_5": true,
+    "G_all_six_pims_found": true,
+    "G_carriers_projective": true,
+    "G_composition_equals_cartan_column": true,
+    "G_dims_match": true,
+    "G_frobenius_predicts_index": true,
+    "G_head_equals_soc": true,
+    "G_multiplicity_matches_frobenius": true,
+    "G_palindromic_except_14": true,
+    "G_rad_over_rad2_equals_ext1": true,
+    "G_rigid_except_14": true,
+    "G_rigid_iff_palindromic": true,
+    "G_selfloop_14_confirmed": true,
+    "G_selfloop_unique": true,
+    "G_socle_layers_match_radical": true,
     "setup_A6_360": true
   },
   "method": {
@@ -419,8 +1374,8 @@
     "radical": "rad(M) = ∩ ker(M → S) — J(kG) 구성 불필요"
   },
   "scope_honesty": {
-    "delivered": "4 블록 차원 산술 게이트 · P(1̂) 치환가군 구성 · 정칙가군 완전 분해(17) · ★𝔽₂ 비분해체 실측(16차원 융합 단순가군) · 3 PIM 완전 Loewy 급수 · ★Cartan 열 독립 재유도 · ★rad/rad² = Ext¹ 삼중 교차검증",
+    "delivered": "4 블록 차원 산술 게이트 · P(1̂) 치환가군 구성 · 정칙가군 완전 분해(17) · ★𝔽₂ 비분해체 실측(16차원 융합 단순가군) · A₆ 3 PIM 완전 Loewy 급수 · ★★A₇ 6 PIM 전부(지수 크기 운반자 3종·Frobenius 예측 게이트) · ★Cartan 열 9개 독립 재유도 · ★rad/rad² = Ext¹ 9개(삼중 교차검증) · ★★자기고리 Ext¹(14̂,14̂)=1 독립 확인 · ★A₇ 는 𝔽₂ 분해체(A₆ 와 대조)",
     "not_claimed": "봉인 게이트 · A 축 산술의 분해체 가정을 넘는 진술",
-    "not_yet": "★A₇ p=2 Loewy 급수(정칙가군 2520차원 — 다른 운반자 필요) · A₆ p=3 Loewy(𝔽₃ 위 융합 6차원 취급 필요) · 퀴버 대수의 관계식"
+    "not_yet": "A₆ p=3 Loewy(𝔽₃ 위 융합 6차원 취급 필요) · 퀴버 대수의 관계식 · A₆ LL=9 vs A₇ LL=5 의 **구조적 설명**(관측만·기전 무주장)"
   }
 }
