@@ -1,0 +1,426 @@
+{
+  "A_dimension_arithmetic": {
+    "identities": "dim P(S_i) = Σ_j C_{ji}·dim S_j · |G|_p | dim P(S_i) · Σ_i dim P(S_i)·dim S_i = 블록차원 · 전 블록 합 = |G|",
+    "per_block": {
+      "A6_p2_principal": {
+        "block_dim": 232,
+        "dim_P": [
+          40,
+          24,
+          24
+        ]
+      },
+      "A6_p3_principal": {
+        "block_dim": 279,
+        "dim_P": [
+          27,
+          36,
+          18,
+          18
+        ]
+      },
+      "A7_p2_nonprincipal": {
+        "block_dim": 432,
+        "dim_P": [
+          24,
+          24,
+          40
+        ]
+      },
+      "A7_p2_principal": {
+        "block_dim": 2088,
+        "dim_P": [
+          72,
+          64,
+          56
+        ]
+      }
+    },
+    "scope": "★분해체 위의 진술 — 𝔽₂/𝔽₃ 위에서는 융합이 일어난다(D 축)",
+    "totals": {
+      "A6_p2": 360,
+      "A6_p3": 360,
+      "A7_p2": 2520
+    }
+  },
+  "B_P1_from_coset_module": {
+    "construction": "P(1̂) = 𝔽₂[A₆/Syl₃(위수 9)] — |H| 가 p 와 서로소 ⟹ 사영",
+    "dim": 40,
+    "head": [
+      1,
+      0,
+      0
+    ],
+    "projectivity_test": "Higman/Chouinard: dim Y^{Syl₂} = dim Y/8",
+    "soc": [
+      1,
+      0,
+      0
+    ]
+  },
+  "C_regular_decomposition": {
+    "dims": [
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      40
+    ],
+    "parts": 17,
+    "reading": "𝔽₂A₆ = P(1̂) ⊕ P(4ₐ)^4 ⊕ P(4_b)^4 ⊕ (16차원)^8 — ★주블록 중복도(1,4,4)가 dim S 와 일치 ⟹ End(S) = 𝔽₂(분해됨)",
+    "summary": {
+      "dim16/head[0, 0, 0]": 8,
+      "dim24/head[0, 0, 1]": 4,
+      "dim24/head[0, 1, 0]": 4,
+      "dim40/head[1, 0, 0]": 1
+    }
+  },
+  "D_field_of_definition": {
+    "consistency": "8 × 16 = 128 = 8² + 8² — A 축의 분해체 산술과 정합",
+    "contrast": "★주블록은 𝔽₂ 위에서 이미 분해됨(C 축 중복도 1,4,4) — 필드 의존이 **블록마다 다르다**",
+    "cross_ref": "A₆ p=3 의 3, 3′ 도 End = GF(9)(ext1_quiver_observe G축) ⟹ 𝔽₃ 위에서는 6차원으로 융합 — 같은 현상",
+    "evidence": {
+      "8x16": 128,
+      "dim": 16,
+      "dim_End": 2,
+      "multiplicity": 8,
+      "rad": 0
+    },
+    "finding": "★𝔽₂ 는 A₆(p=2)의 분해체가 아니다 — 분해체 𝔽₄ 위의 defect-0 블록 {8},{8} 이 𝔽₂ 위에서 **16차원 단순가군 1개(End = 𝔽₄)** 로 융합"
+  },
+  "E_loewy_series": {
+    "features": "★전부 Loewy 길이 9·회문 · ★P(4ₐ)·P(4_b) 는 **단열(uniserial)** · P(1̂) 만 층 4ₐ⊕4_b 로 비단열 · ★층 다중도 총합 = Cartan 열(C 의 독립 재유도)",
+    "pims": {
+      "P[0, 0, 1]": {
+        "cartan_column": [
+          4,
+          2,
+          3
+        ],
+        "composition_total": [
+          4,
+          2,
+          3
+        ],
+        "dim": 24,
+        "ext1_row": [
+          1,
+          0,
+          0
+        ],
+        "head": [
+          0,
+          0,
+          1
+        ],
+        "loewy_layers": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "loewy_length": 9,
+        "rad_over_rad2": [
+          1,
+          0,
+          0
+        ],
+        "soc": [
+          0,
+          0,
+          1
+        ],
+        "uniserial": true
+      },
+      "P[0, 1, 0]": {
+        "cartan_column": [
+          4,
+          3,
+          2
+        ],
+        "composition_total": [
+          4,
+          3,
+          2
+        ],
+        "dim": 24,
+        "ext1_row": [
+          1,
+          0,
+          0
+        ],
+        "head": [
+          0,
+          1,
+          0
+        ],
+        "loewy_layers": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "loewy_length": 9,
+        "rad_over_rad2": [
+          1,
+          0,
+          0
+        ],
+        "soc": [
+          0,
+          1,
+          0
+        ],
+        "uniserial": true
+      },
+      "P[1, 0, 0]": {
+        "cartan_column": [
+          8,
+          4,
+          4
+        ],
+        "composition_total": [
+          8,
+          4,
+          4
+        ],
+        "dim": 40,
+        "ext1_row": [
+          0,
+          1,
+          1
+        ],
+        "head": [
+          1,
+          0,
+          0
+        ],
+        "loewy_layers": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "loewy_length": 9,
+        "rad_over_rad2": [
+          0,
+          1,
+          1
+        ],
+        "soc": [
+          1,
+          0,
+          0
+        ],
+        "uniserial": false
+      }
+    }
+  },
+  "F_triple_cross_check": {
+    "identity": "rad P(S_i)/rad² P(S_i) ≅ ⊕_j S_j^{dim Ext¹(S_i,S_j)}",
+    "meaning": "분해행렬 D(→Cartan C) · Ext¹ 퀴버 · Loewy 급수 — **세 독립 산출물이 서로를 검증**",
+    "quiver": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "symmetric_algebra": "head P(S) = soc P(S) = S 전수 실측",
+    "verified": true
+  },
+  "_note": "사영 덮개 P(S) 명시 구성 → Loewy 급수 — D·Cartan·Ext¹ 삼중 교차검증. 관측·seal 아님·module 0·root 불변.",
+  "_schema": "loewy-series/v1",
+  "all_ok": true,
+  "checks": {
+    "A_A6_p2_dimP": true,
+    "A_A6_p2_principal_ppart_divides": true,
+    "A_A6_p2_sums_to_360": true,
+    "A_A6_p3_dimP": true,
+    "A_A6_p3_principal_ppart_divides": true,
+    "A_A6_p3_sums_to_360": true,
+    "A_A7_p2_dimP": true,
+    "A_A7_p2_nonprincipal_ppart_divides": true,
+    "A_A7_p2_principal_ppart_divides": true,
+    "A_A7_p2_sums_to_2520": true,
+    "B_cosets_40": true,
+    "B_head_is_trivial": true,
+    "B_loewy_length_9": true,
+    "B_projective_higman": true,
+    "B_soc_is_trivial": true,
+    "B_syl2_order8": true,
+    "B_syl3_order9": true,
+    "C_dim_multiset": true,
+    "C_dims_sum_360": true,
+    "C_multiplicity_equals_dim": true,
+    "C_regular_splits_17": true,
+    "D_16dim_End_is_GF4": true,
+    "D_16dim_radical_zero": true,
+    "D_16dim_x8_is_128": true,
+    "E_P1_not_uniserial": true,
+    "E_P4a_P4b_uniserial": true,
+    "E_all_loewy_length_9": true,
+    "E_all_palindromic": true,
+    "E_composition_equals_cartan_column": true,
+    "F_all_projective": true,
+    "F_head_equals_soc": true,
+    "F_rad_over_rad2_equals_ext1": true,
+    "setup_A6_360": true
+  },
+  "method": {
+    "determinism": "random.Random(3) 고정 시드 — 분해는 결정론적",
+    "projective_cover": "①|H| 가 p 와 서로소면 k[G/H] 사영 · ②정칙가군 kG 를 우측곱 자기준동형(End_G(kG)=kG)의 Fitting 분해로 쪼갠다(사영자 e 를 날라 e·A·e 유지)",
+    "projectivity": "Higman/Chouinard: Y 사영 ⟺ dim Y^{Syl_p} = dim Y/|Syl_p|",
+    "radical": "rad(M) = ∩ ker(M → S) — J(kG) 구성 불필요"
+  },
+  "scope_honesty": {
+    "delivered": "4 블록 차원 산술 게이트 · P(1̂) 치환가군 구성 · 정칙가군 완전 분해(17) · ★𝔽₂ 비분해체 실측(16차원 융합 단순가군) · 3 PIM 완전 Loewy 급수 · ★Cartan 열 독립 재유도 · ★rad/rad² = Ext¹ 삼중 교차검증",
+    "not_claimed": "봉인 게이트 · A 축 산술의 분해체 가정을 넘는 진술",
+    "not_yet": "★A₇ p=2 Loewy 급수(정칙가군 2520차원 — 다른 운반자 필요) · A₆ p=3 Loewy(𝔽₃ 위 융합 6차원 취급 필요) · 퀴버 대수의 관계식"
+  }
+}
