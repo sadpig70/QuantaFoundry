@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """블록 대수의 **완전 제시** B ≅ kQ/I — 화살(Ext¹) 다음 층인 **관계식**(Ext²).
 
-관측 7축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
+관측 9축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
   A  A₇ p=2 **비주블록 기본대수** A = ⊕_{i,j} Hom_G(P_i,P_j) — dim A = Σ C_{ij} = 18
      (블록 차원 432 를 다루지 않는다) · ★Cartan 를 **Hom 차원으로 제4 재유도** ·
      rad 여과 rad^n 차원열 · ★graded 차원 = **Loewy 층 수와 일치**(게이트)
@@ -16,19 +16,28 @@
   G  ★★**종합**: 두 블록은 **퀴버가 동형**(3정점 별·화살 4개)이고 관계식도 **같은 개수(3)·
      같은 타입**(영관계 2 + 가환관계 1)인데 **가환관계의 차수가 4 vs 8** ⟹ dim 18 vs 34 —
      **퀴버만으로는 블록 대수가 결정되지 않는다**는 실례
+  H  ★★A₇ p=2 **주블록**(1̂·14̂·20̂ · dim A = 19) — **자기고리를 품은 첫 제시**.
+     ★★**균질 제시가 존재하지 않는다**(리프트 32 **전수** 실패) ⟹ **비균질 관계식 강제** ·
+     정체는 **γ² ≠ 0**(자기고리의 제곱 = 길이-4 경로) · ★**Ext² 에 처음 다중도 2**
+  I  ★★3 블록 종합 — **자기고리가 있는 블록에서만 균질 제시가 깨진다**(실측·기전 무주장)
 
 방법(자체유도):
   ① 기본대수는 **준동형의 합성**으로 실물 계산 — dim Hom(P_i,P_j) = [P_j : S_i] = C_{ij}
   ② rad A ∩ Hom(P_i,P_j) = {φ : im φ ⊆ rad P_j} (i≠j 는 자동 — Nakayama)
   ③ 화살 리프트는 rad² 를 법으로만 정해진다 ⟹ **리프트 선택을 전수**해 균질 제시를 찾는다
-  ④ 최소 관계식 개수 = Σ dim Ext²(S_i,S_j) — D·E 두 경로가 서로를 검증
+  ④ ★**리프트-무관 경로**: kQ/J^maxd 안에서 I 와 J·I + I·J 를 직접 계산해
+     **비균질 관계식까지** 최소 생성원을 센다(`minimal_generators_filtered`) —
+     균질 제시가 있는 두 블록에서는 ③의 결과를 **그대로 재현**(기계 자체검증)
+  ⑤ 최소 관계식 개수 = Σ dim Ext²(S_i,S_j) — 두 경로가 서로를 검증
 
 정직 경계:
-  · 관계식의 **명시 형태는 리프트 선택에 의존**한다(개수 = dim Ext² 는 불변). 본 관측은
-    선택을 전수해 **균질 제시를 실제로 제시**하고 dim kQ/I 로 인증한다.
-  · A₆ p=3 · A₇ p=2 **주블록**은 미착수(퀴버에 이중화살·자기고리가 있어 리프트 공간이 커진다).
-  · 두 블록 대수가 **동형이 아님**은 dim 이 다름으로 즉시 따르나, 어떤 분류표의 이름인지는
-    **주장하지 않는다**(외부 분류 인용 없음).
+  · 관계식의 **명시 형태는 리프트 선택에 의존**한다(개수 = dim Ext² 는 불변).
+  · A₇ **주블록**의 H¹ 경로는 **부분만**(1̂ 열) — m = dim ΩS_i·dim S_j 가 최대 1420
+    (비주블록은 204)이라 `ext1_pair_lean` 의 m×m 캐시가 규모 밖. 총 개수는 head(Ω²) 와
+    리프트-무관 최소생성 **두 경로가 이미 대조**한다.
+  · A₆ p=3 는 미착수(이중화살·GF(9) 융합).
+  · 대수가 **동형이 아님**은 dim 이 다름으로 즉시 따르나, 어떤 분류표의 이름인지는
+    **주장하지 않는다**(외부 분류 인용 없음). "자기고리 ⟹ 비균질"의 **기전도 무주장**.
 """
 import itertools
 import json
@@ -39,16 +48,41 @@ import time
 import numpy as np
 
 from qf_witness.observe.ext1_quiver_observe import (
-    enumerate_group, extend_action, fano_gl42_gens, group_elems, heart_gens,
-    inv_mod, rref_rows, ext1_pair_lean)
+    build_a7_principal_gens, enumerate_group, extend_action, fano_gl42_gens,
+    group_elems, heart_gens, inv_mod, rref_rows, ext1_pair_lean)
 from qf_witness.observe.loewy_series_observe import (
     coset_data, coset_perm_module, decompose_regular, fixed_dim, hecke_endos,
-    hom_space, image_basis, loewy_series, nullspace, submodule_action, subgroup)
+    hom_space, image_basis, loewy_series, nullspace, nullspace_gf2,
+    submodule_action, subgroup)
 
 
 # ══════════════════════════════════════════════════════════════════════════
 # 기본대수 A = ⊕_{i,j} Hom_G(P_i,P_j) — 곱셈 = 준동형 합성
 # ══════════════════════════════════════════════════════════════════════════
+def hom_space_fast(actA, actB, dA, dB, gens, p):
+    """★대형 Hom_G(A,B) — `np.kron` 없이 uint8 블록으로 제약행렬 구성(GF(2) 전용).
+
+    `hom_space` 는 kron(I_dB, A^T) − kron(B, I_dA) 를 **int64** 로 만든다:
+    dA=dB=72 면 5184×5184×8B = 215MB/생성원 → 개수 곱하면 GB 급이 되어 막힌다.
+    같은 행렬을 (dB,dA,dB,dA) uint8 텐서의 두 슬라이스 대입으로 직접 쓰면 27MB.
+    ★행 순서·부호(GF(2) 에서 − = XOR)가 동일하므로 **기저도 byte-identical**."""
+    if p != 2:
+        return hom_space(actA, actB, dA, dB, gens, p)
+    m = dA * dB
+    rows = np.zeros((len(gens) * m, m), dtype=np.uint8)
+    for t, g in enumerate(gens):
+        A = (actA[g] % 2).astype(np.uint8)
+        B = (actB[g] % 2).astype(np.uint8)
+        T = np.zeros((dB, dA, dB, dA), dtype=np.uint8)
+        At = np.ascontiguousarray(A.T)
+        for r in range(dB):
+            T[r, :, r, :] ^= At                  # kron(I_dB, A^T)
+        for c in range(dA):
+            T[:, c, :, c] ^= B                   # − kron(B, I_dA)  (GF(2) ⟹ XOR)
+        rows[t * m:(t + 1) * m] = T.reshape(m, m)
+    return [v.reshape(dB, dA) % 2 for v in nullspace_gf2(rows)]
+
+
 def quot_proj(Nrows, d, p):
     """π: F^d → F^q 로 π v = 0 ⟺ v ∈ span(Nrows) — head 로의 사영."""
     Nb, piv = rref_rows(Nrows.copy() % p, p)
@@ -211,6 +245,66 @@ def minimal_relations(pl, info, maxd, p):
     return gens, per_deg
 
 
+def minimal_generators_filtered(names, pl, info, arrows, maxd, p):
+    """★**비균질 관계식까지** 다루는 최소 생성원 — kQ/J^maxd 안에서 I 와 J·I + I·J 를 직접.
+
+    균질 제시가 존재하지 않는 블록(자기고리 등)에서는 차수별 커널만으로는 I 를 못 만든다.
+    rad^{maxd−1} A = 0 이면 J^{maxd−1} ⊆ I 이고 J^maxd ⊆ J·I 이므로 **절단이 정확**하다.
+    또 J·I = span{α·y : α 화살, y ∈ I}(I 가 양쪽 이데알이므로) — 화살만으로 충분.
+    ★생성원 **개수는 리프트 선택과 무관한 불변량**(= Σ dim Ext²)."""
+    keys = [k for n in range(maxd) for k in pl[n]]
+    grp = {}
+    for k in keys:
+        s, t, _M = info[k]
+        grp.setdefault((s, t), []).append(k)
+    idx = {st: {k: i for i, k in enumerate(kk)} for st, kk in grp.items()}
+    K = {}
+    for st, kk in grp.items():
+        M = np.array([info[k][2].reshape(-1) % p for k in kk], dtype=np.int64)
+        K[st] = [c % p for c in nullspace(M.T % p, p)]
+    JK = {st: [] for st in grp}
+    for st, kk in grp.items():
+        s, t = st
+        for c in K[st]:
+            terms = [kk[i] for i in range(len(kk)) if c[i]]
+            for ai, a in enumerate(arrows):
+                cand = []
+                if a[0] == t:                       # α 를 뒤에 — α∘x
+                    cand.append(((s, a[1]),
+                                 [(pt + (ai,), ps) for (pt, ps) in terms]))
+                if a[1] == s:                       # α 를 앞에 — x∘α
+                    cand.append(((a[0], t),
+                                 [((ai,) + pt, a[0]) for (pt, _ps) in terms]))
+                for st2, newk in cand:
+                    if st2 not in grp:
+                        continue
+                    v = np.zeros(len(grp[st2]), dtype=np.int64)
+                    hit = False
+                    for nk in newk:
+                        if len(nk[0]) < maxd:       # J^maxd 는 0 (절단)
+                            v[idx[st2][nk]] ^= 1
+                            hit = True
+                    if hit:
+                        JK[st2].append(v)
+    counts, reps = {}, {}
+    for st, kk in grp.items():
+        rows = (np.array(JK[st], dtype=np.int64) if JK[st]
+                else np.zeros((0, len(kk)), dtype=np.int64))
+        Cur = rows.copy()
+        rk = len(rref_rows(Cur.copy(), p)[0]) if len(Cur) else 0
+        picked = []
+        for c in K[st]:
+            st_ = np.vstack([Cur, c[None, :]]) if len(Cur) else c[None, :]
+            nrk = len(rref_rows(st_.copy(), p)[0])
+            if nrk > rk:
+                picked.append(sorted(tuple(kk[i][0]) for i in range(len(kk)) if c[i]))
+                Cur, rk = st_, nrk
+        if picked:
+            counts[st] = len(picked)
+            reps[st] = picked
+    return counts, reps, {st: len(v) for st, v in K.items()}
+
+
 def quotient_dims(pl, info, gens, maxd, p):
     """dim (kQ/⟨gens⟩) 의 차수별 성분."""
     out = []
@@ -231,9 +325,9 @@ def block_presentation(names, gens_g, PIM, simples, cartan, loewy_len, p,
     for k in names:
         homs = []
         for (_n, aS, dS) in simples:
-            homs.extend(hom_space(PIM[k], aS, d[k], dS, gens_g, p))
+            homs.extend(hom_space_fast(PIM[k], aS, d[k], dS, gens_g, p))
         RADP[k] = nullspace(np.concatenate(homs, axis=0) % p, p)
-    HOM = {(i, j): hom_space(PIM[i], PIM[j], d[i], d[j], gens_g, p)
+    HOM = {(i, j): hom_space_fast(PIM[i], PIM[j], d[i], d[j], gens_g, p)
            for i in names for j in names}
     cart_hom = [[len(HOM[(i, j)]) for j in names] for i in names]
     rad1, pows = rad_filtration(names, d, HOM, RADP, p)
@@ -279,6 +373,11 @@ def block_presentation(names, gens_g, PIM, simples, cartan, loewy_len, p,
         pl, info = build_paths(names, d, arrows, maxd, p)
         gens_rel, per_deg = minimal_relations(pl, info, maxd, p)
         qd = quotient_dims(pl, info, gens_rel, maxd, p)
+    # ★리프트와 무관한 불변 경로 — 비균질 관계식까지 포함한 최소 생성원
+    fcnt, freps, _kd = minimal_generators_filtered(names, pl, info, arrows,
+                                                   maxd, p)
+    e2rel = [[fcnt.get((names[j], names[i]), 0) for j in range(len(names))]
+             for i in range(len(names))]
     # 전사성: 차수 < LL 경로들의 상이 A 전체
     allm = {}
     for n in range(loewy_len):
@@ -305,7 +404,7 @@ def block_presentation(names, gens_g, PIM, simples, cartan, loewy_len, p,
         ker = nullspace(M, p)
         actO, _b = submodule_action(act, gens_g, ker, p)
         dO = len(ker)
-        hd = [len(hom_space(actO, aS, dO, dS, gens_g, p))
+        hd = [len(hom_space_fast(actO, aS, dO, dS, gens_g, p))
               for (_n, aS, dS) in simples]
         lay = loewy_series(actO, dO, gens_g, simples, p)
         ext2[i] = hd
@@ -338,6 +437,10 @@ def block_presentation(names, gens_g, PIM, simples, cartan, loewy_len, p,
         "relation_degrees": sorted(n for n, gg in per_deg.items() for _ in gg),
         "quotient_dims": qd,
         "dim_kQ_over_I": sum(qd),
+        "homogeneous_certified": (mode == "homogeneous-certified"),
+        "filtered_relations": {f"{k[0]}->{k[1]}": v for k, v in sorted(freps.items())},
+        "n_relations_filtered": sum(fcnt.values()),
+        "ext2_from_relations": e2rel,
         "ext2_matrix": [ext2[k] for k in names],
         "ext2_total": sum(sum(ext2[k]) for k in names),
         "omega2": om2,
@@ -347,13 +450,16 @@ def block_presentation(names, gens_g, PIM, simples, cartan, loewy_len, p,
 
 
 # ══════════════════════════════════════════════════════════════════════════
-def a7_nonprincipal_pims(mul7, id7, ord7, A7G, simples7, N7, syl2_7):
-    """지수 크기 사영 운반자에서 P(4̂)·P(4̄̂)·P(6̂) 만 뽑는다."""
+def a7_pims(mul7, id7, ord7, A7G, simples7, N7, syl2_7, want):
+    """지수 크기 사영 운반자(|H| 홀수)에서 원하는 P(S) 들을 뽑는다 —
+    F₂₁(120) → P(1̂)·P(4̂)·P(4̄̂) · Syl₃(280) → P(6̂)·P(14̂) · C₇(360) → P(20̂)."""
     carriers = {"F21": ([(1, 2, 3, 4, 5, 6, 0), (0, 2, 4, 6, 1, 3, 5)], 120),
-                "Syl3": ([(1, 2, 0, 3, 4, 5, 6), (0, 1, 2, 4, 5, 3, 6)], 280)}
-    want = {"4": 24, "4b": 24, "6": 40}
+                "Syl3": ([(1, 2, 0, 3, 4, 5, 6), (0, 1, 2, 4, 5, 3, 6)], 280),
+                "C7": ([(1, 2, 3, 4, 5, 6, 0)], 360)}
     PIM, info = {}, {}
     for cn, (hg, idxn) in carriers.items():
+        if all(k in PIM for k in want):
+            break
         Hl = subgroup(hg, mul7, id7)
         n_, reps_, perms_, mats_ = coset_data(ord7, mul7, id7, A7G, Hl)
         actX = extend_action(A7G, mul7, id7, mats_, 2, ord7)
@@ -373,7 +479,7 @@ def a7_nonprincipal_pims(mul7, id7, ord7, A7G, simples7, N7, syl2_7):
                     == n_ // 8, "parts": sorted(len(b) for b in ps)}
         for B in sorted(ps, key=len):
             dd = len(B)
-            if dd not in (24, 40):
+            if dd not in want.values():
                 continue
             actY, _ = submodule_action(actX, A7G, B, 2)
             hd = tuple(len(hom_space(actY, aS, dd, dS, A7G, 2))
@@ -383,8 +489,6 @@ def a7_nonprincipal_pims(mul7, id7, ord7, A7G, simples7, N7, syl2_7):
                       None)
             if nm in want and nm not in PIM and want[nm] == dd:
                 PIM[nm] = {g: actY[g] % 2 for g in A7G}
-        if all(k in PIM for k in want):
-            break
     return PIM, info
 
 
@@ -482,6 +586,9 @@ def main():
     R["F_A6_ext2_identity"] = (B6["ext2_matrix"]
                                == [[1, 0, 0], [0, 1, 0], [0, 0, 1]])
     R["F_A6_ext2_equals_relations"] = (B6["ext2_total"] == B6["n_relations"] == 3)
+    R["F_A6_filtered_reproduces"] = (
+        B6["n_relations_filtered"] == B6["n_relations"] == 3
+        and B6["ext2_from_relations"] == B6["ext2_matrix"])
     out["F_A6_p2_principal"] = {"carriers": carr6, "presentation": B6,
                                "note": ("P(1̂)=𝔽₂[A₆/Syl₃] · P(4ₐ)·P(4_b) 는 "
                                         "★**두 C₃ 켤레류의 운반자가 상보적으로** 준다"
@@ -508,17 +615,24 @@ def main():
                             O[ix[(min(i, j), max(i, j))]][jc] ^= 1
             return O
 
-        raw7 = {"4": (g4, 4), "4b": (g4b, 4), "6": ([_w2(m) for m in g4], 6)}
+        prn = build_a7_principal_gens(A7G)
+        raw7 = {"1": ([np.eye(1, dtype=np.int64)] * 2, 1), "4": (g4, 4),
+                "4b": (g4b, 4), "6": ([_w2(m) for m in g4], 6),
+                "14": prn["14"], "20": prn["20"]}
+        ALL7 = ["1", "4", "4b", "6", "14", "20"]
         N7 = ["4", "4b", "6"]
         S7 = {k: extend_action(A7G, mul7, id7, gm, 2, ord7)
               for k, (gm, _d) in raw7.items()}
         D7 = {k: dd for k, (_gm, dd) in raw7.items()}
+        simALL = [(k, S7[k], D7[k]) for k in ALL7]
         sim7 = [(k, S7[k], D7[k]) for k in N7]
         syl2_7 = subgroup([(1, 2, 3, 0, 5, 4, 6), (2, 1, 0, 3, 5, 4, 6)],
                           mul7, id7)
         R["A_A7_syl2_order8"] = (len(syl2_7) == 8)
-        PIM7, cinfo = a7_nonprincipal_pims(mul7, id7, ord7, A7G, sim7, N7,
-                                           syl2_7)
+        DIMP7 = {"1": 72, "4": 24, "4b": 24, "6": 40, "14": 64, "20": 56}
+        PIMA, cinfo = a7_pims(mul7, id7, ord7, A7G, simALL, ALL7, syl2_7, DIMP7)
+        R["A_A7_all_six_pims"] = (sorted(PIMA) == sorted(ALL7))
+        PIM7 = {k: PIMA[k] for k in N7}
         R["A_A7_all_three_pims"] = (sorted(PIM7) == ["4", "4b", "6"])
         R["A_A7_pim_dims"] = ([len(PIM7[k][A7G[0]]) for k in N7]
                               == [24, 24, 40])
@@ -547,6 +661,10 @@ def main():
                                            == B7["n_relations"] == 3)
         R["D_A7_omega2_covers_rad"] = all(
             v["image_dim"] == v["rad_P_dim"] for v in B7["omega2"].values())
+        # ★리프트-무관 경로가 균질 결과를 그대로 재현(기계 자체검증)
+        R["D_A7_filtered_reproduces"] = (
+            B7["n_relations_filtered"] == B7["n_relations"] == 3
+            and B7["ext2_from_relations"] == B7["ext2_matrix"])
         out["A_A7_p2_nonprincipal"] = {"carriers": cinfo, "presentation": B7}
 
         # ── E. 독립 제2 경로 Ext²(S_i,S_j) = H¹(G, Hom(ΩS_i,S_j)) ────────
@@ -570,6 +688,101 @@ def main():
             "identity": "Ext²(S_i,S_j) ≅ Ext¹(ΩS_i,S_j) = H¹(G, Hom(ΩS_i,S_j))",
             "rows": e2h,
             "note": "전일 `ext1_pair_lean`(상한/하한 협공) 를 syzygy 에 그대로 적용",
+        }
+
+        # ── H. ★A₇ p=2 **주블록** — 자기고리를 품은 첫 제시 ──────────────
+        NPr = ["1", "14", "20"]
+        simPr = [(k, S7[k], D7[k]) for k in NPr]
+        PIMPr = {k: PIMA[k] for k in NPr}
+        R["H_A7pr_pim_dims"] = ([len(PIMPr[k][A7G[0]]) for k in NPr]
+                                == [72, 64, 56])
+        CPr = [[4, 2, 2], [2, 3, 1], [2, 1, 2]]
+        BP, arrPr, RADPr = block_presentation(NPr, A7G, PIMPr, simPr, CPr, 5, 2,
+                                              lift_cap=32)
+        R["H_A7pr_cartan_via_hom"] = (BP["cartan_via_hom"] == CPr)
+        R["H_A7pr_dim_basic_19"] = (BP["dim_basic_algebra"] == 19
+                                    == BP["cartan_sum"])
+        R["H_A7pr_rad_powers"] = (BP["rad_power_dims"] == [16, 11, 7, 3, 0])
+        R["H_A7pr_graded_matches_loewy"] = (BP["graded_dims"] == [3, 5, 4, 4, 3])
+        R["H_A7pr_block_dim_2088_untouched"] = (
+            sum(BP["dim_P"][t] * D7[NPr[t]] for t in range(3)) == 2088)
+        # ★화살 5개 — 선행 Ext¹ 퀴버(자기고리 포함)와 일치
+        R["H_A7pr_five_arrows_with_selfloop"] = (
+            BP["n_arrows"] == 5
+            and sorted(tuple(b) for b in BP["arrow_blocks"])
+            == [("1", "14"), ("1", "20"), ("14", "1"), ("14", "14"), ("20", "1")])
+        R["H_A7pr_surjective"] = (BP["image_dim_kQ_to_A"] == 19)
+        # ★★균질 제시가 **존재하지 않는다** — 리프트 32 전수 확인(예측 반증)
+        R["H_A7pr_no_homogeneous_presentation"] = (
+            not BP["homogeneous_certified"]
+            and BP["lift_choices_total"] == 32 and BP["lift_tried"] == 32
+            and BP["dim_kQ_over_I"] == 20)
+        R["H_A7pr_six_relations"] = (BP["n_relations_filtered"] == 6)
+        R["H_A7pr_ext2"] = (BP["ext2_matrix"]
+                            == [[1, 1, 0], [1, 2, 0], [0, 0, 1]])
+        R["H_A7pr_two_routes_agree"] = (BP["ext2_from_relations"]
+                                        == BP["ext2_matrix"])
+        R["H_A7pr_ext2_equals_relations"] = (
+            BP["ext2_total"] == BP["n_relations_filtered"] == 6)
+        R["H_A7pr_omega2_covers_rad"] = all(
+            v["image_dim"] == v["rad_P_dim"] for v in BP["omega2"].values())
+        # ★첫 다중도-2 Ext² 성분이 **자기고리를 가진 14̂** 자리
+        R["H_A7pr_multiplicity2_at_selfloop"] = (
+            BP["ext2_matrix"][NPr.index("14")][NPr.index("14")] == 2
+            and max(max(r) for r in B7["ext2_matrix"]) == 1
+            and max(max(r) for r in B6["ext2_matrix"]) == 1)
+        # ★비균질의 정체: 자기고리 제곱 γ² 가 0 이 아니라 길이-4 경로와 같다
+        selfl = next(t for t, a in enumerate(arrPr) if a[0] == a[1] == "14")
+        rel1414 = BP["filtered_relations"].get("14->14", [])
+        R["H_A7pr_selfloop_square_not_zero"] = any(
+            [selfl, selfl] in [list(x) for x in rel] and len(rel) == 2
+            for rel in rel1414)
+        out["H_A7_p2_principal"] = {
+            "presentation": BP,
+            "note": ("★A₇ p=2 **주블록**(1̂·14̂·20̂ · dim P 72·64·56 · ΣC=19) — "
+                     "**자기고리 Ext¹(14̂,14̂)=1 을 가진 첫 제시** · "
+                     "★★**균질 제시가 존재하지 않는다**(리프트 32 전수: 균질 이데알은 "
+                     "dim kQ/I = 20 ≠ 19) ⟹ **비균질 관계식이 강제**된다 · "
+                     "정체는 **γ² ≠ 0** — 자기고리의 제곱이 길이-4 경로와 같다"),
+            "prediction_corrected": ("★설계 시 γ²=0 을 포함한 **차수 2 영관계 5개**를 "
+                                     "예측했으나 **반증** — 실제로는 영관계 4개이고 "
+                                     "γ² 는 길이-4 경로와 같은 **비균질 관계식**"),
+        }
+
+        # ── H′. 주블록 Ext² 의 H¹ 부분 독립 확인(규모 정직 경계) ─────────
+        e2p, cert_p, scope = {}, True, {}
+        for i in NPr:
+            actR, br = submodule_action(PIMPr[i], A7G, RADPr[i], 2)
+            dR = len(br)
+            full = None
+            row, cr = [], []
+            for j in NPr:
+                m = dR * D7[j]
+                if m > 128:                     # 규모 밖 — 정직 유보
+                    row.append(None)
+                    cr.append(None)
+                    continue
+                if full is None:
+                    full = extend_action(A7G, mul7, id7,
+                                         [actR[g] for g in A7G], 2, ord7)
+                e, cert, _det = ext1_pair_lean(A7G, mul7, id7, ord7bfs, par7,
+                                               full, S7[j], dR, D7[j], 2, 60)
+                row.append(e)
+                cr.append(bool(cert))
+            e2p[i] = {"dim_Omega": dR, "ext2_row": row, "certified": cr}
+            cert_p = cert_p and all(c for c in cr if c is not None)
+        R["Hp_A7pr_h1_column_certified"] = cert_p
+        R["Hp_A7pr_h1_column_agrees"] = all(
+            e2p[NPr[i]]["ext2_row"][j] in (None, BP["ext2_matrix"][i][j])
+            for i in range(3) for j in range(3))
+        R["Hp_A7pr_h1_column_covered"] = (
+            [e2p[k]["ext2_row"][0] for k in NPr] == [1, 1, 0])
+        out["Hp_A7_principal_ext2_via_H1"] = {
+            "rows": e2p,
+            "scope": ("★**부분 확인**: m = dim ΩS_i · dim S_j 가 최대 1420 이라 "
+                      "(비주블록은 204) `ext1_pair_lean` 의 m×m 캐시가 규모 밖 — "
+                      "**1̂ 열(m = 71·50·36)만** 독립 확인하고 나머지는 **정직 유보**. "
+                      "총 개수는 head(Ω²) 와 리프트-무관 최소생성 두 경로가 이미 대조"),
         }
 
         # ── G. 종합 — 퀴버 동형·대수 비동형 ──────────────────────────────
@@ -605,6 +818,46 @@ def main():
                          "**Ext¹ 퀴버만으로는 블록 대수가 결정되지 않는다**(실례)"),
             "ext2": "두 블록 모두 Ext² = 단위행렬(정점마다 관계식 정확히 1개)",
         }
+
+        # ── I. ★3 블록 종합 — 자기고리가 제시를 질적으로 바꾼다 ──────────
+        R["I_selfloop_only_in_principal"] = (
+            BP["n_arrows"] == 5 and B7["n_arrows"] == B6["n_arrows"] == 4
+            and any(b[0] == b[1] for b in BP["arrow_blocks"])
+            and not any(b[0] == b[1] for b in B7["arrow_blocks"])
+            and not any(b[0] == b[1] for b in B6["arrow_blocks"]))
+        R["I_homogeneous_iff_no_selfloop"] = (
+            B6["homogeneous_certified"] and B7["homogeneous_certified"]
+            and not BP["homogeneous_certified"])
+        R["I_relation_counts"] = (
+            [B7["n_relations_filtered"], B6["n_relations_filtered"],
+             BP["n_relations_filtered"]] == [3, 3, 6])
+        R["I_dims"] = ([B7["dim_basic_algebra"], B6["dim_basic_algebra"],
+                        BP["dim_basic_algebra"]] == [18, 34, 19])
+        out["I_three_block_synthesis"] = {
+            "table": {
+                "A7_p2_nonprincipal": {"vertices": 3, "arrows": 4,
+                                       "self_loop": False, "dim_A": 18,
+                                       "relations": B7["n_relations_filtered"],
+                                       "homogeneous": True,
+                                       "ext2": B7["ext2_matrix"]},
+                "A6_p2_principal": {"vertices": 3, "arrows": 4,
+                                    "self_loop": False, "dim_A": 34,
+                                    "relations": B6["n_relations_filtered"],
+                                    "homogeneous": True,
+                                    "ext2": B6["ext2_matrix"]},
+                "A7_p2_principal": {"vertices": 3, "arrows": 5,
+                                    "self_loop": True, "dim_A": 19,
+                                    "relations": BP["n_relations_filtered"],
+                                    "homogeneous": False,
+                                    "ext2": BP["ext2_matrix"]}},
+            "headline": ("★★**자기고리가 있는 블록에서만 균질 제시가 깨진다**(3 블록 실측) — "
+                         "자기고리 없는 두 블록은 리프트를 고르면 균질 제시가 존재하는데, "
+                         "A₇ 주블록은 **리프트 32 전수에서 전부 실패**하고 **γ² = (길이-4 경로)** "
+                         "라는 비균질 관계식이 강제된다 · ★**Ext² 에 처음으로 다중도 2**가 "
+                         "나타나고 그 자리가 정확히 **자기고리 정점 14̂**"),
+            "caveat": ("3 블록 관측 · **일반 정리 주장 아님**(자기고리 ⟹ 비균질의 기전은 "
+                       "무주장)"),
+        }
     ok = bool(all(R.values()))
     out["checks"] = R
     out["method"] = {
@@ -620,15 +873,17 @@ def main():
         "determinism": "random.Random(7) 고정 시드 · 리프트 선택 = (최다 균질 관계식, 사전순)",
     }
     out["scope_honesty"] = {
-        "delivered": ("★A₇ p=2 비주블록·A₆ p=2 주블록 **두 블록의 완전 제시 B ≅ kQ/I** · "
+        "delivered": ("★A₇ p=2 비주·A₆ p=2 주·★★A₇ p=2 **주블록** — **세 블록의 완전 제시** · "
                       "Cartan 를 Hom 차원으로 제4 재유도 · graded = Loewy 층 게이트 · "
-                      "★관계식 3개 명시(영관계 2 + 가환관계 1) · dim kQ/I = Σ C 인증 · "
-                      "★Ext² 두 독립 경로 일치(Ω² head · H¹ syzygy) · "
-                      "★★퀴버 동형·대수 비동형 실례"),
-        "not_yet": ("A₇ p=2 **주블록**(자기고리·리프트 공간 큼)·A₆ p=3(이중화살·GF(9) 융합) · "
-                    "관계식의 **기저 무의존 불변량**(본 관측은 개수는 불변·형태는 리프트 의존을 명시)"),
+                      "★관계식 명시(비주·A₆ 는 3개 = 영관계 2 + 가환 1 / 주블록은 6개) · "
+                      "dim kQ/I = Σ C 인증(균질 두 블록) · ★Ext² 두 독립 경로 일치 · "
+                      "★★퀴버 동형·대수 비동형 실례 · ★★자기고리 블록에서 **균질 제시 부재**"
+                      "(리프트 32 전수)와 **γ² ≠ 0** 실측"),
+        "not_yet": ("A₆ p=3(이중화살·GF(9) 융합) · 주블록 Ext² 의 **H¹ 전 성분**"
+                    "(m ≤ 1420 규모 — 1̂ 열만 확인) · 관계식의 **기저 무의존 표현**"),
         "not_claimed": ("봉인 게이트 · 외부 분류표의 이름(dihedral/quaternion type 등) · "
-                        "두 대수의 유도동등성(derived equivalence) 여부"),
+                        "대수들의 유도동등성(derived equivalence) · "
+                        "\"자기고리 ⟹ 비균질\"의 **기전**(3 블록 관측일 뿐)"),
     }
     out["all_ok"] = ok
 
@@ -643,17 +898,21 @@ def main():
         print("블록 대수 완전 제시 B ≅ kQ/I (정확 — seal 아님):", flush=True)
         for k, v in R.items():
             print(f"  {k}: {v}", flush=True)
-        for nm, Bx in (("A₇ p=2 비주", B7), ("A₆ p=2 주", B6)):
+        for nm, Bx in (("A₇ p=2 비주", B7), ("A₆ p=2 주", B6), ("A₇ p=2 주", BP)):
             print(f"  ★{nm}: dim A = {Bx['dim_basic_algebra']} = ΣC · "
-                  f"화살 {Bx['n_arrows']} · graded {Bx['graded_dims']}", flush=True)
-            print(f"    관계식 {Bx['n_relations']}개 차수 {Bx['relation_degrees']} · "
+                  f"화살 {Bx['n_arrows']} · graded {Bx['graded_dims']} · "
+                  f"균질 {Bx['homogeneous_certified']}", flush=True)
+            print(f"    관계식 {Bx['n_relations_filtered']}개(리프트-무관) · "
                   f"dim kQ/I = {Bx['dim_kQ_over_I']} · Ext² {Bx['ext2_matrix']}",
                   flush=True)
-            print(f"    화살 {Bx['arrow_legend']} · 관계식 {Bx['relations']}",
-                  flush=True)
+            print(f"    화살 {Bx['arrow_legend']} · "
+                  f"관계식 {Bx['filtered_relations']}", flush=True)
         print("  ★★퀴버 동형(3정점 별·화살 4)인데 dim 34 vs 18 — 가환관계 차수 8 vs 4",
               flush=True)
-        print("  ★Ext² 두 독립 경로 일치: head(Ω²) · H¹(G,Hom(ΩS,T))", flush=True)
+        print("  ★★A₇ 주블록: 리프트 32 전수에서 **균질 제시 없음**(20≠19) — "
+              "γ² = 길이-4 경로(비균질 강제)·Ext² 에 첫 다중도 2(자기고리 14̂)", flush=True)
+        print("  ★Ext² 두 독립 경로 일치: head(Ω²) · 리프트-무관 최소생성"
+              "(비주블록은 H¹ 까지 3경로)", flush=True)
         print("  → .pgf/proofs/QUIVER-RELATIONS.json", flush=True)
         print(f"  (elapsed {time.time() - t0:.1f}s)", flush=True)
     if not ok:
