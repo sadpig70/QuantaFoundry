@@ -1,0 +1,858 @@
+{
+  "A_A7_p2_nonprincipal": {
+    "carriers": {
+      "F21": {
+        "index": 120,
+        "parts": [
+          24,
+          24,
+          72
+        ],
+        "projective": true
+      },
+      "Syl3": {
+        "index": 280,
+        "parts": [
+          40,
+          40,
+          64,
+          64,
+          72
+        ],
+        "projective": true
+      }
+    },
+    "presentation": {
+      "arrow_blocks": [
+        [
+          "4",
+          "6"
+        ],
+        [
+          "4b",
+          "6"
+        ],
+        [
+          "6",
+          "4"
+        ],
+        [
+          "6",
+          "4b"
+        ]
+      ],
+      "arrow_legend": [
+        [
+          0,
+          "4",
+          "6"
+        ],
+        [
+          1,
+          "4b",
+          "6"
+        ],
+        [
+          2,
+          "6",
+          "4"
+        ],
+        [
+          3,
+          "6",
+          "4b"
+        ]
+      ],
+      "cartan_expected": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          4
+        ]
+      ],
+      "cartan_sum": 18,
+      "cartan_via_hom": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          4
+        ]
+      ],
+      "dim_P": [
+        24,
+        24,
+        40
+      ],
+      "dim_basic_algebra": 18,
+      "dim_kQ_over_I": 18,
+      "ext2_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "ext2_total": 3,
+      "graded_dims": [
+        3,
+        4,
+        4,
+        4,
+        3
+      ],
+      "image_dim_kQ_to_A": 18,
+      "lift_candidates": {
+        "4->6": 2,
+        "4b->6": 2,
+        "6->4": 2,
+        "6->4b": 2
+      },
+      "lift_choices_total": 16,
+      "lift_chosen": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "lift_mode": "homogeneous-certified",
+      "lift_tried": 1,
+      "n_arrows": 4,
+      "n_relations": 3,
+      "omega2": {
+        "4": {
+          "Omega2_dim": 20,
+          "P1_dim": 40,
+          "head": [
+            1,
+            0,
+            0
+          ],
+          "image_dim": 20,
+          "loewy_layers": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "rad_P_dim": 20
+        },
+        "4b": {
+          "Omega2_dim": 20,
+          "P1_dim": 40,
+          "head": [
+            0,
+            1,
+            0
+          ],
+          "image_dim": 20,
+          "loewy_layers": [
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "rad_P_dim": 20
+        },
+        "6": {
+          "Omega2_dim": 14,
+          "P1_dim": 48,
+          "head": [
+            0,
+            0,
+            1
+          ],
+          "image_dim": 34,
+          "loewy_layers": [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "rad_P_dim": 34
+        }
+      },
+      "path_counts": [
+        3,
+        4,
+        6,
+        8,
+        12,
+        16,
+        24
+      ],
+      "quotient_dims": [
+        3,
+        4,
+        4,
+        4,
+        3,
+        0,
+        0
+      ],
+      "rad_power_dims": [
+        15,
+        11,
+        7,
+        3,
+        0
+      ],
+      "relation_degrees": [
+        2,
+        2,
+        4
+      ],
+      "relation_srctgt": {
+        "2": [
+          [
+            "4",
+            "4"
+          ],
+          [
+            "4b",
+            "4b"
+          ]
+        ],
+        "4": [
+          [
+            "6",
+            "6"
+          ]
+        ]
+      },
+      "relations": {
+        "2": [
+          [
+            [
+              0,
+              2
+            ]
+          ],
+          [
+            [
+              1,
+              3
+            ]
+          ]
+        ],
+        "4": [
+          [
+            [
+              2,
+              0,
+              3,
+              1
+            ],
+            [
+              3,
+              1,
+              2,
+              0
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "E_A7_ext2_via_H1": {
+    "identity": "Ext²(S_i,S_j) ≅ Ext¹(ΩS_i,S_j) = H¹(G, Hom(ΩS_i,S_j))",
+    "note": "전일 `ext1_pair_lean`(상한/하한 협공) 를 syzygy 에 그대로 적용",
+    "rows": {
+      "4": {
+        "certified": [
+          true,
+          true,
+          true
+        ],
+        "dim_Omega": 20,
+        "ext2_row": [
+          1,
+          0,
+          0
+        ]
+      },
+      "4b": {
+        "certified": [
+          true,
+          true,
+          true
+        ],
+        "dim_Omega": 20,
+        "ext2_row": [
+          0,
+          1,
+          0
+        ]
+      },
+      "6": {
+        "certified": [
+          true,
+          true,
+          true
+        ],
+        "dim_Omega": 34,
+        "ext2_row": [
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "F_A6_p2_principal": {
+    "carriers": {
+      "C3a": {
+        "frobenius_m_S": {
+          "1": 1,
+          "4a": 0,
+          "4b": 2
+        },
+        "hecke_dim": 44,
+        "identified": {
+          "1": 1,
+          "4b": 2,
+          "None": 2
+        },
+        "index": 120,
+        "parts": [
+          16,
+          16,
+          24,
+          24,
+          40
+        ],
+        "projective": true
+      },
+      "C3b": {
+        "frobenius_m_S": {
+          "1": 1,
+          "4a": 2,
+          "4b": 0
+        },
+        "hecke_dim": 44,
+        "identified": {
+          "1": 1,
+          "4a": 2,
+          "None": 2
+        },
+        "index": 120,
+        "parts": [
+          16,
+          16,
+          24,
+          24,
+          40
+        ],
+        "projective": true
+      }
+    },
+    "note": "P(1̂)=𝔽₂[A₆/Syl₃] · P(4ₐ)·P(4_b) 는 ★**두 C₃ 켤레류의 운반자가 상보적으로** 준다(Frobenius m_S 예측=실측)",
+    "presentation": {
+      "arrow_blocks": [
+        [
+          "1",
+          "4a"
+        ],
+        [
+          "1",
+          "4b"
+        ],
+        [
+          "4a",
+          "1"
+        ],
+        [
+          "4b",
+          "1"
+        ]
+      ],
+      "arrow_legend": [
+        [
+          0,
+          "1",
+          "4a"
+        ],
+        [
+          1,
+          "1",
+          "4b"
+        ],
+        [
+          2,
+          "4a",
+          "1"
+        ],
+        [
+          3,
+          "4b",
+          "1"
+        ]
+      ],
+      "cartan_expected": [
+        [
+          8,
+          4,
+          4
+        ],
+        [
+          4,
+          3,
+          2
+        ],
+        [
+          4,
+          2,
+          3
+        ]
+      ],
+      "cartan_sum": 34,
+      "cartan_via_hom": [
+        [
+          8,
+          4,
+          4
+        ],
+        [
+          4,
+          3,
+          2
+        ],
+        [
+          4,
+          2,
+          3
+        ]
+      ],
+      "dim_P": [
+        40,
+        24,
+        24
+      ],
+      "dim_basic_algebra": 34,
+      "dim_kQ_over_I": 34,
+      "ext2_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "ext2_total": 3,
+      "graded_dims": [
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "image_dim_kQ_to_A": 34,
+      "lift_candidates": {
+        "1->4a": 8,
+        "1->4b": 8,
+        "4a->1": 8,
+        "4b->1": 8
+      },
+      "lift_choices_total": 4096,
+      "lift_chosen": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "lift_mode": "homogeneous-certified",
+      "lift_tried": 1,
+      "n_arrows": 4,
+      "n_relations": 3,
+      "omega2": {
+        "1": {
+          "Omega2_dim": 9,
+          "P1_dim": 48,
+          "head": [
+            1,
+            0,
+            0
+          ],
+          "image_dim": 39,
+          "loewy_layers": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "rad_P_dim": 39
+        },
+        "4a": {
+          "Omega2_dim": 20,
+          "P1_dim": 40,
+          "head": [
+            0,
+            1,
+            0
+          ],
+          "image_dim": 20,
+          "loewy_layers": [
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          "rad_P_dim": 20
+        },
+        "4b": {
+          "Omega2_dim": 20,
+          "P1_dim": 40,
+          "head": [
+            0,
+            0,
+            1
+          ],
+          "image_dim": 20,
+          "loewy_layers": [
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ],
+          "rad_P_dim": 20
+        }
+      },
+      "path_counts": [
+        3,
+        4,
+        6,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64,
+        96
+      ],
+      "quotient_dims": [
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        0,
+        0
+      ],
+      "rad_power_dims": [
+        31,
+        27,
+        23,
+        19,
+        15,
+        11,
+        7,
+        3,
+        0
+      ],
+      "relation_degrees": [
+        2,
+        2,
+        8
+      ],
+      "relation_srctgt": {
+        "2": [
+          [
+            "4a",
+            "4a"
+          ],
+          [
+            "4b",
+            "4b"
+          ]
+        ],
+        "8": [
+          [
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "relations": {
+        "2": [
+          [
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              1
+            ]
+          ]
+        ],
+        "8": [
+          [
+            [
+              0,
+              2,
+              1,
+              3,
+              0,
+              2,
+              1,
+              3
+            ],
+            [
+              1,
+              3,
+              0,
+              2,
+              1,
+              3,
+              0,
+              2
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "G_comparison": {
+    "ext2": "두 블록 모두 Ext² = 단위행렬(정점마다 관계식 정확히 1개)",
+    "headline": "★★**퀴버가 동형인데 대수는 동형이 아니다** — 관계식 개수(3)와 타입(영관계 2 + 가환관계 1)까지 같고 **가환관계의 차수만** 8 vs 4 로 다른데 그것이 dim 34 vs 18 을 만든다 ⟹ **Ext¹ 퀴버만으로는 블록 대수가 결정되지 않는다**(실례)",
+    "quiver": "두 블록 모두 **3 정점 별 + 화살 4개**(중심↔양 끝, 양방향) — A₆ p=2 중심 1̂ · A₇ p=2 비주 중심 6̂",
+    "relations": {
+      "A6_p2_principal": {
+        "commutativity_degree": 8,
+        "dim": 34,
+        "zero_relations_deg2": 2
+      },
+      "A7_p2_nonprincipal": {
+        "commutativity_degree": 4,
+        "dim": 18,
+        "zero_relations_deg2": 2
+      }
+    }
+  },
+  "_note": "블록 대수의 완전 제시 B ≅ kQ/I — 화살(Ext¹) 다음 층인 관계식(Ext²). 관측·seal 아님·module 0·root 불변.",
+  "_schema": "quiver-relations/v1",
+  "all_ok": true,
+  "checks": {
+    "A_A7_all_three_pims": true,
+    "A_A7_block_dim_432_untouched": true,
+    "A_A7_cartan_via_hom": true,
+    "A_A7_dim_basic_18": true,
+    "A_A7_graded_matches_loewy": true,
+    "A_A7_pim_dims": true,
+    "A_A7_rad_powers": true,
+    "A_A7_syl2_order8": true,
+    "B_A7_four_arrows_star": true,
+    "B_A7_surjective": true,
+    "C_A7_dim_kQ_over_I_18": true,
+    "C_A7_lift_certified": true,
+    "C_A7_relation_degrees": true,
+    "C_A7_three_relations": true,
+    "D_A7_ext2_equals_relations": true,
+    "D_A7_ext2_identity": true,
+    "D_A7_omega2_covers_rad": true,
+    "E_A7_h1_route_certified": true,
+    "E_A7_two_routes_agree": true,
+    "F_A6_all_three_pims": true,
+    "F_A6_carriers_projective": true,
+    "F_A6_cartan_via_hom": true,
+    "F_A6_dim_basic_34": true,
+    "F_A6_dim_kQ_over_I_34": true,
+    "F_A6_ext2_equals_relations": true,
+    "F_A6_ext2_identity": true,
+    "F_A6_four_arrows_star": true,
+    "F_A6_frobenius_complementary": true,
+    "F_A6_graded_matches_loewy": true,
+    "F_A6_lift_certified": true,
+    "F_A6_pim_dims": true,
+    "F_A6_rad_powers": true,
+    "F_A6_relation_degrees": true,
+    "F_A6_surjective": true,
+    "F_A6_syl_orders": true,
+    "F_A6_three_relations": true,
+    "G_algebras_not_isomorphic": true,
+    "G_commutativity_degree_differs": true,
+    "G_ext2_identity_both": true,
+    "G_same_quiver": true,
+    "G_same_relation_count_and_types": true,
+    "setup_A6_360": true,
+    "setup_A7_2520": true
+  },
+  "method": {
+    "arrows": "화살 = rad/rad² 기저 · ★리프트는 rad² 법으로만 정해진다 ⟹ 전수 탐색",
+    "basic_algebra": "A = ⊕_{i,j} Hom_G(P_i,P_j) · 곱셈 = 준동형 합성 · dim Hom(P_i,P_j) = [P_j : S_i] = C_{ij} ⟹ dim A = Σ C_{ij} (블록 차원 432/232 를 다루지 않는다)",
+    "determinism": "random.Random(7) 고정 시드 · 리프트 선택 = (최다 균질 관계식, 사전순)",
+    "ext2": "★Ω²(S_i) = ker(⊕_j P_j^{a_ij} --화살--> P_i) — **화살 자체가 syzygy 의 사영 덮개 사상** · Ext² = head(Ω²) · 제2 경로 = H¹(G,Hom(ΩS_i,S_j))",
+    "radical": "rad A ∩ Hom(P_i,P_j) = {φ : im φ ⊆ rad P_j} — i≠j 는 자동(Nakayama)",
+    "relations": "I = ker(kQ → A) · 최소 균질 생성원을 차수별로 추출하고 **dim kQ/I = Σ C_{ij}** 로 제시의 완전성 인증"
+  },
+  "scope_honesty": {
+    "delivered": "★A₇ p=2 비주블록·A₆ p=2 주블록 **두 블록의 완전 제시 B ≅ kQ/I** · Cartan 를 Hom 차원으로 제4 재유도 · graded = Loewy 층 게이트 · ★관계식 3개 명시(영관계 2 + 가환관계 1) · dim kQ/I = Σ C 인증 · ★Ext² 두 독립 경로 일치(Ω² head · H¹ syzygy) · ★★퀴버 동형·대수 비동형 실례",
+    "not_claimed": "봉인 게이트 · 외부 분류표의 이름(dihedral/quaternion type 등) · 두 대수의 유도동등성(derived equivalence) 여부",
+    "not_yet": "A₇ p=2 **주블록**(자기고리·리프트 공간 큼)·A₆ p=3(이중화살·GF(9) 융합) · 관계식의 **기저 무의존 불변량**(본 관측은 개수는 불변·형태는 리프트 의존을 명시)"
+  }
+}
