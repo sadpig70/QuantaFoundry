@@ -1,0 +1,598 @@
+{
+  "X_cross_gates": {
+    "note": "★세 sidecar 를 **입력으로 읽어** 대조 — Cartan(EXT1 ↔ QR Hom 차원 ↔ LOEWY dim_P 역산) · Ext¹(EXT1 퀴버 ↔ LOEWY rad/rad² ↔ QR 화살) · Loewy(LOEWY 층 ↔ QR graded)",
+    "per_block": {
+      "A6_p2_principal": {
+        "block_dim": true,
+        "cartan_ext1_vs_hom": true,
+        "dimA_equals_sumC": true,
+        "dimP_from_cartan": true,
+        "ext1_equals_arrows": true,
+        "ext1_equals_rad_over_rad2": true,
+        "ext1_symmetric": true,
+        "ext2_total_equals_relations": true,
+        "graded_equals_loewy_layers": true,
+        "layers_sum_to_cartan": true,
+        "quiver_support_in_cartan": true
+      },
+      "A6_p3_principal": {
+        "block_dim": true,
+        "cartan_ext1_vs_hom": true,
+        "dimA_equals_sumC": true,
+        "dimP_from_cartan": true,
+        "ext1_equals_arrows": true,
+        "ext1_symmetric": true,
+        "ext2_total_equals_relations": true,
+        "graded_equals_loewy_layers": true,
+        "quiver_support_in_cartan": true
+      },
+      "A7_p2_nonprincipal": {
+        "block_dim": true,
+        "cartan_ext1_vs_hom": true,
+        "dimA_equals_sumC": true,
+        "dimP_from_cartan": true,
+        "ext1_equals_arrows": true,
+        "ext1_equals_rad_over_rad2": true,
+        "ext1_symmetric": true,
+        "ext2_total_equals_relations": true,
+        "graded_equals_loewy_layers": true,
+        "layers_sum_to_cartan": true,
+        "quiver_support_in_cartan": true
+      },
+      "A7_p2_principal": {
+        "block_dim": true,
+        "cartan_ext1_vs_hom": true,
+        "dimA_equals_sumC": true,
+        "dimP_from_cartan": true,
+        "ext1_equals_arrows": true,
+        "ext1_equals_rad_over_rad2": true,
+        "ext1_symmetric": true,
+        "ext2_total_equals_relations": true,
+        "graded_equals_loewy_layers": true,
+        "layers_sum_to_cartan": true,
+        "quiver_support_in_cartan": true
+      }
+    }
+  },
+  "Y_block_table": {
+    "A6_p2_principal": {
+      "block_dim": 232,
+      "cartan": [
+        [
+          8,
+          4,
+          4
+        ],
+        [
+          4,
+          3,
+          2
+        ],
+        [
+          4,
+          2,
+          3
+        ]
+      ],
+      "dim_P": [
+        40,
+        24,
+        24
+      ],
+      "dim_basic_algebra": 34,
+      "dims": [
+        1,
+        4,
+        4
+      ],
+      "ext2": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "field": "𝔽₂ (이 블록의 분해체)",
+      "graded": [
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3
+      ],
+      "group": "A₆",
+      "homogeneous": true,
+      "loewy_length": 9,
+      "multi_arrow": false,
+      "n_arrows": 4,
+      "n_relations": 3,
+      "p": 2,
+      "presentation": "kQ/I 완전(균질)",
+      "quiver": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "self_loop": false,
+      "simples": [
+        "1̂",
+        "4ₐ",
+        "4_b"
+      ]
+    },
+    "A6_p3_principal": {
+      "block_dim": 279,
+      "cartan": [
+        [
+          5,
+          4,
+          1,
+          1
+        ],
+        [
+          4,
+          5,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          1,
+          2
+        ]
+      ],
+      "dim_P": [
+        27,
+        36,
+        18,
+        18
+      ],
+      "dim_basic_algebra": 36,
+      "dims": [
+        1,
+        4,
+        3,
+        3
+      ],
+      "ext2": [
+        [
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1
+        ]
+      ],
+      "field": "★𝔽₃ 는 분해체가 아니다 → GF(9)",
+      "graded": [
+        4,
+        8,
+        12,
+        8,
+        4
+      ],
+      "group": "A₆",
+      "homogeneous": null,
+      "loewy_length": 5,
+      "multi_arrow": true,
+      "n_arrows": 8,
+      "n_relations": 10,
+      "p": 3,
+      "presentation": "★퀴버·관계식 개수·Ext² 확정 · 명시 형태와 균질성은 유보",
+      "quiver": [
+        [
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "self_loop": false,
+      "simples": [
+        "1̂",
+        "4",
+        "3",
+        "3′"
+      ]
+    },
+    "A7_p2_nonprincipal": {
+      "block_dim": 432,
+      "cartan": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          4
+        ]
+      ],
+      "dim_P": [
+        24,
+        24,
+        40
+      ],
+      "dim_basic_algebra": 18,
+      "dims": [
+        4,
+        4,
+        6
+      ],
+      "ext2": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "field": "𝔽₂ (분해체)",
+      "graded": [
+        3,
+        4,
+        4,
+        4,
+        3
+      ],
+      "group": "A₇",
+      "homogeneous": true,
+      "loewy_length": 5,
+      "multi_arrow": false,
+      "n_arrows": 4,
+      "n_relations": 3,
+      "p": 2,
+      "presentation": "kQ/I 완전(균질)",
+      "quiver": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "self_loop": false,
+      "simples": [
+        "4̂",
+        "4̄̂",
+        "6̂"
+      ]
+    },
+    "A7_p2_principal": {
+      "block_dim": 2088,
+      "cartan": [
+        [
+          4,
+          2,
+          2
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ]
+      ],
+      "dim_P": [
+        72,
+        64,
+        56
+      ],
+      "dim_basic_algebra": 19,
+      "dims": [
+        1,
+        14,
+        20
+      ],
+      "ext2": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "field": "𝔽₂ (분해체)",
+      "graded": [
+        3,
+        5,
+        4,
+        4,
+        3
+      ],
+      "group": "A₇",
+      "homogeneous": false,
+      "loewy_length": 5,
+      "multi_arrow": false,
+      "n_arrows": 5,
+      "n_relations": 6,
+      "p": 2,
+      "presentation": "kQ/I 완전(★비균질 강제)",
+      "quiver": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "self_loop": true,
+      "simples": [
+        "1̂",
+        "14̂",
+        "20̂"
+      ]
+    }
+  },
+  "Z_coverage": {
+    "gaps": "A₇ p=2 주블록 Ext² 의 H¹ 경로는 **1̂ 열만**(m ≤ 1420 규모) · A₆ p=3 Ext² 의 head(Ω²) 경로는 **3·3′ 행만**(Ω¹ 이 52·64 인 1̂₉·4₉ 는 규모 밖) — 나머지는 descent 가 덮는다",
+    "legend": "각 칸 = 그 산출량을 **독립으로 확인한 계산 경로**들. 문헌 대조는 포함하지 않는다(자체유도 규율)",
+    "matrix": {
+      "A6_p2_principal": {
+        "Cartan": [
+          "D→C(a6_cartan_p23)",
+          "Loewy 층 총합",
+          "Hom 차원"
+        ],
+        "Ext1": [
+          "H¹ cocycle",
+          "rad/rad²",
+          "rad_A/rad²_A(화살)"
+        ],
+        "Ext2": [
+          "head(Ω²)",
+          "H¹(G,Hom(ΩS,T))",
+          "리프트-무관 최소생성"
+        ],
+        "Loewy": [
+          "사영 덮개 직접",
+          "기본대수 graded"
+        ]
+      },
+      "A6_p3_principal": {
+        "Cartan": [
+          "D→C(a6_cartan_p23)",
+          "GF(9) Loewy 층 총합",
+          "GF(9) Hom 조립"
+        ],
+        "Ext1": [
+          "H¹(GF(9) 실현화)",
+          "GF(9) rad/rad²",
+          "rad_A/rad²_A(화살)"
+        ],
+        "Ext2": [
+          "리프트-무관 최소생성(GF(9))",
+          "𝔽₃ Ext² descent",
+          "head(Ω²) GF(9) — 3·3′ 행만"
+        ],
+        "Loewy": [
+          "𝔽₃ 사영 덮개",
+          "GF(9) 실현화"
+        ]
+      },
+      "A7_p2_nonprincipal": {
+        "Cartan": [
+          "D→C(a7_cartan_p2)",
+          "Loewy 층 총합",
+          "Hom 차원"
+        ],
+        "Ext1": [
+          "H¹ cocycle",
+          "rad/rad²",
+          "rad_A/rad²_A(화살)"
+        ],
+        "Ext2": [
+          "head(Ω²)",
+          "H¹(G,Hom(ΩS,T))",
+          "리프트-무관 최소생성"
+        ],
+        "Loewy": [
+          "지수 크기 운반자",
+          "기본대수 graded"
+        ]
+      },
+      "A7_p2_principal": {
+        "Cartan": [
+          "D→C(a7_cartan_p2)",
+          "Loewy 층 총합",
+          "Hom 차원"
+        ],
+        "Ext1": [
+          "H¹ 상한/하한 협공",
+          "전 간선 정직 순회",
+          "rad/rad²",
+          "rad_A/rad²_A(화살)"
+        ],
+        "Ext2": [
+          "head(Ω²)",
+          "리프트-무관 최소생성",
+          "H¹(1̂ 열만 — 규모 유보)"
+        ],
+        "Loewy": [
+          "지수 크기 운반자",
+          "기본대수 graded"
+        ]
+      }
+    }
+  },
+  "_inputs": [
+    "EXT1-QUIVER.json",
+    "LOEWY-SERIES.json",
+    "QUIVER-RELATIONS.json"
+  ],
+  "_note": "세 sidecar 교차검증 + 4 블록 종합표 + 커버리지 행렬. 검증기(새 계산 아님)·seal 아님·module 0·root 불변.",
+  "_schema": "block-algebra-synthesis/v1",
+  "all_ok": true,
+  "checks": {
+    "X_A6_p2_principal_block_dim": true,
+    "X_A6_p2_principal_cartan_ext1_vs_hom": true,
+    "X_A6_p2_principal_dimA_equals_sumC": true,
+    "X_A6_p2_principal_dimP_from_cartan": true,
+    "X_A6_p2_principal_ext1_equals_arrows": true,
+    "X_A6_p2_principal_ext1_equals_rad_over_rad2": true,
+    "X_A6_p2_principal_ext1_symmetric": true,
+    "X_A6_p2_principal_ext2_total_equals_relations": true,
+    "X_A6_p2_principal_graded_equals_loewy_layers": true,
+    "X_A6_p2_principal_layers_sum_to_cartan": true,
+    "X_A6_p2_principal_quiver_support_in_cartan": true,
+    "X_A6_p3_principal_block_dim": true,
+    "X_A6_p3_principal_cartan_ext1_vs_hom": true,
+    "X_A6_p3_principal_dimA_equals_sumC": true,
+    "X_A6_p3_principal_dimP_from_cartan": true,
+    "X_A6_p3_principal_ext1_equals_arrows": true,
+    "X_A6_p3_principal_ext1_symmetric": true,
+    "X_A6_p3_principal_ext2_total_equals_relations": true,
+    "X_A6_p3_principal_graded_equals_loewy_layers": true,
+    "X_A6_p3_principal_quiver_support_in_cartan": true,
+    "X_A7_p2_nonprincipal_block_dim": true,
+    "X_A7_p2_nonprincipal_cartan_ext1_vs_hom": true,
+    "X_A7_p2_nonprincipal_dimA_equals_sumC": true,
+    "X_A7_p2_nonprincipal_dimP_from_cartan": true,
+    "X_A7_p2_nonprincipal_ext1_equals_arrows": true,
+    "X_A7_p2_nonprincipal_ext1_equals_rad_over_rad2": true,
+    "X_A7_p2_nonprincipal_ext1_symmetric": true,
+    "X_A7_p2_nonprincipal_ext2_total_equals_relations": true,
+    "X_A7_p2_nonprincipal_graded_equals_loewy_layers": true,
+    "X_A7_p2_nonprincipal_layers_sum_to_cartan": true,
+    "X_A7_p2_nonprincipal_quiver_support_in_cartan": true,
+    "X_A7_p2_principal_block_dim": true,
+    "X_A7_p2_principal_cartan_ext1_vs_hom": true,
+    "X_A7_p2_principal_dimA_equals_sumC": true,
+    "X_A7_p2_principal_dimP_from_cartan": true,
+    "X_A7_p2_principal_ext1_equals_arrows": true,
+    "X_A7_p2_principal_ext1_equals_rad_over_rad2": true,
+    "X_A7_p2_principal_ext1_symmetric": true,
+    "X_A7_p2_principal_ext2_total_equals_relations": true,
+    "X_A7_p2_principal_graded_equals_loewy_layers": true,
+    "X_A7_p2_principal_layers_sum_to_cartan": true,
+    "X_A7_p2_principal_quiver_support_in_cartan": true,
+    "X_totals_equal_group_orders": true,
+    "Y_dim_A_values": true,
+    "Y_four_blocks_present": true,
+    "Y_obstruction_types": true,
+    "Y_relation_counts": true,
+    "Z_every_quantity_has_two_routes": true,
+    "Z_ext2_three_routes_all_blocks": true,
+    "Z_gf9_third_route_present": true,
+    "inputs_all_ok": true
+  },
+  "scope_honesty": {
+    "coupling": "상류 세 관측의 sidecar 를 읽는다 — 상류를 고치면 이 축도 다시 돌려야 한다",
+    "delivered": "★세 sidecar 교차검증(블록별 최대 10 게이트) · 4 블록 종합표 · ★커버리지 행렬(경로 수 명시)",
+    "not_claimed": "새 수학 결과 아님(검증기) · 외부 문헌 대조 없음 · 봉인 게이트 아님"
+  }
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """블록 대수의 **완전 제시** B ≅ kQ/I — 화살(Ext¹) 다음 층인 **관계식**(Ext²).
 
-관측 13축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
+관측 14축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
   A  A₇ p=2 **비주블록 기본대수** A = ⊕_{i,j} Hom_G(P_i,P_j) — dim A = Σ C_{ij} = 18
      (블록 차원 432 를 다루지 않는다) · ★Cartan 를 **Hom 차원으로 제4 재유도** ·
      rad 여과 rad^n 차원열 · ★graded 차원 = **Loewy 층 수와 일치**(게이트)
@@ -27,6 +27,8 @@
      파이프라인이 그대로 돈다 · 4 정점·**화살 8개(이중화살 1̂↔4)**·Cartan·Loewy 완전 재유도
   M  ★★A₆ p=3 **GF(9) 관계식** — ★**규모를 구조로 환원**(5184 계 16 쌍 → 𝔽₃ Hom 텐서 조립
      + J-가환 조건) · **관계식 10개**·Ext² 4×4 · ★**대수/descent 두 경로 일치**
+  N  ★GF(9) Ext² **제3 경로** — `greedy_cover` 로 head(Ω²) 직접(3·3′ 행) ·
+     descent 가 남긴 자유도를 M축이 결정한 값과 **독립 일치**
   L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
@@ -1408,6 +1410,38 @@ def main():
                         "GL₂(GF(9)) 궤도라 전수 불가([[presentation-vs-invariant]] 규율: "
                         "**개수는 불변량이라 확정**하고 형태는 유보). 대표원은 sidecar 에 "
                         "선택 의존으로 기록"),
+        }
+
+        # ── N. ★GF(9) Ext² **제3 경로** — head(Ω²) 를 직접(규모 가능한 두 행) ──
+        e2n, omn = {}, {}
+        for k in ("3", "3b"):
+            radb = nullspace(np.concatenate(
+                [h for (_n, aS, dS) in sim9
+                 for h in hom_space_iter(P9[k], aS, DP9[k], dS, G9, 3)],
+                axis=0) % 3, 3)
+            actR, _br = submodule_action(P9[k], G9, radb, 3)
+            aO, dO, mlt, dt1, im1 = greedy_cover(actR, len(radb), P9, DP9, N9,
+                                                 sim9, G9, 3)
+            hd = [len(hom_space_iter(aO, aS, dO, dS, G9, 3)) // 2
+                  for (_n, aS, dS) in sim9]
+            e2n[k] = hd
+            omn[k] = {"rad_dim_gf9": len(radb) // 2, "P1_dim_gf9": dt1 // 2,
+                      "image_dim_gf9": im1 // 2, "Omega2_dim_gf9": dO // 2,
+                      "P1_mult": mlt, "head": hd}
+        R["N_third_route_cover_exact"] = all(
+            v["image_dim_gf9"] == v["rad_dim_gf9"] for v in omn.values())
+        # ★대수 최소생성(M축)과 **독립 일치** — 특히 Ext²(3,3)=1·Ext²(3,3′)=0 확정
+        R["N_third_route_agrees"] = (e2n["3"] == E29[N9.index("3")]
+                                     and e2n["3b"] == E29[N9.index("3b")])
+        R["N_resolves_descent_residual"] = (e2n["3"] == [1, 0, 1, 0])
+        out["N_A6_p3_GF9_ext2_third_route"] = {
+            "method": ("★`greedy_cover`(리프트-무관 탐욕 사영 덮개)를 **GF(9) 위에서** 직접 — "
+                       "Ω²(S) = ker(P₁ ↠ rad P(S)) 의 head 를 잰다"),
+            "rows": omn, "ext2_rows": e2n,
+            "scope": ("★**3·3′ 두 행만** — Ω¹ 의 𝔽₃-차원이 30 이라 Hom 규모 m ≤ 2160 로 가능. "
+                      "1̂₉·4₉ 는 Ω¹ 이 52·64 라 규모 밖이고 **descent 가 이미 제2 경로**"),
+            "significance": ("★descent 가 남긴 자유도(x+y=1)를 M축 대수 경로가 (1,0) 으로 "
+                             "결정했는데, **제3 경로가 독립으로 같은 값**을 준다"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────

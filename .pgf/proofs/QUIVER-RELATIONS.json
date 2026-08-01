@@ -2248,6 +2248,63 @@
       "4->4": 3
     }
   },
+  "N_A6_p3_GF9_ext2_third_route": {
+    "ext2_rows": {
+      "3": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "3b": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    "method": "★`greedy_cover`(리프트-무관 탐욕 사영 덮개)를 **GF(9) 위에서** 직접 — Ω²(S) = ker(P₁ ↠ rad P(S)) 의 head 를 잰다",
+    "rows": {
+      "3": {
+        "Omega2_dim_gf9": 21,
+        "P1_dim_gf9": 36,
+        "P1_mult": {
+          "1": 0,
+          "3": 0,
+          "3b": 0,
+          "4": 1
+        },
+        "head": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "image_dim_gf9": 15,
+        "rad_dim_gf9": 15
+      },
+      "3b": {
+        "Omega2_dim_gf9": 21,
+        "P1_dim_gf9": 36,
+        "P1_mult": {
+          "1": 0,
+          "3": 0,
+          "3b": 0,
+          "4": 1
+        },
+        "head": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "image_dim_gf9": 15,
+        "rad_dim_gf9": 15
+      }
+    },
+    "scope": "★**3·3′ 두 행만** — Ω¹ 의 𝔽₃-차원이 30 이라 Hom 규모 m ≤ 2160 로 가능. 1̂₉·4₉ 는 Ω¹ 이 52·64 라 규모 밖이고 **descent 가 이미 제2 경로**",
+    "significance": "★descent 가 남긴 자유도(x+y=1)를 M축 대수 경로가 (1,0) 으로 결정했는데, **제3 경로가 독립으로 같은 값**을 준다"
+  },
   "_note": "블록 대수의 완전 제시 B ≅ kQ/I — 화살(Ext¹) 다음 층인 관계식(Ext²). 관측·seal 아님·module 0·root 불변.",
   "_schema": "quiver-relations/v1",
   "all_ok": true,
@@ -2362,6 +2419,9 @@
     "M_rad_powers": true,
     "M_sigma_symmetry_ext2": true,
     "M_surjective_dim_36": true,
+    "N_resolves_descent_residual": true,
+    "N_third_route_agrees": true,
+    "N_third_route_cover_exact": true,
     "setup_A6_360": true,
     "setup_A7_2520": true
   },
