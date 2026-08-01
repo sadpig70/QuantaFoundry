@@ -888,40 +888,66 @@ def main():
                                      "γ² 는 길이-4 경로와 같은 **비균질 관계식**"),
         }
 
-        # ── H′. 주블록 Ext² 의 H¹ 부분 독립 확인(규모 정직 경계) ─────────
-        e2p, cert_p, scope = {}, True, {}
+        # ── H′. ★주블록 Ext² 의 H¹ 경로 **9/9** — 자기쌍대성 실측으로 값싼 방향 ──
+        # ①자기쌍대성을 **가정하지 않고 잰다**: dim Hom(S,S*) = 1 ⟺ S* ≅ S
+        sdual = {}
+        for k in NPr:
+            dl = {g: np.array(np.transpose(inv_mod(S7[k][g], 2)),
+                              dtype=np.int64) % 2 for g in A7G}
+            sdual[k] = len(hom_space_fast(S7[k], dl, D7[k], D7[k], A7G, 2))
+        R["Hp_A7pr_simples_self_dual"] = all(v == 1 for v in sdual.values())
+        # ②ΩS_i 를 전 원소 작용으로 확장
+        OMG = {}
         for i in NPr:
             actR, br = submodule_action(PIMPr[i], A7G, RADPr[i], 2)
-            dR = len(br)
-            full = None
-            row, cr = [], []
+            OMG[i] = (extend_action(A7G, mul7, id7,
+                                    [actR[g] for g in A7G], 2, ord7), len(br))
+        # ③계획: m = dim ΩS_i·dim S_j 가 작은 방향으로(자기쌍대 ⟹ Ext² 대칭).
+        #   ★(14,20)과 (20,14)를 **둘 다** 계산해 대칭 자체를 직접 검증한다.
+        PLAN = [("1", "1"), ("14", "1"), ("20", "1"), ("14", "14"),
+                ("14", "20"), ("20", "14"), ("20", "20")]
+        h1v, h1c, h1m = {}, {}, {}
+        for (i, j) in PLAN:
+            e, cert, _det = ext1_pair_lean(A7G, mul7, id7, ord7bfs, par7,
+                                           OMG[i][0], S7[j], OMG[i][1],
+                                           D7[j], 2, 8)
+            h1v[(i, j)] = e
+            h1c[(i, j)] = bool(cert)
+            h1m[(i, j)] = OMG[i][1] * D7[j]
+        # ④나머지 2 칸은 **실측된 자기쌍대성**으로 채운다
+        fullm, via = [], []
+        for t, i in enumerate(NPr):
+            fullm.append([])
+            via.append([])
             for j in NPr:
-                m = dR * D7[j]
-                if m > 128:                     # 규모 밖 — 정직 유보
-                    row.append(None)
-                    cr.append(None)
-                    continue
-                if full is None:
-                    full = extend_action(A7G, mul7, id7,
-                                         [actR[g] for g in A7G], 2, ord7)
-                e, cert, _det = ext1_pair_lean(A7G, mul7, id7, ord7bfs, par7,
-                                               full, S7[j], dR, D7[j], 2, 60)
-                row.append(e)
-                cr.append(bool(cert))
-            e2p[i] = {"dim_Omega": dR, "ext2_row": row, "certified": cr}
-            cert_p = cert_p and all(c for c in cr if c is not None)
-        R["Hp_A7pr_h1_column_certified"] = cert_p
-        R["Hp_A7pr_h1_column_agrees"] = all(
-            e2p[NPr[i]]["ext2_row"][j] in (None, BP["ext2_matrix"][i][j])
-            for i in range(3) for j in range(3))
-        R["Hp_A7pr_h1_column_covered"] = (
-            [e2p[k]["ext2_row"][0] for k in NPr] == [1, 1, 0])
+                if (i, j) in h1v:
+                    fullm[t].append(h1v[(i, j)])
+                    via[t].append("직접")
+                else:
+                    fullm[t].append(h1v[(j, i)])
+                    via[t].append("쌍대(실측)")
+        R["Hp_A7pr_h1_all_certified"] = all(h1c.values())
+        R["Hp_A7pr_h1_full_matrix_agrees"] = (fullm == BP["ext2_matrix"])
+        R["Hp_A7pr_h1_direct_cells_7"] = (sum(1 for r in via for x in r
+                                              if x == "직접") == 7)
+        # ★쌍대성 직접 검증 — 두 방향을 모두 계산한 쌍
+        R["Hp_A7pr_duality_verified_on_pair"] = (
+            h1v[("14", "20")] == h1v[("20", "14")])
         out["Hp_A7_principal_ext2_via_H1"] = {
-            "rows": e2p,
-            "scope": ("★**부분 확인**: m = dim ΩS_i · dim S_j 가 최대 1420 이라 "
-                      "(비주블록은 204) `ext1_pair_lean` 의 m×m 캐시가 규모 밖 — "
-                      "**1̂ 열(m = 71·50·36)만** 독립 확인하고 나머지는 **정직 유보**. "
-                      "총 개수는 head(Ω²) 와 리프트-무관 최소생성 두 경로가 이미 대조"),
+            "self_dual_hom_dims": sdual,
+            "omega_dims": {k: OMG[k][1] for k in NPr},
+            "computed": {f"{i}->{j}": {"m": h1m[(i, j)], "ext2": h1v[(i, j)],
+                                       "certified": h1c[(i, j)]}
+                         for (i, j) in PLAN},
+            "matrix": fullm, "provenance": via,
+            "method": ("★**자기쌍대성을 실측**(dim Hom(S,S*)=1 전수)한 뒤 "
+                       "`Ext²(S_i,S_j) = Ext²(S_j,S_i)` 로 **m 이 작은 방향**을 고른다 — "
+                       "(1,20)은 m=1420 대신 (20,1) m=36 · (1,14)는 994 대신 (14,1) 50 "
+                       "⟹ 최대 m 이 **1000** 으로 내려간다. 또 `ext1_pair_lean` 의 "
+                       "actH 캐시 상한을 **m 에 맞춰 자동 축소**(m ≤ 250 은 800 그대로라 "
+                       "기존 산출물 byte-identical)"),
+            "scope": ("★**9/9 확인**(7 칸 직접 · 2 칸은 실측된 쌍대성) — 전 쌍 "
+                      "**상한=하한 인증**. 전일 커버리지 행렬이 지목한 빈 칸을 채웠다"),
         }
 
         # ── G. 종합 — 퀴버 동형·대수 비동형 ──────────────────────────────

@@ -1354,48 +1354,89 @@
     }
   },
   "Hp_A7_principal_ext2_via_H1": {
-    "rows": {
-      "1": {
-        "certified": [
-          true,
-          null,
-          null
-        ],
-        "dim_Omega": 71,
-        "ext2_row": [
-          1,
-          null,
-          null
-        ]
+    "computed": {
+      "1->1": {
+        "certified": true,
+        "ext2": 1,
+        "m": 71
       },
-      "14": {
-        "certified": [
-          true,
-          null,
-          null
-        ],
-        "dim_Omega": 50,
-        "ext2_row": [
-          1,
-          null,
-          null
-        ]
+      "14->1": {
+        "certified": true,
+        "ext2": 1,
+        "m": 50
       },
-      "20": {
-        "certified": [
-          true,
-          null,
-          null
-        ],
-        "dim_Omega": 36,
-        "ext2_row": [
-          0,
-          null,
-          null
-        ]
+      "14->14": {
+        "certified": true,
+        "ext2": 2,
+        "m": 700
+      },
+      "14->20": {
+        "certified": true,
+        "ext2": 0,
+        "m": 1000
+      },
+      "20->1": {
+        "certified": true,
+        "ext2": 0,
+        "m": 36
+      },
+      "20->14": {
+        "certified": true,
+        "ext2": 0,
+        "m": 504
+      },
+      "20->20": {
+        "certified": true,
+        "ext2": 1,
+        "m": 720
       }
     },
-    "scope": "★**부분 확인**: m = dim ΩS_i · dim S_j 가 최대 1420 이라 (비주블록은 204) `ext1_pair_lean` 의 m×m 캐시가 규모 밖 — **1̂ 열(m = 71·50·36)만** 독립 확인하고 나머지는 **정직 유보**. 총 개수는 head(Ω²) 와 리프트-무관 최소생성 두 경로가 이미 대조"
+    "matrix": [
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "method": "★**자기쌍대성을 실측**(dim Hom(S,S*)=1 전수)한 뒤 `Ext²(S_i,S_j) = Ext²(S_j,S_i)` 로 **m 이 작은 방향**을 고른다 — (1,20)은 m=1420 대신 (20,1) m=36 · (1,14)는 994 대신 (14,1) 50 ⟹ 최대 m 이 **1000** 으로 내려간다. 또 `ext1_pair_lean` 의 actH 캐시 상한을 **m 에 맞춰 자동 축소**(m ≤ 250 은 800 그대로라 기존 산출물 byte-identical)",
+    "omega_dims": {
+      "1": 71,
+      "14": 50,
+      "20": 36
+    },
+    "provenance": [
+      [
+        "직접",
+        "쌍대(실측)",
+        "쌍대(실측)"
+      ],
+      [
+        "직접",
+        "직접",
+        "직접"
+      ],
+      [
+        "직접",
+        "직접",
+        "직접"
+      ]
+    ],
+    "scope": "★**9/9 확인**(7 칸 직접 · 2 칸은 실측된 쌍대성) — 전 쌍 **상한=하한 인증**. 전일 커버리지 행렬이 지목한 빈 칸을 채웠다",
+    "self_dual_hom_dims": {
+      "1": 1,
+      "14": 1,
+      "20": 1
+    }
   },
   "I_three_block_synthesis": {
     "caveat": "3 블록 관측 · **일반 정리 주장 아님**(자기고리 ⟹ 비균질의 기전은 무주장)",
@@ -2369,9 +2410,11 @@
     "H_A7pr_six_relations": true,
     "H_A7pr_surjective": true,
     "H_A7pr_two_routes_agree": true,
-    "Hp_A7pr_h1_column_agrees": true,
-    "Hp_A7pr_h1_column_certified": true,
-    "Hp_A7pr_h1_column_covered": true,
+    "Hp_A7pr_duality_verified_on_pair": true,
+    "Hp_A7pr_h1_all_certified": true,
+    "Hp_A7pr_h1_direct_cells_7": true,
+    "Hp_A7pr_h1_full_matrix_agrees": true,
+    "Hp_A7pr_simples_self_dual": true,
     "I_dims": true,
     "I_homogeneous_iff_no_selfloop": true,
     "I_relation_counts": true,

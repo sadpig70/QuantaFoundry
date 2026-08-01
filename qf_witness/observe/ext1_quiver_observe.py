@@ -668,6 +668,9 @@ def ext1_pair_lean(gens, mulf, idp, order, par, Ag, Bg, dA, dB, p=2, maxedges=60
     m, k = dB * dA, len(gens)
     nv = k * m
     cache = {}
+    # ★캐시 상한을 m 에 맞춰 자동 축소 — actH 는 m×m 이라 m=1420 이면 800개가 12.9GB.
+    #   순수 메모이제이션이므로 **결과는 불변**이고, m ≤ 250 이면 800 그대로다(회귀 보존).
+    cap = min(800, max(8, 400_000_000 // (8 * m * m)))
 
     def actH(g):
         if g in cache:
@@ -677,7 +680,7 @@ def ext1_pair_lean(gens, mulf, idp, order, par, Ag, Bg, dA, dB, p=2, maxedges=60
         for r2 in range(dB):
             for c2 in range(dA):
                 M[:, r2 * dA + c2] = (np.outer(Bm[:, r2], Ai[c2, :]) % p).reshape(-1)
-        if len(cache) < 800:
+        if len(cache) < cap:
             cache[g] = M
         return M
 
