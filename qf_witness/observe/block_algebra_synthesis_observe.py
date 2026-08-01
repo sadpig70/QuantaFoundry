@@ -246,7 +246,7 @@ def main():
                      "rad_A/rad²_A(화살)"],
             "Loewy": ["𝔽₃ 사영 덮개", "GF(9) 실현화"],
             "Ext2": ["리프트-무관 최소생성(GF(9))", "𝔽₃ Ext² descent",
-                     "head(Ω²) GF(9) — 3·3′ 행만"]},
+                     "★head(Ω²) GF(9) — 4 행 전부"]},
     }
     R["Z_every_quantity_has_two_routes"] = all(
         len(v) >= 2 for blk in cov.values() for v in blk.values())
@@ -255,6 +255,10 @@ def main():
     # ★제3 경로가 이번 사이클에 붙었는지(QR N축) 확인
     R["Z_gf9_third_route_present"] = ("N_A6_p3_GF9_ext2_third_route" in QR)
     # ★A₇ 주블록 H¹ 경로가 9/9 로 채워졌는지(전일 빈 칸)
+    # ★A₆ p=3 head(Ω²) 도 4 행 전부인지(마지막 빈 칸)
+    R["Z_a6p3_omega2_full_matrix"] = (
+        QR["N_A6_p3_GF9_ext2_third_route"].get("matrix")
+        == QR["M_A6_p3_GF9_relations"]["ext2_matrix"])
     R["Z_a7pr_h1_full_matrix"] = (
         QR["Hp_A7_principal_ext2_via_H1"].get("matrix")
         == QR["H_A7_p2_principal"]["presentation"]["ext2_matrix"])
@@ -271,10 +275,11 @@ def main():
         "matrix": cov,
         "legend": ("각 칸 = 그 산출량을 **독립으로 확인한 계산 경로**들. "
                    "문헌 대조는 포함하지 않는다(자체유도 규율)"),
-        "gaps": ("★A₇ p=2 주블록 Ext² 의 H¹ 경로는 **1̂ 열(3/9) → 9/9 로 채움**"
-                 "(2026-08-04: 자기쌍대성 실측으로 값싼 방향 선택) · "
-                 "남은 빈 칸 = A₆ p=3 Ext² 의 head(Ω²) 경로가 **3·3′ 행만**"
-                 "(Ω¹ 이 52·64 인 1̂₉·4₉ 는 규모 밖 — descent 가 덮는다)"),
+        "gaps": ("★**빈 칸 없음** — A₇ p=2 주블록 Ext² 의 H¹ 경로는 3/9 → **9/9**"
+                 "(2026-08-04: 자기쌍대성 실측으로 값싼 방향) · A₆ p=3 Ext² 의 "
+                 "head(Ω²) 경로는 3·3′ 행 → **4 행 전부**"
+                 "(2026-08-05: Ω¹ 도 조립으로 올려 4608 계 회피). "
+                 "잔여는 **경로 수**가 아니라 **관계식의 명시 형태**(리프트 의존)"),
     }
     out["scope_honesty"] = {
         "delivered": ("★세 sidecar 교차검증(블록별 최대 10 게이트) · 4 블록 종합표 · "

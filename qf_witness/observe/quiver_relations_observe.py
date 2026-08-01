@@ -27,8 +27,8 @@
      파이프라인이 그대로 돈다 · 4 정점·**화살 8개(이중화살 1̂↔4)**·Cartan·Loewy 완전 재유도
   M  ★★A₆ p=3 **GF(9) 관계식** — ★**규모를 구조로 환원**(5184 계 16 쌍 → 𝔽₃ Hom 텐서 조립
      + J-가환 조건) · **관계식 10개**·Ext² 4×4 · ★**대수/descent 두 경로 일치**
-  N  ★GF(9) Ext² **제3 경로** — `greedy_cover` 로 head(Ω²) 직접(3·3′ 행) ·
-     descent 가 남긴 자유도를 M축이 결정한 값과 **독립 일치**
+  N  ★GF(9) Ext² **제3 경로** — `greedy_cover` 로 head(Ω²) **4 행 전부** ·
+     ★1̂₉·4₉ 는 **Ω¹ 도 조립으로 올려** 4608 계 회피 · M축·descent 와 삼중 일치
   L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
@@ -92,6 +92,34 @@ def hom_space_fast(actA, actB, dA, dB, gens, p):
             T[:, c, :, c] ^= B                   # − kron(B, I_dA)  (GF(2) ⟹ XOR)
         rows[t * m:(t + 1) * m] = T.reshape(m, m)
     return [v.reshape(dB, dA) % 2 for v in nullspace_gf2(rows)]
+
+
+def assemble_hom_j(baseh, va, vb, Ja, Jb, p):
+    """★소체 Hom 블록 + **J-가환 조건**으로 큰 체 Hom 을 조립한다.
+
+    큰 체 가군의 소체 밑가군이 **이미 가진 소체 가군의 직합**일 때,
+    `Hom_큰체(A,B) = {φ ∈ Hom_소체(밑,밑) : φ∘J_A = J_B∘φ}` 이고
+    좌변의 기저는 `baseh ⊗ Hom(V_a,V_b)`(V = 텐서 중복도 va·vb) 에 J-가환 하나를 걸면 된다.
+    ⟹ 큰 계(dim = dA·dB)를 풀지 않고 **≤ |baseh|·va·vb 차원 계수공간**만 다룬다."""
+    base = []
+    for phi in baseh:
+        for r in range(vb):
+            for c in range(va):
+                E = np.zeros((vb, va), dtype=np.int64)
+                E[r, c] = 1
+                base.append(np.kron(phi % p, E) % p)
+    if not base:
+        return []
+    rows = np.array([((M @ Ja - Jb @ M) % p).reshape(-1) for M in base],
+                    dtype=np.int64)
+    out = []
+    for cv in nullspace(rows.T % p, p):
+        M = np.zeros(base[0].shape, dtype=np.int64)
+        for t, ct in enumerate(cv):
+            if ct:
+                M = (M + ct * base[t]) % p
+        out.append(M)
+    return out
 
 
 def rref_insert(B, piv, v, p):
@@ -165,14 +193,16 @@ def hecke_endos_p(n, perms, Hlist, reps, p):
     return mats
 
 
-def greedy_cover(actM, dM, PIM, dimP, names, simples, gens, p):
+def greedy_cover(actM, dM, PIM, dimP, names, simples, gens, p, homs=None):
     """★리프트-무관 사영 덮개 — head 로의 상이 전사가 될 때까지 Hom(P_j,M) 에서
     준동형을 **탐욕적으로** 고른다. 화살·리프트 선택을 전혀 쓰지 않으므로
-    비분해체(species) 상황에서도 그대로 동작한다. 반환 (Ω 작용, dimΩ, 사용 중복도)."""
-    homs = []
+    비분해체(species) 상황에서도 그대로 동작한다. 반환 (Ω 작용, dimΩ, 사용 중복도).
+    ★`homs` 를 주면 `Hom(P_j, M)` 를 다시 계산하지 않고 **미리 조립한 것을 쓴다**
+    (규모가 큰 큰-체 계산용 · 미지정이면 기존 동작 그대로)."""
+    hsimp = []
     for (_n, aS, dS) in simples:
-        homs.extend(hom_space_iter(actM, aS, dM, dS, gens, p))
-    radM = nullspace(np.concatenate(homs, axis=0) % p, p)
+        hsimp.extend(hom_space_iter(actM, aS, dM, dS, gens, p))
+    radM = nullspace(np.concatenate(hsimp, axis=0) % p, p)
     proj = quot_proj(radM, dM, p)[0]                 # M ↠ head(M)
     q = proj.shape[0]
     picked, mult = [], {k: 0 for k in names}
@@ -181,7 +211,8 @@ def greedy_cover(actM, dM, PIM, dimP, names, simples, gens, p):
     for j in names:
         if rk >= q:
             break
-        for phi in hom_space_iter(PIM[j], actM, dimP[j], dM, gens, p):
+        for phi in (homs[j] if homs is not None
+                    else hom_space_iter(PIM[j], actM, dimP[j], dM, gens, p)):
             cols = ((proj @ phi) % p).T % p          # (dimP[j], q) — 상의 생성벡터
             st = np.vstack([acc, cols]) % p
             nrk = len(rref_rows(st.copy(), p)[0])
@@ -1270,23 +1301,7 @@ def main():
             텐서 조립이면 되고, 계수공간이 ≤ 24 차원이라 5184 계를 안 푼다."""
             i, va = UND9[a]
             j, vb = UND9[b]
-            base = []
-            for phi in HOM3B[(i, j)]:
-                for r in range(vb):
-                    for c in range(va):
-                        E = np.zeros((vb, va), dtype=np.int64)
-                        E[r, c] = 1
-                        base.append(np.kron(phi % 3, E) % 3)
-            rows = np.array([((M @ JA9[a] - JA9[b] @ M) % 3).reshape(-1)
-                             for M in base], dtype=np.int64)
-            out = []
-            for cvec in nullspace(rows.T % 3, 3):
-                M = np.zeros(base[0].shape, dtype=np.int64)
-                for t, ct in enumerate(cvec):
-                    if ct:
-                        M = (M + ct * base[t]) % 3
-                out.append(M)
-            return out
+            return assemble_hom_j(HOM3B[(i, j)], va, vb, JA9[a], JA9[b], 3)
 
         HOM9 = {(a, b): assemble_hom9(a, b) for a in N9 for b in N9}
         dim9 = [[len(HOM9[(a, b)]) // 2 for b in N9] for a in N9]
@@ -1454,8 +1469,41 @@ def main():
             omn[k] = {"rad_dim_gf9": len(radb) // 2, "P1_dim_gf9": dt1 // 2,
                       "image_dim_gf9": im1 // 2, "Omega2_dim_gf9": dO // 2,
                       "P1_mult": mlt, "head": hd}
+        # ★(b) 1̂₉·4₉ — **Ω¹ 도 조립으로 올린다**(Hom 4608 계를 피한다)
+        asm_ok = []
+        for k in ("1", "4"):
+            hs3 = []
+            for (_n, aS, dS) in sim33:
+                hs3.extend(hom_space_iter(PIM3[k], aS, DIMP3[k], dS, A6G, 3))
+            rad3 = nullspace(np.concatenate(hs3, axis=0) % 3, 3)
+            actR3, _b3 = submodule_action(PIM3[k], A6G, rad3, 3)
+            d3 = len(rad3)
+            actO1 = {g: np.kron(actR3[g] % 3, np.eye(2, dtype=np.int64)) % 3
+                     for g in A6G}
+            actO1[JKEY] = np.kron(np.eye(d3, dtype=np.int64), j2) % 3
+            BH = {i: hom_space_iter(PIM3[i], actR3, DIMP3[i], d3, A6G, 3)
+                  for i in N33}
+            HO = {a: assemble_hom_j(BH[UND9[a][0]], UND9[a][1], 2, JA9[a],
+                                    actO1[JKEY], 3) for a in N9}
+            # ★조립 검증 게이트: dim_{GF9} Hom(P_a,Ω¹) = [Ω¹ : S_a] (GF(9) Loewy 에서)
+            exp = [sum(lo9[k][t][N9.index(a)] for t in range(1, len(lo9[k])))
+                   for a in N9]
+            asm_ok.append([len(HO[a]) // 2 for a in N9] == exp)
+            aO, dO, mlt, dt1, im1 = greedy_cover(actO1, 2 * d3, P9, DP9, N9,
+                                                 sim9, G9, 3, homs=HO)
+            hd = [len(hom_space_iter(aO, aS, dO, dS, G9, 3)) // 2
+                  for (_n, aS, dS) in sim9]
+            e2n[k] = hd
+            omn[k] = {"rad_dim_gf9": d3, "P1_dim_gf9": dt1 // 2,
+                      "image_dim_gf9": im1 // 2, "Omega2_dim_gf9": dO // 2,
+                      "P1_mult": mlt, "head": hd,
+                      "assembled_hom_dims": [len(HO[a]) // 2 for a in N9],
+                      "expected_from_loewy": exp}
+        R["N_omega1_assembly_matches_loewy"] = all(asm_ok)
         R["N_third_route_cover_exact"] = all(
             v["image_dim_gf9"] == v["rad_dim_gf9"] for v in omn.values())
+        # ★4 행 전부 — 대수 최소생성(M축)·descent 와 삼중 일치
+        R["N_full_matrix_agrees"] = ([e2n[k] for k in N9] == E29)
         # ★대수 최소생성(M축)과 **독립 일치** — 특히 Ext²(3,3)=1·Ext²(3,3′)=0 확정
         R["N_third_route_agrees"] = (e2n["3"] == E29[N9.index("3")]
                                      and e2n["3b"] == E29[N9.index("3b")])
@@ -1463,11 +1511,15 @@ def main():
         out["N_A6_p3_GF9_ext2_third_route"] = {
             "method": ("★`greedy_cover`(리프트-무관 탐욕 사영 덮개)를 **GF(9) 위에서** 직접 — "
                        "Ω²(S) = ker(P₁ ↠ rad P(S)) 의 head 를 잰다"),
-            "rows": omn, "ext2_rows": e2n,
-            "scope": ("★**3·3′ 두 행만** — Ω¹ 의 𝔽₃-차원이 30 이라 Hom 규모 m ≤ 2160 로 가능. "
-                      "1̂₉·4₉ 는 Ω¹ 이 52·64 라 규모 밖이고 **descent 가 이미 제2 경로**"),
+            "rows": omn, "ext2_rows": e2n, "matrix": [e2n[k] for k in N9],
+            "scope": ("★**4 행 전부** — 3·3′ 은 Ω¹ 이 작아 직접(m ≤ 2160) · "
+                      "★1̂₉·4₉ 는 **Ω¹ 도 조립으로 올려서**(rad 는 체확대와 가환하므로 "
+                      "`Ω¹_{GF9}(S₉) = Ω¹_{𝔽₃}(S) ⊗ GF(9)`) `Hom(P_a,Ω¹)` 의 "
+                      "**4608 계를 회피** — 밑 Hom(m ≤ 1152) 텐서 조립 + J-가환. "
+                      "조립은 **dim = [Ω¹ : S_a](GF(9) Loewy 에서)** 로 검증"),
             "significance": ("★descent 가 남긴 자유도(x+y=1)를 M축 대수 경로가 (1,0) 으로 "
-                             "결정했는데, **제3 경로가 독립으로 같은 값**을 준다"),
+                             "결정했는데, **제3 경로가 독립으로 같은 값**을 준다 · "
+                             "★이제 **4×4 전 칸이 3 경로**로 확인됐다"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────

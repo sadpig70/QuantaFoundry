@@ -439,7 +439,7 @@
     }
   },
   "Z_coverage": {
-    "gaps": "★A₇ p=2 주블록 Ext² 의 H¹ 경로는 **1̂ 열(3/9) → 9/9 로 채움**(2026-08-04: 자기쌍대성 실측으로 값싼 방향 선택) · 남은 빈 칸 = A₆ p=3 Ext² 의 head(Ω²) 경로가 **3·3′ 행만**(Ω¹ 이 52·64 인 1̂₉·4₉ 는 규모 밖 — descent 가 덮는다)",
+    "gaps": "★**빈 칸 없음** — A₇ p=2 주블록 Ext² 의 H¹ 경로는 3/9 → **9/9**(2026-08-04: 자기쌍대성 실측으로 값싼 방향) · A₆ p=3 Ext² 의 head(Ω²) 경로는 3·3′ 행 → **4 행 전부**(2026-08-05: Ω¹ 도 조립으로 올려 4608 계 회피). 잔여는 **경로 수**가 아니라 **관계식의 명시 형태**(리프트 의존)",
     "legend": "각 칸 = 그 산출량을 **독립으로 확인한 계산 경로**들. 문헌 대조는 포함하지 않는다(자체유도 규율)",
     "matrix": {
       "A6_p2_principal": {
@@ -477,7 +477,7 @@
         "Ext2": [
           "리프트-무관 최소생성(GF(9))",
           "𝔽₃ Ext² descent",
-          "head(Ω²) GF(9) — 3·3′ 행만"
+          "★head(Ω²) GF(9) — 4 행 전부"
         ],
         "Loewy": [
           "𝔽₃ 사영 덮개",
@@ -585,6 +585,7 @@
     "Y_four_blocks_present": true,
     "Y_obstruction_types": true,
     "Y_relation_counts": true,
+    "Z_a6p3_omega2_full_matrix": true,
     "Z_a7pr_h1_full_matrix": true,
     "Z_every_quantity_has_two_routes": true,
     "Z_ext2_three_routes_all_blocks": true,
