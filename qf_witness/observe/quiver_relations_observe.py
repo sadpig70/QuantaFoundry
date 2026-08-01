@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """블록 대수의 **완전 제시** B ≅ kQ/I — 화살(Ext¹) 다음 층인 **관계식**(Ext²).
 
-관측 9축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
+관측 12축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
   A  A₇ p=2 **비주블록 기본대수** A = ⊕_{i,j} Hom_G(P_i,P_j) — dim A = Σ C_{ij} = 18
      (블록 차원 432 를 다루지 않는다) · ★Cartan 를 **Hom 차원으로 제4 재유도** ·
      rad 여과 rad^n 차원열 · ★graded 차원 = **Loewy 층 수와 일치**(게이트)
@@ -20,6 +20,12 @@
      ★★**균질 제시가 존재하지 않는다**(리프트 32 **전수** 실패) ⟹ **비균질 관계식 강제** ·
      정체는 **γ² ≠ 0**(자기고리의 제곱 = 길이-4 경로) · ★**Ext² 에 처음 다중도 2**
   I  ★★3 블록 종합 — **자기고리가 있는 블록에서만 균질 제시가 깨진다**(실측·기전 무주장)
+  J  ★★A₆ p=3 주블록 **over 𝔽₃** — ★**𝔽₃ 는 분해체가 아니다**(End(6̃)=GF(9) 실측) ⟹
+     화살이 GF(9)-이중가군이라 `kQ/I` 틀이 성립하지 않는다(**species**) ·
+     ★**A₆ p=3 Loewy 급수 최초 산출**(전부 LL=5·회문) · dim A = 36 · Ext²(리프트-무관)
+  K  ★★**GF(9) 로 올라간다** — J(=√−1)를 **추가 생성원**으로 넣어 실현화하면 기존
+     파이프라인이 그대로 돈다 · 4 정점·**화살 8개(이중화살 1̂↔4)**·Cartan·Loewy 완전 재유도
+  L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
   ① 기본대수는 **준동형의 합성**으로 실물 계산 — dim Hom(P_i,P_j) = [P_j : S_i] = C_{ij}
@@ -35,7 +41,8 @@
   · A₇ **주블록**의 H¹ 경로는 **부분만**(1̂ 열) — m = dim ΩS_i·dim S_j 가 최대 1420
     (비주블록은 204)이라 `ext1_pair_lean` 의 m×m 캐시가 규모 밖. 총 개수는 head(Ω²) 와
     리프트-무관 최소생성 **두 경로가 이미 대조**한다.
-  · A₆ p=3 는 미착수(이중화살·GF(9) 융합).
+  · A₆ p=3 의 **GF(9) 관계식은 정직 유보** — GF(9) PIM 사이의 Hom 이 dim_{𝔽₃} 최대
+    72×72 = 5184 계 16 쌍이라 규모 밖(퀴버까지는 완전 재유도·𝔽₃ 축 Ext² 는 산출).
   · 대수가 **동형이 아님**은 dim 이 다름으로 즉시 따르나, 어떤 분류표의 이름인지는
     **주장하지 않는다**(외부 분류 인용 없음). "자기고리 ⟹ 비균질"의 **기전도 무주장**.
 """
@@ -53,7 +60,7 @@ from qf_witness.observe.ext1_quiver_observe import (
 from qf_witness.observe.loewy_series_observe import (
     coset_data, coset_perm_module, decompose_regular, fixed_dim, hecke_endos,
     hom_space, image_basis, loewy_series, nullspace, nullspace_gf2,
-    submodule_action, subgroup)
+    quotient_action, restrict, submodule_action, subgroup)
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -81,6 +88,100 @@ def hom_space_fast(actA, actB, dA, dB, gens, p):
             T[:, c, :, c] ^= B                   # − kron(B, I_dA)  (GF(2) ⟹ XOR)
         rows[t * m:(t + 1) * m] = T.reshape(m, m)
     return [v.reshape(dB, dA) % 2 for v in nullspace_gf2(rows)]
+
+
+def hom_space_iter(actA, actB, dA, dB, gens, p):
+    """★p-일반 대형 Hom_G(A,B) — kron 없이 + **생성원별 순차 교차**.
+
+    한 번에 (|gens|·m)×m 를 RREF 하는 대신 첫 생성원의 커널로 공간을 좁히고
+    다음 생성원 제약을 **좁혀진 좌표에서** 푼다(둘째부터 열 수가 급감).
+    GF(2) 는 비트팩 경로가 더 빠르므로 `hom_space_fast` 로 위임."""
+    if p == 2:
+        return hom_space_fast(actA, actB, dA, dB, gens, p)
+    m = dA * dB
+    K = None
+    for g in gens:
+        A = actA[g] % p
+        B = actB[g] % p
+        T = np.zeros((dB, dA, dB, dA), dtype=np.int64)
+        At = np.ascontiguousarray(A.T)
+        for r in range(dB):
+            T[r, :, r, :] = At
+        for c in range(dA):
+            T[:, c, :, c] = (T[:, c, :, c] - B) % p
+        C = T.reshape(m, m) % p
+        if K is None:
+            N = nullspace(C, p)
+        else:
+            N = nullspace((C @ K.T) % p, p)
+            N = (N @ K) % p if len(N) else N
+        K = N
+        if len(K) == 0:
+            return []
+    return [v.reshape(dB, dA) % p for v in K]
+
+
+def hecke_endos_p(n, perms, Hlist, reps, p):
+    """`hecke_endos` 의 p-일반 판본 — End_G(k[G/H]) 기저 = H-궤도 합."""
+    seen, orbits = set(), []
+    for j in range(n):
+        if j in seen:
+            continue
+        orb = {perms[h][j] for h in Hlist}
+        seen |= orb
+        orbits.append(sorted(orb))
+    mats = []
+    for orb in orbits:
+        M = np.zeros((n, n), dtype=np.int64)
+        for j in range(n):
+            pj = perms[reps[j]]
+            for t in orb:
+                M[pj[t], j] += 1
+        mats.append(M % p)
+    return mats
+
+
+def greedy_cover(actM, dM, PIM, dimP, names, simples, gens, p):
+    """★리프트-무관 사영 덮개 — head 로의 상이 전사가 될 때까지 Hom(P_j,M) 에서
+    준동형을 **탐욕적으로** 고른다. 화살·리프트 선택을 전혀 쓰지 않으므로
+    비분해체(species) 상황에서도 그대로 동작한다. 반환 (Ω 작용, dimΩ, 사용 중복도)."""
+    homs = []
+    for (_n, aS, dS) in simples:
+        homs.extend(hom_space_iter(actM, aS, dM, dS, gens, p))
+    radM = nullspace(np.concatenate(homs, axis=0) % p, p)
+    proj = quot_proj(radM, dM, p)[0]                 # M ↠ head(M)
+    q = proj.shape[0]
+    picked, mult = [], {k: 0 for k in names}
+    acc = np.zeros((0, q), dtype=np.int64)           # head(M) 안에서 덮은 부분공간
+    rk = 0
+    for j in names:
+        if rk >= q:
+            break
+        for phi in hom_space_iter(PIM[j], actM, dimP[j], dM, gens, p):
+            cols = ((proj @ phi) % p).T % p          # (dimP[j], q) — 상의 생성벡터
+            st = np.vstack([acc, cols]) % p
+            nrk = len(rref_rows(st.copy(), p)[0])
+            if nrk > rk:
+                acc = rref_rows(st.copy(), p)[0]
+                rk = nrk
+                picked.append((j, phi))
+                mult[j] += 1
+            if rk >= q:
+                break
+    dtot = sum(dimP[j] for (j, _f) in picked)
+    Mmap = np.concatenate([f for (_j, f) in picked], axis=1) % p
+    act = {}
+    for g in gens:
+        Z = np.zeros((dtot, dtot), dtype=np.int64)
+        off = 0
+        for (j, _f) in picked:
+            Bm = PIM[j][g] % p
+            Z[off:off + len(Bm), off:off + len(Bm)] = Bm
+            off += len(Bm)
+        act[g] = Z
+    ker = nullspace(Mmap, p)
+    actO, _b = submodule_action(act, gens, ker, p)
+    return actO, len(ker), mult, dtot, len(image_basis(Mmap, p))
 
 
 def quot_proj(Nrows, d, p):
@@ -819,6 +920,239 @@ def main():
             "ext2": "두 블록 모두 Ext² = 단위행렬(정점마다 관계식 정확히 1개)",
         }
 
+        # ── J. ★A₆ p=3 주블록 over 𝔽₃ — ★★분해체가 아니다(species) ──────
+        def _perm3(g, n):
+            M = np.zeros((n, n), dtype=np.int64)
+            for j in range(n):
+                M[g[j], j] = 1
+            return M % 3
+
+        SZ = np.array([[1 if i == 0 else (-1 if i == j else 0) for i in range(6)]
+                       for j in range(1, 6)], dtype=np.int64) % 3
+        _b5, _p5 = rref_rows(SZ.copy(), 3)
+        act5 = {g: restrict(_perm3(g, 6), _b5, _p5, 3) for g in A6G}
+        act4d, _d4 = quotient_action(act5, A6G,
+                                     np.ones((1, 5), dtype=np.int64), 5, 3)
+
+        def _wedge3(M, n):
+            pr = list(itertools.combinations(range(n), 2))
+            ix = {t: i for i, t in enumerate(pr)}
+            O = np.zeros((len(pr), len(pr)), dtype=np.int64)
+            for jc, (a, b) in enumerate(pr):
+                for i in range(n):
+                    for j in range(n):
+                        if i == j or M[i][a] * M[j][b] % 3 == 0:
+                            continue
+                        O[ix[(min(i, j), max(i, j))]][jc] += (
+                            (1 if i < j else -1) * M[i][a] * M[j][b])
+            return O % 3
+
+        raw3 = {"1": [np.eye(1, dtype=np.int64)] * 3,
+                "4": [act4d[g] for g in A6G],
+                "6t": [_wedge3(act4d[g], 4) for g in A6G]}
+        N33 = ["1", "4", "6t"]
+        S33 = {k: extend_action(A6G, mul6, id6, v_, 3, ord6)
+               for k, v_ in raw3.items()}
+        D33 = {"1": 1, "4": 4, "6t": 6}
+        sim33 = [(k, S33[k], D33[k]) for k in N33]
+        endF3 = {k: len(hom_space_iter(S33[k], S33[k], D33[k], D33[k], A6G, 3))
+                 for k in N33}
+        # ★★End(6̃) 의 𝔽₃-차원이 2 ⟹ GF(9) ⟹ 𝔽₃ 는 분해체가 아니다
+        R["J_A6p3_end_dims"] = (endF3 == {"1": 1, "4": 1, "6t": 2})
+        DIMP3 = {"1": 27, "4": 36, "6t": 36}
+        # ★블록 차원: Σ dim P·(dim S / dim End S) = 279
+        R["J_A6p3_block_279"] = (
+            sum(DIMP3[k] * D33[k] // endF3[k] for k in N33) == 279)
+        CAND3 = {"Syl2": [(1, 0, 3, 2, 4, 5), (2, 3, 0, 1, 4, 5),
+                          (0, 1, 3, 2, 5, 4)],
+                 "C5": [(1, 2, 3, 4, 0, 5)],
+                 "V4": [(1, 0, 3, 2, 4, 5), (2, 3, 0, 1, 4, 5)]}
+        PIM3, carr3 = {}, {}
+        for cn, hg in CAND3.items():
+            if all(k in PIM3 for k in DIMP3):
+                break
+            Hl = subgroup(hg, mul6, id6)
+            n_, reps_, perms_, mats_ = coset_data(ord6, mul6, id6, A6G, Hl)
+            actX = extend_action(A6G, mul6, id6, mats_, 3, ord6)
+            alg = hecke_endos_p(n_, perms_, Hl, reps_, 3)
+            rng3 = random.Random(7)                       # 결정론 시드
+
+            def _rnd3(alg=alg, rng3=rng3, n_=n_):
+                M = np.zeros((n_, n_), dtype=np.int64)
+                for A_ in rng3.sample(alg, max(2, len(alg) // 3)):
+                    M = (M + rng3.randrange(1, 3) * A_) % 3
+                return M
+
+            ps = []
+            decompose_regular(np.eye(n_, dtype=np.int64),
+                              np.eye(n_, dtype=np.int64), _rnd3, 3, rng3, ps)
+            carr3[cn] = {"order": len(Hl), "index": n_, "hecke_dim": len(alg),
+                         "projective": fixed_dim(actX, syl3_6, n_, 3) == n_ // 9,
+                         "parts": sorted(len(b) for b in ps),
+                         "frobenius_m_S": {
+                             k: fixed_dim(S33[k], Hl, D33[k], 3) // endF3[k]
+                             for k in N33}}
+            for B in sorted(ps, key=len):
+                dd = len(B)
+                if dd not in DIMP3.values():
+                    continue
+                actY, _ = submodule_action(actX, A6G, B, 3)
+                hd = tuple(len(hom_space_iter(actY, aS, dd, dS, A6G, 3))
+                           for _n, aS, dS in sim33)
+                nm = next((k for t, k in enumerate(N33)
+                           if hd == tuple(endF3[k] if j == t else 0
+                                          for j in range(3))), None)
+                if nm in DIMP3 and nm not in PIM3 and DIMP3[nm] == dd:
+                    PIM3[nm] = {g: actY[g] % 3 for g in A6G}
+        R["J_A6p3_all_three_pims"] = (sorted(PIM3) == sorted(DIMP3))
+        R["J_A6p3_carriers_projective"] = all(v["projective"]
+                                              for v in carr3.values())
+        lo3 = {k: loewy_series(PIM3[k], DIMP3[k], A6G, sim33, 3) for k in N33}
+        HOM3 = {(i, j): len(hom_space_iter(PIM3[i], PIM3[j], DIMP3[i],
+                                           DIMP3[j], A6G, 3))
+                for i in N33 for j in N33}
+        cart3 = [[HOM3[(i, j)] for j in N33] for i in N33]
+        # ★기본대수 차원 = 분해체 위 Σ C = 36 (A^{𝔽₃} ⊗ GF(9) ≅ A^{GF(9)})
+        R["J_A6p3_dim_basic_36"] = (sum(HOM3.values()) == 36)
+        R["J_A6p3_cartan_via_hom"] = (cart3 == [[5, 4, 2], [4, 5, 4], [2, 4, 6]])
+        R["J_A6p3_loewy_length_5"] = all(len(v) == 5 for v in lo3.values())
+        R["J_A6p3_palindromic"] = all(list(v) == list(v)[::-1]
+                                      for v in lo3.values())
+        R["J_A6p3_layers_sum_to_cartan"] = all(
+            [sum(l[i] for l in lo3[k]) for i in range(3)]
+            == [cart3[i][N33.index(k)] for i in range(3)] for k in N33)
+        # ★화살 다중도 비대칭 = species 서명: 4→6̃ 은 2 인데 6̃→4 은 1
+        arr3 = {k: [lo3[k][1][i] // endF3[N33[i]] for i in range(3)] for k in N33}
+        R["J_A6p3_arrow_asymmetry"] = (arr3["6t"][1] == 2 and arr3["4"][2] == 1)
+        R["J_A6p3_double_arrow"] = (arr3["1"][1] == 2 and arr3["4"][0] == 2)
+        # ★Ext² — 리프트-무관 탐욕 사영 덮개(Ω² = ker(P₁ ↠ rad P_i))
+        ext2_3, om3 = {}, {}
+        for k in N33:
+            radb = nullspace(np.concatenate(
+                [h for (_n, aS, dS) in sim33
+                 for h in hom_space_iter(PIM3[k], aS, DIMP3[k], dS, A6G, 3)],
+                axis=0) % 3, 3)
+            actR, _br = submodule_action(PIM3[k], A6G, radb, 3)
+            d1_ = len(radb)
+            aO, dO, mult1, dt1, im1 = greedy_cover(actR, d1_, PIM3, DIMP3, N33,
+                                                   sim33, A6G, 3)
+            hd = [len(hom_space_iter(aO, aS, dO, dS, A6G, 3)) // endF3[nm]
+                  for (nm, aS, dS) in sim33]
+            ext2_3[k] = hd
+            om3[k] = {"rad_dim": d1_, "P1_dim": dt1, "image_dim": im1,
+                      "Omega2_dim": dO, "P1_mult": mult1, "head": hd}
+        R["J_A6p3_cover_exact"] = all(v["image_dim"] == v["rad_dim"]
+                                      for v in om3.values())
+        # ★Ext² 에서도 같은 비대칭(1̂→6̃ 은 1, 6̃→1̂ 은 2) — species 서명이 2층에도
+        R["J_A6p3_ext2_asymmetric"] = (ext2_3["1"][2] == 1
+                                       and ext2_3["6t"][0] == 2)
+        R["J_A6p3_ext2_total_8"] = (
+            sum(sum(v) for v in ext2_3.values()) == 8)
+        out["J_A6_p3_over_F3"] = {
+            "carriers": carr3, "end_dims": endF3,
+            "cartan_via_hom": cart3, "dim_basic_algebra": sum(HOM3.values()),
+            "loewy_layers": {k: [list(x) for x in lo3[k]] for k in N33},
+            "arrow_multiplicities": arr3,
+            "ext2_matrix": [ext2_3[k] for k in N33],
+            "omega2": om3,
+            "note": ("★★**𝔽₃ 는 A₆ p=3 주블록의 분해체가 아니다** — 3·3′ 이 융합해 "
+                     "**6̃ = Λ²(4)** 하나가 되고 **End(6̃) 의 𝔽₃-차원 = 2 ⟹ GF(9)** · "
+                     "따라서 화살이 **GF(9)-이중가군**이라 `B ≅ kQ/I`(퀴버+관계식) 틀이 "
+                     "그대로 적용되지 않는다 — **modulated quiver(species)** 가 필요. "
+                     "★서명: **4→6̃ 다중도 2 vs 6̃→4 다중도 1**(분해체 위라면 대칭)"),
+            "loewy_note": ("★**A₆ p=3 Loewy 급수 최초 산출** — 전부 LL=5·회문 · "
+                           "층 다중도는 𝔽₃-Hom 차원(6̃ 성분은 실제 다중도의 2배)"),
+        }
+
+        # ── K. ★GF(9) 로 올라간다 — J(=√−1)를 추가 생성원으로 실현화 ──────
+        j2 = np.array([[0, -1], [1, 0]], dtype=np.int64) % 3
+        JKEY = "__J__"
+        G9 = A6G + [JKEY]
+
+        def _tensor9(act, d):
+            a = {g: np.kron(act[g] % 3, np.eye(2, dtype=np.int64)) % 3
+                 for g in A6G}
+            a[JKEY] = np.kron(np.eye(d, dtype=np.int64), j2) % 3
+            return a, 2 * d
+
+        # 6̃ 위의 GF(9) 구조 J₆ — End 안에서 J² = −I 를 만족하는 원소
+        def _find_j(basis, n):
+            for c in itertools.product(range(3), repeat=len(basis)):
+                M = np.zeros((n, n), dtype=np.int64)
+                for t, ct in enumerate(c):
+                    if ct:
+                        M = (M + ct * basis[t]) % 3
+                if ((M @ M) % 3 == (-np.eye(n, dtype=np.int64)) % 3).all():
+                    return M % 3
+            return None
+
+        J6 = _find_j(hom_space_iter(S33["6t"], S33["6t"], 6, 6, A6G, 3), 6)
+        JP6 = _find_j(hom_space_iter(PIM3["6t"], PIM3["6t"], 36, 36, A6G, 3), 36)
+        R["K_gf9_structure_found"] = (J6 is not None and JP6 is not None)
+        S9, D9 = {}, {}
+        for nm in ("1", "4"):
+            S9[nm], D9[nm] = _tensor9(S33[nm], D33[nm])
+        S9["3"] = dict(S33["6t"], **{JKEY: J6})
+        S9["3b"] = dict(S33["6t"], **{JKEY: (-J6) % 3})
+        D9["3"] = D9["3b"] = 6
+        N9 = ["1", "4", "3", "3b"]
+        sim9 = [(k, S9[k], D9[k]) for k in N9]
+        P9, DP9 = {}, {}
+        for nm in ("1", "4"):
+            P9[nm], DP9[nm] = _tensor9(PIM3[nm], DIMP3[nm])
+        # ★JP6 의 부호는 단순가군 쪽 J₆ 와 독립으로 정해지므로 **head 로 정렬**한다
+        _h3 = [len(hom_space_iter(dict(PIM3["6t"], **{JKEY: JP6}), aS, 36, dS,
+                                  G9, 3)) for (_n, aS, dS) in
+               [("3", S9["3"], 6), ("3b", S9["3b"], 6)]]
+        if _h3[0] == 0:
+            JP6 = (-JP6) % 3
+        P9["3"] = dict(PIM3["6t"], **{JKEY: JP6})
+        P9["3b"] = dict(PIM3["6t"], **{JKEY: (-JP6) % 3})
+        DP9["3"] = DP9["3b"] = 36
+        end9 = {k: len(hom_space_iter(S9[k], S9[k], D9[k], D9[k], G9, 3))
+                for k in N9}
+        # 절대기약: End_{GF(9)} = GF(9) ⟹ 𝔽₃-차원 2
+        R["K_all_absolutely_irreducible"] = all(v == 2 for v in end9.values())
+        R["K_3_and_3b_not_isomorphic"] = (
+            len(hom_space_iter(S9["3"], S9["3b"], 6, 6, G9, 3)) == 0)
+        R["K_pim_dims_over_gf9"] = ([DP9[k] // 2 for k in N9] == [27, 36, 18, 18])
+        lo9 = {k: [tuple(x // 2 for x in lay)
+                   for lay in loewy_series(P9[k], DP9[k], G9, sim9, 3)]
+               for k in N9}
+        cart9 = [[sum(l[i] for l in lo9[k]) for k in N9] for i in range(4)]
+        R["K_cartan_recovered"] = (
+            cart9 == [[5, 4, 1, 1], [4, 5, 2, 2], [1, 2, 2, 1], [1, 2, 1, 2]])
+        R["K_sum_cartan_36"] = (sum(sum(r) for r in cart9) == 36)
+        R["K_loewy_length_5"] = all(len(v) == 5 for v in lo9.values())
+        R["K_block_dim_279"] = (
+            sum((DP9[N9[t]] // 2) * (D9[N9[t]] // 2) for t in range(4)) == 279)
+        arr9 = {k: list(lo9[k][1]) for k in N9}
+        R["K_eight_arrows"] = (sum(sum(v) for v in arr9.values()) == 8)
+        # ★이중화살 1̂↔4 재현 · 3·3′ 은 4 하고만 연결 · Frobenius σ 대칭
+        R["K_double_arrow_1_4"] = (arr9["1"][1] == 2 and arr9["4"][0] == 2)
+        R["K_3_only_meets_4"] = (arr9["3"] == [0, 1, 0, 0]
+                                 and arr9["3b"] == [0, 1, 0, 0]
+                                 and arr9["4"][2] == 1 and arr9["4"][3] == 1)
+        R["K_frobenius_sigma_symmetry"] = (
+            [list(l) for l in lo9["3"]]
+            == [[l[t] for t in (0, 1, 3, 2)] for l in lo9["3b"]])
+        out["K_A6_p3_over_GF9"] = {
+            "method": ("★**J(=√−1)를 추가 생성원**으로 넣어 GF(9)-가군을 (𝔽₃-가군, J) 로 "
+                       "실현화 — Hom_{GF(9)} = J 와 가환하는 Hom_{𝔽₃} 이므로 "
+                       "**기존 파이프라인이 그대로 재사용**되고 모든 차원이 2배로 나온다. "
+                       "1̂₉·4₉ = ⊗GF(9)(J = I⊗j₂) · 3·3′ = **같은 6̃ 에 J₆ 와 −J₆**"
+                       "(J₆ ∈ End 는 J²=−I 로 탐색)"),
+            "pim_dims_gf9": {k: DP9[k] // 2 for k in N9},
+            "cartan": cart9,
+            "loewy_layers": {k: [list(x) for x in lo9[k]] for k in N9},
+            "arrow_multiplicities": arr9,
+            "note": ("★**분해체 위 Cartan·Loewy·퀴버(화살 8개·이중화살 1̂↔4) 완전 재유도** — "
+                     "3·3′ 은 **4 하고만** 연결되고 Frobenius σ 로 서로 교환된다"),
+            "not_yet": ("★**관계식(Ext²)은 정직 유보** — GF(9) PIM 사이의 Hom 은 "
+                        "dim_{𝔽₃} 최대 72×72 = 5184 계의 GF(3) 커널 16 쌍이라 규모 밖"
+                        "(𝔽₃ 축의 Ext² 는 산출·GF(9) 분해는 미확정)"),
+        }
+
         # ── I. ★3 블록 종합 — 자기고리가 제시를 질적으로 바꾼다 ──────────
         R["I_selfloop_only_in_principal"] = (
             BP["n_arrows"] == 5 and B7["n_arrows"] == B6["n_arrows"] == 4
@@ -857,6 +1191,38 @@ def main():
                          "나타나고 그 자리가 정확히 **자기고리 정점 14̂**"),
             "caveat": ("3 블록 관측 · **일반 정리 주장 아님**(자기고리 ⟹ 비균질의 기전은 "
                        "무주장)"),
+        }
+
+        # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────
+        R["L_four_blocks"] = (
+            [B7["dim_basic_algebra"], B6["dim_basic_algebra"],
+             BP["dim_basic_algebra"], sum(HOM3.values())] == [18, 34, 19, 36])
+        R["L_two_obstructions"] = (
+            B7["homogeneous_certified"] and B6["homogeneous_certified"]
+            and not BP["homogeneous_certified"]
+            and endF3["6t"] == 2)
+        out["L_four_block_synthesis"] = {
+            "table": {
+                "A7_p2_nonprincipal": {"field": "𝔽₂(분해체)", "vertices": 3,
+                                       "arrows": 4, "dim_A": 18,
+                                       "presentation": "kQ/I 완전(균질)"},
+                "A6_p2_principal": {"field": "𝔽₂(분해체)", "vertices": 3,
+                                    "arrows": 4, "dim_A": 34,
+                                    "presentation": "kQ/I 완전(균질)"},
+                "A7_p2_principal": {"field": "𝔽₂(분해체)", "vertices": 3,
+                                    "arrows": 5, "dim_A": 19,
+                                    "presentation": "kQ/I 완전(★비균질 강제)"},
+                "A6_p3_principal": {"field": "★𝔽₃ 는 분해체 아님 / GF(9) 위 4 정점",
+                                    "vertices": "3(𝔽₃) → 4(GF(9))",
+                                    "arrows": "★8(이중화살 포함)", "dim_A": 36,
+                                    "presentation": "★퀴버까지 · 관계식 정직 유보"}},
+            "headline": ("★★**제시를 막는 이유가 두 종류**임이 드러났다 — "
+                         "①**자기고리**(A₇ 주블록): 분해체인데도 **균질 제시가 없다**"
+                         "(γ² = 길이-4 경로) · ②**비분해체**(A₆ p=3): 𝔽₃ 위에서는 "
+                         "**퀴버 자체가 성립하지 않고**(End(6̃)=GF(9) ⟹ species) "
+                         "GF(9) 로 올라가야 4 정점 8 화살의 퀴버가 나온다. "
+                         "★두 장애는 **독립**이다(A₇ 주블록은 분해체·A₆ p=3 은 자기고리 없음)"),
+            "caveat": "4 블록 관측 · 일반 정리 무주장",
         }
     ok = bool(all(R.values()))
     out["checks"] = R

@@ -1478,6 +1478,479 @@
       }
     }
   },
+  "J_A6_p3_over_F3": {
+    "arrow_multiplicities": {
+      "1": [
+        0,
+        2,
+        0
+      ],
+      "4": [
+        2,
+        0,
+        1
+      ],
+      "6t": [
+        0,
+        2,
+        0
+      ]
+    },
+    "carriers": {
+      "C5": {
+        "frobenius_m_S": {
+          "1": 1,
+          "4": 0,
+          "6t": 1
+        },
+        "hecke_dim": 16,
+        "index": 72,
+        "order": 5,
+        "parts": [
+          9,
+          27,
+          36
+        ],
+        "projective": true
+      },
+      "Syl2": {
+        "frobenius_m_S": {
+          "1": 1,
+          "4": 0,
+          "6t": 0
+        },
+        "hecke_dim": 9,
+        "index": 45,
+        "order": 8,
+        "parts": [
+          9,
+          9,
+          27
+        ],
+        "projective": true
+      },
+      "V4": {
+        "frobenius_m_S": {
+          "1": 1,
+          "4": 1,
+          "6t": 0
+        },
+        "hecke_dim": 27,
+        "index": 90,
+        "order": 4,
+        "parts": [
+          9,
+          9,
+          9,
+          27,
+          36
+        ],
+        "projective": true
+      }
+    },
+    "cartan_via_hom": [
+      [
+        5,
+        4,
+        2
+      ],
+      [
+        4,
+        5,
+        4
+      ],
+      [
+        2,
+        4,
+        6
+      ]
+    ],
+    "dim_basic_algebra": 36,
+    "end_dims": {
+      "1": 1,
+      "4": 1,
+      "6t": 2
+    },
+    "ext2_matrix": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        3,
+        0
+      ],
+      [
+        2,
+        0,
+        1
+      ]
+    ],
+    "loewy_layers": {
+      "1": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          3,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "4": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "6t": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ]
+      ]
+    },
+    "loewy_note": "★**A₆ p=3 Loewy 급수 최초 산출** — 전부 LL=5·회문 · 층 다중도는 𝔽₃-Hom 차원(6̃ 성분은 실제 다중도의 2배)",
+    "note": "★★**𝔽₃ 는 A₆ p=3 주블록의 분해체가 아니다** — 3·3′ 이 융합해 **6̃ = Λ²(4)** 하나가 되고 **End(6̃) 의 𝔽₃-차원 = 2 ⟹ GF(9)** · 따라서 화살이 **GF(9)-이중가군**이라 `B ≅ kQ/I`(퀴버+관계식) 틀이 그대로 적용되지 않는다 — **modulated quiver(species)** 가 필요. ★서명: **4→6̃ 다중도 2 vs 6̃→4 다중도 1**(분해체 위라면 대칭)",
+    "omega2": {
+      "1": {
+        "Omega2_dim": 46,
+        "P1_dim": 72,
+        "P1_mult": {
+          "1": 0,
+          "4": 2,
+          "6t": 0
+        },
+        "head": [
+          1,
+          0,
+          1
+        ],
+        "image_dim": 26,
+        "rad_dim": 26
+      },
+      "4": {
+        "Omega2_dim": 58,
+        "P1_dim": 90,
+        "P1_mult": {
+          "1": 2,
+          "4": 0,
+          "6t": 1
+        },
+        "head": [
+          0,
+          3,
+          0
+        ],
+        "image_dim": 32,
+        "rad_dim": 32
+      },
+      "6t": {
+        "Omega2_dim": 42,
+        "P1_dim": 72,
+        "P1_mult": {
+          "1": 0,
+          "4": 2,
+          "6t": 0
+        },
+        "head": [
+          2,
+          0,
+          1
+        ],
+        "image_dim": 30,
+        "rad_dim": 30
+      }
+    }
+  },
+  "K_A6_p3_over_GF9": {
+    "arrow_multiplicities": {
+      "1": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "3": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "3b": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "4": [
+        2,
+        0,
+        1,
+        1
+      ]
+    },
+    "cartan": [
+      [
+        5,
+        4,
+        1,
+        1
+      ],
+      [
+        4,
+        5,
+        2,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        2
+      ]
+    ],
+    "loewy_layers": {
+      "1": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "3": [
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "3b": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "4": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    "method": "★**J(=√−1)를 추가 생성원**으로 넣어 GF(9)-가군을 (𝔽₃-가군, J) 로 실현화 — Hom_{GF(9)} = J 와 가환하는 Hom_{𝔽₃} 이므로 **기존 파이프라인이 그대로 재사용**되고 모든 차원이 2배로 나온다. 1̂₉·4₉ = ⊗GF(9)(J = I⊗j₂) · 3·3′ = **같은 6̃ 에 J₆ 와 −J₆**(J₆ ∈ End 는 J²=−I 로 탐색)",
+    "not_yet": "★**관계식(Ext²)은 정직 유보** — GF(9) PIM 사이의 Hom 은 dim_{𝔽₃} 최대 72×72 = 5184 계의 GF(3) 커널 16 쌍이라 규모 밖(𝔽₃ 축의 Ext² 는 산출·GF(9) 분해는 미확정)",
+    "note": "★**분해체 위 Cartan·Loewy·퀴버(화살 8개·이중화살 1̂↔4) 완전 재유도** — 3·3′ 은 **4 하고만** 연결되고 Frobenius σ 로 서로 교환된다",
+    "pim_dims_gf9": {
+      "1": 27,
+      "3": 18,
+      "3b": 18,
+      "4": 36
+    }
+  },
+  "L_four_block_synthesis": {
+    "caveat": "4 블록 관측 · 일반 정리 무주장",
+    "headline": "★★**제시를 막는 이유가 두 종류**임이 드러났다 — ①**자기고리**(A₇ 주블록): 분해체인데도 **균질 제시가 없다**(γ² = 길이-4 경로) · ②**비분해체**(A₆ p=3): 𝔽₃ 위에서는 **퀴버 자체가 성립하지 않고**(End(6̃)=GF(9) ⟹ species) GF(9) 로 올라가야 4 정점 8 화살의 퀴버가 나온다. ★두 장애는 **독립**이다(A₇ 주블록은 분해체·A₆ p=3 은 자기고리 없음)",
+    "table": {
+      "A6_p2_principal": {
+        "arrows": 4,
+        "dim_A": 34,
+        "field": "𝔽₂(분해체)",
+        "presentation": "kQ/I 완전(균질)",
+        "vertices": 3
+      },
+      "A6_p3_principal": {
+        "arrows": "★8(이중화살 포함)",
+        "dim_A": 36,
+        "field": "★𝔽₃ 는 분해체 아님 / GF(9) 위 4 정점",
+        "presentation": "★퀴버까지 · 관계식 정직 유보",
+        "vertices": "3(𝔽₃) → 4(GF(9))"
+      },
+      "A7_p2_nonprincipal": {
+        "arrows": 4,
+        "dim_A": 18,
+        "field": "𝔽₂(분해체)",
+        "presentation": "kQ/I 완전(균질)",
+        "vertices": 3
+      },
+      "A7_p2_principal": {
+        "arrows": 5,
+        "dim_A": 19,
+        "field": "𝔽₂(분해체)",
+        "presentation": "kQ/I 완전(★비균질 강제)",
+        "vertices": 3
+      }
+    }
+  },
   "_note": "블록 대수의 완전 제시 B ≅ kQ/I — 화살(Ext¹) 다음 층인 관계식(Ext²). 관측·seal 아님·module 0·root 불변.",
   "_schema": "quiver-relations/v1",
   "all_ok": true,
@@ -1549,6 +2022,34 @@
     "I_homogeneous_iff_no_selfloop": true,
     "I_relation_counts": true,
     "I_selfloop_only_in_principal": true,
+    "J_A6p3_all_three_pims": true,
+    "J_A6p3_arrow_asymmetry": true,
+    "J_A6p3_block_279": true,
+    "J_A6p3_carriers_projective": true,
+    "J_A6p3_cartan_via_hom": true,
+    "J_A6p3_cover_exact": true,
+    "J_A6p3_dim_basic_36": true,
+    "J_A6p3_double_arrow": true,
+    "J_A6p3_end_dims": true,
+    "J_A6p3_ext2_asymmetric": true,
+    "J_A6p3_ext2_total_8": true,
+    "J_A6p3_layers_sum_to_cartan": true,
+    "J_A6p3_loewy_length_5": true,
+    "J_A6p3_palindromic": true,
+    "K_3_and_3b_not_isomorphic": true,
+    "K_3_only_meets_4": true,
+    "K_all_absolutely_irreducible": true,
+    "K_block_dim_279": true,
+    "K_cartan_recovered": true,
+    "K_double_arrow_1_4": true,
+    "K_eight_arrows": true,
+    "K_frobenius_sigma_symmetry": true,
+    "K_gf9_structure_found": true,
+    "K_loewy_length_5": true,
+    "K_pim_dims_over_gf9": true,
+    "K_sum_cartan_36": true,
+    "L_four_blocks": true,
+    "L_two_obstructions": true,
     "setup_A6_360": true,
     "setup_A7_2520": true
   },
