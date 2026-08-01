@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """블록 대수의 **완전 제시** B ≅ kQ/I — 화살(Ext¹) 다음 층인 **관계식**(Ext²).
 
-관측 12축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
+관측 13축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
   A  A₇ p=2 **비주블록 기본대수** A = ⊕_{i,j} Hom_G(P_i,P_j) — dim A = Σ C_{ij} = 18
      (블록 차원 432 를 다루지 않는다) · ★Cartan 를 **Hom 차원으로 제4 재유도** ·
      rad 여과 rad^n 차원열 · ★graded 차원 = **Loewy 층 수와 일치**(게이트)
@@ -25,6 +25,8 @@
      ★**A₆ p=3 Loewy 급수 최초 산출**(전부 LL=5·회문) · dim A = 36 · Ext²(리프트-무관)
   K  ★★**GF(9) 로 올라간다** — J(=√−1)를 **추가 생성원**으로 넣어 실현화하면 기존
      파이프라인이 그대로 돈다 · 4 정점·**화살 8개(이중화살 1̂↔4)**·Cartan·Loewy 완전 재유도
+  M  ★★A₆ p=3 **GF(9) 관계식** — ★**규모를 구조로 환원**(5184 계 16 쌍 → 𝔽₃ Hom 텐서 조립
+     + J-가환 조건) · **관계식 10개**·Ext² 4×4 · ★**대수/descent 두 경로 일치**
   L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
@@ -41,8 +43,8 @@
   · A₇ **주블록**의 H¹ 경로는 **부분만**(1̂ 열) — m = dim ΩS_i·dim S_j 가 최대 1420
     (비주블록은 204)이라 `ext1_pair_lean` 의 m×m 캐시가 규모 밖. 총 개수는 head(Ω²) 와
     리프트-무관 최소생성 **두 경로가 이미 대조**한다.
-  · A₆ p=3 의 **GF(9) 관계식은 정직 유보** — GF(9) PIM 사이의 Hom 이 dim_{𝔽₃} 최대
-    72×72 = 5184 계 16 쌍이라 규모 밖(퀴버까지는 완전 재유도·𝔽₃ 축 Ext² 는 산출).
+  · A₆ p=3 GF(9) 관계식의 **개수·Ext² 는 확정**했으나 **명시 형태는 유보** — 이중화살
+    블록의 리프트 공간이 GL₂(GF(9)) 궤도라 전수 불가(개수는 리프트 무관 불변량).
   · 대수가 **동형이 아님**은 dim 이 다름으로 즉시 따르나, 어떤 분류표의 이름인지는
     **주장하지 않는다**(외부 분류 인용 없음). "자기고리 ⟹ 비균질"의 **기전도 무주장**.
 """
@@ -88,6 +90,26 @@ def hom_space_fast(actA, actB, dA, dB, gens, p):
             T[:, c, :, c] ^= B                   # − kron(B, I_dA)  (GF(2) ⟹ XOR)
         rows[t * m:(t + 1) * m] = T.reshape(m, m)
     return [v.reshape(dB, dA) % 2 for v in nullspace_gf2(rows)]
+
+
+def rref_insert(B, piv, v, p):
+    """RREF 기저 B(pivot 목록 piv)에 v 를 축약해 넣는다 — 독립이면 (True, B′, piv′).
+    매번 전체 RREF 를 다시 돌리는 대신 **증분**으로 유지한다(선택 결과는 동일)."""
+    w = v % p
+    for i, c in enumerate(piv):
+        if w[c]:
+            w = (w - int(w[c]) * B[i]) % p
+    nz = np.nonzero(w)[0]
+    if not len(nz):
+        return False, B, piv
+    c0 = int(nz[0])
+    w = (w * pow(int(w[c0]), p - 2, p)) % p
+    if len(B):
+        B = (B - np.outer(B[:, c0], w)) % p
+        B = np.vstack([B, w[None, :]])
+    else:
+        B = w[None, :].copy()
+    return True, B, piv + [c0]
 
 
 def hom_space_iter(actA, actB, dA, dB, gens, p):
@@ -285,7 +307,9 @@ def build_paths(names, DP, arrows, maxd, p):
 
 
 def ker_deg(pl, info, n, p):
-    """차수 n 경로들 중 A 에서 0 이 되는 조합(균질 관계식 후보)."""
+    """차수 n 경로들 중 A 에서 0 이 되는 조합(균질 관계식 후보).
+    ★계수를 집합(0/1)으로 다루므로 **p=2 전용** — 호출부(`minimal_relations`·
+    `ideal_rows`)도 마찬가지다. p>2 는 계수를 나르는 `minimal_generators_filtered` 사용."""
     out, grp = [], {}
     for key in pl[n]:
         s, t, _M = info[key]
@@ -346,62 +370,74 @@ def minimal_relations(pl, info, maxd, p):
     return gens, per_deg
 
 
-def minimal_generators_filtered(names, pl, info, arrows, maxd, p):
+def minimal_generators_filtered(names, pl, info, arrows, maxd, p, scal=None):
     """★**비균질 관계식까지** 다루는 최소 생성원 — kQ/J^maxd 안에서 I 와 J·I + I·J 를 직접.
 
     균질 제시가 존재하지 않는 블록(자기고리 등)에서는 차수별 커널만으로는 I 를 못 만든다.
     rad^{maxd−1} A = 0 이면 J^{maxd−1} ⊆ I 이고 J^maxd ⊆ J·I 이므로 **절단이 정확**하다.
     또 J·I = span{α·y : α 화살, y ∈ I}(I 가 양쪽 이데알이므로) — 화살만으로 충분.
-    ★생성원 **개수는 리프트 선택과 무관한 불변량**(= Σ dim Ext²)."""
+    ★생성원 **개수는 리프트 선택과 무관한 불변량**(= Σ dim Ext²).
+
+    ★`scal`(정점→스칼라 작용 행렬 J, J²=−1)을 주면 **계수를 GF(p²)로** 센다 —
+    경로마다 {M, J∘M} 두 열을 두면 소체 계산이 큰 체의 커널을 주고 차원은 2배로 나온다
+    (화살이 큰 체 위 선형이라 α∘(J∘x) = J∘(α∘x) 로 마커가 보존된다).
+    미지정이면 기존 동작 그대로."""
+    eps = (0, 1) if scal is not None else (0,)
     keys = [k for n in range(maxd) for k in pl[n]]
-    grp = {}
+    grp, mat = {}, {}
     for k in keys:
-        s, t, _M = info[k]
-        grp.setdefault((s, t), []).append(k)
+        s, t, M = info[k]
+        for e in eps:
+            grp.setdefault((s, t), []).append((k, e))
+            mat[(k, e)] = M if e == 0 else (scal[t] @ M) % p
     idx = {st: {k: i for i, k in enumerate(kk)} for st, kk in grp.items()}
     K = {}
     for st, kk in grp.items():
-        M = np.array([info[k][2].reshape(-1) % p for k in kk], dtype=np.int64)
+        M = np.array([mat[k].reshape(-1) % p for k in kk], dtype=np.int64)
         K[st] = [c % p for c in nullspace(M.T % p, p)]
     JK = {st: [] for st in grp}
     for st, kk in grp.items():
         s, t = st
         for c in K[st]:
-            terms = [kk[i] for i in range(len(kk)) if c[i]]
+            # ★계수를 그대로 나른다(p>2 에서 필수 — 0/1 로 뭉개면 틀린다)
+            terms = [(kk[i], int(c[i]) % p) for i in range(len(kk)) if c[i]]
             for ai, a in enumerate(arrows):
                 cand = []
                 if a[0] == t:                       # α 를 뒤에 — α∘x
                     cand.append(((s, a[1]),
-                                 [(pt + (ai,), ps) for (pt, ps) in terms]))
+                                 [(((pt + (ai,), ps), e), q)
+                                  for (((pt, ps), e), q) in terms]))
                 if a[1] == s:                       # α 를 앞에 — x∘α
                     cand.append(((a[0], t),
-                                 [((ai,) + pt, a[0]) for (pt, _ps) in terms]))
+                                 [((((ai,) + pt, a[0]), e), q)
+                                  for (((pt, _ps), e), q) in terms]))
                 for st2, newk in cand:
                     if st2 not in grp:
                         continue
                     v = np.zeros(len(grp[st2]), dtype=np.int64)
                     hit = False
-                    for nk in newk:
-                        if len(nk[0]) < maxd:       # J^maxd 는 0 (절단)
-                            v[idx[st2][nk]] ^= 1
+                    for nk, q in newk:
+                        if len(nk[0][0]) < maxd:    # J^maxd 는 0 (절단)
+                            v[idx[st2][nk]] = (v[idx[st2][nk]] + q) % p
                             hit = True
                     if hit:
                         JK[st2].append(v)
     counts, reps = {}, {}
     for st, kk in grp.items():
-        rows = (np.array(JK[st], dtype=np.int64) if JK[st]
-                else np.zeros((0, len(kk)), dtype=np.int64))
-        Cur = rows.copy()
-        rk = len(rref_rows(Cur.copy(), p)[0]) if len(Cur) else 0
+        B = np.zeros((0, len(kk)), dtype=np.int64)
+        piv = []
+        for v in JK[st]:
+            _ok, B, piv = rref_insert(B, piv, v, p)
         picked = []
         for c in K[st]:
-            st_ = np.vstack([Cur, c[None, :]]) if len(Cur) else c[None, :]
-            nrk = len(rref_rows(st_.copy(), p)[0])
-            if nrk > rk:
-                picked.append(sorted(tuple(kk[i][0]) for i in range(len(kk)) if c[i]))
-                Cur, rk = st_, nrk
+            ok, B, piv = rref_insert(B, piv, c, p)
+            if ok:
+                picked.append(sorted(
+                    (tuple(kk[i][0][0]), kk[i][1], int(c[i]) % p)
+                    if scal is not None else tuple(kk[i][0][0])
+                    for i in range(len(kk)) if c[i]))
         if picked:
-            counts[st] = len(picked)
+            counts[st] = len(picked) // (2 if scal is not None else 1)
             reps[st] = picked
     return counts, reps, {st: len(v) for st, v in K.items()}
 
@@ -1008,9 +1044,10 @@ def main():
         R["J_A6p3_carriers_projective"] = all(v["projective"]
                                               for v in carr3.values())
         lo3 = {k: loewy_series(PIM3[k], DIMP3[k], A6G, sim33, 3) for k in N33}
-        HOM3 = {(i, j): len(hom_space_iter(PIM3[i], PIM3[j], DIMP3[i],
-                                           DIMP3[j], A6G, 3))
-                for i in N33 for j in N33}
+        HOM3B = {(i, j): hom_space_iter(PIM3[i], PIM3[j], DIMP3[i],
+                                        DIMP3[j], A6G, 3)
+                 for i in N33 for j in N33}
+        HOM3 = {k: len(v) for k, v in HOM3B.items()}
         cart3 = [[HOM3[(i, j)] for j in N33] for i in N33]
         # ★기본대수 차원 = 분해체 위 Σ C = 36 (A^{𝔽₃} ⊗ GF(9) ≅ A^{GF(9)})
         R["J_A6p3_dim_basic_36"] = (sum(HOM3.values()) == 36)
@@ -1191,6 +1228,186 @@ def main():
                          "나타나고 그 자리가 정확히 **자기고리 정점 14̂**"),
             "caveat": ("3 블록 관측 · **일반 정리 주장 아님**(자기고리 ⟹ 비균질의 기전은 "
                        "무주장)"),
+        }
+
+        # ── M. ★★GF(9) 관계식 — 5184 계를 𝔽₃ Hom **조립**으로 환원 ────────
+        UND9 = {"1": ("1", 2), "4": ("4", 2), "3": ("6t", 1), "3b": ("6t", 1)}
+        JA9 = {"1": np.kron(np.eye(DIMP3["1"], dtype=np.int64), j2) % 3,
+               "4": np.kron(np.eye(DIMP3["4"], dtype=np.int64), j2) % 3,
+               "3": JP6 % 3, "3b": (-JP6) % 3}
+
+        def assemble_hom9(a, b):
+            """★Hom_{GF(9)}(P_a,P_b) = {φ ∈ Hom_{𝔽₃G}(밑,밑) : φ∘J_a = J_b∘φ} —
+            밑가군이 **이미 가진 𝔽₃ PIM 의 직합**이라 `Hom(P_i,P_j) ⊗ Hom(V_a,V_b)`
+            텐서 조립이면 되고, 계수공간이 ≤ 24 차원이라 5184 계를 안 푼다."""
+            i, va = UND9[a]
+            j, vb = UND9[b]
+            base = []
+            for phi in HOM3B[(i, j)]:
+                for r in range(vb):
+                    for c in range(va):
+                        E = np.zeros((vb, va), dtype=np.int64)
+                        E[r, c] = 1
+                        base.append(np.kron(phi % 3, E) % 3)
+            rows = np.array([((M @ JA9[a] - JA9[b] @ M) % 3).reshape(-1)
+                             for M in base], dtype=np.int64)
+            out = []
+            for cvec in nullspace(rows.T % 3, 3):
+                M = np.zeros(base[0].shape, dtype=np.int64)
+                for t, ct in enumerate(cvec):
+                    if ct:
+                        M = (M + ct * base[t]) % 3
+                out.append(M)
+            return out
+
+        HOM9 = {(a, b): assemble_hom9(a, b) for a in N9 for b in N9}
+        dim9 = [[len(HOM9[(a, b)]) // 2 for b in N9] for a in N9]
+        # ★조립 검증 게이트: dim_{GF9} Hom(P_a,P_b) = C_{ab}
+        R["M_assembly_matches_cartan"] = (dim9 == cart9)
+        R["M_all_even_over_F3"] = all(len(v) % 2 == 0 for v in HOM9.values())
+        R["M_dim_basic_36"] = (sum(sum(r) for r in dim9) == 36)
+        # 독립 교차검증: 작은 쌍 하나는 **직접** Hom 으로도 계산해 대조
+        R["M_direct_check"] = (
+            len(hom_space_iter(P9["3"], P9["3b"], DP9["3"], DP9["3b"], G9, 3))
+            == len(HOM9[("3", "3b")]))
+        PROJ9 = {k: quot_proj(nullspace(np.concatenate(
+            [h for (_n, aS, dS) in sim9
+             for h in hom_space_iter(P9[k], aS, DP9[k], dS, G9, 3)], axis=0) % 3,
+            3), DP9[k], 3)[0] for k in N9}
+
+        def rad_block9(a, b):
+            B = HOM9[(a, b)]
+            rows = np.array([((PROJ9[b] @ m) % 3).reshape(-1) for m in B],
+                            dtype=np.int64)
+            out = []
+            for c in nullspace(rows.T % 3, 3):
+                M = np.zeros(B[0].shape, dtype=np.int64)
+                for t, ct in enumerate(c):
+                    if ct:
+                        M = (M + ct * B[t]) % 3
+                out.append(M)
+            return out
+
+        RAD9 = {(a, b): rad_block9(a, b) for a in N9 for b in N9}
+        pw9, cur9 = [], RAD9
+        for _ in range(20):
+            pw9.append({k: list(v) for k, v in cur9.items()})
+            if sum(len(v) for v in cur9.values()) == 0:
+                break
+            nx9 = {}
+            for a in N9:
+                for b in N9:
+                    nx9[(a, b)] = span_basis(
+                        [(y @ x) % 3 for m in N9 for x in cur9[(a, m)]
+                         for y in RAD9[(m, b)]], DP9[a], DP9[b], 3)
+            cur9 = nx9
+        radp9 = [sum(len(v) for v in w.values()) // 2 for w in pw9]
+        grad9 = [36 - radp9[0]] + [radp9[t] - radp9[t + 1]
+                                   for t in range(len(radp9) - 1)]
+        R["M_rad_powers"] = (radp9 == [32, 24, 12, 4, 0])
+        R["M_graded_matches_loewy"] = (
+            grad9 == [sum(sum(lo9[k][n]) for k in N9)
+                      for n in range(len(lo9["1"]))])
+        # ★화살 = rad/rad² 의 **GF(9)-기저**(J-배수까지 함께 소거)
+        ARR9 = []
+        for a in N9:
+            for b in N9:
+                r1, r2 = pw9[0][(a, b)], pw9[1][(a, b)]
+                if len(r1) == len(r2):
+                    continue
+                Bm = np.zeros((0, DP9[a] * DP9[b]), dtype=np.int64)
+                pv = []
+                for m in r2:
+                    _o, Bm, pv = rref_insert(Bm, pv, m.reshape(-1) % 3, 3)
+                for m in r1:
+                    ok, Bm, pv = rref_insert(Bm, pv, m.reshape(-1) % 3, 3)
+                    if ok:
+                        _o2, Bm, pv = rref_insert(
+                            Bm, pv, ((JA9[b] @ m) % 3).reshape(-1), 3)
+                        ARR9.append((a, b, m % 3))
+        R["M_eight_arrows_match_quiver"] = (
+            len(ARR9) == 8
+            and sorted((x[0], x[1]) for x in ARR9)
+            == [("1", "4"), ("1", "4"), ("3", "4"), ("3b", "4"),
+                ("4", "1"), ("4", "1"), ("4", "3"), ("4", "3b")])
+        maxd9 = 6
+        pl9, info9 = build_paths(N9, DP9, ARR9, maxd9, 3)
+        img9 = 0
+        acc9 = {}
+        for n in range(5):
+            for key in pl9[n]:
+                s_, t_, M = info9[key]
+                acc9.setdefault((s_, t_), []).append(M)
+                acc9[(s_, t_)].append((JA9[t_] @ M) % 3)   # ★GF(9)-배수 포함
+        for a in N9:
+            for b in N9:
+                img9 += len(span_basis(acc9.get((a, b), []), DP9[a], DP9[b],
+                                       3)) // 2
+        # ★전사 ⟹ dim (kQ/J^maxd)/I = 36 = Σ C (제시의 완전성 인증)
+        R["M_surjective_dim_36"] = (img9 == 36)
+        cnt9, rep9, _k9 = minimal_generators_filtered(N9, pl9, info9, ARR9,
+                                                      maxd9, 3, scal=JA9)
+        E29 = [[cnt9.get((N9[j], N9[i]), 0) for j in range(4)] for i in range(4)]
+        R["M_ext2_total_10"] = (sum(sum(r) for r in E29) == 10
+                                == sum(cnt9.values()))
+        R["M_ext2_matrix"] = (E29 == [[1, 0, 1, 1], [0, 3, 0, 0],
+                                      [1, 0, 1, 0], [1, 0, 0, 1]])
+        # ★독립 제2 경로 = 𝔽₃ Ext² 의 descent(한 칸 빼고 전부 결정)
+        i1, i4, i6 = N33.index("1"), N33.index("4"), N33.index("6t")
+        desc = [[ext2_3["1"][i1], ext2_3["1"][i4],
+                 ext2_3["1"][i6], ext2_3["1"][i6]],
+                [ext2_3["4"][i1], ext2_3["4"][i4],
+                 ext2_3["4"][i6], ext2_3["4"][i6]],
+                [ext2_3["6t"][i1] // 2, ext2_3["6t"][i4] // 2, None, None],
+                [ext2_3["6t"][i1] // 2, ext2_3["6t"][i4] // 2, None, None]]
+        R["M_descent_agrees"] = all(
+            desc[i][j] is None or desc[i][j] == E29[i][j]
+            for i in range(4) for j in range(4))
+        # descent 가 남긴 자유도 x+y=1 을 대수 쪽이 결정한다
+        R["M_descent_residual_resolved"] = (
+            E29[2][2] + E29[2][3] == ext2_3["6t"][i6]
+            and (E29[2][2], E29[2][3]) == (1, 0))
+        R["M_sigma_symmetry_ext2"] = (
+            E29[2] == [E29[3][t] for t in (0, 1, 3, 2)])
+        R["M_double_arrow_gives_mult3"] = (E29[1][1] == 3)
+        degs9 = sorted(len(x[0]) for v in rep9.values() for g in v for x in g)
+        dset9 = {f"{k[0]}->{k[1]}": [sorted({len(x[0]) for x in g}) for g in v]
+                 for k, v in sorted(rep9.items())}
+        # ★이 리프트 선택에서는 **비균질**(차수 2 와 4 를 섞는 생성원이 있다).
+        #   균질 제시의 존재 여부는 이중화살 때문에 리프트 전수가 불가 ⟹ **미결**.
+        R["M_inhomogeneous_at_chosen_lift"] = (
+            not all(len(d) == 1 for v in dset9.values() for d in v))
+        out["M_A6_p3_GF9_relations"] = {
+            "method": ("★**규모를 구조로 환원** — GF(9) PIM 의 𝔽₃G-밑가군이 이미 가진 "
+                       "𝔽₃ PIM 의 직합(P(1̂₉)|=P(1̂)²·P(4₉)|=P(4)²·P(3)|≅P(6̃))이므로 "
+                       "`Hom_{GF9}(P_a,P_b) = {φ ∈ Hom_{𝔽₃G} : φ∘J_a = J_b∘φ}` 을 "
+                       "**𝔽₃ Hom 블록의 텐서 조립 + J-가환 조건**으로 얻는다 — "
+                       "dim 5184 계 16 쌍 대신 **≤24 차원 계수공간**"),
+            "hom_dims_gf9": dim9, "rad_powers": radp9, "graded": grad9,
+            "arrows": [[x[0], x[1]] for x in ARR9],
+            "image_dim": img9,
+            "relations": {f"{k[0]}->{k[1]}": v for k, v in sorted(cnt9.items())},
+            "n_relations": sum(cnt9.values()),
+            "relation_degrees": degs9,
+            "ext2_matrix": E29,
+            "ext2_via_descent": [[x for x in r] for r in desc],
+            "note": ("★★**관계식 10개**·**Ext² = [[1,0,1,1],[0,3,0,0],[1,0,1,0],"
+                     "[1,0,0,1]]** — ★**이중화살이 Ext²(4,4)=3 다중도 3**을 만든다 · "
+                     "★**두 독립 경로 일치**(대수 쪽 최소생성 / 𝔽₃ Ext² 의 descent)이고 "
+                     "descent 가 남긴 자유도 **x+y=1 을 대수 쪽이 (1,0) 으로 결정** — "
+                     "즉 **Ext²(3,3)=1 · Ext²(3,3′)=0** · Frobenius σ 대칭 실측"),
+            "found_bug": ("★계수를 0/1 로 뭉개던 `minimal_generators_filtered`(p=2 전용 "
+                          "XOR)를 **계수를 나르도록 수정** — p=3 에서 관계식 18개(오답)가 "
+                          "10개로 정정됐다. p=2 산출물은 계수가 항상 1 이라 불변"),
+            "generator_degree_sets": dset9,
+            "homogeneity": ("★**이 리프트 선택에서는 비균질**(차수 2·4 를 섞는 생성원 존재). "
+                            "A₇ 주블록과 달리 **균질 제시의 존재 여부는 미결** — 이중화살 "
+                            "블록의 리프트 공간이 GL₂(GF(9)) 궤도라 **전수가 불가**하기 "
+                            "때문(부재 주장은 전수로만 할 수 있다)"),
+            "not_yet": ("관계식의 **명시 형태**와 **균질 제시 존재 여부** — 리프트 공간이 "
+                        "GL₂(GF(9)) 궤도라 전수 불가([[presentation-vs-invariant]] 규율: "
+                        "**개수는 불변량이라 확정**하고 형태는 유보). 대표원은 sidecar 에 "
+                        "선택 의존으로 기록"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────
