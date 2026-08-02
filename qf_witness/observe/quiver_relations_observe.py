@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """블록 대수의 **완전 제시** B ≅ kQ/I — 화살(Ext¹) 다음 층인 **관계식**(Ext²).
 
-관측 14축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
+관측 15축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
   A  A₇ p=2 **비주블록 기본대수** A = ⊕_{i,j} Hom_G(P_i,P_j) — dim A = Σ C_{ij} = 18
      (블록 차원 432 를 다루지 않는다) · ★Cartan 를 **Hom 차원으로 제4 재유도** ·
      rad 여과 rad^n 차원열 · ★graded 차원 = **Loewy 층 수와 일치**(게이트)
@@ -29,6 +29,8 @@
      + J-가환 조건) · **관계식 10개**·Ext² 4×4 · ★**대수/descent 두 경로 일치**
   N  ★GF(9) Ext² **제3 경로** — `greedy_cover` 로 head(Ω²) **4 행 전부** ·
      ★1̂₉·4₉ 는 **Ω¹ 도 조립으로 올려** 4608 계 회피 · M축·descent 와 삼중 일치
+  O  ★★**Hochschild 층** — `HH⁰ = Z(A)`·`HH¹ = Der/Inn` 4 블록 · `Σ_B dim Z(B) = |켤레류|` 게이트 ·
+     ★**HH^* 는 유도불변량** ⟹ v22 §4 **Q3 판정**(퀴버 같고 dim 다른 두 블록)
   L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
@@ -92,6 +94,95 @@ def hom_space_fast(actA, actB, dA, dB, gens, p):
             T[:, c, :, c] ^= B                   # − kron(B, I_dA)  (GF(2) ⟹ XOR)
         rows[t * m:(t + 1) * m] = T.reshape(m, m)
     return [v.reshape(dB, dA) % 2 for v in nullspace_gf2(rows)]
+
+
+def conj_classes(ordG, gens, mulf, idp):
+    """켤레류 개수 — 생성원 켤레만으로 궤도 BFS(‖Z(kG)‖ = |켤레류|, 체 무관)."""
+    inv = {}
+    for x in ordG:
+        for y in ordG:
+            if mulf(x, y) == idp:
+                inv[x] = y
+                break
+    seen, cnt = set(), 0
+    for g in ordG:
+        if g in seen:
+            continue
+        cnt += 1
+        fr = [g]
+        seen.add(g)
+        while fr:
+            nf = []
+            for x in fr:
+                for t in gens:
+                    y = mulf(mulf(t, x), inv[t])
+                    if y not in seen:
+                        seen.add(y)
+                        nf.append(y)
+            fr = nf
+    return cnt
+
+
+def algebra_table(names, HOM, d, p):
+    """기본대수의 **RREF 정규 기저 + 구조상수** — 곱 = 준동형 합성.
+    좌표는 pivot 읽기로 얻는다(각 블록 기저가 RREF 이므로 변환행렬 불필요)."""
+    B, PIV, OFF, meta, pos = {}, {}, {}, [], 0
+    for i in names:
+        for j in names:
+            blk = HOM[(i, j)]
+            A = (np.array([m.reshape(-1) % p for m in blk], dtype=np.int64)
+                 if blk else np.zeros((0, d[i] * d[j]), dtype=np.int64))
+            R, piv = rref_rows(A.copy(), p)
+            B[(i, j)] = [r.reshape(d[j], d[i]) for r in R]
+            PIV[(i, j)] = piv
+            OFF[(i, j)] = pos
+            meta.extend([(i, j, t) for t in range(len(piv))])
+            pos += len(piv)
+    n = pos
+    MT = np.zeros((n, n, n), dtype=np.int64)
+    for u, (i, j, t) in enumerate(meta):
+        for v, (j2, l, sIdx) in enumerate(meta):
+            if j2 != j:
+                continue
+            fl = ((B[(j, l)][sIdx] @ B[(i, j)][t]) % p).reshape(-1)
+            for w, pc in enumerate(PIV[(i, l)]):
+                if fl[pc]:
+                    MT[u, v, OFF[(i, l)] + w] = int(fl[pc]) % p
+    return meta, MT, n
+
+
+def _ns(M, p):
+    return nullspace_gf2(M) if p == 2 else nullspace(M, p)
+
+
+def hochschild(MT, n, p):
+    """★HH⁰ = Z(A) · HH¹ = Der(A)/Inn(A) — 구조상수만으로.
+
+    `Der` 는 미지수 n²·방정식 n³ 이므로 **u 마다 순차 교차**(K ← nullspace(C_u·Kᵀ))로 푼다.
+    `dim Inn = dim A − dim Z(A)`(내부 미분 ad_a 의 커널이 중심)."""
+    rows = []
+    for v in range(n):
+        for w in range(n):
+            r = (MT[:, v, w] - MT[v, :, w]) % p
+            if r.any():
+                rows.append(r)
+    Z = (_ns(np.array(rows, dtype=np.int64) % p, p) if rows
+         else np.eye(n, dtype=np.int64))
+    K = np.eye(n * n, dtype=np.int64)
+    for u in range(n):
+        rr = []
+        for v in range(n):
+            for w in range(n):
+                E = np.zeros((n, n), dtype=np.int64)
+                E[:, w] = (E[:, w] + MT[u, v, :]) % p
+                E[u, :] = (E[u, :] - MT[:, v, w]) % p
+                E[v, :] = (E[v, :] - MT[u, :, w]) % p
+                rr.append(E.reshape(-1) % p)
+        N = _ns((np.array(rr, dtype=np.int64) % p @ K.T) % p, p)
+        K = (N @ K) % p if len(N) else N
+        if len(K) == 0:
+            break
+    return len(Z), len(K), n - len(Z), len(K) - (n - len(Z))
 
 
 def assemble_hom_j(baseh, va, vb, Ja, Jb, p):
@@ -616,7 +707,7 @@ def block_presentation(names, gens_g, PIM, simples, cartan, loewy_len, p,
         "omega2": om2,
         "arrow_legend": [[t, arrows[t][0], arrows[t][1]]
                          for t in range(len(arrows))],
-    }, arrows, RADP
+    }, arrows, RADP, HOM, d
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -735,7 +826,8 @@ def main():
     R["F_A6_pim_dims"] = ([len(PIM6[k][A6G[0]]) for k in N6] == [40, 24, 24])
 
     C6 = [[8, 4, 4], [4, 3, 2], [4, 2, 3]]
-    B6, _ar6, _rp6 = block_presentation(N6, A6G, PIM6, sim6, C6, 9, 2)
+    B6, _ar6, _rp6, HOM6, dP6 = block_presentation(
+        N6, A6G, PIM6, sim6, C6, 9, 2)
     R["F_A6_cartan_via_hom"] = (B6["cartan_via_hom"] == C6)
     R["F_A6_dim_basic_34"] = (B6["dim_basic_algebra"] == 34
                               == B6["cartan_sum"])
@@ -807,7 +899,8 @@ def main():
         R["A_A7_pim_dims"] = ([len(PIM7[k][A7G[0]]) for k in N7]
                               == [24, 24, 40])
         C7 = [[2, 1, 2], [1, 2, 2], [2, 2, 4]]
-        B7, arrows7, RADP7 = block_presentation(N7, A7G, PIM7, sim7, C7, 5, 2)
+        B7, arrows7, RADP7, HOM7, dP7 = block_presentation(
+            N7, A7G, PIM7, sim7, C7, 5, 2)
         R["A_A7_cartan_via_hom"] = (B7["cartan_via_hom"] == C7)
         R["A_A7_dim_basic_18"] = (B7["dim_basic_algebra"] == 18
                                   == B7["cartan_sum"])
@@ -867,8 +960,8 @@ def main():
         R["H_A7pr_pim_dims"] = ([len(PIMPr[k][A7G[0]]) for k in NPr]
                                 == [72, 64, 56])
         CPr = [[4, 2, 2], [2, 3, 1], [2, 1, 2]]
-        BP, arrPr, RADPr = block_presentation(NPr, A7G, PIMPr, simPr, CPr, 5, 2,
-                                              lift_cap=32)
+        BP, arrPr, RADPr, HOMPr, dPPr = block_presentation(
+            NPr, A7G, PIMPr, simPr, CPr, 5, 2, lift_cap=32)
         R["H_A7pr_cartan_via_hom"] = (BP["cartan_via_hom"] == CPr)
         R["H_A7pr_dim_basic_19"] = (BP["dim_basic_algebra"] == 19
                                     == BP["cartan_sum"])
@@ -1520,6 +1613,56 @@ def main():
             "significance": ("★descent 가 남긴 자유도(x+y=1)를 M축 대수 경로가 (1,0) 으로 "
                              "결정했는데, **제3 경로가 독립으로 같은 값**을 준다 · "
                              "★이제 **4×4 전 칸이 3 경로**로 확인됐다"),
+        }
+
+        # ── O. ★Hochschild 층 — HH⁰·HH¹ 4 블록(이미 가진 기본대수 위에) ──
+        ncls6 = conj_classes(ord6, A6G, mul6, id6)
+        ncls7 = conj_classes(ord7, A7G, mul7, id7)
+        R["O_conj_classes"] = (ncls6 == 7 and ncls7 == 9)
+        HH = {}
+        for key, (nm, hom, dd, pp) in {
+                "A6_p2_principal": (N6, HOM6, dP6, 2),
+                "A7_p2_nonprincipal": (N7, HOM7, dP7, 2),
+                "A7_p2_principal": (NPr, HOMPr, dPPr, 2),
+                "A6_p3_principal": (N33, HOM3B, DIMP3, 3)}.items():
+            _mt, MTb, nb = algebra_table(nm, hom, dd, pp)
+            z, der, inn, hh1 = hochschild(MTb, nb, pp)
+            HH[key] = {"dim_A": nb, "HH0": z, "dim_Der": der,
+                       "dim_Inn": inn, "HH1": hh1}
+        R["O_inn_equals_dimA_minus_center"] = all(
+            v["dim_Inn"] == v["dim_A"] - v["HH0"] for v in HH.values())
+        # ★게이트: Σ_B dim Z(B) = |켤레류| (Z(kG) 기저 = 켤레류 합 · 체 무관)
+        #   A₆ p=2 defect-0 = M₈(𝔽₄) ⟹ 중심 dim_{𝔽₂}=2 · A₆ p=3 defect-0 = M₉(𝔽₃) ⟹ 1
+        R["O_A7_center_sum_is_classes"] = (
+            HH["A7_p2_principal"]["HH0"]
+            + HH["A7_p2_nonprincipal"]["HH0"] == ncls7)
+        R["O_A6_p2_center_matches"] = (
+            HH["A6_p2_principal"]["HH0"] + 2 == ncls6)
+        R["O_A6_p3_center_matches"] = (
+            HH["A6_p3_principal"]["HH0"] + 1 == ncls6)
+        # ★v22 Q3 판정 — HH^* 는 **유도불변량**
+        a, b = HH["A6_p2_principal"], HH["A7_p2_nonprincipal"]
+        same_quiver_pair = (a["HH0"], a["HH1"]) != (b["HH0"], b["HH1"])
+        R["O_Q3_not_derived_equivalent"] = same_quiver_pair
+        out["O_hochschild"] = {
+            "conj_classes": {"A6": ncls6, "A7": ncls7},
+            "per_block": HH,
+            "method": ("★새 대상 없이 **이미 가진 기본대수**(dim 34·18·19·36)의 구조상수만으로 — "
+                       "`HH⁰ = Z(A)` · `HH¹ = Der(A)/Inn(A)`(Der 는 u 마다 순차 교차) · "
+                       "`HH^*` 는 **Morita 불변**이라 기본대수 값이 곧 블록 값. "
+                       "A₆ p=3 는 **𝔽₃ 위 36차원**(비분해체지만 Morita 동치라 무관)"),
+            "gate": ("★`Z(kG)` 의 기저 = **켤레류 합**이므로 체와 무관하게 "
+                     "`dim Z(kG) = |켤레류|` 이고 `Z(kG) = ⊕_B Z(B)` ⟹ "
+                     "**Σ_B dim Z(B) = |켤레류|**(A₆ 7 · A₇ 9) — defect-0 블록의 중심"
+                     "(𝔽₄ ⟹ 2 · 𝔽₃ ⟹ 1)을 더해 전수 대조"),
+            "Q3_verdict": ("★★**A₆ p=2 주(dim A 34)와 A₇ p=2 비주(dim A 18)는 유도동등이 아니다** — "
+                           "퀴버·관계식 개수·타입·Ext² 가 전부 같지만 **HH^* 가 다르다**"
+                           "(HH^* 는 유도불변량). v22 §4 Q3 이 요구한 "
+                           "**계산 가능한 판별식**을 우리 산출물만으로 제시한 것."
+                           if same_quiver_pair else
+                           "★**판정 불가** — HH⁰·HH¹ 이 같다. 이는 **동등을 뜻하지 않는다**"),
+            "not_claimed": ("HH² 이상 · 유도동등의 **긍정** 판정(HH 가 같아도 동등이 아닐 수 있다) · "
+                            "외부 분류표 대응"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────

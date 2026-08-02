@@ -2444,6 +2444,46 @@
     "scope": "★**4 행 전부** — 3·3′ 은 Ω¹ 이 작아 직접(m ≤ 2160) · ★1̂₉·4₉ 는 **Ω¹ 도 조립으로 올려서**(rad 는 체확대와 가환하므로 `Ω¹_{GF9}(S₉) = Ω¹_{𝔽₃}(S) ⊗ GF(9)`) `Hom(P_a,Ω¹)` 의 **4608 계를 회피** — 밑 Hom(m ≤ 1152) 텐서 조립 + J-가환. 조립은 **dim = [Ω¹ : S_a](GF(9) Loewy 에서)** 로 검증",
     "significance": "★descent 가 남긴 자유도(x+y=1)를 M축 대수 경로가 (1,0) 으로 결정했는데, **제3 경로가 독립으로 같은 값**을 준다 · ★이제 **4×4 전 칸이 3 경로**로 확인됐다"
   },
+  "O_hochschild": {
+    "Q3_verdict": "★★**A₆ p=2 주(dim A 34)와 A₇ p=2 비주(dim A 18)는 유도동등이 아니다** — 퀴버·관계식 개수·타입·Ext² 가 전부 같지만 **HH^* 가 다르다**(HH^* 는 유도불변량). v22 §4 Q3 이 요구한 **계산 가능한 판별식**을 우리 산출물만으로 제시한 것.",
+    "conj_classes": {
+      "A6": 7,
+      "A7": 9
+    },
+    "gate": "★`Z(kG)` 의 기저 = **켤레류 합**이므로 체와 무관하게 `dim Z(kG) = |켤레류|` 이고 `Z(kG) = ⊕_B Z(B)` ⟹ **Σ_B dim Z(B) = |켤레류|**(A₆ 7 · A₇ 9) — defect-0 블록의 중심(𝔽₄ ⟹ 2 · 𝔽₃ ⟹ 1)을 더해 전수 대조",
+    "method": "★새 대상 없이 **이미 가진 기본대수**(dim 34·18·19·36)의 구조상수만으로 — `HH⁰ = Z(A)` · `HH¹ = Der(A)/Inn(A)`(Der 는 u 마다 순차 교차) · `HH^*` 는 **Morita 불변**이라 기본대수 값이 곧 블록 값. A₆ p=3 는 **𝔽₃ 위 36차원**(비분해체지만 Morita 동치라 무관)",
+    "not_claimed": "HH² 이상 · 유도동등의 **긍정** 판정(HH 가 같아도 동등이 아닐 수 있다) · 외부 분류표 대응",
+    "per_block": {
+      "A6_p2_principal": {
+        "HH0": 5,
+        "HH1": 3,
+        "dim_A": 34,
+        "dim_Der": 32,
+        "dim_Inn": 29
+      },
+      "A6_p3_principal": {
+        "HH0": 6,
+        "HH1": 4,
+        "dim_A": 36,
+        "dim_Der": 34,
+        "dim_Inn": 30
+      },
+      "A7_p2_nonprincipal": {
+        "HH0": 4,
+        "HH1": 2,
+        "dim_A": 18,
+        "dim_Der": 16,
+        "dim_Inn": 14
+      },
+      "A7_p2_principal": {
+        "HH0": 5,
+        "HH1": 3,
+        "dim_A": 19,
+        "dim_Der": 17,
+        "dim_Inn": 14
+      }
+    }
+  },
   "_note": "블록 대수의 완전 제시 B ≅ kQ/I — 화살(Ext¹) 다음 층인 관계식(Ext²). 관측·seal 아님·module 0·root 불변.",
   "_schema": "quiver-relations/v1",
   "all_ok": true,
@@ -2565,6 +2605,12 @@
     "N_resolves_descent_residual": true,
     "N_third_route_agrees": true,
     "N_third_route_cover_exact": true,
+    "O_A6_p2_center_matches": true,
+    "O_A6_p3_center_matches": true,
+    "O_A7_center_sum_is_classes": true,
+    "O_Q3_not_derived_equivalent": true,
+    "O_conj_classes": true,
+    "O_inn_equals_dimA_minus_center": true,
     "setup_A6_360": true,
     "setup_A7_2520": true
   },
