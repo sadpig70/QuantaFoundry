@@ -19,6 +19,7 @@
      퀴버 지지 ⊆ Cartan 지지
   Y  ★**4 블록 종합표** — 체 · 정점 · 화살 · dim A · 관계식 · Ext² · 균질성 · 유보
   Z  ★**커버리지 행렬** — 블록 × 산출량 × **독립 경로 수**(무엇이 몇 경로로 확인됐는지)
+  W  ★**외부 요청서(REQUEST-v22) 수치 자동 대조** — 발행 문서가 sidecar 와 어긋나면 빨간불
 
 정직 경계:
   · 이 관측은 **검증기**이지 새 계산이 아니다 — 세 sidecar 가 최신이어야 유효하다
@@ -262,6 +263,29 @@ def main():
     R["Z_a7pr_h1_full_matrix"] = (
         QR["Hp_A7_principal_ext2_via_H1"].get("matrix")
         == QR["H_A7_p2_principal"]["presentation"]["ext2_matrix"])
+
+    # ── W. ★요청서 수치 자동 대조 — 손으로 옮겨 적은 숫자의 stale 방지 ──
+    req = os.path.join(ROOT, ".pgf", "external",
+                       "HORIZONTAL-EXPANSION-REQUEST-v22.md")
+    MK = "<!-- MACHINE-CHECKED: block-algebra-summary -->"
+    KEYS = ["simples", "dims", "dim_P", "block_dim", "cartan", "quiver",
+            "n_arrows", "dim_basic_algebra", "loewy_length", "graded",
+            "n_relations", "ext2", "homogeneous"]
+    if os.path.exists(req):
+        txt = open(req, encoding="utf-8").read()
+        seg = txt.split(MK, 1)[1].split("```json", 1)[1].split("```", 1)[0]
+        emb = json.loads(seg)
+        R["W_request_v22_blocks_present"] = (sorted(emb) == sorted(table))
+        R["W_request_v22_matches_sidecar"] = all(
+            {kk: table[k][kk] for kk in KEYS} == emb[k] for k in emb)
+        out["W_request_cross_check"] = {
+            "file": "HORIZONTAL-EXPANSION-REQUEST-v22.md", "marker": MK,
+            "fields": KEYS,
+            "note": ("★외부 발행 문서의 수치를 **sidecar 와 자동 대조**한다 — "
+                     "요청서를 손으로 고치면 이 게이트가 깨진다(stale 방지)"),
+        }
+    else:
+        R["W_request_v22_present"] = False
 
     ok = bool(all(R.values()))
     out["checks"] = R
