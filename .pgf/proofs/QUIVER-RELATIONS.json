@@ -2484,6 +2484,70 @@
       }
     }
   },
+  "P_hochschild2": {
+    "Q3_remaining": "★**판정 불가(유지)** — A₇ p=2 주(dim A 19)와 A₆ p=2 주(dim A 34)의 `(HH⁰,HH¹,HH²)` 가 **(5, 3, 5) 로 완전히 같다**. `HH^{0,1,2}` 로는 **갈리지 않는다** ⟹ 이 쌍은 여전히 **미결**이며, ★이는 **동등을 뜻하지 않는다**(같은 불변량은 부정을 못 한다)",
+    "cross_check": "★이 복합체는 `HH⁰ = ker δ⁰` · `HH¹ = ker δ¹/im δ⁰` 도 주므로 O축(구조상수 직접)과 **독립 대조**된다 — 전 블록 일치",
+    "method": "★소박한 bar 복합체는 미지수 n³(A₆ p=2 주 = **39304**)·방정식 n⁴ 이라 규모에서 막힌다 → **정규화 상대 복합체** `C^n = Hom_{E-E}(rad^{⊗_E n}, A)`(E = 멱등원 span·분리가능 · `A = E ⊕ rad A`)로 바꾸면 **블록별 곱으로 붕괴**한다 — A₆ p=2 주 C² = **1592** · C³ = **18072**",
+    "not_yet": "A₆ p=3 는 `A/rad ≅ k×k×GF(9)` 라 E 를 `k×k×GF(9)` 로 잡고 `Hom_{E-E}` 에 GF(9)-가환을 넣어야 한다 — **정직 유보** · `HH³` 이상 · 유도동등의 **긍정** 판정",
+    "per_block": {
+      "A6_p2_principal": {
+        "C": [
+          14,
+          140,
+          1592,
+          18072
+        ],
+        "HH0": 5,
+        "HH1": 3,
+        "HH2": 5,
+        "dim_A": 34,
+        "dim_rad": 31,
+        "ker": [
+          5,
+          12,
+          133
+        ]
+      },
+      "A7_p2_nonprincipal": {
+        "C": [
+          8,
+          34,
+          184,
+          988
+        ],
+        "HH0": 4,
+        "HH1": 2,
+        "HH2": 4,
+        "dim_A": 18,
+        "dim_rad": 15,
+        "ker": [
+          4,
+          6,
+          32
+        ]
+      },
+      "A7_p2_principal": {
+        "C": [
+          9,
+          38,
+          209,
+          1169
+        ],
+        "HH0": 5,
+        "HH1": 3,
+        "HH2": 5,
+        "dim_A": 19,
+        "dim_rad": 16,
+        "ker": [
+          5,
+          7,
+          36
+        ]
+      }
+    },
+    "prediction_corrected": "★설계 시 \"dim A 가 19 vs 34 로 크게 다르므로 HH² 도 다를 것\"이라 예측했으나 **반증** — `HH²` 도 5 로 같다. ★**차원 차이는 유도불변량의 차이를 뜻하지 않는다**는 실례이고(dim A 는 유도불변량이 아니다), 이 쌍을 가르려면 `HH³` 이상 또는 다른 불변량(안정 AR-quiver·`HH^*` 의 **환 구조**·Külshammer 이데알)이 필요하다",
+    "side_observation": "★실측: 세 블록 모두 **HH⁰ = HH²** 이고 **HH¹ = HH⁰ − 2** — (4,2,4)·(5,3,5)·(5,3,5). 대칭대수의 주기성과 관련돼 보이나 **기전은 무주장**(3 블록 관측)"
+  },
   "_note": "블록 대수의 완전 제시 B ≅ kQ/I — 화살(Ext¹) 다음 층인 관계식(Ext²). 관측·seal 아님·module 0·root 불변.",
   "_schema": "quiver-relations/v1",
   "all_ok": true,
@@ -2611,6 +2675,12 @@
     "O_Q3_not_derived_equivalent": true,
     "O_conj_classes": true,
     "O_inn_equals_dimA_minus_center": true,
+    "P_Q3_remaining_pair_undecided": true,
+    "P_dimA_equals_E_plus_rad": true,
+    "P_hh01_two_routes_agree": true,
+    "P_hh0_equals_hh2": true,
+    "P_hh1_is_hh0_minus_2": true,
+    "P_scale_collapsed": true,
     "setup_A6_360": true,
     "setup_A7_2520": true
   },

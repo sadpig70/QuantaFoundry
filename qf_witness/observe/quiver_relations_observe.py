@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """블록 대수의 **완전 제시** B ≅ kQ/I — 화살(Ext¹) 다음 층인 **관계식**(Ext²).
 
-관측 15축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
+관측 16축 (정확 유한체 선형대수 · seal 아님 · module 0 · root 불변):
   A  A₇ p=2 **비주블록 기본대수** A = ⊕_{i,j} Hom_G(P_i,P_j) — dim A = Σ C_{ij} = 18
      (블록 차원 432 를 다루지 않는다) · ★Cartan 를 **Hom 차원으로 제4 재유도** ·
      rad 여과 rad^n 차원열 · ★graded 차원 = **Loewy 층 수와 일치**(게이트)
@@ -29,8 +29,10 @@
      + J-가환 조건) · **관계식 10개**·Ext² 4×4 · ★**대수/descent 두 경로 일치**
   N  ★GF(9) Ext² **제3 경로** — `greedy_cover` 로 head(Ω²) **4 행 전부** ·
      ★1̂₉·4₉ 는 **Ω¹ 도 조립으로 올려** 4608 계 회피 · M축·descent 와 삼중 일치
-  O  ★★**Hochschild 층** — `HH⁰ = Z(A)`·`HH¹ = Der/Inn` 4 블록 · `Σ_B dim Z(B) = |켤레류|` 게이트 ·
-     ★**HH^* 는 유도불변량** ⟹ v22 §4 **Q3 판정**(퀴버 같고 dim 다른 두 블록)
+  O  ★★**Hochschild 층** — `HH⁰ = Z(A)`·`HH¹ = Der/Inn` 4 블록 ·
+     `Σ_B dim Z(B) = |켤레류|` 게이트 · ★**HH^* 는 유도불변량** ⟹ v22 §4 **Q3 판정**
+  P  ★★**HH²** — 정규화 **상대** bar 복합체로 규모 붕괴(39304 → 1592) · 𝔽₂ 세 블록 ·
+     ★HH⁰·HH¹ 을 **다른 경로로 재유도**해 O축과 대조 · Q3 남은 쌍 판정
   L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
@@ -183,6 +185,148 @@ def hochschild(MT, n, p):
         if len(K) == 0:
             break
     return len(Z), len(K), n - len(Z), len(K) - (n - len(Z))
+
+
+def hh_relative(names, HOM, RADP, d, p):
+    """★정규화 **상대** bar 복합체 `C^n = Hom_{E-E}(rad^{⊗_E n}, A)` 로 HH⁰·HH¹·HH².
+
+    E = 멱등원 span(분리가능)이고 `A = E ⊕ rad A`(모든 End(S_i)=k 인 블록에서 성립)이라
+    소박한 bar 복합체의 n³·n⁴ 규모가 **블록별 곱**으로 붕괴한다
+    (A₆ p=2 주: 미지수 39304 → **1592**).
+    곱셈 규약은 `a·b := b∘a`("먼저 a, 다음 b" — `HH^*(A) ≅ HH^*(A^op)` 라 무관).
+    ★부수 효과: `HH⁰·HH¹` 을 **다른 경로로 재유도**하므로 구조상수 직접 계산과 대조된다."""
+    # ① A 의 블록별 RREF 기저 + 좌표(pivot 읽기)
+    B, PIV, meta = {}, {}, []
+    for i in names:
+        for j in names:
+            blk = HOM[(i, j)]
+            M = (np.array([m.reshape(-1) % p for m in blk], dtype=np.int64)
+                 if blk else np.zeros((0, d[i] * d[j]), dtype=np.int64))
+            R, piv = rref_rows(M.copy(), p)
+            B[(i, j)] = [r.reshape(d[j], d[i]) % p for r in R]
+            PIV[(i, j)] = piv
+            meta.extend([(i, j, t) for t in range(len(piv))])
+    nA = len(meta)
+
+    def co(i, j, M):
+        fl = (M % p).reshape(-1)
+        return [int(fl[c]) % p for c in PIV[(i, j)]]
+
+    # ② rad A — 블록별 RREF 기저(A-블록 좌표) + 실제 행렬
+    proj = {k: quot_proj(RADP[k], d[k], p)[0] for k in names}
+    RPIV, RMAT, rmeta = {}, {}, []
+    for i in names:
+        for j in names:
+            rows = np.array([((proj[j] @ m) % p).reshape(-1) for m in B[(i, j)]],
+                            dtype=np.int64)
+            ker = nullspace(rows.T % p, p) if len(rows) else []
+            cm = (np.array([c % p for c in ker], dtype=np.int64) if len(ker)
+                  else np.zeros((0, len(B[(i, j)])), dtype=np.int64))
+            Rr, rp = rref_rows(cm.copy(), p)
+            RPIV[(i, j)] = rp
+            for t, cvec in enumerate(Rr):
+                M = np.zeros((d[j], d[i]), dtype=np.int64)
+                for u, cu in enumerate(cvec):
+                    if cu:
+                        M = (M + int(cu) * B[(i, j)][u]) % p
+                RMAT[(i, j, t)] = M
+                rmeta.append((i, j, t))
+    nR = len(rmeta)
+
+    def rco(i, j, cvec):
+        return [int(cvec[c]) % p for c in RPIV[(i, j)]]
+
+    # ③ rad·rad → rad 좌표 (a·b = b∘a)
+    pairs = [(a, b) for a in rmeta for b in rmeta if a[1] == b[0]]
+    prodR = {}
+    for (a, b) in pairs:
+        P = (RMAT[b] @ RMAT[a]) % p
+        prodR[(a, b)] = rco(a[0], b[1], np.array(co(a[0], b[1], P)))
+
+    # ④ 코체인 인덱스
+    c0 = [(i, t) for i in names for t in range(len(PIV[(i, i)]))]
+    c1 = [(rk, w) for rk in rmeta for w in range(len(PIV[(rk[0], rk[1])]))]
+    trips = [(a, b, c) for (a, b) in pairs for c in rmeta if b[1] == c[0]]
+    c2 = [(a, b, w) for (a, b) in pairs
+          for w in range(len(PIV[(a[0], b[1])]))]
+    c3 = [(a, b, c, w) for (a, b, c) in trips
+          for w in range(len(PIV[(a[0], c[1])]))]
+    i1 = {k: t for t, k in enumerate(c1)}
+    i2 = {k: t for t, k in enumerate(c2)}
+    i3 = {k: t for t, k in enumerate(c3)}
+
+    # δ⁰ : (δ⁰z)(a) = a·z − z·a = z∘a − a∘z
+    D0 = np.zeros((len(c1), len(c0)), dtype=np.int64)
+    for q, (m, ua) in enumerate(c0):
+        for rk in rmeta:
+            (i, j, _t) = rk
+            if j == m:
+                for w, val in enumerate(co(i, j, (B[(m, m)][ua] @ RMAT[rk]) % p)):
+                    D0[i1[(rk, w)], q] = (D0[i1[(rk, w)], q] + val) % p
+            if i == m:
+                for w, val in enumerate(co(i, j, (RMAT[rk] @ B[(m, m)][ua]) % p)):
+                    D0[i1[(rk, w)], q] = (D0[i1[(rk, w)], q] - val) % p
+    D0 %= p
+
+    # δ¹ : (δ¹f)(a,b) = a·f(b) − f(a·b) + f(a)·b
+    D1 = np.zeros((len(c2), len(c1)), dtype=np.int64)
+    for (a, b) in pairs:
+        i, m, j = a[0], a[1], b[1]
+        base = i2[(a, b, 0)]
+        for ua in range(len(PIV[(m, j)])):                # a·f(b) = f(b)∘a
+            for w, val in enumerate(co(i, j, (B[(m, j)][ua] @ RMAT[a]) % p)):
+                if val:
+                    D1[base + w, i1[(b, ua)]] = (
+                        D1[base + w, i1[(b, ua)]] + val) % p
+        for ua in range(len(PIV[(i, m)])):                # f(a)·b = b∘f(a)
+            for w, val in enumerate(co(i, j, (RMAT[b] @ B[(i, m)][ua]) % p)):
+                if val:
+                    D1[base + w, i1[(a, ua)]] = (
+                        D1[base + w, i1[(a, ua)]] + val) % p
+        for t2, val in enumerate(prodR[(a, b)]):          # −f(a·b)
+            if val:
+                rk = (i, j, t2)
+                for w in range(len(PIV[(i, j)])):
+                    D1[base + w, i1[(rk, w)]] = (
+                        D1[base + w, i1[(rk, w)]] - val) % p
+    D1 %= p
+
+    # δ² : (δ²f)(a,b,c) = a·f(b,c) − f(a·b,c) + f(a,b·c) − f(a,b)·c
+    D2 = np.zeros((len(c3), len(c2)), dtype=np.int64)
+    for (a, b, c) in trips:
+        i, m1, m2, j = a[0], a[1], c[0], c[1]
+        base = i3[(a, b, c, 0)]
+        for ua in range(len(PIV[(m1, j)])):
+            for w, val in enumerate(co(i, j, (B[(m1, j)][ua] @ RMAT[a]) % p)):
+                if val:
+                    D2[base + w, i2[(b, c, ua)]] = (
+                        D2[base + w, i2[(b, c, ua)]] + val) % p
+        for t2, val in enumerate(prodR[(a, b)]):
+            if val:
+                rk = (i, m2, t2)
+                for w in range(len(PIV[(i, j)])):
+                    D2[base + w, i2[(rk, c, w)]] = (
+                        D2[base + w, i2[(rk, c, w)]] - val) % p
+        for t2, val in enumerate(prodR[(b, c)]):
+            if val:
+                rk = (m1, j, t2)
+                for w in range(len(PIV[(i, j)])):
+                    D2[base + w, i2[(a, rk, w)]] = (
+                        D2[base + w, i2[(a, rk, w)]] + val) % p
+        for ua in range(len(PIV[(i, m2)])):
+            for w, val in enumerate(co(i, j, (RMAT[c] @ B[(i, m2)][ua]) % p)):
+                if val:
+                    D2[base + w, i2[(a, b, ua)]] = (
+                        D2[base + w, i2[(a, b, ua)]] - val) % p
+    D2 %= p
+
+    k0 = len(_ns(D0, p)) if len(c1) else len(c0)
+    k1 = len(_ns(D1, p)) if len(c2) else len(c1)
+    k2 = len(_ns(D2, p)) if len(c3) else len(c2)
+    return {"dim_A": nA, "dim_rad": nR,
+            "C": [len(c0), len(c1), len(c2), len(c3)],
+            "ker": [k0, k1, k2], "HH0": k0, "HH1": k1 - (len(c0) - k0),
+            "HH2": k2 - (len(c1) - k1)}
 
 
 def assemble_hom_j(baseh, va, vb, Ja, Jb, p):
@@ -826,7 +970,7 @@ def main():
     R["F_A6_pim_dims"] = ([len(PIM6[k][A6G[0]]) for k in N6] == [40, 24, 24])
 
     C6 = [[8, 4, 4], [4, 3, 2], [4, 2, 3]]
-    B6, _ar6, _rp6, HOM6, dP6 = block_presentation(
+    B6, _ar6, RADP6, HOM6, dP6 = block_presentation(
         N6, A6G, PIM6, sim6, C6, 9, 2)
     R["F_A6_cartan_via_hom"] = (B6["cartan_via_hom"] == C6)
     R["F_A6_dim_basic_34"] = (B6["dim_basic_algebra"] == 34
@@ -1663,6 +1807,70 @@ def main():
                            "★**판정 불가** — HH⁰·HH¹ 이 같다. 이는 **동등을 뜻하지 않는다**"),
             "not_claimed": ("HH² 이상 · 유도동등의 **긍정** 판정(HH 가 같아도 동등이 아닐 수 있다) · "
                             "외부 분류표 대응"),
+        }
+
+        # ── P. ★★HH² — 정규화 **상대** bar 복합체(규모 붕괴) · 𝔽₂ 세 블록 ────
+        HH2 = {}
+        for key, (nm, hom, rdp, dd) in {
+                "A6_p2_principal": (N6, HOM6, RADP6, dP6),
+                "A7_p2_nonprincipal": (N7, HOM7, RADP7, dP7),
+                "A7_p2_principal": (NPr, HOMPr, RADPr, dPPr)}.items():
+            HH2[key] = hh_relative(nm, hom, rdp, dd, 2)
+        # ★상대 복합체가 HH⁰·HH¹ 을 **다른 경로로 재유도** ⟹ O축과 대조
+        R["P_hh01_two_routes_agree"] = all(
+            HH2[k]["HH0"] == HH[k]["HH0"] and HH2[k]["HH1"] == HH[k]["HH1"]
+            for k in HH2)
+        R["P_dimA_equals_E_plus_rad"] = all(
+            HH2[k]["dim_A"] == HH2[k]["dim_rad"] + len(
+                {"A6_p2_principal": N6, "A7_p2_nonprincipal": N7,
+                 "A7_p2_principal": NPr}[k]) for k in HH2)
+        R["P_scale_collapsed"] = (
+            HH2["A6_p2_principal"]["C"][2] < 2000
+            and HH2["A6_p2_principal"]["dim_A"] ** 3 > 39000)
+        # ★v22 Q3 **남은 쌍** 판정 — A₇ p=2 주(19) vs A₆ p=2 주(34)
+        x = HH2["A7_p2_principal"]
+        y = HH2["A6_p2_principal"]
+        pair_split = ((x["HH0"], x["HH1"], x["HH2"])
+                      != (y["HH0"], y["HH1"], y["HH2"]))
+        # ★설계 예측("dim A 19 vs 34 이니 HH² 도 다를 것")이 **반증**됐다 —
+        #   (HH⁰,HH¹,HH²) 가 (5,3,5) 로 **완전히 같아** 이 쌍은 여전히 **판정 불가**.
+        R["P_Q3_remaining_pair_undecided"] = (not pair_split)
+        # ★실측된 부수 패턴: 세 블록 모두 HH⁰ = HH² 이고 HH¹ = HH⁰ − 2 (기전 무주장)
+        R["P_hh0_equals_hh2"] = all(v["HH0"] == v["HH2"] for v in HH2.values())
+        R["P_hh1_is_hh0_minus_2"] = all(
+            v["HH1"] == v["HH0"] - 2 for v in HH2.values())
+        out["P_hochschild2"] = {
+            "per_block": HH2,
+            "method": ("★소박한 bar 복합체는 미지수 n³(A₆ p=2 주 = **39304**)·방정식 n⁴ 이라 "
+                       "규모에서 막힌다 → **정규화 상대 복합체** "
+                       "`C^n = Hom_{E-E}(rad^{⊗_E n}, A)`(E = 멱등원 span·분리가능 · "
+                       "`A = E ⊕ rad A`)로 바꾸면 **블록별 곱으로 붕괴**한다 — "
+                       "A₆ p=2 주 C² = **%d** · C³ = **%d**"
+                       % (HH2["A6_p2_principal"]["C"][2],
+                          HH2["A6_p2_principal"]["C"][3])),
+            "cross_check": ("★이 복합체는 `HH⁰ = ker δ⁰` · `HH¹ = ker δ¹/im δ⁰` 도 주므로 "
+                            "O축(구조상수 직접)과 **독립 대조**된다 — 전 블록 일치"),
+            "Q3_remaining": ("★**판정 불가(유지)** — A₇ p=2 주(dim A 19)와 A₆ p=2 주(dim A 34)의 "
+                             "`(HH⁰,HH¹,HH²)` 가 **%s 로 완전히 같다**. `HH^{0,1,2}` 로는 "
+                             "**갈리지 않는다** ⟹ 이 쌍은 여전히 **미결**이며, ★이는 "
+                             "**동등을 뜻하지 않는다**(같은 불변량은 부정을 못 한다)"
+                             % ((x["HH0"], x["HH1"], x["HH2"]),)
+                             if not pair_split else
+                             "★★유도동등이 아니다 — %s vs %s"
+                             % ((x["HH0"], x["HH1"], x["HH2"]),
+                                (y["HH0"], y["HH1"], y["HH2"]))),
+            "prediction_corrected": ("★설계 시 \"dim A 가 19 vs 34 로 크게 다르므로 HH² 도 "
+                                     "다를 것\"이라 예측했으나 **반증** — `HH²` 도 5 로 같다. "
+                                     "★**차원 차이는 유도불변량의 차이를 뜻하지 않는다**는 "
+                                     "실례이고(dim A 는 유도불변량이 아니다), 이 쌍을 가르려면 "
+                                     "`HH³` 이상 또는 다른 불변량(안정 AR-quiver·`HH^*` 의 "
+                                     "**환 구조**·Külshammer 이데알)이 필요하다"),
+            "side_observation": ("★실측: 세 블록 모두 **HH⁰ = HH²** 이고 **HH¹ = HH⁰ − 2** — "
+                                 "(4,2,4)·(5,3,5)·(5,3,5). 대칭대수의 주기성과 관련돼 보이나 "
+                                 "**기전은 무주장**(3 블록 관측)"),
+            "not_yet": ("A₆ p=3 는 `A/rad ≅ k×k×GF(9)` 라 E 를 `k×k×GF(9)` 로 잡고 "
+                        "`Hom_{E-E}` 에 GF(9)-가환을 넣어야 한다 — **정직 유보** · "
+                        "`HH³` 이상 · 유도동등의 **긍정** 판정"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────
