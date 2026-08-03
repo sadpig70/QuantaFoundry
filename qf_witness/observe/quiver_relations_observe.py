@@ -188,7 +188,7 @@ def hochschild(MT, n, p):
     return len(Z), len(K), n - len(Z), len(K) - (n - len(Z))
 
 
-def hh_relative(names, HOM, RADP, d, p, complement=False):
+def hh_relative(names, HOM, RADP, d, p, complement=False, cup=False):
     """★정규화 **상대** bar 복합체 `C^n = Hom_{E-E}(rad^{⊗_E n}, A)` 로 HH⁰·HH¹·HH².
 
     E = 멱등원 span(분리가능)이고 `A = E ⊕ rad A`(모든 End(S_i)=k 인 블록에서 성립)이라
@@ -347,13 +347,80 @@ def hh_relative(names, HOM, RADP, d, p, complement=False):
                         D2[base + w, i2[(a, b, ua)]] - val) % p
     D2 %= p
 
+    Z1 = _ns(D1, p) if len(c2) else np.eye(len(c1), dtype=np.int64)
     k0 = len(_ns(D0, p)) if len(c1) else len(c0)
-    k1 = len(_ns(D1, p)) if len(c2) else len(c1)
+    k1 = len(Z1)
     k2 = len(_ns(D2, p)) if len(c3) else len(c2)
-    return {"dim_A": nA, "dim_rad": nR,
-            "C": [len(c0), len(c1), len(c2), len(c3)],
-            "ker": [k0, k1, k2], "HH0": k0, "HH1": k1 - (len(c0) - k0),
-            "HH2": k2 - (len(c1) - k1)}
+    out = {"dim_A": nA, "dim_rad": nR,
+           "C": [len(c0), len(c1), len(c2), len(c3)],
+           "ker": [k0, k1, k2], "HH0": k0, "HH1": k1 - (len(c0) - k0),
+           "HH2": k2 - (len(c1) - k1)}
+    if not cup:
+        return out
+
+    # ── ★cup product HH¹ × HH¹ → HH² ────────────────────────────────────
+    # ①HH¹ 대표 = Z¹ 에서 B¹ = im δ⁰ 를 법으로 독립인 것
+    Bb = np.zeros((0, len(c1)), dtype=np.int64)
+    pv = []
+    for q in range(D0.shape[1]):
+        _o, Bb, pv = rref_insert(Bb, pv, D0[:, q] % p, p)
+    reps = []
+    for z in Z1:
+        ok, Bb, pv = rref_insert(Bb, pv, z % p, p)
+        if ok:
+            reps.append(z % p)
+    # ②B² = im δ¹ (C² 좌표) 의 RREF
+    B2b = np.zeros((0, len(c2)), dtype=np.int64)
+    p2 = []
+    for q in range(D1.shape[1]):
+        _o, B2b, p2 = rref_insert(B2b, p2, D1[:, q] % p, p)
+
+    def val1(fv, rk):
+        """f(rk) ∈ A_{i,j} 를 행렬로."""
+        i, j = rk[0], rk[1]
+        M = np.zeros((d[j], d[i]), dtype=np.int64)
+        for w in range(len(PIV[(i, j)])):
+            cc = int(fv[i1[(rk, w)]]) % p
+            if cc:
+                M = (M + cc * B[(i, j)][w]) % p
+        return M
+
+    def cup11(fv, gv):
+        """(f⌣g)(a,b) = f(a)·g(b) = g(b)∘f(a) — C² 좌표 벡터."""
+        v = np.zeros(len(c2), dtype=np.int64)
+        for (a, b) in pairs:
+            i, j = a[0], b[1]
+            P = (val1(gv, b) @ val1(fv, a)) % p
+            base = i2[(a, b, 0)]
+            for w, cc in enumerate(co(i, j, P)):
+                if cc:
+                    v[base + w] = (v[base + w] + cc) % p
+        return v % p
+
+    cocycle_ok, comm_ok = True, True
+    Cb = np.zeros((0, len(c2)), dtype=np.int64)
+    cp = list(p2)
+    Cb = B2b.copy()
+    span0 = len(cp)
+    prods = {}
+    for x in range(len(reps)):
+        for y in range(len(reps)):
+            u = cup11(reps[x], reps[y])
+            prods[(x, y)] = u
+            if len(c3) and ((D2 @ u) % p).any():
+                cocycle_ok = False                 # ★cup 은 2-코사이클이어야 한다
+    for x in range(len(reps)):
+        for y in range(x, len(reps)):
+            w_ = (prods[(x, y)] + prods[(y, x)]) % p
+            _o, B2c, p2c = rref_insert(B2b.copy(), list(p2), w_, p)
+            if _o:
+                comm_ok = False                    # ★graded 가환성(1×1 ⟹ f⌣g = −g⌣f)
+    for x in range(len(reps)):
+        for y in range(len(reps)):
+            _o, Cb, cp = rref_insert(Cb, cp, prods[(x, y)], p)
+    out.update({"HH1_reps": len(reps), "cup_rank": len(cp) - span0,
+                "cup_is_cocycle": cocycle_ok, "graded_commutative": comm_ok})
+    return out
 
 
 def assemble_hom_j(baseh, va, vb, Ja, Jb, p):
@@ -1842,15 +1909,15 @@ def main():
                 "A6_p2_principal": (N6, HOM6, RADP6, dP6),
                 "A7_p2_nonprincipal": (N7, HOM7, RADP7, dP7),
                 "A7_p2_principal": (NPr, HOMPr, RADPr, dPPr)}.items():
-            HH2[key] = hh_relative(nm, hom, rdp, dd, 2)
+            HH2[key] = hh_relative(nm, hom, rdp, dd, 2, cup=True)
         # ★A₆ p=3 — `A/rad ≅ k×k×GF(9)` 라도 **E = 멱등원 span 으로 충분**하다
         #   (상대 이론은 E 분리가능 + A 가 E-쌍가군 사영만 요구 · `A/rad ≅ E` 불필요).
         #   여공간 Ā 가 rad 가 아니므로 미분에 **π(ab)**(E 성분 제거)가 필요하다.
         HH2["A6_p3_principal"] = hh_relative(N33, HOM3B, None, DIMP3, 3,
-                                             complement=True)
+                                             complement=True, cup=True)
         # ★𝔽₂ 블록에서 두 경로(rad 여공간 / 임의 여공간)가 같은 값을 주는지 회귀
         R["P_complement_mode_regression"] = (
-            hh_relative(N7, HOM7, RADP7, dP7, 2, complement=True)
+            hh_relative(N7, HOM7, RADP7, dP7, 2, complement=True, cup=True)
             == HH2["A7_p2_nonprincipal"])
         # ★상대 복합체가 HH⁰·HH¹ 을 **다른 경로로 재유도** ⟹ O축과 대조
         R["P_hh01_two_routes_agree"] = all(
@@ -1873,11 +1940,23 @@ def main():
         R["P_scale_collapsed"] = (
             HH2["A6_p2_principal"]["C"][2] < 2000
             and HH2["A6_p2_principal"]["dim_A"] ** 3 > 39000)
+        # ★★cup product 구현 정오 게이트 — 실패하면 구현 오류다
+        R["P_cup_is_cocycle"] = all(v["cup_is_cocycle"] for v in HH2.values())
+        R["P_cup_graded_commutative"] = all(
+            v["graded_commutative"] for v in HH2.values())
+        R["P_hh1_reps_match"] = all(v["HH1_reps"] == v["HH1"]
+                                    for v in HH2.values())
         # ★v22 Q3 **남은 쌍** 판정 — A₇ p=2 주(19) vs A₆ p=2 주(34)
         x = HH2["A7_p2_principal"]
         y = HH2["A6_p2_principal"]
-        pair_split = ((x["HH0"], x["HH1"], x["HH2"])
-                      != (y["HH0"], y["HH1"], y["HH2"]))
+        pair_split = ((x["HH0"], x["HH1"], x["HH2"], x["cup_rank"])
+                      != (y["HH0"], y["HH1"], y["HH2"], y["cup_rank"]))
+        # ★설계 예측("HH¹ 이 3차원인 두 블록에서 cup 랭크가 다를 것")이 **반증**됐다 —
+        #   둘 다 **0**(모든 HH¹ 곱이 사라진다) ⟹ Q3 남은 쌍은 여전히 판정 불가.
+        R["P_Q3_cup_rank_also_equal"] = (x["cup_rank"] == y["cup_rank"] == 0)
+        # ★cup 랭크는 **새 불변량으로서는 작동**한다 — 4 블록에서 0·0·1·2 로 갈린다
+        R["P_cup_rank_separates_some"] = (
+            len({v["cup_rank"] for v in HH2.values()}) == 3)
         # ★설계 예측("dim A 19 vs 34 이니 HH² 도 다를 것")이 **반증**됐다 —
         #   (HH⁰,HH¹,HH²) 가 (5,3,5) 로 **완전히 같아** 이 쌍은 여전히 **판정 불가**.
         R["P_Q3_remaining_pair_undecided"] = (not pair_split)
@@ -1932,7 +2011,18 @@ def main():
                                        "⟹ ★**그 패턴은 𝔽₂ 세 블록 특유**였다(비분해체·이중화살 "
                                        "블록에서 깨진다). 다만 `HH¹ = HH⁰ − 2` 는 **네 블록 모두** "
                                        "유지된다 — 기전 무주장"),
-            "not_yet": ("`HH³` 이상 · 유도동등의 **긍정** 판정 · `HH^*` 의 **환 구조**"),
+            "cup": ("★`HH¹ × HH¹ → HH²` 의 **상 차원(cup 랭크)** — 기저 무관 불변량. "
+                    "구현 정오 게이트 2종 전수 통과: **cup 이 항상 2-코사이클**(`δ²(f⌣g)=0`)· "
+                    "**graded 가환성**(`f⌣g + g⌣f ≡ 0 mod B²`). 랭크 = "
+                    "A₇비주 **1** · A₇주 **0** · A₆p2주 **0** · A₆p3주 **2**"),
+            "prediction_corrected_3": ("★설계 시 \"HH¹ 이 3차원인 두 블록에서 cup 랭크가 "
+                                       "다를 것\"이라 예측했으나 **반증** — **둘 다 0**"
+                                       "(모든 HH¹ 곱이 사라진다) ⟹ Q3 남은 쌍은 "
+                                       "`(HH⁰,HH¹,HH²,cup)` = **(5,3,5,0)** 로 완전히 같아 "
+                                       "**여전히 판정 불가**. ★다만 cup 랭크는 **불변량으로서는 "
+                                       "작동**한다(4 블록에서 0·0·1·2 로 갈림)"),
+            "not_yet": ("`HH³` 이상 · 안정 AR-quiver · Külshammer 이데알 · "
+                        "유도동등의 **긍정** 판정"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────
