@@ -31,8 +31,9 @@
      ★1̂₉·4₉ 는 **Ω¹ 도 조립으로 올려** 4608 계 회피 · M축·descent 와 삼중 일치
   O  ★★**Hochschild 층** — `HH⁰ = Z(A)`·`HH¹ = Der/Inn` 4 블록 ·
      `Σ_B dim Z(B) = |켤레류|` 게이트 · ★**HH^* 는 유도불변량** ⟹ v22 §4 **Q3 판정**
-  P  ★★**HH²** — 정규화 **상대** bar 복합체로 규모 붕괴(39304 → 1592) · 𝔽₂ 세 블록 ·
-     ★HH⁰·HH¹ 을 **다른 경로로 재유도**해 O축과 대조 · Q3 남은 쌍 판정
+  P  ★★**HH²** — 정규화 **상대** bar 복합체로 규모 붕괴(39304 → 1592) · **4 블록 전부** ·
+     ★E = **멱등원 span 으로 충분**(A/rad ≅ E 불필요 · π(ab) 필요) ·
+     ★HH⁰·HH¹ 을 **다른 경로로 재유도**해 O축과 대조
   L  ★★4 블록 종합 — **제시를 막는 이유가 두 종류**(자기고리 / 비분해체)이고 서로 **독립**
 
 방법(자체유도):
@@ -187,7 +188,7 @@ def hochschild(MT, n, p):
     return len(Z), len(K), n - len(Z), len(K) - (n - len(Z))
 
 
-def hh_relative(names, HOM, RADP, d, p):
+def hh_relative(names, HOM, RADP, d, p, complement=False):
     """★정규화 **상대** bar 복합체 `C^n = Hom_{E-E}(rad^{⊗_E n}, A)` 로 HH⁰·HH¹·HH².
 
     E = 멱등원 span(분리가능)이고 `A = E ⊕ rad A`(모든 End(S_i)=k 인 블록에서 성립)이라
@@ -212,11 +213,28 @@ def hh_relative(names, HOM, RADP, d, p):
         fl = (M % p).reshape(-1)
         return [int(fl[c]) % p for c in PIV[(i, j)]]
 
-    # ② rad A — 블록별 RREF 기저(A-블록 좌표) + 실제 행렬
-    proj = {k: quot_proj(RADP[k], d[k], p)[0] for k in names}
-    RPIV, RMAT, rmeta = {}, {}, []
+    # ② Ā — E 의 여공간(기본은 rad A · ★complement=True 면 **임의 여공간**).
+    #   상대 이론이 요구하는 것은 E 분리가능 + A 가 E-쌍가군 사영뿐이고
+    #   `A/rad ≅ E` 는 **불필요**하다 — 필요한 것은 `A = E ⊕ Ā` 뿐이며 대각 블록에서
+    #   E 는 항등으로 작용하므로 **아무 여공간이나 E-쌍가군**이다.
+    RPIV, RMAT, rmeta, DROP = {}, {}, [], {}
+    if not complement:
+        proj = {k: quot_proj(RADP[k], d[k], p)[0] for k in names}
     for i in names:
         for j in names:
+            if complement:
+                if i != j:
+                    keep = list(range(len(PIV[(i, j)])))
+                else:
+                    ce = co(i, i, np.eye(d[i], dtype=np.int64))
+                    q = next(t for t, v in enumerate(ce) if v)
+                    DROP[i] = (q, int(ce[q]) % p, ce)
+                    keep = [t for t in range(len(PIV[(i, i)])) if t != q]
+                RPIV[(i, j)] = keep
+                for t, u in enumerate(keep):
+                    RMAT[(i, j, t)] = B[(i, j)][u] % p
+                    rmeta.append((i, j, t))
+                continue
             rows = np.array([((proj[j] @ m) % p).reshape(-1) for m in B[(i, j)]],
                             dtype=np.int64)
             ker = nullspace(rows.T % p, p) if len(rows) else []
@@ -234,9 +252,18 @@ def hh_relative(names, HOM, RADP, d, p):
     nR = len(rmeta)
 
     def rco(i, j, cvec):
+        if complement:
+            # ★π: E 성분을 떨어뜨린 뒤 Ā 좌표(대각 블록에서만 비자명)
+            v = [int(x) % p for x in cvec]
+            if i == j:
+                q, cq, ce = DROP[i]
+                lam = (int(v[q]) * pow(cq, p - 2, p)) % p
+                if lam:
+                    v = [(v[t] - lam * ce[t]) % p for t in range(len(v))]
+            return [v[u] for u in RPIV[(i, j)]]
         return [int(cvec[c]) % p for c in RPIV[(i, j)]]
 
-    # ③ rad·rad → rad 좌표 (a·b = b∘a)
+    # ③ Ā·Ā → Ā 좌표 (a·b = b∘a · complement 면 π 적용)
     pairs = [(a, b) for a in rmeta for b in rmeta if a[1] == b[0]]
     prodR = {}
     for (a, b) in pairs:
@@ -1816,6 +1843,15 @@ def main():
                 "A7_p2_nonprincipal": (N7, HOM7, RADP7, dP7),
                 "A7_p2_principal": (NPr, HOMPr, RADPr, dPPr)}.items():
             HH2[key] = hh_relative(nm, hom, rdp, dd, 2)
+        # ★A₆ p=3 — `A/rad ≅ k×k×GF(9)` 라도 **E = 멱등원 span 으로 충분**하다
+        #   (상대 이론은 E 분리가능 + A 가 E-쌍가군 사영만 요구 · `A/rad ≅ E` 불필요).
+        #   여공간 Ā 가 rad 가 아니므로 미분에 **π(ab)**(E 성분 제거)가 필요하다.
+        HH2["A6_p3_principal"] = hh_relative(N33, HOM3B, None, DIMP3, 3,
+                                             complement=True)
+        # ★𝔽₂ 블록에서 두 경로(rad 여공간 / 임의 여공간)가 같은 값을 주는지 회귀
+        R["P_complement_mode_regression"] = (
+            hh_relative(N7, HOM7, RADP7, dP7, 2, complement=True)
+            == HH2["A7_p2_nonprincipal"])
         # ★상대 복합체가 HH⁰·HH¹ 을 **다른 경로로 재유도** ⟹ O축과 대조
         R["P_hh01_two_routes_agree"] = all(
             HH2[k]["HH0"] == HH[k]["HH0"] and HH2[k]["HH1"] == HH[k]["HH1"]
@@ -1823,7 +1859,17 @@ def main():
         R["P_dimA_equals_E_plus_rad"] = all(
             HH2[k]["dim_A"] == HH2[k]["dim_rad"] + len(
                 {"A6_p2_principal": N6, "A7_p2_nonprincipal": N7,
-                 "A7_p2_principal": NPr}[k]) for k in HH2)
+                 "A7_p2_principal": NPr, "A6_p3_principal": N33}[k])
+            for k in HH2)
+        # ★즉시 검증 게이트: 상대 복합체의 HH⁰·HH¹ 이 O축(구조상수 직접)과 일치
+        R["P_a6p3_hh01_matches_O"] = (
+            (HH2["A6_p3_principal"]["HH0"], HH2["A6_p3_principal"]["HH1"])
+            == (HH["A6_p3_principal"]["HH0"], HH["A6_p3_principal"]["HH1"])
+            == (6, 4))
+        # ★설계 예측 반증: "HH⁰ = HH² 패턴이 유지되면 HH²(A₆p3) = 6" → **실측 7**
+        R["P_a6p3_breaks_hh0_eq_hh2"] = (
+            HH2["A6_p3_principal"]["HH2"] == 7
+            != HH2["A6_p3_principal"]["HH0"])
         R["P_scale_collapsed"] = (
             HH2["A6_p2_principal"]["C"][2] < 2000
             and HH2["A6_p2_principal"]["dim_A"] ** 3 > 39000)
@@ -1836,7 +1882,12 @@ def main():
         #   (HH⁰,HH¹,HH²) 가 (5,3,5) 로 **완전히 같아** 이 쌍은 여전히 **판정 불가**.
         R["P_Q3_remaining_pair_undecided"] = (not pair_split)
         # ★실측된 부수 패턴: 세 블록 모두 HH⁰ = HH² 이고 HH¹ = HH⁰ − 2 (기전 무주장)
-        R["P_hh0_equals_hh2"] = all(v["HH0"] == v["HH2"] for v in HH2.values())
+        # ★실측: **𝔽₂ 세 블록에서만** HH⁰ = HH² · HH¹ = HH⁰ − 2 (A₆ p=3 는 깨진다)
+        _f2 = [k for k in HH2 if k != "A6_p3_principal"]
+        R["P_hh0_equals_hh2_f2_only"] = (
+            all(HH2[k]["HH0"] == HH2[k]["HH2"] for k in _f2)
+            and HH2["A6_p3_principal"]["HH0"]
+            != HH2["A6_p3_principal"]["HH2"])
         R["P_hh1_is_hh0_minus_2"] = all(
             v["HH1"] == v["HH0"] - 2 for v in HH2.values())
         out["P_hochschild2"] = {
@@ -1868,9 +1919,20 @@ def main():
             "side_observation": ("★실측: 세 블록 모두 **HH⁰ = HH²** 이고 **HH¹ = HH⁰ − 2** — "
                                  "(4,2,4)·(5,3,5)·(5,3,5). 대칭대수의 주기성과 관련돼 보이나 "
                                  "**기전은 무주장**(3 블록 관측)"),
-            "not_yet": ("A₆ p=3 는 `A/rad ≅ k×k×GF(9)` 라 E 를 `k×k×GF(9)` 로 잡고 "
-                        "`Hom_{E-E}` 에 GF(9)-가환을 넣어야 한다 — **정직 유보** · "
-                        "`HH³` 이상 · 유도동등의 **긍정** 판정"),
+            "a6p3": ("★★**전일의 유보 사유가 과했다** — 상대 이론이 요구하는 것은 "
+                     "**E 분리가능 + A 가 E-쌍가군 사영**뿐이고 **`A/rad ≅ E` 는 불필요**하다. "
+                     "필요한 것은 `A = E ⊕ Ā` 를 만족하는 **E-쌍가군 여공간** 하나이고, "
+                     "대각 블록에서 E 는 항등으로 작용하므로 **아무 여공간이나 된다** ⟹ "
+                     "**E = 멱등원 span(dim 3)** 으로 충분(Ā dim 33). 단 미분에서 "
+                     "`f(ab)` 가 아니라 **`f(π(ab))`**(E 성분 제거)여야 한다 — "
+                     "𝔽₂ 에서는 `rad·rad ⊆ rad` 라 π 가 항등이어서 드러나지 않던 항. "
+                     "★𝔽₂ 블록에서 **두 여공간 선택이 같은 값**을 줌을 회귀로 확인"),
+            "prediction_corrected_2": ("★설계 시 \"𝔽₂ 에서 본 HH⁰ = HH² 패턴이 유지되면 "
+                                       "HH²(A₆p3) = 6\"이라 예측했으나 **반증** — 실측 **7**. "
+                                       "⟹ ★**그 패턴은 𝔽₂ 세 블록 특유**였다(비분해체·이중화살 "
+                                       "블록에서 깨진다). 다만 `HH¹ = HH⁰ − 2` 는 **네 블록 모두** "
+                                       "유지된다 — 기전 무주장"),
+            "not_yet": ("`HH³` 이상 · 유도동등의 **긍정** 판정 · `HH^*` 의 **환 구조**"),
         }
 
         # ── L. ★4 블록 종합 — 제시를 막는 두 가지 서로 다른 이유 ──────────
