@@ -1,0 +1,791 @@
+{
+  "R_cartan_derived_invariants": {
+    "identity": "유도동등 ⟹ C_A = Xᵀ C_B X (X ∈ GL_n(ℤ)) ⟹ det·SNF 보존",
+    "per_block": {
+      "A6_p2_principal": {
+        "cartan_sum": 34,
+        "det": 8,
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "snf_divides": true,
+        "snf_product_eq_det": true
+      },
+      "A6_p3_principal": {
+        "cartan_sum": 36,
+        "det": 9,
+        "snf": [
+          1,
+          1,
+          1,
+          9
+        ],
+        "snf_divides": true,
+        "snf_product_eq_det": true
+      },
+      "A7_p2_nonprincipal": {
+        "cartan_sum": 18,
+        "det": 4,
+        "snf": [
+          1,
+          1,
+          4
+        ],
+        "snf_divides": true,
+        "snf_product_eq_det": true
+      },
+      "A7_p2_principal": {
+        "cartan_sum": 19,
+        "det": 8,
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "snf_divides": true,
+        "snf_product_eq_det": true
+      }
+    }
+  },
+  "S_integral_congruence": {
+    "note": "필요조건일 뿐 — 성립해도 유도동등을 함의하지 않는다",
+    "pairs": {
+      "A6_p2_principal|A6_p3_principal": {
+        "congruent": false,
+        "reason": "정점 수 불일치"
+      },
+      "A6_p2_principal|A7_p2_nonprincipal": {
+        "box_limits": [
+          2,
+          2,
+          2
+        ],
+        "congruent": false,
+        "example": null,
+        "n_isometries": 0
+      },
+      "A6_p2_principal|A7_p2_principal": {
+        "box_limits": [
+          2,
+          2,
+          2
+        ],
+        "congruent": true,
+        "example": [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "n_isometries": 16
+      },
+      "A6_p3_principal|A7_p2_nonprincipal": {
+        "congruent": false,
+        "reason": "정점 수 불일치"
+      },
+      "A6_p3_principal|A7_p2_principal": {
+        "congruent": false,
+        "reason": "정점 수 불일치"
+      },
+      "A7_p2_nonprincipal|A7_p2_principal": {
+        "box_limits": [
+          1,
+          1,
+          2
+        ],
+        "congruent": false,
+        "example": null,
+        "n_isometries": 0
+      }
+    }
+  },
+  "T_engine_gates": {
+    "arrows_A6p2pr": {
+      "1->1": 0,
+      "1->4a": 1,
+      "1->4b": 1,
+      "4a->1": 1,
+      "4a->4a": 0,
+      "4a->4b": 0,
+      "4b->1": 1,
+      "4b->4a": 0,
+      "4b->4b": 0
+    },
+    "arrows_A7p2pr": {
+      "1->1": 0,
+      "1->14": 1,
+      "1->20": 1,
+      "14->1": 1,
+      "14->14": 1,
+      "14->20": 0,
+      "20->1": 1,
+      "20->14": 0,
+      "20->20": 0
+    },
+    "trivial": {
+      "A6p2pr": {
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            3,
+            2
+          ],
+          [
+            4,
+            2,
+            3
+          ]
+        ],
+        "dim": 34,
+        "tilting": true
+      },
+      "A7p2pr": {
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "dim": 19,
+        "tilting": true
+      }
+    }
+  },
+  "U_mutation_orbit": {
+    "hit": {
+      "E_size": 2,
+      "cartan": [
+        [
+          3,
+          2,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          4,
+          4,
+          8
+        ]
+      ],
+      "det": 8,
+      "dim": 34,
+      "path": "02",
+      "snf": [
+        1,
+        1,
+        8
+      ],
+      "tilting": true
+    },
+    "honest": "좌 mutation 만 구현 — 궤도 자체는 부분이다",
+    "n_mutations": 12,
+    "orbit": [
+      {
+        "E_size": 2,
+        "cartan": [
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 16,
+        "path": "0",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 1,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "path": "1",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 1,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "path": "2",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 2,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "path": "00",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 2,
+        "cartan": [
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            4,
+            2
+          ],
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "path": "01",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 2,
+        "cartan": [
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "det": 8,
+        "dim": 34,
+        "path": "02",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 2,
+        "cartan": [
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 16,
+        "path": "10",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 1,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "path": "11",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 1,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "path": "12",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 1,
+        "cartan": [
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "det": 8,
+        "dim": 34,
+        "path": "020",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 1,
+        "cartan": [
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "det": 8,
+        "dim": 34,
+        "path": "021",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E_size": 2,
+        "cartan": [
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 16,
+        "path": "022",
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "tilting": true
+      }
+    ],
+    "reached_canonical_cartans": [
+      [
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          2,
+          2,
+          4
+        ]
+      ],
+      [
+        [
+          3,
+          2,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          4,
+          4,
+          8
+        ]
+      ]
+    ],
+    "start": "A7_p2_principal (dim 19)",
+    "target_canon": [
+      [
+        3,
+        2,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        4,
+        4,
+        8
+      ]
+    ]
+  },
+  "V_algebra_isomorphism": {
+    "answer_to_v22_Q3": "★★긍정 — 두 블록은 **유도동등**이다. dim A 가 19 vs 34 로 달라도 유도동등일 수 있으며, HH^*·cup 랭크가 일치한 것은 **우연이 아니라 유도불변량이 실제로 같기 때문**이었다",
+    "arrows": {
+      "A6_p2_principal": {
+        "1->1": 0,
+        "1->4a": 1,
+        "1->4b": 1,
+        "4a->1": 1,
+        "4a->4a": 0,
+        "4a->4b": 0,
+        "4b->1": 1,
+        "4b->4a": 0,
+        "4b->4b": 0
+      },
+      "reached": {
+        "0->0": 0,
+        "0->1": 0,
+        "0->2": 1,
+        "1->0": 0,
+        "1->1": 0,
+        "1->2": 1,
+        "2->0": 1,
+        "2->1": 1,
+        "2->2": 0
+      }
+    },
+    "conclusion": "A₇ p=2 주블록에서 **2단 기울기 mutation** 으로 얻은 `End_{K^b}(T)` 가 A₆ p=2 주블록과 **명시적으로 동형**이다",
+    "isomorphism": {
+      "arrow_choice": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "found": true,
+      "n_words": 77,
+      "rank_VA": 34,
+      "rank_VB": 34,
+      "sigma": [
+        "2",
+        "0",
+        "1"
+      ],
+      "tried": 17
+    },
+    "rad_powers": {
+      "A6_p2_principal": [
+        31,
+        27,
+        23,
+        19,
+        15,
+        11,
+        7,
+        3,
+        0
+      ],
+      "reached": [
+        31,
+        27,
+        23,
+        19,
+        15,
+        11,
+        7,
+        3,
+        0
+      ]
+    },
+    "theoretical_input": "Rickard: 기울기 복합체 T 에 대해 A 와 End_{K^b(proj A)}(T) 는 유도동등 — 이 정리는 **인용**이고 여기서 증명하지 않는다. 우리가 계산한 것은 (a) T 가 기울기라는 가설의 **검증** (Hom_K(T,T[±1]) = 0) 과 (b) End(T) ≅ B 의 **명시 동형**이다",
+    "tilting_complex": {
+      "step1": {
+        "approximation_term_E": [
+          "14",
+          "20"
+        ],
+        "end_cartan": [
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "end_dim": 16,
+        "mutated_vertex": "1"
+      },
+      "step2": {
+        "approximation_term_E": [
+          0,
+          1
+        ],
+        "end_cartan": [
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "end_dim": 34,
+        "mutated_vertex_index": 2
+      }
+    }
+  },
+  "all_ok": true,
+  "checks": {
+    "R_Q3_pair_det_equal": true,
+    "R_Q3_pair_snf_equal": true,
+    "R_det_values": true,
+    "R_nonprincipal_det_differs": true,
+    "R_snf_divisibility_chain": true,
+    "R_snf_product_equals_det": true,
+    "S_Q3_isometry_verified": true,
+    "S_Q3_pair_is_congruent": true,
+    "S_nonprincipal_not_congruent": true,
+    "S_p3_block_not_congruent": true,
+    "T_alg_dims": true,
+    "T_cartan_matches_sidecar": true,
+    "T_local_endos": true,
+    "T_quiver_reproduces_ext1": true,
+    "T_trivial_returns_original": true,
+    "U_all_mutations_are_tilting": true,
+    "U_all_preserve_det": true,
+    "U_all_preserve_snf": true,
+    "U_hit_at_depth_2": true,
+    "U_target_reached": true,
+    "V_arrow_count_match": true,
+    "V_explicit_isomorphism_found": true,
+    "V_iso_ranks_full": true,
+    "V_rad_powers_match": true,
+    "V_reached_cartan_is_target": true,
+    "V_reached_is_tilting": true,
+    "all_ok": true
+  },
+  "supersedes": "[[QUIVER-RELATIONS]] 의 not_claimed 항목 \"대수들의 유도동등성\" 은 이 모듈에서 **해소**된다 (A₇p2주 ~ A₆p2주 유도동등)"
+}
