@@ -1378,6 +1378,14 @@
         ]
       },
       {
+        "id": "handoff_guard",
+        "argv": [
+          "-m",
+          "qf_witness.registry.handoff_guard",
+          "--check"
+        ]
+      },
+      {
         "id": "check_claims",
         "argv": [
           "-m",
