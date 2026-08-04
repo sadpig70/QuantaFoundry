@@ -760,7 +760,7 @@
   "W_class_closure": {
     "closed": true,
     "conclusion": "A₇p2주(19) · **새 대수(16·화살 6·LL 5)** · A₆p2주(34) 세 대표가 **양방향 mutation 아래 닫힌다** — 세 대수 모두 `(HH⁰,HH¹) = (5,3)`",
-    "honest": "dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다",
+    "honest": "폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다 (dim 16 대표의 정체는 Y축에서 확정)",
     "identity": "μ⁻_k(A) = (μ⁺_k(A^op))^op — 우 mutation 은 반대 대수로 얻는다",
     "mutation_edges": [
       {
@@ -1257,6 +1257,121 @@
       }
     }
   },
+  "Y_r1_identification": {
+    "candidate": "PSL(2,7) ≅ GL(3,2) · p=2 주블록",
+    "conclusion": "★★★R1 = **PSL(2,7) 의 p=2 주블록**이다 ⟹ 이 유도동등류는 **PSL(2,7) · A₆ ≅ PSL(2,9) · A₇ 의 p=2 주블록 세 개**로 이루어진다(전부 결손군 D₈ · 3 단순가군)",
+    "group": {
+      "C3_order": 3,
+      "block_dim": 104,
+      "carrier_dim": 56,
+      "cartan": [
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "end_3": 1,
+      "hom_3_3b": 0,
+      "order": 168,
+      "parts": [
+        8,
+        8,
+        8,
+        16,
+        16
+      ],
+      "parts_head": [
+        [
+          8,
+          [
+            0,
+            0,
+            0
+          ],
+          null
+        ],
+        [
+          8,
+          [
+            0,
+            0,
+            0
+          ],
+          null
+        ],
+        [
+          8,
+          [
+            0,
+            0,
+            1
+          ],
+          "1"
+        ],
+        [
+          16,
+          [
+            1,
+            0,
+            0
+          ],
+          "3"
+        ],
+        [
+          16,
+          [
+            0,
+            1,
+            0
+          ],
+          "3b"
+        ]
+      ],
+      "pim_dims": [
+        16,
+        16,
+        8
+      ],
+      "syl2": [
+        8,
+        5,
+        2
+      ]
+    },
+    "honest": "류가 이 셋뿐이라는 주장은 **mutation 폐합 범위 안**(dim ≤ 60 · 깊이 ≤ 6)에서의 것이다. 외부 분류표는 인용하지 않는다",
+    "isomorphism": {
+      "arrow_choice": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "found": true,
+      "n_words": 41,
+      "rank_VA": 16,
+      "rank_VB": 16,
+      "sigma": [
+        "3",
+        "3b",
+        "1"
+      ],
+      "tried": 1
+    },
+    "why_this_candidate": "R1 의 Cartan 대각 (3,3,2)·대칭 ⟹ 단순가군이 {S, S*, 1̂} 꼴이고 dim P = (16,16,8) ⟹ 블록 차원 104. 결손군 8 · 3 단순가군 · 104 = 168 − 8² 를 만족하는 가장 값싼 후보"
+  },
   "all_ok": true,
   "checks": {
     "R_Q3_pair_det_equal": true,
@@ -1301,6 +1416,15 @@
     "X_hh01_matches_hochschild": true,
     "X_middle_rep_filled": true,
     "X_two_implementations_agree": true,
+    "Y_3_not_selfdual_and_split": true,
+    "Y_block_dim_accounts_group": true,
+    "Y_carrier_splits": true,
+    "Y_cartan_prediction": true,
+    "Y_explicit_isomorphism": true,
+    "Y_group_order_168": true,
+    "Y_invariant_card_matches": true,
+    "Y_pim_dims": true,
+    "Y_sylow2_is_D8": true,
     "all_ok": true
   },
   "supersedes": "[[QUIVER-RELATIONS]] 의 not_claimed 항목 \"대수들의 유도동등성\" 은 이 모듈에서 **해소**된다 (A₇p2주 ~ A₆p2주 유도동등)"

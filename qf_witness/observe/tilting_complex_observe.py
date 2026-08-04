@@ -6,7 +6,7 @@
 "다음 불변량이 가를 것"이라는 예측이 **세 번 연속 깨졌으므로**, 부정 도구를 더
 찾는 대신 **가설을 뒤집어** 유도동등의 긍정 구성을 시도한다.
 
-관측 7축 (정확 정수·GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 8축 (정확 정수·GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
   R  ★아직 안 잰 유도불변량 — Cartan **판별식**·**Smith 표준형**(4 블록).
      유도동등이면 `C_A = Xᵀ C_B X` (`X ∈ GL_n(ℤ)`)이므로 둘 다 필요조건이다.
   S  ★★**ℤ-합동(등척) 전수 판정** — 짧은 벡터를 `q(v) ≤ B ⟹ |v_i| ≤ √(B·(C⁻¹)_ii)`
@@ -23,6 +23,8 @@
   W  ★유도동등류 **닫기** — 우 mutation `μ⁻_k(A) = (μ⁺_k(A^op))^op`(★반대 대수 하나만
      만들면 엔진 전체가 재사용된다) · **동형-dedup** BFS · 류 내부 불변량 교차검증
      (`HH^*` 는 유도불변 ⟹ 류의 **모든 대표**가 같아야 한다 — 반증 가능한 게이트).
+  Y  ★★★**R1 의 정체** — dim 16 대표가 `PSL(2,7) ≅ GL(3,2)` 의 p=2 **주블록**임을
+     Cartan 예측 + **명시 대수 동형**으로 확정 ⟹ 이 류 = **PSL(2,7)·A₆·A₇ 의 p=2 주블록**.
   X  ★★**구조상수판 `HH^*`·cup** — `hh_relative`(행렬 입력)를 구조상수 입력으로 이식해
      엔진이 만드는 **모든** 대수에 적용한다. ★알려진 답(두 끝점의 `(5,3,5,0)`)이
      새 경로의 **정오 판정기**이고, 두 구현이 같은 대수에서 `C·ker·HH·cup` 까지 일치한다.
@@ -37,7 +39,7 @@
     **가설의 검증**(`Hom_K(T,T[±1]) = 0`)과 (b) `End(T) ≅ B` 의 **명시 동형**이다.
   · ℤ-합동은 **필요조건**일 뿐이다(성립해도 유도동등을 함의하지 않는다).
   · W축 폐합은 **`dim ≤ 60` · 깊이 ≤ 6 안에서의 폐합**이다(상한에 닿으면 포화라 쓰지 않는다).
-  · dim 16 대표는 **어느 군 블록으로도 동일시하지 않았다** — 이 류에 있다는 실측만 쓴다.
+  · Y축에서 dim 16 대표를 **PSL(2,7) 주블록으로 동일시**했다(선행 사이클의 유보 해소).
   · 동형의 **명시 형태는 선택 의존**이다(σ·화살 상). 존재는 불변.
   · 외부 분류표(대수의 이름)는 **인용하지 않는다**.
 """
@@ -59,7 +61,8 @@ from qf_witness.observe.loewy_series_observe import (
     coset_data, coset_perm_module, decompose_regular, hecke_endos, hom_space,
     nullspace, nullspace_gf2, submodule_action, subgroup)
 from qf_witness.observe.quiver_relations_observe import (
-    algebra_table, block_presentation, hh_relative, hochschild, rref_insert)
+    algebra_table, block_presentation, hh_relative, hochschild,
+    hom_space_fast, rref_insert)
 
 PROOFS = os.path.join(ROOT, ".pgf", "proofs")
 
@@ -977,6 +980,98 @@ def build_a7_p2_principal():
             (NPr, HOMPr, RADPr, dPPr))
 
 
+def gl32_perm(M):
+    """`GL(3,2)` 원소를 𝔽₂³ 의 비영벡터 7개 위 순열로(점 인덱스 = 벡터의 정수값)."""
+    pm = [0] * 7
+    for val in range(1, 8):
+        v = [(val >> k) & 1 for k in range(3)]
+        w = [sum(M[r][c] * v[c] for c in range(3)) % 2 for r in range(3)]
+        pm[val - 1] = sum(w[k] << k for k in range(3)) - 1
+    return tuple(pm)
+
+
+def elem_order(g, mul, idp):
+    x, n = g, 1
+    while x != idp:
+        x, n = mul(x, g), n + 1
+    return n
+
+
+def sylow2_fingerprint(ordG, mul, idp):
+    """Sylow-2 부분군 하나와 그 **지문**(위수·involution 수·order-4 수) —
+    `D₈` 는 (8, 5, 2)·`Q₈` 는 (8,1,6)·`ℤ₂³` 는 (8,7,0) 이라 이 지문이 가른다."""
+    tw = sorted(g for g in ordG
+                if g != idp and elem_order(g, mul, idp) in (2, 4))
+    for a in tw:
+        for b in tw:
+            H = subgroup([a, b], mul, idp)
+            if len(H) == 8:
+                o = [elem_order(g, mul, idp) for g in H]
+                return len(H), o.count(2), o.count(4)
+    return 0, 0, 0
+
+
+def build_psl27_p2_principal():
+    """`PSL(2,7) ≅ GL(3,2)` 의 p=2 **주블록** — C₃ 운반자(홀수 위수 ⟹ 사영)에서 세 PIM."""
+    import random
+    M1 = [[0, 0, 1], [1, 0, 1], [0, 1, 0]]        # Singer(위수 7)
+    M2 = [[1, 1, 0], [0, 1, 0], [0, 0, 1]]        # transvection
+    G = [gl32_perm(M1), gl32_perm(M2)]
+    mul, idp, ordG = enumerate_group(G, 7)
+    nat = [np.array(M, dtype=np.int64) for M in (M1, M2)]
+    from qf_witness.observe.ext1_quiver_observe import inv_mod
+    dual = [np.array(np.transpose(inv_mod(m, 2)), dtype=np.int64) % 2
+            for m in nat]
+    raw = {"3": (nat, 3), "3b": (dual, 3),
+           "1": ([np.eye(1, dtype=np.int64)] * 2, 1)}
+    N = ["3", "3b", "1"]
+    S = {k: extend_action(G, mul, idp, gm, 2, ordG)
+         for k, (gm, _d) in raw.items()}
+    D = {k: dd for k, (_g, dd) in raw.items()}
+    sim = [(k, S[k], D[k]) for k in N]
+    info = {"order": len(ordG), "syl2": sylow2_fingerprint(ordG, mul, idp),
+            "hom_3_3b": len(hom_space(S["3"], S["3b"], 3, 3, G, 2)),
+            "end_3": len(hom_space(S["3"], S["3"], 3, 3, G, 2))}
+    g3 = sorted(g for g in ordG if g != idp and mul(mul(g, g), g) == idp)[0]
+    H3 = subgroup([g3], mul, idp)
+    n_, reps_, perms_, mats_ = coset_data(ordG, mul, idp, G, H3)
+    actX = extend_action(G, mul, idp, mats_, 2, ordG)
+    alg = hecke_endos(n_, perms_, H3, reps_)
+    rng = random.Random(7)
+
+    def _rnd(alg=alg, rng=rng, n_=n_):
+        M = np.zeros((n_, n_), dtype=np.int64)
+        for A_ in rng.sample(alg, max(2, len(alg) // 3)):
+            M = (M + A_) % 2
+        return M
+
+    ps = []
+    decompose_regular(np.eye(n_, dtype=np.int64), np.eye(n_, dtype=np.int64),
+                      _rnd, 2, rng, ps)
+    info.update({"C3_order": len(H3), "carrier_dim": n_,
+                 "parts": sorted(len(b) for b in ps)})
+    PIM, heads = {}, []
+    for B in sorted(ps, key=len):
+        dd = len(B)
+        actY, _ = submodule_action(actX, G, B, 2)
+        hd = tuple(len(hom_space(actY, aS, dd, dS, G, 2))
+                   for _n, aS, dS in sim)
+        nm = next((k for t, k in enumerate(N)
+                   if hd == tuple(1 if j == t else 0 for j in range(3))), None)
+        heads.append([dd, list(hd), nm])
+        if nm and nm not in PIM:
+            PIM[nm] = {g: actY[g] % 2 for g in G}
+    info["parts_head"] = heads
+    dP = {k: len(PIM[k][G[0]]) for k in N}
+    HOM = {(i, j): hom_space_fast(PIM[i], PIM[j], dP[i], dP[j], G, 2)
+           for i in N for j in N}
+    cart = [[len(HOM[(i, j)]) for j in N] for i in N]
+    info.update({"pim_dims": [dP[k] for k in N], "cartan": cart,
+                 "block_dim": sum(dP[k] * D[k] for k in N)})
+    meta, MT, _n = algebra_table(N, HOM, dP, 2)
+    return alg_pack(N, meta, MT, 2), info
+
+
 def cartan_of(alg):
     return [[alg["cnt"][(i, j)] for j in alg["names"]] for i in alg["names"]]
 
@@ -1234,8 +1329,8 @@ def main():
         "identity": "μ⁻_k(A) = (μ⁺_k(A^op))^op — 우 mutation 은 반대 대수로 얻는다",
         "representatives": tbl, "mutation_edges": edges,
         "closed": R["W_closed_before_cap"],
-        "honest": ("dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 "
-                   "실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다"),
+        "honest": ("폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다 "
+                   "(dim 16 대표의 정체는 Y축에서 확정)"),
         "observed": ("★좌·우 mutation 이 **매번 같은 동형류**로 간다(18 간선 전부) — "
                      "실측이고 기전은 주장하지 않는다"),
         "conclusion": ("A₇p2주(19) · **새 대수(16·화살 6·LL 5)** · A₆p2주(34) 세 대표가 "
@@ -1281,6 +1376,45 @@ def main():
                  "행렬 입력판과 구조상수판이 같은 대수에서 C·ker·HH·cup 랭크까지 일치"),
         "conclusion": ("류의 **세 대표 전부** `(HH⁰,HH¹,HH²,cup) = (5,3,5,0)` — "
                        "미완성이던 R1(dim 16) 칸이 채워졌고 유도불변성이 재확인됐다")}
+
+    # ── Y. ★★★R1(dim 16)의 **정체** — PSL(2,7) ≅ GL(3,2) 의 p=2 주블록 ──
+    apsl, pinfo = build_psl27_p2_principal()
+    R["Y_group_order_168"] = (pinfo["order"] == 168)
+    # ★D₈ 지문 — Q₈(8,1,6)·ℤ₂³(8,7,0)·ℤ₄×ℤ₂(8,3,4)·ℤ₈(8,1,2) 와 갈린다
+    R["Y_sylow2_is_D8"] = (tuple(pinfo["syl2"]) == (8, 5, 2))
+    R["Y_3_not_selfdual_and_split"] = (pinfo["hom_3_3b"] == 0
+                                       and pinfo["end_3"] == 1)
+    R["Y_carrier_splits"] = (pinfo["carrier_dim"] == 56
+                             and pinfo["parts"] == [8, 8, 8, 16, 16])
+    R["Y_pim_dims"] = (pinfo["pim_dims"] == [16, 16, 8])
+    # ★설계 예측: Hom 으로 재유도한 Cartan 이 **정확히 R1 의 Cartan**
+    r1 = next(r for r in reps if r["alg"]["n"] == 16)
+    R["Y_cartan_prediction"] = (pinfo["cartan"] == [[3, 2, 1], [2, 3, 1],
+                                                    [1, 1, 2]]
+                                == r1["cartan"])
+    # ★|G| = 주블록(104) + defect-0 Steinberg(8² = 64)
+    R["Y_block_dim_accounts_group"] = (pinfo["block_dim"] == 104
+                                       and pinfo["block_dim"] + 64 == 168)
+    R["Y_invariant_card_matches"] = (
+        sum(quiver_of(apsl).values()) == 6
+        and rad_powers(apsl) == [13, 7, 4, 2, 0]
+        and [hh_struct(apsl, cup=True)[k]
+             for k in ("HH0", "HH1", "HH2", "cup_rank")] == [5, 3, 5, 0])
+    isoY = find_isomorphism(r1["alg"], apsl)
+    # ★★Cartan 일치는 필요조건 — **명시 동형**까지 가야 주장이 선다
+    R["Y_explicit_isomorphism"] = isoY["found"]
+    out["Y_r1_identification"] = {
+        "candidate": "PSL(2,7) ≅ GL(3,2) · p=2 주블록",
+        "why_this_candidate": ("R1 의 Cartan 대각 (3,3,2)·대칭 ⟹ 단순가군이 "
+                               "{S, S*, 1̂} 꼴이고 dim P = (16,16,8) ⟹ 블록 차원 104. "
+                               "결손군 8 · 3 단순가군 · 104 = 168 − 8² 를 만족하는 "
+                               "가장 값싼 후보"),
+        "group": pinfo, "isomorphism": isoY,
+        "conclusion": ("★★★R1 = **PSL(2,7) 의 p=2 주블록**이다 ⟹ 이 유도동등류는 "
+                       "**PSL(2,7) · A₆ ≅ PSL(2,9) · A₇ 의 p=2 주블록 세 개**로 "
+                       "이루어진다(전부 결손군 D₈ · 3 단순가군)"),
+        "honest": ("류가 이 셋뿐이라는 주장은 **mutation 폐합 범위 안**"
+                   "(dim ≤ 60 · 깊이 ≤ 6)에서의 것이다. 외부 분류표는 인용하지 않는다")}
 
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
     out["checks"] = R
