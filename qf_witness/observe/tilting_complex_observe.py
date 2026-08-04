@@ -6,7 +6,7 @@
 "다음 불변량이 가를 것"이라는 예측이 **세 번 연속 깨졌으므로**, 부정 도구를 더
 찾는 대신 **가설을 뒤집어** 유도동등의 긍정 구성을 시도한다.
 
-관측 6축 (정확 정수·GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 7축 (정확 정수·GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
   R  ★아직 안 잰 유도불변량 — Cartan **판별식**·**Smith 표준형**(4 블록).
      유도동등이면 `C_A = Xᵀ C_B X` (`X ∈ GL_n(ℤ)`)이므로 둘 다 필요조건이다.
   S  ★★**ℤ-합동(등척) 전수 판정** — 짧은 벡터를 `q(v) ≤ B ⟹ |v_i| ≤ √(B·(C⁻¹)_ii)`
@@ -23,6 +23,10 @@
   W  ★유도동등류 **닫기** — 우 mutation `μ⁻_k(A) = (μ⁺_k(A^op))^op`(★반대 대수 하나만
      만들면 엔진 전체가 재사용된다) · **동형-dedup** BFS · 류 내부 불변량 교차검증
      (`HH^*` 는 유도불변 ⟹ 류의 **모든 대표**가 같아야 한다 — 반증 가능한 게이트).
+  X  ★★**구조상수판 `HH^*`·cup** — `hh_relative`(행렬 입력)를 구조상수 입력으로 이식해
+     엔진이 만드는 **모든** 대수에 적용한다. ★알려진 답(두 끝점의 `(5,3,5,0)`)이
+     새 경로의 **정오 판정기**이고, 두 구현이 같은 대수에서 `C·ker·HH·cup` 까지 일치한다.
+     ⟹ 류의 **세 대표 전부** `(HH⁰,HH¹,HH²,cup) = (5,3,5,0)`(R1 칸 채움).
 
 결과: A₇ p=2 주블록(dim A = 19)과 A₆ p=2 주블록(dim A = 34)은 **유도동등**이다.
 `HH^*` 과 cup 랭크가 세 사이클 연속 일치했던 것은 우연이 아니라 **실제로 같았기** 때문이다.
@@ -33,7 +37,6 @@
     **가설의 검증**(`Hom_K(T,T[±1]) = 0`)과 (b) `End(T) ≅ B` 의 **명시 동형**이다.
   · ℤ-합동은 **필요조건**일 뿐이다(성립해도 유도동등을 함의하지 않는다).
   · W축 폐합은 **`dim ≤ 60` · 깊이 ≤ 6 안에서의 폐합**이다(상한에 닿으면 포화라 쓰지 않는다).
-  · `HH²`·cup 은 이번 범위 밖이다 — 구조상수판 상대 bar 복합체를 만들지 않았다.
   · dim 16 대표는 **어느 군 블록으로도 동일시하지 않았다** — 이 류에 있다는 실측만 쓴다.
   · 동형의 **명시 형태는 선택 의존**이다(σ·화살 상). 존재는 불변.
   · 외부 분류표(대수의 이름)는 **인용하지 않는다**.
@@ -56,7 +59,7 @@ from qf_witness.observe.loewy_series_observe import (
     coset_data, coset_perm_module, decompose_regular, hecke_endos, hom_space,
     nullspace, nullspace_gf2, submodule_action, subgroup)
 from qf_witness.observe.quiver_relations_observe import (
-    algebra_table, block_presentation, hochschild, rref_insert)
+    algebra_table, block_presentation, hh_relative, hochschild, rref_insert)
 
 PROOFS = os.path.join(ROOT, ".pgf", "proofs")
 
@@ -491,6 +494,197 @@ def end_algebra(alg, T):
             "alg": alg_pack(list(range(m)), meta, MT, p)}
 
 
+def rad_basis_piv(alg, i, j):
+    """`rad ∩ Hom(P_i,P_j)` 의 RREF 기저 + pivot(좌표 읽기용)."""
+    c = alg["cnt"][(i, j)]
+    if c == 0:
+        return np.zeros((0, 0), dtype=np.int64), []
+    if i != j:
+        return np.eye(c, dtype=np.int64), list(range(c))
+    Rr = rad_block(alg, i, i)
+    if not len(Rr):
+        return np.zeros((0, c), dtype=np.int64), []
+    return rref_rows(Rr.copy() % alg["p"], alg["p"])
+
+
+def hh_struct(alg, cup=False):
+    """★`hh_relative` 의 **구조상수판** — 행렬(HOM/RADP) 없이 임의 기본대수에 쓴다.
+
+    정규화 상대 bar 복합체 `C^n = Hom_{E-E}(rad^{⊗_E n}, A)` 는 동일하고,
+    행렬 합성 `Y @ X`(= Y∘X)가 전부 `amul(x, y)` 로 바뀐다(규약 `a·b := b∘a`).
+    블록 좌표 읽기는 pivot 슬라이스라 변환행렬이 필요 없다."""
+    p, names, cnt, off = alg["p"], alg["names"], alg["cnt"], alg["off"]
+
+    def co(i, j, v):
+        o = off[(i, j)]
+        return [int(x) % p for x in v[o:o + cnt[(i, j)]]]
+
+    def ebas(i, j, t):
+        v = np.zeros(alg["n"], dtype=np.int64)
+        v[off[(i, j)] + t] = 1
+        return v
+
+    RMAT, RPIV, rmeta = {}, {}, []
+    for i in names:
+        for j in names:
+            Rr, piv = rad_basis_piv(alg, i, j)
+            RPIV[(i, j)] = piv
+            for t, row in enumerate(Rr):
+                v = np.zeros(alg["n"], dtype=np.int64)
+                v[off[(i, j)]:off[(i, j)] + cnt[(i, j)]] = row % p
+                RMAT[(i, j, t)] = v
+                rmeta.append((i, j, t))
+    nR = len(rmeta)
+
+    def rco(i, j, cvec):
+        return [int(cvec[c]) % p for c in RPIV[(i, j)]]
+
+    pairs = [(a, b) for a in rmeta for b in rmeta if a[1] == b[0]]
+    prodR = {(a, b): rco(a[0], b[1],
+                         co(a[0], b[1], amul(alg, RMAT[a], RMAT[b])))
+             for (a, b) in pairs}
+
+    c0 = [(i, t) for i in names for t in range(cnt[(i, i)])]
+    c1 = [(rk, w) for rk in rmeta for w in range(cnt[(rk[0], rk[1])])]
+    trips = [(a, b, c) for (a, b) in pairs for c in rmeta if b[1] == c[0]]
+    c2 = [(a, b, w) for (a, b) in pairs for w in range(cnt[(a[0], b[1])])]
+    c3 = [(a, b, c, w) for (a, b, c) in trips
+          for w in range(cnt[(a[0], c[1])])]
+    i1 = {k: t for t, k in enumerate(c1)}
+    i2 = {k: t for t, k in enumerate(c2)}
+    i3 = {k: t for t, k in enumerate(c3)}
+
+    D0 = np.zeros((len(c1), len(c0)), dtype=np.int64)
+    for q, (m, ua) in enumerate(c0):
+        for rk in rmeta:
+            (i, j, _t) = rk
+            if j == m:                       # a·z = z∘a
+                for w, val in enumerate(
+                        co(i, m, amul(alg, RMAT[rk], ebas(m, m, ua)))):
+                    D0[i1[(rk, w)], q] = (D0[i1[(rk, w)], q] + val) % p
+            if i == m:                       # z·a = a∘z
+                for w, val in enumerate(
+                        co(m, j, amul(alg, ebas(m, m, ua), RMAT[rk]))):
+                    D0[i1[(rk, w)], q] = (D0[i1[(rk, w)], q] - val) % p
+    D0 %= p
+
+    D1 = np.zeros((len(c2), len(c1)), dtype=np.int64)
+    for (a, b) in pairs:
+        i, m, j = a[0], a[1], b[1]
+        base = i2[(a, b, 0)]
+        for ua in range(cnt[(m, j)]):                     # a·f(b)
+            for w, val in enumerate(
+                    co(i, j, amul(alg, RMAT[a], ebas(m, j, ua)))):
+                if val:
+                    D1[base + w, i1[(b, ua)]] = (
+                        D1[base + w, i1[(b, ua)]] + val) % p
+        for ua in range(cnt[(i, m)]):                     # f(a)·b
+            for w, val in enumerate(
+                    co(i, j, amul(alg, ebas(i, m, ua), RMAT[b]))):
+                if val:
+                    D1[base + w, i1[(a, ua)]] = (
+                        D1[base + w, i1[(a, ua)]] + val) % p
+        for t2, val in enumerate(prodR[(a, b)]):          # −f(a·b)
+            if val:
+                rk = (i, j, t2)
+                for w in range(cnt[(i, j)]):
+                    D1[base + w, i1[(rk, w)]] = (
+                        D1[base + w, i1[(rk, w)]] - val) % p
+    D1 %= p
+
+    D2 = np.zeros((len(c3), len(c2)), dtype=np.int64)
+    for (a, b, c) in trips:
+        i, m1, m2, j = a[0], a[1], c[0], c[1]
+        base = i3[(a, b, c, 0)]
+        for ua in range(cnt[(m1, j)]):
+            for w, val in enumerate(
+                    co(i, j, amul(alg, RMAT[a], ebas(m1, j, ua)))):
+                if val:
+                    D2[base + w, i2[(b, c, ua)]] = (
+                        D2[base + w, i2[(b, c, ua)]] + val) % p
+        for t2, val in enumerate(prodR[(a, b)]):
+            if val:
+                rk = (i, m2, t2)
+                for w in range(cnt[(i, j)]):
+                    D2[base + w, i2[(rk, c, w)]] = (
+                        D2[base + w, i2[(rk, c, w)]] - val) % p
+        for t2, val in enumerate(prodR[(b, c)]):
+            if val:
+                rk = (m1, j, t2)
+                for w in range(cnt[(i, j)]):
+                    D2[base + w, i2[(a, rk, w)]] = (
+                        D2[base + w, i2[(a, rk, w)]] + val) % p
+        for ua in range(cnt[(i, m2)]):
+            for w, val in enumerate(
+                    co(i, j, amul(alg, ebas(i, m2, ua), RMAT[c]))):
+                if val:
+                    D2[base + w, i2[(a, b, ua)]] = (
+                        D2[base + w, i2[(a, b, ua)]] - val) % p
+    D2 %= p
+
+    Z1 = _ns(D1, p) if len(c2) else np.eye(len(c1), dtype=np.int64)
+    k0 = len(_ns(D0, p)) if len(c1) else len(c0)
+    k1, k2 = len(Z1), (len(_ns(D2, p)) if len(c3) else len(c2))
+    out = {"dim_A": alg["n"], "dim_rad": nR,
+           "C": [len(c0), len(c1), len(c2), len(c3)],
+           "ker": [k0, k1, k2], "HH0": k0, "HH1": k1 - (len(c0) - k0),
+           "HH2": k2 - (len(c1) - k1)}
+    if not cup:
+        return out
+
+    Bb, pv = np.zeros((0, len(c1)), dtype=np.int64), []
+    for q in range(D0.shape[1]):
+        _o, Bb, pv = rref_insert(Bb, pv, D0[:, q] % p, p)
+    reps = []
+    for z in Z1:
+        ok, Bb, pv = rref_insert(Bb, pv, z % p, p)
+        if ok:
+            reps.append(z % p)
+    B2b, p2 = np.zeros((0, len(c2)), dtype=np.int64), []
+    for q in range(D1.shape[1]):
+        _o, B2b, p2 = rref_insert(B2b, p2, D1[:, q] % p, p)
+
+    def val1(fv, rk):
+        i, j = rk[0], rk[1]
+        v = np.zeros(alg["n"], dtype=np.int64)
+        for w in range(cnt[(i, j)]):
+            v[off[(i, j)] + w] = int(fv[i1[(rk, w)]]) % p
+        return v
+
+    def cup11(fv, gv):
+        v = np.zeros(len(c2), dtype=np.int64)
+        for (a, b) in pairs:
+            i, j = a[0], b[1]
+            P = amul(alg, val1(fv, a), val1(gv, b))
+            base = i2[(a, b, 0)]
+            for w, cc in enumerate(co(i, j, P)):
+                if cc:
+                    v[base + w] = (v[base + w] + cc) % p
+        return v % p
+
+    cocycle_ok, comm_ok, prods = True, True, {}
+    for x in range(len(reps)):
+        for y in range(len(reps)):
+            u = cup11(reps[x], reps[y])
+            prods[(x, y)] = u
+            if len(c3) and ((D2 @ u) % p).any():
+                cocycle_ok = False
+    for x in range(len(reps)):
+        for y in range(x, len(reps)):
+            ok, _B2c, _p2c = rref_insert(B2b.copy(), list(p2),
+                                         (prods[(x, y)] + prods[(y, x)]) % p, p)
+            if ok:
+                comm_ok = False
+    Cb, cp = B2b.copy(), list(p2)
+    span0 = len(cp)
+    for x in range(len(reps)):
+        for y in range(len(reps)):
+            _o, Cb, cp = rref_insert(Cb, cp, prods[(x, y)], p)
+    out.update({"HH1_reps": len(reps), "cup_rank": len(cp) - span0,
+                "cup_is_cocycle": cocycle_ok, "graded_commutative": comm_ok})
+    return out
+
+
 def mutate_step(alg, k, right):
     """한 걸음 mutation — `right=True` 면 `μ⁻_k(A) = (μ⁺_k(A^op))^op`."""
     if not right:
@@ -735,9 +929,10 @@ def build_a6_p2_principal():
             if nm in ("4a", "4b") and nm not in PIM6:
                 PIM6[nm] = {g: actY[g] % 2 for g in A6G}
     C6 = [[8, 4, 4], [4, 3, 2], [4, 2, 3]]
-    B6, _a, _r, HOM6, dP6 = block_presentation(N6, A6G, PIM6, sim6, C6, 9, 2)
+    B6, _a, RADP6, HOM6, dP6 = block_presentation(N6, A6G, PIM6, sim6, C6, 9, 2)
     meta, MT, _n = algebra_table(N6, HOM6, dP6, 2)
-    return alg_pack(N6, meta, MT, 2), B6["cartan_via_hom"]
+    return (alg_pack(N6, meta, MT, 2), B6["cartan_via_hom"],
+            (N6, HOM6, RADP6, dP6))
 
 
 def build_a7_p2_principal():
@@ -775,10 +970,11 @@ def build_a7_p2_principal():
     NPr = ["1", "14", "20"]
     simPr = [(k, SA[k], DA[k]) for k in NPr]
     CPr = [[4, 2, 2], [2, 3, 1], [2, 1, 2]]
-    BP, _a, _r, HOMPr, dPPr = block_presentation(
+    BP, _a, RADPr, HOMPr, dPPr = block_presentation(
         NPr, A7G, {k: PIMA[k] for k in NPr}, simPr, CPr, 5, 2, lift_cap=32)
     meta, MT, _n = algebra_table(NPr, HOMPr, dPPr, 2)
-    return alg_pack(NPr, meta, MT, 2), BP["cartan_via_hom"]
+    return (alg_pack(NPr, meta, MT, 2), BP["cartan_via_hom"],
+            (NPr, HOMPr, RADPr, dPPr))
 
 
 def cartan_of(alg):
@@ -852,9 +1048,9 @@ def main():
         print("tilting_complex_observe: all_ok=%s checks=%d (quick) %.1fs"
               % (R["all_ok"], len(R) - 1, time.time() - t0))
         return 0 if R["all_ok"] else 1
-    alg7, c7 = build_a7_p2_principal()
+    alg7, c7, mx7 = build_a7_p2_principal()
     print("A7 alg %.1fs" % (time.time() - t0), flush=True)
-    alg6, c6 = build_a6_p2_principal()
+    alg6, c6, mx6 = build_a6_p2_principal()
     print("A6 alg %.1fs" % (time.time() - t0), flush=True)
     R["T_cartan_matches_sidecar"] = (c7 == CAR["A7_p2_principal"]
                                      and c6 == CAR["A6_p2_principal"])
@@ -1038,13 +1234,53 @@ def main():
         "identity": "μ⁻_k(A) = (μ⁺_k(A^op))^op — 우 mutation 은 반대 대수로 얻는다",
         "representatives": tbl, "mutation_edges": edges,
         "closed": R["W_closed_before_cap"],
-        "honest": ("HH²·cup 은 이번 범위 밖(구조상수판 상대 bar 복합체 미구현). "
-                   "dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 "
+        "honest": ("dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 "
                    "실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다"),
         "observed": ("★좌·우 mutation 이 **매번 같은 동형류**로 간다(18 간선 전부) — "
                      "실측이고 기전은 주장하지 않는다"),
         "conclusion": ("A₇p2주(19) · **새 대수(16·화살 6·LL 5)** · A₆p2주(34) 세 대표가 "
                        "**양방향 mutation 아래 닫힌다** — 세 대수 모두 `(HH⁰,HH¹) = (5,3)`")}
+
+    # ── X. ★★구조상수판 `HH^*`·cup — 류 전체의 불변량 카드를 채운다 ────
+    two = {}
+    for nm, a, mx in (("A7_p2_principal", alg7, mx7),
+                      ("A6_p2_principal", alg6, mx6)):
+        ref = hh_relative(mx[0], mx[1], mx[2], mx[3], 2, cup=True)
+        got = hh_struct(a, cup=True)
+        two[nm] = {"hh_relative": ref, "hh_struct": got,
+                   "agree": all(ref[k] == got[k] for k in
+                                ("C", "ker", "HH0", "HH1", "HH2",
+                                 "HH1_reps", "cup_rank"))}
+    # ★★두 독립 구현(행렬 입력 vs 구조상수)이 **같은 대수**에서 일치해야 한다
+    R["X_two_implementations_agree"] = all(v["agree"] for v in two.values())
+    card = {}
+    for r in reps:
+        h = hh_struct(r["alg"], cup=True)
+        card[r["label"]] = {"dim": r["alg"]["n"], "C": h["C"],
+                            "HH0": h["HH0"], "HH1": h["HH1"], "HH2": h["HH2"],
+                            "cup_rank": h["cup_rank"],
+                            "cup_is_cocycle": h["cup_is_cocycle"],
+                            "graded_commutative": h["graded_commutative"]}
+    R["X_cup_correctness_gates"] = all(v["cup_is_cocycle"]
+                                       and v["graded_commutative"]
+                                       for v in card.values())
+    # ★★유도불변량이므로 류의 세 대표가 **전부** (5,3,5,0) 이어야 한다
+    R["X_class_invariant_card"] = all(
+        (v["HH0"], v["HH1"], v["HH2"], v["cup_rank"]) == (5, 3, 5, 0)
+        for v in card.values())
+    R["X_hh01_matches_hochschild"] = all(
+        (card[k]["HH0"], card[k]["HH1"])
+        == (tbl[k]["HH0"], tbl[k]["HH1"]) for k in card)
+    R["X_middle_rep_filled"] = ("R1" in card and card["R1"]["dim"] == 16
+                                and card["R1"]["C"] == [8, 26, 116, 528])
+    out["X_hochschild_struct_const"] = {
+        "identity": ("`hh_relative` 의 구조상수판 — 행렬 합성 `Y@X` 가 전부 "
+                     "`amul(x,y)` 로 바뀐다(규약 `a·b := b∘a`)"),
+        "two_path_check": two, "class_card": card,
+        "note": ("★알려진 답(두 끝점의 (5,3,5,0))이 **새 경로의 정오 판정기** 역할을 했다 — "
+                 "행렬 입력판과 구조상수판이 같은 대수에서 C·ker·HH·cup 랭크까지 일치"),
+        "conclusion": ("류의 **세 대표 전부** `(HH⁰,HH¹,HH²,cup) = (5,3,5,0)` — "
+                       "미완성이던 R1(dim 16) 칸이 채워졌고 유도불변성이 재확인됐다")}
 
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
     out["checks"] = R

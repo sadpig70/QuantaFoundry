@@ -760,7 +760,7 @@
   "W_class_closure": {
     "closed": true,
     "conclusion": "A₇p2주(19) · **새 대수(16·화살 6·LL 5)** · A₆p2주(34) 세 대표가 **양방향 mutation 아래 닫힌다** — 세 대수 모두 `(HH⁰,HH¹) = (5,3)`",
-    "honest": "HH²·cup 은 이번 범위 밖(구조상수판 상대 bar 복합체 미구현). dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다",
+    "honest": "dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다",
     "identity": "μ⁻_k(A) = (μ⁺_k(A^op))^op — 우 mutation 은 반대 대수로 얻는다",
     "mutation_edges": [
       {
@@ -1109,6 +1109,154 @@
       }
     }
   },
+  "X_hochschild_struct_const": {
+    "class_card": {
+      "R0": {
+        "C": [
+          9,
+          38,
+          209,
+          1169
+        ],
+        "HH0": 5,
+        "HH1": 3,
+        "HH2": 5,
+        "cup_is_cocycle": true,
+        "cup_rank": 0,
+        "dim": 19,
+        "graded_commutative": true
+      },
+      "R1": {
+        "C": [
+          8,
+          26,
+          116,
+          528
+        ],
+        "HH0": 5,
+        "HH1": 3,
+        "HH2": 5,
+        "cup_is_cocycle": true,
+        "cup_rank": 0,
+        "dim": 16,
+        "graded_commutative": true
+      },
+      "R2": {
+        "C": [
+          14,
+          140,
+          1592,
+          18072
+        ],
+        "HH0": 5,
+        "HH1": 3,
+        "HH2": 5,
+        "cup_is_cocycle": true,
+        "cup_rank": 0,
+        "dim": 34,
+        "graded_commutative": true
+      }
+    },
+    "conclusion": "류의 **세 대표 전부** `(HH⁰,HH¹,HH²,cup) = (5,3,5,0)` — 미완성이던 R1(dim 16) 칸이 채워졌고 유도불변성이 재확인됐다",
+    "identity": "`hh_relative` 의 구조상수판 — 행렬 합성 `Y@X` 가 전부 `amul(x,y)` 로 바뀐다(규약 `a·b := b∘a`)",
+    "note": "★알려진 답(두 끝점의 (5,3,5,0))이 **새 경로의 정오 판정기** 역할을 했다 — 행렬 입력판과 구조상수판이 같은 대수에서 C·ker·HH·cup 랭크까지 일치",
+    "two_path_check": {
+      "A6_p2_principal": {
+        "agree": true,
+        "hh_relative": {
+          "C": [
+            14,
+            140,
+            1592,
+            18072
+          ],
+          "HH0": 5,
+          "HH1": 3,
+          "HH1_reps": 3,
+          "HH2": 5,
+          "cup_is_cocycle": true,
+          "cup_rank": 0,
+          "dim_A": 34,
+          "dim_rad": 31,
+          "graded_commutative": true,
+          "ker": [
+            5,
+            12,
+            133
+          ]
+        },
+        "hh_struct": {
+          "C": [
+            14,
+            140,
+            1592,
+            18072
+          ],
+          "HH0": 5,
+          "HH1": 3,
+          "HH1_reps": 3,
+          "HH2": 5,
+          "cup_is_cocycle": true,
+          "cup_rank": 0,
+          "dim_A": 34,
+          "dim_rad": 31,
+          "graded_commutative": true,
+          "ker": [
+            5,
+            12,
+            133
+          ]
+        }
+      },
+      "A7_p2_principal": {
+        "agree": true,
+        "hh_relative": {
+          "C": [
+            9,
+            38,
+            209,
+            1169
+          ],
+          "HH0": 5,
+          "HH1": 3,
+          "HH1_reps": 3,
+          "HH2": 5,
+          "cup_is_cocycle": true,
+          "cup_rank": 0,
+          "dim_A": 19,
+          "dim_rad": 16,
+          "graded_commutative": true,
+          "ker": [
+            5,
+            7,
+            36
+          ]
+        },
+        "hh_struct": {
+          "C": [
+            9,
+            38,
+            209,
+            1169
+          ],
+          "HH0": 5,
+          "HH1": 3,
+          "HH1_reps": 3,
+          "HH2": 5,
+          "cup_is_cocycle": true,
+          "cup_rank": 0,
+          "dim_A": 19,
+          "dim_rad": 16,
+          "graded_commutative": true,
+          "ker": [
+            5,
+            7,
+            36
+          ]
+        }
+      }
+    }
+  },
   "all_ok": true,
   "checks": {
     "R_Q3_pair_det_equal": true,
@@ -1148,6 +1296,11 @@
     "W_op_transposes_cartan": true,
     "W_pairwise_congruent": true,
     "W_three_representatives": true,
+    "X_class_invariant_card": true,
+    "X_cup_correctness_gates": true,
+    "X_hh01_matches_hochschild": true,
+    "X_middle_rep_filled": true,
+    "X_two_implementations_agree": true,
     "all_ok": true
   },
   "supersedes": "[[QUIVER-RELATIONS]] 의 not_claimed 항목 \"대수들의 유도동등성\" 은 이 모듈에서 **해소**된다 (A₇p2주 ~ A₆p2주 유도동등)"
