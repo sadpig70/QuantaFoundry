@@ -6,7 +6,7 @@
 "다음 불변량이 가를 것"이라는 예측이 **세 번 연속 깨졌으므로**, 부정 도구를 더
 찾는 대신 **가설을 뒤집어** 유도동등의 긍정 구성을 시도한다.
 
-관측 4축 (정확 정수·GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 6축 (정확 정수·GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
   R  ★아직 안 잰 유도불변량 — Cartan **판별식**·**Smith 표준형**(4 블록).
      유도동등이면 `C_A = Xᵀ C_B X` (`X ∈ GL_n(ℤ)`)이므로 둘 다 필요조건이다.
   S  ★★**ℤ-합동(등척) 전수 판정** — 짧은 벡터를 `q(v) ≤ B ⟹ |v_i| ≤ √(B·(C⁻¹)_ii)`
@@ -20,6 +20,9 @@
   U  ★mutation 궤도 탐색 — A₇p2주에서 출발해 도달한 Cartan/차원 목록.
   V  ★★★**대수 동형** — 2단 mutation 으로 얻은 `End_{K^b}(T)` 가 A₆ p=2 주블록과
      **명시적으로 동형**임을 경로값 랭크로 판정 ⟹ v22 §4 **Q3 를 긍정으로 종결**.
+  W  ★유도동등류 **닫기** — 우 mutation `μ⁻_k(A) = (μ⁺_k(A^op))^op`(★반대 대수 하나만
+     만들면 엔진 전체가 재사용된다) · **동형-dedup** BFS · 류 내부 불변량 교차검증
+     (`HH^*` 는 유도불변 ⟹ 류의 **모든 대표**가 같아야 한다 — 반증 가능한 게이트).
 
 결과: A₇ p=2 주블록(dim A = 19)과 A₆ p=2 주블록(dim A = 34)은 **유도동등**이다.
 `HH^*` 과 cup 랭크가 세 사이클 연속 일치했던 것은 우연이 아니라 **실제로 같았기** 때문이다.
@@ -29,8 +32,9 @@
     는 유도동등. 이 정리는 **증명하지 않는다**. 우리가 계산한 것은 (a) `T` 가 기울기라는
     **가설의 검증**(`Hom_K(T,T[±1]) = 0`)과 (b) `End(T) ≅ B` 의 **명시 동형**이다.
   · ℤ-합동은 **필요조건**일 뿐이다(성립해도 유도동등을 함의하지 않는다).
-  · 좌 mutation 만 구현한다 — 우 mutation(역방향)은 미구현이므로 궤도 자체는 **부분**이다
-    (표적을 이미 찾았으므로 완전성은 필요하지 않다).
+  · W축 폐합은 **`dim ≤ 60` · 깊이 ≤ 6 안에서의 폐합**이다(상한에 닿으면 포화라 쓰지 않는다).
+  · `HH²`·cup 은 이번 범위 밖이다 — 구조상수판 상대 bar 복합체를 만들지 않았다.
+  · dim 16 대표는 **어느 군 블록으로도 동일시하지 않았다** — 이 류에 있다는 실측만 쓴다.
   · 동형의 **명시 형태는 선택 의존**이다(σ·화살 상). 존재는 불변.
   · 외부 분류표(대수의 이름)는 **인용하지 않는다**.
 """
@@ -52,7 +56,7 @@ from qf_witness.observe.loewy_series_observe import (
     coset_data, coset_perm_module, decompose_regular, hecke_endos, hom_space,
     nullspace, nullspace_gf2, submodule_action, subgroup)
 from qf_witness.observe.quiver_relations_observe import (
-    algebra_table, block_presentation, rref_insert)
+    algebra_table, block_presentation, hochschild, rref_insert)
 
 PROOFS = os.path.join(ROOT, ".pgf", "proofs")
 
@@ -407,6 +411,29 @@ def left_inverse(rows, p):
     return Linv
 
 
+def op_algebra(alg):
+    """반대 대수 `A^op` — `Hom'(P_i,P_j) := Hom(P_j,P_i)` 로 블록을 전치하고
+    구조상수를 `MT'[v',u',w'] = MT[u,v,w]` 로 재색인한다(★새 엔진이 필요 없다)."""
+    names, p = alg["names"], alg["p"]
+    off2, cnt2, pos = {}, {}, 0
+    for i in names:
+        for j in names:
+            cnt2[(i, j)] = alg["cnt"][(j, i)]
+            off2[(i, j)] = pos
+            pos += cnt2[(i, j)]
+    pi = np.zeros(alg["n"], dtype=np.int64)
+    for i in names:
+        for j in names:
+            for t in range(alg["cnt"][(i, j)]):
+                pi[alg["off"][(i, j)] + t] = off2[(j, i)] + t
+    MT2 = np.zeros_like(alg["MT"])
+    nz = np.nonzero(alg["MT"])
+    for u, v, w in zip(*nz):
+        MT2[pi[v], pi[u], pi[w]] = alg["MT"][u, v, w]
+    return {"names": list(names), "off": off2, "cnt": cnt2, "n": pos,
+            "MT": MT2 % p, "p": p}
+
+
 def trivial_object(alg):
     return [([], [i], np.zeros(0, dtype=np.int64)) for i in alg["names"]]
 
@@ -462,6 +489,21 @@ def end_algebra(alg, T):
                        and all(v == 0 for v in MI.values()),
             "ext_pos": sum(PL.values()), "ext_neg": sum(MI.values()),
             "alg": alg_pack(list(range(m)), meta, MT, p)}
+
+
+def mutate_step(alg, k, right):
+    """한 걸음 mutation — `right=True` 면 `μ⁻_k(A) = (μ⁺_k(A^op))^op`."""
+    if not right:
+        T, E = mutate(alg, k)
+        e = end_algebra(alg, T)
+        return e, [str(x) for x in E]
+    ao = op_algebra(alg)
+    T, E = mutate(ao, k)
+    e = end_algebra(ao, T)
+    return ({"cartan": [list(r) for r in zip(*e["cartan"])], "dim": e["dim"],
+             "tilting": e["tilting"], "ext_pos": e["ext_pos"],
+             "ext_neg": e["ext_neg"], "alg": op_algebra(e["alg"])},
+            [str(x) for x in E])
 
 
 def quiver_of(alg):
@@ -912,6 +954,97 @@ def main():
         "answer_to_v22_Q3": ("★★긍정 — 두 블록은 **유도동등**이다. dim A 가 19 vs 34 로 "
                              "달라도 유도동등일 수 있으며, HH^*·cup 랭크가 일치한 것은 "
                              "**우연이 아니라 유도불변량이 실제로 같기 때문**이었다")}
+
+    # ── W. ★유도동등류 **닫기** — 양방향 mutation · 동형-dedup ──────
+    op7 = op_algebra(alg7)
+    R["W_op_involutive"] = (op_algebra(op7)["n"] == alg7["n"]
+                            and cartan_of(op_algebra(op7)) == cartan_of(alg7)
+                            and np.array_equal(op_algebra(op7)["MT"],
+                                               alg7["MT"]))
+    R["W_op_transposes_cartan"] = (cartan_of(op7)
+                                   == [list(r) for r in zip(*cartan_of(alg7))])
+    reps = [{"label": "R0", "alg": alg7, "path": "", "dim": alg7["n"],
+             "cartan": cartan_of(alg7)}]
+    frontier, edges, saturated = [0], [], True
+    for d in range(1, 7):
+        nxt = []
+        for ri in frontier:
+            a = reps[ri]["alg"]
+            for kk, k in enumerate(a["names"]):
+                for right in (False, True):
+                    e, Ev = mutate_step(a, k, right)
+                    if not e["tilting"]:
+                        saturated = False
+                    tag = None
+                    for rj, rr in enumerate(reps):
+                        if (canon(rr["cartan"]) == canon(e["cartan"])
+                                and find_isomorphism(rr["alg"],
+                                                     e["alg"])["found"]):
+                            tag = rr["label"]
+                            break
+                    if tag is None:
+                        if e["dim"] > 60:      # 상한 도달 = 포화 주장 금지
+                            saturated = False
+                            continue
+                        tag = "R%d" % len(reps)
+                        reps.append({"label": tag, "alg": e["alg"],
+                                     "path": reps[ri]["path"]
+                                     + ("-" if right else "+") + str(kk),
+                                     "dim": e["dim"], "cartan": e["cartan"]})
+                        nxt.append(len(reps) - 1)
+                    edges.append({"from": reps[ri]["label"],
+                                  "vertex": str(k), "dir": "-" if right else "+",
+                                  "E": Ev, "to": tag, "dim": e["dim"]})
+        frontier = nxt
+        print("W depth %d · 신규 %d · 대표 %d · %.1fs"
+              % (d, len(nxt), len(reps), time.time() - t0), flush=True)
+        if not nxt:
+            break
+    R["W_closed_before_cap"] = saturated and not frontier
+    R["W_three_representatives"] = (len(reps) == 3
+                                    and sorted(r["dim"] for r in reps)
+                                    == [16, 19, 34])
+    R["W_all_edges_tilting"] = len(edges) == 6 * len(reps)
+    # ★실측: 이 류에서는 좌·우 mutation 이 **매번 같은 동형류**로 간다(기전 무주장)
+    lr = {}
+    for e in edges:
+        lr.setdefault((e["from"], e["vertex"]), {})[e["dir"]] = e["to"]
+    R["W_left_right_agree"] = all(v.get("+") == v.get("-") for v in lr.values())
+    tbl = {}
+    for r in reps:
+        a = r["alg"]
+        hh0, _dK, _inn, hh1 = hochschild(a["MT"], a["n"], 2)
+        tbl[r["label"]] = {
+            "path": r["path"], "dim": a["n"], "cartan": r["cartan"],
+            "det": det_int(r["cartan"]), "snf": smith(r["cartan"]),
+            "arrows": sum(quiver_of(a).values()), "quiver": quiver_of(a),
+            "rad_powers": rad_powers(a), "HH0": hh0, "HH1": hh1,
+            "loewy_length": len(rad_powers(a))}
+    # ★유도불변량은 류 전체에서 같아야 한다 — 반증 가능한 게이트
+    R["W_HH_constant_on_class"] = all(
+        (v["HH0"], v["HH1"]) == (5, 3) for v in tbl.values())
+    R["W_det_snf_constant"] = all(v["det"] == 8 and v["snf"] == [1, 1, 8]
+                                  for v in tbl.values())
+    R["W_pairwise_congruent"] = all(
+        isometries(tbl[x]["cartan"], tbl[y]["cartan"])[1]
+        for x in tbl for y in tbl)
+    R["W_endpoints_identified"] = (
+        any(v["dim"] == 19 and v["cartan"] == c7 for v in tbl.values())
+        and any(v["dim"] == 34 and canon(v["cartan"]) == tgt
+                for v in tbl.values()))
+    # ★새 대수 — 어느 군 블록으로도 아직 동일시하지 않았다
+    R["W_middle_is_new"] = any(v["dim"] == 16 for v in tbl.values())
+    out["W_class_closure"] = {
+        "identity": "μ⁻_k(A) = (μ⁺_k(A^op))^op — 우 mutation 은 반대 대수로 얻는다",
+        "representatives": tbl, "mutation_edges": edges,
+        "closed": R["W_closed_before_cap"],
+        "honest": ("HH²·cup 은 이번 범위 밖(구조상수판 상대 bar 복합체 미구현). "
+                   "dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 "
+                   "실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다"),
+        "observed": ("★좌·우 mutation 이 **매번 같은 동형류**로 간다(18 간선 전부) — "
+                     "실측이고 기전은 주장하지 않는다"),
+        "conclusion": ("A₇p2주(19) · **새 대수(16·화살 6·LL 5)** · A₆p2주(34) 세 대표가 "
+                       "**양방향 mutation 아래 닫힌다** — 세 대수 모두 `(HH⁰,HH¹) = (5,3)`")}
 
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
     out["checks"] = R

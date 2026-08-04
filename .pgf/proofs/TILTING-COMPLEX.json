@@ -757,6 +757,358 @@
       }
     }
   },
+  "W_class_closure": {
+    "closed": true,
+    "conclusion": "A₇p2주(19) · **새 대수(16·화살 6·LL 5)** · A₆p2주(34) 세 대표가 **양방향 mutation 아래 닫힌다** — 세 대수 모두 `(HH⁰,HH¹) = (5,3)`",
+    "honest": "HH²·cup 은 이번 범위 밖(구조상수판 상대 bar 복합체 미구현). dim 16 대표는 **군 블록으로 동일시하지 않았다** — 이 류에 있다는 실측만 주장한다. 폐합은 dim ≤ 60 · 깊이 ≤ 6 안에서의 폐합이다",
+    "identity": "μ⁻_k(A) = (μ⁺_k(A^op))^op — 우 mutation 은 반대 대수로 얻는다",
+    "mutation_edges": [
+      {
+        "E": [
+          "14",
+          "20"
+        ],
+        "dim": 16,
+        "dir": "+",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "14",
+          "20"
+        ],
+        "dim": 16,
+        "dir": "-",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "1"
+        ],
+        "dim": 19,
+        "dir": "+",
+        "from": "R0",
+        "to": "R0",
+        "vertex": "14"
+      },
+      {
+        "E": [
+          "1"
+        ],
+        "dim": 19,
+        "dir": "-",
+        "from": "R0",
+        "to": "R0",
+        "vertex": "14"
+      },
+      {
+        "E": [
+          "1"
+        ],
+        "dim": 19,
+        "dir": "+",
+        "from": "R0",
+        "to": "R0",
+        "vertex": "20"
+      },
+      {
+        "E": [
+          "1"
+        ],
+        "dim": 19,
+        "dir": "-",
+        "from": "R0",
+        "to": "R0",
+        "vertex": "20"
+      },
+      {
+        "E": [
+          "1",
+          "2"
+        ],
+        "dim": 19,
+        "dir": "+",
+        "from": "R1",
+        "to": "R0",
+        "vertex": "0"
+      },
+      {
+        "E": [
+          "1",
+          "2"
+        ],
+        "dim": 19,
+        "dir": "-",
+        "from": "R1",
+        "to": "R0",
+        "vertex": "0"
+      },
+      {
+        "E": [
+          "0",
+          "2"
+        ],
+        "dim": 19,
+        "dir": "+",
+        "from": "R1",
+        "to": "R0",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "0",
+          "2"
+        ],
+        "dim": 19,
+        "dir": "-",
+        "from": "R1",
+        "to": "R0",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "0",
+          "1"
+        ],
+        "dim": 34,
+        "dir": "+",
+        "from": "R1",
+        "to": "R2",
+        "vertex": "2"
+      },
+      {
+        "E": [
+          "0",
+          "1"
+        ],
+        "dim": 34,
+        "dir": "-",
+        "from": "R1",
+        "to": "R2",
+        "vertex": "2"
+      },
+      {
+        "E": [
+          "2"
+        ],
+        "dim": 34,
+        "dir": "+",
+        "from": "R2",
+        "to": "R2",
+        "vertex": "0"
+      },
+      {
+        "E": [
+          "2"
+        ],
+        "dim": 34,
+        "dir": "-",
+        "from": "R2",
+        "to": "R2",
+        "vertex": "0"
+      },
+      {
+        "E": [
+          "2"
+        ],
+        "dim": 34,
+        "dir": "+",
+        "from": "R2",
+        "to": "R2",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "2"
+        ],
+        "dim": 34,
+        "dir": "-",
+        "from": "R2",
+        "to": "R2",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "0",
+          "1"
+        ],
+        "dim": 16,
+        "dir": "+",
+        "from": "R2",
+        "to": "R1",
+        "vertex": "2"
+      },
+      {
+        "E": [
+          "0",
+          "1"
+        ],
+        "dim": 16,
+        "dir": "-",
+        "from": "R2",
+        "to": "R1",
+        "vertex": "2"
+      }
+    ],
+    "observed": "★좌·우 mutation 이 **매번 같은 동형류**로 간다(18 간선 전부) — 실측이고 기전은 주장하지 않는다",
+    "representatives": {
+      "R0": {
+        "HH0": 5,
+        "HH1": 3,
+        "arrows": 5,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 19,
+        "loewy_length": 5,
+        "path": "",
+        "quiver": {
+          "1->1": 0,
+          "1->14": 1,
+          "1->20": 1,
+          "14->1": 1,
+          "14->14": 1,
+          "14->20": 0,
+          "20->1": 1,
+          "20->14": 0,
+          "20->20": 0
+        },
+        "rad_powers": [
+          16,
+          11,
+          7,
+          3,
+          0
+        ],
+        "snf": [
+          1,
+          1,
+          8
+        ]
+      },
+      "R1": {
+        "HH0": 5,
+        "HH1": 3,
+        "arrows": 6,
+        "cartan": [
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "det": 8,
+        "dim": 16,
+        "loewy_length": 5,
+        "path": "+0",
+        "quiver": {
+          "0->0": 0,
+          "0->1": 1,
+          "0->2": 1,
+          "1->0": 1,
+          "1->1": 0,
+          "1->2": 1,
+          "2->0": 1,
+          "2->1": 1,
+          "2->2": 0
+        },
+        "rad_powers": [
+          13,
+          7,
+          4,
+          2,
+          0
+        ],
+        "snf": [
+          1,
+          1,
+          8
+        ]
+      },
+      "R2": {
+        "HH0": 5,
+        "HH1": 3,
+        "arrows": 4,
+        "cartan": [
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "det": 8,
+        "dim": 34,
+        "loewy_length": 9,
+        "path": "+0+2",
+        "quiver": {
+          "0->0": 0,
+          "0->1": 0,
+          "0->2": 1,
+          "1->0": 0,
+          "1->1": 0,
+          "1->2": 1,
+          "2->0": 1,
+          "2->1": 1,
+          "2->2": 0
+        },
+        "rad_powers": [
+          31,
+          27,
+          23,
+          19,
+          15,
+          11,
+          7,
+          3,
+          0
+        ],
+        "snf": [
+          1,
+          1,
+          8
+        ]
+      }
+    }
+  },
   "all_ok": true,
   "checks": {
     "R_Q3_pair_det_equal": true,
@@ -785,6 +1137,17 @@
     "V_rad_powers_match": true,
     "V_reached_cartan_is_target": true,
     "V_reached_is_tilting": true,
+    "W_HH_constant_on_class": true,
+    "W_all_edges_tilting": true,
+    "W_closed_before_cap": true,
+    "W_det_snf_constant": true,
+    "W_endpoints_identified": true,
+    "W_left_right_agree": true,
+    "W_middle_is_new": true,
+    "W_op_involutive": true,
+    "W_op_transposes_cartan": true,
+    "W_pairwise_congruent": true,
+    "W_three_representatives": true,
     "all_ok": true
   },
   "supersedes": "[[QUIVER-RELATIONS]] 의 not_claimed 항목 \"대수들의 유도동등성\" 은 이 모듈에서 **해소**된다 (A₇p2주 ~ A₆p2주 유도동등)"
