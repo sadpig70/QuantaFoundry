@@ -1229,6 +1229,14 @@
         ]
       },
       {
+        "id": "quaternion_block_observe",
+        "argv": [
+          "-m",
+          "qf_witness.observe.quaternion_block_observe",
+          "--quick"
+        ]
+      },
+      {
         "id": "conway31_ks_observe",
         "argv": [
           "-m",

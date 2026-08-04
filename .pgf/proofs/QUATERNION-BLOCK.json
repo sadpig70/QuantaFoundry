@@ -1,0 +1,252 @@
+{
+  "A_group": {
+    "Q8_order": 8,
+    "cosets": 3,
+    "note": "Sylow-2 지문 = (위수, involution 수, order-4 수) — Q₈ (8,1,6) 는 D₈ (8,5,2) 와 즉시 갈린다",
+    "order": 24,
+    "sylow2_fingerprint": [
+      8,
+      1,
+      6
+    ]
+  },
+  "B_sl23_over_F4": {
+    "block_dim": 24,
+    "cartan_F4": [
+      [
+        4,
+        2,
+        2
+      ],
+      [
+        2,
+        4,
+        2
+      ],
+      [
+        2,
+        2,
+        4
+      ]
+    ],
+    "cartan_det": 32,
+    "cartan_realified_F2": [
+      [
+        8,
+        4,
+        4
+      ],
+      [
+        4,
+        8,
+        4
+      ],
+      [
+        4,
+        4,
+        8
+      ]
+    ],
+    "cartan_snf": [
+      2,
+      2,
+      8
+    ],
+    "hochschild_realified_F2": {
+      "C": [
+        24,
+        240,
+        3168,
+        43968
+      ],
+      "HH0": 14,
+      "HH1": 10,
+      "HH1_reps": 10,
+      "HH2": 22,
+      "cup_is_cocycle": true,
+      "cup_rank": 4,
+      "dim_A": 48,
+      "dim_rad": 42,
+      "graded_commutative": true,
+      "ker": [
+        14,
+        20,
+        242
+      ]
+    },
+    "honest": "`hochschild_realified_F2` 는 **실현화 대수의 𝔽₂-불변량**이지 `HH^*_{𝔽₄}` 가 아니다 — 중심 차원의 절반만 |켤레류| 게이트로 쓴다",
+    "loewy_length": 5,
+    "n_arrows_F4": 6,
+    "parts_head": [
+      [
+        16,
+        [
+          2,
+          0,
+          0
+        ],
+        "S0"
+      ],
+      [
+        16,
+        [
+          0,
+          0,
+          2
+        ],
+        "S2"
+      ],
+      [
+        16,
+        [
+          0,
+          2,
+          0
+        ],
+        "S1"
+      ]
+    ],
+    "pim_dims_F4": [
+      8,
+      8,
+      8
+    ],
+    "quiver_realified": {
+      "S0->S0": 0,
+      "S0->S1": 2,
+      "S0->S2": 2,
+      "S1->S0": 2,
+      "S1->S1": 0,
+      "S1->S2": 2,
+      "S2->S0": 2,
+      "S2->S1": 2,
+      "S2->S2": 0
+    },
+    "rad_powers_F4": [
+      21,
+      15,
+      9,
+      3,
+      0
+    ],
+    "simples": {
+      "End": "𝔽₄ (𝔽₂ 위 2차원)",
+      "count": 3,
+      "dim_F4": 1
+    }
+  },
+  "C_kQ8": {
+    "cartan": [
+      [
+        8
+      ]
+    ],
+    "cartan_det": 8,
+    "dim_A": 8,
+    "hochschild": {
+      "C": [
+        8,
+        56,
+        392,
+        2744
+      ],
+      "HH0": 5,
+      "HH1": 7,
+      "HH1_reps": 7,
+      "HH2": 7,
+      "cup_is_cocycle": true,
+      "cup_rank": 4,
+      "dim_A": 8,
+      "dim_rad": 7,
+      "graded_commutative": true,
+      "ker": [
+        5,
+        10,
+        53
+      ]
+    },
+    "loewy_length": 5,
+    "mutation": {
+      "E": [],
+      "cartan": [
+        [
+          8
+        ]
+      ],
+      "dim": 8,
+      "tilting": true
+    },
+    "n_arrows": 2,
+    "note": "단순가군이 자명 하나뿐이라 **𝔽₂ 가 분해체**이고 엔진 4종이 **한 줄도 안 고치고** 돈다 — §4⁗ 자산 계약의 실제 통과",
+    "rad_powers": [
+      7,
+      5,
+      3,
+      1,
+      0
+    ]
+  },
+  "D_synthesis": {
+    "answer": "★**엔진의 전제는 `D₈` 이 아니라 분해체였다**. `kQ₈`(𝔽₂ 가 분해체)에서는 HH^*·cup·mutation·동형 판정이 **한 줄도 안 고치고** 돌았고, SL(2,3)(3 단순가군)에서는 **𝔽₂ 가 분해체가 아니라** 실현화가 필요해 Cartan·화살·rad^n 까지만 같은 의미로 간다",
+    "defect_group_contrast": {
+      "D8_3simples": {
+        "det_C": 8,
+        "snf": [
+          1,
+          1,
+          8
+        ],
+        "source": "TILTING-COMPLEX.json (A₇·PSL(2,7)·A₆)"
+      },
+      "Q8_1simple_kQ8": {
+        "det_C": 8,
+        "snf": [
+          8
+        ]
+      },
+      "Q8_3simples_SL23": {
+        "det_C": 32,
+        "snf": [
+          2,
+          2,
+          8
+        ]
+      }
+    },
+    "open": "SL(2,3)·SL(2,5) 같은 **비분해체 Q₈ 블록**의 mutation 폐합·동형 판정에는 엔진의 **𝔽_q-선형 일반화**가 필요하다(현재는 𝔽₂-선형)",
+    "question": "v23 §4 Q3″ — 다른 결손군에서 같은 파이프라인이 도는가",
+    "refutations": [
+      "`det C = |D|` — D₈ 3-단순 블록 4개에서 8 이었으나 **Q₈ 3-단순(SL(2,3))에서 32**. 일반 법칙이 아니다. ★다만 kQ₈(1 단순)에서는 8 = |D| 로 성립",
+      "`HH¹ = HH⁰ − 2` — D₈·p=3 네 블록에서 전부 유지됐으나 **kQ₈ 에서 (5,7) 로 깨진다**. 그 패턴도 그 층 특유였다"
+    ]
+  },
+  "all_ok": true,
+  "checks": {
+    "A_Q8_normal_index3": true,
+    "A_order_24": true,
+    "A_quotient_is_homomorphism": true,
+    "A_sylow2_is_Q8": true,
+    "B_all_three_pims": true,
+    "B_arrows_six_no_selfloop": true,
+    "B_cartan_F4": true,
+    "B_center_half_equals_classes": true,
+    "B_det_is_32_not_defect_order": true,
+    "B_pim_dims_F4": true,
+    "B_rad_powers_F4": true,
+    "B_realification_doubles": true,
+    "B_regular_splits_three_pims": true,
+    "B_simples_end_is_F4": true,
+    "B_snf": true,
+    "B_sumC_equals_group_order": true,
+    "C_HH0_equals_conj_classes": true,
+    "C_cup_correctness": true,
+    "C_det_equals_defect_order": true,
+    "C_hh1_pattern_broken": true,
+    "C_kQ8_is_local_dim8": true,
+    "C_mutation_trivial_closure": true,
+    "C_rad_powers": true,
+    "C_two_selfloops": true,
+    "D_two_predictions_refuted": true,
+    "all_ok": true
+  }
+}
