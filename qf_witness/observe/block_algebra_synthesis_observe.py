@@ -19,7 +19,8 @@
      퀴버 지지 ⊆ Cartan 지지
   Y  ★**4 블록 종합표** — 체 · 정점 · 화살 · dim A · 관계식 · Ext² · 균질성 · 유보
   Z  ★**커버리지 행렬** — 블록 × 산출량 × **독립 경로 수**(무엇이 몇 경로로 확인됐는지)
-  W  ★**외부 요청서(REQUEST-v22) 수치 자동 대조** — 발행 문서가 sidecar 와 어긋나면 빨간불
+  W  ★**외부 요청서(REQUEST-v22·v23) 수치 자동 대조** — 발행 문서가 sidecar 와 어긋나면
+     빨간불. v23 은 §3aa **유도동등류 3 대표**를 `TILTING-COMPLEX.json` 과 전 필드 대조.
 
 정직 경계:
   · 이 관측은 **검증기**이지 새 계산이 아니다 — 세 sidecar 가 최신이어야 유효하다
@@ -286,6 +287,51 @@ def main():
         }
     else:
         R["W_request_v22_present"] = False
+
+    # ── W2. ★유도동등류 요약(v23 신규 블록) 자동 대조 ──────────────────
+    TCP = os.path.join(ROOT, ".pgf", "proofs", "TILTING-COMPLEX.json")
+    req23 = os.path.join(ROOT, ".pgf", "external",
+                         "HORIZONTAL-EXPANSION-REQUEST-v23.md")
+    MK2 = "<!-- MACHINE-CHECKED: derived-equivalence-class -->"
+    if os.path.exists(req23) and os.path.exists(TCP):
+        TC = json.load(open(TCP, encoding="utf-8"))
+        rep = TC["W_class_closure"]["representatives"]
+        card = TC["X_hochschild_struct_const"]["class_card"]
+        exp = {k: {"dim_basic_algebra": r["dim"], "cartan": r["cartan"],
+                   "n_arrows": r["arrows"], "loewy_length": r["loewy_length"],
+                   "rad_powers": r["rad_powers"], "cartan_det": r["det"],
+                   "cartan_snf": r["snf"],
+                   "mutation_path": r["path"] or "(start)",
+                   "cochain_dims": card[k]["C"], "HH0": card[k]["HH0"],
+                   "HH1": card[k]["HH1"], "HH2": card[k]["HH2"],
+                   "cup_rank": card[k]["cup_rank"]}
+               for k, r in rep.items()}
+        txt = open(req23, encoding="utf-8").read()
+        seg = txt.split(MK2, 1)[1].split("```json", 1)[1].split("```", 1)[0]
+        emb2 = json.loads(seg)
+        R["W_request_v23_reps_present"] = (sorted(emb2) == sorted(exp))
+        R["W_request_v23_matches_sidecar"] = all(
+            {kk: emb2[k][kk] for kk in exp[k]} == exp[k] for k in exp)
+        # ★유도불변량이므로 발행 문서 안에서도 세 대표가 같아야 한다
+        R["W_request_v23_class_invariant"] = all(
+            (v["HH0"], v["HH1"], v["HH2"], v["cup_rank"]) == (5, 3, 5, 0)
+            and v["cartan_det"] == 8 and v["cartan_snf"] == [1, 1, 8]
+            for v in emb2.values())
+        # ★군 이름은 sidecar 의 판정(V축 dim 34 · Y축 dim 16)과 정합해야 한다
+        gmap = {v["dim_basic_algebra"]: v["group"] for v in emb2.values()}
+        R["W_request_v23_groups_consistent"] = (
+            TC["checks"]["V_explicit_isomorphism_found"]
+            and TC["checks"]["Y_explicit_isomorphism"]
+            and "PSL(2,7)" in gmap.get(16, "") and "A₆" in gmap.get(34, "")
+            and gmap.get(19) == "A₇")
+        out["W_request_v23_cross_check"] = {
+            "file": "HORIZONTAL-EXPANSION-REQUEST-v23.md", "marker": MK2,
+            "fields": sorted(exp["R0"]),
+            "note": ("★v23 §3aa 의 유도동등류 표를 `TILTING-COMPLEX.json` 과 "
+                     "전 필드 대조 — 발행 수치는 생성+게이트로 묶는다"),
+        }
+    else:
+        R["W_request_v23_present"] = False
 
     ok = bool(all(R.values()))
     out["checks"] = R
