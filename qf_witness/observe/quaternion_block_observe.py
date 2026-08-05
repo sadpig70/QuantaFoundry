@@ -22,7 +22,7 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
   G  ★★★**dim 36 대표의 정체** — F축이 도달한 대표가 `SL(2,5) = 2.A₅` 의 p=2 **주블록**임을
      Cartan 예측 + **명시 동형**으로 확정 ⟹ **SL(2,3) ~ SL(2,5) 주블록 유도동등**(결손군 Q₈).
   H  ★★★**Q₈ 류 폐합** — 양방향 mutation + **동형 dedup** BFS(가지치기로 값싸졌다) ⟹
-     대표 **2개**(`SL(2,3)` dim 24 ↔ `SL(2,5)` dim 36) · 둘 다 `(HH⁰,HH¹) = (7,5)`.
+     대표 **2개**(`SL(2,3)` dim 24 ↔ `SL(2,5)` dim 36) · 둘 다 `(HH⁰,HH¹,HH²,cup) = (7,5,5,2)`.
   D  ★★종합 — **Q3″ 에 대한 첫 데이터점**과 **엔진의 진짜 전제**.
 
 정직 경계:
@@ -31,9 +31,8 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
   · F축의 궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — GF(4) 에서
     `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다.
   · G축이 dim 36 대표를 `SL(2,5)` 주블록으로 **동일시**했다(F축 유보 해소).
-  · `HH²`·cup 은 **dim 24 만** 있다 — dim 36·GF(4) 는 `C³ ≈ 2×10⁴` 라 현재 GF(q) rref 의
-    규모 밖이다(𝔽₂ 는 비트팩이 있었다). H축의 류 불변량 게이트는 `(HH⁰,HH¹)` 로 건다.
   · H축 폐합은 `dim ≤ 80` · 깊이 ≤ 6 **안에서의** 폐합이다.
+  · ★`rank_packed`(GF(2^k) 비트평면)로 dim 36 의 `HH²`·cup 도 계산했다(선행 유보 해소).
   · 외부 분류표(quaternion type 등)와의 대응은 **무주장**.
 """
 import json
@@ -507,17 +506,24 @@ def main():
     qtbl = {}
     for r in qreps:
         a = r["alg"]
-        h = GE.hh_struct(a, max_deg=1)      # ★HH² 는 dim 36·GF(4) 에서 규모 밖
+        h = GE.hh_struct(a, cup=True)       # ★비트평면 rank 로 dim 36 도 규모 안
         qtbl[r["label"]] = {
             "path": r["path"] or "(start)", "dim": a["n"],
             "cartan": r["cartan"], "n_arrows": sum(GE.quiver_of(a).values()),
             "rad_powers": GE.rad_powers(a), "loewy_length":
-                len(GE.rad_powers(a)), "HH0": h["HH0"], "HH1": h["HH1"],
+                len(GE.rad_powers(a)), "cochain_dims": h["C"],
+            "HH0": h["HH0"], "HH1": h["HH1"], "HH2": h["HH2"],
+            "cup_rank": h["cup_rank"],
+            "cup_is_cocycle": h["cup_is_cocycle"],
+            "graded_commutative": h["graded_commutative"],
             "cartan_det": det_int(r["cartan"]), "cartan_snf":
                 smith(r["cartan"])}
     # ★★유도불변량 — 류의 **모든 대표**가 같아야 한다(반증 가능한 게이트)
-    R["H_HH_constant_on_class"] = all((v["HH0"], v["HH1"]) == (7, 5)
-                                      for v in qtbl.values())
+    R["H_HH_constant_on_class"] = all(
+        (v["HH0"], v["HH1"], v["HH2"], v["cup_rank"]) == (7, 5, 5, 2)
+        for v in qtbl.values())
+    R["H_cup_correctness"] = all(v["cup_is_cocycle"] and v["graded_commutative"]
+                                 for v in qtbl.values())
     R["H_det_snf_constant"] = all(v["cartan_det"] == 32
                                   and v["cartan_snf"] == [2, 2, 8]
                                   for v in qtbl.values())
@@ -533,9 +539,10 @@ def main():
         "conclusion": ("★★★결손군 `Q₈` 의 유도동등류가 **대표 2개**에서 닫힌다 — "
                        "`SL(2,3)`(dim 24) ↔ `SL(2,5)`(dim 36). 두 대표 모두 "
                        "`(HH⁰,HH¹) = (7,5)`·det 32·SNF [2,2,8]"),
-        "honest": ("`HH²`·cup 은 **dim 24 만** 있다(`(7,5,5)`·cup 2) — dim 36·GF(4) 는 "
-                   "`C³ ≈ 2×10⁴` 라 현재 GF(q) rref 의 규모 밖이다(𝔽₂ 는 비트팩이 있었다). "
-                   "폐합은 `dim ≤ 80` · 깊이 ≤ 6 안에서의 폐합이다"),
+        "honest": ("폐합은 `dim ≤ 80` · 깊이 ≤ 6 **안에서의** 폐합이다. "
+                   "외부 분류표(quaternion type 등) 대응은 무주장"),
+        "note": ("★`rank_packed`(GF(2^k) 비트평면) 덕에 dim 36 의 `C³ = 20648` 도 "
+                 "규모 안으로 들어왔다 — 이전 사이클의 유보가 해소됐다"),
     }
 
     # ── D. 종합 — v23 Q3″ 첫 데이터점 · 엔진의 진짜 전제 ────────────

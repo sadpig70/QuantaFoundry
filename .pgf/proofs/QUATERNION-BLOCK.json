@@ -902,7 +902,7 @@
   "H_q8_class_closure": {
     "closed": true,
     "conclusion": "★★★결손군 `Q₈` 의 유도동등류가 **대표 2개**에서 닫힌다 — `SL(2,3)`(dim 24) ↔ `SL(2,5)`(dim 36). 두 대표 모두 `(HH⁰,HH¹) = (7,5)`·det 32·SNF [2,2,8]",
-    "honest": "`HH²`·cup 은 **dim 24 만** 있다(`(7,5,5)`·cup 2) — dim 36·GF(4) 는 `C³ ≈ 2×10⁴` 라 현재 GF(q) rref 의 규모 밖이다(𝔽₂ 는 비트팩이 있었다). 폐합은 `dim ≤ 80` · 깊이 ≤ 6 안에서의 폐합이다",
+    "honest": "폐합은 `dim ≤ 80` · 깊이 ≤ 6 **안에서의** 폐합이다. 외부 분류표(quaternion type 등) 대응은 무주장",
     "identified": {
       "24": "SL(2,3) p=2 주블록(= 군대수 자체)",
       "36": "SL(2,5) p=2 주블록(G축 명시 동형)"
@@ -1037,10 +1037,12 @@
         "vertex": "2"
       }
     ],
+    "note": "★`rank_packed`(GF(2^k) 비트평면) 덕에 dim 36 의 `C³ = 20648` 도 규모 안으로 들어왔다 — 이전 사이클의 유보가 해소됐다",
     "representatives": {
       "R0": {
         "HH0": 7,
         "HH1": 5,
+        "HH2": 5,
         "cartan": [
           [
             4,
@@ -1064,7 +1066,16 @@
           2,
           8
         ],
+        "cochain_dims": [
+          12,
+          60,
+          396,
+          2748
+        ],
+        "cup_is_cocycle": true,
+        "cup_rank": 2,
         "dim": 24,
+        "graded_commutative": true,
         "loewy_length": 5,
         "n_arrows": 6,
         "path": "(start)",
@@ -1079,6 +1090,7 @@
       "R1": {
         "HH0": 7,
         "HH1": 5,
+        "HH2": 5,
         "cartan": [
           [
             8,
@@ -1102,7 +1114,16 @@
           2,
           8
         ],
+        "cochain_dims": [
+          16,
+          152,
+          1760,
+          20648
+        ],
+        "cup_is_cocycle": true,
+        "cup_rank": 2,
         "dim": 36,
+        "graded_commutative": true,
         "loewy_length": 9,
         "n_arrows": 4,
         "path": "+0",
@@ -1173,6 +1194,7 @@
     "H_HH_constant_on_class": true,
     "H_all_edges_tilting": true,
     "H_closed_before_cap": true,
+    "H_cup_correctness": true,
     "H_det_snf_constant": true,
     "H_members_identified": true,
     "H_two_representatives": true,

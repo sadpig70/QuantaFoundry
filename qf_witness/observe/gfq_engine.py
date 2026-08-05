@@ -148,6 +148,72 @@ def nullspace(F, M):
             else np.zeros((0, n), dtype=np.int64))
 
 
+# ══════════════════════════════════════════════════════════════════════
+# ★GF(2^k) 비트평면 rank — 큰 미분행렬(HH²)의 규모 벽을 뚫는다
+# ══════════════════════════════════════════════════════════════════════
+def _scal_map(F):
+    """스칼라 s 곱을 평면 위 𝔽₂-선형 사상으로: `M_s[t][u] = MUL[s, 2^u]` 의 t 비트."""
+    k = F.k
+    return {s: [[int(F.MUL[s, 1 << u] >> t) & 1 for u in range(k)]
+                for t in range(k)] for s in range(1, F.q)}
+
+
+def _smul_row(SM, s, row, k):
+    out = []
+    for t in range(k):
+        acc = np.zeros_like(row[0])
+        for u in range(k):
+            if SM[s][t][u]:
+                acc = acc ^ row[u]
+        out.append(acc)
+    return out
+
+
+def rank_packed(F, A):
+    """`p = 2` 전용 — 비트평면 + `packbits` 로 rank(전방 소거·값별 그룹 벡터화).
+
+    ★행마다 파이썬 루프를 돌지 않는다: pivot 열의 값으로 행을 **q−1 그룹**으로 묶고
+    그룹마다 `v·pivot행` 을 한 번 만들어 **브로드캐스트 XOR** 한다."""
+    assert F.p == 2, F.p
+    if A.size == 0:
+        return 0
+    n, m = A.shape
+    k, SM = F.k, _scal_map(F)
+    P = [np.packbits(((A.astype(np.int64) >> t) & 1).astype(np.uint8), axis=1)
+         for t in range(k)]
+    r = 0
+    for c in range(m):
+        if r >= n:
+            break
+        by, bt = c // 8, 7 - (c % 8)
+        vals = np.zeros(n - r, dtype=np.int64)
+        for t in range(k):
+            vals |= (((P[t][r:, by] >> bt) & 1).astype(np.int64) << t)
+        nz = np.nonzero(vals)[0]
+        if not len(nz):
+            continue
+        j0 = int(nz[0])
+        if j0:
+            for t in range(k):
+                P[t][[r, r + j0]] = P[t][[r + j0, r]]
+            vals[0], vals[j0] = vals[j0], vals[0]
+        rowp = _smul_row(SM, int(F.INV[int(vals[0])]),
+                         [P[t][r] for t in range(k)], k)
+        for t in range(k):
+            P[t][r] = rowp[t]
+        below = vals[1:]
+        for sc in range(1, F.q):
+            idx = np.nonzero(below == sc)[0]
+            if not len(idx):
+                continue
+            sr = _smul_row(SM, sc, rowp, k)
+            idx = idx + r + 1
+            for t in range(k):
+                P[t][idx] ^= sr[t]
+        r += 1
+    return r
+
+
 def rank(F, M):
     return 0 if M.size == 0 else len(rref(F, M)[1])
 
@@ -756,7 +822,7 @@ def hh_struct(alg, cup=False, max_deg=2):
                     D1[base + w, i1[(rk, w)]] = F.sub(
                         D1[base + w, i1[(rk, w)]], val)
 
-    D2 = np.zeros((len(c3), len(c2)), dtype=np.int64)
+    D2 = np.zeros((len(c3), len(c2)), dtype=np.int8)   # ★메모리 8배 절감
     for (a, b, c) in trips:
         i, m1, m2, j = a[0], a[1], c[0], c[1]
         base = i3[(a, b, c, 0)]
@@ -794,7 +860,8 @@ def hh_struct(alg, cup=False, max_deg=2):
     if max_deg < 2:
         out["ker"] = [k0, k1]
         return out
-    k2 = len(nullspace(F, D2)) if len(c3) else len(c2)
+    # ★차원만 필요하므로 가장 큰 D2 는 **rank 만** 구한다(비트평면 가속)
+    k2 = (len(c2) - rank_packed(F, D2)) if len(c3) else len(c2)
     out["ker"] = [k0, k1, k2]
     out["HH2"] = k2 - (len(c1) - k1)
     if not cup:
@@ -835,7 +902,7 @@ def hh_struct(alg, cup=False, max_deg=2):
         for y in range(len(reps)):
             u = cup11(reps[x], reps[y])
             prods[(x, y)] = u
-            if len(c3) and F.mm(D2, u[:, None]).any():
+            if len(c3) and F.mm(D2.astype(np.int64), u[:, None]).any():
                 cocycle_ok = False
     for x in range(len(reps)):
         for y in range(x, len(reps)):
