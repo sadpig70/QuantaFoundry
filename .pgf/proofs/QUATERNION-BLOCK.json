@@ -717,6 +717,186 @@
       ]
     ]
   },
+  "G_sl25_identification": {
+    "block_dim": 88,
+    "candidate": "SL(2,5) = 2.A₅ · p=2 주블록",
+    "cartan_F4": [
+      [
+        4,
+        2,
+        4
+      ],
+      [
+        2,
+        4,
+        4
+      ],
+      [
+        4,
+        4,
+        8
+      ]
+    ],
+    "conclusion": "★★★F축이 SL(2,3) 에서 mutation 으로 도달한 dim 36 대표는 **SL(2,5) 의 p=2 주블록**이다 ⟹ **SL(2,3) 과 SL(2,5) 의 p=2 주블록이 유도동등**(결손군 Q₈) — D₈ 이야기(PSL(2,7)·A₆·A₇)와 나란히 놓이는 **두 번째 사례**",
+    "dim_A": 36,
+    "dim_P_F4": [
+      16,
+      16,
+      24
+    ],
+    "group": {
+      "hom_matrix": [
+        [
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          8,
+          4,
+          4,
+          8,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          8,
+          8,
+          4,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          8,
+          8,
+          4,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          8,
+          4,
+          4,
+          8,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          8,
+          8,
+          8,
+          8,
+          16
+        ]
+      ],
+      "order": 120,
+      "regular_parts": [
+        16,
+        16,
+        16,
+        16,
+        32,
+        32,
+        32,
+        32,
+        48
+      ],
+      "sylow2_fingerprint": [
+        8,
+        1,
+        6
+      ]
+    },
+    "honest": "이 대표의 `HH^*_{𝔽₄}` 는 **재지 않았다** — dim 36·GF(4) 에서 `C³` 규모가 현재 구현의 범위 밖이다(SL(2,3) dim 24 는 계산됨). 류의 **폐합**(동형 dedup BFS)도 여전히 미착수",
+    "isomorphism": {
+      "arrow_choice": [
+        0,
+        0,
+        3,
+        44
+      ],
+      "found": true,
+      "n_words": 97,
+      "rank_VA": 36,
+      "rank_VB": 36,
+      "sigma": [
+        "1",
+        "2a",
+        "2b"
+      ],
+      "tried": 52
+    },
+    "n_arrows": 4,
+    "rad_powers": [
+      33,
+      29,
+      23,
+      19,
+      15,
+      11,
+      7,
+      3,
+      0
+    ],
+    "why_this_candidate": "도달 Cartan 에 단순차원 (2,2,1) 을 넣으면 dim P = (16,16,24)·블록 차원 **88**. |SL(2,5)| = 120 이고 4차원 단순가군이 든 블록(결손군 ℤ₂·dim P = 8)이 8·4 = 32 를 채우므로 주블록 = 120 − 32 = 88 — 정확히 일치"
+  },
   "all_ok": true,
   "checks": {
     "A_Q8_normal_index3": true,
@@ -758,6 +938,15 @@
     "F_struct_const_assoc": true,
     "F_struct_const_unit": true,
     "F_two_cartans_reached": true,
+    "G_cartan_prediction": true,
+    "G_dim36_arrows_rad": true,
+    "G_dimP_and_block_dim": true,
+    "G_explicit_isomorphism": true,
+    "G_hom_separates_2a_2b": true,
+    "G_order_120": true,
+    "G_regular_parts": true,
+    "G_sylow2_is_Q8": true,
+    "G_target_same_invariants": true,
     "all_ok": true
   }
 }

@@ -170,6 +170,14 @@ def left_inverse(F, rows):
 # ══════════════════════════════════════════════════════════════════════
 # 기본대수(구조상수) — 곱 규약 `a·b := b∘a`
 # ══════════════════════════════════════════════════════════════════════
+def inv_sq(F, M):
+    """정사각 가역행렬의 역 — `[M | I]` RREF."""
+    m = M.shape[0]
+    R, piv = rref(F, np.concatenate([M, np.eye(m, dtype=np.int64)], axis=1))
+    assert piv == list(range(m)), piv
+    return R[:, m:]
+
+
 def pack(F, names, cnt, MT):
     off, pos = {}, 0
     for i in names:
@@ -591,26 +599,69 @@ def find_isomorphism(A, B, cap=200000):
                 if ok:
                     cand.append(blk(B, si, sj, [v])[0])
             opts.append(cand)
-        for combo in itertools.product(*[range(len(o)) for o in opts]):
-            tried += 1
-            if tried > cap:
-                return {"found": False, "tried": tried, "capped": True}
-            arB = [o[c] for o, c in zip(opts, combo)]
-            VB = []
-            for (st, w) in WA:
-                v = IB[s[A["names"].index(st)]]
+        # ★가지치기 — 화살 0..t 만 쓰는 단어들에 대해 well-defined 필요조건을 먼저 건다
+        widx = [max(w, default=-1) for (_st, w) in WA]
+        sub = [[u for u in range(len(WA)) if widx[u] <= t]
+               for t in range(len(opts))]
+        rkA = [rank(F, VA[sub[t]]) for t in range(len(opts))]
+        st_hit = [None]
+
+        def valB(assign, idxs):
+            out = []
+            for u in idxs:
+                stt, w = WA[u]
+                v = IB[s[A["names"].index(stt)]]
                 for ai in w:
-                    v = amul(B, v, arB[ai])
-                VB.append(v)
-            VB = np.array(VB, dtype=np.int64)
-            if rank(F, VB) != B["n"]:
-                continue
-            if rank(F, np.concatenate([VA, VB], axis=1)) == A["n"]:
-                return {"found": True, "sigma": [str(x) for x in s],
-                        "arrow_choice": list(combo), "tried": tried,
-                        "n_words": len(WA), "rank_VA": rank(F, VA),
-                        "rank_VB": B["n"]}
+                    v = amul(B, v, assign[ai])
+                out.append(v)
+            return np.array(out, dtype=np.int64)
+
+        def rec(assign, combo):
+            nonlocal tried
+            t = len(assign)
+            if t == len(opts):
+                tried += 1
+                VB = valB(assign, range(len(WA)))
+                if rank(F, VB) != B["n"]:
+                    return None
+                if rank(F, np.concatenate([VA, VB], axis=1)) == A["n"]:
+                    return list(combo)
+                return None
+            for ci, cand in enumerate(opts[t]):
+                if tried > cap:
+                    st_hit[0] = True
+                    return None
+                a2 = assign + [cand]
+                VBs = valB(a2, sub[t])
+                tried += 1
+                if rank(F, np.concatenate(
+                        [VA[sub[t]], VBs], axis=1)) != rkA[t]:
+                    continue                      # ★가지치기(필요조건 위반)
+                r = rec(a2, combo + [ci])
+                if r is not None:
+                    return r
+            return None
+
+        got = rec([], [])
+        if got is not None:
+            arB = [o[c] for o, c in zip(opts, got)]
+            VB = np.array([_wv(A, B, IB, s, WA[u], arB) for u in range(len(WA))],
+                          dtype=np.int64)
+            return {"found": True, "sigma": [str(x) for x in s],
+                    "arrow_choice": got, "tried": tried,
+                    "n_words": len(WA), "rank_VA": rank(F, VA),
+                    "rank_VB": B["n"]}
+        if st_hit[0]:
+            return {"found": False, "tried": tried, "capped": True}
     return {"found": False, "tried": tried}
+
+
+def _wv(A, B, IB, s, word, arB):
+    stt, w = word
+    v = IB[s[A["names"].index(stt)]]
+    for ai in w:
+        v = amul(B, v, arB[ai])
+    return v
 
 
 def rad_basis_piv(alg, i, j):
@@ -826,8 +877,13 @@ def algebra_table_realified(F, names, HOM, Jact, d):
                 rows.extend([w.reshape(-1) for w in fam])
             B[(i, j)] = basis
             cnt[(i, j)] = len(basis)
-            LIN[(i, j)] = (left_inverse(Fp, rows) if rows
-                           else np.zeros((0, 0), dtype=np.int64))
+            # ★좌역행렬(2304 열 RREF)은 병목 — **pivot 열만 뽑아 정사각 역행렬**로 대체
+            if rows:
+                Sm = np.array(rows, dtype=np.int64)
+                _R, pv = rref(Fp, Sm.copy())
+                LIN[(i, j)] = (list(pv), inv_sq(Fp, Sm[:, pv]))
+            else:
+                LIN[(i, j)] = ([], np.zeros((0, 0), dtype=np.int64))
     meta, off, pos = [], {}, 0
     for i in names:
         for j in names:
@@ -840,7 +896,8 @@ def algebra_table_realified(F, names, HOM, Jact, d):
             if j2 != j:
                 continue
             P = (B[(j, l)][s][0] @ B[(i, j)][t][0]) % p     # b∘a
-            al = LIN[(i, l)] @ P.reshape(-1) % p
+            pv, Mi = LIN[(i, l)]
+            al = (P.reshape(-1)[pv] @ Mi) % p if pv else np.zeros(0, dtype=np.int64)
             for w in range(cnt[(i, l)]):
                 e = sum(int(al[k * w + r]) * p ** r for r in range(k))
                 if e:

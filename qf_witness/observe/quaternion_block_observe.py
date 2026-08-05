@@ -5,7 +5,7 @@
 v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algebra` · `find_isomorphism` ·
 구조상수판 `hh_struct`)을 계약으로 내걸었으니, **다른 결손군에서 그대로 도는지**가 실제 시험이다.
 
-관측 6축 (정확 GF(q) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 7축 (정확 GF(q) 선형대수 · seal 아님 · module 0 · root 불변):
   A  `SL(2,3) = Q₈ ⋊ ℤ₃`(위수 24 · 𝔽₃² 비영벡터 8점 순열군) — Sylow-2 지문 **(8,1,6) = Q₈**
      (D₈ 은 (8,5,2)) · `Q₈` 정규(지수 3) · `G/Q₈ ≅ ℤ₃` 준동형 자체유도.
   B  ★**𝔽₄ 실현화** — `G/Q₈ ≅ ℤ₃` 이라 단순가군은 **𝔽₄ 위 1차원 3개**이고 **𝔽₂ 는 분해체가
@@ -19,6 +19,8 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
      𝔽₂ 엔진의 값(Cartan·화살·rad^n·`HH^*`·cup·mutation·동형)을 **그대로 재현**하는지 확인.
   F  ★★**SL(2,3) over GF(4)** — 계수를 GF(4) 로 올려 **벽을 뚫는다**. 𝔽₄ 구조상수를
      실물로 뽑고(단위원·결합법칙 게이트) `HH^*_{𝔽₄}`·cup·mutation 을 **𝔽₄-불변량으로** 잰다.
+  G  ★★★**dim 36 대표의 정체** — F축이 도달한 대표가 `SL(2,5) = 2.A₅` 의 p=2 **주블록**임을
+     Cartan 예측 + **명시 동형**으로 확정 ⟹ **SL(2,3) ~ SL(2,5) 주블록 유도동등**(결손군 Q₈).
   D  ★★종합 — **Q3″ 에 대한 첫 데이터점**과 **엔진의 진짜 전제**.
 
 정직 경계:
@@ -26,7 +28,9 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
     분리해 기록한다. `dim_{𝔽₄} Z = dim_{𝔽₂} Z / 2` 만 대조 게이트로 쓴다.
   · F축의 궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — GF(4) 에서
     `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다.
-  · F축이 도달한 **dim 36 대표의 군 블록 동일시는 미착수**다.
+  · G축이 dim 36 대표를 `SL(2,5)` 주블록으로 **동일시**했다(F축 유보 해소).
+  · 그 대표의 `HH^*_{𝔽₄}` 는 **재지 않았다** — dim 36·GF(4) 에서 `C³` 규모가 현재 구현의
+    범위 밖이다(SL(2,3) dim 24 는 계산됨). 류의 **폐합**(동형 dedup BFS)도 여전히 미착수.
   · 외부 분류표(quaternion type 등)와의 대응은 **무주장**.
 """
 import json
@@ -343,6 +347,110 @@ def main():
                    "GF(4) 에서 `find_isomorphism` 의 화살 상 열거가 "
                    "`|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다. "
                    "dim 36 대표의 **군 블록 동일시도 미착수**"),
+    }
+
+    # ── G. ★★★dim 36 대표의 정체 — SL(2,5) 의 p=2 주블록 ─────────────
+    VEC = [(a, b) for a in range(5) for b in range(5) if (a, b) != (0, 0)]
+    IX = {v: t for t, v in enumerate(VEC)}
+
+    def pm5(M):
+        return tuple(IX[((M[0][0] * v[0] + M[0][1] * v[1]) % 5,
+                         (M[1][0] * v[0] + M[1][1] * v[1]) % 5)] for v in VEC)
+
+    G5 = [pm5([[0, 4], [1, 0]]), pm5([[1, 1], [0, 1]])]
+    mul5, id5, ord5 = enumerate_group(G5, 24)
+    fp5 = sylow2_fingerprint(ord5, mul5, id5)
+    R["G_order_120"] = (len(ord5) == 120)
+    R["G_sylow2_is_Q8"] = (tuple(fp5) == (8, 1, 6))
+    n5, og5 = len(ord5), sorted(ord5)
+    ox5 = {g: t for t, g in enumerate(og5)}
+    GN5 = list(G5) + ["J"]
+
+    def big5(M2, left=None, right=None):
+        A = np.zeros((2 * n5, 2 * n5), dtype=np.int64)
+        for j, g in enumerate(og5):
+            t = (ox5[mul5(left, g)] if left is not None
+                 else (ox5[mul5(g, right)] if right is not None else j))
+            A[2 * t:2 * t + 2, 2 * j:2 * j + 2] = M2
+        return A % 2
+
+    A5 = {g: big5(np.eye(2, dtype=np.int64), left=g) for g in G5}
+    A5["J"] = big5(MW)
+    E5 = ([big5(np.eye(2, dtype=np.int64), right=h) for h in og5]
+          + [big5(MW, right=h) for h in og5])
+    rng5 = random.Random(7)
+
+    def _rnd5():
+        M = np.zeros((2 * n5, 2 * n5), dtype=np.int64)
+        for A_ in rng5.sample(E5, max(2, len(E5) // 3)):
+            M = (M + A_) % 2
+        return M
+
+    p5 = []
+    decompose_regular(np.eye(2 * n5, dtype=np.int64),
+                      np.eye(2 * n5, dtype=np.int64), _rnd5, 2, rng5, p5)
+    # ★예상 조각: P(4)×4(다른 블록) · P(2a)×2 · P(2b)×2 · P(1̂)×1
+    R["G_regular_parts"] = (sorted(len(b) for b in p5)
+                            == [16, 16, 16, 16, 32, 32, 32, 32, 48])
+    acts5, dims5 = [], []
+    for B in sorted(p5, key=len):
+        a_, _ = submodule_action(A5, GN5, B, 2)
+        acts5.append(a_)
+        dims5.append(len(B))
+    Hm = [[len(hom_space_fast(acts5[x], acts5[y], dims5[x], dims5[y], GN5, 2))
+           for y in range(len(acts5))] for x in range(len(acts5))]
+    # ★사영가군끼리 dim Hom = C_{S,T} ⟹ **동형이면 8(𝔽₂)·다르면 4** 로 2a·2b 를 가른다
+    i2a = 4
+    i2b = next(y for y in range(4, 8) if Hm[i2a][y] == 4)
+    R["G_hom_separates_2a_2b"] = (Hm[i2a][i2a] == 8 and Hm[i2a][i2b] == 4
+                                  and Hm[8][8] == 16)
+    NS5 = ["2a", "2b", "1"]
+    PIM5 = {"2a": acts5[i2a], "2b": acts5[i2b], "1": acts5[8]}
+    dP5 = {"2a": dims5[i2a], "2b": dims5[i2b], "1": dims5[8]}
+    HOM5 = {(x, y): hom_space_fast(PIM5[x], PIM5[y], dP5[x], dP5[y], GN5, 2)
+            for x in NS5 for y in NS5}
+    c5 = [[len(HOM5[(x, y)]) // 2 for y in NS5] for x in NS5]
+    dimP5 = [dP5[k] // 2 for k in NS5]
+    blkdim = sum(d * s for d, s in zip(dimP5, [2, 2, 1]))
+    # ★★설계 예측: Cartan 이 F축이 도달한 dim 36 대표와 **정확히 일치**
+    R["G_cartan_prediction"] = (c5 == [[4, 2, 4], [2, 4, 4], [4, 4, 8]])
+    R["G_dimP_and_block_dim"] = (dimP5 == [16, 16, 24] and blkdim == 88
+                                 and blkdim + 8 * 4 == 120)
+    a25 = GE.algebra_table_realified(F4, NS5, HOM5,
+                                     {k: PIM5[k]["J"] for k in NS5}, dP5)
+    R["G_dim36_arrows_rad"] = (a25["n"] == 36
+                               and sum(GE.quiver_of(a25).values()) == 4
+                               and GE.rad_powers(a25)
+                               == [33, 29, 23, 19, 15, 11, 7, 3, 0])
+    tgt = next(a for a in [GE.mutate_step(a4, NS[0], False)[0]["alg"]]
+               if a["n"] == 36)
+    R["G_target_same_invariants"] = (
+        canon(GE.cartan_of(tgt)) == canon(c5)
+        and sum(GE.quiver_of(tgt).values()) == 4
+        and GE.rad_powers(tgt) == GE.rad_powers(a25))
+    isoG = GE.find_isomorphism(tgt, a25, cap=400000)
+    # ★★★Cartan 일치는 필요조건 — **명시 동형**까지 간다(세 번째 적용)
+    R["G_explicit_isomorphism"] = isoG["found"]
+    out["G_sl25_identification"] = {
+        "candidate": "SL(2,5) = 2.A₅ · p=2 주블록",
+        "why_this_candidate": ("도달 Cartan 에 단순차원 (2,2,1) 을 넣으면 "
+                               "dim P = (16,16,24)·블록 차원 **88**. "
+                               "|SL(2,5)| = 120 이고 4차원 단순가군이 든 블록"
+                               "(결손군 ℤ₂·dim P = 8)이 8·4 = 32 를 채우므로 "
+                               "주블록 = 120 − 32 = 88 — 정확히 일치"),
+        "group": {"order": len(ord5), "sylow2_fingerprint": list(fp5),
+                  "regular_parts": sorted(len(b) for b in p5),
+                  "hom_matrix": Hm},
+        "cartan_F4": c5, "dim_P_F4": dimP5, "block_dim": blkdim,
+        "dim_A": a25["n"], "n_arrows": sum(GE.quiver_of(a25).values()),
+        "rad_powers": GE.rad_powers(a25), "isomorphism": isoG,
+        "conclusion": ("★★★F축이 SL(2,3) 에서 mutation 으로 도달한 dim 36 대표는 "
+                       "**SL(2,5) 의 p=2 주블록**이다 ⟹ **SL(2,3) 과 SL(2,5) 의 "
+                       "p=2 주블록이 유도동등**(결손군 Q₈) — D₈ 이야기"
+                       "(PSL(2,7)·A₆·A₇)와 나란히 놓이는 **두 번째 사례**"),
+        "honest": ("이 대표의 `HH^*_{𝔽₄}` 는 **재지 않았다** — dim 36·GF(4) 에서 "
+                   "`C³` 규모가 현재 구현의 범위 밖이다(SL(2,3) dim 24 는 계산됨). "
+                   "류의 **폐합**(동형 dedup BFS)도 여전히 미착수"),
     }
 
     # ── D. 종합 — v23 Q3″ 첫 데이터점 · 엔진의 진짜 전제 ────────────
