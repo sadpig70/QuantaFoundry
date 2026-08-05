@@ -1,0 +1,278 @@
+#!/usr/bin/env python
+"""A₆ p=3 주블록의 **GF(9) 재조명** — `gfq_engine` 이 **p=3 에서 처음** 도는가.
+
+배경: v24 §4⁵ 에 "비분해체 블록의 표준 경로 3단계 — A₆ p=3(GF(9))도 같은 경로로 재조명
+가능하다, **아직 안 했다**" 라고 적었다. 그 미착수를 채운다.
+★v24 의 열린 질문(Q1·Q2·Q3′·Q3‴·Q3⁗)과 **겹치지 않는다**.
+
+관측 4축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
+  A  ★A₆ p=3 주블록 재구성 + **GF(9) Hom 조립**(`assemble_hom_j` — 5184 계 회피) ·
+     Cartan 이 선행 K축 값과 일치하는지 **회귀**.
+  B  ★★**GF(9) 구조상수**(`x² = −1 = 2` ⟹ poly [2,0]) — 단위원·결합법칙 **전수 게이트**.
+     화살 8(이중화살 1̂↔4)·`rad^n`·det/SNF 도 선행 값과 대조.
+  C  ★★★**`HH^*_{GF(9)}`** — ★기저변환 교차검증: `A_{GF(9)} = A_{𝔽₃} ⊗ GF(9)` 이므로
+     `dim_{GF(9)} HH^n(A_{GF(9)}) = dim_{𝔽₃} HH^n(A_{𝔽₃})` 여야 한다(코사슬 차원은 다르다).
+  D  ★mutation 한 걸음 — 전부 기울기인지 · det/SNF 보존인지.
+
+정직 경계:
+  · **류 폐합은 하지 않았다** — 한 걸음에 `dim A` 가 43~58 로 커지고 GF(9) 에서
+    `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}`(화살 8)로 커진다.
+  · `rank_packed`(비트평면)는 **p=2 전용**이라 p=3 은 일반 `rref` 로 갔다.
+  · 외부 분류표(quaternion/dihedral type 등) 대응은 **무주장**.
+"""
+import itertools
+import json
+import os
+import random
+import sys
+import time
+
+import numpy as np
+
+from qf_witness.core.paths import ROOT
+from qf_witness.observe.ext1_quiver_observe import enumerate_group, rref_rows
+from qf_witness.observe.loewy_series_observe import (
+    coset_data, decompose_regular, extend_action, quotient_action, restrict,
+    submodule_action, subgroup)
+from qf_witness.observe.quiver_relations_observe import (
+    assemble_hom_j, hecke_endos_p, hom_space_iter)
+from qf_witness.observe import gfq_engine as GE
+from qf_witness.observe.tilting_complex_observe import det_int, smith
+
+PROOFS = os.path.join(ROOT, ".pgf", "proofs")
+A6G = [(1, 2, 0, 3, 4, 5), (0, 1, 2, 4, 5, 3), (1, 0, 3, 2, 4, 5)]
+JKEY = "__J__"
+
+
+def _perm3(g, n):
+    M = np.zeros((n, n), dtype=np.int64)
+    for j in range(n):
+        M[g[j], j] = 1
+    return M % 3
+
+
+def _wedge3(M, n):
+    pr = list(itertools.combinations(range(n), 2))
+    ix = {t: i for i, t in enumerate(pr)}
+    O = np.zeros((len(pr), len(pr)), dtype=np.int64)
+    for jc, (a, b) in enumerate(pr):
+        for i in range(n):
+            for j in range(n):
+                if i == j or M[i][a] * M[j][b] % 3 == 0:
+                    continue
+                O[ix[(min(i, j), max(i, j))]][jc] += (
+                    (1 if i < j else -1) * M[i][a] * M[j][b])
+    return O % 3
+
+
+def _find_j(basis, n):
+    """`End` 안에서 `J² = −I` 인 원소 — GF(9) 구조를 주는 스칼라."""
+    for c in itertools.product(range(3), repeat=len(basis)):
+        M = np.zeros((n, n), dtype=np.int64)
+        for t, ct in enumerate(c):
+            if ct:
+                M = (M + ct * basis[t]) % 3
+        if ((M @ M) % 3 == (-np.eye(n, dtype=np.int64)) % 3).all():
+            return M % 3
+    return None
+
+
+def build():
+    """A₆ p=3 주블록 → GF(9) Hom 조립까지."""
+    mul6, id6, ord6 = enumerate_group(A6G, 6)
+    SZ = np.array([[1 if i == 0 else (-1 if i == j else 0) for i in range(6)]
+                   for j in range(1, 6)], dtype=np.int64) % 3
+    b5, p5 = rref_rows(SZ.copy(), 3)
+    act5 = {g: restrict(_perm3(g, 6), b5, p5, 3) for g in A6G}
+    act4d, _d4 = quotient_action(act5, A6G, np.ones((1, 5), dtype=np.int64),
+                                 5, 3)
+    raw3 = {"1": [np.eye(1, dtype=np.int64)] * 3, "4": [act4d[g] for g in A6G],
+            "6t": [_wedge3(act4d[g], 4) for g in A6G]}
+    N33 = ["1", "4", "6t"]
+    S33 = {k: extend_action(A6G, mul6, id6, v, 3, ord6)
+           for k, v in raw3.items()}
+    D33 = {"1": 1, "4": 4, "6t": 6}
+    sim33 = [(k, S33[k], D33[k]) for k in N33]
+    endF3 = {k: len(hom_space_iter(S33[k], S33[k], D33[k], D33[k], A6G, 3))
+             for k in N33}
+    DIMP3 = {"1": 27, "4": 36, "6t": 36}
+    CAND = {"Syl2": [(1, 0, 3, 2, 4, 5), (2, 3, 0, 1, 4, 5),
+                     (0, 1, 3, 2, 5, 4)],
+            "C5": [(1, 2, 3, 4, 0, 5)],
+            "V4": [(1, 0, 3, 2, 4, 5), (2, 3, 0, 1, 4, 5)]}
+    PIM3 = {}
+    for _cn, hg in CAND.items():
+        if all(k in PIM3 for k in DIMP3):
+            break
+        Hl = subgroup(hg, mul6, id6)
+        n_, reps_, perms_, mats_ = coset_data(ord6, mul6, id6, A6G, Hl)
+        actX = extend_action(A6G, mul6, id6, mats_, 3, ord6)
+        alg = hecke_endos_p(n_, perms_, Hl, reps_, 3)
+        rng = random.Random(7)
+
+        def _rnd(alg=alg, rng=rng, n_=n_):
+            M = np.zeros((n_, n_), dtype=np.int64)
+            for A_ in rng.sample(alg, max(2, len(alg) // 3)):
+                M = (M + rng.randrange(1, 3) * A_) % 3
+            return M
+
+        ps = []
+        decompose_regular(np.eye(n_, dtype=np.int64),
+                          np.eye(n_, dtype=np.int64), _rnd, 3, rng, ps)
+        for B in sorted(ps, key=len):
+            dd = len(B)
+            if dd not in DIMP3.values():
+                continue
+            actY, _ = submodule_action(actX, A6G, B, 3)
+            hd = tuple(len(hom_space_iter(actY, aS, dd, dS, A6G, 3))
+                       for _n, aS, dS in sim33)
+            nm = next((k for t, k in enumerate(N33)
+                       if hd == tuple(endF3[k] if j == t else 0
+                                      for j in range(3))), None)
+            if nm in DIMP3 and nm not in PIM3 and DIMP3[nm] == dd:
+                PIM3[nm] = {g: actY[g] % 3 for g in A6G}
+    HOM3B = {(i, j): hom_space_iter(PIM3[i], PIM3[j], DIMP3[i], DIMP3[j],
+                                    A6G, 3) for i in N33 for j in N33}
+    j2 = np.array([[0, -1], [1, 0]], dtype=np.int64) % 3
+    J6 = _find_j(hom_space_iter(S33["6t"], S33["6t"], 6, 6, A6G, 3), 6)
+    JP6 = _find_j(HOM3B[("6t", "6t")], 36)
+    G9 = A6G + [JKEY]
+    S9 = {"3": dict(S33["6t"], **{JKEY: J6}),
+          "3b": dict(S33["6t"], **{JKEY: (-J6) % 3})}
+    h3 = [len(hom_space_iter(dict(PIM3["6t"], **{JKEY: JP6}), S9[k], 36, 6,
+                             G9, 3)) for k in ("3", "3b")]
+    if h3[0] == 0:                       # ★JP6 의 부호는 head 로 정렬한다
+        JP6 = (-JP6) % 3
+    N9 = ["1", "4", "3", "3b"]
+    UND = {"1": ("1", 2), "4": ("4", 2), "3": ("6t", 1), "3b": ("6t", 1)}
+    JA9 = {"1": np.kron(np.eye(27, dtype=np.int64), j2) % 3,
+           "4": np.kron(np.eye(36, dtype=np.int64), j2) % 3,
+           "3": JP6 % 3, "3b": (-JP6) % 3}
+    DP9 = {"1": 54, "4": 72, "3": 36, "3b": 36}
+    HOM9 = {(a, b): assemble_hom_j(HOM3B[UND[a][0], UND[b][0]], UND[a][1],
+                                   UND[b][1], JA9[a], JA9[b], 3)
+            for a in N9 for b in N9}
+    return {"N9": N9, "HOM9": HOM9, "JA9": JA9, "DP9": DP9, "endF3": endF3,
+            "J_found": (J6 is not None and JP6 is not None),
+            "pims": sorted(PIM3)}
+
+
+def main():
+    t0 = time.time()
+    quick = "--quick" in sys.argv
+    R, out = {}, {}
+    if quick:                      # 전 층이 무거워 full 전용
+        print("a6p3_gf9_observe: all_ok=True checks=0 (quick) %.1fs"
+              % (time.time() - t0))
+        return 0
+
+    # ── A. 재구성 + GF(9) Hom 조립 ─────────────────────────────────
+    B = build()
+    N9, HOM9 = B["N9"], B["HOM9"]
+    R["A_end_dims_show_nonsplit"] = (B["endF3"] == {"1": 1, "4": 1, "6t": 2})
+    R["A_three_f3_pims"] = (B["pims"] == ["1", "4", "6t"])
+    R["A_gf9_scalar_found"] = B["J_found"]
+    R["A_hom_all_even_over_f3"] = all(len(v) % 2 == 0 for v in HOM9.values())
+    cart9 = [[len(HOM9[(a, b)]) // 2 for b in N9] for a in N9]
+    # ★선행 K축 값과의 회귀
+    R["A_cartan_regression"] = (cart9 == [[5, 4, 1, 1], [4, 5, 2, 2],
+                                          [1, 2, 2, 1], [1, 2, 1, 2]])
+    R["A_sum_cartan_36"] = (sum(map(sum, cart9)) == 36)
+    print("A %.1fs" % (time.time() - t0), flush=True)
+
+    # ── B. GF(9) 구조상수 + 정오 게이트 ────────────────────────────
+    F9 = GE.GF(3, 2, [2, 0])                     # x² = −1 = 2
+    R["B_field_tables"] = (F9.q == 9 and int(F9.MUL[3, 3]) == 2
+                           and int(F9.MUL[3, F9.INV[3]]) == 1)
+    a9 = GE.algebra_table_realified(F9, N9, HOM9, B["JA9"], B["DP9"])
+    R["B_dim_36_and_cartan"] = (a9["n"] == 36 and GE.cartan_of(a9) == cart9)
+    one = np.zeros(a9["n"], dtype=np.int64)
+    for v in GE.idempotents(a9).values():
+        one = F9.ADD[one, v]
+    R["B_struct_const_unit"] = all(
+        np.array_equal(GE.amul(a9, one, GE.unit(a9["n"], u)),
+                       GE.unit(a9["n"], u))
+        and np.array_equal(GE.amul(a9, GE.unit(a9["n"], u), one),
+                           GE.unit(a9["n"], u)) for u in range(a9["n"]))
+    R["B_struct_const_assoc"] = all(
+        np.array_equal(
+            GE.amul(a9, GE.amul(a9, GE.unit(a9["n"], x), GE.unit(a9["n"], y)),
+                    GE.unit(a9["n"], z)),
+            GE.amul(a9, GE.unit(a9["n"], x),
+                    GE.amul(a9, GE.unit(a9["n"], y), GE.unit(a9["n"], z))))
+        for x in range(a9["n"]) for y in range(a9["n"])
+        for z in range(a9["n"]))
+    qv, rp = GE.quiver_of(a9), GE.rad_powers(a9)
+    # ★선행 K축과 동일: 화살 8 · 이중화살 1̂↔4 · 3·3′ 은 4 하고만
+    R["B_eight_arrows_double_1_4"] = (
+        sum(qv.values()) == 8 and qv["1->4"] == 2 and qv["4->1"] == 2
+        and qv["3->4"] == 1 and qv["3b->4"] == 1 and qv["1->3"] == 0)
+    R["B_rad_powers_LL5"] = (rp == [32, 24, 12, 4, 0])
+    R["B_det_snf"] = (det_int(cart9) == 9 and smith(cart9) == [1, 1, 1, 9])
+    # ★D₈(8)·Q₈(32) 류와 확실히 다르다
+    R["B_det_differs_from_D8_Q8"] = (det_int(cart9) not in (8, 32))
+    print("B %.1fs" % (time.time() - t0), flush=True)
+
+    # ── C. HH^*_{GF(9)} + 기저변환 교차검증 ────────────────────────
+    h9 = GE.hh_struct(a9, cup=True)
+    R["C_cup_correctness"] = (h9["cup_is_cocycle"] and h9["graded_commutative"])
+    # ★★`A_{GF(9)} = A_{𝔽₃} ⊗ GF(9)` ⟹ `HH^n` 차원이 **체를 바꿔도 같다**
+    #   (코사슬 차원은 다르다 — 복합체 자체가 다르므로 우연이 아니다)
+    QR = json.load(open(os.path.join(PROOFS, "QUIVER-RELATIONS.json"),
+                        encoding="utf-8"))
+    f3 = QR["P_hochschild2"]["per_block"]["A6_p3_principal"]
+    R["C_base_change_invariance"] = (
+        (h9["HH0"], h9["HH1"], h9["HH2"]) == (f3["HH0"], f3["HH1"], f3["HH2"])
+        == (6, 4, 7))
+    R["C_cochain_dims_differ"] = (h9["C"] != f3["C"])
+    R["C_cup_rank_matches"] = (h9["cup_rank"] == f3["cup_rank"] == 2)
+    print("C %.1fs" % (time.time() - t0), flush=True)
+
+    # ── D. mutation 한 걸음 ────────────────────────────────────────
+    mut = []
+    for k in N9:
+        e, Ev = GE.mutate_step(a9, k, False)
+        mut.append({"vertex": k, "E": Ev, "cartan": e["cartan"],
+                    "dim": e["dim"], "tilting": e["tilting"],
+                    "det": det_int(e["cartan"]), "snf": smith(e["cartan"])})
+    R["D_all_tilting"] = all(m["tilting"] for m in mut)
+    R["D_det_snf_preserved"] = all(m["det"] == 9 and m["snf"] == [1, 1, 1, 9]
+                                   for m in mut)
+    R["D_dims_grow"] = (sorted(m["dim"] for m in mut) == [43, 43, 52, 58])
+
+    out["A6_p3_over_GF9"] = {
+        "field": "GF(9) = 𝔽₃[x]/(x²+1)", "vertices": N9,
+        "cartan": cart9, "dim_A": a9["n"], "n_arrows": sum(qv.values()),
+        "quiver": qv, "rad_powers": rp, "loewy_length": len(rp),
+        "cartan_det": det_int(cart9), "cartan_snf": smith(cart9),
+        "hochschild_GF9": h9, "hochschild_F3_prior": f3,
+        "mutation_one_step": mut,
+        "note": ("★`gfq_engine` 이 **p=3 에서 처음** 돌았다 — 표준 경로 3단계"
+                 "(스칼라 J 추가 → `algebra_table_realified` → 나머지 그대로)가 "
+                 "**소수를 바꿔도 작동**한다. 규모는 `assemble_hom_j` 로 넘겼다"),
+        "base_change": ("★★`A_{GF(9)} = A_{𝔽₃} ⊗ GF(9)` 이므로 `HH^n` 차원이 "
+                        "**체를 바꿔도 같아야** 하고 실제로 (6,4,7)·cup 2 로 같다. "
+                        "코사슬 차원은 %s vs %s 로 **다르다** — 복합체가 다른데 "
+                        "코호몰로지가 같다는 것이 교차검증의 값어치다"
+                        % (h9["C"], f3["C"])),
+        "honest": ("류 폐합은 **하지 않았다**(한 걸음에 dim 43~58 · GF(9) 에서 "
+                   "화살 8 이라 동형 열거가 커진다) · `rank_packed` 는 p=2 전용이라 "
+                   "p=3 은 일반 rref"),
+    }
+    R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
+    out["checks"] = R
+    out["all_ok"] = R["all_ok"]
+    with open(os.path.join(PROOFS, "A6P3-GF9.json"), "w", encoding="utf-8",
+              newline="\n") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=True)
+        f.write("\n")
+    bad = [k for k, v in R.items() if not v]
+    print("a6p3_gf9_observe: all_ok=%s checks=%d %.1fs"
+          % (R["all_ok"], len(R) - 1, time.time() - t0))
+    if bad:
+        print("  실패:", bad)
+    return 0 if R["all_ok"] else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

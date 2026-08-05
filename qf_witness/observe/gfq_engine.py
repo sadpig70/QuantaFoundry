@@ -860,8 +860,13 @@ def hh_struct(alg, cup=False, max_deg=2):
     if max_deg < 2:
         out["ker"] = [k0, k1]
         return out
-    # ★차원만 필요하므로 가장 큰 D2 는 **rank 만** 구한다(비트평면 가속)
-    k2 = (len(c2) - rank_packed(F, D2)) if len(c3) else len(c2)
+    # ★차원만 필요하므로 가장 큰 D2 는 **rank 만** 구한다
+    # (p=2 는 비트평면 가속 · 그 외는 일반 rref)
+    if len(c3):
+        k2 = len(c2) - (rank_packed(F, D2) if F.p == 2
+                        else rank(F, D2.astype(np.int64)))
+    else:
+        k2 = len(c2)
     out["ker"] = [k0, k1, k2]
     out["HH2"] = k2 - (len(c1) - k1)
     if not cup:

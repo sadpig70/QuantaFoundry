@@ -1,0 +1,315 @@
+{
+  "A6_p3_over_GF9": {
+    "base_change": "★★`A_{GF(9)} = A_{𝔽₃} ⊗ GF(9)` 이므로 `HH^n` 차원이 **체를 바꿔도 같아야** 하고 실제로 (6,4,7)·cup 2 로 같다. 코사슬 차원은 [14, 98, 884, 8148] vs [16, 142, 1498, 16378] 로 **다르다** — 복합체가 다른데 코호몰로지가 같다는 것이 교차검증의 값어치다",
+    "cartan": [
+      [
+        5,
+        4,
+        1,
+        1
+      ],
+      [
+        4,
+        5,
+        2,
+        2
+      ],
+      [
+        1,
+        2,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        2
+      ]
+    ],
+    "cartan_det": 9,
+    "cartan_snf": [
+      1,
+      1,
+      1,
+      9
+    ],
+    "dim_A": 36,
+    "field": "GF(9) = 𝔽₃[x]/(x²+1)",
+    "hochschild_F3_prior": {
+      "C": [
+        16,
+        142,
+        1498,
+        16378
+      ],
+      "HH0": 6,
+      "HH1": 4,
+      "HH1_reps": 4,
+      "HH2": 7,
+      "cup_is_cocycle": true,
+      "cup_rank": 2,
+      "dim_A": 36,
+      "dim_rad": 33,
+      "graded_commutative": true,
+      "ker": [
+        6,
+        14,
+        135
+      ]
+    },
+    "hochschild_GF9": {
+      "C": [
+        14,
+        98,
+        884,
+        8148
+      ],
+      "HH0": 6,
+      "HH1": 4,
+      "HH1_reps": 4,
+      "HH2": 7,
+      "cup_is_cocycle": true,
+      "cup_rank": 2,
+      "dim_A": 36,
+      "dim_rad": 32,
+      "graded_commutative": true,
+      "ker": [
+        6,
+        12,
+        93
+      ],
+      "max_deg": 2
+    },
+    "honest": "류 폐합은 **하지 않았다**(한 걸음에 dim 43~58 · GF(9) 에서 화살 8 이라 동형 열거가 커진다) · `rank_packed` 는 p=2 전용이라 p=3 은 일반 rref",
+    "loewy_length": 5,
+    "mutation_one_step": [
+      {
+        "E": [
+          "4",
+          "4"
+        ],
+        "cartan": [
+          [
+            9,
+            6,
+            3,
+            3
+          ],
+          [
+            6,
+            5,
+            2,
+            2
+          ],
+          [
+            3,
+            2,
+            2,
+            1
+          ],
+          [
+            3,
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 9,
+        "dim": 52,
+        "snf": [
+          1,
+          1,
+          1,
+          9
+        ],
+        "tilting": true,
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "1",
+          "1",
+          "3",
+          "3b"
+        ],
+        "cartan": [
+          [
+            5,
+            8,
+            1,
+            1
+          ],
+          [
+            8,
+            15,
+            3,
+            3
+          ],
+          [
+            1,
+            3,
+            2,
+            1
+          ],
+          [
+            1,
+            3,
+            1,
+            2
+          ]
+        ],
+        "det": 9,
+        "dim": 58,
+        "snf": [
+          1,
+          1,
+          1,
+          9
+        ],
+        "tilting": true,
+        "vertex": "4"
+      },
+      {
+        "E": [
+          "4"
+        ],
+        "cartan": [
+          [
+            5,
+            4,
+            3,
+            1
+          ],
+          [
+            4,
+            5,
+            3,
+            2
+          ],
+          [
+            3,
+            3,
+            3,
+            1
+          ],
+          [
+            1,
+            2,
+            1,
+            2
+          ]
+        ],
+        "det": 9,
+        "dim": 43,
+        "snf": [
+          1,
+          1,
+          1,
+          9
+        ],
+        "tilting": true,
+        "vertex": "3"
+      },
+      {
+        "E": [
+          "4"
+        ],
+        "cartan": [
+          [
+            5,
+            4,
+            1,
+            3
+          ],
+          [
+            4,
+            5,
+            2,
+            3
+          ],
+          [
+            1,
+            2,
+            2,
+            1
+          ],
+          [
+            3,
+            3,
+            1,
+            3
+          ]
+        ],
+        "det": 9,
+        "dim": 43,
+        "snf": [
+          1,
+          1,
+          1,
+          9
+        ],
+        "tilting": true,
+        "vertex": "3b"
+      }
+    ],
+    "n_arrows": 8,
+    "note": "★`gfq_engine` 이 **p=3 에서 처음** 돌았다 — 표준 경로 3단계(스칼라 J 추가 → `algebra_table_realified` → 나머지 그대로)가 **소수를 바꿔도 작동**한다. 규모는 `assemble_hom_j` 로 넘겼다",
+    "quiver": {
+      "1->1": 0,
+      "1->3": 0,
+      "1->3b": 0,
+      "1->4": 2,
+      "3->1": 0,
+      "3->3": 0,
+      "3->3b": 0,
+      "3->4": 1,
+      "3b->1": 0,
+      "3b->3": 0,
+      "3b->3b": 0,
+      "3b->4": 1,
+      "4->1": 2,
+      "4->3": 1,
+      "4->3b": 1,
+      "4->4": 0
+    },
+    "rad_powers": [
+      32,
+      24,
+      12,
+      4,
+      0
+    ],
+    "vertices": [
+      "1",
+      "4",
+      "3",
+      "3b"
+    ]
+  },
+  "all_ok": true,
+  "checks": {
+    "A_cartan_regression": true,
+    "A_end_dims_show_nonsplit": true,
+    "A_gf9_scalar_found": true,
+    "A_hom_all_even_over_f3": true,
+    "A_sum_cartan_36": true,
+    "A_three_f3_pims": true,
+    "B_det_differs_from_D8_Q8": true,
+    "B_det_snf": true,
+    "B_dim_36_and_cartan": true,
+    "B_eight_arrows_double_1_4": true,
+    "B_field_tables": true,
+    "B_rad_powers_LL5": true,
+    "B_struct_const_assoc": true,
+    "B_struct_const_unit": true,
+    "C_base_change_invariance": true,
+    "C_cochain_dims_differ": true,
+    "C_cup_correctness": true,
+    "C_cup_rank_matches": true,
+    "D_all_tilting": true,
+    "D_det_snf_preserved": true,
+    "D_dims_grow": true,
+    "all_ok": true
+  }
+}
