@@ -666,6 +666,8 @@ def find_isomorphism(A, B, cap=200000):
                     cand.append(blk(B, si, sj, [v])[0])
             opts.append(cand)
         # ★가지치기 — 화살 0..t 만 쓰는 단어들에 대해 well-defined 필요조건을 먼저 건다
+        # (★화살 순서를 "닫힌 경로 우선"으로 재배열해 봤으나 A₆ p=3 을 못 풀고
+        #  Q₈ 을 크게 느리게 만들어 **되돌렸다** — 실패한 휴리스틱)
         widx = [max(w, default=-1) for (_st, w) in WA]
         sub = [[u for u in range(len(WA)) if widx[u] <= t]
                for t in range(len(opts))]

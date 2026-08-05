@@ -5,7 +5,7 @@
 가능하다, **아직 안 했다**" 라고 적었다. 그 미착수를 채운다.
 ★v24 의 열린 질문(Q1·Q2·Q3′·Q3‴·Q3⁗)과 **겹치지 않는다**.
 
-관측 4축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 5축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
   A  ★A₆ p=3 주블록 재구성 + **GF(9) Hom 조립**(`assemble_hom_j` — 5184 계 회피) ·
      Cartan 이 선행 K축 값과 일치하는지 **회귀**.
   B  ★★**GF(9) 구조상수**(`x² = −1 = 2` ⟹ poly [2,0]) — 단위원·결합법칙 **전수 게이트**.
@@ -13,10 +13,13 @@
   C  ★★★**`HH^*_{GF(9)}`** — ★기저변환 교차검증: `A_{GF(9)} = A_{𝔽₃} ⊗ GF(9)` 이므로
      `dim_{GF(9)} HH^n(A_{GF(9)}) = dim_{𝔽₃} HH^n(A_{𝔽₃})` 여야 한다(코사슬 차원은 다르다).
   D  ★mutation 한 걸음 — 전부 기울기인지 · det/SNF 보존인지.
+  E  ★Cartan 수준 궤도 — **폐합 주장이 아니다**(동형 dedup 이 규모 밖) ·
+     ★왜 규모 밖인지 **화살별 후보 수를 실측**해 남긴다.
 
 정직 경계:
-  · **류 폐합은 하지 않았다** — 한 걸음에 `dim A` 가 43~58 로 커지고 GF(9) 에서
-    `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}`(화살 8)로 커진다.
+  · **류 폐합은 하지 못했다** — GF(9)·화살 8 에서 동형 판정의 화살 상 후보가
+    큰 블록에서 **6480 개**(곱 ≈ 10^22)라, 닫힌 경로를 앞세우는 순서 재배열을 넣고도
+    **자기동형조차 14분 내 미종료**였다. E축에 후보 수를 실측해 남긴다.
   · `rank_packed`(비트평면)는 **p=2 전용**이라 p=3 은 일반 `rref` 로 갔다.
   · 외부 분류표(quaternion/dihedral type 등) 대응은 **무주장**.
 """
@@ -240,6 +243,64 @@ def main():
                                    for m in mut)
     R["D_dims_grow"] = (sorted(m["dim"] for m in mut) == [43, 43, 52, 58])
 
+    # ── E. ★Cartan 수준 궤도 — **폐합 주장 아님**(동형 dedup 이 규모 밖) ────
+    from qf_witness.observe.tilting_complex_observe import canon
+    seen = {canon(cart9): ""}
+    frontier, orb, capped = [("", a9)], [], False
+    for dep in range(1, 3):        # ★깊이 2 상한(깊이 3 은 시간 밖)
+        nxt = []
+        for path, alg in frontier:
+            for kk, k in enumerate(alg["names"]):
+                for right in (False, True):
+                    e, Ev = GE.mutate_step(alg, k, right)
+                    cc = canon(e["cartan"])
+                    orb.append({"path": path + ("-" if right else "+")
+                                + str(kk), "E": Ev, "dim": e["dim"],
+                                "cartan": e["cartan"],
+                                "tilting": e["tilting"],
+                                "det": det_int(e["cartan"]),
+                                "snf": smith(e["cartan"])})
+                    if cc not in seen and e["dim"] <= 90:
+                        seen[cc] = orb[-1]["path"]
+                        nxt.append((orb[-1]["path"], e["alg"]))
+                    elif cc not in seen:
+                        capped = True
+        frontier = nxt
+        print("E depth %d · 신규 %d · Cartan %d · %.1fs"
+              % (dep, len(nxt), len(seen), time.time() - t0), flush=True)
+        if not nxt:
+            break
+    R["E_all_tilting"] = all(m["tilting"] for m in orb)
+    R["E_det_snf_preserved"] = all(m["det"] == 9 and m["snf"] == [1, 1, 1, 9]
+                                   for m in orb)
+    R["E_more_cartans_than_D8_Q8"] = (len(seen) > 3)
+    # ★후보 수 실측 — 동형 dedup 이 왜 규모 밖인지 수치로
+    arA, R2b = GE.arrow_lifts_of(a9)
+    cand = []
+    for (i, j, _v) in arA:
+        Rr = GE.rad_block(a9, i, j)
+        Bq, pq = [], []
+        for r in R2b[(i, j)]:
+            _o, Bq, pq = GE.rref_insert(F9, Bq, pq, r)
+        cand.append(F9.q ** len(Rr) - F9.q ** len(pq))
+    R["E_iso_search_out_of_scale"] = (sorted(cand)[-1] >= 6000
+                                      and len(arA) == 8)
+    out["E_cartan_orbit"] = {
+        "reached_canonical_cartans": sorted(
+            [list(map(list, c)) for c in seen], key=str),
+        "n_reached": len(seen), "depth_cap": 2, "orbit": orb,
+        "arrow_candidate_counts": cand,
+        "hit_dim_cap": capped,
+        "honest": ("★**폐합 주장이 아니다** — dedup 이 canonical Cartan 이다. "
+                   "GF(9)·화살 8 에서 동형 판정의 화살 상 후보가 "
+                   "`%s` 개(곱 ≈ 10^22)라 사이클을 닫는 순서 재배열"
+                   "(닫힌 경로 우선)을 넣고도 **자기동형조차 14분 내 미종료**였다. "
+                   "필요한 것은 더 센 열거가 아니라 **다른 알고리즘**"
+                   "(rad/rad² 에서 먼저 풀고 rad² 로 successive lifting, "
+                   "또는 대수의 정규형)이다. 궤도도 **깊이 2 상한**이다"
+                   "(깊이 3 은 시간 밖 — 깊이 2 까지 1621초)" % cand),
+    }
+
     out["A6_p3_over_GF9"] = {
         "field": "GF(9) = 𝔽₃[x]/(x²+1)", "vertices": N9,
         "cartan": cart9, "dim_A": a9["n"], "n_arrows": sum(qv.values()),
@@ -255,9 +316,8 @@ def main():
                         "코사슬 차원은 %s vs %s 로 **다르다** — 복합체가 다른데 "
                         "코호몰로지가 같다는 것이 교차검증의 값어치다"
                         % (h9["C"], f3["C"])),
-        "honest": ("류 폐합은 **하지 않았다**(한 걸음에 dim 43~58 · GF(9) 에서 "
-                   "화살 8 이라 동형 열거가 커진다) · `rank_packed` 는 p=2 전용이라 "
-                   "p=3 은 일반 rref"),
+        "honest": ("류 폐합은 **하지 못했다** — E축에 후보 수를 실측해 남겼다 · "
+                   "`rank_packed` 는 p=2 전용이라 p=3 은 일반 rref"),
     }
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
     out["checks"] = R
