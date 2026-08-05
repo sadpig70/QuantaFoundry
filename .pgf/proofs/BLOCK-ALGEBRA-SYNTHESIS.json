@@ -39,6 +39,26 @@
     "marker": "<!-- MACHINE-CHECKED: derived-equivalence-class -->",
     "note": "★v23 §3aa 의 유도동등류 표를 `TILTING-COMPLEX.json` 과 전 필드 대조 — 발행 수치는 생성+게이트로 묶는다"
   },
+  "W_request_v24_cross_check": {
+    "fields": [
+      "HH0",
+      "HH1",
+      "HH2",
+      "cartan",
+      "cartan_det",
+      "cartan_snf",
+      "cochain_dims",
+      "cup_rank",
+      "dim_basic_algebra",
+      "loewy_length",
+      "mutation_path",
+      "n_arrows",
+      "rad_powers"
+    ],
+    "file": "HORIZONTAL-EXPANSION-REQUEST-v24.md",
+    "marker": "<!-- MACHINE-CHECKED: defect-group-classes -->",
+    "note": "★v24 §3ab 의 **결손군 2류 표**를 `TILTING-COMPLEX.json`(D₈) + `QUATERNION-BLOCK.json`(Q₈) 과 전 필드 대조 — 발행 수치는 생성+게이트로 묶는다"
+  },
   "X_cross_gates": {
     "note": "★세 sidecar 를 **입력으로 읽어** 대조 — Cartan(EXT1 ↔ QR Hom 차원 ↔ LOEWY dim_P 역산) · Ext¹(EXT1 퀴버 ↔ LOEWY rad/rad² ↔ QR 화살) · Loewy(LOEWY 층 ↔ QR graded)",
     "per_block": {
@@ -584,6 +604,10 @@
     "W_request_v23_groups_consistent": true,
     "W_request_v23_matches_sidecar": true,
     "W_request_v23_reps_present": true,
+    "W_request_v24_class_invariants": true,
+    "W_request_v24_classes_present": true,
+    "W_request_v24_group_names": true,
+    "W_request_v24_matches_sidecar": true,
     "X_A6_p2_principal_block_dim": true,
     "X_A6_p2_principal_cartan_ext1_vs_hom": true,
     "X_A6_p2_principal_dimA_equals_sumC": true,

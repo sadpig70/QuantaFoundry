@@ -19,7 +19,7 @@
      퀴버 지지 ⊆ Cartan 지지
   Y  ★**4 블록 종합표** — 체 · 정점 · 화살 · dim A · 관계식 · Ext² · 균질성 · 유보
   Z  ★**커버리지 행렬** — 블록 × 산출량 × **독립 경로 수**(무엇이 몇 경로로 확인됐는지)
-  W  ★**외부 요청서(REQUEST-v22·v23) 수치 자동 대조** — 발행 문서가 sidecar 와 어긋나면
+  W  ★**외부 요청서(REQUEST-v22·v23·v24) 수치 자동 대조** — 발행 문서가 sidecar 와 어긋나면
      빨간불. v23 은 §3aa **유도동등류 3 대표**를 `TILTING-COMPLEX.json` 과 전 필드 대조.
 
 정직 경계:
@@ -332,6 +332,67 @@ def main():
         }
     else:
         R["W_request_v23_present"] = False
+
+    # ── W3. ★결손군 2류 표(v24 신규 블록) 자동 대조 ────────────────────
+    QBP = os.path.join(ROOT, ".pgf", "proofs", "QUATERNION-BLOCK.json")
+    req24 = os.path.join(ROOT, ".pgf", "external",
+                         "HORIZONTAL-EXPANSION-REQUEST-v24.md")
+    MK3 = "<!-- MACHINE-CHECKED: defect-group-classes -->"
+    if os.path.exists(req24) and os.path.exists(TCP) and os.path.exists(QBP):
+        TC = json.load(open(TCP, encoding="utf-8"))
+        QB = json.load(open(QBP, encoding="utf-8"))
+        exp = {"D8": {}, "Q8": {}}
+        card = TC["X_hochschild_struct_const"]["class_card"]
+        for lb, v in TC["W_class_closure"]["representatives"].items():
+            exp["D8"][lb] = {
+                "dim_basic_algebra": v["dim"], "cartan": v["cartan"],
+                "n_arrows": v["arrows"], "loewy_length": v["loewy_length"],
+                "rad_powers": v["rad_powers"], "cochain_dims": card[lb]["C"],
+                "HH0": card[lb]["HH0"], "HH1": card[lb]["HH1"],
+                "HH2": card[lb]["HH2"], "cup_rank": card[lb]["cup_rank"],
+                "cartan_det": v["det"], "cartan_snf": v["snf"],
+                "mutation_path": v["path"] or "(start)"}
+        for lb, v in QB["H_q8_class_closure"]["representatives"].items():
+            exp["Q8"][lb] = {
+                "dim_basic_algebra": v["dim"], "cartan": v["cartan"],
+                "n_arrows": v["n_arrows"], "loewy_length": v["loewy_length"],
+                "rad_powers": v["rad_powers"],
+                "cochain_dims": v["cochain_dims"], "HH0": v["HH0"],
+                "HH1": v["HH1"], "HH2": v["HH2"], "cup_rank": v["cup_rank"],
+                "cartan_det": v["cartan_det"], "cartan_snf": v["cartan_snf"],
+                "mutation_path": v["path"]}
+        seg = open(req24, encoding="utf-8").read().split(MK3, 1)[1]             .split("```json", 1)[1].split("```", 1)[0]
+        e3 = json.loads(seg)
+        R["W_request_v24_classes_present"] = (
+            sorted(e3) == ["D8", "Q8"]
+            and all(sorted(e3[g]["members"]) == sorted(exp[g]) for g in exp))
+        R["W_request_v24_matches_sidecar"] = all(
+            {kk: e3[g]["members"][lb][kk] for kk in exp[g][lb]} == exp[g][lb]
+            for g in exp for lb in exp[g])
+        # ★유도불변량 — 류 **안에서는** 같고 **류 사이에서는** 다르다
+        R["W_request_v24_class_invariants"] = (
+            len({(m["HH0"], m["HH1"], m["HH2"], m["cup_rank"], m["cartan_det"])
+                 for m in e3["D8"]["members"].values()}) == 1
+            and len({(m["HH0"], m["HH1"], m["HH2"], m["cup_rank"],
+                      m["cartan_det"])
+                     for m in e3["Q8"]["members"].values()}) == 1
+            and {tuple(sorted(m["cartan_det"] for m in
+                              e3[g]["members"].values()))[0] for g in e3}
+            == {8, 32})
+        R["W_request_v24_group_names"] = (
+            {m["group"] for m in e3["Q8"]["members"].values()}
+            == {"SL(2,3) = Q₈⋊ℤ₃", "SL(2,5) = 2.A₅"}
+            and QB["checks"]["G_explicit_isomorphism"]
+            and QB["checks"]["H_two_representatives"])
+        out["W_request_v24_cross_check"] = {
+            "file": "HORIZONTAL-EXPANSION-REQUEST-v24.md", "marker": MK3,
+            "fields": sorted(exp["D8"]["R0"]),
+            "note": ("★v24 §3ab 의 **결손군 2류 표**를 `TILTING-COMPLEX.json`(D₈) + "
+                     "`QUATERNION-BLOCK.json`(Q₈) 과 전 필드 대조 — "
+                     "발행 수치는 생성+게이트로 묶는다"),
+        }
+    else:
+        R["W_request_v24_present"] = False
 
     ok = bool(all(R.values()))
     out["checks"] = R
