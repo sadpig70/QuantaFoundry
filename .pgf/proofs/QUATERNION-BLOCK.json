@@ -220,6 +220,503 @@
       "`HH¹ = HH⁰ − 2` — D₈·p=3 네 블록에서 전부 유지됐으나 **kQ₈ 에서 (5,7) 로 깨진다**. 그 패턴도 그 층 특유였다"
     ]
   },
+  "E_gfq_regression": {
+    "gf2_engine": {
+      "C": [
+        8,
+        56,
+        392,
+        2744
+      ],
+      "HH0": 5,
+      "HH1": 7,
+      "HH1_reps": 7,
+      "HH2": 7,
+      "cup_is_cocycle": true,
+      "cup_rank": 4,
+      "dim_A": 8,
+      "dim_rad": 7,
+      "graded_commutative": true,
+      "ker": [
+        5,
+        10,
+        53
+      ]
+    },
+    "note": "★일반 엔진을 **q=2 로 먼저 돌려** 𝔽₂ 엔진의 값을 그대로 재현하는지 확인한 뒤에만 q=4 로 간다(A6P3HH·HHStructConst 에서 두 번 통한 패턴)",
+    "target": "kQ₈ (𝔽₂ 분해체)"
+  },
+  "F_sl23_over_GF4": {
+    "cartan": [
+      [
+        4,
+        2,
+        2
+      ],
+      [
+        2,
+        4,
+        2
+      ],
+      [
+        2,
+        2,
+        4
+      ]
+    ],
+    "dim_A": 24,
+    "field": "GF(4) = 𝔽₂[x]/(x²+x+1)",
+    "hochschild_F4": {
+      "C": [
+        12,
+        60,
+        396,
+        2748
+      ],
+      "HH0": 7,
+      "HH1": 5,
+      "HH1_reps": 5,
+      "HH2": 5,
+      "cup_is_cocycle": true,
+      "cup_rank": 2,
+      "dim_A": 24,
+      "dim_rad": 21,
+      "graded_commutative": true,
+      "ker": [
+        7,
+        10,
+        55
+      ]
+    },
+    "honest": "궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — GF(4) 에서 `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다. dim 36 대표의 **군 블록 동일시도 미착수**",
+    "n_arrows": 6,
+    "note": "★★벽을 뚫었다 — 계수를 GF(4) 로 올리자 `HH^*`·cup·mutation 이 **𝔽₄-불변량으로** 나온다. `HH^*_{𝔽₄} = (7,5,5)`·cup 2 는 실현화 𝔽₂ 값의 단순 절반이 **아니다**(복합체 자체가 다르다)",
+    "orbit": [
+      {
+        "E": [
+          "S1",
+          "S2"
+        ],
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+0",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "S1",
+          "S2"
+        ],
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "-0",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "S0",
+          "S2"
+        ],
+        "cartan": [
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            8,
+            4
+          ],
+          [
+            2,
+            4,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+1",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "S0",
+          "S2"
+        ],
+        "cartan": [
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            8,
+            4
+          ],
+          [
+            2,
+            4,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "-1",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "S0",
+          "S1"
+        ],
+        "cartan": [
+          [
+            4,
+            2,
+            4
+          ],
+          [
+            2,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+2",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "S0",
+          "S1"
+        ],
+        "cartan": [
+          [
+            4,
+            2,
+            4
+          ],
+          [
+            2,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            8
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "-2",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "1",
+          "2"
+        ],
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 24,
+        "path": "+0+0",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "1",
+          "2"
+        ],
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 24,
+        "path": "+0-0",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+0+1",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+0-1",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+0+2",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "det": 32,
+        "dim": 36,
+        "path": "+0-2",
+        "snf": [
+          2,
+          2,
+          8
+        ],
+        "tilting": true
+      }
+    ],
+    "rad_powers": [
+      21,
+      15,
+      9,
+      3,
+      0
+    ],
+    "reached_canonical_cartans": [
+      [
+        [
+          4,
+          2,
+          2
+        ],
+        [
+          2,
+          4,
+          2
+        ],
+        [
+          2,
+          2,
+          4
+        ]
+      ],
+      [
+        [
+          4,
+          2,
+          4
+        ],
+        [
+          2,
+          4,
+          4
+        ],
+        [
+          4,
+          4,
+          8
+        ]
+      ]
+    ]
+  },
   "all_ok": true,
   "checks": {
     "A_Q8_normal_index3": true,
@@ -247,6 +744,20 @@
     "C_rad_powers": true,
     "C_two_selfloops": true,
     "D_two_predictions_refuted": true,
+    "E_gf2_field_tables": true,
+    "E_regression_cartan_quiver_rad": true,
+    "E_regression_hochschild": true,
+    "E_regression_mutation": true,
+    "F_HH0_equals_classes": true,
+    "F_all_mutations_tilting": true,
+    "F_cup_correctness": true,
+    "F_det_snf_preserved": true,
+    "F_gf4_field_tables": true,
+    "F_matches_halved_F2": true,
+    "F_not_half_of_realified": true,
+    "F_struct_const_assoc": true,
+    "F_struct_const_unit": true,
+    "F_two_cartans_reached": true,
     "all_ok": true
   }
 }

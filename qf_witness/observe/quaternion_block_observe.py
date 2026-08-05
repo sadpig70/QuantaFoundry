@@ -5,7 +5,7 @@
 v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algebra` · `find_isomorphism` ·
 구조상수판 `hh_struct`)을 계약으로 내걸었으니, **다른 결손군에서 그대로 도는지**가 실제 시험이다.
 
-관측 4축 (정확 GF(2) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 6축 (정확 GF(q) 선형대수 · seal 아님 · module 0 · root 불변):
   A  `SL(2,3) = Q₈ ⋊ ℤ₃`(위수 24 · 𝔽₃² 비영벡터 8점 순열군) — Sylow-2 지문 **(8,1,6) = Q₈**
      (D₈ 은 (8,5,2)) · `Q₈` 정규(지수 3) · `G/Q₈ ≅ ℤ₃` 준동형 자체유도.
   B  ★**𝔽₄ 실현화** — `G/Q₈ ≅ ℤ₃` 이라 단순가군은 **𝔽₄ 위 1차원 3개**이고 **𝔽₂ 는 분해체가
@@ -15,13 +15,18 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
   C  ★`kQ₈` 자체 — 단순가군이 **자명 하나뿐**이라 𝔽₂ 가 분해체이고 **엔진 전 층**
      (`hh_struct`·cup·`mutate_step`·`find_isomorphism`)이 **한 줄도 안 고치고** 돈다.
      독립 게이트 `HH⁰ = dim Z(kQ₈) = |켤레류| = 5`.
+  E  ★**GF(q) 엔진 q=2 회귀** — 신규 `gfq_engine` 을 `kQ₈` 에 q=2 로 먼저 돌려
+     𝔽₂ 엔진의 값(Cartan·화살·rad^n·`HH^*`·cup·mutation·동형)을 **그대로 재현**하는지 확인.
+  F  ★★**SL(2,3) over GF(4)** — 계수를 GF(4) 로 올려 **벽을 뚫는다**. 𝔽₄ 구조상수를
+     실물로 뽑고(단위원·결합법칙 게이트) `HH^*_{𝔽₄}`·cup·mutation 을 **𝔽₄-불변량으로** 잰다.
   D  ★★종합 — **Q3″ 에 대한 첫 데이터점**과 **엔진의 진짜 전제**.
 
 정직 경계:
   · 실현화 위에서 잰 `HH^*`·cup 은 **𝔽₂-불변량**(realified 대수의)이지 `HH^*_{𝔽₄}` 가 아니다 —
     분리해 기록한다. `dim_{𝔽₄} Z = dim_{𝔽₂} Z / 2` 만 대조 게이트로 쓴다.
-  · SL(2,3) 블록의 mutation 폐합·동형 판정은 **하지 않았다** — 엔진이 `End(S) = k`
-    (분해체)를 전제하므로 실현화 위에서 돌리면 **𝔽₂-선형 동형**을 재게 되어 의미가 다르다.
+  · F축의 궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — GF(4) 에서
+    `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다.
+  · F축이 도달한 **dim 36 대표의 군 블록 동일시는 미착수**다.
   · 외부 분류표(quaternion type 등)와의 대응은 **무주장**.
 """
 import json
@@ -38,9 +43,11 @@ from qf_witness.observe.loewy_series_observe import (
     decompose_regular, subgroup, submodule_action)
 from qf_witness.observe.quiver_relations_observe import (
     algebra_table, hom_space_fast)
+from qf_witness.observe import gfq_engine as GE
 from qf_witness.observe.tilting_complex_observe import (
-    alg_pack, cartan_of, det_int, elem_order, find_isomorphism, hh_struct,
-    mutate_step, quiver_of, rad_block, rad_powers, smith, sylow2_fingerprint)
+    alg_pack, canon, cartan_of, det_int, elem_order, find_isomorphism,
+    hh_struct, mutate_step, quiver_of, rad_block, rad_powers, smith,
+    sylow2_fingerprint)
 
 PROOFS = os.path.join(ROOT, ".pgf", "proofs")
 MW = np.array([[0, 1], [1, 1]], dtype=np.int64)      # 𝔽₄ 에서 ω 곱(J² = J + 1)
@@ -226,6 +233,116 @@ def main():
                      "tilting": qe["tilting"]},
         "note": ("단순가군이 자명 하나뿐이라 **𝔽₂ 가 분해체**이고 엔진 4종이 "
                  "**한 줄도 안 고치고** 돈다 — §4⁗ 자산 계약의 실제 통과"),
+    }
+
+    # ── E·F 는 full 전용(결합법칙 전수 등 무거운 게이트) ──────────────
+    if quick:
+        R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
+        print("quaternion_block_observe: all_ok=%s checks=%d (quick) %.1fs"
+              % (R["all_ok"], len(R) - 1, time.time() - t0))
+        return 0 if R["all_ok"] else 1
+
+    # ── E. ★GF(q) 엔진 **q=2 회귀** — 알려진 답이 정오 판정기 ────────
+    F2 = GE.GF(2)
+    g8 = GE.pack(F2, qalg["names"], qalg["cnt"], qalg["MT"])
+    gq = GE.hh_struct(g8, cup=True)
+    ge, gE = GE.mutate_step(g8, "1", False)
+    R["E_gf2_field_tables"] = (F2.ADD.tolist() == [[0, 1], [1, 0]]
+                               and F2.MUL.tolist() == [[0, 0], [0, 1]]
+                               and F2.INV.tolist() == [0, 1])
+    R["E_regression_cartan_quiver_rad"] = (
+        GE.cartan_of(g8) == cartan_of(qalg)
+        and GE.quiver_of(g8) == quiver_of(qalg)
+        and GE.rad_powers(g8) == rad_powers(qalg))
+    R["E_regression_hochschild"] = all(
+        gq[k] == qhh[k] for k in ("C", "ker", "HH0", "HH1", "HH2",
+                                  "HH1_reps", "cup_rank", "cup_is_cocycle",
+                                  "graded_commutative"))
+    R["E_regression_mutation"] = (
+        (ge["cartan"], ge["dim"], ge["tilting"], gE)
+        == (qe["cartan"], qe["dim"], qe["tilting"], qE)
+        and GE.find_isomorphism(g8, ge["alg"])["found"])
+    out["E_gfq_regression"] = {
+        "target": "kQ₈ (𝔽₂ 분해체)", "gf2_engine": gq,
+        "note": ("★일반 엔진을 **q=2 로 먼저 돌려** 𝔽₂ 엔진의 값을 그대로 재현하는지 "
+                 "확인한 뒤에만 q=4 로 간다(A6P3HH·HHStructConst 에서 두 번 통한 패턴)")}
+
+    # ── F. ★★SL(2,3) **over GF(4)** — 벽을 뚫는다 ────────────────────
+    F4 = GE.GF(2, 2, [1, 1])                      # x² = 1 + x
+    R["F_gf4_field_tables"] = (
+        F4.MUL.tolist() == [[0, 0, 0, 0], [0, 1, 2, 3],
+                            [0, 2, 3, 1], [0, 3, 1, 2]]
+        and F4.INV.tolist() == [0, 1, 3, 2])
+    Jact = {k: PIM[k]["J"] for k in NS}
+    a4 = GE.algebra_table_realified(F4, NS, HOM, Jact, dP)
+    one = np.zeros(a4["n"], dtype=np.int64)
+    for v in GE.idempotents(a4).values():
+        one = F4.ADD[one, v]
+    # ★구조상수 정오 게이트 — 단위원·결합법칙
+    R["F_struct_const_unit"] = all(
+        np.array_equal(GE.amul(a4, one, GE.unit(a4["n"], u)),
+                       GE.unit(a4["n"], u))
+        and np.array_equal(GE.amul(a4, GE.unit(a4["n"], u), one),
+                           GE.unit(a4["n"], u)) for u in range(a4["n"]))
+    R["F_struct_const_assoc"] = all(
+        np.array_equal(
+            GE.amul(a4, GE.amul(a4, GE.unit(a4["n"], x), GE.unit(a4["n"], y)),
+                    GE.unit(a4["n"], z)),
+            GE.amul(a4, GE.unit(a4["n"], x),
+                    GE.amul(a4, GE.unit(a4["n"], y), GE.unit(a4["n"], z))))
+        for x in range(a4["n"]) for y in range(a4["n"])
+        for z in range(a4["n"]))
+    # ★𝔽₄ 층이 B축의 ÷2 결과와 일치해야 한다(독립 재유도)
+    R["F_matches_halved_F2"] = (GE.cartan_of(a4) == cart
+                                and a4["n"] == 24
+                                and GE.rad_powers(a4) == [21, 15, 9, 3, 0]
+                                and sum(GE.quiver_of(a4).values()) == 6)
+    h4 = GE.hh_struct(a4, cup=True)
+    R["F_HH0_equals_classes"] = (h4["HH0"] == 7)
+    R["F_cup_correctness"] = (h4["cup_is_cocycle"]
+                              and h4["graded_commutative"])
+    # ★★예측 확인: 𝔽₄ HH 는 실현화 𝔽₂ 값의 **절반이 아니다**(복합체가 다르다)
+    R["F_not_half_of_realified"] = (
+        hhr is None or h4["HH2"] * 2 != hhr["HH2"])
+    orb, seen = [], {canon(GE.cartan_of(a4)): ""}
+    frontier = [("", a4)]
+    for d in range(1, 4):
+        nxt = []
+        for path, a in frontier:
+            for kk, k in enumerate(a["names"]):
+                for right in (False, True):
+                    e, Ev = GE.mutate_step(a, k, right)
+                    cc = canon(e["cartan"])
+                    orb.append({"path": path + ("-" if right else "+")
+                                + str(kk), "E": Ev, "cartan": e["cartan"],
+                                "dim": e["dim"], "tilting": e["tilting"],
+                                "det": det_int(e["cartan"]),
+                                "snf": smith(e["cartan"])})
+                    if cc not in seen and e["dim"] <= 80:
+                        seen[cc] = orb[-1]["path"]
+                        nxt.append((orb[-1]["path"], e["alg"]))
+        frontier = nxt
+        if not nxt:
+            break
+    R["F_all_mutations_tilting"] = all(r["tilting"] for r in orb)
+    R["F_det_snf_preserved"] = all(r["det"] == 32 and r["snf"] == [2, 2, 8]
+                                   for r in orb)
+    R["F_two_cartans_reached"] = (len(seen) == 2)
+    out["F_sl23_over_GF4"] = {
+        "field": "GF(4) = 𝔽₂[x]/(x²+x+1)", "dim_A": a4["n"],
+        "cartan": GE.cartan_of(a4), "n_arrows": sum(GE.quiver_of(a4).values()),
+        "rad_powers": GE.rad_powers(a4), "hochschild_F4": h4,
+        "orbit": orb,
+        "reached_canonical_cartans": sorted(
+            [list(map(list, c)) for c in seen], key=str),
+        "note": ("★★벽을 뚫었다 — 계수를 GF(4) 로 올리자 `HH^*`·cup·mutation 이 "
+                 "**𝔽₄-불변량으로** 나온다. `HH^*_{𝔽₄} = (%d,%d,%d)`·cup %d 는 "
+                 "실현화 𝔽₂ 값의 단순 절반이 **아니다**(복합체 자체가 다르다)"
+                 % (h4["HH0"], h4["HH1"], h4["HH2"], h4["cup_rank"])),
+        "honest": ("궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — "
+                   "GF(4) 에서 `find_isomorphism` 의 화살 상 열거가 "
+                   "`|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다. "
+                   "dim 36 대표의 **군 블록 동일시도 미착수**"),
     }
 
     # ── D. 종합 — v23 Q3″ 첫 데이터점 · 엔진의 진짜 전제 ────────────
