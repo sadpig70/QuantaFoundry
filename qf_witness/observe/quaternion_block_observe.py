@@ -5,7 +5,7 @@
 v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algebra` · `find_isomorphism` ·
 구조상수판 `hh_struct`)을 계약으로 내걸었으니, **다른 결손군에서 그대로 도는지**가 실제 시험이다.
 
-관측 7축 (정확 GF(q) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 8축 (정확 GF(q) 선형대수 · seal 아님 · module 0 · root 불변):
   A  `SL(2,3) = Q₈ ⋊ ℤ₃`(위수 24 · 𝔽₃² 비영벡터 8점 순열군) — Sylow-2 지문 **(8,1,6) = Q₈**
      (D₈ 은 (8,5,2)) · `Q₈` 정규(지수 3) · `G/Q₈ ≅ ℤ₃` 준동형 자체유도.
   B  ★**𝔽₄ 실현화** — `G/Q₈ ≅ ℤ₃` 이라 단순가군은 **𝔽₄ 위 1차원 3개**이고 **𝔽₂ 는 분해체가
@@ -21,6 +21,8 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
      실물로 뽑고(단위원·결합법칙 게이트) `HH^*_{𝔽₄}`·cup·mutation 을 **𝔽₄-불변량으로** 잰다.
   G  ★★★**dim 36 대표의 정체** — F축이 도달한 대표가 `SL(2,5) = 2.A₅` 의 p=2 **주블록**임을
      Cartan 예측 + **명시 동형**으로 확정 ⟹ **SL(2,3) ~ SL(2,5) 주블록 유도동등**(결손군 Q₈).
+  H  ★★★**Q₈ 류 폐합** — 양방향 mutation + **동형 dedup** BFS(가지치기로 값싸졌다) ⟹
+     대표 **2개**(`SL(2,3)` dim 24 ↔ `SL(2,5)` dim 36) · 둘 다 `(HH⁰,HH¹) = (7,5)`.
   D  ★★종합 — **Q3″ 에 대한 첫 데이터점**과 **엔진의 진짜 전제**.
 
 정직 경계:
@@ -29,8 +31,9 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
   · F축의 궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — GF(4) 에서
     `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다.
   · G축이 dim 36 대표를 `SL(2,5)` 주블록으로 **동일시**했다(F축 유보 해소).
-  · 그 대표의 `HH^*_{𝔽₄}` 는 **재지 않았다** — dim 36·GF(4) 에서 `C³` 규모가 현재 구현의
-    범위 밖이다(SL(2,3) dim 24 는 계산됨). 류의 **폐합**(동형 dedup BFS)도 여전히 미착수.
+  · `HH²`·cup 은 **dim 24 만** 있다 — dim 36·GF(4) 는 `C³ ≈ 2×10⁴` 라 현재 GF(q) rref 의
+    규모 밖이다(𝔽₂ 는 비트팩이 있었다). H축의 류 불변량 게이트는 `(HH⁰,HH¹)` 로 건다.
+  · H축 폐합은 `dim ≤ 80` · 깊이 ≤ 6 **안에서의** 폐합이다.
   · 외부 분류표(quaternion type 등)와의 대응은 **무주장**.
 """
 import json
@@ -451,6 +454,88 @@ def main():
         "honest": ("이 대표의 `HH^*_{𝔽₄}` 는 **재지 않았다** — dim 36·GF(4) 에서 "
                    "`C³` 규모가 현재 구현의 범위 밖이다(SL(2,3) dim 24 는 계산됨). "
                    "류의 **폐합**(동형 dedup BFS)도 여전히 미착수"),
+    }
+
+    # ── H. ★★★Q₈ 류 **폐합** — 양방향 mutation · 동형 dedup BFS ──────
+    qreps = [{"label": "R0", "alg": a4, "path": "",
+              "cartan": GE.cartan_of(a4)}]
+    qfront, qedges, qsat = [0], [], True
+    for dep in range(1, 7):
+        nxt = []
+        for ri in qfront:
+            a = qreps[ri]["alg"]
+            for kk, k in enumerate(a["names"]):
+                for right in (False, True):
+                    e, Ev = GE.mutate_step(a, k, right)
+                    if not e["tilting"]:
+                        qsat = False
+                    tag = None
+                    for rr in qreps:
+                        if canon(rr["cartan"]) != canon(e["cartan"]):
+                            continue
+                        iso = GE.find_isomorphism(rr["alg"], e["alg"],
+                                                  cap=400000)
+                        if iso.get("capped"):
+                            qsat = False       # ★상한 도달 = 미판정(폐합 주장 금지)
+                        if iso["found"]:
+                            tag = rr["label"]
+                            break
+                    if tag is None:
+                        if e["dim"] > 80:
+                            qsat = False
+                            continue
+                        tag = "R%d" % len(qreps)
+                        qreps.append({"label": tag, "alg": e["alg"],
+                                      "path": qreps[ri]["path"]
+                                      + ("-" if right else "+") + str(kk),
+                                      "cartan": e["cartan"]})
+                        nxt.append(len(qreps) - 1)
+                    qedges.append({"from": qreps[ri]["label"], "vertex": str(k),
+                                   "dir": "-" if right else "+", "E": Ev,
+                                   "to": tag, "dim": e["dim"]})
+        qfront = nxt
+        print("H depth %d · 신규 %d · 대표 %d · %.1fs"
+              % (dep, len(nxt), len(qreps), time.time() - t0), flush=True)
+        if not nxt:
+            break
+    R["H_closed_before_cap"] = qsat and not qfront
+    R["H_all_edges_tilting"] = (len(qedges) == 6 * len(qreps))
+    # ★★예측: 류가 **정확히 2개**(dim 24 = SL(2,3) · dim 36 = SL(2,5))에서 닫힌다
+    R["H_two_representatives"] = (len(qreps) == 2
+                                  and sorted(r["alg"]["n"] for r in qreps)
+                                  == [24, 36])
+    qtbl = {}
+    for r in qreps:
+        a = r["alg"]
+        h = GE.hh_struct(a, max_deg=1)      # ★HH² 는 dim 36·GF(4) 에서 규모 밖
+        qtbl[r["label"]] = {
+            "path": r["path"] or "(start)", "dim": a["n"],
+            "cartan": r["cartan"], "n_arrows": sum(GE.quiver_of(a).values()),
+            "rad_powers": GE.rad_powers(a), "loewy_length":
+                len(GE.rad_powers(a)), "HH0": h["HH0"], "HH1": h["HH1"],
+            "cartan_det": det_int(r["cartan"]), "cartan_snf":
+                smith(r["cartan"])}
+    # ★★유도불변량 — 류의 **모든 대표**가 같아야 한다(반증 가능한 게이트)
+    R["H_HH_constant_on_class"] = all((v["HH0"], v["HH1"]) == (7, 5)
+                                      for v in qtbl.values())
+    R["H_det_snf_constant"] = all(v["cartan_det"] == 32
+                                  and v["cartan_snf"] == [2, 2, 8]
+                                  for v in qtbl.values())
+    R["H_members_identified"] = (
+        any(v["dim"] == 24 and v["cartan"] == cart for v in qtbl.values())
+        and any(v["dim"] == 36 and canon(v["cartan"]) == canon(c5)
+                for v in qtbl.values()))
+    out["H_q8_class_closure"] = {
+        "representatives": qtbl, "mutation_edges": qedges,
+        "closed": R["H_closed_before_cap"],
+        "identified": {"24": "SL(2,3) p=2 주블록(= 군대수 자체)",
+                       "36": "SL(2,5) p=2 주블록(G축 명시 동형)"},
+        "conclusion": ("★★★결손군 `Q₈` 의 유도동등류가 **대표 2개**에서 닫힌다 — "
+                       "`SL(2,3)`(dim 24) ↔ `SL(2,5)`(dim 36). 두 대표 모두 "
+                       "`(HH⁰,HH¹) = (7,5)`·det 32·SNF [2,2,8]"),
+        "honest": ("`HH²`·cup 은 **dim 24 만** 있다(`(7,5,5)`·cup 2) — dim 36·GF(4) 는 "
+                   "`C³ ≈ 2×10⁴` 라 현재 GF(q) rref 의 규모 밖이다(𝔽₂ 는 비트팩이 있었다). "
+                   "폐합은 `dim ≤ 80` · 깊이 ≤ 6 안에서의 폐합이다"),
     }
 
     # ── D. 종합 — v23 Q3″ 첫 데이터점 · 엔진의 진짜 전제 ────────────

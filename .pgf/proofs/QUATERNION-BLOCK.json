@@ -241,7 +241,8 @@
         5,
         10,
         53
-      ]
+      ],
+      "max_deg": 2
     },
     "note": "★일반 엔진을 **q=2 로 먼저 돌려** 𝔽₂ 엔진의 값을 그대로 재현하는지 확인한 뒤에만 q=4 로 간다(A6P3HH·HHStructConst 에서 두 번 통한 패턴)",
     "target": "kQ₈ (𝔽₂ 분해체)"
@@ -286,7 +287,8 @@
         7,
         10,
         55
-      ]
+      ],
+      "max_deg": 2
     },
     "honest": "궤도는 **Cartan-canon dedup** 이라 **폐합 주장이 아니다** — GF(4) 에서 `find_isomorphism` 의 화살 상 열거가 `|rad∖rad²|^{화살수}` 로 커져 동형 dedup 을 못 돌렸다. dim 36 대표의 **군 블록 동일시도 미착수**",
     "n_arrows": 6,
@@ -897,6 +899,227 @@
     ],
     "why_this_candidate": "도달 Cartan 에 단순차원 (2,2,1) 을 넣으면 dim P = (16,16,24)·블록 차원 **88**. |SL(2,5)| = 120 이고 4차원 단순가군이 든 블록(결손군 ℤ₂·dim P = 8)이 8·4 = 32 를 채우므로 주블록 = 120 − 32 = 88 — 정확히 일치"
   },
+  "H_q8_class_closure": {
+    "closed": true,
+    "conclusion": "★★★결손군 `Q₈` 의 유도동등류가 **대표 2개**에서 닫힌다 — `SL(2,3)`(dim 24) ↔ `SL(2,5)`(dim 36). 두 대표 모두 `(HH⁰,HH¹) = (7,5)`·det 32·SNF [2,2,8]",
+    "honest": "`HH²`·cup 은 **dim 24 만** 있다(`(7,5,5)`·cup 2) — dim 36·GF(4) 는 `C³ ≈ 2×10⁴` 라 현재 GF(q) rref 의 규모 밖이다(𝔽₂ 는 비트팩이 있었다). 폐합은 `dim ≤ 80` · 깊이 ≤ 6 안에서의 폐합이다",
+    "identified": {
+      "24": "SL(2,3) p=2 주블록(= 군대수 자체)",
+      "36": "SL(2,5) p=2 주블록(G축 명시 동형)"
+    },
+    "mutation_edges": [
+      {
+        "E": [
+          "S1",
+          "S2"
+        ],
+        "dim": 36,
+        "dir": "+",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "S0"
+      },
+      {
+        "E": [
+          "S1",
+          "S2"
+        ],
+        "dim": 36,
+        "dir": "-",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "S0"
+      },
+      {
+        "E": [
+          "S0",
+          "S2"
+        ],
+        "dim": 36,
+        "dir": "+",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "S1"
+      },
+      {
+        "E": [
+          "S0",
+          "S2"
+        ],
+        "dim": 36,
+        "dir": "-",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "S1"
+      },
+      {
+        "E": [
+          "S0",
+          "S1"
+        ],
+        "dim": 36,
+        "dir": "+",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "S2"
+      },
+      {
+        "E": [
+          "S0",
+          "S1"
+        ],
+        "dim": 36,
+        "dir": "-",
+        "from": "R0",
+        "to": "R1",
+        "vertex": "S2"
+      },
+      {
+        "E": [
+          "1",
+          "2"
+        ],
+        "dim": 24,
+        "dir": "+",
+        "from": "R1",
+        "to": "R0",
+        "vertex": "0"
+      },
+      {
+        "E": [
+          "1",
+          "2"
+        ],
+        "dim": 24,
+        "dir": "-",
+        "from": "R1",
+        "to": "R0",
+        "vertex": "0"
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "dim": 36,
+        "dir": "+",
+        "from": "R1",
+        "to": "R1",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "dim": 36,
+        "dir": "-",
+        "from": "R1",
+        "to": "R1",
+        "vertex": "1"
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "dim": 36,
+        "dir": "+",
+        "from": "R1",
+        "to": "R1",
+        "vertex": "2"
+      },
+      {
+        "E": [
+          "0"
+        ],
+        "dim": 36,
+        "dir": "-",
+        "from": "R1",
+        "to": "R1",
+        "vertex": "2"
+      }
+    ],
+    "representatives": {
+      "R0": {
+        "HH0": 7,
+        "HH1": 5,
+        "cartan": [
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            2,
+            4
+          ]
+        ],
+        "cartan_det": 32,
+        "cartan_snf": [
+          2,
+          2,
+          8
+        ],
+        "dim": 24,
+        "loewy_length": 5,
+        "n_arrows": 6,
+        "path": "(start)",
+        "rad_powers": [
+          21,
+          15,
+          9,
+          3,
+          0
+        ]
+      },
+      "R1": {
+        "HH0": 7,
+        "HH1": 5,
+        "cartan": [
+          [
+            8,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            4,
+            2,
+            4
+          ]
+        ],
+        "cartan_det": 32,
+        "cartan_snf": [
+          2,
+          2,
+          8
+        ],
+        "dim": 36,
+        "loewy_length": 9,
+        "n_arrows": 4,
+        "path": "+0",
+        "rad_powers": [
+          33,
+          29,
+          23,
+          19,
+          15,
+          11,
+          7,
+          3,
+          0
+        ]
+      }
+    }
+  },
   "all_ok": true,
   "checks": {
     "A_Q8_normal_index3": true,
@@ -947,6 +1170,12 @@
     "G_regular_parts": true,
     "G_sylow2_is_Q8": true,
     "G_target_same_invariants": true,
+    "H_HH_constant_on_class": true,
+    "H_all_edges_tilting": true,
+    "H_closed_before_cap": true,
+    "H_det_snf_constant": true,
+    "H_members_identified": true,
+    "H_two_representatives": true,
     "all_ok": true
   }
 }

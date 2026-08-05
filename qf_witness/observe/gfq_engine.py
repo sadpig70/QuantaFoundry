@@ -676,7 +676,7 @@ def rad_basis_piv(alg, i, j):
     return rref(F, Rr)
 
 
-def hh_struct(alg, cup=False):
+def hh_struct(alg, cup=False, max_deg=2):
     """정규화 **상대** bar 복합체 `C^n = Hom_{E-E}(rad^{⊗_E n}, A)` — GF(q) 판."""
     F, names, cnt, off = alg["F"], alg["names"], alg["cnt"], alg["off"]
 
@@ -710,8 +710,10 @@ def hh_struct(alg, cup=False):
              for (a, b) in pairs}
     c0 = [(i, t) for i in names for t in range(cnt[(i, i)])]
     c1 = [(rk, w) for rk in rmeta for w in range(cnt[(rk[0], rk[1])])]
-    trips = [(a, b, c) for (a, b) in pairs for c in rmeta if b[1] == c[0]]
     c2 = [(a, b, w) for (a, b) in pairs for w in range(cnt[(a[0], b[1])])]
+    # ★`max_deg < 2` 면 3-코사슬을 만들지 않는다(GF(q) rref 가 규모 밖일 때)
+    trips = ([(a, b, c) for (a, b) in pairs for c in rmeta if b[1] == c[0]]
+             if max_deg >= 2 else [])
     c3 = [(a, b, c, w) for (a, b, c) in trips
           for w in range(cnt[(a[0], c[1])])]
     i1 = {k: t for t, k in enumerate(c1)}
@@ -785,11 +787,16 @@ def hh_struct(alg, cup=False):
 
     Z1 = nullspace(F, D1) if len(c2) else np.eye(len(c1), dtype=np.int64)
     k0 = len(nullspace(F, D0)) if len(c1) else len(c0)
-    k1, k2 = len(Z1), (len(nullspace(F, D2)) if len(c3) else len(c2))
+    k1 = len(Z1)
     out = {"dim_A": alg["n"], "dim_rad": nR,
            "C": [len(c0), len(c1), len(c2), len(c3)],
-           "ker": [k0, k1, k2], "HH0": k0, "HH1": k1 - (len(c0) - k0),
-           "HH2": k2 - (len(c1) - k1)}
+           "HH0": k0, "HH1": k1 - (len(c0) - k0), "max_deg": max_deg}
+    if max_deg < 2:
+        out["ker"] = [k0, k1]
+        return out
+    k2 = len(nullspace(F, D2)) if len(c3) else len(c2)
+    out["ker"] = [k0, k1, k2]
+    out["HH2"] = k2 - (len(c1) - k1)
     if not cup:
         return out
 
