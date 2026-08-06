@@ -437,10 +437,13 @@ def main():
     isoG = GE.find_isomorphism(tgt, a25, cap=400000)
     # ★★★Cartan 일치는 필요조건 — **명시 동형**까지 간다(세 번째 적용)
     R["G_explicit_isomorphism"] = isoG["found"]
-    # ★★독립 제2 판정기(층별 lifting)도 같은 답 — 레벨 1 공간 81 로 열거가 작다
+    # ★★독립 제2 판정기(층별 lifting)도 같은 답 — 대각 스케일 몫으로 레벨 1 공간 9
+    #   (몫 전에는 81 — ★공간 수치는 **몫 정책에 따라 바뀌므로** 판정 일치를 주 게이트로 둔다)
     isoL = GE.iso_lift(tgt, a25)
-    R["G_iso_lift_agrees"] = (isoL["found"] is True
-                              and isoL["level1_space"] == 81)
+    isoL0 = GE.iso_lift(tgt, a25, quotient=False)
+    R["G_iso_lift_agrees"] = (isoL["found"] is True is isoL0["found"])
+    R["G_iso_lift_quotient_9x"] = (isoL["level1_space"] == 9
+                                   and isoL0["level1_space"] == 81)
     out["G_sl25_identification"] = {
         "candidate": "SL(2,5) = 2.A₅ · p=2 주블록",
         "why_this_candidate": ("도달 Cartan 에 단순차원 (2,2,1) 을 넣으면 "

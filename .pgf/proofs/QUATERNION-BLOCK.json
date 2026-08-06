@@ -897,12 +897,12 @@
         [
           "('1', '2a')",
           1,
-          3
+          1
         ],
         [
           "('1', '2b')",
           1,
-          3
+          1
         ],
         [
           "('2a', '1')",
@@ -915,10 +915,11 @@
           3
         ]
       ],
-      "level1_space": 81,
+      "level1_space": 9,
       "loewy": 8,
       "n_relations": 61,
       "n_words": 97,
+      "quotient": true,
       "rank_VA": 36,
       "rank_VB": 36,
       "sigma": [
@@ -927,7 +928,7 @@
         "2b"
       ],
       "sigmas": 2,
-      "tried": 5
+      "tried": 9
     },
     "n_arrows": 4,
     "rad_powers": [
@@ -1233,6 +1234,7 @@
     "G_explicit_isomorphism": true,
     "G_hom_separates_2a_2b": true,
     "G_iso_lift_agrees": true,
+    "G_iso_lift_quotient_9x": true,
     "G_order_120": true,
     "G_regular_parts": true,
     "G_sylow2_is_Q8": true,

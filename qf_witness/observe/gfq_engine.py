@@ -1158,42 +1158,79 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
                     cur[t] = v
             return cur
 
-        def _try(cur, idxs):
-            """주어진 단어 부분집합에서 층별 lifting 이 성공하는가."""
-            sub = [WA[u] for u in idxs]
-            Vs = VA[idxs]
-            Ks = nullspace(F, Vs.T)
+        # ★★노드 비용 절감 — 깊이/층에만 의존하는 것은 **캐시**하고
+        #   단어값은 **바뀐 화살을 포함하는 행만** 갱신한다(순수 최적화·결과 불변)
+        dcache, bcache = {}, {}
+
+        def _depth_data(d_):
+            if d_ in dcache:
+                return dcache[d_]
+            allow = arrows_upto[d_]
+            idxs = [u for u in range(len(WA)) if widx[u] <= allow]
+            Ks = nullspace(F, VA[idxs].T)
+            cont = {t: [r for r, u in enumerate(idxs) if t in widx[u]]
+                    for t in allow}
+            dcache[d_] = (allow, idxs, [WA[u] for u in idxs], Ks, cont)
+            return dcache[d_]
+
+        def _basis(d_, m):
+            if (d_, m) in bcache:
+                return bcache[(d_, m)]
+            allow = arrows_upto[d_]
+            bs = []
+            for t, (si, sj) in enumerate(blk_of):
+                if t not in allow:
+                    continue
+                for r in (layers[m][(si, sj)] if m < len(layers) else []):
+                    bs.append((t, blk(B, si, sj, [r])[0]))
+            bcache[(d_, m)] = bs
+            return bs
+
+        def _vals(sub, work):
+            return np.array([_wv(A, B, IB, s, w, work) for w in sub],
+                            dtype=np.int64)
+
+        def _try(cur, d_):
+            """깊이 `d_` 의 단어 부분집합에서 층별 lifting 이 성공하는가."""
+            allow, idxs, sub, Ks, cont = _depth_data(d_)
             work = list(cur)
+            VB = _vals(sub, work)
             for m in range(1, L + 1):
-                basis = []
-                for t, (si, sj) in enumerate(blk_of):
-                    if t not in allowed:
-                        continue
-                    for r in (layers[m][(si, sj)] if m < len(layers) else []):
-                        basis.append((t, blk(B, si, sj, [r])[0]))
-                res = _residual(A, B, IB, s, sub, Ks, work)
+                bs = _basis(d_, m)
+                res = (F.mm(Ks, VB).reshape(-1) if len(Ks)
+                       else np.zeros(0, dtype=np.int64))
                 if not res.any():
                     continue
-                cols = []
-                for (t, d) in basis:
-                    tr = list(work)
-                    tr[t] = F.ADD[tr[t], d]
-                    cols.append(F.ADD[_residual(A, B, IB, s, sub, Ks, tr),
-                                      F.NEG[res]])
-                if not cols:
+                if not bs:
                     return None
+                cols = []
+                for (t, d) in bs:
+                    rows = cont[t]
+                    if not rows:
+                        cols.append(np.zeros_like(res))
+                        continue
+                    sav = work[t]
+                    work[t] = F.ADD[sav, d]
+                    # ★그 화살을 쓰는 행만 갱신하고, **차분만** Ks 에 곱한다
+                    #   `Ks V₂ − Ks V_B = Ks[:, rows] (V₂ − V_B)[rows]`
+                    dv = np.array([F.ADD[_wv(A, B, IB, s, sub[r], work),
+                                         F.NEG[VB[r]]] for r in rows],
+                                  dtype=np.int64)
+                    work[t] = sav
+                    cols.append(F.mm(Ks[:, rows], dv).reshape(-1))
                 sol = _solve(F, np.array(cols, dtype=np.int64), F.NEG[res])
                 if sol is None:
                     return None
-                for t2, (t, d) in enumerate(basis):
+                for t2, (t, d) in enumerate(bs):
                     if sol[t2]:
                         work[t] = F.ADD[work[t], F.MUL[sol[t2], d]]
+                VB = _vals(sub, work)
             return work
 
         found_combo = [None]
 
         def rec1(sel):
-            nonlocal tried, allowed
+            nonlocal tried
             d_ = len(sel)
             if d_ == len(order):
                 return sel
@@ -1202,9 +1239,7 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
                 if tried > cap:
                     return "CAP"
                 s2 = sel + [ci]
-                allowed = arrows_upto[d_]
-                idxs = [u for u in range(len(WA)) if widx[u] <= allowed]
-                if _try(_assign(s2), idxs) is None:
+                if _try(_assign(s2), d_) is None:
                     continue          # ★부분 필요조건 위반 — 가지치기
                 r = rec1(s2)
                 if r == "CAP":
@@ -1213,7 +1248,6 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
                     return r
             return None
 
-        allowed = set()
         got1 = rec1([])
         if got1 == "CAP":
             return dict(info, found=False, capped=True, tried=tried)
