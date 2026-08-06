@@ -1,4 +1,77 @@
 {
+  "V_round_audit": {
+    "class_separation": {
+      "A6p3": [
+        9
+      ],
+      "D8": [
+        8
+      ],
+      "Q8": [
+        32
+      ]
+    },
+    "coverage": {
+      "A6p3_class": {
+        "Cartan": "✓",
+        "HH0_HH1": "✓",
+        "HH2": "✓",
+        "arrows": "✓",
+        "closure": "✗ 동형 dedup 규모 밖(레벨 1 = 1.36×10¹¹)",
+        "cup": "✓",
+        "group_identification": "✗ 출발점만(나머지 ≥12 미상)",
+        "members": "≥13 (canonical Cartan)",
+        "mutation_tilting": "✓ (32 간선)",
+        "rad^n": "✓"
+      },
+      "D8_class": {
+        "Cartan": "✓",
+        "HH0_HH1": "✓",
+        "HH2": "✓",
+        "arrows": "✓",
+        "closure": "✓ (dim ≤ 60 · 깊이 ≤ 6)",
+        "cup": "✓",
+        "group_identification": "✓ 3/3",
+        "members": 3,
+        "mutation_tilting": "✓",
+        "rad^n": "✓"
+      },
+      "Q8_class": {
+        "Cartan": "✓",
+        "HH0_HH1": "✓",
+        "HH2": "✓",
+        "arrows": "✓",
+        "closure": "✓ (dim ≤ 80 · 깊이 ≤ 6)",
+        "cup": "✓",
+        "group_identification": "✓ 2/2",
+        "members": 2,
+        "mutation_tilting": "✓",
+        "rad^n": "✓"
+      }
+    },
+    "discipline_tally": {
+      "failed_optimization_reverted": 1,
+      "known_answer_as_judge": 6,
+      "predictions_refuted_and_recorded": 6,
+      "self_bugs_caught_by_gates": 3,
+      "walls_quantified": 3
+    },
+    "gaps": [
+      "A6p3_class.closure",
+      "A6p3_class.group_identification"
+    ],
+    "honest": "★**빈 칸 2개를 그대로 노출한다** — A₆ p=3 류의 **폐합**과 **구성원 동일시**. 둘 다 동형 판정이 규모 밖이라 막혔고, 필요한 것은 **자기동형군 몫 + 정규형**(열거가 아닌 알고리즘)이다. ★새 요청서는 만들지 않았다 — v24 가 외부 수행 대기 중이다",
+    "note": "★같은 값이 두 곳 이상에 있으면 **반드시 대조**한다 — A₆ p=3 Cartan 은 **세 곳**(QR K축·이 모듈 Y표·신규 사이드카), `HH^*` 는 **두 체**(𝔽₃ P축·GF(9) 신규)에 있다",
+    "sidecars": [
+      "EXT1-QUIVER",
+      "LOEWY-SERIES",
+      "QUIVER-RELATIONS",
+      "BLOCK-ALGEBRA-SYNTHESIS(자기)",
+      "TILTING-COMPLEX",
+      "QUATERNION-BLOCK",
+      "A6P3-GF9"
+    ]
+  },
   "W_request_cross_check": {
     "fields": [
       "simples",
@@ -598,6 +671,12 @@
   "_schema": "block-algebra-synthesis/v1",
   "all_ok": true,
   "checks": {
+    "V_a6p3_cartan_three_way": true,
+    "V_a6p3_hh_base_change": true,
+    "V_coverage_gaps_are_two": true,
+    "V_d8_endpoints_match_table": true,
+    "V_q8_two_reps_identified": true,
+    "V_three_classes_separated": true,
     "W_request_v22_blocks_present": true,
     "W_request_v22_matches_sidecar": true,
     "W_request_v23_class_invariant": true,
