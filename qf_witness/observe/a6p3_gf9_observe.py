@@ -321,10 +321,19 @@ def main():
                    "`rank_packed` 는 p=2 전용이라 p=3 은 일반 rref"),
     }
     # ── F. ★★제2 판정기(층별 lifting)로 벽을 **정확히 수치화** ────────
-    lf = GE.iso_lift(a9, a9, level1_cap=10 ** 6)
+    lf0 = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=False)
+    lf = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=True)
     # ★레벨 1 = 블록별 `GL_m` 열거 ⟹ |GL₂(9)|² × (GF(9)*)⁴
-    R["F_level1_space_measured"] = (lf["level1_space"] == 5760 ** 2 * 8 ** 4
+    R["F_level1_space_measured"] = (lf0["level1_space"] == 5760 ** 2 * 8 ** 4
                                     == 135895449600)
+    # ★★대각 스케일 몫 — 신장나무 3 간선 정규화로 `(GF(9)*)³ = 512` 배 감소
+    R["F_quotient_gives_512x"] = (lf["level1_space"] == 265420800
+                                  and lf0["level1_space"]
+                                  == lf["level1_space"] * 512)
+    # ★가정을 코드로 검증 — 블록 스케일이 실제로 자기동형인가
+    R["F_diag_scale_is_automorphism"] = all(
+        GE.diag_scale_is_auto(a9, dict(zip(N9, lam)))
+        for lam in ((1, 2, 3, 4), (2, 5, 7, 3), (1, 1, 1, 1)))
     R["F_still_capped"] = (lf.get("capped_level1") is True
                            and lf["found"] is False)
     # ★값싼 정오 확인 — Cartan 이 다르면 σ 후보가 없어 즉시 False
@@ -336,16 +345,21 @@ def main():
         "self": {k: lf[k] for k in ("found", "level1_space", "sigmas",
                                     "n_words", "n_relations", "loewy")
                  if k in lf},
-        "level1_per_block": lf.get("level1_per_block"),
+        "level1_space_no_quotient": lf0["level1_space"],
+        "level1_per_block_no_quotient": lf0.get("level1_per_block"),
+        "level1_per_block_quotient": lf.get("level1_per_block"),
         "note": ("★판정기를 **층별 successive lifting** 으로 바꿨다 — `φ` 를 `J^m` 을 "
                  "법으로 알면 보정 `δ ∈ J^m` 이 단어값에 **선형**으로 들어가므로"
                  "(`δ·δ ∈ J^{2m} ⊆ J^{m+1}`) **열거는 레벨 1 뿐**이고 이후는 선형 연립이다. "
                  "★q=2·q=4 에서 기존 판정기와 **6/6 같은 답**(회귀)"),
-        "wall": ("★벽이 **정확히** 수치화됐다: 레벨 1 = 블록별 `GL_m` 이라 "
-                 "`|GL₂(9)|² × (GF(9)*)⁴ = 5760² × 8⁴ = 135,895,449,600 ≈ 1.36×10¹¹`. "
-                 "이전 `rad` 전수(≈10²²)보다 **10¹¹ 배 줄었지만 여전히 열거 불가**다. "
-                 "다음에 필요한 것은 **자기동형군 몫**(대각 자기동형 `(GF(9)*)³ = 512` 로 "
-                 "나누면 ≈2.7×10⁸)과 **정규형** — 열거가 아닌 알고리즘이다"),
+        "wall": ("★벽의 **3단 축소 실측**: `rad` 전수 ≈10²² → 레벨 1(블록별 `GL_m`) "
+                 "`5760² × 8⁴ = 135,895,449,600 ≈ 1.36×10¹¹` → **대각 스케일 몫**"
+                 "(신장나무 3 간선 정규화·`(GF(9)*)³ = 512`) **265,420,800 ≈ 2.65×10⁸**. "
+                 "★그래도 **부족하다** — 레벨 1 가지치기(부분 단어집합 lifting)를 넣었으나 "
+                 "**노드당 비용이 커서 2 만 노드도 30분 내 미도달** ⟹ `2.65×10⁸` 은 도달 불가. "
+                 "★다음 사양서: **노드 비용을 낮추거나**(부분 lifting 을 증분화) "
+                 "**열거 자체를 없애는 정규형**이 필요하다. ★교훈 재확인 — "
+                 "\"줄었으니 될 것\"이 아니라 **줄어든 뒤의 절대값**으로 판단한다"),
     }
 
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")

@@ -1022,7 +1022,66 @@ def _gl_mats(F, m):
             yield M
 
 
-def iso_lift(A, B, cap=2000000, level1_cap=4000000):
+def diag_scale_is_auto(alg, lam):
+    """★블록 등급 대수에서 `(i,j) ↦ λ_j/λ_i` 스케일이 **자기동형**인지 실제로 확인한다.
+
+    이론상 자동이지만(경로가 telescoping) 가정을 코드로 검증한다."""
+    F, names = alg["F"], alg["names"]
+    sc = np.ones(alg["n"], dtype=np.int64)
+    for i in names:
+        for j in names:
+            c, o = alg["cnt"][(i, j)], alg["off"][(i, j)]
+            v = F.MUL[lam[j], F.INV[lam[i]]]
+            for t in range(c):
+                sc[o + t] = v
+
+    def ap(x):
+        return F.MUL[sc, x]
+
+    for u in range(alg["n"]):
+        for v in range(alg["n"]):
+            lhs = ap(amul(alg, unit(alg["n"], u), unit(alg["n"], v)))
+            rhs = amul(alg, ap(unit(alg["n"], u)), ap(unit(alg["n"], v)))
+            if not np.array_equal(lhs, rhs):
+                return False
+    return True
+
+
+def _spanning_blocks(bkeys, names):
+    """정점 그래프의 **신장나무** 간선마다 블록 하나 — 몫 정규화 대상."""
+    seen, tree = {names[0]}, []
+    rest = list(bkeys)
+    changed = True
+    while changed:
+        changed = False
+        for bk in list(rest):
+            a, b = bk
+            if (a in seen) != (b in seen):
+                seen.add(a)
+                seen.add(b)
+                tree.append(bk)
+                rest.remove(bk)
+                changed = True
+    return tree
+
+
+def _scalar_class_reps(F, mats):
+    """`GL_m` 원소를 **스칼라 배 동치류 대표**로 줄인다(몫 정규화)."""
+    out, seen = [], set()
+    for M in mats:
+        key = None
+        for c in range(1, F.q):
+            K = tuple(F.MUL[c, M].reshape(-1).tolist())
+            if key is None or K < key:
+                key = K
+        if key not in seen:
+            seen.add(key)
+            out.append(M)
+    return out
+
+
+def iso_lift(A, B, cap=2000000, level1_cap=4000000,
+             quotient=True):
     """★`A ≅ B` 판정 — **레벨 1(rad/rad²)만 열거**하고 이후는 **선형 연립**으로 올린다.
 
     `φ` 를 `J^m` 을 법으로 알고 있을 때 보정 `δ ∈ J^m` 을 더하면 단어값 변화가
@@ -1041,7 +1100,7 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000):
     layers = rad_layers(B)
     L = len(layers) - 1                          # J^{L+1} = 0
     info = {"level1_space": None, "sigmas": len(sig), "n_words": len(WA),
-            "n_relations": len(KA), "loewy": L}
+            "n_relations": len(KA), "loewy": L, "quotient": quotient}
     tried = 0
     for s in sig:
         # ── 레벨 1: **블록별 `GL_m`** 열거(유도사상이 가역이어야 한다) ──
@@ -1061,6 +1120,11 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000):
         if bad:
             continue
         gls = [list(_gl_mats(F, len(blocks[bk]))) for bk in bkeys]
+        if quotient:
+            # ★대각 스케일 몫 — 신장나무 간선 블록만 스칼라류 대표로
+            tree = set(_spanning_blocks(bkeys, B["names"]))
+            gls = [_scalar_class_reps(F, g) if bk in tree else g
+                   for bk, g in zip(bkeys, gls)]
         space = 1
         for g in gls:
             space *= max(1, len(g))
@@ -1071,19 +1135,95 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000):
             info["capped_level1"] = True
             return dict(info, found=False)
         # ── 보정 자유도: 각 화살마다 J^m 블록 기저 ───────────────────
-        for combo in itertools.product(*[range(len(g)) for g in gls]):
-            tried += 1
-            if tried > cap:
-                return dict(info, found=False, capped=True, tried=tried)
-            cur = [None] * len(arA)
-            for bi, bk in enumerate(bkeys):
-                M = gls[bi][combo[bi]]
+        # ★후보가 적은 블록부터 — 가지치기가 일찍 먹는다
+        order = sorted(range(len(bkeys)), key=lambda t: len(gls[t]))
+        arrows_upto = []
+        acc = set()
+        for t in order:
+            acc |= set(blocks[bkeys[t]])
+            arrows_upto.append(set(acc))
+        widx = [set(w) for (_st, w) in WA]
+
+        def _assign(sel):
+            cur = [np.zeros(B["n"], dtype=np.int64)] * len(arA)
+            cur = list(cur)
+            for pos_, bi in enumerate(order[:len(sel)]):
+                bk = bkeys[bi]
+                M = gls[bi][sel[pos_]]
                 for k, t in enumerate(blocks[bk]):
                     v = np.zeros(B["n"], dtype=np.int64)
                     for r in range(len(qb[bk])):
                         if M[k, r]:
                             v = F.ADD[v, F.MUL[int(M[k, r]), qb[bk][r]]]
                     cur[t] = v
+            return cur
+
+        def _try(cur, idxs):
+            """주어진 단어 부분집합에서 층별 lifting 이 성공하는가."""
+            sub = [WA[u] for u in idxs]
+            Vs = VA[idxs]
+            Ks = nullspace(F, Vs.T)
+            work = list(cur)
+            for m in range(1, L + 1):
+                basis = []
+                for t, (si, sj) in enumerate(blk_of):
+                    if t not in allowed:
+                        continue
+                    for r in (layers[m][(si, sj)] if m < len(layers) else []):
+                        basis.append((t, blk(B, si, sj, [r])[0]))
+                res = _residual(A, B, IB, s, sub, Ks, work)
+                if not res.any():
+                    continue
+                cols = []
+                for (t, d) in basis:
+                    tr = list(work)
+                    tr[t] = F.ADD[tr[t], d]
+                    cols.append(F.ADD[_residual(A, B, IB, s, sub, Ks, tr),
+                                      F.NEG[res]])
+                if not cols:
+                    return None
+                sol = _solve(F, np.array(cols, dtype=np.int64), F.NEG[res])
+                if sol is None:
+                    return None
+                for t2, (t, d) in enumerate(basis):
+                    if sol[t2]:
+                        work[t] = F.ADD[work[t], F.MUL[sol[t2], d]]
+            return work
+
+        found_combo = [None]
+
+        def rec1(sel):
+            nonlocal tried, allowed
+            d_ = len(sel)
+            if d_ == len(order):
+                return sel
+            for ci in range(len(gls[order[d_]])):
+                tried += 1
+                if tried > cap:
+                    return "CAP"
+                s2 = sel + [ci]
+                allowed = arrows_upto[d_]
+                idxs = [u for u in range(len(WA)) if widx[u] <= allowed]
+                if _try(_assign(s2), idxs) is None:
+                    continue          # ★부분 필요조건 위반 — 가지치기
+                r = rec1(s2)
+                if r == "CAP":
+                    return "CAP"
+                if r is not None:
+                    return r
+            return None
+
+        allowed = set()
+        got1 = rec1([])
+        if got1 == "CAP":
+            return dict(info, found=False, capped=True, tried=tried)
+        if got1 is None:
+            continue
+        combo = [0] * len(bkeys)
+        for pos_, bi in enumerate(order):
+            combo[bi] = got1[pos_]
+        for _once in (0,):
+            cur = _assign(got1)
             ok = True
             for m in range(1, L + 1):            # J^m 보정으로 J^{m+1} 조건 맞추기
                 basis, offs = [], []
