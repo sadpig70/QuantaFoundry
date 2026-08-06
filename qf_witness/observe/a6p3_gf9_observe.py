@@ -5,7 +5,7 @@
 가능하다, **아직 안 했다**" 라고 적었다. 그 미착수를 채운다.
 ★v24 의 열린 질문(Q1·Q2·Q3′·Q3‴·Q3⁗)과 **겹치지 않는다**.
 
-관측 5축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 6축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
   A  ★A₆ p=3 주블록 재구성 + **GF(9) Hom 조립**(`assemble_hom_j` — 5184 계 회피) ·
      Cartan 이 선행 K축 값과 일치하는지 **회귀**.
   B  ★★**GF(9) 구조상수**(`x² = −1 = 2` ⟹ poly [2,0]) — 단위원·결합법칙 **전수 게이트**.
@@ -13,6 +13,7 @@
   C  ★★★**`HH^*_{GF(9)}`** — ★기저변환 교차검증: `A_{GF(9)} = A_{𝔽₃} ⊗ GF(9)` 이므로
      `dim_{GF(9)} HH^n(A_{GF(9)}) = dim_{𝔽₃} HH^n(A_{𝔽₃})` 여야 한다(코사슬 차원은 다르다).
   D  ★mutation 한 걸음 — 전부 기울기인지 · det/SNF 보존인지.
+  F  ★★제2 판정기 `iso_lift`(층별 lifting) — 벽을 **정확히 수치화**(레벨 1 = 블록별 `GL_m`).
   E  ★Cartan 수준 궤도 — **폐합 주장이 아니다**(동형 dedup 이 규모 밖) ·
      ★왜 규모 밖인지 **화살별 후보 수를 실측**해 남긴다.
 
@@ -319,6 +320,34 @@ def main():
         "honest": ("류 폐합은 **하지 못했다** — E축에 후보 수를 실측해 남겼다 · "
                    "`rank_packed` 는 p=2 전용이라 p=3 은 일반 rref"),
     }
+    # ── F. ★★제2 판정기(층별 lifting)로 벽을 **정확히 수치화** ────────
+    lf = GE.iso_lift(a9, a9, level1_cap=10 ** 6)
+    # ★레벨 1 = 블록별 `GL_m` 열거 ⟹ |GL₂(9)|² × (GF(9)*)⁴
+    R["F_level1_space_measured"] = (lf["level1_space"] == 5760 ** 2 * 8 ** 4
+                                    == 135895449600)
+    R["F_still_capped"] = (lf.get("capped_level1") is True
+                           and lf["found"] is False)
+    # ★값싼 정오 확인 — Cartan 이 다르면 σ 후보가 없어 즉시 False
+    e43, _E = GE.mutate_step(a9, N9[2], False)
+    lf2 = GE.iso_lift(a9, e43["alg"])
+    R["F_different_cartan_immediate_false"] = (lf2["found"] is False
+                                               and lf2["sigmas"] == 0)
+    out["F_iso_lift"] = {
+        "self": {k: lf[k] for k in ("found", "level1_space", "sigmas",
+                                    "n_words", "n_relations", "loewy")
+                 if k in lf},
+        "level1_per_block": lf.get("level1_per_block"),
+        "note": ("★판정기를 **층별 successive lifting** 으로 바꿨다 — `φ` 를 `J^m` 을 "
+                 "법으로 알면 보정 `δ ∈ J^m` 이 단어값에 **선형**으로 들어가므로"
+                 "(`δ·δ ∈ J^{2m} ⊆ J^{m+1}`) **열거는 레벨 1 뿐**이고 이후는 선형 연립이다. "
+                 "★q=2·q=4 에서 기존 판정기와 **6/6 같은 답**(회귀)"),
+        "wall": ("★벽이 **정확히** 수치화됐다: 레벨 1 = 블록별 `GL_m` 이라 "
+                 "`|GL₂(9)|² × (GF(9)*)⁴ = 5760² × 8⁴ = 135,895,449,600 ≈ 1.36×10¹¹`. "
+                 "이전 `rad` 전수(≈10²²)보다 **10¹¹ 배 줄었지만 여전히 열거 불가**다. "
+                 "다음에 필요한 것은 **자기동형군 몫**(대각 자기동형 `(GF(9)*)³ = 512` 로 "
+                 "나누면 ≈2.7×10⁸)과 **정규형** — 열거가 아닌 알고리즘이다"),
+    }
+
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")
     out["checks"] = R
     out["all_ok"] = R["all_ok"]

@@ -1999,6 +1999,50 @@
       ]
     ]
   },
+  "F_iso_lift": {
+    "level1_per_block": [
+      [
+        "('1', '4')",
+        2,
+        5760
+      ],
+      [
+        "('3', '4')",
+        1,
+        8
+      ],
+      [
+        "('3b', '4')",
+        1,
+        8
+      ],
+      [
+        "('4', '1')",
+        2,
+        5760
+      ],
+      [
+        "('4', '3')",
+        1,
+        8
+      ],
+      [
+        "('4', '3b')",
+        1,
+        8
+      ]
+    ],
+    "note": "★판정기를 **층별 successive lifting** 으로 바꿨다 — `φ` 를 `J^m` 을 법으로 알면 보정 `δ ∈ J^m` 이 단어값에 **선형**으로 들어가므로(`δ·δ ∈ J^{2m} ⊆ J^{m+1}`) **열거는 레벨 1 뿐**이고 이후는 선형 연립이다. ★q=2·q=4 에서 기존 판정기와 **6/6 같은 답**(회귀)",
+    "self": {
+      "found": false,
+      "level1_space": 135895449600,
+      "loewy": 4,
+      "n_relations": 290,
+      "n_words": 326,
+      "sigmas": 2
+    },
+    "wall": "★벽이 **정확히** 수치화됐다: 레벨 1 = 블록별 `GL_m` 이라 `|GL₂(9)|² × (GF(9)*)⁴ = 5760² × 8⁴ = 135,895,449,600 ≈ 1.36×10¹¹`. 이전 `rad` 전수(≈10²²)보다 **10¹¹ 배 줄었지만 여전히 열거 불가**다. 다음에 필요한 것은 **자기동형군 몫**(대각 자기동형 `(GF(9)*)³ = 512` 로 나누면 ≈2.7×10⁸)과 **정규형** — 열거가 아닌 알고리즘이다"
+  },
   "all_ok": true,
   "checks": {
     "A_cartan_regression": true,
@@ -2026,6 +2070,9 @@
     "E_det_snf_preserved": true,
     "E_iso_search_out_of_scale": true,
     "E_more_cartans_than_D8_Q8": true,
+    "F_different_cartan_immediate_false": true,
+    "F_level1_space_measured": true,
+    "F_still_capped": true,
     "all_ok": true
   }
 }

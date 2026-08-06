@@ -15,7 +15,7 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
   C  ★`kQ₈` 자체 — 단순가군이 **자명 하나뿐**이라 𝔽₂ 가 분해체이고 **엔진 전 층**
      (`hh_struct`·cup·`mutate_step`·`find_isomorphism`)이 **한 줄도 안 고치고** 돈다.
      독립 게이트 `HH⁰ = dim Z(kQ₈) = |켤레류| = 5`.
-  E  ★**GF(q) 엔진 q=2 회귀** — 신규 `gfq_engine` 을 `kQ₈` 에 q=2 로 먼저 돌려
+  E  ★**GF(q) 엔진 q=2 회귀**(+ ★제2 판정기 `iso_lift` 대조) — 신규 `gfq_engine` 을 `kQ₈` 에 q=2 로 먼저 돌려
      𝔽₂ 엔진의 값(Cartan·화살·rad^n·`HH^*`·cup·mutation·동형)을 **그대로 재현**하는지 확인.
   F  ★★**SL(2,3) over GF(4)** — 계수를 GF(4) 로 올려 **벽을 뚫는다**. 𝔽₄ 구조상수를
      실물로 뽑고(단위원·결합법칙 게이트) `HH^*_{𝔽₄}`·cup·mutation 을 **𝔽₄-불변량으로** 잰다.
@@ -268,6 +268,10 @@ def main():
         (ge["cartan"], ge["dim"], ge["tilting"], gE)
         == (qe["cartan"], qe["dim"], qe["tilting"], qE)
         and GE.find_isomorphism(g8, ge["alg"])["found"])
+    # ★★두 번째 판정기(층별 lifting)와의 대조 — 같은 답이어야 한다
+    R["E_iso_lift_agrees_kQ8"] = (
+        GE.iso_lift(g8, ge["alg"])["found"]
+        == GE.find_isomorphism(g8, ge["alg"])["found"] is True)
     out["E_gfq_regression"] = {
         "target": "kQ₈ (𝔽₂ 분해체)", "gf2_engine": gq,
         "note": ("★일반 엔진을 **q=2 로 먼저 돌려** 𝔽₂ 엔진의 값을 그대로 재현하는지 "
@@ -433,6 +437,10 @@ def main():
     isoG = GE.find_isomorphism(tgt, a25, cap=400000)
     # ★★★Cartan 일치는 필요조건 — **명시 동형**까지 간다(세 번째 적용)
     R["G_explicit_isomorphism"] = isoG["found"]
+    # ★★독립 제2 판정기(층별 lifting)도 같은 답 — 레벨 1 공간 81 로 열거가 작다
+    isoL = GE.iso_lift(tgt, a25)
+    R["G_iso_lift_agrees"] = (isoL["found"] is True
+                              and isoL["level1_space"] == 81)
     out["G_sl25_identification"] = {
         "candidate": "SL(2,5) = 2.A₅ · p=2 주블록",
         "why_this_candidate": ("도달 Cartan 에 단순차원 (2,2,1) 을 넣으면 "
@@ -445,7 +453,7 @@ def main():
                   "hom_matrix": Hm},
         "cartan_F4": c5, "dim_P_F4": dimP5, "block_dim": blkdim,
         "dim_A": a25["n"], "n_arrows": sum(GE.quiver_of(a25).values()),
-        "rad_powers": GE.rad_powers(a25), "isomorphism": isoG,
+        "rad_powers": GE.rad_powers(a25), "isomorphism": isoG, "isomorphism_lift": isoL,
         "conclusion": ("★★★F축이 SL(2,3) 에서 mutation 으로 도달한 dim 36 대표는 "
                        "**SL(2,5) 의 p=2 주블록**이다 ⟹ **SL(2,3) 과 SL(2,5) 의 "
                        "p=2 주블록이 유도동등**(결손군 Q₈) — D₈ 이야기"

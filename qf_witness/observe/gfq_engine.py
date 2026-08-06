@@ -985,3 +985,166 @@ def algebra_table_realified(F, names, HOM, Jact, d):
                     MT[u, v, off[(i, l)] + w] = e
     _ = d
     return pack(F, names, cnt, MT)
+
+
+# ══════════════════════════════════════════════════════════════════════
+# ★★동형 판정 — **층별 successive lifting**(레벨 1 열거 + 이후 선형 연립)
+# ══════════════════════════════════════════════════════════════════════
+def rad_layers(alg):
+    """`rad^m` 의 블록별 기저 목록 `[rad¹, rad², …]`(마지막은 0)."""
+    names = alg["names"]
+    cur = {(i, j): rad_block(alg, i, j) for i in names for j in names}
+    out = [cur]
+    while any(len(v) for v in cur.values()):
+        cur = {(i, j): _spanmul(alg, i, j, cur) for i in names for j in names}
+        out.append(cur)
+    return out
+
+
+def _quot_basis(F, big, small, blkdim):
+    """`big/small` 의 **여공간 기저**(= 잉여공간의 기저 리프트)."""
+    B, piv = [], []
+    for r in small:
+        _o, B, piv = rref_insert(F, B, piv, r)
+    out = []
+    for r in big:
+        ok, B, piv = rref_insert(F, B, piv, r)
+        if ok:
+            out.append(r)
+    return out
+
+
+def _gl_mats(F, m):
+    """`GL_m(GF q)` 전수."""
+    for tup in itertools.product(range(F.q), repeat=m * m):
+        M = np.array(tup, dtype=np.int64).reshape(m, m)
+        if rank(F, M.copy()) == m:
+            yield M
+
+
+def iso_lift(A, B, cap=2000000, level1_cap=4000000):
+    """★`A ≅ B` 판정 — **레벨 1(rad/rad²)만 열거**하고 이후는 **선형 연립**으로 올린다.
+
+    `φ` 를 `J^m` 을 법으로 알고 있을 때 보정 `δ ∈ J^m` 을 더하면 단어값 변화가
+    **`δ` 에 선형**이다(`δ·δ ∈ J^{2m} ⊆ J^{m+1}`) ⟹ 열거는 레벨 1 뿐이다.
+    반환에 `level1_space`(레벨 1 후보 곱)를 항상 넣어 **왜 되고/안 되는지**를 수치로 남긴다."""
+    F = A["F"]
+    IA, IB = idempotents(A), idempotents(B)
+    arA, _r2 = arrow_lifts_of(A)
+    WA, VA = path_values(A, IA, arA)
+    KA = nullspace(F, VA.T)                      # ★A 쪽 관계(단어들의 선형 종속)
+    CA, CB = cartan_of(A), cartan_of(B)
+    nA = len(A["names"])
+    sig = [s for s in itertools.permutations(B["names"])
+           if all(CA[i][j] == CB[B["names"].index(s[i])][B["names"].index(s[j])]
+                  for i in range(nA) for j in range(nA))]
+    layers = rad_layers(B)
+    L = len(layers) - 1                          # J^{L+1} = 0
+    info = {"level1_space": None, "sigmas": len(sig), "n_words": len(WA),
+            "n_relations": len(KA), "loewy": L}
+    tried = 0
+    for s in sig:
+        # ── 레벨 1: **블록별 `GL_m`** 열거(유도사상이 가역이어야 한다) ──
+        blocks, blk_of = {}, []
+        for t, (i, j, _v) in enumerate(arA):
+            si, sj = s[A["names"].index(i)], s[A["names"].index(j)]
+            blocks.setdefault((si, sj), []).append(t)
+            blk_of.append((si, sj))
+        qb, bkeys = {}, sorted(blocks)
+        bad = False
+        for bk in bkeys:
+            Q = _quot_basis(F, layers[0][bk], layers[1][bk], B["cnt"][bk])
+            if len(Q) != len(blocks[bk]):        # 화살 다중도 불일치 ⟹ 비동형
+                bad = True
+                break
+            qb[bk] = [blk(B, bk[0], bk[1], [r])[0] for r in Q]
+        if bad:
+            continue
+        gls = [list(_gl_mats(F, len(blocks[bk]))) for bk in bkeys]
+        space = 1
+        for g in gls:
+            space *= max(1, len(g))
+        info["level1_space"] = space
+        info["level1_per_block"] = [(str(bk), len(blocks[bk]), len(g))
+                                    for bk, g in zip(bkeys, gls)]
+        if space > level1_cap:
+            info["capped_level1"] = True
+            return dict(info, found=False)
+        # ── 보정 자유도: 각 화살마다 J^m 블록 기저 ───────────────────
+        for combo in itertools.product(*[range(len(g)) for g in gls]):
+            tried += 1
+            if tried > cap:
+                return dict(info, found=False, capped=True, tried=tried)
+            cur = [None] * len(arA)
+            for bi, bk in enumerate(bkeys):
+                M = gls[bi][combo[bi]]
+                for k, t in enumerate(blocks[bk]):
+                    v = np.zeros(B["n"], dtype=np.int64)
+                    for r in range(len(qb[bk])):
+                        if M[k, r]:
+                            v = F.ADD[v, F.MUL[int(M[k, r]), qb[bk][r]]]
+                    cur[t] = v
+            ok = True
+            for m in range(1, L + 1):            # J^m 보정으로 J^{m+1} 조건 맞추기
+                basis, offs = [], []
+                for t, (si, sj) in enumerate(blk_of):
+                    rows = layers[m][(si, sj)] if m < len(layers) else []
+                    offs.append(len(basis))
+                    for r in rows:
+                        basis.append((t, blk(B, si, sj, [r])[0]))
+                res = _residual(A, B, IB, s, WA, KA, cur)
+                if not res.any():
+                    continue                     # 이미 만족
+                cols = []
+                for (t, d) in basis:
+                    trial = list(cur)
+                    trial[t] = F.ADD[trial[t], d]
+                    cols.append(F.ADD[_residual(A, B, IB, s, WA, KA, trial),
+                                      F.NEG[res]])
+                if not cols:
+                    ok = False
+                    break
+                Msys = np.array(cols, dtype=np.int64)
+                sol = _solve(F, Msys, F.NEG[res])
+                if sol is None:
+                    ok = False
+                    break
+                for t2, (t, d) in enumerate(basis):
+                    if sol[t2]:
+                        cur[t] = F.ADD[cur[t], F.MUL[sol[t2], d]]
+            if not ok:
+                continue
+            if _residual(A, B, IB, s, WA, KA, cur).any():
+                continue
+            VB = np.array([_wv(A, B, IB, s, WA[u], cur)
+                           for u in range(len(WA))], dtype=np.int64)
+            if rank(F, VB) != B["n"]:
+                continue
+            return dict(info, found=True, sigma=[str(x) for x in s],
+                        arrow_choice=list(combo), tried=tried,
+                        rank_VA=rank(F, VA), rank_VB=B["n"])
+    return dict(info, found=False, tried=tried)
+
+
+def _residual(A, B, IB, s, WA, KA, arB):
+    """관계 `KA` 를 B 쪽 단어값에 먹인 잔차 — 0 이면 well-defined."""
+    F = A["F"]
+    VB = np.array([_wv(A, B, IB, s, WA[u], arB) for u in range(len(WA))],
+                  dtype=np.int64)
+    if not len(KA):
+        return np.zeros(0, dtype=np.int64)
+    return F.mm(KA, VB).reshape(-1)
+
+
+def _solve(F, cols, rhs):
+    """`Σ x_t cols[t] = rhs` 의 한 해(없으면 None)."""
+    m = len(cols)
+    Aug = np.concatenate([np.array(cols, dtype=np.int64).T,
+                          rhs.reshape(-1, 1)], axis=1)
+    R, piv = rref(F, Aug)
+    if m in piv:
+        return None
+    x = np.zeros(m, dtype=np.int64)
+    for r, c in zip(R, piv):
+        x[c] = r[m]
+    return x
