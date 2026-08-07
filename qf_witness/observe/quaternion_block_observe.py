@@ -335,6 +335,11 @@ def main():
     R["E_iso_lift_agrees_kQ8"] = (
         GE.iso_lift(g8, ge["alg"])["found"]
         == GE.find_isomorphism(g8, ge["alg"])["found"] is True)
+    # ★★선 불변량 가지치기의 **완전성 대조** — 상을 지울 뿐이니 판정이 같아야 한다
+    R["E_line_prune_verdict_agrees"] = all(
+        GE.iso_lift(X, Y, line_prune=True)["found"]
+        is GE.iso_lift(X, Y, line_prune=False)["found"]
+        for (X, Y) in ((g8, ge["alg"]), (g8, g8), (ge["alg"], ge["alg"])))
     out["E_gfq_regression"] = {
         "target": "kQ₈ (𝔽₂ 분해체)", "gf2_engine": gq,
         "note": ("★일반 엔진을 **q=2 로 먼저 돌려** 𝔽₂ 엔진의 값을 그대로 재현하는지 "
@@ -505,6 +510,9 @@ def main():
     isoL = GE.iso_lift(tgt, a25)
     isoL0 = GE.iso_lift(tgt, a25, quotient=False)
     R["G_iso_lift_agrees"] = (isoL["found"] is True is isoL0["found"])
+    # ★★양성 사례에서도 선 불변량 가지치기가 답을 잃지 않는가(GF(4)·dim 36)
+    R["G_line_prune_keeps_positive"] = (
+        GE.iso_lift(tgt, a25, line_prune=False)["found"] is True)
     R["G_iso_lift_quotient_9x"] = (isoL["level1_space"] == 9
                                    and isoL0["level1_space"] == 81)
     out["G_sl25_identification"] = {

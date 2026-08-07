@@ -5,7 +5,7 @@
 가능하다, **아직 안 했다**" 라고 적었다. 그 미착수를 채운다.
 ★v24 의 열린 질문(Q1·Q2·Q3′·Q3‴·Q3⁗)과 **겹치지 않는다**.
 
-관측 6축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
+관측 7축 (정확 GF(9) 선형대수 · seal 아님 · module 0 · root 불변):
   A  ★A₆ p=3 주블록 재구성 + **GF(9) Hom 조립**(`assemble_hom_j` — 5184 계 회피) ·
      Cartan 이 선행 K축 값과 일치하는지 **회귀**.
   B  ★★**GF(9) 구조상수**(`x² = −1 = 2` ⟹ poly [2,0]) — 단위원·결합법칙 **전수 게이트**.
@@ -14,13 +14,16 @@
      `dim_{GF(9)} HH^n(A_{GF(9)}) = dim_{𝔽₃} HH^n(A_{𝔽₃})` 여야 한다(코사슬 차원은 다르다).
   D  ★mutation 한 걸음 — 전부 기울기인지 · det/SNF 보존인지.
   F  ★★제2 판정기 `iso_lift`(층별 lifting) — 벽을 **정확히 수치화**(레벨 1 = 블록별 `GL_m`).
-  E  ★Cartan 수준 궤도 — **폐합 주장이 아니다**(동형 dedup 이 규모 밖) ·
-     ★왜 규모 밖인지 **화살별 후보 수를 실측**해 남긴다.
+  E  ★Cartan 수준 궤도 — **폐합 주장이 아니다** · ★왜 규모 밖이었는지 **화살별 후보
+     수를 실측**해 남긴다(G축이 이 벽을 부분적으로 해소했다).
+  G  ★★★**동형 수준 dedup** — `rad/rad²` 의 **선(line) 불변량**으로 레벨 1 을 정규화해
+     (`265,420,800 → 131,072`, **2025배**) **동형 판정이 처음 끝났다**. 자기동형 즉시 ·
+     깊이 1 의 9 대표를 **7 동형류**로 분해(★Cartan 만으로는 못 하던 병합 2건).
 
 정직 경계:
-  · **류 폐합은 하지 못했다** — GF(9)·화살 8 에서 동형 판정의 화살 상 후보가
-    큰 블록에서 **6480 개**(곱 ≈ 10^22)라, 닫힌 경로를 앞세우는 순서 재배열을 넣고도
-    **자기동형조차 14분 내 미종료**였다. E축에 후보 수를 실측해 남긴다.
+  · **류 폐합은 여전히 하지 못했다** — G축 dedup 은 **깊이 1 안에서만**이다.
+  · ★G축 음성 6건은 전부 **퀴버(화살 다중도)가 달라** 레벨 1 열거 **전에** 끝났다 ⟹
+    **레벨 1 전수 소진을 실제로 시험한 음성 사례는 아직 없다**(다음 층의 몫).
   · `rank_packed`(비트평면)는 **p=2 전용**이라 p=3 은 일반 `rref` 로 갔다.
   · 외부 분류표(quaternion/dihedral type 등) 대응은 **무주장**.
 """
@@ -321,8 +324,13 @@ def main():
                    "`rank_packed` 는 p=2 전용이라 p=3 은 일반 rref"),
     }
     # ── F. ★★제2 판정기(층별 lifting)로 벽을 **정확히 수치화** ────────
-    lf0 = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=False)
-    lf = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=True)
+    lf0 = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=False,
+                      line_prune=False)
+    lf = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=True,
+                     line_prune=False)
+    # ★★선 불변량 정규화 — 같은 측정을 가지치기 켜고 다시
+    lfp = GE.iso_lift(a9, a9, level1_cap=1, cap=1, quotient=True,
+                      line_prune=True)
     # ★레벨 1 = 블록별 `GL_m` 열거 ⟹ |GL₂(9)|² × (GF(9)*)⁴
     R["F_level1_space_measured"] = (lf0["level1_space"] == 5760 ** 2 * 8 ** 4
                                     == 135895449600)
@@ -336,6 +344,15 @@ def main():
         for lam in ((1, 2, 3, 4), (2, 5, 7, 3), (1, 1, 1, 1)))
     R["F_still_capped"] = (lf.get("capped_level1") is True
                            and lf["found"] is False)
+    # ★★선 불변량이 레벨 1 을 **정확히 2025배** 줄인다 — rank-2 블록이 5760 → 128
+    R["F_line_prune_2025x"] = (lfp["level1_space"] == 131072
+                               and lf["level1_space"]
+                               == lfp["level1_space"] * 2025)
+    R["F_line_prune_per_block"] = (
+        sorted((b_, o, n) for (b_, o, n) in lfp["line_prune_per_block"])
+        == [("('1', '4')", 5760, 128), ("('3', '4')", 8, 8),
+            ("('3b', '4')", 8, 8), ("('4', '1')", 5760, 128),
+            ("('4', '3')", 8, 8), ("('4', '3b')", 8, 8)])
     # ★값싼 정오 확인 — Cartan 이 다르면 σ 후보가 없어 즉시 False
     e43, _E = GE.mutate_step(a9, N9[2], False)
     lf2 = GE.iso_lift(a9, e43["alg"])
@@ -360,6 +377,63 @@ def main():
                  "★다음 사양서: **노드 비용을 낮추거나**(부분 lifting 을 증분화) "
                  "**열거 자체를 없애는 정규형**이 필요하다. ★교훈 재확인 — "
                  "\"줄었으니 될 것\"이 아니라 **줄어든 뒤의 절대값**으로 판단한다"),
+    }
+
+    # ── G. ★★★**동형 수준 dedup** — 선 불변량 정규화로 처음 도달한 층 ────
+    #   선행 축들은 전부 **Cartan 수준**에서 멈췄다(동형 판정이 규모 밖이었다).
+    selfi = GE.iso_lift(a9, a9, cap=10 ** 7, level1_cap=10 ** 7)
+    R["G_self_iso_now_terminates"] = (selfi["found"] is True
+                                      and selfi["level1_space"] == 131072)
+    reps = [("id", a9, canon(cart9))]
+    for kk, k in enumerate(N9):
+        for right in (False, True):
+            e, _E = GE.mutate_step(a9, k, right)
+            reps.append((("-" if right else "+") + str(kk), e["alg"],
+                         canon(e["cartan"])))
+    grp = {}
+    for pth, alg, cc in reps:
+        grp.setdefault(str(cc), []).append((pth, alg))
+    R["G_depth1_9_reps_4_cartans"] = (len(reps) == 9 and len(grp) == 4)
+    # ★같은 Cartan 안에서 **실제 동형 판정** — 여기서 처음으로 Cartan 을 넘는다
+    pairs, cls = [], []
+    for cc in sorted(grp):
+        mem, comp = grp[cc], []
+        for pth, alg in mem:
+            hit = None
+            for ci, (rp, ralg) in enumerate(comp):
+                rr = GE.iso_lift(ralg, alg, cap=10 ** 7, level1_cap=10 ** 7)
+                pairs.append({"a": rp, "b": pth, "found": bool(rr["found"]),
+                              "level1_space": rr.get("level1_space"),
+                              "certificate": ("동형" if rr["found"] else
+                                              ("화살 다중도 불일치"
+                                               if rr.get("level1_space") is None
+                                               else "레벨 1 전수 소진"))})
+                if rr["found"]:
+                    hit = ci
+                    break
+            if hit is None:
+                comp.append((pth, alg))
+        cls += [rp for rp, _a in comp]
+    R["G_depth1_seven_iso_classes"] = (len(cls) == 7)
+    # ★두 건의 **실제 동형** — Cartan 만으로는 못 하던 병합
+    R["G_two_genuine_merges"] = (
+        sorted((d["a"], d["b"]) for d in pairs if d["found"])
+        == [("+2", "+3"), ("-2", "-3")])
+    # ★음성은 전부 **화살 다중도 불일치**(퀴버가 다르다)로 값싸게 끝났다
+    R["G_negatives_are_quiver_certificates"] = all(
+        d["certificate"] == "화살 다중도 불일치"
+        for d in pairs if not d["found"])
+    out["G_iso_dedup"] = {
+        "self_iso": {k: selfi.get(k) for k in ("found", "level1_space")},
+        "depth1_reps": len(reps), "canonical_cartans": len(grp),
+        "iso_classes": sorted(cls), "pairs": pairs,
+        "note": ("★★**선 불변량 정규화**(`line_prune`)로 레벨 1 이 "
+                 "`265,420,800 → 131,072`(**2025배**) 로 줄어 **동형 판정이 처음 끝났다**. "
+                 "선행 축은 전부 Cartan 수준에서 멈춰 있었다."),
+        "honest": ("★깊이 1 **안에서만**의 dedup 이다 — 류 폐합 주장이 아니다. "
+                   "음성 6건은 전부 **퀴버(화살 다중도)가 달라** 레벨 1 열거에 "
+                   "들어가기도 전에 끝났다 ⟹ **레벨 1 전수 소진을 실제로 시험한 "
+                   "음성 사례는 아직 없다**. 그 시험은 다음 층(깊이 2)의 몫이다."),
     }
 
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")

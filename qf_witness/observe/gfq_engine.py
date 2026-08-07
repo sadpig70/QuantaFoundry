@@ -1169,6 +1169,108 @@ def _spanning_blocks(bkeys, names):
     return tree
 
 
+def _rad_glob(alg, layers):
+    """`rad^m` 의 **전역**(블록 합) 기저 — `RAD[m] = layers[m-1]`, `RAD[L+1] = 0`."""
+    out = [None]
+    for m in range(1, len(layers) + 1):
+        rows = []
+        for (i, j), rs in layers[m - 1].items():
+            rows += blk(alg, i, j, list(rs))
+        out.append(rows)
+    return out
+
+
+def _codim(F, vs, mod):
+    """`span(mod ∪ vs)` 의 `span(mod)` 위 여차원."""
+    if not vs:
+        return 0
+    r0 = rank(F, np.array(mod, dtype=np.int64)) if mod else 0
+    return rank(F, np.array(list(mod) + list(vs), dtype=np.int64)) - r0
+
+
+def _elt_inv(alg, RAD, v):
+    """★`rad/rad²` 원소의 **대수동형 불변량**(스칼라배·rad² 대표 선택에 불변).
+
+    `v·rad^k` 와 `rad^k·v` 가 `rad^m`(`m ≥ k+2`) 위에서 갖는 차원만 쓴다 —
+    대표를 `v + r`(`r ∈ rad²`)로 바꾸면 변화가 `rad^{k+2}` 안이라 값이 안 변하고,
+    `αv` 로 스케일해도 span 이 같다. ⟹ **선(line) 위의 함수**이며 동형으로 보존된다."""
+    F, out = alg["F"], []
+    for k in (1, 2):
+        if k >= len(RAD):
+            break
+        Lv = [amul(alg, b, v) for b in RAD[k]]
+        Rv = [amul(alg, v, b) for b in RAD[k]]
+        for mm in range(k + 2, len(RAD)):
+            out.append(_codim(F, Lv, RAD[mm]))
+            out.append(_codim(F, Rv, RAD[mm]))
+    if len(RAD) > 1:
+        Tw = [amul(alg, amul(alg, b, v), c) for b in RAD[1] for c in RAD[1]]
+        for mm in range(4, len(RAD)):
+            out.append(_codim(F, Tw, RAD[mm]))
+    return tuple(out)
+
+
+def _line_inv_table(alg, RAD, basis, cap=4096):
+    """블록의 `rad/rad²` 기저에 대해 **선마다** 불변량 표 — 키는 정규화 계수."""
+    F, m = alg["F"], len(basis)
+    if m == 0 or F.q ** m > cap:
+        return None
+    tab = {}
+    for c in itertools.product(range(F.q), repeat=m):
+        t0 = next((t for t, x in enumerate(c) if x), None)
+        if t0 is None or c[t0] != 1:
+            continue                          # 사영 대표(첫 비영 = 1)만
+        w = np.zeros(alg["n"], dtype=np.int64)
+        for t, ct in enumerate(c):
+            if ct:
+                w = F.ADD[w, F.MUL[ct, basis[t]]]
+        tab[c] = _elt_inv(alg, RAD, w)
+    return tab
+
+
+def _order_arrows_by_rarity(alg, RAD, arrows):
+    """★소스 화살 기저를 **드문 불변량 류부터** 쓰도록 재선택.
+
+    화살은 `rad/rad²` 의 기저 **선택**일 뿐이라 바꿔도 무방한데, 드문 류의 선을 먼저
+    쓰면 그 행의 상(像) 후보가 그만큼 좁아진다 — ★가지치기 효율이 **기저 선택**에 달려 있다."""
+    F, byblk = alg["F"], {}
+    for (i, j, v) in arrows:
+        byblk.setdefault((i, j), []).append(v)
+    out = []
+    for (i, j) in sorted(byblk):
+        bas = byblk[(i, j)]
+        tab = _line_inv_table(alg, RAD, bas) if len(bas) > 1 else None
+        if tab is None:
+            out += [(i, j, v) for v in bas]
+            continue
+        size = {}
+        for iv in tab.values():
+            size[iv] = size.get(iv, 0) + 1
+        chosen, Bm, piv = [], [], []
+        for c in sorted(tab, key=lambda c: (size[tab[c]], c)):
+            ok, Bm, piv = rref_insert(F, Bm, piv,
+                                      np.array(c, dtype=np.int64))
+            if not ok:
+                continue
+            w = np.zeros(alg["n"], dtype=np.int64)
+            for t, ct in enumerate(c):
+                if ct:
+                    w = F.ADD[w, F.MUL[ct, bas[t]]]
+            chosen.append(w)
+            if len(chosen) == len(bas):
+                break
+        out += [(i, j, v) for v in chosen]
+    return out
+
+
+def _line_key(F, row):
+    """계수행 → 선 키(첫 비영을 1 로 정규화). 0 행이면 None."""
+    t0 = next((t for t, x in enumerate(row) if x), None)
+    if t0 is None:
+        return None
+    return tuple(int(F.MUL[F.INV[int(row[t0])], int(x)]) for x in row)
+
+
 def _scalar_class_reps(F, mats):
     """`GL_m` 원소를 **스칼라 배 동치류 대표**로 줄인다(몫 정규화)."""
     out, seen = [], set()
@@ -1185,7 +1287,7 @@ def _scalar_class_reps(F, mats):
 
 
 def iso_lift(A, B, cap=2000000, level1_cap=4000000,
-             quotient=True):
+             quotient=True, line_prune=True):
     """★`A ≅ B` 판정 — **레벨 1(rad/rad²)만 열거**하고 이후는 **선형 연립**으로 올린다.
 
     `φ` 를 `J^m` 을 법으로 알고 있을 때 보정 `δ ∈ J^m` 을 더하면 단어값 변화가
@@ -1204,7 +1306,17 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
     layers = rad_layers(B)
     L = len(layers) - 1                          # J^{L+1} = 0
     info = {"level1_space": None, "sigmas": len(sig), "n_words": len(WA),
-            "n_relations": len(KA), "loewy": L, "quotient": quotient}
+            "n_relations": len(KA), "loewy": L, "quotient": quotient,
+            "line_prune": line_prune}
+    # ★선 불변량 — A 쪽 화살값은 σ 와 무관하므로 **한 번만** 잰다
+    RA = _rad_glob(A, rad_layers(A))
+    RB = _rad_glob(B, layers)
+    invA = None
+    if line_prune:
+        arA = _order_arrows_by_rarity(A, RA, arA)   # ★기저부터 다시 고른다
+        WA, VA = path_values(A, IA, arA)
+        KA = nullspace(F, VA.T)
+        invA = [_elt_inv(A, RA, v) for (_i, _j, v) in arA]
     tried = 0
     for s in sig:
         # ── 레벨 1: **블록별 `GL_m`** 열거(유도사상이 가역이어야 한다) ──
@@ -1224,6 +1336,23 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
         if bad:
             continue
         gls = [list(_gl_mats(F, len(blocks[bk]))) for bk in bkeys]
+        if line_prune:
+            # ★★선 불변량 정합 — 동형은 `rad/rad²` 의 선을 **같은 불변량의 선**으로
+            #   보내야 한다. 궤도를 자르는 것이 아니라 **불가능한 상(像)을 지우는**
+            #   것이므로 완전성이 보존된다(무효화 시 `line_prune=False` 로 대조).
+            n_pruned = []
+            for bi, bk in enumerate(bkeys):
+                tab = _line_inv_table(B, RB, qb[bk])
+                if tab is None:
+                    n_pruned.append((str(bk), len(gls[bi]), len(gls[bi])))
+                    continue
+                want = [invA[t] for t in blocks[bk]]
+                keep = [M for M in gls[bi]
+                        if all(tab.get(_line_key(F, M[k])) == want[k]
+                               for k in range(len(want)))]
+                n_pruned.append((str(bk), len(gls[bi]), len(keep)))
+                gls[bi] = keep
+            info["line_prune_per_block"] = n_pruned
         if quotient:
             # ★대각 스케일 몫 — 신장나무 간선 블록만 스칼라류 대표로
             tree = set(_spanning_blocks(bkeys, B["names"]))

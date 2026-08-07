@@ -2076,6 +2076,69 @@
     },
     "wall": "★벽의 **3단 축소 실측**: `rad` 전수 ≈10²² → 레벨 1(블록별 `GL_m`) `5760² × 8⁴ = 135,895,449,600 ≈ 1.36×10¹¹` → **대각 스케일 몫**(신장나무 3 간선 정규화·`(GF(9)*)³ = 512`) **265,420,800 ≈ 2.65×10⁸**. ★그래도 **부족하다** — 레벨 1 가지치기(부분 단어집합 lifting)를 넣었으나 **노드당 비용이 커서 2 만 노드도 30분 내 미도달** ⟹ `2.65×10⁸` 은 도달 불가. ★다음 사양서: **노드 비용을 낮추거나**(부분 lifting 을 증분화) **열거 자체를 없애는 정규형**이 필요하다. ★교훈 재확인 — \"줄었으니 될 것\"이 아니라 **줄어든 뒤의 절대값**으로 판단한다"
   },
+  "G_iso_dedup": {
+    "canonical_cartans": 4,
+    "depth1_reps": 9,
+    "honest": "★깊이 1 **안에서만**의 dedup 이다 — 류 폐합 주장이 아니다. 음성 6건은 전부 **퀴버(화살 다중도)가 달라** 레벨 1 열거에 들어가기도 전에 끝났다 ⟹ **레벨 1 전수 소진을 실제로 시험한 음성 사례는 아직 없다**. 그 시험은 다음 층(깊이 2)의 몫이다.",
+    "iso_classes": [
+      "+0",
+      "+1",
+      "+2",
+      "-0",
+      "-1",
+      "-2",
+      "id"
+    ],
+    "note": "★★**선 불변량 정규화**(`line_prune`)로 레벨 1 이 `265,420,800 → 131,072`(**2025배**) 로 줄어 **동형 판정이 처음 끝났다**. 선행 축은 전부 Cartan 수준에서 멈춰 있었다.",
+    "pairs": [
+      {
+        "a": "+2",
+        "b": "-2",
+        "certificate": "화살 다중도 불일치",
+        "found": false,
+        "level1_space": null
+      },
+      {
+        "a": "+2",
+        "b": "+3",
+        "certificate": "동형",
+        "found": true,
+        "level1_space": 4096
+      },
+      {
+        "a": "+2",
+        "b": "-3",
+        "certificate": "화살 다중도 불일치",
+        "found": false,
+        "level1_space": null
+      },
+      {
+        "a": "-2",
+        "b": "-3",
+        "certificate": "동형",
+        "found": true,
+        "level1_space": 4096
+      },
+      {
+        "a": "+1",
+        "b": "-1",
+        "certificate": "화살 다중도 불일치",
+        "found": false,
+        "level1_space": null
+      },
+      {
+        "a": "+0",
+        "b": "-0",
+        "certificate": "화살 다중도 불일치",
+        "found": false,
+        "level1_space": null
+      }
+    ],
+    "self_iso": {
+      "found": true,
+      "level1_space": 131072
+    }
+  },
   "all_ok": true,
   "checks": {
     "A_cartan_regression": true,
@@ -2106,8 +2169,15 @@
     "F_diag_scale_is_automorphism": true,
     "F_different_cartan_immediate_false": true,
     "F_level1_space_measured": true,
+    "F_line_prune_2025x": true,
+    "F_line_prune_per_block": true,
     "F_quotient_gives_512x": true,
     "F_still_capped": true,
+    "G_depth1_9_reps_4_cartans": true,
+    "G_depth1_seven_iso_classes": true,
+    "G_negatives_are_quiver_certificates": true,
+    "G_self_iso_now_terminates": true,
+    "G_two_genuine_merges": true,
     "all_ok": true
   }
 }
