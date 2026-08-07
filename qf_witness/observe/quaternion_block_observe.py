@@ -24,6 +24,9 @@ v23 §4⁗ 에서 **재사용 자산 4종**(silting mutation 엔진 · `op_algeb
   H  ★★★**Q₈ 류 폐합** — 양방향 mutation + **동형 dedup** BFS(가지치기로 값싸졌다) ⟹
      대표 **2개**(`SL(2,3)` dim 24 ↔ `SL(2,5)` dim 36) · 둘 다 `(HH⁰,HH¹,HH²,cup) = (7,5,5,2)`.
   D  ★★종합 — **Q3″ 에 대한 첫 데이터점**과 **엔진의 진짜 전제**.
+  I  ★**엔진 순수-최적화 등가성** — `mm`/`amul`/`_wvals` 를 **최적화 이전 정의**와
+     여러 체(`q = 2,3,4,5,8,9`)에서 원소별 대조. ★일부러 **`--quick` 안**에 둔다:
+     공용 엔진이 바뀌면 무거운 축을 건너뛰는 배치 게이트도 **반드시 울어야** 한다.
 
 정직 경계:
   · 실현화 위에서 잰 `HH^*`·cup 은 **𝔽₂-불변량**(realified 대수의)이지 `HH^*_{𝔽₄}` 가 아니다 —
@@ -84,6 +87,63 @@ def quotient_z3(ordG, mul, idp, Q8):
     gen = next(g for g in sorted(ordG) if lab[g] != 0)
     ren = {lab[idp]: 0, lab[gen]: 1, lab[mul(gen, gen)]: 2}
     return {g: ren[lab[g]] for g in ordG}, len(cos)
+
+
+def _engine_equiv_checks():
+    """★`gfq_engine` 의 벡터화가 **순수 최적화**인지 — 최적화 이전 정의와 원소별 대조.
+
+    `mm`(축 루프) · `amul`(성분마다 `n×n` 곱) · `_wvals`(단어마다 처음부터)가 옛 정의다.
+    ★값싸므로 **`--quick` 안**에서 돈다 — 공용 엔진 회귀를 배치 게이트가 놓치면 안 된다."""
+    def mm_ref(F, X, Y):
+        R = np.zeros((X.shape[0], Y.shape[1]), dtype=np.int64)
+        for t in range(X.shape[1]):
+            R = F.ADD[R, F.MUL[X[:, t][:, None], Y[t, :][None, :]]]
+        return R
+
+    def amul_ref(alg, x, y):
+        F = alg["F"]
+        r = np.zeros(alg["n"], dtype=np.int64)
+        for u in np.nonzero(x)[0]:
+            r = F.ADD[r, F.MUL[int(x[u]),
+                               mm_ref(F, y[None, :], alg["MT"][u])[0]]]
+        return r
+
+    rng = random.Random(1109)                    # ★고정 시드 — 결정론
+    fields = [GE.GF(2), GE.GF(3), GE.GF(5), GE.GF(2, 2, [1, 1]),
+              GE.GF(3, 2, [2, 0]), GE.GF(2, 3, [1, 1, 0])]
+    ok_mm = ok_am = ok_wv = True
+    for F in fields:
+        for (n, t, m) in [(1, 1, 1), (0, 3, 4), (3, 0, 4), (3, 4, 0),
+                          (5, 7, 3), (13, 11, 9), (4, 60, 300)]:
+            X = np.array([rng.randrange(F.q) for _ in range(n * t)],
+                         dtype=np.int64).reshape(n, t)
+            Y = np.array([rng.randrange(F.q) for _ in range(t * m)],
+                         dtype=np.int64).reshape(t, m)
+            ok_mm &= np.array_equal(F.mm(X, Y), mm_ref(F, X, Y))
+        d = 9
+        MT = np.array([rng.randrange(F.q) if rng.random() < .35 else 0
+                       for _ in range(d ** 3)],
+                      dtype=np.int64).reshape(d, d, d)
+        alg = GE.pack(F, [0], {(0, 0): d}, MT)
+
+        def rv(pr, F=F, d=d, rng=rng):
+            return np.array([rng.randrange(F.q) if rng.random() < pr else 0
+                             for _ in range(d)], dtype=np.int64)
+
+        for _ in range(30):
+            x, y = rv(.5), rv(.3)
+            ok_am &= np.array_equal(GE.amul(alg, x, y), amul_ref(alg, x, y))
+        IB, arB = {0: rv(1.0)}, [rv(.4) for _ in range(3)]
+        words = [(0, tuple(rng.randrange(3) for _ in range(rng.randrange(4))))
+                 for _ in range(30)]
+        Ax = {"names": [0], "F": F}
+        ok_wv &= np.array_equal(
+            GE._wvals(Ax, alg, IB, [0], words, arB),
+            np.array([GE._wv(Ax, alg, IB, [0], w, arB) for w in words],
+                     dtype=np.int64))
+    return {"I_mm_equals_reference": bool(ok_mm),
+            "I_amul_equals_reference": bool(ok_am),
+            "I_wvals_equals_per_word": bool(ok_wv)}
 
 
 def main():
@@ -240,6 +300,9 @@ def main():
         "note": ("단순가군이 자명 하나뿐이라 **𝔽₂ 가 분해체**이고 엔진 4종이 "
                  "**한 줄도 안 고치고** 돈다 — §4⁗ 자산 계약의 실제 통과"),
     }
+
+    # ── I. ★엔진 순수-최적화 등가성 — **quick 안**에 두는 값싼 회귀 ──
+    R.update(_engine_equiv_checks())
 
     # ── E·F 는 full 전용(결합법칙 전수 등 무거운 게이트) ──────────────
     if quick:

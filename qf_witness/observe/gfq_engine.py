@@ -69,6 +69,13 @@ class GF:
         self.INV = np.zeros(q, dtype=np.int64)
         for a in range(1, q):
             self.INV[a] = next(b for b in range(1, q) if M[a, b] == 1)
+        self.PW = p ** np.arange(k, dtype=np.int64)
+        self.DIG = np.array([[(v // p ** i) % p for i in range(k)]
+                             for v in range(q)], dtype=np.int64)
+        # RED[i,j] = `x^i · x^j` 의 자릿수 — `p^i` 가 곧 `x^i` 의 인코딩이다
+        self.RED = np.array([[self.DIG[M[int(self.PW[i]), int(self.PW[j])]]
+                              for j in range(k)] for i in range(k)],
+                            dtype=np.int64)
 
     def add(self, a, b):
         return self.ADD[a, b]
@@ -79,13 +86,42 @@ class GF:
     def mul(self, a, b):
         return self.MUL[a, b]
 
+    def digits(self, X):
+        """원소 배열 → `p` 진 자릿수 평면 `(..., k)`."""
+        return self.DIG[X]
+
+    def mmd(self, A, Bd):
+        """★`B` 를 **미리 자릿수로 펼친** 행렬곱 — 같은 `B` 를 반복해 쓸 때 gather 를 아낀다."""
+        n, t = A.shape[0], A.shape[1]
+        m = Bd.shape[1]
+        if n == 0 or t == 0 or m == 0:
+            return np.zeros((n, m), dtype=np.int64)
+        if self.k == 1:
+            return (A @ Bd[:, :, 0]) % self.p
+        Ad = self.DIG[A]
+        acc = np.zeros((n, m, self.k), dtype=np.int64)
+        for i in range(self.k):
+            for j in range(self.k):
+                P = None
+                for l in range(self.k):
+                    c = int(self.RED[i, j, l])
+                    if not c:
+                        continue
+                    if P is None:
+                        P = (Ad[:, :, i] @ Bd[:, :, j]) % self.p
+                    acc[:, :, l] += c * P
+        return ((acc % self.p) * self.PW).sum(-1)
+
     def mm(self, A, B):
-        """행렬곱."""
-        n, m = A.shape[0], B.shape[1]
-        R = np.zeros((n, m), dtype=np.int64)
-        for t in range(A.shape[1]):
-            R = self.ADD[R, self.MUL[A[:, t][:, None], B[t, :][None, :]]]
-        return R
+        """행렬곱 — ★`GF(p^k)` 곱은 **𝔽_p-쌍선형**이므로 자릿수 평면의 **정수 행렬곱** `k²` 개로 쪼갠다.
+
+        `a·b = Σ_{i,j} a_i b_j x^{i+j}` 이고 `x^{i+j}` 의 자릿수가 `RED[i,j]` 다 ⟹
+        `(n,t,m)` 중간 배열도, 축 길이만큼의 표 조회도 없어진다(`k=1` 이면 `(A@B) % p` 한 번)."""
+        if self.k == 1:
+            if A.shape[1] == 0 or A.shape[0] == 0 or B.shape[1] == 0:
+                return np.zeros((A.shape[0], B.shape[1]), dtype=np.int64)
+            return (A @ B) % self.p
+        return self.mmd(A, self.DIG[B])
 
 
 def rref(F, A):
@@ -255,12 +291,25 @@ def pack(F, names, cnt, MT):
             "MT": MT, "F": F}
 
 
+def _mtd(alg):
+    """구조상수를 `(n, n², k)` 자릿수 평면으로 **한 번만** 펼쳐 캐시한다."""
+    d = alg.get("_MTd")
+    if d is None:
+        n = alg["n"]
+        d = alg["F"].DIG[alg["MT"].reshape(n, n * n)]
+        alg["_MTd"] = d
+    return d
+
+
 def amul(alg, x, y):
-    F = alg["F"]
-    r = np.zeros(alg["n"], dtype=np.int64)
-    for u in np.nonzero(x)[0]:
-        r = F.ADD[r, F.MUL[int(x[u]), F.mm(y[None, :], alg["MT"][u])[0]]]
-    return r
+    """★`Σ_{u,v} x[u] y[v] MT[u,v,w]` — **성분마다 `n×n` 곱을 돌리지 않는다**.
+
+    `MT` 를 `(n, n²)` 로 보면 `S = x·MT` 는 **행렬곱 한 번**이고 `x·y = y·S` 다."""
+    F, n = alg["F"], alg["n"]
+    if not x.any() or not y.any():
+        return np.zeros(n, dtype=np.int64)
+    S = F.mmd(x[None, :], _mtd(alg)).reshape(n, n)
+    return F.mm(y[None, :], S)[0]
 
 
 def hlayout(alg, X, Y):
@@ -713,8 +762,7 @@ def find_isomorphism(A, B, cap=200000):
         got = rec([], [])
         if got is not None:
             arB = [o[c] for o, c in zip(opts, got)]
-            VB = np.array([_wv(A, B, IB, s, WA[u], arB) for u in range(len(WA))],
-                          dtype=np.int64)
+            VB = _wvals(A, B, IB, s, WA, arB)
             return {"found": True, "sigma": [str(x) for x in s],
                     "arrow_choice": got, "tried": tried,
                     "n_words": len(WA), "rank_VA": rank(F, VA),
@@ -730,6 +778,62 @@ def _wv(A, B, IB, s, word, arB):
     for ai in w:
         v = amul(B, v, arB[ai])
     return v
+
+
+def _rmul_mat(alg, a):
+    """★고정 원소 `a` 의 **우곱 행렬** `R_a[u,w] = Σ_v MT[u,v,w] a[v]`.
+
+    `v ↦ v·a` 가 선형이므로 한 번 만들어 두면 곱이 `(1,n)·(n,n)` 하나로 끝난다."""
+    F, n = alg["F"], alg["n"]
+    d = alg.get("_MTtd")
+    if d is None:
+        d = F.DIG[np.ascontiguousarray(
+            alg["MT"].transpose(1, 0, 2)).reshape(n, n * n)]
+        alg["_MTtd"] = d
+    ck = alg.setdefault("_Rc", {})            # ★같은 화살값은 계속 재등장한다
+    key = a.tobytes()
+    R = ck.get(key)
+    if R is None:
+        R = F.mmd(a[None, :], d).reshape(n, n)
+        if len(ck) < 1024:
+            ck[key] = R
+    return R
+
+
+def _wvals(A, B, IB, s, words, arB):
+    """★단어값 **일괄** 계산 — 접두사 공유(트라이) + **화살별 일괄 행렬곱**.
+
+    `_wv` 는 단어마다 멱등원부터 다시 곱해 같은 접두사를 몇 번이고 재계산하고,
+    곱마다 `amul` 을 부른다. 여기서는 (a) 접두사를 캐시하고 (b) **같은 깊이·같은
+    화살**을 쓰는 노드를 한 행렬로 쌓아 곱을 **한 번**에 끝낸다.
+    결과는 `[_wv(..., w, arB) for w in words]` 와 **완전히 같다**(순수 최적화)."""
+    F, n = B["F"], B["n"]
+    idx = {nm: t for t, nm in enumerate(A["names"])}
+    cache = {}
+    for (stt, w) in words:
+        cache.setdefault((stt,), IB[s[idx[stt]]])
+    Rm, depth = {}, 1
+    while True:
+        pend = {}
+        for (stt, w) in words:
+            if len(w) < depth:
+                continue
+            key = (stt,) + tuple(w[:depth])
+            if key not in cache:
+                pend.setdefault(w[depth - 1], {})[key] = key[:-1]
+        if not pend:
+            break
+        for ai, mp in pend.items():
+            if ai not in Rm:
+                Rm[ai] = _rmul_mat(B, arB[ai])
+            ks = list(mp)
+            W = F.mm(np.array([cache[mp[k]] for k in ks], dtype=np.int64),
+                     Rm[ai])
+            for t, k in enumerate(ks):
+                cache[k] = W[t]
+        depth += 1
+    return np.array([cache[(stt,) + tuple(w)] for (stt, w) in words],
+                    dtype=np.int64)
 
 
 def rad_basis_piv(alg, i, j):
@@ -1187,8 +1291,7 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
             return bs
 
         def _vals(sub, work):
-            return np.array([_wv(A, B, IB, s, w, work) for w in sub],
-                            dtype=np.int64)
+            return _wvals(A, B, IB, s, sub, work)
 
         def _try(cur, d_):
             """깊이 `d_` 의 단어 부분집합에서 층별 lifting 이 성공하는가."""
@@ -1213,9 +1316,8 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
                     work[t] = F.ADD[sav, d]
                     # ★그 화살을 쓰는 행만 갱신하고, **차분만** Ks 에 곱한다
                     #   `Ks V₂ − Ks V_B = Ks[:, rows] (V₂ − V_B)[rows]`
-                    dv = np.array([F.ADD[_wv(A, B, IB, s, sub[r], work),
-                                         F.NEG[VB[r]]] for r in rows],
-                                  dtype=np.int64)
+                    dv = F.ADD[_wvals(A, B, IB, s, [sub[r] for r in rows],
+                                      work), F.NEG[VB[rows]]]
                     work[t] = sav
                     cols.append(F.mm(Ks[:, rows], dv).reshape(-1))
                 sol = _solve(F, np.array(cols, dtype=np.int64), F.NEG[res])
@@ -1290,8 +1392,7 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
                 continue
             if _residual(A, B, IB, s, WA, KA, cur).any():
                 continue
-            VB = np.array([_wv(A, B, IB, s, WA[u], cur)
-                           for u in range(len(WA))], dtype=np.int64)
+            VB = _wvals(A, B, IB, s, WA, cur)
             if rank(F, VB) != B["n"]:
                 continue
             return dict(info, found=True, sigma=[str(x) for x in s],
@@ -1303,8 +1404,7 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
 def _residual(A, B, IB, s, WA, KA, arB):
     """관계 `KA` 를 B 쪽 단어값에 먹인 잔차 — 0 이면 well-defined."""
     F = A["F"]
-    VB = np.array([_wv(A, B, IB, s, WA[u], arB) for u in range(len(WA))],
-                  dtype=np.int64)
+    VB = _wvals(A, B, IB, s, WA, arB)
     if not len(KA):
         return np.zeros(0, dtype=np.int64)
     return F.mm(KA, VB).reshape(-1)
