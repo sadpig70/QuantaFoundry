@@ -768,7 +768,9 @@ def find_isomorphism(A, B, cap=200000):
                     "n_words": len(WA), "rank_VA": rank(F, VA),
                     "rank_VB": B["n"]}
         if st_hit[0]:
-            return {"found": False, "tried": tried, "capped": True}
+            # ★★탐색 예산이 끝난 것 — **미판정**(비동형이라고 말하지 않는다)
+            return {"found": None, "undecided": "node_cap", "tried": tried,
+                    "capped": True}
     return {"found": False, "tried": tried}
 
 
@@ -1180,37 +1182,62 @@ def _rad_glob(alg, layers):
     return out
 
 
-def _codim(F, vs, mod):
-    """`span(mod ∪ vs)` 의 `span(mod)` 위 여차원."""
+def _modrank(alg, RAD, mm):
+    """`rank(rad^mm)` — 층마다 한 번만 잰다(여차원 계산의 상수항)."""
+    c = alg.setdefault("_mrk", {})
+    if mm not in c:
+        c[mm] = (rank(alg["F"], np.array(RAD[mm], dtype=np.int64))
+                 if RAD[mm] else 0)
+    return c[mm]
+
+
+def _codim(F, vs, mod, r0):
+    """`span(mod ∪ vs)` 의 `span(mod)` 위 여차원(`r0 = rank(mod)` 는 미리 준다)."""
     if not vs:
         return 0
-    r0 = rank(F, np.array(mod, dtype=np.int64)) if mod else 0
     return rank(F, np.array(list(mod) + list(vs), dtype=np.int64)) - r0
 
 
-def _elt_inv(alg, RAD, v):
+def _gen_data(alg, RAD, gens):
+    """★불변량 계산의 **생성원 쪽** 준비물 — `rad²` 를 화살 곱으로 만든다(한 번만)."""
+    d = alg.get("_gend")
+    if d is None:
+        d = alg["_gend"] = {
+            "G1": list(gens),
+            "G2": [amul(alg, a, b) for a in gens for b in gens]}
+    return d
+
+
+def _elt_inv(alg, RAD, v, gens):
     """★`rad/rad²` 원소의 **대수동형 불변량**(스칼라배·rad² 대표 선택에 불변).
 
     `v·rad^k` 와 `rad^k·v` 가 `rad^m`(`m ≥ k+2`) 위에서 갖는 차원만 쓴다 —
     대표를 `v + r`(`r ∈ rad²`)로 바꾸면 변화가 `rad^{k+2}` 안이라 값이 안 변하고,
-    `αv` 로 스케일해도 span 이 같다. ⟹ **선(line) 위의 함수**이며 동형으로 보존된다."""
+    `αv` 로 스케일해도 span 이 같다. ⟹ **선(line) 위의 함수**이며 동형으로 보존된다.
+
+    ★`rad` 전체 기저 대신 **생성원(화살)**으로 훑는다 — `rad = ⟨화살⟩ + rad²` 이고
+    `v·rad² ⊆ rad³` 이라 `rad^m`(`m ≥ k+2`) 위에서 **같은 값**이면서 비용이
+    `O(|rad|²)` 에서 `O(|화살|²)` 로 떨어진다(깊은 대수에서 이 차이가 결정적이다)."""
     F, out = alg["F"], []
-    for k in (1, 2):
+    gd = _gen_data(alg, RAD, gens)
+    for k, Gk in ((1, gd["G1"]), (2, gd["G2"])):
         if k >= len(RAD):
             break
-        Lv = [amul(alg, b, v) for b in RAD[k]]
-        Rv = [amul(alg, v, b) for b in RAD[k]]
+        Lv = [amul(alg, b, v) for b in Gk]
+        Rv = [amul(alg, v, b) for b in Gk]
         for mm in range(k + 2, len(RAD)):
-            out.append(_codim(F, Lv, RAD[mm]))
-            out.append(_codim(F, Rv, RAD[mm]))
+            r0 = _modrank(alg, RAD, mm)
+            out.append(_codim(F, Lv, RAD[mm], r0))
+            out.append(_codim(F, Rv, RAD[mm], r0))
     if len(RAD) > 1:
-        Tw = [amul(alg, amul(alg, b, v), c) for b in RAD[1] for c in RAD[1]]
+        Tw = [amul(alg, amul(alg, b, v), c)
+              for b in gd["G1"] for c in gd["G1"]]
         for mm in range(4, len(RAD)):
-            out.append(_codim(F, Tw, RAD[mm]))
+            out.append(_codim(F, Tw, RAD[mm], _modrank(alg, RAD, mm)))
     return tuple(out)
 
 
-def _line_inv_table(alg, RAD, basis, cap=4096):
+def _line_inv_table(alg, RAD, basis, gens, cap=4096):
     """블록의 `rad/rad²` 기저에 대해 **선마다** 불변량 표 — 키는 정규화 계수."""
     F, m = alg["F"], len(basis)
     if m == 0 or F.q ** m > cap:
@@ -1224,7 +1251,7 @@ def _line_inv_table(alg, RAD, basis, cap=4096):
         for t, ct in enumerate(c):
             if ct:
                 w = F.ADD[w, F.MUL[ct, basis[t]]]
-        tab[c] = _elt_inv(alg, RAD, w)
+        tab[c] = _elt_inv(alg, RAD, w, gens)
     return tab
 
 
@@ -1236,10 +1263,12 @@ def _order_arrows_by_rarity(alg, RAD, arrows):
     F, byblk = alg["F"], {}
     for (i, j, v) in arrows:
         byblk.setdefault((i, j), []).append(v)
+    gens = [v for (_i, _j, v) in arrows]
     out = []
     for (i, j) in sorted(byblk):
         bas = byblk[(i, j)]
-        tab = _line_inv_table(alg, RAD, bas) if len(bas) > 1 else None
+        tab = (_line_inv_table(alg, RAD, bas, gens) if len(bas) > 1
+               else None)
         if tab is None:
             out += [(i, j, v) for v in bas]
             continue
@@ -1260,6 +1289,55 @@ def _order_arrows_by_rarity(alg, RAD, arrows):
             if len(chosen) == len(bas):
                 break
         out += [(i, j, v) for v in chosen]
+    return out
+
+
+def _gl_order(q, m):
+    """`|GL_m(GF q)|`."""
+    o = 1
+    for i in range(m):
+        o *= q ** m - q ** i
+    return o
+
+
+def _gl_lines_bound(F, m, tab, want):
+    """행별 허용 후보 수의 곱 — 실제 구성 **전에** 규모를 알기 위한 상한."""
+    b_ = 1
+    for k in range(m):
+        c = sum(1 for iv in tab.values() if iv == want[k]) * (F.q - 1)
+        if c == 0:
+            return 0
+        b_ *= c
+    return b_
+
+
+def _gl_mats_lines(F, m, tab, want):
+    """★`GL_m` 을 **훑고 거르는** 대신 **불변량이 맞는 행만 골라 쌓는다**.
+
+    `q^{m²}` 를 도는 것이 `m=3·q=9` 에서 `9⁹ ≈ 3.9×10⁸` 로 불가능해진다.
+    행마다 허용된 **선 × 스칼라**만 훑고 독립성으로 가지치기하면 결과 집합은
+    `filter(불변량, GL_m)` 과 **완전히 같으면서** 비용이 후보 수의 곱으로 떨어진다."""
+    allow = []
+    for k in range(m):
+        vs = []
+        for c, iv in tab.items():
+            if iv != want[k]:
+                continue
+            for a in range(1, F.q):
+                vs.append([int(F.MUL[a, x]) for x in c])
+        allow.append(vs)
+    out = []
+
+    def rec(k, cur, Bm, piv):
+        if k == m:
+            out.append(np.array(cur, dtype=np.int64))
+            return
+        for v in allow[k]:
+            ok, B2, p2 = rref_insert(F, Bm, piv, np.array(v, dtype=np.int64))
+            if ok:
+                rec(k + 1, cur + [v], B2, p2)
+
+    rec(0, [], [], [])
     return out
 
 
@@ -1286,8 +1364,44 @@ def _scalar_class_reps(F, mats):
     return out
 
 
+def _rad_data(alg):
+    """★`rad^m` 층과 그 전역 기저 — 대수에만 의존하므로 **한 번만** 만든다(순수 메모).
+
+    판정마다 다시 만들면 **음성 한 건에 20초**가 설정비로 나간다(BFS 에서 지배적)."""
+    d = alg.get("_radd")
+    if d is None:
+        layers = rad_layers(alg)
+        d = alg["_radd"] = {"layers": layers, "RG": _rad_glob(alg, layers)}
+    return d
+
+
+def _src_arrows(alg, line_prune):
+    """★**소스 쪽**에만 필요한 화살 기저와 선 불변량 — 타깃에는 안 만든다."""
+    key = "_arr1" if line_prune else "_arr0"
+    d = alg.get(key)
+    if d is not None:
+        return d
+    arr, _r2 = arrow_lifts_of(alg)
+    inv = None
+    if line_prune:
+        RG = _rad_data(alg)["RG"]
+        arr = _order_arrows_by_rarity(alg, RG, arr)
+        gens = [v for (_i, _j, v) in arr]
+        inv = [_elt_inv(alg, RG, v, gens) for v in gens]
+    d = alg[key] = {"arrows": arr, "inv": inv}
+    return d
+
+
+def _line_tab_cached(alg, RG, bk, basis, gens):
+    tabs = alg.setdefault("_lintab", {})
+    if bk not in tabs:
+        tabs[bk] = _line_inv_table(alg, RG, basis, gens)
+    return tabs[bk]
+
+
 def iso_lift(A, B, cap=2000000, level1_cap=4000000,
-             quotient=True, line_prune=True):
+             quotient=True, line_prune=True, gl_cap=10 ** 7,
+             l1_cap=200000):
     """★`A ≅ B` 판정 — **레벨 1(rad/rad²)만 열거**하고 이후는 **선형 연립**으로 올린다.
 
     `φ` 를 `J^m` 을 법으로 알고 있을 때 보정 `δ ∈ J^m` 을 더하면 단어값 변화가
@@ -1295,7 +1409,8 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
     반환에 `level1_space`(레벨 1 후보 곱)를 항상 넣어 **왜 되고/안 되는지**를 수치로 남긴다."""
     F = A["F"]
     IA, IB = idempotents(A), idempotents(B)
-    arA, _r2 = arrow_lifts_of(A)
+    dA = _src_arrows(A, line_prune)
+    arA = dA["arrows"]
     WA, VA = path_values(A, IA, arA)
     KA = nullspace(F, VA.T)                      # ★A 쪽 관계(단어들의 선형 종속)
     CA, CB = cartan_of(A), cartan_of(B)
@@ -1303,20 +1418,15 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
     sig = [s for s in itertools.permutations(B["names"])
            if all(CA[i][j] == CB[B["names"].index(s[i])][B["names"].index(s[j])]
                   for i in range(nA) for j in range(nA))]
-    layers = rad_layers(B)
+    dB = _rad_data(B)
+    layers = dB["layers"]
     L = len(layers) - 1                          # J^{L+1} = 0
     info = {"level1_space": None, "sigmas": len(sig), "n_words": len(WA),
             "n_relations": len(KA), "loewy": L, "quotient": quotient,
             "line_prune": line_prune}
-    # ★선 불변량 — A 쪽 화살값은 σ 와 무관하므로 **한 번만** 잰다
-    RA = _rad_glob(A, rad_layers(A))
-    RB = _rad_glob(B, layers)
-    invA = None
-    if line_prune:
-        arA = _order_arrows_by_rarity(A, RA, arA)   # ★기저부터 다시 고른다
-        WA, VA = path_values(A, IA, arA)
-        KA = nullspace(F, VA.T)
-        invA = [_elt_inv(A, RA, v) for (_i, _j, v) in arA]
+    RB, invA = dB["RG"], dA["inv"]   # ★선 불변량은 대수별 캐시에서 온다
+    _Bgen = ([v for (_i, _j, v) in _src_arrows(B, False)["arrows"]]
+             if line_prune else None)      # ★캐시된 화살 목록 재사용
     tried = 0
     for s in sig:
         # ── 레벨 1: **블록별 `GL_m`** 열거(유도사상이 가역이어야 한다) ──
@@ -1335,23 +1445,39 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
             qb[bk] = [blk(B, bk[0], bk[1], [r])[0] for r in Q]
         if bad:
             continue
-        gls = [list(_gl_mats(F, len(blocks[bk]))) for bk in bkeys]
-        if line_prune:
-            # ★★선 불변량 정합 — 동형은 `rad/rad²` 의 선을 **같은 불변량의 선**으로
-            #   보내야 한다. 궤도를 자르는 것이 아니라 **불가능한 상(像)을 지우는**
-            #   것이므로 완전성이 보존된다(무효화 시 `line_prune=False` 로 대조).
-            n_pruned = []
-            for bi, bk in enumerate(bkeys):
-                tab = _line_inv_table(B, RB, qb[bk])
-                if tab is None:
-                    n_pruned.append((str(bk), len(gls[bi]), len(gls[bi])))
-                    continue
+        # (★블록별 선 불변량 **다중집합**을 값싼 필요조건으로 먼저 재 봤으나
+        #  깊이 2 의 같은-Cartan 쌍 11건에서 **0건도 배제하지 못하고** 비용만 들어
+        #  **되돌렸다** — 실패한 필요조건. 배제는 전부 퀴버(화살 다중도)가 했다.)
+        # ★★선 불변량 정합 — 동형은 `rad/rad²` 의 선을 **같은 불변량의 선**으로 보내야
+        #   한다. 궤도를 자르는 것이 아니라 **불가능한 상(像)을 지우는** 것이므로
+        #   완전성이 보존된다(무효화 시 `line_prune=False` 로 대조).
+        #   ★그리고 **거르지 않고 쌓는다** — `GL_m` 전수는 `q^{m²}` 이라
+        #   m=3·q=9 면 9⁹ ≈ 3.9×10⁸ 로 애초에 돌 수 없다.
+        gls, n_pruned = [], []
+        for bk in bkeys:
+            m_ = len(blocks[bk])
+            tab = (_line_tab_cached(B, RB, bk, qb[bk], _Bgen)
+                   if line_prune else None)
+            if tab is not None:
                 want = [invA[t] for t in blocks[bk]]
-                keep = [M for M in gls[bi]
-                        if all(tab.get(_line_key(F, M[k])) == want[k]
-                               for k in range(len(want)))]
-                n_pruned.append((str(bk), len(gls[bi]), len(keep)))
-                gls[bi] = keep
+                # ★구성 **전에** 규모를 재고, 넘으면 **미판정**을 돌려준다 —
+                #   목록을 만들다 멈추면 그냥 멈춰 있는 것이지 답이 아니다.
+                bnd = _gl_lines_bound(F, m_, tab, want)
+                if bnd > l1_cap:
+                    return dict(info, found=None,
+                                undecided="level1_construction",
+                                level1_bound=int(bnd), tried=tried)
+                g = _gl_mats_lines(F, m_, tab, want)
+                n_pruned.append((str(bk), _gl_order(F.q, m_), len(g)))
+            else:
+                # ★가지치기가 없으면 전수뿐이다 — 규모를 넘으면 **미판정**을 돌려준다.
+                #   비동형이라고 말하면 거짓이다.
+                if F.q ** (m_ * m_) > gl_cap:
+                    return dict(info, found=None, undecided="gl_enumeration",
+                                gl_needed=int(F.q ** (m_ * m_)), tried=tried)
+                g = list(_gl_mats(F, m_))
+            gls.append(g)
+        if line_prune:
             info["line_prune_per_block"] = n_pruned
         if quotient:
             # ★대각 스케일 몫 — 신장나무 간선 블록만 스칼라류 대표로
@@ -1365,8 +1491,9 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
         info["level1_per_block"] = [(str(bk), len(blocks[bk]), len(g))
                                     for bk, g in zip(bkeys, gls)]
         if space > level1_cap:
+            # ★열거를 **시작조차 안 했다** — 미판정이지 비동형이 아니다
             info["capped_level1"] = True
-            return dict(info, found=False)
+            return dict(info, found=None, undecided="level1_cap")
         # ── 보정 자유도: 각 화살마다 J^m 블록 기저 ───────────────────
         # ★후보가 적은 블록부터 — 가지치기가 일찍 먹는다
         order = sorted(range(len(bkeys)), key=lambda t: len(gls[t]))
@@ -1481,7 +1608,9 @@ def iso_lift(A, B, cap=2000000, level1_cap=4000000,
 
         got1 = rec1([])
         if got1 == "CAP":
-            return dict(info, found=False, capped=True, tried=tried)
+            # ★★노드 예산이 끝난 것뿐이다 — **비동형이 아니라 미판정**이다
+            return dict(info, found=None, undecided="node_cap", capped=True,
+                        tried=tried)
         if got1 is None:
             continue
         combo = [0] * len(bkeys)

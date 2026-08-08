@@ -16,6 +16,9 @@
   F  ★★제2 판정기 `iso_lift`(층별 lifting) — 벽을 **정확히 수치화**(레벨 1 = 블록별 `GL_m`).
   E  ★Cartan 수준 궤도 — **폐합 주장이 아니다** · ★왜 규모 밖이었는지 **화살별 후보
      수를 실측**해 남긴다(G축이 이 벽을 부분적으로 해소했다).
+  H  ★★**깊이 2 의 미판정** — 처음으로 **퀴버가 같은** 쌍이 나오고, 그 판정은
+     현재 규모 밖이다. ★판정기가 `found=False` 가 아니라 **`found=None`(미판정)** 을
+     돌려주는지를 게이트로 둔다 — 못 끝낸 것을 비동형이라고 말하면 거짓이다.
   G  ★★★**동형 수준 dedup** — `rad/rad²` 의 **선(line) 불변량**으로 레벨 1 을 정규화해
      (`265,420,800 → 131,072`, **2025배**) **동형 판정이 처음 끝났다**. 자기동형 즉시 ·
      깊이 1 의 9 대표를 **7 동형류**로 분해(★Cartan 만으로는 못 하던 병합 2건).
@@ -342,8 +345,10 @@ def main():
     R["F_diag_scale_is_automorphism"] = all(
         GE.diag_scale_is_auto(a9, dict(zip(N9, lam)))
         for lam in ((1, 2, 3, 4), (2, 5, 7, 3), (1, 1, 1, 1)))
+    # ★열거를 시작도 못 했으면 **미판정**이어야 한다(비동형이라고 말하면 거짓)
     R["F_still_capped"] = (lf.get("capped_level1") is True
-                           and lf["found"] is False)
+                           and lf["found"] is None
+                           and lf.get("undecided") == "level1_cap")
     # ★★선 불변량이 레벨 1 을 **정확히 2025배** 줄인다 — rank-2 블록이 5760 → 128
     R["F_line_prune_2025x"] = (lfp["level1_space"] == 131072
                                and lf["level1_space"]
@@ -434,6 +439,55 @@ def main():
                    "음성 6건은 전부 **퀴버(화살 다중도)가 달라** 레벨 1 열거에 "
                    "들어가기도 전에 끝났다 ⟹ **레벨 1 전수 소진을 실제로 시험한 "
                    "음성 사례는 아직 없다**. 그 시험은 다음 층(깊이 2)의 몫이다."),
+    }
+
+    # ── H. ★★깊이 2 — **미판정을 미판정이라고 말하는가**(폐합 실패의 정직한 경계) ──
+    kids = {}
+    base = None
+    for kk, k in enumerate(N9):
+        for right in (False, True):
+            e, _E = GE.mutate_step(a9, k, right)
+            if not right and kk == 0:
+                base = e["alg"]
+    for kk, k in enumerate(base["names"]):
+        for right in (False, True):
+            e, _E = GE.mutate_step(base, k, right)
+            if e["dim"] <= 90:
+                kids[("-" if right else "+") + str(kk)] = e["alg"]
+    # ★같은 Cartan·같은 퀴버라 **열거에 실제로 들어가는** 쌍 — 깊이 1 엔 없었다
+    hardp = [("+2", "+3"), ("-2", "-3")]
+    hres = []
+    for pa, pb in hardp:
+        rr = GE.iso_lift(kids[pa], kids[pb], cap=120, level1_cap=10 ** 9)
+        hres.append({"a": "+0" + pa, "b": "+0" + pb, "found": rr["found"],
+                     "capped": bool(rr.get("capped")),
+                     "undecided": rr.get("undecided"),
+                     "level1_space": rr.get("level1_space"),
+                     "tried": rr.get("tried")})
+    # ★★핵심 게이트 — **비동형이라고 말하지 않는다**(못 끝냈으면 미판정)
+    R["H_hard_pairs_not_claimed_noniso"] = all(
+        h["found"] is not False for h in hres)
+    R["H_hard_pairs_enter_enumeration"] = all(
+        h["level1_space"] is not None and h["level1_space"] > 0
+        for h in hres)
+    R["H_hard_pairs_are_capped"] = all(h["capped"] for h in hres)
+    # ★`GL₃(GF 9)` 전수는 `9⁹` 라 **구성**으로만 도달한다 — 전수 경로는 미판정
+    rr0 = GE.iso_lift(kids["+2"], kids["+3"], cap=120, level1_cap=10 ** 9,
+                      line_prune=False)
+    R["H_unpruned_path_is_undecided"] = (
+        rr0["found"] is None and rr0.get("undecided") == "gl_enumeration"
+        and rr0.get("gl_needed") == 9 ** 9)
+    out["H_depth2_undecided"] = {
+        "pairs": hres, "gl_needed_unpruned": 9 ** 9,
+        "note": ("★★깊이 2 에서 처음으로 **퀴버가 같은** 쌍이 나온다 — 깊이 1 의 음성 "
+                 "6건은 전부 퀴버 불일치로 열거 **전에** 끝났다(선행 유보 해소). "
+                 "★`GL₃(GF(9))` 전수는 `9⁹ = 387,420,489` 라 **거르는 방식으로는 "
+                 "도달 불가**이고, 선 불변량이 맞는 행만 **쌓아 만들면** 도달한다."),
+        "honest": ("★★**류 폐합은 실패했다** — 이 두 쌍은 레벨 1 공간이 "
+                   "각각 `%s`·`%s` 라 현재 처리율(~1.5 노드/초)로 **일/주 단위**다. "
+                   "판정기는 이때 `found=False` 가 아니라 **`found=None`(미판정)** 을 "
+                   "돌려준다 — 못 끝낸 것을 비동형이라고 말하지 않는다."
+                   % (hres[0]["level1_space"], hres[1]["level1_space"])),
     }
 
     R["all_ok"] = all(v for k, v in R.items() if k != "all_ok")

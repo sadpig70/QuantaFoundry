@@ -2067,7 +2067,7 @@
     "level1_space_no_quotient": 135895449600,
     "note": "★판정기를 **층별 successive lifting** 으로 바꿨다 — `φ` 를 `J^m` 을 법으로 알면 보정 `δ ∈ J^m` 이 단어값에 **선형**으로 들어가므로(`δ·δ ∈ J^{2m} ⊆ J^{m+1}`) **열거는 레벨 1 뿐**이고 이후는 선형 연립이다. ★q=2·q=4 에서 기존 판정기와 **6/6 같은 답**(회귀)",
     "self": {
-      "found": false,
+      "found": null,
       "level1_space": 265420800,
       "loewy": 4,
       "n_relations": 290,
@@ -2139,6 +2139,31 @@
       "level1_space": 131072
     }
   },
+  "H_depth2_undecided": {
+    "gl_needed_unpruned": 387420489,
+    "honest": "★★**류 폐합은 실패했다** — 이 두 쌍은 레벨 1 공간이 각각 `6291456`·`262144` 라 현재 처리율(~1.5 노드/초)로 **일/주 단위**다. 판정기는 이때 `found=False` 가 아니라 **`found=None`(미판정)** 을 돌려준다 — 못 끝낸 것을 비동형이라고 말하지 않는다.",
+    "note": "★★깊이 2 에서 처음으로 **퀴버가 같은** 쌍이 나온다 — 깊이 1 의 음성 6건은 전부 퀴버 불일치로 열거 **전에** 끝났다(선행 유보 해소). ★`GL₃(GF(9))` 전수는 `9⁹ = 387,420,489` 라 **거르는 방식으로는 도달 불가**이고, 선 불변량이 맞는 행만 **쌓아 만들면** 도달한다.",
+    "pairs": [
+      {
+        "a": "+0+2",
+        "b": "+0+3",
+        "capped": true,
+        "found": null,
+        "level1_space": 6291456,
+        "tried": 121,
+        "undecided": "node_cap"
+      },
+      {
+        "a": "+0-2",
+        "b": "+0-3",
+        "capped": true,
+        "found": null,
+        "level1_space": 262144,
+        "tried": 121,
+        "undecided": "node_cap"
+      }
+    ]
+  },
   "all_ok": true,
   "checks": {
     "A_cartan_regression": true,
@@ -2178,6 +2203,10 @@
     "G_negatives_are_quiver_certificates": true,
     "G_self_iso_now_terminates": true,
     "G_two_genuine_merges": true,
+    "H_hard_pairs_are_capped": true,
+    "H_hard_pairs_enter_enumeration": true,
+    "H_hard_pairs_not_claimed_noniso": true,
+    "H_unpruned_path_is_undecided": true,
     "all_ok": true
   }
 }
