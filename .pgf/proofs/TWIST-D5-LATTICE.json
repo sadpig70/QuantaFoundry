@@ -9,6 +9,7 @@
   },
   "checks": {
     "A_candidates_exist": true,
+    "A_full_run_is_exhaustive": true,
     "A_odd_Y_automatic": true,
     "A_pentagon_weights": true,
     "A_teeth_constant_solution_degenerate": true,
@@ -51,6 +52,7 @@
   },
   "type_system": {
     "candidate_count_6x5": 1588,
+    "candidates_truncated": false,
     "corollary": "지정 쌍 반교환 = 타입 불일치 겹침 홀수 ⟹ 병합 Y 개수 자동 홀수(설계 보장)",
     "method": "면 집합 + '지정 1쌍만 반교환' 을 GF(2) 아핀 연립으로 풀어 타입 결정",
     "pitfall": "해공간 자유변수 전수 열거 필수 — 특수해는 상수 타입으로 퇴화(weight-1 논리)"

@@ -49,6 +49,10 @@ def Raxis(n, t):
 
 
 def group_order(gens, tol=1e-6, cap=200):
+    """생성군의 위수. ★cap 초과 시 **`-len(seen)`**(음수)로 "**적어도** 이만큼"을 돌려준다.
+
+    `-1` 처럼 정보를 지우면 "못 셌다"와 "많다"가 구별되지 않아, `!= 60` 같은
+    **부정 주장이 열거 포기만으로 통과**해 버린다(실제로 그랬다)."""
     seen = [np.eye(3)]
 
     def known(M):
@@ -63,7 +67,7 @@ def group_order(gens, tol=1e-6, cap=200):
                     seen.append(N); nf.append(N)
         fr = nf
         if len(seen) > cap:
-            return -1
+            return -len(seen)          # ★"적어도 |seen| 개" — 포기가 아니라 하계
     return len(seen)
 
 
@@ -114,8 +118,14 @@ def main():
     R["not_honestly_byte_sealable_rep_theory_asset"] = opaque   # 정직 경계: 봉인 아닌 표현론 자산
 
     # teeth: 가짜 생성원(order 4 회전)은 A₅ order 아님
+    # ★★열거가 cap 에서 끝나면 그것은 "못 셌다"가 아니라 **"적어도 |seen| 개"** 이고,
+    #   그 하계가 60 을 넘으면 **위수 60 이 아님이 증명**된다. 예전 `-1 != 60` 은
+    #   **포기만으로 통과**하던 거짓 근거였다 — 하계를 명시해 진짜 증거로 바꿨다.
     bad = Raxis((0, 1, PHI), 2 * np.pi / 4)
-    R["teeth_fake_generator_not_A5"] = (group_order([bad, b]) != 60)
+    go_bad = group_order([bad, b])
+    R["teeth_fake_generator_not_A5"] = (
+        (-go_bad > 60) if go_bad < 0 else (go_bad != 60))
+    R["teeth_reason_is_lower_bound_not_giveup"] = (go_bad < 0 and -go_bad > 60)
 
     ok = all(R.values())
     if not quick:

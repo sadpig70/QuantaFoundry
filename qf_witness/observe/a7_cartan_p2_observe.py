@@ -207,12 +207,16 @@ def quot_rep(mats, B):
 
 
 def simple_and_orbits(mats, cap=None):
-    """기약성 전수 검증: 모든 궤도 대표가 전체를 생성하는지. (simple, 궤도수)."""
+    """기약성 전수 검증: 모든 궤도 대표가 전체를 생성하는지. (simple, 궤도수).
+
+    ★`cap` 을 주면 대표 `cap` 개까지만 **실제로 검사**하므로 결과는 **전수가 아니다** —
+    그때는 `simple` 자리에 `None`(**미판정**)을 돌려준다. 검사하지 않은 대표가 있는데
+    `True`(기약)라고 말하면 거짓이다. 현재 호출부는 `cap=None`(전수)이다."""
     n = len(mats[0])
     colsL = [col_images(M) for M in mats]
     seen = bytearray(1 << n)
     seen[0] = 1
-    nreps = 0
+    nreps, capped = 0, False
     for v0 in range(1, 1 << n):
         if seen[v0]:
             continue
@@ -229,6 +233,7 @@ def simple_and_orbits(mats, cap=None):
                         nf.append(w)
             fr = nf
         if cap is not None and nreps > cap:
+            capped = True             # ★검사를 건너뛴 대표가 있다 — 전수가 아니다
             continue
         B = rref_basis([v0])
         fr = list(B)
@@ -246,8 +251,8 @@ def simple_and_orbits(mats, cap=None):
                         nf.append(t)
             fr = nf
         if len(B) != n:
-            return False, nreps
-    return True, nreps
+            return False, nreps       # ★반례는 cap 과 무관하게 확정이다
+    return (None if capped else True), nreps
 
 
 # ══════════════════════════════════════════════════════════════════════════

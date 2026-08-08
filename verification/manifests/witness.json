@@ -1402,6 +1402,16 @@
         ]
       },
       {
+        "id": "undecided_audit",
+        "argv": [
+          "-m",
+          "qf_witness.ops.undecided_audit"
+        ],
+        "inputs": [
+          "qf_witness/**/*.py"
+        ]
+      },
+      {
         "id": "check_claims",
         "argv": [
           "-m",

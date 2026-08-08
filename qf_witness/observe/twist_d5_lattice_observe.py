@@ -236,6 +236,8 @@ def to_pauli(terms, types):
 
 
 def enumerate_candidates(m, d, maxfree=8, limit=None):
+    """후보 열거. ★`limit` 이 걸리면 `(out, True)` 로 **잘렸음**을 함께 돌려준다 —
+    잘린 집합 위의 `all(...)` 은 전칭 주장이 아니므로 호출부가 알아야 한다."""
     """'1쌍 반교환·k=2·홀수 Y' 후보 전수 산출."""
     n = m * d
     out = []
@@ -278,8 +280,8 @@ def enumerate_candidates(m, d, maxfree=8, limit=None):
                                 continue
                             out.append((off, C, R, faces[i][0], faces[j][0], prod, newP))
                             if limit and len(out) >= limit:
-                                return out
-    return out
+                                return out, True      # ★잘렸다
+    return out, False
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -293,8 +295,13 @@ def main():
     # ── A. 타입 연립 + 홀수-Y 자동 보장 + 퇴화 함정 ──────────────────────
     M0, D0 = 6, 5
     n0 = M0 * D0
-    cands = enumerate_candidates(M0, D0, limit=None if not quick else 8)
+    cands, cands_cut = enumerate_candidates(M0, D0,
+                                            limit=None if not quick else 8)
     R["A_candidates_exist"] = (len(cands) > 0)
+    # ★★전칭 주장(`all(...)`)은 **잘리지 않은 집합** 위에서만 뜻이 있다 —
+    #   full 은 전수여야 하고, quick 은 잘렸음을 **기록**한다(초록불의 출처 명시).
+    R["A_full_run_is_exhaustive"] = (cands_cut is True) if quick else (
+        cands_cut is False)
     R["A_odd_Y_automatic"] = all(yc(c[5]) % 2 == 1 for c in cands)
     R["A_pentagon_weights"] = all(wt(c[5]) >= 3 for c in cands)
     # 퇴화 함정: 상수 타입(전부 X)은 weight-1 논리를 낳는다
@@ -308,6 +315,7 @@ def main():
         "corollary": "지정 쌍 반교환 = 타입 불일치 겹침 홀수 ⟹ 병합 Y 개수 자동 홀수(설계 보장)",
         "pitfall": "해공간 자유변수 전수 열거 필수 — 특수해는 상수 타입으로 퇴화(weight-1 논리)",
         "candidate_count_6x5": len(cands),
+        "candidates_truncated": cands_cut,
     }
 
     # ── B. MITM 인증기 + 직접 전수 교차검증 ─────────────────────────────
